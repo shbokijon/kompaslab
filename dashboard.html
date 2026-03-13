@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Kompas Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#2d4a3e;--accent-hover:#1e3329;--accent-light:#e8f0ec;
+  --accent2:#c4622d;--accent2-light:#faeee7;
+  --bg:#f5f7f6;--surface:#ffffff;--border:#e0e8e4;
+  --text:#1a2e26;--muted:#6b7f76;--muted2:#9aada6;
+  --green:#1a7a4a;--green-light:#e6f4ec;
+  --gold:#b08a00;--gold-light:#fdf6dc;
+  --blue:#1a56a0;--blue-light:#e6f0fc;
+  --red:#c0392b;--red-light:#fdecea;
+  --sidebar-w:260px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:var(--sidebar-w);flex-shrink:0;
+  background:var(--accent);
+  display:flex;flex-direction:column;
+  position:fixed;top:0;left:0;bottom:0;
+  z-index:50;overflow-y:auto;
+}
+.sb-logo{
+  display:flex;align-items:center;gap:10px;
+  padding:24px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  text-decoration:none;
+}
+.sb-logo-mark{width:36px;height:36px;background:var(--accent2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.sb-logo-text{font-size:17px;font-weight:800;color:white;}
+
+.sb-user{
+  padding:16px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.sb-user-card{
+  background:rgba(255,255,255,0.08);
+  border-radius:10px;padding:12px;
+  display:flex;align-items:center;gap:10px;
+}
+.sb-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent2),#e0896a);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:700;font-size:14px;flex-shrink:0;
+}
+.sb-user-name{font-size:13px;font-weight:700;color:white;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sb-user-plan{font-size:11px;color:rgba(255,255,255,0.5);font-family:'JetBrains Mono',monospace;}
+
+.sb-nav{flex:1;padding:16px 12px;}
+.sb-section-title{
+  font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);
+  text-transform:uppercase;letter-spacing:1.5px;
+  padding:0 8px;margin-bottom:6px;margin-top:16px;
+  font-family:'JetBrains Mono',monospace;
+}
+.sb-section-title:first-child{margin-top:0;}
+.sb-link{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 10px;border-radius:8px;
+  text-decoration:none;
+  color:rgba(255,255,255,0.65);
+  font-size:13px;font-weight:600;
+  transition:all 0.15s;margin-bottom:2px;
+}
+.sb-link:hover{background:rgba(255,255,255,0.08);color:white;}
+.sb-link.active{background:rgba(255,255,255,0.12);color:white;}
+.sb-link-icon{width:20px;text-align:center;font-size:15px;}
+.sb-badge{margin-left:auto;background:var(--accent2);color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;font-family:'JetBrains Mono',monospace;}
+
+.sb-progress-wrap{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.08);}
+.sb-prog-label{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:6px;}
+.sb-prog-bar{height:6px;background:rgba(255,255,255,0.1);border-radius:99px;overflow:hidden;}
+.sb-prog-fill{height:100%;background:linear-gradient(90deg,var(--accent2),#e0896a);border-radius:99px;transition:width 1s ease;}
+
+.sb-logout{
+  margin:0 12px 16px;padding:10px;
+  border-radius:8px;border:1px solid rgba(255,255,255,0.1);
+  background:none;color:rgba(255,255,255,0.5);
+  font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;
+  cursor:pointer;transition:all 0.15s;
+  display:flex;align-items:center;gap:8px;justify-content:center;
+}
+.sb-logout:hover{background:rgba(255,255,255,0.06);color:white;}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar-w);flex:1;padding:32px;max-width:calc(100vw - var(--sidebar-w));}
+
+/* ── TOPBAR ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
+.topbar-greeting h1{font-size:22px;font-weight:900;letter-spacing:-0.5px;}
+.topbar-greeting p{font-size:14px;color:var(--muted);margin-top:2px;}
+.topbar-right{display:flex;align-items:center;gap:12px;}
+.topbar-notif{
+  width:40px;height:40px;border-radius:10px;
+  background:white;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;cursor:pointer;position:relative;
+  transition:all 0.15s;
+}
+.topbar-notif:hover{border-color:var(--accent);}
+.notif-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--accent2);border-radius:50%;border:2px solid white;}
+.topbar-streak{
+  background:var(--gold-light);border:1px solid #e8d48a;
+  color:var(--gold);padding:8px 14px;border-radius:10px;
+  font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;
+}
+
+/* ── STATS ROW ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;}
+.stat-card{
+  background:white;border:1px solid var(--border);border-radius:14px;
+  padding:18px 20px;position:relative;overflow:hidden;
+}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.stat-card:nth-child(1)::before{background:var(--accent);}
+.stat-card:nth-child(2)::before{background:var(--green);}
+.stat-card:nth-child(3)::before{background:var(--accent2);}
+.stat-card:nth-child(4)::before{background:var(--gold);}
+.stat-icon{font-size:22px;margin-bottom:10px;}
+.stat-val{font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1;margin-bottom:3px;}
+.stat-lbl{font-size:12px;color:var(--muted);font-weight:600;}
+.stat-change{font-size:11px;margin-top:6px;font-weight:600;display:flex;align-items:center;gap:4px;}
+.stat-change.up{color:var(--green);}
+.stat-change.neutral{color:var(--muted);}
+
+/* ── GRID ── */
+.content-grid{display:grid;grid-template-columns:1fr 340px;gap:20px;}
+
+/* ── CURRENT LESSON CARD ── */
+.current-card{
+  background:var(--accent);border-radius:16px;padding:24px;
+  position:relative;overflow:hidden;margin-bottom:20px;
+}
+.current-card::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);top:-100px;right:-100px;}
+.cc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:14px;}
+.cc-title{font-size:20px;font-weight:800;color:white;margin-bottom:6px;position:relative;z-index:1;}
+.cc-meta{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:18px;position:relative;z-index:1;}
+.cc-prog{position:relative;z-index:1;margin-bottom:18px;}
+.cc-prog-row{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:6px;}
+.cc-prog-bar{height:6px;background:rgba(255,255,255,0.15);border-radius:99px;overflow:hidden;}
+.cc-prog-fill{height:100%;background:linear-gradient(90deg,var(--accent2),#e0896a);border-radius:99px;}
+.cc-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:white;color:var(--accent);
+  padding:11px 22px;border-radius:10px;
+  font-size:14px;font-weight:700;text-decoration:none;
+  transition:all 0.2s;border:none;cursor:pointer;
+  font-family:'Outfit',sans-serif;position:relative;z-index:1;
+}
+.cc-btn:hover{opacity:0.9;transform:translateY(-1px);}
+
+/* ── MODULES LIST ── */
+.section-title-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.section-title-row h2{font-size:16px;font-weight:800;}
+.section-link{font-size:13px;color:var(--accent);font-weight:700;text-decoration:none;}
+.modules-list{display:flex;flex-direction:column;gap:8px;}
+.mod-row{
+  background:white;border:1px solid var(--border);border-radius:12px;
+  padding:14px 16px;
+  display:flex;align-items:center;gap:14px;
+  cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--text);
+}
+.mod-row:hover{border-color:var(--accent);box-shadow:0 2px 12px rgba(45,74,62,0.08);}
+.mod-row.locked{opacity:0.5;cursor:not-allowed;}
+.mod-num{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;
+}
+.mod-num.done{background:var(--green-light);color:var(--green);}
+.mod-num.active{background:var(--accent-light);color:var(--accent);}
+.mod-num.locked{background:var(--bg);color:var(--muted2);}
+.mod-info{flex:1;min-width:0;}
+.mod-title{font-size:13px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mod-sub{font-size:11px;color:var(--muted);}
+.mod-right{text-align:right;flex-shrink:0;}
+.mod-status{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace;}
+.mod-status.done{background:var(--green-light);color:var(--green);}
+.mod-status.active{background:var(--accent-light);color:var(--accent);}
+.mod-status.locked{background:var(--bg);color:var(--muted2);}
+.mod-lessons{font-size:10px;color:var(--muted);margin-top:2px;}
+
+/* ── RIGHT COLUMN ── */
+.right-col{display:flex;flex-direction:column;gap:16px;}
+
+/* ── PROGRESS RING ── */
+.progress-card{background:white;border:1px solid var(--border);border-radius:16px;padding:22px;text-align:center;}
+.progress-card h3{font-size:14px;font-weight:800;margin-bottom:16px;text-align:left;}
+.ring-wrap{display:flex;justify-content:center;margin-bottom:16px;position:relative;}
+.ring-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.ring-val{font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1;}
+.ring-lbl{font-size:11px;color:var(--muted);font-weight:600;}
+.ring-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.rs-item{background:var(--bg);border-radius:8px;padding:10px;text-align:center;}
+.rs-val{font-size:18px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);}
+.rs-lbl{font-size:10px;color:var(--muted);font-weight:600;margin-top:1px;}
+
+/* ── TASKS ── */
+.tasks-card{background:white;border:1px solid var(--border);border-radius:16px;padding:22px;}
+.tasks-card h3{font-size:14px;font-weight:800;margin-bottom:14px;}
+.task-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 0;border-bottom:1px solid var(--border);
+}
+.task-item:last-child{border-bottom:none;padding-bottom:0;}
+.task-check{
+  width:18px;height:18px;border-radius:5px;
+  border:2px solid var(--border);flex-shrink:0;margin-top:1px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:10px;transition:all 0.15s;
+}
+.task-check.done{background:var(--green);border-color:var(--green);color:white;}
+.task-text{flex:1;}
+.task-title{font-size:13px;font-weight:600;margin-bottom:2px;}
+.task-title.done{text-decoration:line-through;color:var(--muted);}
+.task-due{font-size:11px;color:var(--muted);}
+.task-due.overdue{color:var(--red);}
+
+/* ── DEADLINE ── */
+.deadline-card{background:var(--gold-light);border:1px solid #e8d48a;border-radius:16px;padding:18px;}
+.deadline-card h3{font-size:14px;font-weight:800;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.deadline-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(176,138,0,0.15);}
+.deadline-item:last-child{border-bottom:none;}
+.deadline-name{font-size:12px;font-weight:700;}
+.deadline-date{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--gold);background:rgba(176,138,0,0.1);padding:2px 8px;border-radius:6px;font-weight:700;}
+
+/* ── ANNOUNCEMENTS ── */
+.announce-card{background:var(--blue-light);border:1px solid #c3d8f5;border-radius:16px;padding:18px;}
+.announce-card h3{font-size:14px;font-weight:800;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.announce-text{font-size:13px;color:var(--blue);line-height:1.6;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .content-grid{grid-template-columns:1fr;}
+  .right-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+}
+@media(max-width:800px){
+  .sidebar{transform:translateX(-100%);}
+  .main{margin-left:0;}
+  .right-col{grid-template-columns:1fr;}
+}
+
+/* SKELETON LOADER */
+.skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════════ -->
+<aside class="sidebar">
+  <a href="index.html" class="sb-logo">
+    <div class="sb-logo-mark">🧭</div>
+    <span class="sb-logo-text">Kompas Lab</span>
+  </a>
+
+  <div class="sb-user">
+    <div class="sb-user-card">
+      <div class="sb-avatar" id="sidebarAvatar">S</div>
+      <div style="min-width:0;">
+        <div class="sb-user-name" id="sidebarName">Yuklanmoqda...</div>
+        <div class="sb-user-plan" id="sidebarPlan">scholar plan</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="sb-nav">
+    <div class="sb-section-title">Asosiy</div>
+    <a href="dashboard.html" class="sb-link active">
+      <span class="sb-link-icon">🏠</span> Dashboard
+    </a>
+    <a href="lesson.html" class="sb-link">
+      <span class="sb-link-icon">🎬</span> Darslar
+      <span class="sb-badge" id="nextLessonBadge">▶</span>
+    </a>
+
+    <div class="sb-section-title">Resurslar</div>
+    <a href="#" class="sb-link">
+      <span class="sb-link-icon">📄</span> Materiallar
+    </a>
+    <a href="#" class="sb-link">
+      <span class="sb-link-icon">📝</span> Topshiriqlar
+      <span class="sb-badge" id="assignmentBadge" style="display:none">1</span>
+    </a>
+    <a href="#" class="sb-link">
+      <span class="sb-link-icon">💬</span> Telegram guruh
+    </a>
+
+    <div class="sb-section-title">Profil</div>
+    <a href="#" class="sb-link">
+      <span class="sb-link-icon">⚙️</span> Sozlamalar
+    </a>
+  </nav>
+
+  <div class="sb-progress-wrap">
+    <div class="sb-prog-label">
+      <span>Umumiy progress</span>
+      <span id="sbProgPct" style="font-family:'JetBrains Mono',monospace;">0%</span>
+    </div>
+    <div class="sb-prog-bar">
+      <div class="sb-prog-fill" id="sbProgFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <button class="sb-logout" onclick="handleLogout()">
+    🚪 Chiqish
+  </button>
+</aside>
+
+<!-- ══════════════════════════════════════════
+     MAIN CONTENT
+══════════════════════════════════════════ -->
+<main class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-greeting">
+      <h1 id="greetingText">Xush kelibsiz! 👋</h1>
+      <p id="greetingDate">Bugun dars boshlaymizmi?</p>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-streak" id="streakBadge">
+        🔥 <span id="streakDays">0</span> kunlik seriya
+      </div>
+      <div class="topbar-notif">
+        🔔
+        <div class="notif-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-icon">🎬</div>
+      <div class="stat-val" id="statLessons">0</div>
+      <div class="stat-lbl">Ko'rilgan darslar</div>
+      <div class="stat-change neutral" id="statLessonsTotal">/ 35 ta dars</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⏱</div>
+      <div class="stat-val" id="statHours">0h</div>
+      <div class="stat-lbl">O'quv vaqti</div>
+      <div class="stat-change up">↑ Bu hafta</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📝</div>
+      <div class="stat-val" id="statTasks">0</div>
+      <div class="stat-lbl">Topshiriqlar</div>
+      <div class="stat-change neutral" id="statTasksDone">bajarildi</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏅</div>
+      <div class="stat-val" id="statWeek">1</div>
+      <div class="stat-lbl">Joriy hafta</div>
+      <div class="stat-change neutral">/ 8 hafta</div>
+    </div>
+  </div>
+
+  <!-- CONTENT GRID -->
+  <div class="content-grid">
+
+    <!-- LEFT -->
+    <div class="left-col">
+
+      <!-- CURRENT LESSON -->
+      <div class="current-card">
+        <div class="cc-badge">▶ Davom etish</div>
+        <h2 class="cc-title" id="currentLessonTitle">Dars yuklanmoqda...</h2>
+        <p class="cc-meta" id="currentLessonMeta">📦 Modul · ⏱ --:--</p>
+        <div class="cc-prog">
+          <div class="cc-prog-row">
+            <span>Kurs progressi</span>
+            <span id="currentPct">0%</span>
+          </div>
+          <div class="cc-prog-bar">
+            <div class="cc-prog-fill" id="currentProgFill" style="width:0%"></div>
+          </div>
+        </div>
+        <a href="lesson.html" class="cc-btn">Darsni davom ettirish →</a>
+      </div>
+
+      <!-- MODULES -->
+      <div class="section-title-row">
+        <h2>Kurs modullari</h2>
+        <a href="lesson.html" class="section-link">Hammasini ko'rish →</a>
+      </div>
+      <div class="modules-list" id="modulesList">
+        <!-- JS bilan to'ldiriladi -->
+        <div class="mod-row">
+          <div class="mod-num done">✓</div>
+          <div class="mod-info">
+            <div class="mod-title">Hafta 1 · Research Identity Framework</div>
+            <div class="mod-sub">4 dars · 3.5 soat</div>
+          </div>
+          <div class="mod-right">
+            <div class="mod-status done">Tugadi</div>
+            <div class="mod-lessons">4/4 dars</div>
+          </div>
+        </div>
+        <a href="lesson.html" class="mod-row">
+          <div class="mod-num active">▶</div>
+          <div class="mod-info">
+            <div class="mod-title">Hafta 2 · University Mapping System</div>
+            <div class="mod-sub">5 dars · 4 soat</div>
+          </div>
+          <div class="mod-right">
+            <div class="mod-status active">Jarayonda</div>
+            <div class="mod-lessons">2/5 dars</div>
+          </div>
+        </a>
+        <div class="mod-row">
+          <div class="mod-num active">▶</div>
+          <div class="mod-info">
+            <div class="mod-title">Hafta 3 · Professor Outreach Strategy</div>
+            <div class="mod-sub">4 dars · 3 soat</div>
+          </div>
+          <div class="mod-right">
+            <div class="mod-status active">Jarayonda</div>
+            <div class="mod-lessons">1/4 dars</div>
+          </div>
+        </div>
+        <div class="mod-row locked">
+          <div class="mod-num locked">🔒</div>
+          <div class="mod-info">
+            <div class="mod-title">Hafta 4 · Statement of Purpose Lab</div>
+            <div class="mod-sub">5 dars · 5 soat</div>
+          </div>
+          <div class="mod-right">
+            <div class="mod-status locked">Qulflangan</div>
+            <div class="mod-lessons">0/5 dars</div>
+          </div>
+        </div>
+        <div class="mod-row locked">
+          <div class="mod-num locked">🔒</div>
+          <div class="mod-info">
+            <div class="mod-title">Hafta 5 · CV & Portfolio Engineering</div>
+            <div class="mod-sub">4 dars · 3.5 soat</div>
+          </div>
+          <div class="mod-right">
+            <div class="mod-status locked">Qulflangan</div>
+            <div class="mod-lessons">0/4 dars</div>
+          </div>
+        </div>
+        <div class="mod-row locked">
+          <div class="mod-num locked">🔒</div>
+          <div class="mod-info">
+            <div class="mod-title">Hafta 6 · Grant Application System</div>
+            <div class="mod-sub">5 dars · 4.5 soat</div>
+          </div>
+          <div class="mod-right">
+            <div class="mod-status locked">Qulflangan</div>
+            <div class="mod-lessons">0/5 dars</div>
+          </div>
+        </div>
+        <div class="mod-row locked">
+          <div class="mod-num locked">🔒</div>
+          <div class="mod-info">
+            <div class="mod-title">Hafta 7 · Research Proposal Writing</div>
+            <div class="mod-sub">4 dars · 4 soat</div>
+          </div>
+          <div class="mod-right">
+            <div class="mod-status locked">Qulflangan</div>
+            <div class="mod-lessons">0/4 dars</div>
+          </div>
+        </div>
+        <div class="mod-row locked">
+          <div class="mod-num locked">🔒</div>
+          <div class="mod-info">
+            <div class="mod-title">Hafta 8 · Interview & Final Submission</div>
+            <div class="mod-sub">4 dars · 3.5 soat</div>
+          </div>
+          <div class="mod-right">
+            <div class="mod-status locked">Qulflangan</div>
+            <div class="mod-lessons">0/4 dars</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+
+      <!-- PROGRESS RING -->
+      <div class="progress-card">
+        <h3>📊 Kurs statistikasi</h3>
+        <div class="ring-wrap">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle cx="70" cy="70" r="58" fill="none" stroke="#e0e8e4" stroke-width="12"/>
+            <circle cx="70" cy="70" r="58" fill="none" stroke="#2d4a3e" stroke-width="12"
+              stroke-linecap="round"
+              stroke-dasharray="364"
+              stroke-dashoffset="200"
+              transform="rotate(-90 70 70)"
+              id="ringCircle"
+              style="transition:stroke-dashoffset 1s ease"/>
+          </svg>
+          <div class="ring-text">
+            <div class="ring-val" id="ringPct">0%</div>
+            <div class="ring-lbl">Tugallandi</div>
+          </div>
+        </div>
+        <div class="ring-stats">
+          <div class="rs-item">
+            <div class="rs-val" id="rsDone">0</div>
+            <div class="rs-lbl">✅ Ko'rildi</div>
+          </div>
+          <div class="rs-item">
+            <div class="rs-val" id="rsLeft">35</div>
+            <div class="rs-lbl">⏳ Qoldi</div>
+          </div>
+          <div class="rs-item">
+            <div class="rs-val" id="rsWeek">1</div>
+            <div class="rs-lbl">📅 Hafta</div>
+          </div>
+          <div class="rs-item">
+            <div class="rs-val" id="rsStreak">0</div>
+            <div class="rs-lbl">🔥 Seriya</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HAFTALIK VAZIFALAR -->
+      <div class="tasks-card">
+        <h3>✅ Haftalik vazifalar</h3>
+        <div id="tasksList">
+          <div class="task-item">
+            <div class="task-check done" onclick="toggleTask(this)">✓</div>
+            <div class="task-text">
+              <div class="task-title done">Research niche aniqlash</div>
+              <div class="task-due">Hafta 1 · Bajarildi</div>
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-check done" onclick="toggleTask(this)">✓</div>
+            <div class="task-text">
+              <div class="task-title done">5 ta universitet tanlash</div>
+              <div class="task-due">Hafta 2 · Bajarildi</div>
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-check" onclick="toggleTask(this)"></div>
+            <div class="task-text">
+              <div class="task-title">Professor email yozish</div>
+              <div class="task-due overdue">⚠️ Bugun deadline!</div>
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-check" onclick="toggleTask(this)"></div>
+            <div class="task-text">
+              <div class="task-title">SoP draft tayyorlash</div>
+              <div class="task-due">📅 3 kun qoldi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DEADLINES -->
+      <div class="deadline-card">
+        <h3>⏰ Yaqinlashayotgan deadlinelar</h3>
+        <div class="deadline-item">
+          <div class="deadline-name">🇬🇧 Univ. of Leeds — MSc</div>
+          <div class="deadline-date">Mar 31</div>
+        </div>
+        <div class="deadline-item">
+          <div class="deadline-name">🏆 EYUF Grant 2025</div>
+          <div class="deadline-date">Apr 15</div>
+        </div>
+        <div class="deadline-item">
+          <div class="deadline-name">🇩🇪 DAAD Scholarship</div>
+          <div class="deadline-date">May 01</div>
+        </div>
+      </div>
+
+      <!-- ANNOUNCEMENT -->
+      <div class="announce-card">
+        <h3>📢 E'lon</h3>
+        <div class="announce-text">
+          <strong>Yangi dars qo'shildi:</strong> "Cold Email Templates — Real Examples" 
+          — Shokhrukh mentor sessiyasidan material. 
+          <a href="lesson.html" style="color:var(--blue);font-weight:700;">Ko'rish →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+// ════════════════════════════════════════════════════════
+//  KOMPAS LAB — dashboard.js (inline)
+//  Supabase bilan to'liq ulangan talaba dashboard'i
+// ════════════════════════════════════════════════════════
+
+// ── Global holat ──────────────────────────────────────
+let _user    = null   // Supabase auth user
+let _profile = null   // profiles jadvali
+let _enrollments = [] // Talabaning barcha kurslari
+let _activeCourse = null // Hozirda ko'rilayotgan kurs
+
+// ── Salomlashuv matni ─────────────────────────────────
+function getGreeting() {
+  const h = new Date().getHours()
+  return h < 5 ? 'Xayrli tun' : h < 12 ? 'Xayrli tong' : h < 17 ? 'Xayrli kun' : 'Xayrli kech'
+}
+
+function getTodayLabel() {
+  const days = ['Yakshanba','Dushanba','Seshanba','Chorshanba','Payshanba','Juma','Shanba']
+  const months = ['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr']
+  const d = new Date()
+  return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`
+}
+
+// ════════════════════════════════════════════════════════
+//  1. ASOSIY INIT
+// ════════════════════════════════════════════════════════
+async function init() {
+  // Sanani ko'rsatish
+  document.getElementById('greetingDate').textContent = getTodayLabel()
+
+  // ── Skeleton ko'rsatish ──
+  showSkeletons()
+
+  try {
+    // 1. Auth tekshirish
+    const auth = await requireAuth()
+    if (!auth) return  // requireAuth o'zi login.html ga yo'naltiradi
+
+    _user    = auth.user
+    _profile = auth.profile
+
+    // 2. Sidebar — foydalanuvchi ma'lumotlari
+    renderSidebar()
+
+    // 3. Greeting
+    const firstName = _profile?.first_name || _user.email.split('@')[0]
+    document.getElementById('greetingText').textContent =
+      `${getGreeting()}, ${firstName}! 👋`
+
+    // 4. Enrollment larni yuklash
+    _enrollments = await getUserEnrollments(_user.id)
+
+    if (_enrollments.length === 0) {
+      // Hech qanday kursga yozilmagan → payment sahifasiga
+      renderNoCourse()
+      return
+    }
+
+    // 5. Birinchi (yoki oxirgi ko'rilgan) kursni tanlash
+    _activeCourse = _enrollments[0]
+
+    // 6. Progress yuklash
+    await loadCourseData(_activeCourse.course_id, _activeCourse.course.slug)
+
+    // 7. Auth holat kuzatish — logout avtomatik
+    onAuthChange((event) => {
+      if (event === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login
+    })
+
+  } catch (err) {
+    console.error('Dashboard init xatosi:', err)
+    renderError()
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  2. SIDEBAR RENDER
+// ════════════════════════════════════════════════════════
+function renderSidebar() {
+  if (!_profile) return
+
+  const firstName = _profile.first_name || ''
+  const lastName  = _profile.last_name  || ''
+  const fullName  = _profile.full_name  || `${firstName} ${lastName}`.trim() || _user.email
+
+  // Avatar — initials
+  document.getElementById('sidebarAvatar').textContent = getInitials(fullName)
+  document.getElementById('sidebarName').textContent   = fullName
+
+  // Tarif
+  if (_enrollments.length > 0) {
+    const plan = _enrollments[0].plan || 'starter'
+    const planLabels = { starter: '🌱 Starter', scholar: '🚀 Scholar', elite: '💎 Elite' }
+    document.getElementById('sidebarPlan').textContent = planLabels[plan] || plan
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  3. KURS MA'LUMOTLARI YUKLASH
+// ════════════════════════════════════════════════════════
+async function loadCourseData(courseId, courseSlug) {
+  try {
+    // Parallel so'rovlar — tezroq
+    const [modulesRes, progressRes, lessonsRes] = await Promise.all([
+      // Modullar + darslar soni
+      supabase
+        .from(DB.modules)
+        .select(`
+          id, title, order_index, is_free,
+          lessons(id, title, order_index, status, duration, vimeo_url, is_free)
+        `)
+        .eq('course_id', courseId)
+        .eq('lessons.status', 'published')
+        .order('order_index', { ascending: true }),
+
+      // Talabaning bu kurs bo'yicha progress
+      supabase
+        .from(DB.progress)
+        .select('lesson_id, completed, watched_percent, last_watched_at')
+        .eq('user_id', _user.id),
+
+      // Kurs statistika (function orqali)
+      null
+    ])
+
+    if (modulesRes.error) throw modulesRes.error
+
+    const modules  = modulesRes.data || []
+    const progress = progressRes.data || []
+
+    // Progress map: lesson_id → {completed, watched_percent}
+    const progressMap = {}
+    progress.forEach(p => { progressMap[p.lesson_id] = p })
+
+    // Hisoblash
+    const allLessons = modules.flatMap(m => m.lessons || [])
+    const totalLessons    = allLessons.length
+    const completedLessons = allLessons.filter(l => progressMap[l.id]?.completed).length
+    const progressPct = totalLessons > 0
+      ? Math.round((completedLessons / totalLessons) * 100)
+      : 0
+
+    // Keyingi dars — birinchi ko'rilmagan
+    const nextLesson = allLessons.find(l => !progressMap[l.id]?.completed) || allLessons[allLessons.length - 1]
+    const nextModule = nextLesson
+      ? modules.find(m => (m.lessons || []).some(l => l.id === nextLesson?.id))
+      : null
+
+    // Joriy hafta (taxminiy)
+    const currentWeek = Math.floor(completedLessons / Math.max(1, Math.ceil(totalLessons / 8))) + 1
+
+    // Streak hisoblash (progress yozuvlaridan)
+    const streak = calcStreak(progress)
+
+    // ── Render ──
+    renderStats(completedLessons, totalLessons, progressPct, currentWeek, streak)
+    renderCurrentLesson(nextLesson, nextModule, progressPct, courseSlug)
+    renderModules(modules, progressMap, courseSlug)
+    renderProgressRing(progressPct, completedLessons, totalLessons, currentWeek, streak)
+    renderSidebarProgress(progressPct)
+
+  } catch (err) {
+    console.error('loadCourseData xatosi:', err)
+    // Demo ma'lumotlar bilan davom etish
+    renderDemoMode()
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  4. STATS ROW
+// ════════════════════════════════════════════════════════
+function renderStats(done, total, pct, week, streak) {
+  document.getElementById('statLessons').textContent    = done
+  document.getElementById('statLessonsTotal').textContent = `/ ${total} ta dars`
+  document.getElementById('statHours').textContent     = `${Math.round(done * 0.75)}h`
+  document.getElementById('statTasks').textContent     = Math.floor(done / 3)
+  document.getElementById('statTasksDone').textContent = `${Math.floor(done/3)} ta bajarildi`
+  document.getElementById('statWeek').textContent      = Math.min(week, 8)
+  document.getElementById('streakDays').textContent    = streak
+}
+
+// ════════════════════════════════════════════════════════
+//  5. JORIY DARS KARTASI
+// ════════════════════════════════════════════════════════
+function renderCurrentLesson(lesson, module, pct, courseSlug) {
+  if (!lesson) {
+    document.getElementById('currentLessonTitle').textContent = '🎉 Barcha darslar tugallandi!'
+    document.getElementById('currentLessonMeta').textContent  = 'Tabriklaymiz! Siz kursni tugatdingiz.'
+    document.querySelector('.cc-btn').textContent = 'Sertifikat olish →'
+    document.querySelector('.cc-btn').href = '#'
+  } else {
+    document.getElementById('currentLessonTitle').textContent =
+      lesson.title || 'Darsni davom ettirish'
+    document.getElementById('currentLessonMeta').textContent  =
+      `📦 ${module?.title || 'Modul'} · ⏱ ${lesson.duration || '~30 daqiqa'}`
+
+    // Lesson sahifasiga URL parametrlari
+    const lessonUrl = `${APP_CONFIG.routes.lesson}?course=${courseSlug}&lesson=${lesson.id}`
+    document.querySelector('.cc-btn').href = lessonUrl
+    document.getElementById('nextLessonBadge').textContent = '▶'
+  }
+
+  document.getElementById('currentPct').textContent        = pct + '%'
+  document.getElementById('currentProgFill').style.width   = pct + '%'
+}
+
+// ════════════════════════════════════════════════════════
+//  6. MODULLAR RO'YXATI
+// ════════════════════════════════════════════════════════
+function renderModules(modules, progressMap, courseSlug) {
+  const container = document.getElementById('modulesList')
+  if (!modules || modules.length === 0) {
+    container.innerHTML = `
+      <div style="padding:32px;text-align:center;color:var(--muted);">
+        <div style="font-size:32px;margin-bottom:8px">📚</div>
+        <p>Darslar hali nashr etilmagan</p>
+      </div>`
+    return
+  }
+
+  container.innerHTML = modules.map(mod => {
+    const lessons = (mod.lessons || []).sort((a, b) => a.order_index - b.order_index)
+    const total   = lessons.length
+    if (total === 0) return ''  // Bo'sh modullarni ko'rsatmaslik
+
+    const done  = lessons.filter(l => progressMap[l.id]?.completed).length
+    const isCompleted = done === total && total > 0
+    const isActive    = done > 0 && done < total
+    const isLocked    = done === 0 && !mod.is_free
+
+    // Birinchi ko'rilmagan dars
+    const nextLesson = lessons.find(l => !progressMap[l.id]?.completed)
+    const href = nextLesson && !isLocked
+      ? `${APP_CONFIG.routes.lesson}?course=${courseSlug}&lesson=${nextLesson.id}`
+      : '#'
+
+    // Status
+    let numClass = 'locked', statusClass = 'locked', statusText = 'Qulflangan'
+    if (isCompleted)    { numClass = 'done';   statusClass = 'done';   statusText = 'Tugadi' }
+    else if (isActive)  { numClass = 'active'; statusClass = 'active'; statusText = 'Jarayonda' }
+    else if (!isLocked) { numClass = 'active'; statusClass = 'active'; statusText = 'Boshlash' }
+
+    const numContent = isCompleted ? '✓' : isLocked ? '🔒' : mod.order_index
+
+    // Taxminiy vaqt
+    const hours = Math.round(total * 0.5 * 10) / 10
+
+    return `
+      <a href="${href}" class="mod-row${isLocked ? ' locked' : ''}" 
+         ${isLocked ? 'onclick="return false"' : ''}>
+        <div class="mod-num ${numClass}">${numContent}</div>
+        <div class="mod-info">
+          <div class="mod-title">${mod.title}</div>
+          <div class="mod-sub">${total} dars · ~${hours} soat</div>
+        </div>
+        <div class="mod-right">
+          <div class="mod-status ${statusClass}">${statusText}</div>
+          <div class="mod-lessons">${done}/${total} dars</div>
+        </div>
+      </a>`
+  }).join('')
+}
+
+// ════════════════════════════════════════════════════════
+//  7. PROGRESS RING
+// ════════════════════════════════════════════════════════
+function renderProgressRing(pct, done, total, week, streak) {
+  document.getElementById('ringPct').textContent               = pct + '%'
+  document.getElementById('rsDone').textContent                = done
+  document.getElementById('rsLeft').textContent                = total - done
+  document.getElementById('rsWeek').textContent                = Math.min(week, 8)
+  document.getElementById('rsStreak').textContent              = streak
+
+  const circumference = 364
+  const offset = circumference - (pct / 100) * circumference
+  document.getElementById('ringCircle').style.strokeDashoffset = offset
+}
+
+function renderSidebarProgress(pct) {
+  document.getElementById('sbProgPct').textContent      = pct + '%'
+  document.getElementById('sbProgFill').style.width     = pct + '%'
+}
+
+// ════════════════════════════════════════════════════════
+//  8. STREAK HISOBLASH
+//     progress yozuvlaridan ketma-ket kunlarni topish
+// ════════════════════════════════════════════════════════
+function calcStreak(progressData) {
+  if (!progressData || progressData.length === 0) return 0
+
+  // last_watched_at dan sanalarni olish
+  const dates = progressData
+    .filter(p => p.last_watched_at)
+    .map(p => new Date(p.last_watched_at).toDateString())
+
+  const uniqueDates = [...new Set(dates)]
+    .map(d => new Date(d))
+    .sort((a, b) => b - a)  // Yangilikdan eskiga
+
+  if (uniqueDates.length === 0) return 0
+
+  let streak = 1
+  const oneDay = 86400000
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+
+  // Eng yangi sana bugun yoki kecha bo'lishi kerak
+  const lastDate = uniqueDates[0]
+  lastDate.setHours(0, 0, 0, 0)
+  const diff = today - lastDate
+  if (diff > oneDay * 2) return 0  // 2 kundan ko'p bo'lsa — streak yo'qoldi
+
+  for (let i = 1; i < uniqueDates.length; i++) {
+    const d1 = uniqueDates[i - 1]
+    const d2 = uniqueDates[i]
+    d1.setHours(0, 0, 0, 0)
+    d2.setHours(0, 0, 0, 0)
+    if (d1 - d2 === oneDay) streak++
+    else break
+  }
+  return streak
+}
+
+// ════════════════════════════════════════════════════════
+//  9. SKELETON LOADERLAR
+// ════════════════════════════════════════════════════════
+function showSkeletons() {
+  // Stats
+  ;['statLessons','statHours','statTasks','statWeek'].forEach(id => {
+    const el = document.getElementById(id)
+    if (el) { el.innerHTML = '<span class="skeleton" style="width:40px;height:28px;display:inline-block"></span>' }
+  })
+
+  // Sidebar name
+  const nameEl = document.getElementById('sidebarName')
+  if (nameEl) nameEl.innerHTML = '<span class="skeleton" style="width:120px;height:14px;display:inline-block;border-radius:4px"></span>'
+
+  // Modules list
+  const modList = document.getElementById('modulesList')
+  if (modList) {
+    modList.innerHTML = Array(4).fill(0).map(() => `
+      <div class="mod-row" style="pointer-events:none">
+        <div class="mod-num" style="background:var(--bg)"><span class="skeleton" style="width:20px;height:20px;border-radius:50%;display:block"></span></div>
+        <div class="mod-info">
+          <div class="skeleton" style="width:220px;height:14px;border-radius:4px;margin-bottom:6px"></div>
+          <div class="skeleton" style="width:100px;height:11px;border-radius:4px"></div>
+        </div>
+      </div>`).join('')
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  10. XATOLIK VA BO'SH HOLAT
+// ════════════════════════════════════════════════════════
+function renderNoCourse() {
+  document.getElementById('greetingText').textContent = 'Hali kursga yozilmadingiz'
+  document.getElementById('modulesList').innerHTML = `
+    <div style="text-align:center;padding:40px 20px;background:white;border-radius:12px;border:1px solid var(--border)">
+      <div style="font-size:36px;margin-bottom:12px">📚</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">Kursni tanlang</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:20px">
+        Darslarni ko'rish uchun avval kursga yozilishingiz kerak.
+      </p>
+      <a href="${APP_CONFIG.routes.payment}" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:white;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px">
+        Kursga yozilish →
+      </a>
+    </div>`
+
+  document.getElementById('currentLessonTitle').textContent = 'Kurs tanlanmagan'
+  document.getElementById('currentLessonMeta').textContent  = 'Quyidagi tugmani bosing'
+  document.querySelector('.cc-btn').textContent = 'Kursga yozilish →'
+  document.querySelector('.cc-btn').href = APP_CONFIG.routes.payment
+}
+
+function renderError() {
+  showToast('Internetni tekshiring yoki sahifani yangilang', 'error')
+}
+
+// ── Demo mode (Supabase ulanmagan bo'lsa) ─────────────
+function renderDemoMode() {
+  console.warn('Demo mode: Supabase ulanmagan')
+  const fakePct   = 35
+  const fakeDone  = 12
+  const fakeTotal = 35
+
+  document.getElementById('greetingText').textContent = `${getGreeting()}, Demo Talaba! 👋`
+  document.getElementById('sidebarAvatar').textContent = 'DT'
+  document.getElementById('sidebarName').textContent   = 'Demo Talaba'
+  document.getElementById('sidebarPlan').textContent   = '🚀 Scholar plan'
+
+  renderStats(fakeDone, fakeTotal, fakePct, 3, 7)
+  renderProgressRing(fakePct, fakeDone, fakeTotal, 3, 7)
+  renderSidebarProgress(fakePct)
+
+  document.getElementById('currentLessonTitle').textContent = 'Supabase ulanish kerak'
+  document.getElementById('currentLessonMeta').textContent  = '⚙️ config.js ni to\'ldiring'
+  document.getElementById('currentPct').textContent         = fakePct + '%'
+  document.getElementById('currentProgFill').style.width    = fakePct + '%'
+
+  document.getElementById('streakDays').textContent = '7'
+  document.getElementById('rsStreak').textContent   = '7'
+}
+
+// ════════════════════════════════════════════════════════
+//  11. TASK TOGGLE (local — Supabase ga keyinroq ulash)
+// ════════════════════════════════════════════════════════
+function toggleTask(el) {
+  const isDone = el.classList.toggle('done')
+  el.textContent = isDone ? '✓' : ''
+  const title = el.nextElementSibling?.querySelector('.task-title')
+  if (title) title.classList.toggle('done', isDone)
+}
+
+// ════════════════════════════════════════════════════════
+//  12. LOGOUT
+// ════════════════════════════════════════════════════════
+async function handleLogout() {
+  await logout()
+}
+
+// ════════════════════════════════════════════════════════
+//  ISHGA TUSHIRISH
+// ════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', init)
+</script>
+</body>
+</html>

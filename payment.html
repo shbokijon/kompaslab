@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To'lov — Kompas Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#2d4a3e;--accent-hover:#1e3329;--accent-light:#e8f0ec;
+  --accent2:#c4622d;--accent2-light:#faeee7;
+  --bg:#f5f7f6;--surface:#fff;--border:#e0e8e4;
+  --text:#1a2e26;--muted:#6b7f76;--muted2:#9aada6;
+  --green:#1a7a4a;--green-light:#e6f4ec;
+  --gold:#b08a00;--gold-light:#fdf6dc;
+  --red:#c0392b;--red-light:#fdecea;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* NAV */
+.nav{background:white;border-bottom:1px solid var(--border);padding:0 5%;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;color:var(--accent);text-decoration:none;}
+.nav-logo-mark{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.nav-secure{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);font-weight:700;}
+
+/* PAGE */
+.page{max-width:1000px;margin:0 auto;padding:40px 24px 80px;}
+.page-title{text-align:center;margin-bottom:40px;}
+.page-title h1{font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:8px;}
+.page-title p{font-size:15px;color:var(--muted);}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;}
+
+/* ── COURSE SELECT ── */
+.courses-section h2,.method-section h2{font-size:16px;font-weight:800;margin-bottom:16px;}
+.courses{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
+.course-card{
+  background:white;border:2px solid var(--border);border-radius:14px;
+  padding:18px 20px;cursor:pointer;transition:all 0.2s;
+  display:flex;flex-direction:column;gap:10px;position:relative;
+}
+.course-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(45,74,62,0.08);}
+.course-card.selected{border-color:var(--accent);background:var(--accent-light);}
+.course-card.eyuf.selected{border-color:var(--accent2);background:var(--accent2-light);}
+.course-radio{
+  position:absolute;top:16px;right:16px;
+  width:20px;height:20px;border-radius:50%;
+  border:2px solid var(--border);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+}
+.course-card.selected .course-radio{border-color:var(--accent);background:var(--accent);}
+.course-card.selected .course-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:white;}
+.course-card.eyuf.selected .course-radio{border-color:var(--accent2);background:var(--accent2);}
+.course-emoji{font-size:28px;}
+.course-name{font-size:15px;font-weight:800;}
+.course-meta{display:flex;gap:8px;flex-wrap:wrap;}
+.course-tag{font-size:11px;color:var(--muted);background:var(--bg);padding:2px 8px;border-radius:6px;border:1px solid var(--border);}
+.course-price-row{display:flex;align-items:baseline;gap:4px;margin-top:4px;}
+.course-price{font-size:20px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);}
+.course-card.eyuf.selected .course-price{color:var(--accent2);}
+.course-price-sub{font-size:11px;color:var(--muted);}
+
+/* ── PAYMENT METHOD ── */
+.methods{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:24px;}
+.method-card{
+  background:white;border:2px solid var(--border);border-radius:12px;
+  padding:14px 16px;cursor:pointer;transition:all 0.2s;
+  display:flex;align-items:center;gap:12px;
+}
+.method-card:hover{border-color:var(--accent);}
+.method-card.selected{border-color:var(--accent);background:var(--accent-light);}
+.method-logo{
+  width:44px;height:28px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;letter-spacing:-0.5px;flex-shrink:0;
+}
+.method-logo.click{background:#1A1A2E;color:#00B4D8;}
+.method-logo.payme{background:#22C55E;color:white;}
+.method-logo.card{background:var(--accent-light);color:var(--accent);}
+.method-name{font-size:13px;font-weight:700;}
+.method-sub{font-size:11px;color:var(--muted);}
+
+/* CLICK FORM */
+.payment-form{background:white;border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.payment-form h3{font-size:14px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;}
+.field input{width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:'Outfit',monospace;outline:none;transition:border-color 0.2s;background:var(--bg);}
+.field input:focus{border-color:var(--accent);background:white;}
+.field-hint{font-size:11px;color:var(--muted);margin-top:4px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* ── ORDER SUMMARY (RIGHT) ── */
+.order-card{background:white;border:1px solid var(--border);border-radius:16px;padding:24px;position:sticky;top:20px;}
+.order-title{font-size:16px;font-weight:800;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.order-plan-name{font-size:18px;font-weight:900;margin-bottom:4px;}
+.order-plan-desc{font-size:13px;color:var(--muted);margin-bottom:18px;}
+.order-features{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);}
+.order-feat{display:flex;align-items:center;gap:8px;font-size:13px;}
+.order-feat::before{content:'✓';color:var(--green);font-weight:700;font-size:14px;}
+.order-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.order-total-label{font-size:13px;color:var(--muted);}
+.order-total-val{font-size:13px;font-weight:700;}
+.order-total-row.final{padding-top:12px;border-top:2px solid var(--border);margin-top:8px;}
+.order-total-row.final .order-total-label{font-size:15px;font-weight:800;color:var(--text);}
+.order-total-row.final .order-total-val{font-size:22px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);}
+
+/* PAY BTN */
+.pay-btn{
+  width:100%;padding:15px;margin-top:18px;
+  background:var(--accent);color:white;
+  border:none;border-radius:12px;
+  font-size:15px;font-weight:800;
+  font-family:'Outfit',sans-serif;cursor:pointer;
+  transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 16px rgba(45,74,62,0.25);
+}
+.pay-btn:hover{background:var(--accent-hover);transform:translateY(-1px);}
+.pay-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.pay-secure{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--muted);margin-top:10px;}
+
+/* GUARANTEE */
+.guarantee{background:var(--green-light);border:1px solid #b8e4cc;border-radius:12px;padding:14px 16px;margin-top:16px;display:flex;gap:12px;align-items:flex-start;}
+.guarantee-icon{font-size:22px;flex-shrink:0;}
+.guarantee-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:2px;}
+.guarantee-text{font-size:12px;color:var(--green);opacity:0.8;line-height:1.4;}
+
+/* TRUST */
+.trust-row{display:flex;gap:16px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);font-weight:600;}
+
+/* SUCCESS STATE */
+.success-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(255,255,255,0.95);z-index:200;
+  align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;padding:40px;
+}
+.success-overlay.show{display:flex;}
+.success-icon{font-size:80px;margin-bottom:24px;animation:bounce 0.6s ease;}
+@keyframes bounce{0%{transform:scale(0.5);opacity:0;}70%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
+.success-title{font-size:28px;font-weight:900;margin-bottom:10px;}
+.success-sub{font-size:15px;color:var(--muted);max-width:400px;line-height:1.6;margin-bottom:28px;}
+.success-details{background:var(--green-light);border-radius:14px;padding:18px 24px;margin-bottom:24px;text-align:left;min-width:280px;}
+.sd-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;}
+.sd-row span:first-child{color:var(--muted);}
+.sd-row span:last-child{font-weight:700;font-family:'JetBrains Mono',monospace;}
+
+/* SPINNER */
+.spinner{width:20px;height:20px;border:3px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin 0.7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:white;padding:12px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:999;transform:translateY(100px);transition:transform 0.3s;}
+.toast.show{transform:translateY(0);}
+
+@media(max-width:800px){
+  .layout{grid-template-columns:1fr;}
+  .order-card{position:static;}
+  .methods{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">🧭</div>
+    Kompas Lab
+  </a>
+  <div class="nav-secure">🔒 Xavfsiz to'lov</div>
+</nav>
+
+<div class="page">
+  <div class="page-title">
+    <h1>Kursga yozilish</h1>
+    <p>Kurs tanlang va to'lovni amalga oshiring</p>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT: COURSE + METHOD -->
+    <div>
+
+      <!-- KURS TANLASH -->
+      <div class="courses-section">
+        <h2>1. Kursni tanlang</h2>
+        <div class="courses">
+
+          <div class="course-card" data-slug="bachelor-lab" data-price="499000"
+               onclick="selectCourse(this,'bachelor-lab','Bachelor Lab',499000,'🎓',42,8)">
+            <div class="course-radio"></div>
+            <div class="course-emoji">🎓</div>
+            <div class="course-name">Bachelor Lab</div>
+            <div class="course-meta">
+              <span class="course-tag">8 modul</span>
+              <span class="course-tag">42 dars</span>
+              <span class="course-tag">10–18 yosh</span>
+            </div>
+            <div class="course-price-row">
+              <span class="course-price">499,000</span>
+              <span class="course-price-sub">so'm</span>
+            </div>
+          </div>
+
+          <div class="course-card" data-slug="master-lab" data-price="499000"
+               onclick="selectCourse(this,'master-lab','Master Lab',499000,'🔬',28,8)">
+            <div class="course-radio"></div>
+            <div class="course-emoji">🔬</div>
+            <div class="course-name">Master Lab</div>
+            <div class="course-meta">
+              <span class="course-tag">8 modul</span>
+              <span class="course-tag">28 dars</span>
+              <span class="course-tag">21–27 yosh</span>
+            </div>
+            <div class="course-price-row">
+              <span class="course-price">499,000</span>
+              <span class="course-price-sub">so'm</span>
+            </div>
+          </div>
+
+          <div class="course-card" data-slug="phd-lab" data-price="699000"
+               onclick="selectCourse(this,'phd-lab','PhD Lab',699000,'⚗️',32,9)">
+            <div class="course-radio"></div>
+            <div class="course-emoji">⚗️</div>
+            <div class="course-name">PhD Lab</div>
+            <div class="course-meta">
+              <span class="course-tag">9 modul</span>
+              <span class="course-tag">32 dars</span>
+              <span class="course-tag">22–35 yosh</span>
+            </div>
+            <div class="course-price-row">
+              <span class="course-price">699,000</span>
+              <span class="course-price-sub">so'm</span>
+            </div>
+          </div>
+
+          <div class="course-card eyuf" data-slug="eyuf-lab" data-price="499000"
+               onclick="selectCourse(this,'eyuf-lab','EYUF Lab',499000,'🎯',20,6)">
+            <div class="course-radio"></div>
+            <div class="course-emoji">🎯</div>
+            <div class="course-name">EYUF Lab</div>
+            <div class="course-meta">
+              <span class="course-tag">6 modul</span>
+              <span class="course-tag">20 dars</span>
+              <span class="course-tag">18–30 yosh</span>
+            </div>
+            <div class="course-price-row">
+              <span class="course-price">499,000</span>
+              <span class="course-price-sub">so'm</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TO'LOV USULI -->
+      <div class="method-section">
+        <h2>2. To'lov usulini tanlang</h2>
+        <div class="methods">
+          <div class="method-card selected" onclick="selectMethod(this,'click')">
+            <div class="method-logo click">CLICK</div>
+            <div>
+              <div class="method-name">Click.uz</div>
+              <div class="method-sub">Tezkor to'lov</div>
+            </div>
+          </div>
+          <div class="method-card" onclick="selectMethod(this,'payme')">
+            <div class="method-logo payme">Payme</div>
+            <div>
+              <div class="method-name">Payme</div>
+              <div class="method-sub">Karta orqali</div>
+            </div>
+          </div>
+          <div class="method-card" onclick="selectMethod(this,'bank')">
+            <div class="method-logo card">💳</div>
+            <div>
+              <div class="method-name">Bank kartasi</div>
+              <div class="method-sub">Uzcard / Humo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLICK FORM -->
+      <div class="payment-form" id="form-click">
+        <h3>📱 Click.uz orqali to'lov</h3>
+        <div class="field">
+          <label>Telefon raqam</label>
+          <input type="tel" id="clickPhone" placeholder="+998 90 123 45 67" maxlength="17">
+          <div class="field-hint">Click hisobingizga bog'liq raqam</div>
+        </div>
+        <div style="background:var(--accent-light);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--accent);line-height:1.6;">
+          📱 Raqamingizni kiriting → Click app'ingizga so'rov keladi → Tasdiqlang → Kurs ochildi!
+        </div>
+      </div>
+
+      <!-- PAYME FORM -->
+      <div class="payment-form" id="form-payme" style="display:none;">
+        <h3>💳 Payme orqali to'lov</h3>
+        <div class="field">
+          <label>Karta raqami</label>
+          <input type="text" id="cardNumberPayme" placeholder="8600 •••• •••• ••••" maxlength="19" oninput="formatCard(this)">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Amal qilish muddati</label>
+            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+          </div>
+          <div class="field">
+            <label>Karta egasi</label>
+            <input type="text" id="cardName" placeholder="SARDOR KARIMOV" style="text-transform:uppercase">
+          </div>
+        </div>
+        <div style="background:var(--gold-light);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--gold);">
+          🔒 Karta ma'lumotlaringiz xavfsiz SSL orqali uzatiladi
+        </div>
+      </div>
+
+      <!-- BANK CARD FORM -->
+      <div class="payment-form" id="form-bank" style="display:none;">
+        <h3>💳 Bank kartasi orqali to'lov</h3>
+        <div class="field">
+          <label>Karta raqami (Uzcard / Humo)</label>
+          <input type="text" id="cardNumberBank" placeholder="9860 •••• •••• ••••" maxlength="19" oninput="formatCard(this)">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Amal qilish muddati</label>
+            <input type="text" id="cardExpiryBank" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+          </div>
+          <div class="field">
+            <label>Karta egasi</label>
+            <input type="text" id="cardNameBank" placeholder="SARDOR KARIMOV" style="text-transform:uppercase">
+          </div>
+        </div>
+        <div style="background:var(--accent-light);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--accent);">
+          🔒 To'lov Kompas Lab rasmiy hisob raqamiga o'tkaziladi
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <div>
+      <div class="order-card">
+        <div class="order-title">📋 Buyurtma xulosasi</div>
+
+        <div id="noCourseMsg" style="text-align:center;padding:24px 0;color:var(--muted);font-size:14px;">
+          ← Kursni tanlang
+        </div>
+
+        <div id="orderBody" style="display:none;">
+          <div class="order-plan-name" id="orderCourseName">—</div>
+          <div class="order-plan-desc" id="orderCourseDesc">—</div>
+
+          <div class="order-features" id="orderFeatures">
+            <div class="order-feat" id="orderFeatLessons">— ta video dars</div>
+            <div class="order-feat">PDF materiallar</div>
+            <div class="order-feat">O'z sur'atida o'qish</div>
+            <div class="order-feat">Umrbod kirish huquqi</div>
+          </div>
+
+          <div class="order-total-row">
+            <span class="order-total-label">Kurs narxi</span>
+            <span class="order-total-val" id="orderBasePrice">—</span>
+          </div>
+          <div class="order-total-row final">
+            <span class="order-total-label">Jami to'lov</span>
+            <span class="order-total-val" id="orderTotal" style="font-size:22px;font-family:'JetBrains Mono',monospace;color:var(--accent)">—</span>
+          </div>
+        </div>
+
+        <button class="pay-btn" id="payBtn" onclick="processPayment()" disabled style="opacity:0.5;margin-top:18px;">
+          <span id="payBtnText">💳 To'lovni amalga oshirish</span>
+        </button>
+
+        <div class="pay-secure">🔒 256-bit SSL xavfsiz to'lov</div>
+
+        <div class="guarantee" style="margin-top:16px;">
+          <div class="guarantee-icon">🛡</div>
+          <div>
+            <div class="guarantee-title">7 kunlik kafolat</div>
+            <div class="guarantee-text">Agar 7 kun ichida maqul kelmasa, to'liq pulni qaytaramiz</div>
+          </div>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-item">✅ <span>Xavfsiz</span></div>
+          <div class="trust-item">🎓 <span>Sifatli kontent</span></div>
+          <div class="trust-item">♾️ <span>Umrbod kirish</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-icon">🎉</div>
+  <h2 class="success-title">To'lov qabul qilindi!</h2>
+  <p class="success-sub">Tabriklaymiz! Admin to'lovni tasdiqlagach kurs ochiladi. Odatda 1–2 soat ichida.</p>
+  <div class="success-details">
+    <div class="sd-row">
+      <span>Kurs</span>
+      <span id="successCourse">—</span>
+    </div>
+    <div class="sd-row">
+      <span>Summa</span>
+      <span id="successAmount">—</span>
+    </div>
+    <div class="sd-row">
+      <span>Sana</span>
+      <span id="successDate">—</span>
+    </div>
+    <div class="sd-row">
+      <span>Status</span>
+      <span style="color:var(--gold)">⏳ Tasdiqlanmoqda</span>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:20px;">
+    Savol bo'lsa: <a href="https://t.me/kompaslab" target="_blank" style="color:var(--accent);font-weight:700;">@kompaslab</a>
+  </p>
+  <button onclick="window.location.href='dashboard.html'"
+    style="background:var(--accent);color:white;border:none;border-radius:12px;padding:15px 36px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;">
+    Dashboard →
+  </button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+// ════════════════════════════════════════════════════════
+//  KOMPAS LAB — payment.js (inline)
+//  Yagona narx, kurs tanlash, 3 to'lov usuli
+// ════════════════════════════════════════════════════════
+
+let _user          = null
+let selectedSlug   = null
+let selectedName   = null
+let selectedAmount = 0
+let selectedMethod = 'click'
+let _courseId      = null
+
+// Kurs ma'lumotlari (fallback — Supabase yuklashdan oldin)
+const COURSES = {
+  'bachelor-lab': { name: 'Bachelor Lab', emoji: '🎓', price: 499000, lessons: 42, modules: 8 },
+  'master-lab':   { name: 'Master Lab',   emoji: '🔬', price: 499000, lessons: 28, modules: 8 },
+  'phd-lab':      { name: 'PhD Lab',      emoji: '⚗️', price: 699000, lessons: 32, modules: 9 },
+  'eyuf-lab':     { name: 'EYUF Lab',     emoji: '🎯', price: 499000, lessons: 20, modules: 6 },
+}
+
+// ════════════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════════════
+async function init() {
+  const auth = await requireAuth()
+  if (!auth) return
+  _user = auth.user
+
+  // URL dan kurs slug olish
+  const urlSlug = getParam('course')
+  if (urlSlug && COURSES[urlSlug]) {
+    // Pre-select kursni
+    const card = document.querySelector(`[data-slug="${urlSlug}"]`)
+    if (card) {
+      const c = COURSES[urlSlug]
+      selectCourse(card, urlSlug, c.name, c.price, c.emoji, c.lessons, c.modules)
+    }
+  }
+
+  // Supabase dan real narxlarni yuklash
+  try {
+    const { data: courses } = await supabase
+      .from(DB.courses)
+      .select('id, slug, price_starter, total_lessons, total_modules')
+      .in('slug', Object.keys(COURSES))
+
+    if (courses) {
+      courses.forEach(c => {
+        if (COURSES[c.slug]) {
+          COURSES[c.slug].price   = c.price_starter
+          COURSES[c.slug].lessons = c.total_lessons || COURSES[c.slug].lessons
+          // Kurs kartalaridagi narxni yangilash
+          const card = document.querySelector(`[data-slug="${c.slug}"]`)
+          if (card) {
+            const priceEl = card.querySelector('.course-price')
+            if (priceEl) priceEl.textContent = formatMoney(c.price_starter)
+            card.dataset.price = c.price_starter
+          }
+        }
+      })
+
+      // Pre-select qayta hisoblash (agar allaqachon tanlanilgan bo'lsa)
+      if (selectedSlug) {
+        const updated = COURSES[selectedSlug]
+        selectedAmount = updated.price
+        updateOrderSummary(selectedSlug, updated.name, updated.price, updated.lessons, updated.modules)
+      }
+    }
+  } catch (e) {
+    console.warn('Kurs narxlari yuklanmadi — lokal ma\'lumotlar ishlatilmoqda')
+  }
+
+  onAuthChange((event) => {
+    if (event === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login
+  })
+}
+
+// ════════════════════════════════════════════════════════
+//  KURS TANLASH
+// ════════════════════════════════════════════════════════
+function selectCourse(el, slug, name, price, emoji, lessons, modules) {
+  document.querySelectorAll('.course-card').forEach(c => c.classList.remove('selected'))
+  el.classList.add('selected')
+
+  selectedSlug   = slug
+  selectedName   = name
+  selectedAmount = COURSES[slug]?.price || price
+
+  updateOrderSummary(slug, name, selectedAmount, lessons, modules)
+
+  // To'lov tugmasini faollashtirish
+  const btn = document.getElementById('payBtn')
+  btn.disabled = false
+  btn.style.opacity = '1'
+}
+
+function updateOrderSummary(slug, name, price, lessons, modules) {
+  const course = COURSES[slug] || {}
+  const emoji  = course.emoji || '📚'
+  const actualLessons = course.lessons || lessons
+
+  document.getElementById('noCourseMsg').style.display = 'none'
+  document.getElementById('orderBody').style.display   = 'block'
+
+  document.getElementById('orderCourseName').textContent = `${emoji} ${name}`
+  document.getElementById('orderCourseDesc').textContent = `${modules} modul · ${actualLessons} video dars`
+  document.getElementById('orderFeatLessons').textContent = `${actualLessons} ta video dars`
+  document.getElementById('orderBasePrice').textContent  = formatMoney(price) + ' so\'m'
+  document.getElementById('orderTotal').textContent      = formatMoney(price)
+}
+
+// ════════════════════════════════════════════════════════
+//  TO'LOV USULI TANLASH
+// ════════════════════════════════════════════════════════
+function selectMethod(el, method) {
+  document.querySelectorAll('.method-card').forEach(c => c.classList.remove('selected'))
+  el.classList.add('selected')
+  selectedMethod = method
+
+  document.querySelectorAll('[id^="form-"]').forEach(f => f.style.display = 'none')
+  const formEl = document.getElementById('form-' + method)
+  if (formEl) formEl.style.display = 'block'
+}
+
+// ════════════════════════════════════════════════════════
+//  TO'LOV AMALGA OSHIRISH
+// ════════════════════════════════════════════════════════
+async function processPayment() {
+  if (!selectedSlug) {
+    showToast('⚠️ Avval kursni tanlang'); return
+  }
+
+  // Validatsiya
+  if (selectedMethod === 'click') {
+    const phone = document.getElementById('clickPhone').value.trim()
+    if (!phone || phone.length < 9) {
+      showToast('⚠️ Telefon raqamni kiriting'); return
+    }
+  }
+  if (selectedMethod === 'payme') {
+    const card = document.getElementById('cardNumberPayme').value.replace(/\s/g, '')
+    if (card.length < 16) { showToast('⚠️ Karta raqamini to\'liq kiriting'); return }
+  }
+  if (selectedMethod === 'bank') {
+    const card = document.getElementById('cardNumberBank').value.replace(/\s/g, '')
+    if (card.length < 16) { showToast('⚠️ Karta raqamini to\'liq kiriting'); return }
+  }
+
+  const btn     = document.getElementById('payBtn')
+  const btnText = document.getElementById('payBtnText')
+  btn.disabled  = true
+  btnText.innerHTML = '<div class="spinner"></div> Amalga oshirilmoqda...'
+
+  try {
+    // Kurs ID ni olish
+    if (!_courseId) {
+      const { data: course } = await supabase
+        .from(DB.courses)
+        .select('id')
+        .eq('slug', selectedSlug)
+        .single()
+      _courseId = course?.id
+    }
+
+    if (!_courseId) throw new Error('Kurs topilmadi')
+
+    // Payments jadvaliga yozish (status: pending)
+    const { data: payment, error: pErr } = await supabase
+      .from(DB.payments)
+      .insert({
+        user_id:   _user.id,
+        course_id: _courseId,
+        plan:      'starter',          // Yagona tarif → starter sifatida saqlanadi
+        amount:    selectedAmount,
+        method:    selectedMethod,
+        status:    'pending',
+        note:      `${selectedMethod.toUpperCase()} · ${selectedName} · ${new Date().toLocaleString('uz-UZ')}`
+      })
+      .select()
+      .single()
+
+    if (pErr) throw pErr
+
+    // Enrollments jadvaliga yozish (payment_status: pending)
+    await supabase.from(DB.enrollments).upsert({
+      user_id:        _user.id,
+      course_id:      _courseId,
+      plan:           'starter',
+      payment_status: 'pending',
+      payment_id:     payment.id,
+    }, { onConflict: 'user_id,course_id' })
+
+    // Muvaffaqiyat ekrani
+    await new Promise(r => setTimeout(r, 1200))
+    document.getElementById('successCourse').textContent  = selectedName
+    document.getElementById('successAmount').textContent  = formatMoney(selectedAmount) + ' so\'m'
+    document.getElementById('successDate').textContent    = new Date().toLocaleDateString('uz-UZ')
+    document.getElementById('successOverlay').classList.add('show')
+
+  } catch (err) {
+    showToast('❌ Xatolik: ' + (err.message || 'Qayta urinib ko\'ring'))
+    btn.disabled = false
+    btnText.innerHTML = '💳 To\'lovni amalga oshirish'
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  YORDAMCHI
+// ════════════════════════════════════════════════════════
+function formatMoney(n) {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+function formatCard(input) {
+  let v = input.value.replace(/\D/g, '').slice(0, 16)
+  input.value = v.replace(/(.{4})/g, '$1 ').trim()
+}
+function formatExpiry(input) {
+  let v = input.value.replace(/\D/g, '').slice(0, 4)
+  if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2)
+  input.value = v
+}
+
+let _toastTimer
+function showToast(msg) {
+  const t = document.getElementById('toast')
+  if (!t) return
+  t.textContent = msg
+  t.classList.add('show')
+  clearTimeout(_toastTimer)
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 2800)
+}
+
+document.addEventListener('DOMContentLoaded', init)
+</script>
+</body>
+</html>

@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dars — Kompas Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#2d4a3e;--accent-hover:#1e3329;--accent-light:#e8f0ec;
+  --accent2:#c4622d;--accent2-light:#faeee7;
+  --bg:#f5f7f6;--surface:#fff;--border:#e0e8e4;
+  --text:#1a2e26;--muted:#6b7f76;--muted2:#9aada6;
+  --green:#1a7a4a;--green-light:#e6f4ec;
+  --gold:#b08a00;--gold-light:#fdf6dc;
+  --sidebar-w:300px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:#0f0f0f;color:var(--text);display:flex;height:100vh;overflow:hidden;}
+
+/* ── LESSON SIDEBAR ── */
+.ls{
+  width:var(--sidebar-w);flex-shrink:0;
+  background:#1a1a1a;
+  display:flex;flex-direction:column;
+  height:100vh;overflow:hidden;
+}
+.ls-topbar{
+  padding:16px;border-bottom:1px solid #2a2a2a;
+  display:flex;align-items:center;gap:10px;
+}
+.ls-back{
+  width:32px;height:32px;border-radius:8px;background:#2a2a2a;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:16px;flex-shrink:0;
+  transition:background 0.15s;
+}
+.ls-back:hover{background:#3a3a3a;}
+.ls-logo{font-size:14px;font-weight:800;color:white;}
+.ls-logo span{color:var(--accent2);}
+
+.ls-course-info{padding:14px 16px;border-bottom:1px solid #2a2a2a;}
+.ls-course-name{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:1px;font-family:'JetBrains Mono',monospace;margin-bottom:4px;}
+.ls-prog-row{display:flex;justify-content:space-between;font-size:12px;color:#aaa;margin-bottom:6px;}
+.ls-prog-bar{height:4px;background:#2a2a2a;border-radius:99px;overflow:hidden;}
+.ls-prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),#4a7a65);border-radius:99px;}
+
+.ls-scroll{flex:1;overflow-y:auto;padding:8px;}
+.ls-scroll::-webkit-scrollbar{width:4px;}
+.ls-scroll::-webkit-scrollbar-track{background:#1a1a1a;}
+.ls-scroll::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:99px;}
+
+.ls-module{margin-bottom:4px;}
+.ls-module-head{
+  padding:10px 12px;border-radius:8px;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;font-weight:700;color:#888;
+  transition:background 0.15s;
+}
+.ls-module-head:hover{background:#252525;color:#aaa;}
+.ls-module-head.open{background:#252525;color:#ccc;}
+.ls-module-title{display:flex;align-items:center;gap:8px;}
+.ls-module-arrow{font-size:10px;transition:transform 0.2s;}
+.ls-module-head.open .ls-module-arrow{transform:rotate(90deg);}
+.ls-module-lessons{display:none;padding-left:4px;}
+.ls-module-head.open + .ls-module-lessons{display:block;}
+
+.ls-lesson{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 10px;border-radius:8px;
+  cursor:pointer;transition:all 0.15s;
+  margin-bottom:2px;
+}
+.ls-lesson:hover{background:#252525;}
+.ls-lesson.active{background:#2d4a3e22;border:1px solid #2d4a3e55;}
+.ls-lesson-icon{
+  width:22px;height:22px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:10px;
+}
+.ls-lesson-icon.done{background:var(--green);color:white;}
+.ls-lesson-icon.active{background:var(--accent);color:white;}
+.ls-lesson-icon.locked{background:#2a2a2a;color:#555;}
+.ls-lesson-icon.todo{background:#2a2a2a;border:1px solid #444;color:#666;}
+.ls-lesson-text{flex:1;min-width:0;}
+.ls-lesson-title{font-size:12px;font-weight:600;color:#ccc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ls-lesson.active .ls-lesson-title{color:white;}
+.ls-lesson-dur{font-size:10px;color:#666;font-family:'JetBrains Mono',monospace;}
+
+/* ── VIDEO AREA ── */
+.video-area{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+
+/* VIDEO TOPBAR */
+.vt{
+  background:#1a1a1a;border-bottom:1px solid #2a2a2a;
+  padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+}
+.vt-title{font-size:14px;font-weight:700;color:white;}
+.vt-meta{font-size:12px;color:#888;margin-top:2px;}
+.vt-actions{display:flex;gap:8px;}
+.vt-btn{
+  padding:7px 14px;border-radius:8px;font-size:12px;font-weight:700;
+  border:none;cursor:pointer;font-family:'Outfit',sans-serif;
+  transition:all 0.15s;display:flex;align-items:center;gap:6px;
+}
+.vt-btn.primary{background:var(--accent);color:white;}
+.vt-btn.primary:hover{background:var(--accent-hover);}
+.vt-btn.secondary{background:#2a2a2a;color:#aaa;}
+.vt-btn.secondary:hover{background:#3a3a3a;color:white;}
+.vt-btn.success{background:var(--green);color:white;}
+
+/* VIDEO PLAYER */
+.video-player{
+  flex:1;background:#0a0a0a;position:relative;overflow:hidden;
+}
+.vp-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#0f1f18,#0a0a0a);
+}
+.vp-icon{font-size:64px;margin-bottom:20px;opacity:0.3;}
+.vp-play-btn{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--accent);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;color:white;margin-bottom:16px;
+  transition:all 0.2s;box-shadow:0 8px 32px rgba(45,74,62,0.4);
+}
+.vp-play-btn:hover{transform:scale(1.08);box-shadow:0 12px 40px rgba(45,74,62,0.5);}
+.vp-lesson-name{font-size:18px;font-weight:800;color:white;margin-bottom:6px;text-align:center;padding:0 40px;}
+.vp-lesson-meta{font-size:13px;color:#888;display:flex;gap:16px;}
+.vp-iframe{width:100%;height:100%;border:none;display:none;}
+
+/* VIDEO CONTROLS */
+.vc{
+  background:#111;padding:10px 20px;
+  display:flex;align-items:center;gap:12px;
+  border-top:1px solid #2a2a2a;flex-shrink:0;
+}
+.vc-btn{background:none;border:none;cursor:pointer;font-size:18px;color:#888;padding:4px;transition:color 0.15s;}
+.vc-btn:hover{color:white;}
+.vc-time{font-size:12px;color:#888;font-family:'JetBrains Mono',monospace;white-space:nowrap;}
+.vc-bar{flex:1;height:4px;background:#2a2a2a;border-radius:99px;cursor:pointer;position:relative;}
+.vc-bar-fill{height:100%;background:var(--accent);border-radius:99px;width:35%;pointer-events:none;}
+.vc-speed{font-size:12px;color:#888;font-weight:700;font-family:'JetBrains Mono',monospace;cursor:pointer;padding:4px 8px;border-radius:6px;transition:all 0.15s;}
+.vc-speed:hover{background:#2a2a2a;color:white;}
+
+/* BOTTOM PANEL */
+.bottom-panel{
+  background:white;border-top:1px solid var(--border);
+  padding:0;display:flex;flex-direction:column;
+  height:260px;flex-shrink:0;overflow:hidden;
+}
+.bp-tabs{
+  display:flex;border-bottom:1px solid var(--border);
+  background:var(--bg);flex-shrink:0;
+}
+.bp-tab{
+  padding:12px 20px;font-size:13px;font-weight:700;
+  color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;
+  transition:all 0.15s;background:none;border-right:none;border-left:none;border-top:none;
+  font-family:'Outfit',sans-serif;
+}
+.bp-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.bp-content{flex:1;overflow-y:auto;padding:16px 20px;}
+
+/* NOTES */
+.notes-area{
+  width:100%;border:none;outline:none;resize:none;
+  font-family:'Outfit',sans-serif;font-size:13px;
+  line-height:1.7;color:var(--text);height:100%;
+  background:transparent;
+}
+.notes-area::placeholder{color:var(--muted2);}
+
+/* RESOURCES */
+.res-list{display:flex;flex-direction:column;gap:8px;}
+.res-item{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 12px;border:1px solid var(--border);border-radius:10px;
+  cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--text);
+}
+.res-item:hover{border-color:var(--accent);background:var(--accent-light);}
+.res-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.res-icon.pdf{background:var(--accent2-light);}
+.res-icon.link{background:var(--accent-light);}
+.res-name{font-size:13px;font-weight:700;}
+.res-sub{font-size:11px;color:var(--muted);}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);
+  background:#1a2e26;color:white;padding:12px 20px;border-radius:10px;
+  font-size:13px;font-weight:600;z-index:999;
+  transition:transform 0.3s;white-space:nowrap;display:flex;align-items:center;gap:8px;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+@media(max-width:800px){
+  .ls{display:none;}
+  body{flex-direction:column;}
+  .video-area{flex:1;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     LESSON SIDEBAR
+══════════════════════════════════════════ -->
+<div class="ls">
+  <div class="ls-topbar">
+    <a href="dashboard.html" class="ls-back">←</a>
+    <div class="ls-logo">Kompas <span>Lab</span></div>
+  </div>
+
+  <div class="ls-course-info">
+    <div class="ls-course-name" id="lsCourseName">Yuklanmoqda...</div>
+    <div class="ls-prog-row">
+      <span id="lsProgText">— dars</span>
+      <span id="lsProgPct">0%</span>
+    </div>
+    <div class="ls-prog-bar">
+      <div class="ls-prog-fill" id="lsProgFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div class="ls-scroll" id="lessonScroll">
+
+    <!-- MODULE 1 -->
+    <div class="ls-module">
+      <div class="ls-module-head open" onclick="toggleModule(this)">
+        <div class="ls-module-title">✅ Hafta 1 · Research Identity</div>
+        <span class="ls-module-arrow">›</span>
+      </div>
+      <div class="ls-module-lessons">
+        <div class="ls-lesson" onclick="selectLesson(this,'Research Identity Framework','45:20','W1L1')">
+          <div class="ls-lesson-icon done">✓</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Research Identity Framework</div>
+            <div class="ls-lesson-dur">45:20</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'Scholar OS va PKM tizimi','38:15','W1L2')">
+          <div class="ls-lesson-icon done">✓</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Scholar OS va PKM tizimi</div>
+            <div class="ls-lesson-dur">38:15</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'Vaqtni boshqarish tizimi','52:40','W1L3')">
+          <div class="ls-lesson-icon done">✓</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Vaqtni boshqarish tizimi</div>
+            <div class="ls-lesson-dur">52:40</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'Zotero + Notion workflow','41:55','W1L4')">
+          <div class="ls-lesson-icon done">✓</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Zotero + Notion workflow</div>
+            <div class="ls-lesson-dur">41:55</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2 -->
+    <div class="ls-module">
+      <div class="ls-module-head open" onclick="toggleModule(this)">
+        <div class="ls-module-title">▶ Hafta 2 · University Mapping</div>
+        <span class="ls-module-arrow">›</span>
+      </div>
+      <div class="ls-module-lessons">
+        <div class="ls-lesson" onclick="selectLesson(this,'University Mapping System','48:30','W2L1')">
+          <div class="ls-lesson-icon done">✓</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">University Mapping System</div>
+            <div class="ls-lesson-dur">48:30</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'QS Ranking tahlili','35:10','W2L2')">
+          <div class="ls-lesson-icon done">✓</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">QS Ranking tahlili</div>
+            <div class="ls-lesson-dur">35:10</div>
+          </div>
+        </div>
+        <div class="ls-lesson active" onclick="selectLesson(this,'Admission requirements tahlili','57:45','W2L3')">
+          <div class="ls-lesson-icon active">▶</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Admission requirements tahlili</div>
+            <div class="ls-lesson-dur">57:45</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'Research fit qidirish','43:20','W2L4')">
+          <div class="ls-lesson-icon todo">○</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Research fit qidirish</div>
+            <div class="ls-lesson-dur">43:20</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'University shortlist yaratish','39:00','W2L5')">
+          <div class="ls-lesson-icon todo">○</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">University shortlist yaratish</div>
+            <div class="ls-lesson-dur">39:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3 -->
+    <div class="ls-module">
+      <div class="ls-module-head" onclick="toggleModule(this)">
+        <div class="ls-module-title">📧 Hafta 3 · Professor Outreach</div>
+        <span class="ls-module-arrow">›</span>
+      </div>
+      <div class="ls-module-lessons">
+        <div class="ls-lesson" onclick="selectLesson(this,'Cold Email anatomiyasi','50:00','W3L1')">
+          <div class="ls-lesson-icon todo">○</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Cold Email anatomiyasi</div>
+            <div class="ls-lesson-dur">50:00</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'Subject line texnikasi','44:00','W3L2')">
+          <div class="ls-lesson-icon locked">🔒</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Subject line texnikasi</div>
+            <div class="ls-lesson-dur">44:00</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'Follow-up strategiyasi','38:00','W3L3')">
+          <div class="ls-lesson-icon locked">🔒</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Follow-up strategiyasi</div>
+            <div class="ls-lesson-dur">38:00</div>
+          </div>
+        </div>
+        <div class="ls-lesson" onclick="selectLesson(this,'Real email examples','46:00','W3L4')">
+          <div class="ls-lesson-icon locked">🔒</div>
+          <div class="ls-lesson-text">
+            <div class="ls-lesson-title">Real email examples</div>
+            <div class="ls-lesson-dur">46:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULES 4-8 (qulflangan) -->
+    <div class="ls-module" style="opacity:0.4;">
+      <div class="ls-module-head" onclick="showToast('🔒 Bu modul hali qulflangan')">
+        <div class="ls-module-title">🔒 Hafta 4 · SoP Lab</div>
+        <span class="ls-module-arrow">›</span>
+      </div>
+    </div>
+    <div class="ls-module" style="opacity:0.4;">
+      <div class="ls-module-head" onclick="showToast('🔒 Bu modul hali qulflangan')">
+        <div class="ls-module-title">🔒 Hafta 5 · CV & Portfolio</div>
+        <span class="ls-module-arrow">›</span>
+      </div>
+    </div>
+    <div class="ls-module" style="opacity:0.4;">
+      <div class="ls-module-head" onclick="showToast('🔒 Bu modul hali qulflangan')">
+        <div class="ls-module-title">🔒 Hafta 6 · Grant Applications</div>
+        <span class="ls-module-arrow">›</span>
+      </div>
+    </div>
+    <div class="ls-module" style="opacity:0.4;">
+      <div class="ls-module-head" onclick="showToast('🔒 Bu modul hali qulflangan')">
+        <div class="ls-module-title">🔒 Hafta 7 · Research Proposal</div>
+        <span class="ls-module-arrow">›</span>
+      </div>
+    </div>
+    <div class="ls-module" style="opacity:0.4;">
+      <div class="ls-module-head" onclick="showToast('🔒 Bu modul hali qulflangan')">
+        <div class="ls-module-title">🔒 Hafta 8 · Interview & Final</div>
+        <span class="ls-module-arrow">›</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     VIDEO AREA
+══════════════════════════════════════════ -->
+<div class="video-area">
+
+  <!-- VIDEO TOPBAR -->
+  <div class="vt">
+    <div>
+      <div class="vt-title" id="vtTitle">Admission requirements tahlili</div>
+      <div class="vt-meta">📦 Hafta 2 · Dars 3 · ⏱ 57:45</div>
+    </div>
+    <div class="vt-actions">
+      <button class="vt-btn secondary" onclick="prevLesson()">⏮ Oldingi</button>
+      <button class="vt-btn success" onclick="markComplete()" id="markBtn">✓ Tugatildi deb belgilash</button>
+      <button class="vt-btn primary" onclick="nextLesson()">Keyingi ⏭</button>
+    </div>
+  </div>
+
+  <!-- VIDEO PLAYER -->
+  <div class="video-player">
+    <div class="vp-placeholder" id="videoPlaceholder">
+      <div class="vp-icon">🎬</div>
+      <button class="vp-play-btn" onclick="startVideo()">▶</button>
+      <div class="vp-lesson-name" id="vpLessonName">Admission requirements tahlili</div>
+      <div class="vp-lesson-meta">
+        <span>📦 Hafta 2</span>
+        <span>⏱ 57:45</span>
+        <span>🎥 Vimeo</span>
+      </div>
+    </div>
+    <iframe id="videoIframe" class="vp-iframe"
+      src=""
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- VIDEO CONTROLS -->
+  <div class="vc">
+    <button class="vc-btn" onclick="prevLesson()">⏮</button>
+    <button class="vc-btn" id="playPauseBtn" onclick="togglePlay()">▶</button>
+    <button class="vc-btn" onclick="nextLesson()">⏭</button>
+    <span class="vc-time" id="vcTime">00:00</span>
+    <div class="vc-bar" onclick="seekTo(event,this)">
+      <div class="vc-bar-fill" id="vcFill"></div>
+    </div>
+    <span class="vc-time" id="vcDuration">57:45</span>
+    <span class="vc-speed" onclick="changeSpeed()">1×</span>
+  </div>
+
+  <!-- BOTTOM PANEL -->
+  <div class="bottom-panel">
+    <div class="bp-tabs">
+      <button class="bp-tab active" onclick="switchTab(this,'notes')">📝 Eslatmalar</button>
+      <button class="bp-tab" onclick="switchTab(this,'resources')">📎 Materiallar</button>
+      <button class="bp-tab" onclick="switchTab(this,'homework')">📋 Topshiriq</button>
+    </div>
+    <div class="bp-content">
+
+      <div id="tab-notes">
+        <textarea class="notes-area" placeholder="Bu darsdan eslatmalarni shu yerga yozing... (avtomatik saqlanadi)"></textarea>
+      </div>
+
+      <div id="tab-resources" style="display:none">
+        <div class="res-list">
+          <a href="#" class="res-item">
+            <div class="res-icon pdf">📄</div>
+            <div>
+              <div class="res-name">University Comparison Table.pdf</div>
+              <div class="res-sub">Dars uchun asosiy material · 1.2 MB</div>
+            </div>
+          </a>
+          <a href="#" class="res-item">
+            <div class="res-icon link">🔗</div>
+            <div>
+              <div class="res-name">QS World University Rankings 2025</div>
+              <div class="res-sub">topuniversities.com</div>
+            </div>
+          </a>
+          <a href="#" class="res-item">
+            <div class="res-icon pdf">📊</div>
+            <div>
+              <div class="res-name">Admission Requirements Template.xlsx</div>
+              <div class="res-sub">Shaxsiy jadval · 45 KB</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div id="tab-homework" style="display:none">
+        <div style="font-size:13px;line-height:1.7;color:var(--text);">
+          <strong>📋 Hafta 2 topshirig'i:</strong><br><br>
+          1. O'zingiz uchun 10 ta potensial universitetni QS Ranking'da toping<br>
+          2. Har biri uchun admission talablarini University Comparison Table'ga to'ldiring<br>
+          3. Research fit bo'yicha 3 ta maqbul universitetni tanlang<br><br>
+          <strong>Deadline:</strong> <span style="color:var(--accent2)">Hafta 3 boshida</span><br>
+          <strong>Format:</strong> PDF yoki Excel jadval shaklida<br><br>
+          <button onclick="showToast('📤 Topshiriq yuborish tez kunda...')" 
+            style="background:var(--accent);color:white;border:none;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;">
+            📤 Topshiriqni yuborish
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+// ════════════════════════════════════════════════════════
+//  KOMPAS LAB — lesson.js (inline)
+//  Supabase bilan to'liq ulangan dars sahifasi
+// ════════════════════════════════════════════════════════
+
+// ── Global holat ──────────────────────────────────────
+let _user        = null   // Auth user
+let _courseSlug  = null   // URL parametridan: ?course=eyuf-lab
+let _lessonId    = null   // URL parametridan: ?lesson=UUID
+let _allModules  = []     // Kursning barcha modullari
+let _allLessons  = []     // Flat darslar ro'yxati
+let _progressMap = {}     // lesson_id → progress
+let _currentIdx  = 0      // _allLessons dagi joriy indeks
+
+// Video holat
+let _speeds    = [0.75, 1, 1.25, 1.5, 1.75, 2]
+let _speedIdx  = 1        // default: 1×
+let _vimeoPlayer = null   // Vimeo Player API
+let _progressTimer = null // Vimeo progress tracking
+
+// Notes auto-save
+let _notesSaveTimer = null
+
+// ════════════════════════════════════════════════════════
+//  1. INIT
+// ════════════════════════════════════════════════════════
+async function init() {
+  // URL parametrlarini olish
+  _courseSlug = getParam('course') || 'eyuf-lab'
+  _lessonId   = getParam('lesson')
+
+  try {
+    // 1. Auth + enrollment tekshirish
+    const auth = await requireAuth()
+    if (!auth) return
+
+    _user = auth.user
+
+    // 2. Enrollment tekshirish (bepul darslar istisno)
+    const enrollment = await requireEnrollment(_user.id, _courseSlug)
+    // requireEnrollment — yozilmagan bo'lsa payment.html ga yo'naltiradi
+    // Lekin bepul darslarga kirish uchun davom etamiz
+    if (!enrollment) {
+      // Bepul dars bo'lishi mumkin — tekshiramiz
+      const isFreeLesson = await checkIsFreeLesson(_lessonId)
+      if (!isFreeLesson) return  // redirect allaqachon bo'ldi
+    }
+
+    // 3. Kurs modullar + darslarni yuklash
+    await loadCourseStructure(_courseSlug, _user.id)
+
+    // 4. Auth holat kuzatish
+    onAuthChange((event) => {
+      if (event === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login
+    })
+
+  } catch (err) {
+    console.error('Lesson init xatosi:', err)
+    // Demo mode
+    loadDemoMode()
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  2. KURS TUZILMASINI YUKLASH
+// ════════════════════════════════════════════════════════
+async function loadCourseStructure(courseSlug, userId) {
+  // Kurs ma'lumotlari
+  const { data: course, error: cErr } = await supabase
+    .from(DB.courses)
+    .select('id, title, slug')
+    .eq('slug', courseSlug)
+    .single()
+
+  if (cErr || !course) { showToast('Kurs topilmadi', 'error'); return }
+
+  // Modullar + darslar
+  const { data: modules, error: mErr } = await supabase
+    .from(DB.modules)
+    .select(`
+      id, title, order_index, is_free,
+      lessons(id, title, vimeo_url, order_index, duration, duration_sec, is_free, status, description)
+    `)
+    .eq('course_id', course.id)
+    .eq('lessons.status', 'published')
+    .order('order_index', { ascending: true })
+
+  if (mErr) throw mErr
+
+  _allModules = modules || []
+
+  // Flat darslar ro'yxati (ketma-ket navigatsiya uchun)
+  _allLessons = _allModules.flatMap(m =>
+    (m.lessons || [])
+      .sort((a, b) => a.order_index - b.order_index)
+      .map(l => ({ ...l, moduleTitle: m.title, moduleOrder: m.order_index }))
+  )
+
+  // Progress yuklash
+  const { data: progressData } = await supabase
+    .from(DB.progress)
+    .select('lesson_id, completed, watched_percent, last_watched_at')
+    .eq('user_id', userId)
+
+  _progressMap = {}
+  ;(progressData || []).forEach(p => { _progressMap[p.lesson_id] = p })
+
+  // Kurs progress foizi
+  const total     = _allLessons.length
+  const completed = _allLessons.filter(l => _progressMap[l.id]?.completed).length
+  const pct       = total > 0 ? Math.round((completed / total) * 100) : 0
+
+  // Sidebar progress yangilash
+  document.getElementById('lsProgPct').textContent  = `${completed}/${total}`
+  document.getElementById('lsProgFill').style.width = pct + '%'
+
+  // Kurs nomi
+  const courseNames = {
+    'eyuf-lab': '🎯 EYUF Lab', 'bachelor-lab': '🎓 Bachelor Lab',
+    'master-lab': '🔬 Master Lab', 'phd-lab': '⚗️ PhD Lab'
+  }
+  document.getElementById('lsCourseName').textContent = courseNames[courseSlug] || course.title
+
+  // Sidebar modullar ro'yxatini render qilish
+  renderSidebarModules()
+
+  // Qaysi darsni ochish
+  let targetLesson = null
+  if (_lessonId) {
+    targetLesson = _allLessons.find(l => l.id === _lessonId)
+  }
+  if (!targetLesson) {
+    // Birinchi ko'rilmagan dars
+    targetLesson = _allLessons.find(l => !_progressMap[l.id]?.completed)
+      || _allLessons[0]
+  }
+
+  if (targetLesson) {
+    _currentIdx = _allLessons.indexOf(targetLesson)
+    openLesson(targetLesson)
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  3. SIDEBAR MODULLAR RENDER
+// ════════════════════════════════════════════════════════
+function renderSidebarModules() {
+  const container = document.querySelector('.ls-scroll')
+  if (!container) return
+
+  container.innerHTML = _allModules.map((mod, mi) => {
+    const lessons = (mod.lessons || []).sort((a, b) => a.order_index - b.order_index)
+    if (lessons.length === 0) return ''
+
+    const doneLessons = lessons.filter(l => _progressMap[l.id]?.completed).length
+    const isOpen = lessons.some(l => l.id === _lessonId) || mi < 2
+
+    return `
+      <div class="ls-module">
+        <div class="ls-module-head ${isOpen ? 'open' : ''}" onclick="toggleModule(this)">
+          <div class="ls-module-title">${mod.title}</div>
+          <span class="ls-module-arrow">›</span>
+        </div>
+        <div class="ls-module-lessons" ${!isOpen ? 'style="display:none"' : ''}>
+          ${lessons.map(l => {
+            const prog    = _progressMap[l.id]
+            const isDone  = prog?.completed
+            const isActive = l.id === _lessonId
+            const iconClass = isDone ? 'done' : isActive ? 'active' : 'todo'
+            const iconText  = isDone ? '✓' : isActive ? '▶' : '○'
+            return `
+              <div class="ls-lesson ${isActive ? 'active' : ''}" 
+                   onclick="selectLessonById('${l.id}')">
+                <div class="ls-lesson-icon ${iconClass}">${iconText}</div>
+                <div class="ls-lesson-text">
+                  <div class="ls-lesson-title">${l.title}</div>
+                  <div class="ls-lesson-dur">${l.duration || '—'}</div>
+                </div>
+              </div>`
+          }).join('')}
+        </div>
+      </div>`
+  }).join('')
+}
+
+// ════════════════════════════════════════════════════════
+//  4. DARS OCHISH
+// ════════════════════════════════════════════════════════
+function selectLessonById(lessonId) {
+  const lesson = _allLessons.find(l => l.id === lessonId)
+  if (!lesson) return
+  _currentIdx = _allLessons.indexOf(lesson)
+  _lessonId = lessonId
+
+  // URL yangilash (sahifa reload yo'q)
+  const url = new URL(window.location.href)
+  url.searchParams.set('lesson', lessonId)
+  window.history.pushState({}, '', url)
+
+  openLesson(lesson)
+  renderSidebarModules()
+}
+
+function openLesson(lesson) {
+  // UI yangilash
+  document.getElementById('vtTitle').textContent      = lesson.title
+  document.getElementById('vpLessonName').textContent = lesson.title
+  document.getElementById('vcDuration').textContent   = lesson.duration || '—'
+  document.getElementById('vcTime').textContent       = '00:00'
+  document.getElementById('vcFill').style.width       = '0%'
+  document.querySelector('.vt-meta').textContent      =
+    `📦 ${lesson.moduleTitle || 'Modul'} · ⏱ ${lesson.duration || '~30 daqiqa'}`
+
+  // Mark button holati
+  const prog      = _progressMap[lesson.id]
+  const markBtn   = document.getElementById('markBtn')
+  if (prog?.completed) {
+    markBtn.textContent = '✅ Tugallandi'
+    markBtn.style.background = '#0a5c2e'
+  } else {
+    markBtn.textContent = '✓ Tugatildi deb belgilash'
+    markBtn.style.background = 'var(--green)'
+  }
+
+  // Oldingi video to'xtatish
+  clearInterval(_progressTimer)
+  if (_vimeoPlayer) { try { _vimeoPlayer.pause() } catch(e) {} }
+  document.getElementById('videoIframe').style.display = 'none'
+  document.getElementById('videoPlaceholder').style.display = 'flex'
+  document.getElementById('playPauseBtn').textContent = '▶'
+
+  // Vimeo URL tayyor bo'lsa placeholder ni yangilash
+  if (lesson.vimeo_url) {
+    document.getElementById('vpLessonName').textContent = lesson.title
+  }
+
+  // Eslatmalarni yuklash
+  loadNotes(lesson.id)
+
+  // Materiallarni yuklash
+  loadMaterials(lesson.id)
+}
+
+// ════════════════════════════════════════════════════════
+//  5. VIDEO — VIMEO
+// ════════════════════════════════════════════════════════
+function startVideo() {
+  const lesson = _allLessons[_currentIdx]
+  if (!lesson) return
+
+  const placeholder = document.getElementById('videoPlaceholder')
+  const iframe      = document.getElementById('videoIframe')
+
+  if (lesson.vimeo_url) {
+    // Haqiqiy Vimeo embed
+    const url = lesson.vimeo_url.includes('?')
+      ? lesson.vimeo_url + '&autoplay=1&title=0&byline=0&portrait=0'
+      : lesson.vimeo_url + '?autoplay=1&title=0&byline=0&portrait=0'
+
+    iframe.src = url
+    iframe.style.display = 'block'
+    placeholder.style.display = 'none'
+
+    // Progress tracking — 60 soniyada bir marta saqlash
+    startProgressTracking(lesson.id, lesson.duration_sec || 1800)
+
+  } else {
+    // Vimeo URL yo'q — hali yuklanmagan
+    showToast('🎬 Video tez orada qo\'shiladi', 'warning')
+    placeholder.style.display = 'none'
+    iframe.style.display = 'block'
+    iframe.src = ''
+    startDemoProgress()
+  }
+
+  document.getElementById('playPauseBtn').textContent = '⏸'
+}
+
+// Vimeo progress tracking
+function startProgressTracking(lessonId, totalSec) {
+  clearInterval(_progressTimer)
+  let elapsed    = 0
+  let lastSaved  = 0
+
+  _progressTimer = setInterval(() => {
+    elapsed++
+    const pct = Math.min(Math.round((elapsed / totalSec) * 100), 100)
+
+    // Progress bar yangilash
+    document.getElementById('vcFill').style.width = pct + '%'
+    const m = Math.floor(elapsed / 60).toString().padStart(2, '0')
+    const s = (elapsed % 60).toString().padStart(2, '0')
+    document.getElementById('vcTime').textContent = m + ':' + s
+
+    // Har 30 soniyada yoki 95% da saqlash
+    if (elapsed - lastSaved >= 30 || pct >= 95) {
+      lastSaved = elapsed
+      saveProgress(lessonId, pct)
+    }
+
+    if (pct >= 100) {
+      clearInterval(_progressTimer)
+      markComplete()
+    }
+  }, 1000)
+}
+
+// Demo progress (Vimeo URL yo'q bo'lsa)
+let _demoTimer = null
+function startDemoProgress() {
+  clearInterval(_demoTimer)
+  const fill = document.getElementById('vcFill')
+  const time = document.getElementById('vcTime')
+  let pct    = 0
+  _demoTimer = setInterval(() => {
+    pct = Math.min(pct + 0.1, 100)
+    fill.style.width = pct + '%'
+    const total   = 1800
+    const current = Math.round((pct / 100) * total)
+    const m = Math.floor(current / 60).toString().padStart(2, '0')
+    const s = (current % 60).toString().padStart(2, '0')
+    time.textContent = m + ':' + s
+    if (pct >= 100) { clearInterval(_demoTimer); markComplete() }
+  }, 300)
+}
+
+function togglePlay() {
+  const btn = document.getElementById('playPauseBtn')
+  if (btn.textContent === '▶') {
+    startVideo()
+  } else {
+    clearInterval(_progressTimer)
+    clearInterval(_demoTimer)
+    btn.textContent = '▶'
+    try { if (_vimeoPlayer) _vimeoPlayer.pause() } catch(e) {}
+  }
+}
+
+function seekTo(e, bar) {
+  const rect = bar.getBoundingClientRect()
+  const pct  = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100))
+  document.getElementById('vcFill').style.width = pct + '%'
+  const lesson = _allLessons[_currentIdx]
+  if (lesson) saveProgress(lesson.id, Math.round(pct))
+}
+
+function changeSpeed() {
+  _speedIdx = (_speedIdx + 1) % _speeds.length
+  document.querySelector('.vc-speed').textContent = _speeds[_speedIdx] + '×'
+  showToast(`Tezlik: ${_speeds[_speedIdx]}×`)
+}
+
+// ════════════════════════════════════════════════════════
+//  6. PROGRESS SAQLASH
+// ════════════════════════════════════════════════════════
+async function saveProgress(lessonId, watchedPct) {
+  if (!_user) return
+  try {
+    const isCompleted = watchedPct >= 95
+    await supabase.from(DB.progress).upsert({
+      user_id:         _user.id,
+      lesson_id:       lessonId,
+      watched_percent: watchedPct,
+      completed:       isCompleted,
+      completed_at:    isCompleted ? new Date().toISOString() : null,
+      last_watched_at: new Date().toISOString(),
+    }, { onConflict: 'user_id,lesson_id' })
+
+    // Local cache yangilash
+    _progressMap[lessonId] = {
+      lesson_id:       lessonId,
+      watched_percent: watchedPct,
+      completed:       isCompleted,
+      last_watched_at: new Date().toISOString(),
+    }
+  } catch (err) {
+    console.warn('Progress saqlashda xato:', err.message)
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  7. DARS TUGALLASH
+// ════════════════════════════════════════════════════════
+async function markComplete() {
+  const lesson  = _allLessons[_currentIdx]
+  if (!lesson) return
+
+  const markBtn = document.getElementById('markBtn')
+  markBtn.textContent        = '✅ Tugallandi!'
+  markBtn.style.background   = '#0a5c2e'
+
+  await saveProgress(lesson.id, 100)
+  renderSidebarModules()
+  showToast('🎉 Dars tugatildi! Keyingisiga o\'ting')
+
+  // Keyingi darsga avtomatik o'tish tugmasi
+  if (_currentIdx < _allLessons.length - 1) {
+    setTimeout(() => {
+      showToast('⏭ Keyingi darsga o\'tishingiz mumkin')
+    }, 2000)
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  8. PREV / NEXT NAVIGATSIYA
+// ════════════════════════════════════════════════════════
+function nextLesson() {
+  if (_currentIdx < _allLessons.length - 1) {
+    selectLessonById(_allLessons[_currentIdx + 1].id)
+  } else {
+    showToast('🎉 Bu kursning oxirgi darsi!')
+  }
+}
+
+function prevLesson() {
+  if (_currentIdx > 0) {
+    selectLessonById(_allLessons[_currentIdx - 1].id)
+  } else {
+    showToast('Bu birinchi dars')
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  9. ESLATMALAR (NOTES)
+// ════════════════════════════════════════════════════════
+async function loadNotes(lessonId) {
+  if (!_user) return
+  const notesArea = document.querySelector('.notes-area')
+  if (!notesArea) return
+
+  try {
+    const { data } = await supabase
+      .from(DB.notes)
+      .select('content')
+      .eq('user_id', _user.id)
+      .eq('lesson_id', lessonId)
+      .single()
+
+    notesArea.value = data?.content || ''
+  } catch (e) {
+    notesArea.value = ''
+  }
+}
+
+async function saveNotes(lessonId, content) {
+  if (!_user) return
+  try {
+    await supabase.from(DB.notes).upsert({
+      user_id:    _user.id,
+      lesson_id:  lessonId,
+      content:    content,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: 'user_id,lesson_id' })
+  } catch (e) {
+    console.warn('Notes saqlashda xato:', e.message)
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  10. MATERIALLAR
+// ════════════════════════════════════════════════════════
+async function loadMaterials(lessonId) {
+  const container = document.getElementById('tab-resources')
+  if (!container) return
+
+  try {
+    const { data: materials } = await supabase
+      .from(DB.materials)
+      .select('*')
+      .eq('lesson_id', lessonId)
+      .order('order_index', { ascending: true })
+
+    if (!materials || materials.length === 0) {
+      container.innerHTML = `
+        <div style="padding:24px;text-align:center;color:#888;font-size:13px">
+          Bu dars uchun hali material qo'shilmagan
+        </div>`
+      return
+    }
+
+    const iconMap = { pdf: '📄', docx: '📝', xlsx: '📊', zip: '📦', link: '🔗' }
+    container.innerHTML = `
+      <div class="res-list">
+        ${materials.map(m => `
+          <a href="${m.file_url}" target="_blank" class="res-item">
+            <div class="res-icon ${m.file_type}">${iconMap[m.file_type] || '📎'}</div>
+            <div>
+              <div class="res-name">${m.title}</div>
+              <div class="res-sub">${m.file_size || m.file_type?.toUpperCase() || 'Fayl'}</div>
+            </div>
+          </a>`).join('')}
+      </div>`
+  } catch (e) {
+    console.warn('Materials load error:', e.message)
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  11. BEPUL DARS TEKSHIRISH
+// ════════════════════════════════════════════════════════
+async function checkIsFreeLesson(lessonId) {
+  if (!lessonId) return false
+  try {
+    const { data } = await supabase
+      .from(DB.lessons)
+      .select('is_free')
+      .eq('id', lessonId)
+      .single()
+    return data?.is_free === true
+  } catch (e) {
+    return false
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  12. SIDEBAR TOGGLE
+// ════════════════════════════════════════════════════════
+function toggleModule(head) {
+  head.classList.toggle('open')
+  const lessons = head.nextElementSibling
+  if (lessons) {
+    lessons.style.display = lessons.style.display === 'none' ? '' : 'none'
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  13. TABLAR
+// ════════════════════════════════════════════════════════
+function switchTab(btn, tab) {
+  document.querySelectorAll('.bp-tab').forEach(t => t.classList.remove('active'))
+  btn.classList.add('active')
+  document.querySelectorAll('.bp-content > div').forEach(d => d.style.display = 'none')
+  const el = document.getElementById('tab-' + tab)
+  if (el) el.style.display = 'block'
+}
+
+// ════════════════════════════════════════════════════════
+//  14. TOAST (lesson sahifasi uchun — qora background)
+// ════════════════════════════════════════════════════════
+let _toastTimer = null
+function showToast(msg) {
+  const t = document.getElementById('toast')
+  if (!t) return
+  t.textContent = msg
+  t.classList.add('show')
+  clearTimeout(_toastTimer)
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 2800)
+}
+
+// ════════════════════════════════════════════════════════
+//  15. DEMO MODE (Supabase ulanmagan bo'lsa)
+// ════════════════════════════════════════════════════════
+function loadDemoMode() {
+  console.warn('Lesson demo mode: Supabase ulanmagan')
+  document.getElementById('vtTitle').textContent = 'Demo dars — Supabase ulang'
+  document.getElementById('vpLessonName').textContent = 'Demo dars'
+  document.getElementById('lsCourseName').textContent = '🎯 EYUF Lab (demo)'
+  document.getElementById('lsProgPct').textContent = '0/0'
+  document.querySelector('.ls-scroll').innerHTML = `
+    <div style="padding:20px;color:#888;font-size:13px;text-align:center">
+      config.js ni to'ldirgach darslar ko'rinadi
+    </div>`
+}
+
+// ════════════════════════════════════════════════════════
+//  NOTES AUTO-SAVE EVENT
+// ════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  const notesArea = document.querySelector('.notes-area')
+  if (notesArea) {
+    notesArea.addEventListener('input', () => {
+      clearTimeout(_notesSaveTimer)
+      _notesSaveTimer = setTimeout(async () => {
+        const lesson = _allLessons[_currentIdx]
+        if (lesson && notesArea.value.trim()) {
+          await saveNotes(lesson.id, notesArea.value)
+          showToast('💾 Eslatma saqlandi')
+        }
+      }, 2000)
+    })
+  }
+  init()
+})
+</script>
+
+</body>
+</html>

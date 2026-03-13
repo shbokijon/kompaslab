@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ro'yxatdan o'tish — Kompas Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#2d4a3e;--accent-hover:#1e3329;--accent-light:#e8f0ec;
+  --accent2:#c4622d;--bg:#f5f7f6;--surface:#ffffff;
+  --border:#e0e8e4;--text:#1a2e26;--muted:#6b7f76;--muted2:#9aada6;
+  --green:#1a7a4a;--green-light:#e6f4ec;
+  --red:#c0392b;--red-light:#fdecea;
+  --gold:#b08a00;--gold-light:#fdf6dc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+
+.nav{background:white;border-bottom:1px solid var(--border);padding:0 5%;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;color:var(--accent);text-decoration:none;}
+.nav-logo-mark{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.nav-login{font-size:13px;color:var(--muted);text-decoration:none;font-weight:600;}
+.nav-login span{color:var(--accent);}
+
+.page{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 60px);}
+
+/* LEFT PANEL */
+.left-panel{background:linear-gradient(145deg,#1a2e26,var(--accent));padding:60px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.left-panel::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(196,98,45,0.12) 0%,transparent 70%);bottom:-100px;right:-100px;}
+.lp-content{position:relative;z-index:1;}
+.lp-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);padding:6px 14px;border-radius:99px;font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:28px;}
+.lp-title{font-size:36px;font-weight:900;color:white;line-height:1.15;letter-spacing:-1.5px;margin-bottom:16px;}
+.lp-title span{color:rgba(196,98,45,0.9);}
+.lp-sub{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:32px;}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:16px;margin-bottom:32px;}
+.step{display:flex;align-items:flex-start;gap:14px;}
+.step-num{width:32px;height:32px;background:var(--accent2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:white;flex-shrink:0;}
+.step-content{}
+.step-title{font-size:13px;font-weight:700;color:white;margin-bottom:2px;}
+.step-desc{font-size:12px;color:rgba(255,255,255,0.55);}
+
+/* SOCIAL PROOF */
+.social-proof{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px 18px;}
+.sp-label{font-size:11px;color:rgba(255,255,255,0.5);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.sp-avatars{display:flex;align-items:center;gap:0;}
+.sp-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#4a7a65);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;margin-left:-8px;}
+.sp-avatar:first-child{margin-left:0;}
+.sp-text{margin-left:12px;font-size:13px;color:rgba(255,255,255,0.8);font-weight:600;}
+
+/* RIGHT PANEL */
+.right-panel{background:white;padding:50px 60px;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;}
+.form-wrap{max-width:420px;width:100%;}
+.form-title{font-size:24px;font-weight:900;letter-spacing:-0.5px;margin-bottom:4px;}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:28px;}
+.form-sub a{color:var(--accent);font-weight:700;text-decoration:none;}
+
+/* PROGRESS STEPS */
+.progress-steps{display:flex;align-items:center;gap:0;margin-bottom:28px;}
+.ps-step{display:flex;align-items:center;gap:8px;}
+.ps-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--border);color:var(--muted);transition:all 0.3s;}
+.ps-dot.active{background:var(--accent);border-color:var(--accent);color:white;}
+.ps-dot.done{background:var(--green);border-color:var(--green);color:white;}
+.ps-label{font-size:12px;font-weight:600;color:var(--muted);}
+.ps-label.active{color:var(--accent);}
+.ps-line{flex:1;height:2px;background:var(--border);margin:0 8px;transition:background 0.3s;}
+.ps-line.done{background:var(--green);}
+
+/* FORM STEPS */
+.form-step{display:none;}
+.form-step.active{display:block;}
+
+.field{margin-bottom:16px;}
+.field-label{font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;display:block;}
+.field-input{width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:'Outfit',sans-serif;color:var(--text);background:var(--bg);transition:all 0.2s;outline:none;}
+.field-input:focus{border-color:var(--accent);background:white;box-shadow:0 0 0 3px rgba(45,74,62,0.08);}
+.field-input.error{border-color:var(--red);background:var(--red-light);}
+.field-input::placeholder{color:var(--muted);}
+.field-input-wrap{position:relative;}
+.field-eye{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:var(--muted);padding:4px;}
+.field-hint{font-size:11px;color:var(--muted);margin-top:5px;}
+.field-error{font-size:12px;color:var(--red);margin-top:5px;display:none;}
+.field-error.show{display:block;}
+
+/* ROW */
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* SELECT */
+.field-select{width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:'Outfit',sans-serif;color:var(--text);background:var(--bg);outline:none;cursor:pointer;transition:border-color 0.2s;}
+.field-select:focus{border-color:var(--accent);}
+
+/* PASSWORD STRENGTH */
+.pwd-strength{margin-top:8px;}
+.pwd-bars{display:flex;gap:4px;margin-bottom:4px;}
+.pwd-bar{flex:1;height:3px;border-radius:99px;background:var(--border);transition:background 0.3s;}
+.pwd-label{font-size:11px;color:var(--muted);}
+
+/* TERMS */
+.terms-wrap{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:16px;}
+.terms-check{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--muted);}
+.terms-check input{margin-top:2px;accent-color:var(--accent);flex-shrink:0;}
+.terms-check a{color:var(--accent);font-weight:600;}
+
+/* ALERT */
+.alert{padding:12px 16px;border-radius:10px;font-size:13px;font-weight:600;margin-bottom:16px;display:none;align-items:center;gap:8px;}
+.alert.show{display:flex;}
+.alert.error{background:var(--red-light);color:var(--red);border:1px solid #f5c6c3;}
+.alert.success{background:var(--green-light);color:var(--green);border:1px solid #b8e4cc;}
+.alert.info{background:var(--gold-light);color:var(--gold);border:1px solid #e8d48a;}
+
+/* BUTTONS */
+.btn-row{display:flex;gap:10px;margin-top:20px;}
+.btn-next{flex:1;padding:13px;background:var(--accent);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.btn-next:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 4px 16px rgba(45,74,62,0.25);}
+.btn-next:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.btn-back{padding:13px 18px;background:var(--bg);color:var(--muted);border:2px solid var(--border);border-radius:10px;font-size:14px;font-weight:700;font-family:'Outfit',sans-serif;cursor:pointer;transition:all 0.2s;}
+.btn-back:hover{border-color:var(--accent);color:var(--accent);}
+
+/* SUCCESS STATE */
+.success-state{text-align:center;padding:20px 0;}
+.success-icon{font-size:64px;margin-bottom:20px;}
+.success-title{font-size:24px;font-weight:900;margin-bottom:8px;}
+.success-sub{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:24px;}
+
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin 0.7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:800px){
+  .page{grid-template-columns:1fr;}
+  .left-panel{display:none;}
+  .right-panel{padding:32px 24px;}
+  .field-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">🧭</div>
+    Kompas Lab
+  </a>
+  <a href="login.html" class="nav-login">
+    Hisobingiz bormi? <span>Kiring →</span>
+  </a>
+</nav>
+
+<div class="page">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="lp-content">
+      <div class="lp-badge">🚀 8 haftalik intensiv</div>
+      <h2 class="lp-title">Top universitetga yo'lingiz <span>3 qadamda</span> boshlanadi</h2>
+      <p class="lp-sub">Ro'yxatdan o'ting, kursni boshlang va ilmiy identitetingizni qurishni boshlang.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Hisob yarating</div>
+            <div class="step-desc">Email va parol bilan — 30 soniyada</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">To'lovni amalga oshiring</div>
+            <div class="step-desc">Click.uz orqali xavfsiz to'lov</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Kursni boshlang</div>
+            <div class="step-desc">35 ta dars, mentor feedback, community</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-proof">
+        <div class="sp-label">Hozir o'qiyotganlar</div>
+        <div style="display:flex;align-items:center;">
+          <div class="sp-avatars">
+            <div class="sp-avatar" style="background:linear-gradient(135deg,#2d4a3e,#4a7a65);">A</div>
+            <div class="sp-avatar" style="background:linear-gradient(135deg,#c4622d,#e0896a);">M</div>
+            <div class="sp-avatar" style="background:linear-gradient(135deg,#1a56a0,#4a80c4);">J</div>
+            <div class="sp-avatar" style="background:linear-gradient(135deg,#7b2fa0,#a855c4);">Z</div>
+            <div class="sp-avatar" style="background:linear-gradient(135deg,#b08a00,#d4a800);">+</div>
+          </div>
+          <div class="sp-text">47+ talaba allaqachon o'qimoqda</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <div class="form-wrap">
+
+      <h1 class="form-title">Hisob yarating</h1>
+      <p class="form-sub">
+        Hisobingiz bormi?
+        <a href="login.html">Kiring →</a>
+      </p>
+
+      <!-- PROGRESS STEPS -->
+      <div class="progress-steps" id="progressSteps">
+        <div class="ps-step">
+          <div class="ps-dot active" id="dot1">1</div>
+          <div class="ps-label active" id="lbl1">Shaxsiy</div>
+        </div>
+        <div class="ps-line" id="line1"></div>
+        <div class="ps-step">
+          <div class="ps-dot" id="dot2">2</div>
+          <div class="ps-label" id="lbl2">Hisob</div>
+        </div>
+        <div class="ps-line" id="line2"></div>
+        <div class="ps-step">
+          <div class="ps-dot" id="dot3">3</div>
+          <div class="ps-label" id="lbl3">Tasdiqlash</div>
+        </div>
+      </div>
+
+      <div class="alert error" id="errorAlert">
+        <span>⚠️</span><span id="errorMsg">Xatolik yuz berdi</span>
+      </div>
+
+      <!-- ─── STEP 1: SHAXSIY MA'LUMOTLAR ─── -->
+      <div class="form-step active" id="step1">
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">Ism *</label>
+            <input type="text" id="firstName" class="field-input" placeholder="Sardor" required>
+            <div class="field-error" id="firstNameError">Ismingizni kiriting</div>
+          </div>
+          <div class="field">
+            <label class="field-label">Familiya *</label>
+            <input type="text" id="lastName" class="field-input" placeholder="Karimov" required>
+            <div class="field-error" id="lastNameError">Familiyangizni kiriting</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Telefon raqam *</label>
+          <input type="tel" id="phone" class="field-input" placeholder="+998 90 123 45 67" required>
+          <div class="field-hint">To'lov va bildirishnomalar uchun</div>
+          <div class="field-error" id="phoneError">Telefon raqamni to'g'ri kiriting</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Ta'lim darajasi</label>
+          <select id="education" class="field-select">
+            <option value="">Tanlang...</option>
+            <option value="bachelor">Bakalavr (hozir o'qimoqdaman)</option>
+            <option value="bachelor_done">Bakalavr (bitirganman)</option>
+            <option value="master">Magistratura</option>
+            <option value="phd">Doktorantura</option>
+            <option value="other">Boshqa</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Maqsad</label>
+          <select id="goal" class="field-select">
+            <option value="">Tanlang...</option>
+            <option value="masters">MSc/MA qabul (xorij)</option>
+            <option value="phd">PhD qabul (xorij)</option>
+            <option value="grant">EYUF / GKS / DAAD granti</option>
+            <option value="research">Research tajriba</option>
+            <option value="multiple">Bir nechtasi</option>
+          </select>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-next" onclick="goStep2()">
+            Davom etish <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 2: HISOB MA'LUMOTLARI ─── -->
+      <div class="form-step" id="step2">
+        <div class="field">
+          <label class="field-label">Email manzil *</label>
+          <input type="email" id="email" class="field-input" placeholder="example@gmail.com" required>
+          <div class="field-error" id="emailError">Email noto'g'ri formatda</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Parol *</label>
+          <div class="field-input-wrap">
+            <input type="password" id="password" class="field-input" placeholder="Kamida 8 ta belgi" oninput="checkPasswordStrength(this.value)" required>
+            <button type="button" class="field-eye" onclick="togglePwd('password',this)">👁</button>
+          </div>
+          <div class="pwd-strength">
+            <div class="pwd-bars">
+              <div class="pwd-bar" id="bar1"></div>
+              <div class="pwd-bar" id="bar2"></div>
+              <div class="pwd-bar" id="bar3"></div>
+              <div class="pwd-bar" id="bar4"></div>
+            </div>
+            <div class="pwd-label" id="pwdLabel">Parol kuchini ko'rsatadi</div>
+          </div>
+          <div class="field-error" id="passwordError">Kamida 8 ta belgi, 1 raqam bo'lishi kerak</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Parolni tasdiqlang *</label>
+          <div class="field-input-wrap">
+            <input type="password" id="confirmPassword" class="field-input" placeholder="Parolni qayta kiriting" required>
+            <button type="button" class="field-eye" onclick="togglePwd('confirmPassword',this)">👁</button>
+          </div>
+          <div class="field-error" id="confirmError">Parollar mos kelmadi</div>
+        </div>
+
+        <div class="terms-wrap">
+          <label class="terms-check">
+            <input type="checkbox" id="termsCheck">
+            <span>
+              <a href="#">Foydalanish shartlari</a> va 
+              <a href="#">Maxfiylik siyosati</a>ni o'qib, roziligimni bildiraman.
+            </span>
+          </label>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-back" onclick="goStep1()">← Orqaga</button>
+          <button class="btn-next" onclick="handleRegister()" id="registerBtn">
+            <span id="regBtnText">Hisob yaratish</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 3: MUVAFFAQIYAT ─── -->
+      <div class="form-step" id="step3">
+        <div class="success-state">
+          <div class="success-icon">🎉</div>
+          <h3 class="success-title">Hisob yaratildi!</h3>
+          <p class="success-sub">
+            Emailingizga tasdiqlash xati yuborildi. 
+            Iltimos, emailingizni tekshiring va havolani bosing.
+          </p>
+          <div class="alert info show" style="justify-content:center;text-align:left;">
+            📧 <span>Spam papkasini ham tekshiring</span>
+          </div>
+          <button class="btn-next" onclick="window.location.href='payment.html'" style="margin-top:8px;">
+            Kursga yozilish → 
+          </button>
+          <div style="margin-top:12px;">
+            <a href="login.html" style="font-size:13px;color:var(--muted);text-decoration:none;">
+              Kirish sahifasiga o'tish
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+// ─── SESSION CHECK ── Allaqachon kirgan bo'lsa → dashboard
+document.addEventListener('DOMContentLoaded', () => {
+  redirectIfLoggedIn()
+})
+
+// ─── STEP NAVIGATION ────────────────────────────────
+let currentStep = 1
+
+function goStep(n) {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'))
+  document.getElementById('step' + n).classList.add('active')
+
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('dot' + i)
+    const lbl = document.getElementById('lbl' + i)
+    dot.classList.remove('active','done')
+    lbl.classList.remove('active')
+    if (i < n) { dot.classList.add('done'); dot.textContent = '✓'; }
+    else if (i === n) { dot.classList.add('active'); dot.textContent = i; lbl.classList.add('active'); }
+    else { dot.textContent = i; }
+  }
+  for (let i = 1; i <= 2; i++) {
+    const line = document.getElementById('line' + i)
+    line.classList.toggle('done', i < n)
+  }
+  currentStep = n
+  document.getElementById('errorAlert').classList.remove('show')
+}
+
+// ─── VALIDATION HELPERS ─────────────────────────────
+function showErr(fieldId, errId) {
+  if(fieldId) document.getElementById(fieldId).classList.add('error')
+  const el = document.getElementById(errId)
+  if(el) el.classList.add('show')
+}
+function clearErr(fieldId, errId) {
+  if(fieldId) document.getElementById(fieldId).classList.remove('error')
+  const el = document.getElementById(errId)
+  if(el) el.classList.remove('show')
+}
+function clearAll() {
+  document.querySelectorAll('.field-input,.field-select').forEach(i => i.classList.remove('error'))
+  document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'))
+  document.getElementById('errorAlert').classList.remove('show')
+}
+
+// ─── STEP 1 → 2 ────────────────────────────────────
+function goStep1() { goStep(1) }
+
+function goStep2() {
+  clearAll()
+  const firstName = document.getElementById('firstName').value.trim()
+  const lastName  = document.getElementById('lastName').value.trim()
+  const phone     = document.getElementById('phone').value.trim()
+  let ok = true
+  if (!firstName) { showErr('firstName','firstNameError'); ok = false }
+  if (!lastName)  { showErr('lastName','lastNameError');  ok = false }
+  if (!phone || phone.length < 9) { showErr('phone','phoneError'); ok = false }
+  if (ok) goStep(2)
+}
+
+// ─── PASSWORD STRENGTH ──────────────────────────────
+function checkPasswordStrength(pwd) {
+  const bars  = [1,2,3,4].map(i => document.getElementById('bar' + i))
+  const label = document.getElementById('pwdLabel')
+  const colors = { 1:'#e74c3c', 2:'#e67e22', 3:'#f1c40f', 4:'#1a7a4a' }
+  const labels = { 1:'Juda zaif', 2:'Zaif', 3:'O\'rtacha', 4:'Kuchli 💪' }
+  let score = 0
+  if (pwd.length >= 8) score++
+  if (/[A-Z]/.test(pwd)) score++
+  if (/[0-9]/.test(pwd)) score++
+  if (/[^A-Za-z0-9]/.test(pwd)) score++
+  bars.forEach((b,i) => {
+    b.style.background = i < score ? colors[score] : 'var(--border)'
+  })
+  label.textContent = score ? labels[score] : 'Parol kuchini ko\'rsatadi'
+  label.style.color = score ? colors[score] : 'var(--muted)'
+}
+
+function togglePwd(id, btn) {
+  const inp = document.getElementById(id)
+  inp.type = inp.type === 'password' ? 'text' : 'password'
+  btn.textContent = inp.type === 'password' ? '👁' : '🙈'
+}
+
+// ─── REGISTER ──────────────────────────────────────
+async function handleRegister() {
+  clearAll()
+  const email    = document.getElementById('email').value.trim()
+  const password = document.getElementById('password').value
+  const confirm  = document.getElementById('confirmPassword').value
+  const terms    = document.getElementById('termsCheck').checked
+  const firstName = document.getElementById('firstName').value.trim()
+  const lastName  = document.getElementById('lastName').value.trim()
+  const phone     = document.getElementById('phone').value.trim()
+  const education = document.getElementById('education').value
+  const goal      = document.getElementById('goal').value
+
+  let ok = true
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('email','emailError'); ok = false }
+  if (password.length < 8 || !/[0-9]/.test(password)) { showErr('password','passwordError'); ok = false }
+  if (password !== confirm) { showErr('confirmPassword','confirmError'); ok = false }
+  if (!terms) {
+    document.getElementById('errorAlert').classList.add('show')
+    document.getElementById('errorMsg').textContent = 'Foydalanish shartlarini tasdiqlang'
+    ok = false
+  }
+  if (!ok) return
+
+  const btn = document.getElementById('registerBtn')
+  btn.disabled = true
+  btn.innerHTML = '<div class="spinner"></div>'
+
+  try {
+    // auth.js dan register() — Supabase Auth + profil trigger
+    const result = await register(email, password, {
+      first_name: firstName,
+      last_name:  lastName,
+      phone:      phone,
+      education:  education,
+      goal:       goal,
+    })
+
+    if (result.error) {
+      document.getElementById('errorAlert').classList.add('show')
+      document.getElementById('errorMsg').textContent =
+        result.error.message.includes('already')
+          ? 'Bu email allaqachon ro\'yxatdan o\'tgan. Kiring yoki boshqa email ishlating.'
+          : result.error.message
+      btn.disabled = false
+      btn.innerHTML = '<span id="regBtnText">Hisob yaratish</span>'
+      return
+    }
+
+    // Trigger profilni yaratadi — lekin education/goal ni qo'lda ham yozamiz
+    if (result.data?.user) {
+      try {
+        await supabase.from(DB.profiles).update({
+          education: education,
+          goal:      goal,
+          phone:     phone,
+        }).eq('id', result.data.user.id)
+      } catch(e) { /* trigger allaqachon yaratgan — silent */ }
+    }
+
+    goStep(3)
+
+  } catch(err) {
+    document.getElementById('errorAlert').classList.add('show')
+    document.getElementById('errorMsg').textContent = 'Xatolik: ' + err.message
+    btn.disabled = false
+    btn.innerHTML = '<span>Hisob yaratish</span>'
+  }
+}
+</script>
+
+</body>
+</html>

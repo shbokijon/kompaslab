@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Kompas Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#2d4a3e;--accent-h:#1e3329;--accent-lit:#e8f0ec;
+  --accent2:#c4622d;--accent2-lit:#faeee7;
+  --bg:#f0f4f2;--surface:#fff;--border:#dce8e2;
+  --text:#1a2e26;--muted:#6b7f76;--muted2:#9aada6;
+  --green:#1a7a4a;--green-lit:#e6f4ec;
+  --gold:#b08a00;--gold-lit:#fdf6dc;
+  --blue:#1a56a0;--blue-lit:#e6f0fc;
+  --red:#c0392b;--red-lit:#fdecea;
+  --sb-w:248px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);display:flex;overflow:hidden;}
+
+/* SIDEBAR */
+.sb{width:var(--sb-w);flex-shrink:0;background:var(--text);display:flex;flex-direction:column;height:100vh;position:fixed;top:0;left:0;z-index:100;overflow-y:auto;}
+.sb::-webkit-scrollbar{width:0;}
+.sb-logo{display:flex;align-items:center;gap:10px;padding:20px 18px;border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;flex-shrink:0;}
+.sb-lm{width:36px;height:36px;border-radius:10px;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.sb-lt{font-size:16px;font-weight:800;color:#fff;}
+.sb-badge{font-size:9px;background:rgba(196,98,45,0.25);color:var(--accent2);padding:2px 7px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-weight:700;margin-left:2px;}
+.sb-nav{flex:1;padding:10px 12px;}
+.sb-grp{font-size:10px;font-weight:700;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:1.5px;padding:0 8px;margin:18px 0 6px;font-family:'JetBrains Mono',monospace;}
+.sb-grp:first-child{margin-top:6px;}
+.sb-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;font-weight:600;transition:all .15s;margin-bottom:2px;cursor:pointer;border:none;background:none;width:100%;text-align:left;font-family:'Outfit',sans-serif;}
+.sb-item:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);}
+.sb-item.active{background:rgba(255,255,255,0.1);color:#fff;}
+.sb-icon{width:20px;text-align:center;font-size:14px;flex-shrink:0;}
+.sb-label{flex:1;}
+.sb-pill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;font-family:'JetBrains Mono',monospace;}
+.sp-gray{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}
+.sp-red{background:rgba(192,57,43,0.3);color:#e88;}
+.sb-foot{padding:14px 16px;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;}
+.sb-adm{background:rgba(255,255,255,0.06);border-radius:10px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.sb-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),#e0896a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0;}
+.sb-adm-name{font-size:13px;font-weight:700;color:#fff;}
+.sb-adm-role{font-size:10px;color:rgba(255,255,255,0.35);font-family:'JetBrains Mono',monospace;}
+.sb-out{width:100%;padding:9px;border-radius:8px;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:13px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.sb-out:hover{border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);}
+
+/* MAIN */
+.mw{margin-left:var(--sb-w);flex:1;min-width:0;height:100vh;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;}
+.mw::-webkit-scrollbar{width:6px;}
+.mw::-webkit-scrollbar-track{background:var(--bg);}
+.mw::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+
+/* TOPBAR */
+.tb{background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:50;}
+.tb-l h1{font-size:18px;font-weight:900;letter-spacing:-.4px;}
+.tb-l p{font-size:12px;color:var(--muted);margin-top:1px;}
+.tb-r{display:flex;align-items:center;gap:10px;}
+.btn{padding:8px 16px;border-radius:9px;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;display:inline-flex;align-items:center;gap:6px;}
+.bp{background:var(--accent);color:#fff;}
+.bp:hover{background:var(--accent-h);}
+.bs{background:var(--surface);color:var(--text);border:1px solid var(--border);}
+.bs:hover{border-color:var(--accent);color:var(--accent);}
+.bsm{padding:6px 12px;font-size:12px;}
+.bd{background:var(--red-lit);color:var(--red);border:1px solid #f5c6c3;}
+.bd:hover{background:var(--red);color:#fff;}
+
+/* PAGE */
+.pg{padding:22px 28px 60px;flex:1;}
+.sec{display:none;}.sec.on{display:block;}
+
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px;}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;}
+.kpi::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.kpi:nth-child(1)::after{background:var(--accent);}
+.kpi:nth-child(2)::after{background:var(--green);}
+.kpi:nth-child(3)::after{background:var(--accent2);}
+.kpi:nth-child(4)::after{background:var(--gold);}
+.kpi:nth-child(5)::after{background:var(--red);}
+.kpi-ico{font-size:20px;margin-bottom:10px;}
+.kpi-val{font-size:26px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1;margin-bottom:2px;}
+.kpi-lbl{font-size:11px;color:var(--muted);font-weight:600;}
+.kpi-sub{font-size:11px;margin-top:6px;font-weight:700;display:flex;align-items:center;gap:3px;}
+.ku{color:var(--green);}.kd{color:var(--red);}.kn{color:var(--muted);}
+
+/* TWIN */
+.twin{display:grid;grid-template-columns:1fr 320px;gap:16px;margin-bottom:16px;}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.ch{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.ch h2{font-size:14px;font-weight:800;}
+.ch-r{display:flex;gap:8px;align-items:center;}
+
+/* TABLE CONTROLS */
+.tctrl{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.srch{padding:7px 13px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'Outfit',sans-serif;outline:none;background:var(--bg);color:var(--text);flex:1;min-width:120px;max-width:240px;}
+.srch:focus{border-color:var(--accent);background:#fff;}
+.flt{padding:7px 11px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:'Outfit',sans-serif;outline:none;background:var(--bg);color:var(--text);cursor:pointer;}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.tbl th{background:var(--bg);padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border);white-space:nowrap;}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tbody tr:hover td{background:#fafcfb;}
+.tbl-scroll{overflow-x:auto;}
+
+/* Student row */
+.sr{display:flex;align-items:center;gap:10px;}
+.sav{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#4a7a65);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0;}
+.snm{font-size:13px;font-weight:700;}
+.sem{font-size:11px;color:var(--muted);}
+
+/* Tags */
+.tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;white-space:nowrap;}
+.tg{background:var(--bg);color:var(--muted);border:1px solid var(--border);}
+.ta{background:var(--accent-lit);color:var(--accent);}
+.tgd{background:var(--gold-lit);color:var(--gold);}
+.tgr{background:var(--green-lit);color:var(--green);}
+.trd{background:var(--red-lit);color:var(--red);}
+.tb2{background:var(--blue-lit);color:var(--blue);}
+.to2{background:var(--accent2-lit);color:var(--accent2);}
+
+/* Mini prog */
+.mp{display:flex;align-items:center;gap:8px;}
+.mpb{flex:0 0 60px;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
+.mpf{height:100%;background:linear-gradient(90deg,var(--accent),#4a7a65);border-radius:99px;}
+.mpv{font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--accent);}
+
+/* RIGHT PANELS */
+.rp{display:flex;flex-direction:column;gap:14px;}
+
+/* Chart */
+.ch-wrap{padding:12px 14px 8px;}
+.cbars{display:flex;align-items:flex-end;gap:5px;height:80px;margin-bottom:6px;}
+.cbar{flex:1;border-radius:4px 4px 0 0;background:var(--accent-lit);position:relative;cursor:pointer;transition:background .2s;min-width:0;}
+.cbar:hover{background:var(--accent);}
+.cbar:hover .ctip{display:block;}
+.ctip{display:none;position:absolute;bottom:calc(100%+4px);left:50%;transform:translateX(-50%);background:var(--text);color:#fff;font-size:10px;font-weight:700;padding:3px 7px;border-radius:5px;white-space:nowrap;font-family:'JetBrains Mono',monospace;}
+.clbs{display:flex;gap:5px;}
+.clb{flex:1;text-align:center;font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* Activity */
+.al{padding:10px 14px;}
+.ai{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.ai:last-child{border-bottom:none;}
+.adot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.at{font-size:12px;font-weight:600;margin-bottom:1px;}
+.am{font-size:11px;color:var(--muted);}
+
+/* Lesson rows */
+.lr{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);transition:background .1s;}
+.lr:last-child{border-bottom:none;}
+.lr:hover{background:var(--bg);}
+.lnum{width:28px;height:28px;border-radius:7px;background:var(--accent-lit);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;font-family:'JetBrains Mono',monospace;flex-shrink:0;}
+.li{flex:1;min-width:0;}
+.lt{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lm{font-size:11px;color:var(--muted);margin-top:1px;}
+
+/* Overview extra */
+.ob-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px;}
+.ob{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+.ob-i{width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:19px;}
+.ob-v{font-size:20px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1;}
+.ob-l{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px;}
+
+/* MODAL */
+.ovl{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;}
+.ovl.open{display:flex;}
+.mdl{background:#fff;border-radius:16px;width:100%;max-width:480px;overflow:hidden;}
+.mh{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.mh h3{font-size:15px;font-weight:800;}
+.mx{background:none;border:none;font-size:20px;cursor:pointer;color:var(--muted);line-height:1;padding:2px;}
+.mb{padding:20px;}
+.mf{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;}
+.fld{margin-bottom:13px;}
+.fld label{display:block;font-size:12px;font-weight:700;margin-bottom:5px;}
+.fld input,.fld select,.fld textarea{width:100%;padding:10px 13px;border:2px solid var(--border);border-radius:9px;font-size:13px;font-family:'Outfit',sans-serif;outline:none;background:var(--bg);color:var(--text);transition:border-color .2s;}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent);background:#fff;}
+.fld textarea{resize:vertical;min-height:70px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:22px;right:22px;background:var(--text);color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;z-index:999;transform:translateY(80px);transition:transform .3s;max-width:280px;}
+.toast.on{transform:translateY(0);}
+
+/* EMPTY */
+.empty{text-align:center;padding:32px 20px;color:var(--muted);}
+.ei{font-size:32px;margin-bottom:8px;}
+.et{font-size:13px;font-weight:600;}
+
+/* RESPONSIVE */
+@media(max-width:1200px){.kpi-row{grid-template-columns:repeat(3,1fr);}
+  .twin{grid-template-columns:1fr;}.rp{display:grid;grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){.kpi-row{grid-template-columns:repeat(2,1fr);}.rp{grid-template-columns:1fr;}}
+@media(max-width:700px){.sb{transform:translateX(-100%);}.mw{margin-left:0;}}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sb">
+  <a href="index.html" class="sb-logo">
+    <div class="sb-lm">🧭</div>
+    <span class="sb-lt">Kompas Lab</span>
+    <span class="sb-badge">ADMIN</span>
+  </a>
+  <nav class="sb-nav">
+    <div class="sb-grp">Asosiy</div>
+    <button class="sb-item active" onclick="nav('overview',this)">
+      <span class="sb-icon">📊</span><span class="sb-label">Dashboard</span>
+    </button>
+    <button class="sb-item" onclick="nav('students',this)">
+      <span class="sb-icon">👥</span><span class="sb-label">Talabalar</span>
+      <span class="sb-pill sp-gray" id="pStudents">—</span>
+    </button>
+    <button class="sb-item" onclick="nav('lessons',this)">
+      <span class="sb-icon">🎬</span><span class="sb-label">Darslar</span>
+      <span class="sb-pill sp-gray">35</span>
+    </button>
+    <button class="sb-item" onclick="nav('payments',this)">
+      <span class="sb-icon">💳</span><span class="sb-label">To'lovlar</span>
+      <span class="sb-pill sp-red" id="pPending">—</span>
+    </button>
+    <div class="sb-grp">Boshqaruv</div>
+    <button class="sb-item" onclick="nav('announce',this)">
+      <span class="sb-icon">📢</span><span class="sb-label">E'lonlar</span>
+    </button>
+    <button class="sb-item" onclick="nav('analytics',this)">
+      <span class="sb-icon">📈</span><span class="sb-label">Analitika</span>
+    </button>
+    <a class="sb-item" href="dashboard.html">
+      <span class="sb-icon">🎓</span><span class="sb-label">Talaba ko'rinishi</span>
+    </a>
+  </nav>
+  <div class="sb-foot">
+    <div class="sb-adm">
+      <div class="sb-av" id="sbAv">S</div>
+      <div>
+        <div class="sb-adm-name" id="sbName">Shokhrukh I.</div>
+        <div class="sb-adm-role">super_admin · Leeds, UK</div>
+      </div>
+    </div>
+    <button class="sb-out" onclick="doLogout()">🚪 Chiqish</button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="mw">
+  <!-- TOPBAR -->
+  <div class="tb">
+    <div class="tb-l">
+      <h1 id="pgTitle">Admin Dashboard</h1>
+      <p id="pgDate">Yuklanmoqda...</p>
+    </div>
+    <div class="tb-r">
+      <button class="btn bs" onclick="reload()">🔄 Yangilash</button>
+      <button class="btn bp" onclick="openMdl('lesson')">+ Dars qo'shish</button>
+    </div>
+  </div>
+
+  <div class="pg">
+
+    <!-- OVERVIEW -->
+    <div class="sec on" id="sec-overview">
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-ico">👥</div><div class="kpi-val" id="kS">—</div><div class="kpi-lbl">Jami talabalar</div><div class="kpi-sub ku">↑ Bu hafta</div></div>
+        <div class="kpi"><div class="kpi-ico">✅</div><div class="kpi-val" id="kA">—</div><div class="kpi-lbl">Faol talabalar</div><div class="kpi-sub kn">Bugun online</div></div>
+        <div class="kpi"><div class="kpi-ico">💰</div><div class="kpi-val" id="kR">—</div><div class="kpi-lbl">Bu oy daromad</div><div class="kpi-sub ku">↑ O'tgan oydan</div></div>
+        <div class="kpi"><div class="kpi-ico">📊</div><div class="kpi-val" id="kP">—</div><div class="kpi-lbl">O'rtacha progress</div><div class="kpi-sub kn">Barcha talabalar</div></div>
+        <div class="kpi"><div class="kpi-ico">⚠️</div><div class="kpi-val" id="kPend">—</div><div class="kpi-lbl">Tasdiq kutmoqda</div><div class="kpi-sub kd">To'lovlar</div></div>
+      </div>
+      <div class="twin">
+        <!-- Students table -->
+        <div class="card">
+          <div class="ch">
+            <h2>👥 So'nggi talabalar</h2>
+            <div class="ch-r">
+              <button class="btn bs bsm" onclick="nav('students',null)">Hammasi →</button>
+              <button class="btn bp bsm" onclick="openMdl('student')">+ Qo'shish</button>
+            </div>
+          </div>
+          <div class="tctrl">
+            <input class="srch" placeholder="🔍 Qidirish..." oninput="filterTbl(this.value,'tb1')">
+            <select class="flt" id="filterCourse1" onchange="applyStudentFilter()">
+              <option value="">Barcha kurslar</option>
+              <option value="eyuf-lab">EYUF Lab</option>
+              <option value="bachelor-lab">Bachelor Lab</option>
+              <option value="master-lab">Master Lab</option>
+              <option value="phd-lab">PhD Lab</option>
+            </select>
+          </div>
+          <div class="tbl-scroll">
+            <table class="tbl"><thead><tr>
+              <th>Talaba</th><th>Kurs</th><th>Progress</th><th>Holat</th><th>Amal</th>
+            </tr></thead><tbody id="tb1"></tbody></table>
+          </div>
+        </div>
+        <!-- Right panels -->
+        <div class="rp">
+          <div class="card">
+            <div class="ch"><h2>📈 Daromad (so'm)</h2><span class="tag tgr" id="tTotal">—</span></div>
+            <div class="ch-wrap">
+              <div class="cbars" id="cBars"></div>
+              <div class="clbs" id="cLbs"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2>⚡ Faoliyat lenti</h2><span style="font-size:11px;color:var(--muted)">Real-time</span></div>
+            <div class="al" id="actFeed"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STUDENTS -->
+    <div class="sec" id="sec-students">
+      <div class="card">
+        <div class="ch">
+          <h2>👥 Barcha talabalar</h2>
+          <div class="ch-r">
+            <button class="btn bs bsm" onclick="toast('📤 CSV...')">📤 Export</button>
+            <button class="btn bp bsm" onclick="openMdl('student')">+ Qo'shish</button>
+          </div>
+        </div>
+        <div class="tctrl">
+          <input class="srch" placeholder="🔍 Ism, email..." oninput="filterTbl(this.value,'tb2')">
+          <select class="flt" id="filterCourse2" onchange="applyStudentFilter()">
+            <option value="">Barcha kurslar</option>
+            <option value="eyuf-lab">EYUF Lab</option>
+            <option value="bachelor-lab">Bachelor Lab</option>
+            <option value="master-lab">Master Lab</option>
+            <option value="phd-lab">PhD Lab</option>
+          </select>
+          <select class="flt" id="filterStatus" onchange="applyStudentFilter()">
+            <option value="">Holat</option>
+            <option value="active">Faol</option>
+            <option value="pending">Kutmoqda</option>
+          </select>
+        </div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr>
+            <th>#</th><th>Talaba</th><th>Kurs</th><th>Progress</th><th>Sana</th><th>To'lov</th><th>Holat</th><th>Amal</th>
+          </tr></thead><tbody id="tb2"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSONS -->
+    <div class="sec" id="sec-lessons">
+      <div class="card">
+        <div class="ch">
+          <h2 id="lessonSectionTitle">🎬 Darslar boshqaruvi</h2>
+          <div class="ch-r">
+            <select class="flt" id="lCourseSelect" onchange="loadLessonsSection(this.value)" style="font-weight:700">
+              <option value="eyuf-lab">🎯 EYUF Lab</option>
+              <option value="bachelor-lab">🎓 Bachelor Lab</option>
+              <option value="master-lab">🔬 Master Lab</option>
+              <option value="phd-lab">⚗️ PhD Lab</option>
+            </select>
+            <button class="btn bp bsm" onclick="openMdl('lesson')">+ Yangi dars</button>
+          </div>
+        </div>
+        <div id="lBody"><div style="padding:24px;text-align:center;color:var(--muted);font-size:13px">Kursni tanlang →</div></div>
+      </div>
+    </div>
+
+    <!-- PAYMENTS -->
+    <div class="sec" id="sec-payments">
+      <div class="card">
+        <div class="ch">
+          <h2>💳 To'lovlar</h2>
+          <button class="btn bs bsm" onclick="toast('📤 Export...')">📤 Export</button>
+        </div>
+        <div class="tctrl">
+          <input class="srch" placeholder="🔍 Qidirish..." oninput="filterTbl(this.value,'tb3')">
+          <select class="flt" id="filterPayStatus" onchange="loadPayments()">
+            <option value="">Barcha statuslar</option>
+            <option value="pending">Tasdiqlanmagan</option>
+            <option value="confirmed">Tasdiqlangan</option>
+            <option value="rejected">Rad etilgan</option>
+          </select>
+          <select class="flt" id="filterPayCourse" onchange="loadPayments()">
+            <option value="">Barcha kurslar</option>
+            <option value="eyuf-lab">EYUF Lab</option>
+            <option value="bachelor-lab">Bachelor Lab</option>
+            <option value="master-lab">Master Lab</option>
+            <option value="phd-lab">PhD Lab</option>
+          </select>
+        </div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr>
+            <th>Sana</th><th>Talaba</th><th>Kurs</th><th>Summa</th><th>Usul</th><th>Status</th><th>Amal</th>
+          </tr></thead><tbody id="tb3"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANNOUNCE -->
+    <div class="sec" id="sec-announce">
+      <div class="card">
+        <div class="ch">
+          <h2>📢 E'lonlar</h2>
+          <button class="btn bp bsm" onclick="openMdl('announce')">+ Yangi</button>
+        </div>
+        <div style="padding:20px;display:flex;flex-direction:column;gap:10px;">
+          <div style="background:var(--accent-lit);border-radius:10px;padding:14px 16px;">
+            <div style="font-size:13px;font-weight:700;margin-bottom:3px;">📌 Yangi dars qo'shildi: "Cold Email Templates"</div>
+            <div style="font-size:12px;color:var(--muted)">Barcha talabalar · 2 soat oldin</div>
+          </div>
+          <div style="background:var(--gold-lit);border:1px solid #e8d48a;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:13px;font-weight:700;margin-bottom:3px;">⏰ EYUF deadline — Apr 15</div>
+            <div style="font-size:12px;color:var(--gold)">Scholar va Elite · 1 kun oldin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="sec" id="sec-analytics">
+      <div class="ob-row">
+        <div class="ob"><div class="ob-i" style="background:var(--green-lit)">📊</div><div><div class="ob-v">68%</div><div class="ob-l">Kurs completion</div></div></div>
+        <div class="ob"><div class="ob-i" style="background:var(--gold-lit)">🎯</div><div><div class="ob-v">4.9★</div><div class="ob-l">O'rtacha reyting</div></div></div>
+        <div class="ob"><div class="ob-i" style="background:var(--accent2-lit)">💬</div><div><div class="ob-v">94%</div><div class="ob-l">Telegram engagement</div></div></div>
+        <div class="ob"><div class="ob-i" style="background:var(--blue-lit)">🏆</div><div><div class="ob-v">3</div><div class="ob-l">Grant qabul qilingan</div></div></div>
+      </div>
+      <div class="card">
+        <div class="ch"><h2>📈 Haftalik faoliyat</h2></div>
+        <div style="padding:24px;text-align:center;color:var(--muted);font-size:13px;">📊 Kengaytirilgan analitika tez kunda...</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="ovl" id="m-lesson"><div class="mdl">
+  <div class="mh"><h3>🎬 Yangi dars qo'shish</h3><button class="mx" onclick="closeMdl('lesson')">×</button></div>
+  <div class="mb">
+    <div class="fr">
+      <div class="fld"><label>Kurs *</label>
+        <select id="lCourse" onchange="loadModulesForSelect(this.value)">
+          <option value="eyuf-lab">🎯 EYUF Lab</option>
+          <option value="bachelor-lab">🎓 Bachelor Lab</option>
+          <option value="master-lab">🔬 Master Lab</option>
+          <option value="phd-lab">⚗️ PhD Lab</option>
+        </select>
+      </div>
+      <div class="fld"><label>Modul *</label>
+        <select id="lModule"><option value="">— Kursni tanlang —</option></select>
+      </div>
+    </div>
+    <div class="fld"><label>Dars nomi *</label><input id="lT" placeholder="Research Identity Framework"></div>
+    <div class="fr">
+      <div class="fld"><label>Vimeo URL *</label><input id="lV" placeholder="https://vimeo.com/123456789" style="font-family:'JetBrains Mono',monospace;font-size:12px"></div>
+      <div class="fld"><label>Davomiyligi</label><input id="lD" placeholder="45:30"></div>
+    </div>
+    <div class="fld"><label>Tavsif</label><textarea id="lDesc" placeholder="Bu darsda..."></textarea></div>
+    <div class="fld" style="display:flex;align-items:center;gap:8px;">
+      <input type="checkbox" id="lFree" style="width:auto;margin:0">
+      <label for="lFree" style="margin:0;cursor:pointer;">Bepul dars (preview)</label>
+    </div>
+  </div>
+  <div class="mf"><button class="btn bs" onclick="closeMdl('lesson')">Bekor</button><button class="btn bp" onclick="saveLesson()">💾 Saqlash</button></div>
+</div></div>
+
+<div class="ovl" id="m-student"><div class="mdl">
+  <div class="mh"><h3>👤 Talaba qo'shish / Yozish</h3><button class="mx" onclick="closeMdl('student')">×</button></div>
+  <div class="mb">
+    <div class="fr">
+      <div class="fld"><label>Ism *</label><input id="sF" placeholder="Sardor"></div>
+      <div class="fld"><label>Familiya *</label><input id="sL" placeholder="Karimov"></div>
+    </div>
+    <div class="fld"><label>Email *</label><input id="sE" type="email" placeholder="sardor@gmail.com"></div>
+    <div class="fld"><label>Telefon</label><input id="sP" placeholder="+998 90 123 45 67"></div>
+    <div class="fld"><label>Kurs *</label>
+      <select id="sCourse">
+        <option value="eyuf-lab">🎯 EYUF Lab — 499,000 so'm</option>
+        <option value="bachelor-lab">🎓 Bachelor Lab — 499,000 so'm</option>
+        <option value="master-lab">🔬 Master Lab — 499,000 so'm</option>
+        <option value="phd-lab">⚗️ PhD Lab — 699,000 so'm</option>
+      </select>
+    </div>
+    <div class="fld"><label>To'lov usuli</label>
+      <select id="sMethod">
+        <option value="click">Click.uz</option>
+        <option value="payme">Payme</option>
+        <option value="bank">Bank kartasi</option>
+        <option value="manual">Qo'lda (admin)</option>
+      </select>
+    </div>
+  </div>
+  <div class="mf"><button class="btn bs" onclick="closeMdl('student')">Bekor</button><button class="btn bp" onclick="saveStudent()">✅ Yozish</button></div>
+</div></div>
+
+<div class="ovl" id="m-announce"><div class="mdl">
+  <div class="mh"><h3>📢 Yangi e'lon</h3><button class="mx" onclick="closeMdl('announce')">×</button></div>
+  <div class="mb">
+    <div class="fld"><label>Sarlavha *</label><input id="aT" placeholder="E'lon sarlavhasi..."></div>
+    <div class="fld"><label>Matn</label><textarea id="aB" placeholder="E'lon matni..."></textarea></div>
+    <div class="fld"><label>Kimga</label><select id="aAu"><option value="all">Barcha talabalar</option><option value="eyuf-lab">EYUF Lab</option><option value="bachelor-lab">Bachelor Lab</option><option value="master-lab">Master Lab</option><option value="phd-lab">PhD Lab</option></select></div>
+  </div>
+  <div class="mf"><button class="btn bs" onclick="closeMdl('announce')">Bekor</button><button class="btn bp" onclick="toast('📢 E\'lon yuborildi!');closeMdl('announce')">📢 Yuborish</button></div>
+</div></div>
+
+<div class="toast" id="toastEl"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+// ════════════════════════════════════════════════════════
+//  KOMPAS LAB — admin.js (inline)
+//  To'liq Supabase bilan ulangan admin panel
+// ════════════════════════════════════════════════════════
+
+// ── Global cache ─────────────────────────────────────
+let _allStudents   = []   // profiles + enrollments
+let _allPayments   = []   // payments + profiles + courses
+let _allLessons    = {}   // { courseSlug: [ modules+lessons ] }
+let _courseMap     = {}   // slug → { id, title, emoji }
+
+const COURSE_META = {
+  'eyuf-lab':     { emoji: '🎯', label: 'EYUF Lab' },
+  'bachelor-lab': { emoji: '🎓', label: 'Bachelor Lab' },
+  'master-lab':   { emoji: '🔬', label: 'Master Lab' },
+  'phd-lab':      { emoji: '⚗️', label: 'PhD Lab' },
+}
+
+// ════════════════════════════════════════════════════════
+//  1. INIT
+// ════════════════════════════════════════════════════════
+async function init() {
+  // Sana
+  const d = new Date()
+  document.getElementById('pgDate').textContent =
+    d.toLocaleDateString('uz-UZ', { weekday:'long', year:'numeric', month:'long', day:'numeric' })
+
+  // Admin tekshiruv
+  const auth = await requireAdmin()
+  if (!auth) return
+
+  // Sidebar admin nomi
+  const profile = auth.profile
+  const name    = profile?.first_name || auth.user.email.split('@')[0]
+  document.getElementById('sbName').textContent = profile?.full_name || name
+  document.getElementById('sbAv').textContent   = name[0]?.toUpperCase() || 'A'
+
+  // Kurs xaritasini yuklash
+  await loadCourseMap()
+
+  // Barcha ma'lumotlarni yuklash
+  await loadAll()
+
+  // Auth kuzatish
+  onAuthChange(ev => { if (ev === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login })
+}
+
+// ════════════════════════════════════════════════════════
+//  2. KURS XARITASI
+// ════════════════════════════════════════════════════════
+async function loadCourseMap() {
+  try {
+    const { data } = await supabase.from(DB.courses).select('id, slug, title, emoji')
+    if (data) data.forEach(c => { _courseMap[c.slug] = c })
+  } catch(e) {
+    // Fallback: manual map
+    Object.entries(COURSE_META).forEach(([slug, meta]) => {
+      _courseMap[slug] = { slug, title: meta.label, emoji: meta.emoji }
+    })
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  3. BARCHA MA'LUMOTLARNI YUKLASH
+// ════════════════════════════════════════════════════════
+async function loadAll() {
+  showSkeletons()
+  await Promise.all([
+    loadStudents(),
+    loadPayments(),
+  ])
+  renderKPIs()
+  renderChart()
+  renderActivity()
+}
+
+// ════════════════════════════════════════════════════════
+//  4. TALABALAR
+// ════════════════════════════════════════════════════════
+async function loadStudents() {
+  try {
+    // profiles + enrollments + courses + progress
+    const { data, error } = await supabase
+      .from(DB.profiles)
+      .select(`
+        id, first_name, last_name, full_name, email, phone, role, created_at,
+        enrollments(
+          id, course_id, payment_status, enrolled_at, plan,
+          course:courses(id, slug, title, emoji),
+          progress:progress(count)
+        )
+      `)
+      .neq('role', 'admin')
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+
+    // Flatten: har enrollment uchun alohida qator
+    _allStudents = (data || []).flatMap(p => {
+      const enrollments = p.enrollments || []
+      if (enrollments.length === 0) {
+        return [{
+          id: p.id, name: p.full_name || `${p.first_name || ''} ${p.last_name || ''}`.trim() || p.email,
+          email: p.email, course: null, courseSlug: null,
+          payStatus: 'none', enrollDate: p.created_at?.slice(0,10), progress: 0,
+        }]
+      }
+      return enrollments.map(en => ({
+        id: p.id,
+        name:       p.full_name || `${p.first_name || ''} ${p.last_name || ''}`.trim() || p.email,
+        email:      p.email,
+        course:     en.course?.title || en.course?.slug,
+        courseSlug: en.course?.slug,
+        courseEmoji:en.course?.emoji || '📚',
+        payStatus:  en.payment_status || 'pending',
+        enrollDate: en.enrolled_at?.slice(0,10) || p.created_at?.slice(0,10),
+        progress:   0, // Keyinroq progress hisoblash
+        enrollId:   en.id,
+      }))
+    })
+
+    renderStudentsTable('tb1', _allStudents.slice(0,10), false)
+    renderStudentsTable('tb2', _allStudents, true)
+    updateSidebarBadges()
+
+  } catch(err) {
+    console.error('loadStudents:', err.message)
+    renderEmpty('tb1', '👥', 'Talabalar yuklanmadi')
+    renderEmpty('tb2', '👥', 'Talabalar yuklanmadi')
+  }
+}
+
+function renderStudentsTable(tbId, students, full = false) {
+  const tb = document.getElementById(tbId)
+  if (!students.length) { renderEmpty(tbId, '👥', 'Talabalar topilmadi'); return }
+
+  tb.innerHTML = students.map((s, i) => `
+    <tr data-course="${s.courseSlug || ''}" data-status="${s.payStatus}">
+      ${full ? `<td style="color:var(--muted);font-size:11px;font-family:'JetBrains Mono',monospace">${String(i+1).padStart(2,'0')}</td>` : ''}
+      <td>
+        <div class="sr">
+          <div class="sav">${(s.name[0] || '?').toUpperCase()}</div>
+          <div>
+            <div class="snm">${escHtml(s.name)}</div>
+            <div class="sem">${escHtml(s.email)}</div>
+          </div>
+        </div>
+      </td>
+      <td>${s.course ? `<span class="tag ta">${s.courseEmoji || ''} ${escHtml(s.course)}</span>` : '<span class="tag tg">—</span>'}</td>
+      <td>
+        <div class="mp">
+          <div class="mpb"><div class="mpf" style="width:${s.progress}%"></div></div>
+          <span class="mpv">${s.progress}%</span>
+        </div>
+      </td>
+      ${full ? `<td style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace">${s.enrollDate || '—'}</td>` : ''}
+      ${full ? `<td>${pyTag(s.payStatus)}</td>` : ''}
+      <td>${statusTag(s.payStatus)}</td>
+      <td>
+        <div style="display:flex;gap:4px">
+          <button class="btn bs bsm" onclick="viewStudent('${s.id}','${escHtml(s.name)}')">Ko'rish</button>
+          ${s.payStatus === 'pending' ? `<button class="btn bp bsm" onclick="enrollDirect('${s.enrollId}','${escHtml(s.name)}')">✓ Faollashtir</button>` : ''}
+        </div>
+      </td>
+    </tr>`).join('')
+}
+
+function applyStudentFilter() {
+  const course = document.getElementById('filterCourse2')?.value || ''
+  const status = document.getElementById('filterStatus')?.value  || ''
+  const filtered = _allStudents.filter(s =>
+    (!course || s.courseSlug === course) &&
+    (!status || s.payStatus === status)
+  )
+  renderStudentsTable('tb2', filtered, true)
+}
+
+// ════════════════════════════════════════════════════════
+//  5. TO'LOVLAR
+// ════════════════════════════════════════════════════════
+async function loadPayments() {
+  try {
+    const statusFilter = document.getElementById('filterPayStatus')?.value || ''
+    const courseFilter = document.getElementById('filterPayCourse')?.value  || ''
+
+    let q = supabase
+      .from(DB.payments)
+      .select(`
+        id, amount, method, status, note, created_at,
+        profile:profiles(full_name, first_name, last_name, email),
+        course:courses(slug, title, emoji)
+      `)
+      .order('created_at', { ascending: false })
+      .limit(100)
+
+    if (statusFilter) q = q.eq('status', statusFilter)
+
+    const { data, error } = await q
+    if (error) throw error
+
+    _allPayments = (data || []).filter(p =>
+      !courseFilter || p.course?.slug === courseFilter
+    )
+
+    renderPaymentsTable(_allPayments)
+    updateSidebarBadges()
+
+  } catch(err) {
+    console.error('loadPayments:', err.message)
+    renderEmpty('tb3', '💳', "To'lovlar yuklanmadi")
+  }
+}
+
+function renderPaymentsTable(payments) {
+  const tb = document.getElementById('tb3')
+  if (!payments.length) { renderEmpty('tb3', '💳', "To'lovlar topilmadi"); return }
+
+  const methodLabels = { click: 'Click.uz', payme: 'Payme', bank: 'Bank kartasi', manual: 'Admin' }
+
+  tb.innerHTML = payments.map(p => {
+    const name = p.profile?.full_name ||
+      `${p.profile?.first_name || ''} ${p.profile?.last_name || ''}`.trim() || '—'
+    const date = p.created_at?.slice(0,10) || '—'
+    const course = p.course ? `${p.course.emoji || ''} ${p.course.title}` : '—'
+    const method = methodLabels[p.method] || p.method || '—'
+
+    return `<tr>
+      <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)">${date}</td>
+      <td>
+        <div class="sr">
+          <div class="sav">${(name[0] || '?').toUpperCase()}</div>
+          <div class="snm">${escHtml(name)}</div>
+        </div>
+      </td>
+      <td><span class="tag ta" style="font-size:10px">${escHtml(course)}</span></td>
+      <td style="font-weight:700;font-family:'JetBrains Mono',monospace;font-size:12px">${formatMoney(p.amount)}</td>
+      <td><span class="tag tg">${method}</span></td>
+      <td>${pyTag(p.status)}</td>
+      <td>
+        <div style="display:flex;gap:4px">
+          ${p.status === 'pending' ? `
+            <button class="btn bp bsm" onclick="confirmPayment('${p.id}','${escHtml(name)}')">✓ Tasdiqlash</button>
+            <button class="btn bd bsm" onclick="rejectPayment('${p.id}','${escHtml(name)}')">✗ Rad</button>
+          ` : `
+            <button class="btn bs bsm" onclick="toast('🧾 ${escHtml(name)} · ${formatMoney(p.amount)} so\'m')">🧾 Chek</button>
+          `}
+        </div>
+      </td>
+    </tr>`
+  }).join('')
+}
+
+// ── To'lovni tasdiqlash ───────────────────────────────
+async function confirmPayment(paymentId, name) {
+  if (!confirm(`${name} to'lovini tasdiqlaysizmi?`)) return
+
+  try {
+    // 1. Payment → confirmed
+    const { error: e1 } = await supabase
+      .from(DB.payments)
+      .update({ status: 'confirmed', confirmed_at: new Date().toISOString(), confirmed_by: 'admin' })
+      .eq('id', paymentId)
+    if (e1) throw e1
+
+    // 2. Enrollment → active (trigger ham ishlaydigan bo'lsa ham qo'lda)
+    const { error: e2 } = await supabase
+      .from(DB.enrollments)
+      .update({ payment_status: 'paid', enrolled_at: new Date().toISOString() })
+      .eq('payment_id', paymentId)
+    if (e2) console.warn('Enrollment update:', e2.message)
+
+    toast(`✅ Tasdiqlandi: ${name}`)
+    await loadPayments()
+    await loadStudents()
+    renderKPIs()
+
+  } catch(err) {
+    toast('❌ Xatolik: ' + err.message)
+  }
+}
+
+// ── To'lovni rad etish ────────────────────────────────
+async function rejectPayment(paymentId, name) {
+  if (!confirm(`${name} to'lovini RAD etasizmi?`)) return
+
+  try {
+    const { error } = await supabase
+      .from(DB.payments)
+      .update({ status: 'rejected' })
+      .eq('id', paymentId)
+    if (error) throw error
+
+    toast(`⛔ Rad etildi: ${name}`)
+    await loadPayments()
+    renderKPIs()
+
+  } catch(err) {
+    toast('❌ Xatolik: ' + err.message)
+  }
+}
+
+// ── To'lovsiz enrollment (admin qo'lda) ──────────────
+async function enrollDirect(enrollId, name) {
+  if (!enrollId || !confirm(`${name} ni to'lovsiz faollashtiraysizmi?`)) return
+  try {
+    await supabase
+      .from(DB.enrollments)
+      .update({ payment_status: 'paid', enrolled_at: new Date().toISOString() })
+      .eq('id', enrollId)
+    toast(`✅ Faollashtirildi: ${name}`)
+    await loadStudents()
+    renderKPIs()
+  } catch(err) {
+    toast('❌ Xatolik: ' + err.message)
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  6. DARSLAR
+// ════════════════════════════════════════════════════════
+async function loadLessonsSection(courseSlug) {
+  const container = document.getElementById('lBody')
+  if (!container) return
+
+  container.innerHTML = `<div style="padding:24px;text-align:center;color:var(--muted)">Yuklanmoqda...</div>`
+
+  try {
+    // Kurs ID
+    const course = _courseMap[courseSlug]
+    if (!course?.id) {
+      // Slugdan ID olish
+      const { data: cd } = await supabase.from(DB.courses).select('id').eq('slug', courseSlug).single()
+      if (cd) _courseMap[courseSlug] = { ..._courseMap[courseSlug], id: cd.id }
+    }
+    const courseId = _courseMap[courseSlug]?.id
+    if (!courseId) { container.innerHTML = `<div class="empty"><div class="ei">❌</div><div class="et">Kurs topilmadi</div></div>`; return }
+
+    const { data: modules, error } = await supabase
+      .from(DB.modules)
+      .select(`id, title, order_index, is_free, lessons(id, title, vimeo_url, duration, order_index, status, is_free)`)
+      .eq('course_id', courseId)
+      .order('order_index', { ascending: true })
+
+    if (error) throw error
+
+    if (!modules || modules.length === 0) {
+      container.innerHTML = `<div class="empty"><div class="ei">📭</div><div class="et">Hali darslar qo'shilmagan</div></div>`
+      return
+    }
+
+    let html = ''
+    let totalLessons = 0
+    modules.forEach(mod => {
+      const lessons = (mod.lessons || []).sort((a, b) => a.order_index - b.order_index)
+      totalLessons += lessons.length
+      html += `<div style="background:var(--bg);padding:7px 14px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'JetBrains Mono',monospace;display:flex;justify-content:space-between;">
+        <span>${escHtml(mod.title)}</span>
+        <span>${lessons.length} dars</span>
+      </div>`
+      if (lessons.length === 0) {
+        html += `<div class="lr" style="color:var(--muted);font-size:12px;font-style:italic">Bu modulda hali dars yo'q</div>`
+      }
+      lessons.forEach(l => {
+        const statusDot = l.status === 'published'
+          ? `<span style="color:var(--green);font-size:10px">● nashr</span>`
+          : `<span style="color:var(--gold);font-size:10px">● draft</span>`
+        const vimeoShort = l.vimeo_url
+          ? l.vimeo_url.replace('https://vimeo.com/','').replace('https://player.vimeo.com/video/','').slice(0,12) + '…'
+          : '—'
+        html += `<div class="lr">
+          <div class="lnum">${mod.order_index}.${l.order_index}</div>
+          <div class="li">
+            <div class="lt">${escHtml(l.title)}${l.is_free ? ' <span style="font-size:9px;background:var(--green-lit);color:var(--green);padding:1px 6px;border-radius:4px;font-family:JetBrains Mono">FREE</span>' : ''}</div>
+            <div class="lm">⏱ ${l.duration || '—'} · 🎥 <span style="font-family:'JetBrains Mono',monospace;font-size:10px">${vimeoShort}</span> · ${statusDot}</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-shrink:0">
+            <button class="btn bs bsm" onclick="editLesson('${l.id}')">✏️</button>
+            <button class="btn ${l.status==='published'?'bs':'bp'} bsm" onclick="toggleLessonStatus('${l.id}','${l.status}')">
+              ${l.status === 'published' ? '📦 Draft' : '🚀 Nashr'}
+            </button>
+          </div>
+        </div>`
+      })
+    })
+
+    // Sarlavha yangilash
+    const header = document.querySelector('#sec-lessons .ch h2')
+    if (header) header.innerHTML = `🎬 ${COURSE_META[courseSlug]?.emoji || ''} ${COURSE_META[courseSlug]?.label || courseSlug} · <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);font-weight:400">${totalLessons} dars</span>`
+
+    container.innerHTML = html
+
+  } catch(err) {
+    console.error('loadLessons:', err.message)
+    container.innerHTML = `<div class="empty"><div class="ei">❌</div><div class="et">Xatolik: ${err.message}</div></div>`
+  }
+}
+
+// ── Dars statusini o'zgartirish ───────────────────────
+async function toggleLessonStatus(lessonId, currentStatus) {
+  const newStatus = currentStatus === 'published' ? 'draft' : 'published'
+  try {
+    await supabase.from(DB.lessons).update({ status: newStatus }).eq('id', lessonId)
+    toast(newStatus === 'published' ? '🚀 Nashr etildi' : '📦 Draftga o\'tkazildi')
+    const activeSlug = document.getElementById('lCourseSelect')?.value || 'eyuf-lab'
+    loadLessonsSection(activeSlug)
+  } catch(err) { toast('❌ ' + err.message) }
+}
+
+// ── Dars qo'shish: modullar ro'yxatini yuklash ────────
+async function loadModulesForSelect(courseSlug) {
+  const sel = document.getElementById('lModule')
+  sel.innerHTML = '<option value="">Yuklanmoqda...</option>'
+
+  try {
+    const course = _courseMap[courseSlug]
+    let courseId = course?.id
+    if (!courseId) {
+      const { data } = await supabase.from(DB.courses).select('id').eq('slug', courseSlug).single()
+      courseId = data?.id
+      if (courseId && _courseMap[courseSlug]) _courseMap[courseSlug].id = courseId
+    }
+    if (!courseId) { sel.innerHTML = '<option>Kurs topilmadi</option>'; return }
+
+    const { data: modules } = await supabase
+      .from(DB.modules)
+      .select('id, title, order_index')
+      .eq('course_id', courseId)
+      .order('order_index', { ascending: true })
+
+    if (!modules || modules.length === 0) {
+      sel.innerHTML = '<option value="">Bu kursda modul yo\'q</option>'
+      return
+    }
+    sel.innerHTML = modules.map(m =>
+      `<option value="${m.id}">${m.order_index}. ${m.title}</option>`
+    ).join('')
+  } catch(err) {
+    sel.innerHTML = '<option>Xatolik</option>'
+  }
+}
+
+// ── Yangi dars saqlash ────────────────────────────────
+async function saveLesson() {
+  const moduleId = document.getElementById('lModule').value
+  const title    = document.getElementById('lT').value.trim()
+  const vimeoUrl = document.getElementById('lV').value.trim()
+  const duration = document.getElementById('lD').value.trim()
+  const desc     = document.getElementById('lDesc').value.trim()
+  const isFree   = document.getElementById('lFree').checked
+
+  if (!moduleId)  { toast('⚠️ Modulni tanlang'); return }
+  if (!title)     { toast('⚠️ Dars nomini kiriting'); return }
+  if (!vimeoUrl)  { toast('⚠️ Vimeo URL kiriting'); return }
+
+  try {
+    // Joriy eng katta order_index ni topish
+    const { data: existing } = await supabase
+      .from(DB.lessons)
+      .select('order_index')
+      .eq('module_id', moduleId)
+      .order('order_index', { ascending: false })
+      .limit(1)
+
+    const nextOrder = ((existing?.[0]?.order_index) || 0) + 1
+
+    const { error } = await supabase.from(DB.lessons).insert({
+      module_id:   moduleId,
+      title:       title,
+      vimeo_url:   vimeoUrl,
+      duration:    duration || null,
+      description: desc || null,
+      is_free:     isFree,
+      order_index: nextOrder,
+      status:      'draft',   // draft — admin nashr etib qo'yadi
+    })
+    if (error) throw error
+
+    toast(`✅ Dars qo'shildi: ${title} (draft)`)
+    closeMdl('lesson')
+    // Formani tozalash
+    ;['lT','lV','lD','lDesc'].forEach(id => { document.getElementById(id).value = '' })
+    document.getElementById('lFree').checked = false
+
+    // Darslar bo'limini yangilash
+    const slug = document.getElementById('lCourse').value
+    if (slug) loadLessonsSection(slug)
+
+  } catch(err) { toast('❌ ' + err.message) }
+}
+
+// ── Talaba qo'shish (manual enrollment) ──────────────
+async function saveStudent() {
+  const firstName = document.getElementById('sF').value.trim()
+  const lastName  = document.getElementById('sL').value.trim()
+  const email     = document.getElementById('sE').value.trim()
+  const phone     = document.getElementById('sP').value.trim()
+  const courseSlug= document.getElementById('sCourse').value
+  const method    = document.getElementById('sMethod').value
+
+  if (!firstName || !email) { toast('⚠️ Ism va email majburiy'); return }
+  if (!courseSlug)           { toast('⚠️ Kursni tanlang'); return }
+
+  try {
+    // 1. Foydalanuvchini email orqali topish
+    const { data: profile } = await supabase
+      .from(DB.profiles)
+      .select('id')
+      .eq('email', email)
+      .single()
+
+    if (!profile) {
+      toast('⚠️ Bu email ro\'yxatdan o\'tmagan. Avval talaba register bo\'lishi kerak.')
+      closeMdl('student')
+      return
+    }
+
+    // 2. Kurs ID
+    const courseData = _courseMap[courseSlug]
+    let courseId = courseData?.id
+    if (!courseId) {
+      const { data: c } = await supabase.from(DB.courses).select('id').eq('slug', courseSlug).single()
+      courseId = c?.id
+    }
+    if (!courseId) throw new Error('Kurs topilmadi')
+
+    // 3. Payment yozuvi
+    const coursePrice = { 'eyuf-lab':499000, 'bachelor-lab':499000, 'master-lab':499000, 'phd-lab':699000 }
+    const { data: pay } = await supabase.from(DB.payments).insert({
+      user_id: profile.id, course_id: courseId,
+      plan: 'starter', amount: coursePrice[courseSlug] || 499000,
+      method: method, status: 'confirmed',
+      note: 'Admin qo\'lda yozgan',
+      confirmed_at: new Date().toISOString(), confirmed_by: 'admin',
+    }).select().single()
+
+    // 4. Enrollment
+    await supabase.from(DB.enrollments).upsert({
+      user_id: profile.id, course_id: courseId,
+      plan: 'starter', payment_status: 'paid',
+      payment_id: pay?.id,
+      enrolled_at: new Date().toISOString(),
+    }, { onConflict: 'user_id,course_id' })
+
+    toast(`✅ ${firstName} ${lastName} → ${COURSE_META[courseSlug]?.label || courseSlug}`)
+    closeMdl('student')
+    await loadStudents()
+    await loadPayments()
+    renderKPIs()
+
+  } catch(err) { toast('❌ ' + err.message) }
+}
+
+// ── Talabani ko'rish (detail) ─────────────────────────
+function viewStudent(userId, name) {
+  toast(`👤 ${name} — profil tez kunda qo'shiladi`)
+}
+
+// ════════════════════════════════════════════════════════
+//  7. KPI KARTALAR
+// ════════════════════════════════════════════════════════
+function renderKPIs() {
+  const total    = _allStudents.length
+  const active   = _allStudents.filter(s => s.payStatus === 'paid').length
+  const pending  = _allPayments.filter(p => p.status === 'pending').length
+  const revenue  = _allPayments
+    .filter(p => p.status === 'confirmed')
+    .reduce((sum, p) => sum + (p.amount || 0), 0)
+
+  document.getElementById('kS').textContent    = total
+  document.getElementById('kA').textContent    = active
+  document.getElementById('kR').textContent    = revenue >= 1000000
+    ? (revenue / 1000000).toFixed(1) + 'M'
+    : formatMoney(revenue)
+  document.getElementById('kPend').textContent = pending
+  document.getElementById('pStudents').textContent = total
+  document.getElementById('pPending').textContent  = pending || '—'
+
+  // O'rtacha progress (hozircha statik — progress aggregate keyinroq)
+  document.getElementById('kP').textContent = '—'
+}
+
+// ════════════════════════════════════════════════════════
+//  8. CHART (so'nggi 6 oy daromad)
+// ════════════════════════════════════════════════════════
+function renderChart() {
+  // To'lov ma'lumotlaridan oylik daromad
+  const months = []
+  const now = new Date()
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1)
+    months.push({
+      label: d.toLocaleString('uz-UZ', { month: 'short' }),
+      year:  d.getFullYear(),
+      month: d.getMonth(),
+      total: 0,
+    })
+  }
+
+  _allPayments.filter(p => p.status === 'confirmed').forEach(p => {
+    const d = new Date(p.created_at)
+    const m = months.find(mo => mo.year === d.getFullYear() && mo.month === d.getMonth())
+    if (m) m.total += p.amount || 0
+  })
+
+  const max = Math.max(...months.map(m => m.total), 1)
+  document.getElementById('cBars').innerHTML = months.map(m =>
+    `<div class="cbar" style="height:${Math.max(Math.round(m.total/max*100),2)}%">
+      <div class="ctip">${m.total >= 1000000 ? (m.total/1000000).toFixed(1)+'M' : formatMoney(m.total)}</div>
+    </div>`).join('')
+  document.getElementById('cLbs').innerHTML = months.map(m =>
+    `<span class="clb">${m.label}</span>`).join('')
+
+  const thisMonth = months[months.length - 1]
+  document.getElementById('tTotal').textContent =
+    thisMonth.total >= 1000000
+      ? (thisMonth.total/1000000).toFixed(1) + 'M so\'m'
+      : formatMoney(thisMonth.total) + ' so\'m'
+}
+
+// ════════════════════════════════════════════════════════
+//  9. FAOLIYAT LENTI
+// ════════════════════════════════════════════════════════
+function renderActivity() {
+  // So'nggi 5 ta to'lov / enrollment
+  const feed = _allPayments.slice(0, 5).map(p => {
+    const name = p.profile?.full_name || p.profile?.first_name || '—'
+    const course = p.course?.title || '—'
+    const when = timeSince(p.created_at)
+    let color = '#1a56a0', text = ''
+    if (p.status === 'pending') { color = '#b08a00'; text = `⏳ Yangi to'lov — ${name} (${course})` }
+    else if (p.status === 'confirmed') { color = '#1a7a4a'; text = `✅ To'lov tasdiqlandi — ${name}` }
+    else { color = '#c0392b'; text = `✗ Rad etildi — ${name}` }
+    return { color, text, when }
+  })
+
+  const el = document.getElementById('actFeed')
+  if (!el) return
+  if (!feed.length) { el.innerHTML = '<div class="ai"><div class="at" style="color:var(--muted)">Hali faoliyat yo\'q</div></div>'; return }
+  el.innerHTML = feed.map(f =>
+    `<div class="ai">
+      <div class="adot" style="background:${f.color}"></div>
+      <div><div class="at">${escHtml(f.text)}</div><div class="am">${f.when}</div></div>
+    </div>`).join('')
+}
+
+// ════════════════════════════════════════════════════════
+//  10. NAVIGATSIYA
+// ════════════════════════════════════════════════════════
+function nav(name, el) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'))
+  const s = document.getElementById('sec-' + name)
+  if (s) s.classList.add('on')
+  if (el) {
+    document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'))
+    el.classList.add('active')
+  }
+  const titles = {
+    overview: 'Admin Dashboard', students: 'Talabalar',
+    lessons: 'Darslar', payments: "To'lovlar",
+    announce: "E'lonlar", analytics: 'Analitika'
+  }
+  document.getElementById('pgTitle').textContent = titles[name] || name
+
+  // Darslar bo'limiga kirilganda default kursni yuklash
+  if (name === 'lessons') {
+    const sel = document.getElementById('lCourseSelect')
+    const slug = sel?.value || 'eyuf-lab'
+    loadLessonsSection(slug)
+  }
+  // To'lovlar yangilash
+  if (name === 'payments') loadPayments()
+}
+
+// ════════════════════════════════════════════════════════
+//  11. YORDAMCHI
+// ════════════════════════════════════════════════════════
+function statusTag(s) {
+  if (s === 'paid' || s === 'active')   return '<span class="tag tgr">✓ Faol</span>'
+  if (s === 'pending')                  return '<span class="tag tgd">⏳ Kutmoqda</span>'
+  if (s === 'rejected')                 return '<span class="tag trd">✗ Rad</span>'
+  return '<span class="tag tg">' + (s || '—') + '</span>'
+}
+function pyTag(s) {
+  if (s === 'confirmed' || s === 'paid') return '<span class="tag tgr">✓ Tasdiqlandi</span>'
+  if (s === 'pending')                   return '<span class="tag tgd">⏳ Kutmoqda</span>'
+  if (s === 'rejected')                  return '<span class="tag trd">✗ Rad</span>'
+  return '<span class="tag tg">' + (s || '—') + '</span>'
+}
+function formatMoney(n) { return (n||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') }
+function escHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+function timeSince(iso) {
+  if (!iso) return '—'
+  const sec = Math.floor((Date.now() - new Date(iso)) / 1000)
+  if (sec < 60)    return `${sec} soniya oldin`
+  if (sec < 3600)  return `${Math.floor(sec/60)} daqiqa oldin`
+  if (sec < 86400) return `${Math.floor(sec/3600)} soat oldin`
+  return `${Math.floor(sec/86400)} kun oldin`
+}
+function updateSidebarBadges() {
+  document.getElementById('pStudents').textContent = _allStudents.length || '—'
+  const pending = _allPayments.filter(p => p.status === 'pending').length
+  const pBadge  = document.getElementById('pPending')
+  if (pBadge) { pBadge.textContent = pending || '—'; pBadge.className = pending ? 'sb-pill sp-red' : 'sb-pill sp-gray' }
+}
+function renderEmpty(tbId, icon, text) {
+  const el = document.getElementById(tbId)
+  if (!el) return
+  el.innerHTML = `<tr><td colspan="10"><div class="empty"><div class="ei">${icon}</div><div class="et">${text}</div></div></td></tr>`
+}
+function showSkeletons() {
+  ['kS','kA','kR','kP','kPend'].forEach(id => {
+    const el = document.getElementById(id)
+    if (el) el.innerHTML = '<span class="skeleton" style="width:40px;height:24px;display:inline-block;border-radius:4px"></span>'
+  })
+}
+function filterTbl(q, id) {
+  document.querySelectorAll('#' + id + ' tr').forEach(r => {
+    r.style.display = r.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none'
+  })
+}
+function openMdl(n) {
+  document.getElementById('m-' + n).classList.add('open')
+  // Dars modali ochilganda modullarni yuklash
+  if (n === 'lesson') {
+    const slug = document.getElementById('lCourse').value || 'eyuf-lab'
+    loadModulesForSelect(slug)
+  }
+}
+function closeMdl(n)    { document.getElementById('m-' + n).classList.remove('open') }
+function editLesson(id) { toast('✏️ Tahrirlash modali tez kunda — lesson_id: ' + id) }
+async function reload()  { await loadAll(); toast('🔄 Ma\'lumotlar yangilandi') }
+async function doLogout() { await logout() }
+
+let _tt
+function toast(msg) {
+  const el = document.getElementById('toastEl')
+  el.textContent = msg
+  el.classList.add('on')
+  clearTimeout(_tt)
+  _tt = setTimeout(() => el.classList.remove('on'), 2800)
+}
+
+// ── Modal overlay yopish ─────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.ovl').forEach(o => {
+    o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open') })
+  })
+  init()
+})
+</script>
+</body>
+</html>
