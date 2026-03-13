@@ -480,12 +480,14 @@ async function handleRegister() {
 
   try {
     // auth.js dan register() — Supabase Auth + profil trigger
-    const result = await register(email, password, {
-      first_name: firstName,
-      last_name:  lastName,
-      phone:      phone,
-      education:  education,
-      goal:       goal,
+    const result = await register({
+      email:     email,
+      password:  password,
+      firstName: firstName,
+      lastName:  lastName,
+      phone:     phone,
+      education: education,
+      goal:      goal,
     })
 
     if (result.error) {
