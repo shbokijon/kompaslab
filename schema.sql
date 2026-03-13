@@ -227,7 +227,7 @@ CREATE TABLE enrollments (
   UNIQUE (user_id, course_id)   -- Bir kursga faqat bir marta yozilish
 );
 
-COMMENT ON TABLE enrollments IS 'Kim qaysi kursga yozilgan. payment_status=paid bo\'lsagina dashboard ochiladi';
+COMMENT ON TABLE enrollments IS $$Kim qaysi kursga yozilgan. payment_status=paid bolsagina dashboard ochiladi$$;
 
 
 -- ─────────────────────────────────────────────
@@ -249,7 +249,7 @@ CREATE TABLE payments (
   updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-COMMENT ON TABLE payments IS 'Barcha to\'lovlar tarixi. Click.uz webhook va admin qo\'lda tasdiqlash';
+COMMENT ON TABLE payments IS $$Barcha tolovlar tarixi. Click.uz webhook va admin qolda tasdiqlash$$;
 
 
 -- ─────────────────────────────────────────────
@@ -268,7 +268,7 @@ CREATE TABLE progress (
   UNIQUE (user_id, lesson_id)
 );
 
-COMMENT ON TABLE progress IS 'Talabaning har dars ko\'rish holati. 95% watched = completed';
+COMMENT ON TABLE progress IS $$Talabaning har dars korish holati. 95% watched = completed$$;
 
 
 -- ─────────────────────────────────────────────
@@ -285,7 +285,7 @@ CREATE TABLE notes (
   UNIQUE (user_id, lesson_id)
 );
 
-COMMENT ON TABLE notes IS 'Talabaning dars konspektlari — auto-save 3 soniyada';
+COMMENT ON TABLE notes IS $$Talabaning dars konspektlari - auto-save 3 soniyada$$;
 
 
 -- ─────────────────────────────────────────────
@@ -302,7 +302,7 @@ CREATE TABLE waitlist (
   UNIQUE (email, course_slug)
 );
 
-COMMENT ON TABLE waitlist IS 'Coming soon kurslarga email ro\'yxati. Launch paytida email yuborish uchun';
+COMMENT ON TABLE waitlist IS $$Coming soon kurslarga email royxati. Launch paytida email yuborish uchun$$;
 
 
 -- ─────────────────────────────────────────────
@@ -323,7 +323,7 @@ CREATE TABLE coming_soon (
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-COMMENT ON TABLE coming_soon IS 'Landing page da ko\'rinadigan "Tez orada" mahsulotlar';
+COMMENT ON TABLE coming_soon IS $$Landing page da korinadigan Tez orada mahsulotlar$$;
 
 
 -- ═══════════════════════════════════════════════════════════════════════
