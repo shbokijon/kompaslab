@@ -53,7 +53,7 @@ const APP_CONFIG = {
 
   // Admin email ro'yxati
   adminEmails: [
-    'shokhrukh@kompaslab.uz',
+    'shbokijon@gmail.com',
     // qo'shimcha admin kerak bo'lsa shu yerga qo'shing
   ],
 }
