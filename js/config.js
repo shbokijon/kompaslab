@@ -14,8 +14,8 @@
 
 // ─── 1. SUPABASE KALITLAR ────────────────────────────────────
 //  Supabase → Settings → API sahifasidan oling
-const SUPABASE_URL      = 'https://XXXXXXXXXXXX.supabase.co'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.XXXX'
+const SUPABASE_URL      = 'https://usxpkmbjrdllnitlzdpq.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8'
 
 // ─── 2. SUPABASE CLIENT ──────────────────────────────────────
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
