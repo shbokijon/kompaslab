@@ -453,10 +453,10 @@ function togglePwd(id, btn) {
 // ─── REGISTER ──────────────────────────────────────
 async function handleRegister() {
   clearAll()
-  const email    = document.getElementById('email').value.trim()
-  const password = document.getElementById('password').value
-  const confirm  = document.getElementById('confirmPassword').value
-  const terms    = document.getElementById('termsCheck').checked
+  const email     = document.getElementById('email').value.trim().toLowerCase()
+  const password  = document.getElementById('password').value
+  const confirm   = document.getElementById('confirmPassword').value
+  const terms     = document.getElementById('termsCheck').checked
   const firstName = document.getElementById('firstName').value.trim()
   const lastName  = document.getElementById('lastName').value.trim()
   const phone     = document.getElementById('phone').value.trim()
@@ -479,24 +479,46 @@ async function handleRegister() {
   btn.innerHTML = '<div class="spinner"></div>'
 
   try {
-    // auth.js dan register() — bitta object argument bilan chaqiriladi
-    const result = await register({
+    // To'g'ridan-to'g'ri Supabase Auth — auth.js ga bog'liq emas
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      firstName,
-      lastName,
-      phone,
-      education,
-      goal,
+      options: {
+        data: {
+          full_name: `${firstName} ${lastName}`,
+          phone,
+        },
+        emailRedirectTo: `${APP_CONFIG.baseUrl}/${APP_CONFIG.routes.dashboard}`
+      }
     })
 
-    if (!result.success) {
+    if (error) {
+      const msgs = {
+        'User already registered':      'Bu email allaqachon ro\'yxatdan o\'tgan. Kiring.',
+        'Password should be at least 6 characters': 'Parol kamida 6 belgi bo\'lishi kerak.',
+        'Invalid email':                'Email manzil noto\'g\'ri.',
+        'Signup is disabled':           'Ro\'yxatdan o\'tish vaqtincha o\'chirilgan.',
+      }
       document.getElementById('errorAlert').classList.add('show')
-      document.getElementById('errorMsg').textContent = result.error ||
-        'Ro\'yxatdan o\'tishda xato. Qayta urinib ko\'ring.'
+      document.getElementById('errorMsg').textContent =
+        msgs[error.message] || error.message
       btn.disabled = false
       btn.innerHTML = '<span>Hisob yaratish</span>'
       return
+    }
+
+    // Profile trigger avtomatik yaratadi — qo'shimcha maydonlarni update qilamiz
+    if (data?.user) {
+      await supabase.from('profiles').upsert({
+        id:         data.user.id,
+        email:      email,
+        first_name: firstName,
+        last_name:  lastName,
+        phone:      phone || null,
+        education:  education || null,
+        goal:       goal || null,
+        role:       'student',
+      }, { onConflict: 'id' })
     }
 
     goStep(3)
