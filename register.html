@@ -362,8 +362,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-<script src="auth.js"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
 <script>
 // ─── SESSION CHECK ── Allaqachon kirgan bo'lsa → dashboard
 document.addEventListener('DOMContentLoaded', () => {
@@ -479,37 +479,24 @@ async function handleRegister() {
   btn.innerHTML = '<div class="spinner"></div>'
 
   try {
-    // auth.js dan register() — Supabase Auth + profil trigger
+    // auth.js dan register() — bitta object argument bilan chaqiriladi
     const result = await register({
-      email:     email,
-      password:  password,
-      firstName: firstName,
-      lastName:  lastName,
-      phone:     phone,
-      education: education,
-      goal:      goal,
+      email,
+      password,
+      firstName,
+      lastName,
+      phone,
+      education,
+      goal,
     })
 
-    if (result.error) {
+    if (!result.success) {
       document.getElementById('errorAlert').classList.add('show')
-      document.getElementById('errorMsg').textContent =
-        result.error.message.includes('already')
-          ? 'Bu email allaqachon ro\'yxatdan o\'tgan. Kiring yoki boshqa email ishlating.'
-          : result.error.message
+      document.getElementById('errorMsg').textContent = result.error ||
+        'Ro\'yxatdan o\'tishda xato. Qayta urinib ko\'ring.'
       btn.disabled = false
-      btn.innerHTML = '<span id="regBtnText">Hisob yaratish</span>'
+      btn.innerHTML = '<span>Hisob yaratish</span>'
       return
-    }
-
-    // Trigger profilni yaratadi — lekin education/goal ni qo'lda ham yozamiz
-    if (result.data?.user) {
-      try {
-        await supabase.from(DB.profiles).update({
-          education: education,
-          goal:      goal,
-          phone:     phone,
-        }).eq('id', result.data.user.id)
-      } catch(e) { /* trigger allaqachon yaratgan — silent */ }
     }
 
     goStep(3)
