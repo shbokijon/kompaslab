@@ -362,7 +362,18 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/config.js"></script>
+<script>
+// ─── SUPABASE INIT (inline) ───────────────────────────────────
+const SUPABASE_URL      = 'https://usxpkmbjrdllnitlzdpq.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8'
+window.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true }
+})
+const APP_CONFIG = {
+  baseUrl: 'https://kompaslab.uz',
+  routes:  { dashboard: 'dashboard.html', login: 'login.html' }
+}
+</script>
 <script src="js/auth.js"></script>
 <script>
 // ─── SESSION CHECK ── Allaqachon kirgan bo'lsa → dashboard
