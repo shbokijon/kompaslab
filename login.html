@@ -248,12 +248,19 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 
 <!-- ── SUPABASE SDK ── -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/config.js"></script>
-<script src="js/auth.js"></script>
+<script>
+// ─── SUPABASE INIT (inline) ───────────────────────────────────
+const SUPABASE_URL      = 'https://usxpkmbjrdllnitlzdpq.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8'
+window.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true }
+})
+</script>
 <script>
 // ─── SESSION CHECK ── Allaqachon kirgan bo'lsa → dashboard
-document.addEventListener('DOMContentLoaded', () => {
-  redirectIfLoggedIn()
+document.addEventListener('DOMContentLoaded', async () => {
+  const { data: { session } } = await window.supabase.auth.getSession()
+  if (session) window.location.href = 'dashboard.html'
 })
 
 // ─── TOGGLE PASSWORD ─────────────────────────────────
@@ -312,15 +319,19 @@ async function handleLogin(e) {
   btn.innerHTML = '<div class="spinner"></div><span>Kirilmoqda...</span>'
 
   try {
-    // auth.js dan login() funksiyasi
-    const result = await login(email, password)
+    const { data, error } = await window.supabase.auth.signInWithPassword({
+      email:    email.trim().toLowerCase(),
+      password: password
+    })
 
-    if (result.error) {
+    if (error) {
       document.getElementById('errorAlert').classList.add('show')
       document.getElementById('errorMsg').textContent =
-        result.error.message.includes('Invalid')
-          ? 'Email yoki parol noto\'g\'ri. Qayta urinib ko\'ring.'
-          : result.error.message
+        error.message.includes('Invalid') || error.message.includes('credentials')
+          ? 'Email yoki parol noto\'g\'ri.'
+          : error.message.includes('confirm')
+          ? 'Emailingizni tasdiqlang va qayta urinib ko\'ring.'
+          : error.message
       btn.disabled = false
       btn.innerHTML = '<span id="btnText">Kirish</span><span>→</span>'
       return
@@ -328,13 +339,11 @@ async function handleLogin(e) {
 
     // Muvaffaqiyatli
     document.getElementById('successAlert').classList.add('show')
-    setTimeout(() => {
-      window.location.href = APP_CONFIG.routes.dashboard
-    }, 1200)
+    setTimeout(() => { window.location.href = 'dashboard.html' }, 1200)
 
   } catch(err) {
     document.getElementById('errorAlert').classList.add('show')
-    document.getElementById('errorMsg').textContent = 'Xatolik yuz berdi. Qayta urinib ko\'ring.'
+    document.getElementById('errorMsg').textContent = 'Xatolik: ' + err.message
     btn.disabled = false
     btn.innerHTML = '<span id="btnText">Kirish</span><span>→</span>'
   }
