@@ -200,7 +200,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 @media(max-width:700px){.sb{transform:translateX(-100%);}.mw{margin-left:0;}}
 </style>
 </head>
-<body>
+<body style="display:none">
 
 <!-- SIDEBAR -->
 <aside class="sb">
@@ -510,7 +510,24 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 <div class="toast" id="toastEl"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/config.js"></script>
+<script>
+// ─── SUPABASE INIT (inline) ───────────────────────────────────
+const SUPABASE_URL      = 'https://usxpkmbjrdllnitlzdpq.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8'
+window.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true }
+})
+const APP_CONFIG = {
+  baseUrl: 'https://kompaslab.uz',
+  adminEmails: ['shbokijon@gmail.com'],
+  routes: { login: 'login.html', dashboard: 'dashboard.html', payment: 'payment.html', admin: 'admin.html' }
+}
+const DB = {
+  profiles:'profiles', courses:'courses', modules:'modules', lessons:'lessons',
+  enrollments:'enrollments', payments:'payments', progress:'progress',
+  materials:'materials', notes:'notes', waitlist:'waitlist', coming_soon:'coming_soon'
+}
+</script>
 <script src="js/auth.js"></script>
 <script>
 // ════════════════════════════════════════════════════════
@@ -543,6 +560,7 @@ async function init() {
   // Admin tekshiruv
   const auth = await requireAdmin()
   if (!auth) return
+  document.body.style.display = ''
 
   // Sidebar admin nomi
   const profile = auth.profile
