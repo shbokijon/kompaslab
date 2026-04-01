@@ -198,6 +198,16 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   .twin{grid-template-columns:1fr;}.rp{display:grid;grid-template-columns:1fr 1fr;}}
 @media(max-width:900px){.kpi-row{grid-template-columns:repeat(2,1fr);}.rp{grid-template-columns:1fr;}}
 @media(max-width:700px){.sb{transform:translateX(-100%);}.mw{margin-left:0;}}
+
+/* STUDENT DETAIL TABS */
+.sd-tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;}
+.sd-tab:hover{color:var(--text);}
+.sd-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.sd-course-row{display:flex;align-items:center;justify-content:space-between;background:#f8faf9;border:1px solid var(--border);border-radius:10px;padding:10px 14px;}
+.sd-course-info{display:flex;flex-direction:column;gap:2px;}
+.sd-act-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.sd-act-row:last-child{border-bottom:none;}
+.sd-act-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;}
 </style>
 </head>
 <body style="display:none">
@@ -508,6 +518,69 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 </div></div>
 
 <div class="toast" id="toastEl"></div>
+
+<!-- TALABA DETAIL MODALI -->
+<div class="ovl" id="m-student-detail"><div class="mdl" style="max-width:560px">
+  <div class="mh">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="sav" id="sdAvatar" style="width:38px;height:38px;font-size:16px;border-radius:50%;background:linear-gradient(135deg,#2d4a3e,#c4622d);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0"></div>
+      <div>
+        <h3 id="sdName" style="font-size:16px;margin:0"></h3>
+        <div id="sdEmail" style="font-size:12px;color:var(--muted);margin-top:1px"></div>
+      </div>
+    </div>
+    <button class="mx" onclick="closeMdl('student-detail')">×</button>
+  </div>
+
+  <!-- TAB NAVIGATSIYA -->
+  <div style="display:flex;border-bottom:1px solid var(--border);padding:0 20px;background:#f8faf9">
+    <button class="sd-tab active" onclick="sdTab('profile',this)">👤 Profil</button>
+    <button class="sd-tab" onclick="sdTab('password',this)">🔑 Parol</button>
+    <button class="sd-tab" onclick="sdTab('courses',this)">📚 Kurslar</button>
+    <button class="sd-tab" onclick="sdTab('activity',this)">📊 Faoliyat</button>
+  </div>
+
+  <!-- PROFIL -->
+  <div class="sd-pane" id="sdp-profile">
+    <div class="mb">
+      <div class="fr">
+        <div class="fld"><label>Ism</label><input id="sdFirst" placeholder="Ism"></div>
+        <div class="fld"><label>Familiya</label><input id="sdLast" placeholder="Familiya"></div>
+      </div>
+      <div class="fld"><label>Telefon</label><input id="sdPhone" placeholder="+998 90 123 45 67"></div>
+      <div class="fld"><label>Email (o'zgarmaydi)</label><input id="sdEmailInput" disabled style="opacity:0.5"></div>
+    </div>
+    <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button><button class="btn bp" onclick="saveStudentProfile()">💾 Saqlash</button></div>
+  </div>
+
+  <!-- PAROL -->
+  <div class="sd-pane" id="sdp-password" style="display:none">
+    <div class="mb">
+      <div style="background:var(--gold-light);border:1px solid #e0c85a;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--gold)">
+        ⚠️ Yangi parol kamida 8 ta belgidan iborat bo'lishi kerak
+      </div>
+      <div class="fld"><label>Yangi parol *</label><input id="sdNewPass" type="password" placeholder="Yangi parol..."></div>
+      <div class="fld"><label>Qaytadan kiriting *</label><input id="sdNewPass2" type="password" placeholder="Qaytadan..."></div>
+    </div>
+    <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button><button class="btn bp" onclick="changeStudentPassword()">🔑 O'zgartirish</button></div>
+  </div>
+
+  <!-- KURSLAR -->
+  <div class="sd-pane" id="sdp-courses" style="display:none">
+    <div class="mb">
+      <div id="sdCoursesList" style="display:flex;flex-direction:column;gap:8px;min-height:60px"></div>
+    </div>
+    <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button></div>
+  </div>
+
+  <!-- FAOLIYAT -->
+  <div class="sd-pane" id="sdp-activity" style="display:none">
+    <div class="mb">
+      <div id="sdActivityList" style="display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto;min-height:60px"></div>
+    </div>
+    <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button></div>
+  </div>
+</div></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -1084,8 +1157,145 @@ async function saveStudent() {
 }
 
 // ── Talabani ko'rish (detail) ─────────────────────────
-function viewStudent(userId, name) {
-  toast(`👤 ${name} — profil tez kunda qo'shiladi`)
+let _sdUserId = null
+
+async function viewStudent(userId, name) {
+  _sdUserId = userId
+  // Avatar & header
+  document.getElementById('sdAvatar').textContent = (name[0] || '?').toUpperCase()
+  document.getElementById('sdName').textContent   = name
+  document.getElementById('sdEmail').textContent  = '...'
+  // Default tab
+  sdTab('profile', document.querySelector('.sd-tab'))
+  openMdl('student-detail')
+
+  // Profil ma'lumotlarini yuklash
+  const { data: p } = await supabase
+    .from(DB.profiles).select('*').eq('id', userId).single()
+  if (!p) return
+
+  document.getElementById('sdEmail').textContent     = p.email || ''
+  document.getElementById('sdFirst').value           = p.first_name || ''
+  document.getElementById('sdLast').value            = p.last_name  || ''
+  document.getElementById('sdPhone').value           = p.phone      || ''
+  document.getElementById('sdEmailInput').value      = p.email      || ''
+
+  // Kurslarni yuklash (courses tab uchun cache)
+  _sdStudentData = p
+  await loadSdCourses(userId)
+}
+
+let _sdStudentData = null
+let _sdEnrollments = []
+
+async function loadSdCourses(userId) {
+  const { data } = await supabase
+    .from(DB.enrollments)
+    .select('id, payment_status, plan, enrolled_at, course:courses(title, slug, emoji)')
+    .eq('user_id', userId)
+  _sdEnrollments = data || []
+  renderSdCourses()
+}
+
+function renderSdCourses() {
+  const el = document.getElementById('sdCoursesList')
+  if (!_sdEnrollments.length) {
+    el.innerHTML = '<div style="text-align:center;color:var(--muted);padding:24px">Hech qanday kursga yozilmagan</div>'
+    return
+  }
+  el.innerHTML = _sdEnrollments.map(en => `
+    <div class="sd-course-row">
+      <div class="sd-course-info">
+        <div style="font-weight:700;font-size:14px">${escHtml(en.course?.emoji||'📚')} ${escHtml(en.course?.title||'—')}</div>
+        <div style="font-size:11px;color:var(--muted)">${pyTag(en.payment_status)} · ${en.enrolled_at?.slice(0,10)||'—'}</div>
+      </div>
+      <button class="btn bsm" style="background:#fdecea;color:#c0392b;border-color:#f5c6c2"
+        onclick="unenrollStudent('${en.id}','${escHtml(en.course?.title||'')}')">
+        ✕ Chiqarish
+      </button>
+    </div>`).join('')
+}
+
+function sdTab(name, el) {
+  document.querySelectorAll('.sd-pane').forEach(p => p.style.display = 'none')
+  document.querySelectorAll('.sd-tab').forEach(t => t.classList.remove('active'))
+  document.getElementById('sdp-' + name).style.display = ''
+  if (el) el.classList.add('active')
+  if (name === 'activity') loadSdActivity(_sdUserId)
+}
+
+async function saveStudentProfile() {
+  if (!_sdUserId) return
+  const first = document.getElementById('sdFirst').value.trim()
+  const last  = document.getElementById('sdLast').value.trim()
+  const phone = document.getElementById('sdPhone').value.trim()
+  if (!first) { toast('⚠️ Ism kiritilmadi'); return }
+
+  const { error } = await supabase.from(DB.profiles).update({
+    first_name: first,
+    last_name:  last,
+    full_name:  `${first} ${last}`.trim(),
+    phone:      phone || null,
+    updated_at: new Date().toISOString()
+  }).eq('id', _sdUserId)
+
+  if (error) { toast('❌ ' + error.message); return }
+  toast('✅ Profil yangilandi')
+  await loadStudents()
+}
+
+async function changeStudentPassword() {
+  const p1 = document.getElementById('sdNewPass').value
+  const p2 = document.getElementById('sdNewPass2').value
+  if (!p1 || p1.length < 8) { toast('⚠️ Parol kamida 8 ta belgi'); return }
+  if (p1 !== p2)             { toast('⚠️ Parollar mos emas');       return }
+
+  // Supabase Admin API orqali parol o'zgartirish (service_role kerak)
+  // Anon key bilan faqat o'z parolini o'zgartirish mumkin
+  // Shuning uchun Edge Function yoki to'g'ridan Supabase Dashboard orqali qilish kerak
+  toast('⚠️ Parolni o\'zgartirish uchun Supabase Dashboard → Users → Reset password ishlating')
+}
+
+async function unenrollStudent(enrollId, courseTitle) {
+  if (!confirm(`"${courseTitle}" kursidan chiqarishni tasdiqlaysizmi?`)) return
+  const { error } = await supabase
+    .from(DB.enrollments).delete().eq('id', enrollId)
+  if (error) { toast('❌ ' + error.message); return }
+  toast(`✅ ${courseTitle} kursidan chiqarildi`)
+  await loadSdCourses(_sdUserId)
+  await loadStudents()
+}
+
+async function loadSdActivity(userId) {
+  if (!userId) return
+  const el = document.getElementById('sdActivityList')
+  el.innerHTML = '<div style="color:var(--muted);padding:16px;text-align:center">Yuklanmoqda...</div>'
+
+  const { data, error } = await supabase
+    .from(DB.progress)
+    .select('completed_at, status, lesson:lessons(title, module:modules(title, course:courses(title)))')
+    .eq('user_id', userId)
+    .order('completed_at', { ascending: false })
+    .limit(50)
+
+  if (error || !data?.length) {
+    el.innerHTML = '<div style="text-align:center;color:var(--muted);padding:24px">Hali faoliyat yo\'q</div>'
+    return
+  }
+  el.innerHTML = data.map(r => {
+    const lesson  = r.lesson?.title || '—'
+    const module  = r.lesson?.module?.title || ''
+    const course  = r.lesson?.module?.course?.title || ''
+    const when    = r.completed_at ? timeSince(r.completed_at) : '—'
+    const done    = r.status === 'completed'
+    return `<div class="sd-act-row">
+      <div class="sd-act-dot" style="background:${done?'var(--green)':'var(--gold)'}"></div>
+      <div>
+        <div style="font-size:13px;font-weight:600">${escHtml(lesson)}</div>
+        <div style="font-size:11px;color:var(--muted)">${escHtml(course)}${module?' · '+escHtml(module):''} · ${when}</div>
+      </div>
+    </div>`
+  }).join('')
 }
 
 // ════════════════════════════════════════════════════════
