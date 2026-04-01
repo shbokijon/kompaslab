@@ -257,10 +257,19 @@ window.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, 
 })
 </script>
 <script>
-// ─── SESSION CHECK ── Allaqachon kirgan bo'lsa → dashboard
+// ─── SESSION CHECK ── Allaqachon kirgan bo'lsa → admin yoki dashboard
 document.addEventListener('DOMContentLoaded', async () => {
   const { data: { session } } = await window.supabase.auth.getSession()
-  if (session) window.location.href = 'dashboard.html'
+  if (!session) return
+  const adminEmails = ['shbokijon@gmail.com']
+  const userEmail = (session.user.email || '').toLowerCase()
+  let isAdmin = adminEmails.includes(userEmail)
+  if (!isAdmin) {
+    const { data: profile } = await window.supabase
+      .from('profiles').select('role').eq('id', session.user.id).single()
+    isAdmin = profile?.role === 'admin'
+  }
+  window.location.href = isAdmin ? 'admin.html' : 'dashboard.html'
 })
 
 // ─── TOGGLE PASSWORD ─────────────────────────────────
