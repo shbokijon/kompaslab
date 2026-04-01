@@ -337,9 +337,16 @@ async function handleLogin(e) {
       return
     }
 
-    // Muvaffaqiyatli
+    // Muvaffaqiyatli — admin tekshiruvi
+    const adminEmails = ['shbokijon@gmail.com']
+    let isAdmin = adminEmails.includes(data.user.email)
+    if (!isAdmin) {
+      const { data: profile } = await window.supabase
+        .from('profiles').select('role').eq('id', data.user.id).single()
+      isAdmin = profile?.role === 'admin'
+    }
     document.getElementById('successAlert').classList.add('show')
-    setTimeout(() => { window.location.href = 'dashboard.html' }, 1200)
+    setTimeout(() => { window.location.href = isAdmin ? 'admin.html' : 'dashboard.html' }, 1200)
 
   } catch(err) {
     document.getElementById('errorAlert').classList.add('show')
