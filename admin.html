@@ -243,6 +243,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
     <button class="sb-item" onclick="nav('analytics',this)">
       <span class="sb-icon">📈</span><span class="sb-label">Analitika</span>
     </button>
+    <button class="sb-item" onclick="nav('settings',this)">
+      <span class="sb-icon">⚙️</span><span class="sb-label">Sozlamalar</span>
+    </button>
     <a class="sb-item" href="dashboard.html">
       <span class="sb-icon">🎓</span><span class="sb-label">Talaba ko'rinishi</span>
     </a>
@@ -333,7 +336,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
         <div class="ch">
           <h2>👥 Barcha talabalar</h2>
           <div class="ch-r">
-            <button class="btn bs bsm" onclick="toast('📤 CSV...')">📤 Export</button>
+            <button class="btn bs bsm" onclick="exportStudentsCSV()">📤 CSV</button>
             <button class="btn bp bsm" onclick="openMdl('student')">+ Qo'shish</button>
           </div>
         </div>
@@ -384,7 +387,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       <div class="card">
         <div class="ch">
           <h2>💳 To'lovlar</h2>
-          <button class="btn bs bsm" onclick="toast('📤 Export...')">📤 Export</button>
+          <button class="btn bs bsm" onclick="exportPaymentsCSV()">📤 CSV</button>
         </div>
         <div class="tctrl">
           <input class="srch" placeholder="🔍 Qidirish..." oninput="filterTbl(this.value,'tb3')">
@@ -432,15 +435,34 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 
     <!-- ANALYTICS -->
     <div class="sec" id="sec-analytics">
-      <div class="ob-row">
-        <div class="ob"><div class="ob-i" style="background:var(--green-lit)">📊</div><div><div class="ob-v">68%</div><div class="ob-l">Kurs completion</div></div></div>
-        <div class="ob"><div class="ob-i" style="background:var(--gold-lit)">🎯</div><div><div class="ob-v">4.9★</div><div class="ob-l">O'rtacha reyting</div></div></div>
-        <div class="ob"><div class="ob-i" style="background:var(--accent2-lit)">💬</div><div><div class="ob-v">94%</div><div class="ob-l">Telegram engagement</div></div></div>
-        <div class="ob"><div class="ob-i" style="background:var(--blue-lit)">🏆</div><div><div class="ob-v">3</div><div class="ob-l">Grant qabul qilingan</div></div></div>
-      </div>
+      <div id="courseStatsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:14px"></div>
       <div class="card">
-        <div class="ch"><h2>📈 Haftalik faoliyat</h2></div>
-        <div style="padding:24px;text-align:center;color:var(--muted);font-size:13px;">📊 Kengaytirilgan analitika tez kunda...</div>
+        <div class="ch"><h2>📈 Kurs statistikasi</h2><button class="btn bs bsm" onclick="loadCourseStats()">🔄 Yangilash</button></div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr>
+            <th>Kurs</th><th>Talabalar</th><th>Kutmoqda</th><th>Daromad</th><th>Avg daromad</th>
+          </tr></thead><tbody id="tbStats"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOZLAMALAR -->
+    <div class="sec" id="sec-settings">
+      <div class="card">
+        <div class="ch"><h2>⚙️ Sozlamalar</h2></div>
+        <div class="mb" style="max-width:480px">
+          <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text)">🤖 Telegram bildirishnomalar</div>
+          <div class="fld"><label>Bot Token</label><input id="cfgTgToken" placeholder="1234567890:AAF..." style="font-family:'JetBrains Mono',monospace;font-size:12px"></div>
+          <div class="fld"><label>Chat ID (sizning Telegram ID ingiz)</label><input id="cfgTgChat" placeholder="-100123456789 yoki 123456789" style="font-family:'JetBrains Mono',monospace;font-size:12px"></div>
+          <div style="background:var(--accent-lit);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--accent);margin-bottom:12px">
+            ℹ️ Bot yaratish: @BotFather → /newbot → tokenni yuqoriga kiriting<br>
+            Chat ID olish: @userinfobot ga /start yuboring
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn bp" onclick="saveTgConfig()">💾 Saqlash</button>
+            <button class="btn bs" onclick="testTgNotify()">🧪 Test yuborish</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -876,6 +898,13 @@ async function confirmPayment(paymentId, name) {
     if (e2) console.warn('Enrollment update:', e2.message)
 
     toast(`✅ Tasdiqlandi: ${name}`)
+
+    // To'lov summasi va kursni olish
+    const pay = _allPayments.find(p => p.id === paymentId)
+    const amount = pay?.amount ? formatMoney(pay.amount) + " so'm" : ''
+    const course = pay?.course?.title || ''
+    sendTelegram(`💰 <b>Yangi to'lov tasdiqlandi!</b>\n👤 ${name}\n📚 ${course}\n💵 ${amount}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
+
     await loadPayments()
     await loadStudents()
     renderKPIs()
@@ -897,6 +926,7 @@ async function rejectPayment(paymentId, name) {
     if (error) throw error
 
     toast(`⛔ Rad etildi: ${name}`)
+    sendTelegram(`⛔ <b>To'lov rad etildi</b>\n👤 ${name}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
     await loadPayments()
     renderKPIs()
 
@@ -914,6 +944,7 @@ async function enrollDirect(enrollId, name) {
       .update({ payment_status: 'paid', enrolled_at: new Date().toISOString() })
       .eq('id', enrollId)
     toast(`✅ Faollashtirildi: ${name}`)
+    sendTelegram(`✅ <b>To'lov tasdiqlandi</b>\n👤 ${name}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
     await loadStudents()
     renderKPIs()
   } catch(err) {
@@ -1245,15 +1276,16 @@ async function saveStudentProfile() {
 }
 
 async function changeStudentPassword() {
-  const p1 = document.getElementById('sdNewPass').value
-  const p2 = document.getElementById('sdNewPass2').value
-  if (!p1 || p1.length < 8) { toast('⚠️ Parol kamida 8 ta belgi'); return }
-  if (p1 !== p2)             { toast('⚠️ Parollar mos emas');       return }
+  const email = _sdStudentData?.email
+  if (!email) { toast('⚠️ Email topilmadi'); return }
 
-  // Supabase Admin API orqali parol o'zgartirish (service_role kerak)
-  // Anon key bilan faqat o'z parolini o'zgartirish mumkin
-  // Shuning uchun Edge Function yoki to'g'ridan Supabase Dashboard orqali qilish kerak
-  toast('⚠️ Parolni o\'zgartirish uchun Supabase Dashboard → Users → Reset password ishlating')
+  // Supabase: talabaga parol tiklash emaili yuborish
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: 'https://kompaslab.uz/reset-password.html'
+  })
+  if (error) { toast('❌ ' + error.message); return }
+  toast('✅ Parol tiklash emaili yuborildi: ' + email)
+  closeMdl('student-detail')
 }
 
 async function unenrollStudent(enrollId, courseTitle) {
@@ -1400,7 +1432,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Admin Dashboard', students: 'Talabalar',
     lessons: 'Darslar', payments: "To'lovlar",
-    announce: "E'lonlar", analytics: 'Analitika'
+    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1412,6 +1444,15 @@ function nav(name, el) {
   }
   // To'lovlar yangilash
   if (name === 'payments') loadPayments()
+  // Kurs statistikasi
+  if (name === 'analytics') loadCourseStats()
+  // Sozlamalar — saqlangan qiymatlarni yuklash
+  if (name === 'settings') {
+    const token = localStorage.getItem('tg_token') || ''
+    const chat  = localStorage.getItem('tg_chat')  || ''
+    document.getElementById('cfgTgToken').value = token
+    document.getElementById('cfgTgChat').value  = chat
+  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -1473,6 +1514,128 @@ function closeMdl(n)    { document.getElementById('m-' + n).classList.remove('op
 function editLesson(id) { toast('✏️ Tahrirlash modali tez kunda — lesson_id: ' + id) }
 async function reload()  { await loadAll(); toast('🔄 Ma\'lumotlar yangilandi') }
 async function doLogout() { await logout() }
+
+// ════════════════════════════════════════════════════════
+//  12. CSV EXPORT
+// ════════════════════════════════════════════════════════
+function downloadCSV(filename, headers, rows) {
+  const esc = v => `"${String(v ?? '').replace(/"/g, '""')}"`
+  const csv = [headers, ...rows].map(r => r.map(esc).join(',')).join('\r\n')
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' })
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(blob)
+  a.download = filename
+  a.click()
+  URL.revokeObjectURL(a.href)
+}
+
+function exportStudentsCSV() {
+  if (!_allStudents.length) { toast('⚠️ Talabalar yuklanmagan'); return }
+  const headers = ['Ism', 'Email', 'Kurs', "To'lov holati", 'Yozilgan sana']
+  const rows = _allStudents.map(s => [
+    s.name, s.email, s.course || '—', s.payStatus, s.enrollDate || '—'
+  ])
+  downloadCSV('talabalar.csv', headers, rows)
+  toast('✅ talabalar.csv yuklab olindi')
+}
+
+function exportPaymentsCSV() {
+  if (!_allPayments.length) { toast("⚠️ To'lovlar yuklanmagan"); return }
+  const headers = ['Sana', 'Talaba', 'Email', 'Kurs', "Summa (so'm)", 'Usul', 'Status']
+  const rows = _allPayments.map(p => [
+    p.created_at?.slice(0, 10),
+    p.profile?.full_name || p.profile?.first_name || '—',
+    p.profile?.email || '—',
+    p.course?.title || '—',
+    p.amount || 0,
+    p.method || '—',
+    p.status
+  ])
+  downloadCSV("to'lovlar.csv", headers, rows)
+  toast("✅ to'lovlar.csv yuklab olindi")
+}
+
+// ════════════════════════════════════════════════════════
+//  13. KURS STATISTIKASI
+// ════════════════════════════════════════════════════════
+async function loadCourseStats() {
+  const tbStats = document.getElementById('tbStats')
+  if (tbStats) tbStats.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Yuklanmoqda...</td></tr>'
+
+  try {
+    const { data: courses } = await supabase
+      .from(DB.courses).select('id, title, slug, emoji')
+
+    const results = await Promise.all((courses || []).map(async c => {
+      const [enRows, pyRows] = await Promise.all([
+        supabase.from(DB.enrollments).select('id, payment_status').eq('course_id', c.id),
+        supabase.from(DB.payments).select('amount, status').eq('course_id', c.id).eq('status', 'confirmed')
+      ])
+      const all     = enRows.data || []
+      const paid    = all.filter(e => e.payment_status === 'paid').length
+      const pending = all.filter(e => e.payment_status === 'pending').length
+      const revenue = (pyRows.data || []).reduce((s, p) => s + (p.amount || 0), 0)
+      return { ...c, paid, pending, revenue, avg: paid ? Math.round(revenue / paid) : 0 }
+    }))
+
+    // KPI kartalar
+    const grid = document.getElementById('courseStatsGrid')
+    if (grid) grid.innerHTML = results.map(c => `
+      <div class="card" style="padding:16px">
+        <div style="font-size:22px;margin-bottom:6px">${c.emoji || '📚'}</div>
+        <div style="font-weight:800;font-size:15px;margin-bottom:10px">${escHtml(c.title)}</div>
+        <div style="display:flex;flex-direction:column;gap:4px;font-size:13px">
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Faol talabalar</span><b>${c.paid}</b></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Kutmoqda</span><b style="color:var(--gold)">${c.pending}</b></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Daromad</span><b style="color:var(--green)">${formatMoney(c.revenue)} so'm</b></div>
+        </div>
+      </div>`).join('')
+
+    // Jadval
+    if (tbStats) tbStats.innerHTML = results.map(c => `
+      <tr>
+        <td><b>${c.emoji || ''} ${escHtml(c.title)}</b></td>
+        <td><span class="tag tgr">${c.paid}</span></td>
+        <td><span class="tag tgd">${c.pending}</span></td>
+        <td><b style="color:var(--green)">${formatMoney(c.revenue)} so'm</b></td>
+        <td>${formatMoney(c.avg)} so'm</td>
+      </tr>`).join('')
+  } catch(e) {
+    if (tbStats) renderEmpty('tbStats', '📊', e.message)
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  14. TELEGRAM SOZLAMALAR
+// ════════════════════════════════════════════════════════
+function saveTgConfig() {
+  const token = document.getElementById('cfgTgToken').value.trim()
+  const chat  = document.getElementById('cfgTgChat').value.trim()
+  if (!token || !chat) { toast('⚠️ Token va Chat ID kiriting'); return }
+  localStorage.setItem('tg_token', token)
+  localStorage.setItem('tg_chat',  chat)
+  toast('✅ Sozlamalar saqlandi')
+}
+
+async function testTgNotify() {
+  const token = localStorage.getItem('tg_token')
+  const chat  = localStorage.getItem('tg_chat')
+  if (!token || !chat) { toast('⚠️ Avval token va chat ID saqlang'); return }
+  await sendTelegram('🧪 Test: Kompas Lab admin panel ulandi!')
+}
+
+async function sendTelegram(text) {
+  const token = localStorage.getItem('tg_token')
+  const chat  = localStorage.getItem('tg_chat')
+  if (!token || !chat) return
+  try {
+    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chat, text, parse_mode: 'HTML' })
+    })
+  } catch(e) { console.warn('Telegram xato:', e.message) }
+}
 
 let _tt
 function toast(msg) {
