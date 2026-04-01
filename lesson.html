@@ -528,7 +528,7 @@ let _notesSaveTimer = null
 // ════════════════════════════════════════════════════════
 async function init() {
   // URL parametrlarini olish
-  _courseSlug = getParam('course') || 'eyuf-lab'
+  _courseSlug = getParam('course') || 'bachelor-lab'
   _lessonId   = getParam('lesson')
 
   try {
@@ -618,7 +618,7 @@ async function loadCourseStructure(courseSlug, userId) {
 
   // Kurs nomi
   const courseNames = {
-    'eyuf-lab': '🎯 EYUF Lab', 'bachelor-lab': '🎓 Bachelor Lab',
+    'bachelor-lab': '🎓 Bachelor Lab',
     'master-lab': '🔬 Master Lab', 'phd-lab': '⚗️ PhD Lab'
   }
   document.getElementById('lsCourseName').textContent = courseNames[courseSlug] || course.title
