@@ -339,7 +339,8 @@ async function handleLogin(e) {
 
     // Muvaffaqiyatli — admin tekshiruvi
     const adminEmails = ['shbokijon@gmail.com']
-    let isAdmin = adminEmails.includes(data.user.email)
+    const userEmail = (data.user.email || '').toLowerCase()
+    let isAdmin = adminEmails.includes(userEmail)
     if (!isAdmin) {
       const { data: profile } = await window.supabase
         .from('profiles').select('role').eq('id', data.user.id).single()
