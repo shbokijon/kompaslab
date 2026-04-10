@@ -305,6 +305,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
               <option value="bachelor-lab">Bachelor Lab</option>
               <option value="master-lab">Master Lab</option>
               <option value="phd-lab">PhD Lab</option>
+              <option value="gks-lab">GKS Lab</option>
             </select>
           </div>
           <div class="tbl-scroll">
@@ -374,6 +375,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
               <option value="bachelor-lab">🎓 Bachelor Lab</option>
               <option value="master-lab">🔬 Master Lab</option>
               <option value="phd-lab">⚗️ PhD Lab</option>
+              <option value="gks-lab">🇰🇷 GKS Lab</option>
             </select>
             <button class="btn bp bsm" onclick="openMdl('lesson')">+ Yangi dars</button>
           </div>
@@ -515,6 +517,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
         <option value="bachelor-lab">🎓 Bachelor Lab — 499,000 so'm</option>
         <option value="master-lab">🔬 Master Lab — 499,000 so'm</option>
         <option value="phd-lab">⚗️ PhD Lab — 699,000 so'm</option>
+        <option value="gks-lab">🇰🇷 GKS Lab — 499,000 so'm</option>
       </select>
     </div>
     <div class="fld"><label>To'lov usuli</label>
@@ -534,7 +537,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   <div class="mb">
     <div class="fld"><label>Sarlavha *</label><input id="aT" placeholder="E'lon sarlavhasi..."></div>
     <div class="fld"><label>Matn</label><textarea id="aB" placeholder="E'lon matni..."></textarea></div>
-    <div class="fld"><label>Kimga</label><select id="aAu"><option value="all">Barcha talabalar</option><option value="bachelor-lab">Bachelor Lab</option><option value="master-lab">Master Lab</option><option value="phd-lab">PhD Lab</option></select></div>
+    <div class="fld"><label>Kimga</label><select id="aAu"><option value="all">Barcha talabalar</option><option value="bachelor-lab">Bachelor Lab</option><option value="master-lab">Master Lab</option><option value="phd-lab">PhD Lab</option><option value="gks-lab">GKS Lab</option></select></div>
   </div>
   <div class="mf"><button class="btn bs" onclick="closeMdl('announce')">Bekor</button><button class="btn bp" onclick="toast('📢 E\'lon yuborildi!');closeMdl('announce')">📢 Yuborish</button></div>
 </div></div>
@@ -641,6 +644,7 @@ const COURSE_META = {
   'bachelor-lab': { emoji: '🎓', label: 'Bachelor Lab' },
   'master-lab':   { emoji: '🔬', label: 'Master Lab' },
   'phd-lab':      { emoji: '⚗️', label: 'PhD Lab' },
+  'gks-lab':      { emoji: '🇰🇷', label: 'GKS Lab' },
 }
 
 // ════════════════════════════════════════════════════════
@@ -1161,7 +1165,7 @@ async function saveStudent() {
     if (!courseId) throw new Error('Kurs topilmadi')
 
     // 3. Payment yozuvi
-    const coursePrice = { 'bachelor-lab':499000, 'master-lab':499000, 'phd-lab':699000 }
+    const coursePrice = { 'bachelor-lab':499000, 'master-lab':499000, 'phd-lab':699000, 'gks-lab':499000 }
     const { data: pay } = await supabase.from(DB.payments).insert({
       user_id: profile.id, course_id: courseId,
       plan: 'starter', amount: coursePrice[courseSlug] || 499000,
