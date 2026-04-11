@@ -461,10 +461,26 @@ body{
    PRICING
 ════════════════════════════════════════ */
 .pricing{padding:96px 5%;background:var(--surface);border-top:1px solid var(--border);}
-.pricing-inner{max-width:1160px;margin:0 auto;}
+.pricing-inner{max-width:1400px;margin:0 auto;}
 .pricing-top{text-align:center;margin-bottom:56px;}
 .pricing-top .sec-sub{margin:0 auto;}
 .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto;}
+/* Compact plan card for 6-col grid */
+.plan-sm{padding:20px 14px;}
+.plan-sm .plan-ico{font-size:22px;margin-bottom:8px;}
+.plan-sm .plan-name{font-size:14px;margin-bottom:4px;}
+.plan-sm .plan-desc{font-size:11px;margin-bottom:12px;}
+.plan-sm .plan-price{font-size:26px;}
+.plan-sm .plan-psub{font-size:10px;margin-bottom:14px;}
+.plan-sm .plan-feats{gap:5px;margin-bottom:16px;}
+.plan-sm .pf,.plan-sm .pf-ico,.plan-sm .pf-txt{font-size:11px;}
+.plan-sm .btn-plan{padding:10px;font-size:12px;}
+.plan-sm.featured{transform:scale(1.02);}
+.plan-sm.featured:hover{transform:scale(1.02) translateY(-3px);}
+.plan-coming{opacity:.55;pointer-events:none;}
+.plan-coming .plan-badge{background:var(--muted);}
+.plan-coming .plan-price{color:var(--muted);}
+.plan-coming .btn-plan{color:var(--muted);border-color:var(--border);cursor:not-allowed;}
 
 .plan{
   background:var(--bg);border:2px solid var(--border);border-radius:22px;
@@ -675,13 +691,13 @@ footer{
   .weeks{grid-template-columns:repeat(2,1fr);}
   .mentor-inner{grid-template-columns:1fr;}
   .mentor-card{max-width:400px;}
-  .plans-grid[style]{grid-template-columns:repeat(2,1fr) !important;}
+  .plans-grid[style]{grid-template-columns:repeat(3,1fr) !important;}
 }
 @media(max-width:900px){
   .problem-grid{grid-template-columns:1fr 1fr;}
   .outcomes-grid{grid-template-columns:1fr 1fr;}
   .plans-grid,.plans-grid[style]{grid-template-columns:repeat(2,1fr) !important;}
-  .plan.featured{transform:none;}
+  .plan.featured,.plan-sm.featured{transform:none;}
   .test-grid{grid-template-columns:1fr 1fr;}
   .stats-inner{grid-template-columns:repeat(2,1fr);}
   .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.12);padding:16px;}
@@ -1162,13 +1178,13 @@ footer{
       <p class="sec-sub">Bitta grant qo'lga kiritish — kurs narxini 100 marta qoplash demak.</p>
     </div>
 
-    <!-- 4 KURS GRID -->
-    <div class="plans-grid" style="grid-template-columns:repeat(4,1fr);gap:16px;">
+    <!-- 6 KURS GRID (5 faol + 1 tez kunda) -->
+    <div class="plans-grid" style="grid-template-columns:repeat(6,1fr);gap:12px;max-width:100%;">
 
-      <div class="plan reveal">
+      <div class="plan plan-sm reveal">
         <div class="plan-ico">🎓</div>
         <div class="plan-name">Bachelor Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">10–11-sinf, 16–18 yosh · Xalqaro</div>
+        <div class="plan-desc">10–11-sinf, 16–18 yosh · Xalqaro</div>
         <div class="plan-price">499,000</div>
         <div class="plan-psub">so'm · bir martalik to'lov</div>
         <div class="plan-div"></div>
@@ -1181,10 +1197,10 @@ footer{
         <a href="payment.html?course=bachelor-lab" class="btn-plan btn-plan-g">Yozilish →</a>
       </div>
 
-      <div class="plan reveal reveal-d1">
+      <div class="plan plan-sm reveal reveal-d1">
         <div class="plan-ico">🔬</div>
         <div class="plan-name">Master Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">Bakalavr bitiruvchilari, 21–27 yosh · Xalqaro</div>
+        <div class="plan-desc">Bakalavr bitiruvchilari, 21–27 yosh · Xalqaro</div>
         <div class="plan-price">499,000</div>
         <div class="plan-psub">so'm · bir martalik to'lov</div>
         <div class="plan-div"></div>
@@ -1197,11 +1213,11 @@ footer{
         <a href="payment.html?course=master-lab" class="btn-plan btn-plan-g">Yozilish →</a>
       </div>
 
-      <div class="plan featured reveal reveal-d2">
+      <div class="plan plan-sm featured reveal reveal-d2">
         <div class="plan-badge">🔥 Eng qiyin yo'l</div>
         <div class="plan-ico">⚗️</div>
         <div class="plan-name">PhD Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">Magistrlar, ilmiy martabaga intiluv., 22–35 yosh</div>
+        <div class="plan-desc">Magistrlar, ilmiy martabaga intiluv., 22–35 yosh</div>
         <div class="plan-price">699,000</div>
         <div class="plan-psub">so'm · bir martalik to'lov</div>
         <div class="plan-div"></div>
@@ -1214,36 +1230,53 @@ footer{
         <a href="payment.html?course=phd-lab" class="btn-plan btn-plan-w">Yozilish →</a>
       </div>
 
-      <div class="plan reveal reveal-d3">
+      <div class="plan plan-sm reveal reveal-d3">
         <div class="plan-ico">🇰🇷</div>
         <div class="plan-name">GKS Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">Koreya hukumati stipendiyasi · 18–35 yosh</div>
+        <div class="plan-desc">Koreya hukumati stipendiyasi · 18–35 yosh</div>
         <div class="plan-price">499,000</div>
         <div class="plan-psub">so'm · bir martalik to'lov</div>
         <div class="plan-div"></div>
         <div class="plan-feats">
           <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">6 modul · 20 ta video dars</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Hujjat tayyorlash va ariza strategiyasi</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Hujjat va ariza strategiyasi</span></div>
           <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">O'z sur'atida o'qish</span></div>
           <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Umrbod kirish huquqi</span></div>
         </div>
         <a href="payment.html?course=gks-lab" class="btn-plan btn-plan-g">Yozilish →</a>
       </div>
 
-      <div class="plan reveal reveal-d4">
+      <div class="plan plan-sm reveal reveal-d4">
         <div class="plan-ico">🇩🇪</div>
         <div class="plan-name">DAAD Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">Germaniya stipendiyasi · Magistr, PhD, Tadqiqot</div>
+        <div class="plan-desc">Germaniya stipendiyasi · Magistr, PhD, Tadqiqot</div>
         <div class="plan-price">599,000</div>
         <div class="plan-psub">so'm · bir martalik to'lov</div>
         <div class="plan-div"></div>
         <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">8 modul · 30 ta video dars (~9 soat)</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">8 modul · 30 ta video dars</span></div>
           <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Supervisor topish metodologiyasi</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Cold Email + Research Proposal workshop</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Cold Email + Research Proposal</span></div>
           <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Umrbod kirish huquqi</span></div>
         </div>
         <a href="payment.html?course=daad-lab" class="btn-plan btn-plan-g">Yozilish →</a>
+      </div>
+
+      <div class="plan plan-sm plan-coming reveal reveal-d5">
+        <div class="plan-badge">🔜 Tez kunda</div>
+        <div class="plan-ico">🇯🇵</div>
+        <div class="plan-name">MEXT Lab</div>
+        <div class="plan-desc">Yaponiya davlat stipendiyasi · Bakalavrdan PhD</div>
+        <div class="plan-price">— — —</div>
+        <div class="plan-psub">narx aniqlanmoqda</div>
+        <div class="plan-div"></div>
+        <div class="plan-feats">
+          <div class="pf"><span class="pf-ico">🔜</span><span class="pf-txt">MEXT application tizimi</span></div>
+          <div class="pf"><span class="pf-ico">🔜</span><span class="pf-txt">Research plan tayyorlash</span></div>
+          <div class="pf"><span class="pf-ico">🔜</span><span class="pf-txt">Professor qidirish strategiyasi</span></div>
+          <div class="pf"><span class="pf-ico">🔜</span><span class="pf-txt">Umrbod kirish huquqi</span></div>
+        </div>
+        <span class="btn-plan btn-plan-g">Tez kunda →</span>
       </div>
 
     </div>
