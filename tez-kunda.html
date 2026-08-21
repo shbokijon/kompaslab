@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tez kunda — Kompas Lab</title>
+<meta name="description" content="Kompas Lab yangi Lablar: 2-Miya, Notion Shablonlar va boshqalar tez kunda. Ro'yxatga yoziling.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- ════════════════ NAV ════════════════ -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-lm">🧭</div>
+    <span class="nav-lt">Kompas Lab</span>
+  </a>
+  <div class="nav-links">
+    <a href="kurslar.html" class="nav-link">Kurslar</a>
+    <a href="narxlar.html" class="nav-link">Narxlar</a>
+    <a href="mentor.html" class="nav-link">Mentor</a>
+    <a href="natijalar.html" class="nav-link">Natijalar</a>
+    <a href="tez-kunda.html" class="nav-link">Tez kunda</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+  </div>
+  <div class="nav-ctas">
+    <a href="login.html" class="btn-nav-ghost">Kirish</a>
+    <a href="register.html" class="btn-nav-solid">Ro'yxatdan o'tish →</a>
+  </div>
+</nav>
+
+<!-- ════════════════ COMING SOON ════════════════ -->
+<section class="section" id="coming-soon" style="background:var(--text);padding-top:140px;">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:48px;">
+      <div class="sec-label" style="color:rgba(255,255,255,0.4);justify-content:center;">
+        <span style="background:rgba(255,255,255,0.1)">Tez kunda</span>
+      </div>
+      <h2 class="sec-title" style="color:#fff;">Keyingi <em style="color:var(--accent2)">Lablar.</em></h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto;">
+        Ro'yxatga yoziling — ochilishi bilanoq birinchilar qatorida xabardor bo'ling.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:540px;margin:0 auto 48px;">
+
+      <div class="cs-lab-card reveal" data-slug="ikki-miya">
+        <div style="font-size:32px;margin-bottom:10px;">🧠</div>
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;">2-Miya</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:14px;line-height:1.5;">Ikkinchi miya — bilimni tizimlashtirish va PKM</div>
+        <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;margin-bottom:14px;">2026 yil · Rejalashtirilgan</div>
+        <button class="cs-notify-btn" onclick="openWaitlist('ikki-miya','2-Miya')">🔔 Xabar ber</button>
+      </div>
+
+      <div class="cs-lab-card reveal reveal-d1" data-slug="notion-shablonlar">
+        <div style="font-size:32px;margin-bottom:10px;">📓</div>
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;">Notion Shablonlar</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:14px;line-height:1.5;">Talabalar uchun tayyor Notion workspace to'plami</div>
+        <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--green);font-weight:700;margin-bottom:14px;">2026 yil · Rejalashtirilgan</div>
+        <button class="cs-notify-btn" onclick="openWaitlist('notion-shablonlar','Notion Shablonlar')">🔔 Xabar ber</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST MODAL -->
+<div class="wl-ovl" id="wlModal">
+  <div class="wl-card">
+    <button class="wl-x" onclick="closeWaitlist()">×</button>
+    <div style="font-size:36px;margin-bottom:12px;" id="wlEmoji">🔔</div>
+    <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;" id="wlTitle">GKS Lab ochilishini kuting</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:20px;">
+      Email manzilingizni qoldiring — ochilishi bilanoq siz birinchi xabardor bo'lasiz.
+    </p>
+    <input type="email" id="wlEmail" class="wl-input" placeholder="email@gmail.com">
+    <div id="wlMsg" style="font-size:12px;margin-top:8px;min-height:18px;"></div>
+    <button class="wl-btn" id="wlBtn" onclick="submitWaitlist()">🔔 Xabardor qiling</button>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px;text-align:center;">Spam yo'q. Faqat ochilish xabari.</p>
+  </div>
+</div>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="foot-logo">
+          <div class="foot-lm">🧭</div>
+          <span class="foot-lt">Kompas Lab</span>
+        </a>
+        <p class="foot-bio">STEM talabalarini global tadqiqotchilar va yuqori darajali mutaxassislarga aylantiradigan academic incubator.</p>
+        <div class="foot-socials">
+          <a href="https://t.me/kompaslab" class="foot-soc" target="_blank">✈️</a>
+          <a href="#" class="foot-soc">📸</a>
+          <a href="#" class="foot-soc">▶️</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Kurs</h4>
+        <div class="foot-links">
+          <a href="kurslar.html" class="foot-link">Dastur</a>
+          <a href="narxlar.html" class="foot-link">Narxlar</a>
+          <a href="natijalar.html" class="foot-link">Natijalar</a>
+          <a href="faq.html" class="foot-link">FAQ</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Grantlar</h4>
+        <div class="foot-links">
+          <a href="#" class="foot-link">GKS Korea</a>
+          <a href="#" class="foot-link">DAAD Germany</a>
+          <a href="#" class="foot-link">Erasmus+</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Aloqa</h4>
+        <div class="foot-links">
+          <a href="https://t.me/kompaslab" class="foot-link">Telegram</a>
+          <a href="login.html" class="foot-link">Kirish</a>
+          <a href="register.html" class="foot-link">Ro'yxatdan o'tish</a>
+          <a href="#" class="foot-link">Shartlar</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Kompas Lab · Barcha huquqlar himoyalangan</span>
+      <span>Toshkent, O'zbekiston 🇺🇿</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script>
+// ── NAV SCROLL ──────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20)
+})
+
+// ── REVEAL ON SCROLL ───────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal')
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target) } })
+}, { threshold: 0.12 })
+revealEls.forEach(el => revealObs.observe(el))
+
+// ── SMOOTH SCROLL FOR NAV ──────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1)
+    const el = document.getElementById(id)
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior:'smooth', block:'start' }) }
+  })
+})
+
+// ════════════════════════════════════════════════════════
+//  WAITLIST
+// ════════════════════════════════════════════════════════
+let _wlSlug = '', _wlName = ''
+
+const WL_EMOJIS = {
+  'gks-lab':            '🇰🇷',
+  'ikki-miya':          '🧠',
+  'notion-shablonlar':  '📓',
+}
+
+function openWaitlist(slug, name) {
+  _wlSlug = slug
+  _wlName = name
+  document.getElementById('wlEmoji').textContent = WL_EMOJIS[slug] || '🔔'
+  document.getElementById('wlTitle').textContent = `${name} ochilishini kuting`
+  document.getElementById('wlEmail').value = ''
+  document.getElementById('wlMsg').textContent = ''
+  document.getElementById('wlBtn').disabled = false
+  document.getElementById('wlBtn').textContent = '🔔 Xabardor qiling'
+  document.getElementById('wlModal').classList.add('open')
+  setTimeout(() => document.getElementById('wlEmail').focus(), 150)
+}
+
+function closeWaitlist() {
+  document.getElementById('wlModal').classList.remove('open')
+}
+
+async function submitWaitlist() {
+  const email = document.getElementById('wlEmail').value.trim()
+  const msg   = document.getElementById('wlMsg')
+  const btn   = document.getElementById('wlBtn')
+
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    msg.style.color = 'var(--red)'
+    msg.textContent = '⚠️ To\'g\'ri email kiriting'
+    return
+  }
+
+  btn.disabled = true
+  btn.textContent = '⏳ Saqlanmoqda...'
+  msg.textContent = ''
+
+  try {
+    const { error } = await supabase
+      .from('waitlist')
+      .upsert(
+        { email: email, course_slug: _wlSlug, source: 'tez-kunda_page' },
+        { onConflict: 'email,course_slug', ignoreDuplicates: true }
+      )
+
+    if (error && error.code !== '23505') throw error
+
+    msg.style.color = 'var(--green)'
+    msg.textContent = '✅ Qo\'shildingiz! Ochilishi bilanoq xabar beramiz.'
+    btn.textContent = '✅ Ro\'yxatdasiz'
+
+    const card = document.querySelector(`[data-slug="${_wlSlug}"]`)
+    if (card) {
+      const notifyBtn = card.querySelector('.cs-notify-btn')
+      if (notifyBtn) {
+        notifyBtn.textContent = '✅ Ro\'yxatdasiz'
+        notifyBtn.style.background = 'rgba(26,122,74,0.2)'
+        notifyBtn.style.borderColor = 'rgba(26,122,74,0.4)'
+        notifyBtn.style.color = '#4ade80'
+        notifyBtn.disabled = true
+      }
+    }
+
+    setTimeout(() => closeWaitlist(), 2200)
+
+  } catch(err) {
+    msg.style.color = 'var(--red)'
+    msg.textContent = '❌ Xatolik yuz berdi. Qayta urinib ko\'ring.'
+    btn.disabled = false
+    btn.textContent = '🔔 Xabardor qiling'
+  }
+}
+
+// Modal background click to close
+document.getElementById('wlModal').addEventListener('click', function(e) {
+  if (e.target === this) closeWaitlist()
+})
+
+// Enter key in email field
+document.getElementById('wlEmail').addEventListener('keydown', e => {
+  if (e.key === 'Enter') submitWaitlist()
+})
+</script>
+</body>
+</html>
