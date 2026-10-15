@@ -232,6 +232,13 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       <span class="sb-icon">🎬</span><span class="sb-label">Darslar</span>
       <span class="sb-pill sp-gray">35</span>
     </button>
+    <button class="sb-item" onclick="nav('regs',this)">
+      <span class="sb-icon">📋</span><span class="sb-label">Roʻyxatdan oʻtganlar</span>
+      <span class="sb-pill sp-gray" id="pRegs">—</span>
+    </button>
+    <button class="sb-item" onclick="nav('labs',this)">
+      <span class="sb-icon">🧭</span><span class="sb-label">Lablar va narxlar</span>
+    </button>
     <button class="sb-item" onclick="nav('waitlist',this)">
       <span class="sb-icon">🔔</span><span class="sb-label">Kutish roʻyxati</span>
       <span class="sb-pill sp-gray" id="pWait">—</span>
@@ -477,6 +484,55 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       </div>
     </div>
 
+    <!-- ROʻYXATDAN OʻTGANLAR -->
+    <div class="sec" id="sec-regs">
+      <div class="card">
+        <div class="ch">
+          <h2>📋 Roʻyxatdan oʻtganlar</h2>
+          <div class="ch-r">
+            <button class="btn bs bsm" onclick="copyRegs('email')">📋 Emaillar</button>
+            <button class="btn bs bsm" onclick="copyRegs('phone')">📞 Telefonlar</button>
+            <button class="btn bs bsm" onclick="exportRegsCSV()">📤 CSV</button>
+          </div>
+        </div>
+        <div class="tctrl">
+          <input class="srch" id="regQ" placeholder="🔍 Ism, email, telefon..." oninput="renderRegs()">
+          <select class="flt" id="regPeriod" onchange="renderRegs()">
+            <option value="">Butun davr</option>
+            <option value="1">Oxirgi 24 soat</option>
+            <option value="7">Oxirgi 7 kun</option>
+            <option value="30">Oxirgi 30 kun</option>
+          </select>
+          <span id="regSummary" style="font-size:12px;color:var(--muted)"></span>
+        </div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr>
+            <th>#</th><th>Ism</th><th>Email</th><th>Telefon</th><th>Taʼlim</th><th>Maqsad</th><th>Kurs</th><th>Sana</th>
+          </tr></thead><tbody id="tbRegs"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- LABLAR VA NARXLAR -->
+    <div class="sec" id="sec-labs">
+      <div class="card" style="margin-bottom:14px">
+        <div class="ch"><h2>🌐 Bosh sahifada hozir koʻrinayotgan raqamlar</h2><button class="btn bs bsm" onclick="loadLabs()">🔄 Yangilash</button></div>
+        <div class="mb" id="pubStats" style="font-size:13px;color:var(--muted)">Yuklanmoqda...</div>
+      </div>
+      <div class="card">
+        <div class="ch"><h2>🧭 Lablar va narxlar</h2></div>
+        <div class="mb" style="font-size:12.5px;color:var(--muted);padding-bottom:0">
+          Narxni oʻzgartirib “Saqlash”ni bosing: kompaslab.uz bosh sahifasida sahifa keyingi ochilganda yangi narx chiqadi, deploy kerak emas.
+          Lab sahifalaridagi (bachelor-lab.html va boshqalar) narxlar ham shu bazadan oʻqiladi. Bazada yoʻq Lab uchun avval “Bazaga qoʻshish”ni bosing.
+        </div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr>
+            <th>Lab</th><th>Yillik (soʻm)</th><th>Oylik (soʻm)</th><th>Kutish roʻyxati</th><th>Holat</th><th>Amal</th>
+          </tr></thead><tbody id="tbLabs"></tbody></table>
+        </div>
+      </div>
+    </div>
+
     <!-- SOZLAMALAR -->
     <div class="sec" id="sec-settings">
       <div class="card">
@@ -675,6 +731,9 @@ const COURSE_META = {
   'phd-lab':      { emoji: '⚗️', label: 'PhD Lab' },
   'gks-lab':      { emoji: '🇰🇷', label: 'GKS Lab' },
   'daad-lab':     { emoji: '🇩🇪', label: 'DAAD Lab' },
+  'usa-lab':      { emoji: '🇺🇸', label: 'USA Lab' },
+  'tadbirkor-talaba': { emoji: '💼', label: 'Tadbirkor Talaba' },
+  'miggo':        { emoji: '🧳', label: 'Musofir Lab' },
 }
 
 // ════════════════════════════════════════════════════════
@@ -703,6 +762,7 @@ async function init() {
   // Barcha ma'lumotlarni yuklash
   await loadAll()
   loadWaitlist().catch(() => {})
+  loadRegs().catch(() => {})
 
   // Auth kuzatish
   onAuthChange(ev => { if (ev === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login })
@@ -1467,7 +1527,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Admin Dashboard', students: 'Talabalar',
     lessons: 'Darslar', payments: "To'lovlar", waitlist: 'Kutish roʻyxati',
-    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar'
+    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Roʻyxatdan oʻtganlar', labs: 'Lablar va narxlar'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1480,6 +1540,8 @@ function nav(name, el) {
   // To'lovlar yangilash
   if (name === 'payments') loadPayments()
   if (name === 'waitlist') loadWaitlist()
+  if (name === 'regs') loadRegs()
+  if (name === 'labs') loadLabs()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
   // Sozlamalar — saqlangan qiymatlarni yuklash
@@ -1615,6 +1677,117 @@ async function copyWaitEmails() {
   if (!emails.length) { toast('⚠️ Roʻyxat boʻsh'); return }
   try { await navigator.clipboard.writeText(emails.join(', ')); toast('✅ ' + emails.length + ' ta email nusxalandi') }
   catch (e) { prompt('Emaillar:', emails.join(', ')) }
+}
+
+// ════════════════════════════════════════════════════════
+//  ROʻYXATDAN OʻTGANLAR (profiles)
+// ════════════════════════════════════════════════════════
+let _regs = []
+async function loadRegs() {
+  const tb = document.getElementById('tbRegs')
+  tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  const { data, error } = await supabase.from(DB.profiles)
+    .select('id, first_name, last_name, email, phone, education, goal, created_at, enrollments(payment_status, course:courses(slug, title))')
+    .neq('role', 'admin')
+    .order('created_at', { ascending: false })
+  if (error) { tb.innerHTML = '<tr><td colspan="8" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
+  _regs = data || []
+  document.getElementById('pRegs').textContent = _regs.length
+  renderRegs()
+}
+function regsFiltered() {
+  const q = (document.getElementById('regQ').value || '').trim().toLowerCase()
+  const days = parseInt(document.getElementById('regPeriod').value || '0', 10)
+  const since = days ? Date.now() - days * 86400000 : 0
+  return _regs.filter(r => {
+    if (since && new Date(r.created_at).getTime() < since) return false
+    if (!q) return true
+    return [r.first_name, r.last_name, r.email, r.phone].join(' ').toLowerCase().includes(q)
+  })
+}
+function regCourses(r) {
+  return (r.enrollments || []).map(e => (e.course?.title || e.course?.slug || '?') + ' (' + e.payment_status + ')').join(', ')
+}
+function renderRegs() {
+  const rows = regsFiltered(), tb = document.getElementById('tbRegs')
+  document.getElementById('regSummary').textContent = rows.length + ' / ' + _regs.length + ' kishi'
+  if (!rows.length) { tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Hech kim topilmadi</td></tr>'; return }
+  tb.innerHTML = rows.map((r, i) => '<tr><td>' + (i + 1) + '</td><td>' + escHtml(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || '—') +
+    '</td><td>' + escHtml(r.email || '') + '</td><td>' + escHtml(r.phone || '—') + '</td><td>' + escHtml(r.education || '—') +
+    '</td><td>' + escHtml(r.goal || '—') + '</td><td>' + escHtml(regCourses(r) || '—') + '</td><td>' + escHtml((r.created_at || '').slice(0, 16).replace('T', ' ')) + '</td></tr>').join('')
+}
+async function copyRegs(field) {
+  const vals = [...new Set(regsFiltered().map(r => (r[field] || '').trim()).filter(Boolean))]
+  if (!vals.length) { toast('⚠️ Roʻyxat boʻsh'); return }
+  try { await navigator.clipboard.writeText(vals.join(field === 'email' ? ', ' : '\n')); toast('✅ ' + vals.length + ' ta nusxalandi') }
+  catch (e) { prompt('Nusxalang:', vals.join(', ')) }
+}
+function exportRegsCSV() {
+  const rows = regsFiltered()
+  if (!rows.length) { toast('⚠️ Roʻyxat boʻsh'); return }
+  downloadCSV('royxatdan-otganlar-' + new Date().toISOString().slice(0, 10) + '.csv',
+    ['Ism', 'Familiya', 'Email', 'Telefon', 'Taʼlim', 'Maqsad', 'Kurslar', 'Sana'],
+    rows.map(r => [r.first_name || '', r.last_name || '', r.email || '', r.phone || '', r.education || '', r.goal || '', regCourses(r), (r.created_at || '').slice(0, 19).replace('T', ' ')]))
+  toast('✅ CSV yuklab olindi')
+}
+
+// ════════════════════════════════════════════════════════
+//  LABLAR VA NARXLAR (courses)
+// ════════════════════════════════════════════════════════
+const LAB_LIST = [
+  ['bachelor-lab', 'Bachelor Lab'], ['master-lab', 'Master Lab'], ['phd-lab', 'PhD Lab'],
+  ['gks-lab', 'GKS Lab'], ['usa-lab', 'USA Lab'], ['daad-lab', 'DAAD Lab'],
+  ['tadbirkor-talaba', 'Tadbirkor Talaba'], ['miggo', 'Musofir Lab']
+]
+const LAB_DEFAULT_PRICE = { 'usa-lab': [699000, 99000], 'tadbirkor-talaba': [299000, 29900], 'miggo': [499000, 49900] }
+let _labRows = {}
+function fmtSum(n) { return n == null ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }
+async function loadLabs() {
+  const tb = document.getElementById('tbLabs')
+  tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  const [c, w, st] = await Promise.all([
+    supabase.from(DB.courses).select('slug, title, status, price, price_yearly, price_monthly'),
+    supabase.from(DB.waitlist).select('course_slug'),
+    supabase.rpc('kompas_public_stats')
+  ])
+  if (c.error) { tb.innerHTML = '<tr><td colspan="6" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
+  _labRows = {}; (c.data || []).forEach(r => { _labRows[r.slug] = r })
+  const wl = {}; (w.data || []).forEach(r => { wl[r.course_slug] = (wl[r.course_slug] || 0) + 1 })
+  tb.innerHTML = LAB_LIST.map(([slug, name]) => {
+    const r = _labRows[slug], y = r ? (r.price_yearly ?? r.price) : null, m = r ? r.price_monthly : null
+    const inp = (id, v) => '<input id="' + id + '" type="number" min="0" step="100" value="' + (v ?? '') + '" style="width:120px;padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit">'
+    const act = r
+      ? '<button class="btn bp bsm" onclick="saveLabPrice(\'' + slug + '\')">💾 Saqlash</button>'
+      : '<button class="btn bs bsm" onclick="addLabRow(\'' + slug + '\')">➕ Bazaga qoʻshish</button>'
+    return '<tr><td><b>' + escHtml(name) + '</b><div style="font-size:11px;color:var(--muted)">' + slug + '</div></td>' +
+      '<td>' + (r ? inp('py-' + slug, y) : '—') + '</td><td>' + (r ? inp('pm-' + slug, m) : '—') + '</td>' +
+      '<td>' + (wl[slug] || 0) + ' kishi</td><td>' + (r ? escHtml(r.status) : '<span style="color:var(--red)">bazada yoʻq</span>') + '</td><td>' + act + '</td></tr>'
+  }).join('')
+  const box = document.getElementById('pubStats')
+  if (st.error || !st.data) { box.textContent = 'Statistika oʻqilmadi: ' + (st.error?.message || ''); return }
+  const d = st.data
+  box.innerHTML = '<b style="color:var(--text)">' + d.registered + '</b> kishi roʻyxatdan oʻtgan · <b style="color:var(--text)">' + d.waitlist +
+    '</b> kishi kutish roʻyxatida · oxirgi roʻyxatdan oʻtish: ' + escHtml((d.last_signup || '—').slice(0, 16).replace('T', ' ')) +
+    '<br>Bosh sahifada son faqat 10 va undan koʻp boʻlsa koʻrsatiladi (soxta raqam yozilmaydi).'
+}
+async function saveLabPrice(slug) {
+  const y = parseInt(document.getElementById('py-' + slug).value, 10), m = parseInt(document.getElementById('pm-' + slug).value, 10)
+  if (!(y > 0) || !(m > 0)) { toast('⚠️ Narxni toʻgʻri kiriting'); return }
+  if (m * 12 < y) { toast('⚠️ 12 oylik narx yillikdan arzon boʻlib qoldi, tekshiring'); return }
+  const old = _labRows[slug]
+  if (!confirm(slug + ': yillik ' + fmtSum(old.price_yearly ?? old.price) + ' → ' + fmtSum(y) + ', oylik ' + fmtSum(old.price_monthly) + ' → ' + fmtSum(m) + ' soʻm. Saqlansinmi?')) return
+  const { error } = await supabase.from(DB.courses).update({ price_yearly: y, price_monthly: m, price: y, updated_at: new Date().toISOString() }).eq('slug', slug)
+  if (error) { toast('❌ ' + error.message); return }
+  toast('✅ Saqlandi. Bosh sahifada yangilandi')
+  loadLabs()
+}
+async function addLabRow(slug) {
+  const name = (LAB_LIST.find(l => l[0] === slug) || [slug, slug])[1], p = LAB_DEFAULT_PRICE[slug] || [699000, 99000]
+  if (!confirm(name + ' bazaga “draft” holatida qoʻshilsinmi? Narx: ' + fmtSum(p[0]) + ' / ' + fmtSum(p[1]) + ' soʻm (keyin oʻzgartirasiz).')) return
+  const { error } = await supabase.from(DB.courses).insert({ slug, title: name, status: 'draft', price: p[0], price_yearly: p[0], price_monthly: p[1] })
+  if (error) { toast('❌ ' + error.message); return }
+  toast('✅ ' + name + ' qoʻshildi')
+  loadLabs()
 }
 
 function exportStudentsCSV() {
