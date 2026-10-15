@@ -46,8 +46,10 @@ const APP_CONFIG = {
   // Kurslar (slug Supabase courses.slug bilan mos bo'lishi kerak)
   courses: {
     eyuf:     { slug: 'eyuf-lab',     name: 'EYUF Lab',     emoji: '🎯', modules: 6,  lessons: 20,  price: 499000 },
-    bachelor: { slug: 'bachelor-lab', name: 'Bachelor Lab', emoji: '🎓', modules: 8,  lessons: 42,  price: 499000 },
-    master:   { slug: 'master-lab',   name: 'Master Lab',   emoji: '🔬', modules: 8,  lessons: 28,  price: 499000 },
+    bachelor: { slug: 'bachelor-lab', name: 'Bachelor Lab', emoji: '🎓', modules: 17, lessons: 86,  price: 699000, priceMonthly: 99000 },
+    master:   { slug: 'master-lab',   name: 'Master Lab',   emoji: '🔬', modules: 9,  lessons: 59,  price: 699000, priceMonthly: 99000 },
+    gks:      { slug: 'gks-lab',      name: 'GKS Lab',      emoji: '🇰🇷', modules: 12, lessons: 54,  price: 699000, priceMonthly: 99000 },
+    usa:      { slug: 'usa-lab',      name: 'USA Lab',      emoji: '🇺🇸', modules: 12, lessons: 72,  price: 699000, priceMonthly: 99000 },
     phd:      { slug: 'phd-lab',      name: 'PhD Lab',      emoji: '⚗️', modules: 9,  lessons: 32,  price: 699000 },
   },
 

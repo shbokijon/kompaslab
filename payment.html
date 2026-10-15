@@ -688,5 +688,22 @@ function showToast(msg) {
 
 document.addEventListener('DOMContentLoaded', init)
 </script>
+<!-- TO'LOV YOPIQ (2026-10): obuna modeli (Payme Subscribe) tayyor bo'lguncha.
+     Faqat ichki test kursi (?course=test-lab) ochiq qoladi. Ochish uchun shu blokni olib tashlang. -->
+<div id="payClosed" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(26,46,38,.72);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:20px;padding:32px 28px;max-width:440px;width:100%;text-align:center;font-family:'Outfit',sans-serif;">
+    <div style="font-size:36px;margin-bottom:10px;">⏳</div>
+    <h2 style="font-size:20px;font-weight:900;color:#2d4a3e;margin-bottom:8px;">Onlayn toʻlov hali ochilmagan</h2>
+    <p style="font-size:14px;color:#6b7f76;line-height:1.6;margin-bottom:20px;">Lablar obuna asosida ishga tushadi: yillik 699 000 soʻm yoki oylik 99 000 soʻm. Kutish roʻyxatiga yoziling — ochilishi bilan xabar beramiz.</p>
+    <a href="index.html#pricing" style="display:block;padding:13px;border-radius:12px;background:#c4622d;color:#fff;font-weight:800;text-decoration:none;margin-bottom:10px;">Kutish roʻyxati →</a>
+    <a href="https://t.me/kompaslab" target="_blank" rel="noopener" style="font-size:13px;color:#2d4a3e;font-weight:700;text-decoration:none;">Telegramʼda soʻrash</a>
+  </div>
+</div>
+<script>
+(function () {
+  var slug = new URLSearchParams(location.search).get('course')
+  if (slug !== 'test-lab') document.getElementById('payClosed').style.display = 'flex'
+})()
+</script>
 </body>
 </html>

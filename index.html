@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kompas Lab — Top-300 universitetlarga yo'l</title>
-<meta name="description" content="STEM talabalari uchun top-300 xalqaro universitetlar va EYUF, GKS, DAAD grantlariga tayyorlov platformasi.">
+<title>Kompas Lab — xorijda oʻqishga tizimli tayyorgarlik</title>
+<meta name="description" content="Bachelor, Master, GKS, USA, PhD va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tizimli tayyorgarlik. Har Labda M0 bepul.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* ════════════════════════════════════════
@@ -756,6 +756,85 @@ footer{
 }
 .wl-btn:hover{background:var(--accent-h);}
 .wl-btn:disabled{opacity:.6;cursor:not-allowed;}
+
+/* ════════════════════════════════════════
+   v3 KATALOG (2026-10)
+════════════════════════════════════════ */
+:root{--red:#b42318;}
+.principles{background:var(--accent);padding:28px 5%;}
+.principles-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.pr-item{padding:4px 24px;border-right:1px solid rgba(255,255,255,.12);}
+.pr-item:last-child{border-right:none;}
+.pr-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px;}
+.pr-text{font-size:12px;color:rgba(255,255,255,.6);line-height:1.5;}
+
+.labs{padding:96px 5%;background:var(--bg);}
+.labs-inner{max-width:1160px;margin:0 auto;}
+.labs-top{margin-bottom:40px;}
+.axis{margin-top:44px;}
+.axis-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.axis-name{font-size:12px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-family:'JetBrains Mono',monospace;}
+.axis-desc{font-size:13px;color:var(--muted);}
+.labs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.lab{
+  background:var(--surface);border:1px solid var(--border);border-radius:18px;
+  padding:22px;display:flex;flex-direction:column;gap:12px;
+  transition:transform .2s, box-shadow .2s;
+}
+.lab:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(45,74,62,0.1);}
+.lab-head{display:flex;align-items:center;gap:12px;}
+.lab-ico{width:42px;height:42px;border-radius:12px;background:var(--accent-lit);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.lab-name{font-size:17px;font-weight:900;color:var(--accent);line-height:1.2;}
+.lab-who{font-size:12px;color:var(--muted);margin-top:2px;}
+.lab-meta{display:flex;flex-wrap:wrap;gap:6px;}
+.lab-tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;font-family:'JetBrains Mono',monospace;background:var(--bg);border:1px solid var(--border);color:var(--text);}
+.lab-tag.free{background:var(--green-lit);border-color:transparent;color:var(--green);}
+.lab-tag.soon{background:var(--gold-lit);border-color:transparent;color:var(--gold);}
+.lab-out{font-size:13px;color:var(--text);line-height:1.55;}
+.lab-out b{font-weight:700;}
+.lab-note{font-size:12px;color:var(--muted);line-height:1.5;border-left:3px solid var(--accent2-lit);padding-left:10px;}
+.lab-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.lab-price{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;color:var(--accent);line-height:1.3;}
+.lab-price small{display:block;font-size:11px;font-weight:600;color:var(--muted);font-family:'Outfit',sans-serif;}
+.btn-lab{
+  padding:9px 14px;border-radius:10px;border:1.5px solid var(--accent);
+  background:var(--surface);color:var(--accent);font-size:13px;font-weight:800;
+  font-family:'Outfit',sans-serif;cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.btn-lab:hover{background:var(--accent);color:#fff;}
+
+.plan-rules{max-width:960px;margin:36px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rule{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px 18px;font-size:13px;color:var(--text);line-height:1.6;}
+.rule b{display:block;font-size:13px;font-weight:800;color:var(--accent);margin-bottom:4px;}
+.pay-status{
+  max-width:960px;margin:0 auto 40px;display:flex;gap:12px;align-items:flex-start;
+  background:var(--gold-lit);border:1px solid #e8d48a;border-radius:14px;padding:14px 18px;
+  font-size:13px;color:var(--text);line-height:1.6;
+}
+.wl-select{
+  width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:12px;
+  font-size:14px;font-family:'Outfit',sans-serif;background:var(--bg);margin-bottom:10px;outline:none;
+}
+.wl-select:focus{border-color:var(--accent);background:#fff;}
+
+@media(max-width:1100px){
+  .labs-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:900px){
+  .principles-inner{grid-template-columns:1fr 1fr;}
+  .pr-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.12);padding:14px 8px;}
+  .plan-rules{grid-template-columns:1fr;}
+}
+@media(max-width:650px){
+  .labs-grid{grid-template-columns:1fr;}
+  .principles-inner{grid-template-columns:1fr;}
+  .nav-ctas .btn-nav-ghost{display:none;}
+  .nav-ctas{margin-left:auto;}
+  .btn-nav-solid{padding:7px 12px;font-size:12px;}
+  .nav-lt{font-size:15px;}
+  .hero-inner{grid-template-columns:minmax(0,1fr);}
+  .hero-card{max-width:100%;}
+}
 </style>
 </head>
 <body>
@@ -767,15 +846,14 @@ footer{
     <span class="nav-lt">Kompas Lab</span>
   </a>
   <div class="nav-links">
-    <a href="#curriculum" class="nav-link">Kurslar</a>
+    <a href="#labs" class="nav-link">Lablar</a>
     <a href="#pricing" class="nav-link">Narxlar</a>
-    <a href="#mentor" class="nav-link">Mentor</a>
-    <a href="#results" class="nav-link">Natijalar</a>
-    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="#mentor" class="nav-link">Asoschi</a>
+    <a href="#faq" class="nav-link">Savollar</a>
   </div>
   <div class="nav-ctas">
     <a href="login.html" class="btn-nav-ghost">Kirish</a>
-    <a href="register.html" class="btn-nav-solid">Ro'yxatdan o'tish →</a>
+    <a href="#labs" class="btn-nav-solid">Lab tanlash →</a>
   </div>
 </nav>
 
@@ -786,37 +864,35 @@ footer{
     <div class="hero-left">
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
-        🏆 EYUF · GKS · DAAD scholarship recipients
+        Kuzatuvdan — kashfiyotga
       </div>
-      <h1 class="hero-h1">Top-300 universitetga<br><em>tizimli yo'l.</em></h1>
-      <span class="hero-h1-line2">Emas, omad bilan.</span>
+      <h1 class="hero-h1">Xorijda oʻqishga<br><em>tizimli tayyorgarlik.</em></h1>
+      <span class="hero-h1-line2">Bakalavriatdan doktoranturagacha.</span>
       <p class="hero-sub">
-        <strong>Kompas Lab</strong> — STEM talabalarini global tadqiqotchilar va yuqori darajali mutaxassislarga aylantiradigan 8 haftalik intensiv dastur. Shunchaki ma'lumot emas — <strong>ilmiy identitet qurish tizimi.</strong>
+        <strong>Kompas Lab</strong> — STEM yoʻnalishidagi oʻquvchi va talabalar uchun oʻzbek tilidagi onlayn Lablar. Universitet va stipendiyani dalil bilan tanlaysiz, hujjatlarni <strong>oʻzingiz</strong> yozasiz, har bir fakt rasmiy manbaga havola bilan beriladi.
       </p>
       <div class="hero-ctas">
-        <a href="register.html" class="btn-hero-p">Kursga yozilish →</a>
-        <a href="#curriculum" class="btn-hero-g">📚 Dasturni ko'rish</a>
+        <a href="#labs" class="btn-hero-p">Lablarni koʻrish →</a>
+        <button type="button" class="btn-hero-g" onclick="openWaitlist('', '')" style="cursor:pointer;font-family:'Outfit',sans-serif;">🔔 Kutish roʻyxati</button>
       </div>
       <div class="hero-trust">
-        <div class="trust-item">✅ <span>47+ bitiruvchi</span></div>
+        <div class="trust-item">🆓 <span>Har Labda M0 bepul</span></div>
         <div class="trust-sep"></div>
-        <div class="trust-item">🎓 <span>12 ta qabul</span></div>
+        <div class="trust-item">🔗 <span>Rasmiy manbalar</span></div>
         <div class="trust-sep"></div>
-        <div class="trust-item">💰 <span>3 grant qo'lga kiritildi</span></div>
-        <div class="trust-sep"></div>
-        <div class="trust-item">⭐ <span>4.9/5 reyting</span></div>
+        <div class="trust-item">✍️ <span>Hujjatni oʻzingiz yozasiz</span></div>
       </div>
     </div>
 
     <div class="hero-card">
       <div class="hc-top">
-        <div class="hc-badge">🧭 Kompas Lab · 4 dastur</div>
-        <div class="hc-title">Qaysi yo'ldasiz?</div>
-        <div class="hc-sub">Bakalavrdan PhDgacha — har bosqichda tizimli tayyorgarlik</div>
+        <div class="hc-badge">🧭 Kompas Lab · v3.0 dasturlar</div>
+        <div class="hc-title">Qaysi yoʻldasiz?</div>
+        <div class="hc-sub">Daraja va yoʻnalish boʻyicha alohida Lablar</div>
         <div class="hc-stats">
-          <div class="hcs"><div class="hcs-val">4</div><div class="hcs-lbl">Lab</div></div>
-          <div class="hcs"><div class="hcs-val">122</div><div class="hcs-lbl">Dars</div></div>
-          <div class="hcs"><div class="hcs-val">∞</div><div class="hcs-lbl">Kirish</div></div>
+          <div class="hcs"><div class="hcs-val">0</div><div class="hcs-lbl">M0 narxi</div></div>
+          <div class="hcs"><div class="hcs-val">12</div><div class="hcs-lbl">oy obuna</div></div>
+          <div class="hcs"><div class="hcs-val">UZ</div><div class="hcs-lbl">Til</div></div>
         </div>
       </div>
       <div class="hc-body">
@@ -824,45 +900,49 @@ footer{
           <div class="hc-mod-num hcmn-1">🎓</div>
           <div class="hc-mod-info">
             <div class="hc-mod-name">Bachelor Lab</div>
-            <div class="hc-mod-meta">8 modul · 42 dars · 10–18 yosh</div>
+            <div class="hc-mod-meta">17 modul · 86 dars · 10–11-sinf</div>
           </div>
-          <span class="hc-mod-tag" style="background:var(--accent-lit);color:var(--accent);">499K</span>
         </div>
         <div class="hc-mod">
           <div class="hc-mod-num hcmn-2">🔬</div>
           <div class="hc-mod-info">
             <div class="hc-mod-name">Master Lab</div>
-            <div class="hc-mod-meta">8 modul · 28 dars · 21–27 yosh</div>
+            <div class="hc-mod-meta">9 modul · 59 dars · bakalavrlar</div>
           </div>
-          <span class="hc-mod-tag" style="background:var(--accent-lit);color:var(--accent);">499K</span>
         </div>
         <div class="hc-mod">
-          <div class="hc-mod-num hcmn-3">⚗️</div>
+          <div class="hc-mod-num hcmn-3">🇰🇷</div>
           <div class="hc-mod-info">
-            <div class="hc-mod-name">PhD Lab</div>
-            <div class="hc-mod-meta">9 modul · 32 dars · 22–35 yosh</div>
+            <div class="hc-mod-name">GKS Lab</div>
+            <div class="hc-mod-meta">3 trek · 54 dars · Koreya</div>
           </div>
-          <span class="hc-mod-tag" style="background:var(--accent2-lit);color:var(--accent2);">699K</span>
+        </div>
+        <div class="hc-mod">
+          <div class="hc-mod-num hcmn-4">🇺🇸</div>
+          <div class="hc-mod-info">
+            <div class="hc-mod-name">USA Lab</div>
+            <div class="hc-mod-meta">3 trek · 72 dars · AQSh</div>
+          </div>
         </div>
       </div>
       <div class="hc-foot">
         <div>
-          <div class="hcf-price">499,000</div>
-          <div class="hcf-sub">so'm · bir martalik to'lov</div>
+          <div class="hcf-price">699 000</div>
+          <div class="hcf-sub">soʻm / yil · yoki 99 000 soʻm / oy</div>
         </div>
-        <a href="register.html" class="btn-hcf">Boshlash →</a>
+        <a href="#pricing" class="btn-hcf">Narxlar →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ STATS ════════════════ -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item reveal"><div class="stat-val">47<em>+</em></div><div class="stat-lbl">Bitiruvchi talaba</div></div>
-    <div class="stat-item reveal reveal-d1"><div class="stat-val">12</div><div class="stat-lbl">Universiteta qabul</div></div>
-    <div class="stat-item reveal reveal-d2"><div class="stat-val">3</div><div class="stat-lbl">Grant qo'lga kiritildi</div></div>
-    <div class="stat-item reveal reveal-d3"><div class="stat-val">4.9<em>★</em></div><div class="stat-lbl">O'rtacha reyting</div></div>
+<!-- ════════════════ TAMOYILLAR ════════════════ -->
+<div class="principles">
+  <div class="principles-inner">
+    <div class="pr-item reveal"><div class="pr-title">M0 bepul</div><div class="pr-text">Har Lab bepul qaror darvozasi bilan boshlanadi: sizga mosmi yoki yoʻqmi — toʻlovdan oldin bilasiz.</div></div>
+    <div class="pr-item reveal reveal-d1"><div class="pr-title">Rasmiy manba</div><div class="pr-text">Muddat, toʻlov va talablar rasmiy havola va tekshiruv sanasi bilan beriladi.</div></div>
+    <div class="pr-item reveal reveal-d2"><div class="pr-title">Siz yozasiz</div><div class="pr-text">Insho, xat va CV oʻrningizga yozilmaydi. Kompas tuzilma, mezon va tahlil beradi.</div></div>
+    <div class="pr-item reveal reveal-d3"><div class="pr-title">Kafolat yoʻq</div><div class="pr-text">Qabul yoki stipendiya vaʼda qilinmaydi. Natija sizning hujjatingiz va tayyorgarligingizga bogʻliq.</div></div>
   </div>
 </div>
 
@@ -870,268 +950,195 @@ footer{
 <section class="section" id="problem">
   <div class="section-inner">
     <div class="reveal">
-      <div class="sec-label">Muammo nima?</div>
-      <h2 class="sec-title">90% strategiya <em>amalga oshmaydi.</em></h2>
-      <p class="sec-sub">Nega iste'dodli talabalar top universitetlarga kira olmaydi? Chunki ularda ma'lumot bor, lekin <strong>tizim yo'q.</strong></p>
+      <div class="sec-label">Muammo</div>
+      <h2 class="sec-title">Maʼlumot koʻp, <em>tizim kam.</em></h2>
+      <p class="sec-sub">Xorijda oʻqish haqida videolar va kanallar yetarli. Qiyini — qaysi qadamni qachon qilishni bilish va hujjatlarni bir-biriga bogʻlab tayyorlash.</p>
     </div>
     <div class="problem-grid">
       <div class="prob-card reveal reveal-d1">
-        <div class="prob-icon">😰</div>
-        <div class="prob-title">Qayerdan boshlashni bilmaydi</div>
-        <div class="prob-text">CV, SoP, research proposal, professor email — barchasi bir vaqtda kerak. Qaysi biri avval, qaysi biri keyinligi noma'lum.</div>
+        <div class="prob-icon">🧭</div>
+        <div class="prob-title">Qayerdan boshlash nomaʼlum</div>
+        <div class="prob-text">CV, maqsad bayonnomasi, tavsiya xati, testlar va muddatlar bir vaqtda keladi. Ketma-ketlik boʻlmasa, ish oxirgi haftaga qoladi.</div>
         <div class="prob-vs">
-          <div class="pv-row bad">✗ YouTube videolar, lekin bog'liqlik yo'q</div>
-          <div class="pv-row good">✓ Kompas Lab: 8 haftalik ketma-ket tizim</div>
+          <div class="pv-row bad">✗ Tarqoq videolar va postlar</div>
+          <div class="pv-row good">✓ Modul ketma-ketligi va muddatlar arxitekturasi</div>
         </div>
       </div>
       <div class="prob-card reveal reveal-d2">
         <div class="prob-icon">🎯</div>
-        <div class="prob-title">Noto'g'ri universitetlarni tanlaydi</div>
-        <div class="prob-text">Research fit, supervisor availability, funding structure — bularni bilmay 10 ta ariza yuborgach, 10 ta rad javobi oladi.</div>
+        <div class="prob-title">Universitet reyting boʻyicha tanlanadi</div>
+        <div class="prob-text">Ilmiy moslik (Research Fit), dastur talablari va moliyalashtirish tekshirilmasa, ariza soni koʻpayadi, imkon esa oshmaydi.</div>
         <div class="prob-vs">
-          <div class="pv-row bad">✗ Shunchaki QS ranking'ga qarab</div>
-          <div class="pv-row good">✓ Kompas Lab: Research fit mapping metodologiyasi</div>
+          <div class="pv-row bad">✗ Faqat reyting jadvaliga qarab tanlash</div>
+          <div class="pv-row good">✓ Dalilga asoslangan saralangan roʻyxat (Shortlist)</div>
         </div>
       </div>
       <div class="prob-card reveal reveal-d3">
-        <div class="prob-icon">📧</div>
-        <div class="prob-title">Professor emailiga javob kelmaydi</div>
-        <div class="prob-text">Cold email yozish — alohida san'at. 95% talabalar noto'g'ri yozadi va spam papkasiga ketadi.</div>
+        <div class="prob-icon">📝</div>
+        <div class="prob-title">Hujjat shablondan koʻchiriladi</div>
+        <div class="prob-text">Tayyor namunadan olingan matn komissiyaga sizni koʻrsatmaydi. Oʻz tajribangizdan tuzilgan matn kerak.</div>
         <div class="prob-vs">
-          <div class="pv-row bad">✗ "Qiziqaman, imkoniyat bormi?" — yo'q</div>
-          <div class="pv-row good">✓ Kompas Lab: Ishlaydigan email templatelar</div>
+          <div class="pv-row bad">✗ Koʻchirib olinadigan shablonlar</div>
+          <div class="pv-row good">✓ Tuzilma, baholash mezoni (Rubric) va oʻz-oʻzini tekshirish</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ CURRICULUM ════════════════ -->
-<section class="curriculum" id="curriculum">
-  <div class="curr-inner">
-    <div class="curr-top">
-      <div class="curr-head reveal">
-        <div class="sec-label">4 ta dastur</div>
-        <h2 class="sec-title">Qaysi bosqichda<br><em>bo'lsangiz ham.</em></h2>
-        <p class="sec-sub">Bakalavrdan PhDgacha — har yo'nalishda o'z tizimi, o'z modullari, o'z strategiyasi.</p>
-      </div>
-      <div class="curr-summary reveal reveal-d1">
-        <div class="cs-item"><span class="cs-lbl">🎓 Bachelor Lab</span><span class="cs-val">42 dars</span></div>
-        <div class="cs-item"><span class="cs-lbl">🔬 Master Lab</span><span class="cs-val">28 dars</span></div>
-        <div class="cs-item"><span class="cs-lbl">⚗️ PhD Lab</span><span class="cs-val">32 dars</span></div>
-
-        <div class="cs-item"><span class="cs-lbl">🔄 Kirish muddati</span><span class="cs-val">Umrbod</span></div>
-      </div>
+<!-- ════════════════ LABLAR ════════════════ -->
+<section class="labs" id="labs">
+  <div class="labs-inner">
+    <div class="labs-top reveal">
+      <div class="sec-label">Lablar</div>
+      <h2 class="sec-title">Bosqichingizga mos <em>Lab.</em></h2>
+      <p class="sec-sub">Daraja Labi umumiy akademik tayyorgarlikni beradi. Yoʻnalish Labi muayyan davlat yoki stipendiya tizimining talablarini qoʻshadi.</p>
     </div>
-    <div class="weeks">
-      <div class="week-card reveal">
-        <div class="wc-num">Hafta 1</div>
-        <div class="wc-title">Research Identity Framework</div>
-        <div class="wc-lessons">
-          <div class="wcl">Scholar OS va PKM tizimi</div>
-          <div class="wcl">Vaqtni boshqarish</div>
-          <div class="wcl">Zotero + Notion workflow</div>
-        </div>
-        <div class="wc-meta"><span class="wc-count">4 dars</span><span class="wc-tag wct-core">Core</span></div>
-      </div>
-      <div class="week-card reveal reveal-d1">
-        <div class="wc-num">Hafta 2</div>
-        <div class="wc-title">University Mapping System</div>
-        <div class="wc-lessons">
-          <div class="wcl">QS Ranking tahlili</div>
-          <div class="wcl">Admission requirements</div>
-          <div class="wcl">Research fit qidirish</div>
-        </div>
-        <div class="wc-meta"><span class="wc-count">5 dars</span><span class="wc-tag wct-hot">Hot</span></div>
-      </div>
-      <div class="week-card reveal reveal-d2">
-        <div class="wc-num">Hafta 3</div>
-        <div class="wc-title">Professor Outreach Strategy</div>
-        <div class="wc-lessons">
-          <div class="wcl">Cold email anatomiyasi</div>
-          <div class="wcl">Subject line texnikasi</div>
-          <div class="wcl">Follow-up strategiya</div>
-        </div>
-        <div class="wc-meta"><span class="wc-count">4 dars</span><span class="wc-tag wct-new">New</span></div>
-      </div>
-      <div class="week-card reveal reveal-d3">
-        <div class="wc-num">Hafta 4</div>
-        <div class="wc-title">Statement of Purpose Lab</div>
-        <div class="wc-lessons">
-          <div class="wcl">Komissiya ko'zi bilan</div>
-          <div class="wcl">Compelling Story arc</div>
-          <div class="wcl">Hook paragraph texnikasi</div>
-        </div>
-        <div class="wc-meta"><span class="wc-count">5 dars</span><span class="wc-tag wct-hot">Hot</span></div>
-      </div>
-      <div class="week-card reveal">
-        <div class="wc-num">Hafta 5</div>
-        <div class="wc-title">CV & Portfolio Engineering</div>
-        <div class="wc-lessons">
-          <div class="wcl">STAR metodi CV</div>
-          <div class="wcl">Google Scholar profil</div>
-          <div class="wcl">LinkedIn optimallashtirish</div>
-        </div>
-        <div class="wc-meta"><span class="wc-count">4 dars</span><span class="wc-tag wct-core">Core</span></div>
-      </div>
-      <div class="week-card reveal reveal-d1">
-        <div class="wc-num">Hafta 6</div>
-        <div class="wc-title">Grant Application System</div>
-        <div class="wc-lessons">
-          <div class="wcl">EYUF anatomy</div>
-          <div class="wcl">GKS strategiya</div>
-          <div class="wcl">DAAD talablari</div>
-        </div>
-        <div class="wc-meta"><span class="wc-count">5 dars</span><span class="wc-tag wct-hot">Hot</span></div>
-      </div>
-      <div class="week-card reveal reveal-d2">
-        <div class="wc-num">Hafta 7</div>
-        <div class="wc-title">Research Proposal Writing</div>
-        <div class="wc-lessons">
-          <div class="wcl">Problem-Solution-Novelty</div>
-          <div class="wcl">Literature review</div>
-          <div class="wcl">Methodology section</div>
-        </div>
-        <div class="wc-meta"><span class="wc-count">4 dars</span><span class="wc-tag wct-core">Core</span></div>
-      </div>
-      <div class="week-card reveal reveal-d3">
-        <div class="wc-num">Hafta 8</div>
-        <div class="wc-title">Interview & Final Launch</div>
-        <div class="wc-lessons">
-          <div class="wcl">Mock interview sessiya</div>
-          <div class="wcl">Final checklist</div>
-          <div class="wcl">Application submission</div>
-        </div>
-        <div class="wc-meta"><span class="wc-count">4 dars</span><span class="wc-tag wct-new">Final</span></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ════════════════ MENTOR ════════════════ -->
-<section class="mentor-section" id="mentor">
-  <div class="mentor-inner">
-    <div class="mentor-card reveal">
-      <div class="mc-header">
-        <div class="mc-avatar">🧑‍🔬</div>
-        <div class="mc-name">Shokhrukh Iskandarov</div>
-        <div class="mc-role">Geofizik · PhD candidate · EYUF Scholar</div>
-      </div>
-      <div class="mc-body">
-        <div class="mc-fact">
-          <div class="mcf-ico">🎓</div>
-          <div>
-            <div class="mcf-text">University of Leeds, UK</div>
-            <div class="mcf-sub">PhD — Earth Sciences (Geophysics)</div>
+    <!-- DARAJA -->
+    <div class="axis">
+      <div class="axis-head reveal"><span class="axis-name">Daraja Lablari</span><span class="axis-desc">bakalavriat · magistratura · doktorantura</span></div>
+      <div class="labs-grid">
+
+        <div class="lab reveal" data-slug="bachelor-lab">
+          <div class="lab-head">
+            <div class="lab-ico">🎓</div>
+            <div><div class="lab-name">Bachelor Lab</div><div class="lab-who">10–11-sinf, litsey va kollej oʻquvchilari · 15–19 yosh</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag">17 modul</span><span class="lab-tag">86 dars</span><span class="lab-tag free">M0 bepul</span></div>
+          <div class="lab-out"><b>Natija:</b> oʻzingiz tayyorlagan ariza paketi, 8–12 universitetlik portfel va 4 yillik moliyaviy reja.</div>
+          <div class="lab-note">Birinchi muddatdan 8–12 oy oldin boshlash tavsiya etiladi. 18 yoshgacha boʻlsa, obunani ota-ona rasmiylashtiradi.</div>
+          <div class="lab-foot">
+            <div class="lab-price">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('bachelor-lab','Bachelor Lab')">🔔 Kutish roʻyxati</button>
           </div>
         </div>
-        <div class="mc-fact">
-          <div class="mcf-ico">🏆</div>
-          <div>
-            <div class="mcf-text">EYUF Scholarship 2024</div>
-            <div class="mcf-sub">O'zbekiston Prezidenti stipendiyasi</div>
+
+        <div class="lab reveal reveal-d1" data-slug="master-lab">
+          <div class="lab-head">
+            <div class="lab-ico">🔬</div>
+            <div><div class="lab-name">Master Lab</div><div class="lab-who">Xorijiy magistraturaga topshiruvchi bakalavrlar</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag">9 modul</span><span class="lab-tag">59 dars</span><span class="lab-tag free">M0 bepul</span></div>
+          <div class="lab-out"><b>Natija:</b> toʻliq ariza paketi — akademik CV, tavsiya xatlari rejasi, maqsad bayonnomasi (SoP) va ilmiy loyiha taklifi.</div>
+          <div class="lab-note">Haftasiga 4–6 soat, 4–6 oy. Stipendiyalar atlasi va intervyu moduli ichida.</div>
+          <div class="lab-foot">
+            <div class="lab-price">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('master-lab','Master Lab')">🔔 Kutish roʻyxati</button>
           </div>
         </div>
-        <div class="mc-fact">
-          <div class="mcf-ico">📊</div>
-          <div>
-            <div class="mcf-text">Research: Seismic data analysis</div>
-            <div class="mcf-sub">Machine learning in geophysics</div>
+
+        <div class="lab reveal reveal-d2" data-slug="phd-lab">
+          <div class="lab-head">
+            <div class="lab-ico">⚗️</div>
+            <div><div class="lab-name">PhD Lab</div><div class="lab-who">Doktoranturaga topshiruvchi magistrlar</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag">10 modul</span><span class="lab-tag">60 dars</span><span class="lab-tag free">M0 bepul</span></div>
+          <div class="lab-out"><b>Qamrov:</b> ilmiy yoʻnalish, ilmiy rahbar qidirish, professorga yoziladigan dastlabki xat, ilmiy loyiha taklifi, moliyalashtirish va intervyu.</div>
+          <div class="lab-foot">
+            <div class="lab-price">Narx yangilanmoqda<small>yangi dastur bilan eʼlon qilinadi</small></div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('phd-lab','PhD Lab')">🔔 Kutish roʻyxati</button>
           </div>
         </div>
-        <div class="mc-fact">
-          <div class="mcf-ico">🌍</div>
-          <div>
-            <div class="mcf-text">Leeds, United Kingdom</div>
-            <div class="mcf-sub">April 2026'dan faol o'qitish</div>
-          </div>
-        </div>
+
       </div>
     </div>
 
-    <div class="mentor-text reveal reveal-d1">
-      <div class="sec-label">Mentor haqida</div>
-      <h2 class="sec-title">Nazariya emas —<br><em>shaxsiy tajriba.</em></h2>
-      <p class="mentor-quote">Men EYUF stipendiyasini olish uchun nima kerakligini amalda o'rgandim. Endi shu yo'lni tizimga solaman.</p>
-      <p class="mentor-bio">O'zbekistonning eng nufuzli stipendiyasini qo'lga kiritgan tadqiqotchi sifatida, men applicationdan rejection'gacha, feedback'dan final acceptance'gacha bo'lgan butun jarayonni boshdan kechirdim. Kompas Lab — mening shaxsiy "Scholar OS" tizimim, endi o'quvchilarim uchun.</p>
-      <div class="mentor-achievements">
-        <div class="ma-item">
-          <div class="ma-ico">🇬🇧</div>
-          <div>
-            <div class="ma-text">University of Leeds — Top-100 dunyo universiteti</div>
-            <div class="ma-sub">QS World University Rankings 2024</div>
-          </div>
-        </div>
-        <div class="ma-item">
-          <div class="ma-ico">🏅</div>
-          <div>
-            <div class="ma-text">EYUF — O'zbekiston Prezidenti stipendiyasi</div>
-            <div class="ma-sub">Yoshlar uchun ulug'vor grant</div>
-          </div>
-        </div>
-        <div class="ma-item">
-          <div class="ma-ico">🔬</div>
-          <div>
-            <div class="ma-text">Aktiv tadqiqot: Geofizika + AI/ML</div>
-            <div class="ma-sub">Seismic data inversion — machine learning</div>
-          </div>
-        </div>
-      </div>
-      <a href="register.html" class="btn-hero-p" style="display:inline-flex;">Mentordan o'rganish →</a>
-    </div>
-  </div>
-</section>
+    <!-- YO'NALISH -->
+    <div class="axis">
+      <div class="axis-head reveal"><span class="axis-name">Yoʻnalish Lablari</span><span class="axis-desc">davlat va stipendiya tizimlari</span></div>
+      <div class="labs-grid">
 
-<!-- ════════════════ RESULTS ════════════════ -->
-<section class="results" id="results">
-  <div class="results-inner">
-    <div class="results-top reveal">
-      <div class="sec-label">Natijalar</div>
-      <h2 class="sec-title">Raqamlar gapiradi.</h2>
-      <p class="sec-sub">Kompas Lab bitiruvchilari haqiqiy qabul va grant natijalari bilan.</p>
+        <div class="lab reveal" data-slug="gks-lab">
+          <div class="lab-head">
+            <div class="lab-ico">🇰🇷</div>
+            <div><div class="lab-name">GKS Lab</div><div class="lab-who">Global Korea Scholarship · 3 trek: U · M · D</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag">54 dars</span><span class="lab-tag">siz oʻtasiz: 26–27</span><span class="lab-tag free">M0 bepul</span></div>
+          <div class="lab-out"><b>Natija:</b> GKS formalari boʻyicha hujjatlar, universitet va dastur tanlovi, intervyuga tayyorgarlik. Umumiy oʻzak + oʻz trekingiz.</div>
+          <div class="lab-note">Muvofiqlik M0 da rasmiy yoʻriqnoma boʻyicha toʻlovdan oldin tekshiriladi. Trekni almashtirish bepul.</div>
+          <div class="lab-foot">
+            <div class="lab-price">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('gks-lab','GKS Lab')">🔔 Kutish roʻyxati</button>
+          </div>
+        </div>
+
+        <div class="lab reveal reveal-d1" data-slug="usa-lab">
+          <div class="lab-head">
+            <div class="lab-ico">🇺🇸</div>
+            <div><div class="lab-name">USA Lab</div><div class="lab-who">Global UGRAD · Fulbright magistraturasi · PhD</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag">12 modul</span><span class="lab-tag">72 dars</span><span class="lab-tag free">M0 bepul</span></div>
+          <div class="lab-out"><b>Natija:</b> mos trek tanlovi, muvofiqlik tekshiruvi, insholar, tavsiya va testlar rejasi, intervyu va viza tayyorgarligi.</div>
+          <div class="lab-note">B trek (Global UGRAD) uchun toʻlov sikl rasman eʼlon qilingandan keyin qabul qilinadi. Viza siyosati oʻzgarsa, sahifada ogohlantirish chiqadi.</div>
+          <div class="lab-foot">
+            <div class="lab-price">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('usa-lab','USA Lab')">🔔 Kutish roʻyxati</button>
+          </div>
+        </div>
+
+        <div class="lab reveal reveal-d2" data-slug="daad-lab">
+          <div class="lab-head">
+            <div class="lab-ico">🇩🇪</div>
+            <div><div class="lab-name">DAAD Lab</div><div class="lab-who">Germaniya · magistratura va doktorantura</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag">9 modul</span><span class="lab-tag">51 dars</span><span class="lab-tag free">M0 bepul</span></div>
+          <div class="lab-out"><b>Qamrov:</b> Germaniya akademik tizimi, ilmiy rahbarni oldindan topish, Motivationsschreiben, Forschungsvorhaben va topshirish.</div>
+          <div class="lab-foot">
+            <div class="lab-price">Narx yangilanmoqda<small>yangi dastur bilan eʼlon qilinadi</small></div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('daad-lab','DAAD Lab')">🔔 Kutish roʻyxati</button>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="outcomes-grid">
-      <div class="outcome reveal">
-        <div class="oc-icon">🇬🇧</div>
-        <div class="oc-univ">University of Leeds</div>
-        <div class="oc-title">MSc Geophysics</div>
-        <div class="oc-sub">Full scholarship bilan qabul. Research proposal va SoP Kompas Lab tizimida yozilgan.</div>
-        <span class="oc-tag oct-gold">🏆 EYUF Grant</span>
-      </div>
-      <div class="outcome reveal reveal-d1">
-        <div class="oc-icon">🇩🇪</div>
-        <div class="oc-univ">TU Munich</div>
-        <div class="oc-title">MSc Computational Science</div>
-        <div class="oc-sub">DAAD stipendiyasi bilan qabul. Professor outreach strategiya to'liq ishladi.</div>
-        <span class="oc-tag oct-blue">🎓 DAAD Scholar</span>
-      </div>
-      <div class="outcome reveal reveal-d2">
-        <div class="oc-icon">🇰🇷</div>
-        <div class="oc-univ">KAIST, Korea</div>
-        <div class="oc-title">PhD Materials Science</div>
-        <div class="oc-sub">GKS scholarship. 3 ta professor bilan muloqotdan keyin supervisor topildi.</div>
-        <span class="oc-tag oct-green">✅ GKS Scholar</span>
-      </div>
-      <div class="outcome reveal">
-        <div class="oc-icon">🇳🇱</div>
-        <div class="oc-univ">Delft University of Technology</div>
-        <div class="oc-title">MSc Petroleum Engineering</div>
-        <div class="oc-sub">Research fit mapping metodologiyasi bilan to'g'ri supervisor topildi. 2-arizadan qabul.</div>
-        <span class="oc-tag oct-blue">🎓 Holland Scholarship</span>
-      </div>
-      <div class="outcome reveal reveal-d1">
-        <div class="oc-icon">🇨🇭</div>
-        <div class="oc-univ">ETH Zürich</div>
-        <div class="oc-title">MSc Earth Sciences</div>
-        <div class="oc-sub">Dunyo №9 universiteti. CV engineering va compelling SoP bilan qabul olindi.</div>
-        <span class="oc-tag oct-gold">⭐ Merit Scholarship</span>
-      </div>
-      <div class="outcome reveal reveal-d2">
-        <div class="oc-icon">🏆</div>
-        <div class="oc-univ">3 ta grant bitta yilda</div>
-        <div class="oc-title">EYUF + GKS + Erasmus+</div>
-        <div class="oc-sub">Tizimli yondashuv bilan bir vaqtda 3 ta turli grantga ariza berib, 3 tasini ham oldim.</div>
-        <span class="oc-tag oct-green">🎯 Rekord natija</span>
+
+    <!-- TEZ KUNDA -->
+    <div class="axis" id="coming-soon">
+      <div class="axis-head reveal"><span class="axis-name">Tez kunda</span><span class="axis-desc">talaba hayoti va ochiq materiallar</span></div>
+      <div class="labs-grid">
+
+        <div class="lab reveal" data-slug="tadbirkor-talaba">
+          <div class="lab-head">
+            <div class="lab-ico">💼</div>
+            <div><div class="lab-name">Tadbirkor Talaba Lab</div><div class="lab-who">Universitet talabalari · 18+</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag">10 modul</span><span class="lab-tag">54 dars</span><span class="lab-tag soon">Ishlab chiqilmoqda</span></div>
+          <div class="lab-out">Oʻqishni toʻxtatmasdan kichik, qonuniy va oʻlchanadigan biznes sinovi: muammo, birinchi mijoz, pul hisobi, huquqiy shakl va soliq.</div>
+          <div class="lab-note">Soliq va huquq darslari mutaxassis tekshiruvidan oʻtgandan keyin ochiladi.</div>
+          <div class="lab-foot">
+            <div class="lab-price">Narx eʼlon qilinadi</div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('tadbirkor-talaba','Tadbirkor Talaba Lab')">🔔 Xabar bering</button>
+          </div>
+        </div>
+
+        <div class="lab reveal reveal-d1" data-slug="miggo">
+          <div class="lab-head">
+            <div class="lab-ico">🧳</div>
+            <div><div class="lab-name">Musofir Lab</div><div class="lab-who">Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag free">M0 bepul va ochiq</span><span class="lab-tag soon">Tayyorlanmoqda</span></div>
+          <div class="lab-out">Rasmiy yoʻllar va firibgarlik belgilari haqida bepul ochiq material — roʻyxatdan oʻtmasdan.</div>
+          <div class="lab-note">Kompas ish yoki viza topib bermaydi va vositachi emas.</div>
+          <div class="lab-foot">
+            <div class="lab-price">Bepul</div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('miggo','Musofir Lab')">🔔 Xabar bering</button>
+          </div>
+        </div>
+
+        <div class="lab reveal reveal-d2" data-slug="ikki-miya">
+          <div class="lab-head">
+            <div class="lab-ico">🧠</div>
+            <div><div class="lab-name">2-Miya</div><div class="lab-who">Bilimni tizimlashtirish (PKM)</div></div>
+          </div>
+          <div class="lab-meta"><span class="lab-tag soon">Rejalashtirilgan</span></div>
+          <div class="lab-out">Ikkinchi miya: oʻqiganlaringizni yozib borish, bogʻlash va qayta topish tizimi.</div>
+          <div class="lab-foot">
+            <div class="lab-price">Narx eʼlon qilinadi</div>
+            <button type="button" class="btn-lab" onclick="openWaitlist('ikki-miya','2-Miya')">🔔 Xabar bering</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1142,193 +1149,148 @@ footer{
   <div class="pricing-inner">
     <div class="pricing-top reveal">
       <div class="sec-label">Narxlar</div>
-      <h2 class="sec-title">Investitsiya, <em>xarajat emas.</em></h2>
-      <p class="sec-sub">Bitta grant qo'lga kiritish — kurs narxini 100 marta qoplash demak.</p>
+      <h2 class="sec-title">Bitta narx tuzilmasi, <em>obuna asosida.</em></h2>
+      <p class="sec-sub">Bachelor, Master, GKS va USA Lab uchun. Bitta yillik obuna bitta ariza siklini qamraydi.</p>
     </div>
 
-    <!-- 4 KURS GRID -->
-    <div class="plans-grid" style="grid-template-columns:repeat(4,1fr);gap:16px;">
+    <div class="pay-status reveal">
+      <span style="font-size:18px;">⏳</span>
+      <span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatiga yozilganlarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span>
+    </div>
 
+    <div class="plans-grid">
       <div class="plan reveal">
-        <div class="plan-ico">🎓</div>
-        <div class="plan-name">Bachelor Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">10–11-sinf, 16–18 yosh · Xalqaro</div>
-        <div class="plan-price">499,000</div>
-        <div class="plan-psub">so'm · bir martalik to'lov</div>
+        <div class="plan-ico">🚪</div>
+        <div class="plan-name">M0 — Qaror darvozasi</div>
+        <div class="plan-desc">Lab sizga mosligini tekshirish</div>
+        <div class="plan-price">0</div>
+        <div class="plan-psub">soʻm · muddatsiz</div>
         <div class="plan-div"></div>
         <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">8 modul · 42 ta video dars</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">PDF materiallar to'plami</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">O'z sur'atida o'qish</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Umrbod kirish huquqi</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Har Labning M0 moduli (5–6 dars)</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Tayyorgarlik darajasi koʻrsatkichi (Readiness Score)</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Kimga mos emasligi ochiq yozilgan</span></div>
         </div>
-        <a href="payment.html?course=bachelor-lab" class="btn-plan btn-plan-g">Yozilish →</a>
+        <button type="button" class="btn-plan btn-plan-g" onclick="openWaitlist('', '')">🔔 Ochilganda xabar</button>
       </div>
 
-      <div class="plan reveal reveal-d1">
-        <div class="plan-ico">🔬</div>
-        <div class="plan-name">Master Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">Bakalavr bitiruvchilari, 21–27 yosh · Xalqaro</div>
-        <div class="plan-price">499,000</div>
-        <div class="plan-psub">so'm · bir martalik to'lov</div>
+      <div class="plan featured reveal reveal-d1">
+        <div class="plan-badge">Asosiy reja</div>
+        <div class="plan-ico">📅</div>
+        <div class="plan-name">Yillik</div>
+        <div class="plan-desc">Toʻliq ariza sikli uchun</div>
+        <div class="plan-price">699 000</div>
+        <div class="plan-psub">soʻm · 12 oy · oylikning ~7,1 oyi narxida</div>
         <div class="plan-div"></div>
         <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">8 modul · 28 ta video dars</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">PDF materiallar to'plami</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">O'z sur'atida o'qish</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Umrbod kirish huquqi</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Tanlangan Labning barcha modullari</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Interaktiv vositalar va ish stoli</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">12 oy davomida Qobiq maʼlumotlari yangilanishi</span></div>
         </div>
-        <a href="payment.html?course=master-lab" class="btn-plan btn-plan-g">Yozilish →</a>
+        <button type="button" class="btn-plan btn-plan-p" onclick="openWaitlist('', '')">🔔 Kutish roʻyxati</button>
       </div>
 
-      <div class="plan featured reveal reveal-d2">
-        <div class="plan-badge">🔥 Eng qiyin yo'l</div>
-        <div class="plan-ico">⚗️</div>
-        <div class="plan-name">PhD Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">Magistrlar, ilmiy martabaga intiluv., 22–35 yosh</div>
-        <div class="plan-price">699,000</div>
-        <div class="plan-psub">so'm · bir martalik to'lov</div>
+      <div class="plan reveal reveal-d2">
+        <div class="plan-ico">🔁</div>
+        <div class="plan-name">Oylik</div>
+        <div class="plan-desc">Sinab koʻrish yoki qisqa muddat uchun</div>
+        <div class="plan-price">99 000</div>
+        <div class="plan-psub">soʻm · har oy avtomatik uzaytiriladi</div>
         <div class="plan-div"></div>
         <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">9 modul · 32 ta video dars</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">PDF materiallar to'plami</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">O'z sur'atida o'qish</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Umrbod kirish huquqi</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Tanlangan Labning barcha modullari</span></div>
+          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Istalgan oy bekor qilinadi</span></div>
+          <div class="pf"><span class="pf-ico">ℹ️</span><span class="pf-txt">12 oyda jami 1 188 000 soʻm</span></div>
         </div>
-        <a href="payment.html?course=phd-lab" class="btn-plan btn-plan-w">Yozilish →</a>
+        <button type="button" class="btn-plan btn-plan-g" onclick="openWaitlist('', '')">🔔 Kutish roʻyxati</button>
       </div>
-
-      <div class="plan reveal reveal-d3">
-        <div class="plan-ico">🇰🇷</div>
-        <div class="plan-name">GKS Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">Koreya hukumati stipendiyasi · 18–35 yosh</div>
-        <div class="plan-price">499,000</div>
-        <div class="plan-psub">so'm · bir martalik to'lov</div>
-        <div class="plan-div"></div>
-        <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">6 modul · 20 ta video dars</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Hujjat tayyorlash va ariza strategiyasi</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">O'z sur'atida o'qish</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Umrbod kirish huquqi</span></div>
-        </div>
-        <a href="payment.html?course=gks-lab" class="btn-plan btn-plan-g">Yozilish →</a>
-      </div>
-
-      <div class="plan reveal reveal-d4">
-        <div class="plan-ico">🇩🇪</div>
-        <div class="plan-name">DAAD Lab</div>
-        <div class="plan-desc" style="font-size:12px;color:var(--muted);margin-bottom:4px">Germaniya stipendiyasi · Magistr, PhD, Tadqiqot</div>
-        <div class="plan-price">599,000</div>
-        <div class="plan-psub">so'm · bir martalik to'lov</div>
-        <div class="plan-div"></div>
-        <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">8 modul · 30 ta video dars (~9 soat)</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Supervisor topish metodologiyasi</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Cold Email + Research Proposal workshop</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Umrbod kirish huquqi</span></div>
-        </div>
-        <a href="payment.html?course=daad-lab" class="btn-plan btn-plan-g">Yozilish →</a>
-      </div>
-
-    </div>
-    <p class="pricing-note">🛡 7 kunlik kafolat — agar maqul kelmasa, pulni qaytaramiz. Savollar? <a href="https://t.me/kompaslab">Telegram'da yozing →</a></p>
-  </div>
-</section>
-
-<!-- ════════════════ COMING SOON ════════════════ -->
-<section class="section" id="coming-soon" style="background:var(--text);">
-  <div class="section-inner">
-    <div class="reveal" style="text-align:center;margin-bottom:48px;">
-      <div class="sec-label" style="color:rgba(255,255,255,0.4);justify-content:center;">
-        <span style="background:rgba(255,255,255,0.1)">Tez kunda</span>
-      </div>
-      <h2 class="sec-title" style="color:#fff;">Keyingi <em style="color:var(--accent2)">Lablar.</em></h2>
-      <p class="sec-sub" style="color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto;">
-        Ro'yxatga yoziling — ochilishi bilanoq birinchilar qatorida xabardor bo'ling.
-      </p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:800px;margin:0 auto 48px;">
-
-      <div class="cs-lab-card reveal" data-slug="gks-lab">
-        <div style="font-size:32px;margin-bottom:10px;">🇰🇷</div>
-        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;">GKS Lab</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:14px;line-height:1.5;">Koreyaga o'qishga kirish uchun to'liq tizim</div>
-        <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--accent2);font-weight:700;margin-bottom:14px;">2026 yil · Tez kunda</div>
-        <button class="cs-notify-btn" onclick="openWaitlist('gks-lab','GKS Lab')">🔔 Xabar ber</button>
-      </div>
-
-      <div class="cs-lab-card reveal reveal-d1" data-slug="ikki-miya">
-        <div style="font-size:32px;margin-bottom:10px;">🧠</div>
-        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;">2-Miya</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:14px;line-height:1.5;">Ikkinchi miya — bilimni tizimlashtirish va PKM</div>
-        <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;margin-bottom:14px;">2026 yil · Rejalashtirilgan</div>
-        <button class="cs-notify-btn" onclick="openWaitlist('ikki-miya','2-Miya')">🔔 Xabar ber</button>
-      </div>
-
-      <div class="cs-lab-card reveal reveal-d2" data-slug="notion-shablonlar">
-        <div style="font-size:32px;margin-bottom:10px;">📓</div>
-        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;">Notion Shablonlar</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:14px;line-height:1.5;">Talabalar uchun tayyor Notion workspace to'plami</div>
-        <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--green);font-weight:700;margin-bottom:14px;">2026 yil · Rejalashtirilgan</div>
-        <button class="cs-notify-btn" onclick="openWaitlist('notion-shablonlar','Notion Shablonlar')">🔔 Xabar ber</button>
-      </div>
-
+    <div class="plan-rules">
+      <div class="rule reveal"><b>Bekor qilish</b>Obuna istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Qaytarish shartlari toʻlovdan oldin toʻliq matnda koʻrsatiladi.</div>
+      <div class="rule reveal reveal-d1"><b>18 yoshgacha</b>Obunani va toʻlovni ota-ona yoki vasiy rasmiylashtiradi. Ota-onaga jarayon haqida qisqa hisobot beriladi.</div>
+      <div class="rule reveal reveal-d2"><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div>
+      <div class="rule reveal reveal-d3"><b>Kirmaydi</b>Insho yoki hujjatni oʻrningizga yozish, shaxsiy mentorlik va qabul yoki stipendiya kafolati.</div>
     </div>
+    <p class="pricing-note">Savollar? <a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegramʼda yozing →</a></p>
   </div>
 </section>
 
 <!-- WAITLIST MODAL -->
 <div class="wl-ovl" id="wlModal">
   <div class="wl-card">
-    <button class="wl-x" onclick="closeWaitlist()">×</button>
+    <button class="wl-x" onclick="closeWaitlist()" aria-label="Yopish">×</button>
     <div style="font-size:36px;margin-bottom:12px;" id="wlEmoji">🔔</div>
-    <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;" id="wlTitle">GKS Lab ochilishini kuting</h3>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:20px;">
-      Email manzilingizni qoldiring — ochilishi bilanoq siz birinchi xabardor bo'lasiz.
+    <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;" id="wlTitle">Kutish roʻyxati</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+      Lab va email manzilingizni qoldiring — ochilishi bilan xabar beramiz.
     </p>
+    <select id="wlLab" class="wl-select" aria-label="Lab">
+      <option value="">Labni tanlang</option>
+      <option value="bachelor-lab">🎓 Bachelor Lab</option>
+      <option value="master-lab">🔬 Master Lab</option>
+      <option value="phd-lab">⚗️ PhD Lab</option>
+      <option value="gks-lab">🇰🇷 GKS Lab</option>
+      <option value="usa-lab">🇺🇸 USA Lab</option>
+      <option value="daad-lab">🇩🇪 DAAD Lab</option>
+      <option value="tadbirkor-talaba">💼 Tadbirkor Talaba Lab</option>
+      <option value="miggo">🧳 Musofir Lab</option>
+      <option value="ikki-miya">🧠 2-Miya</option>
+    </select>
     <input type="email" id="wlEmail" class="wl-input" placeholder="email@gmail.com">
     <div id="wlMsg" style="font-size:12px;margin-top:8px;min-height:18px;"></div>
     <button class="wl-btn" id="wlBtn" onclick="submitWaitlist()">🔔 Xabardor qiling</button>
-    <p style="font-size:11px;color:var(--muted);margin-top:12px;text-align:center;">Spam yo'q. Faqat ochilish xabari.</p>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px;text-align:center;">Faqat ochilish xabari. Email boshqa maqsadda ishlatilmaydi.</p>
   </div>
 </div>
 
-<!-- ════════════════ TESTIMONIALS ════════════════ -->
-<section class="testimonials" id="testimonials">
-  <div class="test-inner">
-    <div class="test-top reveal">
-      <div class="sec-label">Sharhlar</div>
-      <h2 class="sec-title">Talabalar <em>nima deydi.</em></h2>
+<!-- ════════════════ ASOSCHI ════════════════ -->
+<section class="mentor-section" id="mentor">
+  <div class="mentor-inner">
+    <div class="mentor-card reveal">
+      <div class="mc-header">
+        <div class="mc-avatar">🧑‍🔬</div>
+        <div class="mc-name">Shoxrux Boqijonov</div>
+        <div class="mc-role">Geofizik · Leeds universiteti doktoranti · EYUF stipendianti</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-fact">
+          <div class="mcf-ico">🎓</div>
+          <div>
+            <div class="mcf-text">University of Leeds, Buyuk Britaniya</div>
+            <div class="mcf-sub">PhD · School of Earth and Environment</div>
+          </div>
+        </div>
+        <div class="mc-fact">
+          <div class="mcf-ico">🏅</div>
+          <div>
+            <div class="mcf-text">“El-yurt umidi” jamgʻarmasi stipendiyasi</div>
+            <div class="mcf-sub">2025-yil 2-tanlov gʻolibi</div>
+          </div>
+        </div>
+        <div class="mc-fact">
+          <div class="mcf-ico">📡</div>
+          <div>
+            <div class="mcf-text">Tadqiqot: shahar geotermal energiyasi</div>
+            <div class="mcf-sub">DAS, seysmik tomografiya, PINN</div>
+          </div>
+        </div>
+        <div class="mc-fact">
+          <div class="mcf-ico">🌏</div>
+          <div>
+            <div class="mcf-text">Janubiy Koreyada oʻqigan</div>
+            <div class="mcf-sub">Oʻzbekistonda universitet oʻqituvchisi boʻlib ishlagan</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="test-grid">
-      <div class="tcard reveal">
-        <div class="tc-stars">⭐⭐⭐⭐⭐</div>
-        <p class="tc-text">"Kompas Lab'gacha 3 ta universitetdan rad oldim. Kursdan keyin tizimni o'zgartirib, ETH Zürich'dan qabul oldim. Professor outreach darslar ayniqsa hayot o'zgartirdi."</p>
-        <div class="tc-author">
-          <div class="tc-av" style="background:linear-gradient(135deg,#2d4a3e,#4a7a65)">A</div>
-          <div><div class="tc-name">Aziz N.</div><div class="tc-role">MSc student · ETH Zürich</div></div>
-        </div>
-        <span class="tc-result" style="background:var(--green-lit);color:var(--green)">✓ ETH Zürich qabul</span>
-      </div>
-      <div class="tcard reveal reveal-d1">
-        <div class="tc-stars">⭐⭐⭐⭐⭐</div>
-        <p class="tc-text">"EYUF stipendiyasi uchun ariza berishdan qo'rqardim. Shokhrukh mentor sifatida mening SoP va research proposal'imni shaxsan ko'rib chiqdi. Natija — stipendiya!"</p>
-        <div class="tc-author">
-          <div class="tc-av" style="background:linear-gradient(135deg,#c4622d,#e0896a)">M</div>
-          <div><div class="tc-name">Malika Y.</div><div class="tc-role">EYUF Scholar 2024</div></div>
-        </div>
-        <span class="tc-result" style="background:var(--gold-lit);color:var(--gold)">🏆 EYUF stipendiyasi</span>
-      </div>
-      <div class="tcard reveal reveal-d2">
-        <div class="tc-stars">⭐⭐⭐⭐⭐</div>
-        <p class="tc-text">"University mapping tizimi menga to'g'ri universitetni topishga yordam berdi. 8 ta universitetga ariza berdim — 5 tasidan qabul oldim. Tizim ishlaydi!"</p>
-        <div class="tc-author">
-          <div class="tc-av" style="background:linear-gradient(135deg,#1a56a0,#3a7acc)">J</div>
-          <div><div class="tc-name">Jasur T.</div><div class="tc-role">PhD student · KAIST Korea</div></div>
-        </div>
-        <span class="tc-result" style="background:#eef4ff;color:#1a56a0">🎓 GKS Scholar</span>
-      </div>
+
+    <div class="mentor-text reveal reveal-d1">
+      <div class="sec-label">Asoschi</div>
+      <h2 class="sec-title">Dastur shaxsiy tajriba va <em>rasmiy manbalar</em> ustiga qurilgan.</h2>
+      <p class="mentor-quote">Xorijda oʻqish yoʻlini oʻzim bosib oʻtdim. Kompas Lab — shu yoʻlni ketma-ket, tekshiriladigan qadamlarga ajratish urinishi.</p>
+      <p class="mentor-bio">Kompas Lab dasturlari asoschining Koreyadagi oʻqish, EYUF tanlovi va Leedsdagi doktorantura tajribasiga hamda universitet va stipendiya tashkilotlarining rasmiy hujjatlariga asoslanadi. Har Lab bitta spetsifikatsiya hujjati boʻyicha quriladi; muddat va talablar Qobiq sahifalarida tekshiruv sanasi bilan yangilanib boriladi.</p>
+      <a href="#labs" class="btn-hero-p" style="display:inline-flex;">Lablarni koʻrish →</a>
     </div>
   </div>
 </section>
@@ -1337,33 +1299,37 @@ footer{
 <section class="faq" id="faq">
   <div class="faq-inner">
     <div class="faq-top reveal">
-      <div class="sec-label">FAQ</div>
-      <h2 class="sec-title">Ko'p so'raladigan <em>savollar.</em></h2>
+      <div class="sec-label">Savollar</div>
+      <h2 class="sec-title">Koʻp soʻraladigan <em>savollar.</em></h2>
     </div>
     <div class="faq-list reveal">
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Kurs qachon boshlanadi? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Ro'yxatdan o'tganingiz zahoti darhol boshlay olasiz. Kurs self-paced — o'z sur'atingizda, o'z vaqtingizda o'qiysiz. Mentor feedback sessiyalari haftada bir marta bo'ladi.</div></div>
+        <div class="faq-q">Qachon boshlash mumkin? <span class="faq-arr">›</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Hozir kutish roʻyxati ochiq. Lablar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beriladi. Har Labning M0 moduli bepul boʻladi.</div></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">STEM bo'lmagan talabalar ham qo'shila oladimi? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Kurs asosan STEM (Science, Technology, Engineering, Mathematics) talabalari uchun mo'ljallangan. Lekin Research proposal va SoP yozish ko'nikmalari boshqa sohalarda ham qo'llaniladi. Savol bo'lsa, Telegram'da yozing.</div></div>
+        <div class="faq-q">Obuna qanday ishlaydi? <span class="faq-arr">›</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Ikki reja bor: yillik — 699 000 soʻm (12 oy) va oylik — 99 000 soʻm (har oy uzaytiriladi). Obuna tanlangan Labning barcha modullarini ochadi. Istalgan vaqtda bekor qilasiz, toʻlangan davr oxirigacha kirish saqlanadi. Umrbod kirish rejasi yoʻq.</div></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Har bir kurs necha darsdan iborat? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Bachelor Lab — 42 ta dars (8 modul), Master Lab — 28 ta dars (8 modul), PhD Lab — 32 ta dars (9 modul), GKS Lab — 20 ta dars (6 modul), DAAD Lab — 30 ta dars (8 modul). Barcha darslar video formatda, PDF materiallar bilan birga keladi. Umrbod kirish huquqi beriladi.</div></div>
+        <div class="faq-q">Har Labda nechta dars bor? <span class="faq-arr">›</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Bachelor Lab — 17 modul, 86 dars. Master Lab — 9 modul, 59 dars. GKS Lab — 54 dars, bitta oʻquvchi umumiy oʻzak va oʻz trekini (26–27 dars) oʻtadi. USA Lab — 12 modul, 72 dars, trekka qarab 40–55 dars. PhD Lab — 10 modul, 60 dars. DAAD Lab — 9 modul, 51 dars.</div></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Kurs ingliz tilida yoki o'zbekcha? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Darslar o'zbek tilida, lekin barcha terminologiya va materiallar ingliz tilida. CV, SoP, email templatelar ingliz tilida tayyorlanadi. Bu sizni haqiqiy xalqaro muhitga tayyorlaydi.</div></div>
+        <div class="faq-q">Darslar video formatdami? <span class="faq-arr">›</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Asosiy format — matn, interaktiv vositalar va ish stoli. Video majburiy emas. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.</div></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Pul qaytarilish kafolati qanday ishlaydi? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">To'lov kunidan 7 kun ichida, agar kurs sizga mos kelmasa, to'liq pulni qaytaramiz. Hech qanday savol so'ralmaydi. Telegram'ga yozing: @kompaslab</div></div>
+        <div class="faq-q">Inshoni yoki hujjatlarni oʻrnimga yozib berasizmi? <span class="faq-arr">›</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati ham berilmaydi.</div></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Kursni tugatgach sertifikat beriladi? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Ha, kursni muvaffaqiyatli tugatgan talabalar Kompas Lab sertifikati oladi. Lekin eng muhim "sertifikat" — bu sizning universitetdagi qabul xatingiz va grant tasdiqi.</div></div>
+        <div class="faq-q">18 yoshga toʻlmaganman. Qatnasha olamanmi? <span class="faq-arr">›</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Ha. Bachelor Lab va GKS Lab bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; platformada pasport yoki attestat nusxalari yigʻilmaydi.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Darslar qaysi tilda? <span class="faq-arr">›</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Oʻzbek tilida. Xalqaro atamalar inglizcha asli bilan va oʻzbekcha izoh bilan beriladi, masalan: Research Proposal (Ilmiy loyiha taklifi).</div></div>
       </div>
     </div>
   </div>
@@ -1372,14 +1338,14 @@ footer{
 <!-- ════════════════ CTA ════════════════ -->
 <section class="cta-section">
   <div class="cta-inner">
-    <div class="cta-badge">🧭 Kompas Lab · Cohort 2025</div>
-    <h2 class="cta-title">Keyingi qabul sizniki<br><em>bo'lishi mumkin.</em></h2>
-    <p class="cta-sub">47 ta talaba allaqachon boshladi. Tizimli yondashuv bilan top universitetga yo'l — bu omad emas, bu san'at.</p>
+    <div class="cta-badge">🧭 Kompas Lab</div>
+    <h2 class="cta-title">Bepul M0 dan <em>boshlang.</em></h2>
+    <p class="cta-sub">Avval Lab sizga mosligini tekshiring, keyin qaror qiling. Ochilish haqida xabar olish uchun kutish roʻyxatiga yoziling.</p>
     <div class="cta-btns">
-      <a href="register.html" class="btn-cta-p">Hoziroq yozilish →</a>
-      <a href="https://t.me/kompaslab" class="btn-cta-g" target="_blank">💬 Telegram'da so'rash</a>
+      <button type="button" class="btn-cta-p" onclick="openWaitlist('', '')" style="border:none;cursor:pointer;">🔔 Kutish roʻyxati</button>
+      <a href="https://t.me/kompaslab" class="btn-cta-g" target="_blank" rel="noopener">💬 Telegramʼda soʻrash</a>
     </div>
-    <div class="cta-guarantee">🛡 7 kunlik kafolat · 🔒 Xavfsiz to'lov · ⚡ Darhol kirish</div>
+    <div class="cta-guarantee">🔒 Karta raqami saqlanmaydi · Obunani istalgan vaqtda bekor qilish</div>
   </div>
 </section>
 
@@ -1392,44 +1358,39 @@ footer{
           <div class="foot-lm">🧭</div>
           <span class="foot-lt">Kompas Lab</span>
         </a>
-        <p class="foot-bio">STEM talabalarini global tadqiqotchilar va yuqori darajali mutaxassislarga aylantiradigan academic incubator.</p>
+        <p class="foot-bio">STEM yoʻnalishidagi oʻquvchi va talabalar uchun xorijda oʻqishga tayyorgarlik Lablari. Kuzatuvdan — kashfiyotga.</p>
         <div class="foot-socials">
-          <a href="https://t.me/kompaslab" class="foot-soc" target="_blank">✈️</a>
-          <a href="#" class="foot-soc">📸</a>
-          <a href="#" class="foot-soc">▶️</a>
+          <a href="https://t.me/kompaslab" class="foot-soc" target="_blank" rel="noopener" aria-label="Telegram">✈️</a>
         </div>
       </div>
       <div class="foot-col">
-        <h4>Kurs</h4>
+        <h4>Daraja</h4>
         <div class="foot-links">
-          <a href="#curriculum" class="foot-link">Dastur</a>
-          <a href="#pricing" class="foot-link">Narxlar</a>
-          <a href="#results" class="foot-link">Natijalar</a>
-          <a href="#faq" class="foot-link">FAQ</a>
+          <a href="#labs" class="foot-link">Bachelor Lab</a>
+          <a href="#labs" class="foot-link">Master Lab</a>
+          <a href="#labs" class="foot-link">PhD Lab</a>
         </div>
       </div>
       <div class="foot-col">
-        <h4>Grantlar</h4>
+        <h4>Yoʻnalish</h4>
         <div class="foot-links">
-          <a href="#" class="foot-link">EYUF haqida</a>
-          <a href="#" class="foot-link">GKS Korea</a>
-          <a href="#" class="foot-link">DAAD Germany</a>
-          <a href="#" class="foot-link">Erasmus+</a>
+          <a href="#labs" class="foot-link">GKS Lab</a>
+          <a href="#labs" class="foot-link">USA Lab</a>
+          <a href="#labs" class="foot-link">DAAD Lab</a>
         </div>
       </div>
       <div class="foot-col">
         <h4>Aloqa</h4>
         <div class="foot-links">
-          <a href="https://t.me/kompaslab" class="foot-link">Telegram</a>
+          <a href="https://t.me/kompaslab" class="foot-link" target="_blank" rel="noopener">Telegram</a>
           <a href="login.html" class="foot-link">Kirish</a>
-          <a href="register.html" class="foot-link">Ro'yxatdan o'tish</a>
-          <a href="#" class="foot-link">Shartlar</a>
+          <a href="register.html" class="foot-link">Roʻyxatdan oʻtish</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2025 Kompas Lab · Barcha huquqlar himoyalangan</span>
-      <span>Toshkent, O'zbekiston 🇺🇿</span>
+      <span>© 2026 Kompas Lab · YATT Boqijonov Shoxrux</span>
+      <span>Oʻzbekiston 🇺🇿</span>
     </div>
   </div>
 </footer>
@@ -1466,27 +1427,36 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 })
 
 // ════════════════════════════════════════════════════════
-//  WAITLIST
+//  KUTISH ROʻYXATI
 // ════════════════════════════════════════════════════════
-let _wlSlug = '', _wlName = ''
-
-const WL_EMOJIS = {
-  'gks-lab':            '🇰🇷',
-  'ikki-miya':          '🧠',
-  'notion-shablonlar':  '📓',
+const WL_LABS = {
+  'bachelor-lab':     { name: 'Bachelor Lab',         emoji: '🎓' },
+  'master-lab':       { name: 'Master Lab',           emoji: '🔬' },
+  'phd-lab':          { name: 'PhD Lab',              emoji: '⚗️' },
+  'gks-lab':          { name: 'GKS Lab',              emoji: '🇰🇷' },
+  'usa-lab':          { name: 'USA Lab',              emoji: '🇺🇸' },
+  'daad-lab':         { name: 'DAAD Lab',             emoji: '🇩🇪' },
+  'tadbirkor-talaba': { name: 'Tadbirkor Talaba Lab', emoji: '💼' },
+  'miggo':            { name: 'Musofir Lab',          emoji: '🧳' },
+  'ikki-miya':        { name: '2-Miya',               emoji: '🧠' },
 }
 
-function openWaitlist(slug, name) {
-  _wlSlug = slug
-  _wlName = name
-  document.getElementById('wlEmoji').textContent = WL_EMOJIS[slug] || '🔔'
-  document.getElementById('wlTitle').textContent = `${name} ochilishini kuting`
+function setWaitlistHeader(slug) {
+  const lab = WL_LABS[slug]
+  document.getElementById('wlEmoji').textContent = lab ? lab.emoji : '🔔'
+  document.getElementById('wlTitle').textContent = lab ? `${lab.name} — kutish roʻyxati` : 'Kutish roʻyxati'
+}
+
+function openWaitlist(slug) {
+  const sel = document.getElementById('wlLab')
+  sel.value = WL_LABS[slug] ? slug : ''
+  setWaitlistHeader(sel.value)
   document.getElementById('wlEmail').value = ''
   document.getElementById('wlMsg').textContent = ''
   document.getElementById('wlBtn').disabled = false
   document.getElementById('wlBtn').textContent = '🔔 Xabardor qiling'
   document.getElementById('wlModal').classList.add('open')
-  setTimeout(() => document.getElementById('wlEmail').focus(), 150)
+  setTimeout(() => (sel.value ? document.getElementById('wlEmail') : sel).focus(), 150)
 }
 
 function closeWaitlist() {
@@ -1494,13 +1464,19 @@ function closeWaitlist() {
 }
 
 async function submitWaitlist() {
+  const slug  = document.getElementById('wlLab').value
   const email = document.getElementById('wlEmail').value.trim()
   const msg   = document.getElementById('wlMsg')
   const btn   = document.getElementById('wlBtn')
 
+  if (!slug) {
+    msg.style.color = 'var(--red)'
+    msg.textContent = '⚠️ Labni tanlang'
+    return
+  }
   if (!email || !/\S+@\S+\.\S+/.test(email)) {
     msg.style.color = 'var(--red)'
-    msg.textContent = '⚠️ To\'g\'ri email kiriting'
+    msg.textContent = '⚠️ Toʻgʻri email kiriting'
     return
   }
 
@@ -1509,52 +1485,46 @@ async function submitWaitlist() {
   msg.textContent = ''
 
   try {
-    // Supabase waitlist jadvaliga yozish
     const { error } = await supabase
       .from('waitlist')
       .upsert(
-        { email: email, course_slug: _wlSlug, source: 'index_page' },
+        { email: email, course_slug: slug, source: 'index_v3' },
         { onConflict: 'email,course_slug', ignoreDuplicates: true }
       )
 
     if (error && error.code !== '23505') throw error
 
     msg.style.color = 'var(--green)'
-    msg.textContent = '✅ Qo\'shildingiz! Ochilishi bilanoq xabar beramiz.'
-    btn.textContent = '✅ Ro\'yxatdasiz'
+    msg.textContent = '✅ Qoʻshildingiz. Ochilishi bilan xabar beramiz.'
+    btn.textContent = '✅ Roʻyxatdasiz'
 
-    // Karta ustiga badge qo'shish
-    const card = document.querySelector(`[data-slug="${_wlSlug}"]`)
-    if (card) {
-      const notifyBtn = card.querySelector('.cs-notify-btn')
-      if (notifyBtn) {
-        notifyBtn.textContent = '✅ Ro\'yxatdasiz'
-        notifyBtn.style.background = 'rgba(26,122,74,0.2)'
-        notifyBtn.style.borderColor = 'rgba(26,122,74,0.4)'
-        notifyBtn.style.color = '#4ade80'
-        notifyBtn.disabled = true
-      }
-    }
+    const card = document.querySelector(`.lab[data-slug="${slug}"] .btn-lab`)
+    if (card) { card.textContent = '✅ Roʻyxatdasiz'; card.disabled = true }
 
     setTimeout(() => closeWaitlist(), 2200)
 
-  } catch(err) {
+  } catch (err) {
     msg.style.color = 'var(--red)'
-    msg.textContent = '❌ Xatolik yuz berdi. Qayta urinib ko\'ring.'
+    msg.textContent = '❌ Xatolik yuz berdi. Qayta urinib koʻring.'
     btn.disabled = false
     btn.textContent = '🔔 Xabardor qiling'
   }
 }
 
-// Modal background click to close
-document.getElementById('wlModal').addEventListener('click', function(e) {
+document.getElementById('wlLab').addEventListener('change', e => setWaitlistHeader(e.target.value))
+
+document.getElementById('wlModal').addEventListener('click', function (e) {
   if (e.target === this) closeWaitlist()
 })
 
-// Enter key in email field
 document.getElementById('wlEmail').addEventListener('keydown', e => {
   if (e.key === 'Enter') submitWaitlist()
 })
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeWaitlist()
+})
 </script>
 </body>
+
 </html>
