@@ -4,1528 +4,538 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kompas Lab — xorijda oʻqishga tizimli tayyorgarlik</title>
-<meta name="description" content="Bachelor, Master, GKS, USA, PhD va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tizimli tayyorgarlik. Har Labda M0 bepul.">
+<meta name="description" content="Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tizimli tayyorgarlik. Har Labda M0 bepul.">
+<meta property="og:title" content="Kompas Lab">
+<meta property="og:description" content="Xorijda oʻqishga tizimli tayyorgarlik. Har Labda M0 bepul. Oʻzbek tilida.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* ════════════════════════════════════════
-   TOKENS
-════════════════════════════════════════ */
 :root{
-  --accent:       #2d4a3e;
-  --accent-h:     #1e3329;
-  --accent-lit:   #e8f0ec;
-  --accent2:      #c4622d;
-  --accent2-h:    #a84f23;
-  --accent2-lit:  #faeee7;
-  --bg:           #f5f7f5;
-  --surface:      #ffffff;
-  --border:       #e0e8e2;
-  --text:         #1a2e26;
-  --muted:        #6b7f76;
-  --muted2:       #9aada6;
-  --green:        #1a7a4a;
-  --green-lit:    #e6f4ec;
-  --gold:         #b08a00;
-  --gold-lit:     #fdf6dc;
+  --accent:#2d4a3e; --accent-h:#1e3329; --accent-lit:#e8f0ec;
+  --accent2:#c4622d; --accent2-h:#a84f23; --accent2-lit:#faeee7;
+  --cream:#f4f3ef; --gold:#b08a00; --gold-lit:#fdf6dc;
+  --bg:#f5f7f5; --surface:#ffffff; --border:#e0e8e2;
+  --text:#1a2e26; --muted:#5f7169; --muted2:#9aada6;
+  --green:#1a7a4a; --green-lit:#e6f4ec; --red:#b42318; --red-lit:#fdecea;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{
-  font-family:'Outfit',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
-}
+body{font-family:"Outfit",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+a{color:inherit;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;}
+.mono{font-family:"JetBrains Mono",monospace;}
 
-/* ════════════════════════════════════════
-   NAV
-════════════════════════════════════════ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  height:64px;
-  background:rgba(245,247,245,0.88);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;
-  padding:0 5%;
-  transition:box-shadow .3s;
-}
-.nav.scrolled{box-shadow:0 4px 24px rgba(45,74,62,0.08);}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.nav-lm{
-  width:36px;height:36px;border-radius:10px;
-  background:var(--accent);
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;
-}
-.nav-lt{font-size:17px;font-weight:800;color:var(--accent);letter-spacing:-.3px;}
-.nav-links{display:flex;align-items:center;gap:6px;margin:0 auto;}
-.nav-link{
-  padding:7px 14px;border-radius:8px;
-  font-size:13px;font-weight:600;color:var(--muted);
-  text-decoration:none;transition:all .15s;
-}
-.nav-link:hover{color:var(--accent);background:var(--accent-lit);}
-.nav-ctas{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.btn-nav-ghost{
-  padding:8px 16px;border-radius:9px;
-  font-size:13px;font-weight:700;color:var(--accent);
-  text-decoration:none;border:1.5px solid var(--border);
-  transition:all .15s;font-family:'Outfit',sans-serif;
-}
-.btn-nav-ghost:hover{border-color:var(--accent);background:var(--accent-lit);}
-.btn-nav-solid{
-  padding:8px 18px;border-radius:9px;
-  font-size:13px;font-weight:700;color:#fff;
-  background:var(--accent2);text-decoration:none;
-  transition:all .15s;
-  box-shadow:0 4px 14px rgba(196,98,45,0.3);
-}
-.btn-nav-solid:hover{background:var(--accent2-h);transform:translateY(-1px);}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;background:rgba(245,247,245,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav .wrap{height:100%;display:flex;align-items:center;gap:16px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.logo-m{width:34px;height:34px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.logo-t{font-size:16px;font-weight:800;color:var(--accent);}
+.logo-t span{color:var(--muted);font-weight:600;}
+.nav-links{display:flex;gap:4px;margin:0 auto;}
+.nav-links a{padding:7px 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;}
+.nav-links a:hover{color:var(--accent);background:var(--accent-lit);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;font-family:"Outfit",sans-serif;font-weight:800;text-decoration:none;transition:all .18s;}
+.btn-p{background:var(--accent2);color:#fff;padding:13px 24px;border-radius:12px;font-size:15px;box-shadow:0 6px 22px rgba(196,98,45,.3);}
+.btn-p:hover{background:var(--accent2-h);transform:translateY(-1px);}
+.btn-g{background:var(--surface);color:var(--accent);padding:12px 22px;border-radius:12px;font-size:15px;border:2px solid var(--border);}
+.btn-g:hover{border-color:var(--accent);background:var(--accent-lit);}
+.btn-sm{padding:8px 14px;font-size:13px;border-radius:9px;}
+.nav .btn-p{margin-left:auto;}
 
-/* ════════════════════════════════════════
-   HERO
-════════════════════════════════════════ */
-.hero{
-  padding:140px 5% 80px;
-  position:relative;
-  overflow:hidden;
-  min-height:90vh;
-  display:flex;align-items:center;
-}
-/* Background pattern */
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(45,74,62,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(196,98,45,0.05) 0%, transparent 60%);
-  pointer-events:none;
-}
-.hero-grid-lines{
-  position:absolute;inset:0;
-  background-image:linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size:60px 60px;
-  opacity:.4;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%);
-  pointer-events:none;
-}
-.hero-inner{max-width:1160px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:center;position:relative;z-index:2;}
+/* HERO */
+.hero{padding:120px 0 64px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 80% 40%,rgba(45,74,62,.07),transparent 70%),radial-gradient(ellipse 40% 50% at 10% 90%,rgba(196,98,45,.06),transparent 60%);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:48px;align-items:center;position:relative;}
+.crumb{font-size:12px;color:var(--muted);margin-bottom:16px;}
+.crumb a{color:var(--muted);text-decoration:none;}
+.crumb a:hover{color:var(--accent);}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold-lit);border:1px solid #e8d48a;color:var(--gold);padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700;font-family:"JetBrains Mono",monospace;margin-bottom:18px;}
+h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(36px,5vw,60px);line-height:1.08;letter-spacing:-1px;color:var(--accent);margin-bottom:18px;}
+h1 em{font-style:italic;color:var(--accent2);}
+.lead{font-size:17px;color:var(--muted);max-width:560px;margin-bottom:26px;}
+.lead strong{color:var(--text);}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;}
+.facts{display:flex;flex-wrap:wrap;gap:8px;}
+.fact{font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px;background:var(--surface);border:1px solid var(--border);color:var(--text);}
+.fact b{font-family:"JetBrains Mono",monospace;color:var(--accent2);}
 
-/* LEFT */
-.hero-left{}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--gold-lit);border:1px solid #e8d48a;
-  color:var(--gold);
-  padding:6px 14px;border-radius:99px;
-  font-size:12px;font-weight:700;margin-bottom:22px;
-  font-family:'JetBrains Mono',monospace;letter-spacing:.5px;
-}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+.packet{background:var(--surface);border:1px solid var(--border);border-radius:22px;overflow:hidden;box-shadow:0 22px 60px rgba(45,74,62,.12);}
+.packet-top{background:var(--accent);color:#fff;padding:22px;}
+.packet-top small{display:block;font-size:11px;font-family:"JetBrains Mono",monospace;color:rgba(255,255,255,.6);letter-spacing:.5px;margin-bottom:6px;}
+.packet-top strong{font-size:19px;font-weight:800;}
+.packet ol{list-style:none;padding:8px 22px 4px;counter-reset:p;}
+.packet li{counter-increment:p;display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;font-weight:600;}
+.packet li:last-child{border-bottom:none;}
+.packet li::before{content:counter(p);width:24px;height:24px;border-radius:7px;background:var(--accent-lit);color:var(--accent);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"JetBrains Mono",monospace;}
+.packet li span{display:block;font-size:11px;color:var(--muted);font-weight:500;}
+.packet-foot{padding:14px 22px;background:var(--bg);border-top:1px solid var(--border);font-size:12px;color:var(--muted);}
 
-.hero-h1{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(42px,5vw,68px);
-  line-height:1.1;
-  letter-spacing:-1.5px;
-  color:var(--accent);
-  margin-bottom:6px;
-}
-.hero-h1 em{
-  font-style:italic;
-  color:var(--accent2);
-}
-.hero-h1-line2{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(42px,5vw,68px);
-  line-height:1.1;
-  letter-spacing:-1.5px;
-  color:var(--text);
-  margin-bottom:22px;
-  display:block;
-}
-.hero-sub{
-  font-size:17px;color:var(--muted);
-  line-height:1.7;max-width:520px;
-  margin-bottom:32px;
-  font-weight:400;
-}
-.hero-sub strong{color:var(--text);font-weight:700;}
-.hero-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
-.btn-hero-p{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:14px 28px;border-radius:12px;
-  background:var(--accent2);color:#fff;
-  font-size:15px;font-weight:800;text-decoration:none;
-  transition:all .2s;font-family:'Outfit',sans-serif;
-  box-shadow:0 6px 24px rgba(196,98,45,0.35);
-}
-.btn-hero-p:hover{background:var(--accent2-h);transform:translateY(-2px);box-shadow:0 10px 32px rgba(196,98,45,0.4);}
-.btn-hero-g{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:13px 24px;border-radius:12px;
-  border:2px solid var(--border);color:var(--accent);
-  font-size:15px;font-weight:700;text-decoration:none;
-  transition:all .2s;background:var(--surface);
-}
-.btn-hero-g:hover{border-color:var(--accent);background:var(--accent-lit);}
-.hero-trust{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.trust-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);}
-.trust-sep{width:4px;height:4px;border-radius:50%;background:var(--muted2);}
+/* SECTIONS */
+section{padding:84px 0;}
+.alt{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.dark{background:var(--accent);color:#fff;}
+.label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:2px;font-family:"JetBrains Mono",monospace;margin-bottom:12px;}
+.label::before{content:"";width:18px;height:2px;background:var(--accent2);}
+h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(28px,3.4vw,42px);line-height:1.15;color:var(--accent);margin-bottom:12px;}
+h2 em{font-style:italic;color:var(--accent2);}
+.dark h2{color:#fff;}
+.sub{font-size:16px;color:var(--muted);max-width:640px;}
+.dark .sub{color:rgba(255,255,255,.65);}
+.head{margin-bottom:40px;}
 
-/* RIGHT CARD */
-.hero-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:24px;
-  overflow:hidden;
-  box-shadow:0 24px 64px rgba(45,74,62,0.12);
-  position:relative;
-}
-.hc-top{
-  background:var(--accent);
-  padding:24px;
-  position:relative;overflow:hidden;
-}
-.hc-top::after{
-  content:'';position:absolute;
-  width:200px;height:200px;
-  background:radial-gradient(circle,rgba(255,255,255,0.06),transparent);
-  top:-80px;right:-60px;
-}
-.hc-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
-  color:rgba(255,255,255,.85);padding:4px 12px;border-radius:99px;
-  font-size:11px;font-weight:700;margin-bottom:14px;
-  font-family:'JetBrains Mono',monospace;
-}
-.hc-title{font-size:20px;font-weight:900;color:#fff;margin-bottom:6px;position:relative;z-index:1;}
-.hc-sub{font-size:13px;color:rgba(255,255,255,.65);position:relative;z-index:1;}
-.hc-stats{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  border-top:1px solid rgba(255,255,255,.1);
-  margin-top:18px;position:relative;z-index:1;
-}
-.hcs{padding:14px;text-align:center;border-right:1px solid rgba(255,255,255,.1);}
-.hcs:last-child{border-right:none;}
-.hcs-val{font-size:20px;font-weight:900;color:#fff;font-family:'JetBrains Mono',monospace;line-height:1;}
-.hcs-lbl{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+/* PRINCIPLE */
+.rule-box{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:start;}
+.rule-box p{color:rgba(255,255,255,.75);margin-bottom:14px;}
+.model-list{display:grid;gap:10px;}
+.model{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px 16px;}
+.model b{display:block;font-size:14px;margin-bottom:2px;}
+.model span{font-size:13px;color:rgba(255,255,255,.65);}
+.model.bad{border-color:rgba(242,166,140,.5);background:rgba(196,98,45,.15);}
 
-.hc-body{padding:20px 24px;}
-.hc-mod{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
-.hc-mod:last-child{border-bottom:none;}
-.hc-mod-num{
-  width:32px;height:32px;border-radius:9px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:800;font-family:'JetBrains Mono',monospace;
-}
-.hcmn-1{background:var(--accent-lit);color:var(--accent);}
-.hcmn-2{background:var(--accent2-lit);color:var(--accent2);}
-.hcmn-3{background:var(--gold-lit);color:var(--gold);}
-.hcmn-4{background:#eef4ff;color:#1a56a0;}
-.hcmn-5{background:var(--green-lit);color:var(--green);}
-.hc-mod-info{flex:1;}
-.hc-mod-name{font-size:13px;font-weight:700;margin-bottom:1px;}
-.hc-mod-meta{font-size:11px;color:var(--muted);}
-.hc-mod-tag{
-  font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;
-  font-family:'JetBrains Mono',monospace;flex-shrink:0;
-}
+/* FIT */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.fit-col{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;}
+.fit-col h3{font-size:16px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.fit-col ul{list-style:none;display:grid;gap:10px;}
+.fit-col li{font-size:14px;padding-left:24px;position:relative;line-height:1.5;}
+.fit-col.yes li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800;}
+.fit-col.no li::before{content:"✗";position:absolute;left:0;color:var(--red);font-weight:800;}
+.fit-col li a{color:var(--accent);font-weight:700;}
 
-.hc-foot{
-  padding:16px 24px;
-  background:var(--bg);
-  border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.hcf-price{font-size:22px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);}
-.hcf-sub{font-size:11px;color:var(--muted);margin-top:1px;}
-.btn-hcf{
-  padding:10px 20px;border-radius:10px;
-  background:var(--accent2);color:#fff;
-  font-size:13px;font-weight:800;text-decoration:none;
-  transition:all .2s;font-family:'Outfit',sans-serif;
-}
-.btn-hcf:hover{background:var(--accent2-h);transform:translateY(-1px);}
+/* PHASES + MODULES */
+.phases{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:36px;}
+.phase{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px;}
+.phase small{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--accent2);font-weight:700;letter-spacing:1px;}
+.phase b{display:block;font-size:14px;margin:4px 0;}
+.phase span{font-size:12px;color:var(--muted);}
+.mods{display:grid;gap:10px;}
+details.mod{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+details.mod[open]{border-color:var(--accent);}
+details.mod summary{list-style:none;cursor:pointer;padding:16px 18px;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;}
+details.mod summary::-webkit-details-marker{display:none;}
+.mod-n{width:44px;height:44px;border-radius:11px;background:var(--accent-lit);color:var(--accent);font-family:"JetBrains Mono",monospace;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.mod.free .mod-n{background:var(--green-lit);color:var(--green);}
+.mod-t{font-weight:800;font-size:15px;line-height:1.3;}
+.mod-a{font-size:12px;color:var(--muted);margin-top:3px;}
+.mod-c{font-size:12px;font-weight:700;color:var(--muted);font-family:"JetBrains Mono",monospace;white-space:nowrap;}
+.mod-c .tag{display:inline-block;margin-left:6px;padding:2px 7px;border-radius:6px;font-size:10px;}
+.tag-free{background:var(--green-lit);color:var(--green);}
+.tag-core{background:var(--gold-lit);color:var(--gold);}
+.mod ol{list-style:none;padding:0 18px 16px 84px;display:grid;gap:8px;}
+.mod li{font-size:14px;line-height:1.45;}
+.mod li .num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent2);font-weight:700;margin-right:6px;}
+.mod li small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;}
 
-/* ════════════════════════════════════════
-   STATS BAR
-════════════════════════════════════════ */
-.stats-bar{
-  background:var(--accent);
-  padding:28px 5%;
-}
-.stats-inner{
-  max-width:1160px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;
-}
-.stat-item{
-  padding:0 32px;
-  border-right:1px solid rgba(255,255,255,.12);
-  text-align:center;
-}
-.stat-item:last-child{border-right:none;}
-.stat-val{font-size:36px;font-weight:900;color:#fff;font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:4px;}
-.stat-lbl{font-size:12px;color:rgba(255,255,255,.55);font-weight:600;text-transform:uppercase;letter-spacing:.8px;}
-.stat-val em{font-style:normal;color:var(--accent2);}
+/* TIMELINE */
+.tl{position:relative;display:grid;gap:12px;}
+.tl-row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;align-items:start;}
+.tl-when{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;color:var(--accent2);padding-top:12px;}
+.tl-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:12px 16px;}
+.tl-card b{font-size:14px;}
+.tl-card p{font-size:13px;color:var(--muted);}
+.tl-card.hot{border-left-color:var(--accent2);}
+.note{font-size:12.5px;color:var(--muted);margin-top:14px;}
 
-/* ════════════════════════════════════════
-   PROBLEM SECTION
-════════════════════════════════════════ */
-.section{padding:96px 5%;}
-.section-inner{max-width:1160px;margin:0 auto;}
-.sec-label{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:11px;font-weight:700;color:var(--accent2);
-  text-transform:uppercase;letter-spacing:2px;
-  font-family:'JetBrains Mono',monospace;
-  margin-bottom:14px;
-}
-.sec-label::before{content:'';width:20px;height:2px;background:var(--accent2);}
-.sec-title{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(30px,3.5vw,46px);
-  line-height:1.15;letter-spacing:-.8px;
-  color:var(--accent);margin-bottom:16px;
-}
-.sec-title em{font-style:italic;color:var(--accent2);}
-.sec-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.7;}
+/* ARTIFACTS */
+.art-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.art{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;}
+.art small{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;color:var(--accent2);}
+.art b{display:block;font-size:14px;margin:4px 0 2px;line-height:1.35;}
+.art span{font-size:12px;color:var(--muted);}
 
-/* Problem cards */
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
-.prob-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:18px;
-  padding:24px;position:relative;overflow:hidden;
-  transition:transform .2s, box-shadow .2s;
-}
-.prob-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(45,74,62,0.1);}
-.prob-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--accent2),#e0896a);
-}
-.prob-icon{font-size:32px;margin-bottom:14px;}
-.prob-title{font-size:16px;font-weight:800;margin-bottom:8px;}
-.prob-text{font-size:13px;color:var(--muted);line-height:1.65;}
-.prob-vs{
-  margin-top:14px;padding-top:14px;border-top:1px solid var(--border);
-  display:flex;flex-direction:column;gap:6px;
-}
-.pv-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;}
-.pv-row.bad{color:var(--muted);}
-.pv-row.good{color:var(--green);font-weight:600;}
+/* ATLAS */
+.atlas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.src{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;}
+.src-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:6px;flex-wrap:wrap;}
+.src-h b{font-size:15px;}
+.chk{font-size:10.5px;font-family:"JetBrains Mono",monospace;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap;}
+.chk.ok{background:var(--green-lit);color:var(--green);}
+.chk.lab{background:var(--accent-lit);color:var(--accent);}
+.chk.wait{background:var(--gold-lit);color:var(--gold);}
+.src p{font-size:13.5px;color:var(--text);}
+.src a.s{font-size:12px;color:#1f5fa8;font-weight:600;}
+.excl{margin-top:18px;background:var(--red-lit);border:1px solid #f3c3bd;border-radius:14px;padding:14px 18px;font-size:13.5px;}
+.excl b{color:var(--red);}
 
-/* ════════════════════════════════════════
-   CURRICULUM
-════════════════════════════════════════ */
-.curriculum{background:var(--accent);padding:96px 5%;}
-.curr-inner{max-width:1160px;margin:0 auto;}
-.curr-top{display:grid;grid-template-columns:1fr 400px;gap:48px;align-items:start;margin-bottom:48px;}
-.curr-head .sec-label{color:rgba(255,255,255,.5);}
-.curr-head .sec-label::before{background:rgba(255,255,255,.3);}
-.curr-head .sec-title{color:#fff;}
-.curr-head .sec-sub{color:rgba(255,255,255,.6);max-width:400px;}
-.curr-summary{
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
-  border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;
-}
-.cs-item{display:flex;align-items:center;justify-content:space-between;}
-.cs-lbl{font-size:13px;color:rgba(255,255,255,.6);font-weight:600;}
-.cs-val{font-size:14px;font-weight:800;color:#fff;font-family:'JetBrains Mono',monospace;}
+/* FOUNDER */
+.founder{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:start;}
+.f-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.f-top{background:linear-gradient(135deg,var(--accent),#4a7a65);color:#fff;padding:24px;}
+.f-top b{display:block;font-size:20px;}
+.f-top span{font-size:13px;color:rgba(255,255,255,.7);}
+.f-list{list-style:none;padding:8px 22px;}
+.f-list li{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;font-weight:600;}
+.f-list li:last-child{border-bottom:none;}
+.f-list li span{display:block;font-size:12px;color:var(--muted);font-weight:500;}
+table.scope{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:13.5px;}
+.scope th,.scope td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+.scope th{background:var(--accent);color:#fff;font-size:12px;font-weight:700;}
+.scope tr:last-child td{border-bottom:none;}
+.y{color:var(--green);font-weight:800;} .n{color:var(--red);font-weight:800;}
 
-/* Weeks grid */
-.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-.week-card{
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
-  border-radius:16px;padding:20px;
-  cursor:pointer;transition:all .2s;
-}
-.week-card:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);transform:translateY(-2px);}
-.wc-num{
-  font-size:10px;font-weight:700;color:rgba(255,255,255,.4);
-  text-transform:uppercase;letter-spacing:1.5px;
-  font-family:'JetBrains Mono',monospace;margin-bottom:8px;
-}
-.wc-title{font-size:14px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3;}
-.wc-lessons{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
-.wcl{font-size:11px;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:6px;font-weight:500;}
-.wcl::before{content:'›';color:rgba(255,255,255,.3);font-size:13px;}
-.wc-meta{
-  display:flex;align-items:center;justify-content:space-between;
-  border-top:1px solid rgba(255,255,255,.08);padding-top:10px;
-}
-.wc-count{font-size:11px;color:rgba(255,255,255,.4);font-family:'JetBrains Mono',monospace;font-weight:600;}
-.wc-tag{
-  font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;
-  font-family:'JetBrains Mono',monospace;
-}
-.wct-core{background:rgba(45,74,62,.5);color:rgba(255,255,255,.7);}
-.wct-hot{background:rgba(196,98,45,.4);color:rgba(255,255,255,.85);}
-.wct-new{background:rgba(176,138,0,.3);color:rgba(255,255,255,.8);}
+/* PRICING */
+.pay-status{display:flex;gap:12px;align-items:flex-start;background:var(--gold-lit);border:1px solid #e8d48a;border-radius:14px;padding:14px 18px;font-size:14px;margin-bottom:28px;}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch;}
+.plan{background:var(--bg);border:2px solid var(--border);border-radius:20px;padding:26px;display:flex;flex-direction:column;}
+.plan.main{background:var(--accent);border-color:var(--accent);color:#fff;position:relative;}
+.plan.main .tag-top{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent2);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;font-family:"JetBrains Mono",monospace;white-space:nowrap;}
+.plan h3{font-size:17px;font-weight:800;margin-bottom:4px;}
+.plan .desc{font-size:13px;color:var(--muted);margin-bottom:16px;}
+.plan.main .desc{color:rgba(255,255,255,.65);}
+.price{font-family:"JetBrains Mono",monospace;font-size:32px;font-weight:800;color:var(--accent);line-height:1;}
+.plan.main .price{color:#fff;}
+.per{font-size:12px;color:var(--muted);margin:6px 0 18px;}
+.plan.main .per{color:rgba(255,255,255,.6);}
+.plan ul{list-style:none;display:grid;gap:8px;margin-bottom:22px;flex:1;}
+.plan li{font-size:13.5px;padding-left:22px;position:relative;}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800;}
+.plan.main li::before{color:#9be0b8;}
+.plan .btn{width:100%;}
+.plan.main .btn-g{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3);}
+.calc{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.calc div{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--muted);}
+.calc b{display:block;font-family:"JetBrains Mono",monospace;font-size:17px;color:var(--text);margin-bottom:2px;}
+.rules{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rules div{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:13.5px;}
+.rules b{display:block;color:var(--accent);margin-bottom:3px;}
 
-/* ════════════════════════════════════════
-   MENTOR
-════════════════════════════════════════ */
-.mentor-section{padding:96px 5%;background:var(--surface);border-top:1px solid var(--border);}
-.mentor-inner{
-  max-width:1160px;margin:0 auto;
-  display:grid;grid-template-columns:400px 1fr;gap:60px;align-items:center;
-}
-.mentor-card{
-  background:var(--bg);border:1px solid var(--border);border-radius:24px;
-  overflow:hidden;
-}
-.mc-header{
-  background:linear-gradient(135deg,var(--accent),#4a7a65);
-  padding:32px;text-align:center;
-}
-.mc-avatar{
-  width:96px;height:96px;border-radius:50%;
-  background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.05));
-  border:3px solid rgba(255,255,255,.3);
-  margin:0 auto 14px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:42px;
-}
-.mc-name{font-size:20px;font-weight:900;color:#fff;margin-bottom:4px;}
-.mc-role{font-size:13px;color:rgba(255,255,255,.65);}
-.mc-body{padding:22px;}
-.mc-fact{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:10px 0;border-bottom:1px solid var(--border);
-}
-.mc-fact:last-child{border-bottom:none;}
-.mcf-ico{font-size:18px;flex-shrink:0;margin-top:1px;}
-.mcf-text{font-size:13px;font-weight:600;color:var(--text);line-height:1.5;}
-.mcf-sub{font-size:11px;color:var(--muted);margin-top:1px;}
+/* QUIZ */
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;}
+.q{margin-bottom:14px;}
+.q label{display:block;font-size:13.5px;font-weight:700;margin-bottom:6px;}
+.q label small{font-weight:500;color:var(--muted);}
+.q select{width:100%;padding:10px 12px;border:2px solid var(--border);border-radius:10px;font-family:"Outfit",sans-serif;font-size:14px;background:var(--bg);color:var(--text);}
+.q select:focus{outline:none;border-color:var(--accent);background:#fff;}
+.score{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:20px;position:sticky;top:80px;align-self:start;}
+.score-n{font-family:"JetBrains Mono",monospace;font-size:48px;font-weight:800;color:var(--accent);line-height:1;}
+.score-n small{font-size:18px;color:var(--muted);}
+.bar{height:10px;background:var(--border);border-radius:99px;overflow:hidden;margin:12px 0;}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s,background .3s;}
+.verdict{font-weight:800;font-size:16px;margin-bottom:6px;}
+.verdict-t{font-size:13.5px;color:var(--muted);margin-bottom:10px;}
+.warn{display:none;background:var(--red-lit);color:var(--red);border-radius:10px;padding:10px 12px;font-size:13px;margin-top:8px;}
+.gaps{font-size:13px;margin-top:8px;}
+.gaps li{margin-left:18px;}
 
-.mentor-text{}
-.mentor-quote{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(22px,2.5vw,32px);
-  line-height:1.4;color:var(--accent);
-  margin-bottom:24px;letter-spacing:-.5px;
-  position:relative;padding-left:24px;
-}
-.mentor-quote::before{
-  content:'"';position:absolute;left:0;top:-8px;
-  font-size:60px;color:var(--accent2);opacity:.3;
-  font-family:'DM Serif Display',serif;line-height:1;
-}
-.mentor-bio{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:28px;}
-.mentor-achievements{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
-.ma-item{
-  display:flex;align-items:center;gap:12px;
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:10px;padding:12px 14px;
-}
-.ma-ico{font-size:18px;flex-shrink:0;}
-.ma-text{font-size:13px;font-weight:700;}
-.ma-sub{font-size:11px;color:var(--muted);margin-top:1px;}
+/* FAQ */
+.faq{max-width:780px;margin:0 auto;display:grid;gap:10px;}
+.faq details{background:var(--bg);border:1px solid var(--border);border-radius:14px;}
+.faq details[open]{border-color:var(--accent);}
+.faq summary{cursor:pointer;list-style:none;padding:16px 18px;font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:12px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";color:var(--muted);font-size:20px;line-height:1;}
+.faq details[open] summary::after{content:"–";}
+.faq p{padding:0 18px 16px;font-size:14.5px;color:var(--muted);}
+.faq p a{color:var(--accent);font-weight:700;}
 
-/* ════════════════════════════════════════
-   RESULTS / OUTCOMES
-════════════════════════════════════════ */
-.results{padding:96px 5%;background:var(--bg);}
-.results-inner{max-width:1160px;margin:0 auto;}
-.results-top{text-align:center;margin-bottom:56px;}
-.results-top .sec-sub{margin:0 auto;}
-.outcomes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.outcome{
-  background:var(--surface);border:1px solid var(--border);border-radius:20px;
-  padding:28px;transition:all .2s;
-}
-.outcome:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(45,74,62,0.1);}
-.oc-icon{font-size:36px;margin-bottom:16px;}
-.oc-univ{
-  font-size:11px;font-weight:700;color:var(--muted2);
-  text-transform:uppercase;letter-spacing:1px;
-  font-family:'JetBrains Mono',monospace;margin-bottom:6px;
-}
-.oc-title{font-size:17px;font-weight:900;color:var(--accent);margin-bottom:8px;}
-.oc-sub{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px;}
-.oc-tag{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:11px;font-weight:700;padding:4px 10px;border-radius:7px;
-  font-family:'JetBrains Mono',monospace;
-}
-.oct-green{background:var(--green-lit);color:var(--green);}
-.oct-gold{background:var(--gold-lit);color:var(--gold);}
-.oct-blue{background:#eef4ff;color:#1a56a0;}
+/* CTA + FOOTER */
+.cta{text-align:center;}
+.cta .sub{margin:0 auto 26px;}
+.cta .btn-g{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25);}
+footer{background:var(--text);color:rgba(255,255,255,.55);padding:34px 0;font-size:13px;}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+footer a{color:rgba(255,255,255,.75);text-decoration:none;margin-right:14px;}
+footer a:hover{color:#fff;}
+.sources{font-size:12px;color:var(--muted);margin-top:22px;}
+.sources a{color:#1f5fa8;}
 
-/* ════════════════════════════════════════
-   PRICING
-════════════════════════════════════════ */
-.pricing{padding:96px 5%;background:var(--surface);border-top:1px solid var(--border);}
-.pricing-inner{max-width:1160px;margin:0 auto;}
-.pricing-top{text-align:center;margin-bottom:56px;}
-.pricing-top .sec-sub{margin:0 auto;}
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto;}
+/* MODAL */
+.ovl{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;display:none;align-items:center;justify-content:center;padding:16px;}
+.ovl.open{display:flex;}
+.mdl{background:#fff;border-radius:20px;padding:30px 26px;width:100%;max-width:420px;position:relative;text-align:center;}
+.mdl h3{font-size:19px;font-weight:900;margin-bottom:6px;}
+.mdl p{font-size:13px;color:var(--muted);margin-bottom:16px;}
+.mdl input{width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:12px;font-size:15px;font-family:"Outfit",sans-serif;background:var(--bg);}
+.mdl input:focus{outline:none;border-color:var(--accent);background:#fff;}
+.mdl .btn{width:100%;margin-top:12px;}
+.x{position:absolute;top:12px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--muted);}
+#wlMsg{font-size:12.5px;min-height:18px;margin-top:8px;}
 
-.plan{
-  background:var(--bg);border:2px solid var(--border);border-radius:22px;
-  padding:32px;position:relative;transition:all .2s;
-}
-.plan:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(45,74,62,0.08);}
-.plan.featured{
-  background:var(--accent);border-color:var(--accent);
-  transform:scale(1.03);
-}
-.plan.featured:hover{transform:scale(1.03) translateY(-3px);}
-.plan-badge{
-  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
-  background:var(--accent2);color:#fff;
-  font-size:11px;font-weight:700;padding:4px 14px;border-radius:99px;
-  font-family:'JetBrains Mono',monospace;white-space:nowrap;
-}
-.plan-ico{font-size:28px;margin-bottom:14px;}
-.plan-name{font-size:18px;font-weight:900;margin-bottom:6px;}
-.plan.featured .plan-name{color:#fff;}
-.plan-desc{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5;}
-.plan.featured .plan-desc{color:rgba(255,255,255,.6);}
-.plan-price{
-  font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;
-  color:var(--accent);line-height:1;margin-bottom:4px;
-}
-.plan.featured .plan-price{color:#fff;}
-.plan-psub{font-size:12px;color:var(--muted);margin-bottom:22px;}
-.plan.featured .plan-psub{color:rgba(255,255,255,.5);}
-.plan-div{height:1px;background:var(--border);margin:0 0 20px;}
-.plan.featured .plan-div{background:rgba(255,255,255,.12);}
-.plan-feats{display:flex;flex-direction:column;gap:9px;margin-bottom:26px;}
-.pf{display:flex;align-items:flex-start;gap:10px;font-size:13px;}
-.pf-ico{font-size:13px;flex-shrink:0;margin-top:1px;}
-.pf-txt{color:var(--text);font-weight:500;line-height:1.4;}
-.plan.featured .pf-txt{color:rgba(255,255,255,.85);}
-.btn-plan{
-  width:100%;padding:13px;border-radius:12px;
-  font-size:14px;font-weight:800;font-family:'Outfit',sans-serif;
-  cursor:pointer;transition:all .2s;text-decoration:none;
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  border:2px solid transparent;
-}
-.btn-plan-p{background:var(--accent2);color:#fff;box-shadow:0 6px 20px rgba(196,98,45,.3);}
-.btn-plan-p:hover{background:var(--accent2-h);transform:translateY(-1px);}
-.btn-plan-g{background:var(--bg);color:var(--accent);border-color:var(--border);}
-.btn-plan-g:hover{border-color:var(--accent);}
-.btn-plan-w{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25);}
-.btn-plan-w:hover{background:rgba(255,255,255,.18);}
-.pricing-note{text-align:center;margin-top:24px;font-size:13px;color:var(--muted);}
-.pricing-note a{color:var(--accent);font-weight:700;text-decoration:none;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
 
-/* ════════════════════════════════════════
-   TESTIMONIALS
-════════════════════════════════════════ */
-.testimonials{padding:96px 5%;background:var(--bg);}
-.test-inner{max-width:1160px;margin:0 auto;}
-.test-top{text-align:center;margin-bottom:48px;}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.tcard{
-  background:var(--surface);border:1px solid var(--border);border-radius:18px;
-  padding:24px;transition:all .2s;
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);}
+  .packet{max-width:520px;}
+  .phases{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .rule-box,.founder,.quiz{grid-template-columns:minmax(0,1fr);}
+  .score{position:static;}
+  .art-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
-.tcard:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(45,74,62,0.08);}
-.tc-stars{font-size:14px;margin-bottom:12px;letter-spacing:2px;}
-.tc-text{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:18px;font-style:italic;}
-.tc-author{display:flex;align-items:center;gap:12px;}
-.tc-av{
-  width:38px;height:38px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:15px;font-weight:800;color:#fff;
-}
-.tc-name{font-size:14px;font-weight:800;}
-.tc-role{font-size:11px;color:var(--muted);}
-.tc-result{
-  display:inline-flex;align-items:center;gap:5px;
-  margin-top:14px;padding:5px 10px;border-radius:7px;
-  font-size:11px;font-weight:700;
-  font-family:'JetBrains Mono',monospace;
-}
-
-/* ════════════════════════════════════════
-   FAQ
-════════════════════════════════════════ */
-.faq{padding:96px 5%;background:var(--surface);border-top:1px solid var(--border);}
-.faq-inner{max-width:720px;margin:0 auto;}
-.faq-top{text-align:center;margin-bottom:48px;}
-.faq-list{display:flex;flex-direction:column;gap:10px;}
-.faq-item{
-  background:var(--bg);border:1px solid var(--border);border-radius:14px;
-  overflow:hidden;cursor:pointer;transition:border-color .2s;
-}
-.faq-item.open{border-color:var(--accent);}
-.faq-q{
-  padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;
-  font-size:14px;font-weight:700;
-}
-.faq-item.open .faq-q{color:var(--accent);}
-.faq-arr{font-size:18px;color:var(--muted);transition:transform .3s;flex-shrink:0;}
-.faq-item.open .faq-arr{transform:rotate(90deg);}
-.faq-a{
-  max-height:0;overflow:hidden;transition:max-height .35s ease;
-  font-size:14px;color:var(--muted);line-height:1.7;
-}
-.faq-item.open .faq-a{max-height:300px;}
-.faq-a-inner{padding:0 20px 18px;}
-
-/* ════════════════════════════════════════
-   CTA
-════════════════════════════════════════ */
-.cta-section{
-  padding:96px 5%;
-  background:var(--accent);
-  position:relative;overflow:hidden;
-}
-.cta-section::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 50% 70% at 20% 50%,rgba(255,255,255,0.04) 0%,transparent 70%),
-    radial-gradient(ellipse 40% 60% at 80% 50%,rgba(196,98,45,0.15) 0%,transparent 60%);
-  pointer-events:none;
-}
-.cta-inner{
-  max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:2;
-}
-.cta-badge{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
-  color:rgba(255,255,255,.8);padding:6px 14px;border-radius:99px;
-  font-size:11px;font-weight:700;margin-bottom:22px;
-  font-family:'JetBrains Mono',monospace;
-}
-.cta-title{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(32px,4vw,54px);
-  line-height:1.15;letter-spacing:-.8px;color:#fff;
-  margin-bottom:16px;
-}
-.cta-title em{font-style:italic;color:#fbd38d;}
-.cta-sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto;}
-.cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
-.btn-cta-p{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:15px 32px;border-radius:13px;
-  background:var(--accent2);color:#fff;
-  font-size:15px;font-weight:800;text-decoration:none;
-  transition:all .2s;font-family:'Outfit',sans-serif;
-  box-shadow:0 8px 28px rgba(196,98,45,.4);
-}
-.btn-cta-p:hover{background:var(--accent2-h);transform:translateY(-2px);}
-.btn-cta-g{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:14px 28px;border-radius:13px;
-  border:2px solid rgba(255,255,255,.2);color:#fff;
-  font-size:15px;font-weight:700;text-decoration:none;
-  transition:all .2s;
-}
-.btn-cta-g:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.08);}
-.cta-guarantee{margin-top:28px;font-size:13px;color:rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;gap:8px;}
-
-/* ════════════════════════════════════════
-   FOOTER
-════════════════════════════════════════ */
-footer{
-  background:var(--text);
-  padding:48px 5% 28px;
-}
-.foot-inner{max-width:1160px;margin:0 auto;}
-.foot-top{display:grid;grid-template-columns:280px 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:28px;}
-.foot-brand{}
-.foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:12px;text-decoration:none;}
-.foot-lm{width:34px;height:34px;border-radius:9px;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:16px;}
-.foot-lt{font-size:16px;font-weight:800;color:#fff;}
-.foot-bio{font-size:12px;color:rgba(255,255,255,.4);line-height:1.65;margin-bottom:16px;}
-.foot-socials{display:flex;gap:8px;}
-.foot-soc{
-  width:32px;height:32px;border-radius:8px;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
-  display:flex;align-items:center;justify-content:center;font-size:14px;
-  text-decoration:none;transition:all .15s;
-}
-.foot-soc:hover{background:rgba(255,255,255,.12);}
-.foot-col h4{font-size:12px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;}
-.foot-links{display:flex;flex-direction:column;gap:8px;}
-.foot-link{font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;font-weight:500;transition:color .15s;}
-.foot-link:hover{color:#fff;}
-.foot-bottom{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3);}
-.foot-bottom a{color:rgba(255,255,255,.4);text-decoration:none;}
-.foot-bottom a:hover{color:rgba(255,255,255,.7);}
-
-/* ════════════════════════════════════════
-   ANIMATIONS
-════════════════════════════════════════ */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
-.reveal.in{opacity:1;transform:translateY(0);}
-.reveal-d1{transition-delay:.1s;}
-.reveal-d2{transition-delay:.2s;}
-.reveal-d3{transition-delay:.3s;}
-.reveal-d4{transition-delay:.4s;}
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-@media(max-width:1100px){
-  .hero-inner{grid-template-columns:1fr;gap:40px;}
-  .hero-card{max-width:540px;}
-  .curr-top{grid-template-columns:1fr;}
-  .weeks{grid-template-columns:repeat(2,1fr);}
-  .mentor-inner{grid-template-columns:1fr;}
-  .mentor-card{max-width:400px;}
-  .plans-grid[style]{grid-template-columns:repeat(2,1fr) !important;}
-}
-@media(max-width:900px){
-  .problem-grid{grid-template-columns:1fr 1fr;}
-  .outcomes-grid{grid-template-columns:1fr 1fr;}
-  .plans-grid,.plans-grid[style]{grid-template-columns:repeat(2,1fr) !important;}
-  .plan.featured{transform:none;}
-  .test-grid{grid-template-columns:1fr 1fr;}
-  .stats-inner{grid-template-columns:repeat(2,1fr);}
-  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.12);padding:16px;}
-  .foot-top{grid-template-columns:1fr 1fr;}
-  #coming-soon [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr !important;}
-}
-@media(max-width:650px){
+@media(max-width:720px){
   .nav-links{display:none;}
-  .hero{padding:100px 5% 60px;}
-  .problem-grid{grid-template-columns:1fr;}
-  .outcomes-grid{grid-template-columns:1fr;}
-  .test-grid{grid-template-columns:1fr;}
-  .foot-top{grid-template-columns:1fr;}
-  .weeks{grid-template-columns:1fr 1fr;}
-  .cta-btns{flex-direction:column;align-items:stretch;}
-  .hc-stats{grid-template-columns:1fr 1fr 1fr;}
-  .plans-grid,.plans-grid[style]{grid-template-columns:1fr !important;}
-}
-/* ════════════════════════════════════════
-   COMING SOON LABS
-════════════════════════════════════════ */
-.cs-lab-card{
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;padding:24px 20px;
-  text-align:center;transition:all .2s;
-}
-.cs-lab-card:hover{
-  background:rgba(255,255,255,0.1);
-  border-color:rgba(255,255,255,0.2);
-  transform:translateY(-3px);
-}
-.cs-notify-btn{
-  width:100%;padding:10px;border:1.5px solid rgba(255,255,255,0.2);
-  border-radius:9px;background:none;color:rgba(255,255,255,0.7);
-  font-size:13px;font-weight:700;font-family:'Outfit',sans-serif;
-  cursor:pointer;transition:all .2s;
-}
-.cs-notify-btn:hover{
-  background:var(--accent2);border-color:var(--accent2);color:#fff;
+  .fit,.atlas,.plans,.calc,.rules{grid-template-columns:minmax(0,1fr);}
+  .art-grid,.phases{grid-template-columns:minmax(0,1fr);}
+  .tl-row{grid-template-columns:minmax(0,1fr);gap:4px;}
+  .tl-when{padding-top:0;}
+  .mod ol{padding:0 16px 16px 16px;}
+  details.mod summary{grid-template-columns:44px minmax(0,1fr);}
+  .mod-c{grid-column:2;}
+  .mod-n{width:40px;height:40px;}
+  .plan.main{margin-top:10px;}
+  section{padding:64px 0;}
+  .scope{font-size:12.5px;}
+  .scope th,.scope td{padding:8px 10px;}
 }
 
-/* ════════════════════════════════════════
-   WAITLIST MODAL
-════════════════════════════════════════ */
-.wl-ovl{
-  position:fixed;inset:0;background:rgba(0,0,0,.6);
-  z-index:300;display:none;align-items:center;justify-content:center;padding:20px;
-}
-.wl-ovl.open{display:flex;}
-.wl-card{
-  background:#fff;border-radius:20px;padding:36px 32px;
-  width:100%;max-width:420px;text-align:center;position:relative;
-}
-.wl-x{
-  position:absolute;top:16px;right:16px;
-  background:none;border:none;font-size:22px;cursor:pointer;
-  color:var(--muted);line-height:1;padding:2px 6px;border-radius:6px;
-}
-.wl-x:hover{background:var(--bg);}
-.wl-input{
-  width:100%;padding:13px 16px;border:2px solid var(--border);
-  border-radius:12px;font-size:15px;font-family:'Outfit',sans-serif;
-  outline:none;transition:border-color .2s;background:var(--bg);
-}
-.wl-input:focus{border-color:var(--accent);background:#fff;}
-.wl-btn{
-  width:100%;padding:14px;margin-top:14px;
-  background:var(--accent);color:#fff;border:none;
-  border-radius:12px;font-size:15px;font-weight:800;
-  font-family:'Outfit',sans-serif;cursor:pointer;transition:all .2s;
-}
-.wl-btn:hover{background:var(--accent-h);}
-.wl-btn:disabled{opacity:.6;cursor:not-allowed;}
+.trk-h{margin:22px 0 10px;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;}
+.tk{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px;background:var(--accent-lit);color:var(--accent);margin-left:6px;vertical-align:1px;}
+.banner{display:flex;gap:12px;align-items:flex-start;border-radius:14px;padding:14px 18px;font-size:14px;margin-bottom:22px;}
+.banner.warn{background:var(--gold-lit);border:1px solid #e8d48a;}
+.banner.red{background:var(--red-lit);border:1px solid #f3c3bd;}
+.banner.green{background:var(--green-lit);border:1px solid #bfe3cd;}
+.cmp{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);font-size:13.5px;margin-top:18px;}
+.cmp th,.cmp td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+.cmp th{background:var(--accent);color:#fff;font-size:12px;}
+.cmp tr:last-child td{border-bottom:none;}
+.tblwrap{overflow-x:auto;border-radius:14px;max-width:100%;-webkit-overflow-scrolling:touch;}
+@media(max-width:720px){.logo-t span{display:none;}.cmp{min-width:520px;}}
+.help{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:12px;padding:14px 18px;font-size:14px;margin-top:18px;}
+.soon{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;max-width:760px;}
+.soon p{color:var(--muted);margin-bottom:14px;}
+.phases.c4{grid-template-columns:repeat(4,minmax(0,1fr));}
+@media(max-width:1000px){.phases.c4,.phases.c5{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}}
 
-/* ════════════════════════════════════════
-   v3 KATALOG (2026-10)
-════════════════════════════════════════ */
-:root{--red:#b42318;}
-.principles{background:var(--accent);padding:28px 5%;}
-.principles-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
-.pr-item{padding:4px 24px;border-right:1px solid rgba(255,255,255,.12);}
-.pr-item:last-child{border-right:none;}
-.pr-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px;}
-.pr-text{font-size:12px;color:rgba(255,255,255,.6);line-height:1.5;}
-
-.labs{padding:96px 5%;background:var(--bg);}
-.labs-inner{max-width:1160px;margin:0 auto;}
-.labs-top{margin-bottom:40px;}
-.axis{margin-top:44px;}
-.axis-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
-.axis-name{font-size:12px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-family:'JetBrains Mono',monospace;}
-.axis-desc{font-size:13px;color:var(--muted);}
-.labs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.lab{
-  background:var(--surface);border:1px solid var(--border);border-radius:18px;
-  padding:22px;display:flex;flex-direction:column;gap:12px;
-  transition:transform .2s, box-shadow .2s;
-}
-.lab:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(45,74,62,0.1);}
-.lab-head{display:flex;align-items:center;gap:12px;}
-.lab-ico{width:42px;height:42px;border-radius:12px;background:var(--accent-lit);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.lab-name{font-size:17px;font-weight:900;color:var(--accent);line-height:1.2;}
-.lab-who{font-size:12px;color:var(--muted);margin-top:2px;}
-.lab-meta{display:flex;flex-wrap:wrap;gap:6px;}
-.lab-tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;font-family:'JetBrains Mono',monospace;background:var(--bg);border:1px solid var(--border);color:var(--text);}
-.lab-tag.free{background:var(--green-lit);border-color:transparent;color:var(--green);}
-.lab-tag.soon{background:var(--gold-lit);border-color:transparent;color:var(--gold);}
-.lab-out{font-size:13px;color:var(--text);line-height:1.55;}
-.lab-out b{font-weight:700;}
-.lab-note{font-size:12px;color:var(--muted);line-height:1.5;border-left:3px solid var(--accent2-lit);padding-left:10px;}
-.lab-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
-.lab-price{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;color:var(--accent);line-height:1.3;}
-.lab-price small{display:block;font-size:11px;font-weight:600;color:var(--muted);font-family:'Outfit',sans-serif;}
-.btn-lab{
-  padding:9px 14px;border-radius:10px;border:1.5px solid var(--accent);
-  background:var(--surface);color:var(--accent);font-size:13px;font-weight:800;
-  font-family:'Outfit',sans-serif;cursor:pointer;transition:all .15s;white-space:nowrap;
-}
-.btn-lab:hover{background:var(--accent);color:#fff;}
-
-.plan-rules{max-width:960px;margin:36px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.rule{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px 18px;font-size:13px;color:var(--text);line-height:1.6;}
-.rule b{display:block;font-size:13px;font-weight:800;color:var(--accent);margin-bottom:4px;}
-.pay-status{
-  max-width:960px;margin:0 auto 40px;display:flex;gap:12px;align-items:flex-start;
-  background:var(--gold-lit);border:1px solid #e8d48a;border-radius:14px;padding:14px 18px;
-  font-size:13px;color:var(--text);line-height:1.6;
-}
-.wl-select{
-  width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:12px;
-  font-size:14px;font-family:'Outfit',sans-serif;background:var(--bg);margin-bottom:10px;outline:none;
-}
-.wl-select:focus{border-color:var(--accent);background:#fff;}
-
-@media(max-width:1100px){
-  .labs-grid{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:900px){
-  .principles-inner{grid-template-columns:1fr 1fr;}
-  .pr-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.12);padding:14px 8px;}
-  .plan-rules{grid-template-columns:1fr;}
-}
-@media(max-width:650px){
-  .labs-grid{grid-template-columns:1fr;}
-  .principles-inner{grid-template-columns:1fr;}
-  .nav-ctas .btn-nav-ghost{display:none;}
-  .nav-ctas{margin-left:auto;}
-  .btn-nav-solid{padding:7px 12px;font-size:12px;}
-  .nav-lt{font-size:15px;}
-  .hero-inner{grid-template-columns:minmax(0,1fr);}
-  .hero-card{max-width:100%;}
-}
+.choose{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}
+.ch{display:block;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;text-decoration:none;color:var(--text);transition:all .18s;}
+.ch:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 30px rgba(45,74,62,.08);}
+.ch small{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;}
+.ch b{display:block;font-size:15px;line-height:1.35;}
+.ch span{display:inline-block;margin-top:10px;font-size:12px;font-weight:800;color:var(--accent2);}
+.axis-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:34px 0 14px;}
+.axis-h b{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);}
+.axis-h span{font-size:13px;color:var(--muted);}
+.labs-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.lc{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px;}
+.lc-h{display:flex;gap:12px;align-items:center;}
+.lc-i{width:42px;height:42px;border-radius:12px;background:var(--accent-lit);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.lc-n{font-weight:900;font-size:17px;color:var(--accent);line-height:1.2;}
+.lc-w{font-size:12px;color:var(--muted);}
+.lc-m{display:flex;flex-wrap:wrap;gap:6px;}
+.lc-t{font-size:11px;font-weight:700;padding:3px 8px;border-radius:7px;font-family:"JetBrains Mono",monospace;background:var(--bg);border:1px solid var(--border);}
+.lc-t.free{background:var(--green-lit);color:var(--green);border-color:transparent;}
+.lc-t.soon{background:var(--gold-lit);color:var(--gold);border-color:transparent;}
+.lc p{font-size:13.5px;line-height:1.55;}
+.lc-f{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+.lc-p{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:14px;color:var(--accent);line-height:1.3;}
+.lc-p small{display:block;font-family:"Outfit",sans-serif;font-weight:600;font-size:11px;color:var(--muted);}
+.lc-b{padding:9px 14px;border-radius:10px;border:1.5px solid var(--accent);background:var(--surface);color:var(--accent);font-weight:800;font-size:13px;text-decoration:none;cursor:pointer;font-family:"Outfit",sans-serif;white-space:nowrap;}
+.lc-b:hover{background:var(--accent);color:#fff;}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:s;}
+.st{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;counter-increment:s;}
+.st::before{content:counter(s);display:flex;width:30px;height:30px;border-radius:9px;background:var(--accent);color:#fff;font-weight:800;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;margin-bottom:10px;}
+.st b{display:block;font-size:15px;margin-bottom:4px;}
+.st p{font-size:13.5px;color:var(--muted);}
+.mdl select{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:12px;font-size:14px;font-family:"Outfit",sans-serif;background:var(--bg);margin-bottom:10px;}
+@media(max-width:1000px){.choose,.steps{grid-template-columns:repeat(2,minmax(0,1fr));}.labs-g{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:720px){.choose,.steps,.labs-g{grid-template-columns:minmax(0,1fr);}.nav .btn-g{display:none;}}
 </style>
 </head>
 <body>
-
-<!-- ════════════════ NAV ════════════════ -->
-<nav class="nav" id="mainNav">
-  <a href="index.html" class="nav-logo">
-    <div class="nav-lm">🧭</div>
-    <span class="nav-lt">Kompas Lab</span>
-  </a>
-  <div class="nav-links">
-    <a href="#labs" class="nav-link">Lablar</a>
-    <a href="#pricing" class="nav-link">Narxlar</a>
-    <a href="#mentor" class="nav-link">Asoschi</a>
-    <a href="#faq" class="nav-link">Savollar</a>
-  </div>
-  <div class="nav-ctas">
-    <a href="login.html" class="btn-nav-ghost">Kirish</a>
-    <a href="#labs" class="btn-nav-solid">Lab tanlash →</a>
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo"><div class="logo-m">🧭</div><span class="logo-t">Kompas Lab</span></a>
+    <div class="nav-links"><a href="#labs">Lablar</a><a href="#jarayon">Qanday ishlaydi</a><a href="#narx">Narxlar</a><a href="#asoschi">Asoschi</a><a href="#savollar">Savollar</a></div>
+    <a href="login.html" class="btn btn-g btn-sm" style="margin-left:auto">Kirish</a>
+    <button type="button" class="btn btn-p btn-sm" style="margin-left:0" data-wl="">🔔 Kutish roʻyxati</button>
   </div>
 </nav>
 
-<!-- ════════════════ HERO ════════════════ -->
-<section class="hero">
-  <div class="hero-grid-lines"></div>
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Kuzatuvdan — kashfiyotga
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge">🧭 Kuzatuvdan — kashfiyotga</div>
+      <h1>Xorijda oʻqishga <em>tizimli tayyorgarlik.</em></h1>
+      <p class="lead"><strong>Kompas Lab</strong> — STEM yoʻnalishidagi oʻquvchi va talabalar uchun oʻzbek tilidagi onlayn Lablar. Universitet va stipendiyani dalil bilan tanlaysiz, hujjatlarni <strong>oʻzingiz</strong> yozasiz, har fakt rasmiy manbaga havola va tekshiruv sanasi bilan beriladi.</p>
+      <div class="cta-row">
+        <a href="#tanlov" class="btn btn-p">Labni tanlash →</a>
+        <a href="#labs" class="btn btn-g">Barcha Lablar</a>
       </div>
-      <h1 class="hero-h1">Xorijda oʻqishga<br><em>tizimli tayyorgarlik.</em></h1>
-      <span class="hero-h1-line2">Bakalavriatdan doktoranturagacha.</span>
-      <p class="hero-sub">
-        <strong>Kompas Lab</strong> — STEM yoʻnalishidagi oʻquvchi va talabalar uchun oʻzbek tilidagi onlayn Lablar. Universitet va stipendiyani dalil bilan tanlaysiz, hujjatlarni <strong>oʻzingiz</strong> yozasiz, har bir fakt rasmiy manbaga havola bilan beriladi.
-      </p>
-      <div class="hero-ctas">
-        <a href="#labs" class="btn-hero-p">Lablarni koʻrish →</a>
-        <button type="button" class="btn-hero-g" onclick="openWaitlist('', '')" style="cursor:pointer;font-family:'Outfit',sans-serif;">🔔 Kutish roʻyxati</button>
-      </div>
-      <div class="hero-trust">
-        <div class="trust-item">🆓 <span>Har Labda M0 bepul</span></div>
-        <div class="trust-sep"></div>
-        <div class="trust-item">🔗 <span>Rasmiy manbalar</span></div>
-        <div class="trust-sep"></div>
-        <div class="trust-item">✍️ <span>Hujjatni oʻzingiz yozasiz</span></div>
-      </div>
+      <div class="facts"><span class="fact">Har Labda <b>M0 bepul</b></span><span class="fact"><b>Oʻzbek</b> tilida</span><span class="fact">Rasmiy <b>manbalar</b></span><span class="fact">Obuna <b>12 oy</b> yoki oylik</span></div>
     </div>
-
-    <div class="hero-card">
-      <div class="hc-top">
-        <div class="hc-badge">🧭 Kompas Lab · v3.0 dasturlar</div>
-        <div class="hc-title">Qaysi yoʻldasiz?</div>
-        <div class="hc-sub">Daraja va yoʻnalish boʻyicha alohida Lablar</div>
-        <div class="hc-stats">
-          <div class="hcs"><div class="hcs-val">0</div><div class="hcs-lbl">M0 narxi</div></div>
-          <div class="hcs"><div class="hcs-val">12</div><div class="hcs-lbl">oy obuna</div></div>
-          <div class="hcs"><div class="hcs-val">UZ</div><div class="hcs-lbl">Til</div></div>
-        </div>
-      </div>
-      <div class="hc-body">
-        <div class="hc-mod">
-          <div class="hc-mod-num hcmn-1">🎓</div>
-          <div class="hc-mod-info">
-            <div class="hc-mod-name">Bachelor Lab</div>
-            <div class="hc-mod-meta">17 modul · 86 dars · 10–11-sinf</div>
-          </div>
-        </div>
-        <div class="hc-mod">
-          <div class="hc-mod-num hcmn-2">🔬</div>
-          <div class="hc-mod-info">
-            <div class="hc-mod-name">Master Lab</div>
-            <div class="hc-mod-meta">9 modul · 59 dars · bakalavrlar</div>
-          </div>
-        </div>
-        <div class="hc-mod">
-          <div class="hc-mod-num hcmn-3">🇰🇷</div>
-          <div class="hc-mod-info">
-            <div class="hc-mod-name">GKS Lab</div>
-            <div class="hc-mod-meta">3 trek · 54 dars · Koreya</div>
-          </div>
-        </div>
-        <div class="hc-mod">
-          <div class="hc-mod-num hcmn-4">🇺🇸</div>
-          <div class="hc-mod-info">
-            <div class="hc-mod-name">USA Lab</div>
-            <div class="hc-mod-meta">3 trek · 72 dars · AQSh</div>
-          </div>
-        </div>
-      </div>
-      <div class="hc-foot">
-        <div>
-          <div class="hcf-price">699 000</div>
-          <div class="hcf-sub">soʻm / yil · yoki 99 000 soʻm / oy</div>
-        </div>
-        <a href="#pricing" class="btn-hcf">Narxlar →</a>
-      </div>
-    </div>
+    <aside class="packet" aria-label="Lablar">
+      <div class="packet-top"><small>LABLAR</small><strong>Qaysi bosqichdasiz?</strong></div>
+      <ol>
+        <li><div><a href="bachelor-lab.html" style="text-decoration:none">Bachelor Lab</a><span>17 modul · 86 dars · 10–11-sinf</span></div></li>
+        <li><div><a href="master-lab.html" style="text-decoration:none">Master Lab</a><span>9 modul · 59 dars · bakalavrlar</span></div></li>
+        <li><div><a href="phd-lab.html" style="text-decoration:none">PhD Lab</a><span>9 modul · 65 dars · magistrlar</span></div></li>
+        <li><div><a href="gks-lab.html" style="text-decoration:none">GKS Lab</a><span>3 trek · 54 dars · Koreya</span></div></li>
+        <li><div><a href="usa-lab.html" style="text-decoration:none">USA Lab</a><span>3 trek · 72 dars · AQSh</span></div></li>
+      </ol>
+      <div class="packet-foot">Har Lab bepul M0 bilan boshlanadi: toʻlovdan oldin sizga mosligini bilasiz.</div>
+    </aside>
   </div>
-</section>
+</header>
 
-<!-- ════════════════ TAMOYILLAR ════════════════ -->
-<div class="principles">
-  <div class="principles-inner">
-    <div class="pr-item reveal"><div class="pr-title">M0 bepul</div><div class="pr-text">Har Lab bepul qaror darvozasi bilan boshlanadi: sizga mosmi yoki yoʻqmi — toʻlovdan oldin bilasiz.</div></div>
-    <div class="pr-item reveal reveal-d1"><div class="pr-title">Rasmiy manba</div><div class="pr-text">Muddat, toʻlov va talablar rasmiy havola va tekshiruv sanasi bilan beriladi.</div></div>
-    <div class="pr-item reveal reveal-d2"><div class="pr-title">Siz yozasiz</div><div class="pr-text">Insho, xat va CV oʻrningizga yozilmaydi. Kompas tuzilma, mezon va tahlil beradi.</div></div>
-    <div class="pr-item reveal reveal-d3"><div class="pr-title">Kafolat yoʻq</div><div class="pr-text">Qabul yoki stipendiya vaʼda qilinmaydi. Natija sizning hujjatingiz va tayyorgarligingizga bogʻliq.</div></div>
-  </div>
-</div>
-
-<!-- ════════════════ PROBLEM ════════════════ -->
-<section class="section" id="problem">
-  <div class="section-inner">
+<section class="dark">
+  <div class="wrap rule-box">
     <div class="reveal">
-      <div class="sec-label">Muammo</div>
-      <h2 class="sec-title">Maʼlumot koʻp, <em>tizim kam.</em></h2>
-      <p class="sec-sub">Xorijda oʻqish haqida videolar va kanallar yetarli. Qiyini — qaysi qadamni qachon qilishni bilish va hujjatlarni bir-biriga bogʻlab tayyorlash.</p>
+      <div class="label" style="color:#f2a68c">Tamoyillar</div>
+      <h2>Kafolat emas — tizim va rasmiy manba.</h2>
+      <p>Har Lab bitta spetsifikatsiya hujjati asosida quriladi. Metod va mantiq darsda turadi; muddat, toʻlov, kvota va stipendiya summasi alohida sahifada — rasmiy havola va tekshiruv sanasi bilan — har chorakda yangilanadi.</p>
+      <p>Toʻqima statistika, tasdiqlanmagan sharh va natija vaʼdasi ishlatilmaydi. Talaba natijalari faqat uning yozma roziligi va tasdiqlovchi dalil bilan eʼlon qilinadi.</p>
     </div>
-    <div class="problem-grid">
-      <div class="prob-card reveal reveal-d1">
-        <div class="prob-icon">🧭</div>
-        <div class="prob-title">Qayerdan boshlash nomaʼlum</div>
-        <div class="prob-text">CV, maqsad bayonnomasi, tavsiya xati, testlar va muddatlar bir vaqtda keladi. Ketma-ketlik boʻlmasa, ish oxirgi haftaga qoladi.</div>
-        <div class="prob-vs">
-          <div class="pv-row bad">✗ Tarqoq videolar va postlar</div>
-          <div class="pv-row good">✓ Modul ketma-ketligi va muddatlar arxitekturasi</div>
-        </div>
-      </div>
-      <div class="prob-card reveal reveal-d2">
-        <div class="prob-icon">🎯</div>
-        <div class="prob-title">Universitet reyting boʻyicha tanlanadi</div>
-        <div class="prob-text">Ilmiy moslik (Research Fit), dastur talablari va moliyalashtirish tekshirilmasa, ariza soni koʻpayadi, imkon esa oshmaydi.</div>
-        <div class="prob-vs">
-          <div class="pv-row bad">✗ Faqat reyting jadvaliga qarab tanlash</div>
-          <div class="pv-row good">✓ Dalilga asoslangan saralangan roʻyxat (Shortlist)</div>
-        </div>
-      </div>
-      <div class="prob-card reveal reveal-d3">
-        <div class="prob-icon">📝</div>
-        <div class="prob-title">Hujjat shablondan koʻchiriladi</div>
-        <div class="prob-text">Tayyor namunadan olingan matn komissiyaga sizni koʻrsatmaydi. Oʻz tajribangizdan tuzilgan matn kerak.</div>
-        <div class="prob-vs">
-          <div class="pv-row bad">✗ Koʻchirib olinadigan shablonlar</div>
-          <div class="pv-row good">✓ Tuzilma, baholash mezoni (Rubric) va oʻz-oʻzini tekshirish</div>
-        </div>
-      </div>
+    <div class="model-list reveal">
+      <div class="model"><b>M0 bepul</b><span>Har Lab bepul qaror darvozasi bilan boshlanadi: sizga mosmi — toʻlovdan oldin bilasiz.</span></div>
+      <div class="model"><b>Rasmiy manba</b><span>Muddat, toʻlov va talablar rasmiy havola va tekshiruv sanasi bilan.</span></div>
+      <div class="model"><b>Siz yozasiz</b><span>Insho, xat va CV oʻrningizga yozilmaydi. Kompas tuzilma, mezon va tahlil beradi.</span></div>
+      <div class="model bad"><b>Kafolat yoʻq</b><span>Qabul yoki stipendiya vaʼda qilinmaydi.</span></div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ LABLAR ════════════════ -->
-<section class="labs" id="labs">
-  <div class="labs-inner">
-    <div class="labs-top reveal">
-      <div class="sec-label">Lablar</div>
-      <h2 class="sec-title">Bosqichingizga mos <em>Lab.</em></h2>
-      <p class="sec-sub">Daraja Labi umumiy akademik tayyorgarlikni beradi. Yoʻnalish Labi muayyan davlat yoki stipendiya tizimining talablarini qoʻshadi.</p>
-    </div>
+<section id="tanlov">
+  <div class="wrap">
+    <div class="head reveal"><div class="label">Lab tanlash</div><h2>Qaysi Lab <em>sizga?</em></h2><p class="sub">Vaziyatingizni tanlang. Ikkilansangiz, Lab sahifasidagi Readiness Score testidan boshlang.</p></div>
+    <div class="choose"><a class="ch reveal" href="bachelor-lab.html"><small>10–11-sinf yoki litsey</small><b>Xorijiy bakalavriatga kirmoqchiman</b><span>Bachelor Lab →</span></a><a class="ch reveal" href="master-lab.html"><small>Bakalavr yoki soʻnggi kurs</small><b>Magistraturaga topshirmoqchiman</b><span>Master Lab →</span></a><a class="ch reveal" href="phd-lab.html"><small>Magistr yoki tadqiqotchi</small><b>Moliyalashtirilgan PhD izlayapman</b><span>PhD Lab →</span></a><a class="ch reveal" href="gks-lab.html"><small>Aniq davlat: Koreya</small><b>GKS stipendiyasiga topshirmoqchiman</b><span>GKS Lab →</span></a><a class="ch reveal" href="usa-lab.html"><small>Aniq davlat: AQSh</small><b>UGRAD, Fulbright yoki AQSh PhD</b><span>USA Lab →</span></a><a class="ch reveal" href="#labs"><small>Aniq davlat: Germaniya</small><b>DAAD va Germaniya</b><span>DAAD Lab →</span></a><a class="ch reveal" href="tadbirkor-talaba.html"><small>Talabaman, daromad kerak</small><b>Oʻqish bilan birga biznes sinovi</b><span>Tadbirkor Talaba →</span></a><a class="ch reveal" href="musofir-lab.html"><small>Ish uchun xorijga</small><b>Faqat rasmiy yoʻl, firibgarlikdan himoya</b><span>Musofir Lab →</span></a></div>
+  </div>
+</section>
 
-    <!-- DARAJA -->
-    <div class="axis">
-      <div class="axis-head reveal"><span class="axis-name">Daraja Lablari</span><span class="axis-desc">bakalavriat · magistratura · doktorantura</span></div>
-      <div class="labs-grid">
+<section class="alt" id="labs">
+  <div class="wrap">
+    <div class="head reveal"><div class="label">Lablar</div><h2>Daraja va yoʻnalish <em>boʻyicha Lablar.</em></h2><p class="sub">Daraja Labi umumiy akademik tayyorgarlikni beradi. Yoʻnalish Labi muayyan davlat yoki stipendiya tizimining talablarini qoʻshadi.</p></div>
+    <div class="axis-h reveal"><b>Daraja Lablari</b><span>bakalavriat · magistratura · doktorantura</span></div>
+    <div class="labs-g"><div class="lc reveal"><div class="lc-h"><div class="lc-i">🎓</div><div><div class="lc-n">Bachelor Lab</div><div class="lc-w">10–11-sinf, litsey va kollej · 15–19 yosh</div></div></div>
+<div class="lc-m"><span class="lc-t">17 modul</span><span class="lc-t">86 dars</span><span class="lc-t free">M0 bepul</span></div><p>Ariza paketi, 8–12 universitetlik portfel va 4 yillik moliyaviy reja. 18 yoshgacha obunani ota-ona rasmiylashtiradi.</p><div class="lc-f"><div class="lc-p">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div><a class="lc-b" href="bachelor-lab.html">Batafsil →</a></div></div><div class="lc reveal"><div class="lc-h"><div class="lc-i">🔬</div><div><div class="lc-n">Master Lab</div><div class="lc-w">Xorijiy magistraturaga topshiruvchilar</div></div></div>
+<div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">59 dars</span><span class="lc-t free">M0 bepul</span></div><p>Akademik CV, tavsiya xatlari, maqsad bayonnomasi, ilmiy loyiha taklifi va stipendiya portfeli.</p><div class="lc-f"><div class="lc-p">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div><a class="lc-b" href="master-lab.html">Batafsil →</a></div></div><div class="lc reveal"><div class="lc-h"><div class="lc-i">⚗️</div><div><div class="lc-n">PhD Lab</div><div class="lc-w">Moliyalashtirilgan doktorantura</div></div></div>
+<div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">65 dars</span><span class="lc-t free">M0 bepul</span></div><p>Ilmiy savol, ilmiy rahbar jadvali, professorlarga xat, ilmiy loyiha taklifi va moliyalashtirish atlasi.</p><div class="lc-f"><div class="lc-p">999 000 soʻm/yil<small>yoki 129 000 soʻm/oy</small></div><a class="lc-b" href="phd-lab.html">Batafsil →</a></div></div></div>
+    <div class="axis-h reveal"><b>Yoʻnalish Lablari</b><span>davlat va stipendiya tizimlari</span></div>
+    <div class="labs-g"><div class="lc reveal"><div class="lc-h"><div class="lc-i">🇰🇷</div><div><div class="lc-n">GKS Lab</div><div class="lc-w">Global Korea Scholarship · U · M · D</div></div></div>
+<div class="lc-m"><span class="lc-t">54 dars</span><span class="lc-t">siz oʻtasiz: 26–27</span><span class="lc-t free">M0 bepul</span></div><p>Muvofiqlik M0 da toʻlovdan oldin tekshiriladi. Umumiy oʻzak va oʻz trekingiz; trekni almashtirish bepul.</p><div class="lc-f"><div class="lc-p">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div><a class="lc-b" href="gks-lab.html">Batafsil →</a></div></div><div class="lc reveal"><div class="lc-h"><div class="lc-i">🇺🇸</div><div><div class="lc-n">USA Lab</div><div class="lc-w">Global UGRAD · Fulbright · PhD</div></div></div>
+<div class="lc-m"><span class="lc-t">12 modul</span><span class="lc-t">72 dars</span><span class="lc-t free">M0 bepul</span></div><p>Uch moliyalashtirilgan yoʻl, muvofiqlik, insholar, intervyu va viza. B trek uchun toʻlov UGRAD sikli eʼlon qilingandan keyin.</p><div class="lc-f"><div class="lc-p">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div><a class="lc-b" href="usa-lab.html">Batafsil →</a></div></div><div class="lc reveal"><div class="lc-h"><div class="lc-i">🇩🇪</div><div><div class="lc-n">DAAD Lab</div><div class="lc-w">Germaniya · magistratura va doktorantura</div></div></div>
+<div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">51 dars</span><span class="lc-t free">M0 bepul</span></div><p>Germaniya akademik tizimi, ilmiy rahbarni oldindan topish, Motivationsschreiben, Forschungsvorhaben.</p><div class="lc-f"><div class="lc-p">Narx yangilanmoqda<small>yangi dastur bilan eʼlon qilinadi</small></div><button type="button" class="lc-b" data-wl="daad-lab">🔔 Xabar bering</button></div></div></div>
+    <div class="axis-h reveal"><b>Tez kunda</b><span>talaba hayoti va ochiq materiallar</span></div>
+    <div class="labs-g"><div class="lc reveal"><div class="lc-h"><div class="lc-i">💼</div><div><div class="lc-n">Tadbirkor Talaba Lab</div><div class="lc-w">Universitet talabalari · 18+</div></div></div>
+<div class="lc-m"><span class="lc-t">10 modul</span><span class="lc-t">54 dars</span><span class="lc-t soon">Ishlab chiqilmoqda</span></div><p>Oʻqishni toʻxtatmasdan kichik, qonuniy biznes sinovi: muammo, birinchi mijoz, pul hisobi, huquqiy shakl va soliq.</p><div class="lc-f"><div class="lc-p">Narx eʼlon qilinadi</div><a class="lc-b" href="tadbirkor-talaba.html">Batafsil →</a></div></div><div class="lc reveal"><div class="lc-h"><div class="lc-i">🧳</div><div><div class="lc-n">Musofir Lab</div><div class="lc-w">Xorijda rasmiy ish: KR · UK · DE · PL</div></div></div>
+<div class="lc-m"><span class="lc-t free">M0 bepul va ochiq</span><span class="lc-t soon">Tayyorlanmoqda</span></div><p>Rasmiy yoʻllar va firibgarlik belgilari haqida bepul material. Kompas ish yoki viza topib bermaydi.</p><div class="lc-f"><div class="lc-p">Bepul</div><a class="lc-b" href="musofir-lab.html">Batafsil →</a></div></div><div class="lc reveal"><div class="lc-h"><div class="lc-i">🧠</div><div><div class="lc-n">2-Miya</div><div class="lc-w">Bilimni tizimlashtirish (PKM)</div></div></div>
+<div class="lc-m"><span class="lc-t soon">Rejalashtirilgan</span></div><p>Ikkinchi miya: oʻqiganlaringizni yozib borish, bogʻlash va qayta topish tizimi.</p><div class="lc-f"><div class="lc-p">Narx eʼlon qilinadi</div><button type="button" class="lc-b" data-wl="ikki-miya">🔔 Xabar bering</button></div></div></div>
+  </div>
+</section>
 
-        <div class="lab reveal" data-slug="bachelor-lab">
-          <div class="lab-head">
-            <div class="lab-ico">🎓</div>
-            <div><div class="lab-name">Bachelor Lab</div><div class="lab-who">10–11-sinf, litsey va kollej oʻquvchilari · 15–19 yosh</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag">17 modul</span><span class="lab-tag">86 dars</span><span class="lab-tag free">M0 bepul</span></div>
-          <div class="lab-out"><b>Natija:</b> oʻzingiz tayyorlagan ariza paketi, 8–12 universitetlik portfel va 4 yillik moliyaviy reja.</div>
-          <div class="lab-note">Birinchi muddatdan 8–12 oy oldin boshlash tavsiya etiladi. 18 yoshgacha boʻlsa, obunani ota-ona rasmiylashtiradi.</div>
-          <div class="lab-foot">
-            <div class="lab-price">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div>
-            <button type="button" class="btn-lab" onclick="openWaitlist('bachelor-lab','Bachelor Lab')">🔔 Kutish roʻyxati</button>
-          </div>
-        </div>
-
-        <div class="lab reveal reveal-d1" data-slug="master-lab">
-          <div class="lab-head">
-            <div class="lab-ico">🔬</div>
-            <div><div class="lab-name">Master Lab</div><div class="lab-who">Xorijiy magistraturaga topshiruvchi bakalavrlar</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag">9 modul</span><span class="lab-tag">59 dars</span><span class="lab-tag free">M0 bepul</span></div>
-          <div class="lab-out"><b>Natija:</b> toʻliq ariza paketi — akademik CV, tavsiya xatlari rejasi, maqsad bayonnomasi (SoP) va ilmiy loyiha taklifi.</div>
-          <div class="lab-note">Haftasiga 4–6 soat, 4–6 oy. Stipendiyalar atlasi va intervyu moduli ichida.</div>
-          <div class="lab-foot">
-            <div class="lab-price">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div>
-            <button type="button" class="btn-lab" onclick="openWaitlist('master-lab','Master Lab')">🔔 Kutish roʻyxati</button>
-          </div>
-        </div>
-
-        <div class="lab reveal reveal-d2" data-slug="phd-lab">
-          <div class="lab-head">
-            <div class="lab-ico">⚗️</div>
-            <div><div class="lab-name">PhD Lab</div><div class="lab-who">Doktoranturaga topshiruvchi magistrlar</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag">9 modul</span><span class="lab-tag">65 dars</span><span class="lab-tag free">M0 bepul</span></div>
-          <div class="lab-out"><b>Natija:</b> ilmiy loyiha taklifi, ilmiy rahbarlar jadvali, professorlar bilan yozishma, akademik CV va moliyalashtirish portfeli.</div>
-          <div class="lab-note">Faqat moliyalashtirilgan PhD: oʻz hisobidan oʻqish maqsad sifatida oʻrgatilmaydi.</div>
-          <div class="lab-foot">
-            <div class="lab-price">999 000 soʻm/yil<small>yoki 129 000 soʻm/oy</small></div>
-            <a class="btn-lab" href="phd-lab.html" style="text-decoration:none">Batafsil →</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- YO'NALISH -->
-    <div class="axis">
-      <div class="axis-head reveal"><span class="axis-name">Yoʻnalish Lablari</span><span class="axis-desc">davlat va stipendiya tizimlari</span></div>
-      <div class="labs-grid">
-
-        <div class="lab reveal" data-slug="gks-lab">
-          <div class="lab-head">
-            <div class="lab-ico">🇰🇷</div>
-            <div><div class="lab-name">GKS Lab</div><div class="lab-who">Global Korea Scholarship · 3 trek: U · M · D</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag">54 dars</span><span class="lab-tag">siz oʻtasiz: 26–27</span><span class="lab-tag free">M0 bepul</span></div>
-          <div class="lab-out"><b>Natija:</b> GKS formalari boʻyicha hujjatlar, universitet va dastur tanlovi, intervyuga tayyorgarlik. Umumiy oʻzak + oʻz trekingiz.</div>
-          <div class="lab-note">Muvofiqlik M0 da rasmiy yoʻriqnoma boʻyicha toʻlovdan oldin tekshiriladi. Trekni almashtirish bepul.</div>
-          <div class="lab-foot">
-            <div class="lab-price">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div>
-            <button type="button" class="btn-lab" onclick="openWaitlist('gks-lab','GKS Lab')">🔔 Kutish roʻyxati</button>
-          </div>
-        </div>
-
-        <div class="lab reveal reveal-d1" data-slug="usa-lab">
-          <div class="lab-head">
-            <div class="lab-ico">🇺🇸</div>
-            <div><div class="lab-name">USA Lab</div><div class="lab-who">Global UGRAD · Fulbright magistraturasi · PhD</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag">12 modul</span><span class="lab-tag">72 dars</span><span class="lab-tag free">M0 bepul</span></div>
-          <div class="lab-out"><b>Natija:</b> mos trek tanlovi, muvofiqlik tekshiruvi, insholar, tavsiya va testlar rejasi, intervyu va viza tayyorgarligi.</div>
-          <div class="lab-note">B trek (Global UGRAD) uchun toʻlov sikl rasman eʼlon qilingandan keyin qabul qilinadi. Viza siyosati oʻzgarsa, sahifada ogohlantirish chiqadi.</div>
-          <div class="lab-foot">
-            <div class="lab-price">699 000 soʻm/yil<small>yoki 99 000 soʻm/oy</small></div>
-            <button type="button" class="btn-lab" onclick="openWaitlist('usa-lab','USA Lab')">🔔 Kutish roʻyxati</button>
-          </div>
-        </div>
-
-        <div class="lab reveal reveal-d2" data-slug="daad-lab">
-          <div class="lab-head">
-            <div class="lab-ico">🇩🇪</div>
-            <div><div class="lab-name">DAAD Lab</div><div class="lab-who">Germaniya · magistratura va doktorantura</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag">9 modul</span><span class="lab-tag">51 dars</span><span class="lab-tag free">M0 bepul</span></div>
-          <div class="lab-out"><b>Qamrov:</b> Germaniya akademik tizimi, ilmiy rahbarni oldindan topish, Motivationsschreiben, Forschungsvorhaben va topshirish.</div>
-          <div class="lab-foot">
-            <div class="lab-price">Narx yangilanmoqda<small>yangi dastur bilan eʼlon qilinadi</small></div>
-            <button type="button" class="btn-lab" onclick="openWaitlist('daad-lab','DAAD Lab')">🔔 Kutish roʻyxati</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- TEZ KUNDA -->
-    <div class="axis" id="coming-soon">
-      <div class="axis-head reveal"><span class="axis-name">Tez kunda</span><span class="axis-desc">talaba hayoti va ochiq materiallar</span></div>
-      <div class="labs-grid">
-
-        <div class="lab reveal" data-slug="tadbirkor-talaba">
-          <div class="lab-head">
-            <div class="lab-ico">💼</div>
-            <div><div class="lab-name">Tadbirkor Talaba Lab</div><div class="lab-who">Universitet talabalari · 18+</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag">10 modul</span><span class="lab-tag">54 dars</span><span class="lab-tag soon">Ishlab chiqilmoqda</span></div>
-          <div class="lab-out">Oʻqishni toʻxtatmasdan kichik, qonuniy va oʻlchanadigan biznes sinovi: muammo, birinchi mijoz, pul hisobi, huquqiy shakl va soliq.</div>
-          <div class="lab-note">Soliq va huquq darslari mutaxassis tekshiruvidan oʻtgandan keyin ochiladi.</div>
-          <div class="lab-foot">
-            <div class="lab-price">Narx eʼlon qilinadi</div>
-            <button type="button" class="btn-lab" onclick="openWaitlist('tadbirkor-talaba','Tadbirkor Talaba Lab')">🔔 Xabar bering</button>
-          </div>
-        </div>
-
-        <div class="lab reveal reveal-d1" data-slug="miggo">
-          <div class="lab-head">
-            <div class="lab-ico">🧳</div>
-            <div><div class="lab-name">Musofir Lab</div><div class="lab-who">Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag free">M0 bepul va ochiq</span><span class="lab-tag soon">Tayyorlanmoqda</span></div>
-          <div class="lab-out">Rasmiy yoʻllar va firibgarlik belgilari haqida bepul ochiq material — roʻyxatdan oʻtmasdan.</div>
-          <div class="lab-note">Kompas ish yoki viza topib bermaydi va vositachi emas.</div>
-          <div class="lab-foot">
-            <div class="lab-price">Bepul</div>
-            <button type="button" class="btn-lab" onclick="openWaitlist('miggo','Musofir Lab')">🔔 Xabar bering</button>
-          </div>
-        </div>
-
-        <div class="lab reveal reveal-d2" data-slug="ikki-miya">
-          <div class="lab-head">
-            <div class="lab-ico">🧠</div>
-            <div><div class="lab-name">2-Miya</div><div class="lab-who">Bilimni tizimlashtirish (PKM)</div></div>
-          </div>
-          <div class="lab-meta"><span class="lab-tag soon">Rejalashtirilgan</span></div>
-          <div class="lab-out">Ikkinchi miya: oʻqiganlaringizni yozib borish, bogʻlash va qayta topish tizimi.</div>
-          <div class="lab-foot">
-            <div class="lab-price">Narx eʼlon qilinadi</div>
-            <button type="button" class="btn-lab" onclick="openWaitlist('ikki-miya','2-Miya')">🔔 Xabar bering</button>
-          </div>
-        </div>
-
-      </div>
+<section id="jarayon">
+  <div class="wrap">
+    <div class="head reveal"><div class="label">Qanday ishlaydi</div><h2>Toʻrt qadam, <em>har Labda bir xil.</em></h2></div>
+    <div class="steps">
+      <div class="st reveal"><b>Bepul M0</b><p>Lab nima beradi va nima bermaydi, kimga mos emasligi ochiq yozilgan.</p></div>
+      <div class="st reveal"><b>Readiness Score</b><p>100 ballik oʻz-oʻzini baholash. "Bu siklga erta" boʻlsa, toʻlov oʻrniga muqobil yoʻl tavsiya qilinadi.</p></div>
+      <div class="st reveal"><b>Obuna va modullar</b><p>Faol obunada barcha modullar ochiq. Har dars: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.</p></div>
+      <div class="st reveal"><b>Artefaktlar va paket</b><p>Har modul bitta hujjat bilan tugaydi; oxirida ariza paketi bitta tugma bilan yuklab olinadi.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ PRICING ════════════════ -->
-<section class="pricing" id="pricing">
-  <div class="pricing-inner">
-    <div class="pricing-top reveal">
-      <div class="sec-label">Narxlar</div>
-      <h2 class="sec-title">Bitta narx tuzilmasi, <em>obuna asosida.</em></h2>
-      <p class="sec-sub">Bachelor, Master, GKS va USA Lab uchun. Bitta yillik obuna bitta ariza siklini qamraydi. PhD Lab: 999 000 soʻm/yil yoki 129 000 soʻm/oy — <a href="phd-lab.html" style="color:var(--accent);font-weight:700">batafsil</a>.</p>
-    </div>
-
-    <div class="pay-status reveal">
-      <span style="font-size:18px;">⏳</span>
-      <span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatiga yozilganlarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span>
-    </div>
-
-    <div class="plans-grid">
-      <div class="plan reveal">
-        <div class="plan-ico">🚪</div>
-        <div class="plan-name">M0 — Qaror darvozasi</div>
-        <div class="plan-desc">Lab sizga mosligini tekshirish</div>
-        <div class="plan-price">0</div>
-        <div class="plan-psub">soʻm · muddatsiz</div>
-        <div class="plan-div"></div>
-        <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Har Labning M0 moduli (5–6 dars)</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Tayyorgarlik darajasi koʻrsatkichi (Readiness Score)</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Kimga mos emasligi ochiq yozilgan</span></div>
-        </div>
-        <button type="button" class="btn-plan btn-plan-g" onclick="openWaitlist('', '')">🔔 Ochilganda xabar</button>
-      </div>
-
-      <div class="plan featured reveal reveal-d1">
-        <div class="plan-badge">Asosiy reja</div>
-        <div class="plan-ico">📅</div>
-        <div class="plan-name">Yillik</div>
-        <div class="plan-desc">Toʻliq ariza sikli uchun</div>
-        <div class="plan-price">699 000</div>
-        <div class="plan-psub">soʻm · 12 oy · oylikning ~7,1 oyi narxida</div>
-        <div class="plan-div"></div>
-        <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Tanlangan Labning barcha modullari</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Interaktiv vositalar va ish stoli</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">12 oy davomida Qobiq maʼlumotlari yangilanishi</span></div>
-        </div>
-        <button type="button" class="btn-plan btn-plan-p" onclick="openWaitlist('', '')">🔔 Kutish roʻyxati</button>
-      </div>
-
-      <div class="plan reveal reveal-d2">
-        <div class="plan-ico">🔁</div>
-        <div class="plan-name">Oylik</div>
-        <div class="plan-desc">Sinab koʻrish yoki qisqa muddat uchun</div>
-        <div class="plan-price">99 000</div>
-        <div class="plan-psub">soʻm · har oy avtomatik uzaytiriladi</div>
-        <div class="plan-div"></div>
-        <div class="plan-feats">
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Tanlangan Labning barcha modullari</span></div>
-          <div class="pf"><span class="pf-ico">✅</span><span class="pf-txt">Istalgan oy bekor qilinadi</span></div>
-          <div class="pf"><span class="pf-ico">ℹ️</span><span class="pf-txt">12 oyda jami 1 188 000 soʻm</span></div>
-        </div>
-        <button type="button" class="btn-plan btn-plan-g" onclick="openWaitlist('', '')">🔔 Kutish roʻyxati</button>
-      </div>
-    </div>
-
-    <div class="plan-rules">
-      <div class="rule reveal"><b>Bekor qilish</b>Obuna istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Qaytarish shartlari toʻlovdan oldin toʻliq matnda koʻrsatiladi.</div>
-      <div class="rule reveal reveal-d1"><b>18 yoshgacha</b>Obunani va toʻlovni ota-ona yoki vasiy rasmiylashtiradi. Ota-onaga jarayon haqida qisqa hisobot beriladi.</div>
-      <div class="rule reveal reveal-d2"><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div>
-      <div class="rule reveal reveal-d3"><b>Kirmaydi</b>Insho yoki hujjatni oʻrningizga yozish, shaxsiy mentorlik va qabul yoki stipendiya kafolati.</div>
-    </div>
-    <p class="pricing-note">Savollar? <a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegramʼda yozing →</a></p>
-  </div>
-</section>
-
-<!-- WAITLIST MODAL -->
-<div class="wl-ovl" id="wlModal">
-  <div class="wl-card">
-    <button class="wl-x" onclick="closeWaitlist()" aria-label="Yopish">×</button>
-    <div style="font-size:36px;margin-bottom:12px;" id="wlEmoji">🔔</div>
-    <h3 style="font-size:18px;font-weight:900;margin-bottom:6px;" id="wlTitle">Kutish roʻyxati</h3>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
-      Lab va email manzilingizni qoldiring — ochilishi bilan xabar beramiz.
-    </p>
-    <select id="wlLab" class="wl-select" aria-label="Lab">
-      <option value="">Labni tanlang</option>
-      <option value="bachelor-lab">🎓 Bachelor Lab</option>
-      <option value="master-lab">🔬 Master Lab</option>
-      <option value="phd-lab">⚗️ PhD Lab</option>
-      <option value="gks-lab">🇰🇷 GKS Lab</option>
-      <option value="usa-lab">🇺🇸 USA Lab</option>
-      <option value="daad-lab">🇩🇪 DAAD Lab</option>
-      <option value="tadbirkor-talaba">💼 Tadbirkor Talaba Lab</option>
-      <option value="miggo">🧳 Musofir Lab</option>
-      <option value="ikki-miya">🧠 2-Miya</option>
-    </select>
-    <input type="email" id="wlEmail" class="wl-input" placeholder="email@gmail.com">
-    <div id="wlMsg" style="font-size:12px;margin-top:8px;min-height:18px;"></div>
-    <button class="wl-btn" id="wlBtn" onclick="submitWaitlist()">🔔 Xabardor qiling</button>
-    <p style="font-size:11px;color:var(--muted);margin-top:12px;text-align:center;">Faqat ochilish xabari. Email boshqa maqsadda ishlatilmaydi.</p>
-  </div>
-</div>
-
-<!-- ════════════════ ASOSCHI ════════════════ -->
-<section class="mentor-section" id="mentor">
-  <div class="mentor-inner">
-    <div class="mentor-card reveal">
-      <div class="mc-header">
-        <div class="mc-avatar">🧑‍🔬</div>
-        <div class="mc-name">Shoxrux Boqijonov</div>
-        <div class="mc-role">Geofizik · Leeds universiteti doktoranti · EYUF stipendianti</div>
-      </div>
-      <div class="mc-body">
-        <div class="mc-fact">
-          <div class="mcf-ico">🎓</div>
-          <div>
-            <div class="mcf-text">University of Leeds, Buyuk Britaniya</div>
-            <div class="mcf-sub">PhD · School of Earth and Environment</div>
-          </div>
-        </div>
-        <div class="mc-fact">
-          <div class="mcf-ico">🏅</div>
-          <div>
-            <div class="mcf-text">“El-yurt umidi” jamgʻarmasi stipendiyasi</div>
-            <div class="mcf-sub">2025-yil 2-tanlov gʻolibi</div>
-          </div>
-        </div>
-        <div class="mc-fact">
-          <div class="mcf-ico">📡</div>
-          <div>
-            <div class="mcf-text">Tadqiqot: shahar geotermal energiyasi</div>
-            <div class="mcf-sub">DAS, seysmik tomografiya, PINN</div>
-          </div>
-        </div>
-        <div class="mc-fact">
-          <div class="mcf-ico">🌏</div>
-          <div>
-            <div class="mcf-text">Janubiy Koreyada oʻqigan</div>
-            <div class="mcf-sub">Oʻzbekistonda universitet oʻqituvchisi boʻlib ishlagan</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mentor-text reveal reveal-d1">
-      <div class="sec-label">Asoschi</div>
-      <h2 class="sec-title">Dastur shaxsiy tajriba va <em>rasmiy manbalar</em> ustiga qurilgan.</h2>
-      <p class="mentor-quote">Xorijda oʻqish yoʻlini oʻzim bosib oʻtdim. Kompas Lab — shu yoʻlni ketma-ket, tekshiriladigan qadamlarga ajratish urinishi.</p>
-      <p class="mentor-bio">Kompas Lab dasturlari asoschining Koreyadagi oʻqish, EYUF tanlovi va Leedsdagi doktorantura tajribasiga hamda universitet va stipendiya tashkilotlarining rasmiy hujjatlariga asoslanadi. Har Lab bitta spetsifikatsiya hujjati boʻyicha quriladi; muddat va talablar Qobiq sahifalarida tekshiruv sanasi bilan yangilanib boriladi.</p>
-      <a href="#labs" class="btn-hero-p" style="display:inline-flex;">Lablarni koʻrish →</a>
+<section class="alt" id="narx">
+  <div class="wrap">
+    <div class="head reveal"><div class="label">Narxlar</div><h2>Obuna asosida. <em>M0 hamma Labda bepul.</em></h2><p class="sub">Yillik obuna bitta ariza siklini qamraydi. Umrbod kirish rejasi yoʻq.</p></div>
+    <div class="pay-status reveal"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
+    <div class="tblwrap reveal"><table class="cmp" style="margin-top:0"><thead><tr><th>Lab</th><th>Yillik, soʻm</th><th>Oylik, soʻm</th><th>Holat</th></tr></thead><tbody><tr><td>🎓 Bachelor Lab</td><td class="mono">699 000</td><td class="mono">99 000</td><td>Kutish roʻyxati</td></tr><tr><td>🔬 Master Lab</td><td class="mono">699 000</td><td class="mono">99 000</td><td>Kutish roʻyxati</td></tr><tr><td>⚗️ PhD Lab</td><td class="mono">999 000</td><td class="mono">129 000</td><td>Kutish roʻyxati</td></tr><tr><td>🇰🇷 GKS Lab</td><td class="mono">699 000</td><td class="mono">99 000</td><td>Kutish roʻyxati</td></tr><tr><td>🇺🇸 USA Lab</td><td class="mono">699 000</td><td class="mono">99 000</td><td>B trek: sikl kutilmoqda</td></tr><tr><td>🇩🇪 DAAD Lab</td><td class="mono">—</td><td class="mono">—</td><td>Narx yangilanmoqda</td></tr><tr><td>💼 Tadbirkor Talaba</td><td class="mono">—</td><td class="mono">—</td><td>Ishlab chiqilmoqda</td></tr><tr><td>🧳 Musofir Lab</td><td class="mono">M0 bepul</td><td class="mono">—</td><td>M0 tayyorlanmoqda</td></tr></tbody></table></div>
+    <div class="rules reveal">
+      <div><b>Bekor qilish</b>Obuna istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Qaytarish shartlari toʻlovdan oldin toʻliq matnda koʻrsatiladi.</div>
+      <div><b>18 yoshgacha</b>Obunani va toʻlovni ota-ona yoki vasiy rasmiylashtiradi. Ota-onaga jarayon haqida qisqa hisobot beriladi.</div>
+      <div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div>
+      <div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ FAQ ════════════════ -->
-<section class="faq" id="faq">
-  <div class="faq-inner">
-    <div class="faq-top reveal">
-      <div class="sec-label">Savollar</div>
-      <h2 class="sec-title">Koʻp soʻraladigan <em>savollar.</em></h2>
+<section id="asoschi">
+  <div class="wrap founder">
+    <div class="f-card reveal">
+      <div class="f-top"><b>Shoxrux Boqijonov</b><span>Geofizik · Leeds universiteti doktoranti · EYUF stipendianti</span></div>
+      <ul class="f-list">
+        <li>University of Leeds, Buyuk Britaniya<span>PhD, School of Earth and Environment, 2026-yildan</span></li>
+        <li>"El-yurt umidi" jamgʻarmasi stipendiyasi<span>2025-yil 2-tanlov gʻolibi</span></li>
+        <li>Tadqiqot: shahar geotermal energiyasi<span>DAS, seysmik tomografiya, PINN</span></li>
+        <li>Janubiy Koreyada oʻqigan<span>Oʻzbekistonda universitet oʻqituvchisi boʻlib ishlagan</span></li>
+      </ul>
     </div>
-    <div class="faq-list reveal">
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Qachon boshlash mumkin? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Hozir kutish roʻyxati ochiq. Lablar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beriladi. Har Labning M0 moduli bepul boʻladi.</div></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Obuna qanday ishlaydi? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Ikki reja bor: yillik — 699 000 soʻm (12 oy) va oylik — 99 000 soʻm (har oy uzaytiriladi). Obuna tanlangan Labning barcha modullarini ochadi. Istalgan vaqtda bekor qilasiz, toʻlangan davr oxirigacha kirish saqlanadi. Umrbod kirish rejasi yoʻq.</div></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Har Labda nechta dars bor? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Bachelor Lab — 17 modul, 86 dars. Master Lab — 9 modul, 59 dars. GKS Lab — 54 dars, bitta oʻquvchi umumiy oʻzak va oʻz trekini (26–27 dars) oʻtadi. USA Lab — 12 modul, 72 dars, trekka qarab 40–55 dars. PhD Lab — 9 modul, 65 dars. DAAD Lab — 9 modul, 51 dars.</div></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Darslar video formatdami? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Asosiy format — matn, interaktiv vositalar va ish stoli. Video majburiy emas. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.</div></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Inshoni yoki hujjatlarni oʻrnimga yozib berasizmi? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati ham berilmaydi.</div></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">18 yoshga toʻlmaganman. Qatnasha olamanmi? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Ha. Bachelor Lab va GKS Lab bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; platformada pasport yoki attestat nusxalari yigʻilmaydi.</div></div>
-      </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Darslar qaysi tilda? <span class="faq-arr">›</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Oʻzbek tilida. Xalqaro atamalar inglizcha asli bilan va oʻzbekcha izoh bilan beriladi, masalan: Research Proposal (Ilmiy loyiha taklifi).</div></div>
-      </div>
+    <div class="reveal">
+      <div class="label">Asoschi</div>
+      <h2>Dastur shaxsiy tajriba va <em>rasmiy manbalar</em> ustiga qurilgan.</h2>
+      <p class="sub" style="margin-bottom:14px">Kompas Lab dasturlari asoschining Koreyadagi oʻqish, El-yurt umidi tanlovi va Leedsdagi doktorantura tajribasiga hamda universitet va stipendiya tashkilotlarining rasmiy hujjatlariga asoslanadi.</p>
+      <p class="sub">Shaxsiy tajriba faqat asoschi haqiqatda oʻtgan bosqichlarda keltiriladi; boshqa qismlar rasmiy manbalarga tayanadi va bu har Lab sahifasida ochiq yozilgan.</p>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ CTA ════════════════ -->
-<section class="cta-section">
-  <div class="cta-inner">
-    <div class="cta-badge">🧭 Kompas Lab</div>
-    <h2 class="cta-title">Bepul M0 dan <em>boshlang.</em></h2>
-    <p class="cta-sub">Avval Lab sizga mosligini tekshiring, keyin qaror qiling. Ochilish haqida xabar olish uchun kutish roʻyxatiga yoziling.</p>
-    <div class="cta-btns">
-      <button type="button" class="btn-cta-p" onclick="openWaitlist('', '')" style="border:none;cursor:pointer;">🔔 Kutish roʻyxati</button>
-      <a href="https://t.me/kompaslab" class="btn-cta-g" target="_blank" rel="noopener">💬 Telegramʼda soʻrash</a>
-    </div>
-    <div class="cta-guarantee">🔒 Karta raqami saqlanmaydi · Obunani istalgan vaqtda bekor qilish</div>
+<section class="alt" id="savollar">
+  <div class="wrap">
+    <div class="head reveal" style="text-align:center"><div class="label">Savollar</div><h2>Koʻp soʻraladigan <em>savollar.</em></h2></div>
+    <div class="faq reveal"><details><summary>Qachon boshlash mumkin?</summary><p>Hozir kutish roʻyxati ochiq. Lablar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beriladi. Har Labning M0 moduli bepul boʻladi.</p></details><details><summary>Obuna qanday ishlaydi?</summary><p>Har Lab alohida obuna: yillik (12 oy, bitta ariza sikli) yoki oylik. Istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Umrbod kirish rejasi yoʻq.</p></details><details><summary>Darslar video formatdami?</summary><p>Asosiy format — matn, interaktiv vositalar va ish stoli. Video majburiy emas. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.</p></details><details><summary>Hujjatlarni oʻrnimga yozib berasizmi?</summary><p>Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati berilmaydi.</p></details><details><summary>18 yoshga toʻlmaganman. Qatnasha olamanmi?</summary><p>Ha: Bachelor Lab va GKS Lab bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi.</p></details><details><summary>Bir nechta Lab kerak boʻlsa-chi?</summary><p>Daraja Labi (Bachelor, Master, PhD) va yoʻnalish Labi (GKS, USA) birga ishlatilishi mumkin; yoʻnalish Labi uchun chegirma rejalashtirilgan. Barcha Lablarni qamraydigan obuna birinchi kohortdan keyin koʻrib chiqiladi.</p></details><details><summary>Darslar qaysi tilda?</summary><p>Oʻzbek tilida. Xalqaro atamalar inglizcha asli va oʻzbekcha izohi bilan beriladi, masalan: Research Proposal (Ilmiy loyiha taklifi).</p></details></div>
   </div>
 </section>
 
-<!-- ════════════════ FOOTER ════════════════ -->
+<section class="dark cta">
+  <div class="wrap">
+    <h2>Bepul M0 dan boshlang.</h2>
+    <p class="sub">Avval Lab sizga mosligini tekshiring, keyin qaror qiling.</p>
+    <div class="cta-row" style="justify-content:center">
+      <button type="button" class="btn btn-p" data-wl="">🔔 Kutish roʻyxati</button>
+      <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">💬 Telegramʼda soʻrash</a>
+    </div>
+  </div>
+</section>
 <footer>
-  <div class="foot-inner">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="index.html" class="foot-logo">
-          <div class="foot-lm">🧭</div>
-          <span class="foot-lt">Kompas Lab</span>
-        </a>
-        <p class="foot-bio">STEM yoʻnalishidagi oʻquvchi va talabalar uchun xorijda oʻqishga tayyorgarlik Lablari. Kuzatuvdan — kashfiyotga.</p>
-        <div class="foot-socials">
-          <a href="https://t.me/kompaslab" class="foot-soc" target="_blank" rel="noopener" aria-label="Telegram">✈️</a>
-        </div>
-      </div>
-      <div class="foot-col">
-        <h4>Daraja</h4>
-        <div class="foot-links">
-          <a href="#labs" class="foot-link">Bachelor Lab</a>
-          <a href="#labs" class="foot-link">Master Lab</a>
-          <a href="#labs" class="foot-link">PhD Lab</a>
-        </div>
-      </div>
-      <div class="foot-col">
-        <h4>Yoʻnalish</h4>
-        <div class="foot-links">
-          <a href="#labs" class="foot-link">GKS Lab</a>
-          <a href="#labs" class="foot-link">USA Lab</a>
-          <a href="#labs" class="foot-link">DAAD Lab</a>
-        </div>
-      </div>
-      <div class="foot-col">
-        <h4>Aloqa</h4>
-        <div class="foot-links">
-          <a href="https://t.me/kompaslab" class="foot-link" target="_blank" rel="noopener">Telegram</a>
-          <a href="login.html" class="foot-link">Kirish</a>
-          <a href="register.html" class="foot-link">Roʻyxatdan oʻtish</a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 Kompas Lab · YATT Boqijonov Shoxrux</span>
-      <span>Oʻzbekiston 🇺🇿</span>
-    </div>
+  <div class="wrap">
+    <div><a href="#labs">Lablar</a><a href="login.html">Kirish</a><a href="register.html">Roʻyxatdan oʻtish</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a></div>
+    <div>© 2026 Kompas Lab · YATT Boqijonov Shoxrux · Oʻzbekiston 🇺🇿</div>
   </div>
 </footer>
+
+<div class="ovl" id="wl" role="dialog" aria-modal="true" aria-labelledby="wlT">
+  <div class="mdl">
+    <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
+    <div style="font-size:34px;margin-bottom:8px">🔔</div>
+    <h3 id="wlT">Kutish roʻyxati</h3>
+    <p>Lab va email manzilingizni qoldiring — ochilishi bilan xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
+    <select id="wlL" aria-label="Lab"><option value="">Labni tanlang</option><option value="bachelor-lab">🎓 Bachelor Lab</option><option value="master-lab">🔬 Master Lab</option><option value="phd-lab">⚗️ PhD Lab</option><option value="gks-lab">🇰🇷 GKS Lab</option><option value="usa-lab">🇺🇸 USA Lab</option><option value="daad-lab">🇩🇪 DAAD Lab</option><option value="tadbirkor-talaba">💼 Tadbirkor Talaba Lab</option><option value="miggo">🧳 Musofir Lab</option><option value="ikki-miya">🧠 2-Miya</option></select>
+    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email">
+    <div id="wlMsg"></div>
+    <button type="button" class="btn btn-p" id="wlB">🔔 Xabardor qiling</button>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/config.js"></script>
 <script>
-// ── NAV SCROLL ──────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20)
-})
-
-// ── REVEAL ON SCROLL ───────────────────────────────────
-const revealEls = document.querySelectorAll('.reveal')
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target) } })
-}, { threshold: 0.12 })
-revealEls.forEach(el => revealObs.observe(el))
-
-// ── FAQ TOGGLE ─────────────────────────────────────────
-function toggleFaq(item) {
-  const isOpen = item.classList.contains('open')
-  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'))
-  if (!isOpen) item.classList.add('open')
-}
-
-// ── SMOOTH SCROLL FOR NAV ──────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href').slice(1)
-    const el = document.getElementById(id)
-    if (el) { e.preventDefault(); el.scrollIntoView({ behavior:'smooth', block:'start' }) }
-  })
-})
-
-// ════════════════════════════════════════════════════════
-//  KUTISH ROʻYXATI
-// ════════════════════════════════════════════════════════
-const WL_LABS = {
-  'bachelor-lab':     { name: 'Bachelor Lab',         emoji: '🎓' },
-  'master-lab':       { name: 'Master Lab',           emoji: '🔬' },
-  'phd-lab':          { name: 'PhD Lab',              emoji: '⚗️' },
-  'gks-lab':          { name: 'GKS Lab',              emoji: '🇰🇷' },
-  'usa-lab':          { name: 'USA Lab',              emoji: '🇺🇸' },
-  'daad-lab':         { name: 'DAAD Lab',             emoji: '🇩🇪' },
-  'tadbirkor-talaba': { name: 'Tadbirkor Talaba Lab', emoji: '💼' },
-  'miggo':            { name: 'Musofir Lab',          emoji: '🧳' },
-  'ikki-miya':        { name: '2-Miya',               emoji: '🧠' },
-}
-
-function setWaitlistHeader(slug) {
-  const lab = WL_LABS[slug]
-  document.getElementById('wlEmoji').textContent = lab ? lab.emoji : '🔔'
-  document.getElementById('wlTitle').textContent = lab ? `${lab.name} — kutish roʻyxati` : 'Kutish roʻyxati'
-}
-
-function openWaitlist(slug) {
-  const sel = document.getElementById('wlLab')
-  sel.value = WL_LABS[slug] ? slug : ''
-  setWaitlistHeader(sel.value)
-  document.getElementById('wlEmail').value = ''
-  document.getElementById('wlMsg').textContent = ''
-  document.getElementById('wlBtn').disabled = false
-  document.getElementById('wlBtn').textContent = '🔔 Xabardor qiling'
-  document.getElementById('wlModal').classList.add('open')
-  setTimeout(() => (sel.value ? document.getElementById('wlEmail') : sel).focus(), 150)
-}
-
-function closeWaitlist() {
-  document.getElementById('wlModal').classList.remove('open')
-}
-
-async function submitWaitlist() {
-  const slug  = document.getElementById('wlLab').value
-  const email = document.getElementById('wlEmail').value.trim()
-  const msg   = document.getElementById('wlMsg')
-  const btn   = document.getElementById('wlBtn')
-
-  if (!slug) {
-    msg.style.color = 'var(--red)'
-    msg.textContent = '⚠️ Labni tanlang'
-    return
+(function () {
+  var els = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.1 });
+    els.forEach(function (el) { io.observe(el); });
+  } else { els.forEach(function (el) { el.classList.add("in"); }); }
+  var ovl = document.getElementById("wl"), sel = document.getElementById("wlL"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
+  function openWl(slug) {
+    sel.value = slug || ""; inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = "🔔 Xabardor qiling";
+    ovl.classList.add("open"); setTimeout(function () { (sel.value ? inp : sel).focus(); }, 120);
   }
-  if (!email || !/\S+@\S+\.\S+/.test(email)) {
-    msg.style.color = 'var(--red)'
-    msg.textContent = '⚠️ Toʻgʻri email kiriting'
-    return
+  function closeWl() { ovl.classList.remove("open"); }
+  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", function () { openWl(b.getAttribute("data-wl")); }); });
+  document.getElementById("wlX").addEventListener("click", closeWl);
+  ovl.addEventListener("click", function (e) { if (e.target === ovl) closeWl(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeWl(); });
+  inp.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
+  btn.addEventListener("click", submit);
+  function submit() {
+    var slug = sel.value, email = inp.value.trim();
+    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "⚠️ Labni tanlang"; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "⚠️ Toʻgʻri email kiriting"; return; }
+    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanishda xatolik. Telegram orqali yozing: t.me/kompaslab"; return; }
+    btn.disabled = true; btn.textContent = "⏳ Saqlanmoqda...";
+    window.supabase.from("waitlist")
+      .upsert({ email: email, course_slug: slug, source: "index_v3" }, { onConflict: "email,course_slug", ignoreDuplicates: true })
+      .then(function (r) {
+        if (r.error && r.error.code !== "23505") throw r.error;
+        msg.style.color = "var(--green)"; msg.textContent = "✅ Qoʻshildingiz. Ochilishi bilan xabar beramiz.";
+        btn.textContent = "✅ Roʻyxatdasiz"; setTimeout(closeWl, 2200);
+      })
+      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "❌ Xatolik yuz berdi. Qayta urinib koʻring."; btn.disabled = false; btn.textContent = "🔔 Xabardor qiling"; });
   }
-
-  btn.disabled = true
-  btn.textContent = '⏳ Saqlanmoqda...'
-  msg.textContent = ''
-
-  try {
-    const { error } = await supabase
-      .from('waitlist')
-      .upsert(
-        { email: email, course_slug: slug, source: 'index_v3' },
-        { onConflict: 'email,course_slug', ignoreDuplicates: true }
-      )
-
-    if (error && error.code !== '23505') throw error
-
-    msg.style.color = 'var(--green)'
-    msg.textContent = '✅ Qoʻshildingiz. Ochilishi bilan xabar beramiz.'
-    btn.textContent = '✅ Roʻyxatdasiz'
-
-    const card = document.querySelector(`.lab[data-slug="${slug}"] .btn-lab`)
-    if (card) { card.textContent = '✅ Roʻyxatdasiz'; card.disabled = true }
-
-    setTimeout(() => closeWaitlist(), 2200)
-
-  } catch (err) {
-    msg.style.color = 'var(--red)'
-    msg.textContent = '❌ Xatolik yuz berdi. Qayta urinib koʻring.'
-    btn.disabled = false
-    btn.textContent = '🔔 Xabardor qiling'
-  }
-}
-
-document.getElementById('wlLab').addEventListener('change', e => setWaitlistHeader(e.target.value))
-
-document.getElementById('wlModal').addEventListener('click', function (e) {
-  if (e.target === this) closeWaitlist()
-})
-
-document.getElementById('wlEmail').addEventListener('keydown', e => {
-  if (e.key === 'Enter') submitWaitlist()
-})
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeWaitlist()
-})
+})();
 </script>
 </body>
-
 </html>
