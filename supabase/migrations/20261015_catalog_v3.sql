@@ -9,7 +9,7 @@
 --    2. courses: obuna narxi ustunlari (oylik/yillik), hisob modeli, spec versiyasi
 --    3. modules: track va planned_lessons ustunlari; enrollments: track
 --    4. Bachelor, Master, GKS ma'lumotlari spetsifikatsiyaga moslanadi
---    5. usa-lab, tadbirkor-talaba, miggo kurslari qo'shiladi (draft)
+--    5. usa-lab, tadbirkor-talaba, miggo kurslari qo'shiladi (draft); phd-lab v3.1 narxi (999 000 / 129 000)
 --    6. Modul xaritalari spetsifikatsiyadan yoziladi (darslar keyin)
 --    7. coming_soon yangilanadi
 --
@@ -32,22 +32,22 @@ create table if not exists archive.catalog_backup_20261015 (
 
 insert into archive.catalog_backup_20261015 (kind, course_slug, row_data)
 select 'course', c.slug, to_jsonb(c) from courses c
-where c.slug in ('bachelor-lab','master-lab','gks-lab');
+where c.slug in ('bachelor-lab','master-lab','gks-lab','phd-lab');
 
 insert into archive.catalog_backup_20261015 (kind, course_slug, row_data)
 select 'module', c.slug, to_jsonb(m) from modules m join courses c on c.id = m.course_id
-where c.slug in ('bachelor-lab','master-lab','gks-lab');
+where c.slug in ('bachelor-lab','master-lab','gks-lab','phd-lab');
 
 insert into archive.catalog_backup_20261015 (kind, course_slug, row_data)
 select 'lesson', c.slug, to_jsonb(l) from lessons l
 join modules m on m.id = l.module_id join courses c on c.id = m.course_id
-where c.slug in ('bachelor-lab','master-lab','gks-lab');
+where c.slug in ('bachelor-lab','master-lab','gks-lab','phd-lab');
 
 insert into archive.catalog_backup_20261015 (kind, course_slug, row_data)
 select 'lesson_content', c.slug, to_jsonb(lc) from lesson_contents lc
 join lessons l on l.id = lc.lesson_id
 join modules m on m.id = l.module_id join courses c on c.id = m.course_id
-where c.slug in ('bachelor-lab','master-lab','gks-lab');
+where c.slug in ('bachelor-lab','master-lab','gks-lab','phd-lab');
 
 -- ── 2. Sxema kengaytmalari ───────────────────────────────────
 alter table courses add column if not exists price_monthly bigint;
@@ -96,6 +96,16 @@ update courses set
   total_modules = 12, total_lessons = 54, updated_at = now()
 where slug = 'gks-lab';
 
+update courses set
+  title = 'PhD Lab',
+  description = 'Xorijdagi moliyalashtirilgan doktoranturaga hujjat topshirish: ilmiy savol, ilmiy rahbar tanlash, professorga xat, ilmiy loyiha taklifi, akademik CV, moliyalashtirish atlasi, intervyu va birinchi yil.',
+  emoji = '⚗️',
+  price = 999000, price_starter = 999000, price_scholar = 999000, price_elite = 999000,
+  price_monthly = 129000, price_yearly = 999000,
+  billing_model = 'subscription', access_months = 12, spec_version = 'v3.1',
+  total_modules = 9, total_lessons = 65, updated_at = now()
+where slug = 'phd-lab';
+
 -- ── 4. Yangi kurslar (draft) ─────────────────────────────────
 insert into courses (slug, title, description, emoji, status,
   price, price_starter, price_scholar, price_elite,
@@ -127,7 +137,7 @@ on conflict (slug) do update set
 -- ── 5. Modul xaritalari ──────────────────────────────────────
 -- Eski modullar (va ularga bog'liq darslar, kontent) zaxiradan keyin o'chiriladi.
 delete from modules where course_id in (
-  select id from courses where slug in ('bachelor-lab','master-lab','gks-lab','usa-lab','tadbirkor-talaba','miggo')
+  select id from courses where slug in ('bachelor-lab','master-lab','gks-lab','phd-lab','usa-lab','tadbirkor-talaba','miggo')
 );
 
 insert into modules (course_id, order_index, title, is_free, is_locked, track, planned_lessons)
@@ -175,6 +185,16 @@ join (values
   ('gks-lab', 9,  'M3-D — Doktorantura nomzodining ilmiy pozitsiyasi', 'D', 4),
   ('gks-lab', 10, 'M4-D — Ilmiy reja', 'D', 6),
   ('gks-lab', 11, 'M5-D — Professor bilan muloqot va yakunlash', 'D', 4),
+  -- PhD Lab v3.1 — 9 modul, 65 dars
+  ('phd-lab', 0, 'M0 — Qaror darvozasi', 'core', 6),
+  ('phd-lab', 1, 'M1 — Ilmiy identitet va yoʻnalish', 'core', 6),
+  ('phd-lab', 2, 'M2 — Ilmiy rahbar va laboratoriya strategiyasi', 'core', 7),
+  ('phd-lab', 3, 'M3 — Professorga yoziladigan dastlabki xat va aloqa', 'core', 7),
+  ('phd-lab', 4, 'M4 — Ilmiy loyiha taklifi muhandisligi', 'core', 9),
+  ('phd-lab', 5, 'M5 — Ilmiy natijalar: CV, chiqishlar va tavsiya', 'core', 7),
+  ('phd-lab', 6, 'M6 — Moliyalashtirish atlasi', 'core', 9),
+  ('phd-lab', 7, 'M7 — PhD intervyusi va loyihani himoya qilish', 'core', 6),
+  ('phd-lab', 8, 'M8 — Taklif, relokatsiya va PhDʼning birinchi yili', 'core', 8),
   -- USA Lab v3.0 — 12 modul, 72 dars (trek darslar darajasida belgilanadi)
   ('usa-lab', 0,  'M0 — AQSh yoʻllari va qaror darvozasi', 'core', 6),
   ('usa-lab', 1,  'M1 — Trek strategiyasi', 'core', 5),
@@ -230,7 +250,7 @@ begin
   into bad
   from courses c
   left join (select course_id, sum(planned_lessons) n from modules group by course_id) s on s.course_id = c.id
-  where c.slug in ('bachelor-lab','master-lab','gks-lab','usa-lab','tadbirkor-talaba','miggo')
+  where c.slug in ('bachelor-lab','master-lab','gks-lab','phd-lab','usa-lab','tadbirkor-talaba','miggo')
     and c.total_lessons <> coalesce(s.n,0);
   if bad is not null then
     raise exception 'total_lessons mos emas: %', bad;
@@ -241,7 +261,7 @@ commit;
 
 -- ── Qaytarish (kerak bo'lsa) ─────────────────────────────────
 -- Modullar va darslarni zaxiradan tiklash:
---   delete from modules where course_id in (select id from courses where slug in ('bachelor-lab','master-lab','gks-lab'));
+--   delete from modules where course_id in (select id from courses where slug in ('bachelor-lab','master-lab','gks-lab','phd-lab'));
 --   insert into modules  select * from jsonb_populate_recordset(null::modules,
 --     (select jsonb_agg(row_data - 'track' - 'planned_lessons') from archive.catalog_backup_20261015 where kind='module'));
 --   insert into lessons  select * from jsonb_populate_recordset(null::lessons,
