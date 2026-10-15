@@ -117,13 +117,13 @@ values
    '🇺🇸', 'draft', 699000, 699000, 699000, 699000,
    99000, 699000, 'subscription', 12, 'v3.0', 12, 72),
   ('tadbirkor-talaba', 'Tadbirkor Talaba Lab',
-   'Universitet talabasi uchun kichik, qonuniy va oʻlchanadigan biznes sinovi: muammo, birinchi mijoz, pul hisobi, huquqiy shakl va soliq. Loyiha maqomida; narx taklif.',
+   'Universitet talabasi uchun kichik, qonuniy va oʻlchanadigan biznes sinovi: muammo, birinchi mijoz, pul hisobi, huquqiy shakl va soliq. Loyiha maqomida.',
    '💼', 'draft', 299000, 299000, 299000, 299000,
-   49000, 299000, 'subscription', 12, 'v1.0', 10, 54),
+   29900, 299000, 'subscription', 12, 'v1.0', 10, 54),
   ('miggo', 'Musofir Lab',
-   'Koreya, Buyuk Britaniya, Germaniya va Polshada faqat rasmiy yoʻllar orqali ishlash va firibgarlikdan himoya. M0 bepul va ochiq; toʻliq kurs loyiha maqomida. Kompas ish topib bermaydi.',
-   '🧳', 'draft', 149000, 149000, 149000, 149000,
-   null, 149000, 'one_time', 12, 'v1.0', 8, 44)
+   'Koreya, Buyuk Britaniya, Germaniya va Polshada faqat rasmiy yoʻllar orqali ishlash va firibgarlikdan himoya. M0 bepul va ochiq; qolgan modullar obuna asosida. Kompas ish topib bermaydi.',
+   '🧳', 'draft', 499000, 499000, 499000, 499000,
+   49900, 499000, 'subscription', 12, 'v1.0', 8, 44)
 on conflict (slug) do update set
   title = excluded.title, description = excluded.description, emoji = excluded.emoji,
   price = excluded.price, price_starter = excluded.price_starter,
@@ -171,7 +171,7 @@ join (values
   ('master-lab', 5, 'M5 — Maqsad bayonnomasi', 'core', 7),
   ('master-lab', 6, 'M6 — Ilmiy loyiha taklifi', 'core', 7),
   ('master-lab', 7, 'M7 — Stipendiyalar atlasi', 'core', 8),
-  ('master-lab', 8, 'M8 — Intervyu, qabul va joʻnash', 'core', 8),
+  ('master-lab', 8, 'M8 — Viza, intervyu va joʻnash', 'core', 8),
   -- GKS Lab v3.0 — umumiy oʻzak + 3 trek, 54 noyob dars
   ('gks-lab', 0,  'M0 — GKS tizimi va qaror darvozasi', 'core', 5),
   ('gks-lab', 1,  'M1 — Hujjatlar infratuzilmasi', 'core', 4),
@@ -268,3 +268,6 @@ commit;
 --     (select jsonb_agg(row_data) from archive.catalog_backup_20261015 where kind='lesson'));
 --   insert into lesson_contents select * from jsonb_populate_recordset(null::lesson_contents,
 --     (select jsonb_agg(row_data) from archive.catalog_backup_20261015 where kind='lesson_content'));
+
+-- DAAD Lab narxi (2026-10-15 qarori)
+update courses set price = 699000, price_yearly = 699000, price_monthly = 99900, updated_at = now() where slug = 'daad-lab';

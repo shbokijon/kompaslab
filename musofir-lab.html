@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Musofir Lab — xorijda faqat rasmiy yoʻl bilan ishlash | Kompas Lab</title>
-<meta name="description" content="Musofir Lab: Koreya, Buyuk Britaniya, Germaniya va Polshada rasmiy mehnat yoʻllari va firibgarlikdan himoya. M0 bepul va ochiq. Kompas ish topib bermaydi.">
-<meta property="og:title" content="Musofir Lab — Kompas Lab">
-<meta property="og:description" content="Musofir Lab: Koreya, Buyuk Britaniya, Germaniya va Polshada rasmiy mehnat yoʻllari va firibgarlikdan himoya. M0 bepul va ochiq. Kompas ish topib bermaydi.">
+<meta name="theme-color" content="#2d4a3e">
+<title>Musofir Lab: xorijda faqat rasmiy yoʻl bilan ishlash | Kompas Lab</title>
+<meta name="description" content="Musofir Lab: Koreya, Buyuk Britaniya, Germaniya va Polshada rasmiy mehnat yoʻllari va firibgarlikdan himoya. M0 bepul va ochiq. Obuna yillik yoki oylik. Kompas ish topib bermaydi.">
+<meta property="og:title" content="Musofir Lab | Kompas Lab">
+<meta property="og:description" content="Musofir Lab: Koreya, Buyuk Britaniya, Germaniya va Polshada rasmiy mehnat yoʻllari va firibgarlikdan himoya. M0 bepul va ochiq. Obuna yillik yoki oylik. Kompas ish topib bermaydi.">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>:root{
   --accent:#2d4a3e; --accent-h:#1e3329; --accent-lit:#e8f0ec;
   --accent2:#c4622d; --accent2-h:#a84f23; --accent2-lit:#faeee7;
   --cream:#f4f3ef; --gold:#b08a00; --gold-lit:#fdf6dc;
@@ -281,50 +282,104 @@ footer a:hover{color:#fff;}
   .scope th,.scope td{padding:8px 10px;}
 }
 
-.trk-h{margin:22px 0 10px;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;}
-.tk{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px;background:var(--accent-lit);color:var(--accent);margin-left:6px;vertical-align:1px;}
+.trk-h{margin:26px 0 10px;font-size:16px;font-weight:800;color:var(--accent);}
+.tk{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px;background:var(--accent-lit);color:var(--accent);margin-left:6px;vertical-align:1px;}
 .banner{display:flex;gap:12px;align-items:flex-start;border-radius:14px;padding:14px 18px;font-size:14px;margin-bottom:22px;}
 .banner.warn{background:var(--gold-lit);border:1px solid #e8d48a;}
 .banner.red{background:var(--red-lit);border:1px solid #f3c3bd;}
 .banner.green{background:var(--green-lit);border:1px solid #bfe3cd;}
-.cmp{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);font-size:13.5px;margin-top:18px;}
+.cmp{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);font-size:14px;margin-top:18px;}
 .cmp th,.cmp td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
-.cmp th{background:var(--accent);color:#fff;font-size:12px;}
+.cmp th{background:var(--accent);color:#fff;font-size:13px;}
 .cmp tr:last-child td{border-bottom:none;}
 .tblwrap{overflow-x:auto;border-radius:14px;max-width:100%;-webkit-overflow-scrolling:touch;}
-@media(max-width:720px){.logo-t span{display:none;}.cmp{min-width:520px;}}
 .help{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:12px;padding:14px 18px;font-size:14px;margin-top:18px;}
 .soon{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;max-width:760px;}
 .soon p{color:var(--muted);margin-bottom:14px;}
 .phases.c4{grid-template-columns:repeat(4,minmax(0,1fr));}
 @media(max-width:1000px){.phases.c4,.phases.c5{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}.cmp{min-width:520px;}}
+
+:root{--bg:#f4f3ef;--border:#e2ded3;--surface:#fffefb;--gold:#8a6a10;--gold-lit:#f8f0d6;}
+body{background:var(--bg);-webkit-text-size-adjust:100%;}
+.nav{background:rgba(244,243,239,.94);}
+h1 em,h2 em{font-style:normal;color:inherit;}
+h1{letter-spacing:-.5px;}
+.label{display:none;}
+.badge{font-family:"Outfit",sans-serif;font-size:13px;letter-spacing:0;}
+.fact b,.packet li::before,.mod-n,.mod-c,.mod li .num,.tl-when,.chk,.price,.calc b,.score-n,.tk,.lc-p,.lc-t,.st::before{font-family:"Outfit",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;}
+.packet-top small,.phase small,.art small,.plan.main .tag-top{font-family:"Outfit",sans-serif;letter-spacing:0;text-transform:none;font-size:12.5px;}
+.phase small{color:var(--accent2);font-weight:700;}
+.price{font-weight:800;letter-spacing:-.5px;}
+.reveal{opacity:1;transform:none;transition:none;}
+input,select,textarea{font-size:16px;}
+.q select,.mdl input,.mdl select{font-size:16px;min-height:46px;}
+.btn{min-height:44px;}
+.btn-sm{min-height:40px;}
+.nav .btn-p{white-space:nowrap;}
+.logo-m{background:none;width:36px;height:36px;}
+.logo-m img{width:34px;height:34px;display:block;}
+.i3d{width:64px;height:64px;display:block;}
+.hero-i{width:76px;height:76px;margin-bottom:10px;}
+@media (prefers-reduced-motion: no-preference){
+  .float{animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
+}
+.live{display:none;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin-top:12px;}
+.live.on{display:flex;}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(26,122,74,.5);}
+@media (prefers-reduced-motion: no-preference){.live i{animation:pulse 2s infinite;}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(26,122,74,.45)}70%{box-shadow:0 0 0 8px rgba(26,122,74,0)}100%{box-shadow:0 0 0 0 rgba(26,122,74,0)}}}
+.method{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:start;}
+.who{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;}
+.who h3{font-size:16px;font-weight:800;margin-bottom:10px;}
+.who ul{list-style:none;display:grid;gap:8px;}
+.who li{font-size:14px;padding-left:18px;position:relative;}
+.who li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--accent2);}
+.why-lab{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;font-size:14px;margin-top:18px;display:flex;gap:14px;align-items:flex-start;}
+.why-lab img{width:44px;height:44px;flex-shrink:0;}
+.plan .per{min-height:18px;}
+.refund{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;font-size:14px;}
+footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
+@media(max-width:1000px){.method{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:720px){
+  .logo-t span{display:none;}
+  .hero{padding:96px 0 48px;}
+  h1{font-size:34px;}
+  .lead{font-size:16px;}
+  .packet li{font-size:14px;}
+  .packet li span{font-size:12.5px;}
+  .mod li small{font-size:13px;}
+  .src p,.rules div,.calc div,.fit-col li{font-size:14.5px;}
+  .nav .btn-p{padding:8px 12px;font-size:13px;}
+  .cta-row .btn{width:100%;}
+}
 </style>
 </head>
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a href="index.html" class="logo"><div class="logo-m">🧭</div><span class="logo-t">Kompas Lab <span>· Musofir</span></span></a>
-    <div class="nav-links"><a href="#dastur">Dastur</a><a href="#faktlar">Rasmiy yoʻllar</a><a href="#narx">Holat</a><a href="#savollar">Savollar</a></div>
-    <button type="button" class="btn btn-p btn-sm" data-wl>🔔 Kutish roʻyxati</button>
+    <a href="index.html" class="logo"><div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div><span class="logo-t">Kompas Lab <span>Musofir</span></span></a>
+    <div class="nav-links"><a href="#dastur">Dastur</a><a href="#faktlar">Rasmiy yoʻllar</a><a href="#narx">Narx</a><a href="#savollar">Savollar</a></div>
+    <button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
   </div>
 </nav>
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
       <div class="crumb"><a href="index.html#labs">Lablar</a> / Tez kunda / Musofir Lab</div>
-      <div class="badge">🧳 Musofir Lab · loyiha</div>
-      <h1>Xorijda ishlash: <em>faqat rasmiy yoʻl bilan.</em></h1>
+      <img class="hero-i float" src="img/3d/musofir.webp" width="160" height="160" alt="Musofir Lab" loading="lazy" decoding="async">
+      <h1>Xorijda ishlash: faqat rasmiy yoʻl bilan.</h1>
       <p class="lead">Qaysi rasmiy yoʻl sizga mosligini, uning talablari va xarajatlarini rasmiy manbadan tekshirishni, vositachi va shartnomani tekshirishni hamda borgan mamlakatdagi huquqlaringiz va yordam manzillarini oʻrganasiz.</p>
       <div class="banner red" style="margin-top:4px"><span>⚠️</span><span><b>Kompas ish yoki viza topib bermaydi va vositachi emas.</b> Hech qanday vositachi, agentlik yoki operatordan pul yoki komissiya olinmaydi.</span></div>
       <div class="cta-row">
-        <a href="#dastur" class="btn btn-p">Bepul M0 ni koʻrish →</a>
+        <a href="#dastur" class="btn btn-p">Bepul M0 ni koʻrish</a>
         <a href="#dastur" class="btn btn-g">Dasturni koʻrish</a>
       </div>
-      <div class="facts"><span class="fact"><b>4</b> mamlakat</span><span class="fact">M0 <b>bepul</b>, roʻyxatdan oʻtmasdan</span><span class="fact"><b>6</b> dars</span><span class="fact"><b>18+</b></span></div>
+      <div class="facts"><span class="fact"><b>4</b> mamlakat</span><span class="fact"><b>8</b> modul</span><span class="fact"><b>44</b> dars</span><span class="fact">M0 <b>bepul</b>, roʻyxatdan oʻtmasdan</span><span class="fact"><b>18+</b></span></div>
+      <div class="live" data-live-wl="miggo"><i></i><span></span></div>
     </div>
     <aside class="packet" aria-label="Rasmiy yoʻl va firibgarlikdan himoya">
-      <div class="packet-top"><small>BEPUL M0 MODULI</small><strong>Rasmiy yoʻl va firibgarlikdan himoya</strong></div>
+      <div class="packet-top"><small>Bepul M0 moduli</small><strong>Rasmiy yoʻl va firibgarlikdan himoya</strong></div>
       <ol><li><div>Rasmiy va norasmiy yoʻl<span>farq, xavf, Migratsiya agentligining roli</span></div></li><li><div>Firibgarlik belgilari<span>"kafolat", oldindan katta toʻlov, pasportni olib qolish</span></div></li><li><div>Mamlakatlar xaritasi<span>Koreya, Buyuk Britaniya, Germaniya, Polsha</span></div></li><li><div>Kim uchun qaysi yoʻl<span>yoʻl tanlash testi</span></div></li><li><div>Xarajat va qarz xavfi<span>rasmiy xarajatlar va qarz olish xavfi</span></div></li><li><div>Keyingi qadam<span>rasmiy kanallar roʻyxati</span></div></li></ol>
       <div class="packet-foot">M0 hamma uchun bepul va ochiq: xavfsizlik maʼlumotini pul evaziga berish bu Lab maqsadiga zid.</div>
     </aside>
@@ -332,58 +387,55 @@ footer a:hover{color:#fff;}
 </header>
 <section class="dark">
   <div class="wrap rule-box">
-    <div class="reveal">
-      <div class="label" style="color:#f2a68c">Firibgarlik belgilari</div>
-      <h2>Bu belgilarni koʻrsangiz — toʻxtang.</h2>
+    <div>
+      <h2>Bu belgilarni koʻrsangiz: toʻxtang.</h2>
       <p>M0.2 darsi shu belgilar haqida. Rasmiy yoʻllarda ham toʻlovlar bor; farq — ular rasmiy manbada eʼlon qilingan va qonuniy tashkilot orqali toʻlanadi.</p><p>Koreya EPS boʻyicha Migratsiya agentligi: nomzodni tanlash huquqi faqat Koreya ish beruvchisida; boshqa organ yoki shaxsning aralashuviga yoʻl qoʻyilmaydi.</p>
     </div>
-    <div class="model-list reveal"><div class="model bad"><b>"Kafolat" vaʼdasi</b><span>Rasmiy tizim ishga joylashishni kafolatlamaydi. Kafolat vaʼda qilgan vositachi — xavf belgisi.</span></div><div class="model bad"><b>Oldindan katta toʻlov</b><span>Ish yoki viza uchun nomaʼlum shaxsga oldindan pul toʻlash.</span></div><div class="model bad"><b>Pasportni olib qolish</b><span>Hujjatlaringizni hech kimga topshirmang.</span></div><div class="model bad"><b>Faqat Telegram orqali aloqa va shoshiltirish</b><span>Ofis, litsenziya va rasmiy shartnoma yoʻq; "bugun toʻlamasangiz joy ketadi".</span></div></div>
+    <div class="model-list"><div class="model bad"><b>"Kafolat" vaʼdasi</b><span>Rasmiy tizim ishga joylashishni kafolatlamaydi. Kafolat vaʼda qilgan vositachi — xavf belgisi.</span></div><div class="model bad"><b>Oldindan katta toʻlov</b><span>Ish yoki viza uchun nomaʼlum shaxsga oldindan pul toʻlash.</span></div><div class="model bad"><b>Pasportni olib qolish</b><span>Hujjatlaringizni hech kimga topshirmang.</span></div><div class="model bad"><b>Faqat Telegram orqali aloqa va shoshiltirish</b><span>Ofis, litsenziya va rasmiy shartnoma yoʻq; "bugun toʻlamasangiz joy ketadi".</span></div></div>
   </div>
 </section>
 <section>
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Kimga mos</div>
-      <h2>Toʻlashdan oldin <em>ochiq yozamiz.</em></h2>
-      <p class="sub">Mos kelmasa, sizga toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
+    <div class="head">
+      <h2>Kimga mos va kimga mos emas</h2>
+      <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
     </div>
     <div class="fit">
-      <div class="fit-col yes reveal"><h3>✅ Mos keladi</h3><ul><li>Ishlab chiqarish va xizmat sohasidagi ishchi (20–35 yosh) — Koreya EPS</li><li>Mavsumiy ishchi (18–35 yosh) — Buyuk Britaniya va Polsha mavsumiy dasturlari</li><li>Kasb egasi: hamshira, oshpaz, haydovchi, texnik — Germaniyada malakani tan oldirish</li><li>Avval Rossiyada ishlagan (25–40 yosh) — yangi yoʻnalishlar va ularning farqi</li><li>Oila aʼzosi — vositachini tekshirish va xavfni tushunish</li></ul></div>
-      <div class="fit-col no reveal"><h3>⛔ Mos emas</h3><ul><li>18 yoshgacha boʻlganlar</li><li>Darhol ish topib berishni kutayotganlar — Kompas buni qilmaydi; Migratsiya agentligiga murojaat qiling</li><li>Talaba sifatida xorijga ketayotganlar → <a href="index.html#labs">daraja Lablari</a></li><li>Norasmiy yoʻl izlayotganlar</li></ul></div>
+      <div class="fit-col yes"><h3>Mos keladi</h3><ul><li>Ishlab chiqarish va xizmat sohasidagi ishchi (20–35 yosh) — Koreya EPS</li><li>Mavsumiy ishchi (18–35 yosh) — Buyuk Britaniya va Polsha mavsumiy dasturlari</li><li>Kasb egasi: hamshira, oshpaz, haydovchi, texnik — Germaniyada malakani tan oldirish</li><li>Avval Rossiyada ishlagan (25–40 yosh) — yangi yoʻnalishlar va ularning farqi</li><li>Oila aʼzosi — vositachini tekshirish va xavfni tushunish</li></ul></div>
+      <div class="fit-col no"><h3>Mos emas</h3><ul><li>18 yoshgacha boʻlganlar</li><li>Darhol ish topib berishni kutayotganlar — Kompas buni qilmaydi; Migratsiya agentligiga murojaat qiling</li><li>Talaba sifatida xorijga ketayotganlar<a href="index.html#labs">daraja Lablari</a></li><li>Norasmiy yoʻl izlayotganlar</li></ul></div>
     </div>
   </div>
 </section>
 <section class="alt" id="dastur">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Dastur</div>
-      <h2>Bepul M0 va <em>mamlakat yoʻllari.</em></h2>
-      <p class="sub">M0 hozir tayyorlanmoqda va roʻyxatdan oʻtmasdan ochiq boʻladi. Toʻliq kurs (M1–M7) loyiha bosqichida: mehnat migratsiyasi boʻyicha tajribali hammuallif topilgandan keyin koʻrib chiqiladi.</p>
+    <div class="head">
+      <h2>Bepul M0 va mamlakat yoʻllari.</h2>
+      <p class="sub">M0 roʻyxatdan oʻtmasdan ochiq boʻladi. M1–M7 tayyorlanmoqda; mehnat migratsiyasi boʻyicha tajribali hammuallif bilan yoziladi va obuna asosida ochiladi.</p>
     </div>
-    <div class="phases c4 reveal"><div class="phase"><small>BEPUL · OCHIQ</small><b>Rasmiy yoʻl va himoya</b><span>M0 · 6 dars</span></div><div class="phase"><small>FAZA I · LOYIHA</small><b>Mamlakat yoʻllari</b><span>M1–M4 · 24 dars</span></div><div class="phase"><small>FAZA II · LOYIHA</small><b>Xavfsizlik va moliya</b><span>M5–M6 · 10 dars</span></div><div class="phase"><small>FAZA III · LOYIHA</small><b>Hayot va qaytish</b><span>M7 · 4 dars</span></div></div>
-    <div class="mods"><details class="mod free reveal" open>
-  <summary><div class="mod-n">M0</div><div><div class="mod-t">Rasmiy yoʻl va firibgarlikdan himoya</div></div><div class="mod-c">6 dars<span class="tag tag-free">BEPUL</span></div></summary>
+    <div class="phases c4"><div class="phase"><small>Bepul, ochiq</small><b>Rasmiy yoʻl va himoya</b><span>M0, 6 dars</span></div><div class="phase"><small>Faza I</small><b>Mamlakat yoʻllari</b><span>M1–M4, 24 dars</span></div><div class="phase"><small>Faza II</small><b>Xavfsizlik va moliya</b><span>M5–M6, 10 dars</span></div><div class="phase"><small>Faza III</small><b>Hayot va qaytish</b><span>M7, 4 dars</span></div></div>
+    <div class="mods"><details class="mod free" open>
+  <summary><div class="mod-n">M0</div><div><div class="mod-t">Rasmiy yoʻl va firibgarlikdan himoya</div></div><div class="mod-c">6 dars<span class="tag tag-free">Bepul</span></div></summary>
   <ol><li><span class="num">0.1</span>Rasmiy va norasmiy yoʻl<small>Farq, xavf, Migratsiya agentligining roli</small></li><li><span class="num">0.2</span>Firibgarlik belgilari<small>"Kafolat", oldindan katta toʻlov, pasportni olib qolish, faqat Telegram orqali aloqa, shoshiltirish</small></li><li><span class="num">0.3</span>Mamlakatlar xaritasi<small>Koreya, Buyuk Britaniya, Germaniya, Polsha — qisqa taqqoslash</small></li><li><span class="num">0.4</span>Kim uchun qaysi yoʻl<small>Yoʻl tanlash testi (2.4)</small></li><li><span class="num">0.5</span>Xarajat va qarz xavfi<small>Rasmiy xarajatlar va qarz olishning xavfi</small></li><li><span class="num">0.6</span>Keyingi qadam va shartlar<small>Rasmiy kanallar roʻyxati; kurs shartlari; Kompas vositachi emas</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M1</div><div><div class="mod-t">Koreya: EPS</div></div><div class="mod-c">7 dars<span class="tag tag-core">LOYIHA</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M1</div><div><div class="mod-t">Koreya: EPS</div></div><div class="mod-c">7 dars<span class="tag tag-core">Tayyorlanmoqda</span></div></summary>
   <ol><li><span class="num">1.1</span>EPS qanday ishlaydi<small>Davlatlararo tizim; vositachisiz; kim tanlaydi (3.1)</small></li><li><span class="num">1.2</span>Talablar va roʻyxatdan oʻtish<small>Yosh, sudlanmaganlik, hujjatlar; Migratsiya agentligi eʼlonlari</small></li><li><span class="num">1.3</span>EPS-TOPIK tayyorgarligi<small>Imtihon tuzilmasi; rasmiy tayyorgarlik materiallari; haftalik reja</small></li><li><span class="num">1.4</span>Amaliy sinov va SPAS bazasi<small>Bazada 2 yil; kutish; kafolat yoʻqligi</small></li><li><span class="num">1.5</span>Shartnoma va ish beruvchi<small>Shartnoma shartlari; ish joyini almashtirish qoidalari (rasmiy manbadan)</small></li><li><span class="num">1.6</span>Koreyadagi huquqlar<small>Ish haqi, sugʻurta, dam olish, shikoyat qilish kanallari</small></li><li><span class="num">1.7</span>Shartnoma muddati tugaganda<small>Qaytish va qonuniy qayta kirish imkoniyatlari (rasmiy manbadan)</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M2</div><div><div class="mod-t">Buyuk Britaniya: mavsumiy ish</div></div><div class="mod-c">6 dars<span class="tag tag-core">LOYIHA</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M2</div><div><div class="mod-t">Buyuk Britaniya: mavsumiy ish</div></div><div class="mod-c">6 dars<span class="tag tag-core">Tayyorlanmoqda</span></div></summary>
   <ol><li><span class="num">2.1</span>Sxema qanday ishlaydi<small>Kvota, tasdiqlangan operatorlar roʻyxati (GOV.UK)</small></li><li><span class="num">2.2</span>Ariza va xarajatlar<small>Qonuniy xarajatlar; operatorlar ishga olish uchun pul olmasligi qoidasi (rasmiy manbadan)</small></li><li><span class="num">2.3</span>Viza shartlari<small>6 oy, oila aʼzolarisiz, doimiy yashashsiz (3.2)</small></li><li><span class="num">2.4</span>Fermadagi ish va huquqlar<small>Ish haqi, soatlar, turar joy, GLAAʼga shikoyat</small></li><li><span class="num">2.5</span>Operator bilan muammo<small>Litsenziya bekor qilinsa nima boʻladi (3.2)</small></li><li><span class="num">2.6</span>Qaytish<small>Vizadan keyin chiqish majburiyati</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M3</div><div><div class="mod-t">Germaniya</div></div><div class="mod-c">6 dars<span class="tag tag-core">LOYIHA</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M3</div><div><div class="mod-t">Germaniya</div></div><div class="mod-c">6 dars<span class="tag tag-core">Tayyorlanmoqda</span></div></summary>
   <ol><li><span class="num">3.1</span>Kelishuv va loyihalar<small>Migratsiya kelishuvi, hamshiralik va dual taʼlim loyihalari (3.3)</small></li><li><span class="num">3.2</span>Malakani tan oldirish<small>Diplom va kasb tan olinishi jarayoni (rasmiy portal)</small></li><li><span class="num">3.3</span>Nemis tili<small>Talab qilinadigan daraja, rasmiy imtihonlar</small></li><li><span class="num">3.4</span>Viza turlari<small>Ish, kasb taʼlimi (Ausbildung), boshqa yoʻllar (rasmiy sahifadan)</small></li><li><span class="num">3.5</span>Ish beruvchi va shartnoma<small>Ish beruvchini tekshirish; shartnoma</small></li><li><span class="num">3.6</span>Germaniyadagi huquqlar<small>Mehnat huquqlari, maslahat markazlari</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M4</div><div><div class="mod-t">Polsha</div></div><div class="mod-c">5 dars<span class="tag tag-core">LOYIHA</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M4</div><div><div class="mod-t">Polsha</div></div><div class="mod-c">5 dars<span class="tag tag-core">Tayyorlanmoqda</span></div></summary>
   <ol><li><span class="num">4.1</span>Viza va ish ruxsatnomasi<small>Ikki alohida hujjat (3.4)</small></li><li><span class="num">4.2</span>Mavsumiy va oddiy ish ruxsatnomasi<small>Farqi va kim beradi</small></li><li><span class="num">4.3</span>Ish beruvchini tekshirish<small>Polsha davlat reyestrlari</small></li><li><span class="num">4.4</span>Polshadagi huquqlar<small>Mehnat inspeksiyasi, shikoyat</small></li><li><span class="num">4.5</span>Kelishuv holati<small>Hukumatlararo kelishuv eʼlon qilinganmi (Qobiq)</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M5</div><div><div class="mod-t">Hujjatlar va xavfsizlik</div><div class="mod-a">Natija: Xavfsizlik papkasi</div></div><div class="mod-c">6 dars<span class="tag tag-core">LOYIHA</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M5</div><div><div class="mod-t">Hujjatlar va xavfsizlik</div><div class="mod-a">Natija: Xavfsizlik papkasi</div></div><div class="mod-c">6 dars<span class="tag tag-core">Tayyorlanmoqda</span></div></summary>
   <ol><li><span class="num">5.1</span>Shartnomani oʻqish<small>Tushunadigan tilda; ish haqi, soat, ushlab qolishlar, turar joy</small></li><li><span class="num">5.2</span>Pasport va hujjatlar<small>Pasportni hech kimga bermaslik; nusxalar</small></li><li><span class="num">5.3</span>Vositachini tekshirish<small>Litsenziya va rasmiy reyestrlar</small></li><li><span class="num">5.4</span>Qonuniy va noqonuniy toʻlovlar<small>Rasmiy toʻlovlar roʻyxati; chek talab qilish</small></li><li><span class="num">5.5</span>Sugʻurta<small>Tibbiy va baxtsiz hodisa sugʻurtasi</small></li><li><span class="num">5.6</span>Favqulodda aloqalar<small>Elchixona, Migratsiya agentligi, mezbon davlat yordam xizmatlari</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M6</div><div><div class="mod-t">Moliya</div></div><div class="mod-c">4 dars<span class="tag tag-core">LOYIHA</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M6</div><div><div class="mod-t">Moliya</div></div><div class="mod-c">4 dars<span class="tag tag-core">Tayyorlanmoqda</span></div></summary>
   <ol><li><span class="num">6.1</span>Xarajat va qaytarish muddati<small>Ketish xarajati necha oyda qaytadi</small></li><li><span class="num">6.2</span>Pul oʻtkazmalari<small>Rasmiy kanallar va komissiyalar</small></li><li><span class="num">6.3</span>Jamgʻarma rejasi<small>Oila byudjeti va maqsad</small></li><li><span class="num">6.4</span>Qarz xavfi<small>Qarz bilan ketish xavfi; ish chiqmasa nima boʻladi</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M7</div><div><div class="mod-t">Hayot va qaytish</div></div><div class="mod-c">4 dars<span class="tag tag-core">LOYIHA</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M7</div><div><div class="mod-t">Hayot va qaytish</div></div><div class="mod-c">4 dars<span class="tag tag-core">Tayyorlanmoqda</span></div></summary>
   <ol><li><span class="num">7.1</span>Moslashish<small>Madaniyat, yolgʻizlik, oila bilan aloqa</small></li><li><span class="num">7.2</span>Sogʻliq<small>Tibbiy yordam olish; ruhiy charchoq belgilari va yordam (tashxis emas)</small></li><li><span class="num">7.3</span>Malaka va til<small>Xorijda oʻrganganlarni hujjatlashtirish</small></li><li><span class="num">7.4</span>Qaytgandan keyin<small>Ish, oʻz ishini boshlash, tajribani ishlatish</small></li></ol>
 </details></div>
     
@@ -392,47 +444,65 @@ footer a:hover{color:#fff;}
 
 <section class="alt" id="faktlar">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Rasmiy yoʻllar</div>
-      <h2>Mamlakatlar boʻyicha: <em>rasmiy manbalar.</em></h2>
+    <div class="head">
+      <h2>Mamlakatlar boʻyicha: rasmiy manbalar.</h2>
       <p class="sub">Kvota, toʻlov va muddatlar oʻzgaradi va Qobiq sahifasida turadi. Quyidagilar spetsifikatsiyada 2026-10-03 holatiga yigʻilgan.</p>
     </div>
-    <div class="atlas"><div class="src reveal"><div class="src-h"><b>🇰🇷 Koreya — EPS (E-9)</b><span class="chk ok">Migratsiya agentligi</span></div><p>2026-yilgi talablar: Oʻzbekiston fuqarosi, 18–40 yosh, Oʻzbekistonda sudlanmagan. Imtihondan oʻtganlar bazaga 2 yilga kiritiladi; agentlik ishga joylashishni kafolatlamaydi.</p><a class="s" href="https://gov.uz/en/migration/news/view/139363" target="_blank" rel="noopener">gov.uz/migration →</a></div><div class="src reveal"><div class="src-h"><b>🇰🇷 Kim tanlaydi</b><span class="chk ok">Migratsiya agentligi</span></div><p>Nomzodni tanlash huquqi faqat Koreya ish beruvchisida; boshqa organ yoki shaxsning aralashuviga yoʻl qoʻyilmaydi; baza muddatini uzaytirib boʻlmaydi.</p><a class="s" href="https://gov.uz/en/migration/news/view/197042" target="_blank" rel="noopener">gov.uz/migration →</a></div><div class="src reveal"><div class="src-h"><b>🇬🇧 Mavsumiy ishchi vizasi</b><span class="chk wait">GOV.UK bilan tasdiqlanadi</span></div><p>Vizani ferma emas, tasdiqlangan sxema operatorlari beradi; viza doimiy yashashga olib kelmaydi, oila aʼzolari olib kelinmaydi.</p><a class="s" href="https://ukvisa.blog/seasonal-worker-visa-uk/" target="_blank" rel="noopener">ukvisa.blog →</a></div><div class="src reveal"><div class="src-h"><b>🇬🇧 Operator xavfi</b><span class="chk wait">Yangilik</span></div><p>Operator litsenziyasi bekor qilinganda Oʻzbekistondagi yuzga yaqin nomzod Buyuk Britaniyaga kira olmagan.</p><a class="s" href="https://thegrocer.co.uk/fruit-and-veg/uzbek-seasonal-workers-barred-from-uk-entry-after-scheme-operator-ban/694700.article" target="_blank" rel="noopener">thegrocer.co.uk →</a></div><div class="src reveal"><div class="src-h"><b>🇩🇪 Germaniya</b><span class="chk ok">Kelishuv</span></div><p>Migratsiya va mobillik boʻyicha hamkorlik kelishuvi 2025-yil 4-martda tasdiqlangan; Oʻzbekiston tomonidan vakolatli organ — Migratsiya agentligi. Loyihalar: hamshiralar, dual kasb taʼlimi.</p><a class="s" href="https://kun.uz/en/news/2025/03/06/shavkat-mirziyoyev-approves-migration-agreement-with-germany" target="_blank" rel="noopener">kun.uz →</a></div><div class="src reveal"><div class="src-h"><b>🇵🇱 Polsha</b><span class="chk wait">Kelishuv loyihasi</span></div><p>Viza va ish ruxsatnomasi alohida hujjatlar; mavsumiy ish uchun alohida ruxsatnoma turi bor. Hukumatlararo kelishuv imzolangani tasdiqlanmagan.</p><a class="s" href="https://practiceguides.chambers.com/practice-guides/corporate-immigration-2026/poland" target="_blank" rel="noopener">chambers.com →</a></div></div>
+    <div class="atlas"><div class="src"><div class="src-h"><b>🇰🇷 Koreya: EPS (E-9)</b><span class="chk ok">Migratsiya agentligi</span></div><p>2026-yilgi talablar: Oʻzbekiston fuqarosi, 18–40 yosh, Oʻzbekistonda sudlanmagan. Imtihondan oʻtganlar bazaga 2 yilga kiritiladi; agentlik ishga joylashishni kafolatlamaydi.</p><a class="s" href="https://gov.uz/en/migration/news/view/139363" target="_blank" rel="noopener">gov.uz/migration</a></div><div class="src"><div class="src-h"><b>🇰🇷 Kim tanlaydi</b><span class="chk ok">Migratsiya agentligi</span></div><p>Nomzodni tanlash huquqi faqat Koreya ish beruvchisida; boshqa organ yoki shaxsning aralashuviga yoʻl qoʻyilmaydi; baza muddatini uzaytirib boʻlmaydi.</p><a class="s" href="https://gov.uz/en/migration/news/view/197042" target="_blank" rel="noopener">gov.uz/migration</a></div><div class="src"><div class="src-h"><b>🇬🇧 Mavsumiy ishchi vizasi</b><span class="chk wait">GOV.UK bilan tasdiqlanadi</span></div><p>Vizani ferma emas, tasdiqlangan sxema operatorlari beradi; viza doimiy yashashga olib kelmaydi, oila aʼzolari olib kelinmaydi.</p><a class="s" href="https://ukvisa.blog/seasonal-worker-visa-uk/" target="_blank" rel="noopener">ukvisa.blog</a></div><div class="src"><div class="src-h"><b>🇬🇧 Operator xavfi</b><span class="chk wait">Yangilik</span></div><p>Operator litsenziyasi bekor qilinganda Oʻzbekistondagi yuzga yaqin nomzod Buyuk Britaniyaga kira olmagan.</p><a class="s" href="https://thegrocer.co.uk/fruit-and-veg/uzbek-seasonal-workers-barred-from-uk-entry-after-scheme-operator-ban/694700.article" target="_blank" rel="noopener">thegrocer.co.uk</a></div><div class="src"><div class="src-h"><b>🇩🇪 Germaniya</b><span class="chk ok">Kelishuv</span></div><p>Migratsiya va mobillik boʻyicha hamkorlik kelishuvi 2025-yil 4-martda tasdiqlangan; Oʻzbekiston tomonidan vakolatli organ — Migratsiya agentligi. Loyihalar: hamshiralar, dual kasb taʼlimi.</p><a class="s" href="https://kun.uz/en/news/2025/03/06/shavkat-mirziyoyev-approves-migration-agreement-with-germany" target="_blank" rel="noopener">kun.uz</a></div><div class="src"><div class="src-h"><b>🇵🇱 Polsha</b><span class="chk wait">Kelishuv loyihasi</span></div><p>Viza va ish ruxsatnomasi alohida hujjatlar; mavsumiy ish uchun alohida ruxsatnoma turi bor. Hukumatlararo kelishuv imzolangani tasdiqlanmagan.</p><a class="s" href="https://practiceguides.chambers.com/practice-guides/corporate-immigration-2026/poland" target="_blank" rel="noopener">chambers.com</a></div></div>
     
     <div class="help reveal"><b>Majburiy mehnat yoki odam savdosi belgilari boʻlsa</b> — darhol rasmiy yordam manzillariga murojaat qiling: Oʻzbekiston elchixonasi, mezbon davlat politsiyasi, Migratsiya agentligi.</div>
   </div>
 </section>
 
 
-<section class="alt" id="asoschi">
+<section class="alt" id="qanday">
   <div class="wrap">
-    <div class="soon reveal">
-      <div class="label">Kim tayyorlaydi</div>
-      <h2 style="font-size:28px">Rasmiy manbalar asosida, <em>vositachisiz.</em></h2>
-      <p>Bu Lab Kompas Labʼning asosiy yoʻnalishidan — talabalarni xorijiy universitet va stipendiyaga tayyorlashdan — tashqarida. Shu sababli hozir faqat bepul M0 ochiq material sifatida tayyorlanmoqda.</p><p>Material faqat rasmiy manbalarga (Migratsiya agentligi, mezbon davlat organlari) tayanadi. Kompas hech qanday vositachi, agentlik yoki operatordan pul olmaydi va reklama joylashtirmaydi.</p>
+    <div class="soon">
+      <h2 style="font-size:28px">Rasmiy manbalar asosida, vositachisiz</h2>
+      <p>Bu Lab Kompas Labʼning asosiy yoʻnalishidan tashqarida: u talabalar uchun emas, xorijda rasmiy ish izlayotganlar uchun. Xavfsizlikka oid M0 qismi shu sababli hamma uchun bepul.</p><p>Material faqat rasmiy manbalarga (Migratsiya agentligi, mezbon davlat organlari) tayanadi. Kompas hech qanday vositachi, agentlik yoki operatordan pul olmaydi va reklama joylashtirmaydi.</p>
     </div>
   </div>
 </section>
 <section id="narx">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Narx</div>
-      <h2>M0 <em>bepul va ochiq.</em></h2>
-      <p class="sub">Toʻliq kurs hozir sotilmaydi.</p>
+    <div class="head">
+      <h2>Obuna: yillik yoki oylik. M0 bepul.</h2>
+      <p class="sub">M0 hamma uchun bepul va roʻyxatdan oʻtmasdan ochiq. M1–M7 obuna asosida; ular tayyor boʻlganda ochiladi. Toʻlov ish yoki viza uchun emas: faqat oʻquv materiali uchun.</p>
     </div>
-    <div class="pay-status reveal"><span>⏳</span><span><b>M0 tayyorlanmoqda.</b> Ochilganda roʻyxatdan oʻtmasdan oʻqish mumkin boʻladi. Xabar olish uchun kutish roʻyxatiga yozilishingiz mumkin (ixtiyoriy).</span></div>
-    <div class="soon reveal"><p>Bu sahifadagi hech qanday toʻlov ish yoki viza uchun emas. Kompas hech qanday ish topib bermaydi.</p><button type="button" class="btn btn-p" data-wl>🔔 M0 ochilganda xabar bering</button></div>
-    <div class="rules reveal"><div><b>Kompas qilmaydi</b>Ish topish, ish beruvchi bilan bogʻlash, vakansiya joylashtirish, hujjat topshirish.</div><div><b>Shaxsiy maʼlumot</b>Pasport nusxasi va shaxsiy hujjatlar Kompas serverlariga yuklanmaydi; ish izlash holatingiz haqida maʼlumot yigʻilmaydi.</div></div>
+    <div class="pay-status"><span>⏳</span><span><b>M0 tayyorlanmoqda, onlayn toʻlov hali ochilmagan.</b> Ochilganda kutish roʻyxatidagilarga xabar beramiz.</span></div>
+    <div class="plans">
+      <div class="plan">
+        <h3>M0, qaror moduli</h3><p class="desc">Rasmiy yoʻl va firibgarlikdan himoya</p>
+        <div class="price">0</div><div class="per">soʻm, muddatsiz</div>
+        <ul><li>6 dars, roʻyxatdan oʻtmasdan</li><li>Firibgarlik belgilari</li><li>Yoʻl tanlash testi</li></ul>
+        <button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>
+      </div>
+      <div class="plan main">
+        <span class="tag-top">Asosiy reja</span>
+        <h3>Yillik</h3><p class="desc">Toʻliq mamlakat yoʻllari va xavfsizlik</p>
+        <div class="price" data-py="miggo">499 000</div><div class="per">soʻm, 12 oy uchun</div>
+        <ul><li>7 modul: Koreya, Buyuk Britaniya, Germaniya, Polsha, hujjatlar, moliya, qaytish</li><li>Vositachi va shartnomani tekshirish roʻyxatlari</li><li>Qoidalar oʻzgarganda ogohlantirish</li></ul>
+        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+      </div>
+      <div class="plan">
+        <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
+        <div class="price" data-pm="miggo">49 900</div><div class="per">soʻm, har oy</div>
+        <ul><li>Barcha modullar, obuna faol ekan</li><li>Istalgan oy toʻxtatiladi</li><li>Bitta mamlakatni oʻrganish uchun qulay</li></ul>
+        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+      </div>
+    </div>
+    <div class="calc"><div><b>598 800 soʻm</b>oylik reja 12 oyda (49 900 × 12)</div><div><b>~10,0 oy</b>yillik reja oylik rejaning shuncha oyiga teng</div><div><b>11 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja arzonroq</div></div>
+    <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi.</div>
+    <div class="rules"><div><b>Kompas qilmaydi</b>Ish topish, ish beruvchi bilan bogʻlash, vakansiya joylashtirish, hujjat topshirish.</div><div><b>Shaxsiy maʼlumot</b>Pasport nusxasi va shaxsiy hujjatlar Kompas serverlariga yuklanmaydi; ish izlash holatingiz haqida maʼlumot yigʻilmaydi.</div><div><b>Vositachisiz</b>Kompas hech qanday vositachi, agentlik yoki operatordan pul yoki komissiya olmaydi.</div></div>
   </div>
 </section>
 <section id="savollar">
   <div class="wrap">
-    <div class="head reveal" style="text-align:center">
-      <div class="label">Savollar</div>
-      <h2>Koʻp soʻraladigan <em>savollar.</em></h2>
+    <div class="head" style="text-align:center">
+      <h2>Koʻp soʻraladigan savollar</h2>
     </div>
-    <div class="faq reveal"><details><summary>Ish topib berasizmi?</summary><p>Yoʻq. Kompas ish topib bermaydi, ish beruvchi bilan bogʻlamaydi va vositachi emas. Rasmiy yoʻllar boʻyicha Migratsiya agentligiga murojaat qiling.</p></details><details><summary>Vositachini qanday tekshiraman?</summary><p>M0.2 va M5 darslarida: litsenziya va rasmiy roʻyxatni tekshirish, toʻlov qayerga va nima uchun qilinayotganini aniqlash, shartnomani oʻqish.</p></details><details><summary>M0 uchun pul toʻlaymanmi?</summary><p>Yoʻq. M0 hamma uchun bepul va roʻyxatdan oʻtmasdan ochiq boʻladi.</p></details><details><summary>Rossiya yoki boshqa mamlakatlar bormi?</summary><p>Hozir 4 mamlakat: Koreya, Buyuk Britaniya, Germaniya, Polsha. Boshqalari keyingi versiyada koʻrib chiqilishi mumkin.</p></details><details><summary>Talaba sifatida ketmoqchiman.</summary><p>Unda Kompas Labʼning daraja Lablari kerak: <a href="bachelor-lab.html">Bachelor</a>, <a href="master-lab.html">Master</a>, <a href="phd-lab.html">PhD</a>.</p></details></div>
-    <p class="sources" style="text-align:center">Manbalar: <a href="https://gov.uz/en/migration/news/view/139363" target="_blank" rel="noopener">Migratsiya agentligi</a> · <a href="https://gov.uz/en/migration/news/view/197042" target="_blank" rel="noopener">Migratsiya agentligi</a> · <a href="https://kun.uz/en/news/2025/03/06/shavkat-mirziyoyev-approves-migration-agreement-with-germany" target="_blank" rel="noopener">Kun.uz</a> · <a href="https://practiceguides.chambers.com/practice-guides/corporate-immigration-2026/poland" target="_blank" rel="noopener">Chambers</a></p>
+    <div class="faq"><details><summary>Ish topib berasizmi?</summary><p>Yoʻq. Kompas ish topib bermaydi, ish beruvchi bilan bogʻlamaydi va vositachi emas. Rasmiy yoʻllar boʻyicha Migratsiya agentligiga murojaat qiling.</p></details><details><summary>Vositachini qanday tekshiraman?</summary><p>M0.2 va M5 darslarida: litsenziya va rasmiy roʻyxatni tekshirish, toʻlov qayerga va nima uchun qilinayotganini aniqlash, shartnomani oʻqish.</p></details><details><summary>M0 uchun pul toʻlaymanmi?</summary><p>Yoʻq. M0 hamma uchun bepul va roʻyxatdan oʻtmasdan ochiq boʻladi.</p></details><details><summary>Obuna nima uchun?</summary><p>M1–M7 uchun: har mamlakat yoʻlining talablari, xarajatlari, hujjatlari, shartnomani tekshirish va borgan joydagi huquqlaringiz. Obuna ish, viza yoki vositachilik xizmati emas.</p></details><details><summary>Rossiya yoki boshqa mamlakatlar bormi?</summary><p>Hozir 4 mamlakat: Koreya, Buyuk Britaniya, Germaniya, Polsha. Boshqalari keyingi versiyada koʻrib chiqilishi mumkin.</p></details><details><summary>Talaba sifatida ketmoqchiman.</summary><p>Unda Kompas Labʼning daraja Lablari kerak: <a href="bachelor-lab.html">Bachelor</a>, <a href="master-lab.html">Master</a>, <a href="phd-lab.html">PhD</a>.</p></details><details><summary>Nega “Lab” deyiladi?</summary><p>Lab soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi. Kompas Lablari ham shunday ishlaydi: har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi.</p></details></div>
+    <p class="sources" style="text-align:center">Manbalar: <a href="https://gov.uz/en/migration/news/view/139363" target="_blank" rel="noopener">Migratsiya agentligi</a>, <a href="https://gov.uz/en/migration/news/view/197042" target="_blank" rel="noopener">Migratsiya agentligi</a>, <a href="https://kun.uz/en/news/2025/03/06/shavkat-mirziyoyev-approves-migration-agreement-with-germany" target="_blank" rel="noopener">Kun.uz</a>, <a href="https://practiceguides.chambers.com/practice-guides/corporate-immigration-2026/poland" target="_blank" rel="noopener">Chambers</a></p>
   </div>
 </section>
 <section class="dark cta">
@@ -440,45 +510,46 @@ footer a:hover{color:#fff;}
     <h2>Faqat rasmiy yoʻl.</h2>
     <p class="sub">M0 ochilganda xabar olish uchun kutish roʻyxatiga yoziling.</p>
     <div class="cta-row" style="justify-content:center">
-      <button type="button" class="btn btn-p" data-wl>🔔 Kutish roʻyxati</button>
-      <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">💬 Telegramʼda soʻrash</a>
+      <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+      <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">Telegramda savol berish</a>
     </div>
   </div>
 </section>
 <footer>
   <div class="wrap">
     <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a></div>
-    <div>© 2026 Kompas Lab · YATT Boqijonov Shoxrux</div>
+    <div>© 2026 Kompas Lab, Oʻzbekiston</div>
   </div>
 </footer>
 <div class="ovl" id="wl" role="dialog" aria-modal="true" aria-labelledby="wlT">
   <div class="mdl">
     <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
-    <div style="font-size:34px;margin-bottom:8px">🧳</div>
-    <h3 id="wlT">Musofir Lab — kutish roʻyxati</h3>
-    <p>Email manzilingizni qoldiring — bepul M0 ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
-    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email">
+    <img class="i3d" src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
+    <h3 id="wlT" style="margin-top:6px">Musofir Lab: kutish roʻyxati</h3>
+    <p>Email manzilingizni qoldiring: bepul M0 ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
+    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
     <div id="wlMsg"></div>
-    <button type="button" class="btn btn-p" id="wlB">🔔 Xabardor qiling</button>
+    <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script>
 (function () {
   var SLUG = "miggo", SOURCE = "musofir_landing";
-  var els = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    els.forEach(function (el) { io.observe(el); });
-  } else { els.forEach(function (el) { el.classList.add("in"); }); }
 
   var dataEl = document.getElementById("rsData");
   if (dataEl) {
     var D = JSON.parse(dataEl.textContent);
     var sels = Array.prototype.slice.call(document.querySelectorAll("select[data-q]"));
+    var shown = 0, raf = null;
+    function animateTo(n) {
+      var el = document.getElementById("sN"), from = shown, t0 = null;
+      if (raf) cancelAnimationFrame(raf);
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = n; shown = n; return; }
+      function step(ts) { if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 400); shown = Math.round(from + (n - from) * k); el.textContent = shown; if (k < 1) raf = requestAnimationFrame(step); }
+      raf = requestAnimationFrame(step);
+    }
     var calc = function () {
       var total = 0, answered = 0, gaps = [], blocked = false;
       sels.forEach(function (s, i) {
@@ -489,7 +560,7 @@ footer a:hover{color:#fff;}
         if (v < D.max[i] * 0.5) gaps.push(D.names[i]);
       });
       var bar = document.getElementById("sB"), V = document.getElementById("sV"), T = document.getElementById("sT"), G = document.getElementById("sG");
-      document.getElementById("sN").textContent = total;
+      animateTo(total);
       bar.style.width = total + "%"; G.innerHTML = ""; V.style.color = "";
       if (blocked) {
         V.textContent = "Bu siklda topshira olmaysiz"; V.style.color = "var(--red)";
@@ -505,7 +576,7 @@ footer a:hover{color:#fff;}
         T.textContent = "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak:"; bar.style.background = "var(--gold)";
       } else {
         V.textContent = "Bu siklga erta"; V.style.color = "var(--red)";
-        T.textContent = "Toʻlov tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
+        T.textContent = "Hozir toʻlash tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
       }
       if (answered === sels.length && (blocked || total < 70)) {
         gaps.forEach(function (g) { var li = document.createElement("li"); li.textContent = g; G.appendChild(li); });
@@ -518,28 +589,52 @@ footer a:hover{color:#fff;}
     sels.forEach(function (s) { s.addEventListener("change", calc); });
   }
 
-  var ovl = document.getElementById("wl"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
-  function openWl() { inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = "🔔 Xabardor qiling"; ovl.classList.add("open"); setTimeout(function () { inp.focus(); }, 120); }
-  function closeWl() { ovl.classList.remove("open"); }
-  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", openWl); });
+  var ovl = document.getElementById("wl"), sel = document.getElementById("wlL"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
+  var BTN = "Roʻyxatga yozilish";
+  function openWl(slug) {
+    if (sel) sel.value = slug || "";
+    inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = BTN;
+    ovl.classList.add("open"); document.body.style.overflow = "hidden";
+    setTimeout(function () { (sel && !sel.value ? sel : inp).focus(); }, 120);
+  }
+  function closeWl() { ovl.classList.remove("open"); document.body.style.overflow = ""; }
+  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", function () { openWl(b.getAttribute("data-wl")); }); });
   document.getElementById("wlX").addEventListener("click", closeWl);
   ovl.addEventListener("click", function (e) { if (e.target === ovl) closeWl(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeWl(); });
   inp.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
   btn.addEventListener("click", submit);
   function submit() {
-    var email = inp.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "⚠️ Toʻgʻri email kiriting"; return; }
-    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanishda xatolik. Telegram orqali yozing: t.me/kompaslab"; return; }
-    btn.disabled = true; btn.textContent = "⏳ Saqlanmoqda...";
+    var slug = sel ? sel.value : SLUG, email = inp.value.trim();
+    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "Labni tanlang"; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "Email manzilni tekshiring: masalan, ism@gmail.com"; return; }
+    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanib boʻlmadi. Telegram orqali yozing: t.me/kompaslab"; return; }
+    btn.disabled = true; btn.textContent = "Saqlanmoqda...";
     window.supabase.from("waitlist")
-      .upsert({ email: email, course_slug: SLUG, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
+      .upsert({ email: email, course_slug: slug, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
       .then(function (r) {
         if (r.error && r.error.code !== "23505") throw r.error;
-        msg.style.color = "var(--green)"; msg.textContent = "✅ Qoʻshildingiz. Ochilishi bilan xabar beramiz.";
-        btn.textContent = "✅ Roʻyxatdasiz"; setTimeout(closeWl, 2200);
+        msg.style.color = "var(--green)"; msg.textContent = "Yozildingiz. Lab ochilganda shu emailga xabar beramiz.";
+        btn.textContent = "Yozildingiz"; setTimeout(closeWl, 2400);
       })
-      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "❌ Xatolik yuz berdi. Qayta urinib koʻring."; btn.disabled = false; btn.textContent = "🔔 Xabardor qiling"; });
+      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "Saqlanmadi. Internetni tekshirib, qayta urinib koʻring."; btn.disabled = false; btn.textContent = BTN; });
+  }
+
+  var LIVE_MIN = 10;
+  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
+  function applyStats(d) {
+    var pr = d.prices || {};
+    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
+    document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
+    var wl = d.waitlist_by_lab || {};
+    document.querySelectorAll("[data-live-wl]").forEach(function (el) {
+      var n = wl[el.getAttribute("data-live-wl")] || 0;
+      if (n >= LIVE_MIN) { el.querySelector("span").textContent = "Kutish roʻyxatida " + nf(n) + " kishi"; el.classList.add("on"); }
+    });
+    if (window.onKompasStats) window.onKompasStats(d);
+  }
+  if (window.supabase && typeof window.supabase.rpc === "function") {
+    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) applyStats(r.data); });
   }
 })();
 </script>

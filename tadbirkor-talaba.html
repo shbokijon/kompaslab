@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tadbirkor Talaba Lab — oʻqish bilan birga kichik biznes sinovi | Kompas Lab</title>
-<meta name="description" content="Tadbirkor Talaba Lab: muammo topish, MVP, birinchi mijozlar, pul hisobi, Oʻzbekistondagi huquqiy shakl va soliq. 10 modul, 54 dars. Ishlab chiqilmoqda.">
-<meta property="og:title" content="Tadbirkor Talaba Lab — Kompas Lab">
-<meta property="og:description" content="Tadbirkor Talaba Lab: muammo topish, MVP, birinchi mijozlar, pul hisobi, Oʻzbekistondagi huquqiy shakl va soliq. 10 modul, 54 dars. Ishlab chiqilmoqda.">
+<meta name="theme-color" content="#2d4a3e">
+<title>Tadbirkor Talaba Lab: oʻqish bilan birga kichik biznes sinovi | Kompas Lab</title>
+<meta name="description" content="Tadbirkor Talaba Lab: muammo topish, MVP, birinchi mijozlar, pul hisobi, Oʻzbekistondagi huquqiy shakl va soliq. 10 modul, 54 dars, M0 bepul. Ishlab chiqilmoqda.">
+<meta property="og:title" content="Tadbirkor Talaba Lab | Kompas Lab">
+<meta property="og:description" content="Tadbirkor Talaba Lab: muammo topish, MVP, birinchi mijozlar, pul hisobi, Oʻzbekistondagi huquqiy shakl va soliq. 10 modul, 54 dars, M0 bepul. Ishlab chiqilmoqda.">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>:root{
   --accent:#2d4a3e; --accent-h:#1e3329; --accent-lit:#e8f0ec;
   --accent2:#c4622d; --accent2-h:#a84f23; --accent2-lit:#faeee7;
   --cream:#f4f3ef; --gold:#b08a00; --gold-lit:#fdf6dc;
@@ -281,50 +282,104 @@ footer a:hover{color:#fff;}
   .scope th,.scope td{padding:8px 10px;}
 }
 
-.trk-h{margin:22px 0 10px;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;}
-.tk{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px;background:var(--accent-lit);color:var(--accent);margin-left:6px;vertical-align:1px;}
+.trk-h{margin:26px 0 10px;font-size:16px;font-weight:800;color:var(--accent);}
+.tk{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px;background:var(--accent-lit);color:var(--accent);margin-left:6px;vertical-align:1px;}
 .banner{display:flex;gap:12px;align-items:flex-start;border-radius:14px;padding:14px 18px;font-size:14px;margin-bottom:22px;}
 .banner.warn{background:var(--gold-lit);border:1px solid #e8d48a;}
 .banner.red{background:var(--red-lit);border:1px solid #f3c3bd;}
 .banner.green{background:var(--green-lit);border:1px solid #bfe3cd;}
-.cmp{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);font-size:13.5px;margin-top:18px;}
+.cmp{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);font-size:14px;margin-top:18px;}
 .cmp th,.cmp td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
-.cmp th{background:var(--accent);color:#fff;font-size:12px;}
+.cmp th{background:var(--accent);color:#fff;font-size:13px;}
 .cmp tr:last-child td{border-bottom:none;}
 .tblwrap{overflow-x:auto;border-radius:14px;max-width:100%;-webkit-overflow-scrolling:touch;}
-@media(max-width:720px){.logo-t span{display:none;}.cmp{min-width:520px;}}
 .help{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:12px;padding:14px 18px;font-size:14px;margin-top:18px;}
 .soon{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;max-width:760px;}
 .soon p{color:var(--muted);margin-bottom:14px;}
 .phases.c4{grid-template-columns:repeat(4,minmax(0,1fr));}
 @media(max-width:1000px){.phases.c4,.phases.c5{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}.cmp{min-width:520px;}}
+
+:root{--bg:#f4f3ef;--border:#e2ded3;--surface:#fffefb;--gold:#8a6a10;--gold-lit:#f8f0d6;}
+body{background:var(--bg);-webkit-text-size-adjust:100%;}
+.nav{background:rgba(244,243,239,.94);}
+h1 em,h2 em{font-style:normal;color:inherit;}
+h1{letter-spacing:-.5px;}
+.label{display:none;}
+.badge{font-family:"Outfit",sans-serif;font-size:13px;letter-spacing:0;}
+.fact b,.packet li::before,.mod-n,.mod-c,.mod li .num,.tl-when,.chk,.price,.calc b,.score-n,.tk,.lc-p,.lc-t,.st::before{font-family:"Outfit",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;}
+.packet-top small,.phase small,.art small,.plan.main .tag-top{font-family:"Outfit",sans-serif;letter-spacing:0;text-transform:none;font-size:12.5px;}
+.phase small{color:var(--accent2);font-weight:700;}
+.price{font-weight:800;letter-spacing:-.5px;}
+.reveal{opacity:1;transform:none;transition:none;}
+input,select,textarea{font-size:16px;}
+.q select,.mdl input,.mdl select{font-size:16px;min-height:46px;}
+.btn{min-height:44px;}
+.btn-sm{min-height:40px;}
+.nav .btn-p{white-space:nowrap;}
+.logo-m{background:none;width:36px;height:36px;}
+.logo-m img{width:34px;height:34px;display:block;}
+.i3d{width:64px;height:64px;display:block;}
+.hero-i{width:76px;height:76px;margin-bottom:10px;}
+@media (prefers-reduced-motion: no-preference){
+  .float{animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
+}
+.live{display:none;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin-top:12px;}
+.live.on{display:flex;}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(26,122,74,.5);}
+@media (prefers-reduced-motion: no-preference){.live i{animation:pulse 2s infinite;}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(26,122,74,.45)}70%{box-shadow:0 0 0 8px rgba(26,122,74,0)}100%{box-shadow:0 0 0 0 rgba(26,122,74,0)}}}
+.method{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:start;}
+.who{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;}
+.who h3{font-size:16px;font-weight:800;margin-bottom:10px;}
+.who ul{list-style:none;display:grid;gap:8px;}
+.who li{font-size:14px;padding-left:18px;position:relative;}
+.who li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--accent2);}
+.why-lab{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;font-size:14px;margin-top:18px;display:flex;gap:14px;align-items:flex-start;}
+.why-lab img{width:44px;height:44px;flex-shrink:0;}
+.plan .per{min-height:18px;}
+.refund{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;font-size:14px;}
+footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
+@media(max-width:1000px){.method{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:720px){
+  .logo-t span{display:none;}
+  .hero{padding:96px 0 48px;}
+  h1{font-size:34px;}
+  .lead{font-size:16px;}
+  .packet li{font-size:14px;}
+  .packet li span{font-size:12.5px;}
+  .mod li small{font-size:13px;}
+  .src p,.rules div,.calc div,.fit-col li{font-size:14.5px;}
+  .nav .btn-p{padding:8px 12px;font-size:13px;}
+  .cta-row .btn{width:100%;}
+}
 </style>
 </head>
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a href="index.html" class="logo"><div class="logo-m">🧭</div><span class="logo-t">Kompas Lab <span>· Tadbirkor Talaba</span></span></a>
-    <div class="nav-links"><a href="#dastur">Dastur</a><a href="#faktlar">Huquq va soliq</a><a href="#narx">Holat</a><a href="#savollar">Savollar</a></div>
-    <button type="button" class="btn btn-p btn-sm" data-wl>🔔 Kutish roʻyxati</button>
+    <a href="index.html" class="logo"><div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div><span class="logo-t">Kompas Lab <span>Tadbirkor Talaba</span></span></a>
+    <div class="nav-links"><a href="#dastur">Dastur</a><a href="#faktlar">Huquq va soliq</a><a href="#narx">Narx</a><a href="#savollar">Savollar</a></div>
+    <button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
   </div>
 </nav>
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
       <div class="crumb"><a href="index.html#labs">Lablar</a> / Tez kunda / Tadbirkor Talaba Lab</div>
-      <div class="badge">💼 Tadbirkor Talaba Lab · v1.0 · loyiha</div>
-      <h1>Oʻqishni toʻxtatmasdan: <em>kichik, qonuniy biznes sinovi.</em></h1>
+      <img class="hero-i float" src="img/3d/tt.webp" width="160" height="160" alt="Tadbirkor Talaba Lab" loading="lazy" decoding="async">
+      <h1>Oʻqishni toʻxtatmasdan: kichik, qonuniy biznes sinovi.</h1>
       <p class="lead">Haqiqiy muammoni mijozlar bilan suhbatda tasdiqlaysiz, oddiy yechim (MVP) yaratasiz, birinchi toʻlovni olasiz, pul oqimini hisoblaysiz, mos huquqiy shaklda roʻyxatdan oʻtasiz va 30 kunlik sinov natijasiga qarab davom etish yoki toʻxtatishni hal qilasiz.</p>
       <div class="banner warn" style="margin-top:4px"><span>⚠️</span><span><b>Ishlab chiqilmoqda.</b> Lab Kompas Labʼning boshqa Lablari ishga tushgandan keyin quriladi. Hozir faqat kutish roʻyxati ochiq.</span></div>
       <div class="cta-row">
-        <a href="#test" class="btn btn-p">Tayyorgarlikni tekshirish →</a>
+        <a href="#test" class="btn btn-p">Tayyorgarlikni tekshirish</a>
         <a href="#dastur" class="btn btn-g">Dasturni koʻrish</a>
       </div>
-      <div class="facts"><span class="fact"><b>10</b> modul</span><span class="fact"><b>54</b> dars</span><span class="fact"><b>18+</b></span><span class="fact">Haftasiga <b>4–5</b> soat</span><span class="fact"><b>3–4</b> oy</span></div>
+      <div class="facts"><span class="fact"><b>10</b> modul</span><span class="fact"><b>54</b> dars</span><span class="fact">M0 <b>bepul</b></span><span class="fact"><b>18+</b></span><span class="fact">Haftasiga <b>4–5</b> soat</span></div>
+      <div class="live" data-live-wl="tadbirkor-talaba"><i></i><span></span></div>
     </div>
     <aside class="packet" aria-label="30 kunlik biznes sinovi">
-      <div class="packet-top"><small>DASTUR OXIRIDA</small><strong>30 kunlik biznes sinovi</strong></div>
+      <div class="packet-top"><small>Dastur oxirida</small><strong>30 kunlik biznes sinovi</strong></div>
       <ol><li><div>10 ta mijoz suhbati qaydi<span>+ muammo bayoni</span></div></li><li><div>Ishlaydigan MVP<span>+ oʻlchov rejasi</span></div></li><li><div>Birinchi 10 mijoz bilan aloqa jadvali<span>kamida 1 toʻlov yoki oldindan buyurtma</span></div></li><li><div>Pul oqimi jadvali<span>+ birlik iqtisodiyoti hisobi</span></div></li><li><div>Huquqiy shakl qarori va soliq rejasi<span>mutaxassis tekshirgan darslar asosida</span></div></li><li><div>Toʻlov qabul qilish rejasi<span>+ maʼlumot himoyasi qoidalari</span></div></li><li><div>30 kunlik sinov hisoboti<span>biznes modeli + 90 kunlik reja yoki toʻxtatish qarori</span></div></li></ol>
       <div class="packet-foot">Sinov kichik va qonuniy boʻladi. Natija — davom etish yoki toʻxtatish boʻyicha asosli qaror.</div>
     </aside>
@@ -332,63 +387,60 @@ footer a:hover{color:#fff;}
 </header>
 <section class="dark">
   <div class="wrap rule-box">
-    <div class="reveal">
-      <div class="label" style="color:#f2a68c">Huquqiy shakllar</div>
+    <div>
       <h2>Qaysi shakl sizga mos?</h2>
       <p>M5 modulida huquqiy shakl va soliq oʻrgatiladi; bu darslar soliq maslahatchisi yoki yurist tekshiruvidan oʻtadi va muddati oʻtsa yopiladi.</p><p>Aniq shartlar (soliq stavkasi, chegaralar, faoliyat turlari) dars matnida emas, Qobiq sahifasida — rasmiy manba va sana bilan.</p>
     </div>
-    <div class="model-list reveal"><div class="model"><b>Oʻzini oʻzi band qilgan shaxs</b><span>Shaxsiy mehnati bilan ruxsat etilgan faoliyat turi. Faqat roʻyxatdagi faoliyat; yollanma ishchi yoʻq. Faoliyat roʻyxatda boʻlsa — eng oddiy boshlanish.</span></div><div class="model"><b>Yakka tartibdagi tadbirkor (YATT)</b><span>Kengroq faoliyat, ishchi yollash mumkin. Barcha mol-mulki bilan javobgar.</span></div><div class="model"><b>Masʼuliyati cheklangan jamiyat (MChJ)</b><span>Hamkorlar, investor, IT Park. Hisobot va maʼmuriy yuk koʻproq — jamoa va investitsiya bosqichida.</span></div><div class="model bad"><b>Kirmaydi</b><span>"Tez boyish", kriptovalyuta savdosi, MLM va shunga oʻxshash sxemalar.</span></div></div>
+    <div class="model-list"><div class="model"><b>Oʻzini oʻzi band qilgan shaxs</b><span>Shaxsiy mehnati bilan ruxsat etilgan faoliyat turi. Faqat roʻyxatdagi faoliyat; yollanma ishchi yoʻq. Faoliyat roʻyxatda boʻlsa — eng oddiy boshlanish.</span></div><div class="model"><b>Yakka tartibdagi tadbirkor (YATT)</b><span>Kengroq faoliyat, ishchi yollash mumkin. Barcha mol-mulki bilan javobgar.</span></div><div class="model"><b>Masʼuliyati cheklangan jamiyat (MChJ)</b><span>Hamkorlar, investor, IT Park. Hisobot va maʼmuriy yuk koʻproq — jamoa va investitsiya bosqichida.</span></div><div class="model bad"><b>Kirmaydi</b><span>"Tez boyish", kriptovalyuta savdosi, MLM va shunga oʻxshash sxemalar.</span></div></div>
   </div>
 </section>
 <section>
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Kimga mos</div>
-      <h2>Toʻlashdan oldin <em>ochiq yozamiz.</em></h2>
-      <p class="sub">Mos kelmasa, sizga toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
+    <div class="head">
+      <h2>Kimga mos va kimga mos emas</h2>
+      <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
     </div>
     <div class="fit">
-      <div class="fit-col yes reveal"><h3>✅ Mos keladi</h3><ul><li>Gʻoyasi bor, qayerdan boshlashni bilmaydigan talaba</li><li>Norasmiy daromad topayotgan talaba (dizayn, kontent, onlayn savdo) — qonuniylashtirish, soliq, narx</li><li>Xorijga tayyorlanayotgan Kompas talabasi — tayyorgarlik davridagi daromad</li><li>Yosh bitiruvchi — ish va biznes orasida kichik sinov bilan qaror</li></ul></div>
-      <div class="fit-col no reveal"><h3>⛔ Mos emas</h3><ul><li>18 yoshgacha → Maktab Lab</li><li>Tez boyish yoki kafolatlangan daromad izlayotganlar</li><li>Investitsiya jalb qilish yoki yirik biznes boʻyicha chuqur bilim kerak boʻlganlar</li><li>Xorijda oʻqiyotgan va u yerda biznes ochmoqchi boʻlganlar → avval viza qoidalari (M8.3)</li><li>Stipendiya shartnomasi tadbirkorlikni cheklaydiganlar → avval shartnomani tekshirish (M8.2)</li></ul></div>
+      <div class="fit-col yes"><h3>Mos keladi</h3><ul><li>Gʻoyasi bor, qayerdan boshlashni bilmaydigan talaba</li><li>Norasmiy daromad topayotgan talaba (dizayn, kontent, onlayn savdo) — qonuniylashtirish, soliq, narx</li><li>Xorijga tayyorlanayotgan Kompas talabasi — tayyorgarlik davridagi daromad</li><li>Yosh bitiruvchi — ish va biznes orasida kichik sinov bilan qaror</li></ul></div>
+      <div class="fit-col no"><h3>Mos emas</h3><ul><li>18 yoshgacha → Maktab Lab</li><li>Tez boyish yoki kafolatlangan daromad izlayotganlar</li><li>Investitsiya jalb qilish yoki yirik biznes boʻyicha chuqur bilim kerak boʻlganlar</li><li>Xorijda oʻqiyotgan va u yerda biznes ochmoqchi boʻlganlar → avval viza qoidalari (M8.3)</li><li>Stipendiya shartnomasi tadbirkorlikni cheklaydiganlar → avval shartnomani tekshirish (M8.2)</li></ul></div>
     </div>
   </div>
 </section>
 <section class="alt" id="dastur">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Dastur</div>
-      <h2>10 modul, 54 dars, <em>4 faza.</em></h2>
+    <div class="head">
+      <h2>10 modul, 54 dars, 4 faza.</h2>
       <p class="sub">Dastur 30 kunlik biznes sinovi atrofida qurilgan: M1–M4 sinovni tayyorlaydi va oʻtkazadi, M5–M6 uni qonuniy qiladi, M7–M9 qarorga olib keladi.</p>
     </div>
-    <div class="phases c5 reveal"><div class="phase"><small>FAZA 0 · BEPUL</small><b>Qaror</b><span>M0 · 5 dars</span></div><div class="phase"><small>FAZA I</small><b>Muammo va yechim</b><span>M1–M2 · 12 dars</span></div><div class="phase"><small>FAZA II</small><b>Mijoz va pul</b><span>M3–M4 · 12 dars</span></div><div class="phase"><small>FAZA III</small><b>Qonun va infratuzilma</b><span>M5–M6 · 11 dars</span></div><div class="phase"><small>FAZA IV</small><b>Muvozanat va yakun</b><span>M7–M9 · 14 dars</span></div></div>
-    <div class="mods"><details class="mod free reveal" open>
-  <summary><div class="mod-n">M0</div><div><div class="mod-t">Qaror darvozasi</div></div><div class="mod-c">5 dars<span class="tag tag-free">BEPUL</span></div></summary>
+    <div class="phases c5"><div class="phase"><small>Faza 0, bepul</small><b>Qaror</b><span>M0, 5 dars</span></div><div class="phase"><small>Faza I</small><b>Muammo va yechim</b><span>M1–M2, 12 dars</span></div><div class="phase"><small>Faza II</small><b>Mijoz va pul</b><span>M3–M4, 12 dars</span></div><div class="phase"><small>Faza III</small><b>Qonun va infratuzilma</b><span>M5–M6, 11 dars</span></div><div class="phase"><small>Faza IV</small><b>Muvozanat va yakun</b><span>M7–M9, 14 dars</span></div></div>
+    <div class="mods"><details class="mod free" open>
+  <summary><div class="mod-n">M0</div><div><div class="mod-t">Qaror darvozasi</div></div><div class="mod-c">5 dars<span class="tag tag-free">Bepul</span></div></summary>
   <ol><li><span class="num">0.1</span>Talaba tadbirkorligi nima va nima emas<small>Kichik sinov, tez boyish emas; muvaffaqiyatsiz sinov ham natija</small></li><li><span class="num">0.2</span>Vaqt, oʻqish va pul<small>Haftalik vaqt byudjeti; yoʻqotishga tayyor summa</small></li><li><span class="num">0.3</span>Huquqiy shakllar xaritasi<small>Oʻzini oʻzi band qilish, YATT, MChJ (3.3)</small></li><li><span class="num">0.4</span>Tayyorgarlik koʻrsatkichi<small>6 yoʻnalish (2.4)</small></li><li><span class="num">0.5</span>Kimga mos emas va shartlar<small>2.2, obuna shartlari, 18+ tasdigʻi</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M1</div><div><div class="mod-t">Muammo topish</div><div class="mod-a">Natija: 10 ta mijoz suhbati qaydi + muammo bayoni</div></div><div class="mod-c">6 dars</div></summary>
   <ol><li><span class="num">1.1</span>Muammolarni kuzatish<small>Oʻz atrofingizdagi takroriy muammolar</small></li><li><span class="num">1.2</span>Mijoz suhbati<small>Mijozga gʻoyani sotmasdan, uning tajribasini soʻrash</small></li><li><span class="num">1.3</span>10 ta suhbat<small>Qaydlar va naqshlar</small></li><li><span class="num">1.4</span>Muammo bayoni<small>Kim, qachon, qanchalik ogʻriydi, hozir nima qiladi</small></li><li><span class="num">1.5</span>Bozor va raqobat<small>Mijozlar soni taxmini, mavjud yechimlar</small></li><li><span class="num">1.6</span>Gʻoya tanlash<small>Ogʻriq, toʻlov qobiliyati, sizning afzalligingiz</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M2</div><div><div class="mod-t">Yechim va MVP</div><div class="mod-a">Natija: Ishlaydigan MVP + oʻlchov rejasi</div></div><div class="mod-c">6 dars</div></summary>
   <ol><li><span class="num">2.1</span>Qiymat taklifi<small>Bir jumlada: kim uchun, qaysi muammo, qanday natija</small></li><li><span class="num">2.2</span>MVP turlari<small>Qoʻlda bajariladigan xizmat, sahifa, oldindan buyurtma</small></li><li><span class="num">2.3</span>Kodsiz vositalar<small>Sahifa, forma, Telegram bot konstruktorlari (atlasga havola)</small></li><li><span class="num">2.4</span>Prototipni sinash<small>5 mijoz bilan sinov</small></li><li><span class="num">2.5</span>Narx gipotezasi<small>Mijoz qancha toʻlaydi; narxni sinash usullari</small></li><li><span class="num">2.6</span>Oʻlchovlar<small>Qaysi raqam sinov muvaffaqiyatini koʻrsatadi</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M3</div><div><div class="mod-t">Birinchi mijozlar va sotuv</div><div class="mod-a">Natija: Birinchi 10 mijoz bilan aloqa jadvali + kamida 1 toʻlov (yoki oldindan buyurtma)</div></div><div class="mod-c">6 dars</div></summary>
   <ol><li><span class="num">3.1</span>Birinchi 10 mijoz<small>Tanishlar, jamoalar, ixtisoslashgan guruhlar</small></li><li><span class="num">3.2</span>Kanallar<small>Telegram, Instagram, tavsiya — kichik byudjet bilan</small></li><li><span class="num">3.3</span>Sotuv suhbati<small>Ehtiyojni aniqlash, taklif, eʼtirozlar</small></li><li><span class="num">3.4</span>Halol marketing<small>Soxta sharh, soxta tanqislik, toʻqima natijalar taqiqlangan</small></li><li><span class="num">3.5</span>Mijozlar jadvali<small>Oddiy CRM: jadvalda</small></li><li><span class="num">3.6</span>Takroriy xarid va fikr<small>Mijoz qaytadimi; fikr yigʻish</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M4</div><div><div class="mod-t">Pul hisobi</div><div class="mod-a">Natija: Pul oqimi jadvali + birlik iqtisodiyoti hisobi</div></div><div class="mod-c">6 dars</div></summary>
   <ol><li><span class="num">4.1</span>Daromad va xarajat<small>Doimiy va oʻzgaruvchan xarajat</small></li><li><span class="num">4.2</span>Narx belgilash<small>Tannarx, raqobat, qiymat asosida</small></li><li><span class="num">4.3</span>Birlik iqtisodiyoti<small>Mijoz jalb qilish narxi (CAC) va mijozdan umrbod daromad (LTV) — oddiy shaklda</small></li><li><span class="num">4.4</span>Pul oqimi<small>Pul qachon keladi va ketadi</small></li><li><span class="num">4.5</span>Shaxsiy va biznes puli<small>Alohida hisob, maosh qoidasi</small></li><li><span class="num">4.6</span>Zarar chegarasi<small>Qachon toʻxtash</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M5</div><div><div class="mod-t">Huquqiy shakl va soliq</div><div class="mod-a">Natija: Huquqiy shakl qarori + soliq rejasi</div></div><div class="mod-c">6 dars</div></summary>
   <ol><li><span class="num">5.1</span>Qachon roʻyxatdan oʻtish kerak<small>Doimiy daromad olish va qonun</small></li><li><span class="num">5.2</span>Oʻzini oʻzi band qilish<small>Faoliyatingiz roʻyxatdami; roʻyxatdan oʻtish; cheklovlar (3.1)</small></li><li><span class="num">5.3</span>YATT<small>Roʻyxatdan oʻtish, javobgarlik, soliq rejimi</small></li><li><span class="num">5.4</span>MChJ va IT Park<small>Qachon kerak; hamkorlar bilan ulush</small></li><li><span class="num">5.5</span>Soliq va hisobot<small>Aylanmadan olinadigan soliq, ijtimoiy soliq, muddatlar (Qobiq)</small></li><li><span class="num">5.6</span>Chek va shartnoma<small>Elektron chek, oddiy xizmat shartnomasi</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M6</div><div><div class="mod-t">Raqamli infratuzilma</div><div class="mod-a">Natija: Toʻlov qabul qilish rejasi + maʼlumot himoyasi qoidalari</div></div><div class="mod-c">5 dars</div></summary>
   <ol><li><span class="num">6.1</span>Onlayn toʻlov qabul qilish<small>Toʻlov tizimlari bilan merchant shartnomasi; talablar (asoschi tajribasi)</small></li><li><span class="num">6.2</span>Sahifa va domen<small>.uz domen, oddiy sayt</small></li><li><span class="num">6.3</span>Shaxsiy maʼlumotlar<small>Mijoz maʼlumotini yigʻish va saqlash qonuniy talablari</small></li><li><span class="num">6.4</span>AI vositalari<small>Biznesda AIʼdan halol foydalanish (AI Tools Labʼga havola)</small></li><li><span class="num">6.5</span>Xavfsizlik<small>Hisoblar, parollar, firibgarlik</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M7</div><div><div class="mod-t">Moliyalashtirish</div></div><div class="mod-c">5 dars</div></summary>
-  <ol><li><span class="num">7.1</span>Oʻz mablagʻi bilan boshlash<small>Nega birinchi sinov kichik byudjetda</small></li><li><span class="num">7.2</span>Grantlar va tanlovlar<small>Davlat va xususiy tanlovlar (Qobiq roʻyxati)</small></li><li><span class="num">7.3</span>Kredit va qarz xavfi<small>Yoshlar kreditlari shartlari va qaytarish xavfi</small></li><li><span class="num">7.4</span>Investor bilan suhbat asoslari<small>Ulush, baholash — tushuncha darajasida</small></li><li><span class="num">7.5</span>Moliyalashtirish qarori<small>Hozir pul kerakmi</small></li></ol>
-</details><details class="mod reveal">
+  <ol><li><span class="num">7.1</span>Oʻz mablagʻi bilan boshlash<small>Nega birinchi sinov kichik byudjetda</small></li><li><span class="num">7.2</span>Grantlar va tanlovlar<small>Davlat va xususiy tanlovlar (Qobiq roʻyxati)</small></li><li><span class="num">7.3</span>Kredit va qarz xavfi<small>Yoshlar kreditlari shartlari va qaytarish xavfi</small></li><li><span class="num">7.4</span>Investor bilan suhbat asoslari<small>Ulush, baholash: tushuncha darajasida</small></li><li><span class="num">7.5</span>Moliyalashtirish qarori<small>Hozir pul kerakmi</small></li></ol>
+</details><details class="mod">
   <summary><div class="mod-n">M8</div><div><div class="mod-t">Oʻqish bilan muvozanat</div></div><div class="mod-c">5 dars</div></summary>
   <ol><li><span class="num">8.1</span>Vaqt boshqaruvi<small>Imtihon davrlari, haftalik reja</small></li><li><span class="num">8.2</span>Stipendiya shartnomasini oʻqish<small>Stipendiya shartlari tadbirkorlik yoki ish bilan ziddiyatga kirishi mumkin; shartnomadagi tegishli bandlarni topish</small></li><li><span class="num">8.3</span>Xorijda oʻqiyotganda<small>Talaba vizalari koʻpincha oʻz biznesini yuritishni cheklaydi (masalan, Buyuk Britaniya); rasmiy qoidani oʻqish</small></li><li><span class="num">8.4</span>Charchoq va chegaralar<small>Belgilar, yordam</small></li><li><span class="num">8.5</span>Toʻxtatish yoki davom ettirish<small>Sinov natijasiga qarab qaror</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M9</div><div><div class="mod-t">Yakuniy loyiha</div><div class="mod-a">Natija: 30 kunlik sinov hisoboti + bir sahifalik biznes modeli + 90 kunlik reja yoki toʻxtatish qarori</div></div><div class="mod-c">4 dars</div></summary>
   <ol><li><span class="num">9.1</span>Bir sahifalik biznes modeli<small>Lean Canvas</small></li><li><span class="num">9.2</span>30 kunlik sinov hisoboti<small>Raqamlar, xulosalar</small></li><li><span class="num">9.3</span>Taqdimot<small>5 daqiqalik taqdimot</small></li><li><span class="num">9.4</span>Keyingi 90 kun<small>Davom ettirish rejasi yoki toʻxtatish va saboqlar</small></li></ol>
 </details></div>
@@ -398,25 +450,23 @@ footer a:hover{color:#fff;}
 
 <section class="alt" id="faktlar">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Oʻzbekistonda talaba tadbirkorligi</div>
-      <h2>Huquq va soliq: <em>tekshirilgan faktlar.</em></h2>
+    <div class="head">
+      <h2>Huquq va soliq: tekshirilgan faktlar.</h2>
       <p class="sub">Spetsifikatsiyada 2026-10-03 holatiga tekshirilgan. Soliq va huquq qoidalari oʻzgaradi — darsga kiritishdan oldin rasmiy manbadan qayta tekshiriladi.</p>
     </div>
-    <div class="atlas"><div class="src reveal"><div class="src-h"><b>Aylanmadan olinadigan soliq</b><span class="chk ok">Tekshirildi</span></div><p>2026-yil 1-yanvardan yillik aylanmasi 1 mlrd soʻmgacha boʻlgan YATT va oʻzini oʻzi band qilgan shaxslar 1% stavkada toʻlaydi.</p><a class="s" href="https://advice.uz/oz/document/2571" target="_blank" rel="noopener">advice.uz →</a></div><div class="src reveal"><div class="src-h"><b>Faoliyat turlari qisqardi</b><span class="chk ok">Tekshirildi</span></div><p>Oʻzini oʻzi band qilish mumkin boʻlgan faoliyat turlari 104 tadan 72 taga qisqargan; chiqarilganlar orasida repetitorlik, foto-video, kopirayterlik bor.</p><a class="s" href="https://kun.uz/news/2025/04/03/mubin-mirzayev-ozini-ozi-band-qilish-turlari-qisqarganiga-izoh-berdi" target="_blank" rel="noopener">kun.uz →</a></div><div class="src reveal"><div class="src-h"><b>Roʻyxatdan oʻtish</b><span class="chk ok">Tekshirildi</span></div><p>Oʻzini oʻzi band qilgan shaxs yollanma ishchi ishlata olmaydi; roʻyxatdan oʻtish bepul — Soliq mobil ilovasi, shaxsiy kabinet yoki my.gov.uz orqali.</p><a class="s" href="https://advice.uz/oz/document/2571" target="_blank" rel="noopener">advice.uz →</a></div><div class="src reveal"><div class="src-h"><b>Faoliyat turlari roʻyxati</b><span class="chk ok">Rasmiy</span></div><p>Amaldagi ruxsat etilgan faoliyat turlari roʻyxati Soliq qoʻmitasi sahifasida.</p><a class="s" href="https://gov.uz/oz/soliq/news/view/38421" target="_blank" rel="noopener">gov.uz/soliq →</a></div><div class="src reveal"><div class="src-h"><b>IT Park rezidentligi</b><span class="chk wait">Tasdiqlanmoqda</span></div><p>Rezident faqat yuridik shaxs boʻlishi mumkin; YATT rezident boʻla olmaydi. itpark.uz dan tasdiqlanadi.</p></div></div>
+    <div class="atlas"><div class="src"><div class="src-h"><b>Aylanmadan olinadigan soliq</b><span class="chk ok">Tekshirildi</span></div><p>2026-yil 1-yanvardan yillik aylanmasi 1 mlrd soʻmgacha boʻlgan YATT va oʻzini oʻzi band qilgan shaxslar 1% stavkada toʻlaydi.</p><a class="s" href="https://advice.uz/oz/document/2571" target="_blank" rel="noopener">advice.uz</a></div><div class="src"><div class="src-h"><b>Faoliyat turlari qisqardi</b><span class="chk ok">Tekshirildi</span></div><p>Oʻzini oʻzi band qilish mumkin boʻlgan faoliyat turlari 104 tadan 72 taga qisqargan; chiqarilganlar orasida repetitorlik, foto-video, kopirayterlik bor.</p><a class="s" href="https://kun.uz/news/2025/04/03/mubin-mirzayev-ozini-ozi-band-qilish-turlari-qisqarganiga-izoh-berdi" target="_blank" rel="noopener">kun.uz</a></div><div class="src"><div class="src-h"><b>Roʻyxatdan oʻtish</b><span class="chk ok">Tekshirildi</span></div><p>Oʻzini oʻzi band qilgan shaxs yollanma ishchi ishlata olmaydi; roʻyxatdan oʻtish bepul — Soliq mobil ilovasi, shaxsiy kabinet yoki my.gov.uz orqali.</p><a class="s" href="https://advice.uz/oz/document/2571" target="_blank" rel="noopener">advice.uz</a></div><div class="src"><div class="src-h"><b>Faoliyat turlari roʻyxati</b><span class="chk ok">Rasmiy</span></div><p>Amaldagi ruxsat etilgan faoliyat turlari roʻyxati Soliq qoʻmitasi sahifasida.</p><a class="s" href="https://gov.uz/oz/soliq/news/view/38421" target="_blank" rel="noopener">gov.uz/soliq</a></div><div class="src"><div class="src-h"><b>IT Park rezidentligi</b><span class="chk wait">Tasdiqlanmoqda</span></div><p>Rezident faqat yuridik shaxs boʻlishi mumkin; YATT rezident boʻla olmaydi. itpark.uz dan tasdiqlanadi.</p></div></div>
     
     
   </div>
 </section>
 <section id="test">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">M0 dan namuna</div>
-      <h2>Tayyorgarlik darajasi <em>(Readiness Score).</em></h2>
-      <p class="sub">6 savol, 100 ball. Bu oʻz-oʻzini tashxislash, qabul ehtimoli emas. Javoblar hech qayerga yuborilmaydi va saqlanmaydi.</p>
+    <div class="head">
+      <h2>Tayyorgarlik darajasi (Readiness Score)</h2>
+      <p class="sub">6 savol, 100 ball. Bu oʻzingizni oʻzingiz baholash, qabul ehtimoli emas. Javoblar hech qayerga yuborilmaydi va saqlanmaydi.</p>
     </div>
-    <div class="quiz reveal">
-      <form id="rs" autocomplete="off"><div class="q"><label for="q0">1. Muammo <small>(20)</small></label><select id="q0" data-q><option value="">Tanlang</option><option value="20">Kimning qanday muammosini aniq bilaman</option><option value="10">Taxminiy gʻoya bor</option><option value="0">Hali yoʻq</option></select></div><div class="q"><label for="q1">2. Vaqt <small>(20)</small></label><select id="q1" data-q><option value="">Tanlang</option><option value="20">Haftasiga 4–5 soat ajrata olaman</option><option value="10">2–3 soat</option><option value="0">Vaqtim yoʻq</option></select></div><div class="q"><label for="q2">3. Moliya <small>(15)</small></label><select id="q2" data-q><option value="">Tanlang</option><option value="15">Yoʻqotishga tayyor kichik byudjet bor</option><option value="8">Juda kichik</option><option value="0">Yoʻq</option></select></div><div class="q"><label for="q3">4. Koʻnikma <small>(15)</small></label><select id="q3" data-q><option value="">Tanlang</option><option value="15">Yechimni oʻzim yarata olaman</option><option value="8">Qisman</option><option value="0">Yoʻq</option></select></div><div class="q"><label for="q4">5. Cheklovlar (stipendiya, viza, ish shartnomasi) <small>(15)</small></label><select id="q4" data-q><option value="">Tanlang</option><option value="15">Cheklov yoʻq yoki tekshirilgan</option><option value="5">Tekshirilmagan</option><option value="0">Cheklov bor</option></select></div><div class="q"><label for="q5">6. Sabab <small>(15)</small></label><select id="q5" data-q><option value="">Tanlang</option><option value="15">Nega hozirligi aniq</option><option value="8">Qisman</option><option value="0">Aniq emas</option></select></div></form>
+    <div class="quiz">
+      <form id="rs" autocomplete="off"><div class="q"><label for="q0">1. Muammo <small>(20 ball)</small></label><select id="q0" data-q><option value="">Tanlang</option><option value="20">Kimning qanday muammosini aniq bilaman</option><option value="10">Taxminiy gʻoya bor</option><option value="0">Hali yoʻq</option></select></div><div class="q"><label for="q1">2. Vaqt <small>(20 ball)</small></label><select id="q1" data-q><option value="">Tanlang</option><option value="20">Haftasiga 4–5 soat ajrata olaman</option><option value="10">2–3 soat</option><option value="0">Vaqtim yoʻq</option></select></div><div class="q"><label for="q2">3. Moliya <small>(15 ball)</small></label><select id="q2" data-q><option value="">Tanlang</option><option value="15">Yoʻqotishga tayyor kichik byudjet bor</option><option value="8">Juda kichik</option><option value="0">Yoʻq</option></select></div><div class="q"><label for="q3">4. Koʻnikma <small>(15 ball)</small></label><select id="q3" data-q><option value="">Tanlang</option><option value="15">Yechimni oʻzim yarata olaman</option><option value="8">Qisman</option><option value="0">Yoʻq</option></select></div><div class="q"><label for="q4">5. Cheklovlar (stipendiya, viza, ish shartnomasi) <small>(15 ball)</small></label><select id="q4" data-q><option value="">Tanlang</option><option value="15">Cheklov yoʻq yoki tekshirilgan</option><option value="5">Tekshirilmagan</option><option value="0">Cheklov bor</option></select></div><div class="q"><label for="q5">6. Sabab <small>(15 ball)</small></label><select id="q5" data-q><option value="">Tanlang</option><option value="15">Nega hozirligi aniq</option><option value="8">Qisman</option><option value="0">Aniq emas</option></select></div></form>
       <div class="score" aria-live="polite">
         <div class="score-n"><span id="sN">0</span><small>/100</small></div>
         <div class="bar"><i id="sB"></i></div>
@@ -424,17 +474,16 @@ footer a:hover{color:#fff;}
         <div class="verdict-t" id="sT">Natija javoblaringiz boʻyicha shu yerda hisoblanadi.</div>
         <ul class="gaps" id="sG"></ul>
         <div class="warn" id="w0">Stipendiya, viza yoki ish shartnomasi tadbirkorlikni cheklashi mumkin — avval shartnomani tekshiring (M8.2–M8.3).</div>
-        <button type="button" class="btn btn-p" style="width:100%;margin-top:14px" data-wl>🔔 M0 ochilganda xabar bering</button>
+        <button type="button" class="btn btn-p" style="width:100%;margin-top:14px" data-wl>M0 ochilganda xabar bering</button>
       </div>
     </div>
   </div>
   <script type="application/json" id="rsData">{"names": ["Muammo", "Vaqt", "Moliya", "Koʻnikma", "Cheklovlar (stipendiya, viza, ish shartnomasi)", "Sabab"], "max": [20, 20, 15, 15, 15, 15], "blockText": "", "warn": [{"q": 4, "v": "0", "text": "Stipendiya, viza yoki ish shartnomasi tadbirkorlikni cheklashi mumkin — avval shartnomani tekshiring (M8.2–M8.3)."}]}</script>
 </section>
 
-<section class="alt" id="asoschi">
+<section class="alt" id="qanday">
   <div class="wrap">
-    <div class="soon reveal">
-      <div class="label">Kim tayyorlaydi</div>
+    <div class="soon">
       <h2 style="font-size:28px">Kitobning amaliy davomi</h2>
       <p>Kurs "Tadbirkor Talaba" kitobining amaliy davomi sifatida yoziladi. Soliq va huquq darslari soliq maslahatchisi yoki yurist tekshiruvidan oʻtadi; tekshiruv muddati oʻtgan dars yopiladi.</p><p>Kurs soliq yoki yuridik maslahat bermaydi: qoidalarni tushuntiradi va aniq holat uchun mutaxassisga yoʻnaltiradi.</p>
     </div>
@@ -442,70 +491,91 @@ footer a:hover{color:#fff;}
 </section>
 <section id="narx">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Narx</div>
-      <h2>Narx <em>ochilishda eʼlon qilinadi.</em></h2>
-      <p class="sub">Lab ishlab chiqilmoqda; hozir toʻlov qabul qilinmaydi.</p>
+    <div class="head">
+      <h2>Obuna: yillik yoki oylik. M0 bepul.</h2>
+      <p class="sub">Lab ishlab chiqilmoqda; hozir toʻlov qabul qilinmaydi. Kompas Labʼning boshqa Lablari obunachilari uchun chegirma koʻrib chiqilmoqda.</p>
     </div>
-    <div class="pay-status reveal"><span>⏳</span><span><b>Lab hali ochilmagan.</b> Kutish roʻyxatiga yozilganlarga ochilish va narx haqida birinchi boʻlib xabar beramiz.</span></div>
-    <div class="soon reveal"><p>Rejalashtirilgan tartib: M0 bepul (5 dars), qolgan modullar obuna asosida. Kompas Labʼning boshqa Lablari obunachilari uchun chegirma koʻrib chiqilmoqda.</p><button type="button" class="btn btn-p" data-wl>🔔 Ochilganda xabar bering</button></div>
-    <div class="rules reveal"><div><b>Ekspert tekshiruvi</b>Soliq va huquq darslari mutaxassis tekshiruvidan oʻtmaguncha ochilmaydi.</div><div><b>Kirmaydi</b>Investitsiya boʻyicha chuqur kurs, soliq yoki yuridik maslahat, kafolatlangan daromad.</div></div>
+    <div class="pay-status"><span>⏳</span><span><b>Lab hali ochilmagan.</b> Kutish roʻyxatiga yozilganlarga ochilish haqida birinchi boʻlib xabar beramiz.</span></div>
+    <div class="plans">
+      <div class="plan">
+        <h3>M0, qaror moduli</h3><p class="desc">Biznes sinovi sizga mosligini bilish</p>
+        <div class="price">0</div><div class="per">soʻm, muddatsiz</div>
+        <ul><li>5 dars</li><li>Tayyorgarlik darajasi (Readiness Score)</li><li>Cheklovlar tekshiruvi (stipendiya, viza, ish shartnomasi)</li></ul>
+        <button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>
+      </div>
+      <div class="plan main">
+        <span class="tag-top">Asosiy reja</span>
+        <h3>Yillik</h3><p class="desc">Toʻliq 30 kunlik sinov va yakuniy qaror uchun</p>
+        <div class="price" data-py="tadbirkor-talaba">299 000</div><div class="per">soʻm, 12 oy uchun</div>
+        <ul><li>10 modul, 54 dars</li><li>Pul oqimi va birlik iqtisodiyoti jadvallari</li><li>Huquqiy shakl va soliq darslari (mutaxassis tekshirgan)</li></ul>
+        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+      </div>
+      <div class="plan">
+        <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
+        <div class="price" data-pm="tadbirkor-talaba">29 900</div><div class="per">soʻm, har oy</div>
+        <ul><li>Barcha modullar, obuna faol ekan</li><li>Istalgan oy toʻxtatiladi</li><li>Keyinroq yillikka oʻtish mumkin</li></ul>
+        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+      </div>
+    </div>
+    <div class="calc"><div><b>358 800 soʻm</b>oylik reja 12 oyda (29 900 × 12)</div><div><b>~10,0 oy</b>yillik reja oylik rejaning shuncha oyiga teng</div><div><b>11 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja arzonroq</div></div>
+    <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi.</div>
+    <div class="rules"><div><b>Ekspert tekshiruvi</b>Soliq va huquq darslari mutaxassis tekshiruvidan oʻtmaguncha ochilmaydi.</div><div><b>Kirmaydi</b>Investitsiya boʻyicha chuqur kurs, soliq yoki yuridik maslahat, kafolatlangan daromad.</div><div><b>18 yoshdan</b>Lab 18 yoshdan katta talabalar uchun.</div></div>
   </div>
 </section>
 <section id="savollar">
   <div class="wrap">
-    <div class="head reveal" style="text-align:center">
-      <div class="label">Savollar</div>
-      <h2>Koʻp soʻraladigan <em>savollar.</em></h2>
+    <div class="head" style="text-align:center">
+      <h2>Koʻp soʻraladigan savollar</h2>
     </div>
-    <div class="faq reveal"><details><summary>Stipendiya olayotgan boʻlsam, biznes qila olamanmi?</summary><p>Baʼzi stipendiya shartnomalari tijorat faoliyatini cheklaydi. M8.2 da shartnomangizni tekshirish tartibini oʻrganasiz; aniq javobni shartnoma va yurist beradi.</p></details><details><summary>Xorijda oʻqiyotganimda u yerda biznes ochsa boʻladimi?</summary><p>Koʻp mamlakatlarda talaba vizasi qoidalari buni taqiqlaydi yoki cheklaydi. M8.3 da ogohlantirish va tekshirish tartibi bor.</p></details><details><summary>Soliq maslahati berasizmi?</summary><p>Yoʻq. Kurs qoidalarni tushuntiradi va aniq holat uchun soliq maslahatchisiga yoʻnaltiradi.</p></details><details><summary>18 yoshga toʻlmaganman.</summary><p>Lab 18 yoshdan katta talabalar uchun; yozilish yosh tasdigʻi bilan.</p></details><details><summary>Investor topishni oʻrgatasizmi?</summary><p>Chuqur emas. M7 da moliyalashtirish turlari tushuntiriladi; investitsiya jalb qilish boʻyicha chuqur kurs qamrovga kirmaydi.</p></details></div>
-    <p class="sources" style="text-align:center">Manbalar: <a href="https://advice.uz/oz/document/2571" target="_blank" rel="noopener">Advice.uz</a> · <a href="https://kun.uz/news/2025/04/03/mubin-mirzayev-ozini-ozi-band-qilish-turlari-qisqarganiga-izoh-berdi" target="_blank" rel="noopener">Kun.uz</a> · <a href="https://gov.uz/oz/soliq/news/view/38421" target="_blank" rel="noopener">gov.uz/soliq</a></p>
+    <div class="faq"><details><summary>Stipendiya olayotgan boʻlsam, biznes qila olamanmi?</summary><p>Baʼzi stipendiya shartnomalari tijorat faoliyatini cheklaydi. M8.2 da shartnomangizni tekshirish tartibini oʻrganasiz; aniq javobni shartnoma va yurist beradi.</p></details><details><summary>Xorijda oʻqiyotganimda u yerda biznes ochsa boʻladimi?</summary><p>Koʻp mamlakatlarda talaba vizasi qoidalari buni taqiqlaydi yoki cheklaydi. M8.3 da ogohlantirish va tekshirish tartibi bor.</p></details><details><summary>Soliq maslahati berasizmi?</summary><p>Yoʻq. Kurs qoidalarni tushuntiradi va aniq holat uchun soliq maslahatchisiga yoʻnaltiradi.</p></details><details><summary>18 yoshga toʻlmaganman.</summary><p>Lab 18 yoshdan katta talabalar uchun; yozilish yosh tasdigʻi bilan.</p></details><details><summary>Investor topishni oʻrgatasizmi?</summary><p>Chuqur emas. M7 da moliyalashtirish turlari tushuntiriladi; investitsiya jalb qilish boʻyicha chuqur kurs qamrovga kirmaydi.</p></details><details><summary>Nega “Lab” deyiladi?</summary><p>Lab soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi. Kompas Lablari ham shunday ishlaydi: har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi.</p></details></div>
+    <p class="sources" style="text-align:center">Manbalar: <a href="https://advice.uz/oz/document/2571" target="_blank" rel="noopener">Advice.uz</a>, <a href="https://kun.uz/news/2025/04/03/mubin-mirzayev-ozini-ozi-band-qilish-turlari-qisqarganiga-izoh-berdi" target="_blank" rel="noopener">Kun.uz</a>, <a href="https://gov.uz/oz/soliq/news/view/38421" target="_blank" rel="noopener">gov.uz/soliq</a></p>
   </div>
 </section>
 <section class="dark cta">
   <div class="wrap">
     <h2>Ochilishini kuting.</h2>
-    <p class="sub">Kutish roʻyxatiga yoziling — Lab ochilganda birinchi boʻlib xabar beramiz.</p>
+    <p class="sub">Kutish roʻyxatiga yoziling: Lab ochilganda birinchi boʻlib xabar beramiz.</p>
     <div class="cta-row" style="justify-content:center">
-      <button type="button" class="btn btn-p" data-wl>🔔 Kutish roʻyxati</button>
-      <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">💬 Telegramʼda soʻrash</a>
+      <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+      <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">Telegramda savol berish</a>
     </div>
   </div>
 </section>
 <footer>
   <div class="wrap">
     <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a></div>
-    <div>© 2026 Kompas Lab · YATT Boqijonov Shoxrux</div>
+    <div>© 2026 Kompas Lab, Oʻzbekiston</div>
   </div>
 </footer>
 <div class="ovl" id="wl" role="dialog" aria-modal="true" aria-labelledby="wlT">
   <div class="mdl">
     <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
-    <div style="font-size:34px;margin-bottom:8px">💼</div>
-    <h3 id="wlT">Tadbirkor Talaba Lab — kutish roʻyxati</h3>
-    <p>Email manzilingizni qoldiring — Lab ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
-    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email">
+    <img class="i3d" src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
+    <h3 id="wlT" style="margin-top:6px">Tadbirkor Talaba Lab: kutish roʻyxati</h3>
+    <p>Email manzilingizni qoldiring: Lab ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
+    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
     <div id="wlMsg"></div>
-    <button type="button" class="btn btn-p" id="wlB">🔔 Xabardor qiling</button>
+    <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script>
 (function () {
   var SLUG = "tadbirkor-talaba", SOURCE = "tt_landing";
-  var els = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    els.forEach(function (el) { io.observe(el); });
-  } else { els.forEach(function (el) { el.classList.add("in"); }); }
 
   var dataEl = document.getElementById("rsData");
   if (dataEl) {
     var D = JSON.parse(dataEl.textContent);
     var sels = Array.prototype.slice.call(document.querySelectorAll("select[data-q]"));
+    var shown = 0, raf = null;
+    function animateTo(n) {
+      var el = document.getElementById("sN"), from = shown, t0 = null;
+      if (raf) cancelAnimationFrame(raf);
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = n; shown = n; return; }
+      function step(ts) { if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 400); shown = Math.round(from + (n - from) * k); el.textContent = shown; if (k < 1) raf = requestAnimationFrame(step); }
+      raf = requestAnimationFrame(step);
+    }
     var calc = function () {
       var total = 0, answered = 0, gaps = [], blocked = false;
       sels.forEach(function (s, i) {
@@ -516,7 +586,7 @@ footer a:hover{color:#fff;}
         if (v < D.max[i] * 0.5) gaps.push(D.names[i]);
       });
       var bar = document.getElementById("sB"), V = document.getElementById("sV"), T = document.getElementById("sT"), G = document.getElementById("sG");
-      document.getElementById("sN").textContent = total;
+      animateTo(total);
       bar.style.width = total + "%"; G.innerHTML = ""; V.style.color = "";
       if (blocked) {
         V.textContent = "Bu siklda topshira olmaysiz"; V.style.color = "var(--red)";
@@ -532,7 +602,7 @@ footer a:hover{color:#fff;}
         T.textContent = "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak:"; bar.style.background = "var(--gold)";
       } else {
         V.textContent = "Bu siklga erta"; V.style.color = "var(--red)";
-        T.textContent = "Toʻlov tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
+        T.textContent = "Hozir toʻlash tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
       }
       if (answered === sels.length && (blocked || total < 70)) {
         gaps.forEach(function (g) { var li = document.createElement("li"); li.textContent = g; G.appendChild(li); });
@@ -545,28 +615,52 @@ footer a:hover{color:#fff;}
     sels.forEach(function (s) { s.addEventListener("change", calc); });
   }
 
-  var ovl = document.getElementById("wl"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
-  function openWl() { inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = "🔔 Xabardor qiling"; ovl.classList.add("open"); setTimeout(function () { inp.focus(); }, 120); }
-  function closeWl() { ovl.classList.remove("open"); }
-  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", openWl); });
+  var ovl = document.getElementById("wl"), sel = document.getElementById("wlL"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
+  var BTN = "Roʻyxatga yozilish";
+  function openWl(slug) {
+    if (sel) sel.value = slug || "";
+    inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = BTN;
+    ovl.classList.add("open"); document.body.style.overflow = "hidden";
+    setTimeout(function () { (sel && !sel.value ? sel : inp).focus(); }, 120);
+  }
+  function closeWl() { ovl.classList.remove("open"); document.body.style.overflow = ""; }
+  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", function () { openWl(b.getAttribute("data-wl")); }); });
   document.getElementById("wlX").addEventListener("click", closeWl);
   ovl.addEventListener("click", function (e) { if (e.target === ovl) closeWl(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeWl(); });
   inp.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
   btn.addEventListener("click", submit);
   function submit() {
-    var email = inp.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "⚠️ Toʻgʻri email kiriting"; return; }
-    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanishda xatolik. Telegram orqali yozing: t.me/kompaslab"; return; }
-    btn.disabled = true; btn.textContent = "⏳ Saqlanmoqda...";
+    var slug = sel ? sel.value : SLUG, email = inp.value.trim();
+    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "Labni tanlang"; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "Email manzilni tekshiring: masalan, ism@gmail.com"; return; }
+    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanib boʻlmadi. Telegram orqali yozing: t.me/kompaslab"; return; }
+    btn.disabled = true; btn.textContent = "Saqlanmoqda...";
     window.supabase.from("waitlist")
-      .upsert({ email: email, course_slug: SLUG, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
+      .upsert({ email: email, course_slug: slug, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
       .then(function (r) {
         if (r.error && r.error.code !== "23505") throw r.error;
-        msg.style.color = "var(--green)"; msg.textContent = "✅ Qoʻshildingiz. Ochilishi bilan xabar beramiz.";
-        btn.textContent = "✅ Roʻyxatdasiz"; setTimeout(closeWl, 2200);
+        msg.style.color = "var(--green)"; msg.textContent = "Yozildingiz. Lab ochilganda shu emailga xabar beramiz.";
+        btn.textContent = "Yozildingiz"; setTimeout(closeWl, 2400);
       })
-      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "❌ Xatolik yuz berdi. Qayta urinib koʻring."; btn.disabled = false; btn.textContent = "🔔 Xabardor qiling"; });
+      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "Saqlanmadi. Internetni tekshirib, qayta urinib koʻring."; btn.disabled = false; btn.textContent = BTN; });
+  }
+
+  var LIVE_MIN = 10;
+  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
+  function applyStats(d) {
+    var pr = d.prices || {};
+    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
+    document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
+    var wl = d.waitlist_by_lab || {};
+    document.querySelectorAll("[data-live-wl]").forEach(function (el) {
+      var n = wl[el.getAttribute("data-live-wl")] || 0;
+      if (n >= LIVE_MIN) { el.querySelector("span").textContent = "Kutish roʻyxatida " + nf(n) + " kishi"; el.classList.add("on"); }
+    });
+    if (window.onKompasStats) window.onKompasStats(d);
+  }
+  if (window.supabase && typeof window.supabase.rpc === "function") {
+    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) applyStats(r.data); });
   }
 })();
 </script>

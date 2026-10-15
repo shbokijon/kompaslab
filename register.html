@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ro'yxatdan o'tish — Kompas Lab</title>
+<title>Roʻyxatdan oʻtish — Kompas Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -152,46 +152,37 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
   <!-- LEFT PANEL -->
   <div class="left-panel">
     <div class="lp-content">
-      <div class="lp-badge">🚀 8 haftalik intensiv</div>
-      <h2 class="lp-title">Top universitetga yo'lingiz <span>3 qadamda</span> boshlanadi</h2>
-      <p class="lp-sub">Ro'yxatdan o'ting, kursni boshlang va ilmiy identitetingizni qurishni boshlang.</p>
+      <div class="lp-badge">Har Labda M0 bepul</div>
+      <h2 class="lp-title">Hisob oching va bepul M0 dan boshlang</h2>
+      <p class="lp-sub">Hisob M0 darslarini ochadi. Obuna kerakmi yoki yoʻqmi, M0 dan keyin oʻzingiz hal qilasiz.</p>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-content">
             <div class="step-title">Hisob yarating</div>
-            <div class="step-desc">Email va parol bilan — 30 soniyada</div>
+            <div class="step-desc">Email va parol bilan</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-content">
-            <div class="step-title">To'lovni amalga oshiring</div>
-            <div class="step-desc">Click.uz orqali xavfsiz to'lov</div>
+            <div class="step-title">Bepul M0 ni oʻting</div>
+            <div class="step-desc">Lab sizga mosligini va tayyorgarlik darajangizni (Readiness Score) bilasiz</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-content">
-            <div class="step-title">Kursni boshlang</div>
-            <div class="step-desc">35 ta dars, mentor feedback, community</div>
+            <div class="step-title">Obunani tanlang</div>
+            <div class="step-desc">Yillik yoki oylik. Onlayn toʻlov ochilganda xabar beramiz</div>
           </div>
         </div>
       </div>
 
-      <div class="social-proof">
-        <div class="sp-label">Hozir o'qiyotganlar</div>
-        <div style="display:flex;align-items:center;">
-          <div class="sp-avatars">
-            <div class="sp-avatar" style="background:linear-gradient(135deg,#2d4a3e,#4a7a65);">A</div>
-            <div class="sp-avatar" style="background:linear-gradient(135deg,#c4622d,#e0896a);">M</div>
-            <div class="sp-avatar" style="background:linear-gradient(135deg,#1a56a0,#4a80c4);">J</div>
-            <div class="sp-avatar" style="background:linear-gradient(135deg,#7b2fa0,#a855c4);">Z</div>
-            <div class="sp-avatar" style="background:linear-gradient(135deg,#b08a00,#d4a800);">+</div>
-          </div>
-          <div class="sp-text">47+ talaba allaqachon o'qimoqda</div>
-        </div>
+      <div class="social-proof" id="liveProof" hidden>
+        <div class="sp-label">Jonli hisob</div>
+        <div class="sp-text" style="margin-left:0" id="liveProofText"></div>
       </div>
     </div>
   </div>
@@ -246,15 +237,15 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
         <div class="field">
           <label class="field-label">Telefon raqam *</label>
           <input type="tel" id="phone" class="field-input" placeholder="+998 90 123 45 67" required>
-          <div class="field-hint">To'lov va bildirishnomalar uchun</div>
-          <div class="field-error" id="phoneError">Telefon raqamni to'g'ri kiriting</div>
+          <div class="field-hint">Toʻlov va bildirishnomalar uchun</div>
+          <div class="field-error" id="phoneError">Telefon raqamni toʻgʻri kiriting</div>
         </div>
 
         <div class="field">
-          <label class="field-label">Ta'lim darajasi</label>
+          <label class="field-label">Taʼlim darajasi</label>
           <select id="education" class="field-select">
             <option value="">Tanlang...</option>
-            <option value="bachelor">Bakalavr (hozir o'qimoqdaman)</option>
+            <option value="bachelor">Bakalavr (hozir oʻqimoqdaman)</option>
             <option value="bachelor_done">Bakalavr (bitirganman)</option>
             <option value="master">Magistratura</option>
             <option value="phd">Doktorantura</option>
@@ -268,7 +259,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
             <option value="">Tanlang...</option>
             <option value="masters">MSc/MA qabul (xorij)</option>
             <option value="phd">PhD qabul (xorij)</option>
-            <option value="grant">EYUF / GKS / DAAD granti</option>
+            <option value="grant">Davlat stipendiyasi (GKS, DAAD va boshqalar)</option>
             <option value="research">Research tajriba</option>
             <option value="multiple">Bir nechtasi</option>
           </select>
@@ -286,7 +277,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
         <div class="field">
           <label class="field-label">Email manzil *</label>
           <input type="email" id="email" class="field-input" placeholder="example@gmail.com" required>
-          <div class="field-error" id="emailError">Email noto'g'ri formatda</div>
+          <div class="field-error" id="emailError">Email notoʻgʻri formatda</div>
         </div>
 
         <div class="field">
@@ -302,9 +293,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
               <div class="pwd-bar" id="bar3"></div>
               <div class="pwd-bar" id="bar4"></div>
             </div>
-            <div class="pwd-label" id="pwdLabel">Parol kuchini ko'rsatadi</div>
+            <div class="pwd-label" id="pwdLabel">Parol kuchini koʻrsatadi</div>
           </div>
-          <div class="field-error" id="passwordError">Kamida 8 ta belgi, 1 raqam bo'lishi kerak</div>
+          <div class="field-error" id="passwordError">Kamida 8 ta belgi, 1 raqam boʻlishi kerak</div>
         </div>
 
         <div class="field">
@@ -321,7 +312,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
             <input type="checkbox" id="termsCheck">
             <span>
               <a href="#">Foydalanish shartlari</a> va 
-              <a href="#">Maxfiylik siyosati</a>ni o'qib, roziligimni bildiraman.
+              <a href="#">Maxfiylik siyosati</a>ni oʻqib, roziligimni bildiraman.
             </span>
           </label>
         </div>
@@ -351,7 +342,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
           </button>
           <div style="margin-top:12px;">
             <a href="login.html" style="font-size:13px;color:var(--muted);text-decoration:none;">
-              Kirish sahifasiga o'tish
+              Kirish sahifasiga oʻtish
             </a>
           </div>
         </div>
@@ -543,5 +534,24 @@ async function handleRegister() {
 }
 </script>
 
+<script>
+(function () {
+  function plural(n) { return n.toLocaleString("ru-RU").replace(/,/g, " "); }
+  function ago(iso) {
+    var h = Math.floor((Date.now() - new Date(iso).getTime()) / 3600000);
+    if (h < 1) return "bir soatdan kam vaqt oldin";
+    if (h < 24) return h + " soat oldin";
+    return Math.floor(h / 24) + " kun oldin";
+  }
+  if (!window.supabase || typeof window.supabase.rpc !== "function") return;
+  window.supabase.rpc("kompas_public_stats").then(function (r) {
+    if (r.error || !r.data || !r.data.registered) return;
+    var d = r.data, t = plural(d.registered) + " kishi roʻyxatdan oʻtgan";
+    if (d.last_signup) t += ". Oxirgisi " + ago(d.last_signup) + ".";
+    document.getElementById("liveProofText").textContent = t;
+    document.getElementById("liveProof").hidden = false;
+  });
+})();
+</script>
 </body>
 </html>

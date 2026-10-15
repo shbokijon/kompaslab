@@ -100,7 +100,7 @@ async function requireAuth() {
  * — Yozilmagan bo'lsa payment.html ga yo'naltiradi
  *
  * @param {string} userId
- * @param {string} courseSlug  — masalan 'eyuf-lab'
+ * @param {string} courseSlug  — masalan 'master-lab'
  * @returns {Promise<Object|null>}  — enrollment yozuvi
  */
 async function requireEnrollment(userId, courseSlug) {

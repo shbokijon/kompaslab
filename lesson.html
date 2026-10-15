@@ -475,10 +475,10 @@ body{font-family:'Outfit',sans-serif;background:#0f0f0f;color:var(--text);displa
 
       <div id="tab-homework" style="display:none">
         <div style="font-size:13px;line-height:1.7;color:var(--text);">
-          <strong>📋 Hafta 2 topshirig'i:</strong><br><br>
-          1. O'zingiz uchun 10 ta potensial universitetni QS Ranking'da toping<br>
-          2. Har biri uchun admission talablarini University Comparison Table'ga to'ldiring<br>
-          3. Research fit bo'yicha 3 ta maqbul universitetni tanlang<br><br>
+          <strong>📋 Hafta 2 topshirigʻi:</strong><br><br>
+          1. Oʻzingiz uchun 10 ta potensial universitetni QS Rankingʻda toping<br>
+          2. Har biri uchun admission talablarini University Comparison Tableʼga toʻldiring<br>
+          3. Research fit boʻyicha 3 ta maqbul universitetni tanlang<br><br>
           <strong>Deadline:</strong> <span style="color:var(--accent2)">Hafta 3 boshida</span><br>
           <strong>Format:</strong> PDF yoki Excel jadval shaklida<br><br>
           <button onclick="showToast('📤 Topshiriq yuborish tez kunda...')" 
@@ -507,7 +507,7 @@ body{font-family:'Outfit',sans-serif;background:#0f0f0f;color:var(--text);displa
 
 // ── Global holat ──────────────────────────────────────
 let _user        = null   // Auth user
-let _courseSlug  = null   // URL parametridan: ?course=eyuf-lab
+let _courseSlug  = null   // URL parametridan: ?course=master-lab
 let _lessonId    = null   // URL parametridan: ?lesson=UUID
 let _allModules  = []     // Kursning barcha modullari
 let _allLessons  = []     // Flat darslar ro'yxati
@@ -1056,7 +1056,7 @@ function loadDemoMode() {
   console.warn('Lesson demo mode: Supabase ulanmagan')
   document.getElementById('vtTitle').textContent = 'Demo dars — Supabase ulang'
   document.getElementById('vpLessonName').textContent = 'Demo dars'
-  document.getElementById('lsCourseName').textContent = '🎯 EYUF Lab (demo)'
+  document.getElementById('lsCourseName').textContent = 'Kompas Lab (demo)'
   document.getElementById('lsProgPct').textContent = '0/0'
   document.querySelector('.ls-scroll').innerHTML = `
     <div style="padding:20px;color:#888;font-size:13px;text-align:center">

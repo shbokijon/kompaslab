@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA Lab — AQShda moliyalashtirilgan oʻqish yoʻllari | Kompas Lab</title>
+<meta name="theme-color" content="#2d4a3e">
+<title>USA Lab: AQShda moliyalashtirilgan oʻqish yoʻllari | Kompas Lab</title>
 <meta name="description" content="USA Lab: Global UGRAD, Fulbright magistraturasi va universitet moliyalashtirgan doktorantura. Muvofiqlik, insholar, tavsiya, testlar, intervyu va viza. 12 modul, 72 dars, M0 bepul.">
-<meta property="og:title" content="USA Lab — Kompas Lab">
+<meta property="og:title" content="USA Lab | Kompas Lab">
 <meta property="og:description" content="USA Lab: Global UGRAD, Fulbright magistraturasi va universitet moliyalashtirgan doktorantura. Muvofiqlik, insholar, tavsiya, testlar, intervyu va viza. 12 modul, 72 dars, M0 bepul.">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>:root{
   --accent:#2d4a3e; --accent-h:#1e3329; --accent-lit:#e8f0ec;
   --accent2:#c4622d; --accent2-h:#a84f23; --accent2-lit:#faeee7;
   --cream:#f4f3ef; --gold:#b08a00; --gold-lit:#fdf6dc;
@@ -281,50 +282,104 @@ footer a:hover{color:#fff;}
   .scope th,.scope td{padding:8px 10px;}
 }
 
-.trk-h{margin:22px 0 10px;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;}
-.tk{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px;background:var(--accent-lit);color:var(--accent);margin-left:6px;vertical-align:1px;}
+.trk-h{margin:26px 0 10px;font-size:16px;font-weight:800;color:var(--accent);}
+.tk{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px;background:var(--accent-lit);color:var(--accent);margin-left:6px;vertical-align:1px;}
 .banner{display:flex;gap:12px;align-items:flex-start;border-radius:14px;padding:14px 18px;font-size:14px;margin-bottom:22px;}
 .banner.warn{background:var(--gold-lit);border:1px solid #e8d48a;}
 .banner.red{background:var(--red-lit);border:1px solid #f3c3bd;}
 .banner.green{background:var(--green-lit);border:1px solid #bfe3cd;}
-.cmp{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);font-size:13.5px;margin-top:18px;}
+.cmp{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);font-size:14px;margin-top:18px;}
 .cmp th,.cmp td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
-.cmp th{background:var(--accent);color:#fff;font-size:12px;}
+.cmp th{background:var(--accent);color:#fff;font-size:13px;}
 .cmp tr:last-child td{border-bottom:none;}
 .tblwrap{overflow-x:auto;border-radius:14px;max-width:100%;-webkit-overflow-scrolling:touch;}
-@media(max-width:720px){.logo-t span{display:none;}.cmp{min-width:520px;}}
 .help{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:12px;padding:14px 18px;font-size:14px;margin-top:18px;}
 .soon{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;max-width:760px;}
 .soon p{color:var(--muted);margin-bottom:14px;}
 .phases.c4{grid-template-columns:repeat(4,minmax(0,1fr));}
 @media(max-width:1000px){.phases.c4,.phases.c5{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}.cmp{min-width:520px;}}
+
+:root{--bg:#f4f3ef;--border:#e2ded3;--surface:#fffefb;--gold:#8a6a10;--gold-lit:#f8f0d6;}
+body{background:var(--bg);-webkit-text-size-adjust:100%;}
+.nav{background:rgba(244,243,239,.94);}
+h1 em,h2 em{font-style:normal;color:inherit;}
+h1{letter-spacing:-.5px;}
+.label{display:none;}
+.badge{font-family:"Outfit",sans-serif;font-size:13px;letter-spacing:0;}
+.fact b,.packet li::before,.mod-n,.mod-c,.mod li .num,.tl-when,.chk,.price,.calc b,.score-n,.tk,.lc-p,.lc-t,.st::before{font-family:"Outfit",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;}
+.packet-top small,.phase small,.art small,.plan.main .tag-top{font-family:"Outfit",sans-serif;letter-spacing:0;text-transform:none;font-size:12.5px;}
+.phase small{color:var(--accent2);font-weight:700;}
+.price{font-weight:800;letter-spacing:-.5px;}
+.reveal{opacity:1;transform:none;transition:none;}
+input,select,textarea{font-size:16px;}
+.q select,.mdl input,.mdl select{font-size:16px;min-height:46px;}
+.btn{min-height:44px;}
+.btn-sm{min-height:40px;}
+.nav .btn-p{white-space:nowrap;}
+.logo-m{background:none;width:36px;height:36px;}
+.logo-m img{width:34px;height:34px;display:block;}
+.i3d{width:64px;height:64px;display:block;}
+.hero-i{width:76px;height:76px;margin-bottom:10px;}
+@media (prefers-reduced-motion: no-preference){
+  .float{animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
+}
+.live{display:none;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin-top:12px;}
+.live.on{display:flex;}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(26,122,74,.5);}
+@media (prefers-reduced-motion: no-preference){.live i{animation:pulse 2s infinite;}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(26,122,74,.45)}70%{box-shadow:0 0 0 8px rgba(26,122,74,0)}100%{box-shadow:0 0 0 0 rgba(26,122,74,0)}}}
+.method{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:start;}
+.who{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;}
+.who h3{font-size:16px;font-weight:800;margin-bottom:10px;}
+.who ul{list-style:none;display:grid;gap:8px;}
+.who li{font-size:14px;padding-left:18px;position:relative;}
+.who li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--accent2);}
+.why-lab{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;font-size:14px;margin-top:18px;display:flex;gap:14px;align-items:flex-start;}
+.why-lab img{width:44px;height:44px;flex-shrink:0;}
+.plan .per{min-height:18px;}
+.refund{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;font-size:14px;}
+footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
+@media(max-width:1000px){.method{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:720px){
+  .logo-t span{display:none;}
+  .hero{padding:96px 0 48px;}
+  h1{font-size:34px;}
+  .lead{font-size:16px;}
+  .packet li{font-size:14px;}
+  .packet li span{font-size:12.5px;}
+  .mod li small{font-size:13px;}
+  .src p,.rules div,.calc div,.fit-col li{font-size:14.5px;}
+  .nav .btn-p{padding:8px 12px;font-size:13px;}
+  .cta-row .btn{width:100%;}
+}
 </style>
 </head>
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a href="index.html" class="logo"><div class="logo-m">🧭</div><span class="logo-t">Kompas Lab <span>· USA</span></span></a>
+    <a href="index.html" class="logo"><div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div><span class="logo-t">Kompas Lab <span>USA</span></span></a>
     <div class="nav-links"><a href="#treklar">Treklar</a><a href="#dastur">Dastur</a><a href="#faktlar">Holat</a><a href="#narx">Narx</a><a href="#savollar">Savollar</a></div>
-    <button type="button" class="btn btn-p btn-sm" data-wl>🔔 Kutish roʻyxati</button>
+    <button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
   </div>
 </nav>
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
       <div class="crumb"><a href="index.html#labs">Lablar</a> / Yoʻnalish Lablari / USA Lab</div>
-      <div class="badge">🇺🇸 USA Lab · v3.0</div>
-      <h1>AQShda oʻqishning <em>uchta moliyalashtirilgan yoʻli.</em></h1>
+      <img class="hero-i float" src="img/3d/usa.webp" width="160" height="160" alt="USA Lab" loading="lazy" decoding="async">
+      <h1>AQShda oʻqishning uchta moliyalashtirilgan yoʻli.</h1>
       <p class="lead">Oʻzingizga mos yoʻlni aniqlaysiz, muvofiqligingizni rasmiy manbadan tekshirasiz, liderlik va ilmiy dalillaringizni tayyorlaysiz, insholarni <strong>oʻzingiz</strong> yozasiz, intervyuga tayyorlanasiz va viza hamda qaytish majburiyatlarini tushunasiz.</p>
       <div class="banner warn" style="margin-top:4px"><span>⚠️</span><span><b>B trek (Global UGRAD):</b> 2026–2027 sikli eʼloni topilmadi. Sikl rasman eʼlon qilinmaguncha B trek uchun toʻlov qabul qilinmaydi.</span></div>
       <div class="cta-row">
-        <a href="#test" class="btn btn-p">Muvofiqlikni tekshirish →</a>
+        <a href="#test" class="btn btn-p">Muvofiqlikni tekshirish</a>
         <a href="#dastur" class="btn btn-g">Dasturni koʻrish</a>
       </div>
-      <div class="facts"><span class="fact"><b>3</b> trek: B · M · D</span><span class="fact"><b>12</b> modul</span><span class="fact"><b>72</b> dars</span><span class="fact">M0 <b>bepul</b></span><span class="fact">Haftasiga <b>4–6</b> soat</span></div>
+      <div class="facts"><span class="fact"><b>3</b> trek: B, M, D</span><span class="fact"><b>12</b> modul</span><span class="fact"><b>72</b> dars</span><span class="fact">M0 <b>bepul</b></span><span class="fact">Haftasiga <b>4–6</b> soat</span></div>
+      <div class="live" data-live-wl="usa-lab"><i></i><span></span></div>
     </div>
     <aside class="packet" aria-label="Sizning AQSh paketingiz">
-      <div class="packet-top"><small>DASTUR OXIRIDA</small><strong>Sizning AQSh paketingiz</strong></div>
+      <div class="packet-top"><small>Dastur oxirida</small><strong>Sizning AQSh paketingiz</strong></div>
       <ol><li><div>Trek kalendari va muvofiqlik xulosasi<span>har band rasmiy manba bilan</span></div></li><li><div>Moliyalashtirish mantigʻi xaritasi<span>xarajat hisobi bilan</span></div></li><li><div>5 ta liderlik holati (STAR)<span>taʼsir vizyoni bilan</span></div></li><li><div>Trekka mos shaxsiy bayonot<span>Core asosida</span></div></li><li><div>Study/Research Objective yoki SoP<span>Fulbright yoki doktorantura uchun</span></div></li><li><div>Tavsiya soʻrovlari va aloqalar jadvali<span>Yutuqlar varaqalari bilan</span></div></li><li><div>Universitet afzalliklari yoki 8–12 kafedra<span>test rejasi va kalendari</span></div></li><li><div>Intervyu yozuvlari va viza nazorat roʻyxati<span>qaytish yoki ish huquqi rejasi</span></div></li></ol>
       <div class="packet-foot">Insholarni siz yozasiz. Viza boʻyicha yuridik maslahat berilmaydi.</div>
     </aside>
@@ -332,69 +387,66 @@ footer a:hover{color:#fff;}
 </header>
 <section class="dark" id="treklar">
   <div class="wrap rule-box">
-    <div class="reveal">
-      <div class="label" style="color:#f2a68c">Treklar</div>
-      <h2>Uch yoʻl — har birining oʻz vizasi va majburiyati.</h2>
+    <div>
+      <h2>Uch yoʻl: har birining oʻz vizasi va majburiyati.</h2>
       <p>Talaba umumiy darslar va oʻz trekini oʻtadi: B — ~40, M — ~55, D — ~55 dars. Fulbright orqali doktorantura yoki bakalavriat Oʻzbekiston uchun mavjud emas.</p><p>Pul oqimi: UGRAD va Fulbrightʼni AQSh Davlat departamenti, doktoranturani universitet va ilmiy rahbar granti (TA/RA) moliyalashtiradi. Aniq summalar Qobiq sahifasida.</p>
     </div>
-    <div class="model-list reveal"><div class="model"><b>B — Global UGRAD</b><span>1 semestr almashinuv, daraja bermaydi. Oʻzbekistonda kunduzgi bakalavriatda oʻqiyotgan, kamida 1 yil qolgan talaba. J-1; qaytish majburiy.</span></div><div class="model"><b>M — Fulbright Foreign Student Program</b><span>Magistratura, 2 yilgacha. Bakalavr diplomi va kamida 2 yil ish tajribasi. J-1; 2 yillik vatanda boʻlish talabi.</span></div><div class="model"><b>D — universitet moliyalashtirgan PhD</b><span>5–6 yil. Kuchli tadqiqot tajribali bakalavr yoki magistr. F-1; qaytish majburiyati yoʻq.</span></div><div class="model bad"><b>Muvofiqlik qizil bayroqlari</b><span>M: 2 yillik tajriba yoʻq boʻlsa Fulbright yopiq. B va M: hozir chet elda yashayotganlar mos emas.</span></div></div>
+    <div class="model-list"><div class="model"><b>B: Global UGRAD</b><span>1 semestr almashinuv, daraja bermaydi. Oʻzbekistonda kunduzgi bakalavriatda oʻqiyotgan, kamida 1 yil qolgan talaba. J-1; qaytish majburiy.</span></div><div class="model"><b>M: Fulbright Foreign Student Program</b><span>Magistratura, 2 yilgacha. Bakalavr diplomi va kamida 2 yil ish tajribasi. J-1; 2 yillik vatanda boʻlish talabi.</span></div><div class="model"><b>D: universitet moliyalashtirgan PhD</b><span>5–6 yil. Kuchli tadqiqot tajribali bakalavr yoki magistr. F-1; qaytish majburiyati yoʻq.</span></div><div class="model bad"><b>Muvofiqlik qizil bayroqlari</b><span>M: 2 yillik tajriba yoʻq boʻlsa Fulbright yopiq. B va M: hozir chet elda yashayotganlar mos emas.</span></div></div>
   </div>
 </section>
 <section>
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Kimga mos</div>
-      <h2>Toʻlashdan oldin <em>ochiq yozamiz.</em></h2>
-      <p class="sub">Mos kelmasa, sizga toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
+    <div class="head">
+      <h2>Kimga mos va kimga mos emas</h2>
+      <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
     </div>
     <div class="fit">
-      <div class="fit-col yes reveal"><h3>✅ Mos keladi</h3><ul><li>2–3-kurs talabasi — Global UGRAD (B)</li><li>24–32 yosh, 2+ yil ish tajribali mutaxassis — Fulbright (M)</li><li>Energetika, geologiya, muhandislik kabi sohalardagi mutaxassis (M)</li><li>Tadqiqot profili bor bakalavr yoki magistr — AQSh doktoranturasi (D)</li></ul></div>
-      <div class="fit-col no reveal"><h3>⛔ Mos emas</h3><ul><li>AQSh bakalavriatiga toʻliq kirmoqchi boʻlganlar → <a href="bachelor-lab.html">Bachelor Lab</a></li><li>Fulbright orqali doktorantura izlayotganlar — mavjud emas; D trek yoki <a href="phd-lab.html">PhD Lab</a></li><li>Bir nechta mamlakatga topshirayotgan, AQSh ulardan biri boʻlganlar → asosiy daraja Labi</li><li>Doktorlik darajasi egalari (postdok) — kursga kirmaydi</li><li>Kafolat yoki insho yozib berish xizmatini izlayotganlar</li></ul></div>
+      <div class="fit-col yes"><h3>Mos keladi</h3><ul><li>2–3-kurs talabasi: Global UGRAD (B)</li><li>24–32 yosh, 2+ yil ish tajribali mutaxassis — Fulbright (M)</li><li>Energetika, geologiya, muhandislik kabi sohalardagi mutaxassis (M)</li><li>Tadqiqot profili bor bakalavr yoki magistr — AQSh doktoranturasi (D)</li></ul></div>
+      <div class="fit-col no"><h3>Mos emas</h3><ul><li>AQSh bakalavriatiga toʻliq kirmoqchi boʻlganlar<a href="bachelor-lab.html">Bachelor Lab</a></li><li>Fulbright orqali doktorantura izlayotganlar — mavjud emas; D trek yoki <a href="phd-lab.html">PhD Lab</a></li><li>Bir nechta mamlakatga topshirayotgan, AQSh ulardan biri boʻlganlar → asosiy daraja Labi</li><li>Doktorlik darajasi egalari (postdok) — kursga kirmaydi</li><li>Kafolat yoki insho yozib berish xizmatini izlayotganlar</li></ul></div>
     </div>
   </div>
 </section>
 <section class="alt" id="dastur">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Dastur</div>
-      <h2>12 modul, 72 dars, <em>trek belgilari bilan.</em></h2>
+    <div class="head">
+      <h2>12 modul, 72 dars, trek belgilari bilan.</h2>
       <p class="sub">Har dars yonida trek belgisi: B, M, D yoki umumiy. B trek eng erta muddatli, shuning uchun qisqartirilgan "UGRAD tezlashtirilgan yoʻli" bilan boradi.</p>
     </div>
-    <div class="phases c5 reveal"><div class="phase"><small>FAZA 0 · BEPUL</small><b>Qaror</b><span>M0 · 6 dars</span></div><div class="phase"><small>FAZA I</small><b>Strategiya va muvofiqlik</b><span>M1–M3 · 17 dars</span></div><div class="phase"><small>FAZA II</small><b>Dalillar va insholar</b><span>M4–M6 · 21 dars</span></div><div class="phase"><small>FAZA III</small><b>Hujjatlar va joylashtirish</b><span>M7–M9 · 17 dars</span></div><div class="phase"><small>FAZA IV</small><b>Intervyu va viza</b><span>M10–M11 · 11 dars</span></div></div>
-    <div class="mods"><details class="mod free reveal" open>
-  <summary><div class="mod-n">M0</div><div><div class="mod-t">AQSh yoʻllari va qaror darvozasi</div><div class="mod-a">Natija: Dasturlar xaritasi + rasmiy manba konspekti + tayyorgarlik koʻrsatkichi + trek kalendari</div></div><div class="mod-c">6 dars<span class="tag tag-free">BEPUL</span></div></summary>
+    <div class="phases c5"><div class="phase"><small>Faza 0, bepul</small><b>Qaror</b><span>M0, 6 dars</span></div><div class="phase"><small>Faza I</small><b>Strategiya va muvofiqlik</b><span>M1–M3, 17 dars</span></div><div class="phase"><small>Faza II</small><b>Dalillar va insholar</b><span>M4–M6, 21 dars</span></div><div class="phase"><small>Faza III</small><b>Hujjatlar va joylashtirish</b><span>M7–M9, 17 dars</span></div><div class="phase"><small>Faza IV</small><b>Intervyu va viza</b><span>M10–M11, 11 dars</span></div></div>
+    <div class="mods"><details class="mod free" open>
+  <summary><div class="mod-n">M0</div><div><div class="mod-t">AQSh yoʻllari va qaror darvozasi</div><div class="mod-a">Natija: Dasturlar xaritasi + rasmiy manba konspekti + tayyorgarlik koʻrsatkichi + trek kalendari</div></div><div class="mod-c">6 dars<span class="tag tag-free">Bepul</span></div></summary>
   <ol><li><span class="num">0.1</span>AQSh davlat dasturlari xaritasi<span class="tk">Umumiy</span><small>Fulbright, Global UGRAD va boshqa almashinuv dasturlari; universitet orqali doktorantura</small></li><li><span class="num">0.2</span>Eng keng tarqalgan miflar<span class="tk">Umumiy</span><small>Fulbright orqali doktorantura va bakalavriat yoʻqligi; Fulbright — AQShda qolish yoʻli emas</small></li><li><span class="num">0.3</span>Raqobat va B reja<span class="tk">Umumiy</span><small>Rad javobi oddiy holat; nazoratdagi va nazoratdan tashqaridagi omillar; artefaktlarni boshqa dasturlarda ishlatish</small></li><li><span class="num">0.4</span>Uch trek va personalar<span class="tk">Umumiy</span><small>B, M, D treklar; 5 persona; muvofiqlik qizil bayroqlari</small></li><li><span class="num">0.5</span>Rasmiy manbalarni oʻqish<span class="tk">Umumiy</span><small>Toshkentdagi AQSh elchixonasi, Davlat departamenti sahifalari; 6 savollik oʻqish usuli</small></li><li><span class="num">0.6</span>Tayyorgarlik, kalendar va shartlar<span class="tk">Umumiy</span><small>Koʻrsatkich (2.5), trek muddatidan orqaga kalendar, obuna shartlari</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M1</div><div><div class="mod-t">Trek strategiyasi</div><div class="mod-a">Natija: Strategik hujjat v1.0 + trek kalendari</div></div><div class="mod-c">5 dars</div></summary>
   <ol><li><span class="num">1.1</span>Global UGRAD mantigʻi<span class="tk">B</span><small>Dastur maqsadi, tanlov, universitetni talaba tanlamasligi, kredit oʻtkazish masalasi</small></li><li><span class="num">1.2</span>Fulbright mantigʻi<span class="tk">M</span><small>Dastur maqsadi, nomzod profili, joylashtirish</small></li><li><span class="num">1.3</span>AQSh doktoranturasi mantigʻi<span class="tk">D</span><small>Kafedra qabuli, moliyalashtirish paketi, 5–6 yillik yoʻl</small></li><li><span class="num">1.4</span>Fulbright va boshqa moliyalashtirish<span class="tk">M</span><small>Sherik moliyalashtirish imkoniyatlari (masalan, El-yurt umidi bilan) — faqat rasmiy eʼlonda boʻlsa</small></li><li><span class="num">1.5</span>Strategik hujjat<span class="tk">Umumiy</span><small>Kim, qaysi trek, qachon, B reja</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M2</div><div><div class="mod-t">Muvofiqlik va diskvalifikatsiya sabablari</div><div class="mod-a">Natija: Muvofiqlik xulosasi (har band rasmiy manba bilan)</div></div><div class="mod-c">6 dars</div></summary>
   <ol><li><span class="num">2.1</span>Shartlarni band-band oʻqish<span class="tk">Umumiy</span><small>Joriy eʼlon va FAQʼni oʻqish usuli</small></li><li><span class="num">2.2</span>Ish tajribasi va yashash talabi<span class="tk">B+M</span><small>Qaysi tajriba hisoblanadi; Oʻzbekistonda yashash sharti</small></li><li><span class="num">2.3</span>J-1 va F-1 farqi<span class="tk">Umumiy</span><small>Almashinuv va talaba vizasi: maqsad, cheklovlar, ishlash huquqi</small></li><li><span class="num">2.4</span>2 yillik vatanda boʻlish talabi<span class="tk">M</span><small>Talab qanday ishlaydi, AQShda qolish rejalariga taʼsiri</small></li><li><span class="num">2.5</span>Halollik va AI qoidalari<span class="tk">Umumiy</span><small>Dastur va universitetlarning insho, AI va plagiat boʻyicha qoidalari (rasmiy manbadan)</small></li><li><span class="num">2.6</span>Muvofiqlik xulosasi<span class="tk">Umumiy</span><small>"Mos / tekshirish kerak / mos emas"</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M3</div><div><div class="mod-t">AQSh oliy taʼlimi va pul oqimi</div><div class="mod-a">Natija: Moliyalashtirish mantigʻi xaritasi + xarajat hisobi</div></div><div class="mod-c">6 dars</div></summary>
-  <ol><li><span class="num">3.1</span>Universitet turlari va akkreditatsiya<span class="tk">Umumiy</span><small>Davlat va xususiy, tadqiqot universitetlari, akkreditatsiyani tekshirish</small></li><li><span class="num">3.2</span>Magistratura va doktorantura tuzilmasi<span class="tk">M</span><span class="tk">D</span><small>Kurslar, malaka imtihonlari, dissertatsiya</small></li><li><span class="num">3.3</span>Kafedra va ilmiy rahbar (AQSh)<span class="tk">D</span><small>Kafedra sahifasi, fakultet, qabul qoʻmitasi</small></li><li><span class="num">3.4</span>Assistentlik va fellowship<span class="tk">D</span><small>TA, RA, fellowship: majburiyatlar va moliyaviy paket</small></li><li><span class="num">3.5</span>Fulbright joylashtirish<span class="tk">M</span><small>Universitetlarni tanlash va joylashtirish mantigʻi (rasmiy tavsifdan)</small></li><li><span class="num">3.6</span>Xarajat va hayot<span class="tk">Umumiy</span><small>Yashash, sugʻurta, shahar tanlash</small></li></ol>
-</details><details class="mod reveal">
+  <ol><li><span class="num">3.1</span>Universitet turlari va akkreditatsiya<span class="tk">Umumiy</span><small>Davlat va xususiy, tadqiqot universitetlari, akkreditatsiyani tekshirish</small></li><li><span class="num">3.2</span>Magistratura va doktorantura tuzilmasi<span class="tk">M</span><span class="tk">D</span><small>Kurslar, malaka imtihonlari, dissertatsiya</small></li><li><span class="num">3.3</span>Kafedra va ilmiy rahbar (AQSh)<span class="tk">D</span><small>Kafedra sahifasi, fakultet, qabul qoʻmitasi</small></li><li><span class="num">3.4</span>Assistentlik va grantli stipendiya (fellowship)<span class="tk">D</span><small>Oʻqituvchi assistent (TA), tadqiqot assistenti (RA), grantli stipendiya (fellowship): majburiyatlar va moliyaviy paket</small></li><li><span class="num">3.5</span>Fulbright joylashtirish<span class="tk">M</span><small>Universitetlarni tanlash va joylashtirish mantigʻi (rasmiy tavsifdan)</small></li><li><span class="num">3.6</span>Xarajat va hayot<span class="tk">Umumiy</span><small>Yashash, sugʻurta, shahar tanlash</small></li></ol>
+</details><details class="mod">
   <summary><div class="mod-n">M4</div><div><div class="mod-t">Liderlik izi va jamiyatga taʼsir</div><div class="mod-a">Natija: 5 ta liderlik holati (STAR) + taʼsir vizyoni</div></div><div class="mod-c">6 dars</div></summary>
   <ol><li><span class="num">4.1</span>Liderlik nima<span class="tk">Umumiy</span><small>Lavozim emas, taʼsir va masʼuliyat</small></li><li><span class="num">4.2</span>Holatlar banki<span class="tk">Umumiy</span><small>STAR shaklida yozish</small></li><li><span class="num">4.3</span>Jamiyatga taʼsir dalillari<span class="tk">B+M</span><small>Koʻngillilik, loyihalar, raqamli natijalar</small></li><li><span class="num">4.4</span>Oʻzbekistonga hissa<span class="tk">B+M</span><small>Qaytgandan keyingi aniq reja</small></li><li><span class="num">4.5</span>Tadqiqot taʼsiri<span class="tk">D</span><small>Ilmiy hissa va keng taʼsir</small></li><li><span class="num">4.6</span>Holatlar bankini yakunlash<span class="tk">Umumiy</span><small>Insholarda qayta ishlatish</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M5</div><div><div class="mod-t">Shaxsiy bayonot</div><div class="mod-a">Natija: Trekka mos yakuniy shaxsiy bayonot</div></div><div class="mod-c">7 dars<span class="tag tag-core">CORE</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M5</div><div><div class="mod-t">Shaxsiy bayonot</div><div class="mod-a">Natija: Trekka mos yakuniy shaxsiy bayonot</div></div><div class="mod-c">7 dars<span class="tag tag-core">Asosiy</span></div></summary>
   <ol><li><span class="num">5.1</span>Fulbright shaxsiy bayonoti<span class="tk">M</span><small>Forma talablari (rasmiy koʻrsatmadan), baholovchi nimani qidiradi</small></li><li><span class="num">5.2</span>UGRAD insholari<span class="tk">B</span><small>Savollar va hajm (rasmiy koʻrsatmadan)</small></li><li><span class="num">5.3</span>Doktorantura uchun shaxsiy tarix bayoni<span class="tk">D</span><small>Baʼzi AQSh kafedralari soʻraydigan alohida bayonot</small></li><li><span class="num">5.4</span>Tuzilma<span class="tk">Umumiy</span><small>Kimlik → Dalil → Maqsad → Moslik</small></li><li><span class="num">5.5</span>Birinchi qoralama<span class="tk">Umumiy</span><small>Holatlar bankidan foydalanish</small></li><li><span class="num">5.6</span>Tahrir<span class="tk">Umumiy</span><small>Klishe, mubolagʻa, tekshirib boʻlmaydigan daʼvo</small></li><li><span class="num">5.7</span>Yakuniy versiya<span class="tk">Umumiy</span><small>Hajm, format, oʻzaro tahrir</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M6</div><div><div class="mod-t">Maqsad va tadqiqot bayoni</div><div class="mod-a">Natija: Fulbright uchun maqsad va tadqiqot bayoni (Study/Research Objective) yoki doktorantura uchun maqsad bayonnomasi (Statement of Purpose)</div></div><div class="mod-c">8 dars</div></summary>
   <ol><li><span class="num">6.1</span>Maqsad va tadqiqot bayoni nima<span class="tk">M</span><small>Rasmiy koʻrsatmadagi talablar; shaxsiy bayonotdan farqi</small></li><li><span class="num">6.2</span>Joylashtirish uchun yozish<span class="tk">M</span><small>Bayonot universitet joylashtirishda qanday ishlatiladi</small></li><li><span class="num">6.3</span>Dastur tanlash dalillari<span class="tk">M</span><small>Kurslar, fakultet, laboratoriyalar</small></li><li><span class="num">6.4</span>Kafedra uchun maqsad bayonnomasi<span class="tk">D</span><small>AQSh kafedralari nimani qidiradi: tadqiqot tajribasi, moslik, kelajak</small></li><li><span class="num">6.5</span>Ilmiy rahbar bilan moslik<span class="tk">D</span><small>Fakultet ishlarini bayonotda dalil sifatida ishlatish</small></li><li><span class="num">6.6</span>Birinchi qoralama<span class="tk">M</span><span class="tk">D</span><small>Tuzilma va dalillar</small></li><li><span class="num">6.7</span>Tahrir<span class="tk">M</span><span class="tk">D</span><small>Aniqlik, hajm, izchillik</small></li><li><span class="num">6.8</span>Ikki inshoning izchilligi<span class="tk">M</span><small>Shaxsiy bayonot bilan takrorlanmaslik va bir-birini toʻldirish</small></li></ol>
-</details><details class="mod reveal">
-  <summary><div class="mod-n">M7</div><div><div class="mod-t">Tavsiya xatlari</div><div class="mod-a">Natija: Yutuqlar varaqalari + tavsiya soʻrovlari + aloqalar jadvali</div></div><div class="mod-c">5 dars<span class="tag tag-core">CORE</span></div></summary>
+</details><details class="mod">
+  <summary><div class="mod-n">M7</div><div><div class="mod-t">Tavsiya xatlari</div><div class="mod-a">Natija: Yutuqlar varaqalari + tavsiya soʻrovlari + aloqalar jadvali</div></div><div class="mod-c">5 dars<span class="tag tag-core">Asosiy</span></div></summary>
   <ol><li><span class="num">7.1</span>AQSh tavsiya madaniyati<span class="tk">Umumiy</span><small>Batafsil va dalilga asoslangan xat kutiladi; solishtirma baho</small></li><li><span class="num">7.2</span>Kimdan soʻrash<span class="tk">Umumiy</span><small>Akademik va professional; trek boʻyicha</small></li><li><span class="num">7.3</span>Yutuqlar varaqasi<span class="tk">Umumiy</span><small>6 boʻlimli varaqa</small></li><li><span class="num">7.4</span>Portallar va muddatlar<span class="tk">Umumiy</span><small>Onlayn yuklash, eslatmalar</small></li><li><span class="num">7.5</span>Ingliz tilida yozmaydigan tavsiya beruvchi<span class="tk">Umumiy</span><small>Rasmiy tarjima qoidalari (dastur talabidan); talaba xatni yozmaydi</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M8</div><div><div class="mod-t">Joylashtirish va professorlar bilan aloqa</div><div class="mod-a">Natija: Fulbright uchun universitet afzalliklari roʻyxati yoki doktorantura uchun 8–12 kafedra va aloqalar jadvali</div></div><div class="mod-c">7 dars</div></summary>
   <ol><li><span class="num">8.1</span>Fulbright joylashtirish jarayoni<span class="tk">M</span><small>Nomzod va joylashtiruvchi tashkilotning roli (rasmiy tavsifdan)</small></li><li><span class="num">8.2</span>Universitet afzalliklari<span class="tk">M</span><small>Dalil bilan afzal koʻrilgan dasturlar</small></li><li><span class="num">8.3</span>Kafedralar roʻyxati<span class="tk">D</span><small>8–12 kafedra: moliyalashtirish, fakultet, natijalar</small></li><li><span class="num">8.4</span>Professorga xat (Core)<span class="tk">D</span><small>AQSh kontekstida: qabul qoʻmitasi qaror qiladi, professor xati qachon foydali</small></li><li><span class="num">8.5</span>Ariza portallari va toʻlovdan ozod qilish<span class="tk">D</span><small>Har kafedra portali; ariza toʻlovidan ozod qilish soʻrash</small></li><li><span class="num">8.6</span>Javoblarni boshqarish<span class="tk">D</span><small>Intervyu takliflari, rad javoblari, kutish roʻyxati</small></li><li><span class="num">8.7</span>Takliflarni taqqoslash<span class="tk">M</span><span class="tk">D</span><small>Moliyalashtirish paketi, ilmiy rahbar, shahar</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M9</div><div><div class="mod-t">Testlar</div><div class="mod-a">Natija: Test rejasi va kalendari</div></div><div class="mod-c">5 dars</div></summary>
   <ol><li><span class="num">9.1</span>TOEFL va IELTS<span class="tk">Umumiy</span><small>Dastur va universitet qaysi testni qabul qiladi; minimal ballar (rasmiy manbadan)</small></li><li><span class="num">9.2</span>GRE va GMAT<span class="tk">M</span><span class="tk">D</span><small>Kim uchun; testni talab qilmaydigan kafedralar</small></li><li><span class="num">9.3</span>Tayyorgarlik rejasi<span class="tk">Umumiy</span><small>Haftalik reja, rasmiy tayyorgarlik materiallari</small></li><li><span class="num">9.4</span>Natijani yuborish<span class="tk">Umumiy</span><small>Rasmiy natija yuborish tartibi</small></li><li><span class="num">9.5</span>Dastur toʻlaydigan testlar<span class="tk">B</span><span class="tk">M</span><small>Dastur qachon test xarajatini qoplashi (rasmiy eʼlondan)</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M10</div><div><div class="mod-t">Intervyu</div><div class="mod-a">Natija: 3 ta yozib olingan javob + savollar banki + mezon bali</div></div><div class="mod-c">6 dars</div></summary>
   <ol><li><span class="num">10.1</span>Fulbright intervyusi<span class="tk">M</span><small>Format va keng tarqalgan savol turlari</small></li><li><span class="num">10.2</span>UGRAD tanlov bosqichi<span class="tk">B</span><small>Tanlov bosqichlari (rasmiy tavsifdan)</small></li><li><span class="num">10.3</span>Kafedra intervyusi<span class="tk">D</span><small>Tadqiqot tajribasini tushuntirish, savollar berish</small></li><li><span class="num">10.4</span>Konsullik suhbati<span class="tk">Umumiy</span><small>Viza suhbati: maqsad, moliya, vatanga bogʻliqlik; halol va qisqa javob</small></li><li><span class="num">10.5</span>Yozib olish mashqi<span class="tk">Umumiy</span><small>8 bandli mezon</small></li><li><span class="num">10.6</span>Savollar banki<span class="tk">Umumiy</span><small>Trek boʻyicha 20 savol</small></li></ol>
-</details><details class="mod reveal">
+</details><details class="mod">
   <summary><div class="mod-n">M11</div><div><div class="mod-t">Viza, joʻnash va qaytish</div><div class="mod-a">Natija: Viza nazorat roʻyxati + birinchi oy rejasi + qaytish yoki ish huquqi rejasi</div></div><div class="mod-c">5 dars</div></summary>
   <ol><li><span class="num">11.1</span>Viza hujjatlari<span class="tk">Umumiy</span><small>DS-160, SEVIS toʻlovi, I-20 (F-1) yoki DS-2019 (J-1); rasmiy sahifalardan</small></li><li><span class="num">11.2</span>Siyosat holatini kuzatish<span class="tk">Umumiy</span><small>Proklamatsiyalar, sud qarorlari, universitet xalqaro boʻlimi xabarlari; ishonchli va ishonchsiz manbalar</small></li><li><span class="num">11.3</span>Joʻnash va birinchi oy<span class="tk">Umumiy</span><small>Kelish, roʻyxatdan oʻtish, xalqaro talabalar boʻlimi</small></li><li><span class="num">11.4</span>Qaytish va Oʻzbekistonga taʼsir<span class="tk">B+M</span><small>Qaytish majburiyatini rejalashtirish, alumni tarmogʻi</small></li><li><span class="num">11.5</span>F-1 da ishlash huquqi<span class="tk">D</span><small>Kampusda ishlash, CPT, OPT, STEM OPT (3.1)</small></li></ol>
 </details></div>
@@ -404,25 +456,23 @@ footer a:hover{color:#fff;}
 
 <section class="alt" id="faktlar">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">2026 holati</div>
-      <h2>Viza va dasturlar: <em>sana bilan.</em></h2>
+    <div class="head">
+      <h2>Viza va dasturlar: sana bilan.</h2>
       <p class="sub">AQSh siyosati oʻzgaruvchan. Quyidagi holat spetsifikatsiyada 2026-10-03 da tekshirilgan; har oy yangilanadi. Siyosat oʻzgarsa, shu sahifada ogohlantirish chiqadi.</p>
     </div>
-    <div class="atlas"><div class="src reveal"><div class="src-h"><b>Kirish cheklovlari (2026-yil 1-yanvardan)</b><span class="chk ok">2026-10-03</span></div><p>Ochilgan roʻyxatlarda Oʻzbekiston yoʻq; qisman cheklangan mamlakatlar uchun F, M, J vizalari ham cheklangan. Har oy tekshiriladi.</p><a class="s" href="https://smc.edu/student-support/international-education/f-1-travel-bans.php" target="_blank" rel="noopener">smc.edu →</a></div><div class="src reveal"><div class="src-h"><b>Immigratsion vizalar pauzasi</b><span class="chk wait">2026-10-03</span></div><p>Oʻzbekiston kiritilgan 75 mamlakat uchun doimiy yashash vizalari toʻxtatilgan; talaba vizalariga tegishli emas (ikkilamchi manba).</p><a class="s" href="https://yep.uz/en/2026/01/us-immigrant-visas-suspension-2026/" target="_blank" rel="noopener">yep.uz →</a></div><div class="src reveal"><div class="src-h"><b>"Duration of status" qoidasi</b><span class="chk ok">2026-10-03</span></div><p>F-1 va J-1 uchun muddatli kirish qoidasi sud tomonidan toʻxtatilgan; amaldagi tizim saqlanmoqda, ish davom etmoqda.</p><a class="s" href="https://internationalcenter.umich.edu/about/news/district-court-postpones-implementation-dhs-final-rule-eliminating-duration-status-f-and" target="_blank" rel="noopener">umich.edu →</a></div><div class="src reveal"><div class="src-h"><b>STEM OPT</b><span class="chk ok">2026-10-03</span></div><p>STEM yoʻnalishidagi F-1 bitiruvchilari uchun 12 oylik OPT ga qoʻshimcha 24 oy, jami 36 oygacha.</p><a class="s" href="https://www.casrai.org/guides/opt-stem-opt-international-graduate-researchers" target="_blank" rel="noopener">casrai.org →</a></div><div class="src reveal"><div class="src-h"><b>Fulbright FFSP (Oʻzbekiston)</b><span class="chk ok">Elchixona eʼloni</span></div><p>Magistratura, 2 yilgacha; bakalavr diplomi, 2 yillik ish tajribasi, Oʻzbekistonda yashash; TOEFL va GRE/GMAT talab qilinadi.</p><a class="s" href="https://sammu.uz/en/announcements/2570440" target="_blank" rel="noopener">sammu.uz →</a></div><div class="src reveal"><div class="src-h"><b>Global UGRAD</b><span class="chk wait">Sikl kutilmoqda</span></div><p>Oxirgi tasdiqlangan sikl 2025-yil avgust yoki 2026-yil yanvarda boshlangan; 2026–2027 sikli eʼloni topilmadi.</p><a class="s" href="https://worldlearning.org/?p=535" target="_blank" rel="noopener">worldlearning.org →</a></div></div>
+    <div class="atlas"><div class="src"><div class="src-h"><b>Kirish cheklovlari (2026-yil 1-yanvardan)</b><span class="chk ok">2026-10-03</span></div><p>Ochilgan roʻyxatlarda Oʻzbekiston yoʻq; qisman cheklangan mamlakatlar uchun F, M, J vizalari ham cheklangan. Har oy tekshiriladi.</p><a class="s" href="https://smc.edu/student-support/international-education/f-1-travel-bans.php" target="_blank" rel="noopener">smc.edu</a></div><div class="src"><div class="src-h"><b>Immigratsion vizalar pauzasi</b><span class="chk wait">2026-10-03</span></div><p>Oʻzbekiston kiritilgan 75 mamlakat uchun doimiy yashash vizalari toʻxtatilgan; talaba vizalariga tegishli emas (ikkilamchi manba).</p><a class="s" href="https://yep.uz/en/2026/01/us-immigrant-visas-suspension-2026/" target="_blank" rel="noopener">yep.uz</a></div><div class="src"><div class="src-h"><b>"Duration of status" qoidasi</b><span class="chk ok">2026-10-03</span></div><p>F-1 va J-1 uchun muddatli kirish qoidasi sud tomonidan toʻxtatilgan; amaldagi tizim saqlanmoqda, ish davom etmoqda.</p><a class="s" href="https://internationalcenter.umich.edu/about/news/district-court-postpones-implementation-dhs-final-rule-eliminating-duration-status-f-and" target="_blank" rel="noopener">umich.edu</a></div><div class="src"><div class="src-h"><b>STEM OPT</b><span class="chk ok">2026-10-03</span></div><p>STEM yoʻnalishidagi F-1 bitiruvchilari uchun 12 oylik OPT ga qoʻshimcha 24 oy, jami 36 oygacha.</p><a class="s" href="https://www.casrai.org/guides/opt-stem-opt-international-graduate-researchers" target="_blank" rel="noopener">casrai.org</a></div><div class="src"><div class="src-h"><b>Fulbright FFSP (Oʻzbekiston)</b><span class="chk ok">Elchixona eʼloni</span></div><p>Magistratura, 2 yilgacha; bakalavr diplomi, 2 yillik ish tajribasi, Oʻzbekistonda yashash; TOEFL va GRE/GMAT talab qilinadi.</p><a class="s" href="https://sammu.uz/en/announcements/2570440" target="_blank" rel="noopener">sammu.uz</a></div><div class="src"><div class="src-h"><b>Global UGRAD</b><span class="chk wait">Sikl kutilmoqda</span></div><p>Oxirgi tasdiqlangan sikl 2025-yil avgust yoki 2026-yil yanvarda boshlangan; 2026–2027 sikli eʼloni topilmadi.</p><a class="s" href="https://worldlearning.org/?p=535" target="_blank" rel="noopener">worldlearning.org</a></div></div>
     
     
   </div>
 </section>
 <section id="test">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">M0 dan namuna</div>
-      <h2>Tayyorgarlik darajasi <em>(Readiness Score).</em></h2>
-      <p class="sub">6 savol, 100 ball. Bu oʻz-oʻzini tashxislash, qabul ehtimoli emas. Javoblar hech qayerga yuborilmaydi va saqlanmaydi.</p>
+    <div class="head">
+      <h2>Tayyorgarlik darajasi (Readiness Score)</h2>
+      <p class="sub">6 savol, 100 ball. Bu oʻzingizni oʻzingiz baholash, qabul ehtimoli emas. Javoblar hech qayerga yuborilmaydi va saqlanmaydi.</p>
     </div>
-    <div class="quiz reveal">
-      <form id="rs" autocomplete="off"><div class="q"><label for="q0">1. Muvofiqlik (diplom, ish tajribasi, yashash joyi) <small>(20)</small></label><select id="q0" data-q><option value="">Tanlang</option><option value="20">Trek shartlariga toʻliq mos kelaman</option><option value="10">Baʼzi shartlarni hali tekshirmadim</option><option value="x">Kamida bitta shartga mos emasman</option></select></div><div class="q"><label for="q1">2. Liderlik izi <small>(20)</small></label><select id="q1" data-q><option value="">Tanlang</option><option value="20">3+ real liderlik holatim bor</option><option value="10">1–2 holat bor</option><option value="0">Hali yoʻq</option></select></div><div class="q"><label for="q2">3. Maqsad aniqligi <small>(15)</small></label><select id="q2" data-q><option value="">Tanlang</option><option value="15">Nega AQSh, nega soha, Oʻzbekistonga hissam aniq</option><option value="8">Qisman aniq</option><option value="0">Aniq emas</option></select></div><div class="q"><label for="q3">4. Akademik va tadqiqot profili <small>(15)</small></label><select id="q3" data-q><option value="">Tanlang</option><option value="15">Trek talabiga mos</option><option value="8">Qisman mos</option><option value="0">Zaif</option></select></div><div class="q"><label for="q4">5. Til va testlar <small>(15)</small></label><select id="q4" data-q><option value="">Tanlang</option><option value="15">TOEFL/IELTS bor, GRE rejasi bor</option><option value="10">Til sertifikati bor</option><option value="5">Sana belgilangan</option><option value="0">Reja yoʻq</option></select></div><div class="q"><label for="q5">6. Trek muddatigacha vaqt <small>(15)</small></label><select id="q5" data-q><option value="">Tanlang</option><option value="15">6–12 oy</option><option value="12">12 oydan koʻp</option><option value="6">3–6 oy</option><option value="0">3 oydan kam</option></select></div></form>
+    <div class="quiz">
+      <form id="rs" autocomplete="off"><div class="q"><label for="q0">1. Muvofiqlik (diplom, ish tajribasi, yashash joyi) <small>(20 ball)</small></label><select id="q0" data-q><option value="">Tanlang</option><option value="20">Trek shartlariga toʻliq mos kelaman</option><option value="10">Baʼzi shartlarni hali tekshirmadim</option><option value="x">Kamida bitta shartga mos emasman</option></select></div><div class="q"><label for="q1">2. Liderlik izi <small>(20 ball)</small></label><select id="q1" data-q><option value="">Tanlang</option><option value="20">3+ real liderlik holatim bor</option><option value="10">1–2 holat bor</option><option value="0">Hali yoʻq</option></select></div><div class="q"><label for="q2">3. Maqsad aniqligi <small>(15 ball)</small></label><select id="q2" data-q><option value="">Tanlang</option><option value="15">Nega AQSh, nega soha, Oʻzbekistonga hissam aniq</option><option value="8">Qisman aniq</option><option value="0">Aniq emas</option></select></div><div class="q"><label for="q3">4. Akademik va tadqiqot profili <small>(15 ball)</small></label><select id="q3" data-q><option value="">Tanlang</option><option value="15">Trek talabiga mos</option><option value="8">Qisman mos</option><option value="0">Zaif</option></select></div><div class="q"><label for="q4">5. Til va testlar <small>(15 ball)</small></label><select id="q4" data-q><option value="">Tanlang</option><option value="15">TOEFL/IELTS bor, GRE rejasi bor</option><option value="10">Til sertifikati bor</option><option value="5">Sana belgilangan</option><option value="0">Reja yoʻq</option></select></div><div class="q"><label for="q5">6. Trek muddatigacha vaqt <small>(15 ball)</small></label><select id="q5" data-q><option value="">Tanlang</option><option value="15">6–12 oy</option><option value="12">12 oydan koʻp</option><option value="6">3–6 oy</option><option value="0">3 oydan kam</option></select></div></form>
       <div class="score" aria-live="polite">
         <div class="score-n"><span id="sN">0</span><small>/100</small></div>
         <div class="bar"><i id="sB"></i></div>
@@ -430,26 +480,25 @@ footer a:hover{color:#fff;}
         <div class="verdict-t" id="sT">Natija javoblaringiz boʻyicha shu yerda hisoblanadi.</div>
         <ul class="gaps" id="sG"></ul>
         
-        <button type="button" class="btn btn-p" style="width:100%;margin-top:14px" data-wl>🔔 M0 ochilganda xabar bering</button>
+        <button type="button" class="btn btn-p" style="width:100%;margin-top:14px" data-wl>M0 ochilganda xabar bering</button>
       </div>
     </div>
   </div>
   <script type="application/json" id="rsData">{"names": ["Muvofiqlik (diplom, ish tajribasi, yashash joyi)", "Liderlik izi", "Maqsad aniqligi", "Akademik va tadqiqot profili", "Til va testlar", "Trek muddatigacha vaqt"], "max": [20, 20, 15, 15, 15, 15], "blockText": "Muvofiqlik boʻyicha bitta \"mos emas\" bandi boʻlsa, bu trek hozir yopiq. M0 da boshqa trek yoki Lab tavsiya qilinadi.", "warn": []}</script>
 </section>
-<section class="alt" id="asoschi">
-  <div class="wrap founder">
-    <div class="f-card reveal">
-      <div class="f-top"><b>Shoxrux Boqijonov</b><span>Geofizik · Leeds universiteti doktoranti · EYUF stipendianti</span></div>
-      <ul class="f-list">
-        <li>University of Leeds, Buyuk Britaniya<span>PhD, School of Earth and Environment, 2026-yildan</span></li>
-        <li>"El-yurt umidi" jamgʻarmasi stipendiyasi<span>2025-yil 2-tanlov gʻolibi</span></li>
-        <li>Tadqiqot: shahar geotermal energiyasi<span>DAS, seysmik tomografiya, PINN</span></li>
-        <li>Janubiy Koreyada oʻqigan<span>Oʻzbekistonda universitet oʻqituvchisi boʻlib ishlagan</span></li>
+<section class="alt" id="qanday">
+  <div class="wrap method">
+    <div class="who">
+      <h3>Dasturlarni kim tuzadi</h3>
+      <ul>
+        <li>Asoschi geofizik, Buyuk Britaniyada (University of Leeds) doktorantura oʻqiydi</li>
+        <li>Janubiy Koreyada oʻqigan</li>
+        <li>Oʻzbekistonda universitetda dars bergan</li>
+        <li>Oʻzi oʻtmagan bosqichlar boʻyicha tajriba daʼvo qilinmaydi</li>
       </ul>
     </div>
-    <div class="reveal">
-      <div class="label">Asoschi</div>
-      <h2>AQSh boʻyicha darslar <em>faqat rasmiy manbalarga</em> tayanadi.</h2>
+    <div>
+      <h2>AQSh boʻyicha darslar faqat rasmiy manbalarga tayanadi.</h2>
       <p class="sub" style="margin-bottom:14px">Shaxsiy tajriba faqat asoschi haqiqatda oʻtgan bosqichlarda keltiriladi. Qolgan qismlar universitet, stipendiya dasturi va davlat organlarining rasmiy sahifalariga tayanadi; har faktik daʼvo yonida havola va tekshiruv sanasi turadi.</p><p class="sub" style="margin-bottom:14px">Viza va immigratsiya boʻyicha yuridik maslahat berilmaydi; rasmiy manbalar va elchixona eʼlonlari koʻrsatiladi.</p>
     </div>
   </div>
@@ -457,45 +506,44 @@ footer a:hover{color:#fff;}
 
 <section id="narx">
   <div class="wrap">
-    <div class="head reveal">
-      <div class="label">Narx</div>
-      <h2>Obuna asosida. <em>M0 bepul.</em></h2>
+    <div class="head">
+      <h2>Obuna: yillik yoki oylik. M0 bepul.</h2>
       <p class="sub">Obuna umumiy darslar va bitta trekni ochadi; trekni almashtirish mumkin. B trek tezlashtirilgan yoʻli (~6 hafta) uchun oylik reja qulayroq.</p>
     </div>
-    <div class="pay-status reveal"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
+    <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
     <div class="plans">
-      <div class="plan reveal">
-        <h3>M0 — Qaror darvozasi</h3><p class="desc">AQSh yoʻllari va muvofiqlik</p>
-        <div class="price">0</div><div class="per">soʻm · muddatsiz</div>
+      <div class="plan">
+        <h3>M0, qaror moduli</h3><p class="desc">AQSh yoʻllari va muvofiqlik</p>
+        <div class="price">0</div><div class="per">soʻm, muddatsiz</div>
         <ul><li>6 dars</li><li>Muvofiqlik tekshirgichi</li><li>Trek tanlovi</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Ochilganda xabar</button>
+        <button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>
       </div>
-      <div class="plan main reveal">
+      <div class="plan main">
         <span class="tag-top">Asosiy reja</span>
         <h3>Yillik</h3><p class="desc">M va D treklar sikli uchun</p>
-        <div class="price">699 000</div><div class="per">soʻm · 12 oy</div>
+        <div class="price" data-py="usa-lab">699 000</div><div class="per">soʻm, 12 oy uchun</div>
         <ul><li>Umumiy darslar + bitta trek, 12 oy</li><li>Trekni almashtirish mumkin</li><li>Siyosat oʻzgarishi ogohlantirishlari</li></ul>
-        <button type="button" class="btn btn-p" data-wl>🔔 Kutish roʻyxati</button>
+        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
-      <div class="plan reveal">
+      <div class="plan">
         <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
-        <div class="price">99 000</div><div class="per">soʻm · har oy uzaytiriladi</div>
+        <div class="price" data-pm="usa-lab">99 000</div><div class="per">soʻm, har oy</div>
         <ul><li>Umumiy darslar + bitta trek</li><li>B trek tezlashtirilgan yoʻli uchun qulay</li><li>Istalgan oy bekor qilinadi</li></ul>
-        <button type="button" class="btn btn-g" data-wl>🔔 Kutish roʻyxati</button>
+        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
-    <div class="calc reveal"><div><b>1 188 000 soʻm</b>oylik reja 12 oyda (99 000 × 12)</div><div><b>~7,1 oy</b>yillik reja oylikning shuncha oyiga teng</div><div><b>8 oy va undan koʻp</b>obuna davom etsa, yillik reja foydaliroq</div></div>
-    <div class="rules reveal"><div><b>B trek qoidasi</b>Global UGRAD sikli rasman eʼlon qilinmaguncha B trek uchun toʻlov qabul qilinmaydi.</div><div><b>Siyosat xavfi</b>Talaba yoki almashinuv vizalari cheklansa: yangi obunalar uchun ogohlantirish; faol yillik obunachilarga qolgan muddat uchun proporsional qaytarish yoki boshqa Labʼga oʻtish taklif qilinadi (taklif, yurist tasdigʻidan keyin).</div><div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div><div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div></div>
+    <div class="calc"><div><b>1 188 000 soʻm</b>oylik reja 12 oyda (99 000 × 12)</div><div><b>~7,1 oy</b>yillik reja oylik rejaning shuncha oyiga teng</div><div><b>8 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja arzonroq</div></div>
+    <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi.</div>
+    <div class="rules"><div><b>B trek qoidasi</b>Global UGRAD sikli rasman eʼlon qilinmaguncha B trek uchun toʻlov qabul qilinmaydi.</div><div><b>Siyosat xavfi</b>Talaba yoki almashinuv vizalari cheklansa: yangi obunachilar uchun sahifada ogohlantirish chiqadi; faol yillik obunachilarga qolgan muddat uchun boshqa Labga oʻtish taklif qilinadi.</div><div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div><div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div></div>
   </div>
 </section>
 <section id="savollar">
   <div class="wrap">
-    <div class="head reveal" style="text-align:center">
-      <div class="label">Savollar</div>
-      <h2>Koʻp soʻraladigan <em>savollar.</em></h2>
+    <div class="head" style="text-align:center">
+      <h2>Koʻp soʻraladigan savollar</h2>
     </div>
-    <div class="faq reveal"><details><summary>Fulbright orqali PhD qilsa boʻladimi?</summary><p>Oʻzbekiston uchun Fulbright doktoranturani moliyalashtirmaydi. AQShda doktorantura kafedra va ilmiy rahbar orqali moliyalashtiriladi — D trek yoki <a href="phd-lab.html">PhD Lab</a>.</p></details><details><summary>2 yillik vatanda boʻlish talabi nima?</summary><p>Fulbright (J-1) bitiruvchisi dasturdan keyin Oʻzbekistonga qaytib, kamida 2 yil yashashi kerak. AQShda qolishni rejalashtirgan nomzod uchun Fulbright mos yoʻl emas; D trek (F-1) koʻrib chiqiladi.</p></details><details><summary>AQSh bakalavriatiga toʻliq kirish-chi?</summary><p>Common App orqali toʻliq bakalavriat qabuli <a href="bachelor-lab.html">Bachelor Lab</a>ʼda. USA Labʼdagi B trek — 1 semestrlik almashinuv, daraja bermaydi.</p></details><details><summary>TOEFL va GREʼga tayyorlaysizmi?</summary><p>Yoʻq. M9 da test strategiyasi va kalendari tuziladi; tayyorlov darslari kursga kirmaydi.</p></details><details><summary>Viza siyosati oʻzgarsa nima boʻladi?</summary><p>Sahifada ogohlantirish chiqadi. Faol yillik obunachilarga proporsional qaytarish yoki boshqa Labʼga oʻtish taklif qilinadi (yurist tasdigʻidan keyin).</p></details><details><summary>Yuridik maslahat berasizmi?</summary><p>Yoʻq. Viza va immigratsiya boʻyicha faqat rasmiy manbalar va ularning mantigʻi tushuntiriladi.</p></details></div>
-    <p class="sources" style="text-align:center">Manbalar: <a href="https://smc.edu/student-support/international-education/f-1-travel-bans.php" target="_blank" rel="noopener">Santa Monica College</a> · <a href="https://internationalcenter.umich.edu/about/news/district-court-postpones-implementation-dhs-final-rule-eliminating-duration-status-f-and" target="_blank" rel="noopener">Michigan universiteti</a> · <a href="https://www.casrai.org/guides/opt-stem-opt-international-graduate-researchers" target="_blank" rel="noopener">CASRAI</a> · <a href="https://sammu.uz/en/announcements/2570440" target="_blank" rel="noopener">SamDTU (elchixona eʼloni)</a> · <a href="https://worldlearning.org/?p=535" target="_blank" rel="noopener">World Learning</a> · <a href="https://yep.uz/en/2026/01/us-immigrant-visas-suspension-2026/" target="_blank" rel="noopener">Yep.uz</a></p>
+    <div class="faq"><details><summary>Fulbright orqali PhD qilsa boʻladimi?</summary><p>Oʻzbekiston uchun Fulbright doktoranturani moliyalashtirmaydi. AQShda doktorantura kafedra va ilmiy rahbar orqali moliyalashtiriladi — D trek yoki <a href="phd-lab.html">PhD Lab</a>.</p></details><details><summary>2 yillik vatanda boʻlish talabi nima?</summary><p>Fulbright (J-1) bitiruvchisi dasturdan keyin Oʻzbekistonga qaytib, kamida 2 yil yashashi kerak. AQShda qolishni rejalashtirgan nomzod uchun Fulbright mos yoʻl emas; D trek (F-1) koʻrib chiqiladi.</p></details><details><summary>AQSh bakalavriatiga toʻliq kirish-chi?</summary><p>Common App orqali toʻliq bakalavriat qabuli <a href="bachelor-lab.html">Bachelor Lab</a>ʼda. USA Labʼdagi B trek — 1 semestrlik almashinuv, daraja bermaydi.</p></details><details><summary>TOEFL va GREʼga tayyorlaysizmi?</summary><p>Yoʻq. M9 da test strategiyasi va kalendari tuziladi; tayyorlov darslari kursga kirmaydi.</p></details><details><summary>Viza siyosati oʻzgarsa nima boʻladi?</summary><p>Sahifada ogohlantirish chiqadi. Faol yillik obunachilarga qolgan muddat uchun boshqa Labga oʻtish taklif qilinadi.</p></details><details><summary>Yuridik maslahat berasizmi?</summary><p>Yoʻq. Viza va immigratsiya boʻyicha faqat rasmiy manbalar va ularning mantigʻi tushuntiriladi.</p></details><details><summary>Nega “Lab” deyiladi?</summary><p>Lab soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi. Kompas Lablari ham shunday ishlaydi: har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi.</p></details></div>
+    <p class="sources" style="text-align:center">Manbalar: <a href="https://smc.edu/student-support/international-education/f-1-travel-bans.php" target="_blank" rel="noopener">Santa Monica College</a>, <a href="https://internationalcenter.umich.edu/about/news/district-court-postpones-implementation-dhs-final-rule-eliminating-duration-status-f-and" target="_blank" rel="noopener">Michigan universiteti</a>, <a href="https://www.casrai.org/guides/opt-stem-opt-international-graduate-researchers" target="_blank" rel="noopener">CASRAI</a>, <a href="https://sammu.uz/en/announcements/2570440" target="_blank" rel="noopener">SamDTU (elchixona eʼloni)</a>, <a href="https://worldlearning.org/?p=535" target="_blank" rel="noopener">World Learning</a>, <a href="https://yep.uz/en/2026/01/us-immigrant-visas-suspension-2026/" target="_blank" rel="noopener">Yep.uz</a></p>
   </div>
 </section>
 <section class="dark cta">
@@ -503,45 +551,46 @@ footer a:hover{color:#fff;}
     <h2>Bepul M0 dan boshlang.</h2>
     <p class="sub">Avval trekingiz va muvofiqligingizni aniqlang, keyin qaror qiling.</p>
     <div class="cta-row" style="justify-content:center">
-      <button type="button" class="btn btn-p" data-wl>🔔 Kutish roʻyxati</button>
-      <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">💬 Telegramʼda soʻrash</a>
+      <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+      <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">Telegramda savol berish</a>
     </div>
   </div>
 </section>
 <footer>
   <div class="wrap">
     <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a></div>
-    <div>© 2026 Kompas Lab · YATT Boqijonov Shoxrux</div>
+    <div>© 2026 Kompas Lab, Oʻzbekiston</div>
   </div>
 </footer>
 <div class="ovl" id="wl" role="dialog" aria-modal="true" aria-labelledby="wlT">
   <div class="mdl">
     <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
-    <div style="font-size:34px;margin-bottom:8px">🇺🇸</div>
-    <h3 id="wlT">USA Lab — kutish roʻyxati</h3>
-    <p>Email manzilingizni qoldiring — M0 va obuna ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
-    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email">
+    <img class="i3d" src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
+    <h3 id="wlT" style="margin-top:6px">USA Lab: kutish roʻyxati</h3>
+    <p>Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
+    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
     <div id="wlMsg"></div>
-    <button type="button" class="btn btn-p" id="wlB">🔔 Xabardor qiling</button>
+    <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script>
 (function () {
   var SLUG = "usa-lab", SOURCE = "usa_landing";
-  var els = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    els.forEach(function (el) { io.observe(el); });
-  } else { els.forEach(function (el) { el.classList.add("in"); }); }
 
   var dataEl = document.getElementById("rsData");
   if (dataEl) {
     var D = JSON.parse(dataEl.textContent);
     var sels = Array.prototype.slice.call(document.querySelectorAll("select[data-q]"));
+    var shown = 0, raf = null;
+    function animateTo(n) {
+      var el = document.getElementById("sN"), from = shown, t0 = null;
+      if (raf) cancelAnimationFrame(raf);
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = n; shown = n; return; }
+      function step(ts) { if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 400); shown = Math.round(from + (n - from) * k); el.textContent = shown; if (k < 1) raf = requestAnimationFrame(step); }
+      raf = requestAnimationFrame(step);
+    }
     var calc = function () {
       var total = 0, answered = 0, gaps = [], blocked = false;
       sels.forEach(function (s, i) {
@@ -552,7 +601,7 @@ footer a:hover{color:#fff;}
         if (v < D.max[i] * 0.5) gaps.push(D.names[i]);
       });
       var bar = document.getElementById("sB"), V = document.getElementById("sV"), T = document.getElementById("sT"), G = document.getElementById("sG");
-      document.getElementById("sN").textContent = total;
+      animateTo(total);
       bar.style.width = total + "%"; G.innerHTML = ""; V.style.color = "";
       if (blocked) {
         V.textContent = "Bu siklda topshira olmaysiz"; V.style.color = "var(--red)";
@@ -568,7 +617,7 @@ footer a:hover{color:#fff;}
         T.textContent = "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak:"; bar.style.background = "var(--gold)";
       } else {
         V.textContent = "Bu siklga erta"; V.style.color = "var(--red)";
-        T.textContent = "Toʻlov tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
+        T.textContent = "Hozir toʻlash tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
       }
       if (answered === sels.length && (blocked || total < 70)) {
         gaps.forEach(function (g) { var li = document.createElement("li"); li.textContent = g; G.appendChild(li); });
@@ -581,28 +630,52 @@ footer a:hover{color:#fff;}
     sels.forEach(function (s) { s.addEventListener("change", calc); });
   }
 
-  var ovl = document.getElementById("wl"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
-  function openWl() { inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = "🔔 Xabardor qiling"; ovl.classList.add("open"); setTimeout(function () { inp.focus(); }, 120); }
-  function closeWl() { ovl.classList.remove("open"); }
-  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", openWl); });
+  var ovl = document.getElementById("wl"), sel = document.getElementById("wlL"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
+  var BTN = "Roʻyxatga yozilish";
+  function openWl(slug) {
+    if (sel) sel.value = slug || "";
+    inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = BTN;
+    ovl.classList.add("open"); document.body.style.overflow = "hidden";
+    setTimeout(function () { (sel && !sel.value ? sel : inp).focus(); }, 120);
+  }
+  function closeWl() { ovl.classList.remove("open"); document.body.style.overflow = ""; }
+  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", function () { openWl(b.getAttribute("data-wl")); }); });
   document.getElementById("wlX").addEventListener("click", closeWl);
   ovl.addEventListener("click", function (e) { if (e.target === ovl) closeWl(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeWl(); });
   inp.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
   btn.addEventListener("click", submit);
   function submit() {
-    var email = inp.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "⚠️ Toʻgʻri email kiriting"; return; }
-    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanishda xatolik. Telegram orqali yozing: t.me/kompaslab"; return; }
-    btn.disabled = true; btn.textContent = "⏳ Saqlanmoqda...";
+    var slug = sel ? sel.value : SLUG, email = inp.value.trim();
+    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "Labni tanlang"; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "Email manzilni tekshiring: masalan, ism@gmail.com"; return; }
+    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanib boʻlmadi. Telegram orqali yozing: t.me/kompaslab"; return; }
+    btn.disabled = true; btn.textContent = "Saqlanmoqda...";
     window.supabase.from("waitlist")
-      .upsert({ email: email, course_slug: SLUG, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
+      .upsert({ email: email, course_slug: slug, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
       .then(function (r) {
         if (r.error && r.error.code !== "23505") throw r.error;
-        msg.style.color = "var(--green)"; msg.textContent = "✅ Qoʻshildingiz. Ochilishi bilan xabar beramiz.";
-        btn.textContent = "✅ Roʻyxatdasiz"; setTimeout(closeWl, 2200);
+        msg.style.color = "var(--green)"; msg.textContent = "Yozildingiz. Lab ochilganda shu emailga xabar beramiz.";
+        btn.textContent = "Yozildingiz"; setTimeout(closeWl, 2400);
       })
-      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "❌ Xatolik yuz berdi. Qayta urinib koʻring."; btn.disabled = false; btn.textContent = "🔔 Xabardor qiling"; });
+      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "Saqlanmadi. Internetni tekshirib, qayta urinib koʻring."; btn.disabled = false; btn.textContent = BTN; });
+  }
+
+  var LIVE_MIN = 10;
+  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
+  function applyStats(d) {
+    var pr = d.prices || {};
+    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
+    document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
+    var wl = d.waitlist_by_lab || {};
+    document.querySelectorAll("[data-live-wl]").forEach(function (el) {
+      var n = wl[el.getAttribute("data-live-wl")] || 0;
+      if (n >= LIVE_MIN) { el.querySelector("span").textContent = "Kutish roʻyxatida " + nf(n) + " kishi"; el.classList.add("on"); }
+    });
+    if (window.onKompasStats) window.onKompasStats(d);
+  }
+  if (window.supabase && typeof window.supabase.rpc === "function") {
+    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) applyStats(r.data); });
   }
 })();
 </script>

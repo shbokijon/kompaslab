@@ -232,13 +232,17 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       <span class="sb-icon">🎬</span><span class="sb-label">Darslar</span>
       <span class="sb-pill sp-gray">35</span>
     </button>
+    <button class="sb-item" onclick="nav('waitlist',this)">
+      <span class="sb-icon">🔔</span><span class="sb-label">Kutish roʻyxati</span>
+      <span class="sb-pill sp-gray" id="pWait">—</span>
+    </button>
     <button class="sb-item" onclick="nav('payments',this)">
-      <span class="sb-icon">💳</span><span class="sb-label">To'lovlar</span>
+      <span class="sb-icon">💳</span><span class="sb-label">Toʻlovlar</span>
       <span class="sb-pill sp-red" id="pPending">—</span>
     </button>
     <div class="sb-grp">Boshqaruv</div>
     <button class="sb-item" onclick="nav('announce',this)">
-      <span class="sb-icon">📢</span><span class="sb-label">E'lonlar</span>
+      <span class="sb-icon">📢</span><span class="sb-label">Eʼlonlar</span>
     </button>
     <button class="sb-item" onclick="nav('analytics',this)">
       <span class="sb-icon">📈</span><span class="sb-label">Analitika</span>
@@ -247,7 +251,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       <span class="sb-icon">⚙️</span><span class="sb-label">Sozlamalar</span>
     </button>
     <a class="sb-item" href="dashboard.html">
-      <span class="sb-icon">🎓</span><span class="sb-label">Talaba ko'rinishi</span>
+      <span class="sb-icon">🎓</span><span class="sb-label">Talaba koʻrinishi</span>
     </a>
   </nav>
   <div class="sb-foot">
@@ -272,7 +276,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
     </div>
     <div class="tb-r">
       <button class="btn bs" onclick="reload()">🔄 Yangilash</button>
-      <button class="btn bp" onclick="openMdl('lesson')">+ Dars qo'shish</button>
+      <button class="btn bp" onclick="openMdl('lesson')">+ Dars qoʻshish</button>
     </div>
   </div>
 
@@ -283,18 +287,18 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       <div class="kpi-row">
         <div class="kpi"><div class="kpi-ico">👥</div><div class="kpi-val" id="kS">—</div><div class="kpi-lbl">Jami talabalar</div><div class="kpi-sub ku">↑ Bu hafta</div></div>
         <div class="kpi"><div class="kpi-ico">✅</div><div class="kpi-val" id="kA">—</div><div class="kpi-lbl">Faol talabalar</div><div class="kpi-sub kn">Bugun online</div></div>
-        <div class="kpi"><div class="kpi-ico">💰</div><div class="kpi-val" id="kR">—</div><div class="kpi-lbl">Bu oy daromad</div><div class="kpi-sub ku">↑ O'tgan oydan</div></div>
-        <div class="kpi"><div class="kpi-ico">📊</div><div class="kpi-val" id="kP">—</div><div class="kpi-lbl">O'rtacha progress</div><div class="kpi-sub kn">Barcha talabalar</div></div>
-        <div class="kpi"><div class="kpi-ico">⚠️</div><div class="kpi-val" id="kPend">—</div><div class="kpi-lbl">Tasdiq kutmoqda</div><div class="kpi-sub kd">To'lovlar</div></div>
+        <div class="kpi"><div class="kpi-ico">💰</div><div class="kpi-val" id="kR">—</div><div class="kpi-lbl">Bu oy daromad</div><div class="kpi-sub ku">↑ Oʻtgan oydan</div></div>
+        <div class="kpi"><div class="kpi-ico">📊</div><div class="kpi-val" id="kP">—</div><div class="kpi-lbl">Oʻrtacha progress</div><div class="kpi-sub kn">Barcha talabalar</div></div>
+        <div class="kpi"><div class="kpi-ico">⚠️</div><div class="kpi-val" id="kPend">—</div><div class="kpi-lbl">Tasdiq kutmoqda</div><div class="kpi-sub kd">Toʻlovlar</div></div>
       </div>
       <div class="twin">
         <!-- Students table -->
         <div class="card">
           <div class="ch">
-            <h2>👥 So'nggi talabalar</h2>
+            <h2>👥 Soʻnggi talabalar</h2>
             <div class="ch-r">
               <button class="btn bs bsm" onclick="nav('students',null)">Hammasi →</button>
-              <button class="btn bp bsm" onclick="openMdl('student')">+ Qo'shish</button>
+              <button class="btn bp bsm" onclick="openMdl('student')">+ Qoʻshish</button>
             </div>
           </div>
           <div class="tctrl">
@@ -318,7 +322,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
         <!-- Right panels -->
         <div class="rp">
           <div class="card">
-            <div class="ch"><h2>📈 Daromad (so'm)</h2><span class="tag tgr" id="tTotal">—</span></div>
+            <div class="ch"><h2>📈 Daromad (soʻm)</h2><span class="tag tgr" id="tTotal">—</span></div>
             <div class="ch-wrap">
               <div class="cbars" id="cBars"></div>
               <div class="clbs" id="cLbs"></div>
@@ -339,14 +343,13 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
           <h2>👥 Barcha talabalar</h2>
           <div class="ch-r">
             <button class="btn bs bsm" onclick="exportStudentsCSV()">📤 CSV</button>
-            <button class="btn bp bsm" onclick="openMdl('student')">+ Qo'shish</button>
+            <button class="btn bp bsm" onclick="openMdl('student')">+ Qoʻshish</button>
           </div>
         </div>
         <div class="tctrl">
           <input class="srch" placeholder="🔍 Ism, email..." oninput="filterTbl(this.value,'tb2')">
           <select class="flt" id="filterCourse2" onchange="applyStudentFilter()">
             <option value="">Barcha kurslar</option>
-            <option value="eyuf-lab">EYUF Lab</option>
             <option value="bachelor-lab">Bachelor Lab</option>
             <option value="master-lab">Master Lab</option>
             <option value="phd-lab">PhD Lab</option>
@@ -359,7 +362,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>#</th><th>Talaba</th><th>Kurs</th><th>Progress</th><th>Sana</th><th>To'lov</th><th>Holat</th><th>Amal</th>
+            <th>#</th><th>Talaba</th><th>Kurs</th><th>Progress</th><th>Sana</th><th>Toʻlov</th><th>Holat</th><th>Amal</th>
           </tr></thead><tbody id="tb2"></tbody></table>
         </div>
       </div>
@@ -386,11 +389,36 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       </div>
     </div>
 
+    <!-- WAITLIST -->
+    <div class="sec" id="sec-waitlist">
+      <div class="card">
+        <div class="ch">
+          <h2>🔔 Kutish roʻyxati</h2>
+          <div class="ch-r">
+            <button class="btn bs bsm" onclick="copyWaitEmails()">📋 Emaillarni nusxalash</button>
+            <button class="btn bs bsm" onclick="exportWaitCSV()">📤 CSV</button>
+          </div>
+        </div>
+        <div class="tctrl">
+          <input class="srch" placeholder="🔍 Email..." oninput="filterTbl(this.value,'tbW')">
+          <select class="flt" id="filterWaitLab" onchange="renderWaitlist()">
+            <option value="">Barcha Lablar</option>
+          </select>
+          <span id="waitSummary" style="font-size:12px;color:var(--muted)"></span>
+        </div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr>
+            <th>#</th><th>Email</th><th>Lab</th><th>Qayerdan</th><th>Sana</th><th>Xabar berildi</th>
+          </tr></thead><tbody id="tbW"></tbody></table>
+        </div>
+      </div>
+    </div>
+
     <!-- PAYMENTS -->
     <div class="sec" id="sec-payments">
       <div class="card">
         <div class="ch">
-          <h2>💳 To'lovlar</h2>
+          <h2>💳 Toʻlovlar</h2>
           <button class="btn bs bsm" onclick="exportPaymentsCSV()">📤 CSV</button>
         </div>
         <div class="tctrl">
@@ -403,7 +431,6 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
           </select>
           <select class="flt" id="filterPayCourse" onchange="loadPayments()">
             <option value="">Barcha kurslar</option>
-            <option value="eyuf-lab">EYUF Lab</option>
             <option value="bachelor-lab">Bachelor Lab</option>
             <option value="master-lab">Master Lab</option>
             <option value="phd-lab">PhD Lab</option>
@@ -421,16 +448,16 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
     <div class="sec" id="sec-announce">
       <div class="card">
         <div class="ch">
-          <h2>📢 E'lonlar</h2>
+          <h2>📢 Eʼlonlar</h2>
           <button class="btn bp bsm" onclick="openMdl('announce')">+ Yangi</button>
         </div>
         <div style="padding:20px;display:flex;flex-direction:column;gap:10px;">
           <div style="background:var(--accent-lit);border-radius:10px;padding:14px 16px;">
-            <div style="font-size:13px;font-weight:700;margin-bottom:3px;">📌 Yangi dars qo'shildi: "Cold Email Templates"</div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:3px;">📌 Yangi dars qoʻshildi (namuna)</div>
             <div style="font-size:12px;color:var(--muted)">Barcha talabalar · 2 soat oldin</div>
           </div>
           <div style="background:var(--gold-lit);border:1px solid #e8d48a;border-radius:10px;padding:14px 16px;">
-            <div style="font-size:13px;font-weight:700;margin-bottom:3px;">⏰ EYUF deadline — Apr 15</div>
+            <div style="font-size:13px;font-weight:700;margin-bottom:3px;">⏰ Muddat eslatmasi (namuna)</div>
             <div style="font-size:12px;color:var(--gold)">Scholar va Elite · 1 kun oldin</div>
           </div>
         </div>
@@ -475,12 +502,11 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 
 <!-- MODALS -->
 <div class="ovl" id="m-lesson"><div class="mdl">
-  <div class="mh"><h3>🎬 Yangi dars qo'shish</h3><button class="mx" onclick="closeMdl('lesson')">×</button></div>
+  <div class="mh"><h3>🎬 Yangi dars qoʻshish</h3><button class="mx" onclick="closeMdl('lesson')">×</button></div>
   <div class="mb">
     <div class="fr">
       <div class="fld"><label>Kurs *</label>
         <select id="lCourse" onchange="loadModulesForSelect(this.value)">
-          <option value="eyuf-lab">🎯 EYUF Lab</option>
           <option value="bachelor-lab">🎓 Bachelor Lab</option>
           <option value="master-lab">🔬 Master Lab</option>
           <option value="phd-lab">⚗️ PhD Lab</option>
@@ -505,7 +531,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 </div></div>
 
 <div class="ovl" id="m-student"><div class="mdl">
-  <div class="mh"><h3>👤 Talaba qo'shish / Yozish</h3><button class="mx" onclick="closeMdl('student')">×</button></div>
+  <div class="mh"><h3>👤 Talaba qoʻshish / Yozish</h3><button class="mx" onclick="closeMdl('student')">×</button></div>
   <div class="mb">
     <div class="fr">
       <div class="fld"><label>Ism *</label><input id="sF" placeholder="Sardor"></div>
@@ -516,19 +542,19 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
     <div class="fld"><label>Kurs *</label>
       <select id="sCourse">
 
-        <option value="bachelor-lab">🎓 Bachelor Lab — 499,000 so'm</option>
-        <option value="master-lab">🔬 Master Lab — 499,000 so'm</option>
-        <option value="phd-lab">⚗️ PhD Lab — 699,000 so'm</option>
-        <option value="gks-lab">🇰🇷 GKS Lab — 499,000 so'm</option>
-        <option value="daad-lab">🇩🇪 DAAD Lab — 599,000 so'm</option>
+        <option value="bachelor-lab">🎓 Bachelor Lab — 499,000 soʻm</option>
+        <option value="master-lab">🔬 Master Lab — 499,000 soʻm</option>
+        <option value="phd-lab">⚗️ PhD Lab — 699,000 soʻm</option>
+        <option value="gks-lab">🇰🇷 GKS Lab — 499,000 soʻm</option>
+        <option value="daad-lab">🇩🇪 DAAD Lab — 599,000 soʻm</option>
       </select>
     </div>
-    <div class="fld"><label>To'lov usuli</label>
+    <div class="fld"><label>Toʻlov usuli</label>
       <select id="sMethod">
         <option value="click">Click.uz</option>
         <option value="payme">Payme</option>
         <option value="bank">Bank kartasi</option>
-        <option value="manual">Qo'lda (admin)</option>
+        <option value="manual">Qoʻlda (admin)</option>
       </select>
     </div>
   </div>
@@ -536,7 +562,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 </div></div>
 
 <div class="ovl" id="m-announce"><div class="mdl">
-  <div class="mh"><h3>📢 Yangi e'lon</h3><button class="mx" onclick="closeMdl('announce')">×</button></div>
+  <div class="mh"><h3>📢 Yangi eʼlon</h3><button class="mx" onclick="closeMdl('announce')">×</button></div>
   <div class="mb">
     <div class="fld"><label>Sarlavha *</label><input id="aT" placeholder="E'lon sarlavhasi..."></div>
     <div class="fld"><label>Matn</label><textarea id="aB" placeholder="E'lon matni..."></textarea></div>
@@ -576,7 +602,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
         <div class="fld"><label>Familiya</label><input id="sdLast" placeholder="Familiya"></div>
       </div>
       <div class="fld"><label>Telefon</label><input id="sdPhone" placeholder="+998 90 123 45 67"></div>
-      <div class="fld"><label>Email (o'zgarmaydi)</label><input id="sdEmailInput" disabled style="opacity:0.5"></div>
+      <div class="fld"><label>Email (oʻzgarmaydi)</label><input id="sdEmailInput" disabled style="opacity:0.5"></div>
     </div>
     <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button><button class="btn bp" onclick="saveStudentProfile()">💾 Saqlash</button></div>
   </div>
@@ -585,12 +611,12 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   <div class="sd-pane" id="sdp-password" style="display:none">
     <div class="mb">
       <div style="background:var(--gold-light);border:1px solid #e0c85a;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--gold)">
-        ⚠️ Yangi parol kamida 8 ta belgidan iborat bo'lishi kerak
+        ⚠️ Yangi parol kamida 8 ta belgidan iborat boʻlishi kerak
       </div>
       <div class="fld"><label>Yangi parol *</label><input id="sdNewPass" type="password" placeholder="Yangi parol..."></div>
       <div class="fld"><label>Qaytadan kiriting *</label><input id="sdNewPass2" type="password" placeholder="Qaytadan..."></div>
     </div>
-    <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button><button class="btn bp" onclick="changeStudentPassword()">🔑 O'zgartirish</button></div>
+    <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button><button class="btn bp" onclick="changeStudentPassword()">🔑 Oʻzgartirish</button></div>
   </div>
 
   <!-- KURSLAR -->
@@ -676,6 +702,7 @@ async function init() {
 
   // Barcha ma'lumotlarni yuklash
   await loadAll()
+  loadWaitlist().catch(() => {})
 
   // Auth kuzatish
   onAuthChange(ev => { if (ev === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login })
@@ -1439,7 +1466,7 @@ function nav(name, el) {
   }
   const titles = {
     overview: 'Admin Dashboard', students: 'Talabalar',
-    lessons: 'Darslar', payments: "To'lovlar",
+    lessons: 'Darslar', payments: "To'lovlar", waitlist: 'Kutish roʻyxati',
     announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
@@ -1452,6 +1479,7 @@ function nav(name, el) {
   }
   // To'lovlar yangilash
   if (name === 'payments') loadPayments()
+  if (name === 'waitlist') loadWaitlist()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
   // Sozlamalar — saqlangan qiymatlarni yuklash
@@ -1535,6 +1563,58 @@ function downloadCSV(filename, headers, rows) {
   a.download = filename
   a.click()
   URL.revokeObjectURL(a.href)
+}
+
+// ── Kutish ro'yxati ─────────────────────────────────
+let _waitlist = []
+const WAIT_LABS = {
+  'bachelor-lab': 'Bachelor Lab', 'master-lab': 'Master Lab', 'phd-lab': 'PhD Lab', 'gks-lab': 'GKS Lab',
+  'usa-lab': 'USA Lab', 'daad-lab': 'DAAD Lab', 'tadbirkor-talaba': 'Tadbirkor Talaba', 'miggo': 'Musofir Lab', 'ikki-miya': '2-Miya'
+}
+async function loadWaitlist() {
+  const tb = document.getElementById('tbW')
+  tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  const { data, error } = await supabase.from(DB.waitlist)
+    .select('email, course_slug, source, notified, added_at')
+    .order('added_at', { ascending: false })
+  if (error) { tb.innerHTML = '<tr><td colspan="6" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
+  _waitlist = data || []
+  const sel = document.getElementById('filterWaitLab'), cur = sel.value
+  const slugs = [...new Set(_waitlist.map(w => w.course_slug))]
+  sel.innerHTML = '<option value="">Barcha Lablar</option>' + slugs.map(sl => {
+    const n = _waitlist.filter(w => w.course_slug === sl).length
+    return '<option value="' + escHtml(sl) + '">' + escHtml(WAIT_LABS[sl] || sl) + ' (' + n + ')</option>'
+  }).join('')
+  sel.value = slugs.includes(cur) ? cur : ''
+  document.getElementById('pWait').textContent = new Set(_waitlist.map(w => w.email)).size
+  renderWaitlist()
+}
+function waitFiltered() {
+  const lab = document.getElementById('filterWaitLab').value
+  return lab ? _waitlist.filter(w => w.course_slug === lab) : _waitlist
+}
+function renderWaitlist() {
+  const rows = waitFiltered(), tb = document.getElementById('tbW')
+  const uniq = new Set(rows.map(w => w.email)).size
+  document.getElementById('waitSummary').textContent = rows.length + ' yozuv, ' + uniq + ' ta noyob email'
+  if (!rows.length) { tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">Hozircha hech kim yozilmagan</td></tr>'; return }
+  tb.innerHTML = rows.map((w, i) => '<tr><td>' + (i + 1) + '</td><td>' + escHtml(w.email) + '</td><td>' + escHtml(WAIT_LABS[w.course_slug] || w.course_slug) +
+    '</td><td>' + escHtml(w.source || '—') + '</td><td>' + escHtml((w.added_at || '').slice(0, 16).replace('T', ' ')) + '</td><td>' + (w.notified ? '✅' : '—') + '</td></tr>').join('')
+}
+function exportWaitCSV() {
+  const rows = waitFiltered()
+  if (!rows.length) { toast('⚠️ Roʻyxat boʻsh'); return }
+  const lab = document.getElementById('filterWaitLab').value || 'barchasi'
+  downloadCSV('kutish-royxati-' + lab + '-' + new Date().toISOString().slice(0, 10) + '.csv',
+    ['Email', 'Lab', 'Qayerdan', 'Sana', 'Xabar berildi'],
+    rows.map(w => [w.email, WAIT_LABS[w.course_slug] || w.course_slug, w.source || '', (w.added_at || '').slice(0, 19).replace('T', ' '), w.notified ? 'ha' : 'yoʻq']))
+  toast('✅ CSV yuklab olindi')
+}
+async function copyWaitEmails() {
+  const emails = [...new Set(waitFiltered().map(w => w.email))]
+  if (!emails.length) { toast('⚠️ Roʻyxat boʻsh'); return }
+  try { await navigator.clipboard.writeText(emails.join(', ')); toast('✅ ' + emails.length + ' ta email nusxalandi') }
+  catch (e) { prompt('Emaillar:', emails.join(', ')) }
 }
 
 function exportStudentsCSV() {
