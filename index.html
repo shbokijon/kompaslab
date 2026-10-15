@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
+<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
 <title>Kompas Lab: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik</title>
 <meta name="description" content="Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul. Obuna: yillik yoki oylik.">
 <meta property="og:title" content="Kompas Lab">
@@ -451,7 +452,57 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .dark .who2 li{font-size:14px;color:rgba(255,255,255,.75);margin-left:18px;margin-bottom:4px;}
 .mdl select{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:12px;font-family:"Outfit",sans-serif;background:var(--bg);margin-bottom:10px;}
 @media(max-width:1000px){.hx,.whylab,.cmpc{grid-template-columns:minmax(0,1fr);}.labs-g{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:720px){.labs-g,.honest{grid-template-columns:minmax(0,1fr);}.nav .btn-g{display:none;}.stat b{font-size:36px;}.out .big{font-size:46px;}.chip{font-size:14px;padding:8px 12px;}.ptbl{min-width:0;font-size:13.5px;}.ptbl td,.ptbl th{padding:10px 8px;}.ptbl td img{width:22px;height:22px;margin-right:6px;}}
+@media(max-width:720px){.labs-g,.honest{grid-template-columns:minmax(0,1fr);}.nav .btn-g{padding:8px 10px;border:none;background:none;min-height:40px;}.nav .wrap{gap:8px;}.stat b{font-size:36px;}.out .big{font-size:46px;}.chip{font-size:14px;padding:8px 12px;}.ptbl{min-width:0;font-size:13.5px;}.ptbl td,.ptbl th{padding:10px 8px;}.ptbl td img{width:22px;height:22px;margin-right:6px;}}
+
+/* v5: jonli hisob, animatsiyalar, 3D ikonkalar, mobil */
+.quick button{min-height:40px;padding:6px 12px;}
+.stat{position:relative;}
+.stat.live-s b{color:var(--accent2);}
+.stat .lv{position:absolute;top:14px;right:14px;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--green);}
+.stat .lv i,.stats-note i{width:8px;height:8px;border-radius:50%;background:var(--green);}
+.bump{animation:bump .6s ease;}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
+.lc .live{margin-top:0;font-size:13px;}
+.lc,.art,.honest div,.rules div{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+.lc-h img,.ic img{transition:transform .3s ease;}
+@media (hover:hover){
+  .lc:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(45,74,62,.12);border-color:#cfd9d2;}
+  .lc:hover .lc-h img{transform:rotate(-8deg) scale(1.08);}
+  .honest div:hover,.rules div:hover{transform:translateY(-2px);border-color:#cfd9d2;}
+  .honest div:hover .ic img,.rules div:hover .ic img{transform:rotate(-8deg) scale(1.1);}
+}
+.chip:active,.btn:active,.lc-b:active,.seg button:active{transform:scale(.97);}
+.ic{display:flex;gap:12px;align-items:flex-start;}
+.ic img{width:40px;height:40px;flex-shrink:0;}
+.rules .ic > div,.honest .ic > div{min-width:0;background:none;border:0;padding:0;border-radius:0;transform:none !important;}
+.pay-status img,.refund img{width:40px;height:40px;flex-shrink:0;}
+.refund{display:flex;gap:12px;align-items:flex-start;}
+.refund p{margin-top:4px;color:var(--muted);font-size:13.5px;}
+@media (prefers-reduced-motion: no-preference){
+  .stat .lv i,.stats-note i{animation:pulse 2s infinite;}
+  .js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+  .js .rv.in{opacity:1;transform:none;}
+  .lc-h img{animation:float 6s ease-in-out infinite;}
+  .lc:nth-child(2) .lc-h img{animation-delay:-2s;}
+  .lc:nth-child(3) .lc-h img{animation-delay:-4s;}
+  .whylab .bulb{animation:float 5s ease-in-out infinite;}
+}
+/* Oylik yoki yillik kalkulyatori */
+.mcalc{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:center;}
+.mcalc label{display:block;font-size:14px;font-weight:800;color:var(--accent);margin-bottom:8px;}
+.mcalc select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:"Outfit",sans-serif;font-size:16px;background:var(--bg);color:var(--text);margin-bottom:14px;}
+.mcalc input[type=range]{width:100%;accent-color:var(--accent2);height:32px;}
+.mcalc .mv{font-weight:800;color:var(--accent2);}
+.mcalc .res{background:var(--bg);border-radius:14px;padding:16px;}
+.mcalc .res b{display:block;font-size:20px;color:var(--accent);line-height:1.25;margin-bottom:6px;font-variant-numeric:tabular-nums;}
+.mcalc .res span{font-size:14px;color:var(--muted);display:block;font-variant-numeric:tabular-nums;}
+@media(max-width:720px){
+  .mcalc{grid-template-columns:minmax(0,1fr);padding:16px;}
+  .ovl{align-items:flex-start;padding-top:8vh;}
+  .stat{padding:18px 16px;}
+  .stat .lv{top:10px;right:10px;}
+  footer a{display:inline-block;padding:10px 0;}
+}
 </style>
 </head>
 <body>
@@ -499,8 +550,8 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="stats">
-      <div class="stat" id="stReg" hidden><b>0</b><span>kishi roʻyxatdan oʻtgan</span></div>
-      <div class="stat" id="stWait" hidden><b>0</b><span>kishi kutish roʻyxatida</span></div>
+      <div class="stat live-s" id="stReg" hidden><span class="lv"><i></i>jonli</span><b>0</b><span>kishi Kompas Labda roʻyxatdan oʻtgan</span></div>
+      <div class="stat live-s" id="stWait" hidden><span class="lv"><i></i>jonli</span><b>0</b><span>kishi kutish roʻyxatida</span></div>
       <div class="stat"><b data-count="8">8</b><span>Lab: daraja, davlat va ish boʻyicha</span></div>
       <div class="stat"><b data-count="485">485</b><span>dars rejasi barcha Lablarda</span></div>
     </div>
@@ -513,22 +564,31 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     <div class="head"><h2>Lablar</h2><p class="sub">Daraja Labi umumiy akademik tayyorgarlikni beradi. Davlat Labi muayyan stipendiya tizimining talablarini qoʻshadi. Har Lab bepul M0 bilan boshlanadi.</p></div>
     <h3 class="grp-h">Daraja boʻyicha</h3><div class="labs-g"><div class="lc"><div class="lc-h"><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Bachelor Lab</div><div class="lc-w">10–11-sinf, litsey va kollej, 15–19 yosh</div></div></div>
 <div class="lc-m"><span class="lc-t">17 modul</span><span class="lc-t">86 dars</span><span class="lc-t free">M0 bepul</span></div><p>Universitet tanlash, testlar rejasi, insho, tavsiya xatlari va 4 yillik moliyaviy reja. 18 yoshgacha obunani ota-ona rasmiylashtiradi.</p>
+<div class="live" data-live-wl="bachelor-lab"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p"><span data-py="bachelor-lab">699 000</span> soʻm/yil<small>yoki <span data-pm="bachelor-lab">99 000</span> soʻm/oy</small></div><a class="lc-b" href="bachelor-lab.html">Batafsil</a></div></div><div class="lc"><div class="lc-h"><img class="" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Master Lab</div><div class="lc-w">Xorijiy magistraturaga topshiruvchilar</div></div></div>
 <div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">59 dars</span><span class="lc-t free">M0 bepul</span></div><p>Akademik CV, tavsiya xatlari, maqsad bayonnomasi (SoP), ilmiy loyiha taklifi va stipendiya portfeli.</p>
+<div class="live" data-live-wl="master-lab"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p"><span data-py="master-lab">699 000</span> soʻm/yil<small>yoki <span data-pm="master-lab">99 000</span> soʻm/oy</small></div><a class="lc-b" href="master-lab.html">Batafsil</a></div></div><div class="lc"><div class="lc-h"><img class="" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">PhD Lab</div><div class="lc-w">Moliyalashtirilgan doktorantura</div></div></div>
 <div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">65 dars</span><span class="lc-t free">M0 bepul</span></div><p>Ilmiy savol, ilmiy rahbarlar jadvali, professorlarga xat, ilmiy loyiha taklifi va moliyalashtirish atlasi.</p>
+<div class="live" data-live-wl="phd-lab"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p"><span data-py="phd-lab">999 000</span> soʻm/yil<small>yoki <span data-pm="phd-lab">129 000</span> soʻm/oy</small></div><a class="lc-b" href="phd-lab.html">Batafsil</a></div></div></div><h3 class="grp-h">Davlat va stipendiya boʻyicha</h3><div class="labs-g"><div class="lc"><div class="lc-h"><img class="" src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">GKS Lab</div><div class="lc-w">Koreya: Global Korea Scholarship</div></div></div>
 <div class="lc-m"><span class="lc-t">3 trek</span><span class="lc-t">54 dars</span><span class="lc-t free">M0 bepul</span></div><p>Muvofiqlik M0 da toʻlovdan oldin tekshiriladi. Umumiy oʻzak va oʻz trekingiz: bakalavriat, magistratura yoki doktorantura.</p>
+<div class="live" data-live-wl="gks-lab"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p"><span data-py="gks-lab">699 000</span> soʻm/yil<small>yoki <span data-pm="gks-lab">99 000</span> soʻm/oy</small></div><a class="lc-b" href="gks-lab.html">Batafsil</a></div></div><div class="lc"><div class="lc-h"><img class="" src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">USA Lab</div><div class="lc-w">AQSh: Global UGRAD, Fulbright, doktorantura</div></div></div>
 <div class="lc-m"><span class="lc-t">12 modul</span><span class="lc-t">72 dars</span><span class="lc-t free">M0 bepul</span><span class="lc-t soon">B trek: sikl kutilmoqda</span></div><p>Uch moliyalashtirilgan yoʻl: muvofiqlik, insholar, intervyu va viza. B trek uchun toʻlov UGRAD sikli eʼlon qilingandan keyin.</p>
+<div class="live" data-live-wl="usa-lab"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p"><span data-py="usa-lab">699 000</span> soʻm/yil<small>yoki <span data-pm="usa-lab">99 000</span> soʻm/oy</small></div><a class="lc-b" href="usa-lab.html">Batafsil</a></div></div><div class="lc"><div class="lc-h"><img class="" src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">DAAD Lab</div><div class="lc-w">Germaniya: magistratura va doktorantura</div></div></div>
 <div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">51 dars</span><span class="lc-t free">M0 bepul</span></div><p>Germaniya akademik tizimi, ilmiy rahbarni oldindan topish, motivatsion xat va tadqiqot rejasi, DAAD portali va joʻnash.</p>
+<div class="live" data-live-wl="daad-lab"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p"><span data-py="daad-lab">699 000</span> soʻm/yil<small>yoki <span data-pm="daad-lab">99 900</span> soʻm/oy</small></div><a class="lc-b" href="daad-lab.html">Batafsil</a></div></div></div><h3 class="grp-h">Talaba hayoti va ish</h3><div class="labs-g"><div class="lc"><div class="lc-h"><img class="" src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Tadbirkor Talaba</div><div class="lc-w">Universitet talabalari, 18 yoshdan</div></div></div>
 <div class="lc-m"><span class="lc-t">10 modul</span><span class="lc-t">54 dars</span><span class="lc-t free">M0 bepul</span><span class="lc-t soon">Ishlab chiqilmoqda</span></div><p>Oʻqishni toʻxtatmasdan kichik, qonuniy biznes sinovi: muammo, birinchi mijoz, pul hisobi, huquqiy shakl va soliq.</p>
+<div class="live" data-live-wl="tadbirkor-talaba"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p"><span data-py="tadbirkor-talaba">299 000</span> soʻm/yil<small>yoki <span data-pm="tadbirkor-talaba">29 900</span> soʻm/oy</small></div><a class="lc-b" href="tadbirkor-talaba.html">Batafsil</a></div></div><div class="lc"><div class="lc-h"><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Musofir Lab</div><div class="lc-w">Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha</div></div></div>
 <div class="lc-m"><span class="lc-t">8 modul</span><span class="lc-t">44 dars</span><span class="lc-t free">M0 bepul</span><span class="lc-t soon">M0 tayyorlanmoqda</span></div><p>Rasmiy yoʻllar va firibgarlik belgilari. M0 roʻyxatdan oʻtmasdan ochiq. Kompas ish yoki viza topib bermaydi.</p>
+<div class="live" data-live-wl="miggo"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p"><span data-py="miggo">499 000</span> soʻm/yil<small>yoki <span data-pm="miggo">49 900</span> soʻm/oy</small></div><a class="lc-b" href="musofir-lab.html">Batafsil</a></div></div><div class="lc"><div class="lc-h"><img class="" src="img/3d/miya.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">2-Miya</div><div class="lc-w">Bilimni tizimlashtirish (PKM)</div></div></div>
 <div class="lc-m"><span class="lc-t soon">Rejalashtirilgan</span></div><p>Ikkinchi miya: oʻqiganlaringizni yozib borish, bogʻlash va qayta topish tizimi.</p>
+<div class="live" data-live-wl="ikki-miya"><i></i><span></span></div>
 <div class="lc-f"><div class="lc-p">Narx eʼlon qilinadi</div><button type="button" class="lc-b" data-wl="ikki-miya">Xabar bering</button></div></div></div>
   </div>
 </section>
@@ -568,10 +628,10 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       </div>
     </div>
     <div class="honest">
-      <div><b>Farqi nimada</b>Koʻp agentliklar hujjatni siz bilan birga tayyorlaydi yoki topshirishga yordam beradi. Kompas hujjatni oʻrningizga yozmaydi va topshirmaydi.</div>
-      <div><b>Sizda nima qoladi</b>Kompasda oʻrgangan usul oʻzingizda qoladi: keyingi ariza, stipendiya yoki ish uchun ham ishlatasiz.</div>
-      <div><b>Agentlik tanlasangiz</b>Shartnoma, litsenziya va “kafolat” vaʼdasini tekshiring. <a href="https://raqobat.gov.uz/uz/xorijda-ishlash-va-oqish-uchun-oson-borishni-vada-qilayotgan-konsalting-firmalardan-ogoh-boling/" target="_blank" rel="noopener">Raqobat qoʻmitasi ogohlantirishi</a></div>
-      <div><b>Hisob qanday</b>Narx Lab yillik obunasiga boʻlinadi. Dollar Markaziy bank kursida (2026-10-06): 1 $ = 11 778 soʻm.</div>
+      <div class="ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Farqi nimada</b>Koʻp agentliklar hujjatni siz bilan birga tayyorlaydi yoki topshirishga yordam beradi. Kompas hujjatni oʻrningizga yozmaydi va topshirmaydi.</div></div>
+      <div class="ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Sizda nima qoladi</b>Kompasda oʻrgangan usul oʻzingizda qoladi: keyingi ariza, stipendiya yoki ish uchun ham ishlatasiz.</div></div>
+      <div class="ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Agentlik tanlasangiz</b>Shartnoma, litsenziya va “kafolat” vaʼdasini tekshiring. <a href="https://raqobat.gov.uz/uz/xorijda-ishlash-va-oqish-uchun-oson-borishni-vada-qilayotgan-konsalting-firmalardan-ogoh-boling/" target="_blank" rel="noopener">Raqobat qoʻmitasi ogohlantirishi</a></div></div>
+      <div class="ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Hisob qanday</b>Narx Lab yillik obunasiga boʻlinadi. Dollar Markaziy bank kursida (2026-10-06): 1 $ = 11 778 soʻm.</div></div>
     </div>
   </div>
 </section>
@@ -579,15 +639,24 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <section id="narx">
   <div class="wrap">
     <div class="head"><h2>Narxlar</h2><p class="sub">Obuna: yillik yoki oylik. M0 hamma Labda bepul. Yillik obuna bitta ariza siklini qamraydi.</p></div>
-    <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
+    <div class="pay-status"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
     <div class="ptop"><div class="seg" role="group" aria-label="Davr"><button type="button" data-period="y" aria-pressed="true">Yillik</button><button type="button" data-period="m" aria-pressed="false">Oylik</button></div></div>
     <div class="tblwrap"><table class="cmp ptbl" id="ptbl" style="margin-top:0"><thead><tr><th>Lab</th><th>Narx</th><th>Holat</th></tr></thead><tbody><tr><td><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async">Bachelor Lab</td><td class="p"><span class="py"><span data-py="bachelor-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="bachelor-lab">99 000</span> soʻm</span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async">Master Lab</td><td class="p"><span class="py"><span data-py="master-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="master-lab">99 000</span> soʻm</span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy" decoding="async">PhD Lab</td><td class="p"><span class="py"><span data-py="phd-lab">999 000</span> soʻm</span><span class="pm"><span data-pm="phd-lab">129 000</span> soʻm</span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async">GKS Lab</td><td class="p"><span class="py"><span data-py="gks-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="gks-lab">99 000</span> soʻm</span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async">USA Lab</td><td class="p"><span class="py"><span data-py="usa-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="usa-lab">99 000</span> soʻm</span></td><td>B trek: sikl kutilmoqda</td></tr><tr><td><img class="" src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async">DAAD Lab</td><td class="p"><span class="py"><span data-py="daad-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="daad-lab">99 900</span> soʻm</span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async">Tadbirkor Talaba</td><td class="p"><span class="py"><span data-py="tadbirkor-talaba">299 000</span> soʻm</span><span class="pm"><span data-pm="tadbirkor-talaba">29 900</span> soʻm</span></td><td>Ishlab chiqilmoqda</td></tr><tr><td><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async">Musofir Lab</td><td class="p"><span class="py"><span data-py="miggo">499 000</span> soʻm</span><span class="pm"><span data-pm="miggo">49 900</span> soʻm</span></td><td>M0 tayyorlanmoqda</td></tr></tbody></table></div>
-    <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz.</div>
+    <div class="mcalc" id="mcalc">
+      <div>
+        <label for="mcLab">Oylik yoki yillik: qaysi biri arzon?</label>
+        <select id="mcLab"><option value="bachelor-lab">Bachelor Lab</option><option value="master-lab" selected>Master Lab</option><option value="phd-lab">PhD Lab</option><option value="gks-lab">GKS Lab</option><option value="usa-lab">USA Lab</option><option value="daad-lab">DAAD Lab</option><option value="tadbirkor-talaba">Tadbirkor Talaba</option><option value="miggo">Musofir Lab</option></select>
+        <label for="mcM">Necha oy kerak: <span class="mv" id="mcMv">6</span> oy</label>
+        <input type="range" id="mcM" min="1" max="12" value="6" step="1">
+      </div>
+      <div class="res" aria-live="polite"><b id="mcB">–</b><span id="mcS"></span></div>
+    </div>
+    <div class="refund"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Toʻlangan obuna puli qaytarilmaydi.</b> Shu sababli har Labning M0 moduli bepul: toʻlashdan oldin dastur sizga mos yoki mos emasligini oʻzingiz tekshirasiz.<p>Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat umuman koʻrsatilmagan toʻlov qaytariladi. Murojaat: <a href="https://t.me/kompaslab" target="_blank" rel="noopener">t.me/kompaslab</a>.</p></div></div>
     <div class="rules">
-      <div><b>Bekor qilish</b>Obunani istalgan vaqtda toʻxtatasiz: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi.</div>
-      <div><b>18 yoshgacha</b>Obunani va toʻlovni ota-ona yoki vasiy rasmiylashtiradi. Ota-onaga jarayon haqida qisqa hisobot beriladi.</div>
-      <div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div>
-      <div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div>
+      <div class="ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Bekor qilish</b>Obunani istalgan vaqtda toʻxtatasiz: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi.</div></div>
+      <div class="ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>18 yoshgacha</b>Obunani va toʻlovni ota-ona yoki vasiy rasmiylashtiradi. Ota-onaga jarayon haqida qisqa hisobot beriladi.</div></div>
+      <div class="ic"><img src="img/3d/lock.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div></div>
+      <div class="ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div></div>
     </div>
   </div>
 </section>
@@ -612,7 +681,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <section class="alt" id="savollar">
   <div class="wrap">
     <div class="head" style="text-align:center"><h2>Koʻp soʻraladigan savollar</h2></div>
-    <div class="faq"><details><summary>Qachon boshlash mumkin?</summary><p>Hozir kutish roʻyxati ochiq. Lablar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beramiz. Har Labning M0 moduli bepul.</p></details><details><summary>Obuna qanday ishlaydi?</summary><p>Har Lab alohida obuna: yillik yoki oylik. Yillik reja bitta ariza siklini qamraydi. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi. Umrbod kirish rejasi yoʻq.</p></details><details><summary>Toʻlov qaytariladimi?</summary><p>Yoʻq. Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mos yoki mos emasligini bilasiz.</p></details><details><summary>Darslar video formatdami?</summary><p>Asosiy format: matn, interaktiv vositalar va ish jadvallari. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.</p></details><details><summary>Hujjatlarni oʻrnimga yozib berasizmi?</summary><p>Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati berilmaydi.</p></details><details><summary>18 yoshga toʻlmaganman. Qatnasha olamanmi?</summary><p>Ha: Bachelor Lab va GKS Lab bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi.</p></details><details><summary>Bir nechta Lab kerak boʻlsa-chi?</summary><p>Daraja Labi (Bachelor, Master, PhD) va davlat Labi (GKS, USA, DAAD) birga ishlatilishi mumkin; ikkinchi Lab uchun chegirma rejalashtirilgan.</p></details><details><summary>Darslar qaysi tilda?</summary><p>Oʻzbek tilida. Xalqaro atamalar avval oʻzbekcha, keyin qavsda inglizcha beriladi, masalan: ilmiy loyiha taklifi (Research Proposal).</p></details></div>
+    <div class="faq"><details><summary>Qachon boshlash mumkin?</summary><p>Hozir kutish roʻyxati ochiq. Lablar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beramiz. Har Labning M0 moduli bepul.</p></details><details><summary>Obuna qanday ishlaydi?</summary><p>Har Lab alohida obuna: yillik yoki oylik. Yillik reja bitta ariza siklini qamraydi. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi. Umrbod kirish rejasi yoʻq.</p></details><details><summary>Toʻlov qaytariladimi?</summary><p>Yoʻq, toʻlangan obuna puli qaytarilmaydi. Shuning uchun har Labning M0 moduli bepul: toʻlashdan oldin dastur sizga mos yoki mos emasligini bilasiz. Obunani istalgan vaqtda toʻxtatsangiz, keyingi davr uchun pul yechilmaydi. Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat koʻrsatilmagan toʻlov qaytariladi.</p></details><details><summary>Darslar video formatdami?</summary><p>Asosiy format: matn, interaktiv vositalar va ish jadvallari. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.</p></details><details><summary>Hujjatlarni oʻrnimga yozib berasizmi?</summary><p>Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati berilmaydi.</p></details><details><summary>18 yoshga toʻlmaganman. Qatnasha olamanmi?</summary><p>Ha: Bachelor Lab va GKS Lab bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi.</p></details><details><summary>Bir nechta Lab kerak boʻlsa-chi?</summary><p>Daraja Labi (Bachelor, Master, PhD) va davlat Labi (GKS, USA, DAAD) birga ishlatilishi mumkin; ikkinchi Lab uchun chegirma rejalashtirilgan.</p></details><details><summary>Darslar qaysi tilda?</summary><p>Oʻzbek tilida. Xalqaro atamalar avval oʻzbekcha, keyin qavsda inglizcha beriladi, masalan: ilmiy loyiha taklifi (Research Proposal).</p></details></div>
   </div>
 </section>
 
@@ -646,7 +715,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script>
 (function () {
@@ -770,6 +839,32 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     });
   });
 
+  // ── Oylik yoki yillik kalkulyatori ──
+  var mcLab = document.getElementById("mcLab"), mcM = document.getElementById("mcM");
+  function mcalc() {
+    var l = bySlug[mcLab.value], n = parseInt(mcM.value, 10), tot = l.m * n;
+    document.getElementById("mcMv").textContent = n;
+    var B = document.getElementById("mcB"), S = document.getElementById("mcS");
+    if (tot < l.y) {
+      B.textContent = "Oylik arzon: " + nf(tot) + " soʻm";
+      S.textContent = n + " oy × " + nf(l.m) + " soʻm. Yillikka nisbatan tejash: " + nf(l.y - tot) + " soʻm.";
+    } else {
+      var be = Math.ceil(l.y / l.m);
+      B.textContent = "Yillik arzon: " + nf(l.y) + " soʻm";
+      S.textContent = n + " oy oylikda " + nf(tot) + " soʻm boʻlardi. Tejash: " + nf(tot - l.y) + " soʻm. " + be + "-oydan boshlab yillik foydali.";
+    }
+  }
+  mcLab.addEventListener("change", mcalc); mcM.addEventListener("input", mcalc); mcalc();
+
+  // ── Skrollda paydo boʻlish ──
+  if ("IntersectionObserver" in window && !reduce) {
+    var rvIo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rvIo.unobserve(e.target); } });
+    }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll("section .head, .grp-h, .labs-g, .steps li, .whylab > div:first-child, .cmpc, .honest > div, .tblwrap, .mcalc, .refund, .rules > div, .model, .faq details, .stats")
+      .forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 70 + "ms"; rvIo.observe(el); });
+  } else { document.documentElement.classList.remove("js"); }
+
   // ── Jonli hisob ──
   function countUp(el, to) {
     if (reduce || !("IntersectionObserver" in window)) { el.textContent = nf(to); return; }
@@ -784,11 +879,16 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   window.onKompasStats = function (d) {
     var pr = d.prices || {};
     LABS.forEach(function (l) { var p = pr[l.slug]; if (p) { if (p.y) l.y = p.y; if (p.m) l.m = p.m; } });
-    recalc();
+    recalc(); mcalc();
     var any = false;
     [["stReg", d.registered], ["stWait", d.waitlist]].forEach(function (x) {
       var box = document.getElementById(x[0]);
-      if (box && x[1] >= LIVE_MIN) { box.hidden = false; countUp(box.querySelector("b"), x[1]); any = true; }
+      if (!box || !(x[1] >= LIVE_MIN)) return;
+      any = true;
+      var b = box.querySelector("b"), prev = parseInt(box.getAttribute("data-n") || "0", 10);
+      box.setAttribute("data-n", x[1]);
+      if (box.hidden) { box.hidden = false; countUp(b, x[1]); }
+      else if (x[1] !== prev) { b.textContent = nf(x[1]); b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
     });
     if (any) {
       var t = "Bazadan jonli olinadi";
@@ -812,9 +912,14 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     });
     if (window.onKompasStats) window.onKompasStats(d);
   }
-  if (window.supabase && typeof window.supabase.rpc === "function") {
+  // Bazadan oʻqish: sahifa ochilganda va ochiq turganda har 60 soniyada
+  function loadStats() {
+    if (document.hidden || !window.supabase || typeof window.supabase.rpc !== "function") return;
     window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) applyStats(r.data); });
   }
+  loadStats();
+  setInterval(loadStats, 60000);
+  document.addEventListener("visibilitychange", loadStats);
 
 })();
 </script>
