@@ -248,6 +248,15 @@ window.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, 
 })
 </script>
 <script>
+// Kirgandan keyin qaytish manzili (faqat shu saytdagi nisbiy sahifa)
+function kompasReturnTo() {
+  var to = null
+  try { to = sessionStorage.getItem('returnTo') } catch (e) {}
+  if (!to) { try { var o = JSON.parse(localStorage.getItem('kompas_return') || 'null'); if (o && Date.now() - o.at < 7 * 86400000) to = o.to } catch (e) {} }
+  try { sessionStorage.removeItem('returnTo'); localStorage.removeItem('kompas_return') } catch (e) {}
+  to = (to || '').replace(/^\/+/, '')
+  return /^[a-z0-9-]+(\.html)?([?#].*)?$/i.test(to) ? to : null
+}
 // ─── SESSION CHECK ── Allaqachon kirgan bo'lsa → admin yoki dashboard
 document.addEventListener('DOMContentLoaded', async () => {
   const { data: { session } } = await window.supabase.auth.getSession()
@@ -260,7 +269,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       .from('profiles').select('role').eq('id', session.user.id).single()
     isAdmin = profile?.role === 'admin'
   }
-  window.location.href = isAdmin ? 'admin.html' : 'dashboard.html'
+  window.location.href = kompasReturnTo() || (isAdmin ? 'admin.html' : 'dashboard.html')
 })
 
 // ─── TOGGLE PASSWORD ─────────────────────────────────
@@ -347,7 +356,8 @@ async function handleLogin(e) {
       isAdmin = profile?.role === 'admin'
     }
     document.getElementById('successAlert').classList.add('show')
-    setTimeout(() => { window.location.href = isAdmin ? 'admin.html' : 'dashboard.html' }, 1200)
+    const back = kompasReturnTo()
+    setTimeout(() => { window.location.href = back || (isAdmin ? 'admin.html' : 'dashboard.html') }, 1200)
 
   } catch(err) {
     document.getElementById('errorAlert').classList.add('show')

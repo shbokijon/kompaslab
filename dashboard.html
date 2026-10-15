@@ -286,6 +286,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       <span class="sb-badge" id="nextLessonBadge">▶</span>
     </a>
 
+    <a href="master-lab-m0.html" class="sb-link">
+      <span class="sb-link-icon">🧭</span> Master Lab M0 <span class="sb-badge">bepul</span>
+    </a>
+
     <div class="sb-section-title">Resurslar</div>
     <a href="#" class="sb-link">
       <span class="sb-link-icon">📄</span> Materiallar
@@ -951,20 +955,20 @@ function renderNoCourse() {
   document.getElementById('greetingText').textContent = 'Hali kursga yozilmadingiz'
   document.getElementById('modulesList').innerHTML = `
     <div style="text-align:center;padding:40px 20px;background:white;border-radius:12px;border:1px solid var(--border)">
-      <div style="font-size:36px;margin-bottom:12px">📚</div>
-      <div style="font-size:16px;font-weight:700;margin-bottom:6px">Kursni tanlang</div>
+      <img src="img/3d/master.webp" width="72" height="72" alt="" style="display:block;margin:0 auto 12px">
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">Bepul: Master Lab M0</div>
       <p style="font-size:13px;color:var(--muted);margin-bottom:20px">
-        Darslarni ko'rish uchun avval kursga yozilishingiz kerak.
+        5 dars, Tayyorgarlik koʻrsatkichi va deadline kalendari. Toʻlovdan oldin dastur sizga mosligini tekshiring.
       </p>
-      <a href="${APP_CONFIG.routes.payment}" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:white;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px">
-        Kursga yozilish →
+      <a href="master-lab-m0.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:white;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px">
+        M0 ni boshlash →
       </a>
     </div>`
 
   document.getElementById('currentLessonTitle').textContent = 'Kurs tanlanmagan'
-  document.getElementById('currentLessonMeta').textContent  = 'Quyidagi tugmani bosing'
-  document.querySelector('.cc-btn').textContent = 'Kursga yozilish →'
-  document.querySelector('.cc-btn').href = APP_CONFIG.routes.payment
+  document.getElementById('currentLessonMeta').textContent  = 'Bepul Master Lab M0 dan boshlang'
+  document.querySelector('.cc-btn').textContent = 'M0 ni boshlash →'
+  document.querySelector('.cc-btn').href = 'master-lab-m0.html'
 }
 
 function renderError() {

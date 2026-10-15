@@ -222,6 +222,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(140%);background:var(--text);color:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;z-index:300;transition:transform .35s ease;max-width:calc(100% - 32px);box-shadow:0 14px 40px rgba(0,0,0,.25);}
 .toast.show{transform:translateX(-50%) translateY(0);}
 .toast img{width:34px;height:34px;}
+/* KIRISH DARVOZASI */
+body.locked main,body.locked footer,body.locked .xp{display:none;}
+.gate{display:none;min-height:calc(100vh - 60px);align-items:center;justify-content:center;padding:24px 16px;}
+body.locked .gate{display:flex;}
+.gate-c{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:28px 24px;max-width:440px;width:100%;text-align:center;box-shadow:0 22px 60px rgba(45,74,62,.12);}
+.gate-c img{width:96px;height:96px;margin:0 auto 10px;}
+.gate-c h1{font-size:30px;margin-bottom:8px;}
+.gate-c p{color:var(--muted);margin-bottom:18px;}
+.gate-c .btn{width:100%;margin-top:10px;}
+.gate-c small{display:block;color:var(--muted);font-size:13px;margin-top:14px;}
+.who{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;}
+@media(max-width:760px){.who{display:none;}}
 .cf{position:fixed;top:-12px;width:9px;height:14px;z-index:400;pointer-events:none;border-radius:2px;animation:fall linear forwards;}
 @keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.8}}
 
@@ -249,18 +261,32 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 }
 </style>
 </head>
-<body>
+<body class="locked">
 
 <header class="top">
   <div class="wrap">
     <a class="logo" href="master-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Master Lab M0</small></a>
     <div class="xp" aria-live="polite">
+      <span class="who" id="who"></span>
       <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
       <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
     </div>
   </div>
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
+
+<div class="gate" id="gate">
+  <div class="gate-c">
+    <img class="float" src="img/3d/lock.webp" width="160" height="160" alt="">
+    <h1 id="gateT">Tekshirilmoqda…</h1>
+    <p id="gateP">Bir soniya.</p>
+    <div id="gateA" hidden>
+      <a class="btn btn-p" href="register.html" data-ret>Bepul roʻyxatdan oʻtish</a>
+      <a class="btn btn-g" href="login.html" data-ret>Kirish</a>
+      <small>M0 bepul. Roʻyxatdan oʻtgach, shu sahifaga qaytasiz.</small>
+    </div>
+  </div>
+</div>
 
 <main>
 <div class="wrap">
@@ -585,6 +611,33 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script>
+// ── Kirish darvozasi: M0 faqat roʻyxatdan oʻtganlar (va admin) uchun ──
+(function () {
+  var RET = "master-lab-m0.html";
+  function lock(title, text, showActions) {
+    document.getElementById("gateT").textContent = title;
+    document.getElementById("gateP").textContent = text;
+    document.getElementById("gateA").hidden = !showActions;
+  }
+  function remember() {
+    try { sessionStorage.setItem("returnTo", RET); } catch (e) {}
+    try { localStorage.setItem("kompas_return", JSON.stringify({ to: RET, at: Date.now() })); } catch (e) {}
+  }
+  document.querySelectorAll("[data-ret]").forEach(function (a) { a.addEventListener("click", remember); });
+  var sb = window.supabase;
+  if (!sb || !sb.auth) { lock("Ulanib boʻlmadi", "Internetni tekshirib, sahifani yangilang. Muammo qolsa, t.me/kompaslab ga yozing.", false); return; }
+  sb.auth.getSession().then(function (r) {
+    var s = r && r.data && r.data.session;
+    if (!s) { remember(); lock("M0 roʻyxatdan oʻtganlar uchun", "Master Lab M0 bepul. Koʻrish uchun hisobingizga kiring yoki bepul roʻyxatdan oʻting.", true); return; }
+    document.body.classList.remove("locked");
+    var w = document.getElementById("who"); if (w) w.textContent = s.user.email || "";
+    try { localStorage.removeItem("kompas_return"); } catch (e) {}
+  }).catch(function () { lock("Ulanib boʻlmadi", "Sahifani yangilang.", false); });
+})();
+</script>
 <script>
 (function () {
   var KEY = "kompas_master_m0_v1";
