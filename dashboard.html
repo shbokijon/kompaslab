@@ -286,9 +286,13 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
       <span class="sb-badge" id="nextLessonBadge">▶</span>
     </a>
 
-    <a href="master-lab-m0.html" class="sb-link">
-      <span class="sb-link-icon">🧭</span> Master Lab M0 <span class="sb-badge">bepul</span>
-    </a>
+    <div class="sb-section-title">Bepul M0 modullar</div>
+    <a href="bachelor-lab-m0.html" class="sb-link"><span class="sb-link-icon">🎓</span> Bachelor Lab M0</a>
+    <a href="master-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧭</span> Master Lab M0</a>
+    <a href="phd-lab-m0.html" class="sb-link"><span class="sb-link-icon">🔬</span> PhD Lab M0</a>
+    <a href="gks-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇰🇷</span> GKS Lab M0</a>
+    <a href="usa-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇺🇸</span> USA Lab M0</a>
+    <a href="tadbirkor-talaba-m0.html" class="sb-link"><span class="sb-link-icon">💼</span> Tadbirkor Talaba M0</a>
 
     <div class="sb-section-title">Resurslar</div>
     <a href="#" class="sb-link">
@@ -592,7 +596,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   </div>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/auth.js"></script>
 <script>
@@ -951,24 +955,55 @@ function showSkeletons() {
 // ════════════════════════════════════════════════════════
 //  10. XATOLIK VA BO'SH HOLAT
 // ════════════════════════════════════════════════════════
+// Bepul M0 modullar: progress shu brauzerdagi localStorage dan olinadi
+const M0_LIST = [
+  { href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bachelor Lab M0',     sub: 'Bakalavr: xorijda oʻqish sizga mosmi' },
+  { href: 'master-lab-m0.html',       key: 'kompas_master_m0_v1',   icon: 'master',   name: 'Master Lab M0',       sub: 'Magistratura: tayyorgarlik va muddatlar' },
+  { href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD Lab M0',          sub: 'Moliyalashtirilgan PhD: qaror darvozasi' },
+  { href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS Lab M0',          sub: 'Koreya hukumati stipendiyasi' },
+  { href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA Lab M0',          sub: 'AQSh: yoʻllar va moliyalashtirish' },
+  { href: 'tadbirkor-talaba-m0.html', key: 'kompas_tt_m0_v1',       icon: 'tt',       name: 'Tadbirkor Talaba M0', sub: 'Oʻqish va biznesni birga olib borish' },
+]
+function m0Progress(key) {
+  try { const o = JSON.parse(localStorage.getItem(key) || 'null'); return o && o.xp ? Math.min(100, Math.round(o.xp / 250 * 100)) : 0 } catch (e) { return 0 }
+}
 function renderNoCourse() {
-  document.getElementById('greetingText').textContent = 'Hali kursga yozilmadingiz'
+  document.getElementById('greetingText').textContent = 'Bepul M0 modullardan boshlang'
+  const cards = M0_LIST.map(m => {
+    const pct = m0Progress(m.key)
+    const btn = pct >= 100 ? 'Koʻrib chiqish' : pct > 0 ? 'Davom etish →' : 'Boshlash →'
+    return `<a href="${m.href}" style="display:flex;gap:12px;align-items:center;background:white;border:1px solid var(--border);border-radius:12px;padding:14px;text-decoration:none;color:inherit">
+      <img src="img/3d/${m.icon}.webp" width="52" height="52" alt="" style="flex:none">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:700">${m.name}</div>
+        <div style="font-size:12px;color:var(--muted);margin:2px 0 8px">${m.sub}</div>
+        <div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden"><div style="height:100%;width:${pct}%;background:var(--accent)"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;margin-top:4px;color:var(--muted)"><span>${pct}%</span><b style="color:var(--accent)">${btn}</b></div>
+      </div></a>`
+  }).join('')
   document.getElementById('modulesList').innerHTML = `
-    <div style="text-align:center;padding:40px 20px;background:white;border-radius:12px;border:1px solid var(--border)">
-      <img src="img/3d/master.webp" width="72" height="72" alt="" style="display:block;margin:0 auto 12px">
-      <div style="font-size:16px;font-weight:700;margin-bottom:6px">Bepul: Master Lab M0</div>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:20px">
-        5 dars, Tayyorgarlik koʻrsatkichi va deadline kalendari. Toʻlovdan oldin dastur sizga mosligini tekshiring.
-      </p>
-      <a href="master-lab-m0.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:white;padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px">
-        M0 ni boshlash →
-      </a>
+    <p style="font-size:13px;color:var(--muted);margin:0 0 12px">Har bir Labning M0 qismi bepul: toʻlovdan oldin dastur sizga mosligini tekshirasiz. Progress shu qurilmada saqlanadi.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">${cards}</div>
+    <div style="margin-top:16px;padding:16px;background:white;border:1px solid var(--border);border-radius:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div><div style="font-size:14px;font-weight:700">Toʻliq dasturga oʻtish</div><div style="font-size:12px;color:var(--muted)">M0 dan keyin dastur mos boʻlsa, obunani tanlang</div></div>
+      <a href="payment.html" style="background:var(--accent);color:white;padding:9px 18px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px">Tariflar va toʻlov</a>
     </div>`
 
-  document.getElementById('currentLessonTitle').textContent = 'Kurs tanlanmagan'
-  document.getElementById('currentLessonMeta').textContent  = 'Bepul Master Lab M0 dan boshlang'
-  document.querySelector('.cc-btn').textContent = 'M0 ni boshlash →'
-  document.querySelector('.cc-btn').href = 'master-lab-m0.html'
+  // Toʻlov qilmaganlarga kurs statistikasi va namunaviy vazifalar koʻrsatilmaydi
+  document.querySelector('.stats-row').style.display = 'none'
+  document.querySelector('.right-col').style.display = 'none'
+  document.querySelector('.content-grid').style.gridTemplateColumns = '1fr'
+  document.querySelector('.section-title-row h2').textContent = 'Bepul M0 modullar'
+  document.querySelector('.section-title-row .section-link').style.display = 'none'
+  document.getElementById('sidebarPlan').textContent = 'Bepul: M0 modullar'
+
+  const started = M0_LIST.map(m => ({ ...m, pct: m0Progress(m.key) })).filter(m => m.pct > 0 && m.pct < 100)[0]
+  document.getElementById('currentPct').textContent = (started ? started.pct : 0) + '%'
+  document.getElementById('currentProgFill').style.width = (started ? started.pct : 0) + '%'
+  document.getElementById('currentLessonTitle').textContent = started ? started.name : 'Kurs tanlanmagan'
+  document.getElementById('currentLessonMeta').textContent  = started ? `${started.pct}% bajarildi` : 'Oʻzingizga mos Lab M0 sini tanlang'
+  document.querySelector('.cc-btn').textContent = started ? 'Davom etish →' : 'M0 ni boshlash →'
+  document.querySelector('.cc-btn').href = started ? started.href : '#modulesList'
 }
 
 function renderError() {

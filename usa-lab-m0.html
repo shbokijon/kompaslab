@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M0 AQSh yoʻllari va qaror darvozasi · USA Lab · Kompas Lab</title>
+<meta name="description" content="USA Lab bepul M0: Global UGRAD, Fulbright va universitet moliyalashtirgan PhD; miflar, B reja, trek tanlovi, rasmiy manbalarni oʻqish va Tayyorgarlik koʻrsatkichi.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --accent:#2d4a3e; --accent-h:#1e3329; --accent-lit:#e8f0ec;
+  --accent2:#c4622d; --accent2-h:#a84f23; --accent2-lit:#faeee7;
+  --gold:#8a6a10; --gold-lit:#f8f0d6;
+  --bg:#f4f3ef; --surface:#fffefb; --border:#e2ded3;
+  --text:#1a2e26; --muted:#5f7169;
+  --green:#1a7a4a; --green-lit:#e6f4ec; --red:#b42318; --red-lit:#fdecea;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:"Outfit",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;}
+a{color:var(--accent);}
+img{display:block;}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+button{font-family:inherit;}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{animation:none!important;transition:none!important;}}
+
+/* TOP BAR */
+.top{position:sticky;top:0;z-index:100;background:rgba(244,243,239,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.top .wrap{display:flex;align-items:center;gap:12px;height:60px;}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--accent);font-weight:800;font-size:15px;flex-shrink:0;}
+.logo img{width:30px;height:30px;}
+.logo small{color:var(--muted);font-weight:600;}
+.xp{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.lvl{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;}
+.xp-pill{display:flex;align-items:center;gap:6px;background:var(--accent);color:#fff;border-radius:99px;padding:6px 12px;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.xp-pill img{width:20px;height:20px;}
+.xp-bar{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:transparent;}
+.xp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent2),#d9a441);transition:width .6s ease;}
+.pop{animation:pop .5s ease;}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.15)}100%{transform:scale(1)}}
+
+/* HERO */
+.hero{padding:44px 0 28px;}
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:28px;align-items:center;}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:12px;}
+.crumb a{color:var(--muted);text-decoration:none;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-lit);color:var(--green);font-weight:800;font-size:13px;padding:5px 12px;border-radius:99px;margin-bottom:14px;}
+h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.08;color:var(--accent);margin-bottom:14px;}
+.lead{font-size:17px;color:var(--muted);max-width:600px;}
+.hero-art{width:180px;height:180px;}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.fact{font-size:13px;font-weight:700;padding:6px 11px;border-radius:9px;background:var(--surface);border:1px solid var(--border);}
+.fact b{color:var(--accent2);font-variant-numeric:tabular-nums;}
+.float{animation:float 6s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-4deg)}}
+
+/* QUEST MAP */
+.map{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin:8px 0 34px;}
+.map-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.map-h b{font-size:16px;color:var(--accent);}
+.map-h span{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;}
+.path{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;position:relative;}
+.node{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:11.5px;font-weight:700;text-align:center;line-height:1.25;position:relative;}
+.node .dot{width:46px;height:46px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--muted);transition:background .3s,border-color .3s,transform .2s;}
+.node:hover .dot{transform:translateY(-2px);border-color:var(--accent);}
+.node.done .dot{background:var(--accent);border-color:var(--accent);color:#fff;}
+.node.done{color:var(--accent);}
+.node::after{content:"";position:absolute;top:23px;left:calc(50% + 26px);right:calc(-50% + 26px);height:2px;background:var(--border);}
+.node:last-child::after{display:none;}
+.node.done::after{background:var(--accent);}
+
+/* SECTIONS */
+section{padding:12px 0 30px;}
+h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(26px,3.4vw,34px);color:var(--accent);line-height:1.15;margin-bottom:10px;}
+.sub{color:var(--muted);margin-bottom:20px;max-width:680px;}
+.goal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px 22px;display:grid;gap:12px;}
+.goal li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:15px;}
+.goal img{width:36px;height:36px;flex-shrink:0;}
+
+/* LESSONS */
+.lessons{display:grid;gap:12px;}
+.lesson{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:border-color .2s,box-shadow .2s;scroll-margin-top:76px;}
+.lesson.open{border-color:var(--accent);box-shadow:0 14px 40px rgba(45,74,62,.10);}
+.l-head{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;background:none;border:none;text-align:left;cursor:pointer;color:inherit;}
+.l-ic{width:52px;height:52px;border-radius:14px;background:var(--accent-lit);display:flex;align-items:center;justify-content:center;position:relative;}
+.l-ic img{width:38px;height:38px;}
+.l-ic .ok{position:absolute;right:-5px;bottom:-5px;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:900;display:none;align-items:center;justify-content:center;border:2px solid var(--surface);}
+.lesson.done .l-ic .ok{display:flex;}
+.l-n{font-size:12.5px;font-weight:800;color:var(--accent2);}
+.l-t{font-size:16.5px;font-weight:800;line-height:1.3;}
+.l-m{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+.tag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:7px;background:var(--bg);border:1px solid var(--border);color:var(--muted);}
+.tag.xp{background:var(--gold-lit);border-color:transparent;color:var(--gold);}
+.chev{font-size:18px;color:var(--muted);transition:transform .25s;}
+.lesson.open .chev{transform:rotate(180deg);color:var(--accent);}
+.l-body{display:none;border-top:1px solid var(--border);}
+.lesson.open .l-body{display:block;}
+.tabs{display:flex;gap:4px;padding:8px 12px 0;overflow-x:auto;background:var(--bg);border-bottom:1px solid var(--border);-webkit-overflow-scrolling:touch;}
+.tab{padding:10px 14px;min-height:44px;border:none;background:none;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;}
+.tab[aria-selected="true"]{color:var(--accent2);border-bottom-color:var(--accent2);}
+.tab .seen{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-left:6px;vertical-align:2px;opacity:0;}
+.tab.v .seen{opacity:1;}
+.panel{display:none;padding:22px;}
+.panel.on{display:block;animation:fadeUp .3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.panel p{margin-bottom:12px;}
+.panel h4{font-size:16px;margin:20px 0 8px;color:var(--accent);}
+.panel ul{margin:8px 0 14px 20px;}
+.panel li{margin-bottom:6px;}
+.hook{background:var(--accent2-lit);border-left:4px solid var(--accent2);border-radius:12px;padding:16px 18px;font-size:16px;}
+.take{display:flex;gap:14px;align-items:flex-start;background:var(--accent-lit);border-radius:12px;padding:16px 18px;}
+.take img{width:40px;height:40px;flex-shrink:0;}
+.box{border-radius:12px;padding:14px 16px;margin:14px 0;font-size:14.5px;}
+.box.info{background:var(--accent-lit);}
+.box.warn{background:var(--gold-lit);}
+.tbl{overflow-x:auto;margin:12px 0;-webkit-overflow-scrolling:touch;}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:420px;}
+th{background:var(--accent);color:#fff;text-align:left;padding:9px 12px;font-size:13px;}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+.assign{background:var(--gold-lit);border-radius:12px;padding:16px 18px;}
+.assign b{display:block;margin-bottom:6px;}
+textarea{width:100%;min-height:96px;margin-top:10px;padding:12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--surface);color:var(--text);resize:vertical;}
+textarea:focus{outline:none;border-color:var(--accent);}
+.hint{font-size:12.5px;color:var(--muted);margin-top:6px;}
+.l-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 22px 20px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 20px;border-radius:12px;border:none;cursor:pointer;font-weight:800;font-size:15px;text-decoration:none;transition:transform .15s,background .15s;}
+.btn:active{transform:scale(.97);}
+.btn-p{background:var(--accent2);color:#fff;box-shadow:0 6px 20px rgba(196,98,45,.25);}
+.btn-p:hover{background:var(--accent2-h);}
+.btn-g{background:var(--surface);color:var(--accent);border:2px solid var(--border);}
+.btn-g:hover{border-color:var(--accent);}
+.btn[disabled]{background:var(--green-lit);color:var(--green);box-shadow:none;cursor:default;}
+
+/* MINI INTERACTIONS */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.chip{min-height:44px;padding:9px 14px;border-radius:99px;border:2px solid var(--border);background:var(--surface);font-size:14.5px;font-weight:700;color:var(--text);cursor:pointer;}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;}
+.quiz{display:grid;gap:12px;margin-top:10px;}
+.qz{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.qz p{font-weight:600;margin-bottom:10px;}
+.qz .row{display:flex;gap:8px;flex-wrap:wrap;}
+.qz button{min-height:42px;padding:8px 16px;border-radius:10px;border:2px solid var(--border);background:var(--bg);font-weight:800;font-size:14px;cursor:pointer;color:var(--text);}
+.qz.ans button{cursor:default;}
+.qz button.right{background:var(--green-lit);border-color:var(--green);color:var(--green);}
+.qz button.wrong{background:var(--red-lit);border-color:var(--red);color:var(--red);}
+.qz .why{display:none;font-size:13.5px;color:var(--muted);margin-top:8px;}
+.qz.ans .why{display:block;}
+.checks{display:grid;gap:8px;margin-top:10px;}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);cursor:pointer;font-size:14.5px;}
+.ck input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent2);flex-shrink:0;}
+.ck.on{border-color:var(--accent2);background:var(--accent2-lit);}
+.verdict{margin-top:12px;font-size:14.5px;border-radius:12px;padding:12px 14px;display:none;}
+.verdict.show{display:block;}
+
+/* TOOLS */
+.tool{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;margin-bottom:16px;scroll-margin-top:76px;}
+.tool-h{display:flex;gap:14px;align-items:center;margin-bottom:6px;}
+.tool-h img{width:52px;height:52px;}
+.tool-h h3{font-size:19px;font-weight:900;color:var(--accent);line-height:1.2;}
+.tool-h span{font-size:13px;color:var(--muted);}
+.rs{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:center;margin-top:12px;}
+.sl{margin-bottom:12px;}
+.sl label{display:flex;justify-content:space-between;gap:10px;font-size:14px;font-weight:700;}
+.sl label small{display:block;font-weight:500;color:var(--muted);font-size:12.5px;}
+.sl output{font-weight:900;color:var(--accent2);font-variant-numeric:tabular-nums;min-width:34px;text-align:right;}
+input[type=range]{width:100%;height:32px;accent-color:var(--accent2);}
+.radar{width:100%;max-width:260px;margin:0 auto;}
+.radar text{font-family:Outfit,sans-serif;font-size:10px;font-weight:700;fill:var(--muted);}
+.score{text-align:center;margin-top:6px;}
+.score b{font-family:"DM Serif Display",serif;font-weight:400;font-size:46px;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;}
+.score span{display:block;font-size:13px;color:var(--muted);}
+.res{margin-top:14px;background:var(--bg);border-radius:14px;padding:14px 16px;font-size:14.5px;display:none;}
+.res.show{display:block;animation:fadeUp .3s ease both;}
+.dl-in{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.dl-in label{font-size:14px;font-weight:700;display:block;margin-bottom:6px;}
+.dl-in input{width:100%;min-height:48px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.tline{position:relative;height:56px;margin:22px 4px 6px;}
+.tline .bar{position:absolute;left:0;right:0;top:20px;height:8px;border-radius:99px;background:var(--border);overflow:hidden;}
+.tline .seg{position:absolute;top:0;bottom:0;}
+.tline .mk{position:absolute;top:0;transform:translateX(-50%);font-size:11.5px;font-weight:800;white-space:nowrap;text-align:center;}
+.tline .mk i{display:block;width:3px;height:18px;margin:0 auto;border-radius:2px;}
+.tline .mk span{display:block;margin-top:14px;}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;}
+
+/* BADGES */
+.badges{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;}
+.bdg{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 8px;text-align:center;font-size:12.5px;font-weight:800;color:var(--muted);line-height:1.25;}
+.bdg img{width:48px;height:48px;margin:0 auto 8px;filter:grayscale(1);opacity:.35;transition:filter .5s,opacity .5s,transform .5s;}
+.bdg small{display:block;font-weight:600;font-size:11.5px;margin-top:3px;}
+.bdg.on{border-color:var(--accent);color:var(--accent);}
+.bdg.on img{filter:none;opacity:1;transform:rotate(-6deg) scale(1.05);}
+
+/* DECISION */
+.decide{background:var(--accent);color:#fff;border-radius:22px;padding:24px;}
+.decide h2{color:#fff;}
+.decide .sub{color:rgba(255,255,255,.75);}
+.stmt{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px 18px;font-size:16px;margin:14px 0;}
+.stmt b{color:#ffd9a8;}
+.decide .ck{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff;}
+.decide .ck.on{background:rgba(196,98,45,.25);border-color:#e9a27a;}
+.decide .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.decide .btn-g{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.3);}
+.decide .missing{font-size:13.5px;color:rgba(255,255,255,.75);margin-top:10px;}
+
+/* MENTOR + PASSPORT */
+.mentor{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px 22px;}
+.mentor .av{width:48px;height:48px;border-radius:50%;background:var(--accent2);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mentor q{font-family:"DM Serif Display",serif;font-size:19px;line-height:1.4;color:var(--accent);display:block;margin-bottom:10px;}
+.mentor small{color:var(--muted);font-size:13px;}
+.pass{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.pass div{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:14.5px;}
+.pass b{display:block;font-size:12.5px;color:var(--muted);margin-bottom:2px;}
+footer{padding:26px 0 60px;}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+
+/* TOAST + CONFETTI */
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(140%);background:var(--text);color:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;z-index:300;transition:transform .35s ease;max-width:calc(100% - 32px);box-shadow:0 14px 40px rgba(0,0,0,.25);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast img{width:34px;height:34px;}
+.cf{position:fixed;top:-12px;width:9px;height:14px;z-index:400;pointer-events:none;border-radius:2px;animation:fall linear forwards;}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.8}}
+
+@media(max-width:760px){
+  .hero{padding:28px 0 20px;}
+  .hero-g{grid-template-columns:minmax(0,1fr) 96px;gap:14px;align-items:start;}
+  .hero-art{width:96px;height:96px;}
+  h1{font-size:34px;}
+  .lead{font-size:16px;}
+  .lvl,.logo small{display:none;}
+  .path{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:16px;}
+  .node:nth-child(4)::after{display:none;}
+  .l-head{grid-template-columns:44px minmax(0,1fr) auto;gap:12px;padding:14px;}
+  .l-ic{width:44px;height:44px;}
+  .l-ic img{width:32px;height:32px;}
+  .panel{padding:18px 16px;}
+  .l-foot{padding:12px 16px 18px;}
+  .l-foot .btn{width:100%;}
+  .rs{grid-template-columns:minmax(0,1fr);}
+  .radar{max-width:230px;}
+  .dl-in{grid-template-columns:minmax(0,1fr);}
+  .badges{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .pass{grid-template-columns:minmax(0,1fr);}
+  .tool,.decide{padding:18px 16px;}
+}
+
+body.locked main,body.locked footer,body.locked .xp{display:none;}
+.gate{display:none;min-height:calc(100vh - 60px);align-items:center;justify-content:center;padding:24px 16px;}
+body.locked .gate{display:flex;}
+.gate-c{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:28px 24px;max-width:440px;width:100%;text-align:center;box-shadow:0 22px 60px rgba(45,74,62,.12);}
+.gate-c img{width:96px;height:96px;margin:0 auto 10px;}
+.gate-c h1{font-size:30px;margin-bottom:8px;}
+.gate-c p{color:var(--muted);margin-bottom:18px;}
+.gate-c .btn{width:100%;margin-top:10px;}
+.gate-c small{display:block;color:var(--muted);font-size:13px;margin-top:14px;}
+.path.p9{grid-template-columns:repeat(9,minmax(0,1fr));}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--accent);background:#fff;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.devnote{display:flex;gap:12px;align-items:flex-start;background:var(--gold-lit);border-radius:14px;padding:12px 16px;margin-top:16px;font-size:14.5px;}
+.devnote img{width:36px;height:36px;flex-shrink:0;}
+.flip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px;}
+.card3{perspective:900px;min-height:240px;cursor:pointer;border:none;background:none;padding:0;text-align:left;font:inherit;color:inherit;}
+.card3 .in{display:block;position:relative;width:100%;height:100%;min-height:240px;transition:transform .5s;transform-style:preserve-3d;}
+.card3[aria-pressed="true"] .in{transform:rotateY(180deg);}
+.card3 .f,.card3 .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:14px 16px;border:1px solid var(--border);}
+.card3 .f{background:var(--surface);display:flex;flex-direction:column;justify-content:space-between;}
+.card3 .f b{font-size:17px;color:var(--accent);line-height:1.25;}
+.card3 .f span{font-size:13px;color:var(--muted);}
+.card3 .f em{font-style:normal;font-size:24px;font-weight:900;color:var(--accent2);}
+.card3 .b{display:block;background:var(--accent);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.5;overflow:auto;}
+.card3 .b b{display:block;color:#ffd9a8;margin-bottom:4px;}
+@media (prefers-reduced-motion: reduce){.card3 .in{transition:none;}}
+.facts2{display:grid;gap:8px;margin-top:10px;}
+.fct{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:14px;}
+.fct b{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;margin-right:6px;background:var(--accent-lit);color:var(--accent);}
+.fct b.wait{background:var(--gold-lit);color:var(--gold);}
+.fct a{color:#1f5fa8;font-size:12.5px;margin-left:4px;}
+.formq{display:grid;gap:10px;margin-top:10px;}
+.fq2{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;}
+.fq2 p{margin:0;font-size:14.5px;font-weight:600;}
+.yn{display:flex;gap:6px;flex-wrap:wrap;}
+.yn button{min-height:40px;min-width:52px;padding:6px 10px;border-radius:10px;border:2px solid var(--border);background:var(--bg);font-weight:800;font-size:13px;cursor:pointer;color:var(--text);}
+.yn button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;}
+.read6{display:grid;gap:8px;margin-top:10px;}
+.rsq{display:grid;gap:12px;}
+.rsq .fld select{background:var(--surface);}
+.gaps{margin-top:10px;font-size:14.5px;}
+.gaps li{margin-left:20px;}
+.verd{font-weight:900;font-size:17px;margin-top:4px;}
+.tline2{position:relative;margin:26px 6px 8px;height:64px;}
+.tline2 .bar{position:absolute;left:0;right:0;top:22px;height:10px;border-radius:99px;background:var(--border);overflow:hidden;display:flex;}
+.tline2 .bar span{height:100%;}
+.tline2 .mk{position:absolute;top:0;transform:translateX(-50%);font-size:11.5px;font-weight:800;white-space:nowrap;text-align:center;}
+.tline2 .mk i{display:block;width:3px;height:22px;margin:0 auto;border-radius:2px;}
+.tline2 .mk span{display:block;margin-top:18px;}
+.phs{display:grid;gap:6px;margin-top:10px;}
+.ph{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px;}
+.ph i{width:14px;height:14px;border-radius:4px;}
+.ph b{font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted);}
+.blocked{background:rgba(180,35,24,.25);border:1px solid #f3a49a;border-radius:14px;padding:12px 14px;margin-top:10px;font-weight:700;}
+.badges.b6{grid-template-columns:repeat(6,minmax(0,1fr));}
+@media(max-width:760px){
+  .path.p9{grid-template-columns:repeat(5,minmax(0,1fr));}
+  .path.p9 .node:nth-child(5)::after{display:none;}
+  .grid2,.flip{grid-template-columns:minmax(0,1fr);}
+  .fq2{grid-template-columns:minmax(0,1fr);}
+  .badges.b6{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .card3,.card3 .in{min-height:210px;}
+}
+</style>
+</head>
+<body class="locked">
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="usa-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· USA Lab M0</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<div class="gate" id="gate">
+  <div class="gate-c">
+    <img class="float" src="img/3d/lock.webp" width="160" height="160" alt="">
+    <h1 id="gateT">Tekshirilmoqda…</h1>
+    <p id="gateP">Bir soniya.</p>
+    <div id="gateA" hidden>
+      <a class="btn btn-p" href="register.html" data-ret>Bepul roʻyxatdan oʻtish</a>
+      <a class="btn btn-g" href="login.html" data-ret>Kirish</a>
+      <small>M0 bepul. Roʻyxatdan oʻtgach, shu sahifaga qaytasiz.</small>
+    </div>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA Lab</a> · Modul 0</div>
+        <span class="badge">🔓 Bepul · Qaror darvozasi</span>
+        <h1>AQSh: uchta moliyalashtirilgan yoʻl.</h1>
+        <p class="lead">Global UGRAD, Fulbright va universitet moliyalashtirgan doktorantura: har birining oʻz vizasi, majburiyati va nomzodi bor. Bu modulda miflarni ajratasiz, trekingizni aniqlaysiz va rasmiy manbani oʻqishni oʻrganasiz.</p>
+        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>250</b> XP</span></div>
+        <div class="devnote"><img src="img/3d/hourglass.webp" width="160" height="160" alt=""><span><b>B trek (Global UGRAD): 2026–2027 sikli eʼloni topilmadi.</b> Sikl rasman eʼlon qilinmaguncha B trek uchun toʻlov qabul qilinmaydi.</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/usa.webp" width="160" height="160" alt="">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 9 bosqich</span></div>
+    <div class="path p9">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">0.1</span>Xarita</a>
+      <a class="node" href="#l2" data-node="l2"><span class="dot">0.2</span>Miflar</a>
+      <a class="node" href="#l3" data-node="l3"><span class="dot">0.3</span>B reja</a>
+      <a class="node" href="#l4" data-node="l4"><span class="dot">0.4</span>Treklar</a>
+      <a class="node" href="#l5" data-node="l5"><span class="dot">0.5</span>Manbalar</a>
+      <a class="node" href="#l6" data-node="l6"><span class="dot">0.6</span>Shartlar</a>
+      <a class="node" href="#l4" data-node="trk"><span class="dot">🧭</span>Trek</a>
+      <a class="node" href="#tool-rs" data-node="rs"><span class="dot">%</span>Koʻrsatkich</a>
+      <a class="node" href="#qaror" data-node="dec"><span class="dot">✓</span>Qaror</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Dasturlar xaritasi</b> va sizga mos trek: B, M yoki D.</span></li>
+      <li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span><b>Rasmiy manba konspekti:</b> 6 savollik oʻqish usuli bilan.</span></li>
+      <li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span><b>Tayyorgarlik koʻrsatkichi</b> va trek muddatidan orqaga kalendar.</span></li>
+    </ul>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 0.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">AQSh davlat dasturlari xaritasi</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🃏 Uch trek</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“AQShga grant bilan” degan gap uch xil narsani anglatishi mumkin: bir semestrlik almashinuv, ikki yillik magistratura yoki besh-olti yillik doktorantura. Ularning vizasi, majburiyati va nomzodi butunlay boshqa.</div></div>
+          <div class="panel">
+            <p>Kartani bosing:</p>
+            <div class="flip">
+              <button type="button" class="card3" data-card="b" aria-pressed="false"><span class="in"><span class="f"><em>B</em><b>Global UGRAD</b><span>Bosing</span></span><span class="b"><b>1 semestr almashinuv · J-1</b>Daraja bermaydi. Oʻzbekistonda kunduzgi bakalavriatda oʻqiyotgan, kamida 1 yil oʻqishi qolgan talaba uchun. Qaytish majburiy. Moliyalashtiruvchi: AQSh Davlat departamenti.</span></span></button>
+              <button type="button" class="card3" data-card="m" aria-pressed="false"><span class="in"><span class="f"><em>M</em><b>Fulbright Foreign Student Program</b><span>Bosing</span></span><span class="b"><b>Magistratura, 2 yilgacha · J-1</b>Bakalavr diplomi va kamida 2 yillik ish tajribasi. 2 yillik vatanda boʻlish talabi bor. Moliyalashtiruvchi: AQSh Davlat departamenti.</span></span></button>
+              <button type="button" class="card3" data-card="d" aria-pressed="false"><span class="in"><span class="f"><em>D</em><b>Universitet moliyalashtirgan PhD</b><span>Bosing</span></span><span class="b"><b>5–6 yil · F-1</b>Kuchli tadqiqot tajribali bakalavr yoki magistr. Moliyalashtiruvchi: universitet va ilmiy rahbar granti (TA/RA). Qaytish majburiyati yoʻq.</span></span></button>
+            </div>
+            <div class="box info"><b>Aniq summalar faqat rasmiy sahifada.</b> Stipendiya va oylik miqdori har yil oʻzgaradi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy"><p>B: UGRAD, 1 semestr, J-1. M: Fulbright, magistratura, J-1, 2 yillik vatanda boʻlish talabi. D: universitet PhD, 5–6 yil, F-1.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: dasturlar xaritasi</b><ul><li>Uchta kartani oching va har biri uchun “men nomzodmanmi?” savoliga bir jumla yozing.</li></ul>
+            <textarea data-save="a1" placeholder="B: ... | M: ... | D: ..."></textarea><div class="hint">Matn faqat shu brauzerda saqlanadi.</div></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Eng keng tarqalgan miflar</span>
+            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">🎯 Mif yoki fakt?</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“Fulbright bilan PhD qilib, keyin AQShda qolaman” degan reja ikki mifdan iborat. Bunday reja bilan tayyorlangan ariza noto'g'ri dasturga yo'naltirilgan bo'ladi.</div></div>
+          <div class="panel">
+            <ul>
+              <li><b>Fulbright orqali doktorantura yoki bakalavriat Oʻzbekiston uchun mavjud emas.</b> Oʻzbekistondan Fulbright FFSP magistratura uchun.</li>
+              <li><b>Fulbright AQShda qolish yoʻli emas.</b> J-1 va 2 yillik vatanda boʻlish talabi: dastur tugagach qaytish kutiladi.</li>
+              <li><b>Global UGRAD daraja bermaydi.</b> Bu bir semestrlik almashinuv.</li>
+              <li><b>AQShda PhD odatda universitet tomonidan moliyalashtiriladi</b> (assistentlik, toʻlovdan ozod qilish). F-1 vizasida qaytish majburiyati yoʻq.</li>
+            </ul>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Oʻzbekistondan Fulbright faqat magistratura uchun va AQShda qolish yoʻli emas. UGRAD daraja bermaydi. PhD universitet orqali.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: mif yoki fakt?</b>
+            <div class="quiz" id="quiz">
+              <div class="qz" data-a="m"><p>“Oʻzbekistondan Fulbright orqali doktoranturaga topshirsa boʻladi.”</p><div class="row"><button type="button" data-v="m">❌ Mif</button><button type="button" data-v="f">✅ Fakt</button></div><div class="why">Mif: Oʻzbekiston uchun Fulbright orqali doktorantura mavjud emas. D trek yoki PhD Lab.</div></div>
+              <div class="qz" data-a="m"><p>“Fulbright tugagach, J-1 bilan AQShda ishlab qolish oson.”</p><div class="row"><button type="button" data-v="m">❌ Mif</button><button type="button" data-v="f">✅ Fakt</button></div><div class="why">Mif: 2 yillik vatanda boʻlish talabi bor.</div></div>
+              <div class="qz" data-a="f"><p>“Global UGRAD bir semestrlik almashinuv va daraja bermaydi.”</p><div class="row"><button type="button" data-v="m">❌ Mif</button><button type="button" data-v="f">✅ Fakt</button></div><div class="why">Fakt.</div></div>
+              <div class="qz" data-a="f"><p>“AQSh doktoranturasi koʻpincha universitet va ilmiy rahbar granti hisobidan moliyalashtiriladi.”</p><div class="row"><button type="button" data-v="m">❌ Mif</button><button type="button" data-v="f">✅ Fakt</button></div><div class="why">Fakt: TA/RA assistentlik va toʻlovdan ozod qilish.</div></div>
+            </div>
+            <div class="verdict" id="quizRes"></div>
+            <textarea data-save="a2" placeholder="Men ishongan mif va endi bilganim: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.3</span><span class="l-t" style="display:block">Raqobat va B reja</span>
+            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">🛟 B reja</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Davlat dasturlarida rad javobi oddiy holat. Kuchli nomzodlar ham rad etiladi. Farq shundaki, tayyor nomzodda B reja bor va u yozgan hujjatlar boshqa arizalarda ham ishlaydi.</div></div>
+          <div class="panel">
+            <div class="tbl"><table><thead><tr><th>Nazoratingizda</th><th>Nazoratingizdan tashqarida</th></tr></thead><tbody>
+              <tr><td>Muvofiqlikni tekshirish, hujjatlar sifati, muddatlar</td><td>Kvota, raqobatchilar soni</td></tr>
+              <tr><td>Liderlik va tadqiqot dalillari, insho</td><td>Komissiya tarkibi va ustuvorliklari</td></tr>
+              <tr><td>Til sertifikati va testlar rejasi</td><td>Siyosat va viza qoidalaridagi oʻzgarishlar</td></tr>
+            </tbody></table></div>
+            <h4>Artefaktlarni qayta ishlatish</h4>
+            <p>USA Lab’da yozilgan liderlik holatlari (STAR), shaxsiy bayonot va tavsiya materiallari boshqa dasturlarda ham ishlaydi: Master Lab, PhD Lab, DAAD yoki GKS arizalari, El-yurt umidi tanlovi.</p>
+            <h4>B rejangizni tanlang</h4>
+            <div class="chips" id="planB">
+              <button type="button" class="chip" data-b="Keyingi siklda qayta topshirish" aria-pressed="false">Keyingi siklda qayta</button>
+              <button type="button" class="chip" data-b="Boshqa davlatda magistratura (Master Lab)" aria-pressed="false">Boshqa davlatda magistratura</button>
+              <button type="button" class="chip" data-b="AQSh universitetiga toʻgʻridan-toʻgʻri PhD (D trek)" aria-pressed="false">AQSh PhD (D trek)</button>
+              <button type="button" class="chip" data-b="Boshqa davlat stipendiyasi (DAAD, GKS va boshqalar)" aria-pressed="false">Boshqa stipendiya</button>
+              <button type="button" class="chip" data-b="El-yurt umidi tanlovi" aria-pressed="false">El-yurt umidi</button>
+            </div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><p>Rad javobi oddiy holat. Nazoratingizdagi omillarga eʼtibor bering va B rejani oldindan tanlang: hujjatlaringiz boshqa arizalarda ham ishlaydi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: B reja</b><ul><li>“Asosiy qism” da kamida bitta B reja tanlang.</li></ul>
+            <textarea data-save="a3" placeholder="B rejam: ... | Qaysi hujjatlarimni qayta ishlataman: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Uch trek va personalar</span>
+            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">🧭 Trek tanlagich</span><span class="tag xp">+20 XP · trek +20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Trekni orzuga qarab emas, hozirgi holatingizga qarab tanlaysiz. Bitta “qizil bayroq” trekni butunlay yopishi mumkin.</div></div>
+          <div class="panel">
+            <h4>Personalar</h4>
+            <ul><li><b>B:</b> 2–3-kurs talabasi.</li><li><b>M:</b> 24–32 yosh, 2+ yil ish tajribali mutaxassis; energetika, geologiya, muhandislik kabi sohalarda.</li><li><b>D:</b> tadqiqot profili bor bakalavr yoki magistr.</li></ul>
+            <h4>Qizil bayroqlar</h4>
+            <ul><li><b>M:</b> 2 yillik ish tajribasi boʻlmasa, Fulbright yopiq.</li><li><b>B va M:</b> hozir chet elda yashayotganlar mos emas.</li><li><b>B:</b> 2026–2027 sikli hali eʼlon qilinmagan.</li></ul>
+            <h4>Trek tanlagich</h4>
+            <div class="formq" id="trkQ">
+              <div class="fq2"><p>Hozirgi holatingiz</p><div class="yn" data-f="st"><button type="button" data-v="ug">Bakalavr talabasi</button><button type="button" data-v="grad">Bakalavr bitiruvchisi</button><button type="button" data-v="ms">Magistr</button></div></div>
+              <div class="fq2"><p>Bakalavriatda kamida 1 yil oʻqishingiz qolganmi? (talabalar uchun)</p><div class="yn" data-f="left"><button type="button" data-v="y">Ha</button><button type="button" data-v="n">Yoʻq</button></div></div>
+              <div class="fq2"><p>Toʻliq ish tajribangiz 2 yil yoki undan koʻpmi?</p><div class="yn" data-f="exp"><button type="button" data-v="y">Ha</button><button type="button" data-v="n">Yoʻq</button></div></div>
+              <div class="fq2"><p>Kuchli tadqiqot tajribangiz bormi (loyiha, tezis, nashr)?</p><div class="yn" data-f="res"><button type="button" data-v="y">Ha</button><button type="button" data-v="n">Yoʻq</button></div></div>
+              <div class="fq2"><p>Hozir chet elda yashayapsizmi?</p><div class="yn" data-f="abr"><button type="button" data-v="y">Ha</button><button type="button" data-v="n">Yoʻq</button></div></div>
+            </div>
+            <div class="verdict" id="trkRes"></div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>B: talaba, kamida 1 yil qolgan. M: bitiruvchi + 2 yil tajriba, Oʻzbekistonda yashaydi. D: tadqiqot profili. Chet elda yashash B va M ni yopadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: trek</b><ul><li>“Asosiy qism” dagi tanlagichga javob bering.</li></ul>
+            <textarea data-save="a4" placeholder="Trekim: ... | Qizil bayroqlar: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.5</span><span class="l-t" style="display:block">Rasmiy manbalarni oʻqish</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🔎 6 savol</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">AQSh siyosati tez oʻzgaradi. Oʻtgan yilgi blog yoki Telegram post bugun notoʻgʻri boʻlishi mumkin. Yagona ishonchli manba: Toshkentdagi AQSh elchixonasi va Davlat departamenti sahifalari.</div></div>
+          <div class="panel">
+            <h4>6 savollik oʻqish usuli</h4>
+            <p>Har qanday eʼlonni oʻqiyotganda shu savollarga javob toping. Topganingizni belgilang:</p>
+            <div class="read6" id="read6">
+              <label class="ck"><input type="checkbox">1. Kim eʼlon qilgan? (elchixona, Davlat departamenti, universitet)</label>
+              <label class="ck"><input type="checkbox">2. Qaysi sikl va qaysi yil uchun?</label>
+              <label class="ck"><input type="checkbox">3. Kim topshira oladi? (fuqarolik, yashash joyi, daraja, tajriba)</label>
+              <label class="ck"><input type="checkbox">4. Muddat qachon va qaysi vaqt mintaqasida?</label>
+              <label class="ck"><input type="checkbox">5. Qanday hujjatlar va testlar kerak?</label>
+              <label class="ck"><input type="checkbox">6. Qayerga va qanday topshiriladi?</label>
+            </div>
+            <h4>Viza va dasturlar: 2026-10-03 holatiga</h4>
+            <div class="facts2">
+              <div class="fct"><b>Kirish cheklovlari</b>2026-yil 1-yanvardan amal qiluvchi eʼlon qilingan roʻyxatlarda Oʻzbekiston yoʻq; qisman cheklangan mamlakatlar uchun F, M, J vizalari ham cheklangan.<a href="https://smc.edu/student-support/international-education/f-1-travel-bans.php" target="_blank" rel="noopener">smc.edu</a></div>
+              <div class="fct"><b>Immigratsion vizalar</b>Oʻzbekiston kiritilgan 75 mamlakat uchun doimiy yashash vizalari toʻxtatilgan; talaba vizalariga tegishli emas (ikkilamchi manba).<a href="https://yep.uz/en/2026/01/us-immigrant-visas-suspension-2026/" target="_blank" rel="noopener">yep.uz</a></div>
+              <div class="fct"><b>Duration of status</b>F-1 va J-1 uchun muddatli kirish qoidasi sud tomonidan toʻxtatilgan; amaldagi tizim saqlanmoqda, ish davom etmoqda.<a href="https://internationalcenter.umich.edu/about/news/district-court-postpones-implementation-dhs-final-rule-eliminating-duration-status-f-and" target="_blank" rel="noopener">umich.edu</a></div>
+              <div class="fct"><b>STEM OPT</b>STEM yoʻnalishidagi F-1 bitiruvchilari uchun 12 oylik OPT ga qoʻshimcha 24 oy, jami 36 oygacha.<a href="https://www.casrai.org/guides/opt-stem-opt-international-graduate-researchers" target="_blank" rel="noopener">casrai.org</a></div>
+              <div class="fct"><b>Fulbright FFSP</b>Magistratura, 2 yilgacha; bakalavr diplomi, 2 yillik ish tajribasi, Oʻzbekistonda yashash; TOEFL va GRE/GMAT talab qilinadi.<a href="https://sammu.uz/en/announcements/2570440" target="_blank" rel="noopener">sammu.uz</a></div>
+              <div class="fct"><b class="wait">Global UGRAD</b>Oxirgi tasdiqlangan sikl 2025-yil avgust yoki 2026-yil yanvarda boshlangan; 2026–2027 sikli eʼloni topilmadi.<a href="https://worldlearning.org/?p=535" target="_blank" rel="noopener">worldlearning.org</a></div>
+            </div>
+            <div class="box warn"><b>Viza boʻyicha yuridik maslahat berilmaydi.</b> Bu jadval yoʻnalish uchun; qaror oldidan elchixona sahifasini tekshiring.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Har eʼlonni 6 savol bilan oʻqing: kim, qaysi sikl, kim topshira oladi, muddat, hujjatlar, qayerga. Siyosatni sanasi bilan kuzating.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: rasmiy manba konspekti</b><ul><li>Treklaringizdan biri uchun rasmiy eʼlonni toping va 6 savolga javob yozing.</li></ul>
+            <textarea data-save="a5" placeholder="Manba: ... | 1) ... 2) ... 3) ... 4) ... 5) ... 6) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.6</span><span class="l-t" style="display:block">Tayyorgarlik, kalendar va shartlar</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📅 Trek kalendari</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Fulbright uchun TOEFL va GRE, PhD uchun professor bilan aloqa va tavsiya xatlari vaqt oladi. Trek muddatiga 3 oydan kam qolgan boʻlsa, tayyor nomzod ham ulgurmasligi mumkin.</div></div>
+          <div class="panel">
+            <ul><li>Trek muddatidan <b>6–12 oy oldin</b> boshlash ideal; <b>3–6 oy</b> siqiq; <b>3 oydan kam</b> juda kech.</li><li>Muddatni joriy eʼlondan oling. B trek uchun sikl hali eʼlon qilinmagan.</li></ul>
+            <div class="fld" style="margin-top:10px;max-width:320px"><label for="tlDate">Trek muddati <small>(taxminiy boʻlishi mumkin)</small></label><input type="date" id="tlDate"></div>
+            <button class="btn btn-p" type="button" id="tlBtn">Hisoblash</button>
+            <div class="res" id="tlRes"></div>
+            <h4>Toʻlov shartlari</h4>
+            <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
+              <tr><td>Obuna</td><td><span data-py>699 000</span> soʻm/yil yoki <span data-pm>99 000</span> soʻm/oy</td></tr>
+              <tr><td>M0 (shu modul)</td><td>Bepul</td></tr>
+              <tr><td>B trek</td><td>2026–2027 sikli rasman eʼlon qilinmaguncha toʻlov qabul qilinmaydi</td></tr>
+              <tr><td>Muvofiqlik</td><td>Bitta “mos emas” bandi boʻlsa, bu trek hozir yopiq: boshqa trek yoki Lab tavsiya qilinadi</td></tr>
+              <tr><td>Bekor qilish</td><td>Istalgan vaqtda: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi</td></tr>
+              <tr><td>Qaytarish</td><td>Toʻlangan obuna puli qaytarilmaydi. Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat koʻrsatilmagan toʻlov</td></tr>
+              <tr><td>Kirmaydi</td><td>Insho yozib berish, viza boʻyicha yuridik maslahat, qabul yoki stipendiya kafolati</td></tr>
+            </tbody></table></div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Trek muddatidan 6–12 oy oldin boshlang. B trek uchun sikl eʼlonini kuting.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: kalendar va qaror</b><ul><li>Pastdagi <a href="#tool-rs">Tayyorgarlik koʻrsatkichi</a> va <a href="#qaror">Qaror</a> boʻlimini toʻldiring.</li></ul></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="vositalar">
+    <h2>Tayyorgarlik koʻrsatkichi</h2>
+    <div class="tool" id="tool-rs">
+      <div class="tool-h"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Tayyorgarlik koʻrsatkichi</h3><span>6 savol · 100 ball · +40 XP</span></div></div>
+      <div class="rs">
+        <div class="rsq" id="rsq"></div>
+        <div>
+          <svg class="radar" id="radar" viewBox="0 0 260 260" role="img" aria-label="Tayyorgarlik diagrammasi"></svg>
+          <div class="score"><b id="rsTot">0</b><span>/ 100</span></div>
+        </div>
+      </div>
+      <button class="btn btn-p" type="button" id="rsBtn" style="margin-top:8px">Natijani saqlash</button>
+      <div class="res" id="rsRes"></div>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges b6">
+      <div class="bdg" data-badge="cards"><img src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy">Xaritachi<small>3 karta</small></div>
+      <div class="bdg" data-badge="quiz"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Mif buzuvchi<small>Test 3+/4</small></div>
+      <div class="bdg" data-badge="trk"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Trek tanlovchi<small>B, M yoki D</small></div>
+      <div class="bdg" data-badge="read"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Manbachi<small>6 savol</small></div>
+      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Halol koʻzgu<small>Koʻrsatkich</small></div>
+      <div class="bdg" data-badge="dec"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Qaror qildi<small>Rozilik</small></div>
+    </div>
+  </section>
+
+  <section id="qaror">
+    <div class="decide">
+      <h2>Qaror va rozilik</h2>
+      <p class="sub">Natijalaringizdan avtomatik yigʻiladi.</p>
+      <div class="stmt" id="stmt"></div>
+      <div id="blockBox"></div>
+      <label class="ck"><input type="checkbox" id="cons1">Toʻlov shartlarini oʻqidim: toʻlangan obuna puli qaytarilmaydi, obunani istalgan vaqtda toʻxtatish mumkin.</label>
+      <label class="ck" style="margin-top:8px"><input type="checkbox" id="cons2">Insholarni oʻzim yozaman; Kompas viza boʻyicha yuridik maslahat va qabul yoki stipendiya kafolatini bermaydi.</label>
+      <div class="missing" id="missing"></div>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="decBtn">Qarorni tasdiqlash · +40 XP</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Nusxalash</button>
+        <a class="btn btn-g" href="usa-lab.html#narx">USA Lab narxlari</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>6 ta, bepul</div>
+      <div><b>Vaqt</b>~1 hafta</div>
+      <div><b>Natija</b>Dasturlar xaritasi + manba konspekti + koʻrsatkich + trek kalendari</div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="usa-lab.html">← USA Lab sahifasi</a>
+    <a class="btn btn-g" href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegramda savol berish</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/live-bar.js"></script>
+<script src="js/protect.js"></script>
+<script>
+// ── Kirish darvozasi: saytda faqat roʻyxatdan oʻtganlar; faylni kompyuterda ochganda koʻrib chiqish rejimi ──
+(function () {
+  var RET = "usa-lab-m0.html";
+  function unlock() { document.body.classList.remove("locked"); }
+  if (location.protocol === "file:") { unlock(); return; }
+  function lock(title, text, actions) { document.getElementById("gateT").textContent = title; document.getElementById("gateP").textContent = text; document.getElementById("gateA").hidden = !actions; }
+  function remember() {
+    try { sessionStorage.setItem("returnTo", RET); } catch (e) {}
+    try { localStorage.setItem("kompas_return", JSON.stringify({ to: RET, at: Date.now() })); } catch (e) {}
+  }
+  document.querySelectorAll("[data-ret]").forEach(function (a) { a.addEventListener("click", remember); });
+  var sb = window.supabase;
+  if (!sb || !sb.auth) { lock("Ulanib boʻlmadi", "Internetni tekshirib, sahifani yangilang. Muammo qolsa, t.me/kompaslab ga yozing.", false); return; }
+  sb.auth.getSession().then(function (r) {
+    var s = r && r.data && r.data.session;
+    if (!s) { remember(); lock("M0 roʻyxatdan oʻtganlar uchun", "USA Lab M0 bepul. Koʻrish uchun hisobingizga kiring yoki bepul roʻyxatdan oʻting.", true); return; }
+    unlock(); try { localStorage.removeItem("kompas_return"); } catch (e) {}
+  }).catch(function () { lock("Ulanib boʻlmadi", "Sahifani yangilang.", false); });
+})();
+</script>
+<script>
+(function () {
+  var KEY = "kompas_usa_m0_v1";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, cards: [], planB: [], trk: {}, read: [], rs: null, tl: null, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  var MON = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"];
+  function fmt(d) { return d.getDate() + "-" + MON[d.getMonth()] + ", " + d.getFullYear(); }
+  function addMonths(d, m) { var x = new Date(d); x.setMonth(x.getMonth() + m); return x; }
+
+  // ── XP ──
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#2563eb"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; S.xp = Math.min(MAX, S.xp + xp); save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M0 toʻliq yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  // ── Darslar ──
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Ajoyib! Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!";
+  }
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, 20, "Dars 0." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else $("tool-rs").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); t.value = S.notes[k] || "";
+    var tm; t.addEventListener("input", function () { clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); }, 300); });
+  });
+
+  // ── 0.1 Kartalar ──
+  document.querySelectorAll("[data-card]").forEach(function (c) {
+    var k = c.getAttribute("data-card");
+    c.addEventListener("click", function () {
+      var on = c.getAttribute("aria-pressed") !== "true"; c.setAttribute("aria-pressed", on ? "true" : "false");
+      if (on && S.cards.indexOf(k) < 0) { S.cards.push(k); save(); if (S.cards.length >= 3) award("cards", 0, "Xaritachi nishoni", "usa"); }
+    });
+  });
+
+  // ── 0.2 Mini-test ──
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Miflarni faktdan ajrata olasiz." : "Asosiy qismni yana bir oʻqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { var xp = r.right * 7 + (r.right === 4 ? 2 : 0); if (r.right >= 3) award("quiz", xp, "Mif buzuvchi nishoni", "shield"); else award("quizTry", xp, "Test: " + r.right + "/4", "shield"); }
+      });
+    });
+  });
+
+  // ── 0.3 B reja ──
+  var pb = document.querySelectorAll("#planB .chip");
+  function renderPlanB() { pb.forEach(function (c) { c.setAttribute("aria-pressed", S.planB.indexOf(c.getAttribute("data-b")) >= 0 ? "true" : "false"); }); }
+  pb.forEach(function (c) { c.addEventListener("click", function () { var v = c.getAttribute("data-b"), i = S.planB.indexOf(v); if (i >= 0) S.planB.splice(i, 1); else S.planB.push(v); save(); renderPlanB(); renderStmt(); }); });
+
+  // ── 0.4 Trek tanlagich ──
+  function trackRec() {
+    var t = S.trk; if (!t.st || !t.exp || !t.res || !t.abr || (t.st === "ug" && !t.left)) return null;
+    var recs = [], flags = [];
+    if (t.st === "ug") { if (t.abr === "y") flags.push("B: chet elda yashayotganlar mos emas"); else if (t.left === "n") flags.push("B: bakalavriatda kamida 1 yil qolishi kerak"); else recs.push("B"); }
+    if (t.st !== "ug") { if (t.exp === "n") flags.push("M: 2 yillik ish tajribasi yoʻq, Fulbright yopiq"); else if (t.abr === "y") flags.push("M: chet elda yashayotganlar mos emas"); else recs.push("M"); }
+    if (t.res === "y" && t.st !== "ug") recs.push("D"); else if (t.res === "n" && t.st !== "ug") flags.push("D: kuchli tadqiqot tajribasi kerak");
+    if (t.st === "ug" && t.res === "y") flags.push("D: avval bakalavriatni tugatish kerak (tadqiqot profili foydali)");
+    return { recs: recs, flags: flags };
+  }
+  function renderTrack() {
+    document.querySelectorAll("#trkQ .yn").forEach(function (g) { var k = g.getAttribute("data-f"); g.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", S.trk[k] === b.getAttribute("data-v") ? "true" : "false"); }); });
+    var r = $("trkRes"), rec = trackRec();
+    if (!rec) { r.className = "verdict"; renderStmt(); return; }
+    var names = { B: "B (Global UGRAD, sikl kutilmoqda)", M: "M (Fulbright)", D: "D (universitet PhD)" };
+    r.className = "verdict show box " + (rec.recs.length ? "info" : "warn");
+    r.innerHTML = (rec.recs.length ? "<b>Sizga mos trek:</b> " + rec.recs.map(function (x) { return names[x]; }).join(", ") + "." : "<b>Hozir mos trek topilmadi.</b> Muqobil: <a href=\"bachelor-lab.html\">Bachelor Lab</a>, <a href=\"master-lab.html\">Master Lab</a> yoki <a href=\"phd-lab.html\">PhD Lab</a>.") +
+      (rec.flags.length ? '<ul style="margin:8px 0 0 20px">' + rec.flags.map(function (f) { return "<li>" + f + "</li>"; }).join("") + "</ul>" : "");
+    award("trk", 20, "Trek tanlovchi nishoni", "compass"); renderStmt();
+  }
+  $("trkQ").addEventListener("click", function (e) { var b = e.target.closest("button[data-v]"); if (!b) return; S.trk[b.parentNode.getAttribute("data-f")] = b.getAttribute("data-v"); save(); renderTrack(); });
+
+  // ── 0.5 6 savol ──
+  var rd = document.querySelectorAll("#read6 input");
+  rd.forEach(function (x, i) { x.checked = S.read.indexOf(i) >= 0; x.addEventListener("change", function () { S.read = []; rd.forEach(function (y, j) { if (y.checked) S.read.push(j); }); save(); renderRead(); }); });
+  function renderRead() { rd.forEach(function (x) { x.closest(".ck").classList.toggle("on", x.checked); }); if (S.read.length === 6) award("read", 0, "Manbachi nishoni", "scroll"); }
+
+  // ── 0.6 Kalendar ──
+  if (S.tl) $("tlDate").value = S.tl.date;
+  function renderTl() {
+    if (!S.tl) return;
+    var dl = new Date(S.tl.date + "T00:00:00"), ideal = addMonths(dl, -12), late = addMonths(dl, -6), stop = addMonths(dl, -3);
+    var today = new Date(), v; today.setHours(0, 0, 0, 0);
+    if (today < ideal) v = ["Erta: hali vaqt bor", "green", "Ideal oyna " + fmt(ideal) + " dan ochiladi. Hozirdan til testlari va liderlik dalillari ustida ishlang."];
+    else if (today <= late) v = ["Ayni vaqti", "green", "Siz 6–12 oylik ideal oynadasiz. Hozir boshlang."];
+    else if (today <= stop) v = ["Siqiq", "gold", "6 oydan kam qolgan. Testlar va tavsiya xatlarini birinchi navbatda boshlang."];
+    else if (today < dl) v = ["Juda kech", "red", "3 oydan kam qolgan. Keyingi siklni rejalashtirish tavsiya etiladi."];
+    else v = ["Sana oʻtgan", "red", "Keyingi sikl muddatini kiriting."];
+    S.tl.verdict = v[0];
+    var t0 = Math.min(today.getTime(), ideal.getTime()), span = Math.max(dl.getTime(), today.getTime()) - t0 || 1;
+    function x(d) { return Math.max(0, Math.min(100, (d - t0) / span * 100)); }
+    var segs = [[ideal, late, "#1a7a4a"], [late, stop, "#d9a441"], [stop, dl, "#b42318"]];
+    $("tlRes").className = "res show";
+    $("tlRes").innerHTML = '<div class="verd" style="color:var(--' + v[1] + ')">' + v[0] + '</div><p style="margin-top:4px">' + v[2] + "</p>" +
+      '<div class="tline2"><div class="bar">' + (x(ideal) > 0 ? '<span style="width:' + x(ideal) + '%;background:transparent"></span>' : "") + segs.map(function (s) { return '<span style="width:' + (x(s[1]) - x(s[0])) + "%;background:" + s[2] + '"></span>'; }).join("") + "</div>" +
+      '<span class="mk" style="left:' + x(today) + '%"><i style="background:#2d4a3e"></i><span>Bugun</span></span>' +
+      '<span class="mk" style="left:' + x(dl) + '%;transform:translateX(-100%)"><i style="background:#b42318;margin-left:auto;margin-right:0"></i><span>Muddat</span></span></div>' +
+      '<div class="phs"><div class="ph"><i style="background:#1a7a4a"></i><span>Ideal (12–6 oy oldin)</span><b>' + fmt(ideal) + " – " + fmt(late) + '</b></div><div class="ph"><i style="background:#d9a441"></i><span>Siqiq (6–3 oy)</span><b>' + fmt(late) + " – " + fmt(stop) + '</b></div><div class="ph"><i style="background:#b42318"></i><span>Juda kech (3 oydan kam)</span><b>' + fmt(stop) + " – " + fmt(dl) + "</b></div></div>";
+  }
+  $("tlBtn").addEventListener("click", function () {
+    var d = $("tlDate").value; if (!d) { toast("Trek muddatini kiriting", "calendar"); $("tlDate").focus(); return; }
+    S.tl = { date: d }; renderTl(); save(); renderStmt(); toast("Hisoblandi", "calendar");
+  });
+
+  // ── Tayyorgarlik koʻrsatkichi (usa-lab.html dagi bilan bir xil) ──
+  var Q = [
+    ["Muvofiqlik (diplom, ish tajribasi, yashash joyi)", 20, [[20, "Trek shartlariga toʻliq mos kelaman"], [10, "Baʼzi shartlarni hali tekshirmadim"], ["x", "Kamida bitta shartga mos emasman"]]],
+    ["Liderlik izi", 20, [[20, "3+ real liderlik holatim bor"], [10, "1–2 holat bor"], [0, "Hali yoʻq"]]],
+    ["Maqsad aniqligi", 15, [[15, "Nega AQSh, nega soha, Oʻzbekistonga hissam aniq"], [8, "Qisman aniq"], [0, "Aniq emas"]]],
+    ["Akademik va tadqiqot profili", 15, [[15, "Trek talabiga mos"], [8, "Qisman mos"], [0, "Zaif"]]],
+    ["Til va testlar", 15, [[15, "TOEFL/IELTS bor, GRE rejasi bor"], [10, "Til sertifikati bor"], [5, "Sana belgilangan"], [0, "Reja yoʻq"]]],
+    ["Trek muddatigacha vaqt", 15, [[15, "6–12 oy"], [12, "12 oydan koʻp"], [6, "3–6 oy"], [0, "3 oydan kam"]]]
+  ];
+  var SHORT = ["Muvofiqlik", "Liderlik", "Maqsad", "Profil", "Til", "Vaqt"];
+  var ans = (S.rs && S.rs.ans) || [null, null, null, null, null, null];
+  $("rsq").innerHTML = Q.map(function (q, i) {
+    return '<div class="fld"><label for="q' + i + '">' + (i + 1) + ". " + q[0] + " <small>(" + q[1] + " ball)</small></label><select id=\"q" + i + '"><option value="">Tanlang</option>' + q[2].map(function (o) { return '<option value="' + o[0] + '"' + (String(ans[i]) === String(o[0]) ? " selected" : "") + ">" + o[1] + "</option>"; }).join("") + "</select></div>";
+  }).join("");
+  var C = 130, R = 92;
+  function pt(i, r) { var a = -Math.PI / 2 + i * Math.PI / 3; return [C + r * Math.cos(a), C + r * Math.sin(a)]; }
+  function num(v) { return v === "x" || v == null ? 0 : v; }
+  function total() { return ans.reduce(function (s, v) { return s + num(v); }, 0); }
+  function gaps() { return Q.filter(function (q, i) { return ans[i] != null && (ans[i] === "x" || ans[i] < q[1] * 0.5); }).map(function (q) { return q[0]; }); }
+  function drawRadar() {
+    var g = "";
+    [.25, .5, .75, 1].forEach(function (k) { g += '<polygon points="' + Q.map(function (_, i) { return pt(i, R * k).join(","); }).join(" ") + '" fill="none" stroke="#e2ded3"/>'; });
+    Q.forEach(function (q, i) { var p = pt(i, R); g += '<line x1="' + C + '" y1="' + C + '" x2="' + p[0] + '" y2="' + p[1] + '" stroke="#e2ded3"/>'; var t = pt(i, R + 18); g += '<text x="' + t[0] + '" y="' + (t[1] + 3) + '" text-anchor="middle">' + SHORT[i] + "</text>"; });
+    var frac = ans.map(function (v, i) { return num(v) / Q[i][1]; });
+    g += '<polygon points="' + frac.map(function (f, i) { return pt(i, R * Math.max(.04, f)).join(","); }).join(" ") + '" fill="rgba(196,98,45,.22)" stroke="#c4622d" stroke-width="2.5" stroke-linejoin="round"/>';
+    frac.forEach(function (f, i) { var p = pt(i, R * Math.max(.04, f)); var gap = ans[i] != null && f < .5; g += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (gap ? 5.5 : 4) + '" fill="' + (gap ? "#b42318" : "#2d4a3e") + '"/>'; });
+    $("radar").innerHTML = g; $("rsTot").textContent = total();
+  }
+  Q.forEach(function (_, i) { $("q" + i).addEventListener("change", function (e) { var v = e.target.value; ans[i] = v === "" ? null : v === "x" ? "x" : +v; drawRadar(); }); });
+  function verdict(t, bl) { return bl ? ["Bu trek hozir yopiq", "red", "Muvofiqlik boʻyicha bitta “mos emas” bandi boʻlsa, bu trek hozir yopiq. Boshqa trek yoki Lab tavsiya qilinadi."] : t >= 70 ? ["Hozir boshlash mumkin", "green", "Asosiy yoʻnalishlar yetarli."] : t >= 45 ? ["Avval boʻshliqlarni yoping", "gold", "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak."] : ["Bu siklga erta", "red", "Hozir toʻlash tavsiya etilmaydi. Avval boʻshliqlarni yoping."]; }
+  function renderRs() {
+    if (!S.rs) return;
+    var v = verdict(S.rs.total, S.rs.blocked), r = $("rsRes"); r.className = "res show";
+    r.innerHTML = '<div class="verd" style="color:var(--' + v[1] + ')">' + S.rs.total + " / 100 · " + v[0] + '</div><p style="margin-top:4px">' + v[2] + "</p>" + ((S.rs.blocked || S.rs.total < 70) && S.rs.gaps.length ? '<ul class="gaps">' + S.rs.gaps.map(function (g) { return "<li>" + g + "</li>"; }).join("") + "</ul>" : "");
+  }
+  $("rsBtn").addEventListener("click", function () {
+    var miss = ans.filter(function (v) { return v == null; }).length;
+    if (miss) { toast("Yana " + miss + " ta savolga javob bering", "chart"); return; }
+    S.rs = { ans: ans.slice(), total: total(), gaps: gaps(), blocked: ans[0] === "x" }; save(); renderRs(); renderStmt();
+    if (!award("rs", 40, "Halol koʻzgu nishoni", "chart")) toast("Natija yangilandi", "chart");
+  });
+  drawRadar();
+
+  // ── Qaror ──
+  function stmtText() {
+    var p = [], rec = trackRec();
+    if (rec) p.push(rec.recs.length ? "Mos trekim: " + rec.recs.join(", ") + "." : "Hozir mos AQSh treki topilmadi.");
+    if (S.rs) p.push("Tayyorgarlik koʻrsatkichim " + S.rs.total + "/100" + (S.rs.blocked ? " (muvofiqlik: mos emas)" : "") + ".");
+    if (S.tl && S.tl.verdict) p.push("Trek muddati " + fmt(new Date(S.tl.date + "T00:00:00")) + ", vaqt boʻyicha: " + S.tl.verdict.toLowerCase() + ".");
+    if (S.planB.length) p.push("B rejam: " + S.planB.join("; ") + ".");
+    if (rec && S.rs) {
+      var onlyB = rec.recs.length === 1 && rec.recs[0] === "B", go = rec.recs.length && !S.rs.blocked && S.rs.total >= 45 && !(S.tl && /kech|oʻtgan/i.test(S.tl.verdict));
+      p.push(!go ? "Hozir AQSh trekiga obuna boʻlmayman, B rejamni koʻrib chiqaman." : onlyB ? "B trek sikli eʼlon qilinishini kutib, tayyorgarlikni boshlayman." : "Men shu siklga tayyorlanishni boshlayman.");
+    }
+    return p.join(" ");
+  }
+  function isBlocked() { var rec = trackRec(); return (S.rs && S.rs.blocked) || (rec && !rec.recs.length); }
+  function renderStmt() {
+    var t = stmtText();
+    $("stmt").innerHTML = t ? t.replace(/(\d+\/100|shu siklga|Mos trekim: [BMD, ]+)/g, "<b>$1</b>") : "Bayonot shu yerda paydo boʻladi. Trek tanlagich va koʻrsatkichni toʻldiring.";
+    $("blockBox").innerHTML = isBlocked() ? '<div class="blocked">⛔ Hozir mos trek yoki muvofiqlik yoʻq: USA Lab obunasini toʻlash tavsiya etilmaydi. B rejangizni koʻrib chiqing.</div>' : "";
+    var miss = []; if (!trackRec()) miss.push("trek tanlagich"); if (!S.rs) miss.push("Tayyorgarlik koʻrsatkichi");
+    $("missing").textContent = miss.length ? "Yetishmayapti: " + miss.join(", ") + "." : "";
+    $("decBtn").disabled = !!S.done.dec; if (S.done.dec) $("decBtn").textContent = "✓ Qaror tasdiqlangan";
+  }
+  $("decBtn").addEventListener("click", function () {
+    if (!trackRec() || !S.rs) { toast("Avval trek tanlagich va koʻrsatkichni toʻldiring", "lock"); return; }
+    if (!$("cons1").checked || !$("cons2").checked) { toast("Ikkala bandni ham belgilang", "shield"); return; }
+    award("dec", 40, "Qaror qildi nishoni", "seedling"); confetti(); renderStmt();
+  });
+  $("copyBtn").addEventListener("click", function () {
+    var t = "Kompas Lab USA Lab M0 natijam:\n" + (stmtText() || "(hali toʻldirilmagan)") + "\n\nObuna: " + $("pyTxt").textContent + " soʻm/yil yoki " + $("pmTxt").textContent + " soʻm/oy. M0 bepul.\nBatafsil: https://kompaslab.uz/usa-lab";
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", t); }); else prompt("Nusxalang:", t);
+  });
+
+  function renderAll() {
+    var keys = ["l1", "l2", "l3", "l4", "l5", "l6", "trk", "rs", "dec"], n = 0;
+    document.querySelectorAll("[data-node]").forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + keys.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+    lessons.forEach(renderLesson);
+  }
+
+  document.querySelector("[data-py]").id = "pyTxt"; document.querySelector("[data-pm]").id = "pmTxt";
+  try {
+    fetch("https://usxpkmbjrdllnitlzdpq.supabase.co/rest/v1/rpc/kompas_public_stats", { method: "POST", headers: { "Content-Type": "application/json", apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8" }, body: "{}" })
+      .then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+        var p = d && d.prices && d.prices["usa-lab"]; if (!p) return;
+        if (p.y) document.querySelectorAll("[data-py]").forEach(function (el) { el.textContent = nf(p.y); });
+        if (p.m) document.querySelectorAll("[data-pm]").forEach(function (el) { el.textContent = nf(p.m); });
+      }).catch(function () {});
+  } catch (e) {}
+
+  renderQuiz(); renderPlanB(); renderTrack(); renderRead(); renderRs(); renderTl(); renderStmt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>
