@@ -28,6 +28,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 | `admin.html` | Admin panel (roʻyxatdan oʻtganlar, CSV, narxlar, analitika) | Qoʻlda |
 | `login.html`, `register.html`, `payment.html` | Kirish; toʻlov (**yopiq**, Click/Payme ulanmagan) | Qoʻlda |
 | `js/config.js` | Supabase mijozi `window.supabase` | — |
+| `js/globe.js`, `data/globe.json` | Bosh sahifadagi "Toshkentdan qayerga?" globusi (Canvas 2D, samolyot, chegaralar, shaharlar). Mamlakat→Lab roʻyxati `DEST` da. Prototip: `globe-demo.html` (noindex) | Maʼlumot: `tools/globe/build_globe.py` (Natural Earth 1:110m) |
 | `js/live-bar.js` | Tepadagi panel: hozir saytda, roʻyxatdan oʻtganlar, bugun/hafta/oy/yil tashriflari | — |
 | `js/protect.js` | Nusxa olishni cheklash + "kompaslab.uz" suv belgisi (faqat kirganlarga) | — |
 | `js/pwa.js`, `sw.js`, `manifest.webmanifest`, `offline.html` | Telefonga oʻrnatish (PWA), oflayn | Rasm/CSS keshini hammaga yangilash: `sw.js` dagi `V = "kl-v1"` ni oshir |

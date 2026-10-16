@@ -104,30 +104,80 @@
       // Boshqa poytaxtlar: mayda nuqta
       if (zoom > 1.3) { ctx.fillStyle = C.land; ctx.globalAlpha = 0.5; D.cap.forEach(function (c) { var p = proj(c[0], c[1]); if (p[2] > 0.1) ctx.fillRect(p[0] - 1.2, p[1] - 1.2, 2.4, 2.4); }); ctx.globalAlpha = 1; }
       // Yoylar
-      var ph = ((performance.now() - t0) / 2600) % 1;
       DEST.forEach(function (d) {
-        var on = sel === d.id; ctx.beginPath(); var pen = false;
+        var on = sel === d.id, cur = !sel && flight().d === d; ctx.beginPath(); var pen = false;
         for (var k = 0; k <= 48; k++) {
           var q = slerp(ORIGIN, d, k / 48), p = proj(q[0], q[1]), x = W / 2 + (p[0] - W / 2) * q[2], y = H / 2 + (p[1] - H / 2) * q[2];
           if (p[2] > -0.1) { if (pen) ctx.lineTo(x, y); else ctx.moveTo(x, y); pen = true; } else pen = false;
         }
-        ctx.strokeStyle = C.arc; ctx.globalAlpha = on ? 0.95 : sel ? 0.18 : 0.5; ctx.lineWidth = on ? 2.4 : 1.2; ctx.stroke(); ctx.globalAlpha = 1;
-        if (!reduce && (!sel || on)) { var q2 = slerp(ORIGIN, d, ph), p2 = proj(q2[0], q2[1]); if (p2[2] > 0) { ctx.beginPath(); ctx.arc(W / 2 + (p2[0] - W / 2) * q2[2], H / 2 + (p2[1] - H / 2) * q2[2], 2.6, 0, 2 * Math.PI); ctx.fillStyle = C.arc; ctx.fill(); } }
+        ctx.strokeStyle = C.arc; ctx.globalAlpha = on || cur ? 0.95 : sel ? 0.18 : 0.45; ctx.lineWidth = on ? 2.4 : 1.2; ctx.stroke(); ctx.globalAlpha = 1;
       });
-      // Shaharlar: poytaxt (halqa) va asosiy shaharlar
-      var showAll = zoom >= 1.9;
-      Object.keys(D.city).forEach(function (iso) {
+      // Shaharlar: avval tanlangan mamlakat, keyin Toshkent, keyin boshqa poytaxtlar; yozuvlar bir-birini bosmaydi
+      var boxes = [], order = Object.keys(D.city).sort(function (x, y) { return (y === sel) - (x === sel) || (y === ORIGIN.iso) - (x === ORIGIN.iso); });
+      function free(x, y, w, h) { for (var i = 0; i < boxes.length; i++) { var q = boxes[i]; if (x < q[0] + q[2] && x + w > q[0] && y < q[1] + q[3] && y + h > q[1]) return false; } boxes.push([x, y, w, h]); return true; }
+      var pts2 = [];
+      order.forEach(function (iso) {
         var isSel = iso === sel, isOr = iso === ORIGIN.iso;
         D.city[iso].forEach(function (c) {
-          var p = proj(c[1] * R, c[2] * R); if (p[2] <= 0.05) return;
-          var cap = c[3] === 1, big = cap && (isSel || isOr || showAll);
-          if (!cap && !(isSel || (isOr && zoom >= 1.5) || showAll)) return;
-          ctx.beginPath(); ctx.arc(p[0], p[1], cap ? (isSel ? 6 : 4.5) : 2.6, 0, 2 * Math.PI);
-          ctx.fillStyle = cap ? (isOr ? C.land : C.arc) : "#fff"; ctx.fill(); ctx.lineWidth = cap ? 2 : 1.4; ctx.strokeStyle = cap ? "#fff" : (isOr ? C.land : C.arc); ctx.stroke();
-          if (big || isSel || (isOr && zoom >= 1.5) || (showAll && !cap && zoom >= 2.4)) label(c[0] + (cap ? " ★" : ""), p[0] + 8, p[1] + 4, cap ? 12.5 : 11, cap ? 800 : 600, C.land);
+          var cap = c[3] === 1;
+          if (!cap && !isSel && !(isOr && zoom >= 1.5)) return;
+          var p = proj(c[1] * R, c[2] * R); if (p[2] <= 0.05 || p[0] < 0 || p[0] > W || p[1] < 0 || p[1] > H) return;
+          pts2.push([p, cap, isOr, isSel]);
+          var want = isSel || isOr || (cap && zoom >= 1.9);
+          if (!want) return;
+          var txt = c[0] + (cap ? " ★" : ""), fs = cap ? 12.5 : 11;
+          ctx.font = (cap ? 800 : 600) + " " + fs + "px Outfit, sans-serif";
+          var w = ctx.measureText(txt).width;
+          if (free(p[0] + 7, p[1] - fs + 3, w + 2, fs + 2)) pts2[pts2.length - 1].push(txt, fs);
         });
       });
+      pts2.forEach(function (o) {
+        var p = o[0], cap = o[1], isOr = o[2], isSel = o[3];
+        ctx.beginPath(); ctx.arc(p[0], p[1], cap ? (isSel ? 6 : 4.5) : 2.6, 0, 2 * Math.PI);
+        ctx.fillStyle = cap ? (isOr ? C.land : C.arc) : "#fff"; ctx.fill(); ctx.lineWidth = cap ? 2 : 1.4; ctx.strokeStyle = cap ? "#fff" : (isOr ? C.land : C.arc); ctx.stroke();
+        if (o[4]) label(o[4], p[0] + 8, p[1] + 4, o[5], cap ? 800 : 600, C.land);
+      });
       DEST.forEach(function (d) { d._p = proj(d.lat * R, d.lon * R); });
+      plane();
+    }
+    // ── Samolyot: tanlangan yoʻnalishda, aks holda yoʻnalishlar boʻylab navbat bilan uchadi ──
+    var FLY = 3600;
+    function flight() {
+      var el = performance.now() - t0, d, t;
+      if (sel) { d = DEST.filter(function (x) { return x.id === sel; })[0]; t = (el % FLY) / FLY; }
+      else { var n = reduce ? 0 : Math.floor(el / FLY); d = DEST[n % DEST.length]; t = (el % FLY) / FLY; }
+      if (reduce) t = 0.55;
+      return { d: d, t: t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2 };
+    }
+    function scr(q) { var p = proj(q[0], q[1]); return [W / 2 + (p[0] - W / 2) * q[2], H / 2 + (p[1] - H / 2) * q[2], p[2], p]; }
+    function plane() {
+      var f = flight(); if (!f.d) return;
+      var t = Math.min(0.985, Math.max(0.015, f.t)), q = slerp(ORIGIN, f.d, t), a = scr(q), b = scr(slerp(ORIGIN, f.d, t + 0.01));
+      if (a[2] <= 0.02) return;
+      var lift = (q[2] - 1) / 0.16, s = (7 + 6 * lift) * Math.min(1.8, Math.sqrt(zoom)) * (W < 500 ? 0.9 : 1), ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
+      var fade = Math.min(1, Math.min(t, 1 - t) * 12);
+      // Yerdagi soya: balandlik qancha katta boʻlsa, shuncha uzoq va xira
+      ctx.save(); ctx.globalAlpha = 0.18 * fade * (1 - 0.4 * lift);
+      ctx.translate(a[3][0] + 3 * lift, a[3][1] + 4 * lift); ctx.rotate(ang); ctx.scale(s * 0.9, s * 0.9);
+      shape(); ctx.fillStyle = "#0d1f18"; ctx.fill(); ctx.restore();
+      // Samolyot: hajm va soya bilan; qanotlar biroz qiyshayadi (bank)
+      ctx.save(); ctx.globalAlpha = fade; ctx.translate(a[0], a[1]); ctx.rotate(ang);
+      var bank = Math.sin(t * Math.PI * 2) * 0.12; ctx.scale(s, s * (1 - Math.abs(bank)));
+      var g = ctx.createLinearGradient(0, -1, 0, 1); g.addColorStop(0, "#ffffff"); g.addColorStop(0.5 + bank, "#eef2ef"); g.addColorStop(1, "#b9c7c0");
+      shape(); ctx.fillStyle = g; ctx.fill(); ctx.lineWidth = 0.09; ctx.strokeStyle = C.land; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0.55, 0); ctx.lineTo(-0.7, 0); ctx.lineWidth = 0.1; ctx.strokeStyle = C.arc; ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(0.78, 0, 0.12, 0.07, 0, 0, 2 * Math.PI); ctx.fillStyle = C.land; ctx.fill();
+      ctx.restore();
+    }
+    // Samolyot shakli (tepadan), burni +x tomonda, oʻlchami ~2 birlik
+    function shape() {
+      ctx.beginPath();
+      ctx.moveTo(1, 0); ctx.quadraticCurveTo(0.95, -0.11, 0.7, -0.12);
+      ctx.lineTo(0.18, -0.12); ctx.lineTo(-0.28, -0.95); ctx.lineTo(-0.46, -0.95); ctx.lineTo(-0.24, -0.12);
+      ctx.lineTo(-0.72, -0.1); ctx.lineTo(-0.94, -0.42); ctx.lineTo(-1.06, -0.42); ctx.lineTo(-0.96, -0.06);
+      ctx.lineTo(-0.96, 0.06); ctx.lineTo(-1.06, 0.42); ctx.lineTo(-0.94, 0.42); ctx.lineTo(-0.72, 0.1);
+      ctx.lineTo(-0.24, 0.12); ctx.lineTo(-0.46, 0.95); ctx.lineTo(-0.28, 0.95); ctx.lineTo(0.18, 0.12);
+      ctx.lineTo(0.7, 0.12); ctx.quadraticCurveTo(0.95, 0.11, 1, 0); ctx.closePath();
     }
     var slowDev = false, ft = [], lastT = 0, odd = false;
     function loop(now) {
@@ -179,9 +229,12 @@
     window.addEventListener("pointerup", up); window.addEventListener("pointercancel", up);
     cv.style.touchAction = "pan-y";
     size(); window.addEventListener("resize", size);
-    getData(function (d) { D = d; DEST.forEach(function (x) { destIdx[d.idx[x.id]] = 1; }); draw(); });
-    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { es[0].isIntersecting && !document.hidden ? start() : stop(); }, { rootMargin: "100px" }).observe(root);
-    else start();
+    var asked = false;
+    function load() { if (asked) return; asked = true; getData(function (d) { D = d; DEST.forEach(function (x) { destIdx[d.idx[x.id]] = 1; }); draw(); }); }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { if (es[0].isIntersecting) load(); }, { rootMargin: "600px" }).observe(root);
+      new IntersectionObserver(function (es) { es[0].isIntersecting && !document.hidden ? start() : stop(); }, { rootMargin: "100px" }).observe(root);
+    } else { load(); start(); }
     document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); });
     root.kglobe = { show: show };
   }
