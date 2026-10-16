@@ -1,0 +1,21 @@
+/* ═══════════════════════════════════════════════════════════════
+   KOMPAS LAB — brand.css
+   Logotip: ikki qatlam (Lab + strelka). Sahifa ochilganda strelka
+   pastdan koʻtarilib "K" ni hosil qiladi; ustiga kelganda yana biroz
+   koʻtariladi: "kuzatuvdan kashfiyotga" — yuqoriga harakat.
+   ═══════════════════════════════════════════════════════════════ */
+.klogo{position:relative;display:inline-block;flex:none;width:38px;height:38px;border-radius:11px;background:#fff;
+  box-shadow:0 1px 2px rgba(26,46,38,.10),0 4px 14px rgba(26,46,38,.10);overflow:hidden;vertical-align:middle}
+.klogo>img{position:absolute!important;left:3px!important;top:3px!important;width:calc(100% - 6px)!important;height:calc(100% - 6px)!important;
+  max-width:none!important;margin:0!important;display:block}
+.klogo-sm{width:32px;height:32px;border-radius:9px}
+
+@media (prefers-reduced-motion:no-preference){
+  .klogo-b{animation:klogoIn .55s cubic-bezier(.2,.8,.2,1) both}
+  .klogo-a{animation:klogoRise .9s .2s cubic-bezier(.3,1.4,.5,1) both;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+  a:hover>.klogo .klogo-a,a:focus-visible>.klogo .klogo-a,.klogo:hover .klogo-a{transform:translateY(-9%)}
+  a:hover>.klogo,a:focus-visible>.klogo{box-shadow:0 1px 2px rgba(26,46,38,.10),0 8px 22px rgba(26,46,38,.16)}
+  .klogo{transition:box-shadow .3s}
+}
+@keyframes klogoIn{from{opacity:0;transform:scale(.7) rotate(-10deg)}to{opacity:1;transform:none}}
+@keyframes klogoRise{0%{opacity:0;transform:translateY(70%)}55%{opacity:1}100%{opacity:1;transform:translateY(0)}}

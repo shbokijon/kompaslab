@@ -159,7 +159,7 @@ async function requireAdmin() {
     APP_CONFIG.adminEmails.includes(auth.user.email)
 
   if (!isAdmin) {
-    showToast('⛔ Bu sahifaga kirish uchun admin huquqi kerak', 'error')
+    if (typeof showToast === 'function') showToast('⛔ Bu sahifaga kirish uchun admin huquqi kerak', 'error')
     setTimeout(() => {
       window.location.href = APP_CONFIG.routes.dashboard
     }, 1500)
