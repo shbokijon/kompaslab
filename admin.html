@@ -212,6 +212,12 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kompas Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script src="js/pwa.js" defer></script>
+<meta name="theme-color" content="#2d4a3e">
 <link rel="stylesheet" href="css/brand.css">
 </head>
 <body style="display:none">
@@ -480,6 +486,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 
     <!-- ANALYTICS -->
     <div class="sec" id="sec-analytics">
+      <div class="card" style="margin-bottom:14px">
+        <div class="ch"><h2>📱 Ilova (telefonga oʻrnatish)</h2><button class="btn bs bsm" onclick="loadPwaStats()">🔄 Yangilash</button></div>
+        <div id="pwaStats" style="padding:4px 2px 2px;font-size:14px;color:var(--muted)">Yuklanmoqda...</div>
+      </div>
       <div id="courseStatsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:14px"></div>
       <div class="card">
         <div class="ch"><h2>📈 Kurs statistikasi</h2><button class="btn bs bsm" onclick="loadCourseStats()">🔄 Yangilash</button></div>
@@ -1826,7 +1836,17 @@ function exportPaymentsCSV() {
 // ════════════════════════════════════════════════════════
 //  13. KURS STATISTIKASI
 // ════════════════════════════════════════════════════════
+async function loadPwaStats() {
+  const box = document.getElementById('pwaStats'); if (!box) return
+  const { data, error } = await supabase.rpc('kompas_pwa_stats')
+  if (error || !data) { box.textContent = 'Oʻqilmadi: ' + (error?.message || ''); return }
+  const p = data.by_platform || {}
+  box.innerHTML = '<b style="color:var(--text);font-size:18px">' + data.installed + '</b> ta oʻrnatish (Android tugmasi orqali) · <b style="color:var(--text);font-size:18px">' + data.standalone_users +
+    '</b> kishi ilova rejimida ochgan, shundan oxirgi 7 kunda <b style="color:var(--text)">' + data.standalone_7d + '</b> · taklif koʻrganlar: ' + data.prompt_shown +
+    '<br>Platforma: Android ' + (p.android || 0) + ', iPhone ' + (p.ios || 0) + '. iPhone oʻrnatishni bildirmaydi: u faqat ilova rejimida ochilganda sanaladi. Hisob 2026-10-16 dan boshlangan.'
+}
 async function loadCourseStats() {
+  loadPwaStats()
   const tbStats = document.getElementById('tbStats')
   if (tbStats) tbStats.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Yuklanmoqda...</td></tr>'
 

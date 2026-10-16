@@ -1,0 +1,24 @@
+{
+  "name": "Kompas Lab",
+  "short_name": "Kompas Lab",
+  "description": "Xorijda oʻqish, stipendiya va rasmiy yoʻllarga tayyorlov. Kuzatuvdan kashfiyotga.",
+  "lang": "uz",
+  "id": "/",
+  "start_url": "/?src=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f3ef",
+  "theme_color": "#2d4a3e",
+  "categories": ["education"],
+  "icons": [
+    { "src": "/img/brand/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/img/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/img/brand/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/img/brand/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Dashboard", "short_name": "Dashboard", "url": "/dashboard?src=pwa", "icons": [{ "src": "/img/brand/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Lablar", "short_name": "Lablar", "url": "/?src=pwa#labs", "icons": [{ "src": "/img/brand/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
