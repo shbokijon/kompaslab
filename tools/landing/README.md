@@ -12,6 +12,9 @@ Sahifalar qoʻlda emas, shu papkadagi fayllardan yaratiladi. HTML faylni toʻgʻ
 
 Yaratish: repo ildizidan `python3 tools/landing/build.py`.
 
+- `index.html` 2026-10 dan **qoʻlda** yuritiladi; generator uni faqat `--index` bilan yozadi (eskirgan, ishlatmang).
+- `postprocess.py` generator natijasiga keyin qoʻshilgan umumiy qismlarni qoʻshadi: logotip, favicon va PWA, havola rasmi (og:image), jonli panel, "Ilovani oʻrnatish", M0 tugmalari. Yangi umumiy qism qoʻshsangiz, shu yerga yozing.
+
 Qoidalar:
 - Kodda faqat qoʻsh qoʻshtirnoq (`"`). Matndagi `'` avtomatik ravishda `ʻ` (oʻ, gʻ) yoki `ʼ` ga aylanadi.
 - Atamalar: avval oʻzbekcha, keyin qavsda inglizcha. `render.py` dagi `TERMS` roʻyxati "Readiness Score" kabi atamalarni avtomatik tuzatadi.
