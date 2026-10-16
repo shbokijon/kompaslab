@@ -3,7 +3,7 @@
 //  Kurs materiallarini nusxalashni qiyinlashtiradi (toʻliq toʻsib boʻlmaydi):
 //   · matnni belgilash, nusxa olish, oʻng tugma, sudrash, chop etish oʻchiriladi
 //     (input/textarea ichida yozish va nusxalash ishlaydi)
-//   · ekranga juda xira suv belgisi: "Kompas Lab - Kuzatuvdan Kashfiyotga"
+//   · ekranga juda xira suv belgisi: "kompaslab.uz"
 // ═══════════════════════════════════════════════════════════════
 (function () {
   if (window.__kompasProtect) return;
@@ -42,7 +42,7 @@
 
   // Suv belgisi: diagonal, butun ekran boʻylab
   function watermark(text) {
-    var c = document.createElement("canvas"), w = 440, h = 260, g = c.getContext("2d");
+    var c = document.createElement("canvas"), w = 280, h = 170, g = c.getContext("2d");
     if (!g) return;
     c.width = w; c.height = h;
     g.translate(w / 2, h / 2); g.rotate(-0.4);
@@ -58,7 +58,7 @@
     var sb = window.supabase;
     if (!sb || !sb.auth || typeof sb.auth.getSession !== "function") return;
     sb.auth.getSession().then(function (r) {
-      if (r && r.data && r.data.session) watermark("Kompas Lab - Kuzatuvdan Kashfiyotga");
+      if (r && r.data && r.data.session) watermark("kompaslab.uz");
     }).catch(function () {});
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
