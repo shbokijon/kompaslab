@@ -197,10 +197,25 @@ body{font-family:'Outfit',sans-serif;background:#0f0f0f;color:var(--text);displa
 }
 .toast.show{transform:translateX(-50%) translateY(0);}
 
+.ls-open{display:none;}
+.ls-bd{display:none;}
 @media(max-width:800px){
-  .ls{display:none;}
-  body{flex-direction:column;}
-  .video-area{flex:1;}
+  body{flex-direction:column;height:auto;min-height:100vh;overflow:auto;}
+  .ls{position:fixed;top:0;left:0;bottom:0;height:100%;width:min(86vw,320px);z-index:300;transform:translateX(-100%);transition:transform .28s cubic-bezier(.2,.8,.2,1);}
+  body.ls-on .ls{transform:none;box-shadow:12px 0 40px rgba(0,0,0,.45);}
+  .ls-bd{display:block;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:290;opacity:0;pointer-events:none;transition:opacity .25s;}
+  body.ls-on .ls-bd{opacity:1;pointer-events:auto;}
+  .video-area{flex:none;overflow:visible;}
+  .vt{flex-wrap:wrap;gap:10px;padding:10px 12px;}
+  .vt-head{display:flex;align-items:center;gap:10px;min-width:0;flex:1 1 100%;}
+  .vt-head>div{min-width:0;}
+  .vt-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .ls-open{display:inline-flex;align-items:center;justify-content:center;flex:none;min-width:40px;height:40px;padding:0 10px;border-radius:10px;border:1px solid #333;background:#2a2a2a;color:#fff;font:700 13px 'Outfit',sans-serif;gap:6px;cursor:pointer;}
+  .vt-actions{flex:1 1 100%;}
+  .vt-actions .vt-btn{flex:1;justify-content:center;padding:9px 8px;min-height:40px;}
+  .vt-btn .tx{display:none;}
+  .video-player{flex:none;aspect-ratio:16/9;width:100%;}
+  .bottom-panel{min-height:50vh;}
 }
 </style>
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -219,6 +234,7 @@ body{font-family:'Outfit',sans-serif;background:#0f0f0f;color:var(--text);displa
 <!-- ══════════════════════════════════════════
      LESSON SIDEBAR
 ══════════════════════════════════════════ -->
+<div class="ls-bd" onclick="document.body.classList.remove('ls-on')"></div>
 <div class="ls">
   <div class="ls-topbar">
     <a href="dashboard.html" class="ls-back">←</a>
@@ -401,13 +417,16 @@ body{font-family:'Outfit',sans-serif;background:#0f0f0f;color:var(--text);displa
 
   <!-- VIDEO TOPBAR -->
   <div class="vt">
+    <div class="vt-head">
+    <button class="ls-open" type="button" aria-label="Darslar roʻyxati" onclick="document.body.classList.add('ls-on')">☰ Darslar</button>
     <div>
       <div class="vt-title" id="vtTitle">Admission requirements tahlili</div>
       <div class="vt-meta">📦 Hafta 2 · Dars 3 · ⏱ 57:45</div>
     </div>
+    </div>
     <div class="vt-actions">
       <button class="vt-btn secondary" onclick="prevLesson()">⏮ Oldingi</button>
-      <button class="vt-btn success" onclick="markComplete()" id="markBtn">✓ Tugatildi deb belgilash</button>
+      <button class="vt-btn success" onclick="markComplete()" id="markBtn">✓ Tugatildi<span class="tx"> deb belgilash</span></button>
       <button class="vt-btn primary" onclick="nextLesson()">Keyingi ⏭</button>
     </div>
   </div>
@@ -731,7 +750,7 @@ function openLesson(lesson) {
     markBtn.textContent = '✅ Tugallandi'
     markBtn.style.background = '#0a5c2e'
   } else {
-    markBtn.textContent = '✓ Tugatildi deb belgilash'
+    markBtn.innerHTML = '✓ Tugatildi<span class="tx"> deb belgilash</span>'
     markBtn.style.background = 'var(--green)'
   }
 
@@ -1096,5 +1115,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 </script>
 
+<script>
+document.querySelector('.ls').addEventListener('click', function (e) { if (e.target.closest('.ls-lesson')) document.body.classList.remove('ls-on') })
+</script>
 </body>
 </html>
