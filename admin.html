@@ -197,7 +197,33 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 @media(max-width:1200px){.kpi-row{grid-template-columns:repeat(3,1fr);}
   .twin{grid-template-columns:1fr;}.rp{display:grid;grid-template-columns:1fr 1fr;}}
 @media(max-width:900px){.kpi-row{grid-template-columns:repeat(2,1fr);}.rp{grid-template-columns:1fr;}}
-@media(max-width:700px){.sb{transform:translateX(-100%);}.mw{margin-left:0;}}
+.burger{display:none;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:20px;line-height:1;cursor:pointer;color:var(--text);}
+.sb-bd{display:none;}
+@media(max-width:700px){
+  .sb{transform:translateX(-100%);transition:transform .28s cubic-bezier(.2,.8,.2,1);z-index:300;box-shadow:none;}
+  body.sb-open .sb{transform:none;box-shadow:12px 0 40px rgba(0,0,0,.25);}
+  .sb-bd{display:block;position:fixed;inset:0;background:rgba(20,30,25,.45);z-index:290;opacity:0;pointer-events:none;transition:opacity .25s;}
+  body.sb-open .sb-bd{opacity:1;pointer-events:auto;}
+  .mw{margin-left:0;}
+  .burger{display:inline-flex;}
+  .tb{padding:0 12px;gap:10px;height:56px;}
+  .tb-l{min-width:0;flex:1;}
+  .tb-l h1{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .tb-l p{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .tb-r{gap:6px;}
+  .tb-r .btn{padding:0 10px;min-height:36px;font-size:12px;}
+  .tb-r .btn .tx{display:none;}
+  .pg{padding:14px 12px 60px;}
+  .kpi-row{gap:10px;margin-bottom:14px;}
+  .kpi{padding:12px 14px;}
+  .kpi-ico{font-size:18px;margin-bottom:6px;}
+  .kpi-val{font-size:22px;}
+  .ch{padding:12px 14px;flex-wrap:wrap;gap:8px;}
+  .ch h2{font-size:15px;}
+  .tctrl .srch,.tctrl .flt{flex:1 1 140px;min-width:0;}
+  .ovl{padding:12px;}
+  .mdl{max-height:calc(100vh - 24px);overflow:auto;}
+}
 
 /* STUDENT DETAIL TABS */
 .sd-tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;}
@@ -287,16 +313,18 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 </aside>
 
 <!-- MAIN -->
+<div class="sb-bd" onclick="document.body.classList.remove('sb-open')"></div>
 <div class="mw">
   <!-- TOPBAR -->
   <div class="tb">
+    <button class="burger" type="button" aria-label="Menyu" onclick="document.body.classList.toggle('sb-open')">☰</button>
     <div class="tb-l">
       <h1 id="pgTitle">Admin Dashboard</h1>
       <p id="pgDate">Yuklanmoqda...</p>
     </div>
     <div class="tb-r">
-      <button class="btn bs" onclick="reload()">🔄 Yangilash</button>
-      <button class="btn bp" onclick="openMdl('lesson')">+ Dars qoʻshish</button>
+      <button class="btn bs" onclick="reload()" aria-label="Yangilash">🔄<span class="tx"> Yangilash</span></button>
+      <button class="btn bp" onclick="openMdl('lesson')" aria-label="Dars qoʻshish">+<span class="tx"> Dars qoʻshish</span></button>
     </div>
   </div>
 
@@ -759,8 +787,9 @@ const COURSE_META = {
 async function init() {
   // Sana
   const d = new Date()
-  document.getElementById('pgDate').textContent =
-    d.toLocaleDateString('uz-UZ', { weekday:'long', year:'numeric', month:'long', day:'numeric' })
+  const OY = ['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr']
+  const KUN = ['yakshanba','dushanba','seshanba','chorshanba','payshanba','juma','shanba']
+  document.getElementById('pgDate').textContent = d.getDate() + '-' + OY[d.getMonth()] + ', ' + d.getFullYear() + ' · ' + KUN[d.getDay()]
 
   // Admin tekshiruv
   const auth = await requireAdmin()
@@ -1534,6 +1563,7 @@ function renderActivity() {
 //  10. NAVIGATSIYA
 // ════════════════════════════════════════════════════════
 function nav(name, el) {
+  document.body.classList.remove('sb-open')
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'))
   const s = document.getElementById('sec-' + name)
   if (s) s.classList.add('on')
