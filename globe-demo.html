@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2d4a3e">
+<title>Yoʻnalishlar globusi · prototip · Kompas Lab</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#2d4a3e;--accent2:#c4622d;--bg:#f4f3ef;--surface:#fffefb;--border:#e2ded3;--text:#1a2e26;--muted:#5f7169;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Outfit",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px;}
+section{padding:48px 0;}
+h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(28px,4vw,40px);color:var(--accent);line-height:1.15;margin-bottom:10px;}
+.sub{color:var(--muted);max-width:640px;margin-bottom:24px;}
+.proto{font-size:13px;font-weight:800;background:#f8f0d6;color:#8a6a10;border-radius:99px;padding:4px 12px;display:inline-block;margin-bottom:14px;}
+
+/* ── Globus komponenti (index.html ga koʻchiriladigan qism) ── */
+.kglobe{--kg-land:#2d4a3e;--kg-sea:#e8f0ec;--kg-arc:#c4622d;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:center;}
+.kg-stage{position:relative;max-width:560px;width:100%;margin:0 auto;aspect-ratio:1;}
+.kg-stage canvas{display:block;cursor:grab;}
+.kg-stage canvas:active{cursor:grabbing;}
+.kg-card{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);width:min(300px,92%);background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 16px;box-shadow:0 14px 40px rgba(45,74,62,.18);}
+.kg-card b{display:block;font-size:17px;color:var(--accent);margin-bottom:6px;padding-right:24px;}
+.kg-card a{display:block;text-decoration:none;color:var(--text);padding:8px 10px;border-radius:10px;background:var(--bg);margin-top:6px;}
+.kg-card a:hover{background:#e8f0ec;}
+.kg-card a span{font-weight:800;color:var(--accent2);}
+.kg-card a small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35;}
+.kg-card .kg-n{display:block;color:var(--muted);font-size:12px;margin-top:8px;}
+.kg-x{position:absolute;top:8px;right:10px;border:none;background:none;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;width:32px;height:32px;}
+.kg-list{display:flex;flex-wrap:wrap;gap:8px;align-content:center;}
+.kg-list button{min-height:40px;padding:6px 14px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface);font:inherit;font-weight:700;font-size:14px;color:var(--text);cursor:pointer;}
+.kg-list button[aria-pressed="true"]{border-color:var(--accent2);background:#faeee7;color:var(--accent2);}
+@media(max-width:760px){.kglobe{grid-template-columns:minmax(0,1fr);gap:14px;}.kg-list{justify-content:center;}.kg-stage{aspect-ratio:auto;}.kg-card{position:relative;left:auto;bottom:auto;transform:none;width:100%;margin-top:8px;box-shadow:none;}}
+</style>
+</head>
+<body>
+<section>
+  <div class="wrap">
+    <span class="proto">Prototip · saytga ulanmagan</span>
+    <h2>Toshkentdan qayerga?</h2>
+    <p class="sub">Mamlakatni tanlang yoki globusdagi nuqtani bosing: u yerga qaysi Lab tayyorlashini koʻrasiz. Globusni barmoq yoki sichqoncha bilan aylantirish mumkin.</p>
+    <div class="kglobe" data-globe></div>
+  </div>
+</section>
+<script src="js/globe.js" defer></script>
+</body>
+</html>
