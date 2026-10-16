@@ -3,6 +3,8 @@
 //  Saytning eng tepasida doim koʻrinadigan jonli panel:
 //   · hozir saytda turganlar (Supabase Realtime Presence, bir brauzer = 1)
 //   · roʻyxatdan oʻtganlar (kompas_public_stats().registered)
+//   · tashriflar: bugun / shu hafta / shu oy / shu yil (kompas_track_visit)
+//     1 tashrif = 1 brauzer × 1 kun (Toshkent vaqti), hafta dushanbadan
 //  Raqam olinmasa, oʻsha belgi koʻrsatilmaydi: soxta raqam yoʻq.
 // ═══════════════════════════════════════════════════════════════
 (function () {
@@ -16,20 +18,23 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var css =
-    ".klb{position:fixed;top:0;left:0;right:0;height:" + H + "px;z-index:400;background:#1e3329;display:flex;align-items:center;justify-content:center;gap:10px;font-family:Outfit,system-ui,sans-serif;box-shadow:0 1px 0 rgba(255,255,255,.06) inset}" +
-    ".klb[hidden]{display:none}" +
-    ".klb-c{position:relative;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 4px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:800;font-size:15px;font-variant-numeric:tabular-nums;cursor:default;-webkit-tap-highlight-color:transparent}" +
+    ".klb{position:fixed;top:0;left:0;right:0;height:" + H + "px;z-index:400;background:#1e3329;display:flex;align-items:center;justify-content:safe center;gap:8px;padding:0 10px;overflow-x:auto;scrollbar-width:none;font-family:Outfit,system-ui,sans-serif;box-shadow:0 1px 0 rgba(255,255,255,.06) inset}" +
+    ".klb::-webkit-scrollbar{display:none}.klb[hidden]{display:none}" +
+    ".klb-s{flex:none;width:1px;height:22px;background:rgba(255,255,255,.25)}.klb-s[hidden]{display:none}" +
+    ".klb-c{position:relative;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 4px;flex:none;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:800;font-size:15px;font-variant-numeric:tabular-nums;cursor:default;-webkit-tap-highlight-color:transparent}" +
     ".klb-c[hidden]{display:none}" +
     ".klb-c img{width:28px;height:28px;display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}" +
     ".klb-d{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.6)}" +
     ".klb-n.bump{animation:klbBump .6s ease}" +
-    ".klb-tip{position:absolute;top:36px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#fff;color:#1a2e26;font-size:12px;font-weight:700;padding:5px 9px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:opacity .15s}" +
-    ".klb-c:hover .klb-tip,.klb-c.tip .klb-tip,.klb-c:focus-visible .klb-tip{opacity:1}" +
+    ".klb-tip{position:fixed;top:" + (H - 2) + "px;left:0;z-index:401;transform:translateX(-50%);white-space:nowrap;background:#fff;color:#1a2e26;font-size:12px;font-weight:700;padding:5px 9px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:opacity .15s}" +
+    ".klb-tip.on{opacity:1}" +
+    "@media(max-width:560px){.klb{gap:5px;padding:0 6px}.klb-c{height:28px;gap:3px;padding:0 8px 0 2px;font-size:13px}.klb-c img{width:22px;height:22px}.klb-d{width:6px;height:6px}}" +
+    "@media(max-width:420px){.klb{gap:4px;padding:0 4px}.klb-c{padding:0 6px 0 1px;gap:2px;font-size:12px}.klb-c img{width:20px;height:20px}.klb-s{height:18px}}" +
     ".klb-c:focus-visible{outline:2px solid #e9a27a;outline-offset:2px}" +
     "@keyframes klbBump{0%{transform:scale(1)}40%{transform:scale(1.3)}100%{transform:scale(1)}}" +
     "@keyframes klbPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55)}70%{box-shadow:0 0 0 7px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}" +
     "@keyframes klbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}" +
-    (reduce ? "" : ".klb-d{animation:klbPulse 2s infinite}.klb-c img{animation:klbFloat 4s ease-in-out infinite}.klb-c+.klb-c img{animation-delay:-2s}") +
+    (reduce ? "" : ".klb-d{animation:klbPulse 2s infinite}.klb-c img{animation:klbFloat 4s ease-in-out infinite}.klb-c:nth-child(even) img{animation-delay:-2s}") +
     // Panel koʻringanda sahifa menyusini pastga suramiz
     "body.klb-on{padding-top:" + H + "px}" +
     "body.klb-on .nav{top:" + H + "px!important}" +
@@ -39,22 +44,39 @@
   function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
 
   function chip(id, icon, label, dot) {
-    return '<span class="klb-c" id="' + id + '" tabindex="0" role="img" aria-label="' + label + '" hidden>' +
+    return '<span class="klb-c" id="' + id + '" data-tip="' + label + '" tabindex="0" role="img" aria-label="' + label + '" hidden>' +
       '<img src="img/3d/' + icon + '.webp" width="28" height="28" alt="">' + (dot ? '<i class="klb-d"></i>' : "") +
-      '<b class="klb-n">0</b><span class="klb-tip">' + label + "</span></span>";
+      '<b class="klb-n">0</b></span>';
   }
 
   function mount() {
     var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
     var bar = document.createElement("div");
     bar.className = "klb"; bar.hidden = true; bar.setAttribute("aria-live", "polite");
-    bar.innerHTML = chip("klbOn", "telescope", "Hozir saytda", true) + chip("klbReg", "bachelor", "Roʻyxatdan oʻtganlar", false);
+    bar.innerHTML = chip("klbOn", "telescope", "Hozir saytda", true) + chip("klbReg", "bachelor", "Roʻyxatdan oʻtganlar", false) +
+      '<i class="klb-s" id="klbSep" hidden></i>' +
+      chip("klbD", "bell", "Bugungi tashriflar", false) + chip("klbW", "calendar", "Shu haftadagi tashriflar", false) +
+      chip("klbM", "chart", "Shu oydagi tashriflar", false) + chip("klbY", "seedling", "Shu yildagi tashriflar", false);
     document.body.insertBefore(bar, document.body.firstChild);
+    // Bitta umumiy izoh: panel gorizontal aylansa ham kesilmaydi
+    var tip = document.createElement("div"); tip.className = "klb-tip"; tip.setAttribute("aria-hidden", "true");
+    document.body.appendChild(tip);
+    var timer;
+    function show(c, ms) {
+      var r = c.getBoundingClientRect(), half;
+      tip.textContent = c.getAttribute("data-tip"); tip.classList.add("on");
+      half = tip.offsetWidth / 2 + 6;
+      tip.style.left = Math.min(Math.max(r.left + r.width / 2, half), window.innerWidth - half) + "px";
+      clearTimeout(timer); if (ms) timer = setTimeout(hide, ms);
+    }
+    function hide() { tip.classList.remove("on"); }
+    bar.addEventListener("mouseover", function (e) { var c = e.target.closest(".klb-c"); if (c) show(c); });
+    bar.addEventListener("mouseleave", hide);
+    bar.addEventListener("focusin", function (e) { var c = e.target.closest(".klb-c"); if (c) show(c); });
+    bar.addEventListener("focusout", hide);
+    bar.addEventListener("scroll", hide, { passive: true });
     // Telefonda bosilganda izoh 2 soniya koʻrinadi
-    bar.addEventListener("click", function (e) {
-      var c = e.target.closest(".klb-c"); if (!c) return;
-      c.classList.add("tip"); setTimeout(function () { c.classList.remove("tip"); }, 2000);
-    });
+    bar.addEventListener("click", function (e) { var c = e.target.closest(".klb-c"); if (c) show(c, 2000); });
     return bar;
   }
 
@@ -62,7 +84,7 @@
     var c = document.getElementById(id), b = c.querySelector(".klb-n");
     var prev = c.hidden ? null : b.textContent;
     b.textContent = nf(n);
-    c.setAttribute("aria-label", c.querySelector(".klb-tip").textContent + ": " + nf(n));
+    c.setAttribute("aria-label", c.getAttribute("data-tip") + ": " + nf(n));
     if (c.hidden) { c.hidden = false; }
     else if (prev !== b.textContent && !reduce) { b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
     if (bar.hidden) { bar.hidden = false; document.body.classList.add("klb-on"); }
@@ -80,7 +102,7 @@
   function visitorId() {
     var id = null;
     try { id = localStorage.getItem("kompas_vid"); } catch (e) {}
-    if (!id) {
+    if (!id || !/^[a-z0-9]{8,40}$/.test(id)) {
       id = (Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
       try { localStorage.setItem("kompas_vid", id); } catch (e) {}
     }
@@ -101,6 +123,18 @@
     }
     loadReg(); setInterval(loadReg, 60000);
     document.addEventListener("visibilitychange", loadReg);
+
+    // Tashriflar: sahifa ochilganda 1 marta yoziladi (bir kunda takror sanalmaydi), har 5 daqiqada yangilanadi
+    function loadVisits() {
+      if (document.hidden || typeof sb.rpc !== "function") return;
+      sb.rpc("kompas_track_visit", { p_vid: visitorId() }).then(function (r) {
+        var d = r && !r.error && r.data;
+        if (!d || typeof d.day !== "number") return;
+        setVal(bar, "klbD", d.day); setVal(bar, "klbW", d.week); setVal(bar, "klbM", d.month); setVal(bar, "klbY", d.year);
+        document.getElementById("klbSep").hidden = false;
+      });
+    }
+    loadVisits(); setInterval(loadVisits, 300000);
 
     // Hozir saytda: Realtime Presence (bitta brauzer bir nechta tabda ham 1 marta sanaladi)
     if (typeof sb.channel !== "function") return;
