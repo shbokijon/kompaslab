@@ -3,8 +3,7 @@
 //  Kurs materiallarini nusxalashni qiyinlashtiradi (toʻliq toʻsib boʻlmaydi):
 //   · matnni belgilash, nusxa olish, oʻng tugma, sudrash, chop etish oʻchiriladi
 //     (input/textarea ichida yozish va nusxalash ishlaydi)
-//   · ekranga foydalanuvchi emaili va sanasi bilan xira suv belgisi qoʻyiladi:
-//     skrinshot tarqalsa, kimdan chiqqani koʻrinadi
+//   · ekranga juda xira suv belgisi: "Kompas Lab - Kuzatuvdan Kashfiyotga"
 // ═══════════════════════════════════════════════════════════════
 (function () {
   if (window.__kompasProtect) return;
@@ -14,7 +13,7 @@
     "body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}" +
     "input,textarea,select,[contenteditable],[contenteditable] *{-webkit-user-select:text;user-select:text}" +
     "img{-webkit-user-drag:none}" +
-    ".kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.09}" +
+    ".kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.045}" +
     ".kp-msg{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;background:#1e3329;color:#fff;font:700 13px Outfit,system-ui,sans-serif;padding:9px 14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .2s;pointer-events:none}" +
     ".kp-msg.on{opacity:1}" +
     "@media print{body>*{display:none!important}body:after{content:'Kompas Lab materiallarini chop etib boʻlmaydi.';display:block;padding:40px;font:700 18px sans-serif}}";
@@ -41,27 +40,25 @@
     if (mod && (k === "c" || k === "x" || k === "a") && !editable(e.target)) { e.preventDefault(); note(); }
   });
 
-  // Suv belgisi: email + sana, diagonal, butun ekran boʻylab
+  // Suv belgisi: diagonal, butun ekran boʻylab
   function watermark(text) {
-    var c = document.createElement("canvas"), w = 320, h = 180, g = c.getContext("2d");
+    var c = document.createElement("canvas"), w = 440, h = 260, g = c.getContext("2d");
     if (!g) return;
     c.width = w; c.height = h;
     g.translate(w / 2, h / 2); g.rotate(-0.4);
-    g.fillStyle = "#000"; g.font = "600 14px system-ui,sans-serif"; g.textAlign = "center";
-    g.fillText(text, 0, 0); g.fillText("Kompas Lab", 0, 20);
+    g.fillStyle = "#000"; g.font = "500 13px Outfit,system-ui,sans-serif"; g.textAlign = "center";
+    g.fillText(text, 0, 0);
     var d = document.querySelector(".kp-wm") || document.createElement("div");
     d.className = "kp-wm"; d.setAttribute("aria-hidden", "true");
     d.style.backgroundImage = "url(" + c.toDataURL() + ")";
     if (!d.parentNode) document.body.appendChild(d);
   }
+  // Faqat tizimga kirganlarga (M0 va darslar shu holatda ochiladi)
   function start() {
     var sb = window.supabase;
     if (!sb || !sb.auth || typeof sb.auth.getSession !== "function") return;
     sb.auth.getSession().then(function (r) {
-      var u = r && r.data && r.data.session && r.data.session.user;
-      if (!u) return;
-      var d = new Date(), p = function (n) { return (n < 10 ? "0" : "") + n; };
-      watermark((u.email || u.phone || u.id.slice(0, 8)) + " · " + p(d.getDate()) + "." + p(d.getMonth() + 1) + "." + d.getFullYear());
+      if (r && r.data && r.data.session) watermark("Kompas Lab - Kuzatuvdan Kashfiyotga");
     }).catch(function () {});
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
