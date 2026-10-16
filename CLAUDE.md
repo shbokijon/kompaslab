@@ -39,6 +39,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 - Manba: `src/<nom>.src.html` (`{{CSS}}` oʻrniga `m0.css`). Yigʻish: `python3 tools/modules/build.py [nom]`.
   - sayt versiyasi → repo ildizida `<nom>.html` (config.js, live-bar, protect, logotip, PWA, darvoza)
   - yuklab olinadigan → `tools/modules/dist/<nom>.html` (rasmlar ichida; git'ga kirmaydi). Foydalanuvchiga `SendUserFile` bilan yuboriladi.
+- Master M3–M8 manbalari umumiy generator bilan yaratilgan (qobiq M2 andozasi); endi `src/*.src.html` ni toʻgʻridan-toʻgʻri tahrirla. Pullik modullarda faktlar "16.10.2026 holatiga" belgilangan: har sikl yangilash kerak (M7, M8).
 - Yangi modul: eng yaqin manbadan nusxa ol → `build.py` dagi `MODULES` ga qoʻsh → yigʻ → tekshir → Lab sahifasi va dashboard'ga bogʻla.
 - Tekshiruv: `python3 -m http.server 8814 &` keyin `PW=$(npm root -g)/playwright node tools/modules/test/smoke.js <nom>` (JS xatosi, 390px, darvoza, 1-dars +XP; sayt va dist).
 - Sandbox'dan Supabase va jsdelivr ochilmaydi: Playwright'da `route` bilan mock qilinadi (smoke.js ga qara).
@@ -57,7 +58,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 | Lab | Slug | Modullar (darslar) | Tayyor |
 |---|---|---|---|
 | Bachelor | bachelor-lab | 17 (86) | M0 saytda |
-| Master | master-lab | 9 (59) | M0 saytda; M1, M2 faqat yuklab olinadigan (`dist/`) |
+| Master | master-lab | 9 (59) | M0 saytda; M1–M8 faqat yuklab olinadigan (`dist/`) |
 | PhD | phd-lab | `phd-lab.html` ga qara | M0 saytda |
 | GKS | gks-lab | 12 (54) | M0 saytda |
 | USA | usa-lab | 12 (72) | M0 saytda |

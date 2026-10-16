@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M6 Ilmiy loyiha taklifi · Master Lab · Kompas Lab</title>
+<meta name="description" content="Master Lab M6: tadqiqot boʻshligʻi, muammo bayoni, adabiyotlar sharhi, metodologiya, Gantt ish rejasi, iqtibos uslublari va Research Proposal v1.0.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+{{CSS}}
+/* M6 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(11,minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(6,minmax(0,1fr));}.path.pn .node:nth-child(4)::after{display:block;}.path.pn .node:nth-child(6)::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 14px;}
+.empty{color:var(--muted);font-size:14px;padding:12px;text-align:center;border:1.5px dashed var(--border);border-radius:14px;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.mini{min-height:36px;padding:6px 12px;border-radius:9px;border:1.5px solid var(--border);background:var(--surface);font-weight:700;font-size:13px;cursor:pointer;color:var(--text);}
+.mini.del{color:var(--red);}
+.sumrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 4px;}
+.sum{background:var(--bg);border-radius:14px;padding:12px 14px;}
+.sum b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:30px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;}
+.sum span{font-size:12.5px;font-weight:700;color:var(--muted);}
+.sum.ok{outline:2px solid var(--green);}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);} .pill.u{background:var(--accent-lit);color:var(--accent);}
+.facts2{display:grid;gap:8px;margin-top:10px;}
+.fct{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:14px;}
+.fct b{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;margin-right:6px;}
+.fct b.ok{background:var(--green-lit);color:var(--green);} .fct b.wait{background:var(--gold-lit);color:var(--gold);}
+.fct a{color:#1f5fa8;font-size:12.5px;margin-left:4px;}
+.meterw{margin-top:10px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.chip{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--border);}
+.chip.bad{background:var(--red-lit);border-color:var(--red);color:var(--red);}
+.chip.good{background:var(--green-lit);border-color:var(--green);color:var(--green);}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.rowl{display:grid;gap:10px;margin-top:12px;}
+.ri{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 14px;font-size:14.5px;}
+.ri-h{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;}
+.ri-h b{line-height:1.3;}
+.ri small{color:var(--muted);font-size:13px;}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact h3{font-size:18px;color:var(--accent);margin:16px 0 6px;}
+.artifact h3:first-of-type{margin-top:0;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.artifact .tbl table{min-width:520px;}
+.badges.b6{grid-template-columns:repeat(6,minmax(0,1fr));}
+.note-prev{font-size:13.5px;background:var(--accent-lit);border-radius:12px;padding:10px 14px;margin-top:10px;}
+@media(max-width:760px){
+  .grid2,.grid3{grid-template-columns:minmax(0,1fr);}
+  .grid2>*,.grid3>*{grid-column:auto!important;}
+  .sumrow{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .badges.b6{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .artifact{padding:16px;}
+  .artifact .row .btn,.btnrow .btn{flex:1 1 100%;}
+}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;}
+}
+.gantt{margin-top:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.g-in{min-width:560px;}
+.g-head,.g-row{display:grid;grid-template-columns:150px minmax(0,1fr) 34px;align-items:center;}
+.g-mon{display:grid;font-size:11px;font-weight:800;color:var(--muted);border-bottom:1px solid var(--border);}
+.g-mon span{padding:4px 0 6px 3px;border-left:1px solid var(--border);}
+.g-row{height:38px;border-bottom:1px solid #efece4;}
+.g-lab{font-size:12.5px;font-weight:700;padding-right:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.g-track{position:relative;height:100%;}
+.g-bar{position:absolute;top:9px;height:20px;border-radius:6px;background:var(--accent);opacity:.85;}
+.g-bar.z{background:repeating-linear-gradient(45deg,var(--gold),var(--gold) 6px,#c9a43c 6px,#c9a43c 12px);}
+.g-bar.over{box-shadow:0 0 0 2px var(--red);}
+.prdoc{font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.55;margin-top:16px;}
+.prdoc h1{font-family:Georgia,serif;font-size:21px;color:var(--text);margin-bottom:10px;}
+.prdoc h4{font-family:Georgia,serif;font-size:16px;margin:14px 0 4px;}
+.prdoc p{margin:0 0 8px;}
+.prdoc .ref{padding-left:24px;text-indent:-24px;font-size:13.5px;}
+@media print{.prdoc{margin-top:0;font-size:11.5pt;}}
+.path.pn .node{font-size:10.5px;}
+@media(max-width:760px){.path.pn .dot{width:40px;height:40px;font-size:12px;}.path.pn .node::after{top:20px;left:calc(50% + 23px);right:calc(-50% + 23px);}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="master-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Master Lab M6</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Master Lab</a> · Modul 6</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza III · Ilmiy ovoz</span>
+        <h1>Ilmiy loyiha taklifi</h1>
+        <p class="lead">Taklif komissiyaga siz tadqiqotchi sifatida qanday fikrlashingizni koʻrsatadi. Bu modulda boʻshliqni aniqlaysiz, uni adabiyot bilan asoslaysiz va bajarsa boʻladigan reja tuzasiz. Natija: <b>Ilmiy loyiha taklifi (Research Proposal)</b>, 1 500–3 000 soʻz.</p>
+        <div class="facts"><span class="fact"><b>7</b> dars</span><span class="fact">~<b>4</b> hafta</span><span class="fact"><b>5</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/telescope.webp" width="160" height="160" alt="">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 11 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">6.1</span>Kimga</a>
+      <a class="node" href="#l2" data-node="l2"><span class="dot">6.2</span>Muammo</a>
+      <a class="node" href="#l3" data-node="l3"><span class="dot">6.3</span>Adabiyot</a>
+      <a class="node" href="#l4" data-node="l4"><span class="dot">6.4</span>Usul</a>
+      <a class="node" href="#l5" data-node="l5"><span class="dot">6.5</span>Reja</a>
+      <a class="node" href="#l6" data-node="l6"><span class="dot">6.6</span>Natija</a>
+      <a class="node" href="#l7" data-node="l7"><span class="dot">6.7</span>Format</a>
+      <a class="node" href="#funnel" data-node="funnel"><span class="dot">🔻</span>Voronka</a>
+      <a class="node" href="#lit" data-node="lit"><span class="dot">📚</span>Matritsa</a>
+      <a class="node" href="#plan" data-node="plan"><span class="dot">📊</span>Gantt</a>
+      <a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Taklif</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Muammo bayoni:</b> global → kontekst → boʻshliq → aniq tadqiqot savoli.</span></li>
+      <li><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span><b>Adabiyotlar matritsasi:</b> 8+ manba, usul, natija va boʻshliq bilan; APA roʻyxati avtomatik.</span></li>
+      <li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span><b>Gantt rejasi:</b> zaxira vaqti bilan real ish rejasi.</span></li>
+      <li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Research Proposal v1.0:</b> 6 boʻlimli, Word va PDF.</span></li>
+    </ul>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 6.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.1</span><span class="l-t" style="display:block">Ilmiy loyiha taklifi kimga kerak</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Oʻquv magistraturasiga 3 000 soʻzlik loyiha taklifini ikki oy yozdingiz, portal esa uni soʻramadi. Boshqa tomondan, tadqiqot magistraturasiga taklifsiz topshirgan doʻstingiz arizasi koʻrib chiqilmadi. Taklif kerakmi yoki yoʻqmi, dastur belgilaydi.</div></div>
+          <div class="panel">
+            <div class="tbl"><table><thead><tr><th>Holat</th><th>Taklif</th></tr></thead><tbody>
+              <tr><td><b>Tadqiqot magistraturasi</b> (MRes, MPhil, MSc by Research, tezisli dasturlar)</td><td>Koʻpincha talab qilinadi; ilmiy rahbar tanlashda asosiy hujjat</td></tr>
+              <tr><td><b>Baʼzi stipendiyalar</b> (masalan, Xitoy hukumati CSC, Yaponiya MEXT tadqiqot talabasi yoʻnalishi)</td><td>Oʻqish yoki tadqiqot rejasi soʻraladi; hajm va shakl stipendiya qoidasida</td></tr>
+              <tr><td><b>Professorga xat</b> (M4.4)</td><td>Qisqa, 1 sahifalik gʻoya foydali boʻlishi mumkin</td></tr>
+              <tr><td><b>Oʻquv magistraturasi</b> (taught MSc/MA)</td><td>Odatda talab qilinmaydi; SoP yetarli</td></tr>
+            </tbody></table></div>
+            <h4>Taklif nimani isbotlaydi</h4>
+            <ul><li>Siz <b>aniq tadqiqot savoli</b> qoʻya olasiz.</li><li>Sohadagi mavjud ishlarni bilasiz va <b>boʻshliqni</b> koʻrasiz.</li><li>Savolga javob topishning <b>bajarsa boʻladigan</b> yoʻlini koʻrsata olasiz.</li></ul>
+            <div class="box info"><b>Taklif — reja, vaʼda emas.</b> Qabul qilingandan keyin mavzu ilmiy rahbar bilan birga oʻzgarishi odatiy. Komissiya sizning fikrlash usulingizni baholaydi.</div>
+            <p>Hajm dasturga qarab koʻpincha 1 500–3 000 soʻz. Dastur sahifasidagi talab (soʻz, sahifa, boʻlimlar) har doim ustun.</p>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Taklif tadqiqot magistraturasi va baʼzi stipendiyalar uchun kerak; oʻquv magistraturasida odatda emas. U savol, boʻshliq va bajarsa boʻladigan yoʻlni koʻrsatadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b>
+            <div class="quiz" id="quiz">
+              <div class="qz" data-a="t"><p>“Oʻquv magistraturasi arizalarining koʻpchiligida ilmiy loyiha taklifi talab qilinmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: u yerda SoP asosiy matn.</div></div>
+              <div class="qz" data-a="n"><p>“Taklif qabul qilingach, mavzuni oʻqish davomida oʻzgartirib boʻlmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: mavzu ilmiy rahbar bilan birga aniqlashadi.</div></div>
+              <div class="qz" data-a="t"><p>“Taklifning vazifasi: aniq savol va uni bajarish yoʻlini koʻrsatish.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: komissiya fikrlash usulingizni baholaydi.</div></div>
+              <div class="qz" data-a="n"><p>“Magistraturada doktorantura miqyosidagi katta loyiha komissiyani koʻproq taassurotlantiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: muddatga mos kelmaydigan reja bajarib boʻlmaydigan reja hisoblanadi.</div></div>
+              </div>
+            <div class="verdict" id="quizRes"></div>
+            <ul style="margin-top:14px"><li>Trackeringizdagi qaysi dasturlar taklif soʻraydi? Hajm va boʻlim talablarini yozing.</li></ul>
+            <textarea data-save="a1" placeholder="Dastur — talab qilinadimi — hajm — boʻlimlar..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 6.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.2</span><span class="l-t" style="display:block">Muammo bayoni</span>
+            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🛠 Muammo voronkasi</span><span class="tag xp">+20 XP · vosita +25 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“Mening mavzum: Oʻzbekistonda suv muammolari.” Bu mavzu emas, butun soha. Undan magistratura muddatida bajariladigan savol chiqmaguncha komissiya nima tadqiq qilmoqchi ekaningizni tushunmaydi.</div></div>
+          <div class="panel">
+            <h4>Voronka: kengdan torga</h4>
+            <ol style="margin-left:20px"><li><b>Global muammo:</b> soha nima uchun muhim (1–2 jumla, manba bilan).</li><li><b>Mintaqaviy yoki aniq kontekst:</b> muammo qayerda va qanday koʻrinishda.</li><li><b>Boʻshliq (gap):</b> mavjud ishlar nimani hali javobsiz qoldirgan.</li><li><b>Tadqiqot savoli:</b> aniq, javob beriladigan, muddatga mos.</li></ol>
+            <h4>Boʻshliq turlari</h4>
+            <div class="tbl"><table><thead><tr><th>Tur</th><th>Misol (shartli)</th></tr></thead><tbody>
+              <tr><td><b>Bilim</b></td><td>Bu hodisa hali oʻrganilmagan</td></tr>
+              <tr><td><b>Usul</b></td><td>Oʻrganilgan, lekin yangi usul bilan emas</td></tr>
+              <tr><td><b>Kontekst</b></td><td>Boshqa mintaqada oʻrganilgan, Markaziy Osiyoda emas</td></tr>
+              <tr><td><b>Ziddiyat</b></td><td>Tadqiqotlar natijalari bir-biriga zid</td></tr>
+            </tbody></table></div>
+            <h4>Muammo → Yechim → Yangilik → Taʼsir</h4>
+            <ul><li><b>Muammo:</b> boʻshliq.</li><li><b>Yechim:</b> siz nima qilasiz (usul darajasida).</li><li><b>Yangilik:</b> bu ishni oldingilardan nima ajratadi.</li><li><b>Taʼsir:</b> natija kimga va qanday foyda beradi.</li></ul>
+            <div class="box warn">Global muammo haqidagi har bir raqam manba bilan keltiriladi. Manbasiz statistika taklifning ishonchliligini birinchi sahifadayoq pasaytiradi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Voronka: global → kontekst → boʻshliq → savol. Boʻshliq bilim, usul, kontekst yoki ziddiyat turida boʻladi. Muammo, Yechim, Yangilik va Taʼsir bitta chiziqda.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b>
+            <ul><li>Pastdagi <a href="#funnel">Muammo voronkasi</a>ni toʻldiring: 4 qavat va MYYT.</li></ul></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 6.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.3</span><span class="l-t" style="display:block">Adabiyotlar sharhi (Literature Review)</span>
+            <span class="l-m"><span class="tag">⏱ 60 daqiqa</span><span class="tag">🛠 Adabiyotlar matritsasi</span><span class="tag xp">+20 XP · vosita +35 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">40 ta maqolani PDF qilib yukladingiz, 5 tasini oxirigacha oʻqidingiz, qaysi fikr qaysi maqoladan ekanini eslay olmaysiz. Sharh yozishga oʻtirganda hammasini qaytadan ochasiz.</div></div>
+          <div class="panel">
+            <h4>Manba topish</h4>
+            <ul><li><a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a> — keng qamrovli, bepul; “Cited by” orqali yangi ishlarni toping.</li><li><a href="https://www.scopus.com/" target="_blank" rel="noopener">Scopus</a> va Web of Science — odatda universitet obunasi orqali.</li><li>Ochiq manbalar: <a href="https://core.ac.uk/" target="_blank" rel="noopener">CORE</a>, <a href="https://doaj.org/" target="_blank" rel="noopener">DOAJ</a>.</li><li>Universitet kutubxonasi va professor maqolalaridagi adabiyotlar roʻyxati.</li></ul>
+            <h4>Oʻqish tartibi</h4>
+            <ol style="margin-left:20px"><li><b>Sharh maqolalari (review)</b> — sohaning xaritasi.</li><li><b>Eng koʻp iqtibos olingan</b> asosiy ishlar.</li><li><b>Soʻnggi 3 yil</b> — hozirgi bahs va boʻshliqlar.</li></ol>
+            <p>Har maqolani 3 bosqichda oʻqing: (1) sarlavha, annotatsiya, rasmlar; (2) kirish va xulosa; (3) faqat kerak boʻlsa, usul va natijalar toʻliq.</p>
+            <h4>Sharh = sintez, xulosa emas</h4>
+            <ul><li>Maqolalarni birma-bir qayta aytmang. Ularni <b>mavzular</b> boʻyicha guruhlang: kim nimada rozi, nimada farq qiladi.</li><li>Har guruh oxirida: “bu yerda hali nima javobsiz?” Sharh boʻshliqqa olib kelishi kerak.</li><li>Iqtiboslarni boshqarish uchun <a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a> (bepul) ishlating: maqola qoʻshilganda maʼlumot avtomatik saqlanadi.</li></ul>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Sharh maqolalaridan boshlang, 3 bosqichda oʻqing, mavzular boʻyicha sintez qiling va boʻshliqqa olib keling. Har manba matritsada: usul, natija, boʻshliq.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b>
+            <ul><li>Pastdagi <a href="#lit">Adabiyotlar matritsasi</a>ga kamida 8 manba kiriting: usul, asosiy natija va boʻshliq bilan.</li><li>Manbalarni 2–3 mavzuga guruhlang.</li></ul>
+            <textarea data-save="a3" placeholder="1-mavzu: ... (manbalar) 2-mavzu: ... 3-mavzu: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 6.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.4</span><span class="l-t" style="display:block">Metodologiya</span>
+            <span class="l-m"><span class="tag">⏱ 45 daqiqa</span><span class="tag">✅ Bajarilish tekshiruvi</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Taklifingizda 5 mamlakat, 3 ta model va dala tajribasi bor. Magistratura tadqiqoti uchun esa bir necha oy bor. Komissiya buni koʻrib, rejani emas, reja tuzish tajribasi yoʻqligini koʻradi.</div></div>
+          <div class="panel">
+            <h4>Metodologiya boʻlimining 4 qismi</h4>
+            <div class="tbl"><table><thead><tr><th>Qism</th><th>Savol</th></tr></thead><tbody>
+              <tr><td><b>Tadqiqot dizayni</b></td><td>Miqdoriy, sifatiy yoki aralash? Tajriba, kuzatuv, modellashtirish, keys-stadi?</td></tr>
+              <tr><td><b>Maʼlumot</b></td><td>Qayerdan, qancha, qanday ruxsat bilan? Mavjudmi yoki yigʻiladimi?</td></tr>
+              <tr><td><b>Usul</b></td><td>Qaysi tahlil usuli va nima uchun aynan shu? Qaysi vosita?</td></tr>
+              <tr><td><b>Cheklovlar</b></td><td>Nimani qamrab olmaydi; natijaga qanday taʼsir qiladi; qanday kamaytiriladi?</td></tr>
+            </tbody></table></div>
+            <h4>Magistratura miqyosi</h4>
+            <ul><li>Bir yillik magistraturada mustaqil tadqiqotga odatda bir necha oy ajratiladi; ikki yillik dasturda koʻproq.</li><li>Bitta asosiy savol, 1–2 yordamchi savol yetarli.</li><li>Maʼlumotga kirish imkoni oldindan tasdiqlangan boʻlsin: “maʼlumot olaman deb umid qilaman” xavf belgisi.</li><li>Odamlar ishtirok etsa (soʻrovnoma, intervyu), etika ruxsati kerak boʻladi; bu vaqt oladi.</li></ul>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Dizayn, maʼlumot, usul va cheklovlar har biri asoslanadi. Miqyos dastur muddatiga mos; maʼlumotga kirish va etika ruxsati oldindan oʻylangan.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: metodologiya eskizi</b>
+            <div class="fld" style="margin-top:8px"><label for="mDes">Dizayn</label><input id="mDes" data-save="mDes" placeholder="Quantitative, observational; geostatistical modelling"></div>
+            <div class="fld"><label for="mDat">Maʼlumot</label><input id="mDat" data-save="mDat" placeholder="Monitoring records 2010–2025, 120 wells, access confirmed by ..."></div>
+            <div class="fld"><label for="mMet">Usul</label><input id="mMet" data-save="mMet" placeholder="Ordinary and regression kriging; cross-validation"></div>
+            <div class="fld"><label for="mLim">Cheklovlar</label><input id="mLim" data-save="mLim" placeholder="Uneven well distribution; no isotope data"></div>
+            <div class="cklist">
+              <label class="ck" data-ck="f1"><input type="checkbox"><span>Maʼlumotga kirish tasdiqlangan yoki ochiq maʼlumot</span></label>
+              <label class="ck" data-ck="f2"><input type="checkbox"><span>Kerakli koʻnikmalar bor yoki oʻrganish rejasi bor</span></label>
+              <label class="ck" data-ck="f3"><input type="checkbox"><span>Uskuna va dasturlar mavjud</span></label>
+              <label class="ck" data-ck="f4"><input type="checkbox"><span>Etika ruxsati kerakmi, aniqlangan</span></label>
+              <label class="ck" data-ck="f5"><input type="checkbox"><span>Hajm dastur muddatiga sigʻadi</span></label>
+              <label class="ck" data-ck="f6"><input type="checkbox"><span>Yoʻnalish dasturdagi professorlar ishiga yaqin</span></label>
+            </div></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 6.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.5</span><span class="l-t" style="display:block">Ish rejasi va Gantt jadvali</span>
+            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 Gantt rejasi</span><span class="tag xp">+20 XP · vosita +25 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Rejada “Tahlil: 1 oy, Yozish: 1 oy” deb yozilgan. Haqiqatda maʼlumot 6 hafta kechikib keldi va yozishga 2 hafta qoldi. Rejada zaxira vaqt yoʻq edi.</div></div>
+          <div class="panel">
+            <h4>Odatiy bosqichlar</h4>
+            <div class="tbl"><table><thead><tr><th>Bosqich</th><th>Mazmuni</th></tr></thead><tbody>
+              <tr><td>1. Adabiyot va savolni aniqlash</td><td>Ilmiy rahbar bilan savolni yakunlash</td></tr>
+              <tr><td>2. Maʼlumot yigʻish yoki tayyorlash</td><td>Ruxsatlar, dala ishi, tozalash</td></tr>
+              <tr><td>3. Tahlil</td><td>Asosiy usul, tekshiruv, sezgirlik tahlili</td></tr>
+              <tr><td>4. Yozish</td><td>Boblar, ilmiy rahbar fikri, tahrir</td></tr>
+              <tr><td>5. Zaxira</td><td>Umumiy muddatning 10–15%</td></tr>
+            </tbody></table></div>
+            <ul><li>Bosqichlar qisman ustma-ust tushishi mumkin: yozish tahlil tugashini kutmaydi.</li><li>Har bosqich oxirida aniq natija: “maʼlumot toʻplami tozalandi”, “3-bob qoralamasi”.</li><li>Real hajm: Gantt jadvali komissiyaga rejalashtira olishingizni koʻrsatadi.</li></ul>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Ish rejasi 4–6 bosqich, har biri aniq natija bilan, 10–15% zaxira vaqt bilan. Gantt jadvali real hajmni koʻrsatadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b>
+            <ul><li>Pastdagi <a href="#plan">Gantt rejasi</a>ga kamida 5 bosqich kiriting; ulardan biri zaxira boʻlsin.</li></ul></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 6.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.6</span><span class="l-t" style="display:block">Kutilayotgan natija va ahamiyati</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">✍️ Natija bayoni</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“Ushbu tadqiqot Oʻzbekistonning suv muammosini hal qiladi.” Komissiya bunday jumlani koʻrganda magistratura tadqiqoti nimaga qodirligini muallif tushunmaganini koʻradi.</div></div>
+          <div class="panel">
+            <h4>Ikki turdagi hissa</h4>
+            <ul><li><b>Ilmiy hissa:</b> yangi maʼlumot, usulni yangi kontekstda sinash, gipotezani tekshirish, solishtirma tahlil.</li><li><b>Amaliy hissa:</b> qaysi tashkilot yoki jarayon uchun qanday foydali boʻlishi mumkin.</li></ul>
+            <h4>Oʻzbekiston uchun ahamiyat</h4>
+            <ul><li>Faqat haqiqiy bogʻliqlik boʻlsa va dalil bilan: rasmiy statistika (masalan, <a href="https://stat.uz/" target="_blank" rel="noopener">stat.uz</a>), davlat dasturi, tashkilot hisoboti.</li><li>Dalil topilmasa, umumiy daʼvo yozmang: taklif ilmiy hissa bilan ham kuchli boʻladi.</li></ul>
+            <h4>Ehtiyotkor til</h4>
+            <div class="tbl"><table><thead><tr><th>Ortiqcha daʼvo</th><th>Aniq daʼvo</th></tr></thead><tbody>
+              <tr><td>This research will solve...</td><td>This study is expected to provide...</td></tr>
+              <tr><td>The results will prove...</td><td>The results will test whether...</td></tr>
+              <tr><td>For the first time in the world...</td><td>To our knowledge, no study has applied ... in ...</td></tr>
+            </tbody></table></div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><p>Natija ilmiy va amaliy hissaga ajratiladi; Oʻzbekiston uchun ahamiyat faqat dalil bilan; til ehtiyotkor: “kutiladi”, “tekshiradi”.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija bayoni</b>
+            <div class="fld" style="margin-top:8px"><label for="oSci">Ilmiy hissa</label><textarea id="oSci" data-save="oSci" style="min-height:70px"></textarea></div>
+            <div class="fld"><label for="oPra">Amaliy hissa</label><textarea id="oPra" data-save="oPra" style="min-height:70px"></textarea></div>
+            <div class="fld"><label for="oUz">Oʻzbekiston uchun ahamiyat va dalil manbasi <small>ixtiyoriy</small></label><textarea id="oUz" data-save="oUz" style="min-height:70px"></textarea></div></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 6.7 -->
+      <article class="lesson" id="l7">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.7</span><span class="l-t" style="display:block">Tahrir, format, iqtibos uslubi</span>
+            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🛠 Iqtibos formatlovchi</span><span class="tag xp">+20 XP · vosita +15 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Adabiyotlar roʻyxatida uch xil uslub, ikkita manba matnda uchramaydi, bittasi esa umuman mavjud emas: uni AI chatbot “topib bergan”. Komissiya aʼzosi aynan shu manbani qidirdi.</div></div>
+          <div class="panel">
+            <h4>Uchta keng tarqalgan uslub</h4>
+            <div class="tbl"><table><thead><tr><th>Uslub</th><th>Matnda</th><th>Qayerda</th></tr></thead><tbody>
+              <tr><td><b>APA 7</b></td><td>(Karimov &amp; Smith, 2025)</td><td>Ijtimoiy fanlar, taʼlim, psixologiya, koʻp tabiiy fanlar</td></tr>
+              <tr><td><b>IEEE</b></td><td>[1]</td><td>Muhandislik, informatika</td></tr>
+              <tr><td><b>Harvard</b></td><td>(Karimov and Smith, 2025)</td><td>Buyuk Britaniya universitetlari; har universitetda kichik farqlar bor</td></tr>
+            </tbody></table></div>
+            <p>Dastur yoki kafedra uslub koʻrsatsa, oʻshani ishlating. Koʻrsatmasa, sohangizda keng tarqalganini tanlab, oxirigacha bir xil qoʻllang.</p>
+            <h4>Format</h4>
+            <ul><li>Soʻz yoki sahifa chegarasi; adabiyotlar roʻyxati odatda hisobga kirmaydi, lekin tekshiring.</li><li>Boʻlim sarlavhalari, sahifa raqamlari, 11–12 shrift, 1.15–1.5 interval.</li><li>Sarlavha: aniq va qisqa, savolni aks ettiradi.</li></ul>
+            <h4>Plagiat va AI</h4>
+            <ul><li>Boshqa muallif fikri: oʻz soʻzlaringiz bilan qayta ifoda + iqtibos. Aynan nusxa: qoʻshtirnoq + iqtibos.</li><li>Koʻp universitetlar matnni oʻxshashlik tekshiruvidan oʻtkazadi.</li><li>AI vositalari mavjud boʻlmagan manbalarni “toʻqib” chiqarishi mumkin. Har manbani DOI yoki nashriyot sahifasi orqali tekshiring.</li><li>AI dan foydalanish qoidasi dasturga qarab farq qiladi; siyosatni tekshiring va matnni oʻzingiz yozing.</li></ul>
+            <div class="srcs">Manbalar: <a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples/journal-article-references" target="_blank" rel="noopener">APA Style: jurnal maqolasi</a> · <a href="https://journals.ieeeauthorcenter.ieee.org/your-role-in-article-production/ieee-editorial-style-manual/" target="_blank" rel="noopener">IEEE Editorial Style Manual</a>. Harvard uchun universitetingiz kutubxona qoʻllanmasiga qarang.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Bitta uslub, oxirigacha izchil; har matndagi iqtibos roʻyxatda va aksincha; har manba mavjudligi tekshirilgan. AI faqat dastur ruxsat bergan doirada.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b>
+            <ul><li>Pastdagi <a href="#cite">Iqtibos formatlovchi</a>da bitta manbani uch uslubda formatlang.</li><li>Matritsangizdagi har manbaning DOI yoki havolasini tekshiring.</li></ul></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l7">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- VORONKA -->
+  <section id="funnel">
+    <h2>Muammo voronkasi</h2>
+    <p class="sub">Kengdan torga: har qavatga 1–2 jumla. Ingliz yoki oʻzbek tilida; taklif muharririga skelet sifatida oʻtadi.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><div><h3>4 qavat + MYYT</h3><span>Har maydon 5+ soʻz · +25 XP</span></div></div>
+      <div class="fld" style="margin-top:12px"><label for="vG">1. Global muammo <small>manba bilan</small></label><textarea id="vG" data-save="vG" style="min-height:60px"></textarea></div>
+      <div class="fld"><label for="vR">2. Mintaqaviy kontekst</label><textarea id="vR" data-save="vR" style="min-height:60px"></textarea></div>
+      <div class="fld"><label for="vB">3. Boʻshliq (gap) <small>bilim, usul, kontekst yoki ziddiyat</small></label><textarea id="vB" data-save="vB" style="min-height:60px"></textarea></div>
+      <div class="fld"><label for="vQ">4. Tadqiqot savoli</label><textarea id="vQ" data-save="vQ" style="min-height:60px" placeholder="How reliably can ... estimate ... in ...?"></textarea></div>
+      <div class="grid3">
+        <div class="fld"><label for="vY">Yechim</label><textarea id="vY" data-save="vY" style="min-height:60px"></textarea></div>
+        <div class="fld"><label for="vN">Yangilik</label><textarea id="vN" data-save="vN" style="min-height:60px"></textarea></div>
+        <div class="fld"><label for="vT">Taʼsir</label><textarea id="vT" data-save="vT" style="min-height:60px"></textarea></div>
+      </div>
+      <div class="out" id="vOut" style="display:none"></div>
+      <button class="btn btn-p" type="button" id="vBtn">Voronka tayyor · +25 XP</button>
+    </div>
+  </section>
+
+  <!-- ADABIYOTLAR -->
+  <section id="lit">
+    <h2>Adabiyotlar matritsasi</h2>
+    <p class="sub">Har manba bitta qator. Mualliflar: har biri “Familiya, Ism” shaklida, nuqtali vergul bilan ajratiladi.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Manba qoʻshish</h3><span>8+ manba, usul va boʻshliq bilan · +35 XP</span></div></div>
+      <form id="lForm" autocomplete="off" style="margin-top:12px">
+        <div class="grid3">
+          <div class="fld" style="grid-column:span 2"><label for="lAu">Mualliflar</label><input id="lAu" required placeholder="Karimov, Aziz; Smith, John"></div>
+          <div class="fld"><label for="lYr">Yil</label><input id="lYr" required inputmode="numeric" placeholder="2025"></div>
+          <div class="fld" style="grid-column:span 2"><label for="lTi">Sarlavha</label><input id="lTi" required></div>
+          <div class="fld"><label for="lJo">Jurnal</label><input id="lJo" placeholder="Hydrogeology Journal"></div>
+          <div class="fld"><label for="lVp">Jild(son), sahifalar</label><input id="lVp" placeholder="12(2), 45–58"></div>
+          <div class="fld" style="grid-column:span 2"><label for="lDoi">DOI yoki havola</label><input id="lDoi" placeholder="10.1007/s10040-..."></div>
+          <div class="fld"><label for="lMe">Usul</label><input id="lMe" required placeholder="Kriging, 60 wells"></div>
+          <div class="fld"><label for="lFi">Asosiy natija</label><input id="lFi" required></div>
+          <div class="fld"><label for="lGa">Boʻshliq yoki cheklov</label><input id="lGa" required></div>
+        </div>
+        <button class="btn btn-p" type="submit">+ Matritsaga qoʻshish</button>
+      </form>
+      <div class="sumrow" id="lSum"></div>
+      <div class="tbl"><table><thead><tr><th>#</th><th>Manba</th><th>Usul</th><th>Natija</th><th>Boʻshliq</th><th></th></tr></thead><tbody id="lTbl"></tbody></table></div>
+      <div class="btnrow"><button class="btn btn-g" type="button" id="lCsv">📤 CSV</button></div>
+    </div>
+
+    <div class="tool" id="cite">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Iqtibos formatlovchi</h3><span>APA 7 · IEEE · Harvard · +15 XP</span></div></div>
+      <div class="grid3" style="margin-top:12px">
+        <div class="fld" style="grid-column:span 2"><label for="cAu">Mualliflar</label><input id="cAu" data-save="cAu" placeholder="Karimov, Aziz; Smith, John"></div>
+        <div class="fld"><label for="cYr">Yil</label><input id="cYr" data-save="cYr" inputmode="numeric"></div>
+        <div class="fld" style="grid-column:span 2"><label for="cTi">Sarlavha</label><input id="cTi" data-save="cTi"></div>
+        <div class="fld"><label for="cJo">Jurnal</label><input id="cJo" data-save="cJo"></div>
+        <div class="fld"><label for="cVo">Jild</label><input id="cVo" data-save="cVo" inputmode="numeric"></div>
+        <div class="fld"><label for="cIs">Son</label><input id="cIs" data-save="cIs" inputmode="numeric"></div>
+        <div class="fld"><label for="cPg">Sahifalar</label><input id="cPg" data-save="cPg" placeholder="45–58"></div>
+        <div class="fld" style="grid-column:span 3"><label for="cDoi">DOI</label><input id="cDoi" data-save="cDoi" placeholder="10.xxxx/xxxxx"></div>
+      </div>
+      <button class="btn btn-p" type="button" id="cBtn">Formatlash · +15 XP</button>
+      <div id="cOut"></div>
+      <p class="hint" style="margin-top:8px">Natijani rasmiy qoʻllanma bilan solishtiring: Harvard uslubi universitetga qarab farq qiladi.</p>
+    </div>
+  </section>
+
+  <!-- GANTT -->
+  <section id="plan">
+    <h2>Gantt rejasi</h2>
+    <p class="sub">Tadqiqot davri oylarda. Har bosqich: boshlanish oyi va davomiyligi.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Bosqichlar</h3><span>5+ bosqich, biri zaxira · +25 XP</span></div></div>
+      <div class="grid3" style="margin-top:12px">
+        <div class="fld"><label for="gDur">Tadqiqot davri</label><select id="gDur" data-save="gDur"><option value="6">6 oy</option><option value="9">9 oy</option><option value="12" selected>12 oy</option><option value="24">24 oy</option></select></div>
+      </div>
+      <form id="gForm" autocomplete="off">
+        <div class="grid3">
+          <div class="fld"><label for="gN">Bosqich</label><input id="gN" required placeholder="Maʼlumot yigʻish"></div>
+          <div class="fld"><label for="gS">Boshlanish oyi</label><input id="gS" type="number" min="1" max="24" value="1" inputmode="numeric" required></div>
+          <div class="fld"><label for="gL">Davomiyligi <small>oy</small></label><input id="gL" type="number" min="1" max="24" value="2" inputmode="numeric" required></div>
+        </div>
+        <label class="ck" style="margin-bottom:12px"><input type="checkbox" id="gZ"><span>Bu zaxira bosqichi</span></label>
+        <button class="btn btn-p" type="submit">+ Bosqich qoʻshish</button>
+      </form>
+      <div class="gantt" id="gChart"></div>
+      <div id="gWarn"></div>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges b6">
+      <div class="bdg" data-badge="quiz"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Taklif bilimdoni<small>Test 3+/4</small></div>
+      <div class="bdg" data-badge="funnel"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Voronka<small>Savol</small></div>
+      <div class="bdg" data-badge="lit"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Adabiyot xaritasi<small>8+ manba</small></div>
+      <div class="bdg" data-badge="plan"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy">Rejalashtiruvchi<small>Gantt</small></div>
+      <div class="bdg" data-badge="cite"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Iqtibos ustasi<small>3 uslub</small></div>
+      <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">III faza yakuni<small>Taklif v1.0</small></div>
+    </div>
+  </section>
+
+  <!-- ARTIFACT -->
+  <section id="artefakt">
+    <h2>Ilmiy loyiha taklifi v1.0</h2>
+    <p class="sub">“Skeletni qoʻyish” vositalardagi yozuvlarni boʻsh boʻlimlarga joylaydi. Keyin har boʻlimni toʻliq matnga aylantiring. Adabiyotlar roʻyxati matritsadan APA 7 da yigʻiladi.</p>
+    <div class="artifact">
+      <div class="noprint">
+        <div class="grid2">
+          <div class="fld"><label for="prTitle">Sarlavha</label><input id="prTitle" data-save="prTitle" placeholder="Estimating groundwater salinity from sparse monitoring data in the Syrdarya basin"></div>
+          <div class="fld"><label for="prRange">Hajm talabi</label><select id="prRange" data-save="prRange"><option value="1500-2000">1 500–2 000 soʻz</option><option value="2000-3000">2 000–3 000 soʻz</option></select></div>
+        </div>
+        <button class="btn btn-g" type="button" id="prSkel">Skeletni qoʻyish</button>
+        <div class="fld" style="margin-top:12px"><label for="pr1">1. Kirish va muammo bayoni <small>Introduction and problem statement</small></label><textarea id="pr1" data-save="pr1" style="min-height:130px"></textarea><div class="meterw" id="pr1M"></div></div>
+        <div class="fld" style="margin-top:12px"><label for="pr2">2. Adabiyotlar sharhi <small>Literature review</small></label><textarea id="pr2" data-save="pr2" style="min-height:130px"></textarea><div class="meterw" id="pr2M"></div></div>
+        <div class="fld" style="margin-top:12px"><label for="pr3">3. Tadqiqot savoli va maqsadlar <small>Research questions and objectives</small></label><textarea id="pr3" data-save="pr3" style="min-height:130px"></textarea><div class="meterw" id="pr3M"></div></div>
+        <div class="fld" style="margin-top:12px"><label for="pr4">4. Metodologiya <small>Methodology</small></label><textarea id="pr4" data-save="pr4" style="min-height:130px"></textarea><div class="meterw" id="pr4M"></div></div>
+        <div class="fld" style="margin-top:12px"><label for="pr5">5. Ish rejasi <small>Work plan</small></label><textarea id="pr5" data-save="pr5" style="min-height:130px"></textarea><div class="meterw" id="pr5M"></div></div>
+        <div class="fld" style="margin-top:12px"><label for="pr6">6. Kutilayotgan natija va ahamiyati <small>Expected outcomes and significance</small></label><textarea id="pr6" data-save="pr6" style="min-height:130px"></textarea><div class="meterw" id="pr6M"></div></div>
+        <div class="meterw" id="prTot"></div>
+      </div>
+      <div id="prDoc" class="prdoc"></div>
+      <div id="aMiss" class="noprint" style="font-size:13.5px;color:var(--muted);margin-top:10px"></div>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">III fazani yakunlash · +30 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>Savolingizni bitta jumlada aytib bera olmasangiz, taklifni yozishga hali erta. Avval savolni toraytiring: qolgan hamma boʻlim shu jumladan kelib chiqadi.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>7 ta</div>
+      <div><b>Vaqt</b>~4 hafta (haftasiga 5–8 soat)</div>
+      <div><b>Natija</b>Research Proposal 1 500–3 000 soʻz + adabiyotlar matritsasi + Gantt</div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="master-lab.html">← Master Lab</a>
+    <span class="btn btn-g" style="cursor:default;opacity:.7">Keyingi: M7 Stipendiyalar atlasi</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+
+<script>
+(function () {
+  var KEY = "kompas_master_m6_v1";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function load(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  var DAY = 86400000, MON = ["yan", "fev", "mar", "apr", "may", "iyn", "iyl", "avg", "sen", "okt", "noy", "dek"];
+  function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+  function pd(s) { return s ? new Date(s + "T00:00:00") : null; }
+  function iso(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function fmt(d) { return d.getDate() + "-" + MON[d.getMonth()] + " " + d.getFullYear(); }
+  function left(d) { return Math.round((d - today()) / DAY); }
+  function leftTag(d) { var n = left(d); return n < 0 ? '<span class="pill no">' + (-n) + " kun oʻtdi</span>" : n <= 30 ? '<span class="pill chk">' + n + " kun qoldi</span>" : '<span class="pill ok">' + n + " kun qoldi</span>"; }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  function csv(name, head, rows) { var q = function (v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }; download(name, "text/csv;charset=utf-8", "﻿" + [head].concat(rows).map(function (r) { return r.map(q).join(","); }).join("\n")); }
+  function meter(el, n, lo, hi, unit) { var pct = Math.min(100, n / hi * 100); el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : ""); el.innerHTML = '<div class="mt"><span>' + n + " " + (unit || "soʻz") + "</span><span>maqsad: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>'; }
+  function uid() { return Date.now() + Math.floor(Math.random() * 1000); }
+
+  // ── XP ──
+  var MAX = 300, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [100, "2-daraja: Izlanuvchi"], [200, "3-daraja: Kashfiyotchi"], [300, "III faza yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; S.xp = Math.min(MAX, S.xp + xp); save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! III faza yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  // ── Darslar ──
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Ajoyib! Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!";
+  }
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, 20, "Dars 6." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else $("funnel").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  var artT;
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    var tm; t.addEventListener("input", function () { clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  // ── Mini-test ──
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Taklifning vazifasini tushunasiz." : "Jadvaldagi holatlarni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { var xp = r.right * 7 + (r.right === 4 ? 2 : 0); if (r.right >= 3) award("quiz", xp, "Taklif bilimdoni nishoni", "telescope"); else award("quizTry", xp, "Test: " + r.right + "/4", "telescope"); }
+      });
+    });
+  });
+
+  // ── Voronka ──
+  S.lit = S.lit || []; S.plan = S.plan || [];
+  var VF = ["vG", "vR", "vB", "vQ", "vY", "vN", "vT"];
+  $("vBtn").addEventListener("click", function () {
+    var miss = VF.filter(function (k) { return wc(nv(k)) < 5; });
+    if (miss.length) { toast("Har maydonda kamida 5 soʻz boʻlsin (" + miss.length + " ta qoldi)", "compass"); return; }
+    award("funnel", 25, "Voronka nishoni", "compass");
+  });
+  function renderFunnel() {
+    var o = $("vOut"); if (!nv("vQ")) { o.style.display = "none"; return; }
+    o.style.display = "block"; o.innerHTML = "<b>Tadqiqot savoli:</b> " + esc(nv("vQ"));
+  }
+
+  // ── Mualliflar va iqtiboslar ──
+  function authors(s) { return String(s || "").split(";").map(function (a) { var p = a.split(","); return { last: (p[0] || "").trim(), first: (p.slice(1).join(",") || "").trim() }; }).filter(function (a) { return a.last; }); }
+  function ini(first, sep) { return first.split(/[\s-]+/).filter(Boolean).map(function (n) { return n.charAt(0).toUpperCase() + "."; }).join(sep); }
+  function joinList(arr, last2, lastN) { if (arr.length < 2) return arr.join(""); if (arr.length === 2) return arr[0] + last2 + arr[1]; return arr.slice(0, -1).join(", ") + lastN + arr[arr.length - 1]; }
+  function doiUrl(d) { d = String(d || "").trim(); if (!d) return ""; return /^https?:/.test(d) ? d : "https://doi.org/" + d.replace(/^doi:\s*/i, ""); }
+  function apa(r) {
+    var au = joinList(authors(r.au).map(function (a) { return a.last + (a.first ? ", " + ini(a.first, " ") : ""); }), ", & ", ", & ");
+    var vi = r.vol ? ", <i>" + esc(r.vol) + "</i>" + (r.iss ? "(" + esc(r.iss) + ")" : "") : "";
+    return esc(au) + " (" + esc(r.yr) + "). " + esc(r.ti).replace(/\.$/, "") + ". " + (r.jo ? "<i>" + esc(r.jo) + "</i>" + vi + (r.pg ? ", " + esc(r.pg) : "") + ". " : "") + esc(doiUrl(r.doi));
+  }
+  function ieee(r) {
+    var au = joinList(authors(r.au).map(function (a) { return (a.first ? ini(a.first, " ") + " " : "") + a.last; }), " and ", ", and ");
+    return esc(au) + ", “" + esc(r.ti).replace(/\.$/, "") + ",” " + (r.jo ? "<i>" + esc(r.jo) + "</i>, " : "") + (r.vol ? "vol. " + esc(r.vol) + ", " : "") + (r.iss ? "no. " + esc(r.iss) + ", " : "") + (r.pg ? "pp. " + esc(r.pg) + ", " : "") + esc(r.yr) + (r.doi ? ", doi: " + esc(String(r.doi).replace(/^https?:\/\/doi\.org\//, "")) : "") + ".";
+  }
+  function harvard(r) {
+    var au = joinList(authors(r.au).map(function (a) { return a.last + (a.first ? ", " + ini(a.first, "") : ""); }), " and ", " and ");
+    return esc(au) + " (" + esc(r.yr) + ") ‘" + esc(r.ti).replace(/\.$/, "") + "’, " + (r.jo ? "<i>" + esc(r.jo) + "</i>, " : "") + (r.vol ? esc(r.vol) + (r.iss ? "(" + esc(r.iss) + ")" : "") + ", " : "") + (r.pg ? "pp. " + esc(r.pg) + ". " : "") + (r.doi ? "Available at: " + esc(doiUrl(r.doi)) + "." : "");
+  }
+  function inText(r) { var a = authors(r.au); return (a.length > 2 ? a[0].last + " et al." : a.map(function (x) { return x.last; }).join(" & ")) + " (" + r.yr + ")"; }
+  $("cBtn").addEventListener("click", function () {
+    var r = { au: nv("cAu"), yr: nv("cYr"), ti: nv("cTi"), jo: nv("cJo"), vol: nv("cVo"), iss: nv("cIs"), pg: nv("cPg"), doi: nv("cDoi") };
+    if (!authors(r.au).length || !r.yr || !r.ti) { toast("Muallif, yil va sarlavha kerak", "shield"); return; }
+    $("cOut").innerHTML = '<div class="out" style="white-space:normal"><b>APA 7</b><br>' + apa(r) + '</div><div class="out" style="white-space:normal"><b>IEEE</b><br>[1] ' + ieee(r) + '</div><div class="out" style="white-space:normal"><b>Harvard</b><br>' + harvard(r) + "</div>";
+    award("cite", 15, "Iqtibos ustasi nishoni", "shield");
+  });
+
+  // ── Matritsa ──
+  function splitVp(v) { var m = String(v || "").match(/^\s*(\d+)\s*(?:\((\w+)\))?\s*,?\s*(.*)$/); return m ? { vol: m[1], iss: m[2] || "", pg: m[3] || "" } : { vol: "", iss: "", pg: v || "" }; }
+  function litRec(x) { var v = splitVp(x.vp); return { au: x.au, yr: x.yr, ti: x.ti, jo: x.jo, vol: v.vol, iss: v.iss, pg: v.pg, doi: x.doi }; }
+  $("lForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    S.lit.push({ au: $("lAu").value.trim(), yr: $("lYr").value.trim(), ti: $("lTi").value.trim(), jo: $("lJo").value.trim(), vp: $("lVp").value.trim(), doi: $("lDoi").value.trim(), me: $("lMe").value.trim(), fi: $("lFi").value.trim(), ga: $("lGa").value.trim() });
+    save(); this.reset(); renderLit(); renderArt();
+    if (S.lit.length >= 8) award("lit", 35, "Adabiyot xaritasi nishoni", "books"); else toast("Manba qoʻshildi: " + S.lit.length + " / 8", "books");
+  });
+  function sortedLit() { return S.lit.slice().sort(function (a, b) { return a.au.localeCompare(b.au); }); }
+  function renderLit() {
+    var n = S.lit.length, recent = S.lit.filter(function (x) { return +x.yr >= new Date().getFullYear() - 3; }).length, doi = S.lit.filter(function (x) { return x.doi; }).length;
+    $("lSum").innerHTML = '<div class="sum' + (n >= 8 ? " ok" : "") + '"><b>' + n + "</b><span>Manba</span></div>" + '<div class="sum"><b>' + recent + "</b><span>Soʻnggi 3 yil</span></div>" + '<div class="sum"><b>' + doi + "</b><span>DOI bilan</span></div>" + '<div class="sum"><b>' + S.lit.filter(function (x) { return x.ga; }).length + "</b><span>Boʻshliq yozilgan</span></div>";
+    $("lTbl").innerHTML = n ? S.lit.map(function (x, i) { return "<tr><td>" + (i + 1) + "</td><td>" + esc(inText(x)) + "<br><small>" + esc(x.ti) + "</small></td><td>" + esc(x.me) + "</td><td>" + esc(x.fi) + "</td><td>" + esc(x.ga) + '</td><td><button type="button" class="mini del" data-ldel="' + i + '">×</button></td></tr>'; }).join("") : '<tr><td colspan="6" style="color:var(--muted)">Matritsa boʻsh</td></tr>';
+  }
+  $("lTbl").addEventListener("click", function (e) { var i = e.target.getAttribute("data-ldel"); if (i == null || !confirm("Manba oʻchirilsinmi?")) return; S.lit.splice(+i, 1); save(); renderLit(); renderArt(); });
+  $("lCsv").addEventListener("click", function () { csv("adabiyotlar-matritsasi.csv", ["Mualliflar", "Yil", "Sarlavha", "Jurnal", "Jild(son), sahifalar", "DOI", "Usul", "Natija", "Boʻshliq"], S.lit.map(function (x) { return [x.au, x.yr, x.ti, x.jo, x.vp, x.doi, x.me, x.fi, x.ga]; })); });
+
+  // ── Gantt ──
+  function dur() { return +(nv("gDur") || 12); }
+  $("gForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    S.plan.push({ n: $("gN").value.trim(), s: Math.max(1, +$("gS").value || 1), l: Math.max(1, +$("gL").value || 1), z: $("gZ").checked });
+    save(); $("gN").value = ""; $("gZ").checked = false; renderPlan(); renderArt(); checkPlan();
+  });
+  function renderPlan() {
+    var D = dur(), cols = "repeat(" + D + ",minmax(0,1fr))", box = $("gChart");
+    if (!S.plan.length) { box.innerHTML = '<div class="empty">Hali bosqich yoʻq</div>'; $("gWarn").innerHTML = ""; return; }
+    box.innerHTML = '<div class="g-in"><div class="g-head"><span></span><div class="g-mon" style="grid-template-columns:' + cols + '">' + Array.from({ length: D }, function (_, i) { return "<span>" + (i + 1) + "</span>"; }).join("") + "</div><span></span></div>" +
+      S.plan.map(function (p, i) { var over = p.s + p.l - 1 > D; return '<div class="g-row"><div class="g-lab" title="' + esc(p.n) + '">' + esc(p.n) + '</div><div class="g-track"><span class="g-bar' + (p.z ? " z" : "") + (over ? " over" : "") + '" style="left:' + ((p.s - 1) / D * 100) + "%;width:" + (Math.min(p.l, D - p.s + 1) / D * 100) + '%"></span></div><button type="button" class="mini del" data-gdel="' + i + '" aria-label="Oʻchirish">×</button></div>'; }).join("") + "</div>";
+    var over = S.plan.filter(function (p) { return p.s + p.l - 1 > D; }), zl = S.plan.filter(function (p) { return p.z; }).reduce(function (s, p) { return s + p.l; }, 0);
+    $("gWarn").innerHTML = (over.length ? '<div class="box warn">⚠️ Davrdan oshgan bosqichlar: ' + over.map(function (p) { return esc(p.n); }).join(", ") + "</div>" : "") + (zl ? '<p class="hint">Zaxira: ' + zl + " oy (" + Math.round(zl / D * 100) + "%).</p>" : '<p class="hint">Zaxira bosqichi yoʻq.</p>');
+  }
+  $("gChart").addEventListener("click", function (e) { var i = e.target.getAttribute("data-gdel"); if (i == null) return; S.plan.splice(+i, 1); save(); renderPlan(); renderArt(); });
+  function checkPlan() { var D = dur(); if (S.plan.length >= 5 && S.plan.some(function (p) { return p.z; }) && !S.plan.some(function (p) { return p.s + p.l - 1 > D; })) award("plan", 25, "Rejalashtiruvchi nishoni", "calendar"); }
+
+  // ── Taklif muharriri ──
+  var SECS = [["pr1", "Introduction and problem statement", .18], ["pr2", "Literature review", .27], ["pr3", "Research questions and objectives", .08], ["pr4", "Methodology", .25], ["pr5", "Work plan", .08], ["pr6", "Expected outcomes and significance", .14]];
+  function range() { var r = (nv("prRange") || "1500-2000").split("-"); return [+r[0], +r[1]]; }
+  function total() { return SECS.reduce(function (s, x) { return s + wc(nv(x[0])); }, 0); }
+  function setIf(k, v) { if (!nv(k) && v) { S.notes[k] = v; $(k).value = v; } }
+  $("prSkel").addEventListener("click", function () {
+    setIf("pr1", [nv("vG"), nv("vR"), nv("vB")].filter(Boolean).join(" "));
+    setIf("pr2", sortedLit().map(function (x) { return inText(x) + " used " + x.me + " and found " + x.fi.replace(/\.$/, "") + ". However, " + x.ga.replace(/\.$/, "") + "."; }).join("\n"));
+    setIf("pr3", [nv("vQ"), nv("vY") && "Approach: " + nv("vY"), nv("vN") && "Novelty: " + nv("vN")].filter(Boolean).join("\n"));
+    setIf("pr4", [nv("mDes") && "Design: " + nv("mDes"), nv("mDat") && "Data: " + nv("mDat"), nv("mMet") && "Methods: " + nv("mMet"), nv("mLim") && "Limitations: " + nv("mLim")].filter(Boolean).join("\n"));
+    setIf("pr5", S.plan.map(function (p) { return "Months " + p.s + "–" + (p.s + p.l - 1) + ": " + p.n; }).join("\n"));
+    setIf("pr6", [nv("oSci"), nv("oPra"), nv("oUz"), nv("vT")].filter(Boolean).join(" "));
+    save(); renderArt(); toast("Skelet joylandi: endi har boʻlimni kengaytiring", "memo");
+  });
+  function renderArt() {
+    renderFunnel(); renderPlan();
+    var R = range(), T = (R[0] + R[1]) / 2;
+    SECS.forEach(function (x) { var t = Math.round(T * x[2]); meter($(x[0] + "M"), wc(nv(x[0])), Math.round(t * .7), Math.round(t * 1.3)); });
+    meter($("prTot"), total(), R[0], R[1]);
+    var h = "<h1>" + (esc(nv("prTitle")) || '<span style="color:var(--muted)">Sarlavha</span>') + "</h1>";
+    SECS.forEach(function (x) { if (!nv(x[0])) return; h += "<h4>" + x[1] + "</h4>" + nv(x[0]).split(/\n+/).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join(""); });
+    if (S.plan.length) h += '<h4>Gantt chart</h4><table style="width:100%;min-width:0;border-collapse:collapse;font-size:13px"><tr><th style="text-align:left">Stage</th><th>Months</th></tr>' + S.plan.map(function (p) { return "<tr><td>" + esc(p.n) + (p.z ? " (buffer)" : "") + '</td><td style="text-align:center">' + p.s + "–" + (p.s + p.l - 1) + "</td></tr>"; }).join("") + "</table>";
+    if (S.lit.length) h += "<h4>References</h4>" + sortedLit().map(function (x) { return '<p class="ref">' + apa(litRec(x)) + "</p>"; }).join("");
+    $("prDoc").innerHTML = h;
+    var n = total(), miss = [];
+    if (!nv("prTitle")) miss.push("sarlavha"); if (n < R[0] || n > R[1]) miss.push("hajm " + R[0] + "–" + R[1] + " soʻz (hozir " + n + ")");
+    if (!S.done.funnel) miss.push("voronka"); if (!S.done.lit) miss.push("8+ manba"); if (!S.done.plan) miss.push("Gantt rejasi");
+    $("aMiss").textContent = miss.length ? "Yakunlash uchun yetishmayapti: " + miss.join(", ") + "." : "Hammasi tayyor.";
+    $("finBtn").disabled = !!S.done.fin; if (S.done.fin) $("finBtn").textContent = "✓ III faza yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    var R = range(), n = total();
+    if (!nv("prTitle") || n < R[0] || n > R[1] || !S.done.funnel || !S.done.lit || !S.done.plan) { toast("Avval yetishmayotgan qismlarni yakunlang", "lock"); return; }
+    award("fin", 30, "Loyiha taklifi v1.0 tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var nm = (nv("prTitle") || "Research_Proposal").replace(/[^A-Za-z0-9]+/g, "_").slice(0, 60);
+    download(nm + ".doc", "application/msword", '<html><head><meta charset="utf-8"><style>body{font-family:Georgia,serif;font-size:12pt;line-height:1.5}h1{font-size:16pt}h4{font-size:13pt;margin:14pt 0 4pt}p{margin:0 0 8pt}.ref{padding-left:24pt;text-indent:-24pt}td,th{border:1px solid #999;padding:3pt 6pt}</style></head><body>' + $("prDoc").innerHTML + "</body></html>");
+  });
+
+  function init() { renderLit(); renderPlan(); }
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+    lessons.forEach(renderLesson);
+  }
+
+  renderQuiz(); init(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>

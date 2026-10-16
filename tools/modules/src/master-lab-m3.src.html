@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M3 Akademik CV · Master Lab · Kompas Lab</title>
+<meta name="description" content="Master Lab M3: akademik CV va ishchi rezyume farqi, taʼlim va GPA, STAR usuli, nashrlar, koʻnikmalar, tahrir va Akademik CV v1.0.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+{{CSS}}
+/* M3 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(9,minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(5,minmax(0,1fr));}.path.pn .node:nth-child(4)::after{display:block;}.path.pn .node:nth-child(5)::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 14px;}
+.empty{color:var(--muted);font-size:14px;padding:12px;text-align:center;border:1.5px dashed var(--border);border-radius:14px;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.mini{min-height:36px;padding:6px 12px;border-radius:9px;border:1.5px solid var(--border);background:var(--surface);font-weight:700;font-size:13px;cursor:pointer;color:var(--text);}
+.mini.del{color:var(--red);}
+.sumrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 4px;}
+.sum{background:var(--bg);border-radius:14px;padding:12px 14px;}
+.sum b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:30px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;}
+.sum span{font-size:12.5px;font-weight:700;color:var(--muted);}
+.sum.ok{outline:2px solid var(--green);}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);} .pill.u{background:var(--accent-lit);color:var(--accent);}
+.facts2{display:grid;gap:8px;margin-top:10px;}
+.fct{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:14px;}
+.fct b{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;margin-right:6px;}
+.fct b.ok{background:var(--green-lit);color:var(--green);} .fct b.wait{background:var(--gold-lit);color:var(--gold);}
+.fct a{color:#1f5fa8;font-size:12.5px;margin-left:4px;}
+.meterw{margin-top:10px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.chip{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--border);}
+.chip.bad{background:var(--red-lit);border-color:var(--red);color:var(--red);}
+.chip.good{background:var(--green-lit);border-color:var(--green);color:var(--green);}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.rowl{display:grid;gap:10px;margin-top:12px;}
+.ri{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:12px 14px;font-size:14.5px;}
+.ri-h{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;}
+.ri-h b{line-height:1.3;}
+.ri small{color:var(--muted);font-size:13px;}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact h3{font-size:18px;color:var(--accent);margin:16px 0 6px;}
+.artifact h3:first-of-type{margin-top:0;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.artifact .tbl table{min-width:520px;}
+.badges.b6{grid-template-columns:repeat(6,minmax(0,1fr));}
+.note-prev{font-size:13.5px;background:var(--accent-lit);border-radius:12px;padding:10px 14px;margin-top:10px;}
+@media(max-width:760px){
+  .grid2,.grid3{grid-template-columns:minmax(0,1fr);}
+  .grid2>*,.grid3>*{grid-column:auto!important;}
+  .sumrow{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .badges.b6{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .artifact{padding:16px;}
+  .artifact .row .btn,.btnrow .btn{flex:1 1 100%;}
+}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;}
+}
+.paper{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.45;padding:28px 30px;border:1px solid var(--border);border-radius:8px;}
+.paper h1{font-family:Georgia,serif;font-size:24px;color:#111;margin:0 0 2px;text-align:center;}
+.paper .ct{text-align:center;font-size:13px;color:#333;margin-bottom:10px;word-break:break-word;}
+.paper h4{font-family:Georgia,serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;margin:14px 0 6px;padding-bottom:2px;}
+.paper .it{margin-bottom:8px;}
+.paper .it .r{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.paper ul{margin:4px 0 0 18px;padding:0;}
+.paper li{margin:2px 0;}
+.paper .ph{color:#999;font-style:italic;}
+@media(max-width:760px){.paper{padding:18px 16px;font-size:13.5px;}}
+@media print{.paper{border:none;padding:0;font-size:11pt;}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="master-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Master Lab M3</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Master Lab</a> · Modul 3</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza II · Hujjat va aloqa</span>
+        <h1>Akademik CV</h1>
+        <p class="lead">CV komissiya sizni koʻradigan birinchi hujjat. Bu modulda uni magistratura mantiqi bilan qayta qurasiz: taʼlim oldinda, har qator dalil. Natija: <b>Akademik CV v1.0</b> (PDF va Word).</p>
+        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact"><b>3</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/scroll.webp" width="160" height="160" alt="">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 9 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">3.1</span>Farq</a>
+      <a class="node" href="#l2" data-node="l2"><span class="dot">3.2</span>Taʼlim</a>
+      <a class="node" href="#l3" data-node="l3"><span class="dot">3.3</span>STAR</a>
+      <a class="node" href="#l4" data-node="l4"><span class="dot">3.4</span>Nashr</a>
+      <a class="node" href="#l5" data-node="l5"><span class="dot">3.5</span>Koʻnikma</a>
+      <a class="node" href="#l6" data-node="l6"><span class="dot">3.6</span>Tahrir</a>
+      <a class="node" href="#cvtool" data-node="cv"><span class="dot">📄</span>CV</a>
+      <a class="node" href="#check" data-node="check"><span class="dot">✅</span>Tahrir</a>
+      <a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>CV v1.0</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span><b>Akademik CV v1.0:</b> 2 sahifagacha, ingliz tilida, PDF va Word formatida.</span></li>
+      <li><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span><b>3+ STAR qatori:</b> tajribangiz harakat, usul va oʻlchanadigan natija bilan.</span></li>
+      <li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Tahrir nazorati:</b> 12 bandlik roʻyxatdan oʻtgan, yuborishga tayyor fayl.</span></li>
+    </ul>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 3.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.1</span><span class="l-t" style="display:block">Akademik CV va ishchi rezyume farqi</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Ish uchun yozilgan bir sahifalik rezyumeni magistratura arizasiga yubordingiz: birinchi qatorda “Sotuv menejeri”, taʼlim pastda, tezis umuman yoʻq. Komissiya aʼzosi CV ni 1–2 daqiqada koʻrib chiqadi va asosiy savoliga javob topolmaydi: bu odam tadqiqotga tayyormi?</div></div>
+          <div class="panel">
+            <p>Ishchi rezyume (resume) ish beruvchiga “bu odam shu lavozimda foyda keltiradimi?” degan savolga javob beradi. Akademik CV (Curriculum Vitae) komissiyaga boshqa savolga javob beradi: <b>“bu odam bizning dasturda oʻqiy va tadqiqot qila oladimi?”</b></p>
+            <div class="tbl"><table><thead><tr><th></th><th>Ishchi rezyume</th><th>Akademik CV (magistratura)</th></tr></thead><tbody>
+              <tr><td><b>Birinchi boʻlim</b></td><td>Ish tajribasi yoki qisqa profil</td><td>Taʼlim (Education)</td></tr>
+              <tr><td><b>Hajm</b></td><td>Odatda 1 sahifa</td><td>Odatda 2 sahifagacha; dastur chegara qoʻysa, oʻsha chegara</td></tr>
+              <tr><td><b>Asosiy dalil</b></td><td>Savdo, loyiha, KPI natijalari</td><td>Kurslar, tezis, tadqiqot tajribasi, nashr va taqdimotlar, akademik mukofotlar</td></tr>
+              <tr><td><b>Ohang</b></td><td>Natija va foyda</td><td>Ilmiy qiziqish, usul va dalil</td></tr>
+            </tbody></table></div>
+            <h4>Mamlakatlar boʻyicha kutilganlar</h4>
+            <ul>
+              <li><b>Buyuk Britaniya va AQSh:</b> rasm, tugʻilgan sana, oilaviy holat va millat yozilmaydi. AQSh dasturlari baʼzan “resume” soʻraydi: bu holda ham taʼlim va tadqiqotni oldinga qoʻying.</li>
+              <li><b>Kontinental Yevropa:</b> tuzilma oʻxshash. Baʼzi dastur va stipendiyalar <b>Europass</b> shaklini talab qiladi; faqat shunda Europass ishlating.</li>
+              <li><b>Har qanday holatda:</b> dastur sahifasidagi talab (sahifa soni, shablon, til) sizning odatingizdan ustun.</li>
+            </ul>
+            <div class="box info"><b>Asosiy tamoyil:</b> CV dagi har bir qator “tadqiqotga tayyorman” degan daʼvoga dalil boʻlishi kerak. Dalil boʻlmagan qator joy egallaydi, xolos.</div>
+            <div class="srcs">Manba: <a href="https://europass.europa.eu/en/create-europass-cv" target="_blank" rel="noopener">Europass CV (Yevropa Komissiyasi)</a>. Rasm va shaxsiy maʼlumotlar boʻyicha talabni har dastur sahifasidan tekshiring.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Akademik CV taʼlimdan boshlanadi, odatda 2 sahifagacha boʻladi va har qatori tadqiqotga tayyorlikni isbotlaydi. Dastur talabi har doim umumiy qoidadan ustun.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b>
+            <div class="quiz" id="quiz">
+              <div class="qz" data-a="t"><p>“Akademik CV da birinchi oʻrinda odatda taʼlim boʻlimi turadi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: magistratura komissiyasi avval akademik tayyorgarlikni koʻradi.</div></div>
+              <div class="qz" data-a="n"><p>“Buyuk Britaniya va AQSh dasturlari uchun CV ga rasm va oilaviy holatni qoʻshish tavsiya etiladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: bu mamlakatlarda bunday maʼlumotlar yozilmaydi.</div></div>
+              <div class="qz" data-a="t"><p>“Europass shakli faqat dastur yoki stipendiya talab qilganda ishlatiladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: aks holda oddiy akademik CV tuzilmasi yetarli.</div></div>
+              <div class="qz" data-a="n"><p>“Ishchi rezyume va akademik CV bir xil hujjat, faqat nomi boshqacha.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: savol, tartib, hajm va dalil turi farq qiladi.</div></div>
+              </div>
+            <div class="verdict" id="quizRes"></div>
+            <ul style="margin-top:14px"><li>Hozirgi rezyume yoki CV ingizni oching. Qaysi 3 qator magistratura komissiyasi uchun foydasiz? Yozing.</li></ul>
+            <textarea data-save="a1" placeholder="1) ... 2) ... 3) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.2</span><span class="l-t" style="display:block">Taʼlim va mukofotlar</span>
+            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 CV quruvchi: Taʼlim</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“GPA: 4.2” deb yozdingiz. Komissiya aʼzosi Oʻzbekiston baholash tizimini bilmaydi: bu 4 dan 4.2 mi, 5 dan 4.2 mi yoki 100 dan? Bitta tushuntirilmagan raqam eng kuchli dalilingizni noaniq qilib qoʻyadi.</div></div>
+          <div class="panel">
+            <h4>Taʼlim qatorining tuzilmasi</h4>
+            <div class="out" style="white-space:normal"><b>BSc in Geology</b>, National University of Uzbekistan, Tashkent · 2021–2025<br>GPA: 4.6 / 5.0 (top 10% of cohort, per official transcript)<br>Thesis: “Groundwater salinity mapping in the Syrdarya basin” (supervisor: Dr A. Karimov)<br>Relevant coursework: Hydrogeology, Geostatistics, GIS, Numerical Methods</div>
+            <p style="margin-top:10px">Bu namuna Kompas tomonidan tuzilgan; ism va mavzu shartli.</p>
+            <h4>GPA ni toʻgʻri yozish</h4>
+            <ul>
+              <li><b>Asl shkalada yozing:</b> “4.6 / 5.0” yoki “86 / 100”. Oʻzingiz boshqa shkalaga aylantirmang; dastur soʻrasa, uning usuli yoki rasmiy baholash xizmatidan foydalaniladi.</li>
+              <li><b>Kontekst qoʻshing</b>, agar hujjat bilan tasdiqlansa: kurs boʻyicha oʻrin, “imtiyozli diplom”.</li>
+              <li><b>Oxirgi 2 yil kuchliroq boʻlsa</b>, buni CV da emas, maqsad bayonnomasi yoki qoʻshimcha izohda tushuntirasiz (M5).</li>
+            </ul>
+            <h4>Tegishli kurslar va tezis</h4>
+            <ul>
+              <li>4–6 ta kurs: aynan siz topshirayotgan dasturga yaqin fanlar. Hamma fanni sanamang.</li>
+              <li>Bitiruv ishi (tezis) nomi va ilmiy rahbar. Hali tugamagan boʻlsa: “in progress, expected June 2026”.</li>
+            </ul>
+            <h4>Mukofotlar (Honours & Awards)</h4>
+            <ul>
+              <li>Format: nomi, darajasi (universitet, viloyat, respublika, xalqaro), yil.</li>
+              <li>Tanlov qatʼiyligini faqat tasdiqlansa yozing: “1 of 3 winners among 120 participants”.</li>
+              <li>Akademik mukofotlar birinchi: stipendiya, olimpiada, ilmiy tanlov. Sport va madaniyat yutuqlari faqat joy qolsa.</li>
+            </ul>
+            <div class="box warn"><b>Tekshirib boʻlmaydigan daʼvo yozmang.</b> Komissiya transkript va sertifikatlarni soʻrashi mumkin; CV va hujjat orasidagi farq ishonchni yoʻqotadi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Taʼlim qatori: daraja, universitet, yillar, asl shkaladagi GPA, tezis va 4–6 tegishli kurs. Har bir raqam tushuntiriladi va hujjat bilan tasdiqlanadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b>
+            <ul><li>Pastdagi <a href="#cvtool">CV quruvchi</a>ning “Taʼlim” qismiga kamida bitta taʼlim qatorini GPA va shkalasi bilan kiriting.</li><li>Dasturingizga eng yaqin 4–6 kursni tanlang. Nima uchun aynan shular? Qisqa yozing.</li></ul>
+            <textarea data-save="a2" placeholder="Kurslar va tanlash sababi..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.3</span><span class="l-t" style="display:block">Tadqiqot tajribasi va STAR</span>
+            <span class="l-m"><span class="tag">⏱ 45 daqiqa</span><span class="tag">🛠 STAR generatori</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“Responsible for laboratory work” deb yozilgan qatordan komissiya hech narsa bilmaydi: nima qildingiz, qanday usul bilan, natija nima boʻldi? Bir xil tajriba STAR usulida yozilsa, dalilga aylanadi.</div></div>
+          <div class="panel">
+            <p><b>STAR</b> — tajribani tuzilmali bayon qilish usuli: <b>Vaziyat</b> (Situation), <b>Vazifa</b> (Task), <b>Harakat</b> (Action), <b>Natija</b> (Result). CV da toʻrttasi ham yozilmaydi: S va T sizga fikrni tartiblash uchun kerak, CV qatoriga esa asosan <b>A + R</b> kiradi.</p>
+            <div class="tbl"><table><thead><tr><th>Kuchsiz</th><th>Kuchli</th></tr></thead><tbody>
+              <tr><td>Responsible for data collection in the lab.</td><td>Collected and cleaned 1,200 groundwater sample records in Python, reducing missing values from 18% to 3%.</td></tr>
+              <tr><td>Participated in a research project.</td><td>Mapped soil salinity for 40 sites using QGIS kriging; results were used in the department’s 2025 regional report.</td></tr>
+              <tr><td>Helped students.</td><td>Taught weekly GIS lab sessions for 25 second-year students as a teaching assistant (Sep–Dec 2024).</td></tr>
+            </tbody></table></div>
+            <p>Namunalar Kompas tomonidan tuzilgan oʻquv misollari.</p>
+            <h4>Kuchli qator qoidalari</h4>
+            <ul><li>Oʻtgan zamondagi harakat feʼli bilan boshlang: analysed, designed, measured, modelled, built, presented.</li><li>Kamida bitta oʻlchanadigan narsa: son, foiz, hajm, muddat, auditoriya.</li><li>Usul yoki vosita nomi: Python, SPSS, QGIS, PCR, XRD.</li><li>12–35 soʻz. Bir qator, bitta fikr.</li></ul>
+            <h4>“Tadqiqot tajribam yoʻq”</h4>
+            <p>Magistraturaga topshiruvchilarning koʻpida rasmiy tadqiqot lavozimi boʻlmaydi. Tadqiqot tajribasi sifatida quyidagilar yoziladi:</p>
+            <ul><li><b>Bitiruv ishi (tezis)</b> va kurs ishlari: savol, usul, natija.</li><li><b>Amaliyot (internship)</b>: tashkilotdagi aniq tahliliy vazifa.</li><li><b>Kafedra yoki laboratoriyada yordam</b>: oʻlchov, maʼlumot yigʻish, assistentlik.</li><li><b>Mustaqil maʼlumot loyihasi</b>: ochiq maʼlumot toʻplamida tahlil, GitHub da kod.</li><li><b>Ish joyidagi tahliliy vazifalar</b>: hisobot, modellashtirish, monitoring.</li></ul>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p>CV qatori = harakat feʼli + usul + oʻlchanadigan natija. Rasmiy lavozim boʻlmasa, tezis, amaliyot va mustaqil loyiha tadqiqot tajribasi sifatida yoziladi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq: 3 ta STAR qatori</b>
+            <ul><li>Pastdagi <a href="#startool">STAR generatori</a>da 3 ta tajribangizdan qator yasang va ularni “Tajriba” boʻlimiga qoʻshing.</li><li>Har birida harakat feʼli va raqam borligini tekshiring.</li></ul></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.4</span><span class="l-t" style="display:block">Nashrlar, taqdimotlar, loyihalar</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🛠 CV quruvchi: Nashrlar</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Konferensiyada tezis bilan chiqqansiz, lekin CV da uni “Participated in a conference” deb yozdingiz. Komissiya uchun bu ishtirokchi va maʼruzachi orasidagi farq: biri tinglagan, ikkinchisi oʻz natijasini taqdim qilgan.</div></div>
+          <div class="panel">
+            <h4>Uchta alohida tur</h4>
+            <ul>
+              <li><b>Nashrlar (Publications):</b> jurnal maqolasi, toʻplamdagi maqola. Holatini halol yozing: <i>published</i>, <i>accepted</i>, <i>under review</i>. “In preparation” ni faqat qoʻlyozma haqiqatan mavjud boʻlsa yozing.</li>
+              <li><b>Taqdimotlar (Presentations):</b> konferensiya tezisi, ogʻzaki yoki poster maʼruza. Konferensiya nomi, shahar, sana.</li>
+              <li><b>Loyihalar (Projects):</b> GitHub repozitoriyasi, maʼlumot tahlili, dastur, xarita. Havola va bir qatorlik natija.</li>
+            </ul>
+            <h4>Iqtibos formati</h4>
+            <p>Bitta uslubni tanlab, hamma joyda bir xil qoʻllang. APA 7 namunasi (shartli):</p>
+            <div class="out" style="white-space:normal">Karimova, D., &amp; <b>Rahimov, A.</b> (2025). Salinity trends in shallow aquifers of the Syrdarya basin. <i>Central Asian Journal of Earth Sciences, 12</i>(2), 45–58. https://doi.org/10.xxxx/xxxxx</div>
+            <ul style="margin-top:10px"><li>Oʻz ismingizni <b>qalin</b> qiling: koʻp mualliflik ishda sizning oʻrningiz koʻrinsin.</li><li>DOI boʻlsa qoʻshing. Uslublar M6.7 da batafsil.</li></ul>
+            <div class="box warn"><b>Shubhali jurnallar.</b> Pul evaziga tez chop etadigan “yirtqich” (predatory) jurnaldagi maqola CV ni kuchaytirmaydi, aksincha savol tugʻdiradi. Jurnalni <a href="https://thinkchecksubmit.org/" target="_blank" rel="noopener">Think. Check. Submit.</a> roʻyxati boʻyicha tekshiring.</div>
+            <p>Nashr boʻlmasa, boʻlimni olib tashlang. Boʻsh yoki sunʼiy toʻldirilgan boʻlim yoʻq boʻlimdan yomonroq.</p>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>Nashr, taqdimot va loyihani ajrating; holatini halol yozing; bitta iqtibos uslubini izchil qoʻllang. Nashr boʻlmasa, loyihalar yetarli dalil.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b>
+            <ul><li>CV quruvchining “Nashrlar, taqdimotlar, loyihalar” qismiga kamida 1 ta yozuv qoʻshing (loyiha ham hisoblanadi).</li><li>Hech narsa boʻlmasa: keyingi 4 hafta ichida qanday kichik loyiha qilishingiz mumkin? Yozing.</li></ul>
+            <textarea data-save="a4" placeholder="Loyiha gʻoyasi, maʼlumot manbasi, natija shakli..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.5</span><span class="l-t" style="display:block">Koʻnikmalar, tillar, sertifikatlar</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🛠 CV quruvchi: Koʻnikmalar</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“Python ★★★★☆, Leadership 90%”. Bunday shkala hech narsani oʻlchamaydi: kim bilan solishtirilgan, qaysi ishda isbotlangan? Komissiya bu yulduzchalarni eʼtiborsiz qoldiradi.</div></div>
+          <div class="panel">
+            <h4>Texnik koʻnikmalar: guruh + dalil</h4>
+            <div class="out" style="white-space:normal"><b>Programming:</b> Python (pandas, NumPy, matplotlib), R (basic)<br><b>GIS &amp; remote sensing:</b> QGIS, Google Earth Engine<br><b>Laboratory:</b> XRF sample preparation, titration</div>
+            <ul style="margin-top:10px"><li>Har koʻnikma CV ning boshqa joyida (tajriba yoki loyihada) ishlatilgan boʻlishi kerak.</li><li>Foiz, yulduzcha va chiziqli shkala yozilmaydi.</li><li>“MS Word, Internet” kabi umumiy koʻnikmalar joy egallaydi, xolos.</li></ul>
+            <h4>Tillar: CEFR</h4>
+            <p>Til darajasini Yevropa umumiy til kompetensiyalari tizimi (CEFR) boʻyicha yozing: A1–A2 (boshlangʻich), B1–B2 (mustaqil), C1–C2 (erkin). Sertifikat boʻlsa, ballni va yilni qoʻshing:</p>
+            <div class="out" style="white-space:normal">English — C1 (IELTS Academic 7.5, 2026)<br>Uzbek — native · Russian — C1</div>
+            <h4>Sertifikatlar</h4>
+            <ul><li>Faqat dasturga tegishlilari: soha kurslari, laboratoriya xavfsizligi, maʼlumot tahlili.</li><li>Onlayn kurs: nomi, platforma, yil. Oʻnta umumiy kursdan bitta tegishli kurs yaxshiroq.</li><li>Til sertifikatining amal qilish muddatini tekshiring: koʻp universitetlar maʼlum muddatdan (odatda 2 yil) eski natijani qabul qilmaydi.</li></ul>
+            <div class="srcs">Manba: <a href="https://www.coe.int/en/web/common-european-framework-reference-languages/table-1-cefr-3.3-common-reference-levels-global-scale" target="_blank" rel="noopener">Council of Europe: CEFR global shkalasi</a>. Til sertifikati muddati va minimal ball har dastur sahifasida.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Koʻnikmalar guruhlanadi va tajribada isbotlanadi; tillar CEFR va sertifikat bali bilan yoziladi; sertifikatlar faqat tegishlisi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b>
+            <ul><li>CV quruvchining “Koʻnikmalar, tillar, sertifikatlar” qismini toʻldiring.</li><li>Har texnik koʻnikma yonida u qaysi tajriba yoki loyihada ishlatilganini oʻzingiz uchun yozing.</li></ul>
+            <textarea data-save="a5" placeholder="Python — tezis tahlili; QGIS — amaliyot xaritasi..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.6</span><span class="l-t" style="display:block">Tahrir va yakunlash</span>
+            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">✅ Tahrir nazorati</span><span class="tag xp">+20 XP · roʻyxat +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">CV ni yozib boʻlgan zahoti yubordingiz. Bir sahifada “2023–2024”, boshqasida “Sep 2023 – May 2024”; bir qator “analyse”, keyingisi “analyzed”. Har biri mayda, birgalikda esa eʼtiborsizlik taassurotini beradi.</div></div>
+          <div class="panel">
+            <h4>Uch bosqichli tahrir</h4>
+            <div class="tbl"><table><thead><tr><th>Bosqich</th><th>Savol</th><th>Usul</th></tr></thead><tbody>
+              <tr><td><b>1. Mazmun</b></td><td>Har qator shu dasturga dalilmi?</td><td>Har qator yonida “bu nimani isbotlaydi?” deb soʻrang. Javob yoʻq boʻlsa, olib tashlang.</td></tr>
+              <tr><td><b>2. Tuzilma</b></td><td>Tartib va format izchilmi?</td><td>Teskari xronologiya; sana formati bir xil; boʻlim nomlari bir xil uslubda.</td></tr>
+              <tr><td><b>3. Imlo va til</b></td><td>Xato bormi?</td><td>Tugagan ish oʻtgan zamonda, davom etayotgani hozirgi zamonda. Britaniya yoki Amerika imlosidan bittasi. Ovoz chiqarib oʻqing.</td></tr>
+            </tbody></table></div>
+            <h4>2 sahifa chegarasi</h4>
+            <ul><li>Magistratura uchun 2 sahifadan oshsa, avval maktab davri, umumiy koʻnikmalar va tegishli boʻlmagan ishlarni qisqartiring.</li><li>Shrift oʻlchamini 10 dan kichraytirib sigʻdirmang.</li></ul>
+            <h4>Fayl</h4>
+            <ul><li>PDF formatida yuboring (portal boshqasini soʻramasa).</li><li>Fayl nomi: <b>Familiya_Ism_CV.pdf</b>. “CV_final_final2.pdf” emas.</li><li>Havolalar PDF ichida bosiladigan boʻlsin.</li></ul>
+            <div class="box info">Yakunlashdan oldin CV ni tanish odamga 2 daqiqa koʻrsating va soʻrang: “Men qaysi sohaga topshiryapman?” Javobi notoʻgʻri boʻlsa, CV dagi yoʻnalish aniq emas.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Tahrir uch bosqichda: mazmun, tuzilma, imlo. Natija: 2 sahifagacha, izchil formatli, Familiya_Ism_CV.pdf nomli fayl.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b>
+            <ul><li>Pastdagi <a href="#check">Tahrir nazorati</a> roʻyxatidan oʻting: 12 bandning hammasi bajarilganda CV yakunlanadi.</li><li>2 daqiqalik test natijasi: tanish odamingiz qaysi sohani aytdi?</li></ul>
+            <textarea data-save="a6" placeholder="Kim koʻrdi, nima dedi, nimani oʻzgartirdim..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CV QURUVCHI -->
+  <section id="cvtool">
+    <h2>CV quruvchi</h2>
+    <p class="sub">Har boʻlimni toʻldiring: pastdagi “Akademik CV v1.0” da tayyor koʻrinish avtomatik yigʻiladi. CV ingliz tilida yoziladi. Maʼlumot faqat shu qurilmada saqlanadi.</p>
+
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Shaxsiy maʼlumot va ilmiy qiziqish</h3><span>Rasm, tugʻilgan sana va oilaviy holat yozilmaydi</span></div></div>
+      <div class="grid3" style="margin-top:12px">
+        <div class="fld"><label for="cvName">Ism va familiya <small>lotin</small></label><input id="cvName" data-save="cvName" placeholder="Aziz Rahimov"></div>
+        <div class="fld"><label for="cvEmail">Email</label><input id="cvEmail" data-save="cvEmail" type="email" inputmode="email" placeholder="aziz.rahimov@gmail.com"></div>
+        <div class="fld"><label for="cvPhone">Telefon <small>ixtiyoriy</small></label><input id="cvPhone" data-save="cvPhone" inputmode="tel" placeholder="+998 ..."></div>
+        <div class="fld"><label for="cvCity">Shahar, mamlakat</label><input id="cvCity" data-save="cvCity" placeholder="Tashkent, Uzbekistan"></div>
+        <div class="fld"><label for="cvLink">LinkedIn / GitHub / sayt <small>ixtiyoriy</small></label><input id="cvLink" data-save="cvLink" inputmode="url" placeholder="github.com/aziz"></div>
+      </div>
+      <div class="fld"><label for="cvInt">Ilmiy qiziqishlar (Research interests) <small>1–2 qator, ingliz tilida</small></label><textarea id="cvInt" data-save="cvInt" style="min-height:70px" placeholder="Groundwater modelling; salinity; geostatistics"></textarea></div>
+      <div id="m1Note"></div>
+    </div>
+
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Taʼlim (Education)</h3><span>Teskari xronologiya: eng oxirgisi birinchi</span></div></div>
+      <form id="eForm" autocomplete="off" style="margin-top:12px">
+        <div class="grid3">
+          <div class="fld"><label for="eDeg">Daraja va yoʻnalish</label><input id="eDeg" required placeholder="BSc in Geology"></div>
+          <div class="fld"><label for="eUni">Universitet</label><input id="eUni" required placeholder="National University of Uzbekistan"></div>
+          <div class="fld"><label for="eCity">Shahar</label><input id="eCity" placeholder="Tashkent"></div>
+          <div class="fld"><label for="eYrs">Yillar</label><input id="eYrs" placeholder="2021–2025"></div>
+          <div class="fld"><label for="eGpa">GPA <small>asl shkalada</small></label><input id="eGpa" placeholder="4.6"></div>
+          <div class="fld"><label for="eScale">Shkala</label><input id="eScale" placeholder="5.0"></div>
+        </div>
+        <div class="fld"><label for="eThesis">Bitiruv ishi va ilmiy rahbar <small>ixtiyoriy</small></label><input id="eThesis" placeholder="“Groundwater salinity mapping...” (supervisor: Dr A. Karimov)"></div>
+        <div class="fld"><label for="eCourses">Tegishli kurslar <small>4–6 ta, vergul bilan</small></label><input id="eCourses" placeholder="Hydrogeology, Geostatistics, GIS"></div>
+        <button class="btn btn-p" type="submit">+ Taʼlim qoʻshish</button>
+      </form>
+      <div class="rowl" id="eList"></div>
+    </div>
+
+    <div class="tool" id="startool">
+      <div class="tool-h"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><div><h3>STAR generatori</h3><span>3 ta qator yasab tajribaga qoʻshing · +40 XP</span></div></div>
+      <div class="grid2" style="margin-top:12px">
+        <div class="fld"><label for="sS">S — Vaziyat <small>oʻzingiz uchun</small></label><textarea id="sS" data-save="sS" style="min-height:70px" placeholder="Kafedrada shoʻrlanish boʻyicha maʼlumotlar tartibsiz edi"></textarea></div>
+        <div class="fld"><label for="sT">T — Vazifa <small>oʻzingiz uchun</small></label><textarea id="sT" data-save="sT" style="min-height:70px" placeholder="Maʼlumotni tozalash va xarita tuzish"></textarea></div>
+        <div class="fld"><label for="sA">A — Harakat <small>ingliz tilida, feʼl bilan</small></label><textarea id="sA" data-save="sA" style="min-height:70px" placeholder="Cleaned and mapped 1,200 groundwater records in Python and QGIS"></textarea></div>
+        <div class="fld"><label for="sR">R — Natija <small>raqam bilan</small></label><textarea id="sR" data-save="sR" style="min-height:70px" placeholder="reducing missing values from 18% to 3%"></textarea></div>
+      </div>
+      <button class="btn btn-g" type="button" id="sBtn">Qator yasash</button>
+      <div id="sOut"></div>
+      <div class="grid2" style="margin-top:10px;align-items:end">
+        <div class="fld"><label for="sTo">Qaysi tajribaga qoʻshilsin</label><select id="sTo"></select></div>
+        <div class="fld"><button class="btn btn-p" type="button" id="sAdd" style="width:100%">+ Tajribaga qoʻshish</button></div>
+      </div>
+      <p class="hint" id="sCount"></p>
+    </div>
+
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Tadqiqot va kasbiy tajriba</h3><span>Tezis, amaliyot, assistentlik, ish</span></div></div>
+      <form id="xForm" autocomplete="off" style="margin-top:12px">
+        <div class="grid3">
+          <div class="fld"><label for="xRole">Lavozim yoki rol</label><input id="xRole" required placeholder="Research Assistant"></div>
+          <div class="fld"><label for="xOrg">Tashkilot, shahar</label><input id="xOrg" required placeholder="Institute of Hydrogeology, Tashkent"></div>
+          <div class="fld"><label for="xYrs">Muddat</label><input id="xYrs" placeholder="Sep 2024 – present"></div>
+        </div>
+        <div class="fld"><label for="xBul">Qatorlar <small>har biri yangi satrda; STAR generatoridan ham qoʻshiladi</small></label><textarea id="xBul" style="min-height:70px"></textarea></div>
+        <button class="btn btn-p" type="submit">+ Tajriba qoʻshish</button>
+      </form>
+      <div class="rowl" id="xList"></div>
+    </div>
+
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Nashrlar, taqdimotlar, loyihalar</h3><span>Bitta iqtibos uslubi; ismingizni **…** bilan qalin qiling</span></div></div>
+      <form id="pForm" autocomplete="off" style="margin-top:12px">
+        <div class="grid3">
+          <div class="fld"><label for="pType">Turi</label><select id="pType"><option>Publication</option><option>Presentation</option><option>Project</option></select></div>
+          <div class="fld" style="grid-column:span 2"><label for="pText">Toʻliq yozuv</label><input id="pText" required placeholder="Karimova, D., & **Rahimov, A.** (2025). Title. Journal, 12(2), 45–58."></div>
+        </div>
+        <div class="fld"><label for="pLink">Havola yoki DOI <small>ixtiyoriy</small></label><input id="pLink" inputmode="url" placeholder="https://doi.org/..."></div>
+        <button class="btn btn-p" type="submit">+ Qoʻshish</button>
+      </form>
+      <div class="rowl" id="pList"></div>
+    </div>
+
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Mukofotlar, koʻnikmalar, tillar, sertifikatlar</h3><span>Har biri yangi satrda</span></div></div>
+      <div class="grid2" style="margin-top:12px">
+        <div class="fld"><label for="cvAwards">Mukofotlar <small>nomi, darajasi, yil</small></label><textarea id="cvAwards" data-save="cvAwards" style="min-height:90px" placeholder="President’s State Scholarship, national, 2024"></textarea></div>
+        <div class="fld"><label for="cvTech">Texnik koʻnikmalar <small>Guruh: koʻnikmalar</small></label><textarea id="cvTech" data-save="cvTech" style="min-height:90px" placeholder="Programming: Python (pandas, NumPy)&#10;GIS: QGIS, Google Earth Engine"></textarea></div>
+      </div>
+      <div class="grid3">
+        <div class="fld"><label for="cvL1">1-til</label><input id="cvL1" data-save="cvL1" placeholder="English"></div>
+        <div class="fld"><label for="cvL1v">Daraja (CEFR)</label><select id="cvL1v" data-save="cvL1v"><option value="">—</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option><option>native</option></select></div>
+        <div class="fld"><label for="cvL1c">Sertifikat <small>ixtiyoriy</small></label><input id="cvL1c" data-save="cvL1c" placeholder="IELTS Academic 7.5, 2026"></div>
+        <div class="fld"><label for="cvL2">2-til</label><input id="cvL2" data-save="cvL2" placeholder="Uzbek"></div>
+        <div class="fld"><label for="cvL2v">Daraja</label><select id="cvL2v" data-save="cvL2v"><option value="">—</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option><option>native</option></select></div>
+        <div class="fld"><label for="cvL2c">Sertifikat</label><input id="cvL2c" data-save="cvL2c"></div>
+        <div class="fld"><label for="cvL3">3-til</label><input id="cvL3" data-save="cvL3" placeholder="Russian"></div>
+        <div class="fld"><label for="cvL3v">Daraja</label><select id="cvL3v" data-save="cvL3v"><option value="">—</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option><option>native</option></select></div>
+        <div class="fld"><label for="cvL3c">Sertifikat</label><input id="cvL3c" data-save="cvL3c"></div>
+      </div>
+      <div class="fld"><label for="cvCert">Sertifikatlar <small>faqat tegishlilari</small></label><textarea id="cvCert" data-save="cvCert" style="min-height:70px" placeholder="Machine Learning, Coursera (Stanford Online), 2025"></textarea></div>
+      <button class="btn btn-p" type="button" id="cvChk">CV boʻlimlarini tekshirish · +50 XP</button>
+      <div id="cvMiss" class="hint" style="margin-top:10px"></div>
+    </div>
+  </section>
+
+  <!-- TAHRIR -->
+  <section id="check">
+    <h2>Tahrir nazorati</h2>
+    <p class="sub">CV ni ochiq qoʻyib, har bandni tekshiring. Hammasi belgilansa, tahrir yakunlanadi.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>12 bandlik roʻyxat</h3><span>Mazmun · tuzilma · imlo · +30 XP</span></div></div>
+      <div class="cklist">
+        <label class="ck" data-ck="c1"><input type="checkbox"><span><b>Mazmun:</b> har qator shu dasturga tegishli dalil.</span></label>
+        <label class="ck" data-ck="c2"><input type="checkbox"><span><b>Mazmun:</b> taʼlim birinchi boʻlimda, GPA shkalasi bilan.</span></label>
+        <label class="ck" data-ck="c3"><input type="checkbox"><span><b>Mazmun:</b> tajriba qatorlari harakat feʼli bilan boshlanadi va natijaga ega.</span></label>
+        <label class="ck" data-ck="c4"><input type="checkbox"><span><b>Mazmun:</b> tekshirib boʻlmaydigan daʼvo yoʻq; har raqam hujjat bilan tasdiqlanadi.</span></label>
+        <label class="ck" data-ck="c5"><input type="checkbox"><span><b>Tuzilma:</b> har boʻlim ichida teskari xronologiya.</span></label>
+        <label class="ck" data-ck="c6"><input type="checkbox"><span><b>Tuzilma:</b> sana formati hamma joyda bir xil.</span></label>
+        <label class="ck" data-ck="c7"><input type="checkbox"><span><b>Tuzilma:</b> 2 sahifadan oshmaydi, shrift 10 dan kichik emas.</span></label>
+        <label class="ck" data-ck="c8"><input type="checkbox"><span><b>Tuzilma:</b> rasm, tugʻilgan sana, oilaviy holat yoʻq (dastur soʻramasa).</span></label>
+        <label class="ck" data-ck="c9"><input type="checkbox"><span><b>Imlo:</b> tugagan ish oʻtgan zamonda, davom etayotgani hozirgi zamonda.</span></label>
+        <label class="ck" data-ck="c10"><input type="checkbox"><span><b>Imlo:</b> bitta imlo tizimi (British yoki American).</span></label>
+        <label class="ck" data-ck="c11"><input type="checkbox"><span><b>Imlo:</b> imlo tekshiruvi va ovoz chiqarib oʻqish bajarildi.</span></label>
+        <label class="ck" data-ck="c12"><input type="checkbox"><span><b>Fayl:</b> PDF, nomi Familiya_Ism_CV.pdf, havolalar ishlaydi.</span></label>
+      </div>
+      <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Tahrir yakunlandi · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges b6">
+      <div class="bdg" data-badge="quiz"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">CV bilimdoni<small>Test 3+/4</small></div>
+      <div class="bdg" data-badge="star"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy">STAR ustasi<small>3 qator</small></div>
+      <div class="bdg" data-badge="cv"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">CV quruvchi<small>Boʻlimlar</small></div>
+      <div class="bdg" data-badge="lang"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Til va koʻnikma<small>2+ til</small></div>
+      <div class="bdg" data-badge="check"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Muharrir<small>12 band</small></div>
+      <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">CV v1.0<small>Yakun</small></div>
+    </div>
+  </section>
+
+  <!-- ARTIFACT -->
+  <section id="artefakt">
+    <h2>Akademik CV v1.0</h2>
+    <p class="sub">CV quruvchidan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”. Word uchun .doc faylni yuklab oling.</p>
+    <div class="artifact">
+      <div class="paper" id="cvPaper"></div>
+      <div class="noprint" id="cvMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">CV v1.0 ni yakunlash · +30 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>CV ni yozishdan oldin oʻzingizdan soʻrang: komissiya bu qatorni oʻqib, men haqimda qanday yangi fakt bilib oladi? Javob boʻlmasa, qator kerak emas.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>6 ta</div>
+      <div><b>Vaqt</b>~2 hafta (haftasiga 4–6 soat)</div>
+      <div><b>Natija</b>Akademik CV v1.0 (PDF va Word)</div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="master-lab.html">← Master Lab</a>
+    <span class="btn btn-g" style="cursor:default;opacity:.7">Keyingi: M4 Tavsiya xatlari</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+
+<script>
+(function () {
+  var KEY = "kompas_master_m3_v1";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function load(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  var DAY = 86400000, MON = ["yan", "fev", "mar", "apr", "may", "iyn", "iyl", "avg", "sen", "okt", "noy", "dek"];
+  function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+  function pd(s) { return s ? new Date(s + "T00:00:00") : null; }
+  function iso(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function fmt(d) { return d.getDate() + "-" + MON[d.getMonth()] + " " + d.getFullYear(); }
+  function left(d) { return Math.round((d - today()) / DAY); }
+  function leftTag(d) { var n = left(d); return n < 0 ? '<span class="pill no">' + (-n) + " kun oʻtdi</span>" : n <= 30 ? '<span class="pill chk">' + n + " kun qoldi</span>" : '<span class="pill ok">' + n + " kun qoldi</span>"; }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  function csv(name, head, rows) { var q = function (v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }; download(name, "text/csv;charset=utf-8", "﻿" + [head].concat(rows).map(function (r) { return r.map(q).join(","); }).join("\n")); }
+  function meter(el, n, lo, hi, unit) { var pct = Math.min(100, n / hi * 100); el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : ""); el.innerHTML = '<div class="mt"><span>' + n + " " + (unit || "soʻz") + "</span><span>maqsad: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>'; }
+  function uid() { return Date.now() + Math.floor(Math.random() * 1000); }
+
+  // ── XP ──
+  var MAX = 300, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [100, "2-daraja: Izlanuvchi"], [200, "3-daraja: Kashfiyotchi"], [300, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; S.xp = Math.min(MAX, S.xp + xp); save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M3 yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  // ── Darslar ──
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Ajoyib! Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!";
+  }
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, 20, "Dars 3." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else $("cvtool").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  var artT;
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    var tm; t.addEventListener("input", function () { clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  // ── Mini-test ──
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Akademik CV mantiqini tushunasiz." : "Taqqoslash jadvalini yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { var xp = r.right * 7 + (r.right === 4 ? 2 : 0); if (r.right >= 3) award("quiz", xp, "CV bilimdoni nishoni", "books"); else award("quizTry", xp, "Test: " + r.right + "/4", "books"); }
+      });
+    });
+  });
+
+  // ── CV quruvchi ──
+  S.edu = S.edu || []; S.exp = S.exp || []; S.pubs = S.pubs || []; S.starN = S.starN || 0;
+  var M1 = load("kompas_master_m1_v1");
+  var VERBS = ["analysed", "analyzed", "applied", "assessed", "automated", "built", "calculated", "co-authored", "collected", "compared", "conducted", "coordinated", "created", "designed", "developed", "evaluated", "identified", "implemented", "improved", "interpreted", "investigated", "led", "mapped", "measured", "modelled", "modeled", "organised", "organized", "prepared", "presented", "processed", "programmed", "published", "reduced", "reviewed", "simulated", "supervised", "surveyed", "taught", "tested", "trained", "translated", "validated", "visualised", "visualized", "wrote", "cleaned", "managed", "monitored", "drafted"];
+  function delBtn(i, list) { return '<button type="button" class="mini del" data-del="' + list + '" data-i="' + i + '">Oʻchirish</button>'; }
+  function bold(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>"); }
+  function lines(s) { return String(s || "").split(/\n+/).map(function (x) { return x.trim(); }).filter(Boolean); }
+
+  function renderM1Note() {
+    var n = $("m1Note"); if (!M1 || !M1.fun) { n.innerHTML = ""; return; }
+    n.innerHTML = '<div class="note-prev">M1 dagi ilmiy qiziqish bayoningiz: <b>' + esc(M1.fun.soha + " → " + M1.fun.yon + " → " + M1.fun.savol) + "</b>. Uni 1–2 qatorlik inglizcha “Research interests” ga aylantiring.</div>";
+  }
+  $("eForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    S.edu.push({ deg: $("eDeg").value.trim(), uni: $("eUni").value.trim(), city: $("eCity").value.trim(), yrs: $("eYrs").value.trim(), gpa: $("eGpa").value.trim(), scale: $("eScale").value.trim(), thesis: $("eThesis").value.trim(), courses: $("eCourses").value.trim() });
+    save(); this.reset(); renderLists(); renderArt();
+  });
+  $("xForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    S.exp.push({ role: $("xRole").value.trim(), org: $("xOrg").value.trim(), yrs: $("xYrs").value.trim(), bul: lines($("xBul").value) });
+    save(); this.reset(); renderLists(); renderArt();
+  });
+  $("pForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    S.pubs.push({ type: $("pType").value, text: $("pText").value.trim(), link: $("pLink").value.trim() });
+    save(); this.reset(); renderLists(); renderArt();
+  });
+  function renderLists() {
+    $("eList").innerHTML = S.edu.length ? S.edu.map(function (x, i) { return '<div class="ri"><div class="ri-h"><b>' + esc(x.deg) + ", " + esc(x.uni) + "</b>" + delBtn(i, "edu") + "</div><small>" + esc(x.yrs) + (x.gpa ? " · GPA " + esc(x.gpa) + (x.scale ? " / " + esc(x.scale) : "") : "") + "</small></div>"; }).join("") : '<div class="empty">Hali taʼlim qoʻshilmagan</div>';
+    $("xList").innerHTML = S.exp.length ? S.exp.map(function (x, i) { return '<div class="ri"><div class="ri-h"><b>' + esc(x.role) + ", " + esc(x.org) + "</b>" + delBtn(i, "exp") + "</div><small>" + esc(x.yrs) + " · " + x.bul.length + " qator</small>" + (x.bul.length ? "<ul style=\"margin:6px 0 0 18px\">" + x.bul.map(function (b, j) { return "<li>" + esc(b) + ' <button type="button" class="mini del" data-del="bul" data-i="' + i + '" data-j="' + j + '" aria-label="Qatorni oʻchirish">×</button></li>'; }).join("") + "</ul>" : "") + "</div>"; }).join("") : '<div class="empty">Hali tajriba qoʻshilmagan</div>';
+    $("pList").innerHTML = S.pubs.length ? S.pubs.map(function (x, i) { return '<div class="ri"><div class="ri-h"><span><span class="pill u">' + esc(x.type) + "</span> " + bold(x.text) + "</span>" + delBtn(i, "pubs") + "</div></div>"; }).join("") : '<div class="empty">Ixtiyoriy boʻlim: loyiha ham hisoblanadi</div>';
+    $("sTo").innerHTML = S.exp.length ? S.exp.map(function (x, i) { return '<option value="' + i + '">' + esc(x.role + ", " + x.org) + "</option>"; }).join("") : '<option value="">Avval tajriba qoʻshing</option>';
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-del]") : null; if (!b) return;
+    var l = b.getAttribute("data-del"), i = +b.getAttribute("data-i");
+    if (l === "bul") S.exp[i].bul.splice(+b.getAttribute("data-j"), 1);
+    else { if (!confirm("Yozuv oʻchirilsinmi?")) return; S[l].splice(i, 1); }
+    save(); renderLists(); renderArt();
+  });
+
+  // ── STAR ──
+  var lastBul = "";
+  function starCheck(t) {
+    var w = t.split(/\s+/)[0].toLowerCase().replace(/[^a-z-]/g, ""), n = wc(t);
+    return [["Harakat feʼli bilan boshlanadi", VERBS.indexOf(w) >= 0 || /ed$/.test(w)], ["Raqam yoki oʻlchov bor", /\d/.test(t)], ["Uzunlik 12–35 soʻz (" + n + ")", n >= 12 && n <= 35]];
+  }
+  $("sBtn").addEventListener("click", function () {
+    var a = nv("sA").replace(/[.\s]+$/, ""), r = nv("sR").replace(/^[,;\s]+/, "").replace(/[.\s]+$/, "");
+    if (!a) { toast("Avval “Harakat” maydonini toʻldiring", "bulb"); return; }
+    lastBul = a.charAt(0).toUpperCase() + a.slice(1) + (r ? ", " + r : "") + ".";
+    var c = starCheck(lastBul);
+    $("sOut").innerHTML = '<div class="out">' + esc(lastBul) + '</div><div class="chips">' + c.map(function (x) { return '<span class="chip ' + (x[1] ? "good" : "bad") + '">' + (x[1] ? "✓ " : "✗ ") + x[0] + "</span>"; }).join("") + "</div>";
+  });
+  $("sAdd").addEventListener("click", function () {
+    if (!lastBul) { toast("Avval qator yasang", "bulb"); return; }
+    if (!S.exp.length) { toast("Avval “Tajriba” qoʻshing", "lock"); return; }
+    var ok = starCheck(lastBul).filter(function (x) { return x[1]; }).length;
+    if (ok < 2) { toast("Qatorni kuchaytiring: feʼl va raqam kerak", "bulb"); return; }
+    S.exp[+$("sTo").value].bul.push(lastBul); S.starN++; lastBul = ""; $("sOut").innerHTML = "";
+    ["sS", "sT", "sA", "sR"].forEach(function (k) { S.notes[k] = ""; $(k).value = ""; });
+    save(); renderLists(); renderArt(); renderStar();
+    if (S.starN >= 3) award("star", 40, "STAR ustasi nishoni", "bulb"); else toast("Qator qoʻshildi: " + S.starN + " / 3", "bulb");
+  });
+  function renderStar() { $("sCount").textContent = "Qoʻshilgan STAR qatorlari: " + Math.min(S.starN, 3) + " / 3"; }
+
+  // ── Tekshiruv ──
+  function langs() { return [1, 2, 3].map(function (i) { return { l: nv("cvL" + i), v: nv("cvL" + i + "v"), c: nv("cvL" + i + "c") }; }).filter(function (x) { return x.l; }); }
+  function cvMissing() {
+    var m = [];
+    if (!nv("cvName") || !nv("cvEmail")) m.push("ism va email");
+    if (!S.edu.some(function (x) { return x.gpa; })) m.push("GPA bilan taʼlim qatori");
+    if (!S.exp.some(function (x) { return x.bul.length >= 2; })) m.push("kamida 2 qatorli tajriba");
+    if (!nv("cvTech")) m.push("texnik koʻnikmalar");
+    if (!langs().some(function (x) { return x.v; })) m.push("darajasi koʻrsatilgan til");
+    return m;
+  }
+  $("cvChk").addEventListener("click", function () {
+    var m = cvMissing();
+    if (m.length) { $("cvMiss").textContent = "Yetishmayapti: " + m.join(", ") + "."; toast("CV hali toʻliq emas", "lock"); return; }
+    $("cvMiss").textContent = "Asosiy boʻlimlar tayyor.";
+    award("cv", 50, "CV quruvchi nishoni", "memo");
+    if (langs().length >= 2 && nv("cvTech")) award("lang", 0, "Tillar va koʻnikmalar nishoni", "chart");
+  });
+  $("ckBtn").addEventListener("click", function () {
+    var n = 0; for (var i = 1; i <= 12; i++) if (S.ck["c" + i]) n++;
+    if (n < 12) { toast("Belgilangan: " + n + " / 12", "shield"); return; }
+    award("check", 30, "Muharrir nishoni", "shield");
+  });
+
+  // ── CV v1.0 ──
+  function cvBody() {
+    var ph = function (t) { return '<span class="ph">' + t + "</span>"; }, h = "";
+    var ct = [nv("cvCity"), nv("cvEmail"), nv("cvPhone"), nv("cvLink")].filter(Boolean).map(esc).join(" · ");
+    h += "<h1>" + (esc(nv("cvName")) || ph("Ism Familiya")) + '</h1><div class="ct">' + (ct || ph("Shahar · email · telefon")) + "</div>";
+    if (nv("cvInt")) h += "<h4>Research Interests</h4><div>" + esc(nv("cvInt")) + "</div>";
+    h += "<h4>Education</h4>" + (S.edu.length ? S.edu.map(function (x) {
+      return '<div class="it"><div class="r"><span><b>' + esc(x.deg) + "</b>, " + esc(x.uni) + (x.city ? ", " + esc(x.city) : "") + "</span><span>" + esc(x.yrs) + "</span></div>" +
+        (x.gpa ? "<div>GPA: " + esc(x.gpa) + (x.scale ? " / " + esc(x.scale) : "") + "</div>" : "") + (x.thesis ? "<div>Thesis: " + esc(x.thesis) + "</div>" : "") + (x.courses ? "<div>Relevant coursework: " + esc(x.courses) + "</div>" : "") + "</div>";
+    }).join("") : ph("Taʼlim qatorini qoʻshing"));
+    h += "<h4>Research &amp; Professional Experience</h4>" + (S.exp.length ? S.exp.map(function (x) {
+      return '<div class="it"><div class="r"><span><b>' + esc(x.role) + "</b>, " + esc(x.org) + "</span><span>" + esc(x.yrs) + "</span></div>" + (x.bul.length ? "<ul>" + x.bul.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" : "") + "</div>";
+    }).join("") : ph("Tajriba qoʻshing"));
+    var groups = { Publication: "Publications", Presentation: "Presentations", Project: "Projects" };
+    Object.keys(groups).forEach(function (g) {
+      var it = S.pubs.filter(function (x) { return x.type === g; }); if (!it.length) return;
+      h += "<h4>" + groups[g] + "</h4><ul>" + it.map(function (x) { return "<li>" + bold(x.text) + (x.link ? " " + esc(x.link) : "") + "</li>"; }).join("") + "</ul>";
+    });
+    if (lines(nv("cvAwards")).length) h += "<h4>Honours &amp; Awards</h4><ul>" + lines(nv("cvAwards")).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+    if (lines(nv("cvTech")).length) h += "<h4>Skills</h4>" + lines(nv("cvTech")).map(function (x) { var p = x.split(":"); return "<div>" + (p.length > 1 ? "<b>" + esc(p[0]) + ":</b>" + esc(p.slice(1).join(":")) : esc(x)) + "</div>"; }).join("");
+    if (langs().length) h += "<h4>Languages</h4><div>" + langs().map(function (x) { return esc(x.l) + (x.v ? " — " + esc(x.v) : "") + (x.c ? " (" + esc(x.c) + ")" : ""); }).join(" · ") + "</div>";
+    if (lines(nv("cvCert")).length) h += "<h4>Certificates</h4><ul>" + lines(nv("cvCert")).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+    return h;
+  }
+  function fileBase() { var p = nv("cvName").split(/\s+/).filter(Boolean); return (p.length > 1 ? p[p.length - 1] + "_" + p.slice(0, -1).join("_") : p[0] || "Familiya_Ism") + "_CV"; }
+  function renderArt() {
+    var paper = $("cvPaper"); paper.innerHTML = cvBody();
+    var words = wc(paper.innerText || paper.textContent), pages = Math.max(1, Math.ceil(words / 480));
+    var m = cvMissing();
+    $("cvMeta").innerHTML = "Hajm: ~" + words + " soʻz, taxminan " + pages + " sahifa" + (pages > 2 ? ' <span class="pill no">2 sahifadan oshdi</span>' : "") + ". Fayl nomi: <b>" + esc(fileBase()) + ".pdf</b>." + (m.length ? "<br>Yetishmayapti: " + m.join(", ") + "." : "");
+    $("finBtn").disabled = !!S.done.fin; if (S.done.fin) $("finBtn").textContent = "✓ CV v1.0 yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    if (!S.done.cv || !S.done.check) { toast("Avval CV tekshiruvi va tahrir roʻyxatini yakunlang", "lock"); return; }
+    award("fin", 30, "Akademik CV v1.0 tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var st = "body{font-family:Georgia,'Times New Roman',serif;font-size:11pt;line-height:1.35;color:#111}h1{font-size:18pt;text-align:center;margin:0}.ct{text-align:center;font-size:10pt}h4{font-size:10.5pt;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #111;margin:12pt 0 4pt}.r span+span{float:right}.it{margin-bottom:6pt}.ph{color:#999}";
+    download(fileBase() + ".doc", "application/msword", '<html><head><meta charset="utf-8"><style>' + st + "</style></head><body>" + cvBody() + "</body></html>");
+  });
+  $("copyBtn").addEventListener("click", function () { var p = $("cvPaper"); copyText((p.innerText || p.textContent).trim()); });
+
+  function init() { renderM1Note(); renderLists(); renderStar(); }
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+    lessons.forEach(renderLesson);
+  }
+
+  renderQuiz(); init(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>

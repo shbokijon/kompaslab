@@ -36,6 +36,12 @@ MODULES = {
     # Pullik modullar: hozircha faqat yuklab olinadigan fayl
     "master-lab-m1":       dict(lab="master-lab.html", site=False),
     "master-lab-m2":       dict(lab="master-lab.html", site=False),
+    "master-lab-m3":       dict(lab="master-lab.html", site=False),
+    "master-lab-m4":       dict(lab="master-lab.html", site=False),
+    "master-lab-m5":       dict(lab="master-lab.html", site=False),
+    "master-lab-m6":       dict(lab="master-lab.html", site=False),
+    "master-lab-m7":       dict(lab="master-lab.html", site=False),
+    "master-lab-m8":       dict(lab="master-lab.html", site=False),
 }
 
 SB = '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>'
