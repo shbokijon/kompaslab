@@ -297,6 +297,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
     <a href="gks-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇰🇷</span> GKS Lab M0</a>
     <a href="usa-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇺🇸</span> USA Lab M0</a>
     <a href="tadbirkor-talaba-m0.html" class="sb-link"><span class="sb-link-icon">💼</span> Tadbirkor Talaba M0</a>
+    <a href="musofir-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧳</span> Musofir Lab M0</a>
 
     <div class="sb-section-title">Resurslar</div>
     <a href="#" class="sb-link">
@@ -967,6 +968,7 @@ const M0_LIST = [
   { href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS Lab M0',          sub: 'Koreya hukumati stipendiyasi' },
   { href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA Lab M0',          sub: 'AQSh: yoʻllar va moliyalashtirish' },
   { href: 'tadbirkor-talaba-m0.html', key: 'kompas_tt_m0_v1',       icon: 'tt',       name: 'Tadbirkor Talaba M0', sub: 'Oʻqish va biznesni birga olib borish' },
+  { href: 'musofir-lab-m0.html',      key: 'kompas_musofir_m0_v1',  icon: 'musofir',  name: 'Musofir Lab M0',      sub: 'Xorijda ish: rasmiy yoʻl va himoya' },
 ]
 function m0Progress(key) {
   try { const o = JSON.parse(localStorage.getItem(key) || 'null'); return o && o.xp ? Math.min(100, Math.round(o.xp / 250 * 100)) : 0 } catch (e) { return 0 }
