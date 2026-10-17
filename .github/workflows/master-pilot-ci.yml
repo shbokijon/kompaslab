@@ -1,0 +1,29 @@
+name: Master Pilot — security and static QA
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: ["feature/master-workspace-staging-*"]
+permissions:
+  contents: read
+jobs:
+  regression:
+    name: Source regression / no production writes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: JavaScript syntax validation
+        run: |
+          node --check js/master-workspace.js
+          node --check js/auth.js
+          node --check js/config.js
+          node --check sw.js
+      - name: Offline security and integration invariants
+        run: node --test tests/staging-safety.test.cjs
+      - name: Ensure staged pilot is not indexed as production content
+        run: |
+          grep -Fq '<meta name="robots" content="noindex,nofollow">' master-application.html
+          grep -Fq 'productionHost' js/master-workspace.js

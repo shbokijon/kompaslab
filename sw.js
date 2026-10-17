@@ -6,7 +6,7 @@
 //  · js/ va boshqa domenlar (Supabase API): har doim internetdan.
 //  Yangilanganda V ni oshiring.
 // ═══════════════════════════════════════════════════════════════
-var V = "kl-v2", PAGES = V + "-pages", ASSETS = V + "-assets";
+var V = "kl-v3", PAGES = V + "-pages", ASSETS = V + "-assets";
 var PRECACHE = ["/offline.html", "/css/brand.css", "/favicon.ico", "/img/brand/logo-base.webp", "/img/brand/logo-arrow.webp", "/img/brand/icon-192.png"];
 
 self.addEventListener("install", function (e) {
@@ -26,6 +26,12 @@ self.addEventListener("fetch", function (e) {
   var req = e.request, url = new URL(req.url);
   if (req.method !== "GET" || url.origin !== self.location.origin) return;
   if (url.pathname.indexOf("/js/") === 0 || url.pathname === "/sw.js") return;   // har doim yangi
+
+  // Never store authenticated or administrative HTML in an offline shared cache.
+  if (/^\/(?:admin|dashboard|lesson|payment|login|register|reset|reset-password|master-application)(?:\.html)?\/?$/.test(url.pathname)) {
+    e.respondWith(fetch(req, { cache: "no-store" }));
+    return;
+  }
 
   if (req.mode === "navigate") {
     e.respondWith(fetch(req).then(function (res) {
