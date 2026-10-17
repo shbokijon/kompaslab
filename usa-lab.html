@@ -177,7 +177,7 @@ table.scope{width:100%;border-collapse:collapse;background:var(--surface);border
 
 /* PRICING */
 .pay-status{display:flex;gap:12px;align-items:flex-start;background:var(--gold-lit);border:1px solid #e8d48a;border-radius:14px;padding:14px 18px;font-size:14px;margin-bottom:28px;}
-.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch;}
+.plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch;}
 .plan{background:var(--bg);border:2px solid var(--border);border-radius:20px;padding:26px;display:flex;flex-direction:column;}
 .plan.main{background:var(--accent);border-color:var(--accent);color:#fff;position:relative;}
 .plan.main .tag-top{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent2);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;font-family:"JetBrains Mono",monospace;white-space:nowrap;}
@@ -258,6 +258,7 @@ footer a:hover{color:#fff;}
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
 
 @media(max-width:1000px){
+  .plans{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px;}
   .hero-grid{grid-template-columns:minmax(0,1fr);}
   .packet{max-width:520px;}
   .phases{grid-template-columns:repeat(2,minmax(0,1fr));}
@@ -519,7 +520,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <section id="narx">
   <div class="wrap">
     <div class="head">
-      <h2>Obuna: yillik yoki oylik. M0 bepul.</h2>
+      <h2>Obuna: oylik, 4 oy yoki yillik. M0 bepul.</h2>
       <p class="sub">Obuna umumiy darslar va bitta trekni ochadi; trekni almashtirish mumkin. B trek tezlashtirilgan yoʻli (~6 hafta) uchun oylik reja qulayroq.</p>
     </div>
     <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
@@ -530,17 +531,23 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
         <ul><li>6 dars</li><li>Muvofiqlik tekshirgichi</li><li>Trek tanlovi</li></ul>
         <a class="btn btn-g" href="usa-lab-m0.html">M0 ni boshlash</a>
       </div>
-      <div class="plan main">
-        <span class="tag-top">Asosiy reja</span>
-        <h3>Yillik</h3><p class="desc">M va D treklar sikli uchun</p>
-        <div class="price" data-py="usa-lab">699 000</div><div class="per">soʻm, 12 oy uchun</div>
-        <ul><li>Umumiy darslar + bitta trek, 12 oy</li><li>Trekni almashtirish mumkin</li><li>Siyosat oʻzgarishi ogohlantirishlari</li></ul>
-        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
       <div class="plan">
         <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
         <div class="price" data-pm="usa-lab">99 000</div><div class="per">soʻm, har oy</div>
-        <ul><li>Umumiy darslar + bitta trek</li><li>B trek tezlashtirilgan yoʻli uchun qulay</li><li>Istalgan oy bekor qilinadi</li></ul>
+        <ul><li>Umumiy darslar + bitta trek</li><li>B trek tezlashtirilgan yoʻli uchun qulay</li><li>Istalgan oy bekor qilinadi</li><li>Modullar har oy bitta faza boʻyicha ochiladi; natija topshirilsa, keyingisi ertaroq</li></ul>
+        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+      </div>
+      <div class="plan main">
+        <span class="tag-top">Asosiy reja</span>
+        <h3>Mavsum, 4 oy</h3><p class="desc">Bitta ariza sikli uchun: 4 oy 3 oy narxida</p>
+        <div class="price" data-ps="usa-lab">297 000</div><div class="per">soʻm, 4 oy uchun</div>
+        <ul><li>Barcha modullar birdaniga ochiladi</li><li>Bitta ariza siklini qamraydi: 4 oy</li><li>1 oy tekin: 4 oy 3 oy narxida</li><li>Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni</li></ul>
+        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+      </div>
+      <div class="plan">
+        <h3>Yillik</h3><p class="desc">M va D treklar sikli uchun</p>
+        <div class="price" data-py="usa-lab">699 000</div><div class="per">soʻm, 12 oy uchun</div>
+        <ul><li>Umumiy darslar + bitta trek, 12 oy</li><li>Trekni almashtirish mumkin</li><li>Siyosat oʻzgarishi ogohlantirishlari</li></ul>
         <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
@@ -680,6 +687,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     var pr = d.prices || {};
     document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
+    document.querySelectorAll("[data-ps]").forEach(function (el) { var p = pr[el.getAttribute("data-ps")]; if (p && p.m) el.textContent = nf(p.m * 3); });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;

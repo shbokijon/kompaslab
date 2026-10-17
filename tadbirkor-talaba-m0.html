@@ -550,7 +550,7 @@ body.locked .gate{display:flex;}
             <h4>Shartlar</h4>
             <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
               <tr><td>Holat</td><td>Lab ishlab chiqilmoqda; hozir faqat M0 va kutish roʻyxati ochiq</td></tr>
-              <tr><td>Obuna (rejalashtirilgan)</td><td><span data-py>299 000</span> soʻm/yil yoki <span data-pm>29 900</span> soʻm/oy</td></tr>
+              <tr><td>Obuna (rejalashtirilgan)</td><td><span data-py>299 000</span> soʻm/yil yoki <span data-pm>29 900</span> soʻm/oy, Mavsum (4 oy) <span data-ps>89 700</span> soʻm</td></tr>
               <tr><td>Yosh</td><td>18 yoshdan</td></tr>
               <tr><td>Bekor qilish</td><td>Istalgan vaqtda: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi</td></tr>
               <tr><td>Qaytarish</td><td>Toʻlangan obuna puli qaytarilmaydi. Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat koʻrsatilmagan toʻlov</td></tr>
@@ -905,6 +905,7 @@ body.locked .gate{display:flex;}
         var p = d && d.prices && d.prices["tadbirkor-talaba"]; if (!p) return;
         if (p.y) document.querySelectorAll("[data-py]").forEach(function (el) { el.textContent = nf(p.y); });
         if (p.m) document.querySelectorAll("[data-pm]").forEach(function (el) { el.textContent = nf(p.m); });
+        if (p.m) document.querySelectorAll("[data-ps]").forEach(function (el) { el.textContent = nf(p.m * 3); });
       }).catch(function () {});
   } catch (e) {}
 

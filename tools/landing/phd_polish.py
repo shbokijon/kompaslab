@@ -1,7 +1,7 @@
 # PhD Lab sahifasi alohida shablondan qurilgan (phd_source.html).
 # Bu skript unga umumiy dizayn qatlami, narx, qaytarish qoidasi va jonli maʼlumotni qoʻllaydi.
 import re
-from render import BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, icon, polish, uz_fix, std_calc, fmt
+from render import SEASON_ITEMS, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, icon, polish, uz_fix, std_calc, fmt
 
 Y, M = 999000, 129000
 
@@ -34,11 +34,27 @@ def build():
     s = R(s, "El-yurt umidi paneli (asoschi tajribasi) va boshqa panellar mantigʻi;", "El-yurt umidi va boshqa stipendiya panellari mantigʻi;")
     s = R(s, "Darsda asoschining 2025-yil 2-tanlov tajribasi; yosh, til va kvota faqat rasmiy sahifadan.", "Yosh, til va kvota faqat rasmiy sahifadan.")
     # narx
-    s = R(s, "<h2>Obuna asosida. <em>M0 bepul.</em></h2>", "<h2>Obuna: yillik yoki oylik. M0 bepul.</h2>")
+    s = R(s, "<h2>Obuna asosida. <em>M0 bepul.</em></h2>", "<h2>Obuna: oylik, 4 oy yoki yillik. M0 bepul.</h2>")
     s = R(s, '<div class="price">999 000</div><div class="per">soʻm · 12 oy</div>', f'<div class="price" data-py="phd-lab">{fmt(Y)}</div><div class="per">soʻm, 12 oy uchun</div>')
     s = R(s, '<div class="price">129 000</div><div class="per">soʻm · har oy uzaytiriladi</div>', f'<div class="price" data-pm="phd-lab">{fmt(M)}</div><div class="per">soʻm, har oy</div>')
     s = R(s, '<div class="price">0</div><div class="per">soʻm · muddatsiz</div>', '<div class="price">0</div><div class="per">soʻm, muddatsiz</div>')
     s = s.replace("<li>Istalgan oy bekor qilinadi</li>", "<li>Istalgan oy toʻxtatiladi</li>")
+    # Tartib: M0, Oylik, Mavsum (4 oy, asosiy), Yillik — render.pricing bilan bir xil
+    a = s.index('      <div class="plan main reveal">')
+    blk = s[a:s.index('    <div class="calc', a)]
+    y_card = blk[:blk.index('      <div class="plan reveal">')]
+    m_card = blk[blk.index('      <div class="plan reveal">'):blk.rindex('    </div>')]
+    y_card = y_card.replace('<div class="plan main reveal">\n        <span class="tag-top">Asosiy reja</span>\n', '<div class="plan reveal">\n').replace('class="btn btn-p" data-wl', 'class="btn btn-g" data-wl')
+    m_card = m_card.replace("<li>Barcha modullar, obuna faol ekan</li>", "<li>Bir oylik kirish</li>").replace("</ul>", "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "</ul>", 1)
+    s_card = f'''      <div class="plan main reveal">
+        <span class="tag-top">Asosiy reja</span>
+        <h3>Mavsum, 4 oy</h3><p class="desc">Bitta ariza sikli uchun: 4 oy 3 oy narxida</p>
+        <div class="price" data-ps="phd-lab">{fmt(M * 3)}</div><div class="per">soʻm, 4 oy uchun</div>
+        <ul>{"".join(f"<li>{x}</li>" for x in SEASON_ITEMS)}</ul>
+        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxati</button>
+      </div>
+'''
+    s = s[:a] + m_card + s_card + y_card + blk[blk.rindex('    </div>'):] + s[a + len(blk):]
     calc = "".join(f"<div><b>{a}</b>{b}</div>" for a, b in std_calc(Y, M))
     s = re.sub(r'<div class="calc reveal">.*?</div>\s*</div>', '<div class="calc">' + calc + "</div>\n    <div class=\"refund\">" + REFUND + "</div>", s, count=1, flags=re.S)
     s = R(s, "<div><b>Bekor qilish</b>Obuna istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Qaytarish shartlari toʻlovdan oldin toʻliq matnda koʻrsatiladi.</div>",

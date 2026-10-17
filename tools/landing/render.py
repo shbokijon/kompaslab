@@ -327,6 +327,10 @@ def std_calc(y, m):
 
 REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi."
 
+# Mavsum (4 oy) narxi = 3 × oylik; bazada alohida ustun yoʻq, sahifa oylik narxdan hisoblaydi
+SEASON_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 4 oy", "1 oy tekin: 4 oy 3 oy narxida", "Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni"]
+MONTHLY_EXTRA = ["Modullar har oy bitta faza boʻyicha ochiladi; natija topshirilsa, keyingisi ertaroq"]
+
 def pricing(lab):
     p = lab["pricing"]
     slug = lab["slug"]
@@ -338,17 +342,23 @@ def pricing(lab):
         <ul>{"".join(f"<li>{x}</li>" for x in p["m0_items"])}</ul>
         <button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>
       </div>
-      <div class="plan main">
-        <span class="tag-top">Asosiy reja</span>
-        <h3>Yillik</h3><p class="desc">{p["y_desc"]}</p>
-        <div class="price" data-py="{slug}">{fmt(y)}</div><div class="per">soʻm, 12 oy uchun</div>
-        <ul>{"".join(f"<li>{x}</li>" for x in p["y_items"])}</ul>
-        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
       <div class="plan">
         <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
         <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, har oy</div>
-        <ul>{"".join(f"<li>{x}</li>" for x in p["m_items"])}</ul>
+        <ul>{"".join(f"<li>{x}</li>" for x in p["m_items"] + MONTHLY_EXTRA)}</ul>
+        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+      </div>
+      <div class="plan main">
+        <span class="tag-top">Asosiy reja</span>
+        <h3>Mavsum, 4 oy</h3><p class="desc">Bitta ariza sikli uchun: 4 oy 3 oy narxida</p>
+        <div class="price" data-ps="{slug}">{fmt(mo * 3)}</div><div class="per">soʻm, 4 oy uchun</div>
+        <ul>{"".join(f"<li>{x}</li>" for x in SEASON_ITEMS)}</ul>
+        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+      </div>
+      <div class="plan">
+        <h3>Yillik</h3><p class="desc">{p["y_desc"]}</p>
+        <div class="price" data-py="{slug}">{fmt(y)}</div><div class="per">soʻm, 12 oy uchun</div>
+        <ul>{"".join(f"<li>{x}</li>" for x in p["y_items"])}</ul>
         <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
@@ -360,7 +370,7 @@ def pricing(lab):
     return f'''<section id="narx">
   <div class="wrap">
     <div class="head">
-      <h2>Obuna: yillik yoki oylik. M0 bepul.</h2>
+      <h2>Obuna: oylik, 4 oy yoki yillik. M0 bepul.</h2>
       <p class="sub">{p["sub"]}</p>
     </div>
     <div class="pay-status"><span>⏳</span><span>{status}</span></div>
@@ -428,6 +438,7 @@ LIVE_JS = '''
     var pr = d.prices || {};
     document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
+    document.querySelectorAll("[data-ps]").forEach(function (el) { var p = pr[el.getAttribute("data-ps")]; if (p && p.m) el.textContent = nf(p.m * 3); });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;

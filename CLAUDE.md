@@ -52,7 +52,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 - Javoblar faqat `localStorage` da: kalit `kompas_<lab>_m0_v1` (masalan `kompas_usa_m0_v1`).
 - Oxirida avtomatik yigʻiladigan **Qaror va rozilik** bayonoti (18+, toʻlov qaytarilmasligi, Kompas vositachi emas).
 - **Tayyorgarlik koʻrsatkichi (Readiness Score)** Lab sahifasidagi test bilan **aynan bir xil** (ogʻirliklar, 70/45 chegaralari, "x" bloklovchi javoblar).
-- Narxlar `kompas_public_stats().prices[slug]` dan jonli olinadi (`data-py`, `data-pm`); HTML dagi raqam zaxira.
+- Narxlar `kompas_public_stats().prices[slug]` dan jonli olinadi (`data-py`, `data-pm`); HTML dagi raqam zaxira. **Mavsum (4 oy) = 3 × oylik** (`data-ps`), bazada alohida ustun yoʻq.
 - Faktlar bloki: "Tekshirildi / Rasmiy / Ehtiyot" belgisi, sana va havola.
 - Kirish darvozasi: sayt versiyasida faqat roʻyxatdan oʻtganlar (va admin); `file://` da ochiq. **Istisno: Musofir M0 hamma uchun ochiq**, himoyasiz, ulashish tugmasi bor.
 
@@ -68,6 +68,11 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 | Tadbirkor Talaba | tadbirkor-talaba | 10 (54) | M0 saytda |
 | Musofir | miggo | 8 (44) | M0 saytda (ochiq) |
 Modul va dars nomlari: `tools/landing/mods.json` (DAAD: `labs_data.py` → `DAAD_MODS`).
+
+## Obuna modeli (2026-10-17 tasdiqlangan)
+- 3 tarif: **Oylik**, **Mavsum, 4 oy** (asosiy, 3 oy narxida), **Yillik**. M0 bepul.
+- Oylikda modullar har oy bitta faza boʻyicha ochiladi (natija topshirilsa ertaroq); Mavsum va Yillikda hammasi birdaniga.
+- Hozircha faqat sahifalardagi matn va narx: haqiqiy cheklov toʻlov va server tomonidagi kirish huquqi bilan birga qilinadi (pastdagi 1–2-bandlar).
 
 ## Ochiq masalalar (foydalanuvchi qarori kutilmoqda)
 1. **Xavfsizlik:** `fn_mark_payment_paid`, `fn_set_module_access`, `fn_upsert_lesson_content` anon/authenticated tomonidan chaqirilishi mumkin (ichida ruxsat tekshiruvi yoʻq yoki yetarli emas). Toʻlov ochilishidan oldin `revoke execute` qilinishi shart. Foydalanuvchi hali tasdiqlamagan.

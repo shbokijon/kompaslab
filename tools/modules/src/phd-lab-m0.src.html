@@ -337,7 +337,7 @@ body.locked .gate{display:flex;}
             <div class="verdict" id="fitRes"></div>
             <h4>Toʻlov shartlari</h4>
             <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
-              <tr><td>Obuna</td><td><span data-py>999 000</span> soʻm/yil yoki <span data-pm>129 000</span> soʻm/oy</td></tr>
+              <tr><td>Obuna</td><td><span data-py>999 000</span> soʻm/yil yoki <span data-pm>129 000</span> soʻm/oy, Mavsum (4 oy) <span data-ps>387 000</span> soʻm</td></tr>
               <tr><td>M0 (shu modul)</td><td>Bepul</td></tr>
               <tr><td>Tayyorgarlik darvozasi</td><td>Natija “Bu siklga erta” boʻlsa, toʻlov oʻrniga muqobil yoʻl tavsiya qilinadi</td></tr>
               <tr><td>Bekor qilish</td><td>Istalgan vaqtda: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi</td></tr>
@@ -721,6 +721,7 @@ body.locked .gate{display:flex;}
         var p = d && d.prices && d.prices["phd-lab"]; if (!p) return;
         if (p.y) document.querySelectorAll("[data-py]").forEach(function (el) { el.textContent = nf(p.y); });
         if (p.m) document.querySelectorAll("[data-pm]").forEach(function (el) { el.textContent = nf(p.m); });
+        if (p.m) document.querySelectorAll("[data-ps]").forEach(function (el) { el.textContent = nf(p.m * 3); });
       }).catch(function () {});
   } catch (e) {}
 

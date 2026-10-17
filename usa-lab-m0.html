@@ -586,7 +586,7 @@ body.locked .gate{display:flex;}
             <div class="res" id="tlRes"></div>
             <h4>Toʻlov shartlari</h4>
             <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
-              <tr><td>Obuna</td><td><span data-py>699 000</span> soʻm/yil yoki <span data-pm>99 000</span> soʻm/oy</td></tr>
+              <tr><td>Obuna</td><td><span data-py>699 000</span> soʻm/yil yoki <span data-pm>99 000</span> soʻm/oy, Mavsum (4 oy) <span data-ps>297 000</span> soʻm</td></tr>
               <tr><td>M0 (shu modul)</td><td>Bepul</td></tr>
               <tr><td>B trek</td><td>2026–2027 sikli rasman eʼlon qilinmaguncha toʻlov qabul qilinmaydi</td></tr>
               <tr><td>Muvofiqlik</td><td>Bitta “mos emas” bandi boʻlsa, bu trek hozir yopiq: boshqa trek yoki Lab tavsiya qilinadi</td></tr>
@@ -957,6 +957,7 @@ body.locked .gate{display:flex;}
         var p = d && d.prices && d.prices["usa-lab"]; if (!p) return;
         if (p.y) document.querySelectorAll("[data-py]").forEach(function (el) { el.textContent = nf(p.y); });
         if (p.m) document.querySelectorAll("[data-pm]").forEach(function (el) { el.textContent = nf(p.m); });
+        if (p.m) document.querySelectorAll("[data-ps]").forEach(function (el) { el.textContent = nf(p.m * 3); });
       }).catch(function () {});
   } catch (e) {}
 
