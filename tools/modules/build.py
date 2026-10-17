@@ -65,6 +65,20 @@ LOGO = '<span class="klogo klogo-sm"><img class="klogo-b" src="img/brand/logo-ba
 TOAST_ICONS = ["bulb", "lock", "shield", "compass", "money", "seedling", "memo", "chart", "hourglass", "scroll", "calendar", "telescope", "bell"]
 
 
+# Suv belgisi: har modulda (sayt va yuklab olinadigan), kirishdan qatʼi nazar; chop etishda koʻrinmaydi
+# (CV, SoP kabi hujjatlar PDF ga suv belgisisiz chiqadi). protect.js shu .kp-wm ni qayta ishlatadi.
+WATERMARK = """<style>.kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}@media print{.kp-wm{display:none!important}}</style>
+<script>(function(){function m(){if(document.querySelector(".kp-wm"))return;var c=document.createElement("canvas"),w=280,h=170,g=c.getContext&&c.getContext("2d");if(!g)return;c.width=w;c.height=h;g.translate(w/2,h/2);g.rotate(-0.4);g.fillStyle="#000";g.font="500 13px Outfit,system-ui,sans-serif";g.textAlign="center";g.fillText("kompaslab.uz",0,0);var d=document.createElement("div");d.className="kp-wm";d.setAttribute("aria-hidden","true");d.style.backgroundImage="url("+c.toDataURL()+")";document.body.appendChild(d);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",m);else m();})();</script>
+"""
+
+
+def watermark(s):
+    if 'class="kp-wm"' in s or ".kp-wm{" in s:
+        return s
+    i = s.rfind("</body>")  # oxirgisi: JS ichidagi "</body>" matnlariga tegmaslik uchun
+    return s[:i] + WATERMARK + s[i:]
+
+
 def site(name, src, cfg):
     s = src.replace('<link rel="icon" href="img/3d/compass.webp" type="image/webp">\n', "")
     head = HEAD + (OG.format(t=cfg["og"][0], d=cfg["og"][1]) if cfg.get("og") else "")
@@ -105,7 +119,7 @@ def standalone(name, src, cfg):
 
 def build(name):
     cfg = MODULES[name]
-    src = (HERE / "src" / (name + ".src.html")).read_text(encoding="utf-8").replace("{{CSS}}", (HERE / "m0.css").read_text(encoding="utf-8"))
+    src = watermark((HERE / "src" / (name + ".src.html")).read_text(encoding="utf-8").replace("{{CSS}}", (HERE / "m0.css").read_text(encoding="utf-8")))
     out = []
     if cfg.get("site"):
         (ROOT / (name + ".html")).write_text(site(name, src, cfg), encoding="utf-8"); out.append(name + ".html")

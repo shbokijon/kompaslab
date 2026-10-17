@@ -185,6 +185,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 
       <div class="alert error" id="errorAlert">
         ⚠️ <span id="errorMsg">Email yoki parol notoʻgʻri</span>
+        <button type="button" id="resendBtn" hidden style="margin-left:auto;border:none;background:none;color:inherit;font:inherit;font-weight:800;text-decoration:underline;cursor:pointer">Xatni qayta yuborish</button>
       </div>
       <div class="alert success" id="successAlert">
         ✓ <span>Muvaffaqiyatli kirdingiz! Yoʻnaltirilmoqda...</span>
@@ -193,7 +194,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
       <form id="loginForm" onsubmit="handleLogin(event)">
 
         <div class="field">
-          <label class="field-label">
+          <label class="field-label" for="emailInput">
             Email manzil
           </label>
           <div class="field-input-wrap">
@@ -211,7 +212,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
         </div>
 
         <div class="field">
-          <label class="field-label">
+          <label class="field-label" for="passwordInput">
             Parol
             <a href="reset-password.html">Parolni unutdingizmi?</a>
           </label>
@@ -226,13 +227,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
             >
             <button type="button" class="field-eye" onclick="togglePassword('passwordInput', this)">👁</button>
           </div>
-          <div class="field-error" id="passwordError">Parol kamida 8 ta belgi boʻlishi kerak</div>
+          <div class="field-error" id="passwordError">Parolni kiriting</div>
         </div>
 
-        <div class="checkbox-wrap">
-          <input type="checkbox" id="rememberMe" checked>
-          <label for="rememberMe">Meni eslab qol</label>
-        </div>
 
         <button type="submit" class="btn-submit" id="submitBtn">
           <span id="btnText">Kirish</span>
@@ -252,7 +249,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 </div>
 
 <!-- ── SUPABASE SDK ── -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 // ─── SUPABASE INIT (inline) ───────────────────────────────────
 const SUPABASE_URL      = 'https://usxpkmbjrdllnitlzdpq.supabase.co'
@@ -314,6 +311,13 @@ function clearErrors() {
   document.getElementById('errorAlert').classList.remove('show')
 }
 
+// ─── TASDIQLASH XATINI QAYTA YUBORISH ───────────────────
+document.getElementById('resendBtn').addEventListener('click', async function () {
+  const email = document.getElementById('emailInput').value.trim().toLowerCase(), b = this
+  b.disabled = true; b.textContent = 'Yuborilmoqda...'
+  const { error } = await window.supabase.auth.resend({ type: 'signup', email, options: { emailRedirectTo: location.origin + '/dashboard.html' } })
+  b.textContent = error ? 'Keyinroq urinib koʻring' : 'Yuborildi ✓'
+})
 // ─── LOGIN HANDLER ───────────────────────────────────
 async function handleLogin(e) {
   e.preventDefault()
@@ -330,7 +334,7 @@ async function handleLogin(e) {
     showError('emailInput', 'emailError')
     valid = false
   }
-  if (password.length < 8) {
+  if (!password) {
     showError('passwordInput', 'passwordError')
     valid = false
   }
@@ -353,8 +357,11 @@ async function handleLogin(e) {
         error.message.includes('Invalid') || error.message.includes('credentials')
           ? 'Email yoki parol noto\'g\'ri.'
           : error.message.includes('confirm')
-          ? 'Emailingizni tasdiqlang va qayta urinib ko\'ring.'
-          : error.message
+          ? 'Email hali tasdiqlanmagan. Pochtangizdagi havolani bosing.'
+          : /rate|seconds/i.test(error.message)
+          ? 'Juda koʻp urinish. Bir necha daqiqadan keyin qayta urinib koʻring.'
+          : 'Kirib boʻlmadi. Internetni tekshirib, qayta urinib koʻring.'
+      document.getElementById('resendBtn').hidden = !error.message.includes('confirm')
       btn.disabled = false
       btn.innerHTML = '<span id="btnText">Kirish</span><span>→</span>'
       return
@@ -371,7 +378,7 @@ async function handleLogin(e) {
     }
     document.getElementById('successAlert').classList.add('show')
     const back = kompasReturnTo()
-    setTimeout(() => { window.location.href = back || (isAdmin ? 'admin.html' : 'dashboard.html') }, 1200)
+    setTimeout(() => { window.location.href = back || (isAdmin ? 'admin.html' : 'dashboard.html') }, 400)
 
   } catch(err) {
     document.getElementById('errorAlert').classList.add('show')

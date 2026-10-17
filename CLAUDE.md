@@ -26,7 +26,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 | `*-m0.html`, M1/M2 | Interaktiv modullar | **`tools/modules/`** (pastda). `master-lab-m0.html` manbasiz — toʻgʻridan-toʻgʻri tahrirlanadi |
 | `dashboard.html`, `lesson.html` | Talaba kabineti; dars pleyeri (hozir demo maʼlumot) | Qoʻlda. `dashboard.html` dagi `M0_LIST` — M0 kartochkalari |
 | `admin.html` | Admin panel (roʻyxatdan oʻtganlar, CSV, narxlar, analitika) | Qoʻlda |
-| `login.html`, `register.html`, `payment.html` | Kirish; toʻlov (**yopiq**, Click/Payme ulanmagan) | Qoʻlda |
+| `login.html`, `register.html`, `reset-password.html`, `payment.html` | Kirish; roʻyxatdan oʻtish (taʼlim va maqsad `user_metadata` ga yoziladi); parolni tiklash (`/reset`); toʻlov (**yopiq**, Click/Payme ulanmagan) | Qoʻlda |
 | `js/config.js` | Supabase mijozi `window.supabase` | — |
 | `js/globe.js`, `css/globe.css`, `data/globe.json` | Bosh sahifadagi "Toshkentdan qayerga?" globusi (Canvas 2D, samolyot, chegaralar, shaharlar). Mamlakat→Lab roʻyxati `DEST` da (`c` — ob-havo olinadigan poytaxt). Qatlamlar: **Xarita / Ob-havo** (hozirgi, Open-Meteo Forecast API, kun-tun chizigʻi, yomgʻir/qor/chaqmoq effektlari) / **Iqlim** (oxirgi 12 toʻliq oy, Open-Meteo Historical API ERA5; saralash: issiq yoz ≥25°C, sovuq qish ≤0°C, yomgʻirli ≥1000 mm). Toʻliq ekran, aylanish tezligi/yoʻnalishi, tanlov `localStorage` `kompas_globe_v1`. Ob-havo faqat qatlam yoki mamlakat tanlanganda yuklanadi; Open-Meteo CC BY 4.0 — manba havolasi sahifada qolishi shart. Prototip: `globe-demo.html` (noindex) | Maʼlumot: `tools/globe/build_globe.py` (Natural Earth 1:110m) |
 | `js/journey.js` | Kabinetdagi "Mening yoʻlim": kompas (keyingi qadam), vaqt chizigʻi (Lab darslari / surʼat vs maqsad sanasi), hujjatlar javoni (M0 xp≥250, Master M1–M8 `done.fin`), haftalik ritm. Faqat localStorage (`kompas_journey_v1`) | Lab darslar soni `LABS` da qoʻlda |
@@ -56,6 +56,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 - Narxlar `kompas_public_stats().prices[slug]` dan jonli olinadi (`data-py`, `data-pm`); HTML dagi raqam zaxira. **Mavsum (4 oy) = 3 × oylik** (`data-ps`), bazada alohida ustun yoʻq.
 - Faktlar bloki: "Tekshirildi / Rasmiy / Ehtiyot" belgisi, sana va havola.
 - Kirish darvozasi: sayt versiyasida faqat roʻyxatdan oʻtganlar (va admin); `file://` da ochiq. **Istisno: Musofir M0 hamma uchun ochiq**, himoyasiz, ulashish tugmasi bor.
+- **Suv belgisi ("kompaslab.uz") hamma modulda shart**: `build.py` `WATERMARK` ni har sayt va yuklab olinadigan versiyaga qoʻshadi (oxirgi `</body>` oldidan; kirishdan qatʼi nazar; chop etishda yashirin). Qoʻlda yuritiladigan `master-lab-m0.html` va `lesson.html` da ham bor.
 
 ### Holat (2026-10-17)
 | Lab | Slug | Modullar (darslar) | Tayyor |
@@ -84,4 +85,5 @@ Modul va dars nomlari: `tools/landing/mods.json` (DAAD: `labs_data.py` → `DAAD
 2. **Toʻlov:** Click/Payme merchant maʼlumotlari yoʻq; `payment.html` yopiq va eskirgan (karta raqamini oʻzi soʻraydi — PCI DSS ga zid). Toʻgʻri yoʻl: provayderning oʻz sahifasiga yoʻnaltirish + webhook.
 3. Ommaviy oferta va maxfiylik siyosati sahifasi yoʻq ("toʻlov qaytarilmaydi" qoidasi uchun kerak).
 4. M0 progressi faqat brauzerda (qurilmalar orasida koʻchmaydi) — bazaga yozish rejada.
-5. Mobil ilova: hozir PWA; doʻkon ilovasi signal boʻlganda (Android avval).
+5. **Roʻyxatdan oʻtish maʼlumoti:** `profiles.education/goal` hech qachon toʻldirilmagan (mijozda UPDATE huquqi yoʻq). 2026-10-17 dan ular `user_metadata` ga yoziladi; `fn_create_profile` triggeriga qoʻshish va eski yozuvlarni toʻldirish — bazaga oid, tasdiq kutilmoqda. Supabase Auth → Redirect URLs da `https://www.kompaslab.uz/reset-password.html` boʻlishi kerak (tekshirilmagan).
+6. Mobil ilova: hozir PWA; doʻkon ilovasi signal boʻlganda (Android avval).

@@ -13,7 +13,7 @@
     "body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}" +
     "input,textarea,select,[contenteditable],[contenteditable] *{-webkit-user-select:text;user-select:text}" +
     "img{-webkit-user-drag:none}" +
-    ".kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.045}" +
+    ".kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}" +
     ".kp-msg{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;background:#1e3329;color:#fff;font:700 13px Outfit,system-ui,sans-serif;padding:9px 14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .2s;pointer-events:none}" +
     ".kp-msg.on{opacity:1}" +
     "@media print{body>*{display:none!important}body:after{content:'Kompas Lab materiallarini chop etib boʻlmaydi.';display:block;padding:40px;font:700 18px sans-serif}}";

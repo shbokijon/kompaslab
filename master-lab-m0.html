@@ -923,5 +923,7 @@ body.locked .gate{display:flex;}
   renderSys(); renderQuiz(); renderFit(); renderRs(); renderDl(); renderStmt(); renderAll(); renderXp(false);
 })();
 </script>
+<style>.kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}@media print{.kp-wm{display:none!important}}</style>
+<script>(function(){function m(){if(document.querySelector(".kp-wm"))return;var c=document.createElement("canvas"),w=280,h=170,g=c.getContext&&c.getContext("2d");if(!g)return;c.width=w;c.height=h;g.translate(w/2,h/2);g.rotate(-0.4);g.fillStyle="#000";g.font="500 13px Outfit,system-ui,sans-serif";g.textAlign="center";g.fillText("kompaslab.uz",0,0);var d=document.createElement("div");d.className="kp-wm";d.setAttribute("aria-hidden","true");d.style.backgroundImage="url("+c.toDataURL()+")";document.body.appendChild(d);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",m);else m();})();</script>
 </body>
 </html>
