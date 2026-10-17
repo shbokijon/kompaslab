@@ -273,14 +273,9 @@ function kompasReturnTo() {
 document.addEventListener('DOMContentLoaded', async () => {
   const { data: { session } } = await window.supabase.auth.getSession()
   if (!session) return
-  const adminEmails = ['shbokijon@gmail.com']
-  const userEmail = (session.user.email || '').toLowerCase()
-  let isAdmin = adminEmails.includes(userEmail)
-  if (!isAdmin) {
-    const { data: profile } = await window.supabase
-      .from('profiles').select('role').eq('id', session.user.id).single()
-    isAdmin = profile?.role === 'admin'
-  }
+  const { data: profile } = await window.supabase
+    .from('profiles').select('role').eq('id', session.user.id).single()
+  const isAdmin = profile?.role === 'admin'
   window.location.href = kompasReturnTo() || (isAdmin ? 'admin.html' : 'dashboard.html')
 })
 
