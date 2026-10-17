@@ -229,12 +229,17 @@
       if (zoom > 1.3) { ctx.fillStyle = C.land; ctx.globalAlpha = 0.5; D.cap.forEach(function (c) { var p = proj(c[0], c[1]); if (p[2] > 0.1) ctx.fillRect(p[0] - 1.2, p[1] - 1.2, 2.4, 2.4); }); ctx.globalAlpha = 1; }
       // Yoylar
       DEST.forEach(function (d, di) {
-        var on = sel === d.id, cur = !sel && flight().d === d; ctx.beginPath(); var pen = false;
-        for (var k = 0; k <= 48; k++) {
-          var q = slerp(ORIGIN, d, k / 48), p = proj(q[0], q[1]), x = W / 2 + (p[0] - W / 2) * q[2], y = H / 2 + (p[1] - H / 2) * q[2];
-          if (p[2] > -0.1) { if (pen) ctx.lineTo(x, y); else ctx.moveTo(x, y); pen = true; } else pen = false;
-        }
-        ctx.strokeStyle = C.arc; ctx.globalAlpha = (on || cur ? 0.95 : sel ? 0.18 : 0.45) * (match(di + 1) ? 1 : 0.3); ctx.lineWidth = on ? 2.4 : 1.2; ctx.stroke(); ctx.globalAlpha = 1;
+        var on = sel === d.id, cur = !sel && flight().d === d, tt = on ? flight().t : 1;
+        // Tanlangan yoʻnalish: uchilgan qism toʻq, hali uchilmagani xira
+        [[1, on && tt < 1 ? 0.25 : 1], [tt, on && tt < 1 ? 1 : 0]].forEach(function (seg) {
+          if (!seg[1]) return; ctx.beginPath(); var pen = false;
+          for (var k = 0; k <= 48 && k / 48 <= seg[0] + 1e-6; k++) {
+            var q = slerp(ORIGIN, d, k / 48), p = proj(q[0], q[1]), x = W / 2 + (p[0] - W / 2) * q[2], y = H / 2 + (p[1] - H / 2) * q[2];
+            if (p[2] > -0.1) { if (pen) ctx.lineTo(x, y); else ctx.moveTo(x, y); pen = true; } else pen = false;
+          }
+          ctx.strokeStyle = C.arc; ctx.globalAlpha = seg[1] * (on || cur ? 0.95 : sel ? 0.18 : 0.45) * (match(di + 1) ? 1 : 0.3); ctx.lineWidth = on ? 2.4 : 1.2; ctx.stroke();
+        });
+        ctx.globalAlpha = 1;
       });
       // Shaharlar: avval tanlangan mamlakat, keyin Toshkent, keyin boshqa poytaxtlar; yozuvlar bir-birini bosmaydi
       var boxes = [], order = Object.keys(D.city).sort(function (x, y) { return (y === sel) - (x === sel) || (y === ORIGIN.iso) - (x === ORIGIN.iso); });
@@ -350,17 +355,50 @@
       });
     }
     // ── Samolyot: tanlangan yoʻnalishda, aks holda yoʻnalishlar boʻylab navbat bilan uchadi ──
-    var FLY = 3600;
+    var FLY = 3600, FLYS = 4200, fly = null;
+    function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
     function flight() {
       var el = performance.now() - t0, d, t;
-      if (sel) { d = DEST.filter(function (x) { return x.id === sel; })[0]; t = (el % FLY) / FLY; }
-      else { var n = reduce ? 0 : Math.floor(el / FLY); d = DEST[n % DEST.length]; t = (el % FLY) / FLY; }
+      if (sel) {
+        d = DEST.filter(function (x) { return x.id === sel; })[0];
+        if (!fly || fly.done) return { d: d, t: 1, done: true };
+        return { d: d, t: ease(Math.min(1, (performance.now() - fly.at) / FLYS)) };
+      }
+      var n = reduce ? 0 : Math.floor(el / FLY); d = DEST[n % DEST.length]; t = (el % FLY) / FLY;
       if (reduce) t = 0.55;
-      return { d: d, t: t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2 };
+      return { d: d, t: ease(t) };
+    }
+    function gdist(a, b) {
+      var la1 = a.lat * R, la2 = b.lat * R, dl = (b.lon - a.lon) * R;
+      return Math.acos(Math.max(-1, Math.min(1, Math.sin(la1) * Math.sin(la2) + Math.cos(la1) * Math.cos(la2) * Math.cos(dl))));
+    }
+    // Uchish: kamera butun yoʻnalishni koʻrsatadi (oʻrtasiga qaraydi), samolyot Toshkentdan uchadi
+    function takeoff(d) {
+      fly = { d: d, at: performance.now(), done: false };
+      if (reduce || !running) return land();
+      var m = slerp(ORIGIN, d, 0.5), half = gdist(ORIGIN, d) / 2;
+      target = [m[1] / R, Math.max(-30, Math.min(55, m[0] / R))];
+      setZoom(Math.max(1, Math.min(2.4, 0.8 / Math.sin(half)))); idleAt = performance.now() + FLYS + 8000;
+    }
+    // Qoʻnish: kamera mamlakatga yaqinlashadi
+    function land() {
+      var d = fly.d; fly.done = true; fly.landAt = performance.now();
+      target = [d.lon, Math.max(-30, Math.min(55, d.lat))]; idleAt = performance.now() + 8000;
+      setZoom(d.id === "USA" || d.id === "CHN" ? 2 : d.id === "GBR" || d.id === "KOR" || d.id === "HUN" || d.id === "POL" ? 3.2 : 2.6);
+      if (!running) { lon0 = target[0]; lat0 = target[1]; target = null; draw(); }
     }
     function scr(q) { var p = proj(q[0], q[1]); return [W / 2 + (p[0] - W / 2) * q[2], H / 2 + (p[1] - H / 2) * q[2], p[2], p]; }
     function plane() {
       var f = flight(); if (!f.d) return;
+      if (f.done) {
+        // Qoʻnish toʻlqini (1,6 s)
+        var e = fly && fly.landAt ? (performance.now() - fly.landAt) / 1600 : 1, pd = f.d._p;
+        if (!reduce && e < 1 && pd && pd[2] > 0.05) {
+          ctx.save(); ctx.globalAlpha = 0.7 * (1 - e); ctx.strokeStyle = C.arc; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(pd[0], pd[1], 6 + 22 * e, 0, 2 * Math.PI); ctx.stroke(); ctx.restore();
+        }
+        return;
+      }
       var t = Math.min(0.985, Math.max(0.015, f.t)), q = slerp(ORIGIN, f.d, t), a = scr(q), b = scr(slerp(ORIGIN, f.d, t + 0.01));
       if (a[2] <= 0.02) return;
       var lift = (q[2] - 1) / 0.16, s = (7 + 6 * lift) * Math.min(1.8, Math.sqrt(zoom)) * (W < 500 ? 0.9 : 1), ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
@@ -391,6 +429,7 @@
     var slowDev = false, ft = [], lastT = 0, odd = false;
     function loop(now) {
       if (!running) return;
+      if (fly && !fly.done && now - fly.at > FLYS) land();
       if (lastT) { ft.push(now - lastT); if (ft.length > 30) { ft.shift(); slowDev = ft.reduce(function (a, b) { return a + b; }, 0) / ft.length > 26; } } lastT = now;
       var idle = !target && !drag && !pinch && Math.abs(zt - zoom) < 0.01;
       if (idle && slowDev && (odd = !odd)) { raf = requestAnimationFrame(loop); return; }
@@ -412,7 +451,7 @@
     }
     function setLayer(l) {
       layer = l; filt = ""; persist(); paintCtl();
-      if (l === "wx") load("cur", refresh); if (l === "cl") load("cl", refresh);
+      if (l === "wx" || (l === "cl" && sel)) load("cur", refresh); if (l === "cl" || (l === "wx" && sel)) load("cl", refresh);
       refresh();
     }
     // Legend, roʻyxatdagi haroratlar, kartochka va globusni yangilash
@@ -473,21 +512,20 @@
     function show(id, user) {
       sel = id; var d = DEST.filter(function (x) { return x.id === id; })[0];
       root.querySelectorAll(".kg-list button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-c") === id ? "true" : "false"); });
-      if (!d) { card.hidden = true; setZoom(1); return; }
+      if (!d) { card.hidden = true; fly = null; setZoom(1); return; }
       if (user) snd("whoosh");
       var cities = D && D.city[id] ? D.city[id].map(function (c) { return c[0] + (c[3] ? " (poytaxt)" : ""); }).join(", ") : "";
       card.innerHTML = '<button type="button" class="kg-x" aria-label="Yopish">×</button><b>' + d.n + "</b>" + (cities ? '<small class="kg-c">' + cities + "</small>" : "") +
-        '<div class="kg-wx" data-wx></div>' +
+        '<button type="button" class="kg-fly" data-a="fly" data-snd="none">✈ Toshkentdan qayta uchish</button><div class="kg-wx" data-wx></div>' +
         d.labs.map(function (l) { return '<a href="' + l[0] + '.html"><span>' + l[1] + "</span><small>" + l[2] + "</small></a>"; }).join("") + '<small class="kg-n">Har Lab bepul M0 bilan boshlanadi.</small>';
       card.hidden = false; cardWx();
-      load("cur", refresh); load("cl", refresh);
-      target = [d.lon, Math.max(-30, Math.min(55, d.lat))]; idleAt = performance.now() + 8000;
-      setZoom(id === "USA" || id === "CHN" ? 2 : id === "GBR" || id === "KOR" || id === "HUN" || id === "POL" ? 3.2 : 2.6);
-      if (!running) { lon0 = target[0]; lat0 = target[1]; target = null; draw(); }
+      if (layer !== "map") { load("cur", refresh); load("cl", refresh); }
+      takeoff(d);
     }
     // Kartochkadagi ob-havo va iqlim: hozir + oxirgi 12 oy, Toshkent bilan solishtirish, oylik grafik
     function cardWx() {
       var box = card.querySelector("[data-wx]"); if (!box) return;
+      if (layer === "map") { box.innerHTML = ""; return; }  // Xarita qatlamida ob-havo va iqlim koʻrsatilmaydi
       var i = PTS.map(function (p) { return p.id; }).indexOf(sel), pt = PTS[i], h = "";
       var w = WX.cur && WX.cur[i], c = WX.cl && WX.cl[i], o = WX.cl && WX.cl[0];
       if (w && w.t != null) {
@@ -520,7 +558,10 @@
       return '<svg class="kg-sp" viewBox="0 0 ' + W2 + " " + H2 + '" role="img" aria-label="Oylik oʻrtacha harorat va yogʻin">' + bars + '<polyline points="' + pts.map(function (p) { return p[0] + "," + p[1]; }).join(" ") + '" fill="none" stroke="#c4622d" stroke-width="1.6" stroke-linejoin="round"/>' + dots + lab + "</svg>" +
         '<small class="kg-lg"><i class="kg-lt"></i>harorat <i class="kg-lp"></i>yogʻin</small>';
     }
-    card.addEventListener("click", function (e) { if (e.target.classList.contains("kg-x")) show(null); });
+    card.addEventListener("click", function (e) {
+      if (e.target.classList.contains("kg-x")) show(null);
+      else if (e.target.closest('[data-a="fly"]') && sel) { snd("whoosh"); takeoff(DEST.filter(function (x) { return x.id === sel; })[0]); }
+    });
     root.querySelector(".kg-list").addEventListener("click", function (e) { var b = e.target.closest("[data-c]"); if (b) { var c = b.getAttribute("data-c"); show(sel === c ? null : c, sel !== c); } });
     root.querySelector(".kg-zoom").addEventListener("click", function (e) {
       var b = e.target.closest("button"); if (!b) return;

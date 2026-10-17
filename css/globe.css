@@ -18,6 +18,8 @@
 .kg-zoom [data-a="home"]{font-size:19px;}
 .kg-card .kg-c{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin:-2px 0 4px;}
 .kg-card .kg-n{display:block;color:var(--muted);font-size:12px;margin-top:8px;}
+.kg-fly{display:inline-block;border:1px solid var(--border);background:var(--bg);color:var(--accent);font:inherit;font-size:12.5px;font-weight:700;border-radius:99px;padding:4px 12px;margin:2px 0 4px;cursor:pointer;}
+.kg-fly:hover{background:#e8f0ec;}
 .kg-x{position:absolute;top:8px;right:10px;border:none;background:none;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;width:32px;height:32px;}
 .kg-list{display:flex;flex-wrap:wrap;gap:8px;align-content:center;}
 .kg-list button{min-height:40px;padding:6px 8px 6px 14px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface);font:inherit;font-weight:700;font-size:14px;color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:opacity .2s,border-color .15s;}
