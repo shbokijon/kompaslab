@@ -1,7 +1,7 @@
 # PhD Lab sahifasi alohida shablondan qurilgan (phd_source.html).
 # Bu skript unga umumiy dizayn qatlami, narx, qaytarish qoidasi va jonli maʼlumotni qoʻllaydi.
 import re
-from render import SEASON_ITEMS, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, PRO_PLANNED, icon, polish, uz_fix, std_calc, fmt
+from render import SEASON_ITEMS, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, PRO_PLANNED, HONEST_NOTE, icon, polish, uz_fix, std_calc, fmt
 
 Y, M = 999000, 129000
 
@@ -16,6 +16,9 @@ def build():
     s = s.replace("family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600", "family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display")
     s = R(s, '<div class="logo-m">🧭</div><span class="logo-t">Kompas Lab <span>· PhD</span></span>', '<div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div><span class="logo-t">Kompas Lab <span>PhD</span></span>')
     s = R(s, '<a href="#asoschi">Asoschi</a>', '<a href="#qanday">Qanday tuzilgan</a>')
+    # "Ochiq gap": natija va kafolat boʻyicha umumiy izoh (render.HONEST_NOTE)
+    s = R(s, "<li>\"PhD kafolati\" izlayotganlar — bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>",
+          "<li>\"PhD kafolati\" izlayotganlar — bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>\n    <p class=\"honest\">" + HONEST_NOTE + "</p>")
     s = s.replace("🔔 Kutish roʻyxati", "Kutish roʻyxati").replace("Ochilganda xabar</button>", "Ochilganda xabar bering</button>")
     s = R(s, '<div class="badge">⚗️ PhD Lab · v3.1</div>', icon("phd", "hero-i float", "PhD Lab"))
     s = R(s, '<div class="facts">', '<div class="facts">', 1)

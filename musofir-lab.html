@@ -297,6 +297,15 @@ footer a:hover{color:#fff;}
 .soon{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;max-width:760px;}
 .soon p{color:var(--muted);margin-bottom:14px;}
 .phases.c4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.ab{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin-bottom:18px;}
+.ab-c{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 22px;}
+.ab-c.b{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent);}
+.ab-c small{display:block;font-size:12px;font-weight:800;color:var(--accent2);margin-bottom:6px;}
+.ab-c p{font-size:14px;line-height:1.55;}
+.ab-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--accent);}
+.ab-arrow::before{content:"→";}
+.honest{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;font-size:14px;color:var(--text);}
+@media(max-width:720px){.ab{grid-template-columns:minmax(0,1fr);}.ab-arrow{justify-content:center;transform:rotate(90deg);}}
 @media(max-width:1000px){.phases.c4,.phases.c5{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}.cmp{min-width:520px;}}
 
@@ -419,10 +428,12 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       <h2>Kimga mos va kimga mos emas</h2>
       <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
     </div>
+    
     <div class="fit">
       <div class="fit-col yes"><h3>Mos keladi</h3><ul><li>Ishlab chiqarish va xizmat sohasidagi ishchi (20–35 yosh) — Koreya EPS</li><li>Mavsumiy ishchi (18–35 yosh) — Buyuk Britaniya va Polsha mavsumiy dasturlari</li><li>Kasb egasi: hamshira, oshpaz, haydovchi, texnik — Germaniyada malakani tan oldirish</li><li>Avval Rossiyada ishlagan (25–40 yosh) — yangi yoʻnalishlar va ularning farqi</li><li>Oila aʼzosi — vositachini tekshirish va xavfni tushunish</li></ul></div>
-      <div class="fit-col no"><h3>Mos emas</h3><ul><li>18 yoshgacha boʻlganlar</li><li>Darhol ish topib berishni kutayotganlar — Kompas buni qilmaydi; Migratsiya agentligiga murojaat qiling</li><li>Talaba sifatida xorijga ketayotganlar<a href="index.html#labs">daraja Lablari</a></li><li>Norasmiy yoʻl izlayotganlar</li></ul></div>
+      <div class="fit-col no"><h3>Mos emas</h3><ul><li>18 yoshgacha boʻlganlar</li><li>Darhol ish topib berishni kutayotganlar — Kompas buni qilmaydi; Migratsiya agentligiga murojaat qiling</li><li>Talaba sifatida xorijga ketayotganlar → <a href="index.html#labs">daraja Lablari</a></li><li>Norasmiy yoʻl izlayotganlar</li></ul></div>
     </div>
+    <p class="honest"><b>Ochiq gap.</b> Kompas Lab yangi platforma: bitiruvchilar natijasi hali yoʻq, shuning uchun sahifada natija raqami ham, sharh ham yoʻq. Natijalar faqat yozma rozilik bilan eʼlon qilinadi va ular bilan birga maqsadga yetmagan holatlar ulushi ham koʻrsatiladi. Kompas ishga joylashish yoki viza kafolatini bermaydi.</p>
   </div>
 </section>
 <section class="alt" id="dastur">

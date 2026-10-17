@@ -23,6 +23,15 @@ EXTRA_CSS = """
 .soon{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;max-width:760px;}
 .soon p{color:var(--muted);margin-bottom:14px;}
 .phases.c4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.ab{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin-bottom:18px;}
+.ab-c{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 22px;}
+.ab-c.b{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent);}
+.ab-c small{display:block;font-size:12px;font-weight:800;color:var(--accent2);margin-bottom:6px;}
+.ab-c p{font-size:14px;line-height:1.55;}
+.ab-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--accent);}
+.ab-arrow::before{content:"→";}
+.honest{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;font-size:14px;color:var(--text);}
+@media(max-width:720px){.ab{grid-template-columns:minmax(0,1fr);}.ab-arrow{justify-content:center;transform:rotate(90deg);}}
 @media(max-width:1000px){.phases.c4,.phases.c5{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}.cmp{min-width:520px;}}
 """
@@ -166,6 +175,21 @@ def dark_block(lab):
   </div>
 </section>'''
 
+HONEST_NOTE = ("<b>Ochiq gap.</b> Kompas Lab yangi platforma: bitiruvchilar natijasi hali yoʻq, shuning uchun sahifada natija raqami ham, sharh ham yoʻq. "
+               "Natijalar faqat talabaning yozma roziligi bilan eʼlon qilinadi va ular bilan birga maqsadga yetmagan holatlar ulushi ham koʻrsatiladi. "
+               "Hech bir Lab qabul, stipendiya yoki viza kafolatini bermaydi.")
+
+def ab_strip(lab):
+    a = lab.get("point_a")
+    if not a:
+        return ""
+    b = f"{esc(lab['packet_title'])}: yuqoridagi {len(lab['packet'])} band. Hujjatlarni oʻzingiz yozasiz; Lab freymvork va baholash mezonini (rubrika) beradi."
+    return f'''<div class="ab">
+      <div class="ab-c"><small>A nuqta: hozir</small><p>{a}</p></div>
+      <div class="ab-arrow" aria-hidden="true"></div>
+      <div class="ab-c b"><small>B nuqta: Lab oxirida</small><p>{b}</p></div>
+    </div>'''
+
 def fit(lab):
     y = "".join(f"<li>{x}</li>" for x in lab["fit_yes"])
     n = "".join(f"<li>{x}</li>" for x in lab["fit_no"])
@@ -175,10 +199,12 @@ def fit(lab):
       <h2>Kimga mos va kimga mos emas</h2>
       <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
     </div>
+    {ab_strip(lab)}
     <div class="fit">
       <div class="fit-col yes"><h3>Mos keladi</h3><ul>{y}</ul></div>
       <div class="fit-col no"><h3>Mos emas</h3><ul>{n}</ul></div>
     </div>
+    <p class="honest">{lab.get("honest_note", HONEST_NOTE)}</p>
   </div>
 </section>'''
 
@@ -591,9 +617,11 @@ def polish(html):
     # 3) faqat koʻrinadigan matnda: tugmadagi strelka, " · " ajratgich, atamalar
     parts = re.split(r"(<script\b.*?</script>|<style\b.*?</style>)", html, flags=re.S)
     for i in range(0, len(parts), 2):
-        def txt(m):
+        src = parts[i]
+        def txt(m, src=src):
             t = m.group(1)
-            t = re.sub(r"\s*→\s*$", "", t)
+            # tugmadagi oxirgi strelka olinadi; keyin havola kelsa (masalan "… → Master Lab"), strelka qoladi
+            t = re.sub(r"\s*→\s*$", " → " if src.startswith("<a", m.end() - 1) else "", t)
             t = t.replace(" · ", ", ")
             if len(t.strip()) <= 48 or "qoldiring — " in t or "yoziling — " in t:
                 t = t.replace(" — ", ": ")
