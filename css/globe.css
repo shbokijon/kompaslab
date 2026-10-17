@@ -1,0 +1,87 @@
+/* ── Yoʻnalishlar globusi (js/globe.js): index.html va globe-demo.html ── */
+.kglobe{--kg-land:#2d4a3e;--kg-sea:#e8f0ec;--kg-arc:#c4622d;--kg-dim:#a9bdb4;--kg-night:#7489a8;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:center;}
+.kg-main{display:grid;gap:12px;min-width:0;}
+.kg-stage{position:relative;max-width:680px;width:100%;margin:0 auto;aspect-ratio:1;overflow:hidden;border-radius:16px;}
+.kg-stage canvas{display:block;cursor:grab;}
+.kg-stage canvas:active{cursor:grabbing;}
+.kg-side{display:grid;gap:14px;align-content:center;min-width:0;}
+.kg-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 16px;box-shadow:0 10px 30px rgba(45,74,62,.08);}
+.kg-card > b{display:block;font-size:17px;color:var(--accent);margin-bottom:6px;padding-right:24px;}
+.kg-card a{color:var(--accent);}
+.kg-card > a{display:block;text-decoration:none;color:var(--text);padding:8px 10px;border-radius:10px;background:var(--bg);margin-top:6px;}
+.kg-card > a:hover{background:#e8f0ec;}
+.kg-card > a span{font-weight:800;color:var(--accent2);}
+.kg-card > a small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35;}
+.kg-zoom{position:absolute;right:6px;top:6px;display:flex;flex-direction:column;gap:6px;}
+.kg-zoom button{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface);font-size:22px;font-weight:700;color:var(--accent);cursor:pointer;line-height:1;display:grid;place-items:center;padding:0;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.kg-zoom button:hover{border-color:var(--accent);}
+.kg-zoom [data-a="home"]{font-size:19px;}
+.kg-card .kg-c{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin:-2px 0 4px;}
+.kg-card .kg-n{display:block;color:var(--muted);font-size:12px;margin-top:8px;}
+.kg-x{position:absolute;top:8px;right:10px;border:none;background:none;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;width:32px;height:32px;}
+.kg-list{display:flex;flex-wrap:wrap;gap:8px;align-content:center;}
+.kg-list button{min-height:40px;padding:6px 8px 6px 14px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface);font:inherit;font-weight:700;font-size:14px;color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:opacity .2s,border-color .15s;}
+.kg-list button:hover{border-color:var(--accent);}
+.kg-list button[aria-pressed="true"]{border-color:var(--accent2);background:#faeee7;color:var(--accent2);}
+.kg-list .kg-t:empty{display:none;}
+.kg-list .kg-t{font-size:12px;font-weight:800;border-radius:99px;padding:2px 7px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.kg-list button:not(:has(.kg-t:not(:empty))){padding-right:14px;}
+.kg-list button.kg-dim{opacity:.38;}
+/* Boshqaruv paneli: qatlam, aylanish, tezlik */
+.kg-bar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:center;}
+.kg-seg{display:inline-flex;background:var(--surface);border:1.5px solid var(--border);border-radius:99px;padding:3px;gap:2px;}
+.kg-seg button{border:0;background:none;font:inherit;font-weight:700;font-size:13.5px;color:var(--muted);padding:7px 12px;border-radius:99px;cursor:pointer;min-height:36px;white-space:nowrap;}
+.kg-seg button[aria-pressed="true"]{background:var(--accent);color:#fff;}
+.kg-ctl{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);border-radius:99px;padding:3px 10px 3px 3px;}
+.kg-ib{width:36px;height:36px;border-radius:50%;border:0;background:var(--bg);font-size:17px;line-height:1;cursor:pointer;color:var(--accent);display:grid;place-items:center;padding:0;}
+.kg-ib:hover{background:#e8f0ec;}
+.kg-spd{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);}
+.kg-spd input{width:96px;accent-color:var(--accent2);height:28px;}
+.kg-spd b{min-width:62px;color:var(--accent2);font-variant-numeric:tabular-nums;}
+.kg-ctl .sfx-btn{width:32px;height:32px;}
+/* Legend va manba */
+.kg-leg{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:10px 14px;display:grid;gap:8px;}
+.kg-leg[hidden]{display:none;}
+.kg-scale{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--muted);}
+.kg-scale i{flex:1;height:8px;border-radius:99px;}
+.kg-src{font-size:12px;color:var(--muted);line-height:1.45;}
+.kg-src a{color:var(--accent);}
+.kg-err{color:#b42318;}
+.kg-err button{font:inherit;font-weight:700;border:1px solid currentColor;background:none;color:inherit;border-radius:8px;padding:2px 8px;cursor:pointer;margin-left:4px;}
+.kg-filt{display:flex;flex-wrap:wrap;gap:6px;}
+.kg-filt button{font:inherit;font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:99px;border:1.5px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;min-height:32px;}
+.kg-filt button[aria-pressed="true"]{border-color:var(--accent2);background:#faeee7;color:var(--accent2);}
+/* Kartochkadagi ob-havo va iqlim */
+.kg-wx:empty{display:none;}
+.kg-wx{margin:8px 0 4px;display:grid;gap:8px;}
+.kg-now{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border-radius:12px;padding:8px 10px;font-size:13.5px;line-height:1.35;}
+.kg-now .kg-e{font-size:28px;line-height:1;}
+.kg-now b{font-size:18px;font-weight:900;}
+.kg-now small{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+.kg-cl{background:var(--bg);border-radius:12px;padding:8px 10px;}
+.kg-cl .kg-h{display:block;font-size:12px;font-weight:800;color:var(--accent);margin-bottom:4px;}
+.kg-cl ul{list-style:none;display:grid;gap:3px;font-size:12.5px;line-height:1.4;margin-top:4px;}
+.kg-cl li b{font-variant-numeric:tabular-nums;}
+.kg-sp{width:100%;height:auto;display:block;}
+.kg-sp text{font-size:7px;fill:#7a8b84;font-family:Outfit,sans-serif;}
+.kg-lg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
+.kg-lg i{display:inline-block;width:12px;height:3px;border-radius:2px;}
+.kg-lg .kg-lt{background:#c4622d;}
+.kg-lg .kg-lp{background:#9ec5f5;height:8px;width:8px;margin-left:6px;}
+/* Toʻliq ekran (Fullscreen API yoki iPhone uchun qatlam) */
+.kglobe.kg-full{position:fixed;inset:0;z-index:1000;background:var(--bg,#f4f3ef);padding:16px max(16px,env(safe-area-inset-right)) 16px max(16px,env(safe-area-inset-left));grid-template-columns:minmax(0,1fr) 340px;align-items:center;overflow:auto;margin:0;}
+.kglobe.kg-full .kg-stage{max-width:none;width:min(100%,calc(100vh - 150px));width:min(100%,calc(100dvh - 150px));}
+.kglobe:fullscreen{background:var(--bg,#f4f3ef);}
+html.kg-lock,html.kg-lock body{overflow:hidden;}
+@media(max-width:760px){
+  .kglobe{grid-template-columns:minmax(0,1fr);gap:14px;}
+  .kg-list{justify-content:center;}
+  .kg-card{order:-1;}
+  .kglobe.kg-full{grid-template-columns:minmax(0,1fr);align-content:start;align-items:start;}
+  .kglobe.kg-full .kg-stage{width:min(100%,calc(100vh - 230px));width:min(100%,calc(100dvh - 230px));}
+  .kglobe.kg-full .kg-side{order:2;}
+  .kg-seg button{padding:7px 10px;font-size:13px;}
+  .kg-spd input{width:80px;}
+  .kg-spd > span{display:none;}
+}
+@media (prefers-reduced-motion: reduce){.kg-list button{transition:none;}}

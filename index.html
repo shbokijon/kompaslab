@@ -503,28 +503,62 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   .stat .lv{top:10px;right:10px;}
   footer a{display:inline-block;padding:10px 0;}
 }
-/* ── Yoʻnalishlar globusi (js/globe.js) ── */
-.kglobe{--kg-land:#2d4a3e;--kg-sea:#e8f0ec;--kg-arc:#c4622d;--kg-dim:#a9bdb4;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:center;}
-.kg-stage{position:relative;max-width:560px;width:100%;margin:0 auto;aspect-ratio:1;overflow:hidden;border-radius:16px;}
-.kg-stage canvas{display:block;cursor:grab;}
-.kg-stage canvas:active{cursor:grabbing;}
-.kg-side{display:grid;gap:14px;align-content:center;}
-.kg-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 16px;}
-.kg-card b{display:block;font-size:17px;color:var(--accent);margin-bottom:6px;padding-right:24px;}
-.kg-card a{display:block;text-decoration:none;color:var(--text);padding:8px 10px;border-radius:10px;background:var(--bg);margin-top:6px;}
-.kg-card a:hover{background:#e8f0ec;}
-.kg-card a span{font-weight:800;color:var(--accent2);}
-.kg-card a small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35;}
-.kg-zoom{position:absolute;right:6px;top:6px;display:flex;flex-direction:column;gap:6px;}
-.kg-zoom button{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface);font-size:22px;font-weight:700;color:var(--accent);cursor:pointer;line-height:1;}
-.kg-card .kg-c{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin:-2px 0 4px;}
-.kg-card .kg-n{display:block;color:var(--muted);font-size:12px;margin-top:8px;}
-.kg-x{position:absolute;top:8px;right:10px;border:none;background:none;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;width:32px;height:32px;}
-.kg-list{display:flex;flex-wrap:wrap;gap:8px;align-content:center;}
-.kg-list button{min-height:40px;padding:6px 14px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface);font:inherit;font-weight:700;font-size:14px;color:var(--text);cursor:pointer;}
-.kg-list button[aria-pressed="true"]{border-color:var(--accent2);background:#faeee7;color:var(--accent2);}
-@media(max-width:760px){.kglobe{grid-template-columns:minmax(0,1fr);gap:14px;}.kg-list{justify-content:center;}.kg-card{order:-1;}}
+/* v6: hero — 3D ikonkalar, finder kartochkasi, kompas nuri */
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(45,74,62,.09) 1px,transparent 1.2px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000,transparent 75%);pointer-events:none;}
+.hx > div{position:relative;z-index:1;}
+.motto{display:inline-flex;align-items:center;gap:8px;background:var(--accent2-lit);border:1px solid #f1d6c6;border-radius:99px;padding:5px 14px 5px 5px;font-size:13.5px;font-weight:800;}
+.motto img{width:30px;height:30px;}
+.facts{gap:10px;}
+.fact{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:6px 12px 6px 6px;border-radius:12px;box-shadow:0 2px 8px rgba(45,74,62,.05);}
+.fact img{width:28px;height:28px;flex:none;}
+.finder{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:18px 20px 20px;box-shadow:0 18px 44px rgba(45,74,62,.08);gap:16px;}
+.fnd-top{display:flex;align-items:center;gap:12px;}
+.fnd-t{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:17px;color:var(--accent);margin-right:auto;}
+.fnd-t img{width:36px;height:36px;}
+.fnd-steps{display:inline-flex;gap:5px;}
+.fnd-steps i{width:26px;height:6px;border-radius:99px;background:var(--border);transition:background .3s;}
+.fnd-steps i.on{background:var(--accent2);}
+.fq b{display:flex;align-items:center;gap:8px;}
+.fq b .n{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800;flex:none;}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 7px;transition:background .15s,border-color .15s,color .15s,transform .15s,box-shadow .15s;}
+.chip img{width:26px;height:26px;flex:none;transition:transform .25s ease;}
+.chip[aria-pressed="true"]{box-shadow:0 6px 16px rgba(45,74,62,.22);}
+.chip[aria-pressed="true"] img{filter:drop-shadow(0 0 4px rgba(255,255,255,.6));}
+@media (hover:hover){.chip:hover img{transform:scale(1.15) rotate(-6deg);}.fact:hover img{transform:rotate(-8deg) scale(1.1);}}
+.fact img{transition:transform .25s ease;}
+.dial::before{content:"";position:absolute;inset:-8%;border-radius:50%;background:radial-gradient(circle,rgba(196,98,45,.13),rgba(45,74,62,.05) 45%,transparent 68%);pointer-events:none;}
+.dial svg{filter:drop-shadow(0 18px 30px rgba(45,74,62,.14));}
+.pt.on img{filter:drop-shadow(0 6px 10px rgba(196,98,45,.45));}
+.result{transition:border-color .3s,box-shadow .3s;}
+.result.has{border-color:#f1d6c6;box-shadow:0 16px 40px rgba(196,98,45,.10);border-left:4px solid var(--accent2);}
+.result .empty{display:flex;align-items:center;gap:12px;}
+.result .empty[hidden]{display:none;}
+.result .empty img{width:48px;height:48px;flex:none;}
+.stat .st-i{width:40px;height:40px;display:block;margin-bottom:10px;}
+@media (prefers-reduced-motion: no-preference){
+  .motto img{animation:spin-in 1.2s cubic-bezier(.2,.9,.3,1.2) both, float 6s ease-in-out 1.2s infinite;}
+  @keyframes spin-in{from{transform:rotate(-200deg) scale(.4);opacity:0}to{transform:none;opacity:1}}
+  .chip[aria-pressed="true"] img{animation:pop .45s ease;}
+  @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.25) rotate(-8deg)}100%{transform:none}}
+  .r-b:not([hidden]){animation:rise .45s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .dial:not(.idle)::before{animation:glow 2.4s ease-in-out infinite;}
+  @keyframes glow{0%,100%{opacity:.7;transform:scale(.97)}50%{opacity:1;transform:scale(1.03)}}
+  .stat .st-i{animation:float 6s ease-in-out infinite;}
+  .stat:nth-child(2) .st-i{animation-delay:-1.5s;}.stat:nth-child(3) .st-i{animation-delay:-3s;}.stat:nth-child(4) .st-i{animation-delay:-4.5s;}
+}
+@media(max-width:720px){
+  .finder{padding:14px 14px 16px;border-radius:18px;}
+  .fnd-t{font-size:15.5px;}
+  .fnd-t img{width:30px;height:30px;}
+  .chip{padding:5px 12px 5px 6px;}
+  .chip img{width:24px;height:24px;}
+  .fact{font-size:12.5px;}
+  .fact img{width:24px;height:24px;}
+  .stat .st-i{width:34px;height:34px;margin-bottom:8px;}
+}
 </style>
+<link rel="stylesheet" href="css/globe.css">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
@@ -533,6 +567,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <meta name="apple-mobile-web-app-title" content="Kompas Lab">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script src="js/pwa.js" defer></script>
+<script src="js/sfx.js" defer></script>
 <script src="js/globe.js" defer></script>
 <link rel="stylesheet" href="css/brand.css">
 <meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
@@ -550,16 +585,17 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero" data-sfx>
   <div class="wrap hx">
     <div>
-      <span class="motto">Kuzatuvdan kashfiyotga</span>
+      <span class="motto"><img src="img/3d/compass.webp" width="160" height="160" alt="" decoding="async">Kuzatuvdan kashfiyotga</span>
       <h1>Xorijiy universitet va stipendiyaga oʻzbek tilida tayyorlaning.</h1>
       <p class="lead">Kompas Lab STEM yoʻnalishidagi oʻquvchi va talabalar uchun onlayn dasturlar. Universitet va stipendiyani dalil bilan tanlaysiz, hujjatlarni <strong>oʻzingiz</strong> yozasiz. Har fakt rasmiy manba havolasi bilan beriladi.</p>
-      <div class="facts"><span class="fact">Har Labda <b>M0 bepul</b></span><span class="fact"><b>Oʻzbek</b> tilida</span><span class="fact">Rasmiy <b>manbalar</b></span><span class="fact">Obuna: <b>yillik</b> yoki <b>oylik</b></span></div>
+      <div class="facts"><span class="fact"><img src="img/3d/seedling.webp" width="160" height="160" alt="" decoding="async"><span>Har Labda <b>M0 bepul</b></span></span><span class="fact"><img src="img/3d/memo.webp" width="160" height="160" alt="" decoding="async"><span><b>Oʻzbek</b> tilida</span></span><span class="fact"><img src="img/3d/scroll.webp" width="160" height="160" alt="" decoding="async"><span>Rasmiy <b>manbalar</b></span></span><span class="fact"><img src="img/3d/calendar.webp" width="160" height="160" alt="" decoding="async"><span>Obuna: <b>yillik</b> yoki <b>oylik</b></span></span></div>
       <div class="finder" aria-label="Lab tanlash">
-        <div class="fq"><b>1. Hozir kimsiz?</b><div class="chips"><button type="button" class="chip" data-q="who" data-v="maktab" aria-pressed="false">Maktab yoki litsey oʻquvchisi</button><button type="button" class="chip" data-q="who" data-v="bakalavr" aria-pressed="false">Bakalavr talabasi yoki bitiruvchi</button><button type="button" class="chip" data-q="who" data-v="magistr" aria-pressed="false">Magistr yoki tadqiqotchi</button><button type="button" class="chip" data-q="who" data-v="ishchi" aria-pressed="false">Ishlayotgan mutaxassis</button></div></div>
-        <div class="fq"><b>2. Maqsadingiz?</b><div class="chips"><button type="button" class="chip" data-q="goal" data-v="oqish" aria-pressed="false">Xorijda oʻqish, davlat tanlanmagan</button><button type="button" class="chip" data-q="goal" data-v="korea" aria-pressed="false">Koreya</button><button type="button" class="chip" data-q="goal" data-v="usa" aria-pressed="false">AQSh</button><button type="button" class="chip" data-q="goal" data-v="germany" aria-pressed="false">Germaniya</button><button type="button" class="chip" data-q="goal" data-v="biznes" aria-pressed="false">Oʻqish bilan birga biznes</button><button type="button" class="chip" data-q="goal" data-v="ish" aria-pressed="false">Xorijda rasmiy ish</button></div></div>
+        <div class="fnd-top"><span class="fnd-t"><img src="img/3d/telescope.webp" width="160" height="160" alt="" decoding="async">Sizga qaysi Lab mos?</span><span class="fnd-steps" aria-hidden="true"><i data-s="who"></i><i data-s="goal"></i></span><span data-sfx-slot></span></div>
+        <div class="fq"><b><span class="n">1</span>Hozir kimsiz?</b><div class="chips"><button type="button" class="chip" data-q="who" data-v="maktab" aria-pressed="false" data-snd="pick"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Maktab yoki litsey oʻquvchisi</span></button><button type="button" class="chip" data-q="who" data-v="bakalavr" aria-pressed="false" data-snd="pick"><img src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Bakalavr talabasi yoki bitiruvchi</span></button><button type="button" class="chip" data-q="who" data-v="magistr" aria-pressed="false" data-snd="pick"><img src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Magistr yoki tadqiqotchi</span></button><button type="button" class="chip" data-q="who" data-v="ishchi" aria-pressed="false" data-snd="pick"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Ishlayotgan mutaxassis</span></button></div></div>
+        <div class="fq"><b><span class="n">2</span>Maqsadingiz?</b><div class="chips"><button type="button" class="chip" data-q="goal" data-v="oqish" aria-pressed="false" data-snd="pick"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Xorijda oʻqish, davlat tanlanmagan</span></button><button type="button" class="chip" data-q="goal" data-v="korea" aria-pressed="false" data-snd="pick"><img src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Koreya</span></button><button type="button" class="chip" data-q="goal" data-v="usa" aria-pressed="false" data-snd="pick"><img src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>AQSh</span></button><button type="button" class="chip" data-q="goal" data-v="germany" aria-pressed="false" data-snd="pick"><img src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Germaniya</span></button><button type="button" class="chip" data-q="goal" data-v="biznes" aria-pressed="false" data-snd="pick"><img src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Oʻqish bilan birga biznes</span></button><button type="button" class="chip" data-q="goal" data-v="ish" aria-pressed="false" data-snd="pick"><img src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Xorijda rasmiy ish</span></button></div></div>
       </div>
     </div>
     <div>
@@ -577,7 +613,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   </svg>
   <span class="pt" data-slug="bachelor-lab" style="left:50.00%;top:11.50%"><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="Bachelor Lab" loading="lazy" decoding="async"></span><span class="pt" data-slug="master-lab" style="left:77.22%;top:22.78%"><img class="" src="img/3d/master.webp" width="160" height="160" alt="Master Lab" loading="lazy" decoding="async"></span><span class="pt" data-slug="phd-lab" style="left:88.50%;top:50.00%"><img class="" src="img/3d/phd.webp" width="160" height="160" alt="PhD Lab" loading="lazy" decoding="async"></span><span class="pt" data-slug="gks-lab" style="left:77.22%;top:77.22%"><img class="" src="img/3d/gks.webp" width="160" height="160" alt="GKS Lab" loading="lazy" decoding="async"></span><span class="pt" data-slug="usa-lab" style="left:50.00%;top:88.50%"><img class="" src="img/3d/usa.webp" width="160" height="160" alt="USA Lab" loading="lazy" decoding="async"></span><span class="pt" data-slug="daad-lab" style="left:22.78%;top:77.22%"><img class="" src="img/3d/daad.webp" width="160" height="160" alt="DAAD Lab" loading="lazy" decoding="async"></span><span class="pt" data-slug="tadbirkor-talaba" style="left:11.50%;top:50.00%"><img class="" src="img/3d/tt.webp" width="160" height="160" alt="Tadbirkor Talaba" loading="lazy" decoding="async"></span><span class="pt" data-slug="miggo" style="left:22.78%;top:22.78%"><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="Musofir Lab" loading="lazy" decoding="async"></span>
 </div>
-      <div class="result" id="result" aria-live="polite"><p class="empty" id="rEmpty">Ikki savolga javob bering: kompas sizga mos Labni koʻrsatadi.</p><div class="note2" id="rNote" hidden></div><div class="r-b" data-r="bachelor-lab" hidden><div class="r-h"><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Bachelor Lab</div><div class="r-w">10–11-sinf, litsey va kollej, 15–19 yosh</div></div></div><p>Xorijiy bakalavriatga: universitet tanlashdan topshirishgacha.</p><div class="r-p"><span data-py="bachelor-lab">699 000</span> soʻm/yil yoki <span data-pm="bachelor-lab">99 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="bachelor-lab.html">Bachelor Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="bachelor-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="master-lab" hidden><div class="r-h"><img class="" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Master Lab</div><div class="r-w">Xorijiy magistraturaga topshiruvchilar</div></div></div><p>Magistratura: yoʻnalish, hujjatlar, stipendiya, viza va joʻnash.</p><div class="r-p"><span data-py="master-lab">699 000</span> soʻm/yil yoki <span data-pm="master-lab">99 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="master-lab.html">Master Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="master-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="phd-lab" hidden><div class="r-h"><img class="" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">PhD Lab</div><div class="r-w">Moliyalashtirilgan doktorantura</div></div></div><p>Doktorantura: ilmiy savoldan ilmiy rahbar va loyiha taklifigacha.</p><div class="r-p"><span data-py="phd-lab">999 000</span> soʻm/yil yoki <span data-pm="phd-lab">129 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="phd-lab.html">PhD Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="phd-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="gks-lab" hidden><div class="r-h"><img class="" src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">GKS Lab</div><div class="r-w">Koreya: Global Korea Scholarship</div></div></div><p>Koreya hukumati stipendiyasi: muvofiqlik, hujjatlar va intervyu.</p><div class="r-p"><span data-py="gks-lab">699 000</span> soʻm/yil yoki <span data-pm="gks-lab">99 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="gks-lab.html">GKS Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="gks-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="usa-lab" hidden><div class="r-h"><img class="" src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">USA Lab</div><div class="r-w">AQSh: Global UGRAD, Fulbright, doktorantura</div></div></div><p>AQShda moliyalashtirilgan oʻqishning uch yoʻli.</p><div class="r-p"><span data-py="usa-lab">699 000</span> soʻm/yil yoki <span data-pm="usa-lab">99 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="usa-lab.html">USA Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="usa-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="daad-lab" hidden><div class="r-h"><img class="" src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">DAAD Lab</div><div class="r-w">Germaniya: magistratura va doktorantura</div></div></div><p>Germaniya va DAAD: ilmiy rahbardan vizagacha.</p><div class="r-p"><span data-py="daad-lab">699 000</span> soʻm/yil yoki <span data-pm="daad-lab">99 900</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="daad-lab.html">DAAD Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="daad-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="tadbirkor-talaba" hidden><div class="r-h"><img class="" src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Tadbirkor Talaba</div><div class="r-w">Universitet talabalari, 18 yoshdan</div></div></div><p>Oʻqish bilan birga kichik, qonuniy biznes sinovi.</p><div class="r-p"><span data-py="tadbirkor-talaba">299 000</span> soʻm/yil yoki <span data-pm="tadbirkor-talaba">29 900</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="tadbirkor-talaba.html">Tadbirkor Talaba sahifasi</a><button type="button" class="btn btn-g" data-wl="tadbirkor-talaba">Kutish roʻyxati</button></div></div><div class="r-b" data-r="miggo" hidden><div class="r-h"><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Musofir Lab</div><div class="r-w">Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha</div></div></div><p>Xorijda faqat rasmiy yoʻl bilan ishlash va firibgarlikdan himoya.</p><div class="r-p"><span data-py="miggo">499 000</span> soʻm/yil yoki <span data-pm="miggo">49 900</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="musofir-lab.html">Musofir Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="miggo">Kutish roʻyxati</button></div></div></div>
+      <div class="result" id="result" aria-live="polite"><p class="empty" id="rEmpty"><img src="img/3d/bulb.webp" width="160" height="160" alt="" decoding="async"><span>Ikki savolga javob bering: kompas sizga mos Labni koʻrsatadi.</span></p><div class="note2" id="rNote" hidden></div><div class="r-b" data-r="bachelor-lab" hidden><div class="r-h"><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Bachelor Lab</div><div class="r-w">10–11-sinf, litsey va kollej, 15–19 yosh</div></div></div><p>Xorijiy bakalavriatga: universitet tanlashdan topshirishgacha.</p><div class="r-p"><span data-py="bachelor-lab">699 000</span> soʻm/yil yoki <span data-pm="bachelor-lab">99 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="bachelor-lab.html">Bachelor Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="bachelor-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="master-lab" hidden><div class="r-h"><img class="" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Master Lab</div><div class="r-w">Xorijiy magistraturaga topshiruvchilar</div></div></div><p>Magistratura: yoʻnalish, hujjatlar, stipendiya, viza va joʻnash.</p><div class="r-p"><span data-py="master-lab">699 000</span> soʻm/yil yoki <span data-pm="master-lab">99 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="master-lab.html">Master Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="master-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="phd-lab" hidden><div class="r-h"><img class="" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">PhD Lab</div><div class="r-w">Moliyalashtirilgan doktorantura</div></div></div><p>Doktorantura: ilmiy savoldan ilmiy rahbar va loyiha taklifigacha.</p><div class="r-p"><span data-py="phd-lab">999 000</span> soʻm/yil yoki <span data-pm="phd-lab">129 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="phd-lab.html">PhD Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="phd-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="gks-lab" hidden><div class="r-h"><img class="" src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">GKS Lab</div><div class="r-w">Koreya: Global Korea Scholarship</div></div></div><p>Koreya hukumati stipendiyasi: muvofiqlik, hujjatlar va intervyu.</p><div class="r-p"><span data-py="gks-lab">699 000</span> soʻm/yil yoki <span data-pm="gks-lab">99 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="gks-lab.html">GKS Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="gks-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="usa-lab" hidden><div class="r-h"><img class="" src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">USA Lab</div><div class="r-w">AQSh: Global UGRAD, Fulbright, doktorantura</div></div></div><p>AQShda moliyalashtirilgan oʻqishning uch yoʻli.</p><div class="r-p"><span data-py="usa-lab">699 000</span> soʻm/yil yoki <span data-pm="usa-lab">99 000</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="usa-lab.html">USA Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="usa-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="daad-lab" hidden><div class="r-h"><img class="" src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">DAAD Lab</div><div class="r-w">Germaniya: magistratura va doktorantura</div></div></div><p>Germaniya va DAAD: ilmiy rahbardan vizagacha.</p><div class="r-p"><span data-py="daad-lab">699 000</span> soʻm/yil yoki <span data-pm="daad-lab">99 900</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="daad-lab.html">DAAD Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="daad-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="tadbirkor-talaba" hidden><div class="r-h"><img class="" src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Tadbirkor Talaba</div><div class="r-w">Universitet talabalari, 18 yoshdan</div></div></div><p>Oʻqish bilan birga kichik, qonuniy biznes sinovi.</p><div class="r-p"><span data-py="tadbirkor-talaba">299 000</span> soʻm/yil yoki <span data-pm="tadbirkor-talaba">29 900</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="tadbirkor-talaba.html">Tadbirkor Talaba sahifasi</a><button type="button" class="btn btn-g" data-wl="tadbirkor-talaba">Kutish roʻyxati</button></div></div><div class="r-b" data-r="miggo" hidden><div class="r-h"><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Musofir Lab</div><div class="r-w">Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha</div></div></div><p>Xorijda faqat rasmiy yoʻl bilan ishlash va firibgarlikdan himoya.</p><div class="r-p"><span data-py="miggo">499 000</span> soʻm/yil yoki <span data-pm="miggo">49 900</span> soʻm/oy. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="musofir-lab.html">Musofir Lab sahifasi</a><button type="button" class="btn btn-g" data-wl="miggo">Kutish roʻyxati</button></div></div></div>
     </div>
   </div>
 </header>
@@ -585,10 +621,10 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="stats">
-      <div class="stat live-s" id="stReg" hidden><span class="lv"><i></i>jonli</span><b>0</b><span>kishi Kompas Labda roʻyxatdan oʻtgan</span></div>
-      <div class="stat live-s" id="stWait" hidden><span class="lv"><i></i>jonli</span><b>0</b><span>kishi kutish roʻyxatida</span></div>
-      <div class="stat"><b data-count="8">8</b><span>Lab: daraja, davlat va ish boʻyicha</span></div>
-      <div class="stat"><b data-count="485">485</b><span>dars rejasi barcha Lablarda</span></div>
+      <div class="stat live-s" id="stReg" hidden><span class="lv"><i></i>jonli</span><img class="st-i" src="img/3d/seedling.webp" width="160" height="160" alt="" decoding="async"><b>0</b><span>kishi Kompas Labda roʻyxatdan oʻtgan</span></div>
+      <div class="stat live-s" id="stWait" hidden><span class="lv"><i></i>jonli</span><img class="st-i" src="img/3d/hourglass.webp" width="160" height="160" alt="" decoding="async"><b>0</b><span>kishi kutish roʻyxatida</span></div>
+      <div class="stat"><img class="st-i" src="img/3d/compass.webp" width="160" height="160" alt="" decoding="async"><b data-count="8">8</b><span>Lab: daraja, davlat va ish boʻyicha</span></div>
+      <div class="stat"><img class="st-i" src="img/3d/books.webp" width="160" height="160" alt="" decoding="async"><b data-count="485">485</b><span>dars rejasi barcha Lablarda</span></div>
     </div>
     <div class="stats-note" id="stNote" hidden><i></i><span id="stNoteT"></span></div>
   </div>
@@ -596,7 +632,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 
 <section id="globus">
   <div class="wrap">
-    <div class="head"><h2>Toshkentdan qayerga?</h2><p class="sub">Mamlakatni tanlang yoki globusdagi nuqtani bosing: u yerga qaysi Lab tayyorlashini koʻrasiz. Globusni barmoq bilan aylantiring, + va − bilan yaqinlashtiring.</p></div>
+    <div class="head"><h2>Toshkentdan qayerga?</h2><p class="sub">Mamlakatni tanlang yoki globusdagi nuqtani bosing: u yerga qaysi Lab tayyorlashini koʻrasiz. Globusni barmoq bilan aylantiring, + va − bilan yaqinlashtiring. <b>Ob-havo</b> va <b>Iqlim</b> qatlamlari poytaxtlardagi hozirgi havo va oxirgi 12 oy iqlimini koʻrsatadi; ⛶ — toʻliq ekran.</p></div>
     <div class="kglobe" data-globe></div>
   </div>
 </section>
@@ -835,8 +871,9 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       var q = c.getAttribute("data-q");
       document.querySelectorAll(".chip[data-q=" + q + "]").forEach(function (o) { o.setAttribute("aria-pressed", o === c ? "true" : "false"); });
       ans[q] = c.getAttribute("data-v");
+      var st = document.querySelector('.fnd-steps i[data-s="' + q + '"]'); if (st) st.classList.add("on");
       var r = pick();
-      if (r) { point(r.slug); show(r); }
+      if (r) { point(r.slug); show(r); res.classList.add("has"); if (window.KSfx) window.KSfx.play("needle"); }
     });
   });
 
