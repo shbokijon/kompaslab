@@ -154,9 +154,8 @@ async function requireAdmin() {
   const auth = await requireAuth()
   if (!auth) return null
 
-  const isAdmin =
-    auth.profile?.role === 'admin' ||
-    APP_CONFIG.adminEmails.includes(auth.user.email)
+  // Server-verified DB role only. Email allowlists are not authorization.
+  const isAdmin = auth.profile?.role === 'admin'
 
   if (!isAdmin) {
     if (typeof showToast === 'function') showToast('⛔ Bu sahifaga kirish uchun admin huquqi kerak', 'error')
