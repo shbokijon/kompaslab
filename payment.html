@@ -312,66 +312,15 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
       </div>
 
-      <!-- CLICK FORM -->
-      <div class="payment-form" id="form-click">
-        <h3>📱 Click.uz orqali toʻlov</h3>
-        <div class="field">
-          <label>Telefon raqam</label>
-          <input type="tel" id="clickPhone" placeholder="+998 90 123 45 67" maxlength="17">
-          <div class="field-hint">Click hisobingizga bogʻliq raqam</div>
-        </div>
-        <div style="background:var(--accent-light);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--accent);line-height:1.6;">
-          📱 Raqamingizni kiriting → Click app'ingizga soʻrov keladi → Tasdiqlang → Kurs ochildi!
-        </div>
+      <!-- PAYMENT PROVIDER NOT CONNECTED: do not collect card data locally -->
+      <div class="payment-form" role="status">
+        <h3>⏳ Toʻlov vaqtincha yopiq</h3>
+        <p>Click va Payme bilan integratsiya yakunlanmaguncha telefon, karta raqami yoki amal qilish muddati soʻralmaydi. Bepul M0 va kutish roʻyxatidan foydalaning.</p>
+        <p><a href="master-lab-m0.html">Master Lab M0 (bepul)</a> · <a href="index.html#narx">Tariflar va kutish roʻyxati</a></p>
       </div>
-
-      <!-- PAYME FORM -->
-      <div class="payment-form" id="form-payme" style="display:none;">
-        <h3>💳 Payme orqali toʻlov</h3>
-        <div class="field">
-          <label>Karta raqami</label>
-          <input type="text" id="cardNumberPayme" placeholder="8600 •••• •••• ••••" maxlength="19" oninput="formatCard(this)">
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label>Amal qilish muddati</label>
-            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
-          </div>
-          <div class="field">
-            <label>Karta egasi</label>
-            <input type="text" id="cardName" placeholder="SARDOR KARIMOV" style="text-transform:uppercase">
-          </div>
-        </div>
-        <div style="background:var(--gold-light);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--gold);">
-          🔒 Karta ma'lumotlaringiz xavfsiz SSL orqali uzatiladi
-        </div>
-      </div>
-
-      <!-- BANK CARD FORM -->
-      <div class="payment-form" id="form-bank" style="display:none;">
-        <h3>💳 Bank kartasi orqali toʻlov</h3>
-        <div class="field">
-          <label>Karta raqami (Uzcard / Humo)</label>
-          <input type="text" id="cardNumberBank" placeholder="9860 •••• •••• ••••" maxlength="19" oninput="formatCard(this)">
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label>Amal qilish muddati</label>
-            <input type="text" id="cardExpiryBank" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
-          </div>
-          <div class="field">
-            <label>Karta egasi</label>
-            <input type="text" id="cardNameBank" placeholder="SARDOR KARIMOV" style="text-transform:uppercase">
-          </div>
-        </div>
-        <div style="background:var(--accent-light);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--accent);">
-          🔒 Toʻlov Kompas Lab rasmiy hisob raqamiga oʻtkaziladi
-        </div>
-      </div>
-
     </div>
 
-    <!-- RIGHT: ORDER SUMMARY -->
+        <!-- RIGHT: ORDER SUMMARY -->
     <div>
       <div class="order-card">
         <div class="order-title">📋 Buyurtma xulosasi</div>
@@ -388,7 +337,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
             <div class="order-feat" id="orderFeatLessons">— ta video dars</div>
             <div class="order-feat">PDF materiallar</div>
             <div class="order-feat">Oʻz sur'atida oʻqish</div>
-            <div class="order-feat">Umrbod kirish huquqi</div>
+            <div class="order-feat">Kirish muddati haqidagi shartlar sotuv ochilishidan oldin beriladi</div>
           </div>
 
           <div class="order-total-row">
@@ -401,11 +350,11 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           </div>
         </div>
 
-        <button class="pay-btn" id="payBtn" onclick="processPayment()" disabled style="opacity:0.5;margin-top:18px;">
-          <span id="payBtnText">💳 Toʻlovni amalga oshirish</span>
+        <button class="pay-btn" id="payBtn" disabled style="opacity:0.5;margin-top:18px;">
+          <span id="payBtnText">⏳ Toʻlov hozircha yopiq</span>
         </button>
 
-        <div class="pay-secure">🔒 256-bit SSL xavfsiz toʻlov</div>
+        <div class="pay-secure">Toʻlov provayderi ulanmaguncha hech qanday mablagʻ olinmaydi</div>
 
         <div class="guarantee" style="margin-top:16px;">
           <div class="guarantee-icon">ℹ️</div>
@@ -557,8 +506,8 @@ function selectCourse(el, slug, name, price, emoji, lessons, modules) {
 
   // To'lov tugmasini faollashtirish
   const btn = document.getElementById('payBtn')
-  btn.disabled = false
-  btn.style.opacity = '1'
+  btn.disabled = true
+  btn.style.opacity = '0.5'
 }
 
 function updateOrderSummary(slug, name, price, lessons, modules) {
@@ -593,82 +542,8 @@ function selectMethod(el, method) {
 //  TO'LOV AMALGA OSHIRISH
 // ════════════════════════════════════════════════════════
 async function processPayment() {
-  if (!selectedSlug) {
-    showToast('⚠️ Avval kursni tanlang'); return
-  }
-
-  // Validatsiya
-  if (selectedMethod === 'click') {
-    const phone = document.getElementById('clickPhone').value.trim()
-    if (!phone || phone.length < 9) {
-      showToast('⚠️ Telefon raqamni kiriting'); return
-    }
-  }
-  if (selectedMethod === 'payme') {
-    const card = document.getElementById('cardNumberPayme').value.replace(/\s/g, '')
-    if (card.length < 16) { showToast('⚠️ Karta raqamini to\'liq kiriting'); return }
-  }
-  if (selectedMethod === 'bank') {
-    const card = document.getElementById('cardNumberBank').value.replace(/\s/g, '')
-    if (card.length < 16) { showToast('⚠️ Karta raqamini to\'liq kiriting'); return }
-  }
-
-  const btn     = document.getElementById('payBtn')
-  const btnText = document.getElementById('payBtnText')
-  btn.disabled  = true
-  btnText.innerHTML = '<div class="spinner"></div> Amalga oshirilmoqda...'
-
-  try {
-    // Kurs ID ni olish
-    if (!_courseId) {
-      const { data: course } = await supabase
-        .from(DB.courses)
-        .select('id')
-        .eq('slug', selectedSlug)
-        .single()
-      _courseId = course?.id
-    }
-
-    if (!_courseId) throw new Error('Kurs topilmadi')
-
-    // Payments jadvaliga yozish (status: pending)
-    const { data: payment, error: pErr } = await supabase
-      .from(DB.payments)
-      .insert({
-        user_id:   _user.id,
-        course_id: _courseId,
-        plan:      'starter',          // Yagona tarif → starter sifatida saqlanadi
-        amount:    selectedAmount,
-        method:    selectedMethod,
-        status:    'pending',
-        note:      `${selectedMethod.toUpperCase()} · ${selectedName} · ${new Date().toLocaleString('uz-UZ')}`
-      })
-      .select()
-      .single()
-
-    if (pErr) throw pErr
-
-    // Enrollments jadvaliga yozish (payment_status: pending)
-    await supabase.from(DB.enrollments).upsert({
-      user_id:        _user.id,
-      course_id:      _courseId,
-      plan:           'starter',
-      payment_status: 'pending',
-      payment_id:     payment.id,
-    }, { onConflict: 'user_id,course_id' })
-
-    // Muvaffaqiyat ekrani
-    await new Promise(r => setTimeout(r, 1200))
-    document.getElementById('successCourse').textContent  = selectedName
-    document.getElementById('successAmount').textContent  = formatMoney(selectedAmount) + ' so\'m'
-    document.getElementById('successDate').textContent    = new Date().toLocaleDateString('uz-UZ')
-    document.getElementById('successOverlay').classList.add('show')
-
-  } catch (err) {
-    showToast('❌ Xatolik: ' + (err.message || 'Qayta urinib ko\'ring'))
-    btn.disabled = false
-    btnText.innerHTML = '💳 To\'lovni amalga oshirish'
-  }
+  showToast("Onlayn toʻlov hozircha yopiq. Karta maʼlumotlarini kiritmang.");
+  return false;
 }
 
 // ════════════════════════════════════════════════════════
@@ -712,8 +587,7 @@ document.addEventListener('DOMContentLoaded', init)
 </div>
 <script>
 (function () {
-  var slug = new URLSearchParams(location.search).get('course')
-  if (slug !== 'test-lab') document.getElementById('payClosed').style.display = 'flex'
+  document.getElementById('payClosed').style.display = 'flex'
 })()
 </script>
 </body>
