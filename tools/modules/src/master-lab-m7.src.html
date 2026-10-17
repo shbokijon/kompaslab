@@ -251,7 +251,7 @@
             <div class="facts2"><div class="fct"><b class="ok">Rasmiy</b>2026/27 oʻquv yili uchun ariza muddati: <b>15-yanvar 2026, 14:00 (CET)</b>. Oldingi yillarda ham 15-yanvar boʻlgan; 2027/28 eʼloni hali chiqmagan.<a href="https://amman.mfa.gov.hu/en/articles/stipendium-hungaricum-application-system-is-open" target="_blank" rel="noopener">mfa.gov.hu</a><a href="https://stipendiumhungaricum.hu/" target="_blank" rel="noopener">stipendiumhungaricum.hu</a></div>
               <div class="fct"><b class="wait">Ehtiyot</b>Oʻzbekiston hamkor mamlakat; yuboruvchi tomon: Oliy taʼlim, fan va innovatsiyalar vazirligi. 2025/26 kvotasi manbalarda 170 va 200 deb turlicha.<a href="https://www.samdu.uz/en/announcements/62814" target="_blank" rel="noopener">samdu.uz</a></div></div>
             <h4>Germaniya</h4>
-            <p>DAAD stipendiyalari va Germaniyadagi bepul yoki arzon oʻqish imkoniyatlari alohida Lab’da batafsil: <a href="daad-lab.html">DAAD Lab</a>.</p>
+            <p>DAAD stipendiyalari va Germaniyadagi bepul yoki arzon oʻqish imkoniyatlari alohida Labʼda batafsil: <a href="daad-lab.html">DAAD Lab</a>.</p>
             <p class="hint">16.10.2026 holatiga.</p>
           </div>
           <div class="panel"><div class="take"><img src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy"><p>Erasmus Mundus — yuzdan ortiq alohida qoʻshma dastur, ariza har biriga alohida, katalog EACEA da. Stipendium Hungaricum muddati odatda 15-yanvar. Germaniya — DAAD Lab.</p></div></div>
@@ -274,7 +274,7 @@
           <div class="panel"><div class="hook">Xitoy, Yaponiya va Koreya stipendiyalari bir-biriga oʻxshash koʻrinadi: hammasi toʻliq, hammasi hukumat dasturi. Lekin ariza yoʻli, yosh chegarasi va til talabi har birida boshqacha.</div></div>
           <div class="panel">
             <h4>Koreya: GKS</h4>
-            <p>Global Korea Scholarship alohida Lab’da batafsil: <a href="gks-lab.html">GKS Lab</a>.</p>
+            <p>Global Korea Scholarship alohida Labʼda batafsil: <a href="gks-lab.html">GKS Lab</a>.</p>
             <h4>Yaponiya: MEXT (tadqiqot talabasi)</h4>
             <div class="facts2"><div class="fct"><b class="wait">Ehtiyot</b>Elchixona tavsiyasi yoʻli: 2027-yil qabuli uchun boshqa mamlakatlardagi Yaponiya elchixonalarida muddat <b>2026-yil may oxiri – 1-iyun</b> boʻlgan, yaʼni bu sikl yopilgan. Yosh chegarasi (masalan, 1992-yil 2-apreldan keyin tugʻilgan) va jarayon har mamlakat elchixonasida eʼlon qilinadi.<a href="https://www.afg.emb-japan.go.jp/itpr_ja/mext_scholarship2027.html" target="_blank" rel="noopener">emb-japan.go.jp (Afgʻoniston)</a><a href="https://www.iraq.emb-japan.go.jp/itpr_en/culture.html" target="_blank" rel="noopener">emb-japan.go.jp (Iroq)</a></div></div>
             <p class="hint" style="margin-top:6px">Oʻzbekiston uchun eʼlonni Yaponiyaning Toshkentdagi elchixonasi sahifasida tekshiring.</p>
@@ -611,8 +611,8 @@
     { id: "mext", n: "MEXT (elchixona yoʻli)", r: "🇯🇵 Yaponiya", l: "7.5", dl: "2027 sikli yopilgan (2026 may–iyun)", f: function (p) { return [deg(p, false), p.age == null ? ["chk", "Yoshni kiriting"] : p.age <= 34 ? ["chk", "Yosh chegarasi elchixonada (2027: 1992-04-02 dan keyin tugʻilganlar)"] : ["no", "Yosh chegarasidan oshgan boʻlishi mumkin"], ["chk", "Toshkentdagi elchixona eʼlonini tekshiring"]]; } },
     { id: "adb", n: "ADB-Japan (ADB-JSP)", r: "🌏 Osiyo-Tinch okeani", l: "7.5", dl: "Universitetga qarab", f: function (p) { return [deg(p, false), work(p, 2, "Darajadan keyin 2+ yil toʻliq ish tajribasi"), age(p, function (a) { return a <= 35; }, "35 yoshgacha"), ret(p, "Qaytish majburiyati"), ["chk", "Oʻzbekiston roʻyxatda: adb.org da tasdiqlang"]]; } },
     { id: "eyuf", n: "El-yurt umidi", r: "🇺🇿 Oʻzbekiston", l: "7.7", dl: "2026: 3–24-aprel (ehtiyot)", f: function (p) { return [deg(p, false), age(p, function (a) { return a >= 22 && a <= 40; }, "22–40 yosh (ehtiyot)"), p.work == null ? ["chk", "Ish tajribasini kiriting"] : p.work > 1 ? ["ok", "1 yildan ortiq ish tajribasi"] : ["no", "1 yildan ortiq ish tajribasi kerak"], p.ielts == null ? ["chk", "IELTS 7 yoki teng sertifikat"] : p.ielts >= 7 ? ["ok", "IELTS 7+"] : ["no", "IELTS 7 yoki teng sertifikat kerak (sizda " + p.ielts + ")"], ret(p, "Ishlab berish majburiyati (shartnoma)")]; } },
-    { id: "gks", n: "GKS", r: "🇰🇷 Koreya", l: "GKS Lab", dl: "GKS Lab’ga qarang", f: function () { return [["chk", "Shartlar GKS Lab’da batafsil"]]; } },
-    { id: "daad", n: "DAAD", r: "🇩🇪 Germaniya", l: "DAAD Lab", dl: "DAAD Lab’ga qarang", f: function () { return [["chk", "Shartlar DAAD Lab’da batafsil"]]; } },
+    { id: "gks", n: "GKS", r: "🇰🇷 Koreya", l: "GKS Lab", dl: "GKS Labʼga qarang", f: function () { return [["chk", "Shartlar GKS Labʼda batafsil"]]; } },
+    { id: "daad", n: "DAAD", r: "🇩🇪 Germaniya", l: "DAAD Lab", dl: "DAAD Labʼga qarang", f: function () { return [["chk", "Shartlar DAAD Labʼda batafsil"]]; } },
   ];
   function check(s) { var rs = s.f(P()).filter(Boolean), st = rs.some(function (r) { return r[0] === "no"; }) ? "no" : rs.some(function (r) { return r[0] === "chk"; }) ? "chk" : "ok"; return { st: st, rs: rs }; }
   var STL = { ok: "Mos", chk: "Tekshirish kerak", no: "Mos emas" };

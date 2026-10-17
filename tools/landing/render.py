@@ -67,6 +67,12 @@ input,select,textarea{font-size:16px;}
 .why-lab{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;font-size:14px;margin-top:18px;display:flex;gap:14px;align-items:flex-start;}
 .why-lab img{width:44px;height:44px;flex-shrink:0;}
 .plan .per{min-height:18px;}
+.pro-plan{margin-top:18px;background:var(--surface);border:1px dashed var(--border);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--muted);}
+.pro-plan .tag-plan{display:inline-block;background:var(--gold-lit);color:var(--gold);font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;margin-right:8px;}
+.pro-plan b{color:var(--text);}
+.pro-plan p{margin:8px 0 6px;}
+.pro-plan ul{margin:0;padding-left:20px;}
+.pro-plan li{margin:3px 0;}
 .refund{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;font-size:14px;}
 footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 @media(max-width:1000px){.method{grid-template-columns:minmax(0,1fr);}}
@@ -318,14 +324,28 @@ def maker(lab):
   </div>
 </section>'''
 
+def best_short(n, m):
+    """n oy uchun Mavsum (4 oy = 3 x oylik) va oylik obunaning eng arzon jamlanmasi."""
+    return min(k * 3 * m + max(0, n - 4 * k) * m for k in range(n // 4 + 2))
+
 def std_calc(y, m):
-    ratio = y / m
-    months = int(ratio) + 1
-    return [(f"{fmt(m * 12)} soʻm", f"oylik reja 12 oyda ({fmt(m)} × 12)"),
-            (f"~{ratio:.1f} oy".replace(".", ","), "yillik reja oylik rejaning shuncha oyiga teng"),
-            (f"{months} oy va undan koʻp", "obuna shuncha davom etsa, yillik reja arzonroq")]
+    # Yillik reja oylik bilan emas, Mavsum + oylik jamlanmasining eng arzoni bilan solishtiriladi
+    months = next((n for n in range(1, 13) if y < best_short(n, m)), None)
+    rows = [(f"{fmt(m * 12)} soʻm", f"12 oy faqat oylik reja bilan ({fmt(m)} × 12)"),
+            (f"{fmt(m * 9)} soʻm", f"12 oy Mavsum bilan (3 × {fmt(m * 3)})")]
+    if months:
+        rows.append((f"{months} oy va undan koʻp", "obuna shuncha davom etsa, yillik reja Mavsum va oylikdan arzon"))
+    else:
+        rows.append(("Mavsum arzonroq", "12 oyda ham 3 ta Mavsum yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun"))
+    return rows
 
 REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi."
+
+# Kompas Pro: rejadagi funksiyalar (2026-10-17 qarori). Qurilmaguncha "Rejada" belgisi bilan, narxga kirmaydi
+PRO_PLANNED = """<div class="pro-plan"><span class="tag-plan">Rejada</span><b>Kompas Pro: hali ishlamaydi</b>
+      <p>Yillik obunaga qoʻshish rejalashtirilgan funksiyalar. Hozirgi narxga kirmaydi, ishga tushish sanasi eʼlon qilinmagan.</p>
+      <ul><li>Shaxsiy muddat eslatmalari (Telegram yoki email)</li><li>Profilga mos stipendiyalar bazasi: rasmiy havola va tekshiruv sanasi bilan</li><li>Tayyorgarlik koʻrsatkichi tarixi: oyma-oy oʻzgarish</li><li>Javoblar va hujjatlarni telefon va kompyuter orasida sinxronlash</li></ul>
+    </div>"""
 
 # Mavsum (4 oy) narxi = 3 × oylik; bazada alohida ustun yoʻq, sahifa oylik narxdan hisoblaydi
 SEASON_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 4 oy", "1 oy tekin: 4 oy 3 oy narxida", "Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni"]
@@ -362,7 +382,8 @@ def pricing(lab):
         <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
-    <div class="calc">{"".join(f"<div><b>{a}</b>{b}</div>" for a, b in std_calc(y, mo))}</div>'''
+    <div class="calc">{"".join(f"<div><b>{a}</b>{b}</div>" for a, b in std_calc(y, mo))}</div>
+    {PRO_PLANNED}'''
     if p.get("pre_html"):
         plans = p["pre_html"] + plans
     rules = "".join(f"<div><b>{a}</b>{b}</div>" for a, b in p["rules"])

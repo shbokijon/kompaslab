@@ -74,6 +74,10 @@ Modul va dars nomlari: `tools/landing/mods.json` (DAAD: `labs_data.py` → `DAAD
 - 3 tarif: **Oylik**, **Mavsum, 4 oy** (asosiy, 3 oy narxida), **Yillik**. M0 bepul.
 - Oylikda modullar har oy bitta faza boʻyicha ochiladi (natija topshirilsa ertaroq); Mavsum va Yillikda hammasi birdaniga.
 - Hozircha faqat sahifalardagi matn va narx: haqiqiy cheklov toʻlov va server tomonidagi kirish huquqi bilan birga qilinadi (pastdagi 1–2-bandlar).
+- Narx taqqoslash (`render.std_calc`): yillik reja oylik bilan emas, **Mavsum + oylik jamlanmasining eng arzoni** bilan solishtiriladi (`best_short`). Natija: 699/99 → yillik 10+ oyda foydali; Tadbirkor va Musofirda 12 oyda ham 3 × Mavsum arzon (narxni qayta koʻrish kerak).
+- **Kompas Pro (2026-10-17):** yillik tarif ostida "Rejada" belgisi bilan (`render.PRO_PLANNED`, bosh sahifada ham): muddat eslatmalari, stipendiyalar bazasi, koʻrsatkich tarixi, sinxronlash. Qurilmaguncha narxga kirmaydi. Shu sababli tariflardan qurilmagan "muddat eslatmalari (Telegram)" vaʼdalari olib tashlandi.
+- Asoschi iqtiboslari: Master M0 iqtibosi ismsiz va EYUF siz ("Asoschi"), EYUF 3.4.13 yurist bilan hal boʻlguncha. Footerda YATT maʼlumoti hozircha yoʻq.
+- `robots.txt` va `sitemap.xml` ildizda; yangi ochiq sahifa qoʻshilsa, sitemap ga qoʻsh.
 
 ## Ochiq masalalar (foydalanuvchi qarori kutilmoqda)
 1. **Xavfsizlik:** `fn_mark_payment_paid`, `fn_set_module_access`, `fn_upsert_lesson_content` anon/authenticated tomonidan chaqirilishi mumkin (ichida ruxsat tekshiruvi yoʻq yoki yetarli emas). Toʻlov ochilishidan oldin `revoke execute` qilinishi shart. Foydalanuvchi hali tasdiqlamagan.
