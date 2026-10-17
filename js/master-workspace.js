@@ -147,6 +147,13 @@
     inform("Ish maydoni tayyor. M0 yoki universitetlar roʻyxatidan boshlang.");
   }
   async function init() {
+    const productionHost = location.hostname === "kompaslab.uz" || location.hostname === "www.kompaslab.uz";
+    if (!productionHost) {
+      inform("Bu staging preview production maʼlumotlar bazasiga ulanmaydi. Alohida staging Supabase loyihasi sozlanmaguncha forma faollashmaydi.");
+      $("loginGate").classList.remove("hidden");
+      $("loginLink").addEventListener("click", authLink);
+      return;
+    }
     if (!db?.auth) return inform("Ulanish mavjud emas. Sahifani yangilang.",true);
     $("loginLink").addEventListener("click",authLink);
     try {
