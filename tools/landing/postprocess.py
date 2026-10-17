@@ -43,6 +43,8 @@ def process(path: Path, root: Path) -> None:
     s = s.replace('<link rel="icon" href="img/3d/compass.webp" type="image/webp">\n', "")
     if "manifest.webmanifest" not in s:
         s = s.replace("</head>", HEAD + "</head>", 1)
+    if "css/motion.css" not in s:
+        s = s.replace('<link rel="stylesheet" href="css/brand.css">', '<link rel="stylesheet" href="css/brand.css">\n<link rel="stylesheet" href="css/motion.css">', 1)
     if 'name="theme-color"' not in s:
         s = s.replace('<script src="js/pwa.js" defer></script>\n', '<script src="js/pwa.js" defer></script>\n<meta name="theme-color" content="#2d4a3e">\n', 1)
     s = s.replace('<div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div>', LOGO)

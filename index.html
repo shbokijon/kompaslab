@@ -370,7 +370,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .pt img{width:100%;height:100%;display:block;}
 .pt.on{transform:translate(-50%,-50%) scale(1.3);opacity:1;}
 .dial.idle .pt{opacity:.9;}
-#needle{transform-box:view-box;transform-origin:170px 170px;transition:transform 1.2s cubic-bezier(.25,1.6,.45,1);}
+#needle{transform-box:view-box;transform-origin:170px 170px;transition:transform var(--km-dur-needle,1.2s) var(--km-ease-needle,cubic-bezier(.25,1.6,.45,1));}
 @media (prefers-reduced-motion: no-preference){
   .dial.idle .sway{animation:sway 4.5s ease-in-out infinite;transform-box:view-box;transform-origin:170px 170px;}
   @keyframes sway{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(16deg)}}
@@ -464,8 +464,8 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .bump{animation:bump .6s ease;}
 @keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
 .lc .live{margin-top:0;font-size:13px;}
-.lc,.art,.honest div,.rules div{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
-.lc-h img,.ic img{transition:transform .3s ease;}
+.lc,.art,.honest div,.rules div{transition:transform var(--km-dur-2) var(--km-ease-out),box-shadow var(--km-dur-2) var(--km-ease-out),border-color var(--km-dur-2) var(--km-ease-out);}
+.lc-h img,.ic img{transition:transform var(--km-dur-3) var(--km-ease-settle);}
 @media (hover:hover){
   .lc:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(45,74,62,.12);border-color:#cfd9d2;}
   .lc:hover .lc-h img{transform:rotate(-8deg) scale(1.08);}
@@ -481,12 +481,8 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .refund p{margin-top:4px;color:var(--muted);font-size:13.5px;}
 @media (prefers-reduced-motion: no-preference){
   .stat .lv i,.stats-note i{animation:pulse 2s infinite;}
-  .js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+  .js .rv{opacity:0;transform:translateY(14px);transition:opacity var(--km-dur-4) var(--km-ease-out),transform var(--km-dur-4) var(--km-ease-out);}
   .js .rv.in{opacity:1;transform:none;}
-  .lc-h img{animation:float 6s ease-in-out infinite;}
-  .lc:nth-child(2) .lc-h img{animation-delay:-2s;}
-  .lc:nth-child(3) .lc-h img{animation-delay:-4s;}
-  .whylab .bulb{animation:float 5s ease-in-out infinite;}
 }
 .pro-plan{margin-top:18px;background:var(--surface);border:1px dashed var(--border);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--muted);}
 .pro-plan .tag-plan{display:inline-block;background:var(--gold-lit);color:var(--gold);font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;margin-right:8px;}
@@ -543,16 +539,14 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .result .empty img{width:48px;height:48px;flex:none;}
 .stat .st-i{width:40px;height:40px;display:block;margin-bottom:10px;}
 @media (prefers-reduced-motion: no-preference){
-  .motto img{animation:spin-in 1.2s cubic-bezier(.2,.9,.3,1.2) both, float 6s ease-in-out 1.2s infinite;}
+  .motto img{animation:spin-in var(--km-dur-needle) var(--km-ease-settle) both;}
   @keyframes spin-in{from{transform:rotate(-200deg) scale(.4);opacity:0}to{transform:none;opacity:1}}
   .chip[aria-pressed="true"] img{animation:pop .45s ease;}
   @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.25) rotate(-8deg)}100%{transform:none}}
-  .r-b:not([hidden]){animation:rise .45s ease both;}
+  .r-b:not([hidden]){animation:rise var(--km-dur-3) var(--km-ease-settle) both;}
   @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-  .dial:not(.idle)::before{animation:glow 2.4s ease-in-out infinite;}
+  .dial:not(.idle)::before{animation:glow 2.4s var(--km-ease-inout) 1;}
   @keyframes glow{0%,100%{opacity:.7;transform:scale(.97)}50%{opacity:1;transform:scale(1.03)}}
-  .stat .st-i{animation:float 6s ease-in-out infinite;}
-  .stat:nth-child(2) .st-i{animation-delay:-1.5s;}.stat:nth-child(3) .st-i{animation-delay:-3s;}.stat:nth-child(4) .st-i{animation-delay:-4.5s;}
 }
 @media(max-width:720px){
   .finder{padding:14px 14px 16px;border-radius:18px;}
@@ -577,6 +571,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <script src="js/sfx.js" defer></script>
 <script src="js/globe.js" defer></script>
 <link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/motion.css">
 <meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Kompas Lab logotipi: Kuzatuvdan kashfiyotga">
@@ -952,10 +947,13 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   // ── Skrollda paydo boʻlish ──
   if ("IntersectionObserver" in window && !reduce) {
     var rvIo = new IntersectionObserver(function (es) {
+      rvSeen = true;
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rvIo.unobserve(e.target); } });
     }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
-    document.querySelectorAll("section .head, .grp-h, .labs-g, .steps li, .whylab > div:first-child, .cmpc, .honest > div, .tblwrap, .mcalc, .refund, .rules > div, .model, .faq details, .stats")
-      .forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 70 + "ms"; rvIo.observe(el); });
+    var rvEls = document.querySelectorAll("section .head, .grp-h, .labs-g, .steps li, .whylab > div:first-child, .cmpc, .honest > div, .tblwrap, .refund, .rules > div, .model, .stats"), rvSeen = false;
+    rvEls.forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 60 + "ms"; rvIo.observe(el); });
+    // Iframe/WebView: observer 600 ms ichida javob bermasa, hammasi ochiladi
+    setTimeout(function () { if (!rvSeen) { rvEls.forEach(function (el) { el.classList.add("in"); }); rvIo.disconnect(); } }, 600);
   } else { document.documentElement.classList.remove("js"); }
 
   // ── Jonli hisob ──

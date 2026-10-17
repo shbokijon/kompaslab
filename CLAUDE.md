@@ -36,6 +36,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 | `js/protect.js` | Nusxa olishni cheklash + "kompaslab.uz" suv belgisi (faqat kirganlarga) | — |
 | `js/pwa.js`, `sw.js`, `manifest.webmanifest`, `offline.html` | Telefonga oʻrnatish (PWA), oflayn | Rasm/CSS keshini hammaga yangilash: `sw.js` dagi `V = "kl-v1"` ni oshir |
 | `css/brand.css` | Logotip komponenti `.klogo` va animatsiyasi | — |
+| `css/motion.css` | Yagona harakat tokenlari (`--km-dur-1..4`, `--km-ease-out/in/inout`, spring `--km-ease-needle` ζ 0.35 va `--km-ease-settle` ζ 0.80, CSS `linear()` + cubic-bezier zaxira), `.btn` bosish javobi, reduced-motion. Bosh sahifa va Lab sahifalarida ulangan (`postprocess.py`); `brand.css` tokenlarni zaxira qiymat bilan ishlatadi | Qoidalar: faqat transform/opacity; doimiy loop faqat kompas ninasi (`sway`) va jonli yashil nuqta; kalkulyator, FAQ, forma va dars matniga reveal qoʻyilmaydi; `.rv` reveal'da 600 ms fallback bor. Yangi animatsiya shu tokenlardan foydalansin |
 | `img/brand/` | Logotip, favicon, ikonkalar, `og.jpg` | `python3 tools/brand/make_logo.py` |
 | `img/3d/*.webp` | 3D ikonkalar (bachelor, bell, books, bulb, calendar, chart, compass, daad, gks, hourglass, lock, master, memo, miya, money, musofir, phd, scroll, seedling, shield, telescope, tt, usa) | — |
 

@@ -1,0 +1,42 @@
+/* ═══════════════════════════════════════════════════════════════
+   KOMPAS LAB — motion.css (v1, 2026-10-17)
+   Butun sayt uchun yagona harakat tokenlari.
+   Spring egri chiziqlari soʻnuvchi garmonik ossillyatordan olingan:
+   x(t) = 1 − e^(−ζωt)[cos(ω_d t) + ζ/√(1−ζ²)·sin(ω_d t)],  40 nuqta.
+   Qoidalar:
+   · faqat transform va opacity animatsiya qilinadi;
+   · sahifada bitta doimiy harakat (bosh sahifada kompas ninasi), boshqa
+     cheksiz loop faqat "jonli" holatni bildirsa (yashil nuqta);
+   · dars matni, kalkulyator, forma, FAQ ga reveal qoʻyilmaydi;
+   · prefers-reduced-motion: barcha oʻtishlar oʻchadi.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --km-dur-1:120ms;   /* bosish, fokus */
+  --km-dur-2:200ms;   /* hover, toggle */
+  --km-dur-3:320ms;   /* modal, natija bloki, toast */
+  --km-dur-4:560ms;   /* dekorativ reveal */
+  --km-dur-needle:1400ms;
+  --km-stagger:60ms;
+  --km-ease-out:cubic-bezier(.22,1,.36,1);
+  --km-ease-in:cubic-bezier(.55,0,1,.45);
+  --km-ease-inout:cubic-bezier(.65,0,.35,1);
+  --km-ease-needle:cubic-bezier(.34,1.56,.64,1); /* linear() yoʻq brauzerlar uchun */
+  --km-ease-settle:cubic-bezier(.3,1.15,.5,1);
+}
+@supports (transition-timing-function:linear(0,1)){
+  :root{
+    --km-ease-needle:linear(0, 0.088, 0.304, 0.578, 0.85, 1.074, 1.226, 1.299, 1.303, 1.256, 1.178, 1.092, 1.013, 0.953, 0.917, 0.905, 0.911, 0.931, 0.957, 0.983, 1.005, 1.02, 1.028, 1.029, 1.025, 1.018, 1.01, 1.002, 0.996, 0.992, 0.991, 0.991, 0.993, 0.996, 0.998, 1, 1.002, 1.003, 1.003, 1.002, 1); /* ζ = 0.35, ~31% oshib ketish */
+    --km-ease-settle:linear(0, 0.017, 0.061, 0.124, 0.198, 0.279, 0.361, 0.442, 0.519, 0.591, 0.657, 0.717, 0.77, 0.816, 0.856, 0.889, 0.918, 0.941, 0.96, 0.976, 0.988, 0.997, 1.004, 1.008, 1.012, 1.014, 1.015, 1.015, 1.015, 1.014, 1.013, 1.012, 1.011, 1.01, 1.008, 1.007, 1.006, 1.005, 1.004, 1.003, 1); /* ζ = 0.80, ~1.5% */
+  }
+}
+
+/* Tugmalar: bosilganda darhol javob */
+.btn{transition:transform var(--km-dur-1) var(--km-ease-out),background-color var(--km-dur-2) var(--km-ease-out),
+  border-color var(--km-dur-2) var(--km-ease-out),box-shadow var(--km-dur-2) var(--km-ease-out),color var(--km-dur-2) var(--km-ease-out);}
+.btn:active{transform:translateY(0) scale(.97);transition-duration:60ms;}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;
+    transition-duration:1ms!important;transition-delay:0ms!important;scroll-behavior:auto!important;}
+  .btn:active{transform:none;}
+}
