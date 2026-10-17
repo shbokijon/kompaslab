@@ -48,7 +48,7 @@ IDX_CSS = """
 .finder{margin-top:26px;display:grid;gap:18px;}
 .fq b{display:block;font-size:14px;font-weight:800;margin-bottom:8px;color:var(--accent);}
 .chips{display:flex;flex-wrap:wrap;gap:8px;}
-.chip{font-family:"Outfit",sans-serif;font-size:14px;font-weight:600;padding:9px 14px;min-height:42px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s,color .15s;}
+.chip{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:14px;font-weight:600;padding:9px 14px;min-height:42px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s,color .15s;}
 .chip:hover{border-color:var(--accent);}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;}
 .chip:focus-visible,.seg button:focus-visible,.lc-b:focus-visible,.btn:focus-visible{outline:3px solid var(--accent2);outline-offset:2px;}
@@ -76,7 +76,7 @@ IDX_CSS = """
 .result .note2{font-size:13px;color:var(--gold);background:var(--gold-lit);border-radius:10px;padding:8px 12px;margin-bottom:12px;}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border:1px solid var(--border);border-radius:18px;background:var(--surface);overflow:hidden;}
 .stat{padding:22px 20px;box-shadow:1px 1px 0 var(--border);}
-.stat b{display:block;font-family:"DM Serif Display",serif;font-weight:400;font-size:44px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;}
+.stat b{display:block;font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:44px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;}
 .stat span{display:block;font-size:13.5px;color:var(--muted);margin-top:8px;}
 .stat[hidden]{display:none;}
 .stats-note{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-top:12px;}
@@ -98,7 +98,7 @@ IDX_CSS = """
 .lc-f{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
 .lc-p{font-weight:800;font-size:15px;color:var(--accent);line-height:1.3;}
 .lc-p small{display:block;font-weight:600;font-size:12px;color:var(--muted);}
-.lc-b{display:inline-flex;align-items:center;min-height:42px;padding:9px 16px;border-radius:10px;border:1.5px solid var(--accent);background:var(--surface);color:var(--accent);font-weight:800;font-size:14px;text-decoration:none;cursor:pointer;font-family:"Outfit",sans-serif;white-space:nowrap;}
+.lc-b{display:inline-flex;align-items:center;min-height:42px;padding:9px 16px;border-radius:10px;border:1.5px solid var(--accent);background:var(--surface);color:var(--accent);font-weight:800;font-size:14px;text-decoration:none;cursor:pointer;font-family:"Outfit","IBM Plex Sans",sans-serif;white-space:nowrap;}
 .lc-b:hover{background:var(--accent);color:#fff;}
 .whylab{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start;}
 .whylab .bulb{width:72px;height:72px;margin-bottom:8px;}
@@ -113,16 +113,16 @@ IDX_CSS = """
 .cmpc .in{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;}
 .cmpc label{display:block;font-size:14px;font-weight:800;color:var(--accent);margin:0 0 8px;}
 .cmpc .row{display:flex;gap:8px;margin-bottom:14px;}
-.cmpc input,.cmpc select{width:100%;min-height:48px;padding:10px 14px;border:2px solid var(--border);border-radius:12px;font-family:"Outfit",sans-serif;font-size:17px;background:var(--bg);color:var(--text);}
+.cmpc input,.cmpc select{width:100%;min-height:48px;padding:10px 14px;border:2px solid var(--border);border-radius:12px;font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:17px;background:var(--bg);color:var(--text);}
 .cmpc input:focus,.cmpc select:focus{outline:none;border-color:var(--accent);background:#fff;}
 .seg{display:inline-flex;border:2px solid var(--border);border-radius:12px;overflow:hidden;flex-shrink:0;background:var(--bg);}
-.seg button{font-family:"Outfit",sans-serif;font-size:15px;font-weight:700;padding:0 14px;min-height:44px;border:none;background:none;color:var(--muted);cursor:pointer;}
+.seg button{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:15px;font-weight:700;padding:0 14px;min-height:44px;border:none;background:none;color:var(--muted);cursor:pointer;}
 .seg button[aria-pressed="true"]{background:var(--accent);color:#fff;}
 .quick{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 14px;font-size:13px;color:var(--muted);align-items:center;}
-.quick button{font-family:"Outfit",sans-serif;font-size:13px;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);cursor:pointer;color:var(--text);min-height:34px;}
+.quick button{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:13px;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);cursor:pointer;color:var(--text);min-height:34px;}
 .out{background:var(--accent);color:#fff;border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:center;}
-.out .big{font-family:"DM Serif Display",serif;font-size:56px;line-height:1;font-variant-numeric:tabular-nums;}
-.out .big small{font-family:"Outfit",sans-serif;font-size:18px;font-weight:700;margin-left:6px;}
+.out .big{font-family:"DM Serif Display","Playfair Display",serif;font-size:56px;line-height:1;font-variant-numeric:tabular-nums;}
+.out .big small{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:18px;font-weight:700;margin-left:6px;}
 .out p{color:rgba(255,255,255,.78);font-size:15px;margin-top:10px;}
 .out .muted{color:rgba(255,255,255,.6);font-size:13px;}
 .honest{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -138,7 +138,7 @@ IDX_CSS = """
 .dark .who2{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:18px 20px;margin-top:10px;}
 .dark .who2 b{display:block;margin-bottom:8px;}
 .dark .who2 li{font-size:14px;color:rgba(255,255,255,.75);margin-left:18px;margin-bottom:4px;}
-.mdl select{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:12px;font-family:"Outfit",sans-serif;background:var(--bg);margin-bottom:10px;}
+.mdl select{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:12px;font-family:"Outfit","IBM Plex Sans",sans-serif;background:var(--bg);margin-bottom:10px;}
 @media(max-width:1000px){.hx,.whylab,.cmpc{grid-template-columns:minmax(0,1fr);}.labs-g{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:720px){.labs-g,.honest{grid-template-columns:minmax(0,1fr);}.nav .btn-g{display:none;}.stat b{font-size:36px;}.out .big{font-size:46px;}.chip{font-size:14px;padding:8px 12px;}.ptbl{min-width:0;font-size:13.5px;}.ptbl td,.ptbl th{padding:10px 8px;}.ptbl td img{width:22px;height:22px;margin-right:6px;}}
 """
@@ -419,7 +419,7 @@ def build():
     <ol class="steps">
       <li><b>Bepul M0</b><span>Lab nima beradi va nima bermaydi, kimga mos emasligi ochiq yozilgan.</span></li>
       <li><b>Tayyorgarlik darajasi (Readiness Score)</b><span>100 ballik oʻzini oʻzi baholash. Natija “Bu siklga erta” boʻlsa, toʻlov oʻrniga boʻshliqlar roʻyxati va muqobil yoʻl beriladi.</span></li>
-      <li><b>Modullar va topshiriqlar</b><span>Faol obunada barcha modullar ochiq. Har dars: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.</span></li>
+      <li><b>Modullar va topshiriqlar</b><span>Mavsum va yillik obunada barcha modullar birdaniga ochiq, oylikda har oy bitta faza. Har dars: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.</span></li>
       <li><b>Tayyor hujjatlar</b><span>CV, xatlar, insho yoki ilmiy loyiha taklifi. Matnni siz yozasiz, Kompas tuzilma va mezon beradi.</span></li>
     </ol>
   </div>

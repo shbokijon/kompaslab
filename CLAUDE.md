@@ -8,6 +8,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 - **Faktlar faqat manba bilan** (havola + sana). Maʼlumot yoʻq boʻlsa, toʻqima; "tekshirilmagan" deb yoz. Strategik masalada ishonchni foizda ber.
 - **Soxta raqam yoʻq**: statistika, sharh, natija oʻylab topilmaydi. Jonli hisoblar 10 dan kam boʻlsa koʻrsatilmaydi.
 - Atamalar: avval oʻzbekcha, keyin qavsda inglizcha. Oʻzbek apostrofi: `oʻ`, `gʻ` (U+02BB), `ʼ` (U+02BC).
+- **Shrift zaxirasi (2026-10-17):** DM Serif Display, Outfit va JetBrains Mono'da U+02BB yoʻq (DM Serif'da U+02BC ham yoʻq). Har sahifada asosiy shrift havolasidan keyin `IBM Plex Sans` + `Playfair Display` faqat `text=%CA%BB%CA%BC` (2 belgi) bilan yuklanadi va har `font-family` roʻyxatida ikkinchi oʻrinda turadi. Yangi sahifa yoki shrift qoʻshilsa, shu juftlikni saqla. JetBrains Mono ishlatilgan har sahifada yuklanishi shart.
 - Foydalanuvchi odatda tayyor ishni darhol saytga chiqarishni kutadi. Pul, toʻlov, maʼlumotlar bazasi xavfsizligi yoki maʼlumot oʻchirishga oid ishlarda avval soʻra.
 
 ## Texnologiya va joylash

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toʻlov — Kompas Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet">
 <style>
 :root{
   --accent:#2d4a3e;--accent-hover:#1e3329;--accent-light:#e8f0ec;
@@ -16,7 +17,7 @@
   --red:#c0392b;--red-light:#fdecea;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
 /* NAV */
 .nav{background:white;border-bottom:1px solid var(--border);padding:0 5%;height:60px;display:flex;align-items:center;justify-content:space-between;}
@@ -59,7 +60,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .course-meta{display:flex;gap:8px;flex-wrap:wrap;}
 .course-tag{font-size:11px;color:var(--muted);background:var(--bg);padding:2px 8px;border-radius:6px;border:1px solid var(--border);}
 .course-price-row{display:flex;align-items:baseline;gap:4px;margin-top:4px;}
-.course-price{font-size:20px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);}
+.course-price{font-size:20px;font-weight:900;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);}
 .course-card.eyuf.selected .course-price{color:var(--accent2);}
 .course-price-sub{font-size:11px;color:var(--muted);}
 
@@ -88,7 +89,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .payment-form h3{font-size:14px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .field{margin-bottom:14px;}
 .field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;}
-.field input{width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:'Outfit',monospace;outline:none;transition:border-color 0.2s;background:var(--bg);}
+.field input{width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:'Outfit','IBM Plex Sans',monospace;outline:none;transition:border-color 0.2s;background:var(--bg);}
 .field input:focus{border-color:var(--accent);background:white;}
 .field-hint{font-size:11px;color:var(--muted);margin-top:4px;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -106,7 +107,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .order-total-val{font-size:13px;font-weight:700;}
 .order-total-row.final{padding-top:12px;border-top:2px solid var(--border);margin-top:8px;}
 .order-total-row.final .order-total-label{font-size:15px;font-weight:800;color:var(--text);}
-.order-total-row.final .order-total-val{font-size:22px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);}
+.order-total-row.final .order-total-val{font-size:22px;font-weight:900;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);}
 
 /* PAY BTN */
 .pay-btn{
@@ -114,7 +115,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
   background:var(--accent);color:white;
   border:none;border-radius:12px;
   font-size:15px;font-weight:800;
-  font-family:'Outfit',sans-serif;cursor:pointer;
+  font-family:'Outfit','IBM Plex Sans',sans-serif;cursor:pointer;
   transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;
   box-shadow:0 4px 16px rgba(45,74,62,0.25);
 }
@@ -147,7 +148,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .success-details{background:var(--green-light);border-radius:14px;padding:18px 24px;margin-bottom:24px;text-align:left;min-width:280px;}
 .sd-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;}
 .sd-row span:first-child{color:var(--muted);}
-.sd-row span:last-child{font-weight:700;font-family:'JetBrains Mono',monospace;}
+.sd-row span:last-child{font-weight:700;font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
 
 /* SPINNER */
 .spinner{width:20px;height:20px;border:3px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin 0.7s linear infinite;}
@@ -396,7 +397,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
           </div>
           <div class="order-total-row final">
             <span class="order-total-label">Jami toʻlov</span>
-            <span class="order-total-val" id="orderTotal" style="font-size:22px;font-family:'JetBrains Mono',monospace;color:var(--accent)">—</span>
+            <span class="order-total-val" id="orderTotal" style="font-size:22px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent)">—</span>
           </div>
         </div>
 
@@ -452,7 +453,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
     Savol boʻlsa: <a href="https://t.me/kompaslab" target="_blank" style="color:var(--accent);font-weight:700;">@kompaslab</a>
   </p>
   <button onclick="window.location.href='dashboard.html'"
-    style="background:var(--accent);color:white;border:none;border-radius:12px;padding:15px 36px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Outfit',sans-serif;">
+    style="background:var(--accent);color:white;border:none;border-radius:12px;padding:15px 36px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Outfit','IBM Plex Sans',sans-serif;">
     Dashboard →
   </button>
 </div>
@@ -701,7 +702,7 @@ document.addEventListener('DOMContentLoaded', init)
 <!-- TO'LOV YOPIQ (2026-10): obuna modeli (Payme Subscribe) tayyor bo'lguncha.
      Faqat ichki test kursi (?course=test-lab) ochiq qoladi. Ochish uchun shu blokni olib tashlang. -->
 <div id="payClosed" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(26,46,38,.72);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;padding:32px 28px;max-width:440px;width:100%;text-align:center;font-family:'Outfit',sans-serif;">
+  <div style="background:#fff;border-radius:20px;padding:32px 28px;max-width:440px;width:100%;text-align:center;font-family:'Outfit','IBM Plex Sans',sans-serif;">
     <div style="font-size:36px;margin-bottom:10px;">⏳</div>
     <h2 style="font-size:20px;font-weight:900;color:#2d4a3e;margin-bottom:8px;">Onlayn toʻlov hali ochilmagan</h2>
     <p style="font-size:14px;color:#6b7f76;line-height:1.6;margin-bottom:20px;">Lablar obuna asosida ishga tushadi; har Lab narxi uning sahifasida. Kutish roʻyxatiga yoziling — ochilishi bilan xabar beramiz.</p>

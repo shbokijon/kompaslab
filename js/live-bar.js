@@ -18,7 +18,7 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var css =
-    ".klb{position:fixed;top:0;left:0;right:0;height:" + H + "px;z-index:400;background:#1e3329;display:flex;align-items:center;justify-content:safe center;gap:8px;padding:0 10px;overflow-x:auto;scrollbar-width:none;font-family:Outfit,system-ui,sans-serif;box-shadow:0 1px 0 rgba(255,255,255,.06) inset}" +
+    ".klb{position:fixed;top:0;left:0;right:0;height:" + H + "px;z-index:400;background:#1e3329;display:flex;align-items:center;justify-content:safe center;gap:8px;padding:0 10px;overflow-x:auto;scrollbar-width:none;font-family:Outfit,IBM Plex Sans,system-ui,sans-serif;box-shadow:0 1px 0 rgba(255,255,255,.06) inset}" +
     ".klb::-webkit-scrollbar{display:none}.klb[hidden]{display:none}" +
     ".klb-s{flex:none;width:1px;height:22px;background:rgba(255,255,255,.25)}.klb-s[hidden]{display:none}" +
     ".klb-c{position:relative;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 4px;flex:none;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:800;font-size:15px;font-variant-numeric:tabular-nums;cursor:default;-webkit-tap-highlight-color:transparent}" +

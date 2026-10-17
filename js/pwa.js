@@ -45,7 +45,7 @@
   var mobile = isIOS || isAndroid;
   var force = /[?&]pwa=1/.test(location.search);
   var deferred = null, box = null, css =
-    ".kpw{position:fixed;left:12px;right:12px;bottom:12px;z-index:390;display:flex;gap:12px;align-items:center;background:#fffefb;border:1px solid #e2ded3;border-radius:18px;padding:12px 12px 12px 14px;box-shadow:0 18px 50px rgba(26,46,38,.22);font-family:Outfit,system-ui,sans-serif;color:#1a2e26;max-width:520px;margin:0 auto;transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.9,.3,1.1)}" +
+    ".kpw{position:fixed;left:12px;right:12px;bottom:12px;z-index:390;display:flex;gap:12px;align-items:center;background:#fffefb;border:1px solid #e2ded3;border-radius:18px;padding:12px 12px 12px 14px;box-shadow:0 18px 50px rgba(26,46,38,.22);font-family:Outfit,IBM Plex Sans,system-ui,sans-serif;color:#1a2e26;max-width:520px;margin:0 auto;transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.9,.3,1.1)}" +
     ".kpw.on{transform:none}" +
     ".kpw .klogo{width:46px;height:46px;border-radius:13px}" +
     ".kpw-t{flex:1;min-width:0;font-size:13.5px;line-height:1.4}.kpw-t>b{display:block;font-size:15px}" +

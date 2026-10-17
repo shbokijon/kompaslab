@@ -65,7 +65,7 @@
 .kg-cl ul{list-style:none;display:grid;gap:3px;font-size:12.5px;line-height:1.4;margin-top:4px;}
 .kg-cl li b{font-variant-numeric:tabular-nums;}
 .kg-sp{width:100%;height:auto;display:block;}
-.kg-sp text{font-size:7px;fill:#7a8b84;font-family:Outfit,sans-serif;}
+.kg-sp text{font-size:7px;fill:#7a8b84;font-family:Outfit,IBM Plex Sans,sans-serif;}
 .kg-lg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
 .kg-lg i{display:inline-block;width:12px;height:3px;border-radius:2px;}
 .kg-lg .kg-lt{background:#c4622d;}

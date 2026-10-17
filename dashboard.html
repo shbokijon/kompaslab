@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard — Kompas Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet">
 <style>
 :root{
   --accent:#2d4a3e;--accent-hover:#1e3329;--accent-light:#e8f0ec;
@@ -18,7 +19,7 @@
   --sidebar-w:260px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;}
+body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;}
 
 /* ── SIDEBAR ── */
 .sidebar{
@@ -53,14 +54,14 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   color:white;font-weight:700;font-size:14px;flex-shrink:0;
 }
 .sb-user-name{font-size:13px;font-weight:700;color:white;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.sb-user-plan{font-size:11px;color:rgba(255,255,255,0.5);font-family:'JetBrains Mono',monospace;}
+.sb-user-plan{font-size:11px;color:rgba(255,255,255,0.5);font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
 
 .sb-nav{flex:1;padding:16px 12px;}
 .sb-section-title{
   font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);
   text-transform:uppercase;letter-spacing:1.5px;
   padding:0 8px;margin-bottom:6px;margin-top:16px;
-  font-family:'JetBrains Mono',monospace;
+  font-family:'JetBrains Mono','IBM Plex Sans',monospace;
 }
 .sb-section-title:first-child{margin-top:0;}
 .sb-link{
@@ -74,7 +75,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .sb-link:hover{background:rgba(255,255,255,0.08);color:white;}
 .sb-link.active{background:rgba(255,255,255,0.12);color:white;}
 .sb-link-icon{width:20px;text-align:center;font-size:15px;}
-.sb-badge{margin-left:auto;background:var(--accent2);color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;font-family:'JetBrains Mono',monospace;}
+.sb-badge{margin-left:auto;background:var(--accent2);color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
 
 .sb-progress-wrap{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.08);}
 .sb-prog-label{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:6px;}
@@ -85,7 +86,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   margin:0 12px 16px;padding:10px;
   border-radius:8px;border:1px solid rgba(255,255,255,0.1);
   background:none;color:rgba(255,255,255,0.5);
-  font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;
+  font-size:13px;font-weight:600;font-family:'Outfit','IBM Plex Sans',sans-serif;
   cursor:pointer;transition:all 0.15s;
   display:flex;align-items:center;gap:8px;justify-content:center;
 }
@@ -126,7 +127,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .stat-card:nth-child(3)::before{background:var(--accent2);}
 .stat-card:nth-child(4)::before{background:var(--gold);}
 .stat-icon{font-size:22px;margin-bottom:10px;}
-.stat-val{font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1;margin-bottom:3px;}
+.stat-val{font-size:28px;font-weight:900;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);line-height:1;margin-bottom:3px;}
 .stat-lbl{font-size:12px;color:var(--muted);font-weight:600;}
 .stat-change{font-size:11px;margin-top:6px;font-weight:600;display:flex;align-items:center;gap:4px;}
 .stat-change.up{color:var(--green);}
@@ -141,7 +142,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   position:relative;overflow:hidden;margin-bottom:20px;
 }
 .current-card::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);top:-100px;right:-100px;}
-.cc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:14px;}
+.cc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;font-family:'JetBrains Mono','IBM Plex Sans',monospace;margin-bottom:14px;}
 .cc-title{font-size:20px;font-weight:800;color:white;margin-bottom:6px;position:relative;z-index:1;}
 .cc-meta{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:18px;position:relative;z-index:1;}
 .cc-prog{position:relative;z-index:1;margin-bottom:18px;}
@@ -154,7 +155,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   padding:11px 22px;border-radius:10px;
   font-size:14px;font-weight:700;text-decoration:none;
   transition:all 0.2s;border:none;cursor:pointer;
-  font-family:'Outfit',sans-serif;position:relative;z-index:1;
+  font-family:'Outfit','IBM Plex Sans',sans-serif;position:relative;z-index:1;
 }
 .cc-btn:hover{opacity:0.9;transform:translateY(-1px);}
 
@@ -174,7 +175,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .mod-num{
   width:36px;height:36px;border-radius:10px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;
+  font-size:13px;font-weight:800;font-family:'JetBrains Mono','IBM Plex Sans',monospace;
 }
 .mod-num.done{background:var(--green-light);color:var(--green);}
 .mod-num.active{background:var(--accent-light);color:var(--accent);}
@@ -183,7 +184,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .mod-title{font-size:13px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .mod-sub{font-size:11px;color:var(--muted);}
 .mod-right{text-align:right;flex-shrink:0;}
-.mod-status{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace;}
+.mod-status{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
 .mod-status.done{background:var(--green-light);color:var(--green);}
 .mod-status.active{background:var(--accent-light);color:var(--accent);}
 .mod-status.locked{background:var(--bg);color:var(--muted2);}
@@ -197,11 +198,11 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .progress-card h3{font-size:14px;font-weight:800;margin-bottom:16px;text-align:left;}
 .ring-wrap{display:flex;justify-content:center;margin-bottom:16px;position:relative;}
 .ring-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
-.ring-val{font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1;}
+.ring-val{font-size:28px;font-weight:900;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);line-height:1;}
 .ring-lbl{font-size:11px;color:var(--muted);font-weight:600;}
 .ring-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .rs-item{background:var(--bg);border-radius:8px;padding:10px;text-align:center;}
-.rs-val{font-size:18px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);}
+.rs-val{font-size:18px;font-weight:900;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);}
 .rs-lbl{font-size:10px;color:var(--muted);font-weight:600;margin-top:1px;}
 
 /* ── TASKS ── */
@@ -231,7 +232,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .deadline-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(176,138,0,0.15);}
 .deadline-item:last-child{border-bottom:none;}
 .deadline-name{font-size:12px;font-weight:700;}
-.deadline-date{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--gold);background:rgba(176,138,0,0.1);padding:2px 8px;border-radius:6px;font-weight:700;}
+.deadline-date{font-size:11px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--gold);background:rgba(176,138,0,0.1);padding:2px 8px;border-radius:6px;font-weight:700;}
 
 /* ── ANNOUNCEMENTS ── */
 .announce-card{background:var(--blue-light);border:1px solid #c3d8f5;border-radius:16px;padding:18px;}
@@ -345,7 +346,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
   <div class="sb-progress-wrap">
     <div class="sb-prog-label">
       <span>Umumiy progress</span>
-      <span id="sbProgPct" style="font-family:'JetBrains Mono',monospace;">0%</span>
+      <span id="sbProgPct" style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;">0%</span>
     </div>
     <div class="sb-prog-bar">
       <div class="sb-prog-fill" id="sbProgFill" style="width:0%"></div>

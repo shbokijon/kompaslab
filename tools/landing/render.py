@@ -44,9 +44,9 @@ body{background:var(--bg);-webkit-text-size-adjust:100%;}
 h1 em,h2 em{font-style:normal;color:inherit;}
 h1{letter-spacing:-.5px;}
 .label{display:none;}
-.badge{font-family:"Outfit",sans-serif;font-size:13px;letter-spacing:0;}
-.fact b,.packet li::before,.mod-n,.mod-c,.mod li .num,.tl-when,.chk,.price,.calc b,.score-n,.tk,.lc-p,.lc-t,.st::before{font-family:"Outfit",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;}
-.packet-top small,.phase small,.art small,.plan.main .tag-top{font-family:"Outfit",sans-serif;letter-spacing:0;text-transform:none;font-size:12.5px;}
+.badge{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:13px;letter-spacing:0;}
+.fact b,.packet li::before,.mod-n,.mod-c,.mod li .num,.tl-when,.chk,.price,.calc b,.score-n,.tk,.lc-p,.lc-t,.st::before{font-family:"Outfit","IBM Plex Sans",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;}
+.packet-top small,.phase small,.art small,.plan.main .tag-top{font-family:"Outfit","IBM Plex Sans",sans-serif;letter-spacing:0;text-transform:none;font-size:12.5px;}
 .phase small{color:var(--accent2);font-weight:700;}
 .price{font-weight:800;letter-spacing:-.5px;}
 .reveal{opacity:1;transform:none;transition:none;}
@@ -636,7 +636,7 @@ def uz_fix(s):
     s = re.sub(r"([oOgG])['\u2018\u2019\u02BC`]", "\\1\u02BB", s)
     return s.replace("'", "\u02BC").replace("\u2019", "\u02BC")
 
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">'
+FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">\n<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet">'
 
 def head(title, meta, og_title, css):
     return f'''<!DOCTYPE html>

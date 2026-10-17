@@ -137,7 +137,7 @@ function showToast(msg, type = 'success', ms = 3500) {
     el.style.cssText = [
       'position:fixed;bottom:22px;right:22px',
       'padding:11px 18px;border-radius:10px',
-      "font-family:'Outfit',sans-serif;font-size:13px;font-weight:600",
+      "font-family:'Outfit','IBM Plex Sans',sans-serif;font-size:13px;font-weight:600",
       'z-index:9999;transform:translateY(80px);opacity:0',
       'transition:all 0.3s;box-shadow:0 8px 24px rgba(0,0,0,.15)',
     ].join(';')

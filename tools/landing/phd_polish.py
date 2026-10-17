@@ -13,7 +13,7 @@ def R(s, a, b, n=1):
 def build():
     s = (HERE / "phd_source.html").read_text(encoding="utf-8")
     s = re.sub(r"<style>.*?</style>", lambda m: "<style>" + BASE_CSS + EXTRA_CSS + POLISH_CSS + "</style>", s, count=1, flags=re.S)
-    s = s.replace("family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600", "family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display")
+    s = s.replace("family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600", "family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600;700;800")
     s = R(s, '<div class="logo-m">🧭</div><span class="logo-t">Kompas Lab <span>· PhD</span></span>', '<div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div><span class="logo-t">Kompas Lab <span>PhD</span></span>')
     s = R(s, '<a href="#asoschi">Asoschi</a>', '<a href="#qanday">Qanday tuzilgan</a>')
     # "Ochiq gap": natija va kafolat boʻyicha umumiy izoh (render.HONEST_NOTE)

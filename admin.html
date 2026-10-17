@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Panel — Kompas Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet">
 <style>
 :root{
   --accent:#2d4a3e;--accent-h:#1e3329;--accent-lit:#e8f0ec;
@@ -19,7 +20,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);display:flex;overflow:hidden;}
+body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;overflow:hidden;}
 
 /* SIDEBAR */
 .sb{width:var(--sb-w);flex-shrink:0;background:var(--text);display:flex;flex-direction:column;height:100vh;position:fixed;top:0;left:0;z-index:100;overflow-y:auto;}
@@ -27,24 +28,24 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .sb-logo{display:flex;align-items:center;gap:10px;padding:20px 18px;border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;flex-shrink:0;}
 .sb-lm{width:36px;height:36px;border-radius:10px;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .sb-lt{font-size:16px;font-weight:800;color:#fff;}
-.sb-badge{font-size:9px;background:rgba(196,98,45,0.25);color:var(--accent2);padding:2px 7px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-weight:700;margin-left:2px;}
+.sb-badge{font-size:9px;background:rgba(196,98,45,0.25);color:var(--accent2);padding:2px 7px;border-radius:5px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-weight:700;margin-left:2px;}
 .sb-nav{flex:1;padding:10px 12px;}
-.sb-grp{font-size:10px;font-weight:700;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:1.5px;padding:0 8px;margin:18px 0 6px;font-family:'JetBrains Mono',monospace;}
+.sb-grp{font-size:10px;font-weight:700;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:1.5px;padding:0 8px;margin:18px 0 6px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
 .sb-grp:first-child{margin-top:6px;}
-.sb-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;font-weight:600;transition:all .15s;margin-bottom:2px;cursor:pointer;border:none;background:none;width:100%;text-align:left;font-family:'Outfit',sans-serif;}
+.sb-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;font-weight:600;transition:all .15s;margin-bottom:2px;cursor:pointer;border:none;background:none;width:100%;text-align:left;font-family:'Outfit','IBM Plex Sans',sans-serif;}
 .sb-item:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);}
 .sb-item.active{background:rgba(255,255,255,0.1);color:#fff;}
 .sb-icon{width:20px;text-align:center;font-size:14px;flex-shrink:0;}
 .sb-label{flex:1;}
-.sb-pill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;font-family:'JetBrains Mono',monospace;}
+.sb-pill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
 .sp-gray{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}
 .sp-red{background:rgba(192,57,43,0.3);color:#e88;}
 .sb-foot{padding:14px 16px;border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0;}
 .sb-adm{background:rgba(255,255,255,0.06);border-radius:10px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
 .sb-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),#e0896a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0;}
 .sb-adm-name{font-size:13px;font-weight:700;color:#fff;}
-.sb-adm-role{font-size:10px;color:rgba(255,255,255,0.35);font-family:'JetBrains Mono',monospace;}
-.sb-out{width:100%;padding:9px;border-radius:8px;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:13px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.sb-adm-role{font-size:10px;color:rgba(255,255,255,0.35);font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
+.sb-out{width:100%;padding:9px;border-radius:8px;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:13px;font-weight:600;cursor:pointer;font-family:'Outfit','IBM Plex Sans',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;}
 .sb-out:hover{border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);}
 
 /* MAIN */
@@ -58,7 +59,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .tb-l h1{font-size:18px;font-weight:900;letter-spacing:-.4px;}
 .tb-l p{font-size:12px;color:var(--muted);margin-top:1px;}
 .tb-r{display:flex;align-items:center;gap:10px;}
-.btn{padding:8px 16px;border-radius:9px;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;display:inline-flex;align-items:center;gap:6px;}
+.btn{padding:8px 16px;border-radius:9px;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:'Outfit','IBM Plex Sans',sans-serif;transition:all .15s;display:inline-flex;align-items:center;gap:6px;}
 .bp{background:var(--accent);color:#fff;}
 .bp:hover{background:var(--accent-h);}
 .bs{background:var(--surface);color:var(--text);border:1px solid var(--border);}
@@ -81,7 +82,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .kpi:nth-child(4)::after{background:var(--gold);}
 .kpi:nth-child(5)::after{background:var(--red);}
 .kpi-ico{font-size:20px;margin-bottom:10px;}
-.kpi-val{font-size:26px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1;margin-bottom:2px;}
+.kpi-val{font-size:26px;font-weight:900;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);line-height:1;margin-bottom:2px;}
 .kpi-lbl{font-size:11px;color:var(--muted);font-weight:600;}
 .kpi-sub{font-size:11px;margin-top:6px;font-weight:700;display:flex;align-items:center;gap:3px;}
 .ku{color:var(--green);}.kd{color:var(--red);}.kn{color:var(--muted);}
@@ -97,9 +98,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 
 /* TABLE CONTROLS */
 .tctrl{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
-.srch{padding:7px 13px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'Outfit',sans-serif;outline:none;background:var(--bg);color:var(--text);flex:1;min-width:120px;max-width:240px;}
+.srch{padding:7px 13px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'Outfit','IBM Plex Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);flex:1;min-width:120px;max-width:240px;}
 .srch:focus{border-color:var(--accent);background:#fff;}
-.flt{padding:7px 11px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:'Outfit',sans-serif;outline:none;background:var(--bg);color:var(--text);cursor:pointer;}
+.flt{padding:7px 11px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:'Outfit','IBM Plex Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);cursor:pointer;}
 
 /* TABLE */
 .tbl{width:100%;border-collapse:collapse;font-size:13px;}
@@ -116,7 +117,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .sem{font-size:11px;color:var(--muted);}
 
 /* Tags */
-.tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;white-space:nowrap;}
+.tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;font-family:'JetBrains Mono','IBM Plex Sans',monospace;white-space:nowrap;}
 .tg{background:var(--bg);color:var(--muted);border:1px solid var(--border);}
 .ta{background:var(--accent-lit);color:var(--accent);}
 .tgd{background:var(--gold-lit);color:var(--gold);}
@@ -129,7 +130,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .mp{display:flex;align-items:center;gap:8px;}
 .mpb{flex:0 0 60px;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
 .mpf{height:100%;background:linear-gradient(90deg,var(--accent),#4a7a65);border-radius:99px;}
-.mpv{font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--accent);}
+.mpv{font-size:11px;font-weight:700;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);}
 
 /* RIGHT PANELS */
 .rp{display:flex;flex-direction:column;gap:14px;}
@@ -140,9 +141,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .cbar{flex:1;border-radius:4px 4px 0 0;background:var(--accent-lit);position:relative;cursor:pointer;transition:background .2s;min-width:0;}
 .cbar:hover{background:var(--accent);}
 .cbar:hover .ctip{display:block;}
-.ctip{display:none;position:absolute;bottom:calc(100%+4px);left:50%;transform:translateX(-50%);background:var(--text);color:#fff;font-size:10px;font-weight:700;padding:3px 7px;border-radius:5px;white-space:nowrap;font-family:'JetBrains Mono',monospace;}
+.ctip{display:none;position:absolute;bottom:calc(100%+4px);left:50%;transform:translateX(-50%);background:var(--text);color:#fff;font-size:10px;font-weight:700;padding:3px 7px;border-radius:5px;white-space:nowrap;font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
 .clbs{display:flex;gap:5px;}
-.clb{flex:1;text-align:center;font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+.clb{flex:1;text-align:center;font-size:10px;color:var(--muted);font-family:'JetBrains Mono','IBM Plex Sans',monospace;}
 
 /* Activity */
 .al{padding:10px 14px;}
@@ -156,7 +157,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .lr{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);transition:background .1s;}
 .lr:last-child{border-bottom:none;}
 .lr:hover{background:var(--bg);}
-.lnum{width:28px;height:28px;border-radius:7px;background:var(--accent-lit);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;font-family:'JetBrains Mono',monospace;flex-shrink:0;}
+.lnum{width:28px;height:28px;border-radius:7px;background:var(--accent-lit);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;font-family:'JetBrains Mono','IBM Plex Sans',monospace;flex-shrink:0;}
 .li{flex:1;min-width:0;}
 .lt{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .lm{font-size:11px;color:var(--muted);margin-top:1px;}
@@ -165,7 +166,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .ob-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px;}
 .ob{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
 .ob-i{width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:19px;}
-.ob-v{font-size:20px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--accent);line-height:1;}
+.ob-v{font-size:20px;font-weight:900;font-family:'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);line-height:1;}
 .ob-l{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px;}
 
 /* MODAL */
@@ -179,7 +180,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 .mf{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;}
 .fld{margin-bottom:13px;}
 .fld label{display:block;font-size:12px;font-weight:700;margin-bottom:5px;}
-.fld input,.fld select,.fld textarea{width:100%;padding:10px 13px;border:2px solid var(--border);border-radius:9px;font-size:13px;font-family:'Outfit',sans-serif;outline:none;background:var(--bg);color:var(--text);transition:border-color .2s;}
+.fld input,.fld select,.fld textarea{width:100%;padding:10px 13px;border:2px solid var(--border);border-radius:9px;font-size:13px;font-family:'Outfit','IBM Plex Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);transition:border-color .2s;}
 .fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent);background:#fff;}
 .fld textarea{resize:vertical;min-height:70px;}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -226,7 +227,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
 }
 
 /* STUDENT DETAIL TABS */
-.sd-tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;}
+.sd-tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;font-family:'Outfit','IBM Plex Sans',sans-serif;transition:all .15s;}
 .sd-tab:hover{color:var(--text);}
 .sd-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
 .sd-course-row{display:flex;align-items:center;justify-content:space-between;background:#f8faf9;border:1px solid var(--border);border-radius:10px;padding:10px 14px;}
@@ -584,8 +585,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
         <div class="ch"><h2>⚙️ Sozlamalar</h2></div>
         <div class="mb" style="max-width:480px">
           <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text)">🤖 Telegram bildirishnomalar</div>
-          <div class="fld"><label>Bot Token</label><input id="cfgTgToken" placeholder="1234567890:AAF..." style="font-family:'JetBrains Mono',monospace;font-size:12px"></div>
-          <div class="fld"><label>Chat ID (sizning Telegram ID ingiz)</label><input id="cfgTgChat" placeholder="-100123456789 yoki 123456789" style="font-family:'JetBrains Mono',monospace;font-size:12px"></div>
+          <div class="fld"><label>Bot Token</label><input id="cfgTgToken" placeholder="1234567890:AAF..." style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px"></div>
+          <div class="fld"><label>Chat ID (sizning Telegram ID ingiz)</label><input id="cfgTgChat" placeholder="-100123456789 yoki 123456789" style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px"></div>
           <div style="background:var(--accent-lit);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--accent);margin-bottom:12px">
             ℹ️ Bot yaratish: @BotFather → /newbot → tokenni yuqoriga kiriting<br>
             Chat ID olish: @userinfobot ga /start yuboring
@@ -619,7 +620,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);disp
     </div>
     <div class="fld"><label>Dars nomi *</label><input id="lT" placeholder="Research Identity Framework"></div>
     <div class="fr">
-      <div class="fld"><label>Vimeo URL *</label><input id="lV" placeholder="https://vimeo.com/123456789" style="font-family:'JetBrains Mono',monospace;font-size:12px"></div>
+      <div class="fld"><label>Vimeo URL *</label><input id="lV" placeholder="https://vimeo.com/123456789" style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px"></div>
       <div class="fld"><label>Davomiyligi</label><input id="lD" placeholder="45:30"></div>
     </div>
     <div class="fld"><label>Tavsif</label><textarea id="lDesc" placeholder="Bu darsda..."></textarea></div>
@@ -905,7 +906,7 @@ function renderStudentsTable(tbId, students, full = false) {
 
   tb.innerHTML = students.map((s, i) => `
     <tr data-course="${s.courseSlug || ''}" data-status="${s.payStatus}">
-      ${full ? `<td style="color:var(--muted);font-size:11px;font-family:'JetBrains Mono',monospace">${String(i+1).padStart(2,'0')}</td>` : ''}
+      ${full ? `<td style="color:var(--muted);font-size:11px;font-family:'JetBrains Mono','IBM Plex Sans',monospace">${String(i+1).padStart(2,'0')}</td>` : ''}
       <td>
         <div class="sr">
           <div class="sav">${(s.name[0] || '?').toUpperCase()}</div>
@@ -922,7 +923,7 @@ function renderStudentsTable(tbId, students, full = false) {
           <span class="mpv">${s.progress}%</span>
         </div>
       </td>
-      ${full ? `<td style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace">${s.enrollDate || '—'}</td>` : ''}
+      ${full ? `<td style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono','IBM Plex Sans',monospace">${s.enrollDate || '—'}</td>` : ''}
       ${full ? `<td>${pyTag(s.payStatus)}</td>` : ''}
       <td>${statusTag(s.payStatus)}</td>
       <td>
@@ -994,7 +995,7 @@ function renderPaymentsTable(payments) {
     const method = methodLabels[p.method] || p.method || '—'
 
     return `<tr>
-      <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)">${date}</td>
+      <td style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:11px;color:var(--muted)">${date}</td>
       <td>
         <div class="sr">
           <div class="sav">${(name[0] || '?').toUpperCase()}</div>
@@ -1002,7 +1003,7 @@ function renderPaymentsTable(payments) {
         </div>
       </td>
       <td><span class="tag ta" style="font-size:10px">${escHtml(course)}</span></td>
-      <td style="font-weight:700;font-family:'JetBrains Mono',monospace;font-size:12px">${formatMoney(p.amount)}</td>
+      <td style="font-weight:700;font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px">${formatMoney(p.amount)}</td>
       <td><span class="tag tg">${method}</span></td>
       <td>${pyTag(p.status)}</td>
       <td>
@@ -1131,7 +1132,7 @@ async function loadLessonsSection(courseSlug) {
     modules.forEach(mod => {
       const lessons = (mod.lessons || []).sort((a, b) => a.order_index - b.order_index)
       totalLessons += lessons.length
-      html += `<div style="background:var(--bg);padding:7px 14px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'JetBrains Mono',monospace;display:flex;justify-content:space-between;">
+      html += `<div style="background:var(--bg);padding:7px 14px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;display:flex;justify-content:space-between;">
         <span>${escHtml(mod.title)}</span>
         <span>${lessons.length} dars</span>
       </div>`
@@ -1149,7 +1150,7 @@ async function loadLessonsSection(courseSlug) {
           <div class="lnum">${mod.order_index}.${l.order_index}</div>
           <div class="li">
             <div class="lt">${escHtml(l.title)}${l.is_free ? ' <span style="font-size:9px;background:var(--green-lit);color:var(--green);padding:1px 6px;border-radius:4px;font-family:JetBrains Mono">FREE</span>' : ''}</div>
-            <div class="lm">⏱ ${l.duration || '—'} · 🎥 <span style="font-family:'JetBrains Mono',monospace;font-size:10px">${vimeoShort}</span> · ${statusDot}</div>
+            <div class="lm">⏱ ${l.duration || '—'} · 🎥 <span style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:10px">${vimeoShort}</span> · ${statusDot}</div>
           </div>
           <div style="display:flex;gap:5px;flex-shrink:0">
             <button class="btn bs bsm" onclick="editLesson('${l.id}')">✏️</button>
@@ -1163,7 +1164,7 @@ async function loadLessonsSection(courseSlug) {
 
     // Sarlavha yangilash
     const header = document.querySelector('#sec-lessons .ch h2')
-    if (header) header.innerHTML = `🎬 ${COURSE_META[courseSlug]?.emoji || ''} ${COURSE_META[courseSlug]?.label || courseSlug} · <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);font-weight:400">${totalLessons} dars</span>`
+    if (header) header.innerHTML = `🎬 ${COURSE_META[courseSlug]?.emoji || ''} ${COURSE_META[courseSlug]?.label || courseSlug} · <span style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:13px;color:var(--muted);font-weight:400">${totalLessons} dars</span>`
 
     container.innerHTML = html
 
