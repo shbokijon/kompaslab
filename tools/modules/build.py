@@ -79,6 +79,10 @@ def site(name, src, cfg):
     return s
 
 
+def sfx_inline():
+    return "<script>\n" + (ROOT / "js/sfx.js").read_text(encoding="utf-8") + "</script>"
+
+
 def standalone(name, src, cfg):
     t = src
     used = set(re.findall(r"img/3d/([a-z0-9-]+)\.webp", t))
@@ -92,6 +96,8 @@ def standalone(name, src, cfg):
             cache[n] = "data:image/webp;base64," + base64.b64encode((ROOT / "img/3d" / (n + ".webp")).read_bytes()).decode()
         return cache[n]
     t = re.sub(r"img/3d/([a-z0-9-]+)\.webp", rep, t)
+    # Tovush effektlari internetsiz ham ishlasin: js/sfx.js fayl ichiga
+    t = t.replace('<script src="js/sfx.js"></script>', sfx_inline(), 1)
     # Ichki havolalar saytga olib borsin
     t = re.sub(r'href="([a-z0-9-]+)\.html"', lambda m: 'href="https://kompaslab.uz/' + ("" if m.group(1) == "index" else m.group(1)) + '"', t)
     return t

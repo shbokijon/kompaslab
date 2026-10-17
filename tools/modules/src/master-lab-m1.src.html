@@ -462,6 +462,7 @@
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
 
 <script>
 (function () {
@@ -483,15 +484,16 @@
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
-  function toast(msg, img) { $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
   function confetti() {
+    if (window.KSfx) KSfx.play("win");
     if (reduce) return;
     var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
     for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
   }
   function award(id, xp, msg, img) {
     if (S.done[id]) return false;
-    S.done[id] = true; S.xp = Math.min(MAX, S.xp + xp); save(); renderXp(true); renderAll();
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp); save(); renderXp(true); renderAll();
     toast((xp ? "+" + xp + " XP · " : "") + msg, img);
     if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M1 toʻliq yakunlandi", "seedling"); }, 900);
     return true;
