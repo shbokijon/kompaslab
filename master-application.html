@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#2d4a3e">
+<meta name="description" content="Kompas Lab Master Lab shaxsiy application workspace: M0, universitet va deadline rejalari.">
+<link rel="canonical" href="https://www.kompaslab.uz/master-application">
+<link rel="icon" href="/img/brand/favicon-32.png" type="image/png">
+<title>Master Application Workspace | Kompas Lab</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#21342d;background:#f5f7f4;color-scheme:light}
+*{box-sizing:border-box}body{margin:0}a{color:#24563e}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #d67e36;outline-offset:2px}
+header{background:#2d4a3e;color:white;padding:16px max(20px,calc((100vw - 1080px)/2))}
+header a{color:white}header nav{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+main{max-width:1080px;margin:28px auto;padding:0 18px 40px}h1{font-size:clamp(1.7rem,4vw,2.3rem)}h2{font-size:1.2rem;margin:0 0 14px}h3{font-size:1.05rem}
+p{line-height:1.55}.muted{color:#5d6e64}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:white;border:1px solid #dfe6e0;border-radius:14px;padding:20px;margin:0 0 18px;box-shadow:0 4px 16px #203d2910}
+label{display:block;font-weight:600;font-size:.92rem;margin:12px 0 5px}
+input,textarea,select{display:block;width:100%;border:1px solid #899e90;background:white;border-radius:8px;padding:10px;min-height:44px;font:inherit}
+textarea{min-height:84px;resize:vertical}.btn,button{border:0;border-radius:8px;background:#2d4a3e;color:white;padding:11px 16px;min-height:44px;font:inherit;font-weight:650;cursor:pointer}
+.btn{display:inline-block;text-decoration:none}button.secondary{background:#e9efea;color:#213c2f}button:disabled{opacity:.55}
+.row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.item{border-top:1px solid #e6ebe5;padding:12px 0}.item:first-child{border-top:0}
+.help{font-size:.85rem;color:#56675b}.notice{padding:13px;border-radius:8px;background:#e9f2ed;margin:12px 0}
+.notice.error{background:#fae6e6;color:#8c172a}
+details{border:1px solid #dfe6e0;border-radius:9px;margin:8px 0;padding:12px}
+summary{cursor:pointer;font-weight:650}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.hidden{display:none!important}.badge{font-size:.75rem;background:#e7ece9;padding:4px 7px;border-radius:4px}
+@media(max-width:740px){.grid{grid-template-columns:1fr}main{margin:16px auto}.card{padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><nav><a href="index.html" aria-label="Kompas Lab bosh sahifasi"><strong>🧭 KOMPAS LAB</strong></a><div><a href="master-lab-m0.html">M0</a> · <a href="dashboard.html">Kabinet</a> · <a href="master-lab.html">Master Lab</a></div></nav></header>
+<main>
+<div class="row"><div><p class="muted">MASTER LAB / ISH MAYDONI · PILOT</p><h1>Shaxsiy magistratura ariza rejangiz</h1><p>Yoʻlingizni tanlang, rasmiy manbalarni saqlang, deadline va vazifalarni boshqaring. Qabul yoki grant kafolatlanmaydi.</p></div><img src="img/3d/master.webp" width="94" height="94" alt="" decoding="async"></div>
+<div id="notice" class="notice" role="status" aria-live="polite">Tekshirilmoqda…</div>
+<section id="loginGate" class="card hidden"><h2>Bepul akkauntga kiring</h2><p>Reja faqat oʻz akkauntingizda saqlanadi. M0 ni toʻlovsiz boshlashingiz mumkin.</p><a class="btn" id="loginLink" href="login.html">Kirish</a> <a class="btn" href="register.html">Roʻyxatdan oʻtish</a></section>
+<section id="workspace" class="hidden">
+<div class="grid">
+<section class="card"><h2>1. Bepul M0 diagnostika</h2><form id="m0Form">
+<label for="track">Magistratura yoʻli</label><select id="track"><option value="undecided">Hali aniqlanmagan</option><option value="taught">Taught</option><option value="research">Research</option></select>
+<div id="m0Fields"></div><button type="submit">M0 natijasini saqlash</button></form></section>
+<section class="card"><h2>2. Dasturlar short-list</h2><p class="help">Deadline maʼlumotlari dastlab <b>unverified</b>. Asl rasmiy sahifani ochib tekshiring. Sana timezone offset bilan yoziladi.</p>
+<form id="programForm">
+<label for="institution">Universitet</label><input id="institution" required maxlength="200">
+<label for="programName">Dastur nomi</label><input id="programName" required maxlength="200">
+<label for="country">Mamlakat</label><input id="country" maxlength="90">
+<label for="officialUrl">Rasmiy manba (HTTPS)</label><input type="url" id="officialUrl" placeholder="https://..." pattern="https://.*">
+<label for="deadline">Admission deadline (ISO + offset)</label><input id="deadline" placeholder="2027-01-15T23:59:00+09:00" aria-describedby="deadlineHelp"><p class="help" id="deadlineHelp">Faqat rasmiy eʼlon va timezone aniq boʻlsa toʻldiring.</p>
+<button type="submit">Dastur qoʻshish</button></form><div id="programs" aria-live="polite"></div></section>
+</div>
+<section class="card"><h2>3. Navbatdagi amaliy vazifalar</h2><form id="taskForm" class="grid">
+<div><label for="taskTitle">Vazifa</label><input id="taskTitle" maxlength="220" placeholder="Rasmiy talablarni tekshirish" required></div>
+<div><label for="taskDue">Ichki muddat (sizning vaqt mintaqangiz)</label><input type="datetime-local" id="taskDue"></div>
+<div><label for="taskSource">Asl manba (ixtiyoriy)</label><input id="taskSource" type="url" pattern="https://.*" placeholder="https://..."></div>
+<div><label>&nbsp;</label><button type="submit">Vazifa qoʻshish</button></div>
+</form><div id="tasks" aria-live="polite"></div></section>
+<section class="card"><h2>4. Natijani eksport qilish</h2><p>Shaxsiy rejangizni JSON yoki spreadsheet uchun CSV shaklida yuklab oling. Faylda siz kiritgan maʼlumotlar boʻladi — maxfiy saqlang.</p>
+<div class="actions"><button id="exportJson" type="button">JSON export</button><button id="exportCsv" type="button" class="secondary">CSV export</button></div></section>
+<section class="card"><h2>Maxfiylik va oʻlchash</h2><label><input id="trackConsent" type="checkbox" style="display:inline;width:auto;min-height:0"> Mahsulotni yaxshilash uchun anonim foydalanish eventlarini yuborishga roziman</label>
+<p class="help">Eventlarga CV, hujjat mazmuni, email yoki shaxsiy yozuvlar qoʻshilmaydi.</p></section>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/master-workspace.js"></script>
+</body></html>
