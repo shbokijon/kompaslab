@@ -383,13 +383,22 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Kompas Lab logotipi: Kuzatuvdan kashfiyotga">
 <meta name="twitter:card" content="summary_large_image">
-</head>
-<body>
+<style>
+/* Only new page-directory elements; all existing Kompas typography and hero styling stays untouched. */
+.kl-landing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
+.kl-landing-grid a{background:var(--surface);border:1px solid var(--border);border-radius:19px;display:flex;align-items:center;gap:15px;text-decoration:none;color:var(--text);padding:23px;transition:transform .15s,border-color .15s;box-shadow:0 12px 33px rgba(45,74,62,.04)}
+.kl-landing-grid a:hover{transform:translateY(-2px);border-color:var(--accent)}
+.kl-landing-grid .badge-icon{background:var(--accent-lit);color:var(--accent);font:800 15px "Outfit",sans-serif;width:45px;height:45px;display:flex;align-items:center;justify-content:center;flex:none;border-radius:12px}
+.kl-landing-grid strong{color:var(--accent);display:block;font-size:16px}
+.kl-landing-grid small{color:var(--muted);display:block;font-size:13px;line-height:1.5;margin-top:3px}
+.kl-landing-callout{background:var(--accent-lit);border:1px solid #cfe3d5;color:var(--accent);padding:16px 20px;margin-top:24px;border-radius:13px;font-size:14px}
+@media(max-width:720px){.kl-landing-grid{grid-template-columns:1fr}.kl-landing-grid a{padding:19px}}
+</style></head>
 <nav class="nav">
   <div class="wrap">
     <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab <span>Master</span></span></a>
-    <div class="nav-links"><a href="#dastur">Dastur</a><a href="master-planner.html">Bepul reja</a><a href="#faktlar">Faktlar</a><a href="#narx">Narx</a><a href="#savollar">Savollar</a></div>
-    <button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
+    <div class="nav-links"><a href="master-lab-dastur.html">Modullar</a><a href="master-lab-m0-darslar.html">M0 darslari</a><a href="master-lab-manbalar.html">Manbalar</a><a href="master-lab-narxlar.html">Narxlar</a><a href="master-lab-savollar.html">Savollar</a></div>
+    <a class="btn btn-p btn-sm" href="master-lab-m0-darslar.html">Bepul M0</a>
   </div>
 </nav>
 <header class="hero">
@@ -401,11 +410,11 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       <p class="lead">Ilmiy yoʻnalishingizni aniqlaysiz, universitet va stipendiyalarni dalil bilan tanlaysiz, CV, tavsiya xati, maqsad bayonnomasi va ilmiy loyiha taklifini <strong>oʻzingiz</strong> yozasiz, intervyuga tayyorlanasiz va joʻnashni rejalashtirasiz.</p>
       
       <div class="cta-row">
-        <a href="#test" class="btn btn-p">Tayyorgarlikni tekshirish</a>
-        <a href="#dastur" class="btn btn-g">Dasturni koʻrish</a>
+        <a href="master-lab-m0-darslar.html" class="btn btn-p">Bepul M0 darslari</a>
+        <a href="master-lab-dastur.html" class="btn btn-g">Modullarni ko‘rish</a>
       </div>
       <div class="facts"><span class="fact"><b>9</b> modul rejasi</span><span class="fact"><b>59</b> dars rejasi</span><span class="fact">M0 <b>bepul</b></span><span class="fact">Haftasiga <b>4–6</b> soat</span><span class="fact"><b>4–6</b> oy</span></div>
-      <div class="live" data-live-wl="master-lab"><i></i><span></span></div>
+      
     </div>
     <aside class="packet" aria-label="Sizning ariza paketingiz">
       <div class="packet-top"><small>Dastur oxirida</small><strong>Sizning ariza paketingiz</strong></div>
@@ -414,308 +423,18 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     </aside>
   </div>
 </header>
-<section class="dark">
-  <div class="wrap rule-box">
-    <div>
-      <h2>Matn sizniki boʻladi.</h2>
-      <p>Master Lab freymvork, baholash mezoni va misol tahlilini beradi. Namunalar "Kompas tomonidan tuzilgan oʻquv namunasi" deb belgilanadi — haqiqiy talabalar matni ishlatilmaydi.</p><p>Nega tavsiya xatlari II fazada: tavsiya beruvchiga kamida 6–8 hafta kerak, professorga xatga javob va qayta yozish sikli ham 4–8 hafta oladi. Shu sababli bu ish maqsad bayonnomasidan oldin boshlanadi.</p>
-    </div>
-    <div class="model-list"><div class="model"><b>Stipendiya muvofiqligi rasmiy sahifadan</b><span>Har dastur yozuvida rasmiy havola va oxirgi tekshiruv sanasi.</span></div><div class="model"><b>AI vositalari qoidasi (M6.7)</b><span>Fikr va tahrir uchun foydalanish mumkin; matn va daʼvolar sizniki boʻlishi va dastur qoidalariga mos boʻlishi kerak.</span></div><div class="model"><b>Tavsiya xati: tavsiya beruvchiniki</b><span>Professor "oʻzing yoz" desa, siz material tayyorlaysiz, xat matnini yozmaysiz.</span></div><div class="model bad"><b>Shablon matn yoʻq</b><span>Koʻchirib olinadigan tayyor SoP yoki xat berilmaydi.</span></div></div>
-  </div>
-</section>
-<section>
-  <div class="wrap">
-    <div class="head">
-      <h2>Kimga mos va kimga mos emas</h2>
-      <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
-    </div>
-    <div class="ab">
-      <div class="ab-c"><small>A nuqta: hozir</small><p>Bakalavrni tugatgansiz yoki tugatyapsiz. Qaysi dastur yoʻnalishingizga mos va CV, maqsad bayonnomasi, tavsiyalarni qanday tayyorlash hali noaniq.</p></div>
-      <div class="ab-arrow" aria-hidden="true"></div>
-      <div class="ab-c b"><small>B nuqta: Lab oxirida</small><p>Sizning ariza paketingiz: yuqoridagi 8 band. Hujjatlarni oʻzingiz yozasiz; Lab freymvork va baholash mezonini (rubrika) beradi.</p></div>
-    </div>
-    <div class="fit">
-      <div class="fit-col yes"><h3>Mos keladi</h3><ul><li>Bakalavr bitiruvchisi yoki 3–4-kurs talabasi (STEM, ingliz tili oʻrta yoki yuqori)</li><li>Ishlayotgan mutaxassis (1–5 yil tajriba) — Chevening kabi tajriba talab qiladigan dasturlar</li><li>Mahalliy magistratura talabasi yoki bitiruvchisi — tadqiqot magistraturasi, ilmiy rahbar</li><li>Ota-ona: kurs nima beradi va nima bermaydi</li></ul></div>
-      <div class="fit-col no"><h3>Mos emas</h3><ul><li>Bakalavriatga kirmoqchi boʻlganlar → <a href="bachelor-lab.html">Bachelor Lab</a></li><li>Faqat GKS yoki DAAD/MEXT izlayotganlar → <a href="gks-lab.html">GKS Lab</a>, DAAD Lab, MEXT Lab (tayyorlanmoqda)</li><li>Doktoranturaga topshirayotganlar → <a href="phd-lab.html">PhD Lab</a></li><li>Sohani almashtirmoqchi, lekin buni asoslaydigan tajriba yoki kurslari yoʻqlar — M0 avval shu boʻshliqni koʻrsatadi</li><li>"Qabul yoki stipendiya kafolati" izlayotganlar</li><li>Hujjatni kimdir oʻrniga yozib berishini kutayotganlar</li></ul></div>
-    </div>
-    <p class="honest"><b>Ochiq gap.</b> Kompas Lab yangi platforma: bitiruvchilar natijasi hali yoʻq, shuning uchun sahifada natija raqami ham, sharh ham yoʻq. Natijalar faqat talabaning yozma roziligi bilan eʼlon qilinadi va ular bilan birga maqsadga yetmagan holatlar ulushi ham koʻrsatiladi. Hech bir Lab qabul, stipendiya yoki viza kafolatini bermaydi.</p>
-  </div>
-</section>
-<section class="alt" id="dastur">
-  <div class="wrap">
-    <div class="head">
-      <h2>9 modul, 59 dars, 4 faza.</h2>
-      <p class="sub">Bu to‘liq o‘quv dasturi rejasi. M0 bepul; M1–M8 hali editorial va manba auditida. Pullik modullar ochilmagan. Har dars: Diqqat, Asosiy qism, Xulosa va Topshiriq.</p>
-    </div>
-    <div class="phases c5"><div class="phase"><small>Faza 0, bepul</small><b>Qaror</b><span>M0, 5 dars, 1 hafta</span></div><div class="phase"><small>Faza I</small><b>Strategiya</b><span>M1–M2, 12 dars, 3–4 hafta</span></div><div class="phase"><small>Faza II</small><b>Hujjat va aloqa</b><span>M3–M4, 12 dars, 4–6 hafta</span></div><div class="phase"><small>Faza III</small><b>Ilmiy ovoz</b><span>M5–M6, 14 dars, 6–8 hafta</span></div><div class="phase"><small>Faza IV</small><b>Stipendiya va joʻnash</b><span>M7–M8, 16 dars, 4–6 hafta</span></div></div>
-    <div class="mods"><details class="mod free" open>
-  <summary><div class="mod-n">M0</div><div><div class="mod-t">Qaror darvozasi</div><div class="mod-a">Natija: Tayyorgarlik koʻrsatkichi + shaxsiy boshlash sanasi + rozilik qaydi</div></div><div class="mod-c">5 dars<span class="tag tag-free">Bepul</span></div></summary>
-  <ol><li><span class="num">0.1</span>Master Lab qanday ishlaydi<small>Fazalar, artefaktlar, haftalik yuklama, nima beriladi va nima berilmaydi</small></li><li><span class="num">0.2</span>Magistratura dunyosi<small>Oʻquv (taught) va tadqiqot (research) magistraturasi; 1 va 2 yillik dasturlar; mamlakatlar boʻyicha tuzilma farqi</small></li><li><span class="num">0.3</span>Ariza paketi anatomiyasi<small>Ariza qaysi qismlardan iborat: CV, maqsad bayonnomasi, tavsiya xatlari, transkript, til sertifikati, ilmiy loyiha taklifi (talab qilinsa); komissiya har birida nimani qidiradi</small></li><li><span class="num">0.4</span>Tayyorgarlik diagnostikasi<small>6 yoʻnalish boʻyicha oʻz-oʻzini baholash (2.5-boʻlim)</small></li><li><span class="num">0.5</span>Qaror: boshlash, kechiktirish yoki boshqa Lab<small>Kimga mos emas roʻyxati; toʻlov va bekor qilish shartlari toʻliq matnda; rozilik</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M1</div><div><div class="mod-t">Ilmiy yoʻnalish va universitet tanlash</div><div class="mod-a">Natija: Saralangan roʻyxat (Shortlist) v1.0 + Ilmiy qiziqish bayoni</div></div><div class="mod-c">7 dars</div></summary>
-  <ol><li><span class="num">1.1</span>Tadqiqotchi sifatida men kimman<small>Oʻtgan kurslar, loyihalar va qiziqishlardan ilmiy profil chiqarish</small></li><li><span class="num">1.2</span>Qiziqish sohasini toraytirish<small>Keng soha → yoʻnalish → aniq savol; "Men energetikaga qiziqaman" va "Men past haroratli geotermal tizimlar modellashtirishga qiziqaman" farqi</small></li><li><span class="num">1.3</span>Reytinglarni toʻgʻri oʻqish<small>QS, THE, ARWU qanday hisoblanadi; umumiy va fan boʻyicha reyting farqi; reyting nimani koʻrsatmaydi</small></li><li><span class="num">1.4</span>Ilmiy moslik (Research fit)<small>Dastur tarkibi, kafedra, laboratoriya, professorlar ishlari; moslikni dalil bilan koʻrsatish</small></li><li><span class="num">1.5</span>Uch darajali saralangan roʻyxat<small>Orzu (Dream), Moʻljal (Target), Ishonchli (Safety) darajalari; har darajada nechta dastur</small></li><li><span class="num">1.6</span>Moliyalashtirish turlari<small>Toʻliq stipendiya, qisman grant, universitet chegirmasi, assistentlik, oʻz hisobidan; har birining saralangan roʻyxatga taʼsiri</small></li><li><span class="num">1.7</span>Profilning izchil hikoyasi (Coherent narrative)<small>Oʻtmish, hozir va maqsadni bir chiziqqa keltirish; hikoya keyingi barcha hujjatlar uchun asos</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M2</div><div><div class="mod-t">Muddatlar arxitekturasi va ish tizimi</div><div class="mod-a">Natija: Asosiy nazorat jadvali (Master Tracker) + Gantt jadvali + Strategik hujjat v1.0</div></div><div class="mod-c">5 dars</div></summary>
-  <ol><li><span class="num">2.1</span>Ariza sikli qanday ishlaydi<small>Universitet muddati va stipendiya muddati ikki alohida sana; stipendiya koʻpincha qabuldan oldin yopiladi; muddatlarni faqat rasmiy sahifadan olish</small></li><li><span class="num">2.2</span>Teskari reja<small>Muddatdan orqaga: til sertifikati, tavsiya xatlari, hujjat tarjimasi, yozish bloklari</small></li><li><span class="num">2.3</span>Asosiy nazorat jadvali (Master Tracker)<small>Har bir dastur: holat, muddat, hujjatlar, toʻlov, natija</small></li><li><span class="num">2.4</span>Parallel ariza portfeli<small>3 stipendiya va 6–10 universitetga bir vaqtda; ustma-ust tushgan muddatlarni boshqarish</small></li><li><span class="num">2.5</span>I faza sintezi<small>Strategik hujjat: kim, qayerga, qachon, qanday moliyalashtirish bilan</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M3</div><div><div class="mod-t">Akademik CV</div><div class="mod-a">Natija: Akademik CV v1.0 (PDF va DOCX)</div></div><div class="mod-c">6 dars<span class="tag tag-core">Asosiy</span></div></summary>
-  <ol><li><span class="num">3.1</span>Akademik CV va ishchi rezyume farqi<small>Hajm, tartib, boʻlimlar; Yevropa, AQSh va Buyuk Britaniya kutganlari; Europass qachon talab qilinadi</small></li><li><span class="num">3.2</span>Taʼlim va mukofotlar<small>GPA, baholash shkalasini tushuntirish, tegishli kurslar, olimpiadalar</small></li><li><span class="num">3.3</span>Tadqiqot tajribasi va STAR<small>Vaziyat, Vazifa, Harakat, Natija (STAR) usuli; "tajribam yoʻq" muammosi: kurs loyihasi, bitiruv ishi, amaliyot</small></li><li><span class="num">3.4</span>Nashrlar, taqdimotlar, loyihalar<small>Iqtibos formati, konferensiya tezislari, GitHub va maʼlumotlar loyihalari</small></li><li><span class="num">3.5</span>Koʻnikmalar, tillar, sertifikatlar<small>Texnik koʻnikmalarni dalil bilan yozish; til darajasi (CEFR)</small></li><li><span class="num">3.6</span>Tahrir va yakunlash<small>3 bosqich: mazmun, tuzilma, imlo; 2 sahifa chegarasi; fayl nomi</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M4</div><div><div class="mod-t">Tavsiya xatlari va professor bilan aloqa</div><div class="mod-a">Natija: Yutuqlar varaqasi (Brag Sheet) + tavsiya soʻrovlari + professorlarga xatlar + Aloqalar jadvali (Outreach Log)</div></div><div class="mod-c">6 dars<span class="tag tag-core">Asosiy</span></div></summary>
-  <ol><li><span class="num">4.1</span>Tavsiya xati anatomiyasi<small>Komissiya xatda nimani qidiradi: kuzatilgan dalil, solishtirma baho, aniq epizodlar</small></li><li><span class="num">4.2</span>Kimdan, qachon, qanday soʻrash<small>Akademik va professional tavsiya beruvchi; muddatdan 8 hafta oldin soʻrash; rad etilsa nima qilish</small></li><li><span class="num">4.3</span>Yutuqlar varaqasi (Brag Sheet)<small>6 boʻlim: kim/qayerga/qachon, aloqa tarixi, nega bu dastur, faktlar, 2–3 STAR epizod, taʼkidlanishi soʻralgan sifatlar</small></li><li><span class="num">4.4</span>Professorga dastlabki xat (cold email)<small>Kimga yoziladi; mavzu qatori; 150–200 soʻzlik tuzilma; professor ishini oʻqiganini koʻrsatish; nimalar yozilmaydi</small></li><li><span class="num">4.5</span>Javob, qayta yozish va suhbat<small>Javob kelmasa qachon qayta yozish; ijobiy javobdan keyin onlayn suhbatga tayyorlanish</small></li><li><span class="num">4.6</span>Aloqalar jadvali (Outreach Log)<small>Tavsiya va xatlarni bitta jadvalda boshqarish: sana, holat, eslatma</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M5</div><div><div class="mod-t">Maqsad bayonnomasi</div><div class="mod-a">Natija: Maqsad bayonnomasi (Statement of Purpose, SoP), 700–1 000 soʻz + 2 ta dasturga moslashtirilgan variant + tahrir qaydi</div></div><div class="mod-c">7 dars<span class="tag tag-core">Asosiy</span></div></summary>
-  <ol><li><span class="num">5.1</span>Maqsad bayonnomasi nima<small>SoP, shaxsiy bayonot (Personal Statement) va motivatsion xat farqi; qaysi dastur qaysi birini soʻraydi; soʻz chegarasi va savolli formatlar</small></li><li><span class="num">5.2</span>Tuzilma: Kimlik → Dalil → Maqsad → Moslik<small>Toʻrt qismli freymvork; har qismning vazifasi va hajmi</small></li><li><span class="num">5.3</span>"Nega aynan shu dastur?"<small>Dastur kurslari, professorlar, laboratoriyalar orqali aniq javob; umumiy maqtov iboralaridan qochish</small></li><li><span class="num">5.4</span>Dalil bilan yozish<small>Sifat emas, hodisa: "qiziquvchanman" oʻrniga aniq loyiha va natija; raqamlar</small></li><li><span class="num">5.5</span>Birinchi qoralama<small>Yozish tartibi: avval oʻrta qism, keyin kirish; 90 daqiqalik bloklar</small></li><li><span class="num">5.6</span>Tahrir<small>Keng tarqalgan xatolar: bolalikdan boshlash, CVʼni qayta aytish, klishe, mavhum maqsad; 3 bosqichli tahrir</small></li><li><span class="num">5.7</span>Namuna tahlili<small>Kompas tomonidan tuzilgan oʻquv namunalari (haqiqiy talabalar matni emas): kuchsiz va kuchli versiya tahlili</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M6</div><div><div class="mod-t">Ilmiy loyiha taklifi</div><div class="mod-a">Natija: Ilmiy loyiha taklifi (Research Proposal), 1 500–3 000 soʻz (dastur talabiga qarab)</div></div><div class="mod-c">7 dars<span class="tag tag-core">Asosiy</span></div></summary>
-  <ol><li><span class="num">6.1</span>Ilmiy loyiha taklifi kimga kerak<small>Tadqiqot magistraturasi, baʼzi stipendiyalar va professorga xat; oʻquv magistraturasida koʻpincha talab qilinmaydi</small></li><li><span class="num">6.2</span>Muammo bayoni<small>Global → mintaqaviy → aniq boʻshliq; Muammo → Yechim → Yangilik → Taʼsir freymvorki</small></li><li><span class="num">6.3</span>Adabiyotlar sharhi (Literature Review)<small>Manba topish: Google Scholar, Scopus, kutubxona; oʻqish tartibi; iqtibos boshqaruvchi (Zotero)</small></li><li><span class="num">6.4</span>Metodologiya<small>Tadqiqot dizayni, maʼlumot, usul, cheklovlar; magistratura miqyosiga mos boʻlishi</small></li><li><span class="num">6.5</span>Ish rejasi va Gantt jadvali<small>Vaqt boʻyicha bosqichlar; real hajm</small></li><li><span class="num">6.6</span>Kutilayotgan natija va ahamiyati<small>Ilmiy va amaliy hissa; Oʻzbekiston uchun ahamiyat (mavjud boʻlsa, dalil bilan)</small></li><li><span class="num">6.7</span>Tahrir, format, iqtibos uslubi<small>APA, IEEE, Harvard uslublari; sahifa va soʻz chegarasi; plagiat va AI vositalaridan foydalanish qoidalari</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M7</div><div><div class="mod-t">Stipendiyalar atlasi</div><div class="mod-a">Natija: Stipendiya portfeli (3 dastur, har biriga muvofiqlik tekshiruvi va muddat)</div></div><div class="mod-c">8 dars</div></summary>
-  <ol><li><span class="num">7.1</span>Stipendiya turlari va muvofiqlik<small>Davlat, universitet, xalqaro tashkilot dasturlari; muvofiqlik (eligibility) shartlarini oʻqish: fuqarolik, ish tajribasi, qaytish majburiyati</small></li><li><span class="num">7.2</span>Buyuk Britaniya<small>Chevening (ish tajribasi talabi, 2 tavsiya beruvchi, qaytish majburiyati), universitet stipendiyalari</small></li><li><span class="num">7.3</span>AQSh<small>Fulbright (Oʻzbekistondagi AQSh elchixonasi orqali), universitet moliyalashtirishi va assistentlik</small></li><li><span class="num">7.4</span>Yevropa Ittifoqi<small>Erasmus Mundus qoʻshma magistraturalari, milliy dasturlar (masalan, Vengriya Stipendium Hungaricum); Germaniya — qisqa tavsif va DAAD Labʼga havola</small></li><li><span class="num">7.5</span>Osiyo<small>Koreya (GKS) va Yaponiya (MEXT) — qisqa tavsif va tegishli Lablarga havola; Xitoy hukumati stipendiyasi (CSC)</small></li><li><span class="num">7.6</span>Turkiya va boshqa yoʻnalishlar<small>Türkiye Bursları; xalqaro tashkilotlar dasturlari (muvofiqlik har yili tekshiriladi)</small></li><li><span class="num">7.7</span>Oʻzbekiston dasturlari va universitet grantlari<small>El-yurt umidi jamgʻarmasi; universitetlarning oʻz grantlari va toʻlov chegirmalarini topish usuli</small></li><li><span class="num">7.8</span>Stipendiya portfeli<small>3 dasturni tanlash mezoni: muvofiqlik, moslik, muddat, raqobat; har biriga SoP moslashtirish rejasi</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M8</div><div><div class="mod-t">Viza, intervyu va joʻnash</div><div class="mod-a">Natija: 3 ta yozib olingan intervyu javobi + 5 daqiqalik ilmiy taqdimot + Joʻnash oldi nazorat roʻyxati (Pre-departure checklist)</div></div><div class="mod-c">8 dars</div></summary>
-  <ol><li><span class="num">8.1</span>Intervyu turlari<small>Motivatsion, panel, ilmiy, texnik; onlayn intervyu texnikasi</small></li><li><span class="num">8.2</span>10 asosiy savol<small>"Oʻzingiz haqingizda", "Nega shu dastur", "5 yildan keyin" va boshqalar; STAR asosida javob</small></li><li><span class="num">8.3</span>Stipendiya intervyulari<small>Chevening (yetakchilik, tarmoq, maqsad), Fulbright va boshqalar; komissiya mantiqi</small></li><li><span class="num">8.4</span>5 daqiqalik ilmiy taqdimot<small>Muammo, usul, natija, ahamiyat; slaydsiz va slayd bilan</small></li><li><span class="num">8.5</span>Oʻz-oʻzini yozib olish va baholash<small>Telefon orqali yozib olish, mezon boʻyicha baholash, ixtiyoriy oʻzaro tahrir</small></li><li><span class="num">8.6</span>Qabul xati keldi: birinchi 2 hafta<small>Shartli va shartsiz qabul; javob muddati; depozit; CAS (UK) yoki I-20 (AQSh) kabi hujjatlar nima</small></li><li><span class="num">8.7</span>Viza, sugʻurta, uy-joy, bank<small>Talaba vizasi bosqichlari; tibbiy sugʻurta talablari (mamlakatga qarab); yotoqxona va ijara; moliyaviy hujjatlar</small></li><li><span class="num">8.8</span>Birinchi 90 kun va oʻqishdan keyingi yoʻllar<small>Ilmiy rahbar bilan birinchi uchrashuvlar, akademik madaniyat; oʻqishdan keyin ishlash huquqi va qaytish majburiyatlari (mamlakat va stipendiyaga qarab)</small></li></ol>
-</details></div>
-    
-  </div>
-</section>
-
-<section class="alt" id="faktlar">
-  <div class="wrap">
-    <div class="head">
-      <h2>Rasmiy havola va tekshiruv qaydlari</h2>
-      <p class="sub">Quyidagi sanalar kontentning avvalgi tekshiruv qaydlaridir. Mustaqil reviewer tasdig‘i yoki joriy qabul shartlari kafolati emas. Har faktni asl saytda qayta tekshiring. <a href="sources.html">Rasmiy manbalar</a>.</p>
-    </div>
-    <div class="atlas"><div class="src"><div class="src-h"><b>🇬🇧 Chevening</b><span class="chk wait">Manba qaydi: 2026-10-03</span></div><p>Ikki tavsiya beruvchi (akademik yoki professional); xatlar faqat intervyuga taklif qilinganda yuklanadi, ingliz tilida. Chevening tavsiya beruvchilarga oʻzi murojaat qilmaydi.</p><a class="s" href="https://chevening.org/apply/references" target="_blank" rel="noopener">chevening.org</a></div><div class="src"><div class="src-h"><b>🇬🇧 Graduate vizasi</b><span class="chk wait">Manba qaydi: 2026-10-15</span></div><p>2027-yil 1-yanvardan beriladigan arizalarda bakalavr va magistr bitiruvchilari uchun 18 oy (hozir 2 yil); doktorlar uchun 3 yil.</p><a class="s" href="https://www.gov.uk/graduate-visa" target="_blank" rel="noopener">gov.uk</a></div><div class="src"><div class="src-h"><b>🇳🇴 Norvegiya</b><span class="chk wait">Manba qaydi: 2026-10-17</span></div><p>2023-yil kuzidan EI/EIH va Shveytsariyadan tashqaridagi talabalar oʻqish uchun toʻlaydi.</p><a class="s" href="https://www.usn.no/english/usn-faq/semester-start/what-is-the-tuition-fee-and-do-you-offer-scholarships" target="_blank" rel="noopener">usn.no</a></div><div class="src"><div class="src-h"><b>🇺🇸 🇪🇺 Fulbright, Erasmus Mundus</b><span class="chk wait">Tekshirilmoqda</span></div><p>Toʻliq darslar bor (7.3, 7.4); muvofiqlik har yangi tanlovda rasmiy sahifadan tekshiriladi.</p></div><div class="src"><div class="src-h"><b>🇺🇿 🇨🇳 🇹🇷 🇭🇺 Boshqa dasturlar</b><span class="chk wait">Tekshirilmoqda</span></div><p>El-yurt umidi, CSC, Türkiye Bursları, Stipendium Hungaricum — darsga rasmiy sahifa tekshiruvidan keyin kiradi.</p></div><div class="src"><div class="src-h"><b>🇰🇷 🇩🇪 🇯🇵 GKS, DAAD, MEXT</b><span class="chk lab">Alohida Lablarda</span></div><p>Master Labʼda qisqa tavsif; chuqur yoʻriqnoma tegishli Lablarda.</p><a class="s" href="gks-lab.html" target="_blank" rel="noopener">GKS Lab</a></div></div>
-    <div class="excl"><b>Atlasga kirmaydi:</b> NSF GRFP (faqat AQSh fuqarolari va doimiy rezidentlar), Orange Knowledge Programme (2024-yilda tugagan — <a href="https://studyinnl.org/finances/scholarships" target="_blank" rel="noopener">Study in NL</a>), Vanier CGS (toʻxtatilgan), MSCA (doktorantura uchun — <a href="phd-lab.html">PhD Lab</a>).</div>
-    
-  </div>
-</section>
-<section id="test">
-  <div class="wrap">
-    <div class="head">
-      <h2>Tayyorgarlik darajasi (Readiness Score)</h2>
-      <p class="sub">6 savol, 100 ball. Bu oʻzingizni oʻzingiz baholash, qabul ehtimoli emas. Javoblar hech qayerga yuborilmaydi va saqlanmaydi.</p>
-    </div>
-    <div class="quiz">
-      <form id="rs" autocomplete="off"><div class="q"><label for="q0">1. Akademik asos <small>(20 ball)</small></label><select id="q0" data-q><option value="">Tanlang</option><option value="20">GPA yuqori, mutaxassislik mos</option><option value="12">GPA oʻrtacha, mutaxassislik mos</option><option value="6">Mutaxassislikni oʻzgartirmoqchiman</option><option value="0">Bilmayman</option></select></div><div class="q"><label for="q1">2. Til sertifikati <small>(20 ball)</small></label><select id="q1" data-q><option value="">Tanlang</option><option value="20">Bor, talabga yetadi</option><option value="12">Bor, balni oshirish kerak</option><option value="6">Yoʻq, sana belgilangan</option><option value="0">Yoʻq, reja ham yoʻq</option></select></div><div class="q"><label for="q2">3. Ilmiy yoʻnalish <small>(20 ball)</small></label><select id="q2" data-q><option value="">Tanlang</option><option value="20">Qiziqishimni bir jumlada aytaman</option><option value="10">Soha aniq, yoʻnalish emas</option><option value="0">Hali bilmayman</option></select></div><div class="q"><label for="q3">4. Tajriba <small>(15 ball)</small></label><select id="q3" data-q><option value="">Tanlang</option><option value="15">Loyiha, amaliyot, ish yoki nashr bor</option><option value="8">Kurs ishlari va bitiruv ishi</option><option value="0">Deyarli yoʻq</option></select></div><div class="q"><label for="q4">5. Hujjatlar <small>(10 ball)</small></label><select id="q4" data-q><option value="">Tanlang</option><option value="10">Diplom, transkript va 2+ tavsiya beruvchi bor</option><option value="5">Qisman tayyor</option><option value="0">Hali yoʻq</option></select></div><div class="q"><label for="q5">6. Maqsad sanasigacha vaqt <small>(15 ball)</small></label><select id="q5" data-q><option value="">Tanlang</option><option value="15">12–18 oy</option><option value="10">18 oydan koʻp</option><option value="6">6–12 oy</option><option value="0">6 oydan kam</option></select></div></form>
-      <div class="score" aria-live="polite">
-        <div class="score-n"><span id="sN">0</span><small>/100</small></div>
-        <div class="bar"><i id="sB"></i></div>
-        <div class="verdict" id="sV">Savollarga javob bering</div>
-        <div class="verdict-t" id="sT">Natija javoblaringiz boʻyicha shu yerda hisoblanadi.</div>
-        <ul class="gaps" id="sG"></ul>
-        <div class="warn" id="w0">Maqsad sanasigacha 6 oydan kam: tavsiya xatlari va til sertifikati uchun vaqt yetmasligi mumkin.</div>
-        <a class="btn btn-p" style="width:100%;margin-top:14px" href="master-lab-m0.html">Bepul M0 ni boshlash</a>
-      </div>
-    </div>
-  </div>
-  <script type="application/json" id="rsData">{"names": ["Akademik asos", "Til sertifikati", "Ilmiy yoʻnalish", "Tajriba", "Hujjatlar", "Maqsad sanasigacha vaqt"], "max": [20, 20, 20, 15, 10, 15], "blockText": "", "warn": [{"q": 5, "v": "0", "text": "Maqsad sanasigacha 6 oydan kam: tavsiya xatlari va til sertifikati uchun vaqt yetmasligi mumkin."}]}</script>
-</section>
-<section class="alt" id="qanday">
-  <div class="wrap method">
-    <div class="who">
-      <h3>Dasturlarni kim tuzadi</h3>
-      <ul>
-        <li>Asoschi geofizik, Buyuk Britaniyada (University of Leeds) doktorantura oʻqiydi</li>
-        <li>Janubiy Koreyada oʻqigan</li>
-        <li>Oʻzbekistonda universitetda dars bergan</li>
-        <li>Oʻzi oʻtmagan bosqichlar boʻyicha tajriba daʼvo qilinmaydi</li>
-      </ul>
-    </div>
-    <div>
-      <h2>Asoschi oʻzi topshirmagan dasturlar boʻyicha tajriba daʼvo qilinmaydi.</h2>
-      <p class="sub" style="margin-bottom:14px">Shaxsiy tajriba faqat asoschi haqiqatda oʻtgan bosqichlarda keltiriladi. Qolgan qismlar universitet, stipendiya dasturi va davlat organlarining rasmiy sahifalariga tayanadi; har faktik daʼvo yonida havola va tekshiruv sanasi turadi.</p><p class="sub" style="margin-bottom:14px">Masalan, DAAD yoki Chevening boʻyicha darslar faqat rasmiy manbalarga tayanadi.</p>
-    </div>
-  </div>
-</section>
-
-<section id="narx">
-  <div class="wrap">
-    <div class="head">
-      <h2>Rejadagi obuna narxlari · M0 bepul</h2>
-      <p class="sub">To‘lov hali ochilmagan. ERI, rasmiy payment va M1–M8 auditidan so‘ng yakuniy tariflar eʼlon qilinadi. <a href="master-planner.html">Bepul Master reja</a> hozir mavjud.</p>
-    </div>
-    <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
-    <div class="plans">
-      <div class="plan">
-        <h3>M0, qaror moduli</h3><p class="desc">Dastur sizga mosligini bilish</p>
-        <div class="price">0</div><div class="per">soʻm, muddatsiz</div>
-        <ul><li>5 dars</li><li>Tayyorgarlik darajasi (Readiness Score) va boʻshliqlar roʻyxati</li><li>Shaxsiy boshlash sanasi</li></ul>
-        <a class="btn btn-g" href="master-lab-m0.html">M0 ni boshlash</a>
-      </div>
-      <div class="plan">
-        <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
-        <div class="price" data-pm="master-lab">99 000</div><div class="per">soʻm, har oy</div>
-        <ul><li>Bir oylik kirish</li><li>Istalgan oy bekor qilinadi</li><li>Keyinroq yillikka oʻtish mumkin</li><li>Modullar har oy bitta faza boʻyicha ochiladi; natija topshirilsa, keyingisi ertaroq</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
-      <div class="plan main">
-        <span class="tag-top">Asosiy reja</span>
-        <h3>Mavsum, 4 oy</h3><p class="desc">Bitta ariza sikli uchun: 4 oy 3 oy narxida</p>
-        <div class="price" data-ps="master-lab">297 000</div><div class="per">soʻm, 4 oy uchun</div>
-        <ul><li>Barcha modullar birdaniga ochiladi</li><li>Bitta ariza siklini qamraydi: 4 oy</li><li>1 oy tekin: 4 oy 3 oy narxida</li><li>Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni</li></ul>
-        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
-      <div class="plan">
-        <h3>Yillik</h3><p class="desc">Toʻliq ariza sikli uchun</p>
-        <div class="price" data-py="master-lab">699 000</div><div class="per">soʻm, 12 oy uchun</div>
-        <ul><li>9 modul, 59 dars, barcha vositalar</li><li>Nazorat jadvali, aloqalar jadvali</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
-    </div>
-    <div class="calc"><div><b>1 188 000 soʻm</b>12 oy faqat oylik reja bilan (99 000 × 12)</div><div><b>891 000 soʻm</b>12 oy Mavsum bilan (3 × 297 000)</div><div><b>10 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja Mavsum va oylikdan arzon</div></div>
-    <div class="pro-plan"><span class="tag-plan">Rejada</span><b>Kompas Pro: hali ishlamaydi</b>
-      <p>Yillik obunaga qoʻshish rejalashtirilgan funksiyalar. Hozirgi narxga kirmaydi, ishga tushish sanasi eʼlon qilinmagan.</p>
-      <ul><li>Shaxsiy muddat eslatmalari (Telegram yoki email)</li><li>Profilga mos stipendiyalar bazasi: rasmiy havola va tekshiruv sanasi bilan</li><li>Tayyorgarlik koʻrsatkichi tarixi: oyma-oy oʻzgarish</li><li>Javoblar va hujjatlarni telefon va kompyuter orasida sinxronlash</li></ul>
-    </div>
-    <div class="refund"><b>To‘lov hali ochilmagan.</b> Refund va bekor qilish qoidalari xavfsiz to‘lov ishga tushishidan oldin amaldagi qonunchilikka muvofiq eʼlon qilinadi.</div>
-    <div class="rules"><div><b>Bekor qilish</b>Obunani istalgan vaqtda toʻxtatasiz: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi.</div><div><b>Tayyorgarlik darvozasi</b>M0 natijasi "Bu siklga erta" boʻlsa, toʻlov oʻrniga aniq boʻshliqlar roʻyxati va muqobil yoʻl tavsiya qilinadi.</div><div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div><div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div></div>
-  </div>
-</section>
-<section id="savollar">
-  <div class="wrap">
-    <div class="head" style="text-align:center">
-      <h2>Koʻp soʻraladigan savollar</h2>
-    </div>
-    <div class="faq"><details><summary>Oʻquv va tadqiqot magistraturasining farqi nima?</summary><p>Oʻquv (taught) magistratura asosan kurslar va imtihonlardan, tadqiqot (research) magistraturasi asosan ilmiy loyihadan iborat. M0.2 da sizga qaysi biri mosligini qaror daraxti bilan aniqlaysiz.</p></details><details><summary>Ilmiy loyiha taklifi har doim kerakmi?</summary><p>Yoʻq. U tadqiqot magistraturasi, baʼzi stipendiyalar va professorga xatda kerak; oʻquv magistraturasida koʻpincha talab qilinmaydi (M6.1).</p></details><details><summary>Ish tajribam bor. Bu foydali boʻladimi?</summary><p>Ha, ayrim dasturlar ish tajribasini talab qiladi (masalan, Chevening). M3 da tajribani STAR usulida CVʼga yozasiz.</p></details><details><summary>Maqsad bayonnomasini yozib berasizmi?</summary><p>Yoʻq. M5 da 7 dars: tuzilma, dalil bilan yozish, tahrir va izohli oʻquv namunalari. Matn sizniki boʻladi.</p></details><details><summary>Jonli mashq intervyusi bormi?</summary><p>Asosiy obunaga kirmaydi. M8 da oʻzingizni yozib olish va 8 bandli mezon bilan baholash oʻrgatiladi.</p></details><details><summary>Germaniya yoki Koreyaga topshirmoqchiman.</summary><p>DAAD va GKS boʻyicha chuqur yoʻriqnoma alohida Lablarda; Master Labʼda qisqa tavsif va havola.</p></details><details><summary>Nega “Lab” deyiladi?</summary><p>Lab soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi. Kompas Lablari ham shunday ishlaydi: har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi.</p></details></div>
-    <p class="sources" style="text-align:center">Manbalar: <a href="https://chevening.org/apply/references" target="_blank" rel="noopener">Chevening</a>, <a href="https://www.gov.uk/graduate-visa" target="_blank" rel="noopener">GOV.UK Graduate visa</a>, <a href="https://www.usn.no/english/usn-faq/semester-start/what-is-the-tuition-fee-and-do-you-offer-scholarships" target="_blank" rel="noopener">USN</a>, <a href="https://studyinnl.org/finances/scholarships" target="_blank" rel="noopener">Study in NL</a></p>
-  </div>
-</section>
-<section class="dark cta">
-  <div class="wrap">
-    <h2>Bepul M0 dan boshlang.</h2>
-    <p class="sub">Avval dastur sizga mosligini tekshiring, keyin qaror qiling.</p>
-    <div class="cta-row" style="justify-content:center">
-      <a class="btn btn-p" href="master-lab-m0.html">Bepul M0 ni boshlash</a>
-      <a href="master-planner.html" class="btn btn-g">Bepul reja tuzish</a>
-    </div>
-  </div>
-</section>
+<section class="dark"><div class="wrap"><div class="rule-box"><div><h2>Mentorsiz, mustaqil va o‘zingizga qulay tezlikda.</h2><p>Darslar bosqichlarga ajratilgan; har biri tushuncha, amaliy misol va topshiriqdan iborat. Kompas individual mentor feedback, hujjatni sizning o‘rningizga yozish yoki qabul kafolatini bermaydi.</p></div><div class="model-list"><div class="model"><b>M0 bepul</b><span>5 ta alohida interaktiv dars.</span></div><div class="model"><b>M1–M8 rejada</b><span>Pullik darslarning matni editorial va xavfsizlik tekshiruvidan oldin ochilmaydi.</span></div><div class="model"><b>Rasmiy manbalar</b><span>Joriy qabul, grant va viza maʼlumotlari asli orqali tekshiriladi.</span></div></div></div></div></section>
+<section id="yonalishlar"><div class="wrap"><div class="head"><h2>Kerakli bo‘limni tanlang</h2><p class="sub">Kursning barcha maʼlumotlari bir sahifaga yig‘ilmagan. Modullar, darslar, manbalar, narxlar va savollar alohida sahifada.</p></div><div class="kl-landing-grid"><a href="master-lab-dastur.html"><span class="badge-icon">01</span><span><strong>Modullar va darslar</strong><small>M0–M8 dasturi va darslarning to‘liq mavzu xaritasi</small></span></a>
+<a href="master-lab-m0-darslar.html"><span class="badge-icon">02</span><span><strong>Bepul M0 darslari</strong><small>Beshta darsning har biri alohida sahifada</small></span></a>
+<a href="master-lab-manbalar.html"><span class="badge-icon">03</span><span><strong>Rasmiy manbalar</strong><small>Grantlar va universitetlarga oid asl manbalar va tekshiruv qaydlari</small></span></a>
+<a href="master-planner.html"><span class="badge-icon">04</span><span><strong>Shaxsiy reja</strong><small>Mustaqil universitetlar ro‘yxati va to‘qqiz bosqichli reja</small></span></a>
+<a href="master-lab-narxlar.html"><span class="badge-icon">05</span><span><strong>Kirish va narxlar</strong><small>ERI hamda payment integratsiyasi ochilguncha to‘lov yopiq</small></span></a>
+<a href="master-lab-savollar.html"><span class="badge-icon">06</span><span><strong>Savollar va javoblar</strong><small>Kimga mosligi, darslar va ish tartibi</small></span></a></div><div class="kl-landing-callout"><strong>Hozirgi holat:</strong> Master Lab — to‘liq o‘quv dasturi rejasi, bepul M0 esa mavjud darslar. M1–M8 materiallari va pullik kirish tayyor bo‘lmaguncha sotuv ochilmaydi.</div></div></section>
+<section class="dark cta"><div class="wrap"><h2>O‘qishni bepul boshlang.</h2><p class="sub" style="color:rgba(255,255,255,.82)">M0 — qaror, tayyorgarlik va rejalashtirish. Har bir dars alohida ochiladi.</p><div class="cta-row" style="justify-content:center"><a class="btn btn-p" href="master-lab-m0-darslar.html">M0 darslari</a><a class="btn btn-g" href="master-lab-dastur.html">Barcha modullar</a></div></div></section>
 <footer>
   <div class="wrap">
     <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="#" data-install>📱 Ilovani oʻrnatish</a></div>
     <div>© 2026 Kompas Lab, Oʻzbekiston</div>
   </div>
 </footer>
-<div class="ovl" id="wl" role="dialog" aria-modal="true" aria-labelledby="wlT">
-  <div class="mdl">
-    <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
-    <img class="i3d" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
-    <h3 id="wlT" style="margin-top:6px">Master Lab: kutish roʻyxati</h3>
-    <p>Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
-    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
-    <div id="wlMsg"></div>
-    <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/live-bar.js"></script>
-<script>
-(function () {
-  var SLUG = "master-lab", SOURCE = "master_landing";
-
-  var dataEl = document.getElementById("rsData");
-  if (dataEl) {
-    var D = JSON.parse(dataEl.textContent);
-    var sels = Array.prototype.slice.call(document.querySelectorAll("select[data-q]"));
-    var shown = 0, raf = null;
-    function animateTo(n) {
-      var el = document.getElementById("sN"), from = shown, t0 = null;
-      if (raf) cancelAnimationFrame(raf);
-      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = n; shown = n; return; }
-      function step(ts) { if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 400); shown = Math.round(from + (n - from) * k); el.textContent = shown; if (k < 1) raf = requestAnimationFrame(step); }
-      raf = requestAnimationFrame(step);
-    }
-    var calc = function () {
-      var total = 0, answered = 0, gaps = [], blocked = false;
-      sels.forEach(function (s, i) {
-        if (s.value === "") return;
-        answered++;
-        if (s.value === "x") { blocked = true; gaps.push(D.names[i]); return; }
-        var v = parseInt(s.value, 10); total += v;
-        if (v < D.max[i] * 0.5) gaps.push(D.names[i]);
-      });
-      var bar = document.getElementById("sB"), V = document.getElementById("sV"), T = document.getElementById("sT"), G = document.getElementById("sG");
-      animateTo(total);
-      bar.style.width = total + "%"; G.innerHTML = ""; V.style.color = "";
-      if (blocked) {
-        V.textContent = "Bu siklda topshira olmaysiz"; V.style.color = "var(--red)";
-        T.textContent = D.blockText; bar.style.background = "var(--red)";
-      } else if (answered < sels.length) {
-        V.textContent = "Javoblar: " + answered + " / " + sels.length;
-        T.textContent = "Barcha savollarga javob bering."; bar.style.background = "var(--muted2)";
-      } else if (total >= 70) {
-        V.textContent = "Hozir boshlash mumkin"; V.style.color = "var(--green)";
-        T.textContent = "Asosiy yoʻnalishlar yetarli. M0 da shaxsiy vaqt chizigʻingizni tuzasiz."; bar.style.background = "var(--green)";
-      } else if (total >= 45) {
-        V.textContent = "Avval boʻshliqlarni yoping"; V.style.color = "var(--gold)";
-        T.textContent = "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak:"; bar.style.background = "var(--gold)";
-      } else {
-        V.textContent = "Bu siklga erta"; V.style.color = "var(--red)";
-        T.textContent = "Hozir toʻlash tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
-      }
-      if (answered === sels.length && (blocked || total < 70)) {
-        gaps.forEach(function (g) { var li = document.createElement("li"); li.textContent = g; G.appendChild(li); });
-      }
-      (D.warn || []).forEach(function (w, k) {
-        var el = document.getElementById("w" + k);
-        if (el) el.style.display = (sels[w.q] && sels[w.q].value === w.v) ? "block" : "none";
-      });
-    };
-    sels.forEach(function (s) { s.addEventListener("change", calc); });
-  }
-
-  var ovl = document.getElementById("wl"), sel = document.getElementById("wlL"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
-  var BTN = "Roʻyxatga yozilish";
-  function openWl(slug) {
-    if (sel) sel.value = slug || "";
-    inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = BTN;
-    ovl.classList.add("open"); document.body.style.overflow = "hidden";
-    setTimeout(function () { (sel && !sel.value ? sel : inp).focus(); }, 120);
-  }
-  function closeWl() { ovl.classList.remove("open"); document.body.style.overflow = ""; }
-  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", function () { openWl(b.getAttribute("data-wl")); }); });
-  document.getElementById("wlX").addEventListener("click", closeWl);
-  ovl.addEventListener("click", function (e) { if (e.target === ovl) closeWl(); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeWl(); });
-  inp.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
-  btn.addEventListener("click", submit);
-  function submit() {
-    var slug = sel ? sel.value : SLUG, email = inp.value.trim();
-    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "Labni tanlang"; return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "Email manzilni tekshiring: masalan, ism@gmail.com"; return; }
-    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanib boʻlmadi. Telegram orqali yozing: t.me/kompaslab"; return; }
-    btn.disabled = true; btn.textContent = "Saqlanmoqda...";
-    window.supabase.from("waitlist")
-      .upsert({ email: email, course_slug: slug, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
-      .then(function (r) {
-        if (r.error && r.error.code !== "23505") throw r.error;
-        msg.style.color = "var(--green)"; msg.textContent = "Yozildingiz. Lab ochilganda shu emailga xabar beramiz.";
-        btn.textContent = "Yozildingiz"; setTimeout(closeWl, 2400);
-      })
-      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "Saqlanmadi. Internetni tekshirib, qayta urinib koʻring."; btn.disabled = false; btn.textContent = BTN; });
-  }
-
-  var LIVE_MIN = 10;
-  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
-  function applyStats(d) {
-    var pr = d.prices || {};
-    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
-    document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
-    document.querySelectorAll("[data-ps]").forEach(function (el) { var p = pr[el.getAttribute("data-ps")]; if (p && p.m) el.textContent = nf(p.m * 3); });
-    var wl = d.waitlist_by_lab || {};
-    document.querySelectorAll("[data-live-wl]").forEach(function (el) {
-      var n = wl[el.getAttribute("data-live-wl")] || 0;
-      if (n >= LIVE_MIN) { el.querySelector("span").textContent = "Kutish roʻyxatida " + nf(n) + " kishi"; el.classList.add("on"); }
-    });
-    if (window.onKompasStats) window.onKompasStats(d);
-  }
-  if (window.supabase && typeof window.supabase.rpc === "function") {
-    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) applyStats(r.data); });
-  }
-})();
-</script>
-</body>
-</html>
+</body></html>
