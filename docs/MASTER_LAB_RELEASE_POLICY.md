@@ -40,3 +40,17 @@ Keep payment.html closed until: production identity/legal documentation, merchan
 
 ## Verification
 Change through PR; inspect Vercel deployment and domain after merge. GitHub changes alone do not prove public site deploy success.
+
+## Navigation architecture (2026-10-18)
+
+- Master course landing: master-lab.html (short hub with premium original CSS and hero).
+- Syllabus: master-lab-dastur.html (9 modules, 59 lesson titles from the existing syllabus).
+- M0 module hub: master-lab-m0-darslar.html (5 standalone lessons).
+- M0 free lessons: master-lab-m0-1.html through master-lab-m0-5.html. These educational pages are free and do not grant any paid entitlements; they reuse the original lesson copy.
+- M0 legacy interactive tools: master-lab-m0.html#tool-rs, #tool-dl, #qaror (kept temporarily for backward compatibility, legacy login gate and tool state).
+- Shared local progress key: kompas_master_m0_v1. No cross-device guarantee.
+- M1–M8 module outlines: master-lab-modul.html?m=1..8. Outlines are public; complete paid content remains private (existing tools/modules/build.py keeps site:false).
+- Dedicated course source/pricing/FAQ pages: master-lab-manbalar.html, master-lab-narxlar.html, master-lab-savollar.html.
+- Course pages should be short; module pages enumerate their lessons; full lesson content belongs only on its separate URL.
+- M1–M8 actual lesson release requires server-side authorization, source validation, release tests and payment webhook integration.
+- The site-wide landing remains in its original long form for now to avoid breaking its coupled compass, pricing and live-stat scripts. It needs a separate refactor sprint; do not replace the approved premium design.
