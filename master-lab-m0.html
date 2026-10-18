@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
 <title>M0 Qaror darvozasi · Master Lab · Kompas Lab</title>
-<meta name="description" content="Master Lab bepul M0 moduli: magistratura tizimlari, ariza anatomiyasi, Tayyorgarlik koʻrsatkichi va deadline kalendari. Toʻlovdan oldin halol qaror.">
+<meta name="description" content="Master Lab bepul M0: magistratura tizimlari, ariza anatomiyasi, Tayyorgarlik ko‘rsatkichi va oxirgi muddatlar (Deadline) kalendari.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet">
@@ -512,9 +512,9 @@ body.locked .gate{display:flex;}
             <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
               <tr><td>Obuna</td><td><span data-py>699 000</span> soʻm/yil yoki <span data-pm>99 000</span> soʻm/oy, Mavsum (4 oy) <span data-ps>297 000</span> soʻm</td></tr>
               <tr><td>M0 (shu modul)</td><td>Bepul</td></tr>
-              <tr><td>Bekor qilish</td><td>Istalgan vaqtda: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi</td></tr>
-              <tr><td>Qaytarish</td><td>Toʻlangan obuna puli qaytarilmaydi. Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat koʻrsatilmagan toʻlov</td></tr>
-              <tr><td>Rozilik</td><td>Toʻlovdan oldin shartlarni oʻqiganingizni tasdiqlaysiz</td></tr>
+              <tr><td>Bekor qilish (Cancellation)</td><td>Obuna hozir ochilmagan. Kelajakda amal qiladigan qoidalar eʼlon qilinadi.</td></tr>
+              <tr><td>Pulni qaytarish (Refund)</td><td>Hozir to‘lov qabul qilinmaydi. Shartlar to‘lov ishga tushishidan oldin eʼlon qilinadi.</td></tr>
+              <tr><td>Rozilik</td><td>To‘lov ishga tushgach, shartlarni tasdiqlash mexanizmi taqdim etiladi.</td></tr>
             </tbody></table></div>
             <div class="box info"><b>Nega M0 bepul:</b> siz hozir toʻlovsiz nima olishingizni (0.1), qaysi tizimda topshirishingizni (0.2), kuchli ariza nimaligini (0.3) va oʻz darajangizni (0.4) bilib oldingiz. Qaror shu maʼlumot asosida qabul qilinadi.</div>
           </div>
@@ -577,13 +577,13 @@ body.locked .gate{display:flex;}
       <h2>Qaror bayonoti</h2>
       <p class="sub">Natijalaringizdan avtomatik yigʻiladi. Nusxalab, oʻzingizda saqlang.</p>
       <div class="stmt" id="stmt"></div>
-      <label class="ck"><input type="checkbox" id="cons1">Toʻlov shartlarini oʻqidim: toʻlangan obuna puli qaytarilmaydi, obunani istalgan vaqtda toʻxtata olaman.</label>
+      <label class="ck"><input type="checkbox" id="cons1">M0 bepul ekanini va pullik obunalar hali ochilmaganini tushunaman. Kelajakdagi to‘lov shartlari keyin eʼlon qilinadi.</label>
       <label class="ck" style="margin-top:8px"><input type="checkbox" id="cons2">Kompas hujjatni oʻrnimga yozmasligini va qabul yoki stipendiya kafolatlanmasligini tushunaman.</label>
       <div class="missing" id="missing"></div>
       <div class="row">
         <button class="btn btn-p" type="button" id="decBtn">Qarorni tasdiqlash · +50 XP</button>
         <button class="btn btn-g" type="button" id="copyBtn">📋 Nusxalash</button>
-        <a class="btn btn-g" href="master-lab.html#narx">Master Lab narxlari</a>
+        <a class="btn btn-g" href="master-planner.html">Shaxsiy rejalashtirgich (Master Planner)</a>
       </div>
     </div>
   </section>
@@ -614,7 +614,7 @@ body.locked .gate{display:flex;}
 <footer>
   <div class="wrap">
     <a class="btn btn-g" href="master-lab.html">← Master Lab sahifasi</a>
-    <a class="btn btn-g" href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegramda savol berish</a>
+    <a class="btn btn-g" href="master-planner.html">Shaxsiy rejamni tuzish</a>
   </div>
 </footer>
 

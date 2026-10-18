@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
 <script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
-<title>Kompas Lab: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik</title>
+<title>Kompas Lab — yo‘nalish, magistratura va stipendiya uchun mustaqil tayyorgarlik</title>
 <meta name="description" content="Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul. Obuna: oylik, Mavsum (4 oy) yoki yillik.">
 <meta property="og:title" content="Kompas Lab">
 <meta property="og:description" content="Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul. Obuna: oylik, Mavsum (4 oy) yoki yillik.">
@@ -577,6 +577,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <script src="js/sfx.js" defer></script>
 <script src="js/globe.js" defer></script>
 <link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/self-service.css">
 <meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Kompas Lab logotipi: Kuzatuvdan kashfiyotga">
@@ -587,7 +588,8 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   <div class="wrap">
     <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab</span></a>
     <div class="nav-links"><a href="#labs">Lablar</a><a href="#nega-lab">Qanday ishlaydi</a><a href="#solishtirish">Solishtirish</a><a href="#narx">Narxlar</a><a href="#savollar">Savollar</a></div>
-    <a href="login.html" class="btn btn-g btn-sm" style="margin-left:auto">Kirish</a>
+    <a href="master-planner.html" class="btn btn-g btn-sm" style="margin-left:auto">Master reja</a>
+    <a href="login.html" class="btn btn-g btn-sm">Kirish</a>
     <button type="button" class="btn btn-p btn-sm" style="margin-left:0" data-wl="">Kutish roʻyxati</button>
   </div>
 </nav>
@@ -596,8 +598,9 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   <div class="wrap hx">
     <div>
       <span class="motto"><img src="img/3d/compass.webp" width="160" height="160" alt="" decoding="async">Kuzatuvdan kashfiyotga</span>
-      <h1>Xorijiy universitet va stipendiyaga oʻzbek tilida tayyorlaning.</h1>
-      <p class="lead">Kompas Lab STEM yoʻnalishidagi oʻquvchi va talabalar uchun onlayn dasturlar. Universitet va stipendiyani dalil bilan tanlaysiz, hujjatlarni <strong>oʻzingiz</strong> yozasiz. Har fakt rasmiy manba havolasi bilan beriladi.</p>
+      <h1>Xorijda o‘qish uchun o‘zingizga mos yo‘lni toping va mustaqil tayyorlaning.</h1>
+      <p class="lead">Kompas Lab — xorijda taʼlim olishni rejalashtirayotganlar uchun o‘zbekcha mustaqil tayyorgarlik platformasi. Bepul dars, rejalashtirgich, vazifalar va rasmiy manbalardan foydalaning. STEM yo‘nalishlari ustuvor, lekin boshqa fanlar uchun ham ochiq. Har bir universitet talabini asl saytida tekshiring.</p>
+      <div class="ss-actions" style="margin:14px 0 20px"><a class="ss-btn" href="master-planner.html">Bepul magistratura rejasini tuzish (Master Planner)</a><a class="ss-btn secondary" href="master-lab.html">Master Lab dasturini ko‘rish</a></div>
       <div class="facts"><span class="fact"><img src="img/3d/seedling.webp" width="160" height="160" alt="" decoding="async"><span>Har Labda <b>M0 bepul</b></span></span><span class="fact"><img src="img/3d/memo.webp" width="160" height="160" alt="" decoding="async"><span><b>Oʻzbek</b> tilida</span></span><span class="fact"><img src="img/3d/scroll.webp" width="160" height="160" alt="" decoding="async"><span>Rasmiy <b>manbalar</b></span></span><span class="fact"><img src="img/3d/calendar.webp" width="160" height="160" alt="" decoding="async"><span>Obuna: <b>oylik</b>, <b>Mavsum</b> yoki <b>yillik</b></span></span></div>
       <div class="finder" aria-label="Lab tanlash">
         <div class="fnd-top"><span class="fnd-t"><img src="img/3d/telescope.webp" width="160" height="160" alt="" decoding="async">Sizga qaysi Lab mos?</span><span class="fnd-steps" aria-hidden="true"><i data-s="who"></i><i data-s="goal"></i></span><span data-sfx-slot></span></div>
@@ -646,7 +649,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 
 <section class="alt" id="labs">
   <div class="wrap">
-    <div class="head"><h2>Lablar</h2><p class="sub">Daraja Labi umumiy akademik tayyorgarlikni beradi. Davlat Labi muayyan stipendiya tizimining talablarini qoʻshadi. Har Lab bepul M0 bilan boshlanadi.</p></div>
+    <div class="head"><h2>Lablar</h2><p class="sub">Daraja Labʼlari umumiy tayyorgarlikni, davlat va stipendiya Labʼlari maxsus qoidalarni o‘rgatadi. Modullar turli bosqichda: <strong>dastur rejasi</strong> — barcha darslar tayyor va nashr etilgan degani emas. Master Labʼni to‘liq tayyorlash birinchi ustuvorlik.</p></div>
     <h3 class="grp-h">Daraja boʻyicha</h3><div class="labs-g"><div class="lc"><div class="lc-h"><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Bachelor Lab</div><div class="lc-w">10–11-sinf, litsey va kollej, 15–19 yosh</div></div></div>
 <div class="lc-m"><span class="lc-t">17 modul</span><span class="lc-t">86 dars</span><span class="lc-t free">M0 bepul</span></div><p>Universitet tanlash, testlar rejasi, insho, tavsiya xatlari va 4 yillik moliyaviy reja. 18 yoshgacha obunani ota-ona rasmiylashtiradi.</p>
 <div class="live" data-live-wl="bachelor-lab"><i></i><span></span></div>
@@ -678,6 +681,15 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   </div>
 </section>
 
+<section class="alt" id="mustaqil">
+  <div class="wrap">
+    <div class="head"><h2>O‘zingiz mustaqil ishlang — mentor kerak emas</h2><p class="sub">Kompas’da dars, reja va topshiriqlarni o‘zingiz boshqarasiz. Hozir ishlayotgan bepul vositalar bilan boshlang. Individual mentor feedback va qabul kafolati mavjud emas.</p></div>
+    <div class="ss-grid">
+      <div class="ss-card"><h3>Magistratura rejalashtirgichi (Master Planner)</h3><p>Maqsad, o‘qish yili, saralangan dasturlar (Shortlist), M0–M8 topshiriqlari va eksport. Hisob ochish ham shart emas; ma'lumotlar qurilmada saqlanadi.</p><a class="ss-btn" href="master-planner.html">Bepul boshlash</a></div>
+      <div class="ss-card"><h3>Rasmiy manbalar (Official Sources)</h3><p>Universitet va davlatning rasmiy portallari. Har muhim talab uchun aynan dastur sahifasidagi qabul yili, muddat va tekshiruv sanasini ko‘ring.</p><a class="ss-btn secondary" href="sources.html">Manbalarni ko‘rish</a></div>
+    </div>
+  </div>
+</section>
 <section id="nega-lab">
   <div class="wrap whylab">
     <div>
@@ -697,7 +709,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 
 <section class="alt" id="solishtirish">
   <div class="wrap">
-    <div class="head"><h2>Agentlik narxi bilan solishtiring</h2><p class="sub">Agentlik yoki konsultant aytgan narxni kiriting. Hisob shu sahifada bajariladi, hech qayerga yuborilmaydi.</p></div>
+    <div class="head"><h2>Kompas va konsultatsiya xizmati qanday farq qiladi?</h2><p class="sub"><strong>Kompas</strong> — mustaqil o‘rganish va arizani rejalash vositasi; <strong>agentlik</strong> esa shartnomasiga qarab siz bilan individual ishlashi mumkin. Xizmatlar bir xil emas. Quyidagi hisob faqat eʼlon qilingan narxlarni matematik solishtiradi, qaysi biri foydaliroq ekanini isbotlamaydi.</p></div>
     <div class="cmpc">
       <div class="in">
         <label for="amt">Agentlik narxi</label>
@@ -723,7 +735,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 
 <section id="narx">
   <div class="wrap">
-    <div class="head"><h2>Narxlar</h2><p class="sub">Obuna: oylik, 4 oylik (Mavsum) yoki yillik. M0 hamma Labda bepul. Mavsum bitta ariza sikliga moʻljallangan va 3 oy narxiga teng; oylik obunada modullar har oy bitta faza boʻyicha ochiladi.</p></div>
+    <div class="head"><h2>Rejalashtirilgan narxlar (Indicative Pricing)</h2><p class="sub">Quyidagi qiymatlar <strong>hozir sotilayotgan obuna emas</strong>: to‘lovlar yopiq. ERI, rasmiy payment integratsiyasi, kontent ekspertizasi va testlardan keyin yakuniy narxlar qayta eʼlon qilinadi. M0 bepul. Hozir Master Lab rejalashtirgichi ham bepul.</p></div>
     <div class="pay-status"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
     <div class="ptop"><div class="seg" role="group" aria-label="Davr"><button type="button" data-period="m" aria-pressed="false">Oylik</button><button type="button" data-period="s" aria-pressed="true">4 oy · Mavsum</button><button type="button" data-period="y" aria-pressed="false">Yillik</button></div></div>
     <div class="tblwrap"><table class="cmp ptbl season" id="ptbl" style="margin-top:0"><thead><tr><th>Lab</th><th>Narx</th><th>Holat</th></tr></thead><tbody><tr><td><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async">Bachelor Lab</td><td class="p"><span class="py"><span data-py="bachelor-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="bachelor-lab">99 000</span> soʻm</span><span class="ps"><span data-ps="bachelor-lab">297 000</span> soʻm<small>4 oy, 1 oy tekin</small></span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async">Master Lab</td><td class="p"><span class="py"><span data-py="master-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="master-lab">99 000</span> soʻm</span><span class="ps"><span data-ps="master-lab">297 000</span> soʻm<small>4 oy, 1 oy tekin</small></span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy" decoding="async">PhD Lab</td><td class="p"><span class="py"><span data-py="phd-lab">999 000</span> soʻm</span><span class="pm"><span data-pm="phd-lab">129 000</span> soʻm</span><span class="ps"><span data-ps="phd-lab">387 000</span> soʻm<small>4 oy, 1 oy tekin</small></span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async">GKS Lab</td><td class="p"><span class="py"><span data-py="gks-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="gks-lab">99 000</span> soʻm</span><span class="ps"><span data-ps="gks-lab">297 000</span> soʻm<small>4 oy, 1 oy tekin</small></span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async">USA Lab</td><td class="p"><span class="py"><span data-py="usa-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="usa-lab">99 000</span> soʻm</span><span class="ps"><span data-ps="usa-lab">297 000</span> soʻm<small>4 oy, 1 oy tekin</small></span></td><td>B trek: sikl kutilmoqda</td></tr><tr><td><img class="" src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async">DAAD Lab</td><td class="p"><span class="py"><span data-py="daad-lab">699 000</span> soʻm</span><span class="pm"><span data-pm="daad-lab">99 900</span> soʻm</span><span class="ps"><span data-ps="daad-lab">299 700</span> soʻm<small>4 oy, 1 oy tekin</small></span></td><td>Kutish roʻyxati</td></tr><tr><td><img class="" src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async">Tadbirkor Talaba</td><td class="p"><span class="py"><span data-py="tadbirkor-talaba">299 000</span> soʻm</span><span class="pm"><span data-pm="tadbirkor-talaba">29 900</span> soʻm</span><span class="ps"><span data-ps="tadbirkor-talaba">89 700</span> soʻm<small>4 oy, 1 oy tekin</small></span></td><td>Ishlab chiqilmoqda</td></tr><tr><td><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async">Musofir Lab</td><td class="p"><span class="py"><span data-py="miggo">499 000</span> soʻm</span><span class="pm"><span data-pm="miggo">49 900</span> soʻm</span><span class="ps"><span data-ps="miggo">149 700</span> soʻm<small>4 oy, 1 oy tekin</small></span></td><td>M0 tayyorlanmoqda</td></tr></tbody></table></div>
@@ -740,7 +752,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       <p>Yillik obunaga qoʻshish rejalashtirilgan funksiyalar. Hozirgi narxga kirmaydi, ishga tushish sanasi eʼlon qilinmagan.</p>
       <ul><li>Shaxsiy muddat eslatmalari (Telegram yoki email)</li><li>Profilga mos stipendiyalar bazasi: rasmiy havola va tekshiruv sanasi bilan</li><li>Tayyorgarlik koʻrsatkichi tarixi: oyma-oy oʻzgarish</li><li>Javoblar va hujjatlarni telefon va kompyuter orasida sinxronlash</li></ul>
     </div>
-    <div class="refund"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Toʻlangan obuna puli qaytarilmaydi.</b> Shu sababli har Labning M0 moduli bepul: toʻlashdan oldin dastur sizga mos yoki mos emasligini oʻzingiz tekshirasiz.<p>Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat umuman koʻrsatilmagan toʻlov qaytariladi. Murojaat: <a href="https://t.me/kompaslab" target="_blank" rel="noopener">t.me/kompaslab</a>.</p></div></div>
+    <div class="refund"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Hozir to‘lov qabul qilinmaydi.</b> ERI va rasmiy to‘lov integratsiyasi tayyor bo‘lgach, obuna, bekor qilish va pulni qaytarish shartlari isteʼmolchi huquqlari talablariga mos ravishda alohida eʼlon qilinadi.<p>Bepul M0 va <a href="master-planner.html">Master rejalashtirgichi</a> hozirdanoq ochiq.</p></div></div>
     <div class="rules">
       <div class="ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Bekor qilish</b>Obunani istalgan vaqtda toʻxtatasiz: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi.</div></div>
       <div class="ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>18 yoshgacha</b>Obunani va toʻlovni ota-ona yoki vasiy rasmiylashtiradi. Ota-onaga jarayon haqida qisqa hisobot beriladi.</div></div>
@@ -770,7 +782,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <section class="alt" id="savollar">
   <div class="wrap">
     <div class="head" style="text-align:center"><h2>Koʻp soʻraladigan savollar</h2></div>
-    <div class="faq"><details><summary>Qachon boshlash mumkin?</summary><p>Hozir kutish roʻyxati ochiq. Lablar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beramiz. Har Labning M0 moduli bepul.</p></details><details><summary>Obuna qanday ishlaydi?</summary><p>Har Lab alohida obuna: oylik, Mavsum (4 oy, 3 oy narxida) yoki yillik. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi. Umrbod kirish rejasi yoʻq.</p></details><details><summary>Toʻlov qaytariladimi?</summary><p>Yoʻq, toʻlangan obuna puli qaytarilmaydi. Shuning uchun har Labning M0 moduli bepul: toʻlashdan oldin dastur sizga mos yoki mos emasligini bilasiz. Obunani istalgan vaqtda toʻxtatsangiz, keyingi davr uchun pul yechilmaydi. Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat koʻrsatilmagan toʻlov qaytariladi.</p></details><details><summary>Darslar video formatdami?</summary><p>Asosiy format: matn, interaktiv vositalar va ish jadvallari. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.</p></details><details><summary>Hujjatlarni oʻrnimga yozib berasizmi?</summary><p>Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati berilmaydi.</p></details><details><summary>18 yoshga toʻlmaganman. Qatnasha olamanmi?</summary><p>Ha: Bachelor Lab va GKS Lab bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi.</p></details><details><summary>Bir nechta Lab kerak boʻlsa-chi?</summary><p>Daraja Labi (Bachelor, Master, PhD) va davlat Labi (GKS, USA, DAAD) birga ishlatilishi mumkin; ikkinchi Lab uchun chegirma rejalashtirilgan.</p></details><details><summary>Darslar qaysi tilda?</summary><p>Oʻzbek tilida. Xalqaro atamalar avval oʻzbekcha, keyin qavsda inglizcha beriladi, masalan: ilmiy loyiha taklifi (Research Proposal).</p></details></div>
+    <div class="faq"><details><summary>Qachon boshlash mumkin?</summary><p>Hozir kutish roʻyxati ochiq. Lablar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beramiz. Har Labning M0 moduli bepul.</p></details><details><summary>Obuna qanday ishlaydi?</summary><p>Har Lab alohida obuna: oylik, Mavsum (4 oy, 3 oy narxida) yoki yillik. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi. Umrbod kirish rejasi yoʻq.</p></details><details><summary>To‘lov va pulni qaytarish shartlari qanday?</summary><p>Onlayn to‘lov hali ochilmagan. ERI va to‘lov provayderi integratsiyasi yakunlangach, obuna hamda pulni qaytarish shartlari qonunchilikka muvofiq alohida eʼlon qilinadi. Hozir M0 va bepul rejalashtirgichdan foydalanishingiz mumkin.</p></details><details><summary>Darslar video formatdami?</summary><p>Asosiy format: matn, interaktiv vositalar va ish jadvallari. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.</p></details><details><summary>Hujjatlarni oʻrnimga yozib berasizmi?</summary><p>Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati berilmaydi.</p></details><details><summary>18 yoshga toʻlmaganman. Qatnasha olamanmi?</summary><p>Ha: Bachelor Lab va GKS Lab bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi.</p></details><details><summary>Bir nechta Lab kerak boʻlsa-chi?</summary><p>Daraja Labi (Bachelor, Master, PhD) va davlat Labi (GKS, USA, DAAD) birga ishlatilishi mumkin; ikkinchi Lab uchun chegirma rejalashtirilgan.</p></details><details><summary>Darslar qaysi tilda?</summary><p>Oʻzbek tilida. Xalqaro atamalar avval oʻzbekcha, keyin qavsda inglizcha beriladi, masalan: ilmiy loyiha taklifi (Research Proposal).</p></details></div>
   </div>
 </section>
 
