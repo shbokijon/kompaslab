@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>Dars 0.2: Firibgarlik belgilari · Musofir Lab M0 | Kompas Lab</title>
+<meta name="description" content="Musofir Lab bepul M0: rasmiy va norasmiy yoʻl farqi, firibgarlik belgilari, Koreya, Buyuk Britaniya, Germaniya va Polsha yoʻllari, xarajat va qarz xavfi. Hamma uchun ochiq.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --accent:#2d4a3e; --accent-h:#1e3329; --accent-lit:#e8f0ec;
+  --accent2:#c4622d; --accent2-h:#a84f23; --accent2-lit:#faeee7;
+  --gold:#8a6a10; --gold-lit:#f8f0d6;
+  --bg:#f4f3ef; --surface:#fffefb; --border:#e2ded3;
+  --text:#1a2e26; --muted:#5f7169;
+  --green:#1a7a4a; --green-lit:#e6f4ec; --red:#b42318; --red-lit:#fdecea;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:"Outfit","IBM Plex Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;}
+a{color:var(--accent);}
+img{display:block;}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+button{font-family:inherit;}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{animation:none!important;transition:none!important;}}
+
+/* TOP BAR */
+.top{position:sticky;top:0;z-index:100;background:rgba(244,243,239,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.top .wrap{display:flex;align-items:center;gap:12px;height:60px;}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--accent);font-weight:800;font-size:15px;flex-shrink:0;}
+.logo img{width:30px;height:30px;}
+.logo small{color:var(--muted);font-weight:600;}
+.xp{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.lvl{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;}
+.xp-pill{display:flex;align-items:center;gap:6px;background:var(--accent);color:#fff;border-radius:99px;padding:6px 12px;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.xp-pill img{width:20px;height:20px;}
+.xp-bar{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:transparent;}
+.xp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent2),#d9a441);transition:width .6s ease;}
+.pop{animation:pop .5s ease;}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.15)}100%{transform:scale(1)}}
+
+/* HERO */
+.hero{padding:44px 0 28px;}
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:28px;align-items:center;}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:12px;}
+.crumb a{color:var(--muted);text-decoration:none;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-lit);color:var(--green);font-weight:800;font-size:13px;padding:5px 12px;border-radius:99px;margin-bottom:14px;}
+h1{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.08;color:var(--accent);margin-bottom:14px;}
+.lead{font-size:17px;color:var(--muted);max-width:600px;}
+.hero-art{width:180px;height:180px;}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.fact{font-size:13px;font-weight:700;padding:6px 11px;border-radius:9px;background:var(--surface);border:1px solid var(--border);}
+.fact b{color:var(--accent2);font-variant-numeric:tabular-nums;}
+.float{animation:float 6s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-4deg)}}
+
+/* QUEST MAP */
+.map{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin:8px 0 34px;}
+.map-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.map-h b{font-size:16px;color:var(--accent);}
+.map-h span{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;}
+.path{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;position:relative;}
+.node{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:11.5px;font-weight:700;text-align:center;line-height:1.25;position:relative;}
+.node .dot{width:46px;height:46px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--muted);transition:background .3s,border-color .3s,transform .2s;}
+.node:hover .dot{transform:translateY(-2px);border-color:var(--accent);}
+.node.done .dot{background:var(--accent);border-color:var(--accent);color:#fff;}
+.node.done{color:var(--accent);}
+.node::after{content:"";position:absolute;top:23px;left:calc(50% + 26px);right:calc(-50% + 26px);height:2px;background:var(--border);}
+.node:last-child::after{display:none;}
+.node.done::after{background:var(--accent);}
+
+/* SECTIONS */
+section{padding:12px 0 30px;}
+h2{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:clamp(26px,3.4vw,34px);color:var(--accent);line-height:1.15;margin-bottom:10px;}
+.sub{color:var(--muted);margin-bottom:20px;max-width:680px;}
+.goal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px 22px;display:grid;gap:12px;}
+.goal li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:15px;}
+.goal img{width:36px;height:36px;flex-shrink:0;}
+
+/* LESSONS */
+.lessons{display:grid;gap:12px;}
+.lesson{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:border-color .2s,box-shadow .2s;scroll-margin-top:76px;}
+.lesson.open{border-color:var(--accent);box-shadow:0 14px 40px rgba(45,74,62,.10);}
+.l-head{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;background:none;border:none;text-align:left;cursor:pointer;color:inherit;}
+.l-ic{width:52px;height:52px;border-radius:14px;background:var(--accent-lit);display:flex;align-items:center;justify-content:center;position:relative;}
+.l-ic img{width:38px;height:38px;}
+.l-ic .ok{position:absolute;right:-5px;bottom:-5px;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:900;display:none;align-items:center;justify-content:center;border:2px solid var(--surface);}
+.lesson.done .l-ic .ok{display:flex;}
+.l-n{font-size:12.5px;font-weight:800;color:var(--accent2);}
+.l-t{font-size:16.5px;font-weight:800;line-height:1.3;}
+.l-m{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+.tag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:7px;background:var(--bg);border:1px solid var(--border);color:var(--muted);}
+.tag.xp{background:var(--gold-lit);border-color:transparent;color:var(--gold);}
+.chev{font-size:18px;color:var(--muted);transition:transform .25s;}
+.lesson.open .chev{transform:rotate(180deg);color:var(--accent);}
+.l-body{display:none;border-top:1px solid var(--border);}
+.lesson.open .l-body{display:block;}
+.tabs{display:flex;gap:4px;padding:8px 12px 0;overflow-x:auto;background:var(--bg);border-bottom:1px solid var(--border);-webkit-overflow-scrolling:touch;}
+.tab{padding:10px 14px;min-height:44px;border:none;background:none;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;}
+.tab[aria-selected="true"]{color:var(--accent2);border-bottom-color:var(--accent2);}
+.tab .seen{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-left:6px;vertical-align:2px;opacity:0;}
+.tab.v .seen{opacity:1;}
+.panel{display:none;padding:22px;}
+.panel.on{display:block;animation:fadeUp .3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.panel p{margin-bottom:12px;}
+.panel h4{font-size:16px;margin:20px 0 8px;color:var(--accent);}
+.panel ul{margin:8px 0 14px 20px;}
+.panel li{margin-bottom:6px;}
+.hook{background:var(--accent2-lit);border-left:4px solid var(--accent2);border-radius:12px;padding:16px 18px;font-size:16px;}
+.take{display:flex;gap:14px;align-items:flex-start;background:var(--accent-lit);border-radius:12px;padding:16px 18px;}
+.take img{width:40px;height:40px;flex-shrink:0;}
+.box{border-radius:12px;padding:14px 16px;margin:14px 0;font-size:14.5px;}
+.box.info{background:var(--accent-lit);}
+.box.warn{background:var(--gold-lit);}
+.tbl{overflow-x:auto;margin:12px 0;-webkit-overflow-scrolling:touch;}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:420px;}
+th{background:var(--accent);color:#fff;text-align:left;padding:9px 12px;font-size:13px;}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+.assign{background:var(--gold-lit);border-radius:12px;padding:16px 18px;}
+.assign b{display:block;margin-bottom:6px;}
+textarea{width:100%;min-height:96px;margin-top:10px;padding:12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--surface);color:var(--text);resize:vertical;}
+textarea:focus{outline:none;border-color:var(--accent);}
+.hint{font-size:12.5px;color:var(--muted);margin-top:6px;}
+.l-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 22px 20px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 20px;border-radius:12px;border:none;cursor:pointer;font-weight:800;font-size:15px;text-decoration:none;transition:transform .15s,background .15s;}
+.btn:active{transform:scale(.97);}
+.btn-p{background:var(--accent2);color:#fff;box-shadow:0 6px 20px rgba(196,98,45,.25);}
+.btn-p:hover{background:var(--accent2-h);}
+.btn-g{background:var(--surface);color:var(--accent);border:2px solid var(--border);}
+.btn-g:hover{border-color:var(--accent);}
+.btn[disabled]{background:var(--green-lit);color:var(--green);box-shadow:none;cursor:default;}
+
+/* MINI INTERACTIONS */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.chip{min-height:44px;padding:9px 14px;border-radius:99px;border:2px solid var(--border);background:var(--surface);font-size:14.5px;font-weight:700;color:var(--text);cursor:pointer;}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;}
+.quiz{display:grid;gap:12px;margin-top:10px;}
+.qz{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.qz p{font-weight:600;margin-bottom:10px;}
+.qz .row{display:flex;gap:8px;flex-wrap:wrap;}
+.qz button{min-height:42px;padding:8px 16px;border-radius:10px;border:2px solid var(--border);background:var(--bg);font-weight:800;font-size:14px;cursor:pointer;color:var(--text);}
+.qz.ans button{cursor:default;}
+.qz button.right{background:var(--green-lit);border-color:var(--green);color:var(--green);}
+.qz button.wrong{background:var(--red-lit);border-color:var(--red);color:var(--red);}
+.qz .why{display:none;font-size:13.5px;color:var(--muted);margin-top:8px;}
+.qz.ans .why{display:block;}
+.checks{display:grid;gap:8px;margin-top:10px;}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);cursor:pointer;font-size:14.5px;}
+.ck input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent2);flex-shrink:0;}
+.ck.on{border-color:var(--accent2);background:var(--accent2-lit);}
+.verdict{margin-top:12px;font-size:14.5px;border-radius:12px;padding:12px 14px;display:none;}
+.verdict.show{display:block;}
+
+/* TOOLS */
+.tool{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;margin-bottom:16px;scroll-margin-top:76px;}
+.tool-h{display:flex;gap:14px;align-items:center;margin-bottom:6px;}
+.tool-h img{width:52px;height:52px;}
+.tool-h h3{font-size:19px;font-weight:900;color:var(--accent);line-height:1.2;}
+.tool-h span{font-size:13px;color:var(--muted);}
+.rs{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:center;margin-top:12px;}
+.sl{margin-bottom:12px;}
+.sl label{display:flex;justify-content:space-between;gap:10px;font-size:14px;font-weight:700;}
+.sl label small{display:block;font-weight:500;color:var(--muted);font-size:12.5px;}
+.sl output{font-weight:900;color:var(--accent2);font-variant-numeric:tabular-nums;min-width:34px;text-align:right;}
+input[type=range]{width:100%;height:32px;accent-color:var(--accent2);}
+.radar{width:100%;max-width:260px;margin:0 auto;}
+.radar text{font-family:Outfit,IBM Plex Sans,sans-serif;font-size:10px;font-weight:700;fill:var(--muted);}
+.score{text-align:center;margin-top:6px;}
+.score b{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:46px;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;}
+.score span{display:block;font-size:13px;color:var(--muted);}
+.res{margin-top:14px;background:var(--bg);border-radius:14px;padding:14px 16px;font-size:14.5px;display:none;}
+.res.show{display:block;animation:fadeUp .3s ease both;}
+.dl-in{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.dl-in label{font-size:14px;font-weight:700;display:block;margin-bottom:6px;}
+.dl-in input{width:100%;min-height:48px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.tline{position:relative;height:56px;margin:22px 4px 6px;}
+.tline .bar{position:absolute;left:0;right:0;top:20px;height:8px;border-radius:99px;background:var(--border);overflow:hidden;}
+.tline .seg{position:absolute;top:0;bottom:0;}
+.tline .mk{position:absolute;top:0;transform:translateX(-50%);font-size:11.5px;font-weight:800;white-space:nowrap;text-align:center;}
+.tline .mk i{display:block;width:3px;height:18px;margin:0 auto;border-radius:2px;}
+.tline .mk span{display:block;margin-top:14px;}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;}
+
+/* BADGES */
+.badges{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;}
+.bdg{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 8px;text-align:center;font-size:12.5px;font-weight:800;color:var(--muted);line-height:1.25;}
+.bdg img{width:48px;height:48px;margin:0 auto 8px;filter:grayscale(1);opacity:.35;transition:filter .5s,opacity .5s,transform .5s;}
+.bdg small{display:block;font-weight:600;font-size:11.5px;margin-top:3px;}
+.bdg.on{border-color:var(--accent);color:var(--accent);}
+.bdg.on img{filter:none;opacity:1;transform:rotate(-6deg) scale(1.05);}
+
+/* DECISION */
+.decide{background:var(--accent);color:#fff;border-radius:22px;padding:24px;}
+.decide h2{color:#fff;}
+.decide .sub{color:rgba(255,255,255,.75);}
+.stmt{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px 18px;font-size:16px;margin:14px 0;}
+.stmt b{color:#ffd9a8;}
+.decide .ck{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff;}
+.decide .ck.on{background:rgba(196,98,45,.25);border-color:#e9a27a;}
+.decide .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.decide .btn-g{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.3);}
+.decide .missing{font-size:13.5px;color:rgba(255,255,255,.75);margin-top:10px;}
+
+/* MENTOR + PASSPORT */
+.mentor{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px 22px;}
+.mentor .av{width:48px;height:48px;border-radius:50%;background:var(--accent2);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mentor q{font-family:"DM Serif Display","Playfair Display",serif;font-size:19px;line-height:1.4;color:var(--accent);display:block;margin-bottom:10px;}
+.mentor small{color:var(--muted);font-size:13px;}
+.pass{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.pass div{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:14.5px;}
+.pass b{display:block;font-size:12.5px;color:var(--muted);margin-bottom:2px;}
+footer{padding:26px 0 60px;}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+
+/* TOAST + CONFETTI */
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(140%);background:var(--text);color:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;z-index:300;transition:transform .35s ease;max-width:calc(100% - 32px);box-shadow:0 14px 40px rgba(0,0,0,.25);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast img{width:34px;height:34px;}
+.cf{position:fixed;top:-12px;width:9px;height:14px;z-index:400;pointer-events:none;border-radius:2px;animation:fall linear forwards;}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.8}}
+
+@media(max-width:760px){
+  .hero{padding:28px 0 20px;}
+  .hero-g{grid-template-columns:minmax(0,1fr) 96px;gap:14px;align-items:start;}
+  .hero-art{width:96px;height:96px;}
+  h1{font-size:34px;}
+  .lead{font-size:16px;}
+  .lvl,.logo small{display:none;}
+  .path{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:16px;}
+  .node:nth-child(4)::after{display:none;}
+  .l-head{grid-template-columns:44px minmax(0,1fr) auto;gap:12px;padding:14px;}
+  .l-ic{width:44px;height:44px;}
+  .l-ic img{width:32px;height:32px;}
+  .panel{padding:18px 16px;}
+  .l-foot{padding:12px 16px 18px;}
+  .l-foot .btn{width:100%;}
+  .rs{grid-template-columns:minmax(0,1fr);}
+  .radar{max-width:230px;}
+  .dl-in{grid-template-columns:minmax(0,1fr);}
+  .badges{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .pass{grid-template-columns:minmax(0,1fr);}
+  .tool,.decide{padding:18px 16px;}
+}
+
+/* Musofir M0 qoʻshimchalari */
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--accent);background:#fff;}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px;}
+.safe{display:flex;gap:12px;align-items:flex-start;background:var(--red-lit);border:1px solid rgba(180,35,24,.25);border-radius:14px;padding:12px 16px;margin-top:16px;font-size:14.5px;}
+.safe img{width:36px;height:36px;flex-shrink:0;}
+.flip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px;}
+.flip.f4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.card3{perspective:900px;min-height:230px;cursor:pointer;border:none;background:none;padding:0;text-align:left;font:inherit;color:inherit;}
+.card3 .in{display:block;position:relative;width:100%;height:100%;min-height:230px;transition:transform .5s;transform-style:preserve-3d;}
+.card3[aria-pressed="true"] .in{transform:rotateY(180deg);}
+.card3 .f,.card3 .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:14px 16px;border:1px solid var(--border);}
+.card3 .f{background:var(--surface);display:flex;flex-direction:column;justify-content:space-between;}
+.card3 .f b{font-size:17px;color:var(--accent);line-height:1.25;}
+.card3 .f span{font-size:13px;color:var(--muted);}
+.card3 .f em{font-style:normal;font-size:30px;}
+.card3 .b{display:block;background:var(--accent);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.5;overflow:auto;}
+.card3 .b b{display:block;color:#ffd9a8;margin-bottom:4px;}
+.card3.bad .b{background:#7a2318;}
+@media (prefers-reduced-motion: reduce){.card3 .in{transition:none;}}
+.facts2{display:grid;gap:8px;margin-top:10px;}
+.fct{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:14px;}
+.fct b{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;margin-right:6px;}
+.fct b.ok{background:var(--green-lit);color:var(--green);} .fct b.wait{background:var(--gold-lit);color:var(--gold);}
+.fct a{color:#1f5fa8;font-size:12.5px;margin-left:4px;}
+.meter{margin-top:14px;background:var(--bg);border-radius:14px;padding:14px 16px;}
+.meter-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-weight:800;}
+.meter-h b{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:30px;line-height:1;}
+.meter-t{height:12px;border-radius:99px;background:linear-gradient(90deg,#1a7a4a 0%,#d9a441 45%,#b42318 100%);position:relative;margin:10px 0 6px;opacity:.9;}
+.meter-t i{position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--text);transform:translate(-50%,-50%);left:0;transition:left .45s cubic-bezier(.3,1.4,.5,1);}
+.meter p{margin:6px 0 0;font-size:14.5px;}
+.routes{display:grid;gap:10px;margin-top:12px;}
+.route{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;}
+.route .fl{font-size:28px;}
+.route b{display:block;font-size:15.5px;}
+.route span{font-size:13.5px;color:var(--muted);}
+.route .pc{font-weight:900;font-size:13px;padding:4px 10px;border-radius:99px;white-space:nowrap;}
+.pc.hi{background:var(--green-lit);color:var(--green);} .pc.mid{background:var(--gold-lit);color:var(--gold);} .pc.lo{background:var(--bg);color:var(--muted);}
+.route.top{border-color:var(--accent);box-shadow:0 6px 20px rgba(45,74,62,.10);}
+.budget{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px;}
+.budget div{background:var(--bg);border-radius:14px;padding:12px 14px;}
+.budget b{display:block;font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:28px;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums;}
+.budget span{font-size:12.5px;font-weight:700;color:var(--muted);}
+.chan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px;}
+.chan a{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--text);font-size:14px;}
+.chan a:hover{border-color:var(--accent);}
+.chan a em{font-style:normal;font-size:24px;}
+.chan a b{display:block;color:var(--accent);}
+.verd{font-weight:900;font-size:17px;margin-top:4px;}
+.badges.b6{grid-template-columns:repeat(6,minmax(0,1fr));}
+@media(max-width:760px){
+  .grid2,.flip,.flip.f4,.budget,.chan{grid-template-columns:minmax(0,1fr);}
+  .badges.b6{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .card3,.card3 .in{min-height:190px;}
+  .route{grid-template-columns:auto minmax(0,1fr);}
+  .route .pc{grid-column:2;justify-self:start;}
+}
+</style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kompas Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script src="js/pwa.js" defer></script>
+<link rel="stylesheet" href="css/brand.css">
+<meta property="og:title" content="Musofir Lab M0: rasmiy yoʻl va firibgarlikdan himoya">
+<meta property="og:description" content="Xorijga ishga ketishdan oldin: firibgarlik belgilari, 4 mamlakatning rasmiy yoʻllari, xarajat va qarz xavfi. Bepul.">
+<meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<script src="js/kompas-ui.js"></script>
+<link rel="canonical" href="https://www.kompaslab.uz/musofir-lab-m0-2">
+</head>
+<body data-kview="lesson" data-klesson="l2">
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="musofir-lab.html"><span class="klogo klogo-sm"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span>Kompas Lab <small>· Musofir Lab M0</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="musofir-lab.html">Musofir Lab</a> · Modul 0</div>
+        <span class="badge">🔓 Bepul · Hamma uchun ochiq · 18+</span>
+        <h1>Xorijda ish: avval rasmiy yoʻl, keyin pul.</h1>
+        <p class="lead">Bu modulda rasmiy va norasmiy yoʻl farqini, firibgarlik belgilarini, toʻrt mamlakat yoʻllarini va ketish xarajati necha oyda qaytishini oʻrganasiz. Natija: sizga mos rasmiy yoʻl va halol qaror.</p>
+        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>250</b> XP</span></div>
+        <div class="safe"><img src="img/3d/shield.webp" width="160" height="160" alt=""><span><b>Kompas ish yoki viza topib bermaydi va vositachi emas.</b> Hech qanday vositachi, agentlik yoki operatordan pul olinmaydi. Sizdan “Kompas nomidan” pul soʻrashsa, bu firibgarlik.</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/musofir.webp" width="160" height="160" alt="">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 9 bosqich</span></div>
+    <div class="path">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">0.1</span>Rasmiy</a>
+      <a class="node" href="#l2" data-node="l2"><span class="dot">0.2</span>Belgilar</a>
+      <a class="node" href="#l3" data-node="l3"><span class="dot">0.3</span>Xarita</a>
+      <a class="node" href="#l4" data-node="l4"><span class="dot">0.4</span>Yoʻl</a>
+      <a class="node" href="#l5" data-node="l5"><span class="dot">0.5</span>Xarajat</a>
+      <a class="node" href="#l6" data-node="l6"><span class="dot">0.6</span>Qadam</a>
+      <a class="node" href="#tool-fr" data-node="fr"><span class="dot">🛡</span>Tekshiruv</a>
+      <a class="node" href="#tool-route" data-node="route"><span class="dot">🧭</span>Test</a>
+      <a class="node" href="#qaror" data-node="dec"><span class="dot">✓</span>Qaror</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Firibgarlik tekshiruvi:</b> vositachi yoki taklifni 9 ta belgi boʻyicha tekshirish odati.</span></li>
+      <li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Sizga mos rasmiy yoʻl:</b> Koreya, Buyuk Britaniya, Germaniya yoki Polsha: qaysi biridan boshlab tekshirish kerak.</span></li>
+      <li><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span><b>Xarajat hisobi:</b> ketish xarajati necha oyda qaytadi va qarz bilan ketish xavfi.</span></li>
+    </ul>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi, serverga yuborilmaydi.</p>
+    <div class="lessons">
+
+      <!-- 0.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">Rasmiy va norasmiy yoʻl</span>
+            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">🎯 Rasmiymi yoki xavfli?</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Ikki kishi bir xil mamlakatga, bir xil ishga ketadi. Biri shartnoma, sugʻurta va shikoyat qilish huquqi bilan. Ikkinchisi turist vizasida, hujjatsiz va maoshi toʻlanmasa ham hech kimga murojaat qila olmaydi. Farq ishda emas, yoʻlda.</div></div>
+          <div class="panel">
+            <p>Kartani bosing:</p>
+            <div class="flip">
+              <button type="button" class="card3" data-card="ok" aria-pressed="false"><span class="in"><span class="f"><em>✅</em><b>Rasmiy yoʻl</b><span>Bosing</span></span><span class="b"><b>Davlat dasturi yoki tasdiqlangan tashkilot</b>Talablar va toʻlovlar rasmiy manbada eʼlon qilinadi. Ish vizasi, mehnat shartnomasi, sugʻurta. Muammo boʻlsa: mezbon davlat organlari, elchixona va Migratsiya agentligiga murojaat qilish huquqi.</span></span></button>
+              <button type="button" class="card3 bad" data-card="bad" aria-pressed="false"><span class="in"><span class="f"><em>⛔</em><b>Norasmiy yoʻl</b><span>Bosing</span></span><span class="b"><b>Turist vizasi, “tanish orqali”, hujjatsiz</b>Ish huquqi yoʻq: maosh toʻlanmasa yoki jarohat olsangiz, himoya yoʻq. Ushlansa: chiqarib yuborish va keyingi kirishga taqiq xavfi. Pasport ish beruvchida qolishi mumkin.</span></span></button>
+            </div>
+            <h4>Migratsiya agentligining roli</h4>
+            <ul><li>Oʻzbekistonda tashqi mehnat migratsiyasi boʻyicha vakolatli davlat organi: Koreya EPS kabi davlatlararo dasturlarga nomzodlarni roʻyxatga oladi va eʼlonlarni joylaydi.</li><li>Rasmiy eʼlonlar: <a href="https://gov.uz/oz/migration" target="_blank" rel="noopener">gov.uz/migration</a>. Telegramdagi “agentlik vakili” emas, shu sahifa manba.</li></ul>
+            <div class="box info"><b>Rasmiy yoʻlda ham toʻlov bor.</b> Imtihon, viza, chipta, sugʻurta. Farq: rasmiy toʻlov eʼlon qilingan, qonuniy tashkilotga toʻlanadi va chek beriladi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy"><p>Rasmiy yoʻl: eʼlon qilingan talablar, ish vizasi, shartnoma va himoya. Norasmiy yoʻl: arzonroq koʻrinadi, lekin huquqsiz va chiqarib yuborish xavfi bilan.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: rasmiymi yoki xavfli?</b>
+            <div class="quiz" id="quiz">
+              <div class="qz" data-a="ok"><p>“Migratsiya agentligining gov.uz dagi eʼlonini oʻqib, EPS-TOPIK imtihoniga belgilangan muddatda onlayn roʻyxatdan oʻtdim.”</p><div class="row"><button type="button" data-v="ok">✅ Rasmiy</button><button type="button" data-v="bad">⛔ Xavfli</button></div><div class="why">Rasmiy eʼlon, rasmiy kanal, rasmiy muddat.</div></div>
+              <div class="qz" data-a="bad"><p>“Telegramdagi odam: ‘Koreyaga ish vizasi 100% kafolat, imtihonsiz. Bugun 3000 dollar oldindan toʻlasangiz joy sizniki.’”</p><div class="row"><button type="button" data-v="ok">✅ Rasmiy</button><button type="button" data-v="bad">⛔ Xavfli</button></div><div class="why">Kafolat, imtihonsiz, oldindan katta toʻlov, shoshiltirish: toʻrtta xavf belgisi bitta xabarda.</div></div>
+              <div class="qz" data-a="bad"><p>“Turist vizasida borib, u yerda tanishlar orqali ish topaman, keyin hujjatni toʻgʻrilayman.”</p><div class="row"><button type="button" data-v="ok">✅ Rasmiy</button><button type="button" data-v="bad">⛔ Xavfli</button></div><div class="why">Turist vizasi ish huquqini bermaydi: bu norasmiy yoʻl.</div></div>
+              <div class="qz" data-a="ok"><p>“Buyuk Britaniya mavsumiy ishi uchun operator nomini GOV.UK dagi tasdiqlangan operatorlar roʻyxatidan tekshirdim.”</p><div class="row"><button type="button" data-v="ok">✅ Rasmiy</button><button type="button" data-v="bad">⛔ Xavfli</button></div><div class="why">Operatorni rasmiy roʻyxatdan tekshirish: toʻgʻri qadam.</div></div>
+            </div>
+            <div class="verdict" id="quizRes"></div>
+            <textarea data-save="a1" placeholder="Men eshitgan “ish taklifi” va u qaysi yoʻlga oʻxshaydi: ..."></textarea><div class="hint">Matn faqat shu brauzerda saqlanadi.</div></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Firibgarlik belgilari</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🛡 Taklif tekshiruvi</span><span class="tag xp">+20 XP · tekshiruv +20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Firibgar ochiq aytmaydi: “men firibgarman”. U kafolat beradi, shoshiltiradi va “faqat siz uchun” joy topganini aytadi. Belgilarni oldindan bilgan odamni aldash qiyin.</div></div>
+          <div class="panel">
+            <h4>Toʻxtash belgilari</h4>
+            <ul>
+              <li><b>“Kafolat” vaʼdasi.</b> Rasmiy tizim ishga joylashishni kafolatlamaydi.</li>
+              <li><b>Oldindan katta toʻlov</b> nomaʼlum shaxsga yoki shaxsiy kartaga, chek va shartnomasiz.</li>
+              <li><b>Pasportni olib qolish</b> yoki “hujjatlaringizni bizga topshiring”.</li>
+              <li><b>Faqat Telegram yoki WhatsApp:</b> ofis, litsenziya, rasmiy shartnoma yoʻq.</li>
+              <li><b>Shoshiltirish:</b> “bugun toʻlamasangiz joy ketadi”.</li>
+              <li><b>Imtihonsiz yoki navbatsiz</b> yoʻl vaʼdasi: rasmiy dasturda bunday “eshik” yoʻq.</li>
+            </ul>
+            <h4>Tekshirilgan faktlar</h4>
+            <div class="facts2">
+              <div class="fct"><b class="ok">Rasmiy</b>Koreya EPS: nomzodni tanlash huquqi faqat Koreya ish beruvchisida; boshqa organ yoki shaxsning aralashuviga yoʻl qoʻyilmaydi. Demak, “sizni tanlatib beraman” degan vositachi yolgʻon gapiryapti.<a href="https://gov.uz/en/migration/news/view/197042" target="_blank" rel="noopener">gov.uz/migration</a></div>
+              <div class="fct"><b class="ok">Yangilik</b>Buyuk Britaniyada bitta operatorning litsenziyasi bekor qilingach, Oʻzbekistondagi yuzga yaqin nomzod mamlakatga kira olmagan. Rasmiy yoʻlda ham operatorni tekshirish kerak.<a href="https://thegrocer.co.uk/fruit-and-veg/uzbek-seasonal-workers-barred-from-uk-entry-after-scheme-operator-ban/694700.article" target="_blank" rel="noopener">thegrocer.co.uk</a></div>
+            </div>
+            <p style="margin-top:12px">Pastdagi <a href="#tool-fr">Taklif tekshiruvi</a> vositasida sizga kelgan taklifni tekshiring.</p>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p>Kafolat, oldindan katta toʻlov, pasportni olish, faqat messenjer, shoshiltirish: bittasi ham toʻxtash uchun yetarli.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: taklif tekshiruvi</b><ul><li>Oʻzingizga yoki tanishingizga kelgan taklifni <a href="#tool-fr">tekshiruv</a>dan oʻtkazing.</li><li>Taklif yoʻq boʻlsa, 0.1 testidagi Telegram xabarini tekshiring.</li></ul>
+            <textarea data-save="a2" placeholder="Taklif: ... | Topilgan belgilar: ... | Qarorim: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.3</span><span class="l-t" style="display:block">Mamlakatlar xaritasi</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🗺 4 mamlakat</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“Qayerga ketish yaxshi?” degan savolga toʻgʻri javob yoʻq. Toʻgʻri savol: “Qaysi rasmiy yoʻlning talablariga men javob beraman?” Toʻrt mamlakatning yoʻllari bir-biriga umuman oʻxshamaydi.</div></div>
+          <div class="panel">
+            <p>Kartani bosing:</p>
+            <div class="flip f4">
+              <button type="button" class="card3" data-card="kr" aria-pressed="false"><span class="in"><span class="f"><em>🇰🇷</em><b>Koreya: EPS (E-9)</b><span>Bosing</span></span><span class="b"><b>Davlatlararo tizim</b>Ishlab chiqarish va xizmat sohasi. EPS-TOPIK imtihoni, keyin amaliy sinov. Oʻtganlar bazaga kiradi; ish beruvchi tanlaydi. Kafolat yoʻq.</span></span></button>
+              <button type="button" class="card3" data-card="uk" aria-pressed="false"><span class="in"><span class="f"><em>🇬🇧</em><b>Buyuk Britaniya: mavsumiy ish</b><span>Bosing</span></span><span class="b"><b>Qisqa muddat, fermada</b>Bogʻdorchilik: 6 oygacha; parranda: 2-oktabrdan 31-dekabrgacha. Oila aʼzolari olib borilmaydi. Vizaga tasdiqlangan operator homiylik qiladi.</span></span></button>
+              <button type="button" class="card3" data-card="de" aria-pressed="false"><span class="in"><span class="f"><em>🇩🇪</em><b>Germaniya</b><span>Bosing</span></span><span class="b"><b>Malaka va til yoʻli</b>Migratsiya kelishuvi bor. Loyihalar: hamshiralar, dual kasb taʼlimi. Diplomni tan oldirish va nemis tili talab qilinadi.</span></span></button>
+              <button type="button" class="card3" data-card="pl" aria-pressed="false"><span class="in"><span class="f"><em>🇵🇱</em><b>Polsha</b><span>Bosing</span></span><span class="b"><b>Viza + ish ruxsatnomasi</b>Ikki alohida hujjat. Mavsumiy ish uchun alohida ruxsatnoma turi bor. Hukumatlararo kelishuv imzolangani tasdiqlanmagan.</span></span></button>
+            </div>
+            <h4>Tekshirilgan faktlar (2026-10-16 holatiga)</h4>
+            <div class="facts2">
+              <div class="fct"><b class="ok">Rasmiy</b>🇰🇷 EPS 2026: Oʻzbekiston fuqarosi, amaldagi xorijga chiqish pasporti, 18–40 yosh (10.03.1986 – 09.03.2008 oraligʻida tugʻilgan), Oʻzbekistonda sudlanmagan. 2026-yilgi roʻyxatdan oʻtish 9–12-mart kunlari boʻlib oʻtgan; keyingi sikl yangi eʼlonda.<a href="https://gov.uz/en/migration/news/view/139363" target="_blank" rel="noopener">gov.uz/migration</a></div>
+              <div class="fct"><b class="ok">Rasmiy</b>🇰🇷 Imtihondan oʻtganlar bazaga 2 yilga kiritiladi; agentlik ishga joylashishni kafolatlamaydi, baza muddatini uzaytirib boʻlmaydi.<a href="https://gov.uz/en/migration/news/view/139363" target="_blank" rel="noopener">gov.uz/migration</a><a href="https://gov.uz/en/migration/news/view/197042" target="_blank" rel="noopener">gov.uz/migration</a></div>
+              <div class="fct"><b class="ok">Rasmiy</b>🇬🇧 Mavsumiy ishchi vizasi: bogʻdorchilik 6 oygacha, parranda 2-oktabr – 31-dekabr; oila aʼzolari olib kelinmaydi; ariza toʻlovi GOV.UK da koʻrsatilgan (oʻzgarib turadi).<a href="https://www.gov.uk/seasonal-worker-visa" target="_blank" rel="noopener">gov.uk</a></div>
+              <div class="fct"><b class="ok">Tekshirildi</b>🇩🇪 Migratsiya va mobillik boʻyicha hamkorlik kelishuvi 2025-yil 4-martda tasdiqlangan; Oʻzbekiston tomonidan vakolatli organ: Migratsiya agentligi.<a href="https://kun.uz/en/news/2025/03/06/shavkat-mirziyoyev-approves-migration-agreement-with-germany" target="_blank" rel="noopener">kun.uz</a></div>
+              <div class="fct"><b class="wait">Ehtiyot</b>🇵🇱 Viza va ish ruxsatnomasi alohida hujjatlar; hukumatlararo kelishuv imzolangani tasdiqlanmagan. Polsha uchun vositachi takliflarini ayniqsa sinchiklab tekshiring.<a href="https://practiceguides.chambers.com/practice-guides/corporate-immigration-2026/poland" target="_blank" rel="noopener">chambers.com</a></div>
+            </div>
+            <div class="box warn"><b>Talablar, kvotalar va toʻlovlar har yili oʻzgaradi.</b> Hujjat topshirishdan oldin rasmiy sahifani qayta oching. Bu yerdagi maʼlumot sanasi koʻrsatilgan.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Koreya: imtihon va baza, kafolat yoʻq. Britaniya: 6 oygacha mavsumiy, operator orqali. Germaniya: malaka va til. Polsha: viza va ruxsatnoma alohida, kelishuv tasdiqlanmagan.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: mamlakat taqqoslovi</b><ul><li>Toʻrt kartadan qaysi biri sizning yoshingiz, kasbingiz va tilingizga yaqin?</li><li>Oʻsha mamlakatning rasmiy sahifasini oching va bitta talabni yozib oling.</li></ul>
+            <textarea data-save="a3" placeholder="Menga yaqin: ... | Rasmiy sahifadagi talab: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Kim uchun qaysi yoʻl</span>
+            <span class="l-m"><span class="tag">⏱ 15 daqiqa</span><span class="tag">🧭 Yoʻl tanlash testi</span><span class="tag xp">+20 XP · test +20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Hamshira uchun eng yaxshi yoʻl bilan 22 yoshli ishchi uchun eng yaxshi yoʻl boshqa-boshqa. Tanishingizga mos kelgan yoʻl sizga mos kelmasligi mumkin.</div></div>
+          <div class="panel">
+            <div class="tbl"><table><thead><tr><th>Kim</th><th>Birinchi tekshiriladigan yoʻl</th></tr></thead><tbody>
+              <tr><td>Ishlab chiqarish yoki xizmat sohasidagi ishchi, 18–40 yosh</td><td>🇰🇷 Koreya EPS</td></tr>
+              <tr><td>Bir mavsum (6 oygacha) ishlab qaytmoqchi</td><td>🇬🇧 Britaniya mavsumiy ish, 🇵🇱 Polsha mavsumiy ruxsatnoma</td></tr>
+              <tr><td>Kasb egasi: hamshira, texnik, kasb diplomi bor</td><td>🇩🇪 Germaniya: malakani tan oldirish</td></tr>
+              <tr><td>Avval Rossiyada ishlagan</td><td>Yangi yoʻllarning farqi: til, imtihon va shartnoma talablari</td></tr>
+            </tbody></table></div>
+            <div class="box info"><b>Test qaror emas.</b> U qaysi rasmiy sahifani birinchi oʻqishni koʻrsatadi. Yakuniy talablar faqat rasmiy manbada.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Yosh, kasb, til va muddat yoʻlni belgilaydi. Testdan keyin oʻsha yoʻlning rasmiy sahifasini oching.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: yoʻl</b><ul><li>Pastdagi <a href="#tool-route">Yoʻl tanlash testi</a>ga 5 savol boʻyicha javob bering.</li></ul>
+            <textarea data-save="a4" placeholder="Testdagi birinchi yoʻl: ... | Rasmiy sahifa: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.5</span><span class="l-t" style="display:block">Xarajat va qarz xavfi</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧮 Qaytarish kalkulyatori</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Koʻpchilik maoshni hisoblaydi, lekin ketish xarajatini va uning qancha oyda qaytishini hisoblamaydi. Qarz bilan ketib, ish chiqmay qolsa, qarz Oʻzbekistonda oilada qoladi.</div></div>
+          <div class="panel">
+            <h4>Rasmiy xarajatlar</h4>
+            <ul><li>Imtihon, tibbiy koʻrik, hujjat tarjimasi, viza toʻlovi, chipta, sugʻurta, birinchi oy yashash puli.</li><li>Har biri uchun rasmiy narx va chek boʻlishi kerak. Chekni bermaydigan toʻlov: xavf belgisi.</li></ul>
+            <h4>Qarz xavfi</h4>
+            <ul><li>Koreya EPS da imtihondan oʻtish ish kafolati emas: baza muddati 2 yil, ish beruvchi tanlamasligi mumkin. Bu vaqtda qarz foizi oʻsadi.</li><li>Mavsumiy ishda muddat qisqa: xarajat qaytgunicha mavsum tugashi mumkin.</li><li>Qarz olishdan oldin “ish chiqmasa, qanday toʻlayman?” savoliga javob yozing.</li></ul>
+            <h4>Kalkulyator <small style="font-weight:600;color:var(--muted)">(raqamlarni rasmiy manba va shartnomadan kiriting)</small></h4>
+            <div class="grid2">
+              <div class="fld"><label for="cCost">Ketish xarajati jami <small>soʻm</small></label><input id="cCost" type="number" min="0" step="100000" placeholder="masalan, 15000000" inputmode="numeric"></div>
+              <div class="fld"><label for="cDebt">Shundan qarz <small>soʻm</small></label><input id="cDebt" type="number" min="0" step="100000" placeholder="0 boʻlsa, 0 yozing" inputmode="numeric"></div>
+              <div class="fld"><label for="cSave">Oyiga jamgʻara oladigan summa <small>maosh − yashash xarajati, soʻm</small></label><input id="cSave" type="number" min="0" step="100000" placeholder="masalan, 5000000" inputmode="numeric"></div>
+              <div class="fld"><label for="cTerm">Shartnoma yoki viza muddati <small>oy</small></label><input id="cTerm" type="number" min="1" max="120" placeholder="masalan, 6" inputmode="numeric"></div>
+            </div>
+            <div class="budget" id="cOut"></div>
+            <div class="verdict" id="cRes"></div>
+            <button class="btn btn-p" type="button" id="cBtn" style="margin-top:10px">Hisobni saqlash</button>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>Xarajat necha oyda qaytishini ketishdan oldin hisoblang. Qarz bilan ketish: ish chiqmasa ham toʻlanadigan majburiyat.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: xarajat hisobi</b><ul><li>Kalkulyatorni toʻldiring.</li><li>“Ish chiqmasa yoki kechiksa, xarajatni qanday qoplayman?” savoliga javob yozing.</li></ul>
+            <textarea data-save="a5" placeholder="Ish chiqmasa: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.6</span><span class="l-t" style="display:block">Keyingi qadam va shartlar</span>
+            <span class="l-m"><span class="tag">⏱ 15 daqiqa</span><span class="tag">📞 Rasmiy kanallar</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Eng muhim koʻnikma: maʼlumotni qayerdan tekshirishni bilish. Bu roʻyxatni saqlab qoʻying va oilangizga yuboring.</div></div>
+          <div class="panel">
+            <h4>Rasmiy kanallar</h4>
+            <div class="chan">
+              <a href="https://gov.uz/oz/migration" target="_blank" rel="noopener"><em>🇺🇿</em><span><b>Migratsiya agentligi</b>Eʼlonlar, EPS roʻyxatdan oʻtish</span></a>
+              <a href="https://www.eps.go.kr/" target="_blank" rel="noopener"><em>🇰🇷</em><span><b>EPS (Koreya)</b>Ish ruxsatnomasi tizimi rasmiy sayti</span></a>
+              <a href="https://www.gov.uk/seasonal-worker-visa" target="_blank" rel="noopener"><em>🇬🇧</em><span><b>GOV.UK</b>Mavsumiy ishchi vizasi</span></a>
+              <a href="https://www.make-it-in-germany.com/" target="_blank" rel="noopener"><em>🇩🇪</em><span><b>Make it in Germany</b>Germaniya hukumatining rasmiy portali</span></a>
+            </div>
+            <div class="box warn"><b>Majburiy mehnat yoki odam savdosi belgilari boʻlsa</b> (pasport olib qoʻyilgan, maosh toʻlanmayapti, chiqib ketishga ruxsat berilmayapti): darhol mezbon davlat politsiyasi, Oʻzbekiston elchixonasi va Migratsiya agentligiga murojaat qiling.</div>
+            <h4>Musofir Lab sizga mos emas, agar:</h4>
+            <div class="checks" id="notFit">
+              <label class="ck"><input type="checkbox" data-alt="">18 yoshga toʻlmaganman</label>
+              <label class="ck"><input type="checkbox" data-alt="Migratsiya agentligiga murojaat">Darhol ish topib berishlarini kutyapman</label>
+              <label class="ck"><input type="checkbox" data-alt="Bachelor, Master yoki PhD Lab">Talaba sifatida xorijga ketmoqchiman</label>
+              <label class="ck"><input type="checkbox" data-alt="">Norasmiy yoʻl izlayapman</label>
+            </div>
+            <div class="verdict" id="fitRes"></div>
+            <h4>Shartlar</h4>
+            <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
+              <tr><td>Holat</td><td>M0 hamma uchun bepul va ochiq. M1–M7 tayyorlanmoqda: mehnat migratsiyasi boʻyicha tajribali hammuallif bilan yoziladi</td></tr>
+              <tr><td>Obuna (rejalashtirilgan)</td><td><span data-py>499 000</span> soʻm/yil yoki <span data-pm>49 900</span> soʻm/oy, Mavsum (4 oy) <span data-ps>149 700</span> soʻm, faqat oʻquv materiali uchun</td></tr>
+              <tr><td>Yosh</td><td>18 yoshdan</td></tr>
+              <tr><td>Bekor qilish</td><td>Istalgan vaqtda: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi</td></tr>
+              <tr><td>Qaytarish</td><td>Toʻlangan obuna puli qaytarilmaydi. Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat koʻrsatilmagan toʻlov</td></tr>
+              <tr><td>Kirmaydi</td><td>Ish yoki viza topish, ish beruvchi bilan bogʻlash, hujjat topshirish, vositachilik</td></tr>
+              <tr><td>Shaxsiy maʼlumot</td><td>Pasport va shaxsiy hujjatlar Kompas serverlariga yuklanmaydi</td></tr>
+            </tbody></table></div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Maʼlumot manbai: Migratsiya agentligi va mezbon davlat rasmiy saytlari. Kompas oʻqitadi, ish topmaydi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: qaror</b><ul><li>Sahifa oxiridagi <a href="#qaror">Qaror</a> boʻlimida bayonotingizni tasdiqlang.</li><li>Rasmiy kanallar roʻyxatini oilangizga yuboring.</li></ul></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="vositalar">
+    <h2>Vositalar</h2>
+
+    <div class="tool" id="tool-fr">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Taklif tekshiruvi</h3><span>9 belgi · +20 XP</span></div></div>
+      <p class="sub" style="margin:0 0 6px">Sizga kelgan ish taklifida nimalar bor? Mos kelganlarini belgilang.</p>
+      <div class="checks" id="flags">
+        <label class="ck"><input type="checkbox" data-w="3">Ish yoki viza “kafolatlanadi”</label>
+        <label class="ck"><input type="checkbox" data-w="3">Oldindan katta toʻlov soʻraladi (shaxsiy kartaga yoki naqd, cheksiz)</label>
+        <label class="ck"><input type="checkbox" data-w="3">Pasport yoki asl hujjatlarni topshirish soʻraladi</label>
+        <label class="ck"><input type="checkbox" data-w="3">“Imtihonsiz”, “navbatsiz” yoki “bazadan tanlatib beramiz”</label>
+        <label class="ck"><input type="checkbox" data-w="2">Aloqa faqat Telegram yoki WhatsApp orqali, ofis manzili yoʻq</label>
+        <label class="ck"><input type="checkbox" data-w="2">Shoshiltirishadi: “bugun toʻlamasangiz joy ketadi”</label>
+        <label class="ck"><input type="checkbox" data-w="2">Litsenziya yoki rasmiy roʻyxatdagi raqamini koʻrsatmaydi</label>
+        <label class="ck"><input type="checkbox" data-w="2">Shartnoma yoʻq yoki siz tushunmaydigan tilda</label>
+        <label class="ck"><input type="checkbox" data-w="1">Turist yoki talaba vizasida “ishlab ketaverasiz” deyishadi</label>
+      </div>
+      <div class="meter" aria-live="polite">
+        <div class="meter-h"><span id="frT">Belgilar topilmadi</span><b id="frN">0</b></div>
+        <div class="meter-t"><i id="frI"></i></div>
+        <p id="frP">Belgi yoʻqligi taklif xavfsiz degani emas: tashkilot va talablarni rasmiy manbada tekshiring.</p>
+      </div>
+      <button class="btn btn-p" type="button" id="frBtn" style="margin-top:12px">Tekshiruvni saqlash · +20 XP</button>
+    </div>
+
+    <div class="tool" id="tool-route">
+      <div class="tool-h"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Yoʻl tanlash testi</h3><span>5 savol · +20 XP</span></div></div>
+      <div class="grid2" id="rq"></div>
+      <button class="btn btn-p" type="button" id="rBtn" style="margin-top:4px">Natijani koʻrish</button>
+      <div class="res" id="rRes"></div>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges b6">
+      <div class="bdg" data-badge="l1"><img src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy">Kuzatuvchi<small>0.1</small></div>
+      <div class="bdg" data-badge="quiz"><img src="img/3d/lock.webp" width="160" height="160" alt="" loading="lazy">Rasmiy yoʻlni taniydi<small>Test 3+/4</small></div>
+      <div class="bdg" data-badge="fr"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Firibgarlikka qalqon<small>Tekshiruv</small></div>
+      <div class="bdg" data-badge="route"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yoʻl tanlovchi<small>Test</small></div>
+      <div class="bdg" data-badge="cost"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy">Hisobchi<small>Xarajat</small></div>
+      <div class="bdg" data-badge="dec"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Qaror qildi<small>18+ rozilik</small></div>
+    </div>
+  </section>
+
+  <section id="qaror">
+    <div class="decide">
+      <h2>Qaror va rozilik</h2>
+      <p class="sub">Natijalaringizdan avtomatik yigʻiladi.</p>
+      <div class="stmt" id="stmt"></div>
+      <label class="ck"><input type="checkbox" id="cons1">18 yoshdan kattaman.</label>
+      <label class="ck" style="margin-top:8px"><input type="checkbox" id="cons2">Kompas ish yoki viza topib bermasligini va vositachi emasligini tushunaman.</label>
+      <label class="ck" style="margin-top:8px"><input type="checkbox" id="cons3">Nomaʼlum shaxsga oldindan pul toʻlamayman va pasportimni hech kimga bermayman.</label>
+      <div class="missing" id="missing"></div>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="decBtn">Qarorni tasdiqlash · +60 XP</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Nusxalash</button>
+        <button class="btn btn-g" type="button" id="shareBtn">📤 Oilamga yuborish</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>6 ta, bepul</div>
+      <div><b>Vaqt</b>~1 hafta</div>
+      <div><b>Natija</b>Tekshiruv + yoʻl + xarajat hisobi + qaror</div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="musofir-lab.html">← Musofir Lab sahifasi</a>
+    <a class="btn btn-g" href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegramda savol berish</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/live-bar.js"></script>
+<script>
+// M0 Musofir Lab sahifasida vaʼda qilinganidek hamma uchun ochiq: xavfsizlik maʼlumoti roʻyxatdan oʻtishga bogʻlanmaydi.
+(function () {
+  var KEY = "kompas_musofir_m0_v1";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, flags: [], route: null, c: {}, fit: [], open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function d1(n) { return String(Math.round(n * 10) / 10).replace(".", ","); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+
+  // ── XP ──
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#2563eb"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp); save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M0 toʻliq yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  // ── Darslar ──
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Ajoyib! Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!";
+  }
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, 20, "Dars 0." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else $("qaror").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); t.value = S.notes[k] || "";
+    var tm; t.addEventListener("input", function () { clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); }, 300); });
+  });
+  document.querySelectorAll("[data-card]").forEach(function (c) { c.addEventListener("click", function () { c.setAttribute("aria-pressed", c.getAttribute("aria-pressed") === "true" ? "false" : "true"); }); });
+
+  // ── 0.1 Mini-test ──
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Rasmiy yoʻlni xavfli yoʻldan ajrata olasiz." : "Kartalarni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { var xp = r.right * 7 + (r.right === 4 ? 2 : 0); if (r.right >= 3) award("quiz", xp, "Rasmiy yoʻlni taniydi nishoni", "lock"); else award("quizTry", xp, "Test: " + r.right + "/4", "lock"); }
+      });
+    });
+  });
+
+  // ── Taklif tekshiruvi ──
+  var flags = document.querySelectorAll("#flags input");
+  flags.forEach(function (x, i) { x.checked = S.flags.indexOf(i) >= 0; x.addEventListener("change", function () { S.flags = []; flags.forEach(function (y, j) { if (y.checked) S.flags.push(j); }); save(); renderFlags(); renderStmt(); }); });
+  function flagScore() { var s = 0, n = 0; flags.forEach(function (x) { if (x.checked) { s += +x.getAttribute("data-w"); n++; } }); return { s: s, n: n }; }
+  function renderFlags() {
+    var f = flagScore(), pos = Math.min(100, f.s / 9 * 100), t, p;
+    flags.forEach(function (x) { x.closest(".ck").classList.toggle("on", x.checked); });
+    if (f.n === 0) { t = "Belgilar topilmadi"; p = "Belgi yoʻqligi taklif xavfsiz degani emas: tashkilot va talablarni rasmiy manbada tekshiring."; }
+    else if (f.s <= 2) { t = "Ehtiyot boʻling"; p = "Toʻlovdan oldin tashkilotni rasmiy roʻyxatda tekshiring va shartnomani tushunadigan tilda soʻrang."; }
+    else { t = "Toʻxtang"; p = "Bu taklifda jiddiy xavf belgilari bor. Pul toʻlamang, hujjat bermang. Savol boʻlsa, Migratsiya agentligiga murojaat qiling."; }
+    $("frT").textContent = t; $("frN").textContent = f.n + " / 9"; $("frP").textContent = p;
+    $("frI").style.left = (f.n ? Math.max(6, pos) : 0) + "%";
+    $("frN").style.color = f.n === 0 ? "var(--green)" : f.s <= 2 ? "var(--gold)" : "var(--red)";
+  }
+  $("frBtn").addEventListener("click", function () {
+    S.frSaved = true; save();
+    if (!award("fr", 20, "Firibgarlikka qalqon nishoni", "shield")) toast("Tekshiruv yangilandi", "shield");
+    renderStmt();
+  });
+
+  // ── Yoʻl tanlash testi ──
+  var RQ = [
+    ["age", "Yoshingiz", [["a", "18–40"], ["b", "41 va undan katta"], ["x", "18 dan kichik"]]],
+    ["term", "Qancha muddatga?", [["s", "Bir mavsum (6 oygacha)"], ["l", "Uzoq muddat (1 yildan koʻp)"], ["u", "Bilmayman"]]],
+    ["job", "Kasbingiz", [["w", "Ishchi: ishlab chiqarish, qurilish, qishloq xoʻjaligi"], ["n", "Hamshira yoki tibbiyot xodimi"], ["t", "Kasb diplomi bor: texnik, oshpaz, haydovchi"], ["o", "Hali kasbim yoʻq"]]],
+    ["lang", "Qaysi tilni oʻrganishga tayyorsiz yoki bilasiz?", [["ko", "Koreys"], ["de", "Nemis"], ["en", "Ingliz (boshlangʻich)"], ["no", "Hozircha hech biri"]]],
+    ["rec", "Oʻzbekistonda sudlanganmisiz?", [["n", "Yoʻq"], ["y", "Ha"]]]
+  ];
+  var RA = (S.route && S.route.a) || {};
+  $("rq").innerHTML = RQ.map(function (q, i) {
+    return '<div class="fld"><label for="r' + i + '">' + (i + 1) + ". " + q[1] + '</label><select id="r' + i + '" data-k="' + q[0] + '"><option value="">Tanlang</option>' + q[2].map(function (o) { return '<option value="' + o[0] + '"' + (RA[q[0]] === o[0] ? " selected" : "") + ">" + o[1] + "</option>"; }).join("") + "</select></div>";
+  }).join("");
+  RQ.forEach(function (q, i) { $("r" + i).addEventListener("change", function (e) { RA[q[0]] = e.target.value; }); });
+  function routes(a) {
+    var R = [
+      { id: "kr", fl: "🇰🇷", n: "Koreya: EPS", s: 0, why: [] },
+      { id: "uk", fl: "🇬🇧", n: "Buyuk Britaniya: mavsumiy ish", s: 0, why: [] },
+      { id: "de", fl: "🇩🇪", n: "Germaniya: malaka yoʻli", s: 0, why: [] },
+      { id: "pl", fl: "🇵🇱", n: "Polsha: viza + ish ruxsatnomasi", s: 0, why: [] }
+    ];
+    var kr = R[0], uk = R[1], de = R[2], pl = R[3];
+    if (a.age === "a") { kr.s += 2; kr.why.push("yosh EPS 2026 talabiga mos"); } else { kr.s -= 5; kr.why.push("EPS 2026 yosh chegarasi 18–40"); }
+    if (a.term === "l") { kr.s += 2; de.s += 2; pl.s += 1; } if (a.term === "s") { uk.s += 3; pl.s += 2; uk.why.push("mavsumiy muddat"); } if (a.term === "u") { kr.s += 1; uk.s += 1; de.s += 1; pl.s += 1; }
+    if (a.job === "w") { kr.s += 2; uk.s += 1; pl.s += 1; kr.why.push("ishlab chiqarish va xizmat sohasi"); }
+    if (a.job === "n") { de.s += 4; de.why.push("hamshiralar loyihasi bor"); }
+    if (a.job === "t") { de.s += 3; pl.s += 1; de.why.push("kasb diplomini tan oldirish mumkin"); }
+    if (a.job === "o") { uk.s += 1; kr.s += 1; }
+    if (a.lang === "ko") { kr.s += 3; kr.why.push("EPS-TOPIK koreys tilida"); } else if (a.lang !== "") kr.s -= 1;
+    if (a.lang === "de") { de.s += 3; de.why.push("nemis tili talab qilinadi"); } else { de.s -= 2; }
+    if (a.lang === "en") { uk.s += 1; }
+    if (a.rec === "y") { kr.s -= 5; kr.why.push("EPS sharti: Oʻzbekistonda sudlanmaganlik"); }
+    if (!de.why.length) de.why.push("diplomni tan oldirish va nemis tili talab qilinadi");
+    pl.why.push("hukumatlararo kelishuv tasdiqlanmagan: ehtiyot");
+    uk.why.push("faqat tasdiqlangan operator orqali");
+    R.sort(function (x, y) { return y.s - x.s; });
+    return R;
+  }
+  function renderRoute() {
+    if (!S.route) return;
+    var r = $("rRes"); r.className = "res show";
+    if (S.route.a.age === "x") { r.innerHTML = '<div class="verd" style="color:var(--red)">18 yoshgacha mos emas</div><p>Xorijda ishlash rasmiy yoʻllari 18 yoshdan. Oʻqish yoʻllari uchun Kompas Lab daraja Lablariga qarang.</p>'; return; }
+    var R = routes(S.route.a), top = R[0];
+    r.innerHTML = '<div class="verd">Birinchi tekshiriladigan yoʻl: ' + top.fl + " " + top.n + '</div><div class="routes">' + R.map(function (x, i) {
+      var c = x.s >= 5 ? ["hi", "Yaqin"] : x.s >= 2 ? ["mid", "Tekshirib koʻring"] : ["lo", "Hozir uzoq"];
+      return '<div class="route' + (i === 0 && x.s >= 2 ? " top" : "") + '"><span class="fl">' + x.fl + "</span><span><b>" + x.n + "</b><span>" + x.why.join("; ") + '</span></span><span class="pc ' + c[0] + '">' + c[1] + "</span></div>";
+    }).join("") + '</div><p class="hint" style="margin-top:10px">Bu yoʻnaltirish, ruxsat yoki kafolat emas. Talablar rasmiy sahifada: 0.6 darsidagi kanallar.</p>';
+  }
+  $("rBtn").addEventListener("click", function () {
+    var miss = RQ.filter(function (q) { return !RA[q[0]]; }).length;
+    if (miss) { toast("Yana " + miss + " ta savolga javob bering", "compass"); return; }
+    S.route = { a: JSON.parse(JSON.stringify(RA)) }; save(); renderRoute(); renderStmt();
+    if (!award("route", 20, "Yoʻl tanlovchi nishoni", "compass")) toast("Natija yangilandi", "compass");
+  });
+
+  // ── 0.5 Xarajat kalkulyatori ──
+  ["cCost", "cDebt", "cSave", "cTerm"].forEach(function (id) { if (S.c[id] != null && S.c[id] !== "") $(id).value = S.c[id]; });
+  function cost() {
+    var v = function (id) { return $(id).value === "" ? null : +$(id).value; };
+    var c = { cost: v("cCost"), debt: v("cDebt"), save: v("cSave"), term: v("cTerm") };
+    c.ready = c.cost != null && c.save != null && c.term != null && c.debt != null;
+    c.months = c.ready && c.save > 0 ? c.cost / c.save : null;
+    return c;
+  }
+  function renderCost() {
+    var c = cost(); S.c = { cCost: $("cCost").value, cDebt: $("cDebt").value, cSave: $("cSave").value, cTerm: $("cTerm").value }; save();
+    if (!c.ready) { $("cOut").innerHTML = ""; $("cRes").className = "verdict"; return c; }
+    var m = c.months == null ? "—" : d1(c.months), share = c.months == null ? null : Math.round(c.months / c.term * 100);
+    $("cOut").innerHTML = "<div><b>" + m + "</b><span>Xarajat qaytadigan oy</span></div><div><b>" + (share == null ? "—" : share + "%") + "</b><span>Muddatning shuncha qismi</span></div><div><b>" + (c.save > 0 ? nf(Math.max(0, c.save * c.term - c.cost)) : "—") + "</b><span>Muddat oxirida qoladi, soʻm</span></div>";
+    var r = $("cRes"), cls, msg;
+    if (c.save <= 0) { cls = "warn"; msg = "Oylik jamgʻarma nol: bu holatda xarajat qaytmaydi. Maosh va yashash xarajatini rasmiy manbadan qayta hisoblang."; }
+    else if (c.months > c.term) { cls = "warn"; msg = "Xarajat muddat tugaguncha qaytmaydi. Bu yoʻl moliyaviy jihatdan zararli boʻlishi mumkin."; }
+    else if (c.months > c.term / 3) { cls = "warn"; msg = "Muddatning uchdan biridan koʻpi faqat xarajatni qoplashga ketadi. Kechikish yoki kasallik boʻlsa, foyda qolmasligi mumkin."; }
+    else { cls = "info"; msg = "Xarajat muddatning birinchi uchdan bir qismida qaytadi. Raqamlar rasmiy manbaga asoslanganini tekshiring."; }
+    if (c.debt > 0) msg += " Qarz: " + nf(c.debt) + " soʻm. Ish chiqmasa yoki kechiksa ham bu summa toʻlanadi; zaxira rejasini yozing.";
+    r.className = "verdict show box " + cls; r.textContent = msg;
+    return c;
+  }
+  ["cCost", "cDebt", "cSave", "cTerm"].forEach(function (id) { $(id).addEventListener("input", renderCost); });
+  $("cBtn").addEventListener("click", function () {
+    var c = renderCost();
+    if (!c.ready) { toast("Barcha maydonlarni toʻldiring", "money"); return; }
+    if (!award("cost", 0, "Hisobchi nishoni", "money")) toast("Hisob yangilandi", "money");
+    renderStmt();
+  });
+
+  // ── 0.6 Mos emas ──
+  var fit = document.querySelectorAll("#notFit input");
+  fit.forEach(function (x, i) { x.checked = S.fit.indexOf(i) >= 0; x.addEventListener("change", function () { S.fit = []; fit.forEach(function (y, j) { if (y.checked) S.fit.push(j); }); save(); renderFit(); }); });
+  function renderFit() {
+    var alts = [], other = 0;
+    fit.forEach(function (x) { x.closest(".ck").classList.toggle("on", x.checked); if (x.checked) { var a = x.getAttribute("data-alt"); if (a) alts.push(a); else other++; } });
+    var r = $("fitRes");
+    if (!alts.length && !other) { r.className = "verdict show box info"; r.innerHTML = "Hech biri belgilanmadi: Musofir Lab sizga mos boʻlishi mumkin."; }
+    else { r.className = "verdict show box warn"; r.innerHTML = (alts.length ? "Sizga mosroq: " + alts.join(", ") + ". " : "") + (other ? "Belgilangan bandlar boʻyicha bu Lab sizga mos emas." : ""); }
+    renderStmt();
+  }
+
+  // ── Qaror ──
+  function stmtText() {
+    var p = [];
+    if (S.route && S.route.a.age !== "x") { var top = routes(S.route.a)[0]; p.push("Men birinchi boʻlib " + top.n + " yoʻlining rasmiy talablarini tekshiraman."); }
+    if (S.done.fr) { var f = flagScore(); p.push(f.n ? "Tekshirgan taklifimda " + f.n + " ta xavf belgisi topildi" + (f.s > 2 ? ": unga pul toʻlamayman." : ".") : "Har bir taklifni 9 belgi boʻyicha tekshiraman."); }
+    var c = cost(); if (S.done.cost && c.months != null) p.push("Ketish xarajatim taxminan " + d1(c.months) + " oyda qaytadi" + (c.debt > 0 ? ", qarz uchun zaxira rejam bor" : "") + ".");
+    if (S.fit.length) p.push("Bu Lab menga hozir mos emas: avval belgilangan masalani hal qilaman.");
+    if (p.length) p.push("Faqat rasmiy yoʻldan ketaman.");
+    return p.join(" ");
+  }
+  function renderStmt() {
+    var t = stmtText();
+    $("stmt").innerHTML = t ? t.replace(/(Faqat rasmiy yoʻldan ketaman\.)/g, "<b>$1</b>") : "Bayonot shu yerda paydo boʻladi. Taklif tekshiruvi va yoʻl testini toʻldiring.";
+    var miss = []; if (!S.done.fr) miss.push("taklif tekshiruvi"); if (!S.route) miss.push("yoʻl tanlash testi");
+    $("missing").textContent = miss.length ? "Yetishmayapti: " + miss.join(", ") + "." : "";
+    $("decBtn").disabled = !!S.done.dec; if (S.done.dec) $("decBtn").textContent = "✓ Qaror tasdiqlangan";
+  }
+  $("decBtn").addEventListener("click", function () {
+    if (!S.done.fr || !S.route) { toast("Avval tekshiruv va testni toʻldiring", "lock"); return; }
+    if (!$("cons1").checked) { toast("Dastur 18 yoshdan", "shield"); return; }
+    if (!$("cons2").checked || !$("cons3").checked) { toast("Barcha bandlarni belgilang", "shield"); return; }
+    award("dec", 60, "Qaror qildi nishoni", "seedling"); confetti(); renderStmt();
+  });
+  function shareText() {
+    return "Kompas Lab Musofir M0 natijam:\n" + (stmtText() || "(hali toʻldirilmagan)") + "\n\nRasmiy manbalar: gov.uz/migration\nBepul M0: https://kompaslab.uz/musofir-lab-m0";
+  }
+  $("copyBtn").addEventListener("click", function () {
+    var t = shareText();
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", t); }); else prompt("Nusxalang:", t);
+  });
+  $("shareBtn").addEventListener("click", function () {
+    var t = "Xorijga ishga ketishdan oldin: firibgarlik belgilari va rasmiy yoʻllar. Kompas Lab bepul darsi:", u = "https://kompaslab.uz/musofir-lab-m0";
+    if (navigator.share) navigator.share({ title: "Musofir Lab M0", text: t, url: u }).catch(function () {});
+    else window.open("https://t.me/share/url?url=" + encodeURIComponent(u) + "&text=" + encodeURIComponent(t), "_blank", "noopener");
+  });
+
+  function renderAll() {
+    var keys = ["l1", "l2", "l3", "l4", "l5", "l6", "fr", "route", "dec"], n = 0;
+    document.querySelectorAll("[data-node]").forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + keys.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+    lessons.forEach(renderLesson);
+  }
+
+  try {
+    fetch("https://usxpkmbjrdllnitlzdpq.supabase.co/rest/v1/rpc/kompas_public_stats", { method: "POST", headers: { "Content-Type": "application/json", apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8" }, body: "{}" })
+      .then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+        var p = d && d.prices && d.prices.miggo; if (!p) return;
+        if (p.y) document.querySelectorAll("[data-py]").forEach(function (el) { el.textContent = nf(p.y); });
+        if (p.m) document.querySelectorAll("[data-pm]").forEach(function (el) { el.textContent = nf(p.m); });
+        if (p.m) document.querySelectorAll("[data-ps]").forEach(function (el) { el.textContent = nf(p.m * 3); });
+      }).catch(function () {});
+  } catch (e) {}
+
+  renderQuiz(); renderFlags(); renderRoute(); renderCost(); renderFit(); renderStmt(); renderAll(); renderXp(false);
+})();
+</script>
+<style>.kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}@media print{.kp-wm{display:none!important}}</style>
+<script>(function(){function m(){if(document.querySelector(".kp-wm"))return;var c=document.createElement("canvas"),w=280,h=170,g=c.getContext&&c.getContext("2d");if(!g)return;c.width=w;c.height=h;g.translate(w/2,h/2);g.rotate(-0.4);g.fillStyle="#000";g.font="500 13px Outfit,system-ui,sans-serif";g.textAlign="center";g.fillText("kompaslab.uz",0,0);var d=document.createElement("div");d.className="kp-wm";d.setAttribute("aria-hidden","true");d.style.backgroundImage="url("+c.toDataURL()+")";document.body.appendChild(d);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",m);else m();})();</script>
+<script>window.KMOD={"base": "musofir-lab-m0", "key": "kompas_musofir_m0_v1", "lab": "musofir-lab.html", "labName": "Musofir Lab", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "Rasmiy va norasmiy yoʻl", "short": "Rasmiy", "meta": "⏱ 20 daqiqa, 🎯 Rasmiymi yoki xavfli?"}, {"id": "l2", "num": "0.2", "title": "Firibgarlik belgilari", "short": "Belgilar", "meta": "⏱ 25 daqiqa, 🛡 Taklif tekshiruvi"}, {"id": "l3", "num": "0.3", "title": "Mamlakatlar xaritasi", "short": "Xarita", "meta": "⏱ 30 daqiqa, 🗺 4 mamlakat"}, {"id": "l4", "num": "0.4", "title": "Kim uchun qaysi yoʻl", "short": "Yoʻl", "meta": "⏱ 15 daqiqa, 🧭 Yoʻl tanlash testi"}, {"id": "l5", "num": "0.5", "title": "Xarajat va qarz xavfi", "short": "Xarajat", "meta": "⏱ 25 daqiqa, 🧮 Qaytarish kalkulyatori"}, {"id": "l6", "num": "0.6", "title": "Keyingi qadam va shartlar", "short": "Qadam", "meta": "⏱ 15 daqiqa, 📞 Rasmiy kanallar"}], "yakunMeta": "Taklif tekshiruvi, Yoʻl tanlash testi, nishonlar, qaror va rozilik"};</script>
+<script src="js/kompas-module.js"></script>
+</body>
+</html>

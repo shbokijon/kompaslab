@@ -1,4 +1,356 @@
-<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2d4a3e"><meta name="description" content="Master Lab tizimi va Kompas metodi"><title>Dars 0.1 · Master Lab M0 · Kompas Lab</title><link rel="icon" href="img/brand/favicon-32.png"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/brand.css"><link rel="stylesheet" href="css/master-m0-original.css"><link rel="stylesheet" href="css/master-m0-lesson.css"></head><body><nav class="kl-top"><div class="wrap"><a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab <span>Master</span></span></a><div class="kl-links"><a href="master-lab.html">Kurs</a><a href="master-lab-dastur.html">Modullar</a><a href="master-lab-m0-darslar.html">M0 darslari</a><a href="master-planner.html">Shaxsiy reja</a></div></div></nav><main class="kl-main" data-m0-lesson="1"><div class="kl-eyebrow">Master Lab / M0 / Dars 0.1</div><h1 class="kl-title">Master Lab tizimi va Kompas metodi</h1><p class="kl-description">Maqsad, Kompas metodi va o‘qishga qaror</p><div class="kl-note">Bepul dars · Maʼlumotlar faqat shu brauzerda saqlanadi. Darsdagi davlatlar bo‘yicha misollar umumiy taʼlimiy tavsif, yakuniy talab yoki grant kafolati emas. Aniq talabni rasmiy saytdan tekshiring.</div><div class="kl-lesson-container"><article class="lesson open" id="l1" data-lesson="l1">
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>Dars 0.1: Master Lab tizimi va Kompas metodi · Master Lab M0 | Kompas Lab</title>
+<meta name="description" content="Master Lab bepul M0 moduli: magistratura tizimlari, ariza anatomiyasi, Tayyorgarlik koʻrsatkichi va deadline kalendari. Toʻlovdan oldin halol qaror.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#2d4a3e; --accent-h:#1e3329; --accent-lit:#e8f0ec;
+  --accent2:#c4622d; --accent2-h:#a84f23; --accent2-lit:#faeee7;
+  --gold:#8a6a10; --gold-lit:#f8f0d6;
+  --bg:#f4f3ef; --surface:#fffefb; --border:#e2ded3;
+  --text:#1a2e26; --muted:#5f7169;
+  --green:#1a7a4a; --green-lit:#e6f4ec; --red:#b42318; --red-lit:#fdecea;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:"Outfit","IBM Plex Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;}
+a{color:var(--accent);}
+img{display:block;}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+button{font-family:inherit;}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{animation:none!important;transition:none!important;}}
+
+/* TOP BAR */
+.top{position:sticky;top:0;z-index:100;background:rgba(244,243,239,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.top .wrap{display:flex;align-items:center;gap:12px;height:60px;}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--accent);font-weight:800;font-size:15px;flex-shrink:0;}
+.logo img{width:30px;height:30px;}
+.logo small{color:var(--muted);font-weight:600;}
+.xp{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.lvl{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;}
+.xp-pill{display:flex;align-items:center;gap:6px;background:var(--accent);color:#fff;border-radius:99px;padding:6px 12px;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.xp-pill img{width:20px;height:20px;}
+.xp-bar{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:transparent;}
+.xp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent2),#d9a441);transition:width .6s ease;}
+.pop{animation:pop .5s ease;}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.15)}100%{transform:scale(1)}}
+
+/* HERO */
+.hero{padding:44px 0 28px;}
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:28px;align-items:center;}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:12px;}
+.crumb a{color:var(--muted);text-decoration:none;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-lit);color:var(--green);font-weight:800;font-size:13px;padding:5px 12px;border-radius:99px;margin-bottom:14px;}
+h1{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.08;color:var(--accent);margin-bottom:14px;}
+.lead{font-size:17px;color:var(--muted);max-width:600px;}
+.hero-art{width:180px;height:180px;}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.fact{font-size:13px;font-weight:700;padding:6px 11px;border-radius:9px;background:var(--surface);border:1px solid var(--border);}
+.fact b{color:var(--accent2);font-variant-numeric:tabular-nums;}
+.float{animation:float 6s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-4deg)}}
+
+/* QUEST MAP */
+.map{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin:8px 0 34px;}
+.map-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.map-h b{font-size:16px;color:var(--accent);}
+.map-h span{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;}
+.path{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;position:relative;}
+.node{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:11.5px;font-weight:700;text-align:center;line-height:1.25;position:relative;}
+.node .dot{width:46px;height:46px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--muted);transition:background .3s,border-color .3s,transform .2s;}
+.node:hover .dot{transform:translateY(-2px);border-color:var(--accent);}
+.node.done .dot{background:var(--accent);border-color:var(--accent);color:#fff;}
+.node.done{color:var(--accent);}
+.node::after{content:"";position:absolute;top:23px;left:calc(50% + 26px);right:calc(-50% + 26px);height:2px;background:var(--border);}
+.node:last-child::after{display:none;}
+.node.done::after{background:var(--accent);}
+
+/* SECTIONS */
+section{padding:12px 0 30px;}
+h2{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:clamp(26px,3.4vw,34px);color:var(--accent);line-height:1.15;margin-bottom:10px;}
+.sub{color:var(--muted);margin-bottom:20px;max-width:680px;}
+.goal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px 22px;display:grid;gap:12px;}
+.goal li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:15px;}
+.goal img{width:36px;height:36px;flex-shrink:0;}
+
+/* LESSONS */
+.lessons{display:grid;gap:12px;}
+.lesson{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:border-color .2s,box-shadow .2s;scroll-margin-top:76px;}
+.lesson.open{border-color:var(--accent);box-shadow:0 14px 40px rgba(45,74,62,.10);}
+.l-head{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;background:none;border:none;text-align:left;cursor:pointer;color:inherit;}
+.l-ic{width:52px;height:52px;border-radius:14px;background:var(--accent-lit);display:flex;align-items:center;justify-content:center;position:relative;}
+.l-ic img{width:38px;height:38px;}
+.l-ic .ok{position:absolute;right:-5px;bottom:-5px;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:900;display:none;align-items:center;justify-content:center;border:2px solid var(--surface);}
+.lesson.done .l-ic .ok{display:flex;}
+.l-n{font-size:12.5px;font-weight:800;color:var(--accent2);}
+.l-t{font-size:16.5px;font-weight:800;line-height:1.3;}
+.l-m{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+.tag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:7px;background:var(--bg);border:1px solid var(--border);color:var(--muted);}
+.tag.xp{background:var(--gold-lit);border-color:transparent;color:var(--gold);}
+.chev{font-size:18px;color:var(--muted);transition:transform .25s;}
+.lesson.open .chev{transform:rotate(180deg);color:var(--accent);}
+.l-body{display:none;border-top:1px solid var(--border);}
+.lesson.open .l-body{display:block;}
+.tabs{display:flex;gap:4px;padding:8px 12px 0;overflow-x:auto;background:var(--bg);border-bottom:1px solid var(--border);-webkit-overflow-scrolling:touch;}
+.tab{padding:10px 14px;min-height:44px;border:none;background:none;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;}
+.tab[aria-selected="true"]{color:var(--accent2);border-bottom-color:var(--accent2);}
+.tab .seen{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-left:6px;vertical-align:2px;opacity:0;}
+.tab.v .seen{opacity:1;}
+.panel{display:none;padding:22px;}
+.panel.on{display:block;animation:fadeUp .3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.panel p{margin-bottom:12px;}
+.panel h4{font-size:16px;margin:20px 0 8px;color:var(--accent);}
+.panel ul{margin:8px 0 14px 20px;}
+.panel li{margin-bottom:6px;}
+.hook{background:var(--accent2-lit);border-left:4px solid var(--accent2);border-radius:12px;padding:16px 18px;font-size:16px;}
+.take{display:flex;gap:14px;align-items:flex-start;background:var(--accent-lit);border-radius:12px;padding:16px 18px;}
+.take img{width:40px;height:40px;flex-shrink:0;}
+.box{border-radius:12px;padding:14px 16px;margin:14px 0;font-size:14.5px;}
+.box.info{background:var(--accent-lit);}
+.box.warn{background:var(--gold-lit);}
+.tbl{overflow-x:auto;margin:12px 0;-webkit-overflow-scrolling:touch;}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:420px;}
+th{background:var(--accent);color:#fff;text-align:left;padding:9px 12px;font-size:13px;}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+.assign{background:var(--gold-lit);border-radius:12px;padding:16px 18px;}
+.assign b{display:block;margin-bottom:6px;}
+textarea{width:100%;min-height:96px;margin-top:10px;padding:12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--surface);color:var(--text);resize:vertical;}
+textarea:focus{outline:none;border-color:var(--accent);}
+.hint{font-size:12.5px;color:var(--muted);margin-top:6px;}
+.l-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 22px 20px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 20px;border-radius:12px;border:none;cursor:pointer;font-weight:800;font-size:15px;text-decoration:none;transition:transform .15s,background .15s;}
+.btn:active{transform:scale(.97);}
+.btn-p{background:var(--accent2);color:#fff;box-shadow:0 6px 20px rgba(196,98,45,.25);}
+.btn-p:hover{background:var(--accent2-h);}
+.btn-g{background:var(--surface);color:var(--accent);border:2px solid var(--border);}
+.btn-g:hover{border-color:var(--accent);}
+.btn[disabled]{background:var(--green-lit);color:var(--green);box-shadow:none;cursor:default;}
+
+/* MINI INTERACTIONS */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.chip{min-height:44px;padding:9px 14px;border-radius:99px;border:2px solid var(--border);background:var(--surface);font-size:14.5px;font-weight:700;color:var(--text);cursor:pointer;}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;}
+.quiz{display:grid;gap:12px;margin-top:10px;}
+.qz{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.qz p{font-weight:600;margin-bottom:10px;}
+.qz .row{display:flex;gap:8px;flex-wrap:wrap;}
+.qz button{min-height:42px;padding:8px 16px;border-radius:10px;border:2px solid var(--border);background:var(--bg);font-weight:800;font-size:14px;cursor:pointer;color:var(--text);}
+.qz.ans button{cursor:default;}
+.qz button.right{background:var(--green-lit);border-color:var(--green);color:var(--green);}
+.qz button.wrong{background:var(--red-lit);border-color:var(--red);color:var(--red);}
+.qz .why{display:none;font-size:13.5px;color:var(--muted);margin-top:8px;}
+.qz.ans .why{display:block;}
+.checks{display:grid;gap:8px;margin-top:10px;}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);cursor:pointer;font-size:14.5px;}
+.ck input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent2);flex-shrink:0;}
+.ck.on{border-color:var(--accent2);background:var(--accent2-lit);}
+.verdict{margin-top:12px;font-size:14.5px;border-radius:12px;padding:12px 14px;display:none;}
+.verdict.show{display:block;}
+
+/* TOOLS */
+.tool{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;margin-bottom:16px;scroll-margin-top:76px;}
+.tool-h{display:flex;gap:14px;align-items:center;margin-bottom:6px;}
+.tool-h img{width:52px;height:52px;}
+.tool-h h3{font-size:19px;font-weight:900;color:var(--accent);line-height:1.2;}
+.tool-h span{font-size:13px;color:var(--muted);}
+.rs{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:center;margin-top:12px;}
+.sl{margin-bottom:12px;}
+.sl label{display:flex;justify-content:space-between;gap:10px;font-size:14px;font-weight:700;}
+.sl label small{display:block;font-weight:500;color:var(--muted);font-size:12.5px;}
+.sl output{font-weight:900;color:var(--accent2);font-variant-numeric:tabular-nums;min-width:34px;text-align:right;}
+input[type=range]{width:100%;height:32px;accent-color:var(--accent2);}
+.radar{width:100%;max-width:260px;margin:0 auto;}
+.radar text{font-family:Outfit,IBM Plex Sans,sans-serif;font-size:10px;font-weight:700;fill:var(--muted);}
+.score{text-align:center;margin-top:6px;}
+.score b{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:46px;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;}
+.score span{display:block;font-size:13px;color:var(--muted);}
+.res{margin-top:14px;background:var(--bg);border-radius:14px;padding:14px 16px;font-size:14.5px;display:none;}
+.res.show{display:block;animation:fadeUp .3s ease both;}
+.dl-in{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.dl-in label{font-size:14px;font-weight:700;display:block;margin-bottom:6px;}
+.dl-in input{width:100%;min-height:48px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.tline{position:relative;height:56px;margin:22px 4px 6px;}
+.tline .bar{position:absolute;left:0;right:0;top:20px;height:8px;border-radius:99px;background:var(--border);overflow:hidden;}
+.tline .seg{position:absolute;top:0;bottom:0;}
+.tline .mk{position:absolute;top:0;transform:translateX(-50%);font-size:11.5px;font-weight:800;white-space:nowrap;text-align:center;}
+.tline .mk i{display:block;width:3px;height:18px;margin:0 auto;border-radius:2px;}
+.tline .mk span{display:block;margin-top:14px;}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;}
+
+/* BADGES */
+.badges{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;}
+.bdg{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 8px;text-align:center;font-size:12.5px;font-weight:800;color:var(--muted);line-height:1.25;}
+.bdg img{width:48px;height:48px;margin:0 auto 8px;filter:grayscale(1);opacity:.35;transition:filter .5s,opacity .5s,transform .5s;}
+.bdg small{display:block;font-weight:600;font-size:11.5px;margin-top:3px;}
+.bdg.on{border-color:var(--accent);color:var(--accent);}
+.bdg.on img{filter:none;opacity:1;transform:rotate(-6deg) scale(1.05);}
+
+/* DECISION */
+.decide{background:var(--accent);color:#fff;border-radius:22px;padding:24px;}
+.decide h2{color:#fff;}
+.decide .sub{color:rgba(255,255,255,.75);}
+.stmt{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px 18px;font-size:16px;margin:14px 0;}
+.stmt b{color:#ffd9a8;}
+.decide .ck{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff;}
+.decide .ck.on{background:rgba(196,98,45,.25);border-color:#e9a27a;}
+.decide .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.decide .btn-g{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.3);}
+.decide .missing{font-size:13.5px;color:rgba(255,255,255,.75);margin-top:10px;}
+
+/* MENTOR + PASSPORT */
+.mentor{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px 22px;}
+.mentor .av{width:48px;height:48px;border-radius:50%;background:var(--accent2);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mentor q{font-family:"DM Serif Display","Playfair Display",serif;font-size:19px;line-height:1.4;color:var(--accent);display:block;margin-bottom:10px;}
+.mentor small{color:var(--muted);font-size:13px;}
+.pass{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.pass div{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:14.5px;}
+.pass b{display:block;font-size:12.5px;color:var(--muted);margin-bottom:2px;}
+footer{padding:26px 0 60px;}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+
+/* TOAST + CONFETTI */
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(140%);background:var(--text);color:#fff;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;z-index:300;transition:transform .35s ease;max-width:calc(100% - 32px);box-shadow:0 14px 40px rgba(0,0,0,.25);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast img{width:34px;height:34px;}
+/* KIRISH DARVOZASI */
+body.locked main,body.locked footer,body.locked .xp{display:none;}
+.gate{display:none;min-height:calc(100vh - 60px);align-items:center;justify-content:center;padding:24px 16px;}
+body.locked .gate{display:flex;}
+.gate-c{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:28px 24px;max-width:440px;width:100%;text-align:center;box-shadow:0 22px 60px rgba(45,74,62,.12);}
+.gate-c img{width:96px;height:96px;margin:0 auto 10px;}
+.gate-c h1{font-size:30px;margin-bottom:8px;}
+.gate-c p{color:var(--muted);margin-bottom:18px;}
+.gate-c .btn{width:100%;margin-top:10px;}
+.gate-c small{display:block;color:var(--muted);font-size:13px;margin-top:14px;}
+.who{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;}
+@media(max-width:760px){.who{display:none;}}
+.cf{position:fixed;top:-12px;width:9px;height:14px;z-index:400;pointer-events:none;border-radius:2px;animation:fall linear forwards;}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.8}}
+
+@media(max-width:760px){
+  .hero{padding:28px 0 20px;}
+  .hero-g{grid-template-columns:minmax(0,1fr) 96px;gap:14px;align-items:start;}
+  .hero-art{width:96px;height:96px;}
+  h1{font-size:34px;}
+  .lead{font-size:16px;}
+  .lvl,.logo small{display:none;}
+  .path{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:16px;}
+  .node:nth-child(4)::after{display:none;}
+  .l-head{grid-template-columns:44px minmax(0,1fr) auto;gap:12px;padding:14px;}
+  .l-ic{width:44px;height:44px;}
+  .l-ic img{width:32px;height:32px;}
+  .panel{padding:18px 16px;}
+  .l-foot{padding:12px 16px 18px;}
+  .l-foot .btn{width:100%;}
+  .rs{grid-template-columns:minmax(0,1fr);}
+  .radar{max-width:230px;}
+  .dl-in{grid-template-columns:minmax(0,1fr);}
+  .badges{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .pass{grid-template-columns:minmax(0,1fr);}
+  .tool,.decide{padding:18px 16px;}
+}
+</style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kompas Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script src="js/pwa.js" defer></script>
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<script src="js/kompas-ui.js"></script>
+<link rel="canonical" href="https://www.kompaslab.uz/master-lab-m0-1">
+</head>
+<body class="locked" data-kview="lesson" data-klesson="l1">
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="master-lab.html"><span class="klogo klogo-sm"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span>Kompas Lab <small>· Master Lab M0</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="who" id="who"></span>
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<div class="gate" id="gate">
+  <div class="gate-c">
+    <img class="float" src="img/3d/lock.webp" width="160" height="160" alt="">
+    <h1 id="gateT">Tekshirilmoqda…</h1>
+    <p id="gateP">Bir soniya.</p>
+    <div id="gateA" hidden>
+      <a class="btn btn-p" href="register.html" data-ret>Bepul roʻyxatdan oʻtish</a>
+      <a class="btn btn-g" href="login.html" data-ret>Kirish</a>
+      <small>M0 bepul. Roʻyxatdan oʻtgach, shu sahifaga qaytasiz.</small>
+    </div>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Master Lab</a> · Modul 0</div>
+        <span class="badge">🔓 Bepul · Qaror darvozasi</span>
+        <h1>Toʻlovdan oldin halol qaror.</h1>
+        <p class="lead">Bu modulda magistratura tizimlarini koʻrasiz, kuchli arizaning tuzilishini tushunasiz va oʻz tayyorgarlik darajangizni oʻlchaysiz. Oxirida Master Lab sizga mos yoki mos emasligini oʻzingiz aniqlaysiz.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2,5</b> soat</span><span class="fact"><b>2</b> interaktiv vosita</span><span class="fact"><b>250</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/master.webp" width="160" height="160" alt="">
+    </div>
+  </div>
+
+  <!-- QUEST MAP -->
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="path">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">0.1</span>Tizim</a>
+      <a class="node" href="#l2" data-node="l2"><span class="dot">0.2</span>Davlatlar</a>
+      <a class="node" href="#l3" data-node="l3"><span class="dot">0.3</span>Ariza</a>
+      <a class="node" href="#l4" data-node="l4"><span class="dot">0.4</span>Diagnostika</a>
+      <a class="node" href="#l5" data-node="l5"><span class="dot">0.5</span>Mos emas</a>
+      <a class="node" href="#tool-rs" data-node="rs"><span class="dot">%</span>Koʻrsatkich</a>
+      <a class="node" href="#tool-dl" data-node="dl"><span class="dot">📅</span>Kalendar</a>
+      <a class="node" href="#qaror" data-node="dec"><span class="dot">✓</span>Qaror</a>
+    </div>
+  </nav>
+
+  <!-- GOAL -->
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Magistratura tizimlari xaritasi va oʻzingiz uchun 2–3 ta maqsadli tizim.</li>
+      <li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Tayyorgarlik koʻrsatkichi: 6 oʻlchov boʻyicha halol baho va ikkita eng zaif tomoningiz.</li>
+      <li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy">Deadlineʼdan orqaga sanalgan shaxsiy kalendar: “vaqtim yetadimi?” savoliga aniq javob.</li>
+      <li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Qaror bayonoti: bu sikl yoki keyingi sikl.</li>
+    </ul>
+  </section>
+
+  <!-- LESSONS -->
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 0.1 -->
+      <article class="lesson" id="l1" data-lesson="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">Master Lab tizimi va Kompas metodi</span>
@@ -27,4 +379,557 @@
           <div class="panel"><div class="assign"><b>Natija: “Nega magistratura” bayonoti (3–5 jumla)</b>
             <ul><li>Nima uchun magistraturaga borasiz? “Diplom kerak” yoki “chet elga chiqish” javob emas, buni ochib bering.</li><li>Siz uchun kuchli ariza nima degani? 0.4-darsdan keyin bu javobni qayta oʻqiysiz.</li><li>Agentlik sizga nima bera olmaydi?</li></ul>
             <textarea data-save="a1" placeholder="Javobingizni shu yerga yozing..."></textarea><div class="hint">Matn faqat shu brauzerda saqlanadi, hech qayerga yuborilmaydi.</div></div></div>
-          <div class="l-foot"><span class="hint" data-hint>To‘rt qismni o‘qing va yakunlang.</span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div></div></article></div><p class="kl-status" id="lessonStatus" aria-live="polite"></p><div class="kl-lesson-actions"><a href="master-lab-m0-darslar.html">← Darslar ro‘yxati</a><a href="master-lab-m0-darslar.html">Barcha darslar</a><a href="master-lab-m0-2.html">Keyingi dars →</a></div></main><script src="js/master-m0-pages.js" defer></script><footer class="kl-foot"><div class="wrap">© 2026 Kompas Lab · <a href="master-lab-dastur.html">Modullar</a> · <a href="sources.html">Rasmiy manbalar</a> · Qabul yoki stipendiya kafolati yo‘q.</div></footer></body></html>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrt qismni oʻqing, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.2 -->
+      <article class="lesson" id="l2" data-lesson="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Magistratura tizimlari: AQSh, Buyuk Britaniya, Yevropa, Osiyo, Avstraliya</span>
+            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">📄 2–3 maqsadli tizim</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“Magistratura” bitta soʻz, lekin tizimlar har xil. AQShda koʻpincha ikki yil va assistentlik orqali moliyalashtirish, Buyuk Britaniyada odatda bir yil va koʻpincha oʻz hisobingizdan. Hammasiga bitta yondashuv bilan topshirish rad javobi xavfini oshiradi.</div></div>
+          <div class="panel">
+            <p>Tizimlar uch narsada farq qiladi: <b>davomiylik</b>, <b>moliyalashtirish</b> (grant bilan yoki oʻz hisobidan) va <b>ariza muddati</b>. Quyida odatiy naqshlar: yodlash uchun emas, farqni koʻrish uchun.</p>
+            <h4>🇺🇸 AQSh: assistentlik modeli</h4>
+            <ul><li><b>Davomiylik:</b> odatda 1,5–2 yil.</li><li><b>Moliyalashtirish:</b> asosiy yoʻl oʻqituvchi yoki tadqiqot assistentligi (TA/RA): universitet oʻqish haqini qoplaydi va stipendiya beradi, evaziga siz dars yoki tadqiqotda ishlaysiz.</li><li><b>Test:</b> koʻp dasturlar GRE talabini olib tashlagan, lekin har dasturda tekshiring. TOEFL yoki IELTS deyarli hamma joyda kerak.</li></ul>
+            <h4>🇬🇧 Buyuk Britaniya: oʻquv magistraturasi</h4>
+            <ul><li><b>Davomiylik:</b> odatda 1 yil, asosan kurslar.</li><li><b>Moliyalashtirish:</b> koʻpchilik oʻz hisobidan. Toʻliq grant asosan tashqi stipendiyalar orqali, masalan Chevening.</li></ul>
+            <h4>🇪🇺 Yevropa: Boloniya tizimi va Erasmus Mundus</h4>
+            <ul><li><b>Davomiylik:</b> odatda 2 yil (120 ECTS).</li><li><b>Moliyalashtirish:</b> ayrim davlatlarda davlat universitetlarida oʻqish bepul yoki arzon. Erasmus Mundus qoʻshma magistraturasi bir necha davlatda oʻqiladi va toʻliq stipendiyali, raqobat yuqori.</li></ul>
+            <h4>🌏 Osiyo: aloqaga asoslangan model</h4>
+            <ul><li>GKS (Koreya) va MEXT (Yaponiya) davlat stipendiyalari. Koʻp hollarda professor bilan oldindan aloqa muhim rol oʻynaydi.</li></ul>
+            <h4>🇦🇺 Avstraliya</h4>
+            <ul><li>Australia Awards: davlat stipendiyasi, oʻz shartlari va muddatlari bilan.</li></ul>
+            <div class="box warn"><b>Halollik ogohlantirishi:</b> bu odatiy naqshlar, aniq qoidalar emas. Shartlar har yil va har dasturda oʻzgaradi. Yakuniy faktni har doim dasturning rasmiy sahifasidan tekshiring.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Strategiyani tanlashdan oldin qaysi tizimda va qaysi moliyaviy modelda (grant, bepul oʻqish yoki oʻz hisobidan) topshirayotganingizni aniqlang.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: 2–3 maqsadli tizim</b>
+            <p style="margin:6px 0 0">Oʻzingizga mos 2–3 tizimni tanlang. Tanlov qaror bayonotiga avtomatik qoʻshiladi.</p>
+            <div class="chips" id="sysChips"><button type="button" class="chip" data-sys="AQSh" aria-pressed="false">🇺🇸 AQSh</button><button type="button" class="chip" data-sys="Buyuk Britaniya" aria-pressed="false">🇬🇧 Buyuk Britaniya</button><button type="button" class="chip" data-sys="Yevropa" aria-pressed="false">🇪🇺 Yevropa</button><button type="button" class="chip" data-sys="Osiyo" aria-pressed="false">🌏 Osiyo</button><button type="button" class="chip" data-sys="Avstraliya" aria-pressed="false">🇦🇺 Avstraliya</button></div>
+            <div class="hint" id="sysHint">0 ta tanlandi</div>
+            <ul style="margin-top:12px"><li>Har tizim uchun bitta rasmiy manba havolasini toping (universitet yoki dastur sahifasi).</li><li>Nega aynan shu tizimlar sizning profilingiz va moliyaviy imkoniyatingizga mos?</li></ul>
+            <textarea data-save="a2" placeholder="Havolalar va izohingiz..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrt qismni oʻqing, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.3 -->
+      <article class="lesson" id="l3" data-lesson="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.3</span><span class="l-t" style="display:block">Qabul qilingan va rad etilgan ariza tuzilishi</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bahosi bir xil ikki ariza: biri qabul qilinadi, ikkinchisi rad etiladi. Farq raqamda emas, hikoyaning izchilligida. Komissiya avval raqamni emas, siz kim ekaningiz va nima qilmoqchi ekaningizni koʻrishga harakat qiladi.</div></div>
+          <div class="panel">
+            <p>Baho eshikdan oʻtish sharti, gʻalaba emas. Komissiya <b>izchil hikoya</b> qidiradi: bu odam kim, nima qilgan, qayerga bormoqchi va nega aynan shu dasturga. Master Labʼda bu toʻrt qadam: <b>Shaxs → Dalil → Maqsad → Moslik</b>.</p>
+            <h4>Kuchli ariza</h4>
+            <ul><li><b>Bitta hikoya:</b> CV, SoP va ilmiy loyiha taklifi bir odam haqida bir xil hikoyani aytadi.</li><li><b>Ilmiy moslik:</b> aniq professor yoki laboratoriya va ularning ishi nomlanadi.</li><li><b>Daʼvo emas, dalil:</b> “mehnatsevarman” emas, “loyihani 6 oyda yakunlab, natijani konferensiyada taqdim qildim”.</li><li><b>Aniq maqsad:</b> magistraturadan keyingi reja tadqiqot yoʻnalishi bilan bogʻlangan.</li></ul>
+            <h4>Zaif ariza</h4>
+            <ul><li><b>Umumiy SoP:</b> universitet nomini almashtirsangiz, boshqa arizaga ham toʻgʻri keladi.</li><li><b>Moslik yoʻq:</b> “nega aynan shu dastur?” savoliga javob yoʻq, faqat reyting.</li><li><b>Sifatlar roʻyxati:</b> “motivatsiyali, tez oʻrganuvchi” dalilsiz hech narsa demaydi.</li><li><b>Zid hujjatlar:</b> CV bir hikoya aytadi, SoP boshqasini.</li></ul>
+            <div class="box warn"><b>Keng tarqalgan xato:</b> avval hujjatlarni yigʻib, keyin “kuchliroq koʻrinsin” deb bezash. Toʻgʻri tartib teskari: avval hikoya, keyin har hujjat shu hikoyaning bir qismi sifatida yoziladi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Ariza raqamlar toʻplami emas, bitta izchil hikoya: Shaxs → Dalil → Maqsad → Moslik.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: bu jumla kuchli arizagami yoki zaif?</b>
+            <div class="quiz" id="quiz">
+              <div class="qz" data-a="k"><p>“Sizning laboratoriyangiz yer osti suvlarini modellashtirish ustida ishlaydi. Men shu mavzuda 6 oylik bitiruv loyihasini bajarganman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Kuchli: aniq laboratoriya, aniq mavzu va oʻzining dalili bor.</div></div>
+              <div class="qz" data-a="z"><p>“Men mehnatsevar, tez oʻrganuvchi va juda motivatsiyali talabaman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Zaif: faqat sifatlar, birorta dalil yoʻq.</div></div>
+              <div class="qz" data-a="z"><p>“Universitetingiz dunyo reytingida yuqori oʻrinda turgani uchun topshiryapman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Zaif: reyting hammaga maʼlum. Dastur sizga nega mosligi aytilmagan.</div></div>
+              <div class="qz" data-a="k"><p>“Soʻrovnoma tahlilini 4 oyda yakunladim va natijani talabalar ilmiy konferensiyasida taqdim qildim.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Kuchli: harakat, muddat va natija bor.</div></div>
+            </div>
+            <div class="verdict" id="quizRes"></div>
+            <ul style="margin-top:14px"><li>Sizda hozir kuchli arizaning qaysi elementlari bor, qaysilari yoʻq?</li><li>Arizangizdagi Shaxs → Dalil → Maqsad → Moslik ipining birinchi variantini bir jumlada yozing.</li></ul>
+            <textarea data-save="a3" placeholder="Tahlilingiz..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrt qismni oʻqing, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.4 -->
+      <article class="lesson" id="l4" data-lesson="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Tayyorgarlik koʻrsatkichi: oʻzingizga halol koʻzgu</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📄 Koʻrsatkich varagʻi</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Toʻlashdan oldin halol koʻzguga haqingiz bor. Koʻrsatkich qabulni bashorat qilmaydi: u bugun qayerda turganingizni koʻrsatadi. Agar u “keyingi sikl” desa, bu muvaffaqiyatsizlik emas, toʻgʻri qaror boʻlishi mumkin.</div></div>
+          <div class="panel">
+            <p>Koʻrsatkich 6 oʻlchov boʻyicha oʻzingizni baholashdan tuziladi. Har birini 0–100 oraligʻida baholang. Bu test emas, koʻzgu.</p>
+            <div class="tbl"><table><thead><tr><th>Oʻlchov</th><th>Nimani baholaysiz</th></tr></thead><tbody>
+              <tr><td>Tadqiqot yoʻnalishi</td><td>Qiziqishingizni bir jumlada ayta olasizmi?</td></tr>
+              <tr><td>Akademik tayyorgarlik</td><td>Diplom, baholar, ilmiy tajriba dastur talablariga qanchalik mos?</td></tr>
+              <tr><td>Til</td><td>Hozirgi darajangiz talab qilingan darajaga qanchalik yaqin?</td></tr>
+              <tr><td>Vaqt</td><td>Deadlineʼgacha vaqtingiz yetarlimi?</td></tr>
+              <tr><td>Moliyalashtirish</td><td>Maqsadli tizimning moliyaviy modelini tushunasizmi?</td></tr>
+              <tr><td>Hikoya</td><td>Oʻzingiz haqingizdagi izchil hikoya qanchalik shakllangan?</td></tr>
+            </tbody></table></div>
+            <h4>Natijani qanday oʻqish kerak</h4>
+            <p>Oʻrtacha ball umumiy rasmni beradi, lekin asosiysi <b>eng past ikki oʻlchov</b>: ular kursdagi asosiy ishingizni koʻrsatadi. Yuqori oʻrtacha ball bitta juda past oʻlchovni yashira olmaydi. Masalan, Vaqt 20 boʻlsa, deadlineʼga ulgurmaslik xavfi bor va uni birinchi hal qilish kerak.</p>
+            <div class="box info"><b>Halollik shartnomasi:</b> ball past va vaqt kam boʻlsa, toʻgʻri javob keyingi siklga tayyorlanish. Shoshilinch zaif arizadan koʻra bir yil kutib kuchli ariza berish yaxshiroq.</div>
+            <div class="box warn"><b>Keng tarqalgan xato:</b> oʻzingizni ortiqcha yuqori baholash. Past ball yomon xabar emas, u aniq ish rejasi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Koʻrsatkich qabulni bashorat qilmaydi, toʻlashdan oldin halol koʻzgu beradi. Eng past ikki oʻlchov kursdagi asosiy ishingiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: toʻldirilgan koʻrsatkich</b>
+            <ul><li>Pastdagi <a href="#tool-rs">Tayyorgarlik koʻrsatkichi</a> vositasida 6 oʻlchovni halol baholang.</li><li>Ikkita eng past oʻlchovni yozib oling.</li><li>Xulosa: “Ballim [X], eng zaif tomonlarim [1] va [2]”.</li></ul>
+            <textarea data-save="a4" placeholder="Xulosangiz..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrt qismni oʻqing, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.5 -->
+      <article class="lesson" id="l5" data-lesson="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.5</span><span class="l-t" style="display:block">Master Lab sizga mos emas, agar… va toʻlov shartlari</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📄 Qaror bayonoti</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bu dars sizni toʻlashdan qaytarishga harakat qiladi. Mantiq oddiy: shu darsdan keyin ham davom etsangiz, bu oʻylangan qaror boʻladi.</div></div>
+          <div class="panel">
+            <h4>Master Lab sizga mos emas, agar:</h4>
+            <p>Sizga tegishlilarini belgilang. Natija pastda darhol chiqadi.</p>
+            <div class="checks" id="notFit">
+              <label class="ck"><input type="checkbox" data-alt="Bachelor Lab" data-href="bachelor-lab.html">Bakalavriatga topshirmoqchisiz</label>
+              <label class="ck"><input type="checkbox" data-alt="GKS Lab" data-href="gks-lab.html">Faqat GKS (Koreya) stipendiyasiga topshirmoqchisiz</label>
+              <label class="ck"><input type="checkbox" data-alt="DAAD Lab" data-href="daad-lab.html">Faqat DAAD (Germaniya) stipendiyasiga topshirmoqchisiz</label>
+              <label class="ck"><input type="checkbox" data-alt="PhD Lab" data-href="phd-lab.html">Doktoranturaga (PhD) topshirmoqchisiz</label>
+              <label class="ck"><input type="checkbox" data-alt="">Aniq tadqiqot qiziqishingiz yoʻq, shunchaki “magistratura kerak”</label>
+              <label class="ck"><input type="checkbox" data-alt="">Deadlineʼgacha 6 oydan kam qolgan (Chevening yoki Fulbright uchun 12 oydan kam)</label>
+              <label class="ck"><input type="checkbox" data-alt="">“Stipendiya kafolati” izlayapsiz</label>
+            </div>
+            <div class="verdict" id="fitRes"></div>
+            <h4>Toʻlov shartlari</h4>
+            <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
+              <tr><td>Obuna</td><td><span data-py>699 000</span> soʻm/yil yoki <span data-pm>99 000</span> soʻm/oy, Mavsum (4 oy) <span data-ps>297 000</span> soʻm</td></tr>
+              <tr><td>M0 (shu modul)</td><td>Bepul</td></tr>
+              <tr><td>Bekor qilish (Cancellation)</td><td>Obuna hali ochilmagan.</td></tr>
+              <tr><td>Qaytarish (Refund)</td><td>To‘lov hozir yopiq. Shartlar ishga tushishidan oldin eʼlon qilinadi.</td></tr>
+              <tr><td>Rozilik</td><td>Obuna ochilganda shartlar alohida ko‘rsatiladi.</td></tr>
+            </tbody></table></div>
+            <div class="box info"><b>Nega M0 bepul:</b> siz hozir toʻlovsiz nima olishingizni (0.1), qaysi tizimda topshirishingizni (0.2), kuchli ariza nimaligini (0.3) va oʻz darajangizni (0.4) bilib oldingiz. Qaror shu maʼlumot asosida qabul qilinadi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Bu modul sizga mos kelmasa, toʻlamaslik toʻgʻri qaror. Mos kelsa, kalendaringizni deadlineʼdan orqaga quring.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: qaror bayonoti</b>
+            <ul><li>“Mos emas” roʻyxatini halol belgilang.</li><li><a href="#tool-dl">Deadline kalendari</a> vositasida “vaqtim yetadimi?” savoliga javob oling.</li><li>Sahifa oxiridagi <a href="#qaror">Qaror</a> boʻlimi bayonotni siz uchun yigʻadi.</li></ul></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrt qismni oʻqing, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="vositalar">
+    <h2>Interaktiv vositalar</h2>
+    <p class="sub">Ikki vosita modul natijasini beradi: tayyorgarlik koʻrsatkichi va shaxsiy kalendar.</p>
+
+    <div class="tool" id="tool-rs">
+      <div class="tool-h"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Tayyorgarlik koʻrsatkichi</h3><span>6 oʻlchov · +40 XP</span></div></div>
+      <div class="rs">
+        <div id="sliders"></div>
+        <div>
+          <svg class="radar" id="radar" viewBox="0 0 260 260" role="img" aria-label="Tayyorgarlik diagrammasi"></svg>
+          <div class="score"><b id="rsAvg">50</b><span>/ 100 oʻrtacha</span></div>
+        </div>
+      </div>
+      <button class="btn btn-p" type="button" id="rsBtn" style="margin-top:8px">Natijani saqlash</button>
+      <div class="res" id="rsRes"></div>
+    </div>
+
+    <div class="tool" id="tool-dl">
+      <div class="tool-h"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Deadline kalendari</h3><span>Deadlineʼdan orqaga sanash · +30 XP</span></div></div>
+      <div class="dl-in">
+        <div><label for="dlDate">Rasmiy deadline sanasi</label><input type="date" id="dlDate"></div>
+        <div><label for="dlW">Tayyorgarlik uchun hafta</label><input type="number" id="dlW" value="18" min="4" max="60" inputmode="numeric"></div>
+      </div>
+      <div class="hint">Master Labʼning asosiy modullari fazalar boʻyicha taxminan 17–24 hafta davom etadi. Deadlineʼdan oldin 4 hafta zaxira qoʻshiladi.</div>
+      <button class="btn btn-p" type="button" id="dlBtn" style="margin-top:12px">Orqaga sanash</button>
+      <div class="res" id="dlRes"></div>
+    </div>
+  </section>
+
+  <!-- BADGES -->
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <p class="sub">Har bosqich uchun nishon olasiz. 250 XP: modul toʻliq yakunlandi.</p>
+    <div class="badges">
+      <div class="bdg" data-badge="l1"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Kuzatuvchi<small>0.1 yakunlandi</small></div>
+      <div class="bdg" data-badge="sys"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Xaritachi<small>2–3 tizim tanlandi</small></div>
+      <div class="bdg" data-badge="quiz"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Tahlilchi<small>Test 3+/4</small></div>
+      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Halol koʻzgu<small>Koʻrsatkich</small></div>
+      <div class="bdg" data-badge="dl"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy">Vaqt muhandisi<small>Kalendar</small></div>
+      <div class="bdg" data-badge="dec"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Qaror qildi<small>Bayonot</small></div>
+    </div>
+  </section>
+
+  <!-- DECISION -->
+  <section id="qaror">
+    <div class="decide">
+      <h2>Qaror bayonoti</h2>
+      <p class="sub">Natijalaringizdan avtomatik yigʻiladi. Nusxalab, oʻzingizda saqlang.</p>
+      <div class="stmt" id="stmt"></div>
+      <label class="ck"><input type="checkbox" id="cons1">M0 bepul. Pullik obuna hozir ochilmagan, kelajakdagi shartlar keyin eʼlon qilinadi.</label>
+      <label class="ck" style="margin-top:8px"><input type="checkbox" id="cons2">Kompas hujjatni oʻrnimga yozmasligini va qabul yoki stipendiya kafolatlanmasligini tushunaman.</label>
+      <div class="missing" id="missing"></div>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="decBtn">Qarorni tasdiqlash · +50 XP</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Nusxalash</button>
+        <a class="btn btn-g" href="master-planner.html">Bepul reja tuzish</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENTOR -->
+  <section>
+    <div class="mentor">
+      <div class="av"><img src="img/3d/compass.webp" alt="" width="30" height="30"></div>
+      <div>
+        <q>Men stipendiya tanlovidan birinchi urinishda emas, ikkinchisida oʻtdim. Birinchi safar shoshildim: hujjatlarni yigʻdim, lekin izchil hikoyam yoʻq edi. Master Lab shu xatoni takrorlamasligingiz uchun: avval koʻzguga qarang, keyin qaror qiling.</q>
+        <small>Asoschi · geofizik, University of Leeds doktoranti</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASSPORT -->
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>5 ta, bepul</div>
+      <div><b>Vaqt</b>~2,5 soat</div>
+      <div><b>Natija</b>Koʻrsatkich + kalendar + qaror bayonoti</div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="master-lab.html">← Master Lab sahifasi</a>
+    <a class="btn btn-g" href="master-planner.html">Bepul reja tuzish</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/live-bar.js"></script>
+<script src="js/protect.js"></script>
+<script>
+// ── Kirish darvozasi: M0 faqat roʻyxatdan oʻtganlar (va admin) uchun ──
+(function () {
+  var RET = "master-lab-m0-1.html";
+  function lock(title, text, showActions) {
+    document.getElementById("gateT").textContent = title;
+    document.getElementById("gateP").textContent = text;
+    document.getElementById("gateA").hidden = !showActions;
+  }
+  function remember() {
+    try { sessionStorage.setItem("returnTo", RET); } catch (e) {}
+    try { localStorage.setItem("kompas_return", JSON.stringify({ to: RET, at: Date.now() })); } catch (e) {}
+  }
+  document.querySelectorAll("[data-ret]").forEach(function (a) { a.addEventListener("click", remember); });
+  var sb = window.supabase;
+  if (!sb || !sb.auth) { lock("Ulanib boʻlmadi", "Internetni tekshirib, sahifani yangilang. Muammo qolsa, t.me/kompaslab ga yozing.", false); return; }
+  sb.auth.getSession().then(function (r) {
+    var s = r && r.data && r.data.session;
+    if (!s) { remember(); lock("M0 roʻyxatdan oʻtganlar uchun", "Master Lab M0 bepul. Koʻrish uchun hisobingizga kiring yoki bepul roʻyxatdan oʻting.", true); return; }
+    document.body.classList.remove("locked");
+    var w = document.getElementById("who"); if (w) w.textContent = s.user.email || "";
+    try { localStorage.removeItem("kompas_return"); } catch (e) {}
+  }).catch(function () { lock("Ulanib boʻlmadi", "Sahifani yangilang.", false); });
+})();
+</script>
+<script>
+(function () {
+  var KEY = "kompas_master_m0_v1";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, sys: [], quiz: {}, rs: null, dl: null, dec: false, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function $(id) { return document.getElementById(id); }
+
+  // ── XP va daraja ──
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp;
+    $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; });
+    $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn");
+    $("toastT").textContent = msg; $("toastImg").src = "img/3d/" + (img || "bulb") + ".webp";
+    var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600);
+  }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#e9a27a"];
+    for (var i = 0; i < 46; i++) {
+      var c = document.createElement("i"); c.className = "cf";
+      c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length];
+      c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; c.style.animationDelay = Math.random() * .3 + "s";
+      document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600);
+    }
+  }
+  // Har mukofot bir marta beriladi
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp); save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M0 toʻliq yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  // ── Darslar: akkordeon va tablar ──
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) {
+      var on = l.id === id && !l.classList.contains("open");
+      l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false");
+    });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); });
+    show(0);
+  });
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Ajoyib! Keyingi darsga oʻting."; }
+    else { h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!"; }
+  }
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = id.slice(1);
+      award(id, 20, "Dars 0." + n + " yakunlandi", "seedling");
+      var next = $("l" + (+n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else $("tool-rs").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+
+  // ── Yozma javoblar ──
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); t.value = S.notes[k] || "";
+    var tm; t.addEventListener("input", function () { clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); }, 400); });
+  });
+
+  // ── 0.2: tizim tanlash ──
+  var chips = document.querySelectorAll("#sysChips .chip");
+  function renderSys() {
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", S.sys.indexOf(c.getAttribute("data-sys")) >= 0 ? "true" : "false"); });
+    $("sysHint").textContent = S.sys.length + " ta tanlandi" + (S.sys.length > 3 ? ": koʻpi bilan 3 ta tavsiya etiladi" : "");
+  }
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var v = c.getAttribute("data-sys"), i = S.sys.indexOf(v);
+      if (i >= 0) S.sys.splice(i, 1); else if (S.sys.length < 3) S.sys.push(v); else { toast("Koʻpi bilan 3 ta tizim", "telescope"); return; }
+      save(); renderSys(); renderStmt();
+      if (S.sys.length >= 2) award("sys", 0, "Xaritachi nishoni", "telescope");
+    });
+  });
+
+  // ── 0.3: mini-test ──
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return;
+      answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) {
+        var v = b.getAttribute("data-v");
+        b.classList.toggle("right", v === q.getAttribute("data-a"));
+        b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a"));
+      });
+    });
+    var r = $("quizRes");
+    if (answered === qz.length) { r.className = "verdict show " + (right >= 3 ? "box info" : "box warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Kuchli va zaif arizani ajrata olasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return;
+        S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { var xp = r.right * 7 + (r.right === 4 ? 2 : 0); if (r.right >= 3) award("quiz", xp, "Tahlilchi nishoni: " + r.right + "/4", "scroll"); else award("quizTry", xp, "Test: " + r.right + "/4", "scroll"); }
+      });
+    });
+  });
+
+  // ── 0.5: mos emas ──
+  var fit = document.querySelectorAll("#notFit input");
+  function renderFit() {
+    var alts = [], other = 0;
+    fit.forEach(function (x) {
+      x.closest(".ck").classList.toggle("on", x.checked);
+      if (x.checked) { var a = x.getAttribute("data-alt"); if (a) alts.push('<a href="' + x.getAttribute("data-href") + '">' + a + "</a>"); else other++; }
+    });
+    var r = $("fitRes");
+    if (!alts.length && !other) { r.className = "verdict show box info"; r.innerHTML = "Hech biri belgilanmadi: Master Lab sizga mos boʻlishi mumkin. Koʻrsatkich va kalendar bilan tekshiring."; }
+    else { r.className = "verdict show box warn"; r.innerHTML = (alts.length ? "Sizga mosroq: " + alts.join(", ") + ". " : "") + (other ? "Belgilangan bandlar boʻyicha hozir toʻlash tavsiya etilmaydi: avval shu masalani hal qiling yoki keyingi siklni rejalang." : ""); }
+    renderStmt();
+  }
+  fit.forEach(function (x) { x.addEventListener("change", renderFit); });
+
+  // ── Tayyorgarlik koʻrsatkichi ──
+  var DIMS = [["Tadqiqot yoʻnalishi", "Qiziqishingizni bir jumlada ayta olasizmi"], ["Akademik tayyorgarlik", "Diplom va tajriba talabga mosligi"], ["Til", "Darajangiz talabga yaqinligi"], ["Vaqt", "Deadlineʼgacha vaqt yetarliligi"], ["Moliyalashtirish", "Moliyaviy modelni tushunish"], ["Hikoya", "Izchil hikoya shakllanganligi"]];
+  var vals = (S.rs && S.rs.vals) || [50, 50, 50, 50, 50, 50];
+  $("sliders").innerHTML = DIMS.map(function (d, i) {
+    return '<div class="sl"><label for="r' + i + '"><span>' + d[0] + "<small>" + d[1] + '</small></span><output id="o' + i + '">' + vals[i] + '</output></label><input type="range" id="r' + i + '" min="0" max="100" step="5" value="' + vals[i] + '"></div>';
+  }).join("");
+  var SHORT = ["Tadqiqot", "Akademik", "Til", "Vaqt", "Moliya", "Hikoya"];
+  var C = 130, R = 92;
+  function pt(i, r) { var a = -Math.PI / 2 + i * Math.PI / 3; return [C + r * Math.cos(a), C + r * Math.sin(a)]; }
+  function drawRadar() {
+    var g = "";
+    [.25, .5, .75, 1].forEach(function (k) { g += '<polygon points="' + DIMS.map(function (_, i) { return pt(i, R * k).join(","); }).join(" ") + '" fill="none" stroke="#e2ded3" stroke-width="1"/>'; });
+    DIMS.forEach(function (d, i) { var p = pt(i, R); g += '<line x1="' + C + '" y1="' + C + '" x2="' + p[0] + '" y2="' + p[1] + '" stroke="#e2ded3"/>'; var q = pt(i, R + 18); g += '<text x="' + q[0] + '" y="' + (q[1] + 3) + '" text-anchor="middle">' + SHORT[i] + "</text>"; });
+    var low = sorted().slice(0, 2).map(function (x) { return x.i; });
+    g += '<polygon points="' + vals.map(function (v, i) { return pt(i, R * v / 100).join(","); }).join(" ") + '" fill="rgba(196,98,45,.22)" stroke="#c4622d" stroke-width="2.5" stroke-linejoin="round"/>';
+    vals.forEach(function (v, i) { var p = pt(i, R * v / 100); g += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (low.indexOf(i) >= 0 ? 5.5 : 4) + '" fill="' + (low.indexOf(i) >= 0 ? "#b42318" : "#2d4a3e") + '"/>'; });
+    $("radar").innerHTML = g;
+    $("rsAvg").textContent = avg();
+  }
+  function avg() { return Math.round(vals.reduce(function (a, b) { return a + b; }, 0) / vals.length); }
+  function sorted() { return vals.map(function (v, i) { return { v: v, i: i }; }).sort(function (a, b) { return a.v - b.v; }); }
+  DIMS.forEach(function (_, i) {
+    $("r" + i).addEventListener("input", function (e) { vals[i] = +e.target.value; $("o" + i).textContent = vals[i]; drawRadar(); });
+  });
+  function rsVerdict(a) {
+    if (a >= 70) return "Kuchli boshlangʻich holat. Eng zaif ikki oʻlchovga eʼtibor bering.";
+    if (a >= 45) return "Oʻrtacha holat. Kurs aynan shu zaif oʻlchovlar ustida ishlash uchun. Vaqt yetarli boʻlsa, davom eting.";
+    return "Bu siklga erta boʻlishi mumkin. Bu yomon xabar emas, aniq ish rejasi. Vaqt kam boʻlsa, keyingi siklni jiddiy koʻrib chiqing.";
+  }
+  function renderRs() {
+    if (!S.rs) return;
+    var s = sorted(), r = $("rsRes");
+    r.className = "res show";
+    r.innerHTML = "<b>Koʻrsatkich: " + S.rs.avg + " / 100.</b> Eng zaif ikki oʻlchov: <b>" + DIMS[S.rs.low[0]][0] + "</b> va <b>" + DIMS[S.rs.low[1]][0] + "</b>.<br>" + rsVerdict(S.rs.avg);
+  }
+  $("rsBtn").addEventListener("click", function () {
+    var s = sorted(); S.rs = { vals: vals.slice(), avg: avg(), low: [s[0].i, s[1].i] }; save(); renderRs(); renderStmt();
+    award("rs", 40, "Halol koʻzgu nishoni", "chart");
+  });
+  drawRadar();
+
+  // ── Deadline kalendari ──
+  var DAY = 86400000;
+  function fmt(d) { var m = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"]; return d.getDate() + "-" + m[d.getMonth()] + ", " + d.getFullYear(); }
+  function renderDl() {
+    if (!S.dl) return;
+    var dead = new Date(S.dl.date + "T00:00:00"), target = new Date(dead.getTime() - 28 * DAY), start = new Date(target.getTime() - S.dl.weeks * 7 * DAY);
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var left = Math.round((start - today) / DAY);
+    var v = left > 14 ? ["Vaqtingiz yetarli.", "green"] : left >= 0 ? ["Vaqtingiz tigʻiz: darhol boshlang.", "gold"] : ["Bu sikl uchun vaqt yetarli emas. Keyingi siklni rejalashtiring: bu toʻgʻri qaror.", "red"];
+    var t0 = Math.min(today.getTime(), start.getTime()), span = dead.getTime() - t0 || 1;
+    function x(d) { return Math.max(0, Math.min(100, (d - t0) / span * 100)); }
+    var r = $("dlRes"); r.className = "res show";
+    r.innerHTML = '<div class="tline"><div class="bar"><span class="seg" style="left:' + x(start) + "%;width:" + (x(target) - x(start)) + '%;background:#2d4a3e"></span><span class="seg" style="left:' + x(target) + "%;width:" + (100 - x(target)) + '%;background:#d9a441"></span></div>' +
+      '<span class="mk" style="left:' + x(today) + '%"><i style="background:#c4622d"></i><span>Bugun</span></span>' +
+      '<span class="mk" style="left:' + x(dead) + '%;transform:translateX(-100%)"><i style="background:#b42318;margin-left:auto;margin-right:0"></i><span>Deadline</span></span></div>' +
+      '<div class="legend"><span><i style="background:#2d4a3e"></i>Tayyorgarlik (' + S.dl.weeks + ' hafta)</span><span><i style="background:#d9a441"></i>Zaxira (4 hafta)</span></div>' +
+      '<p style="margin-top:10px">Boshlash kerak boʻlgan sana: <b>' + fmt(start) + "</b>. Hujjatlar tayyor boʻlishi kerak: <b>" + fmt(target) + "</b>. Rasmiy deadline: <b>" + fmt(dead) + '</b>.</p><p style="margin-top:6px;font-weight:800;color:var(--' + v[1] + ')">' + v[0] + "</p>";
+    S.dl.verdict = left > 14 ? "yetarli" : left >= 0 ? "tigʻiz" : "yetarli emas";
+  }
+  if (S.dl) { $("dlDate").value = S.dl.date; $("dlW").value = S.dl.weeks; }
+  $("dlBtn").addEventListener("click", function () {
+    var d = $("dlDate").value, w = Math.max(4, Math.min(60, parseInt($("dlW").value, 10) || 18));
+    if (!d) { toast("Deadline sanasini kiriting", "calendar"); $("dlDate").focus(); return; }
+    S.dl = { date: d, weeks: w }; renderDl(); save(); renderStmt();
+    award("dl", 30, "Vaqt muhandisi nishoni", "hourglass");
+  });
+
+  // ── Qaror bayonoti ──
+  function renderStmt() {
+    var parts = [], miss = [];
+    if (S.rs) parts.push("Tayyorgarlik koʻrsatkichim <b>" + S.rs.avg + "/100</b>, eng zaif tomonlarim: <b>" + DIMS[S.rs.low[0]][0].toLowerCase() + "</b> va <b>" + DIMS[S.rs.low[1]][0].toLowerCase() + "</b>.");
+    else miss.push("Tayyorgarlik koʻrsatkichi");
+    if (S.dl && S.dl.verdict) parts.push("Soʻnggi muddat (Deadline) gacha vaqtim <b>" + (S.dl.verdict === "siqiq" ? "tigʻiz" : S.dl.verdict) + "</b>.");
+    else miss.push("Deadline kalendari");
+    if (S.sys.length) parts.push("Maqsadli tizimlarim: <b>" + S.sys.join(", ") + "</b>.");
+    else miss.push("0.2 da tizim tanlash");
+    var notFit = Array.prototype.some.call(fit, function (x) { return x.checked; });
+    var go = S.rs && S.dl && S.dl.verdict !== "yetarli emas" && S.rs.avg >= 45 && !notFit;
+    if (S.rs && S.dl) parts.push(go ? "Men <b>shu siklga</b> moʻljallayman." : "Men <b>keyingi siklga</b> moʻljallab, avval zaif tomonlarim ustida ishlayman.");
+    $("stmt").innerHTML = parts.length ? parts.join(" ") : "Bayonot shu yerda paydo boʻladi. Darslar va vositalarni toʻldiring.";
+    $("missing").textContent = miss.length ? "Yetishmayapti: " + miss.join(", ") + "." : "";
+    $("decBtn").disabled = !!S.done.dec;
+    if (S.done.dec) $("decBtn").textContent = "✓ Qaror tasdiqlangan";
+  }
+  $("decBtn").addEventListener("click", function () {
+    if (!S.rs || !S.dl) { toast("Avval koʻrsatkich va kalendarni toʻldiring", "lock"); return; }
+    if (!$("cons1").checked || !$("cons2").checked) { toast("Ikkala bandni ham belgilang", "shield"); return; }
+    award("dec", 50, "Qaror qildi nishoni", "seedling"); confetti(); renderStmt();
+  });
+  $("copyBtn").addEventListener("click", function () {
+    var txt = $("stmt").innerText;
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Bayonot nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); });
+    else prompt("Nusxalang:", txt);
+  });
+
+  // ── Xarita va nishonlar ──
+  function renderAll() {
+    var keys = ["l1", "l2", "l3", "l4", "l5", "rs", "dl", "dec"], n = 0;
+    document.querySelectorAll("[data-node]").forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + keys.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+    lessons.forEach(renderLesson);
+  }
+
+  // ── Narxlar bazadan (admin panelda oʻzgartirilsa shu yerda ham yangilanadi) ──
+  try {
+    fetch("https://usxpkmbjrdllnitlzdpq.supabase.co/rest/v1/rpc/kompas_public_stats", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8" },
+      body: "{}"
+    }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      var p = d && d.prices && d.prices["master-lab"]; if (!p) return;
+      if (p.y) document.querySelectorAll("[data-py]").forEach(function (el) { el.textContent = nf(p.y); });
+      if (p.m) document.querySelectorAll("[data-pm]").forEach(function (el) { el.textContent = nf(p.m); });
+      if (p.m) document.querySelectorAll("[data-ps]").forEach(function (el) { el.textContent = nf(p.m * 3); });
+    }).catch(function () {});
+  } catch (e) {}
+
+  renderSys(); renderQuiz(); renderFit(); renderRs(); renderDl(); renderStmt(); renderAll(); renderXp(false);
+})();
+</script>
+<style>.kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}@media print{.kp-wm{display:none!important}}</style>
+<script>(function(){function m(){if(document.querySelector(".kp-wm"))return;var c=document.createElement("canvas"),w=280,h=170,g=c.getContext&&c.getContext("2d");if(!g)return;c.width=w;c.height=h;g.translate(w/2,h/2);g.rotate(-0.4);g.fillStyle="#000";g.font="500 13px Outfit,system-ui,sans-serif";g.textAlign="center";g.fillText("kompaslab.uz",0,0);var d=document.createElement("div");d.className="kp-wm";d.setAttribute("aria-hidden","true");d.style.backgroundImage="url("+c.toDataURL()+")";document.body.appendChild(d);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",m);else m();})();</script>
+<script>window.KMOD={"base": "master-lab-m0", "key": "kompas_master_m0_v1", "lab": "master-lab.html", "labName": "Master Lab", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "Master Lab tizimi va Kompas metodi", "short": "Tizim", "meta": "⏱ 25 daqiqa, 📄 “Nega magistratura” bayonoti"}, {"id": "l2", "num": "0.2", "title": "Magistratura tizimlari: AQSh, Buyuk Britaniya, Yevropa, Osiyo, Avstraliya", "short": "Davlatlar", "meta": "⏱ 35 daqiqa, 📄 2–3 maqsadli tizim"}, {"id": "l3", "num": "0.3", "title": "Qabul qilingan va rad etilgan ariza tuzilishi", "short": "Ariza", "meta": "⏱ 30 daqiqa, 🎯 Mini-test"}, {"id": "l4", "num": "0.4", "title": "Tayyorgarlik koʻrsatkichi: oʻzingizga halol koʻzgu", "short": "Diagnostika", "meta": "⏱ 30 daqiqa, 📄 Koʻrsatkich varagʻi"}, {"id": "l5", "num": "0.5", "title": "Master Lab sizga mos emas, agar… va toʻlov shartlari", "short": "Mos emas", "meta": "⏱ 30 daqiqa, 📄 Qaror bayonoti"}], "yakunMeta": "Tayyorgarlik koʻrsatkichi, Deadline kalendari, nishonlar, qaror va rozilik"};</script>
+<script src="js/kompas-module.js"></script>
+</body>
+</html>

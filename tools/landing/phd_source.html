@@ -785,7 +785,7 @@ footer a:hover{color:#fff;}
     document.getElementById("wSelf").style.display = sels[5].value === "0" ? "block" : "none";
     document.getElementById("wTime").style.display = sels[6].value === "0" ? "block" : "none";
   }
-  sels.forEach(function (s) { s.addEventListener("change", calc); });
+  if (sels[0]) sels.forEach(function (s) { s.addEventListener("change", calc); });   // test faqat Moslik testi sahifasida
 
   // Kutish roʻyxati
   var ovl = document.getElementById("wl"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");

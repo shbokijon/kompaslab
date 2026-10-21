@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M3-M. Magistratura nomzodining pozitsiyasi · GKS Lab | Kompas Lab</title>
+<meta name="description" content="GKS Lab, M3-M: Magistratura nomzodining pozitsiyasi. 4 dars. Natija: STAR inventari + akademik CV v1.0 + yoʻnalish koʻprigi matni (kerak boʻlsa).">
+<meta property="og:title" content="GKS Lab | Kompas Lab">
+<meta property="og:description" content="GKS Lab, M3-M: Magistratura nomzodining pozitsiyasi. 4 dars. Natija: STAR inventari + akademik CV v1.0 + yoʻnalish koʻprigi matni (kerak boʻlsa).">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet">
+<style>:root{
+  --accent:#2d4a3e; --accent-h:#1e3329; --accent-lit:#e8f0ec;
+  --accent2:#c4622d; --accent2-h:#a84f23; --accent2-lit:#faeee7;
+  --cream:#f4f3ef; --gold:#b08a00; --gold-lit:#fdf6dc;
+  --bg:#f5f7f5; --surface:#ffffff; --border:#e0e8e2;
+  --text:#1a2e26; --muted:#5f7169; --muted2:#9aada6;
+  --green:#1a7a4a; --green-lit:#e6f4ec; --red:#b42318; --red-lit:#fdecea;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:"Outfit","IBM Plex Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+a{color:inherit;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;}
+.mono{font-family:"JetBrains Mono","IBM Plex Sans",monospace;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;background:rgba(245,247,245,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav .wrap{height:100%;display:flex;align-items:center;gap:16px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.logo-m{width:34px;height:34px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.logo-t{font-size:16px;font-weight:800;color:var(--accent);}
+.logo-t span{color:var(--muted);font-weight:600;}
+.nav-links{display:flex;gap:4px;margin:0 auto;}
+.nav-links a{padding:7px 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;}
+.nav-links a:hover{color:var(--accent);background:var(--accent-lit);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;font-family:"Outfit","IBM Plex Sans",sans-serif;font-weight:800;text-decoration:none;transition:all .18s;}
+.btn-p{background:var(--accent2);color:#fff;padding:13px 24px;border-radius:12px;font-size:15px;box-shadow:0 6px 22px rgba(196,98,45,.3);}
+.btn-p:hover{background:var(--accent2-h);transform:translateY(-1px);}
+.btn-g{background:var(--surface);color:var(--accent);padding:12px 22px;border-radius:12px;font-size:15px;border:2px solid var(--border);}
+.btn-g:hover{border-color:var(--accent);background:var(--accent-lit);}
+.btn-sm{padding:8px 14px;font-size:13px;border-radius:9px;}
+.nav .btn-p{margin-left:auto;}
+
+/* HERO */
+.hero{padding:120px 0 64px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 80% 40%,rgba(45,74,62,.07),transparent 70%),radial-gradient(ellipse 40% 50% at 10% 90%,rgba(196,98,45,.06),transparent 60%);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:48px;align-items:center;position:relative;}
+.crumb{font-size:12px;color:var(--muted);margin-bottom:16px;}
+.crumb a{color:var(--muted);text-decoration:none;}
+.crumb a:hover{color:var(--accent);}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold-lit);border:1px solid #e8d48a;color:var(--gold);padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700;font-family:"JetBrains Mono","IBM Plex Sans",monospace;margin-bottom:18px;}
+h1{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:clamp(36px,5vw,60px);line-height:1.08;letter-spacing:-1px;color:var(--accent);margin-bottom:18px;}
+h1 em{font-style:italic;color:var(--accent2);}
+.lead{font-size:17px;color:var(--muted);max-width:560px;margin-bottom:26px;}
+.lead strong{color:var(--text);}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;}
+.facts{display:flex;flex-wrap:wrap;gap:8px;}
+.fact{font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px;background:var(--surface);border:1px solid var(--border);color:var(--text);}
+.fact b{font-family:"JetBrains Mono","IBM Plex Sans",monospace;color:var(--accent2);}
+
+.packet{background:var(--surface);border:1px solid var(--border);border-radius:22px;overflow:hidden;box-shadow:0 22px 60px rgba(45,74,62,.12);}
+.packet-top{background:var(--accent);color:#fff;padding:22px;}
+.packet-top small{display:block;font-size:11px;font-family:"JetBrains Mono","IBM Plex Sans",monospace;color:rgba(255,255,255,.6);letter-spacing:.5px;margin-bottom:6px;}
+.packet-top strong{font-size:19px;font-weight:800;}
+.packet ol{list-style:none;padding:8px 22px 4px;counter-reset:p;}
+.packet li{counter-increment:p;display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;font-weight:600;}
+.packet li:last-child{border-bottom:none;}
+.packet li::before{content:counter(p);width:24px;height:24px;border-radius:7px;background:var(--accent-lit);color:var(--accent);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"JetBrains Mono","IBM Plex Sans",monospace;}
+.packet li span{display:block;font-size:11px;color:var(--muted);font-weight:500;}
+.packet-foot{padding:14px 22px;background:var(--bg);border-top:1px solid var(--border);font-size:12px;color:var(--muted);}
+
+/* SECTIONS */
+section{padding:84px 0;}
+.alt{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.dark{background:var(--accent);color:#fff;}
+.label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:2px;font-family:"JetBrains Mono","IBM Plex Sans",monospace;margin-bottom:12px;}
+.label::before{content:"";width:18px;height:2px;background:var(--accent2);}
+h2{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:clamp(28px,3.4vw,42px);line-height:1.15;color:var(--accent);margin-bottom:12px;}
+h2 em{font-style:italic;color:var(--accent2);}
+.dark h2{color:#fff;}
+.sub{font-size:16px;color:var(--muted);max-width:640px;}
+.dark .sub{color:rgba(255,255,255,.65);}
+.head{margin-bottom:40px;}
+
+/* PRINCIPLE */
+.rule-box{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:start;}
+.rule-box p{color:rgba(255,255,255,.75);margin-bottom:14px;}
+.model-list{display:grid;gap:10px;}
+.model{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px 16px;}
+.model b{display:block;font-size:14px;margin-bottom:2px;}
+.model span{font-size:13px;color:rgba(255,255,255,.65);}
+.model.bad{border-color:rgba(242,166,140,.5);background:rgba(196,98,45,.15);}
+
+/* FIT */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.fit-col{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;}
+.fit-col h3{font-size:16px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.fit-col ul{list-style:none;display:grid;gap:10px;}
+.fit-col li{font-size:14px;padding-left:24px;position:relative;line-height:1.5;}
+.fit-col.yes li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800;}
+.fit-col.no li::before{content:"✗";position:absolute;left:0;color:var(--red);font-weight:800;}
+.fit-col li a{color:var(--accent);font-weight:700;}
+
+/* PHASES + MODULES */
+.phases{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:36px;}
+.phase{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px;}
+.phase small{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:10px;color:var(--accent2);font-weight:700;letter-spacing:1px;}
+.phase b{display:block;font-size:14px;margin:4px 0;}
+.phase span{font-size:12px;color:var(--muted);}
+.mods{display:grid;gap:10px;}
+details.mod{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+details.mod[open]{border-color:var(--accent);}
+details.mod summary{list-style:none;cursor:pointer;padding:16px 18px;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;}
+details.mod summary::-webkit-details-marker{display:none;}
+.mod-n{width:44px;height:44px;border-radius:11px;background:var(--accent-lit);color:var(--accent);font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.mod.free .mod-n{background:var(--green-lit);color:var(--green);}
+.mod-t{font-weight:800;font-size:15px;line-height:1.3;}
+.mod-a{font-size:12px;color:var(--muted);margin-top:3px;}
+.mod-c{font-size:12px;font-weight:700;color:var(--muted);font-family:"JetBrains Mono","IBM Plex Sans",monospace;white-space:nowrap;}
+.mod-c .tag{display:inline-block;margin-left:6px;padding:2px 7px;border-radius:6px;font-size:10px;}
+.tag-free{background:var(--green-lit);color:var(--green);}
+.tag-core{background:var(--gold-lit);color:var(--gold);}
+.mod ol{list-style:none;padding:0 18px 16px 84px;display:grid;gap:8px;}
+.mod li{font-size:14px;line-height:1.45;}
+.mod li .num{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:12px;color:var(--accent2);font-weight:700;margin-right:6px;}
+.mod li small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;}
+
+/* TIMELINE */
+.tl{position:relative;display:grid;gap:12px;}
+.tl-row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;align-items:start;}
+.tl-when{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:13px;font-weight:700;color:var(--accent2);padding-top:12px;}
+.tl-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:12px 16px;}
+.tl-card b{font-size:14px;}
+.tl-card p{font-size:13px;color:var(--muted);}
+.tl-card.hot{border-left-color:var(--accent2);}
+.note{font-size:12.5px;color:var(--muted);margin-top:14px;}
+
+/* ARTIFACTS */
+.art-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.art{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;}
+.art small{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:11px;font-weight:700;color:var(--accent2);}
+.art b{display:block;font-size:14px;margin:4px 0 2px;line-height:1.35;}
+.art span{font-size:12px;color:var(--muted);}
+
+/* ATLAS */
+.atlas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.src{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;}
+.src-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:6px;flex-wrap:wrap;}
+.src-h b{font-size:15px;}
+.chk{font-size:10.5px;font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap;}
+.chk.ok{background:var(--green-lit);color:var(--green);}
+.chk.lab{background:var(--accent-lit);color:var(--accent);}
+.chk.wait{background:var(--gold-lit);color:var(--gold);}
+.src p{font-size:13.5px;color:var(--text);}
+.src a.s{font-size:12px;color:#1f5fa8;font-weight:600;}
+.excl{margin-top:18px;background:var(--red-lit);border:1px solid #f3c3bd;border-radius:14px;padding:14px 18px;font-size:13.5px;}
+.excl b{color:var(--red);}
+
+/* FOUNDER */
+.founder{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:start;}
+.f-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.f-top{background:linear-gradient(135deg,var(--accent),#4a7a65);color:#fff;padding:24px;}
+.f-top b{display:block;font-size:20px;}
+.f-top span{font-size:13px;color:rgba(255,255,255,.7);}
+.f-list{list-style:none;padding:8px 22px;}
+.f-list li{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;font-weight:600;}
+.f-list li:last-child{border-bottom:none;}
+.f-list li span{display:block;font-size:12px;color:var(--muted);font-weight:500;}
+table.scope{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:13.5px;}
+.scope th,.scope td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+.scope th{background:var(--accent);color:#fff;font-size:12px;font-weight:700;}
+.scope tr:last-child td{border-bottom:none;}
+.y{color:var(--green);font-weight:800;} .n{color:var(--red);font-weight:800;}
+
+/* PRICING */
+.pay-status{display:flex;gap:12px;align-items:flex-start;background:var(--gold-lit);border:1px solid #e8d48a;border-radius:14px;padding:14px 18px;font-size:14px;margin-bottom:28px;}
+.plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch;}
+.plan{background:var(--bg);border:2px solid var(--border);border-radius:20px;padding:26px;display:flex;flex-direction:column;}
+.plan.main{background:var(--accent);border-color:var(--accent);color:#fff;position:relative;}
+.plan.main .tag-top{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent2);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;font-family:"JetBrains Mono","IBM Plex Sans",monospace;white-space:nowrap;}
+.plan h3{font-size:17px;font-weight:800;margin-bottom:4px;}
+.plan .desc{font-size:13px;color:var(--muted);margin-bottom:16px;}
+.plan.main .desc{color:rgba(255,255,255,.65);}
+.price{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:32px;font-weight:800;color:var(--accent);line-height:1;}
+.plan.main .price{color:#fff;}
+.per{font-size:12px;color:var(--muted);margin:6px 0 18px;}
+.plan.main .per{color:rgba(255,255,255,.6);}
+.plan ul{list-style:none;display:grid;gap:8px;margin-bottom:22px;flex:1;}
+.plan li{font-size:13.5px;padding-left:22px;position:relative;}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800;}
+.plan.main li::before{color:#9be0b8;}
+.plan .btn{width:100%;}
+.plan.main .btn-g{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3);}
+.calc{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.calc div{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--muted);}
+.calc b{display:block;font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:17px;color:var(--text);margin-bottom:2px;}
+.rules{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rules div{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:13.5px;}
+.rules b{display:block;color:var(--accent);margin-bottom:3px;}
+
+/* QUIZ */
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;}
+.q{margin-bottom:14px;}
+.q label{display:block;font-size:13.5px;font-weight:700;margin-bottom:6px;}
+.q label small{font-weight:500;color:var(--muted);}
+.q select{width:100%;padding:10px 12px;border:2px solid var(--border);border-radius:10px;font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:14px;background:var(--bg);color:var(--text);}
+.q select:focus{outline:none;border-color:var(--accent);background:#fff;}
+.score{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:20px;position:sticky;top:80px;align-self:start;}
+.score-n{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:48px;font-weight:800;color:var(--accent);line-height:1;}
+.score-n small{font-size:18px;color:var(--muted);}
+.bar{height:10px;background:var(--border);border-radius:99px;overflow:hidden;margin:12px 0;}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s,background .3s;}
+.verdict{font-weight:800;font-size:16px;margin-bottom:6px;}
+.verdict-t{font-size:13.5px;color:var(--muted);margin-bottom:10px;}
+.warn{display:none;background:var(--red-lit);color:var(--red);border-radius:10px;padding:10px 12px;font-size:13px;margin-top:8px;}
+.gaps{font-size:13px;margin-top:8px;}
+.gaps li{margin-left:18px;}
+
+/* FAQ */
+.faq{max-width:780px;margin:0 auto;display:grid;gap:10px;}
+.faq details{background:var(--bg);border:1px solid var(--border);border-radius:14px;}
+.faq details[open]{border-color:var(--accent);}
+.faq summary{cursor:pointer;list-style:none;padding:16px 18px;font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:12px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";color:var(--muted);font-size:20px;line-height:1;}
+.faq details[open] summary::after{content:"–";}
+.faq p{padding:0 18px 16px;font-size:14.5px;color:var(--muted);}
+.faq p a{color:var(--accent);font-weight:700;}
+
+/* CTA + FOOTER */
+.cta{text-align:center;}
+.cta .sub{margin:0 auto 26px;}
+.cta .btn-g{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25);}
+footer{background:var(--text);color:rgba(255,255,255,.55);padding:34px 0;font-size:13px;}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+footer a{color:rgba(255,255,255,.75);text-decoration:none;margin-right:14px;}
+footer a:hover{color:#fff;}
+.sources{font-size:12px;color:var(--muted);margin-top:22px;}
+.sources a{color:#1f5fa8;}
+
+/* MODAL */
+.ovl{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;display:none;align-items:center;justify-content:center;padding:16px;}
+.ovl.open{display:flex;}
+.mdl{background:#fff;border-radius:20px;padding:30px 26px;width:100%;max-width:420px;position:relative;text-align:center;}
+.mdl h3{font-size:19px;font-weight:900;margin-bottom:6px;}
+.mdl p{font-size:13px;color:var(--muted);margin-bottom:16px;}
+.mdl input{width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:12px;font-size:15px;font-family:"Outfit","IBM Plex Sans",sans-serif;background:var(--bg);}
+.mdl input:focus{outline:none;border-color:var(--accent);background:#fff;}
+.mdl .btn{width:100%;margin-top:12px;}
+.x{position:absolute;top:12px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--muted);}
+#wlMsg{font-size:12.5px;min-height:18px;margin-top:8px;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
+
+@media(max-width:1000px){
+  .plans{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px;}
+  .hero-grid{grid-template-columns:minmax(0,1fr);}
+  .packet{max-width:520px;}
+  .phases{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .rule-box,.founder,.quiz{grid-template-columns:minmax(0,1fr);}
+  .score{position:static;}
+  .art-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:720px){
+  .nav-links{display:none;}
+  .fit,.atlas,.plans,.calc,.rules{grid-template-columns:minmax(0,1fr);}
+  .art-grid,.phases{grid-template-columns:minmax(0,1fr);}
+  .tl-row{grid-template-columns:minmax(0,1fr);gap:4px;}
+  .tl-when{padding-top:0;}
+  .mod ol{padding:0 16px 16px 16px;}
+  details.mod summary{grid-template-columns:44px minmax(0,1fr);}
+  .mod-c{grid-column:2;}
+  .mod-n{width:40px;height:40px;}
+  .plan.main{margin-top:10px;}
+  section{padding:64px 0;}
+  .scope{font-size:12.5px;}
+  .scope th,.scope td{padding:8px 10px;}
+}
+
+.trk-h{margin:26px 0 10px;font-size:16px;font-weight:800;color:var(--accent);}
+.tk{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px;background:var(--accent-lit);color:var(--accent);margin-left:6px;vertical-align:1px;}
+.banner{display:flex;gap:12px;align-items:flex-start;border-radius:14px;padding:14px 18px;font-size:14px;margin-bottom:22px;}
+.banner.warn{background:var(--gold-lit);border:1px solid #e8d48a;}
+.banner.red{background:var(--red-lit);border:1px solid #f3c3bd;}
+.banner.green{background:var(--green-lit);border:1px solid #bfe3cd;}
+.cmp{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);font-size:14px;margin-top:18px;}
+.cmp th,.cmp td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+.cmp th{background:var(--accent);color:#fff;font-size:13px;}
+.cmp tr:last-child td{border-bottom:none;}
+.tblwrap{overflow-x:auto;border-radius:14px;max-width:100%;-webkit-overflow-scrolling:touch;}
+.help{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:12px;padding:14px 18px;font-size:14px;margin-top:18px;}
+.soon{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;max-width:760px;}
+.soon p{color:var(--muted);margin-bottom:14px;}
+.phases.c4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.ab{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin-bottom:18px;}
+.ab-c{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 22px;}
+.ab-c.b{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent);}
+.ab-c small{display:block;font-size:12px;font-weight:800;color:var(--accent2);margin-bottom:6px;}
+.ab-c p{font-size:14px;line-height:1.55;}
+.ab-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--accent);}
+.ab-arrow::before{content:"→";}
+.honest{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;font-size:14px;color:var(--text);}
+@media(max-width:720px){.ab{grid-template-columns:minmax(0,1fr);}.ab-arrow{justify-content:center;transform:rotate(90deg);}}
+@media(max-width:1000px){.phases.c4,.phases.c5{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:720px){.phases.c4,.phases.c5{grid-template-columns:minmax(0,1fr);}.cmp{min-width:520px;}}
+
+:root{--bg:#f4f3ef;--border:#e2ded3;--surface:#fffefb;--gold:#8a6a10;--gold-lit:#f8f0d6;}
+body{background:var(--bg);-webkit-text-size-adjust:100%;}
+.nav{background:rgba(244,243,239,.94);}
+h1 em,h2 em{font-style:normal;color:inherit;}
+h1{letter-spacing:-.5px;}
+.label{display:none;}
+.badge{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:13px;letter-spacing:0;}
+.fact b,.packet li::before,.mod-n,.mod-c,.mod li .num,.tl-when,.chk,.price,.calc b,.score-n,.tk,.lc-p,.lc-t,.st::before{font-family:"Outfit","IBM Plex Sans",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;}
+.packet-top small,.phase small,.art small,.plan.main .tag-top{font-family:"Outfit","IBM Plex Sans",sans-serif;letter-spacing:0;text-transform:none;font-size:12.5px;}
+.phase small{color:var(--accent2);font-weight:700;}
+.price{font-weight:800;letter-spacing:-.5px;}
+.reveal{opacity:1;transform:none;transition:none;}
+input,select,textarea{font-size:16px;}
+.q select,.mdl input,.mdl select{font-size:16px;min-height:46px;}
+.btn{min-height:44px;}
+.btn-sm{min-height:40px;}
+.nav .btn-p{white-space:nowrap;}
+.logo-m{background:none;width:36px;height:36px;}
+.logo-m img{width:34px;height:34px;display:block;}
+.i3d{width:64px;height:64px;display:block;}
+.hero-i{width:76px;height:76px;margin-bottom:10px;}
+@media (prefers-reduced-motion: no-preference){
+  .float{animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
+}
+.live{display:none;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin-top:12px;}
+.live.on{display:flex;}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(26,122,74,.5);}
+@media (prefers-reduced-motion: no-preference){.live i{animation:pulse 2s infinite;}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(26,122,74,.45)}70%{box-shadow:0 0 0 8px rgba(26,122,74,0)}100%{box-shadow:0 0 0 0 rgba(26,122,74,0)}}}
+.method{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:start;}
+.who{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;}
+.who h3{font-size:16px;font-weight:800;margin-bottom:10px;}
+.who ul{list-style:none;display:grid;gap:8px;}
+.who li{font-size:14px;padding-left:18px;position:relative;}
+.who li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--accent2);}
+.why-lab{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;font-size:14px;margin-top:18px;display:flex;gap:14px;align-items:flex-start;}
+.why-lab img{width:44px;height:44px;flex-shrink:0;}
+.plan .per{min-height:18px;}
+.pro-plan{margin-top:18px;background:var(--surface);border:1px dashed var(--border);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--muted);}
+.pro-plan .tag-plan{display:inline-block;background:var(--gold-lit);color:var(--gold);font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;margin-right:8px;}
+.pro-plan b{color:var(--text);}
+.pro-plan p{margin:8px 0 6px;}
+.pro-plan ul{margin:0;padding-left:20px;}
+.pro-plan li{margin:3px 0;}
+.refund{margin-top:18px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;font-size:14px;}
+footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
+@media(max-width:1000px){.method{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:720px){
+  .logo-t span{display:none;}
+  .hero{padding:96px 0 48px;}
+  h1{font-size:34px;}
+  .lead{font-size:16px;}
+  .packet li{font-size:14px;}
+  .packet li span{font-size:12.5px;}
+  .mod li small{font-size:13px;}
+  .src p,.rules div,.calc div,.fit-col li{font-size:14.5px;}
+  .nav .btn-p{padding:8px 12px;font-size:13px;}
+  .cta-row .btn{width:100%;}
+}
+</style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kompas Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script src="js/pwa.js" defer></script>
+<link rel="stylesheet" href="css/brand.css">
+<meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kompas Lab logotipi: Kuzatuvdan kashfiyotga">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.kompaslab.uz/gks-lab-m3-m">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<script src="js/kompas-ui.js"></script>
+</head>
+<body data-kpage="modul">
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab <span>GKS</span></span></a>
+    <div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="gks-lab.html">Umumiy</a><a href="gks-lab-dastur.html" aria-current="page">Dastur</a><a href="gks-lab-test.html">Moslik testi</a><a href="gks-lab-narxlar.html">Narxlar</a><a href="gks-lab-savollar.html">Savollar</a></div>
+    <span class="kl-sfx" data-sfx-slot></span><button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
+  </div>
+</nav>
+<div class="kl-tabbar"><div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="gks-lab.html">Umumiy</a><a href="gks-lab-dastur.html" aria-current="page">Dastur</a><a href="gks-lab-test.html">Moslik testi</a><a href="gks-lab-narxlar.html">Narxlar</a><a href="gks-lab-savollar.html">Savollar</a></div></div>
+<header class="kl-pagehead">
+  <div class="wrap">
+    <nav class="kl-crumb" aria-label="Yoʻl"><a href="index.html">Kompas Lab</a><span aria-hidden="true">/</span><a href="gks-lab.html">GKS Lab</a><span aria-hidden="true">/</span><a href="gks-lab-dastur.html">Dastur</a><span aria-hidden="true">/</span><span>M3-M</span></nav>
+    <div class="kl-head-row"><div><h1>M3-M. Magistratura nomzodining pozitsiyasi</h1><p class="lead">4 dars. Trek M: magistratura (GKS-G).</p></div><img class="kl-head-art float" src="img/3d/gks.webp" alt="" width="160" height="160"></div>
+  </div>
+</header>
+<section style="padding-top:8px">
+  <div class="wrap">
+    <div class="kl-mod-art"><img src="img/3d/memo.webp" alt="" width="28" height="28" style="width:28px;height:28px;flex:none"><span><b>Modul natijasi:</b> STAR inventari + akademik CV v1.0 + yoʻnalish koʻprigi matni (kerak boʻlsa)</span></div>
+    <h2 style="margin:34px 0 14px">Darslar</h2>
+    <ol class="kl-route kl-lessons"><li class="kl-st is-locked"><div><span class="kl-st-n">3.1</span><span class="kl-st-b"><b>Bakalavrdan magistraturaga</b><small>&quot;Oʻqishni xohlayman&quot;dan &quot;nimani oʻrganmoqchiman&quot;ga; bakalavr ishlaridagi takrorlanuvchi mavzu</small></span><span class="kl-st-s">Obuna</span></div></li><li class="kl-st is-locked"><div><span class="kl-st-n">3.2</span><span class="kl-st-b"><b>Dalillar inventari</b><small>Kurs ishi, bitiruv ishi, tezis, laboratoriya, dasturiy vositalar — STAR formatida</small></span><span class="kl-st-s">Obuna</span></div></li><li class="kl-st is-locked"><div><span class="kl-st-n">3.3</span><span class="kl-st-b"><b>Akademik CV (Core)</b><small>Boʻlimlar tartibi, STAR bandlari, natijani raqam bilan</small></span><span class="kl-st-s">Obuna</span></div></li><li class="kl-st is-locked"><div><span class="kl-st-n">3.4</span><span class="kl-st-b"><b>Yoʻnalish oʻzgarishini asoslash</b><small>Eski sohadan olib kelinadigan koʻnikma, toʻldiriladigan boʻshliq, reja</small></span><span class="kl-st-s">Obuna</span></div></li></ol>
+    <div class="kl-lock"><img src="img/3d/lock.webp" alt="" width="160" height="160"><div><b>Darslar obuna bilan ochiladi.</b><p>Har dars alohida sahifada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Onlayn toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz.</p><div class="row"><a class="btn btn-p" href="gks-lab-narxlar.html">Narxlar va obuna</a><a class="btn btn-g" href="gks-lab-m0.html">Bepul M0 dan boshlash</a></div></div></div>
+    <div class="kl-modnav" style="display:block"><div class="kl-pager"><a class="pv" rel="prev" data-kkey data-dir="prev" href="gks-lab-m5-u.html"><small>Oldingi modul</small><b>M5-U: Oʻquv rejasi, topshirish va intervyu</b></a><a class="nx" rel="next" data-kkey data-dir="next" href="gks-lab-m4-m.html"><small>Keyingi modul</small><b>M4-M: Oʻquv rejasi</b></a></div></div>
+    <div class="head" style="margin-top:46px"><h2>Butun dastur</h2></div>
+    <ol class="kl-route" data-needle><li class="kl-phase">Umumiy oʻzak: barcha treklar</li><li class="kl-st is-free"><a href="gks-lab-m0.html"><span class="kl-st-n">M0</span><span class="kl-st-b"><b>GKS tizimi va qaror darvozasi</b><small>5 dars. Natija: Muvofiqlik jadvali + tanlangan trek + boshlash sanasi + rozilik qaydi</small></span><span class="kl-st-s">Bepul, ochiq</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m1.html"><span class="kl-st-n">M1</span><span class="kl-st-b"><b>Hujjatlar infratuzilmasi</b><small>4 dars. Natija: Hujjatlar nazorat jadvali + legallashtirish yoʻl xaritasi + til rejasi + tavsiya beruvchilar uchun varaqalar</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m2.html"><span class="kl-st-n">M2</span><span class="kl-st-b"><b>Universitet va dastur tanlash</b><small>4 dars. Natija: 3 ta asoslangan universitet tanlovi + har biri uchun moslik dalilnomasi</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-phase">Trek U: bakalavriat (GKS-U)</li><li class="kl-st is-locked"><a href="gks-lab-m3-u.html"><span class="kl-st-n sm">M3-U</span><span class="kl-st-b"><b>Nomzod profili</b><small>4 dars. Natija: Faoliyat vaqt chizigʻi + akademik profil izohi + zaif tomonlar javoblari</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m4-u.html"><span class="kl-st-n sm">M4-U</span><span class="kl-st-b"><b>Shaxsiy bayonot</b><small>5 dars. Natija: Yakuniy shaxsiy bayonot (GKS formasi talablariga mos) + tahrir qaydi</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m5-u.html"><span class="kl-st-n sm">M5-U</span><span class="kl-st-b"><b>Oʻquv rejasi, topshirish va intervyu</b><small>4 dars. Natija: Oʻquv rejasi + yigʻilgan paket + intervyu javoblari yozuvi</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-phase">Trek M: magistratura (GKS-G)</li><li class="kl-st is-locked is-here"><a href="gks-lab-m3-m.html"><span class="kl-st-n sm">M3-M</span><span class="kl-st-b"><b>Magistratura nomzodining pozitsiyasi</b><small>4 dars. Natija: STAR inventari + akademik CV v1.0 + yoʻnalish koʻprigi matni (kerak boʻlsa)</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m4-m.html"><span class="kl-st-n sm">M4-M</span><span class="kl-st-b"><b>Oʻquv rejasi</b><small>5 dars. Natija: Yakuniy oʻquv rejasi (GKS formasi boʻyicha) + semestrlar jadvali + 12 manbali annotatsiyalangan roʻyxat</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m5-m.html"><span class="kl-st-n sm">M5-M</span><span class="kl-st-b"><b>Professor, paket va intervyu</b><small>5 dars. Natija: Shaxsiy bayonot + 2 professorga xat + izchillik auditi jadvali + 60 soniyalik taqdimot yozuvi</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-phase">Trek D: doktorantura (GKS-G)</li><li class="kl-st is-locked"><a href="gks-lab-m3-d.html"><span class="kl-st-n sm">M3-D</span><span class="kl-st-b"><b>Doktorantura nomzodining ilmiy pozitsiyasi</b><small>4 dars. Natija: Portfel auditi + PhD darajasidagi CV + 3 ta potensial doktorlik savoli</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m4-d.html"><span class="kl-st-n sm">M4-D</span><span class="kl-st-b"><b>Ilmiy reja</b><small>6 dars. Natija: GKS formasiga moslangan ilmiy reja (oʻquv rejasi boʻlimi) + 30 manbali baza + 3–4 yillik Gantt jadvali</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m5-d.html"><span class="kl-st-n sm">M5-D</span><span class="kl-st-b"><b>Professor bilan muloqot va yakunlash</b><small>4 dars. Natija: 3 professorga xat va 1 sahifalik reja konspekti + suhbat tayyorgarligi + yakuniy paket</small></span><span class="kl-st-s">Obuna</span></a></li></ol>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="#" data-install>📱 Ilovani oʻrnatish</a></div>
+    <div>© 2026 Kompas Lab, Oʻzbekiston</div>
+  </div>
+</footer>
+<div class="ovl" id="wl" role="dialog" aria-modal="true" aria-labelledby="wlT">
+  <div class="mdl">
+    <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
+    <img class="i3d" src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
+    <h3 id="wlT" style="margin-top:6px">GKS Lab: kutish roʻyxati</h3>
+    <p>Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
+    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
+    <div id="wlMsg"></div>
+    <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/live-bar.js"></script>
+<script>
+(function () {
+  var SLUG = "gks-lab", SOURCE = "gks_landing";
+
+  var dataEl = document.getElementById("rsData");
+  if (dataEl) {
+    var D = JSON.parse(dataEl.textContent);
+    var sels = Array.prototype.slice.call(document.querySelectorAll("select[data-q]"));
+    var shown = 0, raf = null;
+    function animateTo(n) {
+      var el = document.getElementById("sN"), from = shown, t0 = null;
+      if (raf) cancelAnimationFrame(raf);
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = n; shown = n; return; }
+      function step(ts) { if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 400); shown = Math.round(from + (n - from) * k); el.textContent = shown; if (k < 1) raf = requestAnimationFrame(step); }
+      raf = requestAnimationFrame(step);
+    }
+    var calc = function () {
+      var total = 0, answered = 0, gaps = [], blocked = false;
+      sels.forEach(function (s, i) {
+        if (s.value === "") return;
+        answered++;
+        if (s.value === "x") { blocked = true; gaps.push(D.names[i]); return; }
+        var v = parseInt(s.value, 10); total += v;
+        if (v < D.max[i] * 0.5) gaps.push(D.names[i]);
+      });
+      var bar = document.getElementById("sB"), V = document.getElementById("sV"), T = document.getElementById("sT"), G = document.getElementById("sG");
+      animateTo(total);
+      bar.style.width = total + "%"; G.innerHTML = ""; V.style.color = "";
+      if (blocked) {
+        V.textContent = "Bu siklda topshira olmaysiz"; V.style.color = "var(--red)";
+        T.textContent = D.blockText; bar.style.background = "var(--red)";
+      } else if (answered < sels.length) {
+        V.textContent = "Javoblar: " + answered + " / " + sels.length;
+        T.textContent = "Barcha savollarga javob bering."; bar.style.background = "var(--muted2)";
+      } else if (total >= 70) {
+        V.textContent = "Hozir boshlash mumkin"; V.style.color = "var(--green)";
+        T.textContent = "Asosiy yoʻnalishlar yetarli. M0 da shaxsiy vaqt chizigʻingizni tuzasiz."; bar.style.background = "var(--green)";
+      } else if (total >= 45) {
+        V.textContent = "Avval boʻshliqlarni yoping"; V.style.color = "var(--gold)";
+        T.textContent = "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak:"; bar.style.background = "var(--gold)";
+      } else {
+        V.textContent = "Bu siklga erta"; V.style.color = "var(--red)";
+        T.textContent = "Hozir toʻlash tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
+      }
+      if (answered === sels.length && (blocked || total < 70)) {
+        gaps.forEach(function (g) { var li = document.createElement("li"); li.textContent = g; G.appendChild(li); });
+      }
+      (D.warn || []).forEach(function (w, k) {
+        var el = document.getElementById("w" + k);
+        if (el) el.style.display = (sels[w.q] && sels[w.q].value === w.v) ? "block" : "none";
+      });
+    };
+    sels.forEach(function (s) { s.addEventListener("change", calc); });
+  }
+
+  var ovl = document.getElementById("wl"), sel = document.getElementById("wlL"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
+  var BTN = "Roʻyxatga yozilish";
+  function openWl(slug) {
+    if (sel) sel.value = slug || "";
+    inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = BTN;
+    ovl.classList.add("open"); document.body.style.overflow = "hidden";
+    setTimeout(function () { (sel && !sel.value ? sel : inp).focus(); }, 120);
+  }
+  function closeWl() { ovl.classList.remove("open"); document.body.style.overflow = ""; }
+  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", function () { openWl(b.getAttribute("data-wl")); }); });
+  document.getElementById("wlX").addEventListener("click", closeWl);
+  ovl.addEventListener("click", function (e) { if (e.target === ovl) closeWl(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeWl(); });
+  inp.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
+  btn.addEventListener("click", submit);
+  function submit() {
+    var slug = sel ? sel.value : SLUG, email = inp.value.trim();
+    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "Labni tanlang"; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "Email manzilni tekshiring: masalan, ism@gmail.com"; return; }
+    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanib boʻlmadi. Telegram orqali yozing: t.me/kompaslab"; return; }
+    btn.disabled = true; btn.textContent = "Saqlanmoqda...";
+    window.supabase.from("waitlist")
+      .upsert({ email: email, course_slug: slug, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
+      .then(function (r) {
+        if (r.error && r.error.code !== "23505") throw r.error;
+        msg.style.color = "var(--green)"; msg.textContent = "Yozildingiz. Lab ochilganda shu emailga xabar beramiz.";
+        btn.textContent = "Yozildingiz"; setTimeout(closeWl, 2400);
+      })
+      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "Saqlanmadi. Internetni tekshirib, qayta urinib koʻring."; btn.disabled = false; btn.textContent = BTN; });
+  }
+
+  var LIVE_MIN = 10;
+  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
+  function applyStats(d) {
+    var pr = d.prices || {};
+    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
+    document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
+    document.querySelectorAll("[data-ps]").forEach(function (el) { var p = pr[el.getAttribute("data-ps")]; if (p && p.m) el.textContent = nf(p.m * 3); });
+    var wl = d.waitlist_by_lab || {};
+    document.querySelectorAll("[data-live-wl]").forEach(function (el) {
+      var n = wl[el.getAttribute("data-live-wl")] || 0;
+      if (n >= LIVE_MIN) { el.querySelector("span").textContent = "Kutish roʻyxatida " + nf(n) + " kishi"; el.classList.add("on"); }
+    });
+    if (window.onKompasStats) window.onKompasStats(d);
+  }
+  if (window.supabase && typeof window.supabase.rpc === "function") {
+    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) applyStats(r.data); });
+  }
+})();
+</script>
+<script src="js/sfx.js"></script>
+</body>
+</html>

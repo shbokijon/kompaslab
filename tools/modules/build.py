@@ -13,9 +13,15 @@
 #       hamma rasm fayl ichida (base64), internetsiz ochiladi; file:// da darvoza ochiq
 #
 #  Manba: tools/modules/src/<nom>.src.html ({{CSS}} oʻrniga m0.css qoʻyiladi)
-#  master-lab-m0.html manbasiz: toʻgʻridan-toʻgʻri tahrirlanadi.
+#  master-lab-m0: tayyor sahifa src/master-lab-m0.page.html (raw=True, faqat sayt).
+#
+#  Sayt versiyasi (2026-10-18) uch xil sahifaga yigʻiladi, hammasi bitta manbadan:
+#    <nom>.html        modul sahifasi (hub): maqsad, darslar yoʻli, nishonlar
+#    <nom>-N.html      har dars alohida sahifada
+#    <nom>-yakun.html  vositalar, nishonlar, qaror
+#  Koʻrinishni js/kompas-module.js tanlaydi (body data-kview), dizayn css/kompas-ui.css.
 # ═══════════════════════════════════════════════════════════════
-import base64, re, sys
+import base64, json, re, sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -28,6 +34,8 @@ MODULES = {
     "gks-lab-m0":          dict(lab="gks-lab.html", site=True, protect=True),
     "phd-lab-m0":          dict(lab="phd-lab.html", site=True, protect=True),
     "tadbirkor-talaba-m0": dict(lab="tadbirkor-talaba.html", site=True, protect=True),
+    # Tayyor sahifa (avval master-lab-m0.html qoʻlda yuritilgan): faqat sayt versiyasi
+    "master-lab-m0":       dict(lab="master-lab.html", site=True, raw=True),
     "usa-lab-m0":          dict(lab="usa-lab.html", site=True, protect=True),
     # Musofir M0 hamma uchun ochiq (xavfsizlik maʼlumoti): darvoza va himoya yoʻq, ulashish bor
     "musofir-lab-m0":      dict(lab="musofir-lab.html", site=True, protect=False,
@@ -117,12 +125,65 @@ def standalone(name, src, cfg):
     return t
 
 
+UI_HEAD = '<link rel="stylesheet" href="css/kompas-ui.css">\n<script src="js/kompas-ui.js"></script>\n'
+
+
+def meta(name, s):
+    """Manbadan modul, darslar va yakun maʼlumoti (kompas-module.js uchun)."""
+    m = re.search(r'class="crumb"><a href="index\.html">Kompas Lab</a> · <a href="([a-z0-9-]+\.html)">([^<]+)</a> · Modul (\d+)', s)
+    assert m, name + ": crumb topilmadi"
+    key = re.search(r'var KEY = "([a-z0-9_]+)"', s).group(1)
+    short = dict(re.findall(r'<a class="node" href="#(l\d+)" data-node="l\d+"><span class="dot">[^<]*</span>([^<]+)</a>', s))
+    lessons = []
+    for lid, chunk in re.findall(r'<article class="lesson" id="(l\d+)"[^>]*>(.*?)<div class="l-body">', s, flags=re.S):
+        num = re.search(r'<span class="l-n">Dars ([0-9.]+)</span>', chunk).group(1)
+        title = re.sub(r"<[^>]+>", "", re.search(r'<span class="l-t"[^>]*>(.*?)</span>', chunk, flags=re.S).group(1)).strip()
+        tags = [re.sub(r"<[^>]+>", "", t).strip() for t in re.findall(r'<span class="tag(?: [a-z]+)?">(.*?)</span>', chunk)]
+        tags = [t for t in tags if "XP" not in t]
+        lessons.append(dict(id=lid, num=num, title=title, short=short.get(lid, "").strip(), meta=", ".join(tags)))
+    assert lessons, name + ": darslar topilmadi"
+    tools = [re.sub(r"<[^>]+>", "", t) for t in re.findall(r'<div class="tool"[^>]*>\s*<div class="tool-h">.*?<h3>(.*?)</h3>', s, flags=re.S)]
+    return dict(base=name, key=key, lab=m.group(1), labName=m.group(2), mod="M" + m.group(3), lessons=lessons,
+                yakunMeta=", ".join(tools + ["nishonlar", "qaror va rozilik"]))
+
+
+def views(name, s):
+    """Sayt versiyasini hub, dars va yakun sahifalariga ajratadi: {fayl: html}."""
+    info = meta(name, s)
+    s = s.replace("</head>", UI_HEAD + "</head>", 1)
+    i = s.rfind("</body>")
+    s = s[:i] + "<script>window.KMOD=" + json.dumps(info, ensure_ascii=False) + ';</script>\n<script src="js/kompas-module.js"></script>\n' + s[i:]
+    tmatch = re.search(r"<title>(.*?)</title>", s)
+    pages = [(name + ".html", "hub", "", None)]
+    pages += [(name + "-" + str(k + 1) + ".html", "lesson", l["id"], "Dars " + l["num"] + ": " + l["title"] + " · " + info["labName"] + " " + info["mod"] + " | Kompas Lab") for k, l in enumerate(info["lessons"])]
+    pages.append((name + "-yakun.html", "yakun", "", "Yakun: vositalar va qaror · " + info["labName"] + " " + info["mod"] + " | Kompas Lab"))
+    out = {}
+    for fn, view, lid, title in pages:
+        t = s
+        attrs = ' data-kview="' + view + '"' + (' data-klesson="' + lid + '"' if lid else "")
+        t = re.sub(r"<body([^>]*)>", lambda m: "<body" + m.group(1) + attrs + ">", t, count=1)
+        t = re.sub(r'var RET = "[a-z0-9-]+\.html";', 'var RET = "' + fn + '";', t, count=1)
+        if title and tmatch:
+            t = t.replace(tmatch.group(0), "<title>" + title + "</title>", 1)
+        canon = '<link rel="canonical" href="https://www.kompaslab.uz/' + fn[:-5] + '">\n'
+        t = t.replace("</head>", canon + "</head>", 1)
+        out[fn] = t
+    return out
+
+
 def build(name):
     cfg = MODULES[name]
+    if cfg.get("raw"):
+        src = watermark((HERE / "src" / (name + ".page.html")).read_text(encoding="utf-8"))
+        for fn, html in views(name, src).items():
+            (ROOT / fn).write_text(html, encoding="utf-8")
+        print(name, "-> sayt (raw)")
+        return
     src = watermark((HERE / "src" / (name + ".src.html")).read_text(encoding="utf-8").replace("{{CSS}}", (HERE / "m0.css").read_text(encoding="utf-8")))
     out = []
     if cfg.get("site"):
-        (ROOT / (name + ".html")).write_text(site(name, src, cfg), encoding="utf-8"); out.append(name + ".html")
+        for fn, html in views(name, site(name, src, cfg)).items():
+            (ROOT / fn).write_text(html, encoding="utf-8"); out.append(fn)
     DIST.mkdir(exist_ok=True)
     (DIST / (name + ".html")).write_text(standalone(name, src, cfg), encoding="utf-8"); out.append("dist/" + name + ".html")
     print(name, "->", ", ".join(out))

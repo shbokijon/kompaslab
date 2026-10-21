@@ -19,6 +19,9 @@ const MOCK = `window.supabase={createClient:()=>({
   const b = await chromium.launch(); let bad = 0;
   for (const n of names) for (const [kind, url] of [["sayt", "http://localhost:8814/" + n + ".html"], ["dist", "file://" + ROOT + "/tools/modules/dist/" + n + ".html"]]) {
     if (kind === "sayt" && !fs.existsSync(path.join(ROOT, n + ".html"))) continue;   // saytga chiqmagan modul
+    // 2026-10-18 dan sayt versiyasi hub/dars/yakun sahifalariga boʻlingan: uni lesson_flow.js tekshiradi
+    // master-lab-m1..m8.html saytda faqat darslar roʻyxati (Lab generatori), pullik modul emas
+    if (kind === "sayt" && /data-kview=|data-kpage=/.test(fs.readFileSync(path.join(ROOT, n + ".html"), "utf8"))) continue;
     const ctx = await b.newContext({ viewport: { width: 390, height: 800 } }); const p = await ctx.newPage(); const errs = [];
     p.on("pageerror", e => errs.push(e.message));
     await ctx.route(/supabase-js/, r => r.fulfill({ contentType: "text/javascript", body: MOCK }));

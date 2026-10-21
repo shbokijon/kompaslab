@@ -84,5 +84,39 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/master-lab-m0-darslar",
+      "destination": "/master-lab-m0",
+      "permanent": false
+    },
+    {
+      "source": "/master-lab-m0-darslar.html",
+      "destination": "/master-lab-m0",
+      "permanent": false
+    },
+    {
+      "source": "/master-lab-modul",
+      "has": [
+        {
+          "type": "query",
+          "key": "m",
+          "value": "(?<m>[1-8])"
+        }
+      ],
+      "destination": "/master-lab-m:m",
+      "permanent": false
+    },
+    {
+      "source": "/master-lab-modul",
+      "destination": "/master-lab-dastur",
+      "permanent": false
+    },
+    {
+      "source": "/master-lab-modul.html",
+      "destination": "/master-lab-dastur",
+      "permanent": false
+    }
   ]
 }

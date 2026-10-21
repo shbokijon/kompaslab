@@ -19,6 +19,16 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 - `supabase-js` doim **2.45.4** ga mahkamlangan (jsdelivr UMD).
 - `tools/`, `supabase/`, `schema.sql` saytga chiqmaydi (`.vercelignore`).
 
+## Sayt tuzilmasi (2026-10-18): Bosh sahifa → Lab → Modul → Dars
+Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
+- **Sayt:** `index.html` (kompas testi, jonli hisob, globus, Lablar katalogi), `qanday-ishlaydi.html`, `narxlar.html`, `savollar.html`. Bular 2026-10-18 da `tools/site/split_index.py` bilan bir marta ajratilgan, endi **qoʻlda** yuritiladi; umumiy CSS `css/home.css`.
+- **Lab** (generator, `tools/landing/split.py` uzun sahifani ajratadi): `<lab>.html` Umumiy (hero, A→B, modullar yoʻli), `<lab>-dastur.html`, `<lab>-test.html` (Moslik testi, boʻlsa), `<lab>-narxlar.html`, `<lab>-savollar.html`, va har modul `<lab>-<modul>.html` (`gks-lab-m3-u.html` kabi; darslar roʻyxati, obuna holati). Eski `<lab>.html#narx` kabi havolalar Umumiy sahifada JS bilan yangi sahifaga oʻtadi. Master uchun qoʻshimcha tablar: Manbalar, Shaxsiy reja (`split.EXTRA_TABS`).
+- **M0 modul** (`tools/modules/build.py`, bitta manbadan): `<lab>-m0.html` modul sahifasi (hub), `<lab>-m0-N.html` har dars, `<lab>-m0-yakun.html` vositalar, nishonlar, qaror. Sahifa toʻliq DOM bilan keladi, koʻrinishni `js/kompas-module.js` tanlaydi (`body[data-kview]`); modulning oʻz JS kodi oʻzgarmaydi, progress umumiy localStorage kalitida. Master M0 manbasi: `tools/modules/src/master-lab-m0.page.html` (`raw=True`).
+- **Umumiy dizayn qatlami:** `css/kompas-ui.css` + `js/kompas-ui.js` (har sahifa `<head>` da): sahifalar orasida View Transitions (dars→dars chapga/oʻngga), Lab tablari (mobilda pastki tab paneli), "yoʻl" bekatlari va joriy bekatdagi kompas strelkasi, ←/→ bilan oldingi/keyingi sahifa, dars yakunida tabrik oynasi. Ichki havolalarga `data-snd="nav"` (sfx.js `nav` tovushi).
+- Eski Master URLlar (`master-lab-m0-darslar`, `master-lab-modul?m=N`) `vercel.json` redirects bilan yangi sahifalarga.
+- `sitemap.xml`: `python3 tools/site/sitemap.py` (darvozali M0 sahifalari kirmaydi).
+- Tekshiruv (server 8814 da): `node tools/modules/test/site_crawl.js` (hamma sahifa: JS xatosi, 390px siljish, buzilgan havola) va `node tools/modules/test/lesson_flow.js gks-lab-m0 …` (dars → tabrik → keyingi dars → hub → yakun). `smoke.js` endi faqat `dist/` (bitta sahifali yuklab olinadigan) versiyaga mos.
+
 ## Fayl xaritasi
 | Fayl | Nima | Qanday tahrirlanadi |
 |---|---|---|

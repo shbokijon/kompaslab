@@ -383,15 +383,20 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Kompas Lab logotipi: Kuzatuvdan kashfiyotga">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.kompaslab.uz/gks-lab">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<script src="js/kompas-ui.js"></script>
 </head>
-<body>
+<body data-kpage="hub">
+
 <nav class="nav">
   <div class="wrap">
     <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab <span>GKS</span></span></a>
-    <div class="nav-links"><a href="#treklar">Treklar</a><a href="#dastur">Dastur</a><a href="#faktlar">Faktlar</a><a href="#narx">Narx</a><a href="#savollar">Savollar</a></div>
-    <button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
+    <div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="gks-lab.html" aria-current="page">Umumiy</a><a href="gks-lab-dastur.html">Dastur</a><a href="gks-lab-test.html">Moslik testi</a><a href="gks-lab-narxlar.html">Narxlar</a><a href="gks-lab-savollar.html">Savollar</a></div>
+    <span class="kl-sfx" data-sfx-slot></span><button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
   </div>
 </nav>
+<div class="kl-tabbar"><div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="gks-lab.html" aria-current="page">Umumiy</a><a href="gks-lab-dastur.html">Dastur</a><a href="gks-lab-test.html">Moslik testi</a><a href="gks-lab-narxlar.html">Narxlar</a><a href="gks-lab-savollar.html">Savollar</a></div></div>
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -401,8 +406,8 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       <p class="lead">GKS qanday ishlashini va qaysi trek sizga mosligini tushunasiz, muvofiqligingizni rasmiy yoʻriqnomadan tekshirasiz, universitetlarni tanlaysiz, hujjatlarni <strong>oʻzingiz</strong> tayyorlaysiz va intervyuga tayyorlanasiz.</p>
       
       <div class="cta-row">
-        <a href="#test" class="btn btn-p">Muvofiqlikni tekshirish</a>
-        <a href="#dastur" class="btn btn-g">Dasturni koʻrish</a>
+        <a href="gks-lab-test.html" class="btn btn-p">Muvofiqlikni tekshirish</a>
+        <a href="gks-lab-dastur.html" class="btn btn-g">Dasturni koʻrish</a>
       </div>
       <div class="facts"><span class="fact"><b>3</b> trek: U, M, D</span><span class="fact"><b>54</b> dars</span><span class="fact">Siz oʻtasiz: <b>26–27</b></span><span class="fact">M0 <b>bepul</b></span><span class="fact">Oynadan <b>8–12</b> oy oldin</span></div>
       <div class="live" data-live-wl="gks-lab"><i></i><span></span></div>
@@ -423,179 +428,22 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     <div class="model-list"><div class="model"><b>Trek U: bakalavriat (GKS-U)</b><span>11-sinf, litsey yoki kollej bitiruvchisi. Ogʻirlik markazi — shaxsiy bayonot. 13 dars.</span></div><div class="model"><b>Trek M: magistratura (GKS-G)</b><span>Bakalavr bitiruvchisi yoki oxirgi kurs talabasi. Ogʻirlik markazi — oʻquv rejasi; professor bilan aloqa foydali. 14 dars.</span></div><div class="model"><b>Trek D: doktorantura (GKS-G)</b><span>Magistr bitiruvchisi. Oʻquv rejasi va tadqiqot yoʻnalishi; professor bilan aloqa juda muhim. 14 dars.</span></div><div class="model bad"><b>Muvofiqlik: toʻlovdan oldin</b><span>M0 da yoʻriqnoma shartlari tekshiriladi; "mos emas" chiqsa, toʻlov tugmasi koʻrsatilmaydi.</span></div></div>
   </div>
 </section>
-<section>
+<section id="yol">
   <div class="wrap">
-    <div class="head">
-      <h2>Kimga mos va kimga mos emas</h2>
-      <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
-    </div>
-    <div class="ab">
-      <div class="ab-c"><small>A nuqta: hozir</small><p>GKS stipendiyasini koʻzlayapsiz, lekin qaysi trek sizga mos, qaysi hujjatlar va qanday legallashtirish kerakligi hali aniq emas.</p></div>
-      <div class="ab-arrow" aria-hidden="true"></div>
-      <div class="ab-c b"><small>B nuqta: Lab oxirida</small><p>Sizning GKS paketingiz: yuqoridagi 7 band. Hujjatlarni oʻzingiz yozasiz; Lab freymvork va baholash mezonini (rubrika) beradi.</p></div>
-    </div>
-    <div class="fit">
-      <div class="fit-col yes"><h3>Mos keladi</h3><ul><li>Koreyaga GKS stipendiyasi bilan bakalavriat, magistratura yoki doktoranturaga topshirmoqchi boʻlganlar</li><li>Ariza oynasigacha 8–12 oy vaqti borlar</li><li>Bachelor, Master yoki PhD Lab bilan birga GKS qatlamini qoʻshmoqchi boʻlganlar</li></ul></div>
-      <div class="fit-col no"><h3>Mos emas</h3><ul><li>Koreyaga oʻz hisobidan borishni rejalashtirganlar → <a href="bachelor-lab.html">Bachelor</a> yoki <a href="master-lab.html">Master Lab</a></li><li>Muvofiqlik shartlariga (yosh, daraja, fuqarolik) mos kelmasligi aniq boʻlganlar — M0 da tekshiriladi</li><li>Ariza oynasigacha 3 oydan kam qolganlar (hujjat legallashtirishga vaqt yetmasligi mumkin)</li><li>Koreys tili kursi izlayotganlar (faqat til strategiyasi beriladi)</li><li>Joriy yil rasmiy yoʻriqnomasini oʻqimasdan faqat Labga tayanmoqchi boʻlganlar — birlamchi manba har doim NIIED eʼloni</li><li>Stipendiya kafolati yoki hujjat yozib berish xizmatini izlayotganlar</li></ul></div>
-    </div>
-    <p class="honest"><b>Ochiq gap.</b> Kompas Lab yangi platforma: bitiruvchilar natijasi hali yoʻq, shuning uchun sahifada natija raqami ham, sharh ham yoʻq. Natijalar faqat talabaning yozma roziligi bilan eʼlon qilinadi va ular bilan birga maqsadga yetmagan holatlar ulushi ham koʻrsatiladi. Hech bir Lab qabul, stipendiya yoki viza kafolatini bermaydi.</p>
-  </div>
-</section>
-<section class="alt" id="dastur">
-  <div class="wrap">
-    <div class="head">
-      <h2>Umumiy oʻzak + 3 trek, 54 dars.</h2>
-      <p class="sub">Bitta oʻquvchi umumiy oʻzak va oʻz trekini — 26–27 darsni oʻtadi.</p>
-    </div>
-    <div class="phases c4"><div class="phase"><small>Umumiy oʻzak</small><b>M0 (bepul), M1, M2</b><span>13 dars, 4–6 hafta</span></div><div class="phase"><small>Trek U</small><b>Bakalavriat</b><span>13 dars, 6–8 hafta</span></div><div class="phase"><small>Trek M</small><b>Magistratura</b><span>14 dars, 8–10 hafta</span></div><div class="phase"><small>Trek D</small><b>Doktorantura</b><span>14 dars, 8–12 hafta</span></div></div>
-    <div class="trk-h">Umumiy oʻzak: barcha treklar</div><div class="mods"><details class="mod free" open>
-  <summary><div class="mod-n">M0</div><div><div class="mod-t">GKS tizimi va qaror darvozasi</div><div class="mod-a">Natija: Muvofiqlik jadvali + tanlangan trek + boshlash sanasi + rozilik qaydi</div></div><div class="mod-c">5 dars<span class="tag tag-free">Bepul</span></div></summary>
-  <ol><li><span class="num">0.1</span>GKS nima va kimga beriladi<small>NIIED, dastur maqsadi, darajalar (GKS-U, GKS-G), stipendiya tarkibi mantigʻi va majburiyatlar</small></li><li><span class="num">0.2</span>Ikki trek va tanlov bosqichlari<small>Elchixona va universitet treki; har bosqichda kim baholaydi</small></li><li><span class="num">0.3</span>Muvofiqlik tekshiruvi<small>Fuqarolik, yosh, akademik daraja, baho talabi, sogʻliq, oldingi stipendiyalar; yoʻriqnomani band-band oʻqish</small></li><li><span class="num">0.4</span>Trek tanlovi<small>U, M yoki D; elchixona yoki universitet treki — 5 mezon boʻyicha</small></li><li><span class="num">0.5</span>Vaqt chizigʻi, toʻlov va rozilik<small>Ariza oynasidan orqaga 8–12 oylik reja; obuna shartlari; Trek U uchun ota-ona tasdigʻi</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M1</div><div><div class="mod-t">Hujjatlar infratuzilmasi</div><div class="mod-a">Natija: Hujjatlar nazorat jadvali + legallashtirish yoʻl xaritasi + til rejasi + tavsiya beruvchilar uchun varaqalar</div></div><div class="mod-c">4 dars</div></summary>
-  <ol><li><span class="num">1.1</span>Hujjatlarning toʻliq xaritasi<small>Ariza formasi, shaxsiy bayonot, oʻquv rejasi, tavsiya xatlari, diplom va transkript, fuqarolik hujjatlari, sogʻliq formasi, til sertifikati; har birining formati va imzo talabi</small></li><li><span class="num">1.2</span>Apostil, tarjima va tasdiq<small>Oʻzbekistonda diplom va transkriptni legallashtirish yoʻli; tarjima talablari; asl nusxa va nusxa; real muddatlar</small></li><li><span class="num">1.3</span>Tavsiya xatlari (Core + GKS formasi)<small>Tavsiya beruvchi tanlash, yutuqlar varaqasi; GKS tavsiya formasi talablari va topshirish usuli</small></li><li><span class="num">1.4</span>Til strategiyasi: TOPIK va ingliz tili<small>Koreys tili kursi mantigʻi, TOPIK darajalari taʼsiri, ingliz tilidagi dasturlar, sertifikat amal muddati</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M2</div><div><div class="mod-t">Universitet va dastur tanlash</div><div class="mod-a">Natija: 3 ta asoslangan universitet tanlovi + har biri uchun moslik dalilnomasi</div></div><div class="mod-c">4 dars</div></summary>
-  <ol><li><span class="num">2.1</span>GKS universitetlari tizimi<small>Yoʻriqnoma ilovalaridagi universitet va dastur roʻyxatlarini oʻqish; universitet turlari (yoʻriqnomadagi A/B kabi guruhlar); kvota, til va yoʻnalish filtrlari</small></li><li><span class="num">2.2</span>Saralangan roʻyxat<small>Ilmiy moslik, til talabi, joylashuv, dastur mazmuni; xavf taqsimoti</small></li><li><span class="num">2.3</span>Ilmiy moslik<small>Fakultet va laboratoriya sahifalari, professorlarning soʻnggi nashrlari</small></li><li><span class="num">2.4</span>Keng tarqalgan xatolar filtri<small>Shablon matn, mubolagʻa, tekshirilmaydigan daʼvo, format xatosi, kech hujjat, mos kelmaydigan yoʻnalish</small></li></ol>
-</details></div><div class="trk-h">Trek U: bakalavriat (GKS-U)</div><div class="mods"><details class="mod">
-  <summary><div class="mod-n">M3-U</div><div><div class="mod-t">Nomzod profili</div><div class="mod-a">Natija: Faoliyat vaqt chizigʻi + akademik profil izohi + zaif tomonlar javoblari</div></div><div class="mod-c">4 dars</div></summary>
-  <ol><li><span class="num">3.1</span>Potensial qanday isbotlanadi<small>Olimpiada, mustaqil loyiha, oʻz-oʻzini oʻqitish, jamoaviy tashabbus; oʻsish traektoriyasi</small></li><li><span class="num">3.2</span>Qiziqishning kelib chiqishi<small>Kuzatuv → savol → harakat zanjiri</small></li><li><span class="num">3.3</span>Baholarni taqdim etish<small>Oʻzbek baholash tizimini tushuntirish, yoʻriqnomadagi konvertatsiya jadvalidan foydalanish, sinfdagi oʻrin</small></li><li><span class="num">3.4</span>Zaif tomonlarni boshqarish<small>Past baho, tanaffus yili, yoʻnalish oʻzgarishi — javobgarlik va tuzatish harakati</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M4-U</div><div><div class="mod-t">Shaxsiy bayonot</div><div class="mod-a">Natija: Yakuniy shaxsiy bayonot (GKS formasi talablariga mos) + tahrir qaydi</div></div><div class="mod-c">5 dars<span class="tag tag-core">Asosiy</span></div></summary>
-  <ol><li><span class="num">4.1</span>GKS shaxsiy bayonoti formasi<small>Forma savollari, hajm chegarasi, baholovchi nimani izlaydi</small></li><li><span class="num">4.2</span>Kimlik → Dalil → Maqsad → Moslik<small>Toʻrt blok; "nega Koreya, nega shu universitet"</small></li><li><span class="num">4.3</span>Birinchi qoralama<small>Skeletdan matnga; umumiy iboralardan qochish</small></li><li><span class="num">4.4</span>Tahrir<small>Sifatni faktga almashtirish, mubolagʻani olib tashlash, tekshirib boʻlmaydigan daʼvoni oʻchirish</small></li><li><span class="num">4.5</span>Oʻzaro tahrir va yakuniy versiya<small>Mezon boʻyicha baholash, moderatsiyali oʻzaro tahrir</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M5-U</div><div><div class="mod-t">Oʻquv rejasi, topshirish va intervyu</div><div class="mod-a">Natija: Oʻquv rejasi + yigʻilgan paket + intervyu javoblari yozuvi</div></div><div class="mod-c">4 dars</div></summary>
-  <ol><li><span class="num">5.1</span>Bakalavr oʻquv rejasi<small>Til yili, 1–4-kurs fanlari va koʻnikmalar rejasi, bitiruvdan keyingi yoʻl va uning GKS maqsadiga aloqasi</small></li><li><span class="num">5.2</span>Paketni yigʻish va nazorat<small>Fayl nomlari, format, nusxalar, onlayn yuklash; ikkinchi shaxs tekshiruvi</small></li><li><span class="num">5.3</span>Intervyu<small>Elchixona intervyusi mantigʻi, keng tarqalgan savollar, qisqa javob tuzilmasi</small></li><li><span class="num">5.4</span>Natijadan keyin<small>Bosqich natijalari, universitet qabuli, joʻnash oldi hujjatlar; rad javobidan keyingi reja</small></li></ol>
-</details></div><div class="trk-h">Trek M: magistratura (GKS-G)</div><div class="mods"><details class="mod">
-  <summary><div class="mod-n">M3-M</div><div><div class="mod-t">Magistratura nomzodining pozitsiyasi</div><div class="mod-a">Natija: STAR inventari + akademik CV v1.0 + yoʻnalish koʻprigi matni (kerak boʻlsa)</div></div><div class="mod-c">4 dars</div></summary>
-  <ol><li><span class="num">3.1</span>Bakalavrdan magistraturaga<small>"Oʻqishni xohlayman"dan "nimani oʻrganmoqchiman"ga; bakalavr ishlaridagi takrorlanuvchi mavzu</small></li><li><span class="num">3.2</span>Dalillar inventari<small>Kurs ishi, bitiruv ishi, tezis, laboratoriya, dasturiy vositalar — STAR formatida</small></li><li><span class="num">3.3</span>Akademik CV (Core)<small>Boʻlimlar tartibi, STAR bandlari, natijani raqam bilan</small></li><li><span class="num">3.4</span>Yoʻnalish oʻzgarishini asoslash<small>Eski sohadan olib kelinadigan koʻnikma, toʻldiriladigan boʻshliq, reja</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M4-M</div><div><div class="mod-t">Oʻquv rejasi</div><div class="mod-a">Natija: Yakuniy oʻquv rejasi (GKS formasi boʻyicha) + semestrlar jadvali + 12 manbali annotatsiyalangan roʻyxat</div></div><div class="mod-c">5 dars</div></summary>
-  <ol><li><span class="num">4.1</span>Nega oʻquv rejasi markaziy hujjat<small>GKS formasidagi savollar, kuchli va kuchsiz reja farqi</small></li><li><span class="num">4.2</span>Tadqiqot savolini shakllantirish<small>Mavzudan tor savolga; oʻlchanadigan, javob beriladigan, ahamiyatli; Muammo → Yechim → Yangilik → Taʼsir</small></li><li><span class="num">4.3</span>Adabiyot bilan ishlash minimumi<small>Manba qidirish, tez oʻqish tartibi, 10–15 manbali baza, boʻshliqni aniqlash</small></li><li><span class="num">4.4</span>Toʻliq oʻquv rejasi<small>Fon → savol → metod → semestrlar boʻyicha reja → natija → uzoq muddatli maqsad</small></li><li><span class="num">4.5</span>Tahrir va oʻzaro tahrir<small>Mutaxassis boʻlmagan oʻquvchi tushunadimi; hajm va atamalar</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M5-M</div><div><div class="mod-t">Professor, paket va intervyu</div><div class="mod-a">Natija: Shaxsiy bayonot + 2 professorga xat + izchillik auditi jadvali + 60 soniyalik taqdimot yozuvi</div></div><div class="mod-c">5 dars</div></summary>
-  <ol><li><span class="num">5.1</span>Professorni tanlash<small>Laboratoriya sahifasi, nashrlar, joriy loyihalar, guruh</small></li><li><span class="num">5.2</span>Professorga dastlabki xat (Core)<small>Tuzilma, aniq ishga havola, soʻrov, biriktirma; universitet trekida ayniqsa muhim</small></li><li><span class="num">5.3</span>GKS-G shaxsiy bayonoti<small>Forma savollari; oʻquv rejasi bilan takrorlanmaslik</small></li><li><span class="num">5.4</span>Izchillik auditi<small>CV, bayonot, oʻquv rejasi va tavsiyalardagi faktlarning mosligi</small></li><li><span class="num">5.5</span>Intervyu va keyingi bosqich<small>"Nega aynan shu tadqiqot?"; savolni 60 soniyada tushuntirish; rad javobida B reja</small></li></ol>
-</details></div><div class="trk-h">Trek D: doktorantura (GKS-G)</div><div class="mods"><details class="mod">
-  <summary><div class="mod-n">M3-D</div><div><div class="mod-t">Doktorantura nomzodining ilmiy pozitsiyasi</div><div class="mod-a">Natija: Portfel auditi + PhD darajasidagi CV + 3 ta potensial doktorlik savoli</div></div><div class="mod-c">4 dars</div></summary>
-  <ol><li><span class="num">3.1</span>PhD nomzodi nimani taklif qiladi<small>Laboratoriyaga keltiriladigan qiymat; magistratura va doktorantura arizasi farqi</small></li><li><span class="num">3.2</span>Ilmiy portfel auditi<small>Nashr, konferensiya, preprint, magistrlik ishi, kod va maʼlumotlar</small></li><li><span class="num">3.3</span>PhD darajasidagi CV (Core)<small>Nashrlar formati, mualliflik tartibi, metodik koʻnikmalar</small></li><li><span class="num">3.4</span>Magistrlik ishidan doktorlik yoʻnalishiga<small>Cheklovlar va javobsiz savollardan kengaytirish</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M4-D</div><div><div class="mod-t">Ilmiy reja</div><div class="mod-a">Natija: GKS formasiga moslangan ilmiy reja (oʻquv rejasi boʻlimi) + 30 manbali baza + 3–4 yillik Gantt jadvali</div></div><div class="mod-c">6 dars<span class="tag tag-core">Asosiy</span></div></summary>
-  <ol><li><span class="num">4.1</span>Tuzilma: Muammo → Yechim → Yangilik → Taʼsir<small>Bloklar vazifasi va GKS formasi boʻlimlariga joylash</small></li><li><span class="num">4.2</span>Muammo va adabiyotdagi boʻshliq<small>25–40 manbali baza; boʻshliqni dalil bilan koʻrsatish</small></li><li><span class="num">4.3</span>Metodologiya<small>Maʼlumot, usul, vositalar, cheklovlar, xavflar; Koreyadagi laboratoriya resurslari bilan moslik</small></li><li><span class="num">4.4</span>Yangilik va taʼsir<small>Yangilik turlari; Oʻzbekiston va Koreya hamkorligi bilan aloqa (dalil bilan)</small></li><li><span class="num">4.5</span>Vaqt va resurs rejasi<small>Bosqichlar, nashr va konferensiya rejasi, til kursi yili hisobga olingan</small></li><li><span class="num">4.6</span>Tahrir va oʻzaro tahrir<small>Mezon, atama izchilligi, iqtibos uslubi, hajm</small></li></ol>
-</details><details class="mod">
-  <summary><div class="mod-n">M5-D</div><div><div class="mod-t">Professor bilan muloqot va yakunlash</div><div class="mod-a">Natija: 3 professorga xat va 1 sahifalik reja konspekti + suhbat tayyorgarligi + yakuniy paket</div></div><div class="mod-c">4 dars</div></summary>
-  <ol><li><span class="num">5.1</span>Professor tahlili va ilmiy xat (Core)<small>Nashr trendi, guruh, sigʻim; maqolaga texnik izoh, hamkorlik nuqtasi</small></li><li><span class="num">5.2</span>Onlayn ilmiy suhbat<small>Rejani 5 daqiqada bayon qilish, tanqidga javob, oʻz savollari</small></li><li><span class="num">5.3</span>Shaxsiy bayonot va izchillik auditi<small>GKS-G bayonoti; barcha hujjatlarda faktlar mosligi</small></li><li><span class="num">5.4</span>Intervyu, natija va joʻnash<small>Intervyu savollari; natijadan keyingi hujjatlar va joʻnash oldi roʻyxat</small></li></ol>
-</details></div>
-    
-  </div>
-</section>
-
-<section class="alt" id="faktlar">
-  <div class="wrap">
-    <div class="head">
-      <h2>2026 sikli: tekshirilgan faktlar.</h2>
-      <p class="sub">Kvota, muddat va hujjat roʻyxati har yil yangi yoʻriqnomadan olinadi. Yoʻriqnomaning koreyscha va inglizcha versiyalari farq qilsa, koreyscha versiya ustun.</p>
-    </div>
-    <div class="atlas"><div class="src"><div class="src-h"><b>Ikki ariza yoʻli</b><span class="chk ok">2026 yoʻriqnomasi</span></div><p>Elchixona treki va universitet treki. Elchixona trekida 3 tagacha universitet tanlanadi.</p><a class="s" href="https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2026 GKS-G yoʻriqnomasi</a></div><div class="src"><div class="src-h"><b>Yosh chegarasi (GKS-G)</b><span class="chk ok">Tekshirildi 2026-10-15</span></div><p>40 yoshdan kichik (1986-yil 1-sentabrdan keyin tugʻilgan). Doktorantura: 1 yil koreys tili + 3 yil daraja.</p><a class="s" href="https://boston.mofa.go.kr/us-boston-en/brd/m_4558/view.do?seq=761392" target="_blank" rel="noopener">mofa.go.kr</a></div><div class="src"><div class="src-h"><b>GKS-U ariza</b><span class="chk ok">2026 sikli</span></div><p>Ariza faqat onlayn, Study in Korea sayti orqali. Umumiy trekda 3 tagacha universitet, kamida bittasi B turidan.</p><a class="s" href="https://www.mofa.go.kr/kh-en/brd/m_25856/view.do?seq=66" target="_blank" rel="noopener">mofa.go.kr</a></div><div class="src"><div class="src-h"><b>R-GKS treki</b><span class="chk ok">2026 sikli</span></div><p>Mintaqaviy universitetlar treki universitet trekidan elchixona trekiga oʻtkazilgan.</p><a class="s" href="https://his.pusan.ac.kr/bbs/international/2622/1741122/artclView.do" target="_blank" rel="noopener">pusan.ac.kr</a></div><div class="src"><div class="src-h"><b>Oʻzbekiston kvotasi</b><span class="chk ok">2026 GKS-U</span></div><p>Oʻzbekiston GKS-U elchixona treki kvota jadvalida bor; aniq son Qobiq sahifasida.</p><a class="s" href="https://partiuintercambio.org/wp-content/uploads/2025/09/2026-GKS-U-Application-Guidelines-English-1.pdf" target="_blank" rel="noopener">2026 GKS-U yoʻriqnomasi</a></div><div class="src"><div class="src-h"><b>Toshkent elchixonasi eʼloni</b><span class="chk wait">Har sikl</span></div><p>Boshqa mamlakat elchixonalari eʼlonlaridagi shartlar Toshkentdagi Koreya elchixonasi eʼloni bilan solishtiriladi.</p></div></div>
-    
-    <div class="tblwrap reveal"><table class="cmp"><thead><tr><th>Mezon</th><th>Elchixona treki</th><th>Universitet treki</th></tr></thead><tbody>
-<tr><td>Universitet tanlash</td><td>Bir nechta universitet (yoʻriqnoma chegarasida)</td><td>Bitta universitet orqali</td></tr>
-<tr><td>Birinchi baholovchi</td><td>Elchixona</td><td>Universitet</td></tr>
-<tr><td>Kim uchun qulay</td><td>Universitet tanlovi hali ochiq boʻlganlar</td><td>Aniq universitet va professorni tanlaganlar</td></tr>
-<tr><td>Asosiy xavf</td><td>Elchixona bosqichida chiqib ketsa, universitetlar arizani koʻrmaydi</td><td>Bitta universitetga bogʻliqlik</td></tr>
-</tbody></table></div>
-  </div>
-</section>
-<section id="test">
-  <div class="wrap">
-    <div class="head">
-      <h2>Tayyorgarlik darajasi (Readiness Score)</h2>
-      <p class="sub">6 savol, 100 ball. Bu oʻzingizni oʻzingiz baholash, qabul ehtimoli emas. Javoblar hech qayerga yuborilmaydi va saqlanmaydi.</p>
-    </div>
-    <div class="quiz">
-      <form id="rs" autocomplete="off"><div class="q"><label for="q0">1. Muvofiqlik (yosh, daraja, baho, fuqarolik) <small>(25 ball)</small></label><select id="q0" data-q><option value="">Tanlang</option><option value="25">Barcha shartlarga mos kelaman</option><option value="12">Baʼzi shartlarni hali tekshirmadim</option><option value="x">Kamida bitta shartga mos emasman</option></select></div><div class="q"><label for="q1">2. Akademik asos <small>(20 ball)</small></label><select id="q1" data-q><option value="">Tanlang</option><option value="20">Baholarim GPA talabidan yuqori</option><option value="10">Talab chegarasida</option><option value="0">Talabdan past</option></select></div><div class="q"><label for="q2">3. Til (TOPIK yoki ingliz tili) <small>(15 ball)</small></label><select id="q2" data-q><option value="">Tanlang</option><option value="15">Sertifikat bor</option><option value="8">Sana belgilangan</option><option value="0">Reja yoʻq</option></select></div><div class="q"><label for="q3">4. Yoʻnalish aniqligi <small>(15 ball)</small></label><select id="q3" data-q><option value="">Tanlang</option><option value="15">Mutaxassislik va "nega Koreya" bir jumlada</option><option value="8">Soha aniq, sabab emas</option><option value="0">Hali bilmayman</option></select></div><div class="q"><label for="q4">5. Hujjatlar va legallashtirish <small>(10 ball)</small></label><select id="q4" data-q><option value="">Tanlang</option><option value="10">Diplom, transkript, tavsiya beruvchilar tayyor</option><option value="5">Qisman tayyor</option><option value="0">Boshlanmagan</option></select></div><div class="q"><label for="q5">6. Ariza oynasigacha vaqt <small>(15 ball)</small></label><select id="q5" data-q><option value="">Tanlang</option><option value="15">8–12 oy</option><option value="12">12 oydan koʻp</option><option value="6">3–8 oy</option><option value="0">3 oydan kam</option></select></div></form>
-      <div class="score" aria-live="polite">
-        <div class="score-n"><span id="sN">0</span><small>/100</small></div>
-        <div class="bar"><i id="sB"></i></div>
-        <div class="verdict" id="sV">Savollarga javob bering</div>
-        <div class="verdict-t" id="sT">Natija javoblaringiz boʻyicha shu yerda hisoblanadi.</div>
-        <ul class="gaps" id="sG"></ul>
-        <div class="warn" id="w0">Ariza oynasigacha 3 oydan kam: hujjat legallashtirishga vaqt yetmasligi mumkin.</div>
-        <a class="btn btn-p" style="width:100%;margin-top:14px" href="gks-lab-m0.html">Bepul M0 ni boshlash</a>
-      </div>
-    </div>
-  </div>
-  <script type="application/json" id="rsData">{"names": ["Muvofiqlik (yosh, daraja, baho, fuqarolik)", "Akademik asos", "Til (TOPIK yoki ingliz tili)", "Yoʻnalish aniqligi", "Hujjatlar va legallashtirish", "Ariza oynasigacha vaqt"], "max": [25, 20, 15, 15, 10, 15], "blockText": "Muvofiqlik boʻyicha bitta \"mos emas\" bandi boʻlsa, umumiy ball qanday boʻlishidan qatʼi nazar bu siklda topshirib boʻlmaydi. M0 da shartlar yoʻriqnoma bilan aniq tekshiriladi.", "warn": [{"q": 5, "v": "0", "text": "Ariza oynasigacha 3 oydan kam: hujjat legallashtirishga vaqt yetmasligi mumkin."}]}</script>
-</section>
-<section class="alt" id="qanday">
-  <div class="wrap method">
-    <div class="who">
-      <h3>Dasturlarni kim tuzadi</h3>
-      <ul>
-        <li>Asoschi geofizik, Buyuk Britaniyada (University of Leeds) doktorantura oʻqiydi</li>
-        <li>Janubiy Koreyada oʻqigan</li>
-        <li>Oʻzbekistonda universitetda dars bergan</li>
-        <li>Oʻzi oʻtmagan bosqichlar boʻyicha tajriba daʼvo qilinmaydi</li>
-      </ul>
-    </div>
-    <div>
-      <h2>GKS boʻyicha darslar yoʻriqnomaga tayanadi.</h2>
-      <p class="sub" style="margin-bottom:14px">Shaxsiy tajriba faqat asoschi haqiqatda oʻtgan bosqichlarda keltiriladi. Qolgan qismlar universitet, stipendiya dasturi va davlat organlarining rasmiy sahifalariga tayanadi; har faktik daʼvo yonida havola va tekshiruv sanasi turadi.</p><p class="sub" style="margin-bottom:14px">Asoschi Janubiy Koreyada oʻqigan; bu tajriba kontekst sifatida ishlatiladi. GKS jarayoni boʻyicha har bir qoida shu siklning rasmiy yoʻriqnomasidan olinadi.</p>
+    <div class="head"><h2>Dastur yoʻli: 12 modul, 54 dars</h2><p class="sub">Har modulning oʻz sahifasi bor: darslar roʻyxati, natija va kirish holati. Darslar tartib bilan qurilgan, har biri bitta Topshiriq bilan tugaydi.</p></div>
+    <div class="kl-path">
+      <ol class="kl-route"><li class="kl-phase">Umumiy oʻzak: barcha treklar</li><li class="kl-st is-free"><a href="gks-lab-m0.html"><span class="kl-st-n">M0</span><span class="kl-st-b"><b>GKS tizimi va qaror darvozasi</b><small>5 dars. Natija: Muvofiqlik jadvali + tanlangan trek + boshlash sanasi + rozilik qaydi</small></span><span class="kl-st-s">Bepul, ochiq</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m1.html"><span class="kl-st-n">M1</span><span class="kl-st-b"><b>Hujjatlar infratuzilmasi</b><small>4 dars. Natija: Hujjatlar nazorat jadvali + legallashtirish yoʻl xaritasi + til rejasi + tavsiya beruvchilar uchun varaqalar</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m2.html"><span class="kl-st-n">M2</span><span class="kl-st-b"><b>Universitet va dastur tanlash</b><small>4 dars. Natija: 3 ta asoslangan universitet tanlovi + har biri uchun moslik dalilnomasi</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-phase">Trek U: bakalavriat (GKS-U)</li><li class="kl-st is-locked"><a href="gks-lab-m3-u.html"><span class="kl-st-n sm">M3-U</span><span class="kl-st-b"><b>Nomzod profili</b><small>4 dars. Natija: Faoliyat vaqt chizigʻi + akademik profil izohi + zaif tomonlar javoblari</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m4-u.html"><span class="kl-st-n sm">M4-U</span><span class="kl-st-b"><b>Shaxsiy bayonot</b><small>5 dars. Natija: Yakuniy shaxsiy bayonot (GKS formasi talablariga mos) + tahrir qaydi</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m5-u.html"><span class="kl-st-n sm">M5-U</span><span class="kl-st-b"><b>Oʻquv rejasi, topshirish va intervyu</b><small>4 dars. Natija: Oʻquv rejasi + yigʻilgan paket + intervyu javoblari yozuvi</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-phase">Trek M: magistratura (GKS-G)</li><li class="kl-st is-locked"><a href="gks-lab-m3-m.html"><span class="kl-st-n sm">M3-M</span><span class="kl-st-b"><b>Magistratura nomzodining pozitsiyasi</b><small>4 dars. Natija: STAR inventari + akademik CV v1.0 + yoʻnalish koʻprigi matni (kerak boʻlsa)</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m4-m.html"><span class="kl-st-n sm">M4-M</span><span class="kl-st-b"><b>Oʻquv rejasi</b><small>5 dars. Natija: Yakuniy oʻquv rejasi (GKS formasi boʻyicha) + semestrlar jadvali + 12 manbali annotatsiyalangan roʻyxat</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m5-m.html"><span class="kl-st-n sm">M5-M</span><span class="kl-st-b"><b>Professor, paket va intervyu</b><small>5 dars. Natija: Shaxsiy bayonot + 2 professorga xat + izchillik auditi jadvali + 60 soniyalik taqdimot yozuvi</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-phase">Trek D: doktorantura (GKS-G)</li><li class="kl-st is-locked"><a href="gks-lab-m3-d.html"><span class="kl-st-n sm">M3-D</span><span class="kl-st-b"><b>Doktorantura nomzodining ilmiy pozitsiyasi</b><small>4 dars. Natija: Portfel auditi + PhD darajasidagi CV + 3 ta potensial doktorlik savoli</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m4-d.html"><span class="kl-st-n sm">M4-D</span><span class="kl-st-b"><b>Ilmiy reja</b><small>6 dars. Natija: GKS formasiga moslangan ilmiy reja (oʻquv rejasi boʻlimi) + 30 manbali baza + 3–4 yillik Gantt jadvali</small></span><span class="kl-st-s">Obuna</span></a></li><li class="kl-st is-locked"><a href="gks-lab-m5-d.html"><span class="kl-st-n sm">M5-D</span><span class="kl-st-b"><b>Professor bilan muloqot va yakunlash</b><small>4 dars. Natija: 3 professorga xat va 1 sahifalik reja konspekti + suhbat tayyorgarligi + yakuniy paket</small></span><span class="kl-st-s">Obuna</span></a></li></ol>
+      <aside aria-label="Qisqacha">
+        <h3>GKS Lab</h3>
+        <p>M0 bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz.</p>
+        <dl><dt>Modullar</dt><dd>12</dd><dt>Darslar</dt><dd>54</dd><dt>Bepul qism</dt><dd>M0</dd></dl>
+        <a class="btn btn-p" href="gks-lab-m0.html">Bepul M0 ni boshlash</a>
+        <a class="btn btn-g" href="gks-lab-test.html">Moslik testini topshirish</a>
+      </aside>
     </div>
   </div>
 </section>
-
-<section id="narx">
-  <div class="wrap">
-    <div class="head">
-      <h2>Obuna: oylik, 4 oy yoki yillik. M0 bepul.</h2>
-      <p class="sub">Obuna umumiy oʻzak va tanlangan trekni ochadi; trekni almashtirish bepul. GKS sikli yillik, shuning uchun yillik reja bitta siklni qamraydi.</p>
-    </div>
-    <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
-    <div class="plans">
-      <div class="plan">
-        <h3>M0, qaror moduli</h3><p class="desc">GKS tizimi va muvofiqlik</p>
-        <div class="price">0</div><div class="per">soʻm, muddatsiz</div>
-        <ul><li>5 dars</li><li>Muvofiqlik tekshiruvi</li><li>Trek tanlovi</li></ul>
-        <a class="btn btn-g" href="gks-lab-m0.html">M0 ni boshlash</a>
-      </div>
-      <div class="plan">
-        <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
-        <div class="price" data-pm="gks-lab">99 000</div><div class="per">soʻm, har oy</div>
-        <ul><li>Umumiy oʻzak + bitta trek</li><li>Istalgan oy bekor qilinadi</li><li>Keyinroq yillikka oʻtish mumkin</li><li>Modullar har oy bitta faza boʻyicha ochiladi; natija topshirilsa, keyingisi ertaroq</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
-      <div class="plan main">
-        <span class="tag-top">Asosiy reja</span>
-        <h3>Mavsum, 4 oy</h3><p class="desc">Bitta ariza sikli uchun: 4 oy 3 oy narxida</p>
-        <div class="price" data-ps="gks-lab">297 000</div><div class="per">soʻm, 4 oy uchun</div>
-        <ul><li>Barcha modullar birdaniga ochiladi</li><li>Bitta ariza siklini qamraydi: 4 oy</li><li>1 oy tekin: 4 oy 3 oy narxida</li><li>Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni</li></ul>
-        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
-      <div class="plan">
-        <h3>Yillik</h3><p class="desc">Bitta GKS sikli uchun</p>
-        <div class="price" data-py="gks-lab">699 000</div><div class="per">soʻm, 12 oy uchun</div>
-        <ul><li>Umumiy oʻzak + bitta trek</li><li>Trekni almashtirish mumkin</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
-    </div>
-    <div class="calc"><div><b>1 188 000 soʻm</b>12 oy faqat oylik reja bilan (99 000 × 12)</div><div><b>891 000 soʻm</b>12 oy Mavsum bilan (3 × 297 000)</div><div><b>10 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja Mavsum va oylikdan arzon</div></div>
-    <div class="pro-plan"><span class="tag-plan">Rejada</span><b>Kompas Pro: hali ishlamaydi</b>
-      <p>Yillik obunaga qoʻshish rejalashtirilgan funksiyalar. Hozirgi narxga kirmaydi, ishga tushish sanasi eʼlon qilinmagan.</p>
-      <ul><li>Shaxsiy muddat eslatmalari (Telegram yoki email)</li><li>Profilga mos stipendiyalar bazasi: rasmiy havola va tekshiruv sanasi bilan</li><li>Tayyorgarlik koʻrsatkichi tarixi: oyma-oy oʻzgarish</li><li>Javoblar va hujjatlarni telefon va kompyuter orasida sinxronlash</li></ul>
-    </div>
-    <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi.</div>
-    <div class="rules"><div><b>Daraja Labi bilan birga (taklif)</b>Bachelor, Master yoki PhD Lab obunachisi uchun GKS qatlami chegirmali; miqdor Kompas Pass qarori bilan belgilanadi.</div><div><b>Bekor qilish</b>Obunani istalgan vaqtda toʻxtatasiz: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi.</div><div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div><div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div></div>
-  </div>
-</section>
-<section id="savollar">
-  <div class="wrap">
-    <div class="head" style="text-align:center">
-      <h2>Koʻp soʻraladigan savollar</h2>
-    </div>
-    <div class="faq"><details><summary>Koreys tilini bilishim shartmi?</summary><p>GKSʼda til sertifikati muvofiqlik va baholashga taʼsir qiladi; magistratura va doktorantura dasturida 1 yillik koreys tili oʻqishi bor. GKS Lab koreys tili darsi bermaydi — til strategiyasi va rejasi beriladi.</p></details><details><summary>Elchixona yoki universitet treki: qaysi biri?</summary><p>Universitet tanlovi ochiq boʻlsa elchixona treki, aniq universitet va professor tanlangan boʻlsa universitet treki qulayroq. Ikkalasining xavfi bor; M0 va M2 da qaror qilasiz.</p></details><details><summary>Hujjatlarni tayyorlash qancha vaqt oladi?</summary><p>Legallashtirish va tarjima bir necha oy olishi mumkin; shuning uchun ariza oynasigacha 3 oydan kam qolganlar uchun Lab tavsiya etilmaydi. M1 da yoʻl xaritasini tuzasiz.</p></details><details><summary>Bachelor yoki Master Lab bilan birga kerakmi?</summary><p>GKS Lab yoʻnalish Labi: GKS formalari va baholash mantigʻini qoʻshadi. CV, tavsiya xati, insho kabi umumiy koʻnikmalar daraja Lablarida chuqurroq. Daraja Labi obunachilari uchun chegirma rejalashtirilgan.</p></details><details><summary>Muvofiq emasligim chiqsa-chi?</summary><p>M0 dagi tekshiruvda "mos emas" chiqsa, toʻlov tugmasi koʻrsatilmaydi va muqobil Lab tavsiya qilinadi.</p></details><details><summary>Stipendiya kafolati bormi?</summary><p>Yoʻq. GKS Lab natijani vaʼda qilmaydi.</p></details><details><summary>Nega “Lab” deyiladi?</summary><p>Lab soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi. Kompas Lablari ham shunday ishlaydi: har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi.</p></details></div>
-    <p class="sources" style="text-align:center">Manbalar: <a href="https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2026 GKS-G yoʻriqnomasi</a>, <a href="https://boston.mofa.go.kr/us-boston-en/brd/m_4558/view.do?seq=761392" target="_blank" rel="noopener">Koreya bosh konsulligi, Boston</a>, <a href="https://www.mofa.go.kr/kh-en/brd/m_25856/view.do?seq=66" target="_blank" rel="noopener">Koreya elchixonasi, Kambodja</a>, <a href="https://his.pusan.ac.kr/bbs/international/2622/1741122/artclView.do" target="_blank" rel="noopener">Pusan milliy universiteti</a></p>
-  </div>
-</section>
+<section class="alt"><div class="wrap"><div class="head"><h2>Keyingi qadam</h2></div><nav class="kl-next" aria-label="Lab sahifalari"><a href="gks-lab-dastur.html"><b>Dastur</b><span>Fazalar, modullar va har darsning mavzusi</span></a><a href="gks-lab-test.html"><b>Moslik testi</b><span>6 savol: hozir boshlash kerakmi yoki avval boʻshliqlarni yopishmi</span></a><a href="gks-lab-narxlar.html"><b>Narxlar</b><span>Oylik, 4 oylik Mavsum va yillik obuna</span></a><a href="gks-lab-savollar.html"><b>Savollar</b><span>Kimga mos, kimga mos emas va koʻp soʻraladigan savollar</span></a></nav></div></section>
 <section class="dark cta">
   <div class="wrap">
     <h2>Bepul M0 dan boshlang.</h2>
@@ -731,5 +579,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   }
 })();
 </script>
+<script src="js/sfx.js"></script>
+<script>(function(){var M={"dastur": "gks-lab-dastur.html", "qanday": "gks-lab-dastur.html#qanday", "faktlar": "gks-lab-dastur.html#faktlar", "atlas": "gks-lab-dastur.html#atlas", "narx": "gks-lab-narxlar.html", "savollar": "gks-lab-savollar.html", "kimga": "gks-lab-savollar.html", "test": "gks-lab-test.html", "treklar": "gks-lab.html#treklar"};var h=location.hash.slice(1);if(h&&M[h]){location.replace(M[h]);}})();</script>
 </body>
 </html>

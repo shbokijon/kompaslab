@@ -269,8 +269,11 @@ body.locked .gate{display:flex;}
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script src="js/pwa.js" defer></script>
 <link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<script src="js/kompas-ui.js"></script>
+<link rel="canonical" href="https://www.kompaslab.uz/master-lab-m0">
 </head>
-<body class="locked">
+<body class="locked" data-kview="hub">
 
 <header class="top">
   <div class="wrap">
@@ -305,7 +308,6 @@ body.locked .gate{display:flex;}
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Master Lab</a> · Modul 0</div>
-        <div class="box info" style="margin:16px 0 20px"><b>Darslar endi alohida sahifalarda.</b> M0 dagi beshta darsni <a href="master-lab-m0-darslar.html">yangi darslar ro‘yxatidan</a> oching. Bu avvalgi sahifa esa tayyorgarlik ko‘rsatkichi, kalendar va yakuniy qaror uchun saqlangan. Progress shu qurilmada umumiy saqlanadi.</div>
         <span class="badge">🔓 Bepul · Qaror darvozasi</span>
         <h1>Toʻlovdan oldin halol qaror.</h1>
         <p class="lead">Bu modulda magistratura tizimlarini koʻrasiz, kuchli arizaning tuzilishini tushunasiz va oʻz tayyorgarlik darajangizni oʻlchaysiz. Oxirida Master Lab sizga mos yoki mos emasligini oʻzingiz aniqlaysiz.</p>
@@ -927,5 +929,7 @@ body.locked .gate{display:flex;}
 </script>
 <style>.kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}@media print{.kp-wm{display:none!important}}</style>
 <script>(function(){function m(){if(document.querySelector(".kp-wm"))return;var c=document.createElement("canvas"),w=280,h=170,g=c.getContext&&c.getContext("2d");if(!g)return;c.width=w;c.height=h;g.translate(w/2,h/2);g.rotate(-0.4);g.fillStyle="#000";g.font="500 13px Outfit,system-ui,sans-serif";g.textAlign="center";g.fillText("kompaslab.uz",0,0);var d=document.createElement("div");d.className="kp-wm";d.setAttribute("aria-hidden","true");d.style.backgroundImage="url("+c.toDataURL()+")";document.body.appendChild(d);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",m);else m();})();</script>
+<script>window.KMOD={"base": "master-lab-m0", "key": "kompas_master_m0_v1", "lab": "master-lab.html", "labName": "Master Lab", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "Master Lab tizimi va Kompas metodi", "short": "Tizim", "meta": "⏱ 25 daqiqa, 📄 “Nega magistratura” bayonoti"}, {"id": "l2", "num": "0.2", "title": "Magistratura tizimlari: AQSh, Buyuk Britaniya, Yevropa, Osiyo, Avstraliya", "short": "Davlatlar", "meta": "⏱ 35 daqiqa, 📄 2–3 maqsadli tizim"}, {"id": "l3", "num": "0.3", "title": "Qabul qilingan va rad etilgan ariza tuzilishi", "short": "Ariza", "meta": "⏱ 30 daqiqa, 🎯 Mini-test"}, {"id": "l4", "num": "0.4", "title": "Tayyorgarlik koʻrsatkichi: oʻzingizga halol koʻzgu", "short": "Diagnostika", "meta": "⏱ 30 daqiqa, 📄 Koʻrsatkich varagʻi"}, {"id": "l5", "num": "0.5", "title": "Master Lab sizga mos emas, agar… va toʻlov shartlari", "short": "Mos emas", "meta": "⏱ 30 daqiqa, 📄 Qaror bayonoti"}], "yakunMeta": "Tayyorgarlik koʻrsatkichi, Deadline kalendari, nishonlar, qaror va rozilik"};</script>
+<script src="js/kompas-module.js"></script>
 </body>
 </html>

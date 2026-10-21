@@ -22,3 +22,7 @@ if "--index" in sys.argv:
     gen_index.build()
 phd_polish.build()
 postprocess.run(ROOT, [lab["file"] for lab in LABS.values()] + ["phd-lab.html"])
+# Uzun sahifani alohida sahifalarga ajratish: Umumiy, Dastur, Test, Narxlar, Savollar, modullar
+import split
+made = split.run(ROOT, [lab["file"] for lab in LABS.values()] + ["phd-lab.html"])
+print(len(made), "sahifa ajratildi")

@@ -6,7 +6,8 @@
 //    Tanlov localStorage "kompas_sfx" da, hamma sahifalarga umumiy ("0" = oʻchiq).
 //  · Sahifada [data-sfx] boʻlsa, avtomatik "tap" faqat shu boʻlimlar ichida chalinadi.
 //    Tugmadagi data-snd="nom" oʻsha tovushni chaladi ("none" = jim).
-//  API: KSfx.play(nom)  — tap | tab | pick | xp | badge | level | win | warn | needle | chime | whoosh | swap
+//  API: KSfx.play(nom)  — tap | tab | pick | xp | badge | level | win | warn | needle | chime | whoosh | swap | nav | turn
+//  Ichki havolalarga kompas-ui.js data-snd="nav" qoʻyadi (sahifa almashinuvi tovushi).
 //       KSfx.gain(oldXp, newXp) — XP qoʻshilganda mos tovushni tanlaydi
 // ═══════════════════════════════════════════════════════════════
 (function () {
@@ -45,7 +46,11 @@
     chime: function () { [G5, C6, E6].forEach(function (f, i) { note(f, i * 0.06, 0.6, "sine", 0.08); }); },
     // Globusda mamlakatga "uchish"
     whoosh: function () { sweep(400, 2400, 0.45, 0.2); note(392, 0.05, 0.4, "sine", 0.05); note(784, 0.3, 0.35, "sine", 0.05); },
-    swap: function () { note(660, 0, 0.07, "sine", 0.08); note(494, 0.05, 0.1, "sine", 0.07); }
+    swap: function () { note(660, 0, 0.07, "sine", 0.08); note(494, 0.05, 0.1, "sine", 0.07); },
+    // Sahifa almashinuvi: qogʻoz varagʻi shitirlashi + past nota
+    nav: function () { sweep(3200, 1100, 0.16, 0.05); note(523.25, 0.02, 0.12, "sine", 0.045); },
+    // Keyingi dars: yuqoriga koʻtariluvchi ikki nota
+    turn: function () { sweep(1400, 3600, 0.18, 0.045); note(659.25, 0.03, 0.12, "triangle", 0.06); note(987.77, 0.1, 0.18, "sine", 0.05); }
   };
   // Shovqin (oq shovqin) filtr chastotasi f0 dan f1 ga siljiydi
   var noise = null;
@@ -71,6 +76,7 @@
 
   // Dars boʻlimlari va tugmalar uchun yengil tovush; XP beradigan bosish oʻz tovushini qoʻshadi
   document.addEventListener("click", function (e) {
+    if (!e.isTrusted) return;   // dasturiy .click() tovush chiqarmaydi
     var el = e.target.closest && e.target.closest("[data-snd], .tab, .l-head, button, .btn, input[type=checkbox], input[type=radio]");
     if (!el || el.disabled || el.classList.contains("sfx-btn")) return;
     if (document.querySelector("[data-sfx]") && !el.closest("[data-sfx]")) return;

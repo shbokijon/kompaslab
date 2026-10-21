@@ -1,0 +1,226 @@
+/* ═══════════════════════════════════════════════════════════════
+   KOMPAS LAB — kompas-ui.css (2026-10-18)
+   Sayt tuzilmasi: Bosh sahifa → Lab → Modul → Dars.
+   Umumiy qism: sahifalar orasidagi oʻtish (View Transitions), Lab ichidagi
+   tablar, "yoʻl" (modul va dars bekatlari), dars sahifasi xromi, yakun oynasi.
+   Rang va shriftlar mavjud brend tokenlaridan olinadi (--accent, --accent2 ...).
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --kl-forest:#2d4a3e; --kl-forest-d:#1e3329; --kl-clay:#c4622d; --kl-gold:#c9a84c; --kl-cream:#f4f3ef;
+  --kl-line:#d8cfb6; --kl-ease:cubic-bezier(.22,.8,.24,1);
+  --kl-nav:62px; --kl-tabs:0px;
+}
+body.klb-on{--kl-top:40px;}
+
+/* ── Sahifalar orasida oʻtish ─────────────────────────────────── */
+@view-transition{navigation:auto;}
+.nav,.top{view-transition-name:kl-nav;}
+.klb{view-transition-name:kl-live;}
+.kl-tabs a[aria-current="page"]::after{view-transition-name:kl-tab-ind;}
+.kl-route-needle{view-transition-name:kl-needle;}
+::view-transition-group(root){animation-duration:.34s;animation-timing-function:var(--kl-ease);}
+::view-transition-old(root){animation:kl-out .2s var(--kl-ease) both;}
+::view-transition-new(root){animation:kl-in .34s var(--kl-ease) both;}
+html:active-view-transition-type(next)::view-transition-old(root){animation:kl-out-l .22s var(--kl-ease) both;}
+html:active-view-transition-type(next)::view-transition-new(root){animation:kl-in-r .36s var(--kl-ease) both;}
+html:active-view-transition-type(prev)::view-transition-old(root){animation:kl-out-r .22s var(--kl-ease) both;}
+html:active-view-transition-type(prev)::view-transition-new(root){animation:kl-in-l .36s var(--kl-ease) both;}
+::view-transition-group(kl-tab-ind),::view-transition-group(kl-needle){animation-duration:.42s;animation-timing-function:var(--kl-ease);}
+@keyframes kl-out{to{opacity:0}}
+@keyframes kl-in{from{opacity:0;transform:translateY(10px)}}
+@keyframes kl-out-l{to{opacity:0;transform:translateX(-28px)}}
+@keyframes kl-in-r{from{opacity:0;transform:translateX(36px)}}
+@keyframes kl-out-r{to{opacity:0;transform:translateX(28px)}}
+@keyframes kl-in-l{from{opacity:0;transform:translateX(-36px)}}
+@media (prefers-reduced-motion: reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important;}
+}
+
+/* ── Lab tablari (Umumiy · Dastur · Moslik testi · Narxlar · Savollar) ── */
+.kl-tabs{display:flex;gap:2px;margin:0 auto;align-items:center;}
+.kl-tabs a{position:relative;padding:8px 12px;border-radius:9px;font-size:13.5px;font-weight:700;color:var(--muted,#5f7169);text-decoration:none;white-space:nowrap;transition:color .18s,background .18s;}
+.kl-tabs a:hover{color:var(--kl-forest);background:rgba(45,74,62,.07);}
+.kl-tabs a[aria-current="page"]{color:var(--kl-forest);}
+.kl-tabs a[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:3px;border-radius:3px;background:var(--kl-clay);}
+.kl-tabbar{display:none;}
+.nav .kl-sfx{display:flex;align-items:center;}
+@media(max-width:1100px){
+  .nav .kl-tabs{display:none;}
+  .kl-tabbar{display:block;position:fixed;left:0;right:0;top:calc(var(--kl-top,0px) + var(--kl-nav));z-index:190;background:rgba(244,243,239,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--border,#e2ded3);view-transition-name:kl-tabbar;}
+  .kl-tabbar .kl-tabs{overflow-x:auto;scrollbar-width:none;padding:4px 12px;justify-content:flex-start;scroll-snap-type:x proximity;}
+  .kl-tabbar .kl-tabs::-webkit-scrollbar{display:none;}
+  .kl-tabbar .kl-tabs a{scroll-snap-align:center;padding:9px 12px;}
+  body.kl-has-tabs{--kl-tabs:46px;}
+  body.kl-has-tabs .hero,body.kl-has-tabs .kl-pagehead{padding-top:calc(var(--kl-nav) + var(--kl-tabs) + 34px);}
+}
+
+/* ── Ichki sahifa sarlavhasi ──────────────────────────────────── */
+.kl-pagehead{padding:calc(var(--kl-nav) + 54px) 0 18px;}
+.kl-pagehead .crumb,.kl-crumb{font-size:13px;color:var(--muted,#5f7169);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.kl-crumb a{color:var(--muted,#5f7169);text-decoration:none;border-bottom:1px solid transparent;}
+.kl-crumb a:hover{color:var(--kl-forest);border-color:currentColor;}
+.kl-crumb span[aria-hidden]{opacity:.45;}
+.kl-pagehead h1{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.06;color:var(--kl-forest);letter-spacing:-.5px;max-width:20ch;}
+.kl-pagehead .lead{margin-top:14px;max-width:62ch;}
+.kl-pagehead + section{padding-top:28px;}
+.kl-pagehead .kl-head-row{display:flex;gap:24px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;}
+.kl-pagehead .kl-head-art{width:92px;height:92px;flex:none;}
+
+/* ── "Yoʻl": modul va dars bekatlari ──────────────────────────── */
+.kl-route{list-style:none;margin:0;padding:0;position:relative;display:grid;gap:10px;}
+.kl-route::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:repeating-linear-gradient(to bottom,var(--kl-line) 0 7px,transparent 7px 13px);}
+.kl-st{position:relative;}
+.kl-st > a,.kl-st > div{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:16px;align-items:center;padding:12px 16px 12px 0;border-radius:16px;text-decoration:none;color:inherit;transition:background .2s var(--kl-ease);}
+.kl-st > a:hover{background:rgba(255,254,251,.9);box-shadow:0 1px 0 var(--border,#e2ded3),0 10px 28px rgba(45,74,62,.07);}
+.kl-st-n{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--surface,#fffefb);border:2px solid var(--kl-line);font-weight:800;font-size:15px;color:var(--kl-forest);font-variant-numeric:tabular-nums;transition:transform .25s var(--kl-ease),background .2s,border-color .2s,color .2s;}
+.kl-st > a:hover .kl-st-n{transform:scale(1.06);border-color:var(--kl-forest);}
+.kl-st-b{min-width:0;}
+.kl-st-b b{display:block;font-size:17px;line-height:1.3;color:var(--text,#1a2e26);}
+.kl-st-b small{display:block;margin-top:3px;font-size:13.5px;color:var(--muted,#5f7169);line-height:1.45;}
+.kl-st-s{font-size:12.5px;font-weight:800;padding:5px 11px;border-radius:99px;white-space:nowrap;background:rgba(45,74,62,.07);color:var(--kl-forest);}
+.kl-st.is-free .kl-st-n{background:var(--kl-forest);border-color:var(--kl-forest);color:#fff;}
+.kl-st.is-free .kl-st-s{background:#e6f4ec;color:#1a7a4a;}
+.kl-st.is-locked .kl-st-s{background:transparent;color:var(--muted,#5f7169);border:1px solid var(--border,#e2ded3);}
+.kl-st.is-done .kl-st-n{background:#1a7a4a;border-color:#1a7a4a;color:#fff;}
+.kl-st.is-done .kl-st-s{background:#e6f4ec;color:#1a7a4a;}
+.kl-st.is-current .kl-st-n{border-color:var(--kl-clay);color:var(--kl-clay);box-shadow:0 0 0 6px rgba(196,98,45,.12);}
+.kl-st.is-current .kl-st-s{background:var(--kl-clay);color:#fff;}
+.kl-st.is-here > a,.kl-st.is-here > div{background:var(--surface,#fffefb);box-shadow:0 1px 0 var(--border,#e2ded3),0 12px 30px rgba(45,74,62,.08);}
+.kl-phase{list-style:none;font-size:13px;font-weight:800;color:var(--kl-clay);padding:14px 0 2px 72px;}
+.kl-phase:first-child{padding-top:0;}
+/* Kompas strelkasi: joriy bekatni koʻrsatadi */
+.kl-route-needle{position:absolute;left:6px;width:44px;height:44px;z-index:2;pointer-events:none;transition:top .7s var(--kl-ease);}
+.kl-route-needle svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 8px rgba(30,51,41,.18));}
+.kl-route-needle .kn{transform-origin:22px 22px;animation:kl-needle 1.4s var(--kl-ease) both;}
+@keyframes kl-needle{0%{transform:rotate(-200deg)}55%{transform:rotate(24deg)}75%{transform:rotate(-10deg)}100%{transform:rotate(0)}}
+.kl-route.has-needle .kl-st.is-current .kl-st-n,.kl-route.has-needle .kl-st.is-here .kl-st-n{color:transparent;}
+@media(max-width:640px){
+  .kl-route::before{left:21px;top:22px;bottom:22px;}
+  .kl-st > a,.kl-st > div{grid-template-columns:44px minmax(0,1fr);gap:12px;padding-right:10px;}
+  .kl-st-n{width:44px;height:44px;font-size:13px;}
+  .kl-st-s{grid-column:2;justify-self:start;margin-top:-4px;}
+  .kl-st-b b{font-size:16px;}
+  .kl-phase{padding-left:56px;}
+  .kl-route-needle{left:3px;width:38px;height:38px;}
+}
+
+/* ── Lab umumiy sahifasi: dastur boʻlimi ──────────────────────── */
+.kl-path{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start;}
+.kl-path aside{position:sticky;top:calc(var(--kl-top,0px) + var(--kl-nav) + 24px);background:var(--surface,#fffefb);border:1px solid var(--border,#e2ded3);border-radius:20px;padding:22px;}
+.kl-path aside h3{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:24px;color:var(--kl-forest);line-height:1.15;}
+.kl-path aside p{font-size:14px;color:var(--muted,#5f7169);margin:10px 0 16px;}
+.kl-path aside .btn{width:100%;}
+.kl-path aside .btn + .btn{margin-top:8px;}
+.kl-path aside dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:0 0 16px;}
+.kl-path aside dt{color:var(--muted,#5f7169);}
+.kl-path aside dd{font-weight:800;text-align:right;margin:0;font-variant-numeric:tabular-nums;}
+@media(max-width:960px){.kl-path{grid-template-columns:minmax(0,1fr);}.kl-path aside{position:static;}}
+
+/* Keyingi sahifalar kartochkasi (Lab ichida) */
+.kl-next{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;}
+.kl-next a{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:16px;background:var(--surface,#fffefb);border:1px solid var(--border,#e2ded3);text-decoration:none;color:inherit;transition:border-color .2s,transform .25s var(--kl-ease);}
+.kl-next a:hover{border-color:var(--kl-forest);transform:translateY(-2px);}
+.kl-next b{font-size:16px;color:var(--kl-forest);}
+.kl-next span{font-size:13.5px;color:var(--muted,#5f7169);}
+
+/* ── Modul (M1+) sahifasi: darslar roʻyxati ───────────────────── */
+.kl-mod-art{margin-top:18px;display:flex;gap:12px;align-items:flex-start;background:var(--surface,#fffefb);border:1px solid var(--border,#e2ded3);border-left:4px solid var(--kl-gold);border-radius:14px;padding:14px 18px;font-size:15px;max-width:760px;}
+.kl-mod-art b{color:var(--kl-forest);}
+.kl-lock{display:flex;gap:14px;align-items:flex-start;margin-top:22px;padding:18px 20px;border-radius:16px;background:var(--kl-forest);color:#fff;}
+.kl-lock img{width:48px;height:48px;flex:none;}
+.kl-lock b{font-size:16px;}
+.kl-lock p{font-size:14px;color:rgba(255,255,255,.78);margin-top:4px;}
+.kl-lock .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.kl-lock .btn-g{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3);}
+.kl-modnav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px;}
+
+/* ── Oldingi / keyingi ─────────────────────────────────────────── */
+.kl-pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.kl-pager a{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:16px;border:1px solid var(--border,#e2ded3);background:var(--surface,#fffefb);text-decoration:none;color:inherit;min-height:76px;justify-content:center;transition:border-color .2s,box-shadow .25s;}
+.kl-pager a:hover{border-color:var(--kl-forest);box-shadow:0 10px 26px rgba(45,74,62,.08);}
+.kl-pager small{font-size:12.5px;font-weight:700;color:var(--muted,#5f7169);}
+.kl-pager b{font-size:15.5px;color:var(--kl-forest);line-height:1.3;}
+.kl-pager .nx{text-align:right;align-items:flex-end;grid-column:2;}
+.kl-pager .nx b::after{content:"";display:inline-block;width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);margin-left:10px;vertical-align:2px;transition:transform .2s;}
+.kl-pager .pv b::before{content:"";display:inline-block;width:8px;height:8px;border-bottom:2px solid currentColor;border-left:2px solid currentColor;transform:rotate(45deg);margin-right:10px;vertical-align:2px;}
+.kl-pager .nx:hover b::after{transform:translateX(3px) rotate(45deg);}
+.kl-pager .nx.primary{background:var(--kl-forest);border-color:var(--kl-forest);}
+.kl-pager .nx.primary small{color:rgba(255,255,255,.7);}
+.kl-pager .nx.primary b{color:#fff;}
+@media(max-width:560px){.kl-pager,.kl-modnav{grid-template-columns:1fr;}.kl-pager .nx{grid-column:1;}}
+
+/* ── Modul sahifalari (M0): hub / dars / yakun koʻrinishi ──────── */
+body[data-kview] .kl-only-hub,body[data-kview] .kl-only-lesson,body[data-kview] .kl-only-yakun{display:none;}
+body[data-kview="hub"] .kl-only-hub,body[data-kview="lesson"] .kl-only-lesson,body[data-kview="yakun"] .kl-only-yakun{display:block;}
+body[data-kview="hub"] #darslar .lessons,
+body[data-kview="hub"] #vositalar,body[data-kview="hub"] #qaror{display:none!important;}
+body[data-kview="lesson"] main .hero,body[data-kview="lesson"] main .map,body[data-kview="lesson"] main > .wrap > section:not(#darslar),
+body[data-kview="lesson"] #darslar > h2,body[data-kview="lesson"] #darslar > .sub,
+body[data-kview="lesson"] .lesson:not(.kl-cur){display:none!important;}
+body[data-kview="lesson"] .lesson.kl-cur{border-color:var(--accent);box-shadow:0 18px 50px rgba(45,74,62,.10);}
+body[data-kview="lesson"] .lesson.kl-cur .l-body{display:block;}
+body[data-kview="lesson"] .lesson.kl-cur .l-head{display:none;}
+body[data-kview="lesson"] .lesson.kl-cur .l-body{border-top:0;}
+body[data-kview="lesson"] .lesson.kl-cur .chev{display:none;}
+body[data-kview="lesson"] #darslar{padding-top:6px;}
+body[data-kview="yakun"] main .hero,body[data-kview="yakun"] main .map,body[data-kview="yakun"] #darslar,
+body[data-kview="yakun"] main > .wrap > section:not(#vositalar):not(#nishonlar):not(#qaror){display:none!important;}
+body[data-kview="hub"] #nishonlar{display:block;}
+body[data-kview="hub"] main .map{display:none!important;}
+
+/* Dars sahifasi xromi */
+.kl-lhead{padding:30px 0 10px;}
+.kl-lhead .kl-crumb{margin-bottom:10px;}
+.kl-lhead h1{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.08;color:var(--accent,#2d4a3e);margin:0;}
+.kl-lhead .kl-lmeta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:13px;color:var(--muted,#5f7169);}
+.kl-steps{display:flex;align-items:center;gap:0;margin:22px 0 30px;}
+.kl-steps a{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--muted,#5f7169);font-size:11.5px;font-weight:800;min-width:0;}
+.kl-steps a::before{content:"";position:absolute;top:14px;left:-50%;right:50%;height:2px;background:var(--border,#e2ded3);z-index:0;}
+.kl-steps a:first-child::before{display:none;}
+.kl-steps a.done::before,.kl-steps a.cur::before{background:var(--accent,#2d4a3e);}
+.kl-steps i{position:relative;z-index:1;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;background:var(--surface,#fffefb);border:2px solid var(--border,#e2ded3);transition:transform .2s;}
+.kl-steps a:hover i{transform:scale(1.1);}
+.kl-steps a.done i{background:var(--accent,#2d4a3e);border-color:var(--accent,#2d4a3e);color:#fff;}
+.kl-steps a.cur i{border-color:var(--accent2,#c4622d);color:var(--accent2,#c4622d);box-shadow:0 0 0 5px rgba(196,98,45,.13);}
+.kl-steps a.cur{color:var(--accent2,#c4622d);}
+.kl-steps span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+@media(max-width:560px){.kl-steps span{display:none;}.kl-steps a.cur span{display:block;position:absolute;top:36px;}.kl-steps{margin-bottom:18px;}}
+.kl-read{position:fixed;left:0;right:0;top:calc(var(--kl-top,0px) + 60px);height:3px;z-index:99;pointer-events:none;}
+.kl-read i{display:block;height:100%;width:0;background:var(--accent,#2d4a3e);transform-origin:left;}
+.kl-lfoot{margin:26px 0 8px;}
+.kl-keys{font-size:12.5px;color:var(--muted,#5f7169);text-align:center;margin-top:12px;}
+.kl-keys kbd{font-family:inherit;font-weight:800;border:1px solid var(--border,#e2ded3);border-bottom-width:2px;border-radius:6px;padding:1px 6px;background:var(--surface,#fffefb);}
+@media(hover:none){.kl-keys{display:none;}}
+
+/* Modul hub: darslar yoʻli */
+.kl-hub-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.kl-hub-route{margin-top:6px;}
+.kl-yakun-card{margin-top:14px;}
+
+/* ── Yakun oynasi ─────────────────────────────────────────────── */
+.kl-done{position:fixed;inset:0;z-index:600;display:grid;place-items:center;padding:20px;background:rgba(20,34,28,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s;}
+.kl-done.on{opacity:1;pointer-events:auto;}
+.kl-done-c{width:min(440px,100%);background:var(--surface,#fffefb);border-radius:24px;padding:30px 26px 24px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:translateY(16px) scale(.97);transition:transform .45s var(--kl-ease);}
+.kl-done.on .kl-done-c{transform:none;}
+.kl-done svg{width:84px;height:84px;margin:0 auto 10px;display:block;}
+.kl-done svg circle{fill:none;stroke:#1a7a4a;stroke-width:4;stroke-dasharray:240;stroke-dashoffset:240;}
+.kl-done svg path{fill:none;stroke:#1a7a4a;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;}
+.kl-done.on svg circle{animation:kl-draw .6s .1s var(--kl-ease) forwards;}
+.kl-done.on svg path{animation:kl-draw .35s .55s var(--kl-ease) forwards;}
+@keyframes kl-draw{to{stroke-dashoffset:0}}
+.kl-done h2{font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:30px;color:var(--accent,#2d4a3e);line-height:1.1;}
+.kl-done p{font-size:15px;color:var(--muted,#5f7169);margin:8px 0 18px;}
+.kl-done .kl-xp{display:inline-block;background:var(--gold-lit,#f8f0d6);color:var(--gold,#8a6a10);font-weight:800;font-size:14px;padding:4px 12px;border-radius:99px;margin-bottom:10px;}
+.kl-done .btn{width:100%;}
+.kl-done .btn + .btn{margin-top:8px;}
+@media (prefers-reduced-motion: reduce){.kl-done svg circle,.kl-done svg path{stroke-dashoffset:0;animation:none!important;}.kl-route-needle .kn{animation:none;}}
+
+/* Klaviatura fokusi */
+.kl-st a:focus-visible,.kl-pager a:focus-visible,.kl-tabs a:focus-visible,.kl-next a:focus-visible,.kl-steps a:focus-visible{outline:3px solid var(--kl-clay);outline-offset:3px;}
+
+/* Dastur sahifasi: modul kartasidan modul sahifasiga */
+.kl-modlink{display:inline-flex;align-items:center;gap:8px;margin:2px 0 16px 20px;font-weight:800;font-size:14px;color:var(--kl-clay);text-decoration:none;}
+.kl-modlink::after{content:"";width:7px;height:7px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);transition:transform .2s;}
+.kl-modlink:hover::after{transform:translateX(3px) rotate(45deg);}
+.kl-lessons .kl-st-n{font-size:13.5px;}
+.kl-st-n.sm{font-size:12px;letter-spacing:-.2px;}
