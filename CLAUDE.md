@@ -98,3 +98,5 @@ Modul va dars nomlari: `tools/landing/mods.json` (DAAD: `labs_data.py` → `DAAD
 4. M0 progressi faqat brauzerda (qurilmalar orasida koʻchmaydi) — bazaga yozish rejada.
 5. **Roʻyxatdan oʻtish maʼlumoti:** `profiles.education/goal` hech qachon toʻldirilmagan (mijozda UPDATE huquqi yoʻq). 2026-10-17 dan ular `user_metadata` ga yoziladi; `fn_create_profile` triggeriga qoʻshish va eski yozuvlarni toʻldirish — bazaga oid, tasdiq kutilmoqda. Supabase Auth → Redirect URLs da `https://www.kompaslab.uz/reset-password.html` boʻlishi kerak (tekshirilmagan).
 6. Mobil ilova: hozir PWA; doʻkon ilovasi signal boʻlganda (Android avval).
+7. **Supabase toʻxtagan (2026-10-22):** loyiha `INACTIVE`, tiklash "unpaid invoices" sababli rad etildi. Toʻlov qilinmaguncha kutish roʻyxati, jonli narx va hisoblar ishlamaydi.
+8. **Soha savoli (2026-10-22):** bosh sahifa finderidagi ixtiyoriy 3-savol va kutish oynasidagi `#wlS` javobi hozircha `waitlist.source` ga `index_v5;soha=<kod>` koʻrinishida yoziladi. Toʻgʻri yechim: alohida `field_of_study` ustuni (baza tiklangach, tasdiq bilan).
