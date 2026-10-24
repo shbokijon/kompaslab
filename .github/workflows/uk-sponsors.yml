@@ -1,0 +1,36 @@
+name: Refresh UK sponsor register
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 7 * * 1-5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: uk-sponsor-snapshot
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Retrieve and validate Home Office CSV
+        run: python tools/atlas/uk_sponsors.py
+      - name: Commit snapshot if changed
+        run: |
+          git add data/uk-sponsors.json
+          if git diff --cached --quiet; then
+            echo "No change"
+            exit 0
+          fi
+          git -c user.name="kompas-atlas-bot" -c user.email="kompas-atlas-bot@users.noreply.github.com" commit -m "data(atlas): refresh UK sponsor register"
+          git push
