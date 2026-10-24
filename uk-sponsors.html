@@ -237,16 +237,18 @@ function normalise(items){
  }
  return out.sort(function(a,b){return a.name.localeCompare(b.name,"en");});
 }
-function initDataset(list,date,source){
- data=normalise(list);stamp=date||"Sana koʻrsatilmagan";
+function initDataset(list,date,source,verifiedSnapshot){
+ // Verified imported snapshots are already unique and alphabetically sorted.
+ data=verifiedSnapshot?list:normalise(list);stamp=date||"Sana koʻrsatilmagan";
  text(info,data.length.toLocaleString("en-GB")+" ta Skilled Worker registr yozuvi · "+stamp+" · "+source);
  text(status,source==="Rasmiy snapshot"?"Rasmiy nusxa":"Mahalliy CSV");
  status.classList.remove("at-error");
  var cityCounts=new Map(),rSet=new Set();
  data.forEach(function(d){if(d.town)cityCounts.set(d.town,(cityCounts.get(d.town)||0)+1);if(d.rating)rSet.add(d.rating);});
  var options=Array.from(cityCounts.keys()).sort(function(a,b){return a.localeCompare(b,"en")});
- city.replaceChildren(new Option("Barcha shaharlar",""));
- options.forEach(function(x){city.add(new Option(x,x));});
+ var cityOptions=[new Option("Barcha shaharlar","")];
+ options.forEach(function(x){cityOptions.push(new Option(x,x));});
+ city.replaceChildren.apply(city,cityOptions);
  rating.replaceChildren(new Option("Barchasi",""));
  Array.from(rSet).sort().forEach(function(x){rating.add(new Option(x,x));});
  cities.replaceChildren();
@@ -385,11 +387,11 @@ function loadJSON(url){
 }
 var loadStart=performance.now();
 loadJSON("data/uk-sponsors-lite.json").then(function(d){
- initDataset(decodeCompact(d),d.last_updated||"Sana koʻrsatilmagan","Rasmiy snapshot");
+ initDataset(decodeCompact(d),d.last_updated||"Sana koʻrsatilmagan","Rasmiy snapshot",true);
 }).catch(function(){
  return loadJSON("data/uk-sponsors.json").then(function(d){
   if(!d||!Array.isArray(d.records)||!d.records.length)throw Error("Snapshot hali tayyor emas");
-  initDataset(d.records,d.last_updated||"Sana koʻrsatilmagan","Rasmiy snapshot");
+  initDataset(d.records,d.last_updated||"Sana koʻrsatilmagan","Rasmiy snapshot",true);
  });
 }).then(function(){
  // Performance is local only; no telemetry or personal data transfer.
