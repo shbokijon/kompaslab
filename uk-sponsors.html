@@ -87,6 +87,24 @@ body{min-height:100vh}
 .at-bottom p{font-size:12.5px;color:var(--muted);max-width:820px}
 .at-bottom a{color:var(--accent)}
 .at-error{color:#ae3f30!important}
+
+.ukmap{margin-top:22px;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(280px,.92fr);background:#eef3ee;border:1px solid #dce7de;border-radius:22px;overflow:hidden;min-height:390px}
+.ukmap-canvas{background:radial-gradient(circle at 60% 48%,#f9fcf9,#e8efea);display:grid;place-items:center;position:relative;padding:12px}
+.ukmap svg{width:100%;max-height:440px;display:block}
+.ukmap svg .uk-land{fill:#d0e0d2;stroke:#84ab8c;stroke-width:1.2;vector-effect:non-scaling-stroke}
+.ukmap svg .uk-dot{fill:#c4622d;stroke:#fff;stroke-width:2;cursor:pointer;transition:fill .15s}
+.ukmap svg .uk-dot:hover,.ukmap svg .uk-dot.selected{fill:#2d4a3e;stroke-width:3}
+.ukmap svg .uk-dot:focus-visible{outline:none;stroke:#1a2e26;stroke-width:4}
+.ukmap svg text{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:11px;font-weight:800;fill:#1e3329;pointer-events:none}
+.ukmap-info{padding:27px 24px;background:#fff}
+.ukmap-info h2{font:800 20px/1.3 "Outfit","IBM Plex Sans",sans-serif;color:var(--accent);margin:5px 0 13px}
+.ukmap-info .map-help{font-size:13px;color:var(--muted)}
+.map-legend{display:grid;gap:8px;margin:22px 0}
+.map-stat{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f5f8f5;border:1px solid #e0ebe2;border-radius:10px;padding:9px 11px}
+.map-stat b{font-size:12px;color:#274538}
+.map-stat strong{font-size:13px;color:var(--accent2);font-variant-numeric:tabular-nums}
+.map-source{font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--border);padding-top:14px}
+@media(max-width:720px){.ukmap{grid-template-columns:minmax(0,1fr)}.ukmap svg{max-height:345px}.ukmap-info{padding:20px}}
 @media(max-width:720px){.atlas-hero{padding:34px 0 25px}.atlas-hero h1{font-size:39px}.at-main{padding-top:14px}.controls,.cards,.at-details{grid-template-columns:minmax(0,1fr)}.at-panel{padding:18px}.panel-top{gap:8px}.at-file input{max-width:155px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
@@ -115,6 +133,11 @@ body{min-height:100vh}
 <div class="panel-foot"><p>Barcha kompaniyalar roʻyxati alfabet tartibida. Qidiruv natijalari tavsiya yoki ish eʼloni emas.</p><button id="reset" type="button" class="btn-quiet">Filtrlarni tozalash</button></div>
 <div class="at-file"><label for="csvFile">Rasmiy CSV faylni yuklash</label><input id="csvFile" type="file" accept=".csv,text/csv" aria-label="Home Office CSV fayli"><small>Fayl brauzerda ochiladi, serverga yuborilmaydi.</small></div>
 </section>
+
+<section class="ukmap" aria-label="UK sponsorlar shaharlar xaritasi">
+<div class="ukmap-canvas"><svg id="ukAtlasMap" viewBox="0 0 470 540" role="group" aria-label="UK xaritasi: shahar bo‘yicha sponsor registri yozuvlari"><g id="ukMapOutline"></g><g id="ukMapDots"></g></svg></div>
+<div class="ukmap-info"><span class="eyebrow">SHAHARLAR XARITASI</span><h2>Homiylik litsenziyalari qayerda koʻproq?</h2><p class="map-help">Doira ustiga bosing — shu shahar kompaniyalarini koʻrasiz. Sonlar filtrlangan registr yozuvlari, haqiqiy vakansiyalar soni emas.</p><div class="map-legend" id="ukMapCounts" aria-live="polite"></div><p class="map-source">Nuqtalar shaharlarning <strong>taxminiy markazi</strong>ni koʻrsatadi; ish beruvchining ofis manzili emas. Xarita chegaralari: Natural Earth 1:110m (jamoat mulki).</p></div>
+</section>
 <div class="at-cities" id="cities" aria-label="Eng koʻp qayd etilgan shaharlar"></div>
 <div class="resultbar"><h2>Natijalar</h2><span id="resultsCount" aria-live="polite"></span></div>
 <div class="cards" id="results"></div>
@@ -134,6 +157,19 @@ var data=[],visible=24,stamp="",debounce;
 var q=document.getElementById("q"),city=document.getElementById("city"),rating=document.getElementById("rating");
 var results=document.getElementById("results"),counter=document.getElementById("resultsCount"),cities=document.getElementById("cities");
 var info=document.getElementById("datasetInfo"),status=document.getElementById("datasetStatus"),more=document.getElementById("more");
+var mapOutline=document.getElementById("ukMapOutline"),mapDots=document.getElementById("ukMapDots"),mapCounts=document.getElementById("ukMapCounts");
+var NS="http://www.w3.org/2000/svg";
+var MAP_CITIES=[
+ ["London",51.5074,-0.1278],["Birmingham",52.4862,-1.8904],["Manchester",53.4808,-2.2426],
+ ["Leeds",53.8008,-1.5491],["Liverpool",53.4084,-2.9916],["Bristol",51.4545,-2.5879],
+ ["Sheffield",53.3811,-1.4701],["Cardiff",51.4816,-3.1791],["Edinburgh",55.9533,-3.1883],
+ ["Glasgow",55.8642,-4.2518],["Belfast",54.5973,-5.9301],["Aberdeen",57.1497,-2.0943],
+ ["Nottingham",52.9548,-1.1581],["Leicester",52.6369,-1.1398],["Oxford",51.7520,-1.2577],
+ ["Cambridge",52.2053,0.1218],["Newcastle upon Tyne",54.9783,-1.6178],
+ ["Coventry",52.4068,-1.5197],["Reading",51.4543,-0.9781],["Southampton",50.9097,-1.4044]
+];
+function sx(lon){return 12+(lon+9.5)*37;}
+function sy(lat){return 14+(61.25-lat)*42;}
 function text(node,value){node.textContent=String(value==null?"":value);}
 function clean(s){return String(s==null?"":s).trim().slice(0,220);}
 function norm(s){return clean(s).toLocaleLowerCase();}
@@ -214,6 +250,56 @@ function render(){
   meta.append(tag,a);card.append(head,meta);results.appendChild(card);
  });
  more.hidden=filtered.length<=visible;
+ updateMap();
+}
+function geoMap(geo) {
+ if(!geo||!Array.isArray(geo.c)||!Array.isArray(geo.r))return;
+ var ix=geo.c.indexOf("GBR");if(ix<0)return;
+ mapOutline.replaceChildren();
+ geo.r.filter(function(r){return r[0]===ix;}).forEach(function(r){
+  var x=0,y=0,d="";
+  for(var i=1;i+1<r.length;i+=2){
+   x+=r[i];y+=r[i+1];
+   var xx=sx(x/10),yy=sy(y/10);
+   d+=(i===1?"M":"L")+xx.toFixed(1)+" "+yy.toFixed(1)+" ";
+  }
+  if(d){var p=document.createElementNS(NS,"path");p.setAttribute("d",d+"Z");p.setAttribute("class","uk-land");mapOutline.appendChild(p);}
+ });
+}
+function updateMap(){
+ mapDots.replaceChildren();mapCounts.replaceChildren();
+ if(!data.length)return;
+ var query=norm(q.value),rank=rating.value;
+ var cityCount=new Map(),cityNames=new Map();
+ data.forEach(function(d){
+  if((!query||norm(d.name).includes(query))&&(!rank||d.rating===rank)){
+   var citykey=norm(d.town);
+   cityCount.set(citykey,(cityCount.get(citykey)||0)+1);
+   cityNames.set(citykey,d.town);
+  }
+ });
+ var all=MAP_CITIES.map(function(c){return {name:c[0],lat:c[1],lon:c[2],count:cityCount.get(norm(c[0]))||0};})
+  .filter(function(x){return x.count>0}).sort(function(a,b){return a.count-b.count;});
+ all.forEach(function(item){
+  var g=document.createElementNS(NS,"g"),circle=document.createElementNS(NS,"circle");
+  var size=Math.min(24,Math.max(7,6+Math.sqrt(item.count)*.14));
+  circle.setAttribute("cx",sx(item.lon));circle.setAttribute("cy",sy(item.lat));circle.setAttribute("r",size);
+  circle.setAttribute("class","uk-dot"+(norm(item.name)===norm(city.value)?" selected":""));
+  circle.setAttribute("tabindex","0");circle.setAttribute("role","button");
+  circle.setAttribute("aria-label",item.name+": "+item.count+" ta qayd. Shaharni filtrlash.");
+  var tooltip=document.createElementNS(NS,"title");tooltip.textContent=item.name+" · "+item.count.toLocaleString("en-GB")+" ta qayd";
+  circle.appendChild(tooltip);
+  function pick(){var matched=cityNames.get(norm(item.name));city.value=city.value===matched?"":matched||"";visible=24;render();}
+  circle.addEventListener("click",pick);
+  circle.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick();}});
+  g.appendChild(circle);mapDots.appendChild(g);
+ });
+ all.sort(function(a,b){return b.count-a.count;}).slice(0,5).forEach(function(item){
+  var line=document.createElement("div");line.className="map-stat";
+  var title=document.createElement("b");title.textContent=item.name;
+  var val=document.createElement("strong");val.textContent=item.count.toLocaleString("en-GB")+" ta";
+  line.append(title,val);mapCounts.appendChild(line);
+ });
 }
 function fail(msg){data=[];text(info,msg);text(status,"Maʼlumot yoʻq");status.classList.add("at-error");render();}
 function importCSV(content){
@@ -248,6 +334,7 @@ fetch("data/uk-sponsors.json",{cache:"no-store"}).then(function(r){if(!r.ok)thro
  if(!d||!Array.isArray(d.records)||!d.records.length)throw Error("Snapshot hali tayyor emas");
  initDataset(d.records,d.last_updated||"Sana koʻrsatilmagan","Rasmiy snapshot");
 }).catch(function(){fail("Avtomatik roʻyxat hali tayyor emas. GOV.UK registridan CSV yuklash mumkin.");});
+fetch("data/globe.json").then(function(r){if(!r.ok)throw Error("Map data unavailable");return r.json();}).then(geoMap).catch(function(){mapOutline.textContent="";});
 })();
 </script>
 </body>
