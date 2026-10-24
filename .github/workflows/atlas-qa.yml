@@ -1,0 +1,37 @@
+name: Atlas browser QA
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "uk-sponsors.html"
+      - "tools/atlas/**"
+      - ".github/workflows/atlas-qa.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify offline compact snapshot
+        run: python tools/atlas/compact_from_snapshot.py
+      - name: Install Playwright browsers for mobile emulation
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Serve Kompas Lab static site
+        run: |
+          python -m http.server 8814 --bind 127.0.0.1 > /tmp/atlas-http.log 2>&1 &
+          sleep 2
+      - name: Mobile Chromium and WebKit checks
+        run: node tools/atlas/test_mobile.cjs

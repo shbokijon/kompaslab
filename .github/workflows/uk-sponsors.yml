@@ -34,7 +34,7 @@ jobs:
         run: python tools/atlas/uk_sponsors.py
       - name: Commit snapshot if changed
         run: |
-          git add data/uk-sponsors.json
+          git add data/uk-sponsors.json data/uk-sponsors-lite.json
           if git diff --cached --quiet; then
             echo "No change"
             exit 0
