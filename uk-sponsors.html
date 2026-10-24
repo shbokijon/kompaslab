@@ -105,6 +105,24 @@ body{min-height:100vh}
 .map-stat strong{font-size:13px;color:var(--accent2);font-variant-numeric:tabular-nums}
 .map-source{font-size:12px;color:var(--muted);line-height:1.55;border-top:1px solid var(--border);padding-top:14px}
 @media(max-width:720px){.ukmap{grid-template-columns:minmax(0,1fr)}.ukmap svg{max-height:345px}.ukmap-info{padding:20px}}
+
+/* Careers links are independently verified destinations, NOT sponsorship assertions. */
+.career-section{margin-top:46px}
+.career-section h2,.journey-section h2{font:800 clamp(21px,3vw,28px) "Outfit","IBM Plex Sans",sans-serif;color:var(--accent);margin:6px 0 8px}
+.section-desc{font-size:13.5px;color:var(--muted);max-width:800px;margin:0 0 20px}
+.career-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.career-card{padding:17px;border:1px solid var(--border);border-radius:15px;background:#fff;display:flex;flex-direction:column;gap:8px;min-height:168px}
+.career-card strong{font-size:15px;color:var(--text)}
+.career-card small{font-size:11px;font-weight:700;color:#7c5a24}
+.career-card p{font-size:12px;color:var(--muted);flex:1}
+.career-card a{font-size:12px;font-weight:800;color:var(--accent);text-underline-offset:3px}
+.journey-section{margin-top:39px;padding:22px;border:1px solid #cadfd0;border-radius:18px;background:#f2f7f2}
+.journey-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.journey-grid a{background:white;border:1px solid #d4e2d7;border-radius:12px;padding:15px;color:var(--accent);text-decoration:none;font-weight:800;font-size:14px}
+.journey-grid a span{display:block;font-weight:500;color:var(--muted);font-size:12px;line-height:1.5;margin-top:5px}
+.journey-grid a:hover{border-color:var(--accent);box-shadow:0 7px 20px rgba(29,59,45,.09)}
+@media(max-width:800px){.career-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.career-grid,.journey-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:720px){.atlas-hero{padding:34px 0 25px}.atlas-hero h1{font-size:39px}.at-main{padding-top:14px}.controls,.cards,.at-details{grid-template-columns:minmax(0,1fr)}.at-panel{padding:18px}.panel-top{gap:8px}.at-file input{max-width:155px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
@@ -142,6 +160,28 @@ body{min-height:100vh}
 <div class="resultbar"><h2>Natijalar</h2><span id="resultsCount" aria-live="polite"></span></div>
 <div class="cards" id="results"></div>
 <button class="load-more" id="more" type="button" hidden>Yana kompaniyalarni koʻrsatish</button>
+
+<section class="career-section" aria-label="Tekshirilgan rasmiy ish qidirish sahifalari">
+<span class="eyebrow">CAREERS / ISH IMKONIYATLARI</span><h2>Kompaniyalarning rasmiy Careers sahifalari</h2>
+<p class="section-desc">Quyidagi havolalar tashkilotlarning oʻz rasmiy veb-sahifalaridan tekshirilgan (2026-10-24). <strong>Careers havolasi faol vakansiya yoki sponsorship tasdigʻi emas.</strong> Har bir eʼlonni alohida tekshiring. Tanlangan kompaniyalar sponsor registrining barcha tashkilotlarini ifodalamaydi.</p>
+<div class="career-grid">
+<article class="career-card"><strong>University of Leeds</strong><small>Tadqiqot va oliy taʼlim</small><p>Research, professional services va university jobs.</p><a target="_blank" rel="noopener noreferrer" href="https://www.leeds.ac.uk/universityjobs">Rasmiy ish sahifasi ↗</a></article>
+<article class="career-card"><strong>SSE</strong><small>Energetika</small><p>Energy, renewables, infrastructure va engineering rollari.</p><a target="_blank" rel="noopener noreferrer" href="https://careers.sse.com/jobs/search">Rasmiy ish sahifasi ↗</a></article>
+<article class="career-card"><strong>National Grid</strong><small>Energetika va infratuzilma</small><p>Grid engineering, analytics va infrastructure rollari.</p><a target="_blank" rel="noopener noreferrer" href="https://jobs.nationalgrid.com/uk/jobs">Rasmiy ish sahifasi ↗</a></article>
+<article class="career-card"><strong>Arm</strong><small>Computing va engineering</small><p>Software, hardware, AI va graduate opportunities.</p><a target="_blank" rel="noopener noreferrer" href="https://careers.arm.com/search-jobs">Rasmiy ish sahifasi ↗</a></article>
+<article class="career-card"><strong>Rolls-Royce</strong><small>Muhandislik va tadqiqot</small><p>Engineering, technology, graduate va PhD opportunities.</p><a target="_blank" rel="noopener noreferrer" href="https://careers.rolls-royce.co.uk/en/jobs">Rasmiy ish sahifasi ↗</a></article>
+<article class="career-card"><strong>Tesco</strong><small>Retail, data va business</small><p>Retail operations, technology va head-office careers.</p><a target="_blank" rel="noopener noreferrer" href="https://www.tescoplc.com/careers">Rasmiy ish sahifasi ↗</a></article>
+</div>
+</section>
+<section class="journey-section" aria-label="Kompas Lab bilan keyingi qadamlar">
+<span class="eyebrow">KOMPAS LAB BILAN BOGʻLANISH</span><h2>Atlasdan shaxsiy rejangizga oʻting</h2>
+<p class="section-desc">Kompaniya topilgach, uning vakansiyasi, talablar va ariza muddatini oʻzingiz tekshirib, keyingi vazifalarni rejalashtiring. Ushbu havolalar hozircha avtomatik kompaniya matching yoki visa eligibility tekshiruvi emas.</p>
+<div class="journey-grid">
+<a href="master-planner.html">Bepul shaxsiy reja <span>Kelgusi vazifalar va muddatni belgilash</span></a>
+<a href="master-lab.html">Master Lab <span>Akademik profil, CV va ariza tayyorlash</span></a>
+<a href="phd-lab.html">PhD Lab <span>Research profile va ilmiy karyera</span></a>
+</div>
+</section>
 <div class="at-details">
 <article><h3>1. Sponsor licence nima?</h3><p>Home Office ish beruvchiga belgilangan viza yoʻllarida xodimlarga homiylik qilish uchun ruxsat berganini bildiradi.</p></article>
 <article><h3>2. Qanday foydalaniladi?</h3><p>Nom va shahar orqali kompaniyani toping. Uning <em>Careers</em> sahifasidan mos vakansiya qidiring va sponsorship shartini bevosita tekshiring.</p></article>
@@ -330,9 +370,30 @@ q.addEventListener("input",function(){clearTimeout(debounce);debounce=setTimeout
 [city,rating].forEach(function(el){el.addEventListener("change",function(){visible=24;render();});});
 document.getElementById("reset").addEventListener("click",function(){q.value="";city.value="";rating.value="";visible=24;render();});
 more.addEventListener("click",function(){visible+=24;render();});
-fetch("data/uk-sponsors.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("Snapshot hali yuklanmagan");return r.json()}).then(function(d){
- if(!d||!Array.isArray(d.records)||!d.records.length)throw Error("Snapshot hali tayyor emas");
- initDataset(d.records,d.last_updated||"Sana koʻrsatilmagan","Rasmiy snapshot");
+
+function decodeCompact(d){
+ if(!d||d.schema!==1||!Array.isArray(d.rows)||!Array.isArray(d.towns)||!Array.isArray(d.ratings)||!Array.isArray(d.counties)||d.rows.length!==d.count){
+  throw Error("Ixcham roʻyxat formati notoʻgʻri");
+ }
+ return d.rows.map(function(row){
+  if(!Array.isArray(row)||row.length!==4)throw Error("Ixcham roʻyxatda xatolik");
+  return {name:row[0],town:d.towns[row[1]],county:d.counties[row[2]],rating:d.ratings[row[3]]};
+ });
+}
+function loadJSON(url){
+ return fetch(url,{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("HTTP "+r.status);return r.json();});
+}
+var loadStart=performance.now();
+loadJSON("data/uk-sponsors-lite.json").then(function(d){
+ initDataset(decodeCompact(d),d.last_updated||"Sana koʻrsatilmagan","Rasmiy snapshot");
+}).catch(function(){
+ return loadJSON("data/uk-sponsors.json").then(function(d){
+  if(!d||!Array.isArray(d.records)||!d.records.length)throw Error("Snapshot hali tayyor emas");
+  initDataset(d.records,d.last_updated||"Sana koʻrsatilmagan","Rasmiy snapshot");
+ });
+}).then(function(){
+ // Performance is local only; no telemetry or personal data transfer.
+ document.documentElement.dataset.atlasLoadMs=String(Math.round(performance.now()-loadStart));
 }).catch(function(){fail("Avtomatik roʻyxat hali tayyor emas. GOV.UK registridan CSV yuklash mumkin.");});
 fetch("data/globe.json").then(function(r){if(!r.ok)throw Error("Map data unavailable");return r.json();}).then(geoMap).catch(function(){mapOutline.textContent="";});
 })();
