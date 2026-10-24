@@ -19,6 +19,7 @@ from urllib.request import Request, urlopen
 
 PAGE = "https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers"
 OUT = Path(__file__).resolve().parents[2] / "data" / "uk-sponsors.json"
+LITE = OUT.with_name("uk-sponsors-lite.json")
 MAX_CSV_BYTES = 22_000_000
 MIN_SPONSORS = 10_000
 MAX_SPONSORS = 150_000
@@ -81,6 +82,33 @@ def parse_csv(csv_bytes: bytes) -> list[dict]:
     return result
 
 
+
+def compact_records(records: list[dict], *, source: str, published: str | None, retrieved: str) -> dict:
+    """Dictionary-encode repeated town/county/rating strings for mobile downloads.
+
+    Names are preserved verbatim; no approximate entity matching or sponsorship
+    eligibility inference is performed.
+    """
+    towns, counties, ratings = [], [], []
+    ti, ci, ri = {}, {}, {}
+    rows = []
+    for item in records:
+        for value, values, ids in (
+            (item["town"], towns, ti), (item["county"], counties, ci),
+            (item["rating"], ratings, ri)
+        ):
+            if value not in ids:
+                ids[value] = len(values)
+                values.append(value)
+        rows.append([item["name"], ti[item["town"]], ci[item["county"]], ri[item["rating"]]])
+    return {
+        "schema": 1, "source": source, "last_updated": published,
+        "retrieved_at": retrieved, "route": "Skilled Worker",
+        "count": len(records), "towns": towns, "counties": counties,
+        "ratings": ratings, "rows": rows,
+    }
+
+
 def run() -> None:
     html = download(PAGE, limit=1_800_000).decode("utf-8")
     links = CsvLinks()
@@ -102,11 +130,18 @@ def run() -> None:
         "route": "Skilled Worker",
         "records": records,
     }
+    compact = compact_records(records, source=PAGE, published=published,
+                              retrieved=result["retrieved_at"])
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    tmp = OUT.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    tmp.replace(OUT)
-    print(f"Saved {len(records):,} Skilled Worker register records; edition {published or 'unknown'}")
+    tmp_full = OUT.with_suffix(".json.tmp")
+    tmp_lite = LITE.with_suffix(".json.tmp")
+    tmp_full.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    tmp_lite.write_text(json.dumps(compact, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    # Both files are completely written before either is published.
+    tmp_full.replace(OUT)
+    tmp_lite.replace(LITE)
+    reduction = round(100 * (1 - LITE.stat().st_size / OUT.stat().st_size))
+    print(f"Saved {len(records):,} Skilled Worker register records; edition {published or 'unknown'}; compact {LITE.stat().st_size:,} bytes ({reduction}% smaller)")
 
 
 if __name__ == "__main__":
