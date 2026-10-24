@@ -1,6 +1,6 @@
 """Offline importer unit tests: no invented employer data in production."""
 import unittest
-from uk_sponsors import CsvLinks, parse_csv
+from uk_sponsors import CsvLinks, parse_csv, compact_records
 
 
 class ImportTests(unittest.TestCase):
@@ -20,6 +20,15 @@ class ImportTests(unittest.TestCase):
         # Expected RuntimeError is the guard against publishing tiny/incomplete data.
         with self.assertRaisesRegex(RuntimeError, "Unexpected Skilled Worker record count"):
             parse_csv(sample.encode("utf-8"))
+
+    def test_compact_schema_roundtrip(self):
+        records = [{"name":"Test, Ltd","town":"Leeds","county":"Yorkshire","rating":"Worker (A rating)"},
+                   {"name":"Other","town":"Leeds","county":"Yorkshire","rating":"Worker (A rating)"}]
+        compact = compact_records(records, source="https://www.gov.uk", published="2026-10-23", retrieved="2026-10-24")
+        self.assertEqual(compact["count"], len(records))
+        self.assertEqual(compact["towns"], ["Leeds"])
+        self.assertEqual(compact["rows"][0][0], records[0]["name"])
+        self.assertEqual(compact["rows"][1][1], 0)
 
     def test_rejects_wrong_header(self):
         with self.assertRaisesRegex(RuntimeError, "Unexpected header"):
