@@ -86,7 +86,7 @@ Modul va dars nomlari: `tools/landing/mods.json` (DAAD: `labs_data.py` → `DAAD
 
 ## Obuna modeli (2026-10-17 tasdiqlangan)
 - 3 tarif: **Oylik**, **Mavsum, 4 oy** (asosiy, 3 oy narxida), **Yillik**. M0 bepul.
-- Oylikda modullar har oy bitta faza boʻyicha ochiladi (natija topshirilsa ertaroq); Mavsum va Yillikda hammasi birdaniga.
+- **Oylik (2026-10-30 tasdiqlangan):** har toʻlov bitta fazani ochadi (Masterda faza = 2 modul: I M1–M2, II M3–M4, III M5–M6, IV M7–M8); keyingi faza navbatdagi toʻlov bilan, **toʻlov qilingan zahoti** ochiladi (oy oxirini kutmaydi; "natija topshirilsa ertaroq" qoidasi bekor). Obuna tugasa (`expires_at`), ochilgan modullar ham yopiladi; javoblar talaba brauzerida qoladi. Texnik: toʻlov webhooki `enrollments.unlocked_modules` ni +2 (M0 = 1-oʻrin, faza k → 1+2k) va `expires_at` ni +30 kun qiladi; `fn_paid_page()` shuni tekshiradi. Mavsum va Yillikda hammasi birdaniga (`unlocked_modules` NULL).
 - Hozircha faqat sahifalardagi matn va narx: haqiqiy cheklov toʻlov va server tomonidagi kirish huquqi bilan birga qilinadi (pastdagi 1–2-bandlar).
 - Narx taqqoslash (`render.std_calc`): yillik reja oylik bilan emas, **Mavsum + oylik jamlanmasining eng arzoni** bilan solishtiriladi (`best_short`). Natija: 699/99 → yillik 10+ oyda foydali; Tadbirkor va Musofirda 12 oyda ham 3 × Mavsum arzon (narxni qayta koʻrish kerak).
 - **Kompas Pro (2026-10-17):** yillik tarif ostida "Rejada" belgisi bilan (`render.PRO_PLANNED`, bosh sahifada ham): muddat eslatmalari, stipendiyalar bazasi, koʻrsatkich tarixi, sinxronlash. Qurilmaguncha narxga kirmaydi. Shu sababli tariflardan qurilmagan "muddat eslatmalari (Telegram)" vaʼdalari olib tashlandi.

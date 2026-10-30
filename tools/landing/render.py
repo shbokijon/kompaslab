@@ -365,7 +365,7 @@ def std_calc(y, m):
         rows.append(("Mavsum arzonroq", "12 oyda ham 3 ta Mavsum yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun"))
     return rows
 
-REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi."
+REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi. Oylik obunada har toʻlov bitta fazani ochadi; obuna tugasa, ochilgan modullar ham yopiladi."
 
 # Kompas Pro: rejadagi funksiyalar (2026-10-17 qarori). Qurilmaguncha "Rejada" belgisi bilan, narxga kirmaydi
 PRO_PLANNED = """<div class="pro-plan"><span class="tag-plan">Rejada</span><b>Kompas Pro: hali ishlamaydi</b>
@@ -375,7 +375,7 @@ PRO_PLANNED = """<div class="pro-plan"><span class="tag-plan">Rejada</span><b>Ko
 
 # Mavsum (4 oy) narxi = 3 × oylik; bazada alohida ustun yoʻq, sahifa oylik narxdan hisoblaydi
 SEASON_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 4 oy", "1 oy tekin: 4 oy 3 oy narxida", "Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni"]
-MONTHLY_EXTRA = ["Modullar har oy bitta faza boʻyicha ochiladi; natija topshirilsa, keyingisi ertaroq"]
+MONTHLY_EXTRA = ["Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
 
 def pricing(lab):
     p = lab["pricing"]

@@ -103,7 +103,7 @@ p{color:var(--muted);line-height:1.55;margin:0 0 18px}
         return;
       }
       if (d.reason === "locked") {
-        show("Bu modul hali ochilmagan", "Tarifingiz boʻyicha hozir " + (d.unlocked_modules || 0) + " ta modul ochiq (M0 bilan). Keyingi modul navbatdagi toʻlov yoki oy boshlanganda ochiladi.",
+        show("Bu modul hali ochilmagan", "Tarifingiz boʻyicha hozir " + (d.unlocked_modules || 0) + " ta modul ochiq (M0 bilan). Oylik obunada keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.",
           [{label: "Mening kabinetim", href: "dashboard.html", primary: true}, {label: "Modul sahifasi", href: hub}]);
       } else if (d.reason === "expired" || d.reason === "frozen") {
         show("Obuna faol emas", d.reason === "expired" ? "Obuna muddati tugagan." : "Toʻlov kechikkani sababli kirish vaqtincha toʻxtatilgan.",
