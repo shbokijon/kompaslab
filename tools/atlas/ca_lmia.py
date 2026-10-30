@@ -39,11 +39,18 @@ COLS = {
 }
 
 
-def download(url: str, *, limit: int) -> bytes:
+def download(url: str, *, limit: int, any_https: bool = False) -> bytes:
+    """API sahifasi faqat open.canada.ca dan. Fayl havolasi rasmiy API dan olinadi,
+    portal uni fayl omboriga yoʻnaltirishi mumkin: bunda faqat HTTPS talab qilinadi."""
+    if urlsplit(url).hostname not in HOSTS:
+        raise RuntimeError("Resource must be listed on open.canada.ca")
     req = Request(url, headers={"User-Agent": "KompasLab-Atlas/1.0 (official open data importer; https://kompaslab.uz)"})
     with urlopen(req, timeout=90) as resp:
-        if urlsplit(resp.geturl()).hostname not in HOSTS:
-            raise RuntimeError("Unexpected redirect host")
+        final = urlsplit(resp.geturl())
+        if final.hostname not in HOSTS and not (any_https and final.scheme == "https"):
+            raise RuntimeError(f"Unexpected redirect host: {final.hostname}")
+        if final.hostname not in HOSTS:
+            print(f"Redirected to {final.hostname}", flush=True)
         body = resp.read(limit + 1)
     if len(body) > limit:
         raise RuntimeError("Download too large")
@@ -123,7 +130,7 @@ def run() -> None:
     package = json.loads(download(API, limit=5_000_000))
     url, period = latest_resource(package)
     print(f"Latest resource: {period} {url}", flush=True)
-    wb = openpyxl.load_workbook(io.BytesIO(download(url, limit=40_000_000)), read_only=True, data_only=True)
+    wb = openpyxl.load_workbook(io.BytesIO(download(url, limit=40_000_000, any_https=True)), read_only=True, data_only=True)
     ws = wb.worksheets[0]
     rows = [list(r) for r in ws.iter_rows(values_only=True)]
     recs = parse_rows(rows)
