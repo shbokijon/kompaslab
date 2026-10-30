@@ -48,7 +48,7 @@
 <header class="kl-pagehead">
   <div class="wrap">
     <nav class="kl-crumb" aria-label="Yoʻl"><a href="index.html">Kompas Lab</a><span aria-hidden="true">/</span><span>Narxlar</span></nav>
-    <div class="kl-head-row"><div><h1>Narxlar · rejalashtirilgan</h1><p class="lead">Bu qiymatlar hali sotuvdagi tariflar emas: to‘lov yopiq. ERI, payment integratsiyasi va darslar auditi tugagach narxlar tasdiqlanadi. Master Lab M0 va <a href="master-planner.html">bepul rejalashtirgich</a> hozir mavjud.</p></div><img class="kl-head-art float" src="img/3d/money.webp" alt="" width="160" height="160"></div>
+    <div class="kl-head-row"><div><h1>Narxlar · rejalashtirilgan</h1><p class="lead">Onlayn toʻlov hali ochilmagan, narxlar toʻlov ochilganda tasdiqlanadi. Hozir 7 ta Labning bepul M0 darslari (roʻyxatdan oʻtgach) va <a href="master-planner.html">magistratura rejalashtirgichi</a> ochiq.</p></div><img class="kl-head-art float" src="img/3d/money.webp" alt="" width="160" height="160"></div>
   </div>
 </header>
 <section id="narx">
@@ -71,7 +71,7 @@
     </div>
     <div class="refund"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Hozir to‘lov qabul qilinmaydi.</b> ERI va rasmiy to‘lov integratsiyasidan keyin bekor qilish va pulni qaytarish shartlari qonunchilikka muvofiq eʼlon qilinadi.<p>Master Lab uchun <a href="master-planner.html">bepul reja (Master Planner)</a> tuzish mumkin.</p></div></div>
     <div class="rules">
-      <div class="ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Bekor qilish</b>Obunani istalgan vaqtda toʻxtatasiz: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi.</div></div>
+      <div class="ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Bekor qilish</b>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz. Toʻlamasangiz, toʻlangan davr tugashi bilan kirish yopiladi.</div></div>
       <div class="ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>18 yoshgacha</b>Obunani va toʻlovni ota-ona yoki vasiy rasmiylashtiradi.</div></div>
       <div class="ic"><img src="img/3d/lock.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div></div>
       <div class="ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div></div>
@@ -85,7 +85,6 @@
       <div class="in">
         <label for="amt">Agentlik narxi</label>
         <div class="row"><input id="amt" type="text" inputmode="numeric" autocomplete="off" placeholder="masalan, 15 000 000"><div class="seg" role="group" aria-label="Valyuta"><button type="button" data-cur="uzs" aria-pressed="true">soʻm</button><button type="button" data-cur="usd" aria-pressed="false">$</button></div></div>
-        <div class="quick"><span>Tez kiritish:</span><button type="button" data-amt="5000000">5 mln</button><button type="button" data-amt="15000000">15 mln</button><button type="button" data-amt="40000000">40 mln</button></div>
         <label for="cmpLab">Qaysi Lab bilan</label>
         <select id="cmpLab"><option value="bachelor-lab">Bachelor Lab</option><option value="master-lab" selected>Master Lab</option><option value="phd-lab">PhD Lab</option><option value="gks-lab">GKS Lab</option><option value="usa-lab">USA Lab</option><option value="daad-lab">DAAD Lab</option><option value="tadbirkor-talaba">Tadbirkor Talaba</option><option value="miggo">Musofir Lab</option></select>
       </div>
@@ -96,7 +95,7 @@
       </div>
     </div>
     <div class="honest">
-      <div class="ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Farqi nimada</b>Koʻp agentliklar hujjatni siz bilan birga tayyorlaydi yoki topshirishga yordam beradi. Kompas hujjatni oʻrningizga yozmaydi va topshirmaydi.</div></div>
+      <div class="ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Farqi nimada</b>Agentlik arizani siz bilan yoki siz uchun tayyorlaydi. Kompasda arizani oʻzingiz tayyorlaysiz: tuzilma, baholash mezoni va rasmiy manbalar beriladi.</div></div>
       <div class="ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Sizda nima qoladi</b>Kompasda oʻrgangan usul oʻzingizda qoladi: keyingi ariza, stipendiya yoki ish uchun ham ishlatasiz.</div></div>
       <div class="ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Agentlik tanlasangiz</b>Shartnoma, litsenziya va “kafolat” vaʼdasini tekshiring. <a href="https://raqobat.gov.uz/uz/xorijda-ishlash-va-oqish-uchun-oson-borishni-vada-qilayotgan-konsalting-firmalardan-ogoh-boling/" target="_blank" rel="noopener">Raqobat qoʻmitasi ogohlantirishi</a></div></div>
       <div class="ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><b>Hisob qanday</b>Narx Lab yillik obunasiga boʻlinadi. Dollar Markaziy bank kursida (2026-10-06): 1 $ = 11 778 soʻm.</div></div>
@@ -108,7 +107,7 @@
     <h2>Bepul M0 dan boshlang.</h2>
     <p class="sub">Avval Lab sizga mosligini tekshiring, keyin qaror qiling.</p>
     <div class="cta-row" style="justify-content:center">
-      <button type="button" class="btn btn-p" data-wl="">Kutish roʻyxatiga yozilish</button>
+      <a href="index.html#labs" class="btn btn-p">Lab tanlab, M0 ni ochish</a><button type="button" class="btn btn-g" data-wl="">Kutish roʻyxati</button>
       <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">Telegramda savol berish</a>
     </div>
   </div>
@@ -172,7 +171,7 @@
 
 
   var SLUG = "", SOURCE = "index_v4";
-  var LABS = [{"slug": "bachelor-lab", "name": "Bachelor Lab", "icon": "bachelor", "page": "bachelor-lab.html", "who": "10–11-sinf, litsey va kollej, 15–19 yosh", "why": "Xorijiy bakalavriatga: universitet tanlashdan topshirishgacha.", "y": 699000, "m": 99000, "ang": 0}, {"slug": "master-lab", "name": "Master Lab", "icon": "master", "page": "master-lab.html", "who": "Xorijiy magistraturaga topshiruvchilar", "why": "Magistratura: yoʻnalish, hujjatlar, stipendiya, viza va joʻnash.", "y": 699000, "m": 99000, "ang": 45}, {"slug": "phd-lab", "name": "PhD Lab", "icon": "phd", "page": "phd-lab.html", "who": "Moliyalashtirilgan doktorantura", "why": "Doktorantura: ilmiy savoldan ilmiy rahbar va loyiha taklifigacha.", "y": 999000, "m": 129000, "ang": 90}, {"slug": "gks-lab", "name": "GKS Lab", "icon": "gks", "page": "gks-lab.html", "who": "Koreya: Global Korea Scholarship", "why": "Koreya hukumati stipendiyasi: muvofiqlik, hujjatlar va intervyu.", "y": 699000, "m": 99000, "ang": 135}, {"slug": "usa-lab", "name": "USA Lab", "icon": "usa", "page": "usa-lab.html", "who": "AQSh: Global UGRAD, Fulbright, doktorantura", "why": "AQShda moliyalashtirilgan oʻqishning uch yoʻli.", "y": 699000, "m": 99000, "ang": 180}, {"slug": "daad-lab", "name": "DAAD Lab", "icon": "daad", "page": "daad-lab.html", "who": "Germaniya: magistratura va doktorantura", "why": "Germaniya va DAAD: ilmiy rahbardan vizagacha.", "y": 699000, "m": 99000, "ang": 225}, {"slug": "tadbirkor-talaba", "name": "Tadbirkor Talaba", "icon": "tt", "page": "tadbirkor-talaba.html", "who": "Universitet talabalari, 18 yoshdan", "why": "Oʻqish bilan birga kichik, qonuniy biznes sinovi.", "y": 299000, "m": 29900, "ang": 270}, {"slug": "miggo", "name": "Musofir Lab", "icon": "musofir", "page": "musofir-lab.html", "who": "Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha", "why": "Xorijda faqat rasmiy yoʻl bilan ishlash va firibgarlikdan himoya.", "y": 499000, "m": 49900, "ang": 315}];
+  var LABS = [{"slug": "bachelor-lab", "name": "Bachelor Lab", "icon": "bachelor", "page": "bachelor-lab.html", "who": "10–11-sinf, litsey va kollej, 15–19 yosh", "why": "Universitet tanlash, testlar rejasi, insho va tavsiya xatlari.", "y": 699000, "m": 99000, "ang": 0}, {"slug": "master-lab", "name": "Master Lab", "icon": "master", "page": "master-lab.html", "who": "Xorijiy magistraturaga topshiruvchilar", "why": "Yoʻnalish tanlash, hujjatlar, stipendiya, viza va joʻnashga tayyorgarlik.", "y": 699000, "m": 99000, "ang": 45}, {"slug": "phd-lab", "name": "PhD Lab", "icon": "phd", "page": "phd-lab.html", "who": "Moliyalashtirilgan doktorantura", "why": "Ilmiy savol, ilmiy rahbar topish va ilmiy loyiha taklifi.", "y": 999000, "m": 129000, "ang": 90}, {"slug": "gks-lab", "name": "GKS Lab", "icon": "gks", "page": "gks-lab.html", "who": "Koreya: Global Korea Scholarship", "why": "GKS ga muvofiqlik, hujjatlar va intervyuga tayyorgarlik.", "y": 699000, "m": 99000, "ang": 135}, {"slug": "usa-lab", "name": "USA Lab", "icon": "usa", "page": "usa-lab.html", "who": "AQSh: Global UGRAD, Fulbright, doktorantura", "why": "AQShda moliyalashtirilgan oʻqishning uch yoʻli.", "y": 699000, "m": 99000, "ang": 180}, {"slug": "daad-lab", "name": "DAAD Lab", "icon": "daad", "page": "daad-lab.html", "who": "Germaniya: magistratura va doktorantura", "why": "Professor topish, motivatsion xat, DAAD portali va viza.", "y": 699000, "m": 99000, "ang": 225}, {"slug": "tadbirkor-talaba", "name": "Tadbirkor Talaba", "icon": "tt", "page": "tadbirkor-talaba.html", "who": "Universitet talabalari, 18 yoshdan", "why": "Oʻqish bilan birga kichik, qonuniy biznes sinovi.", "y": 299000, "m": 29900, "ang": 270}, {"slug": "miggo", "name": "Musofir Lab", "icon": "musofir", "page": "musofir-lab.html", "who": "Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha", "why": "Xorijda faqat rasmiy yoʻl bilan ishlash va firibgarlikdan himoya.", "y": 499000, "m": 49900, "ang": 315}];
   var bySlug = {}; LABS.forEach(function (l) { bySlug[l.slug] = l; });
   function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

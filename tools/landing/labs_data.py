@@ -5,7 +5,7 @@
 STD_NAV = [("dastur", "Dastur"), ("faktlar", "Faktlar"), ("narx", "Narx"), ("savollar", "Savollar")]
 
 STD_RULES = [
-    ("Bekor qilish", "Obunani istalgan vaqtda to'xtatasiz: keyingi davr uchun pul yechilmaydi, to'langan davr oxirigacha kirish saqlanadi."),
+    ("Bekor qilish", "Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz. Toʻlamasangiz, toʻlangan davr tugashi bilan kirish yopiladi."),
     ("Tayyorgarlik darvozasi", "M0 natijasi \"Bu siklga erta\" bo'lsa, to'lov o'rniga aniq bo'shliqlar ro'yxati va muqobil yo'l tavsiya qilinadi."),
     ("To'lov xavfsizligi", "To'lov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi."),
     ("Kirmaydi", "Hujjatni o'rningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati."),

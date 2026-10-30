@@ -365,7 +365,7 @@ def std_calc(y, m):
         rows.append(("Mavsum arzonroq", "12 oyda ham 3 ta Mavsum yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun"))
     return rows
 
-REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi. Oylik obunada har toʻlov bitta fazani ochadi; obuna tugasa, ochilgan modullar ham yopiladi."
+REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi. Oylik obunada har toʻlov bitta fazani ochadi; obuna tugasa, ochilgan modullar ham yopiladi."
 
 # Kompas Pro: rejadagi funksiyalar (2026-10-17 qarori). Qurilmaguncha "Rejada" belgisi bilan, narxga kirmaydi
 PRO_PLANNED = """<div class="pro-plan"><span class="tag-plan">Rejada</span><b>Kompas Pro: hali ishlamaydi</b>
@@ -450,13 +450,19 @@ FOOTER = '''<footer>
   </div>
 </footer>'''
 
+def _cta_buttons(lab):
+    m0 = lab["file"].replace(".html", "-m0.html")
+    if (ROOT / m0).exists():
+        return f'<a href="{m0}" class="btn btn-p">Bepul M0 ni ochish</a><button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</button>'
+    return '<button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>'
+
 def cta(lab):
     return f'''<section class="dark cta">
   <div class="wrap">
     <h2>{lab["cta_title"]}</h2>
     <p class="sub">{lab["cta_sub"]}</p>
     <div class="cta-row" style="justify-content:center">
-      <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+      {_cta_buttons(lab)}
       <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">Telegramda savol berish</a>
     </div>
   </div>

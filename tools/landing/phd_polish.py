@@ -61,7 +61,7 @@ def build():
     calc = "".join(f"<div><b>{a}</b>{b}</div>" for a, b in std_calc(Y, M))
     s = re.sub(r'<div class="calc reveal">.*?</div>\s*</div>', '<div class="calc">' + calc + "</div>\n    " + PRO_PLANNED + "\n    <div class=\"refund\">" + REFUND + "</div>", s, count=1, flags=re.S)
     s = R(s, "<div><b>Bekor qilish</b>Obuna istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Qaytarish shartlari toʻlovdan oldin toʻliq matnda koʻrsatiladi.</div>",
-          "<div><b>Bekor qilish</b>Obunani istalgan vaqtda toʻxtatasiz: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi.</div>")
+          "<div><b>Bekor qilish</b>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz. Toʻlamasangiz, toʻlangan davr tugashi bilan kirish yopiladi.</div>")
     s = s.replace("<h3>M0 — Qaror darvozasi</h3>", "<h3>M0, qaror moduli</h3>")
     # savollar: «Nega Lab?»
     q, a2 = WHY_LAB_FAQ
