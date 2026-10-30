@@ -33,17 +33,19 @@ jobs:
         run: pip install openpyxl==3.1.5
       - name: Verify parsers
         run: cd tools/atlas && python test_registries.py
+      - name: Start run log
+        run: date -u +"run %Y-%m-%dT%H:%MZ" > tools/atlas/last_run.txt
       - name: Netherlands (IND recognised sponsors)
         id: nl
         continue-on-error: true
-        run: python tools/atlas/nl_sponsors.py
+        run: python tools/atlas/nl_sponsors.py 2>&1 | tee -a tools/atlas/last_run.txt; exit ${PIPESTATUS[0]}
       - name: Canada (positive LMIA, latest quarter)
         id: ca
         continue-on-error: true
-        run: python tools/atlas/ca_lmia.py
+        run: python tools/atlas/ca_lmia.py 2>&1 | tee -a tools/atlas/last_run.txt; exit ${PIPESTATUS[0]}
       - name: Commit snapshots if changed
         run: |
-          for f in data/nl-sponsors.json data/ca-lmia.json; do [ -f "$f" ] && git add "$f"; done
+          for f in data/nl-sponsors.json data/ca-lmia.json tools/atlas/last_run.txt; do [ -f "$f" ] && git add "$f"; done
           if git diff --cached --quiet; then
             echo "No change"
           else

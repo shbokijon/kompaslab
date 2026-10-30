@@ -26,7 +26,7 @@ OUT = Path(__file__).resolve().parents[2] / "data" / "ca-lmia.json"
 MIN_ROWS = 1_000
 MAX_ROWS = 200_000
 HOSTS = {"open.canada.ca", "www.open.canada.ca"}
-QUARTER = re.compile(r"(20\d{2})q([1-4])_pos_en\.xlsx$", re.I)
+QUARTER = re.compile(r"(20\d{2})_?q([1-4])_pos(?:itive)?_en\.xlsx$", re.I)
 
 # Column header keywords (English file). Matched case-insensitively.
 COLS = {
@@ -122,6 +122,7 @@ def run() -> None:
 
     package = json.loads(download(API, limit=5_000_000))
     url, period = latest_resource(package)
+    print(f"Latest resource: {period} {url}", flush=True)
     wb = openpyxl.load_workbook(io.BytesIO(download(url, limit=40_000_000)), read_only=True, data_only=True)
     ws = wb.worksheets[0]
     rows = [list(r) for r in ws.iter_rows(values_only=True)]
