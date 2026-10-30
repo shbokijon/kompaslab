@@ -1,7 +1,7 @@
 # Kompas Lab — loyiha qoʻllanmasi (har yangi chat shu fayldan boshlaydi)
 
 kompaslab.uz: xorijda oʻqish, stipendiya va rasmiy mehnat yoʻllariga oʻzbek tilida tayyorlov platformasi.
-Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
+Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com. Adminlar (2026-10-30): shbokijon@gmail.com va kompaslab.uz@gmail.com (`profiles.role = admin`, mijoz tomonida `adminEmails`). Saytdagi aloqa emaili: kompaslab.uz@gmail.com (footer, Telegram havolasidan oldin).
 
 ## Muloqot qoidalari
 - Javob **oʻzbek tilida**, qisqa, aniq; kirish va maqtov soʻzlarisiz.
