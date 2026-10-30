@@ -407,15 +407,16 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 </header>
 <section class="alt" id="dastur">
   <div class="wrap">
-    <div class="phases">
-      <div class="phase"><small>FAZA 0, BEPUL</small><b>Qaror</b><span>M0, 6 dars, 1 hafta</span></div>
-      <div class="phase"><small>FAZA I</small><b>Identitet va ilmiy rahbar</b><span>M1–M2, 13 dars, 4–5 hafta</span></div>
-      <div class="phase"><small>FAZA II</small><b>Aloqa va taklif</b><span>M3–M4, 16 dars, 6–8 hafta</span></div>
-      <div class="phase"><small>FAZA III</small><b>Dalil va moliya</b><span>M5–M6, 16 dars, 4–6 hafta</span></div>
-      <div class="phase"><small>FAZA IV</small><b>Intervyu va birinchi yil</b><span>M7–M8, 14 dars, 4–6 hafta</span></div>
+    <div class="phases kl-ph" role="group" aria-label="Fazalar">
+      <button type="button" class="phase" data-ph="0" aria-pressed="true" aria-controls="kl-ph-mods"><small>FAZA 0, BEPUL</small><b>Qaror</b><span>M0, 6 dars, 1 hafta</span></button>
+      <button type="button" class="phase" data-ph="1" aria-pressed="false" aria-controls="kl-ph-mods"><small>FAZA I</small><b>Identitet va ilmiy rahbar</b><span>M1–M2, 13 dars, 4–5 hafta</span></button>
+      <button type="button" class="phase" data-ph="2" aria-pressed="false" aria-controls="kl-ph-mods"><small>FAZA II</small><b>Aloqa va taklif</b><span>M3–M4, 16 dars, 6–8 hafta</span></button>
+      <button type="button" class="phase" data-ph="3" aria-pressed="false" aria-controls="kl-ph-mods"><small>FAZA III</small><b>Dalil va moliya</b><span>M5–M6, 16 dars, 4–6 hafta</span></button>
+      <button type="button" class="phase" data-ph="4" aria-pressed="false" aria-controls="kl-ph-mods"><small>FAZA IV</small><b>Intervyu va birinchi yil</b><span>M7–M8, 14 dars, 4–6 hafta</span></button>
     </div>
-    <div class="mods">
-      <details class="mod free" open>
+    <p class="kl-ph-hint">Fazani tanlang: uning modullari pastda chiqadi. Modulni bossangiz, darslar roʻyxati ochiladi; har dars izohi modul sahifasida.</p>
+    <div id="kl-ph-mods" class="kl-ph-body"><div class="mods">
+      <details class="mod free" data-ph="0">
         <summary><div class="mod-n">M0</div><div><div class="mod-t">Qaror darvozasi</div><div class="mod-a">Natija: Tayyorgarlik darajasi (Readiness Score) + shaxsiy vaqt chizigʻi + rozilik qaydi (consent_log)</div></div><div class="mod-c">6 dars<span class="tag tag-free">BEPUL</span></div></summary>
         <ol>
           <li><span class="num">0.1</span>PhD nima va kimga kerak<small>Doktorantura — mustaqil tadqiqot orqali yangi bilim yaratish; akademik va sanoat karyera yoʻllari; PhD qaysi maqsadlar uchun ortiqcha</small></li>
@@ -426,7 +427,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
           <li><span class="num">0.6</span>Qaror: boshlash, kechiktirish yoki boshqa Lab<small>Kimga mos emas roʻyxati (2.2); toʻlov, bekor qilish va qaytarish shartlari toʻliq matnda; rozilik</small></li>
         </ol>
       <a class="kl-modlink" href="phd-lab-m0.html">M0 modul sahifasi</a></details>
-      <details class="mod">
+      <details class="mod" data-ph="1">
         <summary><div class="mod-n">M1</div><div><div class="mod-t">Ilmiy identitet va yoʻnalish</div><div class="mod-a">Natija: Tadqiq qilinadigan savol (1 sahifa) + yangilik bayoni</div></div><div class="mod-c">6 dars</div></summary>
         <ol>
           <li><span class="num">1.1</span>Qanday tadqiqotchi boʻlmoqdaman<small>Oʻtgan loyihalar, dissertatsiya, ish tajribasidan ilmiy profil chiqarish; usul (metod) va muammo (soha) oʻqlari</small></li>
@@ -437,7 +438,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
           <li><span class="num">1.6</span>Bajarilishi mumkinlik filtri<small>3–4 yil, maʼlumotga kirish, uskuna, hisoblash resurslari, etika; savolni toraytirish yoki kengaytirish</small></li>
         </ol>
       <a class="kl-modlink" href="phd-lab-m1.html">M1 modul sahifasi</a></details>
-      <details class="mod">
+      <details class="mod" data-ph="1">
         <summary><div class="mod-n">M2</div><div><div class="mod-t">Ilmiy rahbar va laboratoriya strategiyasi</div><div class="mod-a">Natija: Ilmiy rahbar kuzatuv jadvali (Supervisor Tracker)</div></div><div class="mod-c">7 dars<span class="tag tag-core">CORE</span></div></summary>
         <ol>
           <li><span class="num">2.1</span>Nega ilmiy rahbar universitetdan muhimroq<small>PhD sifatini kim belgilaydi: rahbar, guruh, resurslar; reyting nimani koʻrsatmaydi</small></li>
@@ -449,7 +450,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
           <li><span class="num">2.7</span>Kuzatuv jadvalini yakunlash<small>10–15 nom, ustuvorlik: Dream / Target / Safety; har biriga keyingi qadam</small></li>
         </ol>
       <a class="kl-modlink" href="phd-lab-m2.html">M2 modul sahifasi</a></details>
-      <details class="mod">
+      <details class="mod" data-ph="2">
         <summary><div class="mod-n">M3</div><div><div class="mod-t">Professorga yoziladigan dastlabki xat va aloqa</div><div class="mod-a">Natija: 5+ yuborilgan xat + Aloqalar jadvali (Outreach Log) + suhbat rejasi</div></div><div class="mod-c">7 dars<span class="tag tag-core">CORE</span></div></summary>
         <ol>
           <li><span class="num">3.1</span>Professor nimani izlaydi<small>Professorning vaqti va qiziqishi; xatni 10–20 soniyada nima uchun oʻchiradi; moslik, tayyorgarlik, mustaqillik signallari</small></li>
@@ -461,7 +462,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
           <li><span class="num">3.7</span>Arizadan oldingi suhbat<small>Onlayn suhbat tuzilmasi, 5 daqiqalik gʻoya taqdimoti, professorga beriladigan savollar, suhbatdan keyingi xat</small></li>
         </ol>
       <a class="kl-modlink" href="phd-lab-m3.html">M3 modul sahifasi</a></details>
-      <details class="mod">
+      <details class="mod" data-ph="2">
         <summary><div class="mod-n">M4</div><div><div class="mod-t">Ilmiy loyiha taklifi muhandisligi</div><div class="mod-a">Natija: Ilmiy loyiha taklifi (Research Proposal) v1.0, dastur talabiga qarab 1 500–3 000 soʻz</div></div><div class="mod-c">9 dars<span class="tag tag-core">CORE</span></div></summary>
         <ol>
           <li><span class="num">4.1</span>PhD taklifi nima va kim oʻqiydi<small>Ilmiy rahbar, kafedra komissiyasi, stipendiya paneli — har biri nimani qidiradi; taklif "shartnoma" emas, fikrlash namunasi</small></li>
@@ -475,7 +476,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
           <li><span class="num">4.9</span>Etika, resurslar va yakuniy tahrir<small>Etika ruxsati, maʼlumotlarni boshqarish rejasi, resurslar; iqtibos uslubi; plagiat va AI vositalari qoidalari; 3 bosqichli tahrir</small></li>
         </ol>
       <a class="kl-modlink" href="phd-lab-m4.html">M4 modul sahifasi</a></details>
-      <details class="mod">
+      <details class="mod" data-ph="3">
         <summary><div class="mod-n">M5</div><div><div class="mod-t">Ilmiy natijalar: CV, chiqishlar va tavsiya</div><div class="mod-a">Natija: Akademik CV + Yutuqlar varaqasi + 3 tavsiya soʻrovi + ORCID/Google Scholar profili</div></div><div class="mod-c">7 dars<span class="tag tag-core">CORE</span></div></summary>
         <ol>
           <li><span class="num">5.1</span>PhD uchun akademik CV<small>Boʻlimlar va tartib: tadqiqot tajribasi birinchi; STAR usuli; hajm; UK, Yevropa va AQSh kutganlari</small></li>
@@ -487,7 +488,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
           <li><span class="num">5.7</span>Yutuqlar varaqasi va xalqaro tavsiya beruvchilar bilan ishlash<small>6 boʻlimli varaqa; vaqt mintaqasi, portal havolalari, eslatmalar jadvali; professor "oʻzing yoz" desa nima qilish</small></li>
         </ol>
       <a class="kl-modlink" href="phd-lab-m5.html">M5 modul sahifasi</a></details>
-      <details class="mod">
+      <details class="mod" data-ph="3">
         <summary><div class="mod-n">M6</div><div><div class="mod-t">Moliyalashtirish atlasi</div><div class="mod-a">Natija: Moliya portfeli (Tier 1/2/3) + 12 oylik muddat kalendari. Dastur tafsilotlari va chegaralari 7-boʻlimda</div></div><div class="mod-c">9 dars</div></summary>
         <ol>
           <li><span class="num">6.1</span>PhD moliyalashtirishning 5 modeli<small>Doktorlik oʻrni (studentship), maoshli PhD (ish shartnomasi), assistentlik (RA/TA), hukumat stipendiyasi, loyiha granti ichidagi oʻrin (MSCA, ERC); har biri qaysi mamlakatda keng tarqalgan</small></li>
@@ -501,7 +502,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
           <li><span class="num">6.9</span>Rad javobidan oʻrganish<small>Rad sabablarini tasniflash (moslik, moliya, raqobat, hujjat sifati); qayta topshirish qarori; xulosa yozish</small></li>
         </ol>
       <a class="kl-modlink" href="phd-lab-m6.html">M6 modul sahifasi</a></details>
-      <details class="mod">
+      <details class="mod" data-ph="4">
         <summary><div class="mod-n">M7</div><div><div class="mod-t">PhD intervyusi va loyihani himoya qilish</div><div class="mod-a">Natija: 3 ta yozib olingan javob + intervyu mezoni bali + 5 daqiqalik ilmiy taqdimot</div></div><div class="mod-c">6 dars</div></summary>
         <ol>
           <li><span class="num">7.1</span>PhD intervyu turlari<small>Ilmiy rahbar bilan 1:1, kafedra paneli, stipendiya paneli, texnik savollar yoki topshiriq; onlayn intervyu texnikasi</small></li>
@@ -512,7 +513,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
           <li><span class="num">7.6</span>Taklifdan oldingi muhokama<small>Nimalar muhokama qilinadi: boshlanish sanasi, loyiha qamrovi, konferensiya va trening byudjeti, ish shartnomasi shartlari (maoshli PhDʼda); xushmuomala va asosli soʻrov</small></li>
         </ol>
       <a class="kl-modlink" href="phd-lab-m7.html">M7 modul sahifasi</a></details>
-      <details class="mod">
+      <details class="mod" data-ph="4">
         <summary><div class="mod-n">M8</div><div><div class="mod-t">Taklif, relokatsiya va PhDʼning birinchi yili</div><div class="mod-a">Natija: Qaror matritsasi + relokatsiya nazorat roʻyxati + 1 yillik PhD reja</div></div><div class="mod-c">8 dars</div></summary>
         <ol>
           <li><span class="num">8.1</span>Taklifni qabul qilish: 48 soatlik nazorat va qaror matritsasi<small>Shartli va shartsiz taklif; moliyalashtirish hujjati; javob muddati; bir nechta taklifni vaznli mezonlar bilan solishtirish</small></li>
@@ -527,6 +528,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       <a class="kl-modlink" href="phd-lab-m8.html">M8 modul sahifasi</a></details>
     </div>
   </div>
+    </div>
 </section>
 
 <!-- TESKARI REJA -->

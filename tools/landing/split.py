@@ -62,6 +62,54 @@ def blocks(body):
     return out
 
 
+def phase_tabs(sec):
+    """Dastur sahifasi (2026-10-30): faza kartalari tugma boʻladi, bosilganda faqat shu faza modullari
+    koʻrinadi; modullar yopiq, dars izohlari bu sahifada yashirin (toʻliq matn modul sahifasida).
+    Faza → modul: trek sarlavhalari boʻlsa (Bachelor, GKS) tartib boʻyicha, boʻlmasa "M1–M4" oraligʻidan.
+    JS yoʻq boʻlsa hamma modul (yopiq holda) koʻrinadi. Boshqaruv: js/kompas-ui.js (.kl-ph)."""
+    phs = list(re.finditer(r'<div class="phase"><small>(.*?)</small><b>(.*?)</b><span>(.*?)</span></div>', sec))
+    if len(phs) < 2:
+        return sec
+    ranges = []
+    for p in phs:
+        r = re.match(r"M(\d+)(?:[–-]M(\d+))?", text(p.group(3)))
+        ranges.append((int(r.group(1)), int(r.group(2) or r.group(1))) if r else None)
+    has_groups = 'class="trk-h"' in sec
+    state = {"g": -1}
+
+    def tag(m):
+        s = m.group(0)
+        if s.startswith('<div class="trk-h"'):
+            state["g"] += 1
+            return s.replace('<div class="trk-h"', f'<div class="trk-h" data-ph="{state["g"]}"', 1)
+        if has_groups:
+            k = max(state["g"], 0)
+        else:
+            mid = re.search(r'<div class="mod-n">(.*?)</div>', s)
+            n = int(re.sub(r"\D", "", text(mid.group(1))) or 0) if mid else 0
+            k = next((i for i, r in enumerate(ranges) if r and r[0] <= n <= r[1]), 0)
+        return re.sub(r'^<details class="(mod[^"]*)"( open)?>', rf'<details class="\1" data-ph="{k}">', s)
+
+    sec = re.sub(r'<div class="trk-h">|<details class="mod[^"]*"[^>]*>.*?</details>', tag, sec, flags=re.S)
+    # Trek sarlavhasidan keyingi .mods bloki ham shu fazaga tegishli
+    sec = re.sub(r'(<div class="trk-h" data-ph="(\d+)">.*?</div>)<div class="mods">', r'\1<div class="mods" data-ph="\2">', sec, flags=re.S)
+    for i, p in enumerate(phs):
+        btn = (f'<button type="button" class="phase" data-ph="{i}" aria-pressed="{"true" if i == 0 else "false"}" aria-controls="kl-ph-mods">'
+               f'<small>{p.group(1)}</small><b>{p.group(2)}</b><span>{p.group(3)}</span></button>')
+        sec = sec.replace(p.group(0), btn, 1)
+    sec = re.sub(r'<div class="phases([^"]*)">', r'<div class="phases\1 kl-ph" role="group" aria-label="Fazalar">', sec, count=1)
+    hint = '<p class="kl-ph-hint">Fazani tanlang: uning modullari pastda chiqadi. Modulni bossangiz, darslar roʻyxati ochiladi; har dars izohi modul sahifasida.</p>'
+    sec = re.sub(r'(<div class="phases[^"]* kl-ph"[^>]*>.*?</div>)', lambda m: m.group(1) + "\n    " + hint, sec, count=1, flags=re.S)
+    # Modullar konteyneriga id (aria-controls uchun): birinchi .mods yoki trk-h oldidan
+    sec = re.sub(r'(<p class="kl-ph-hint">.*?</p>\s*)', r'\1<div id="kl-ph-mods" class="kl-ph-body">', sec, count=1, flags=re.S)
+    # Oʻram yopilishi: izoh (.note) boʻlsa undan oldin, boʻlmasa .wrap ni yopadigan oxirgi </div> oldidan
+    n = sec.find('<p class="note">')
+    if n < 0:
+        n = sec.rfind("</div>", 0, sec.rfind("</section>"))
+    sec = sec[:n] + "</div>\n    " + sec[n:]
+    return sec
+
+
 def modules(dastur):
     """#dastur dan modullar va guruhlar."""
     res, group = [], None
@@ -277,6 +325,7 @@ def split(root, f, src):
         href = m0_page if (sl == "m0" and m0_page) else f"{stem}-{sl}.html"
         return d.replace("</details>", f'<a class="kl-modlink" href="{href}">{esc(mid)} modul sahifasi</a></details>')
     sec = re.sub(r'<details class="mod[^"]*"[^>]*>.*?</details>', addlink, sec, flags=re.S)
+    sec = phase_tabs(sec)
     parts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Dastur")], h2, sub, icon), sec]
     for k in order:
         if k in ("faktlar", "atlas", "qanday", "extra") or k.startswith("extra"):

@@ -96,7 +96,37 @@
 
     needles();
     window.addEventListener("resize", function () { clearTimeout(needles.t); needles.t = setTimeout(needles, 150); });
+    phaseTabs();
   });
+
+  // Dastur sahifasi (2026-10-30): faza tugmasi bosilganda faqat shu faza modullari koʻrinadi.
+  // Manzil: #faza-N (havolani ulashish mumkin). Belgilash: tools/landing/split.py → phase_tabs().
+  function phaseTabs() {
+    var box = document.querySelector(".kl-ph"); if (!box) return;
+    var body = document.getElementById("kl-ph-mods"); if (!body) return;
+    var btns = box.querySelectorAll("button[data-ph]");
+    document.documentElement.classList.add("kl-ph-on");
+    function show(k, scroll) {
+      btns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-ph") === k ? "true" : "false"); });
+      body.querySelectorAll("[data-ph]").forEach(function (el) {
+        var on = el.getAttribute("data-ph") === k;
+        el.hidden = !on;
+        if (on && el.tagName === "DETAILS") { el.classList.remove("kl-ph-in"); void el.offsetWidth; el.classList.add("kl-ph-in"); }
+      });
+      if (scroll) body.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var k = b.getAttribute("data-ph");
+        show(k, false);
+        if (box.scrollWidth > box.clientWidth) box.scrollTo({ left: b.offsetLeft - (box.clientWidth - b.offsetWidth) / 2, behavior: "smooth" });
+        if (window.KSfx) KSfx.play("pick");
+        try { history.replaceState(null, "", "#faza-" + k); } catch (e) {}
+      });
+    });
+    var m = /^#faza-(\d+)$/.exec(location.hash);
+    show(m && box.querySelector('button[data-ph="' + m[1] + '"]') ? m[1] : "0", false);
+  }
 
   // Kompas strelkasi joriy bekatda turadi
   var SVG = '<svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="#fffefb" stroke="#c4622d" stroke-width="2.5"/><circle cx="22" cy="22" r="15.5" fill="none" stroke="#e2ded3" stroke-dasharray="1.5 3.2"/><g class="kn"><path d="M22 18.6 L37 22 L22 25.4 Z" fill="#c4622d"/><path d="M22 18.6 L7 22 L22 25.4 Z" fill="#2d4a3e"/><circle cx="22" cy="22" r="2.6" fill="#fffefb" stroke="#2d4a3e" stroke-width="1.4"/></g></svg>';
