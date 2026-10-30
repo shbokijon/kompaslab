@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+<title>Profil · Kompas Lab</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Kompas Lab profilingiz: obuna holati va shaxsiy maʼlumotlar.">
+<meta property="og:title" content="Kompas Lab">
+<meta property="og:description" content="Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul. Obuna: oylik, Mavsum (4 oy) yoki yillik.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<link rel="stylesheet" href="css/home.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kompas Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script src="js/pwa.js" defer></script>
+<script src="js/sfx.js" defer></script>
+<link rel="stylesheet" href="css/brand.css">
+<meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kompas Lab logotipi: Kuzatuvdan kashfiyotga">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.kompaslab.uz/profil">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<script src="js/kompas-ui.js"></script>
+</head>
+
+<body data-kpage="profil">
+
+<nav class="nav" data-sfx>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab</span></a>
+    <div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html">Narxlar</a><a href="atlas.html">Atlas</a><a href="savollar.html">Savollar</a></div>
+    <span class="kl-sfx" data-sfx-slot></span><a href="login.html" class="btn btn-g btn-sm">Kirish</a>
+  </div>
+</nav>
+<div class="kl-tabbar" data-sfx><div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html">Narxlar</a><a href="atlas.html">Atlas</a><a href="savollar.html">Savollar</a></div></div>
+<style>
+.pf{padding:28px 0 64px;}
+.pf .wrap{max-width:880px;}
+.pf-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;}
+.pf-card{background:var(--surface,#fff);border:1px solid var(--border,#e0e8e2);border-radius:18px;padding:22px;}
+.pf-card h2{font-size:20px;margin:0 0 14px;}
+.pf-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.pf-ava{display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:#2d4a3e;color:#f4f3ef;font-size:26px;font-weight:800;flex:none;box-shadow:0 0 0 3px var(--surface,#fff),0 0 0 5px #d8cfb6;}
+.pf-ava.paid{box-shadow:0 0 0 3px var(--surface,#fff),0 0 0 6px #c9a84c;}
+.pf-top b{display:block;font-size:22px;line-height:1.2;word-break:break-word;}
+.pf-top small{display:block;color:var(--muted,#5f7169);font-size:14px;word-break:break-all;}
+.pf-tag{display:inline-block;margin-top:6px;padding:3px 10px;border-radius:999px;background:#2d4a3e;color:#f4f3ef;font-size:12px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;}
+.pf-tag.paid{background:#c9a84c;color:#1e3329;}
+.pf-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:18px;}
+.pf-meta div{padding:12px 14px;border-radius:12px;background:#f4f3ef;}
+.pf-meta span{display:block;font-size:12.5px;color:var(--muted,#5f7169);}
+.pf-meta b{font-size:15px;}
+.pf-sub{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0;}
+.pf-sub:first-child{padding-top:0;}
+.pf-sub+.pf-sub{border-top:1px solid var(--border,#e0e8e2);}
+.pf-sub b{font-size:16px;}
+.pf-sub small{display:block;color:var(--muted,#5f7169);font-size:13.5px;margin-top:2px;}
+.pf-st{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:800;}
+.pf-st.on{background:#e3eee8;color:#2d4a3e;}
+.pf-st.off{background:#f6e3d8;color:#9a4720;}
+.pf-empty{color:var(--muted,#5f7169);font-size:15px;line-height:1.55;}
+.pf-empty p{margin:0 0 12px;}
+.pf-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+.pf-form label{display:flex;flex-direction:column;gap:6px;font-size:13.5px;font-weight:700;color:var(--muted,#5f7169);}
+.pf-form input,.pf-form select{font:inherit;font-size:15px;padding:11px 12px;border-radius:10px;border:1px solid var(--border,#e0e8e2);background:var(--surface,#fff);color:var(--text,#1a2e26);min-height:44px;}
+.pf-form input:focus,.pf-form select:focus{outline:2px solid #c4622d;outline-offset:1px;}
+.pf-form .full{grid-column:1/-1;}
+.pf-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px;}
+.pf-msg{font-size:14px;font-weight:600;}
+.pf-msg.ok{color:#2d4a3e;}
+.pf-msg.err{color:#b4441a;}
+.pf-links{display:flex;gap:10px;flex-wrap:wrap;}
+.pf [hidden]{display:none!important;}
+.pf-note{font-size:13px;color:var(--muted,#5f7169);margin:12px 0 0;}
+.pf-load{padding:60px 0;text-align:center;color:var(--muted,#5f7169);}
+</style>
+<header class="kl-pagehead">
+  <div class="wrap">
+    <nav class="kl-crumb" aria-label="Yoʻl"><a href="index.html">Kompas Lab</a><span aria-hidden="true">/</span><span>Profil</span></nav>
+    <div class="kl-head-row"><div><h1>Profil</h1><p class="lead">Hisobingiz, obuna holati va shaxsiy maʼlumotlaringiz.</p></div><img class="kl-head-art float" src="img/3d/compass.webp" alt="" width="160" height="160"></div>
+  </div>
+</header>
+<main class="pf">
+  <div class="wrap">
+    <div class="pf-load" id="pfLoad">Yuklanmoqda…</div>
+    <div class="pf-grid" id="pfMain" hidden>
+      <section class="pf-card" aria-labelledby="pfName">
+        <div class="pf-top">
+          <span class="pf-ava" id="pfAva" aria-hidden="true">?</span>
+          <div><b id="pfName">—</b><small id="pfEmail" translate="no">—</small><span class="pf-tag" id="pfTag">Roʻyxatdan oʻtgan</span></div>
+        </div>
+        <div class="pf-meta">
+          <div><span>Roʻyxatdan oʻtgan sana</span><b id="pfSince">—</b></div>
+          <div><span>Faol obunalar</span><b id="pfCount">0</b></div>
+          <div><span>Bepul M0 darslari</span><b>Ochiq</b></div>
+        </div>
+      </section>
+
+      <section class="pf-card" aria-labelledby="pfSubsT">
+        <h2 id="pfSubsT">Obunalarim</h2>
+        <div id="pfSubs"></div>
+      </section>
+
+      <section class="pf-card" aria-labelledby="pfFormT">
+        <h2 id="pfFormT">Shaxsiy maʼlumotlar</h2>
+        <form class="pf-form" id="pfForm" autocomplete="on">
+          <label>Ism<input id="fFirst" maxlength="60" autocomplete="given-name" required></label>
+          <label>Familiya<input id="fLast" maxlength="60" autocomplete="family-name"></label>
+          <label>Telefon<input id="fPhone" type="tel" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+998 90 123 45 67"></label>
+          <label>Hozirgi taʼlim
+            <select id="fEdu">
+              <option value="">Tanlang…</option>
+              <option value="school">Maktab, litsey yoki kollej</option>
+              <option value="bachelor">Bakalavr (hozir oʻqimoqdaman)</option>
+              <option value="bachelor_done">Bakalavr (bitirganman)</option>
+              <option value="master">Magistratura</option>
+              <option value="phd">Doktorantura</option>
+              <option value="other">Boshqa</option>
+            </select>
+          </label>
+          <label class="full">Maqsad
+            <select id="fGoal">
+              <option value="">Tanlang…</option>
+              <option value="bachelor">Xorijda bakalavriat</option>
+              <option value="masters">Xorijda magistratura (MSc/MA)</option>
+              <option value="phd">PhD qabul (xorij)</option>
+              <option value="grant">Davlat stipendiyasi (GKS, DAAD va boshqalar)</option>
+              <option value="research">Tadqiqot tajribasi (Research)</option>
+              <option value="work">Xorijda rasmiy ish</option>
+              <option value="business">Oʻqish bilan birga biznes</option>
+              <option value="multiple">Bir nechtasi</option>
+            </select>
+          </label>
+          <div class="pf-row full"><button type="submit" class="btn btn-p" id="fSave">Saqlash</button><span class="pf-msg" id="fMsg" role="status"></span></div>
+        </form>
+        <p class="pf-note">Email manzilini oʻzgartirish uchun <a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a> ga yozing.</p>
+      </section>
+
+      <section class="pf-card" aria-labelledby="pfAccT">
+        <h2 id="pfAccT">Hisob</h2>
+        <div class="pf-links">
+          <a class="btn btn-g" href="dashboard.html">🏠 Kabinet</a>
+          <a class="btn btn-g" href="dashboard.html#sozlamalar">🔑 Parolni oʻzgartirish</a>
+          <a class="btn btn-g" href="admin.html" id="pfAdmin" hidden>🛠 Admin panel</a>
+          <button type="button" class="btn btn-g" id="pfOut">🚪 Chiqish</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a><a href="qollab-quvvatlash.html">Qoʻllab-quvvatlash</a><a href="#" data-install>📱 Ilovani oʻrnatish</a></div>
+    <div>© 2026 Kompas Lab, Oʻzbekiston</div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script>
+// ════════════════════════════════════════════════════════
+//  KOMPAS LAB — profil.html (2026-10-30)
+//  Kirgan foydalanuvchining profili: holat, obunalar, shaxsiy maʼlumot.
+//  Obuna holati faqat koʻrinish uchun; kontentga kirishni server tekshiradi (fn_my_access, fn_paid_page).
+//  Mijoz faqat ruxsat etilgan ustunlarni yangilaydi: first_name, last_name, phone, education, goal (full_name bazada hisoblanadi).
+// ════════════════════════════════════════════════════════
+(function () {
+  var sb = window.supabase;
+  var LABS = { "bachelor-lab": "Bachelor Lab", "master-lab": "Master Lab", "phd-lab": "PhD Lab", "gks-lab": "GKS Lab", "usa-lab": "USA Lab", "daad-lab": "DAAD Lab", "tadbirkor-talaba": "Tadbirkor Talaba", "miggo": "Musofir Lab" };
+  var PAGE = { "miggo": "musofir-lab.html" };
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]; }); }
+  function dt(s) { var d = new Date(s); return isNaN(d) ? "—" : ("0" + d.getDate()).slice(-2) + "." + ("0" + (d.getMonth() + 1)).slice(-2) + "." + d.getFullYear(); }
+  function ini(s) { return (s || "?").split(/\s+/).filter(Boolean).slice(0, 2).map(function (w) { return w.charAt(0); }).join("").toUpperCase() || "?"; }
+  function resetMe() { try { localStorage.removeItem("kompas_me_v1"); } catch (e) {} }
+
+  async function signOut() {
+    resetMe();
+    try { await sb.auth.signOut(); } catch (e) {}
+    location.href = "index.html";
+  }
+  $("pfOut").addEventListener("click", signOut);
+
+  var user = null, profile = null;
+
+  function fill() {
+    var md = user.user_metadata || {};
+    var first = profile.first_name || md.first_name || "";
+    var last = profile.last_name || md.last_name || "";
+    var full = profile.full_name || md.full_name || [first, last].filter(Boolean).join(" ") || user.email;
+    if (!first && full && full !== user.email) { var parts = full.split(" "); first = parts.shift(); last = last || parts.join(" "); }
+    $("pfName").textContent = full;
+    $("pfEmail").textContent = user.email || "";
+    $("pfAva").textContent = ini(full);
+    $("pfSince").textContent = dt(profile.created_at || user.created_at);
+    $("pfAdmin").hidden = profile.role !== "admin";
+    $("fFirst").value = first;
+    $("fLast").value = last;
+    $("fPhone").value = profile.phone || md.phone || "";
+    $("fEdu").value = profile.education || md.education || "";
+    $("fGoal").value = profile.goal || md.goal || "";
+  }
+
+  function subRow(e, a) {
+    var slug = e.courses && e.courses.slug, name = LABS[slug] || (e.courses && e.courses.title) || slug;
+    var now = Date.now();
+    var on = a ? !!a.access : ((e.payment_status === "paid" || e.payment_status === "partial") && !e.frozen_at && (!e.expires_at || new Date(e.expires_at).getTime() > now));
+    var why = on ? "Faol" : (e.frozen_at ? "Muzlatilgan" : (e.expires_at && new Date(e.expires_at).getTime() <= now ? "Muddati tugagan" : "Faol emas"));
+    var det = [];
+    if (a && a.total_modules) det.push(a.unlocked_modules >= a.total_modules ? "Hamma modullar ochiq" : (a.unlocked_modules + " / " + a.total_modules + " modul ochiq"));
+    det.push(e.expires_at ? (on ? dt(e.expires_at) + " gacha" : dt(e.expires_at) + " da tugagan") : "Muddatsiz");
+    if (a && a.installment && a.installment.next_due) det.push("Keyingi toʻlov: " + dt(a.installment.next_due.due_date));
+    return { on: on, html: '<div class="pf-sub"><div><b>' + esc(name) + '</b><small>' + esc(det.join(" · ")) + '</small></div>' +
+      '<div class="pf-row"><span class="pf-st ' + (on ? "on" : "off") + '">' + why + '</span><a class="btn btn-g btn-sm" href="' + (PAGE[slug] || (slug + ".html")) + '">Labga oʻtish</a></div></div>' };
+  }
+
+  async function loadSubs() {
+    var r = await sb.from("enrollments").select("payment_status,expires_at,frozen_at,unlocked_modules,courses(slug,title)").eq("user_id", user.id);
+    var list = (r.data || []).filter(function (e) { return e.courses && e.courses.slug && e.payment_status !== "pending" && e.payment_status !== "rejected" && e.payment_status !== "failed"; });
+    if (!list.length) {
+      $("pfSubs").innerHTML = '<div class="pf-empty"><p>Hozircha obuna yoʻq. Onlayn toʻlov hali ochilmagan; ochilganda obuna shu yerda koʻrinadi.</p>' +
+        '<div class="pf-links"><a class="btn btn-p" href="index.html#labs">Bepul M0 darslari</a><a class="btn btn-g" href="narxlar.html">Narxlar</a></div></div>';
+      return;
+    }
+    var rows = await Promise.all(list.map(async function (e) {
+      var a = null;
+      try { var x = await sb.rpc("fn_my_access", { p_course_slug: e.courses.slug }); if (!x.error) a = x.data; } catch (err) {}
+      return subRow(e, a);
+    }));
+    var active = rows.filter(function (x) { return x.on; }).length;
+    $("pfSubs").innerHTML = rows.map(function (x) { return x.html; }).join("");
+    $("pfCount").textContent = String(active);
+    if (active) { $("pfTag").textContent = "Obunachi"; $("pfTag").classList.add("paid"); $("pfAva").classList.add("paid"); }
+  }
+
+  $("pfForm").addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var msg = $("fMsg"), btn = $("fSave");
+    var first = $("fFirst").value.trim(), last = $("fLast").value.trim();
+    if (!first) { msg.className = "pf-msg err"; msg.textContent = "Ismni kiriting."; return; }
+    var upd = {
+      first_name: first, last_name: last || null,
+      phone: $("fPhone").value.trim() || null, education: $("fEdu").value || null, goal: $("fGoal").value || null,
+      updated_at: new Date().toISOString()
+    };
+    btn.disabled = true; msg.className = "pf-msg"; msg.textContent = "Saqlanmoqda…";
+    var r = await sb.from("profiles").update(upd).eq("id", user.id).select().maybeSingle();
+    if (r.error || !r.data) {
+      btn.disabled = false; msg.className = "pf-msg err"; msg.textContent = "Saqlanmadi. Qayta urinib koʻring.";
+      return;
+    }
+    try { await sb.auth.updateUser({ data: { first_name: first, last_name: last, full_name: [first, last].filter(Boolean).join(" "), phone: upd.phone, education: upd.education, goal: upd.goal } }); } catch (e) {}
+    profile = r.data; resetMe(); fill();
+    btn.disabled = false; msg.className = "pf-msg ok"; msg.textContent = "Saqlandi.";
+  });
+
+  async function init() {
+    if (/[?&]chiqish=1/.test(location.search)) { await signOut(); return; }
+    var s = (await sb.auth.getSession()).data.session;
+    if (!s) {
+      try { sessionStorage.setItem("returnTo", "profil.html"); } catch (e) {}
+      location.replace("login.html");
+      return;
+    }
+    user = s.user;
+    var p = await sb.from("profiles").select("first_name,last_name,full_name,phone,education,goal,role,created_at").eq("id", user.id).maybeSingle();
+    profile = p.data || {};
+    fill();
+    $("pfLoad").hidden = true; $("pfMain").hidden = false;
+    loadSubs();
+  }
+  init();
+})();
+</script>
+</body>
+</html>

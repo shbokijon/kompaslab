@@ -145,3 +145,93 @@
   }
   window.KUI = { needles: needles, setDir: setDir };
 })();
+
+// ── Profil belgisi (2026-10-30): kirgan foydalanuvchiga nav'da "Kirish" oʻrniga profil.
+//    Sessiya Supabase'ning localStorage kalitidan oʻqiladi (config.js boʻlmagan sahifada ham ishlaydi).
+//    Obuna holati faqat koʻrinish uchun: kontentga kirishni server (fn_paid_page, RLS) tekshiradi.
+//    Kesh: localStorage "kompas_me_v1" (uid, ism, rol, faol obunalar), 5 daqiqada yangilanadi.
+(function () {
+  var TOK = "sb-usxpkmbjrdllnitlzdpq-auth-token", ME = "kompas_me_v1", TTL = 300000;
+  var LABS = { "bachelor-lab": "Bachelor Lab", "master-lab": "Master Lab", "phd-lab": "PhD Lab", "gks-lab": "GKS Lab", "usa-lab": "USA Lab", "daad-lab": "DAAD Lab", "tadbirkor-talaba": "Tadbirkor Talaba", "miggo": "Musofir Lab" };
+  function rd(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
+  function user() { var s = rd(TOK); return s && s.user && s.user.id ? s.user : null; }
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function names(u, me) {
+    var md = u.user_metadata || {};
+    var full = (me && me.name) || md.full_name || [md.first_name, md.last_name].filter(Boolean).join(" ") || "";
+    var first = (me && me.first) || md.first_name || full.split(" ")[0] || (u.email || "").split("@")[0];
+    var ini = (full || first || u.email || "?").split(/\s+/).filter(Boolean).slice(0, 2).map(function (w) { return w.charAt(0); }).join("").toUpperCase();
+    return { full: full || first, first: first, ini: ini || "?" };
+  }
+  function dt(s) { var d = new Date(s); return isNaN(d) ? "" : ("0" + d.getDate()).slice(-2) + "." + ("0" + (d.getMonth() + 1)).slice(-2) + "." + d.getFullYear(); }
+
+  var chip = null;
+  function render(u, me) {
+    var n = names(u, me), subs = (me && me.uid === u.id && me.subs) || [];
+    var paid = subs.length > 0;
+    var st = paid
+      ? subs.map(function (s) { return "<li><b>" + esc(LABS[s.slug] || s.title || s.slug) + "</b>" + (s.exp ? " · " + dt(s.exp) + " gacha" : "") + "</li>"; }).join("")
+      : "<li>Bepul hisob: M0 darslari ochiq</li>";
+    if (!chip) {
+      chip = document.createElement("div");
+      chip.className = "kl-me";
+      chip.innerHTML = '<button type="button" class="kl-me-b" aria-haspopup="true" aria-expanded="false" data-snd="tab"></button><div class="kl-me-m" role="menu" hidden></div>';
+      var b = chip.firstChild, m = chip.lastChild;
+      b.addEventListener("click", function (e) { e.stopPropagation(); var o = m.hidden; m.hidden = !o; b.setAttribute("aria-expanded", o ? "true" : "false"); });
+      document.addEventListener("click", function (e) { if (!chip.contains(e.target)) { m.hidden = true; b.setAttribute("aria-expanded", "false"); } });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !m.hidden) { m.hidden = true; b.setAttribute("aria-expanded", "false"); b.focus(); } });
+    }
+    chip.classList.toggle("is-paid", paid);
+    chip.firstChild.setAttribute("aria-label", "Profil: " + n.full);
+    chip.firstChild.innerHTML = '<span class="kl-me-a" aria-hidden="true">' + esc(n.ini) + '</span><span class="kl-me-n">' + esc(n.first) + "</span>";
+    chip.lastChild.innerHTML =
+      '<div class="kl-me-h"><span class="kl-me-a" aria-hidden="true">' + esc(n.ini) + '</span><div><b>' + esc(n.full) + '</b><small translate="no">' + esc(u.email || "") + "</small></div></div>" +
+      '<div class="kl-me-s"><span class="kl-me-tag">' + (paid ? "Obunachi" : "Roʻyxatdan oʻtgan") + "</span><ul>" + st + "</ul></div>" +
+      '<a role="menuitem" href="profil.html">👤 Profil</a><a role="menuitem" href="dashboard.html">🏠 Kabinet</a>' +
+      (me && me.uid === u.id && me.admin ? '<a role="menuitem" href="admin.html">🛠 Admin panel</a>' : "") +
+      '<a role="menuitem" href="profil.html?chiqish=1" class="kl-me-out">🚪 Chiqish</a>';
+    return chip;
+  }
+  function mount(c) {
+    if (c.parentNode) return;
+    var nav = document.querySelector("nav.nav .wrap");
+    var login = nav && nav.querySelector('a[href="login.html"]');
+    if (login) { login.parentNode.replaceChild(c, login); return; }
+    var slot = nav && nav.querySelector("[data-sfx-slot]");
+    if (slot) { slot.parentNode.insertBefore(c, slot.nextSibling); return; }
+    if (nav) { nav.appendChild(c); return; }
+    var xp = document.querySelector("header.top .xp");
+    if (xp) { c.classList.add("kl-me-sm"); xp.appendChild(c); }
+  }
+  function footer() {
+    document.querySelectorAll('footer a[href="login.html"]').forEach(function (a) { a.href = "profil.html"; a.textContent = "Profil"; });
+  }
+  function refresh(u) {
+    var sb = window.supabase;
+    if (!sb || typeof sb.from !== "function") return;
+    var me = rd(ME);
+    if (me && me.uid === u.id && Date.now() - (me.at || 0) < TTL) return;
+    Promise.all([
+      sb.from("profiles").select("first_name,full_name,role").eq("id", u.id).maybeSingle(),
+      sb.from("enrollments").select("payment_status,expires_at,frozen_at,courses(slug,title)").eq("user_id", u.id)
+    ]).then(function (r) {
+      if (r[0].error || r[1].error) return;
+      var p = r[0].data || {}, now = Date.now();
+      var subs = (r[1].data || []).filter(function (e) {
+        return (e.payment_status === "paid" || e.payment_status === "partial") && !e.frozen_at && (!e.expires_at || new Date(e.expires_at).getTime() > now);
+      }).map(function (e) { return { slug: e.courses && e.courses.slug, title: e.courses && e.courses.title, exp: e.expires_at }; });
+      var next = { uid: u.id, at: now, first: p.first_name || "", name: p.full_name || "", admin: p.role === "admin", subs: subs };
+      try { localStorage.setItem(ME, JSON.stringify(next)); } catch (e) {}
+      render(u, next);
+    }).catch(function () {});
+  }
+  function run() {
+    var u = user();
+    if (!u) { try { localStorage.removeItem(ME); } catch (e) {} return; }
+    mount(render(u, rd(ME)));
+    footer();
+    refresh(u);
+  }
+  window.KUI_ME = { reset: function () { try { localStorage.removeItem(ME); } catch (e) {} } };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();

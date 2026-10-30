@@ -246,6 +246,35 @@ html[data-theme="dark"] .kl-ph-on .kl-ph button.phase[aria-pressed="true"]::afte
 @media (prefers-reduced-motion: reduce){.kl-ph-in{animation:none}.kl-ph button.phase{transition:none}}
 @media (max-width:720px){.kl-ph-on .kl-ph{display:flex;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory;padding:2px 2px 6px;margin:0 -20px;padding-left:20px;padding-right:20px;scrollbar-width:none;}.kl-ph-on .kl-ph::-webkit-scrollbar{display:none}.kl-ph-on .kl-ph button.phase{flex:0 0 68%;scroll-snap-align:center;}.kl-ph-on .kl-ph button.phase::after{display:none}.kl-ph-on .kl-ph button.phase:hover{transform:none}}
 
+/* ── Profil belgisi (js/kompas-ui.js, 2026-10-30) ── */
+.kl-me{position:relative;flex:none;}
+.kl-me-b{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:3px 12px 3px 3px;border-radius:999px;border:1px solid var(--border,#e0e8e2);background:var(--surface,#fff);color:var(--text,#1a2e26);font:inherit;font-size:14px;font-weight:700;cursor:pointer;max-width:180px;}
+.kl-me-b:hover{border-color:var(--kl-forest);}
+.kl-me-b:focus-visible{outline:2px solid var(--kl-clay);outline-offset:2px;}
+.kl-me-a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--kl-forest);color:#f4f3ef;font-size:13px;font-weight:800;letter-spacing:.02em;flex:none;box-shadow:0 0 0 2px var(--surface,#fff);}
+.kl-me.is-paid .kl-me-a{box-shadow:0 0 0 2px var(--surface,#fff),0 0 0 4px var(--kl-gold);}
+.kl-me-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.kl-me-m{position:absolute;right:0;top:calc(100% + 8px);z-index:400;width:280px;max-width:calc(100vw - 24px);padding:8px;border-radius:14px;border:1px solid var(--border,#e0e8e2);background:var(--surface,#fff);color:var(--text,#1a2e26);box-shadow:0 14px 40px rgba(30,51,41,.18);font-size:14px;}
+.kl-me-m[hidden]{display:none;}
+.kl-me-h{display:flex;align-items:center;gap:10px;padding:8px 8px 10px;}
+.kl-me-h .kl-me-a{width:40px;height:40px;font-size:15px;}
+.kl-me-h b{display:block;line-height:1.25;word-break:break-word;}
+.kl-me-h small{display:block;color:var(--muted,#5f7169);font-size:12.5px;word-break:break-all;}
+.kl-me-s{margin:0 0 6px;padding:10px;border-radius:10px;background:#f4f3ef;}
+.kl-me-s ul{margin:6px 0 0;padding:0;list-style:none;font-size:13px;color:var(--muted,#5f7169);}
+.kl-me-s li+li{margin-top:3px;}
+.kl-me-tag{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--kl-forest);color:#f4f3ef;font-size:11.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;}
+.kl-me.is-paid .kl-me-tag{background:var(--kl-gold);color:#1e3329;}
+.kl-me-m a{display:block;padding:9px 10px;border-radius:9px;color:inherit;text-decoration:none;font-weight:600;}
+.kl-me-m a:hover,.kl-me-m a:focus-visible{background:rgba(45,74,62,.08);}
+.kl-me-m .kl-me-out{color:var(--kl-clay);border-top:1px solid var(--border,#e0e8e2);border-radius:0 0 9px 9px;margin-top:4px;}
+.kl-me-sm .kl-me-b{min-height:34px;padding:2px;}
+.kl-me-sm .kl-me-n{display:none;}
+.kl-me-sm .kl-me-a{width:28px;height:28px;font-size:12px;}
+header.top .xp .kl-me{margin-left:6px;}
+@media (max-width:480px){header.top .xp .kl-me{display:none;}}
+@media (max-width:720px){.kl-me-b{padding:2px;}.kl-me-n{display:none;}}
+
 /* ==== TUNGI REJIM (generator: tools/site/dark_css.py) ==== */
 /* Qoʻlda tahrirlamang. Mavzu: html[data-theme] (js/kompas-ui.js qoʻyadi). */
 html[data-theme="dark"]{color-scheme:dark;--ko-accent:#2d4a3e;--ko-accent-h:#1e3329;--ko-accent-lit:#e8f0ec;--ko-accent2:#c4622d;--ko-accent2-h:#a84f23;--ko-accent2-lit:#faeee7;--ko-bg:#f5f7f5;--ko-border:#e0e8e2;--ko-cream:#f4f3ef;--ko-gold:#b08a00;--ko-gold-lit:#fdf6dc;--ko-green:#1a7a4a;--ko-green-lit:#e6f4ec;--ko-kl-cream:#f4f3ef;--ko-kl-forest:#2d4a3e;--ko-kl-forest-d:#1e3329;--ko-kl-line:#d8cfb6;--ko-muted:#5f7169;--ko-muted2:#9aada6;--ko-red:#b42318;--ko-red-lit:#fdecea;--ko-surface:#ffffff;--ko-text:#1a2e26;--accent:#9fd0b6;--accent-h:#bfe3cf;--accent-lit:#1c2b24;--accent2:#e0874f;--accent2-h:#ec9a66;--accent2-lit:#2e2018;--bg:#0f1512;--border:#2a3731;--cream:#121a16;--gold:#d9b65a;--gold-lit:#2a2412;--green:#6fcf9a;--green-lit:#15291e;--kl-cream:#1d1c18;--kl-forest:#b9d4c9;--kl-forest-d:#c0dace;--kl-line:#39352b;--muted:#a2b4aa;--muted2:#71847a;--red:#f19a90;--red-lit:#2e1816;--surface:#17201b;--text:#e5ece7}
@@ -353,6 +382,15 @@ html[data-theme="dark"] .kl-done .kl-xp{background:var(--gold-lit,#2b2616);color
 html[data-theme="dark"] .kl-ph-on .kl-ph button.phase[aria-pressed="true"]{background:var(--ko-accent)}
 html[data-theme="dark"] .kl-ph-on .kl-ph button.phase[aria-pressed="true"]::after{background:var(--ko-accent)}
 html[data-theme="dark"][data-theme="dark"] .kl-ph-on .kl-ph button.phase[aria-pressed="true"]{border-color:#43554b}
+html[data-theme="dark"] .kl-me-b{border:1px solid var(--border,#39403b);background:var(--surface,#131313);color:var(--text,#c1dcd1)}
+html[data-theme="dark"] .kl-me-a{background:var(--ko-kl-forest)}
+html[data-theme="dark"] .kl-me-m{border:1px solid var(--border,#39403b);background:var(--surface,#131313);color:var(--text,#c1dcd1)}
+html[data-theme="dark"] .kl-me-h small{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .kl-me-s{background:#1d1c18}
+html[data-theme="dark"] .kl-me-s ul{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .kl-me-tag{background:var(--ko-kl-forest)}
+html[data-theme="dark"] .kl-me.is-paid .kl-me-tag{color:#c0dace}
+html[data-theme="dark"] .kl-me-m .kl-me-out{border-top:1px solid var(--border,#39403b)}
 html[data-theme="dark"] .top{background:rgba(29,28,24,0.94)}
 html[data-theme="dark"] .xp-pill{background:var(--ko-accent)}
 html[data-theme="dark"] .xp-bar i{background:linear-gradient(90deg,var(--ko-accent2),#d9a441)}
@@ -372,6 +410,22 @@ html[data-theme="dark"] .st3.n{background:#1a1223;color:#ab8ad3}
 html[data-theme="dark"] .legal h2{color:var(--green,#b9d4c9)}
 html[data-theme="dark"] .fct a{color:#99b6d8}
 html[data-theme="dark"] .meter-t i{background:#131313}
+html[data-theme="dark"] .pf-card{background:var(--surface,#131313);border:1px solid var(--border,#39403b)}
+html[data-theme="dark"] .pf-top small{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .pf-tag.paid{color:#c0dace}
+html[data-theme="dark"] .pf-meta div{background:#1d1c18}
+html[data-theme="dark"] .pf-meta span{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .pf-sub+.pf-sub{border-top:1px solid var(--border,#39403b)}
+html[data-theme="dark"] .pf-sub small{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .pf-st.on{background:#1c231f;color:#b9d4c9}
+html[data-theme="dark"] .pf-st.off{background:#291e17;color:#d9b09c}
+html[data-theme="dark"] .pf-empty{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .pf-form label{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .pf-form input,html[data-theme="dark"] .pf-form select{border:1px solid var(--border,#39403b);background:var(--surface,#131313);color:var(--text,#c1dcd1)}
+html[data-theme="dark"] .pf-msg.ok{color:#b9d4c9}
+html[data-theme="dark"] .pf-msg.err{color:#d8a997}
+html[data-theme="dark"] .pf-note{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .pf-load{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .yn button[aria-pressed="true"]{background:var(--ko-accent)}
 html[data-theme="dark"] .at-nav{background:#131313}
 html[data-theme="dark"] .atlas-hero{background:radial-gradient(circle at 82% 12%,#1d201c 0,transparent 40%),linear-gradient(#181915,#171917)}
