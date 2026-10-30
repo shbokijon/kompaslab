@@ -269,6 +269,46 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 /* SKELETON LOADER */
 .skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px;}
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+/* 2026-10-30: kabinet kartalari */
+/* journey.js kompasi M0 roʻyxati / davom etish kartasini takrorlaydi */
+#journey > .jy-c:first-child{display:none;}
+.stats-row{grid-template-columns:repeat(3,1fr);margin-bottom:8px;}
+.stats-note{font-size:12px;color:var(--muted);margin:0 0 22px;}
+.stats-note a{color:var(--accent);font-weight:700;}
+.side-card{background:white;border:1px solid var(--border);border-radius:16px;padding:18px;scroll-margin-top:20px;}
+.left-col .side-card{margin-top:22px;}
+.side-card h3{font-size:14px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.side-muted{font-size:12.5px;color:var(--muted);line-height:1.55;margin:0 0 12px;}
+.side-actions{display:flex;flex-wrap:wrap;gap:8px;}
+.side-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border-radius:10px;border:1.5px solid var(--accent);background:var(--accent);color:white;font:inherit;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;}
+.side-btn.ghost{background:white;color:var(--accent);}
+.set-msg{font-size:12.5px;margin-top:8px;min-height:1em;}
+.set-msg.ok{color:var(--green);}.set-msg.err{color:#b42318;}
+.set-row{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0 12px;border-bottom:1px solid var(--border);margin-bottom:12px;}
+.set-row b{font-weight:700;overflow:hidden;text-overflow:ellipsis;}
+.set-form{display:grid;gap:10px;margin-bottom:12px;}
+.set-form label{display:grid;gap:4px;font-size:12px;font-weight:700;color:var(--muted);}
+.set-form input{min-height:40px;border:1.5px solid var(--border);border-radius:10px;padding:6px 10px;font:inherit;font-size:15px;}
+.sub-item{padding:10px 0;border-bottom:1px solid var(--border);}
+.sub-item:last-child{border-bottom:none;padding-bottom:0;}
+.sub-name{font-size:14px;font-weight:800;margin-bottom:4px;}
+.sub-row{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--muted);padding:2px 0;}
+.sub-row b{color:var(--text);font-weight:700;}
+.sub-tag{display:inline-block;font-size:11px;font-weight:800;padding:2px 8px;border-radius:99px;background:var(--green-light);color:var(--green);}
+.sub-tag.warn{background:#fdecea;color:#b42318;}
+.dl-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.dl-item:last-child{border-bottom:none;}
+.dl-name{font-size:12.5px;font-weight:700;line-height:1.35;}
+.dl-name small{display:block;font-weight:600;color:var(--muted);font-size:11px;}
+.dl-left{font-size:11px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-weight:800;padding:3px 8px;border-radius:6px;background:var(--accent-light);color:var(--accent);white-space:nowrap;}
+.dl-left.soon{background:#fdecea;color:#b42318;}
+.m0-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+.m0-card{display:flex;gap:12px;align-items:center;background:white;border:1px solid var(--border);border-radius:12px;padding:14px;text-decoration:none;color:inherit;}
+.m0-card:hover{border-color:var(--accent);}
+.m0-bar{height:6px;background:var(--border);border-radius:99px;overflow:hidden;}
+.m0-bar i{display:block;height:100%;background:var(--accent);}
+@media(max-width:600px){.stats-row{grid-template-columns:repeat(3,1fr);gap:8px;}.stat-card{padding:12px 10px;}.stat-val{font-size:22px;}.stat-icon{font-size:18px;margin-bottom:6px;}.stat-change{display:none;}}
 </style>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
@@ -298,54 +338,36 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <div class="sb-avatar" id="sidebarAvatar">S</div>
       <div style="min-width:0;">
         <div class="sb-user-name" id="sidebarName">Yuklanmoqda...</div>
-        <div class="sb-user-plan" id="sidebarPlan">scholar plan</div>
+        <div class="sb-user-plan" id="sidebarPlan"></div>
       </div>
     </div>
   </div>
 
   <nav class="sb-nav">
-    <div class="sb-section-title">Asosiy</div>
-    <a href="dashboard.html" class="sb-link active">
-      <span class="sb-link-icon">🏠</span> Dashboard
-    </a>
-    <a href="lesson.html" class="sb-link">
-      <span class="sb-link-icon">🎬</span> Darslar
-      <span class="sb-badge" id="nextLessonBadge">▶</span>
-    </a>
+      <div class="sb-section-title">Asosiy</div>
+      <a href="dashboard.html" class="sb-link active"><span class="sb-link-icon">🏠</span> Kabinet</a>
+      <a href="master-planner.html" class="sb-link"><span class="sb-link-icon">🗂</span> Shaxsiy reja</a>
+      <a href="atlas.html" class="sb-link"><span class="sb-link-icon">🌍</span> Kompas Atlas</a>
+      <div id="sbCourses"></div>
 
-    <div class="sb-section-title">Bepul M0 modullar</div>
-    <a href="bachelor-lab-m0.html" class="sb-link"><span class="sb-link-icon">🎓</span> Bachelor Lab M0</a>
-    <a href="master-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧭</span> Master Lab M0 · 5 dars</a>
-    <a href="master-lab-dastur.html" class="sb-link"><span class="sb-link-icon">📚</span> Master Lab · modullar</a>
-    <a href="phd-lab-m0.html" class="sb-link"><span class="sb-link-icon">🔬</span> PhD Lab M0</a>
-    <a href="gks-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇰🇷</span> GKS Lab M0</a>
-    <a href="usa-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇺🇸</span> USA Lab M0</a>
-    <a href="tadbirkor-talaba-m0.html" class="sb-link"><span class="sb-link-icon">💼</span> Tadbirkor Talaba M0</a>
-    <a href="musofir-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧳</span> Musofir Lab M0</a>
+      <div class="sb-section-title">Bepul M0 modullar</div>
+      <a href="master-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧭</span> Master Lab M0</a>
+      <a href="bachelor-lab-m0.html" class="sb-link"><span class="sb-link-icon">🎓</span> Bachelor Lab M0</a>
+      <a href="phd-lab-m0.html" class="sb-link"><span class="sb-link-icon">🔬</span> PhD Lab M0</a>
+      <a href="gks-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇰🇷</span> GKS Lab M0</a>
+      <a href="usa-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇺🇸</span> USA Lab M0</a>
+      <a href="tadbirkor-talaba-m0.html" class="sb-link"><span class="sb-link-icon">💼</span> Tadbirkor Talaba M0</a>
+      <a href="musofir-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧳</span> Musofir Lab M0</a>
 
-    <div class="sb-section-title">Resurslar</div>
-    <a href="atlas.html" class="sb-link"><span class="sb-link-icon">🌍</span> Kompas Atlas</a>
-    <a href="#" class="sb-link">
-      <span class="sb-link-icon">📄</span> Materiallar
-    </a>
-    <a href="#" class="sb-link">
-      <span class="sb-link-icon">📝</span> Topshiriqlar
-      <span class="sb-badge" id="assignmentBadge" style="display:none">1</span>
-    </a>
-    <a href="#" class="sb-link">
-      <span class="sb-link-icon">💬</span> Telegram guruh
-    </a>
-    <a href="#" class="sb-link" data-install>
-      <span class="sb-link-icon">📱</span> Ilovani oʻrnatish
-    </a>
+      <div class="sb-section-title">Yordam</div>
+      <a href="narxlar.html" class="sb-link"><span class="sb-link-icon">💳</span> Narxlar va obuna</a>
+      <a href="savollar.html" class="sb-link"><span class="sb-link-icon">❓</span> Savollar</a>
+      <a href="https://t.me/kompaslab" class="sb-link" target="_blank" rel="noopener"><span class="sb-link-icon">💬</span> Telegram kanal</a>
+      <a href="#" class="sb-link" data-install><span class="sb-link-icon">📱</span> Ilovani oʻrnatish</a>
+      <a href="#sozlamalar" class="sb-link"><span class="sb-link-icon">⚙️</span> Sozlamalar</a>
+    </nav>
 
-    <div class="sb-section-title">Profil</div>
-    <a href="#" class="sb-link">
-      <span class="sb-link-icon">⚙️</span> Sozlamalar
-    </a>
-  </nav>
-
-  <div class="sb-progress-wrap">
+  <div class="sb-progress-wrap" id="sbProgWrap" hidden>
     <div class="sb-prog-label">
       <span>Umumiy progress</span>
       <span id="sbProgPct" style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;">0%</span>
@@ -367,468 +389,256 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 <main class="main">
 
   <!-- TOPBAR -->
-  <div class="topbar">
-    <button class="burger" type="button" aria-label="Menyu" onclick="document.body.classList.toggle('sb-open')">☰</button>
-    <div class="topbar-greeting">
-      <h1 id="greetingText">Xush kelibsiz! 👋</h1>
-      <p id="greetingDate">Bugun dars boshlaymizmi?</p>
-    </div>
-    <div class="topbar-right">
-      <div class="topbar-streak" id="streakBadge">
-        🔥 <span id="streakDays">0</span> kunlik seriya
-      </div>
-      <div class="topbar-notif">
-        🔔
-        <div class="notif-dot"></div>
+    <div class="topbar">
+      <button class="burger" type="button" aria-label="Menyu" onclick="document.body.classList.toggle('sb-open')">☰</button>
+      <div class="topbar-greeting">
+        <h1 id="greetingText">Kabinet</h1>
+        <p id="greetingDate"></p>
       </div>
     </div>
-  </div>
 
-  <!-- STATS ROW -->
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-icon">🎬</div>
-      <div class="stat-val" id="statLessons">0</div>
-      <div class="stat-lbl">Koʻrilgan darslar</div>
-      <div class="stat-change neutral" id="statLessonsTotal">/ 35 ta dars</div>
+    <!-- STATISTIKA: faqat shu qurilmadagi haqiqiy progressdan -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-val" id="statLessons">0</div>
+        <div class="stat-lbl">Yakunlangan darslar</div>
+        <div class="stat-change neutral" id="statLessonsSub">barcha modullarda</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div class="stat-val" id="statDocs">0</div>
+        <div class="stat-lbl">Tayyor hujjatlar</div>
+        <div class="stat-change neutral">Master Lab, 9 tadan</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-val" id="statWeeks">0</div>
+        <div class="stat-lbl">Faol haftalar</div>
+        <div class="stat-change neutral">oxirgi 8 haftada</div>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="stat-icon">⏱</div>
-      <div class="stat-val" id="statHours">0h</div>
-      <div class="stat-lbl">Oʻquv vaqti</div>
-      <div class="stat-change up">↑ Bu hafta</div>
+    <p class="stats-note">Raqamlar shu qurilmadagi javoblaringizdan hisoblanadi. Boshqa qurilmaga oʻtsangiz, <a href="#sozlamalar">zaxira nusxadan</a> tiklang.</p>
+
+    <div class="content-grid">
+      <!-- CHAP USTUN -->
+      <div class="left-col">
+        <!-- Obunachi: davom etish kartasi -->
+        <div class="current-card" id="currentCard" hidden>
+          <div class="cc-badge">▶ Davom etish</div>
+          <h2 class="cc-title" id="currentLessonTitle"></h2>
+          <p class="cc-meta" id="currentLessonMeta"></p>
+          <div class="cc-prog">
+            <div class="cc-prog-row"><span>Kurs progressi</span><span id="currentPct">0%</span></div>
+            <div class="cc-prog-bar"><div class="cc-prog-fill" id="currentProgFill" style="width:0%"></div></div>
+          </div>
+          <a href="#" class="cc-btn" id="currentBtn">Davom etish →</a>
+        </div>
+
+        <div class="section-title-row">
+          <h2 id="modulesTitle">Kurs modullari</h2>
+          <a href="#" class="section-link" id="modulesLink" hidden>Butun dastur →</a>
+        </div>
+        <div class="modules-list" id="modulesList"></div>
+
+        <!-- MENING YOʻLIM: kompas, vaqt chizigʻi, hujjatlar javoni, haftalik ritm (js/journey.js) -->
+        <div id="journey" style="margin-top:22px"></div>
+
+      </div>
+
+      <!-- OʻNG USTUN -->
+      <div class="right-col">
+        <div class="side-card" id="subCard">
+          <h3>💳 Obuna</h3>
+          <div id="subBody"><div class="side-muted">Yuklanmoqda…</div></div>
+        </div>
+
+        <div class="side-card">
+          <h3>⏰ Yaqin muddatlar</h3>
+          <div id="dlList"></div>
+        </div>
+
+        <div class="side-card" id="backupCard">
+          <h3>💾 Javoblar zaxirasi</h3>
+          <p class="side-muted">Modullardagi javoblaringiz (CV, roʻyxat, maqsad bayonnomasi va boshqalar) faqat shu brauzerda saqlanadi. Brauzer tozalansa yoki qurilma almashsa, ular yoʻqoladi. Vaqti-vaqti bilan zaxira oling.</p>
+          <div class="side-actions">
+            <button type="button" class="side-btn" id="bkExport">Zaxirani yuklab olish</button>
+            <label class="side-btn ghost">Fayldan tiklash<input type="file" id="bkImport" accept=".json,application/json" hidden></label>
+          </div>
+          <div class="set-msg" id="bkMsg" role="status"></div>
+        </div>
+
+        <!-- SOZLAMALAR -->
+        <div class="side-card" id="sozlamalar">
+          <h3>⚙️ Sozlamalar</h3>
+          <div class="set-row"><span>Email</span><b id="setEmail">—</b></div>
+          <form id="pwForm" class="set-form" autocomplete="off">
+            <label>Yangi parol<input type="password" id="pw1" minlength="8" autocomplete="new-password" required></label>
+            <label>Parolni takrorlang<input type="password" id="pw2" minlength="8" autocomplete="new-password" required></label>
+            <button type="submit" class="side-btn">Parolni oʻzgartirish</button>
+            <div class="set-msg" id="pwMsg" role="status"></div>
+          </form>
+          <button type="button" class="side-btn ghost" onclick="handleLogout()">🚪 Hisobdan chiqish</button>
+        </div>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="stat-icon">📝</div>
-      <div class="stat-val" id="statTasks">0</div>
-      <div class="stat-lbl">Topshiriqlar</div>
-      <div class="stat-change neutral" id="statTasksDone">bajarildi</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon">🏅</div>
-      <div class="stat-val" id="statWeek">1</div>
-      <div class="stat-lbl">Joriy hafta</div>
-      <div class="stat-change neutral">/ 8 hafta</div>
-    </div>
-  </div>
-
-  <!-- CONTENT GRID -->
-  <div class="content-grid">
-
-    <!-- LEFT -->
-    <div class="left-col">
-
-      <!-- CURRENT LESSON -->
-      <div class="current-card">
-        <div class="cc-badge">▶ Davom etish</div>
-        <h2 class="cc-title" id="currentLessonTitle">Dars yuklanmoqda...</h2>
-        <p class="cc-meta" id="currentLessonMeta">📦 Modul · ⏱ --:--</p>
-        <div class="cc-prog">
-          <div class="cc-prog-row">
-            <span>Kurs progressi</span>
-            <span id="currentPct">0%</span>
-          </div>
-          <div class="cc-prog-bar">
-            <div class="cc-prog-fill" id="currentProgFill" style="width:0%"></div>
-          </div>
-        </div>
-        <a href="lesson.html" class="cc-btn">Darsni davom ettirish →</a>
-      </div>
-
-      <!-- MENING YOʻLIM: kompas, vaqt chizigʻi, hujjatlar javoni, haftalik ritm (js/journey.js) -->
-      <div id="journey"></div>
-
-      <!-- MODULES -->
-      <div class="section-title-row">
-        <h2>Kurs modullari</h2>
-        <a href="lesson.html" class="section-link">Hammasini koʻrish →</a>
-      </div>
-      <div class="modules-list" id="modulesList">
-        <!-- JS bilan to'ldiriladi -->
-        <div class="mod-row">
-          <div class="mod-num done">✓</div>
-          <div class="mod-info">
-            <div class="mod-title">Hafta 1 · Research Identity Framework</div>
-            <div class="mod-sub">4 dars · 3.5 soat</div>
-          </div>
-          <div class="mod-right">
-            <div class="mod-status done">Tugadi</div>
-            <div class="mod-lessons">4/4 dars</div>
-          </div>
-        </div>
-        <a href="lesson.html" class="mod-row">
-          <div class="mod-num active">▶</div>
-          <div class="mod-info">
-            <div class="mod-title">Hafta 2 · University Mapping System</div>
-            <div class="mod-sub">5 dars · 4 soat</div>
-          </div>
-          <div class="mod-right">
-            <div class="mod-status active">Jarayonda</div>
-            <div class="mod-lessons">2/5 dars</div>
-          </div>
-        </a>
-        <div class="mod-row">
-          <div class="mod-num active">▶</div>
-          <div class="mod-info">
-            <div class="mod-title">Hafta 3 · Professor Outreach Strategy</div>
-            <div class="mod-sub">4 dars · 3 soat</div>
-          </div>
-          <div class="mod-right">
-            <div class="mod-status active">Jarayonda</div>
-            <div class="mod-lessons">1/4 dars</div>
-          </div>
-        </div>
-        <div class="mod-row locked">
-          <div class="mod-num locked">🔒</div>
-          <div class="mod-info">
-            <div class="mod-title">Hafta 4 · Statement of Purpose Lab</div>
-            <div class="mod-sub">5 dars · 5 soat</div>
-          </div>
-          <div class="mod-right">
-            <div class="mod-status locked">Qulflangan</div>
-            <div class="mod-lessons">0/5 dars</div>
-          </div>
-        </div>
-        <div class="mod-row locked">
-          <div class="mod-num locked">🔒</div>
-          <div class="mod-info">
-            <div class="mod-title">Hafta 5 · CV & Portfolio Engineering</div>
-            <div class="mod-sub">4 dars · 3.5 soat</div>
-          </div>
-          <div class="mod-right">
-            <div class="mod-status locked">Qulflangan</div>
-            <div class="mod-lessons">0/4 dars</div>
-          </div>
-        </div>
-        <div class="mod-row locked">
-          <div class="mod-num locked">🔒</div>
-          <div class="mod-info">
-            <div class="mod-title">Hafta 6 · Grant Application System</div>
-            <div class="mod-sub">5 dars · 4.5 soat</div>
-          </div>
-          <div class="mod-right">
-            <div class="mod-status locked">Qulflangan</div>
-            <div class="mod-lessons">0/5 dars</div>
-          </div>
-        </div>
-        <div class="mod-row locked">
-          <div class="mod-num locked">🔒</div>
-          <div class="mod-info">
-            <div class="mod-title">Hafta 7 · Research Proposal Writing</div>
-            <div class="mod-sub">4 dars · 4 soat</div>
-          </div>
-          <div class="mod-right">
-            <div class="mod-status locked">Qulflangan</div>
-            <div class="mod-lessons">0/4 dars</div>
-          </div>
-        </div>
-        <div class="mod-row locked">
-          <div class="mod-num locked">🔒</div>
-          <div class="mod-info">
-            <div class="mod-title">Hafta 8 · Interview & Final Submission</div>
-            <div class="mod-sub">4 dars · 3.5 soat</div>
-          </div>
-          <div class="mod-right">
-            <div class="mod-status locked">Qulflangan</div>
-            <div class="mod-lessons">0/4 dars</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- RIGHT COLUMN -->
-    <div class="right-col">
-
-      <!-- PROGRESS RING -->
-      <div class="progress-card">
-        <h3>📊 Kurs statistikasi</h3>
-        <div class="ring-wrap">
-          <svg width="140" height="140" viewBox="0 0 140 140">
-            <circle cx="70" cy="70" r="58" fill="none" stroke="#e0e8e4" stroke-width="12"/>
-            <circle cx="70" cy="70" r="58" fill="none" stroke="#2d4a3e" stroke-width="12"
-              stroke-linecap="round"
-              stroke-dasharray="364"
-              stroke-dashoffset="200"
-              transform="rotate(-90 70 70)"
-              id="ringCircle"
-              style="transition:stroke-dashoffset 1s ease"/>
-          </svg>
-          <div class="ring-text">
-            <div class="ring-val" id="ringPct">0%</div>
-            <div class="ring-lbl">Tugallandi</div>
-          </div>
-        </div>
-        <div class="ring-stats">
-          <div class="rs-item">
-            <div class="rs-val" id="rsDone">0</div>
-            <div class="rs-lbl">✅ Koʻrildi</div>
-          </div>
-          <div class="rs-item">
-            <div class="rs-val" id="rsLeft">35</div>
-            <div class="rs-lbl">⏳ Qoldi</div>
-          </div>
-          <div class="rs-item">
-            <div class="rs-val" id="rsWeek">1</div>
-            <div class="rs-lbl">📅 Hafta</div>
-          </div>
-          <div class="rs-item">
-            <div class="rs-val" id="rsStreak">0</div>
-            <div class="rs-lbl">🔥 Seriya</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- HAFTALIK VAZIFALAR -->
-      <div class="tasks-card">
-        <h3>✅ Haftalik vazifalar</h3>
-        <div id="tasksList">
-          <div class="task-item">
-            <div class="task-check done" onclick="toggleTask(this)">✓</div>
-            <div class="task-text">
-              <div class="task-title done">Research niche aniqlash</div>
-              <div class="task-due">Hafta 1 · Bajarildi</div>
-            </div>
-          </div>
-          <div class="task-item">
-            <div class="task-check done" onclick="toggleTask(this)">✓</div>
-            <div class="task-text">
-              <div class="task-title done">5 ta universitet tanlash</div>
-              <div class="task-due">Hafta 2 · Bajarildi</div>
-            </div>
-          </div>
-          <div class="task-item">
-            <div class="task-check" onclick="toggleTask(this)"></div>
-            <div class="task-text">
-              <div class="task-title">Professor email yozish</div>
-              <div class="task-due overdue">⚠️ Bugun deadline!</div>
-            </div>
-          </div>
-          <div class="task-item">
-            <div class="task-check" onclick="toggleTask(this)"></div>
-            <div class="task-text">
-              <div class="task-title">SoP draft tayyorlash</div>
-              <div class="task-due">📅 3 kun qoldi</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DEADLINES -->
-      <div class="deadline-card">
-        <h3>⏰ Yaqin muddatlar</h3>
-        <div class="deadline-item">
-          <div class="deadline-name">Muddatlar M0 da tuzgan rejangizdan shu yerga tushadi</div>
-        </div>
-      </div>
-
-      <!-- ANNOUNCEMENT -->
-      <div class="announce-card">
-        <h3>📢 Eʼlon</h3>
-        <div class="announce-text">
-          Yangi darslar va muddat eslatmalari shu yerda eʼlon qilinadi.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</main>
+  </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/auth.js"></script>
 <script>
 // ════════════════════════════════════════════════════════
-//  KOMPAS LAB — dashboard.js (inline)
-//  Supabase bilan to'liq ulangan talaba dashboard'i
+//  KOMPAS LAB — dashboard.js (inline, 2026-10-30)
+//  Kabinet: faqat haqiqiy maʼlumot. Obuna holati serverdan (fn_my_access),
+//  progress, hujjatlar va muddatlar shu qurilmadagi modul javoblaridan.
+//  Soxta raqam, namunaviy vazifa yoki bildirishnoma koʻrsatilmaydi.
 // ════════════════════════════════════════════════════════
 
-// ── Global holat ──────────────────────────────────────
-let _user    = null   // Supabase auth user
-let _profile = null   // profiles jadvali
-let _enrollments = [] // Talabaning barcha kurslari
-let _activeCourse = null // Hozirda ko'rilayotgan kurs
+let _user = null, _profile = null, _enrollments = [], _activeCourse = null
 
-// ── Salomlashuv matni ─────────────────────────────────
-function getGreeting() {
-  const h = new Date().getHours()
-  return h < 5 ? 'Xayrli tun' : h < 12 ? 'Xayrli tong' : h < 17 ? 'Xayrli kun' : 'Xayrli kech'
-}
+const MONTHS = ['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr']
+const DAYS = ['Yakshanba','Dushanba','Seshanba','Chorshanba','Payshanba','Juma','Shanba']
+function getGreeting() { const h = new Date().getHours(); return h < 5 ? 'Xayrli tun' : h < 12 ? 'Xayrli tong' : h < 17 ? 'Xayrli kun' : 'Xayrli kech' }
+function fmtDate(d) { return d.getDate() + '-' + MONTHS[d.getMonth()] + ' ' + d.getFullYear() }
+function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) }
+function ls(k) { try { return JSON.parse(localStorage.getItem(k) || 'null') } catch (e) { return null } }
 
-function getTodayLabel() {
-  const days = ['Yakshanba','Dushanba','Seshanba','Chorshanba','Payshanba','Juma','Shanba']
-  const months = ['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr']
-  const d = new Date()
-  return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`
+// Kurslar: Lab sahifasi va (interaktiv sahifali kurslar uchun) modul havolasi
+const LAB_PAGE = { 'miggo': 'musofir-lab' }
+function labPage(slug) { return (LAB_PAGE[slug] || slug) }
+const PAGE_COURSES = {
+  'master-lab': { href: n => n === 0 ? 'master-lab-m0.html' : `master-lab-o.html?m=${n}`, key: n => `kompas_master_m${n}_v1` }
 }
 
 // ════════════════════════════════════════════════════════
-//  1. ASOSIY INIT
+//  1. ISHGA TUSHIRISH
 // ════════════════════════════════════════════════════════
 async function init() {
-  // Sanani ko'rsatish
-  document.getElementById('greetingDate').textContent = getTodayLabel()
-
-  // ── Skeleton ko'rsatish ──
-  showSkeletons()
-
+  const d = new Date()
+  document.getElementById('greetingDate').textContent = DAYS[d.getDay()] + ', ' + fmtDate(d)
+  renderLocalStats()
+  renderDeadlines()
+  initBackup()
   try {
-    // 1. Auth tekshirish
     const auth = await requireAuth()
-    if (!auth) return  // requireAuth o'zi login.html ga yo'naltiradi
-
-    _user    = auth.user
-    _profile = auth.profile
-
-    // 2. Sidebar — foydalanuvchi ma'lumotlari
+    if (!auth) return
+    _user = auth.user; _profile = auth.profile
     renderSidebar()
+    document.getElementById('setEmail').textContent = _user.email || '—'
+    const firstName = (_profile && _profile.first_name) || (_user.user_metadata && _user.user_metadata.first_name) || ''
+    document.getElementById('greetingText').textContent = firstName ? `${getGreeting()}, ${firstName}!` : getGreeting() + '!'
 
-    // 3. Greeting
-    const firstName = _profile?.first_name || _user.email.split('@')[0]
-    document.getElementById('greetingText').textContent =
-      `${getGreeting()}, ${firstName}! 👋`
-
-    // 4. Enrollment larni yuklash
     _enrollments = await getUserEnrollments(_user.id)
-
-    if (_enrollments.length === 0) {
-      // Hech qanday kursga yozilmagan → payment sahifasiga
-      renderNoCourse()
-      return
-    }
-
-    // 5. Birinchi (yoki oxirgi ko'rilgan) kursni tanlash
+    await renderSubscriptions()
+    if (!_enrollments.length) { renderNoCourse(); return }
     _activeCourse = _enrollments[0]
-
-    // 6. Progress yuklash
+    renderCourseLinks()
     await loadCourseData(_activeCourse.course_id, _activeCourse.course.slug)
-
-    // 7. Auth holat kuzatish — logout avtomatik
-    onAuthChange((event) => {
-      if (event === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login
-    })
-
+    onAuthChange(ev => { if (ev === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login })
   } catch (err) {
-    console.error('Dashboard init xatosi:', err)
+    console.error('Kabinet xatosi:', err)
     renderError()
   }
 }
 
 // ════════════════════════════════════════════════════════
-//  2. SIDEBAR RENDER
+//  2. SIDEBAR
 // ════════════════════════════════════════════════════════
 function renderSidebar() {
-  if (!_profile) return
-
-  const firstName = _profile.first_name || ''
-  const lastName  = _profile.last_name  || ''
-  const fullName  = _profile.full_name  || `${firstName} ${lastName}`.trim() || _user.email
-
-  // Avatar — initials
-  document.getElementById('sidebarAvatar').textContent = getInitials(fullName)
-  document.getElementById('sidebarName').textContent   = fullName
-
-  // Tarif
-  if (_enrollments.length > 0) {
-    const plan = _enrollments[0].plan || 'starter'
-    const planLabels = { starter: '🌱 Starter', scholar: '🚀 Scholar', elite: '💎 Elite' }
-    document.getElementById('sidebarPlan').textContent = planLabels[plan] || plan
-  }
+  const fn = (_profile && _profile.first_name) || '', ln = (_profile && _profile.last_name) || ''
+  const full = (_profile && _profile.full_name) || `${fn} ${ln}`.trim() || _user.email
+  document.getElementById('sidebarAvatar').textContent = getInitials(full)
+  document.getElementById('sidebarName').textContent = full
+}
+function renderCourseLinks() {
+  const box = document.getElementById('sbCourses')
+  box.innerHTML = '<div class="sb-section-title">Kurslarim</div>' + _enrollments.map(e => {
+    const c = e.course || {}
+    return `<a href="${esc(labPage(c.slug))}-dastur.html" class="sb-link"><span class="sb-link-icon">📘</span> ${esc(c.title || c.slug)}</a>`
+  }).join('')
 }
 
 // ════════════════════════════════════════════════════════
-//  3. KURS MA'LUMOTLARI YUKLASH
+//  3. OBUNA (serverdan)
+// ════════════════════════════════════════════════════════
+async function renderSubscriptions() {
+  const body = document.getElementById('subBody')
+  if (!_enrollments.length) {
+    document.getElementById('sidebarPlan').textContent = 'Bepul: M0 modullar'
+    body.innerHTML = '<p class="side-muted">Faol obuna yoʻq. Har Labning M0 qismi bepul: avval dastur sizga mosligini tekshiring.</p><a class="side-btn" href="narxlar.html">Narxlar va obuna</a>'
+    return
+  }
+  const rows = await Promise.all(_enrollments.map(async e => {
+    let a = null
+    try { const r = await supabase.rpc('fn_my_access', { p_course_slug: e.course.slug }); a = r.data } catch (x) {}
+    return { e, a }
+  }))
+  body.innerHTML = rows.map(({ e, a }) => {
+    const c = e.course || {}
+    const ok = a && a.access
+    let tag = ok ? '<span class="sub-tag">Faol</span>' : '<span class="sub-tag warn">' + (a && a.frozen ? 'Toʻxtatilgan' : 'Faol emas') + '</span>'
+    const total = a ? a.total_modules : null, open = a ? Math.min(a.unlocked_modules, a.total_modules) : null
+    const exp = e.expires_at ? fmtDate(new Date(e.expires_at)) : 'muddatsiz'
+    let lines = `<div class="sub-row"><span>Holat</span>${tag}</div>`
+    if (total != null) lines += `<div class="sub-row"><span>Ochiq modullar</span><b>${open} / ${total}</b></div>`
+    lines += `<div class="sub-row"><span>Amal qiladi</span><b>${esc(exp)}</b></div>`
+    const nx = a && a.installment && a.installment.next_due
+    if (nx) lines += `<div class="sub-row"><span>Keyingi toʻlov</span><b>${Number(nx.amount).toLocaleString('ru-RU')} soʻm · ${esc(fmtDate(new Date(nx.due_date)))}</b></div>`
+    return `<div class="sub-item"><div class="sub-name">${esc(c.title || c.slug)}</div>${lines}</div>`
+  }).join('') + '<p class="side-muted" style="margin:10px 0 0">Oylik obunada har toʻlov bitta fazani ochadi.</p>'
+  const first = rows[0]
+  document.getElementById('sidebarPlan').textContent = first.a && first.a.access ? 'Obuna faol' : 'Obuna faol emas'
+}
+
+// ════════════════════════════════════════════════════════
+//  4. KURS MODULLARI
 // ════════════════════════════════════════════════════════
 async function loadCourseData(courseId, courseSlug) {
-  try {
-    // Parallel so'rovlar — tezroq
-    const [modulesRes, progressRes, lessonsRes] = await Promise.all([
-      // Modullar + darslar soni
-      supabase
-        .from(DB.modules)
-        .select(`
-          id, title, order_index, is_free,
-          lessons(id, title, order_index, status, duration, vimeo_url, is_free)
-        `)
-        .eq('course_id', courseId)
-        .eq('lessons.status', 'published')
-        .order('order_index', { ascending: true }),
+  const link = document.getElementById('modulesLink')
+  link.hidden = false; link.href = labPage(courseSlug) + '-dastur.html'
+  const { data, error } = await supabase
+    .from(DB.modules)
+    .select('id, title, order_index, is_free, lessons(id, title, order_index, status)')
+    .eq('course_id', courseId)
+    .eq('lessons.status', 'published')
+    .order('order_index', { ascending: true })
+  if (error) throw error
+  const modules = data || []
+  const progressMap = {}
+  if (PAGE_COURSES[courseSlug]) mergeLocalProgress(courseSlug, modules, progressMap)
+  const all = modules.flatMap(m => (m.lessons || []).sort((a, b) => a.order_index - b.order_index))
+  const done = all.filter(l => progressMap[l.id]).length
+  const pct = all.length ? Math.round(done / all.length * 100) : 0
+  const next = all.find(l => !progressMap[l.id])
+  const nextMod = next ? modules.find(m => (m.lessons || []).some(l => l.id === next.id)) : null
 
-      // Talabaning bu kurs bo'yicha progress
-      supabase
-        .from(DB.progress)
-        .select('lesson_id, completed, watched_percent, last_watched_at')
-        .eq('user_id', _user.id),
-
-      // Kurs statistika (function orqali)
-      null
-    ])
-
-    if (modulesRes.error) throw modulesRes.error
-
-    const modules  = modulesRes.data || []
-    const progress = progressRes.data || []
-
-    // Progress map: lesson_id → {completed, watched_percent}
-    const progressMap = {}
-    progress.forEach(p => { progressMap[p.lesson_id] = p })
-    if (PAGE_COURSES[courseSlug]) mergeLocalProgress(courseSlug, modules, progressMap)
-
-    // Hisoblash
-    const allLessons = modules.flatMap(m => m.lessons || [])
-    const totalLessons    = allLessons.length
-    const completedLessons = allLessons.filter(l => progressMap[l.id]?.completed).length
-    const progressPct = totalLessons > 0
-      ? Math.round((completedLessons / totalLessons) * 100)
-      : 0
-
-    // Keyingi dars — birinchi ko'rilmagan
-    const nextLesson = allLessons.find(l => !progressMap[l.id]?.completed) || allLessons[allLessons.length - 1]
-    const nextModule = nextLesson
-      ? modules.find(m => (m.lessons || []).some(l => l.id === nextLesson?.id))
-      : null
-
-    // Joriy hafta (taxminiy)
-    const currentWeek = Math.floor(completedLessons / Math.max(1, Math.ceil(totalLessons / 8))) + 1
-
-    // Streak hisoblash (progress yozuvlaridan)
-    const streak = calcStreak(progress)
-
-    // ── Render ──
-    renderStats(completedLessons, totalLessons, progressPct, currentWeek, streak)
-    renderCurrentLesson(nextLesson, nextModule, progressPct, courseSlug)
-    renderModules(modules, progressMap, courseSlug)
-    renderProgressRing(progressPct, completedLessons, totalLessons, currentWeek, streak)
-    renderSidebarProgress(progressPct)
-
-  } catch (err) {
-    console.error('loadCourseData xatosi:', err)
-    // Demo ma'lumotlar bilan davom etish
-    renderDemoMode()
-  }
-}
-
-// ── Interaktiv sahifali kurslar (video pleyer emas) ──
-// Master Lab: M0 bepul sahifa, M1–M8 master-lab-o.html?m=N orqali (obuna serverda tekshiriladi).
-// Javoblar va yakunlangan darslar shu modullarning localStorage kalitida: kompas_master_m<N>_v1.
-const PAGE_COURSES = {
-  'master-lab': { href: n => n === 0 ? 'master-lab-m0.html' : `master-lab-o.html?m=${n}`, key: n => `kompas_master_m${n}_v1` }
+  const card = document.getElementById('currentCard'); card.hidden = false
+  document.getElementById('currentLessonTitle').textContent = next ? next.title : 'Barcha darslar yakunlandi'
+  document.getElementById('currentLessonMeta').textContent = next ? (nextMod ? nextMod.title : '') : 'Hujjatlaringizni javondan tekshiring.'
+  document.getElementById('currentPct').textContent = pct + '%'
+  document.getElementById('currentProgFill').style.width = pct + '%'
+  const btn = document.getElementById('currentBtn')
+  if (next && nextMod && moduleOpen(nextMod)) { btn.href = lessonHref(courseSlug, nextMod); btn.textContent = 'Davom etish →' }
+  else { btn.href = labPage(courseSlug) + '-dastur.html'; btn.textContent = 'Dasturni koʻrish →' }
+  document.getElementById('sbProgWrap').hidden = false
+  document.getElementById('sbProgPct').textContent = pct + '%'
+  document.getElementById('sbProgFill').style.width = pct + '%'
+  document.getElementById('statLessonsSub').textContent = `kursda ${done} / ${all.length}`
+  renderModules(modules, progressMap, courseSlug)
 }
 function mergeLocalProgress(courseSlug, modules, progressMap) {
   const pc = PAGE_COURSES[courseSlug]
   modules.forEach(m => {
-    let st = null
-    try { st = JSON.parse(localStorage.getItem(pc.key(m.order_index)) || 'null') } catch (e) {}
-    const done = (st && st.done) || {}
-    ;(m.lessons || []).forEach(l => { if (done['l' + l.order_index]) progressMap[l.id] = { lesson_id: l.id, completed: true } })
+    const st = ls(pc.key(m.order_index)), d = (st && st.done) || {}
+    ;(m.lessons || []).forEach(l => { if (d['l' + l.order_index]) progressMap[l.id] = true })
   })
 }
-function lessonHref(courseSlug, mod, lesson) {
+function lessonHref(courseSlug, mod) {
   const pc = PAGE_COURSES[courseSlug]
-  if (pc && mod) return pc.href(mod.order_index)
-  return `${APP_CONFIG.routes.lesson}?course=${courseSlug}&lesson=${lesson.id}`
+  return pc ? pc.href(mod.order_index) : labPage(courseSlug) + '-dastur.html'
 }
-// Modul obuna boʻyicha ochiqmi: unlocked_modules M0 ni ham sanaydi (pozitsiya = order_index + 1)
+// unlocked_modules M0 ni ham sanaydi (pozitsiya = order_index + 1)
 function moduleOpen(mod) {
   if (mod.is_free) return true
   const e = _activeCourse
@@ -836,294 +646,154 @@ function moduleOpen(mod) {
   if (e.expires_at && new Date(e.expires_at) <= new Date()) return false
   return e.unlocked_modules == null || mod.order_index + 1 <= e.unlocked_modules
 }
-
-// ════════════════════════════════════════════════════════
-//  4. STATS ROW
-// ════════════════════════════════════════════════════════
-function renderStats(done, total, pct, week, streak) {
-  document.getElementById('statLessons').textContent    = done
-  document.getElementById('statLessonsTotal').textContent = `/ ${total} ta dars`
-  document.getElementById('statHours').textContent     = `${Math.round(done * 0.75)}h`
-  document.getElementById('statTasks').textContent     = Math.floor(done / 3)
-  document.getElementById('statTasksDone').textContent = `${Math.floor(done/3)} ta bajarildi`
-  document.getElementById('statWeek').textContent      = Math.min(week, 8)
-  document.getElementById('streakDays').textContent    = streak
-}
-
-// ════════════════════════════════════════════════════════
-//  5. JORIY DARS KARTASI
-// ════════════════════════════════════════════════════════
-function renderCurrentLesson(lesson, module, pct, courseSlug) {
-  if (!lesson) {
-    document.getElementById('currentLessonTitle').textContent = '🎉 Barcha darslar tugallandi!'
-    document.getElementById('currentLessonMeta').textContent  = 'Tabriklaymiz! Siz kursni tugatdingiz.'
-    document.querySelector('.cc-btn').textContent = 'Sertifikat olish →'
-    document.querySelector('.cc-btn').href = '#'
-  } else {
-    document.getElementById('currentLessonTitle').textContent =
-      lesson.title || 'Darsni davom ettirish'
-    document.getElementById('currentLessonMeta').textContent  =
-      `📦 ${module?.title || 'Modul'} · ⏱ ${lesson.duration || '~30 daqiqa'}`
-
-    // Dars sahifasi (Master: interaktiv modul sahifasi)
-    const lessonUrl = lessonHref(courseSlug, module, lesson)
-    document.querySelector('.cc-btn').href = lessonUrl
-    document.getElementById('nextLessonBadge').textContent = '▶'
-  }
-
-  document.getElementById('currentPct').textContent        = pct + '%'
-  document.getElementById('currentProgFill').style.width   = pct + '%'
-}
-
-// ════════════════════════════════════════════════════════
-//  6. MODULLAR RO'YXATI
-// ════════════════════════════════════════════════════════
 function renderModules(modules, progressMap, courseSlug) {
-  const container = document.getElementById('modulesList')
-  if (!modules || modules.length === 0) {
-    container.innerHTML = `
-      <div style="padding:32px;text-align:center;color:var(--muted);">
-        <div style="font-size:32px;margin-bottom:8px">📚</div>
-        <p>Darslar hali nashr etilmagan</p>
-      </div>`
-    return
-  }
-
-  container.innerHTML = modules.map(mod => {
-    const lessons = (mod.lessons || []).sort((a, b) => a.order_index - b.order_index)
-    const total   = lessons.length
-    if (total === 0) return ''  // Bo'sh modullarni ko'rsatmaslik
-
-    const done  = lessons.filter(l => progressMap[l.id]?.completed).length
-    const isCompleted = done === total && total > 0
-    const isActive    = done > 0 && done < total
-    const isLocked    = !moduleOpen(mod)
-
-    // Birinchi ko'rilmagan dars
-    const nextLesson = lessons.find(l => !progressMap[l.id]?.completed) || lessons[0]
-    const href = nextLesson && !isLocked ? lessonHref(courseSlug, mod, nextLesson) : '#'
-
-    // Status
-    let numClass = 'locked', statusClass = 'locked', statusText = 'Qulflangan'
-    if (isCompleted)    { numClass = 'done';   statusClass = 'done';   statusText = 'Tugadi' }
-    else if (isActive)  { numClass = 'active'; statusClass = 'active'; statusText = 'Jarayonda' }
-    else if (!isLocked) { numClass = 'active'; statusClass = 'active'; statusText = 'Boshlash' }
-
-    const numContent = isCompleted ? '✓' : isLocked ? '🔒' : mod.order_index
-
-    // Taxminiy vaqt
-    const hours = Math.round(total * 0.5 * 10) / 10
-
-    return `
-      <a href="${href}" class="mod-row${isLocked ? ' locked' : ''}" 
-         ${isLocked ? 'onclick="return false"' : ''}>
-        <div class="mod-num ${numClass}">${numContent}</div>
-        <div class="mod-info">
-          <div class="mod-title">${mod.title}</div>
-          <div class="mod-sub">${total} dars · ~${hours} soat</div>
-        </div>
-        <div class="mod-right">
-          <div class="mod-status ${statusClass}">${statusText}</div>
-          <div class="mod-lessons">${done}/${total} dars</div>
-        </div>
+  const box = document.getElementById('modulesList')
+  const rows = modules.map(mod => {
+    const lessons = mod.lessons || [], total = lessons.length
+    if (!total) return ''
+    const done = lessons.filter(l => progressMap[l.id]).length
+    const locked = !moduleOpen(mod)
+    let st = 'active', txt = done ? 'Jarayonda' : 'Boshlash', num = mod.order_index
+    if (done === total) { st = 'done'; txt = 'Tugadi'; num = '✓' }
+    if (locked) { st = 'locked'; txt = 'Yopiq'; num = '🔒' }
+    const href = locked ? labPage(courseSlug) + '-m' + mod.order_index + '.html' : lessonHref(courseSlug, mod)
+    return `<a href="${esc(href)}" class="mod-row${locked ? ' locked' : ''}">
+        <div class="mod-num ${st}">${num}</div>
+        <div class="mod-info"><div class="mod-title">${esc(mod.title)}</div><div class="mod-sub">${total} dars</div></div>
+        <div class="mod-right"><div class="mod-status ${st}">${txt}</div><div class="mod-lessons">${done}/${total} dars</div></div>
       </a>`
   }).join('')
+  box.innerHTML = rows || '<p class="side-muted">Darslar hali eʼlon qilinmagan.</p>'
 }
 
 // ════════════════════════════════════════════════════════
-//  7. PROGRESS RING
+//  5. OBUNASIZ: bepul M0 modullar (birinchi oʻrinda)
 // ════════════════════════════════════════════════════════
-function renderProgressRing(pct, done, total, week, streak) {
-  document.getElementById('ringPct').textContent               = pct + '%'
-  document.getElementById('rsDone').textContent                = done
-  document.getElementById('rsLeft').textContent                = total - done
-  document.getElementById('rsWeek').textContent                = Math.min(week, 8)
-  document.getElementById('rsStreak').textContent              = streak
-
-  const circumference = 364
-  const offset = circumference - (pct / 100) * circumference
-  document.getElementById('ringCircle').style.strokeDashoffset = offset
-}
-
-function renderSidebarProgress(pct) {
-  document.getElementById('sbProgPct').textContent      = pct + '%'
-  document.getElementById('sbProgFill').style.width     = pct + '%'
-}
-
-// ════════════════════════════════════════════════════════
-//  8. STREAK HISOBLASH
-//     progress yozuvlaridan ketma-ket kunlarni topish
-// ════════════════════════════════════════════════════════
-function calcStreak(progressData) {
-  if (!progressData || progressData.length === 0) return 0
-
-  // last_watched_at dan sanalarni olish
-  const dates = progressData
-    .filter(p => p.last_watched_at)
-    .map(p => new Date(p.last_watched_at).toDateString())
-
-  const uniqueDates = [...new Set(dates)]
-    .map(d => new Date(d))
-    .sort((a, b) => b - a)  // Yangilikdan eskiga
-
-  if (uniqueDates.length === 0) return 0
-
-  let streak = 1
-  const oneDay = 86400000
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-
-  // Eng yangi sana bugun yoki kecha bo'lishi kerak
-  const lastDate = uniqueDates[0]
-  lastDate.setHours(0, 0, 0, 0)
-  const diff = today - lastDate
-  if (diff > oneDay * 2) return 0  // 2 kundan ko'p bo'lsa — streak yo'qoldi
-
-  for (let i = 1; i < uniqueDates.length; i++) {
-    const d1 = uniqueDates[i - 1]
-    const d2 = uniqueDates[i]
-    d1.setHours(0, 0, 0, 0)
-    d2.setHours(0, 0, 0, 0)
-    if (d1 - d2 === oneDay) streak++
-    else break
-  }
-  return streak
-}
-
-// ════════════════════════════════════════════════════════
-//  9. SKELETON LOADERLAR
-// ════════════════════════════════════════════════════════
-function showSkeletons() {
-  // Stats
-  ;['statLessons','statHours','statTasks','statWeek'].forEach(id => {
-    const el = document.getElementById(id)
-    if (el) { el.innerHTML = '<span class="skeleton" style="width:40px;height:28px;display:inline-block"></span>' }
-  })
-
-  // Sidebar name
-  const nameEl = document.getElementById('sidebarName')
-  if (nameEl) nameEl.innerHTML = '<span class="skeleton" style="width:120px;height:14px;display:inline-block;border-radius:4px"></span>'
-
-  // Modules list
-  const modList = document.getElementById('modulesList')
-  if (modList) {
-    modList.innerHTML = Array(4).fill(0).map(() => `
-      <div class="mod-row" style="pointer-events:none">
-        <div class="mod-num" style="background:var(--bg)"><span class="skeleton" style="width:20px;height:20px;border-radius:50%;display:block"></span></div>
-        <div class="mod-info">
-          <div class="skeleton" style="width:220px;height:14px;border-radius:4px;margin-bottom:6px"></div>
-          <div class="skeleton" style="width:100px;height:11px;border-radius:4px"></div>
-        </div>
-      </div>`).join('')
-  }
-}
-
-// ════════════════════════════════════════════════════════
-//  10. XATOLIK VA BO'SH HOLAT
-// ════════════════════════════════════════════════════════
-// Bepul M0 modullar: progress shu brauzerdagi localStorage dan olinadi
 const M0_LIST = [
-  { href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bachelor Lab M0',     sub: 'Bakalavr: xorijda oʻqish sizga mosmi' },
   { href: 'master-lab-m0.html',       key: 'kompas_master_m0_v1',   icon: 'master',   name: 'Master Lab M0',       sub: 'Magistratura: tayyorgarlik va muddatlar' },
+  { href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bachelor Lab M0',     sub: 'Bakalavr: xorijda oʻqish sizga mosmi' },
   { href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD Lab M0',          sub: 'Moliyalashtirilgan PhD: qaror darvozasi' },
   { href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS Lab M0',          sub: 'Koreya hukumati stipendiyasi' },
   { href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA Lab M0',          sub: 'AQSh: yoʻllar va moliyalashtirish' },
   { href: 'tadbirkor-talaba-m0.html', key: 'kompas_tt_m0_v1',       icon: 'tt',       name: 'Tadbirkor Talaba M0', sub: 'Oʻqish va biznesni birga olib borish' },
   { href: 'musofir-lab-m0.html',      key: 'kompas_musofir_m0_v1',  icon: 'musofir',  name: 'Musofir Lab M0',      sub: 'Xorijda ish: rasmiy yoʻl va himoya' },
 ]
-function m0Progress(key) {
-  try { const o = JSON.parse(localStorage.getItem(key) || 'null'); return o && o.xp ? Math.min(100, Math.round(o.xp / 250 * 100)) : 0 } catch (e) { return 0 }
-}
+function m0Progress(key) { const o = ls(key); return o && o.xp ? Math.min(100, Math.round(o.xp / 250 * 100)) : 0 }
 function renderNoCourse() {
-  document.getElementById('greetingText').textContent = 'Bepul M0 modullardan boshlang'
-  const cards = M0_LIST.map(m => {
-    const pct = m0Progress(m.key)
-    const btn = pct >= 100 ? 'Koʻrib chiqish' : pct > 0 ? 'Davom etish →' : 'Boshlash →'
-    return `<a href="${m.href}" style="display:flex;gap:12px;align-items:center;background:white;border:1px solid var(--border);border-radius:12px;padding:14px;text-decoration:none;color:inherit">
-      <img src="img/3d/${m.icon}.webp" width="52" height="52" alt="" style="flex:none">
-      <div style="flex:1;min-width:0">
-        <div style="font-size:14px;font-weight:700">${m.name}</div>
-        <div style="font-size:12px;color:var(--muted);margin:2px 0 8px">${m.sub}</div>
-        <div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden"><div style="height:100%;width:${pct}%;background:var(--accent)"></div></div>
-        <div style="display:flex;justify-content:space-between;font-size:11px;margin-top:4px;color:var(--muted)"><span>${pct}%</span><b style="color:var(--accent)">${btn}</b></div>
-      </div></a>`
-  }).join('')
+  document.getElementById('modulesTitle').textContent = 'Bepul M0 modullar'
+  const list = M0_LIST.map(m => ({ ...m, pct: m0Progress(m.key) })).sort((a, b) => (b.pct > 0 && b.pct < 100) - (a.pct > 0 && a.pct < 100))
   document.getElementById('modulesList').innerHTML = `
-    <p style="font-size:13px;color:var(--muted);margin:0 0 12px">Har bir Labning M0 qismi bepul: toʻlovdan oldin dastur sizga mosligini tekshirasiz. Progress shu qurilmada saqlanadi.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">${cards}</div>
-    <div style="margin-top:16px;padding:16px;background:white;border:1px solid var(--border);border-radius:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
-      <div><div style="font-size:14px;font-weight:700">Toʻliq dasturga oʻtish</div><div style="font-size:12px;color:var(--muted)">M0 dan keyin dastur mos boʻlsa, obunani tanlang</div></div>
-      <a href="payment.html" style="background:var(--accent);color:white;padding:9px 18px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px">Tariflar va toʻlov</a>
-    </div>`
+    <p class="side-muted">Har Labning M0 qismi bepul: toʻlovdan oldin dastur sizga mosligini tekshirasiz.</p>
+    <div class="m0-grid">${list.map(m => {
+      const btn = m.pct >= 100 ? 'Koʻrib chiqish' : m.pct > 0 ? 'Davom etish →' : 'Boshlash →'
+      return `<a class="m0-card" href="${m.href}"><img src="img/3d/${m.icon}.webp" width="52" height="52" alt="" style="flex:none">
+        <div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:700">${m.name}</div>
+        <div style="font-size:12px;color:var(--muted);margin:2px 0 8px">${m.sub}</div>
+        <div class="m0-bar"><i style="width:${m.pct}%"></i></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;margin-top:4px;color:var(--muted)"><span>${m.pct}%</span><b style="color:var(--accent)">${btn}</b></div></div></a>`
+    }).join('')}</div>`
+}
 
-  // Toʻlov qilmaganlarga kurs statistikasi va namunaviy vazifalar koʻrsatilmaydi
-  document.querySelector('.stats-row').style.display = 'none'
-  document.querySelector('.right-col').style.display = 'none'
-  document.querySelector('.content-grid').style.gridTemplateColumns = '1fr'
-  document.querySelector('.section-title-row h2').textContent = 'Bepul M0 modullar'
-  document.querySelector('.section-title-row .section-link').style.display = 'none'
-  document.getElementById('sidebarPlan').textContent = 'Bepul: M0 modullar'
+// ════════════════════════════════════════════════════════
+//  6. STATISTIKA (shu qurilmadagi javoblardan)
+// ════════════════════════════════════════════════════════
+function isoWeek(d) { const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())), n = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - n); const y = t.getUTCFullYear(), w = Math.ceil(((t - Date.UTC(y, 0, 1)) / 86400000 + 1) / 7); return y * 100 + w }
+function renderLocalStats() {
+  let lessons = 0
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i)
+    if (!/^kompas_[a-z]+_m\d+_v1$/.test(k)) continue
+    const o = ls(k), d = (o && o.done) || {}
+    lessons += Object.keys(d).filter(x => /^l\d+$/.test(x) && d[x]).length
+  }
+  let docs = (ls('kompas_master_m0_v1') || {}).xp >= 250 ? 1 : 0
+  for (let n = 1; n <= 8; n++) { const o = ls('kompas_master_m' + n + '_v1'); if (o && o.done && o.done.fin) docs++ }
+  const weeks = ((ls('kompas_journey_v1') || {}).weeks || [])
+  const recent = new Set(); for (let k = 0; k < 8; k++) recent.add(isoWeek(new Date(Date.now() - k * 7 * 86400000)))
+  document.getElementById('statLessons').textContent = lessons
+  document.getElementById('statDocs').textContent = docs
+  document.getElementById('statWeeks').textContent = weeks.filter(w => recent.has(w)).length
+}
 
-  const started = M0_LIST.map(m => ({ ...m, pct: m0Progress(m.key) })).filter(m => m.pct > 0 && m.pct < 100)[0]
-  document.getElementById('currentPct').textContent = (started ? started.pct : 0) + '%'
-  document.getElementById('currentProgFill').style.width = (started ? started.pct : 0) + '%'
-  document.getElementById('currentLessonTitle').textContent = started ? started.name : 'Kurs tanlanmagan'
-  document.getElementById('currentLessonMeta').textContent  = started ? `${started.pct}% bajarildi` : 'Oʻzingizga mos Lab M0 sini tanlang'
-  document.querySelector('.cc-btn').textContent = started ? 'Davom etish →' : 'M0 ni boshlash →'
-  document.querySelector('.cc-btn').href = started ? started.href : '#modulesList'
+// ════════════════════════════════════════════════════════
+//  7. YAQIN MUDDATLAR (Shaxsiy reja, Master M2 jadvali, vaqt chizigʻi)
+// ════════════════════════════════════════════════════════
+function renderDeadlines() {
+  const items = []
+  const plan = ls('kompas-master-planner-v1')
+  ;((plan && plan.programmes) || []).forEach(p => { if (p.deadline) items.push({ d: p.deadline, n: `${p.university || ''}${p.programme ? ', ' + p.programme : ''}`, src: 'Shaxsiy reja' }) })
+  const m2 = ls('kompas_master_m2_v1')
+  ;((m2 && m2.rows) || []).forEach(r => { if (r.date) items.push({ d: r.date, n: r.name || 'Ariza', src: 'Master M2 jadvali' }) })
+  const j = ls('kompas_journey_v1')
+  if (j && j.date) items.push({ d: j.date, n: 'Ariza muddati (vaqt chizigʻi)', src: 'Mening yoʻlim' })
+  const today = new Date(); today.setHours(0, 0, 0, 0)
+  const up = items.map(x => ({ ...x, t: new Date(x.d + 'T00:00:00') })).filter(x => !isNaN(x.t) && x.t >= today)
+    .sort((a, b) => a.t - b.t)
+  const seen = new Set(), uniq = up.filter(x => { const k = x.d + '|' + x.n; if (seen.has(k)) return false; seen.add(k); return true }).slice(0, 6)
+  const box = document.getElementById('dlList')
+  if (!uniq.length) {
+    box.innerHTML = '<p class="side-muted">Muddat kiritilmagan. Dastur va muddatlarni <a href="master-planner.html">Shaxsiy reja</a>ga yoki Master M2 dagi jadvalga qoʻshing: shu yerda tartib bilan chiqadi.</p>'
+    return
+  }
+  box.innerHTML = uniq.map(x => {
+    const days = Math.round((x.t - today) / 86400000)
+    return `<div class="dl-item"><div class="dl-name">${esc(x.n)}<small>${esc(fmtDate(x.t))} · ${esc(x.src)}</small></div><div class="dl-left${days <= 14 ? ' soon' : ''}">${days === 0 ? 'bugun' : days + ' kun'}</div></div>`
+  }).join('') + '<p class="side-muted" style="margin:8px 0 0">Sanalarni oʻzingiz kiritgansiz: rasmiy sahifadan qayta tekshiring.</p>'
+}
+
+// ════════════════════════════════════════════════════════
+//  8. ZAXIRA (eksport / import)
+// ════════════════════════════════════════════════════════
+const BK_KEY = /^kompas[_-]/
+function initBackup() {
+  const msg = document.getElementById('bkMsg')
+  const say = (t, ok) => { msg.textContent = t; msg.className = 'set-msg ' + (ok ? 'ok' : 'err') }
+  document.getElementById('bkExport').addEventListener('click', () => {
+    const data = {}
+    for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (BK_KEY.test(k)) data[k] = localStorage.getItem(k) }
+    const n = Object.keys(data).length
+    if (!n) { say('Hali saqlangan javob yoʻq.', false); return }
+    const blob = new Blob([JSON.stringify({ app: 'kompaslab', v: 1, exported_at: new Date().toISOString(), data }, null, 1)], { type: 'application/json' })
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob)
+    a.download = 'kompaslab-zaxira-' + new Date().toISOString().slice(0, 10) + '.json'
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000)
+    say(n + ' ta yozuv yuklab olindi. Faylni xavfsiz joyda saqlang.', true)
+  })
+  document.getElementById('bkImport').addEventListener('change', e => {
+    const f = e.target.files && e.target.files[0]; if (!f) return
+    f.text().then(t => {
+      let o; try { o = JSON.parse(t) } catch (x) { say('Fayl oʻqilmadi: JSON emas.', false); return }
+      if (!o || o.app !== 'kompaslab' || typeof o.data !== 'object') { say('Bu Kompas Lab zaxira fayli emas.', false); return }
+      const keys = Object.keys(o.data).filter(k => BK_KEY.test(k) && typeof o.data[k] === 'string')
+      if (!keys.length) { say('Faylda tiklanadigan yozuv yoʻq.', false); return }
+      if (!confirm(keys.length + ' ta yozuv tiklanadi. Shu qurilmadagi mos javoblar fayldagisi bilan almashtiriladi. Davom etasizmi?')) return
+      keys.forEach(k => { try { localStorage.setItem(k, o.data[k]) } catch (x) {} })
+      say('Tiklandi. Sahifa yangilanmoqda…', true)
+      setTimeout(() => location.reload(), 800)
+    })
+    e.target.value = ''
+  })
+  // Parolni oʻzgartirish
+  document.getElementById('pwForm').addEventListener('submit', async e => {
+    e.preventDefault()
+    const m = document.getElementById('pwMsg'), p1 = document.getElementById('pw1').value, p2 = document.getElementById('pw2').value
+    if (p1.length < 8) { m.textContent = 'Parol kamida 8 ta belgidan iborat boʻlsin.'; m.className = 'set-msg err'; return }
+    if (p1 !== p2) { m.textContent = 'Parollar bir xil emas.'; m.className = 'set-msg err'; return }
+    const r = await updatePassword(p1)
+    m.textContent = r.success ? 'Parol oʻzgartirildi.' : 'Oʻzgartirib boʻlmadi: ' + (r.error || 'xato')
+    m.className = 'set-msg ' + (r.success ? 'ok' : 'err')
+    if (r.success) e.target.reset()
+  })
 }
 
 function renderError() {
+  document.getElementById('subBody').innerHTML = '<p class="side-muted">Server bilan aloqa yoʻq. Internetni tekshirib, sahifani yangilang.</p>'
   showToast('Internetni tekshiring yoki sahifani yangilang', 'error')
 }
-
-// ── Demo mode (Supabase ulanmagan bo'lsa) ─────────────
-function renderDemoMode() {
-  console.warn('Demo mode: Supabase ulanmagan')
-  const fakePct   = 35
-  const fakeDone  = 12
-  const fakeTotal = 35
-
-  document.getElementById('greetingText').textContent = `${getGreeting()}, Demo Talaba! 👋`
-  document.getElementById('sidebarAvatar').textContent = 'DT'
-  document.getElementById('sidebarName').textContent   = 'Demo Talaba'
-  document.getElementById('sidebarPlan').textContent   = '🚀 Scholar plan'
-
-  renderStats(fakeDone, fakeTotal, fakePct, 3, 7)
-  renderProgressRing(fakePct, fakeDone, fakeTotal, 3, 7)
-  renderSidebarProgress(fakePct)
-
-  document.getElementById('currentLessonTitle').textContent = 'Supabase ulanish kerak'
-  document.getElementById('currentLessonMeta').textContent  = '⚙️ config.js ni to\'ldiring'
-  document.getElementById('currentPct').textContent         = fakePct + '%'
-  document.getElementById('currentProgFill').style.width    = fakePct + '%'
-
-  document.getElementById('streakDays').textContent = '7'
-  document.getElementById('rsStreak').textContent   = '7'
-}
-
-// ════════════════════════════════════════════════════════
-//  11. TASK TOGGLE (local — Supabase ga keyinroq ulash)
-// ════════════════════════════════════════════════════════
-function toggleTask(el) {
-  const isDone = el.classList.toggle('done')
-  el.textContent = isDone ? '✓' : ''
-  const title = el.nextElementSibling?.querySelector('.task-title')
-  if (title) title.classList.toggle('done', isDone)
-}
-
-// ════════════════════════════════════════════════════════
-//  12. LOGOUT
-// ════════════════════════════════════════════════════════
-async function handleLogout() {
-  await logout()
-}
-
-// ════════════════════════════════════════════════════════
-//  ISHGA TUSHIRISH
-// ════════════════════════════════════════════════════════
+async function handleLogout() { await logout() }
 document.addEventListener('DOMContentLoaded', init)
 </script>
+
 <script>
 document.querySelector('.sidebar').addEventListener('click', function (e) { if (e.target.closest('a')) document.body.classList.remove('sb-open') })
 </script>

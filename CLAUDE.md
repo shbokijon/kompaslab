@@ -36,7 +36,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 | `index.html` | Bosh sahifa (v5: jonli hisob, kalkulyator, animatsiyalar) | **Qoʻlda**. Generator uni faqat `--index` bilan yozadi (eskirgan, ishlatma) |
 | `*-lab.html`, `tadbirkor-talaba.html` | Lab sahifalari | **Generator**: `python3 tools/landing/build.py` (`labs_data.py`, `mods.json`, `render.py` + `postprocess.py`). HTML ni toʻgʻridan-toʻgʻri tahrirlasang, keyingi yaratishda yoʻqoladi |
 | `*-m0.html`, M1/M2 | Interaktiv modullar | **`tools/modules/`** (pastda). `master-lab-m0.html` manbasiz — toʻgʻridan-toʻgʻri tahrirlanadi |
-| `dashboard.html`, `lesson.html` | Talaba kabineti; dars pleyeri (hozir demo maʼlumot) | Qoʻlda. `dashboard.html` dagi `M0_LIST` — M0 kartochkalari |
+| `dashboard.html`, `lesson.html` | Talaba kabineti (2026-10-30 v2: soxta vazifa/statistika yoʻq; statistika, Yaqin muddatlar (Shaxsiy reja, Master M2, Mening yoʻlim) va zaxira eksport/import localStorage dan; obuna kartasi `fn_my_access` dan; Sozlamalar: parol, chiqish; obunasizda M0 kartochkalari birinchi). `lesson.html` eski demo pleyer, kabinetdan havola yoʻq | Qoʻlda. `dashboard.html` dagi `M0_LIST`, `PAGE_COURSES` |
 | `admin.html` | Admin panel (roʻyxatdan oʻtganlar, CSV, narxlar, analitika) | Qoʻlda |
 | `login.html`, `register.html`, `reset-password.html`, `payment.html` | Kirish; roʻyxatdan oʻtish (taʼlim va maqsad `user_metadata` ga yoziladi); parolni tiklash (`/reset`); toʻlov (**yopiq**, Click/Payme ulanmagan) | Qoʻlda |
 | `js/config.js` | Supabase mijozi `window.supabase` | — |
