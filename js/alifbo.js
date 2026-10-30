@@ -80,14 +80,24 @@
     }
     if (el.nodeName === "INPUT" && /^(button|submit|reset)$/i.test(el.type) && el.value) { var cv = conv(el.value); if (cv !== el.value) el.value = cv; }
   }
+  // Atributlar (placeholder, title, aria-label…) uchun: element oʻzi textarea/input yoki translate="no"
+  // boʻlsa ham atributi oʻgiriladi; faqat ajdod oʻtkazib yuborilgan boʻlsa yoki elementning oʻzi
+  // lang="en" / data-alifbo="off" boʻlsa oʻgirilmaydi.
+  function attrSkip(el) {
+    if (el.getAttribute("data-alifbo") === "off") return true;
+    var lg = el.getAttribute("lang");
+    if (lg && !/^uz/i.test(lg)) return true;
+    return skip(el.parentNode);
+  }
   function walk(root) {
     if (!root) return;
     if (root.nodeType === 3) { if (!skip(root.parentNode)) { var c = conv(root.nodeValue); if (c !== root.nodeValue) root.nodeValue = c; } return; }
-    if (root.nodeType !== 1 || skip(root)) { if (root.nodeType === 1 && root.nodeName === "INPUT") attrs(root); return; }
-    attrs(root);
+    if (root.nodeType !== 1) return;
+    if (!attrSkip(root)) attrs(root);
+    if (skip(root)) { if (root.querySelectorAll) root.querySelectorAll("[placeholder],[title],[aria-label],[alt],[data-tip]").forEach(function (e) { if (!attrSkip(e)) attrs(e); }); return; }
     var tw = document.createTreeWalker(root, 5, null), n;
     while ((n = tw.nextNode())) {
-      if (n.nodeType === 1) { if (!skip(n)) attrs(n); else if (n.nodeName === "INPUT") attrs(n); continue; }
+      if (n.nodeType === 1) { if (!attrSkip(n)) attrs(n); continue; }
       if (skip(n.parentNode)) continue;
       var v = n.nodeValue, cc = conv(v);
       if (cc !== v) n.nodeValue = cc;
@@ -100,7 +110,7 @@
       for (var i = 0; i < ms.length; i++) {
         var m = ms[i];
         if (m.type === "characterData") walk(m.target);
-        else if (m.type === "attributes") { if (!skip(m.target)) attrs(m.target); }
+        else if (m.type === "attributes") { if (!attrSkip(m.target)) attrs(m.target); }
         else for (var j = 0; j < m.addedNodes.length; j++) walk(m.addedNodes[j]);
       }
     }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ATTR });
