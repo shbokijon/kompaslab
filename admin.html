@@ -642,21 +642,25 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <div class="fld"><label>Email *</label><input id="sE" type="email" placeholder="sardor@gmail.com"></div>
     <div class="fld"><label>Telefon</label><input id="sP" placeholder="+998 90 123 45 67"></div>
     <div class="fld"><label>Kurs *</label>
-      <select id="sCourse">
-
-        <option value="bachelor-lab">🎓 Bachelor Lab — 499,000 soʻm</option>
-        <option value="master-lab">🔬 Master Lab — 499,000 soʻm</option>
-        <option value="phd-lab">⚗️ PhD Lab — 699,000 soʻm</option>
-        <option value="gks-lab">🇰🇷 GKS Lab — 499,000 soʻm</option>
-        <option value="daad-lab">🇩🇪 DAAD Lab — 599,000 soʻm</option>
+      <select id="sCourse" onchange="fillStudentAmount()">
+        <option value="">Yuklanmoqda...</option>
       </select>
+    </div>
+    <div class="fr">
+      <div class="fld"><label>Tarif *</label>
+        <select id="sPlan" onchange="fillStudentAmount()">
+          <option value="yearly">Yillik</option>
+          <option value="monthly">Oylik</option>
+        </select>
+      </div>
+      <div class="fld"><label>Summa (soʻm) *</label><input id="sAmount" type="number" min="0" step="100"></div>
     </div>
     <div class="fld"><label>Toʻlov usuli</label>
       <select id="sMethod">
         <option value="click">Click.uz</option>
         <option value="payme">Payme</option>
         <option value="bank">Bank kartasi</option>
-        <option value="manual">Qoʻlda (admin)</option>
+        <option value="admin">Qoʻlda (admin)</option>
       </select>
     </div>
   </div>
@@ -738,7 +742,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
   </div>
 </div></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 // ─── SUPABASE INIT (inline) ───────────────────────────────────
 const SUPABASE_URL      = 'https://usxpkmbjrdllnitlzdpq.supabase.co'
@@ -780,6 +784,9 @@ const COURSE_META = {
   'usa-lab':      { emoji: '🇺🇸', label: 'USA Lab' },
   'tadbirkor-talaba': { emoji: '💼', label: 'Tadbirkor Talaba' },
   'miggo':        { emoji: '🧳', label: 'Musofir Lab' },
+  'maktab-lab':   { emoji: "🏫", label: "Maktab Lab" },
+  'research-lab': { emoji: "🔭", label: "Research Lab" },
+  'ai-tools':     { emoji: "🤖", label: "AI Amaliyot Lab" },
 }
 
 // ════════════════════════════════════════════════════════
@@ -820,7 +827,8 @@ async function init() {
 // ════════════════════════════════════════════════════════
 async function loadCourseMap() {
   try {
-    const { data } = await supabase.from(DB.courses).select('id, slug, title, emoji')
+    const { data, error } = await supabase.from(DB.courses).select("id, slug, title, emoji, status, price, price_yearly, price_monthly")
+    if (error) throw error
     if (data) data.forEach(c => { _courseMap[c.slug] = c })
   } catch(e) {
     // Fallback: manual map
@@ -828,6 +836,52 @@ async function loadCourseMap() {
       _courseMap[slug] = { slug, title: meta.label, emoji: meta.emoji }
     })
   }
+  populateCourseSelects()
+}
+
+// Hamma kurs roʻyxatlari bazadagi courses jadvalidan (qattiq yozilgan roʻyxat va narx yoʻq)
+function courseSlugsSorted() {
+  const order = LAB_LIST.map(l => l[0])
+  return Object.keys(_courseMap).filter(sl => sl !== "test-lab").sort((a, b) => {
+    const ia = order.indexOf(a), ib = order.indexOf(b)
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b)
+  })
+}
+function courseLabel(sl) {
+  const c = _courseMap[sl] || {}, m = COURSE_META[sl] || {}
+  return ((c.emoji || m.emoji || "") + " " + (c.title || m.label || sl)).trim()
+}
+function populateCourseSelects() {
+  const slugs = courseSlugsSorted()
+  const opts = slugs.map(sl => "<option value=\"" + escHtml(sl) + "\">" + escHtml(courseLabel(sl)) + "</option>").join("")
+  ;["filterCourse1", "filterCourse2", "filterPayCourse"].forEach(id => {
+    const el = document.getElementById(id); if (!el) return
+    const cur = el.value
+    el.innerHTML = "<option value=\"\">Barcha kurslar</option>" + opts
+    el.value = slugs.includes(cur) ? cur : ""
+  })
+  ;["lCourseSelect", "lCourse"].forEach(id => {
+    const el = document.getElementById(id); if (!el) return
+    const cur = el.value
+    el.innerHTML = opts
+    if (slugs.includes(cur)) el.value = cur
+  })
+  const au = document.getElementById("aAu")
+  if (au) au.innerHTML = "<option value=\"all\">Barcha talabalar</option>" + opts
+  const sc = document.getElementById("sCourse")
+  if (sc) {
+    sc.innerHTML = slugs.map(sl => {
+      const c = _courseMap[sl] || {}, y = c.price_yearly ?? c.price, m = c.price_monthly
+      return "<option value=\"" + escHtml(sl) + "\">" + escHtml(courseLabel(sl)) + " \u2014 " + fmtSum(y) + " / " + fmtSum(m) + " soʻm</option>"
+    }).join("") || "<option value=\"\">Kurslar yuklanmadi</option>"
+    fillStudentAmount()
+  }
+}
+function fillStudentAmount() {
+  const sl = document.getElementById("sCourse")?.value, plan = document.getElementById("sPlan")?.value
+  const c = _courseMap[sl] || {}, amt = plan === "monthly" ? c.price_monthly : (c.price_yearly ?? c.price)
+  const inp = document.getElementById("sAmount")
+  if (inp) inp.value = amt ?? ""
 }
 
 // ════════════════════════════════════════════════════════
@@ -985,7 +1039,7 @@ function renderPaymentsTable(payments) {
   const tb = document.getElementById('tb3')
   if (!payments.length) { renderEmpty('tb3', '💳', "To'lovlar topilmadi"); return }
 
-  const methodLabels = { click: 'Click.uz', payme: 'Payme', bank: 'Bank kartasi', manual: 'Admin' }
+  const methodLabels = { click: 'Click.uz', payme: 'Payme', bank: 'Bank kartasi', cash: 'Naqd', admin: 'Admin', manual: 'Admin' }
 
   tb.innerHTML = payments.map(p => {
     const name = p.profile?.full_name ||
@@ -1302,23 +1356,20 @@ async function saveStudent() {
     }
     if (!courseId) throw new Error('Kurs topilmadi')
 
-    // 3. Payment yozuvi
-    const coursePrice = { 'bachelor-lab':499000, 'master-lab':499000, 'phd-lab':699000, 'gks-lab':499000 }
-    const { data: pay } = await supabase.from(DB.payments).insert({
+    // 3. Toʻlov yozuvi (summa bazadagi narxdan, admin oʻzgartirishi mumkin).
+    // Enrollmentni payments dagi trg_activate_enrollment triggeri yaratadi.
+    const plan = document.getElementById("sPlan").value
+    const amount = parseInt(document.getElementById("sAmount").value, 10)
+    if (!(amount > 0)) { toast("⚠️ Summani kiriting"); return }
+    if (!confirm(firstName + " " + lastName + " \u2192 " + courseLabel(courseSlug) + ", " + (plan === "monthly" ? "oylik" : "yillik") + ", " + fmtSum(amount) + " soʻm. Tasdiqlaysizmi?")) return
+    const { data: pay, error: payErr } = await supabase.from(DB.payments).insert({
       user_id: profile.id, course_id: courseId,
-      plan: 'starter', amount: coursePrice[courseSlug] || 499000,
-      method: method, status: 'confirmed',
-      note: 'Admin qo\'lda yozgan',
-      confirmed_at: new Date().toISOString(), confirmed_by: 'admin',
+      plan: "starter", amount: amount,
+      method: method, status: "confirmed",
+      note: "Admin qoʻlda yozgan; tarif: " + plan,
+      confirmed_at: new Date().toISOString(), confirmed_by: "admin",
     }).select().single()
-
-    // 4. Enrollment
-    await supabase.from(DB.enrollments).upsert({
-      user_id: profile.id, course_id: courseId,
-      plan: 'starter', payment_status: 'paid',
-      payment_id: pay?.id,
-      enrolled_at: new Date().toISOString(),
-    }, { onConflict: 'user_id,course_id' })
+    if (payErr || !pay) throw new Error("Toʻlov yozilmadi: " + (payErr?.message || "ruxsat yoʻq"))
 
     toast(`✅ ${firstName} ${lastName} → ${COURSE_META[courseSlug]?.label || courseSlug}`)
     closeMdl('student')
@@ -1432,9 +1483,10 @@ async function changeStudentPassword() {
 
 async function unenrollStudent(enrollId, courseTitle) {
   if (!confirm(`"${courseTitle}" kursidan chiqarishni tasdiqlaysizmi?`)) return
-  const { error } = await supabase
-    .from(DB.enrollments).delete().eq('id', enrollId)
-  if (error) { toast('❌ ' + error.message); return }
+  const { data: gone, error } = await supabase
+    .from(DB.enrollments).delete().eq("id", enrollId).select("id")
+  if (error) { toast("❌ " + error.message); return }
+  if (!gone || !gone.length) { toast("❌ Oʻchirilmadi: bazada ruxsat yoʻq yoki yozuv topilmadi"); return }
   toast(`✅ ${courseTitle} kursidan chiqarildi`)
   await loadSdCourses(_sdUserId)
   await loadStudents()
@@ -1785,7 +1837,8 @@ function exportRegsCSV() {
 const LAB_LIST = [
   ['bachelor-lab', 'Bachelor Lab'], ['master-lab', 'Master Lab'], ['phd-lab', 'PhD Lab'],
   ['gks-lab', 'GKS Lab'], ['usa-lab', 'USA Lab'], ['daad-lab', 'DAAD Lab'],
-  ['tadbirkor-talaba', 'Tadbirkor Talaba'], ['miggo', 'Musofir Lab']
+  ['tadbirkor-talaba', 'Tadbirkor Talaba'], ['miggo', 'Musofir Lab'],
+  ['maktab-lab', 'Maktab Lab'], ['research-lab', 'Research Lab'], ['ai-tools', 'AI Amaliyot Lab']
 ]
 const LAB_DEFAULT_PRICE = { 'usa-lab': [699000, 99000], 'tadbirkor-talaba': [299000, 29900], 'miggo': [499000, 49900] }
 let _labRows = {}
@@ -1801,7 +1854,8 @@ async function loadLabs() {
   if (c.error) { tb.innerHTML = '<tr><td colspan="6" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
   _labRows = {}; (c.data || []).forEach(r => { _labRows[r.slug] = r })
   const wl = {}; (w.data || []).forEach(r => { wl[r.course_slug] = (wl[r.course_slug] || 0) + 1 })
-  tb.innerHTML = LAB_LIST.map(([slug, name]) => {
+  const extra = Object.keys(_labRows).filter(sl => !LAB_LIST.some(l => l[0] === sl)).map(sl => [sl, _labRows[sl].title || sl])
+  tb.innerHTML = LAB_LIST.concat(extra).map(([slug, name]) => {
     const r = _labRows[slug], y = r ? (r.price_yearly ?? r.price) : null, m = r ? r.price_monthly : null
     const inp = (id, v) => '<input id="' + id + '" type="number" min="0" step="100" value="' + (v ?? '') + '" style="width:120px;padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit">'
     const act = r
