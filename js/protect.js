@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════
 //  KOMPAS LAB — protect.js
-//  Kurs materiallarini nusxalashni qiyinlashtiradi (toʻliq toʻsib boʻlmaydi):
+//  Kurs materiallarini nusxalashni qiyinlashtiradi (2026-10-30: KOMPAS_PROTECT_ALL — kirmaganlarga ham) (toʻliq toʻsib boʻlmaydi):
 //   · matnni belgilash, nusxa olish, oʻng tugma, sudrash, chop etish oʻchiriladi
 //     (input/textarea ichida yozish va nusxalash ishlaydi)
 //   · ekranga juda xira suv belgisi: "kompaslab.uz"
@@ -54,7 +54,9 @@
     if (!d.parentNode) document.body.appendChild(d);
   }
   // Faqat tizimga kirganlarga (M0 va darslar shu holatda ochiladi)
+  // window.KOMPAS_PROTECT_ALL = true boʻlsa (Lab dastur va modul sahifalari), suv belgisi hammaga
   function start() {
+    if (window.KOMPAS_PROTECT_ALL) { watermark("kompaslab.uz"); return; }
     var sb = window.supabase;
     if (!sb || !sb.auth || typeof sb.auth.getSession !== "function") return;
     sb.auth.getSession().then(function (r) {

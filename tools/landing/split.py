@@ -62,6 +62,11 @@ def blocks(body):
     return out
 
 
+# Dastur va modul sahifalari (2026-10-30): nusxa olish cheklovi va "kompaslab.uz" suv belgisi hamma tashrifchiga
+# (kirmaganlarga ham). Toʻliq himoya emas: matn HTML manbasida qoladi, qidiruv tizimlari uni koʻradi.
+PROTECT = '<script>window.KOMPAS_PROTECT_ALL=true;</script>\n<script src="js/protect.js" defer></script>\n'
+
+
 def phase_tabs(sec):
     """Dastur sahifasi (2026-10-30): faza kartalari tugma boʻladi, bosilganda faqat shu faza modullari
     koʻrinadi; modullar yopiq, dars izohlari bu sahifada yashirin (toʻliq matn modul sahifasida).
@@ -278,7 +283,7 @@ def split(root, f, src):
         h = h.replace("</head>", f'<link rel="canonical" href="{SITE}{fn[:-5]}">\n' + UI_HEAD + "</head>", 1)
         b = bopen.replace("<body", f'<body data-kpage="{kind}"', 1)
         foot = "\n".join(B[k] for k in order if k in ("footer", "modal") or k.startswith("footer") or k.startswith("modal"))
-        html = h + b + "\n" + pre + "\n" + nav(stem + "-dastur.html" if kind == "modul" else fn) + "\n" + main + "\n" + foot + "\n" + scripts + '\n<script src="js/sfx.js"></script>\n' + tail_after
+        html = h + b + "\n" + pre + "\n" + nav(stem + "-dastur.html" if kind == "modul" else fn) + "\n" + main + "\n" + foot + "\n" + scripts + '\n<script src="js/sfx.js"></script>\n' + (PROTECT if kind in ("dastur", "modul") else "") + tail_after
         if kind == "hub":
             html = html.replace("</body>", HUB_JS.replace("{{MAP}}", json.dumps(hmap)) + "</body>", 1)
         html = relink(html, stem, hmap, set(own))
