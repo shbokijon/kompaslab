@@ -273,7 +273,7 @@ function kompasReturnTo() {
 document.addEventListener('DOMContentLoaded', async () => {
   const { data: { session } } = await window.supabase.auth.getSession()
   if (!session) return
-  const adminEmails = ['shbokijon@gmail.com']
+  const adminEmails = ['shbokijon@gmail.com', 'kompaslab.uz@gmail.com']
   const userEmail = (session.user.email || '').toLowerCase()
   let isAdmin = adminEmails.includes(userEmail)
   if (!isAdmin) {
@@ -369,7 +369,7 @@ async function handleLogin(e) {
     }
 
     // Muvaffaqiyatli — admin tekshiruvi
-    const adminEmails = ['shbokijon@gmail.com']
+    const adminEmails = ['shbokijon@gmail.com', 'kompaslab.uz@gmail.com']
     const userEmail = (data.user.email || '').toLowerCase()
     let isAdmin = adminEmails.includes(userEmail)
     if (!isAdmin) {
