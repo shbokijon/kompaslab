@@ -76,7 +76,7 @@ IDX_CSS = """
 .result .note2{font-size:13px;color:var(--gold);background:var(--gold-lit);border-radius:10px;padding:8px 12px;margin-bottom:12px;}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border:1px solid var(--border);border-radius:18px;background:var(--surface);overflow:hidden;}
 .stat{padding:22px 20px;box-shadow:1px 1px 0 var(--border);}
-.stat b{display:block;font-family:"DM Serif Display","Playfair Display",serif;font-weight:400;font-size:44px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;}
+.stat b{display:block;font-family:"Noto Serif Display","Playfair Display",serif;font-weight:400;font-size:44px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;}
 .stat span{display:block;font-size:13.5px;color:var(--muted);margin-top:8px;}
 .stat[hidden]{display:none;}
 .stats-note{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-top:12px;}
@@ -121,7 +121,7 @@ IDX_CSS = """
 .quick{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 14px;font-size:13px;color:var(--muted);align-items:center;}
 .quick button{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:13px;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);cursor:pointer;color:var(--text);min-height:34px;}
 .out{background:var(--accent);color:#fff;border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:center;}
-.out .big{font-family:"DM Serif Display","Playfair Display",serif;font-size:56px;line-height:1;font-variant-numeric:tabular-nums;}
+.out .big{font-family:"Noto Serif Display","Playfair Display",serif;font-size:56px;line-height:1;font-variant-numeric:tabular-nums;}
 .out .big small{font-family:"Outfit","IBM Plex Sans",sans-serif;font-size:18px;font-weight:700;margin-left:6px;}
 .out p{color:rgba(255,255,255,.78);font-size:15px;margin-top:10px;}
 .out .muted{color:rgba(255,255,255,.6);font-size:13px;}

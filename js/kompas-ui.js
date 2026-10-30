@@ -5,6 +5,47 @@
 //  · Ichki havolalarga "nav" tovushi (sfx.js), ←/→ bilan oldingi/keyingi sahifa
 //  · Lab tablari (mobil panel) va "yoʻl"dagi kompas strelkasi
 // ═══════════════════════════════════════════════════════════════
+// ── Tungi rejim (2026-10-30): tanlov localStorage "kompas_theme" (light|dark), boʻlmasa tizim sozlamasi.
+//    <head> da sinxron ishlaydi, shuning uchun sahifa yorugʻ holda "miltillamaydi". Ranglar: css/kompas-ui.css oxiridagi blok.
+(function () {
+  var KEY = "kompas_theme", root = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  function saved() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function apply() { var t = saved() || (mq && mq.matches ? "dark" : "light"); root.setAttribute("data-theme", t); return t; }
+  apply();
+  if (mq && mq.addEventListener) mq.addEventListener("change", function () { if (!saved()) { apply(); sync(); } });
+  var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>';
+  var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>';
+  var btns = [];
+  function sync() {
+    var dark = root.getAttribute("data-theme") === "dark";
+    btns.forEach(function (b) { b.innerHTML = dark ? SUN : MOON; b.setAttribute("aria-label", dark ? "Yorugʻ rejim" : "Tungi rejim"); b.setAttribute("title", dark ? "Yorugʻ rejim" : "Tungi rejim"); b.setAttribute("aria-pressed", dark ? "true" : "false"); });
+  }
+  function make() {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "kl-theme"; b.setAttribute("data-snd", "tab");
+    b.addEventListener("click", function () {
+      var t = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      try { localStorage.setItem(KEY, t); } catch (e) {}
+      root.setAttribute("data-theme", t); sync();
+    });
+    btns.push(b); return b;
+  }
+  function mount() {
+    var slot = document.querySelector("[data-sfx-slot]");
+    if (slot && slot.parentNode) { slot.parentNode.insertBefore(make(), slot); }
+    else {
+      var xp = document.querySelector("header.top .xp");
+      var nav = document.querySelector(".at-nav .wrap, .atop .wrap");
+      if (xp) xp.parentNode.insertBefore(make(), xp);
+      else if (nav) nav.appendChild(make());
+      else { var b = make(); b.classList.add("kl-theme-float"); document.body.appendChild(b); }
+    }
+    sync();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount); else mount();
+})();
+
 (function () {
   var DIR = "kl_dir";
   // Yangi sahifa ochilganda: oldingi sahifada bosilgan havola yoʻnalishini oʻtishga qoʻshamiz

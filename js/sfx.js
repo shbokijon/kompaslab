@@ -6,7 +6,7 @@
 //    Tanlov localStorage "kompas_sfx" da, hamma sahifalarga umumiy ("0" = oʻchiq).
 //  · Sahifada [data-sfx] boʻlsa, avtomatik "tap" faqat shu boʻlimlar ichida chalinadi.
 //    Tugmadagi data-snd="nom" oʻsha tovushni chaladi ("none" = jim).
-//  API: KSfx.play(nom)  — tap | tab | pick | xp | badge | level | win | warn | needle | chime | whoosh | swap | nav | turn
+//  API: KSfx.play(nom)  — tap | tab | pick | xp | badge | level | win | warn | needle | chime | whoosh | swap | nav | turn | k1–k4 | k4end
 //  Ichki havolalarga kompas-ui.js data-snd="nav" qoʻyadi (sahifa almashinuvi tovushi).
 //       KSfx.gain(oldXp, newXp) — XP qoʻshilganda mos tovushni tanlaydi
 // ═══════════════════════════════════════════════════════════════
@@ -50,7 +50,13 @@
     // Sahifa almashinuvi: qogʻoz varagʻi shitirlashi + past nota
     nav: function () { sweep(3200, 1100, 0.16, 0.05); note(523.25, 0.02, 0.12, "sine", 0.045); },
     // Keyingi dars: yuqoriga koʻtariluvchi ikki nota
-    turn: function () { sweep(1400, 3600, 0.18, 0.045); note(659.25, 0.03, 0.12, "triangle", 0.06); note(987.77, 0.1, 0.18, "sine", 0.05); }
+    turn: function () { sweep(1400, 3600, 0.18, 0.045); note(659.25, 0.03, 0.12, "triangle", 0.06); note(987.77, 0.1, 0.18, "sine", 0.05); },
+    // 4K yoʻli (bosh sahifa): har bekat yuqoriroq nota (pentatonika), yoʻl boʻylab shitirlash, oxirida akkord
+    k1: function () { sweep(900, 1800, 0.22, 0.04); note(392, 0.04, 0.3, "triangle", 0.11); note(784, 0.06, 0.4, "sine", 0.05); },
+    k2: function () { sweep(1000, 2100, 0.22, 0.04); note(440, 0.04, 0.3, "triangle", 0.11); note(880, 0.06, 0.4, "sine", 0.05); },
+    k3: function () { sweep(1100, 2400, 0.22, 0.04); note(523.25, 0.04, 0.3, "triangle", 0.1); note(1046.5, 0.06, 0.4, "sine", 0.045); },
+    k4: function () { sweep(1200, 2700, 0.22, 0.04); note(587.33, 0.04, 0.3, "triangle", 0.1); note(1174.66, 0.06, 0.4, "sine", 0.045); },
+    k4end: function () { [392, 493.88, 587.33, 783.99].forEach(function (f, i) { note(f, 0.05 + i * 0.05, 1.2, "sine", 0.05); }); note(1567.98, 0.3, 0.9, "sine", 0.03); }
   };
   // Shovqin (oq shovqin) filtr chastotasi f0 dan f1 ga siljiydi
   var noise = null;
