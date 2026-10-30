@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+<title>Qoʻllab-quvvatlash · Kompas Lab</title>
+<meta name="description" content="Kompas Labni qanday qoʻllab-quvvatlash mumkin: ulashish, xato haqida xabar, fikr. Pul bilan yordam rasmiy toʻlov tizimi ulangach ochiladi.">
+<meta property="og:title" content="Kompas Lab">
+<meta property="og:description" content="Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul. Obuna: oylik, Mavsum (4 oy) yoki yillik.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<link rel="stylesheet" href="css/home.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kompas Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script src="js/pwa.js" defer></script>
+<script src="js/sfx.js" defer></script>
+<link rel="stylesheet" href="css/brand.css">
+<meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kompas Lab logotipi: Kuzatuvdan kashfiyotga">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.kompaslab.uz/qollab-quvvatlash">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<script src="js/kompas-ui.js"></script>
+</head>
+<body data-kpage="donat">
+
+<nav class="nav" data-sfx>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab</span></a>
+    <div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html">Narxlar</a><a href="savollar.html">Savollar</a></div>
+    <span class="kl-sfx" data-sfx-slot></span><a href="login.html" class="btn btn-g btn-sm">Kirish</a>
+    <button type="button" class="btn btn-p btn-sm" style="margin-left:0" data-wl="">Kutish roʻyxati</button>
+  </div>
+</nav>
+<div class="kl-tabbar" data-sfx><div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html">Narxlar</a><a href="savollar.html">Savollar</a></div></div>
+<header class="kl-pagehead">
+  <div class="wrap">
+    <nav class="kl-crumb" aria-label="Yoʻl"><a href="index.html">Kompas Lab</a><span aria-hidden="true">/</span><span>Qoʻllab-quvvatlash</span></nav>
+    <div class="kl-head-row"><div><h1>Kompas Labni qoʻllab-quvvatlash</h1><p class="lead">Kompas Lab hozircha pul qabul qilmaydi: rasmiy toʻlov tizimi (Click, Payme) hali ulanmagan. Har Labdagi M0 bepul. Hozir ishlaydigan yordam yoʻllari pastda.</p></div><img class="kl-head-art float" src="img/3d/seedling.webp" alt="" width="160" height="160"></div>
+  </div>
+</header>
+<section id="yordam">
+  <div class="wrap">
+    <div class="head"><h2>Hozir qila oladigan ishlar</h2></div>
+    <div class="dn-grid">
+      <div class="dn-card">
+        <img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
+        <b>Ulashing</b>
+        <p>Xorijda oʻqishni oʻylayotgan tanishingizga yuboring. Oʻzbek tilidagi bepul M0 kimgadir birinchi qadamni oson qiladi.</p>
+        <button type="button" class="btn btn-p btn-sm" id="shareBtn" data-snd="pick">Ulashish</button>
+        <span class="dn-msg" id="shareMsg" aria-live="polite"></span>
+      </div>
+      <div class="dn-card">
+        <img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
+        <b>Xato topsangiz, yozing</b>
+        <p>Eskirgan muddat, buzilgan havola, notoʻgʻri fakt. Sahifa manzili va bir jumla izoh yetarli: rasmiy manba bilan tekshirib, tuzatamiz.</p>
+        <a class="btn btn-g btn-sm" href="mailto:kompaslab.uz@gmail.com?subject=Saytda%20xato" translate="no">kompaslab.uz@gmail.com</a>
+      </div>
+      <div class="dn-card">
+        <img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
+        <b>Fikr bildiring</b>
+        <p>Qaysi dars tushunarsiz boʻldi, nima yetishmadi, qaysi Lab kerak. Har xabar oʻqiladi.</p>
+        <a class="btn btn-g btn-sm" href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegramda yozish</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="alt" id="donat">
+  <div class="wrap dn-money" id="donatBox" data-state="off">
+    <div>
+      <h2>Pul bilan qoʻllab-quvvatlash</h2>
+      <div id="donatOff">
+        <p class="dn-status"><span class="dn-dot" aria-hidden="true"></span>Tayyorlanmoqda: rasmiy toʻlov tizimi ulangach shu yerda ochiladi.</p>
+      </div>
+      <div id="donatOn" hidden>
+        <p>Toʻlov rasmiy provayder sahifasida amalga oshadi. Karta maʼlumotlari Kompas Labga kelmaydi.</p>
+        <a class="btn btn-p" id="donatGo" href="#" target="_blank" rel="noopener">Qoʻllab-quvvatlash</a>
+      </div>
+    </div>
+    <div class="dn-rules">
+      <b>Qoidalar</b>
+      <ul>
+        <li>Ixtiyoriy. Bu obuna emas: evaziga pullik modul ochilmaydi, imtiyoz berilmaydi.</li>
+        <li>Faqat rasmiy toʻlov sahifasi orqali (Click yoki Payme). Bu saytda karta raqami soʻralmaydi.</li>
+        <li><b>Kompas Lab hech kimdan shaxsiy karta raqamiga pul soʻramaydi.</b> Kimdir Kompas Lab nomidan karta raqami yuborsa, bu firibgarlik: <a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a> ga xabar bering.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a><a href="qollab-quvvatlash.html">Qoʻllab-quvvatlash</a><a href="#" data-install>📱 Ilovani oʻrnatish</a></div>
+    <div>© 2026 Kompas Lab, Oʻzbekiston</div>
+  </div>
+</footer>
+
+<script src="js/donat.js"></script>
+</body>
+</html>

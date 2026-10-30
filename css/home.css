@@ -628,3 +628,21 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   .k4x-dot{flex:none;margin-top:14px;}
 }
 @media (prefers-reduced-motion:reduce){.k4x-card,.k4x-ic,.k4x-dot{transition:none}.k4x-s.here .k4x-ic,.k4x-s.here .k4x-dot::after{animation:none}}
+
+/* Qoʻllab-quvvatlash sahifasi (qollab-quvvatlash.html, js/donat.js) */
+.dn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.dn-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--border);}
+.dn-card img{width:56px;height:56px;}
+.dn-card b{font-size:18px;color:var(--accent);}
+.dn-card p{font-size:14.5px;color:var(--muted);flex:1;}
+.dn-msg{font-size:13px;color:var(--green);min-height:1em;}
+.dn-money{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
+.dn-money h2{margin-bottom:14px;}
+.dn-status{display:flex;align-items:center;gap:10px;color:var(--muted);}
+.dn-dot{width:10px;height:10px;border-radius:50%;background:var(--accent2);flex:none;animation:dnPulse 1.8s ease-in-out infinite;}
+@keyframes dnPulse{0%,100%{opacity:1}50%{opacity:.35}}
+.dn-rules{padding:20px 22px;border-radius:16px;background:var(--bg);border:1px solid var(--border);font-size:14.5px;}
+.dn-rules ul{margin:10px 0 0 18px;display:flex;flex-direction:column;gap:8px;}
+.dn-rules a{color:var(--accent2);}
+@media (max-width:760px){.dn-money{grid-template-columns:1fr;gap:20px;}}
+@media (prefers-reduced-motion:reduce){.dn-dot{animation:none;}}

@@ -280,6 +280,7 @@ html[data-theme="dark"] .at-callout p{color:#b1bdb8}
 html[data-theme="dark"] .k4x-base{stroke:var(--ko-border)}
 html[data-theme="dark"] .k4x-s.on .k4x-dot{background:var(--ko-accent)}
 html[data-theme="dark"] .k4x-trav circle:first-child{stroke:#b9d4c9}
+html[data-theme="dark"] .dn-dot{background:var(--ko-accent2)}
 html[data-theme="dark"] .kg-card > a:hover{background:#1b201e}
 html[data-theme="dark"] .kg-fly:hover{background:#1b201e}
 html[data-theme="dark"] .kg-list button[aria-pressed="true"]{background:#231913}
