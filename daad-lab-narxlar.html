@@ -237,7 +237,7 @@ table.scope{width:100%;border-collapse:collapse;background:var(--surface);border
 .cta .btn-g{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25);}
 footer{background:var(--text);color:rgba(255,255,255,.55);padding:34px 0;font-size:13px;}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-footer a{color:rgba(255,255,255,.75);text-decoration:none;margin-right:14px;}
+footer a{color:rgba(255,255,255,.75);text-decoration:none;margin-right:14px;display:inline-block;}
 footer a:hover{color:#fff;}
 .sources{font-size:12px;color:var(--muted);margin-top:22px;}
 .sources a{color:#1f5fa8;}
@@ -415,14 +415,14 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       </div>
       <div class="plan">
         <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
-        <div class="price" data-pm="daad-lab">99 900</div><div class="per">soʻm, har oy</div>
+        <div class="price" data-pm="daad-lab">99 000</div><div class="per">soʻm, har oy</div>
         <ul><li>Bir oylik kirish</li><li>Istalgan oy toʻxtatiladi</li><li>Keyinroq yillikka oʻtish mumkin</li><li>Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi</li><li>Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi</li></ul>
         <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
       <div class="plan main">
         <span class="tag-top">Asosiy reja</span>
         <h3>Mavsum, 4 oy</h3><p class="desc">Bitta ariza sikli uchun: 4 oy 3 oy narxida</p>
-        <div class="price" data-ps="daad-lab">299 700</div><div class="per">soʻm, 4 oy uchun</div>
+        <div class="price" data-ps="daad-lab">297 000</div><div class="per">soʻm, 4 oy uchun</div>
         <ul><li>Barcha modullar birdaniga ochiladi</li><li>Bitta ariza siklini qamraydi: 4 oy</li><li>1 oy tekin: 4 oy 3 oy narxida</li><li>Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni</li></ul>
         <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
@@ -433,7 +433,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
         <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
-    <div class="calc"><div><b>1 198 800 soʻm</b>12 oy faqat oylik reja bilan (99 900 × 12)</div><div><b>899 100 soʻm</b>12 oy Mavsum bilan (3 × 299 700)</div><div><b>9 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja Mavsum va oylikdan arzon</div></div>
+    <div class="calc"><div><b>1 188 000 soʻm</b>12 oy faqat oylik reja bilan (99 000 × 12)</div><div><b>891 000 soʻm</b>12 oy Mavsum bilan (3 × 297 000)</div><div><b>10 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja Mavsum va oylikdan arzon</div></div>
     <div class="pro-plan"><span class="tag-plan">Rejada</span><b>Kompas Pro: hali ishlamaydi</b>
       <p>Yillik obunaga qoʻshish rejalashtirilgan funksiyalar. Hozirgi narxga kirmaydi, ishga tushish sanasi eʼlon qilinmagan.</p>
       <ul><li>Shaxsiy muddat eslatmalari (Telegram yoki email)</li><li>Profilga mos stipendiyalar bazasi: rasmiy havola va tekshiruv sanasi bilan</li><li>Tayyorgarlik koʻrsatkichi tarixi: oyma-oy oʻzgarish</li><li>Javoblar va hujjatlarni telefon va kompyuter orasida sinxronlash</li></ul>
@@ -444,7 +444,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 </section>
 <footer>
   <div class="wrap">
-    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="#" data-install>📱 Ilovani oʻrnatish</a></div>
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a></div>
     <div>© 2026 Kompas Lab, Oʻzbekiston</div>
   </div>
 </footer>
@@ -453,7 +453,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
     <img class="i3d" src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
     <h3 id="wlT" style="margin-top:6px">DAAD Lab: kutish roʻyxati</h3>
-    <p>Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
+    <p>Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi (<a href="maxfiylik.html">maxfiylik siyosati</a>).</p>
     <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
     <div id="wlMsg"></div>
     <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>

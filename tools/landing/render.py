@@ -445,7 +445,7 @@ def faq(lab):
 
 FOOTER = '''<footer>
   <div class="wrap">
-    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a></div>
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a></div>
     <div>© 2026 Kompas Lab, Oʻzbekiston</div>
   </div>
 </footer>'''
@@ -469,7 +469,7 @@ def modal(lab):
     <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
     {icon(ICONS[lab["key"]], "i3d", "")}
     <h3 id="wlT" style="margin-top:6px">{lab["name"]}: kutish roʻyxati</h3>
-    <p>{lab["wl_text"]} Email boshqa maqsadda ishlatilmaydi.</p>
+    <p>{lab["wl_text"]} Email boshqa maqsadda ishlatilmaydi (<a href="maxfiylik.html">maxfiylik siyosati</a>).</p>
     <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
     <div id="wlMsg"></div>
     <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>
