@@ -54,7 +54,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 - Manba: `src/<nom>.src.html` (`{{CSS}}` oʻrniga `m0.css`). Yigʻish: `python3 tools/modules/build.py [nom]`.
   - sayt versiyasi → repo ildizida `<nom>.html` (config.js, live-bar, protect, logotip, PWA, darvoza)
   - yuklab olinadigan → `tools/modules/dist/<nom>.html` (rasmlar ichida; git'ga kirmaydi). Foydalanuvchiga `SendUserFile` bilan yuboriladi.
-- **Pullik modullar (2026-10-30, Master M1–M8):** `build.py` dagi `paid=True` → `tools/modules/paid/<nom>.html` (git va saytga chiqmaydi) → `python3 tools/modules/paid_upload.py` → `paid/upload_*.sql` ni bazada ishga tushir (`paid_pages`). Talaba `master-lab-o.html?m=N` orqali oladi, `fn_paid_page()` obunani serverda tekshiradi. Modul sahifasidagi "Modulni ochish" tugmasi: `js/paid-module.js`. Batafsil: `docs/MASTER_LAB_RELEASE_POLICY.md`. Tekshiruv: `node tools/modules/test/paid_reader.js`. Kontent oʻzgarsa: qayta yigʻ → SQL → bazaga yukla.
+- **Pullik modullar (2026-10-30, Master M1–M8):** `build.py` dagi `paid=True` → `tools/modules/paid/<nom>.html` (git va saytga chiqmaydi) → bazaga yuklash: admin `admin-paid.html` da fayllarni tanlaydi (yoki `python3 tools/modules/paid_upload.py` → `paid/upload_*.sql`). Jadval: `paid_pages`. Talaba `master-lab-o.html?m=N` orqali oladi, `fn_paid_page()` obunani serverda tekshiradi. Modul sahifasidagi "Modulni ochish" tugmasi: `js/paid-module.js`. Batafsil: `docs/MASTER_LAB_RELEASE_POLICY.md`. Tekshiruv: `node tools/modules/test/paid_reader.js`. Kontent oʻzgarsa: qayta yigʻ → SQL → bazaga yukla.
 - Master M3–M8 manbalari umumiy generator bilan yaratilgan (qobiq M2 andozasi); endi `src/*.src.html` ni toʻgʻridan-toʻgʻri tahrirla. Pullik modullarda faktlar "16.10.2026 holatiga" belgilangan: har sikl yangilash kerak (M7, M8).
 - Yangi modul: eng yaqin manbadan nusxa ol → `build.py` dagi `MODULES` ga qoʻsh → yigʻ → tekshir → Lab sahifasi va dashboard'ga bogʻla.
 - Tekshiruv: `python3 -m http.server 8814 &` keyin `PW=$(npm root -g)/playwright node tools/modules/test/smoke.js <nom>` (JS xatosi, 390px, darvoza, 1-dars +XP; sayt va dist).
@@ -94,7 +94,7 @@ Modul va dars nomlari: `tools/landing/mods.json` (DAAD: `labs_data.py` → `DAAD
 - `robots.txt` va `sitemap.xml` ildizda; yangi ochiq sahifa qoʻshilsa, sitemap ga qoʻsh.
 
 ## Ochiq masalalar (foydalanuvchi qarori kutilmoqda)
-1. **Xavfsizlik:** `fn_mark_payment_paid`, `fn_set_module_access`, `fn_upsert_lesson_content` anon/authenticated tomonidan chaqirilishi mumkin (ichida ruxsat tekshiruvi yoʻq yoki yetarli emas). Toʻlov ochilishidan oldin `revoke execute` qilinishi shart. Foydalanuvchi hali tasdiqlamagan.
+1. **Xavfsizlik:** `fn_set_module_access` 2026-10-30 da tuzatildi (faqat admin/service_role). `fn_mark_payment_paid` anon/authenticated ga yopiq. Trigger funksiyalari va boshqa SECURITY DEFINER funksiyalar Supabase advisor roʻyxatida (WARN); `fn_upsert_lesson_content` (ichida ruxsat tekshiruvi yoʻq yoki yetarli emas). Toʻlov ochilishidan oldin `revoke execute` qilinishi shart. Foydalanuvchi hali tasdiqlamagan.
 2. **Toʻlov:** Click/Payme merchant maʼlumotlari yoʻq; `payment.html` yopiq va eskirgan (karta raqamini oʻzi soʻraydi — PCI DSS ga zid). Toʻgʻri yoʻl: provayderning oʻz sahifasiga yoʻnaltirish + webhook.
 3. Ommaviy oferta va maxfiylik siyosati sahifasi yoʻq ("toʻlov qaytarilmaydi" qoidasi uchun kerak).
 4. M0 progressi faqat brauzerda (qurilmalar orasida koʻchmaydi) — bazaga yozish rejada.

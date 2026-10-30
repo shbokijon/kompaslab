@@ -9,7 +9,7 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 
 ## Paid delivery (2026-10-30)
 - `python3 tools/modules/build.py master-lab-mN` writes the full single-page module to `tools/modules/paid/master-lab-mN.html` (gitignored, not deployed).
-- `python3 tools/modules/paid_upload.py` writes `tools/modules/paid/upload_*.sql`; running them upserts `public.paid_pages` (course_slug, module_index, html, sha256, version).
+- Upload: admin opens `admin-paid.html` (noindex, admin only; RLS allows only admin writes) and selects the eight built files; sha256 and timestamp are recorded. Alternative: `python3 tools/modules/paid_upload.py` writes `tools/modules/paid/upload_*.sql`; running them upserts `public.paid_pages` (course_slug, module_index, html, sha256, version).
 - `paid_pages` RLS: admin only. Students get the HTML only from `fn_paid_page(course, module)` (security definer, authenticated only): checks enrollment payment_status paid/partial, frozen_at, expires_at and `fn_module_position(module) <= unlocked_modules`. Reasons returned: auth, no_access, frozen, expired, locked, missing.
 - `master-lab-o.html?m=N` (noindex) calls the RPC and renders the page with document.write in the same origin, so localStorage keys `kompas_master_mN_v1`, relative assets, sfx, watermark and protect.js keep working.
 - Module hubs `master-lab-mN.html` include `js/paid-module.js`: for admin or an entitled subscriber the lock box becomes "Modulni ochish". This is display only; the server check is in fn_paid_page.

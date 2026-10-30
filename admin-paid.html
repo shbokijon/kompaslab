@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<meta name="robots" content="noindex, nofollow">
+<title>Pullik modullar · Admin | Kompas Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<style>
+:root{--forest:#2d4a3e;--terra:#c4622d;--cream:#f4f3ef;--ink:#1a2e26;--muted:#5f7169;--line:#e2ded3;--card:#fffefb;--ok:#1a7a4a;--bad:#b42318}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cream:#141a17;--ink:#e9efe9;--muted:#a3b2aa;--line:#2b3631;--card:#1b2420}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Outfit,"IBM Plex Sans",system-ui,sans-serif;padding:24px 16px}
+.wrap{max-width:760px;margin:0 auto}
+h1{font-family:"DM Serif Display","Playfair Display",Georgia,serif;font-weight:400;font-size:28px;margin:0 0 6px}
+p{color:var(--muted);line-height:1.55}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+code{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:12px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:12px;font:600 15px Outfit,"IBM Plex Sans",system-ui,sans-serif;border:0;background:var(--terra);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:default}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+input[type=file]{font:inherit;max-width:100%}
+#log{white-space:pre-wrap;font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:12px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Pullik modullar</h1>
+  <p>Master Lab M1–M8 sahifalarini bazaga (<code>paid_pages</code>) yuklash. Fayllar: <code>master-lab-m1.html</code> … <code>master-lab-m8.html</code> (<code>tools/modules/paid/</code> dan). Faqat admin; baza RLS ham faqat adminga yozishga ruxsat beradi.</p>
+  <div class="card" id="gate">Tekshirilmoqda…</div>
+  <div class="card" id="ui" hidden>
+    <p style="margin-top:0"><input type="file" id="f" accept=".html,text/html" multiple></p>
+    <button class="btn" id="go" type="button" disabled>Yuklash</button>
+    <div id="log"></div>
+  </div>
+  <div class="card" id="state" hidden>
+    <b>Bazadagi holat</b>
+    <table><thead><tr><th>Modul</th><th>sha256</th><th>Versiya</th><th>Yangilangan</th></tr></thead><tbody id="rows"></tbody></table>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script>
+(function () {
+  "use strict";
+  var sb = window.supabase, $ = function (id) { return document.getElementById(id); };
+  var files = [];
+  function log(t, cls) { var d = document.createElement("div"); if (cls) d.className = cls; d.textContent = t; $("log").appendChild(d); }
+  function hex(buf) { return Array.prototype.map.call(new Uint8Array(buf), function (b) { return ("0" + b.toString(16)).slice(-2); }).join(""); }
+  function sha(text) { return crypto.subtle.digest("SHA-256", new TextEncoder().encode(text)).then(hex); }
+
+  function refresh() {
+    return sb.from("paid_pages").select("course_slug,module_index,sha256,version,updated_at").order("module_index").then(function (r) {
+      $("state").hidden = false;
+      var tb = $("rows"); tb.innerHTML = "";
+      if (r.error) { tb.innerHTML = "<tr><td colspan=4 class=bad></td></tr>"; tb.querySelector("td").textContent = r.error.message; return; }
+      if (!r.data.length) { tb.innerHTML = "<tr><td colspan=4>Hali hech narsa yuklanmagan.</td></tr>"; return; }
+      r.data.forEach(function (x) {
+        var tr = document.createElement("tr");
+        [x.course_slug + " M" + x.module_index, x.sha256.slice(0, 12), x.version, new Date(x.updated_at).toLocaleString("uz")].forEach(function (v) { var td = document.createElement("td"); td.textContent = v; tr.appendChild(td); });
+        tb.appendChild(tr);
+      });
+    });
+  }
+
+  if (!sb || !sb.auth) { $("gate").textContent = "Server bilan aloqa yoʻq."; return; }
+  sb.auth.getSession().then(function (r) {
+    if (!r.data.session) { try { sessionStorage.setItem("returnTo", "admin-paid.html"); } catch (e) {} location.href = "login.html"; return; }
+    return sb.rpc("fn_is_admin").then(function (a) {
+      if (a.data !== true) { $("gate").textContent = "Bu sahifa faqat admin uchun."; return; }
+      $("gate").hidden = true; $("ui").hidden = false;
+      refresh();
+    });
+  });
+
+  $("f").addEventListener("change", function (e) {
+    files = Array.prototype.slice.call(e.target.files || []);
+    $("log").innerHTML = "";
+    var bad = files.filter(function (f) { return !/^(?:[a-z]+-lab)-m[1-9]\.html$/.test(f.name); });
+    bad.forEach(function (f) { log(f.name + ": nomi mos emas (master-lab-mN.html kutiladi)", "bad"); });
+    files = files.filter(function (f) { return bad.indexOf(f) < 0; });
+    $("go").disabled = !files.length;
+    if (files.length) log(files.length + " ta fayl tanlandi.");
+  });
+
+  $("go").addEventListener("click", function () {
+    $("go").disabled = true;
+    var stamp = new Date().toISOString().slice(0, 10) + "+admin";
+    files.reduce(function (p, f) {
+      return p.then(function () {
+        return f.text().then(function (html) {
+          var m = f.name.match(/^([a-z]+-lab)-m(\d)\.html$/);
+          if (html.indexOf("<article class=\"lesson\"") < 0 || html.indexOf("kp-wm") < 0) { log(f.name + ": pullik modul sahifasiga oʻxshamaydi, oʻtkazib yuborildi", "bad"); return; }
+          return sha(html).then(function (h) {
+            return sb.from("paid_pages").upsert({ course_slug: m[1], module_index: +m[2], html: html, sha256: h, version: stamp, updated_at: new Date().toISOString() }, { onConflict: "course_slug,module_index" })
+              .then(function (r) { log(f.name + ": " + (r.error ? "XATO " + r.error.message : "yuklandi, sha256 " + h.slice(0, 12)), r.error ? "bad" : "ok"); });
+          });
+        });
+      });
+    }, Promise.resolve()).then(refresh).then(function () { $("go").disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
