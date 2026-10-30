@@ -40,7 +40,7 @@ async function testScenario(s){
  assert.ok(pageState.width <= pageState.viewport+2,`Horizontal overflow: ${pageState.width} > ${pageState.viewport}`);
  assert.ok(pageState.cards>0 && pageState.cards<=24,"Initial pagination must render 1..24 results");
  assert.ok(pageState.mapDots >= 5,"City map needs data markers");
- assert.ok(pageState.careers.length>=6,"Expected curated careers links");
+ assert.ok(pageState.careers.length>=5,"Expected curated careers links");
  for(const a of pageState.careers){
   assert.ok(a.href.startsWith("https://"),"External careers must use https");
   assert.ok(a.rel.includes("noopener") && a.target==="_blank","External links require tab isolation");

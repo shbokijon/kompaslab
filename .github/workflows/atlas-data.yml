@@ -1,0 +1,58 @@
+name: Refresh Atlas registers (NL, CA)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "tools/atlas/nl_sponsors.py"
+      - "tools/atlas/ca_lmia.py"
+      - ".github/workflows/atlas-data.yml"
+  schedule:
+    - cron: "41 6 * * 2"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atlas-registers
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install XLSX reader
+        run: pip install openpyxl==3.1.5
+      - name: Verify parsers
+        run: cd tools/atlas && python test_registries.py
+      - name: Netherlands (IND recognised sponsors)
+        id: nl
+        continue-on-error: true
+        run: python tools/atlas/nl_sponsors.py
+      - name: Canada (positive LMIA, latest quarter)
+        id: ca
+        continue-on-error: true
+        run: python tools/atlas/ca_lmia.py
+      - name: Commit snapshots if changed
+        run: |
+          for f in data/nl-sponsors.json data/ca-lmia.json; do [ -f "$f" ] && git add "$f"; done
+          if git diff --cached --quiet; then
+            echo "No change"
+          else
+            git -c user.name="kompas-atlas-bot" -c user.email="kompas-atlas-bot@users.noreply.github.com" commit -m "data(atlas): refresh NL and CA registers"
+            git pull --rebase origin main
+            git push
+          fi
+      - name: Fail if any importer failed
+        if: steps.nl.outcome == 'failure' || steps.ca.outcome == 'failure'
+        run: |
+          echo "nl=${{ steps.nl.outcome }} ca=${{ steps.ca.outcome }}"
+          exit 1

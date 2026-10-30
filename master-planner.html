@@ -1,38 +1,95 @@
-<!doctype html>
-<html class="ss-app" lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Magistratura rejalashtirgichi · Kompas Lab</title>
-<meta name="description" content="Xorijiy magistraturaga tayyorgarlik uchun bepul, mustaqil ishlaydigan reja, saralangan dasturlar va vazifalar.">
-<link rel="icon" href="/img/brand/favicon-32.png"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC&display=swap" rel="stylesheet"><link rel="stylesheet" href="/css/self-service.css"><script src="js/alifbo.js"></script>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>Bepul reja: xorijda oʻqishga tayyorgarlik rejasi · Kompas Lab</title>
+<meta name="description" content="Bepul tayyorgarlik rejasi: Bachelor, Master, PhD, GKS, USA va DAAD uchun maqsad, saralangan roʻyxat va bosqichlar. Roʻyxatdan oʻtmasdan, maʼlumot qurilmangizda.">
+<link rel="canonical" href="https://www.kompaslab.uz/master-planner">
+<meta property="og:title" content="Bepul reja: xorijda oʻqishga tayyorgarlik rejasi · Kompas Lab">
+<meta property="og:description" content="Bepul tayyorgarlik rejasi: Bachelor, Master, PhD, GKS, USA va DAAD uchun maqsad, saralangan roʻyxat va bosqichlar. Roʻyxatdan oʻtmasdan, maʼlumot qurilmangizda.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.kompaslab.uz/master-planner">
+<meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<link rel="stylesheet" href="css/atlas.css">
+<script src="js/kompas-ui.js"></script>
+<script src="js/pwa.js" defer></script>
+<script src="js/sfx.js" defer></script>
+
 </head>
-<body><nav class="ss-nav"><div class="ss-wrap"><a class="ss-brand" href="/index.html"><span class="ss-brand-icon" aria-hidden="true"><img src="/img/brand/logo-base.webp" alt=""><img src="/img/brand/logo-arrow.webp" alt=""></span>Kompas Lab</a><div class="ss-navlinks" role="navigation" aria-label="Sayt boʻlimlari"><a href="/index.html#labs">Lablar</a><a href="/master-planner.html" aria-current="page">Bepul reja</a><a href="/qanday-ishlaydi.html">Qanday ishlaydi</a><a href="/narxlar.html">Narxlar</a><a href="/savollar.html">Savollar</a><a href="/login.html">Kirish</a></div></div></nav>
-<header class="ss-hero"><div class="ss-wrap"><span class="ss-eyebrow">Bepul · Mustaqil ishlash · Mahalliy saqlash</span><h1>Magistratura rejalashtirgichi (Master Planner)</h1>
-<p>Maqsadingizni yozing, magistratura dasturlarini saralang va tayyorgarlik bosqichlarini kuzating. Bu vosita universitet talablarini avtomatik tasdiqlamaydi.</p>
-<div class="ss-actions"><a class="ss-btn secondary" href="/master-lab-m0.html">M0 darslarini oʻqish</a><a class="ss-btn outline" href="/master-lab.html#dastur">M0–M8 dasturi</a></div></div></header>
-<main class="ss-wrap">
-<div class="ss-source"><strong>Maʼlumot xavfsizligi:</strong> bu dastlabki versiya maʼlumotlarni faqat shu qurilmangiz brauzeridagi <em>localStorage</em>da saqlaydi. Qurilma yoki brauzer almashtirilsa sinxronlanmaydi. Pasport, bank kartasi, manzil, sogʻliq yoki maxfiy hujjatlarni kiritmang. Faylni eksport qilishingiz mumkin.</div>
-<div class="ss-grid">
-<section class="ss-card"><h2>1. Maqsad</h2><label class="ss-label" for="goal">Nima uchun magistratura?</label><textarea id="goal" class="ss-control" rows="3" maxlength="800" placeholder="Masalan: renewable energy boʻyicha tadqiqot va industry tajribasi"></textarea>
-<div class="ss-inline"><div class="ss-grow"><label class="ss-label" for="degree">Dastur turi</label><select id="degree" class="ss-control"><option value="taught">Oʻquv magistraturasi (Taught MSc/MA)</option><option value="research">Tadqiqot magistraturasi (Research MSc/MRes)</option><option value="other">Boshqa yoki nomaʼlum</option></select></div>
-<div class="ss-grow"><label class="ss-label" for="intake">Qabul yili</label><input id="intake" class="ss-control" type="number" min="2026" max="2040" value="2027"></div></div>
-<label class="ss-label" for="countries">Mamlakatlar</label><input id="countries" class="ss-control" maxlength="140" placeholder="UK, Germany, Japan, Korea, Australia ...">
-<button id="saveProfile" class="ss-btn" type="button" style="margin-top:15px">Maqsadni saqlash</button><p id="profileStatus" class="ss-note" role="status"></p>
+<body data-kpage="reja">
+<nav class="nav" data-sfx>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab</span></a>
+    <div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html" aria-current="page">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html">Narxlar</a><a href="atlas.html">Atlas</a><a href="savollar.html">Savollar</a></div>
+    <span class="kl-sfx" data-sfx-slot></span><a href="login.html" class="btn btn-g btn-sm">Kirish</a>
+  </div>
+</nav>
+<div class="kl-tabbar" data-sfx><div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html" aria-current="page">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html">Narxlar</a><a href="atlas.html">Atlas</a><a href="savollar.html">Savollar</a></div></div>
+<header class="kl-pagehead">
+  <div class="wrap">
+    <nav class="kl-crumb" aria-label="Yoʻl"><a href="index.html">Kompas Lab</a><span aria-hidden="true">/</span><span>Bepul reja</span></nav>
+    <div class="kl-head-row"><div><h1>Bepul reja</h1><p class="lead">Labingizni tanlang: maqsad, saralangan roʻyxat (Shortlist) va tayyorgarlik bosqichlari bir joyda. Maʼlumot faqat shu qurilmada saqlanadi, roʻyxatdan oʻtish shart emas.</p></div><img class="kl-head-art float" src="img/3d/calendar.webp" alt="" width="160" height="160"></div>
+  </div>
+</header>
+<main><div class="wrap">
+<nav class="pl-labs" aria-label="Lab tanlash"><a href="master-planner.html?lab=master" data-lab="master">Master Lab</a><a href="master-planner.html?lab=bachelor" data-lab="bachelor">Bachelor Lab</a><a href="master-planner.html?lab=phd" data-lab="phd">PhD Lab</a><a href="master-planner.html?lab=gks" data-lab="gks">GKS Lab</a><a href="master-planner.html?lab=usa" data-lab="usa">USA Lab</a><a href="master-planner.html?lab=daad" data-lab="daad">DAAD Lab</a></nav>
+<div class="pl-grid">
+<section class="pl-card"><h2>1. Maqsad</h2>
+<label class="pl-label" for="goal" id="goalQ">Maqsadingiz</label><textarea id="goal" class="pl-ctl" rows="3" maxlength="800"></textarea>
+<div class="pl-row"><div id="degreeBox"><label class="pl-label" for="degree">Daraja yoki trek</label><select id="degree" class="pl-ctl"></select></div>
+<div><label class="pl-label" for="intake">Qabul yili</label><input id="intake" class="pl-ctl" type="number" min="2026" max="2040" value="2027"></div></div>
+<label class="pl-label" for="countries">Mamlakatlar</label><input id="countries" class="pl-ctl" maxlength="140" placeholder="Germaniya, Koreya, Yaponiya…" data-suggest="country">
+<div class="pl-btns"><button id="saveProfile" class="btn btn-p btn-sm" type="button">Saqlash</button></div><p id="profileStatus" class="pl-note" role="status"></p>
 </section>
-<section class="ss-card"><h2>2. Tayyorgarlik bosqichlari</h2><p class="ss-note">M0–M8 boʻyicha shaxsiy ishlar. Belgilar faqat siz bajargan ishlarni bildiradi, universitet tasdiqini emas.</p><div class="ss-progress"><div id="bar"></div></div><p id="progressText" class="ss-note" aria-live="polite"></p><ul id="taskList" class="ss-list"></ul></section>
-<section class="ss-card ss-full"><h2>3. Saralangan roʻyxat (Shortlist)</h2><p class="ss-note">Universitetning rasmiy dastur sahifasini oʻzingiz qoʻshing. Kompas bu havolalarni avtomatik tekshirmaydi; har bir maʼlumotni rasmiy saytga kirib tekshiring.</p>
-<form id="addProgramme"><div class="ss-inline">
-<div class="ss-grow"><label for="university" class="ss-label">Universitet</label><input id="university" class="ss-control" maxlength="120" required placeholder="University name"></div>
-<div class="ss-grow"><label for="programme" class="ss-label">Dastur</label><input id="programme" class="ss-control" maxlength="150" required placeholder="Programme title"></div>
-<div class="ss-grow"><label for="officialUrl" class="ss-label">Rasmiy havola</label><input id="officialUrl" class="ss-control" type="url" required placeholder="https://university.edu/..."></div></div>
-<div class="ss-inline"><div class="ss-grow"><label for="deadline" class="ss-label">Oxirgi muddat (ixtiyoriy)</label><input id="deadline" class="ss-control" type="date"></div><div class="ss-grow"><label for="funding" class="ss-label">Moliyalashtirish</label><select id="funding" class="ss-control"><option value="unknown">Hali nomaʼlum</option><option value="possible">Tekshirish kerak</option><option value="self-funded">Oʻz hisobimdan</option></select></div></div>
-<button class="ss-btn" style="margin-top:15px" type="submit">Dastur qoʻshish</button><p id="addStatus" role="status" class="ss-note"></p></form><div id="programmesList" aria-live="polite"></div></section>
-<section class="ss-card"><h2>4. Rasmiy manbalar</h2>
-<p>Birinchi navbatda universitetning aynan siz tanlagan dastur sahifasi, davlat stipendiyasi tashkiloti va tegishli immigratsiya idorasini tekshiring.</p>
-<div class="ss-actions"><a class="ss-btn secondary" href="/sources.html">Manbalar katalogi</a><a class="ss-btn secondary" target="_blank" rel="noopener noreferrer" href="https://www.daad.de/en/">DAAD — Germaniya</a><a class="ss-btn secondary" target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/student-visa">GOV.UK — Student visa</a></div>
-<p class="ss-note">Rasmiy saytdagi maʼlumotlar ham oʻzgarishi mumkin. Har bir deadline, talab va toʻlovni topshirishdan oldin qayta tekshiring.</p></section>
-<section class="ss-card"><h2>5. Saqlash va eksport</h2><p class="ss-note">Eksport JSON fayli orqali rejangizning zaxira nusxasini oling. Kompas serveriga hech narsa yuborilmaydi.</p>
-<div class="ss-actions"><button id="export" type="button" class="ss-btn">Rejani yuklab olish (JSON)</button><button id="clear" type="button" class="ss-btn secondary">Maʼlumotlarni tozalash</button></div><p id="dataStatus" class="ss-note" role="status"></p>
-<p class="ss-note">Kelgusida akkaunt sinxronlash alohida ishlab chiqiladi. Hozir mavjud emas.</p></section>
-</div></main>
-<footer class="ss-foot"><div class="ss-wrap"><a href="/index.html">Kompas Lab</a> · <a href="/index.html#labs">Lablar</a> · <a href="/sources.html">Rasmiy manbalar</a> · <a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a> · <a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a> · <a href="/maxfiylik.html">Maxfiylik siyosati</a> · © 2026 Kompas Lab, Oʻzbekiston. Qabul, grant yoki viza kafolati yoʻq.</div></footer>
-<script defer src="/js/master-planner.js"></script><script src="js/suggest.js" defer></script>
-</body></html>
+<section class="pl-card"><h2>2. Tayyorgarlik bosqichlari</h2>
+<p class="pl-note">Lab modullari boʻyicha. Belgi faqat siz bajargan ishni bildiradi, universitet yoki stipendiya tasdigʻini emas.</p>
+<div class="pl-bar"><div id="bar"></div></div><p id="progressText" class="pl-note" aria-live="polite"></p>
+<ul id="taskList" class="pl-tasks"></ul>
+<div id="next" class="pl-next" hidden></div>
+</section>
+<section class="pl-card full"><h2>3. Saralangan roʻyxat (Shortlist)</h2>
+<p class="pl-note">Rasmiy dastur sahifasini oʻzingiz qoʻshing. Kompas havolalarni tekshirmaydi; har maʼlumotni rasmiy saytda tekshiring.</p>
+<form id="addProgramme"><div class="pl-row">
+<div><label for="university" class="pl-label">Universitet</label><input id="university" class="pl-ctl" maxlength="120" required data-suggest="uni"></div>
+<div><label for="programme" class="pl-label" id="progLabel">Dastur</label><input id="programme" class="pl-ctl" maxlength="150" required data-suggest="prog"></div>
+<div><label for="officialUrl" class="pl-label">Rasmiy havola</label><input id="officialUrl" class="pl-ctl" type="url" required placeholder="https://"></div></div>
+<div class="pl-row"><div><label for="deadline" class="pl-label">Oxirgi muddat (ixtiyoriy)</label><input id="deadline" class="pl-ctl" type="date"></div>
+<div><label for="funding" class="pl-label">Moliyalashtirish</label><select id="funding" class="pl-ctl"><option value="unknown">Hali nomaʼlum</option><option value="possible">Tekshirish kerak</option><option value="self-funded">Oʻz hisobimdan</option></select></div></div>
+<div class="pl-btns"><button class="btn btn-p btn-sm" type="submit">Roʻyxatga qoʻshish</button></div><p id="addStatus" role="status" class="pl-note"></p></form>
+<div id="programmesList" aria-live="polite"></div>
+</section>
+<section class="pl-card"><h2>4. Rasmiy manbalar</h2>
+<p class="pl-note">Avval aynan siz tanlagan dastur sahifasi, stipendiya tashkiloti va immigratsiya idorasini tekshiring.</p>
+<div class="pl-btns"><a class="btn btn-g btn-sm" href="sources.html">Manbalar katalogi</a><a class="btn btn-g btn-sm" href="atlas.html">Kompas Atlas</a></div>
+<p class="pl-note">Rasmiy saytdagi maʼlumot ham oʻzgaradi. Har muddat, talab va toʻlovni topshirishdan oldin qayta tekshiring.</p>
+</section>
+<section class="pl-card"><h2>5. Zaxira nusxa</h2>
+<p class="pl-note">Rejani faylga saqlang va boshqa qurilmada qayta yuklang. Kompas serveriga hech narsa yuborilmaydi.</p>
+<div class="pl-btns"><button id="export" type="button" class="btn btn-p btn-sm">Faylga saqlash</button><label class="btn btn-g btn-sm" for="importFile">Fayldan yuklash</label><input id="importFile" class="pl-file" type="file" accept="application/json,.json"><button id="clear" type="button" class="btn btn-g btn-sm">Tozalash</button></div>
+<p id="dataStatus" class="pl-note" role="status"></p>
+<p class="pl-note">Pasport, bank kartasi, manzil yoki sogʻliq haqidagi maʼlumotni kiritmang.</p>
+</section>
+</div></div></main>
+<footer>
+  <div class="wrap">
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="atlas.html">Atlas</a><a href="sources.html">Rasmiy manbalar</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a></div>
+    <div>&copy; 2026 Kompas Lab, Oʻzbekiston</div>
+  </div>
+</footer>
+<script type="application/json" id="pl-cfg">{"master":{"name":"Master Lab","slug":"master-lab","key":"kompas-master-planner-v1","goal":"Nima uchun magistratura?","prog":"Dastur","opts":[["taught","Oʻquv magistraturasi (Taught MSc/MA)"],["research","Tadqiqot magistraturasi (Research MSc/MRes)"],["other","Boshqa yoki nomaʼlum"]],"tasks":[{"id":"M0","t":"Qaror darvozasi","h":"master-lab-m0.html"},{"id":"M1","t":"Ilmiy yoʻnalish va universitet tanlash","h":"master-lab-m1.html"},{"id":"M2","t":"Muddatlar arxitekturasi va ish tizimi","h":"master-lab-m2.html"},{"id":"M3","t":"Akademik CV","h":"master-lab-m3.html"},{"id":"M4","t":"Tavsiya xatlari va professor bilan aloqa","h":"master-lab-m4.html"},{"id":"M5","t":"Maqsad bayonnomasi","h":"master-lab-m5.html"},{"id":"M6","t":"Ilmiy loyiha taklifi","h":"master-lab-m6.html"},{"id":"M7","t":"Stipendiyalar atlasi","h":"master-lab-m7.html"},{"id":"M8","t":"Viza, intervyu va joʻnash","h":"master-lab-m8.html"}]},"bachelor":{"name":"Bachelor Lab","slug":"bachelor-lab","key":"kompas-planner-bachelor-v1","goal":"Nima uchun xorijda bakalavriat va qaysi yoʻnalish?","prog":"Yoʻnalish (major)","opts":[],"tasks":[{"id":"M0","t":"Qaror darvozasi","h":"bachelor-lab-m0.html"},{"id":"M1","t":"Qabul qanday qaror qabul qiladi","h":"bachelor-lab-m1.html"},{"id":"M2","t":"Universitet tanlash va ariza portfeli","h":"bachelor-lab-m2.html"},{"id":"M3","t":"Yoʻnalish va akademik kimlik","h":"bachelor-lab-m3.html"},{"id":"M4","t":"Muddatlar arxitekturasi va ish tizimi","h":"bachelor-lab-m4.html"},{"id":"M5","t":"Baholar va testlar","h":"bachelor-lab-m5.html"},{"id":"M6","t":"Yutuqlar, CV va hujjatlar","h":"bachelor-lab-m6.html"},{"id":"M7","t":"Darsdan tashqari faoliyat","h":"bachelor-lab-m7.html"},{"id":"M8","t":"Tavsiya xatlari","h":"bachelor-lab-m8.html"},{"id":"M9","t":"Shaxsiy bayonot va insholar","h":"bachelor-lab-m9.html"},{"id":"M10","t":"Insho tahriri va yakuniy versiya","h":"bachelor-lab-m10.html"},{"id":"M11","t":"Davlat stipendiyalari","h":"bachelor-lab-m11.html"},{"id":"M12","t":"Universitet grantlari va moliyaviy reja","h":"bachelor-lab-m12.html"},{"id":"M13","t":"Ariza platformalari","h":"bachelor-lab-m13.html"},{"id":"M14","t":"Mintaqaviy yoʻnalishlar: Xitoy, Italiya, Singapur","h":"bachelor-lab-m14.html"},{"id":"M15","t":"Intervyu va qabul qarori","h":"bachelor-lab-m15.html"},{"id":"M16","t":"Qabuldan keyin: viza va joʻnash","h":"bachelor-lab-m16.html"}]},"phd":{"name":"PhD Lab","slug":"phd-lab","key":"kompas-planner-phd-v1","goal":"Qaysi ilmiy savol ustida ishlamoqchisiz?","prog":"Dastur yoki laboratoriya","opts":[],"tasks":[{"id":"M0","t":"Qaror darvozasi","h":"phd-lab-m0.html"},{"id":"M1","t":"Ilmiy identitet va yoʻnalish","h":"phd-lab-m1.html"},{"id":"M2","t":"Ilmiy rahbar va laboratoriya strategiyasi","h":"phd-lab-m2.html"},{"id":"M3","t":"Professorga yoziladigan dastlabki xat va aloqa","h":"phd-lab-m3.html"},{"id":"M4","t":"Ilmiy loyiha taklifi muhandisligi","h":"phd-lab-m4.html"},{"id":"M5","t":"Ilmiy natijalar: CV, chiqishlar va tavsiya","h":"phd-lab-m5.html"},{"id":"M6","t":"Moliyalashtirish atlasi","h":"phd-lab-m6.html"},{"id":"M7","t":"PhD intervyusi va loyihani himoya qilish","h":"phd-lab-m7.html"},{"id":"M8","t":"Taklif, relokatsiya va PhDʼning birinchi yili","h":"phd-lab-m8.html"}]},"gks":{"name":"GKS Lab","slug":"gks-lab","key":"kompas-planner-gks-v1","goal":"Nima uchun Koreya va GKS?","prog":"Dastur","opts":[["U","Bakalavriat"],["M","Magistratura"],["D","Doktorantura"]],"tasks":[{"id":"M0","t":"GKS tizimi va qaror darvozasi","h":"gks-lab-m0.html"},{"id":"M1","t":"Hujjatlar infratuzilmasi","h":"gks-lab-m1.html"},{"id":"M2","t":"Universitet va dastur tanlash","h":"gks-lab-m2.html"},{"id":"M3-U","t":"Nomzod profili","h":"gks-lab-m3-u.html"},{"id":"M4-U","t":"Shaxsiy bayonot","h":"gks-lab-m4-u.html"},{"id":"M5-U","t":"Oʻquv rejasi, topshirish va intervyu","h":"gks-lab-m5-u.html"},{"id":"M3-M","t":"Magistratura nomzodining pozitsiyasi","h":"gks-lab-m3-m.html"},{"id":"M4-M","t":"Oʻquv rejasi","h":"gks-lab-m4-m.html"},{"id":"M5-M","t":"Professor, paket va intervyu","h":"gks-lab-m5-m.html"},{"id":"M3-D","t":"Doktorantura nomzodining ilmiy pozitsiyasi","h":"gks-lab-m3-d.html"},{"id":"M4-D","t":"Ilmiy reja","h":"gks-lab-m4-d.html"},{"id":"M5-D","t":"Professor bilan muloqot va yakunlash","h":"gks-lab-m5-d.html"}]},"usa":{"name":"USA Lab","slug":"usa-lab","key":"kompas-planner-usa-v1","goal":"AQShda qaysi yoʻl: Global UGRAD, Fulbright yoki doktorantura?","prog":"Dastur","opts":[],"tasks":[{"id":"M0","t":"AQSh yoʻllari va qaror darvozasi","h":"usa-lab-m0.html"},{"id":"M1","t":"Trek strategiyasi","h":"usa-lab-m1.html"},{"id":"M2","t":"Muvofiqlik va diskvalifikatsiya sabablari","h":"usa-lab-m2.html"},{"id":"M3","t":"AQSh oliy taʼlimi va pul oqimi","h":"usa-lab-m3.html"},{"id":"M4","t":"Liderlik izi va jamiyatga taʼsir","h":"usa-lab-m4.html"},{"id":"M5","t":"Shaxsiy bayonot","h":"usa-lab-m5.html"},{"id":"M6","t":"Maqsad va tadqiqot bayoni","h":"usa-lab-m6.html"},{"id":"M7","t":"Tavsiya xatlari","h":"usa-lab-m7.html"},{"id":"M8","t":"Joylashtirish va professorlar bilan aloqa","h":"usa-lab-m8.html"},{"id":"M9","t":"Testlar","h":"usa-lab-m9.html"},{"id":"M10","t":"Intervyu","h":"usa-lab-m10.html"},{"id":"M11","t":"Viza, joʻnash va qaytish","h":"usa-lab-m11.html"}]},"daad":{"name":"DAAD Lab","slug":"daad-lab","key":"kompas-planner-daad-v1","goal":"Nima uchun Germaniya va qaysi DAAD dasturi?","prog":"Dastur","opts":[["master","Magistratura"],["phd","Doktorantura"]],"tasks":[{"id":"M0","t":"Qaror moduli","h":"daad-lab-m0.html"},{"id":"M1","t":"Germaniya akademik tizimi","h":"daad-lab-m1.html"},{"id":"M2","t":"Avval ilmiy rahbar (Supervisor-First)","h":"daad-lab-m2.html"},{"id":"M3","t":"Hujjatlar toʻplami","h":"daad-lab-m3.html"},{"id":"M4","t":"Motivatsion xat (Motivationsschreiben)","h":"daad-lab-m4.html"},{"id":"M5","t":"Tadqiqot rejasi (Forschungsvorhaben)","h":"daad-lab-m5.html"},{"id":"M6","t":"Dastur tanlash va moslashtirish","h":"daad-lab-m6.html"},{"id":"M7","t":"Portal, topshirish va intervyu","h":"daad-lab-m7.html"},{"id":"M8","t":"Germaniyaga joʻnash","h":"daad-lab-m8.html"}]}}</script>
+<script src="js/master-planner.js" defer></script><script src="js/suggest.js" defer></script>
+</body>
+</html>

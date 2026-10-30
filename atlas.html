@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kompas Atlas — ish beruvchilar va rasmiy yoʻllar</title>
-<meta name="description" content="UK, Niderlandiya, Yangi Zelandiya, Kanada, AQSh, Yevropa, Germaniya, Avstraliya, Singapur, Koreya va Yaponiyada rasmiy ish va sponsorlik manbalarini toping.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>Kompas Atlas: xorijda oʻqish va ishlash boʻyicha rasmiy manbalar</title>
+<meta name="description" content="Xorijda oʻqish va ishlash boʻyicha rasmiy manbalar: maqolalar, UK, Niderlandiya va Kanada registrlaridan qidiruv, 9 mamlakatning rasmiy portallari. Oʻzbek tilida.">
 <link rel="canonical" href="https://www.kompaslab.uz/atlas">
-<meta name="robots" content="noindex,follow">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7" rel="stylesheet"><script src="js/alifbo.js"></script>
-<link rel="stylesheet" href="css/home.css"><link rel="stylesheet" href="css/kompas-ui.css">
+<meta property="og:title" content="Kompas Atlas: xorijda oʻqish va ishlash boʻyicha rasmiy manbalar">
+<meta property="og:description" content="Xorijda oʻqish va ishlash boʻyicha rasmiy manbalar: maqolalar, UK, Niderlandiya va Kanada registrlaridan qidiruv, 9 mamlakatning rasmiy portallari. Oʻzbek tilida.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.kompaslab.uz/atlas">
+<meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="css/kompas-ui.css">
+<link rel="stylesheet" href="css/atlas.css">
 <script src="js/kompas-ui.js"></script>
-<style>
-:root{--accent:#2d4a3e;--accent2:#c4622d;--muted:#5f7169;--border:#dbe4dc}
-body{background:#f5f7f5}
-.atop{background:#fff;border-bottom:1px solid var(--border);padding:14px 0}.atop .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.atop a{text-decoration:none;color:var(--accent);font-weight:800}
-.ahero{padding:60px 0 32px;background:radial-gradient(ellipse at 75% 20%,#e4ede6,transparent 42%)}
-.eyebrow{font-size:11px;color:var(--accent2);font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-h1{font-size:clamp(38px,5vw,60px);max-width:900px;margin:12px 0 16px}
-.intro{font-size:17px;max-width:820px;color:var(--muted)}
-.atools{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 2px}.atools a{padding:10px 14px;background:#fff;border:1px solid #d7e4d9;border-radius:11px;font-size:13px;font-weight:800;color:var(--accent);text-decoration:none}
-.arow{padding:10px 0 65px}
-.agroup{display:flex;align-items:baseline;gap:12px;margin:30px 0 12px;flex-wrap:wrap}
-.agroup h2{margin:0;font:800 21px "Outfit","IBM Plex Sans",sans-serif}
-.agroup p{font-size:12.5px;color:var(--muted)}
-.agrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
-.aplace{border-radius:17px;padding:20px;background:#fff;border:1px solid var(--border);display:flex;flex-direction:column;min-height:210px}
-.aplace a{display:inline-flex;align-items:center;color:var(--accent);font-weight:800;font-size:13px;margin-top:auto;gap:5px}
-.flag{font-size:24px;margin-right:7px}.aname{font-size:18px;font-weight:800;color:#1c3828}
-.info{font-size:12px;color:#62786b;margin:9px 0 14px;line-height:1.55}
-.kind{font-size:11px;font-weight:800;color:#7b5930;background:#fcf6e6;border-radius:7px;padding:5px 8px;display:inline-block;align-self:flex-start;margin-top:10px}
-.aplace.live{border-color:#a0c6a6;background:linear-gradient(160deg,#ffffff,#f4faf5)}
-.aplace.live .kind{background:#e6f3e9;color:#23704b}
-.afoot{margin-top:30px;border-top:1px solid var(--border);padding-top:16px;font-size:13px;color:var(--muted);max-width:850px}
-@media(max-width:820px){.agrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:530px){.agrid{grid-template-columns:minmax(0,1fr)}.aplace{min-height:165px}.ahero{padding-top:30px}}
-</style>
+<script src="js/pwa.js" defer></script>
+<script src="js/sfx.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Kompas Atlas", "url": "https://www.kompaslab.uz/atlas", "inLanguage": "uz", "dateModified": "2026-10-30", "hasPart": [{"@type": "Article", "headline": "Professorga dastlabki xat (Cold email): 5 ta keng tarqalgan xato", "url": "https://www.kompaslab.uz/atlas-professorga-xat"}, {"@type": "Article", "headline": "Talaba vizasida ishlash: 8 mamlakat qoidalari (30.10.2026 holatiga)", "url": "https://www.kompaslab.uz/atlas-talaba-ishi"}, {"@type": "Article", "headline": "IELTS nima va qachon kerak boʻladi", "url": "https://www.kompaslab.uz/atlas-ingliz-tili-testi"}]}</script>
+<style>.at-sub{font-size:16px;margin:4px 0 10px;color:var(--muted)}</style>
 </head>
-<body>
-<nav class="atop"><div class="wrap"><a href="index.html">← Kompas Lab</a><strong>Kompas Atlas</strong></div></nav>
-<header class="ahero"><div class="wrap"><span class="eyebrow">GLOBAL CAREER & WORK ROUTES</span><h1>Davlatni emas, <em>imkoniyatni</em> tekshiring.</h1><p class="intro">Rasmiy employer registrlari, ish qidirish portallari va viza qoidalari bir joyda. Har mamlakatdagi tizim boshqacha: sponsor litsenziyasi, avvalgi ish vizalari va eʼlon qilingan vakansiya bir narsa emas.</p>
-<div class="atools"><a href="uk-sponsors.html">UK katalogini ochish ↗</a><a href="master-planner.html">Shaxsiy reja ↗</a><a href="phd-lab.html">PhD Lab ↗</a></div>
-</div></header>
-<main class="arow"><div class="wrap">
-<div class="agroup"><h2>Kompas ichida qidiruv</h2><p>Ichki maʼlumot bazasi mavjud</p></div>
-<div class="agrid">
-<article class="aplace live"><div><span class="flag" aria-hidden="true">🇬🇧</span><span class="aname">Buyuk Britaniya</span></div><span class="kind">Ichki qidiruv mavjud</span><p class="info">Home Office: Skilled Worker sponsor licence registri. Shahar xaritasi, nom, reyting va tanlangan rasmiy Careers havolalari.</p><a href="uk-sponsors.html">UK sponsorlarni qidirish →</a></article>
-</div>
-<div class="agroup"><h2>Rasmiy portal orqali tekshirish</h2><p>Bu mamlakatlar uchun ichki Kompas bazasi hali yoʻq</p></div>
-<div class="agrid">
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇳🇱</span><span class="aname">Niderlandiya</span></div><span class="kind">Recognised sponsors registri</span><p class="info">IND: highly skilled migrant va ishlash maqsadi uchun rasman tan olingan sponsorlar; alohida Research registri ham bor.</p><a target="_blank" rel="noopener noreferrer" href="https://ind.nl/en/public-register-recognised-sponsors/public-register-work">IND registrini tekshirish ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇳🇿</span><span class="aname">Yangi Zelandiya</span></div><span class="kind">Accredited employer registri</span><p class="info">Immigration NZ: AEWV uchun akkreditatsiyalangan kompaniyalarni nomi orqali tekshirish. Barcha ish beruvchilar ochiq roʻyxatga kiritilmasligi mumkin.</p><a target="_blank" rel="noopener noreferrer" href="https://www.immigration.govt.nz/work/requirements-for-work-visas/approved-employers/accredited-employer-list/">Immigration NZ registri ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇨🇦</span><span class="aname">Kanada</span></div><span class="kind">Tarixiy positive LMIA</span><p class="info">Kanada Open Data: ijobiy LMIA olgan ish beruvchilar haqidagi avvalgi davr maʼlumotlari. Hozir ochiq ish yoki yangi ishchi ruxsati emas.</p><a target="_blank" rel="noopener noreferrer" href="https://open.canada.ca/data/en/dataset/90fed587-1364-4f33-a9ee-208181dc0b97">Open Data maʼlumotlari ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇺🇸</span><span class="aname">AQSh</span></div><span class="kind">Tarixiy H-1B petition</span><p class="info">USCIS H-1B Employer Data Hub: ish beruvchi tomonidan topshirilgan va koʻrib chiqilgan tarixiy petition maʼlumotlari. Amaldagi sponsorlar katalogi emas.</p><a target="_blank" rel="noopener noreferrer" href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub">USCIS manbasi ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇩🇪</span><span class="aname">Germaniya</span></div><span class="kind">Rasmiy vacancies portali</span><p class="info">Make it in Germany: professional va akademik ish eʼlonlari. Har bir rol uchun viza, diplom recognition va ish beruvchi shartlari alohida.</p><a target="_blank" rel="noopener noreferrer" href="https://www.make-it-in-germany.com/en/working-in-germany/job-listings">Rasmiy ish eʼlonlari ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇪🇺</span><span class="aname">Yevropa (EURES)</span></div><span class="kind">Transchegaraviy vakansiyalar</span><p class="info">EURES — Yevropa miqyosidagi vakansiyalar va ish sharoitlari. Yevropa uchun yagona visa sponsor registri yoʻq; har davlat qoidasi alohida.</p><a target="_blank" rel="noopener noreferrer" href="https://eures.europa.eu/index_en">EURES portali ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇦🇺</span><span class="aname">Avstraliya</span></div><span class="kind">Sponsorship qoidalari</span><p class="info">Home Affairs: ish beruvchi sponsorligi va ishchi vizalari boʻyicha rasmiy yoʻriqnomalar. Hozir Kompas’da tekshirilgan ochiq employer katalogi yoʻq.</p><a target="_blank" rel="noopener noreferrer" href="https://immi.homeaffairs.gov.au/visas/employing-and-sponsoring-someone/sponsoring-workers">Home Affairs sahifasi ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇸🇬</span><span class="aname">Singapur</span></div><span class="kind">Employment Pass eligibility</span><p class="info">MOM: Employment Pass uchun minimal maosh va COMPASS mezonlari. Firma ichki xodimlar tarkibi kabi ochiq boʻlmagan maʼlumotlar ham ahamiyatli.</p><a target="_blank" rel="noopener noreferrer" href="https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility">MOM eligibility sahifasi ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇰🇷</span><span class="aname">Janubiy Koreya</span></div><span class="kind">EPS (E-9) tizimi</span><p class="info">EPS — E-9 mehnat migratsiyasi jarayoni. Professional E-7 yoʻli bundan farq qiladi; ikkisini bitta kompaniya roʻyxati deb koʻrsatib boʻlmaydi.</p><a target="_blank" rel="noopener noreferrer" href="https://www.eps.go.kr/">Rasmiy EPS portali ↗</a></article>
-<article class="aplace"><div><span class="flag" aria-hidden="true">🇯🇵</span><span class="aname">Yaponiya</span></div><span class="kind">Specified Skilled Worker</span><p class="info">Yaponiya Immigration Services Agency: SSW ishlash yoʻli, til va kasbiy malaka sinovlari. Professional visa yoʻllari alohida baholanadi.</p><a target="_blank" rel="noopener noreferrer" href="https://www.ssw.go.jp/en/about/visa/">Rasmiy SSW tushuntirishi ↗</a></article>
-</div>
-<p class="afoot">Manbalar 2026-10-24 holatida tekshirilgan. Ish taklifi, sponsorlik va viza kafolati berilmaydi. Ichki qidiruv yaratishdan oldin rasmiy maʼlumotni qayta ishlatish litsenziyasi, format, yangilanish tezligi va talaba uchun qiymati tekshiriladi.</p>
-</div></main>
-</body></html>
+<body data-kpage="atlas">
+<nav class="nav" data-sfx>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab</span></a>
+    <div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html">Narxlar</a><a href="atlas.html" aria-current="page">Atlas</a><a href="savollar.html">Savollar</a></div>
+    <span class="kl-sfx" data-sfx-slot></span><a href="login.html" class="btn btn-g btn-sm">Kirish</a>
+  </div>
+</nav>
+<div class="kl-tabbar" data-sfx><div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html">Narxlar</a><a href="atlas.html" aria-current="page">Atlas</a><a href="savollar.html">Savollar</a></div></div>
+<header class="kl-pagehead">
+  <div class="wrap">
+    <nav class="kl-crumb" aria-label="Yoʻl"><a href="index.html">Kompas Lab</a><span aria-hidden="true">/</span><span>Atlas</span></nav>
+    <div class="kl-head-row"><div><h1>Kompas Atlas</h1><p class="lead">Xorijda oʻqish va ishlash boʻyicha rasmiy manbalar: qisqa maqolalar va rasmiy registrlardan qidiruv. Har faktda manba va tekshirilgan sana bor.</p></div><img class="kl-head-art float" src="img/3d/telescope.webp" alt="" width="160" height="160"></div>
+  </div>
+</header>
+<main>
+<section class="at-sec" id="oqish"><div class="wrap">
+<h2>Oʻqish</h2>
+<p class="at-intro">Universitet, stipendiya, til testi va oʻqish davridagi qoidalar haqida qisqa maqolalar. Har birida rasmiy manbalar va mos Labning bepul M0 moduli koʻrsatilgan.</p>
+<div class="at-grid"><article class="at-card"><span class="at-kind">Oʻqish · PhD, Master, DAAD</span><h3>Professorga dastlabki xat (Cold email): 5 ta keng tarqalgan xato</h3><p>Bir xil xatni oʻnlab professorga yuborish, "Dear Sir/Madam" va birinchi xatdayoq stipendiya soʻrash. Nimadan qochish va xat qanday tuzilishi.</p><a class="at-go" href="atlas-professorga-xat.html">Oʻqish →</a></article><article class="at-card"><span class="at-kind">Oʻqish · 8 mamlakat</span><h3>Talaba vizasida ishlash: 8 mamlakat qoidalari (30.10.2026 holatiga)</h3><p>Buyuk Britaniya, Germaniya, Niderlandiya, Kanada, AQSh, Yaponiya, Polsha va Koreya: oʻqish davrida haftasiga necha soat ishlash mumkin va qanday shartlar bilan.</p><a class="at-go" href="atlas-talaba-ishi.html">Oʻqish →</a></article><article class="at-card"><span class="at-kind">Oʻqish · Bachelor, Master</span><h3>IELTS nima va qachon kerak boʻladi</h3><p>IELTS Academic nimadan iborat, qachon universitet talab qiladi, qachon viza uchun kerak va qachon talab qilinmasligi mumkin.</p><a class="at-go" href="atlas-ingliz-tili-testi.html">Oʻqish →</a></article><article class="at-card"><span class="at-kind">Katalog</span><h3>Rasmiy manbalar katalogi</h3><p>Stipendiya tashkilotlari, universitet portallari va immigratsiya idoralarining rasmiy sahifalari.</p><a class="at-go" href="sources.html">Ochish →</a></article></div>
+<div class="at-labs"><a href="master-planner.html">Bepul reja</a><a href="master-lab-m0.html">Master Lab M0</a><a href="bachelor-lab-m0.html">Bachelor Lab M0</a><a href="phd-lab-m0.html">PhD Lab M0</a></div>
+</div></section>
+<section class="at-sec" id="ish"><div class="wrap">
+<h2>Ish yoʻllari</h2>
+<p class="at-intro">Har mamlakatda tizim boshqacha: homiylik litsenziyasi, avvalgi ish vizalari statistikasi va eʼlon qilingan vakansiya bir narsa emas. Shuning uchun har kartada qanday maʼlumot ekani yozilgan.</p>
+<h3 class="at-sub">Kompas ichida qidiruv</h3>
+<div class="at-grid"><article class="at-card at-int"><span class="at-flag" aria-hidden="true">🇬🇧</span><span class="at-kind">Kompas ichida qidiruv</span><h3>Buyuk Britaniya</h3><p>Home Office registri: Skilled Worker vizasi boʻyicha homiylik litsenziyasi bor tashkilotlar. Nom va shahar boʻyicha qidiruv, xarita.</p><a class="at-go" href="uk-sponsors.html">Qidirish →</a></article><article class="at-card at-int"><span class="at-flag" aria-hidden="true">🇳🇱</span><span class="at-kind">Kompas ichida qidiruv</span><h3>Niderlandiya</h3><p>IND registri: yuqori malakali migrant va boshqa ish yoʻllari uchun tan olingan homiylar (nom va KvK raqami).</p><a class="at-go" href="nl-sponsors.html">Qidirish →</a></article><article class="at-card at-int"><span class="at-flag" aria-hidden="true">🇨🇦</span><span class="at-kind">Kompas ichida qidiruv</span><h3>Kanada</h3><p>Ijobiy LMIA olgan ish beruvchilar, eng soʻnggi eʼlon qilingan chorak. Tarixiy maʼlumot: hozirgi boʻsh ish oʻrni emas.</p><a class="at-go" href="ca-lmia.html">Qidirish →</a></article></div>
+<h3 class="at-sub" style="margin-top:22px">Rasmiy portal orqali tekshirish</h3>
+<div class="at-grid"><article class="at-card"><span class="at-flag" aria-hidden="true">🇺🇸</span><span class="at-kind">H-1B petitsiyalari (tarixiy)</span><h3>AQSh</h3><p>USCIS H-1B Employer Data Hub: ish beruvchilar topshirgan va koʻrib chiqilgan petitsiyalar. Amaldagi homiylar roʻyxati emas.</p><a class="at-go" href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article><article class="at-card"><span class="at-flag" aria-hidden="true">🇩🇪</span><span class="at-kind">Rasmiy vakansiyalar portali</span><h3>Germaniya</h3><p>Make it in Germany: ish eʼlonlari. Har ish uchun viza, diplomni tan oldirish va ish beruvchi shartlari alohida tekshiriladi.</p><a class="at-go" href="https://www.make-it-in-germany.com/en/working-in-germany/job-listings" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article><article class="at-card"><span class="at-flag" aria-hidden="true">🇵🇱</span><span class="at-kind">Ish ruxsatnomasi</span><h3>Polsha</h3><p>Xorijliklar idorasi (UDSC): ish ruxsatnomasi turlari va kim ruxsatnomasiz ishlay olishi.</p><a class="at-go" href="https://www.mos.cudzoziemcy.gov.pl/en/categories-information/doing-the-job/work-permit/" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article><article class="at-card"><span class="at-flag" aria-hidden="true">🇰🇷</span><span class="at-kind">EPS (E-9)</span><h3>Janubiy Koreya</h3><p>EPS: E-9 mehnat migratsiyasi tizimi. Professional E-7 yoʻli alohida.</p><a class="at-go" href="https://www.eps.go.kr/" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article><article class="at-card"><span class="at-flag" aria-hidden="true">🇯🇵</span><span class="at-kind">Specified Skilled Worker</span><h3>Yaponiya</h3><p>Yaponiya immigratsiya xizmati: SSW yoʻli, til va kasbiy malaka imtihonlari.</p><a class="at-go" href="https://www.ssw.go.jp/en/about/visa/" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article><article class="at-card"><span class="at-flag" aria-hidden="true">🇪🇺</span><span class="at-kind">Transchegaraviy vakansiyalar</span><h3>Yevropa (EURES)</h3><p>EURES: Yevropa boʻyicha vakansiyalar. Yevropa uchun yagona homiylar registri yoʻq, har davlat qoidasi alohida.</p><a class="at-go" href="https://eures.europa.eu/index_en" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article><article class="at-card"><span class="at-flag" aria-hidden="true">🇳🇿</span><span class="at-kind">Akkreditatsiyalangan ish beruvchilar</span><h3>Yangi Zelandiya</h3><p>Immigration NZ: AEWV uchun akkreditatsiyalangan kompaniyalarni nom boʻyicha tekshirish (yuklab olinadigan roʻyxat yoʻq).</p><a class="at-go" href="https://www.immigration.govt.nz/work/requirements-for-work-visas/approved-employers/accredited-employer-list/" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article><article class="at-card"><span class="at-flag" aria-hidden="true">🇦🇺</span><span class="at-kind">Homiylik qoidalari</span><h3>Avstraliya</h3><p>Home Affairs: ish beruvchi homiyligi va ishchi vizalari boʻyicha rasmiy yoʻriqnoma. Faqat maʼlumot.</p><a class="at-go" href="https://immi.homeaffairs.gov.au/visas/employing-and-sponsoring-someone/sponsoring-workers" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article><article class="at-card"><span class="at-flag" aria-hidden="true">🇸🇬</span><span class="at-kind">Employment Pass</span><h3>Singapur</h3><p>MOM: Employment Pass uchun minimal maosh va COMPASS mezonlari. Faqat maʼlumot.</p><a class="at-go" href="https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility" target="_blank" rel="noopener">Rasmiy sahifa ↗</a></article></div>
+<div class="at-note"><b>Diqqat.</b> Roʻyxatda boʻlish kompaniyada hozir boʻsh ish oʻrni borligini, sizni ishga olishini yoki viza homiyligini bildirmaydi. Kompas ish topib bermaydi va viza boʻyicha maslahat bermaydi; har vakansiya va viza shartini rasmiy manbada tekshiring.</div>
+<div class="at-labs"><a href="musofir-lab-m0.html">Musofir Lab M0 (ochiq)</a></div>
+<p class="at-src">Manbalar 30.10.2026 holatiga tekshirilgan. Ichki qidiruvdagi har nusxada yuklab olingan sana koʻrsatiladi.</p>
+</div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="atlas.html">Atlas</a><a href="sources.html">Rasmiy manbalar</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a></div>
+    <div>&copy; 2026 Kompas Lab, Oʻzbekiston</div>
+  </div>
+</footer>
+</body>
+</html>

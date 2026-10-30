@@ -1,0 +1,81 @@
+/* Kompas Atlas, Bepul reja: umumiy komponentlar. Ranglar faqat tokenlardan (tungi rejim uchun). */
+.at-sec{padding:28px 0 8px}
+.at-sec:last-of-type{padding-bottom:64px}
+.at-sec h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 6px}
+.at-sec>.wrap>p.at-intro{color:var(--muted);max-width:760px;margin:0 0 18px}
+.at-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.at-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.at-card h3{font-size:17px;line-height:1.35;margin:0}
+.at-card p{font-size:14px;color:var(--muted);margin:0}
+.at-card .at-flag{font-size:22px;line-height:1}
+.at-card .at-kind{font:700 11px/1 "JetBrains Mono","IBM Plex Sans",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2)}
+.at-card a.at-go{margin-top:auto;font-weight:700;font-size:14px;color:var(--accent);text-underline-offset:3px}
+.at-card.at-int{border-color:var(--accent)}
+.at-note{background:var(--gold-lit);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.6;margin:16px 0}
+.at-labs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.at-labs a{border:1px solid var(--border);background:var(--surface);border-radius:99px;padding:7px 13px;font-size:13px;font-weight:700;color:var(--accent);text-decoration:none}
+.at-labs a:hover{border-color:var(--accent)}
+.at-src{font-size:12.5px;color:var(--muted);margin-top:22px}
+/* Maqola */
+.at-art{max-width:760px;margin:0 auto;padding:10px 0 64px}
+.at-art h2{font-size:24px;margin:30px 0 8px}
+.at-art p,.at-art li{font-size:16px;line-height:1.75}
+.at-art ol,.at-art ul{padding-left:22px}
+.at-art .at-short{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;font-size:16px}
+.at-art table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;background:var(--surface)}
+.at-art th,.at-art td{border:1px solid var(--border);padding:9px 10px;text-align:left;vertical-align:top}
+.at-art th{background:var(--bg);font-weight:700}
+.at-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.at-art .at-meta{font-size:13px;color:var(--muted)}
+.at-art .at-sample{background:var(--bg);border:1px dashed var(--border);border-radius:12px;padding:14px 16px;font-size:14.5px}
+.at-art .at-sample b{display:block;font-size:12px;color:var(--accent2);margin-bottom:6px}
+.at-art .at-sources li{font-size:14px}
+.at-cta{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;margin-top:28px}
+.at-cta h3{margin:0 0 6px;font-size:18px}
+.at-cta p{margin:0 0 10px;font-size:14.5px;color:var(--muted)}
+/* Registr qidiruvi */
+.ar-panel{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;margin:8px 0 18px}
+.ar-controls{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px}
+.ar-controls.one{grid-template-columns:1fr}
+.ar-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;color:var(--muted)}
+.ar-controls input,.ar-controls select{height:44px;border:1px solid var(--border);border-radius:10px;padding:0 12px;font:500 15px "Outfit","IBM Plex Sans",sans-serif;background:var(--bg);color:var(--text);width:100%}
+.ar-stat{font-size:12.5px;margin:10px 0 0;color:var(--muted)}
+.ar-stat.warn{color:var(--red)}
+.ar-bar{display:flex;justify-content:space-between;align-items:baseline;margin:6px 0 10px}
+.ar-bar h2{font-size:18px;margin:0}
+.ar-bar span{font-size:12.5px;color:var(--muted)}
+.ar-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.ar-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;min-width:0}
+.ar-card h3{font:700 15px/1.35 "Outfit","IBM Plex Sans",sans-serif;margin:0 0 4px;overflow-wrap:anywhere}
+.ar-meta,.ar-occ{font-size:12.5px;color:var(--muted);margin:0;overflow-wrap:anywhere}
+.ar-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ar-tags span{font-size:11px;font-weight:700;border-radius:7px;background:var(--accent-lit);color:var(--accent);padding:4px 7px}
+.ar-empty{grid-column:1/-1;border:1px dashed var(--border);border-radius:14px;padding:26px 18px;text-align:center;color:var(--muted)}
+.ar-empty b{display:block;color:var(--text);margin-bottom:4px}
+.ar-more{display:block;margin:16px auto 0}
+/* Bepul reja */
+.pl-labs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0}
+.pl-labs a{border:1px solid var(--border);background:var(--surface);border-radius:99px;padding:8px 14px;font-size:14px;font-weight:700;color:var(--text);text-decoration:none}
+.pl-labs a[aria-current="page"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.pl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:18px 0 64px}
+.pl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;min-width:0}
+.pl-card.full{grid-column:1/-1}
+.pl-card h2{font-size:20px;margin:0 0 8px}
+.pl-note{font-size:13px;color:var(--muted);margin:6px 0}
+.pl-label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin:10px 0 4px}
+.pl-ctl{width:100%;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font:500 15px "Outfit","IBM Plex Sans",sans-serif;background:var(--bg);color:var(--text)}
+.pl-row{display:flex;gap:10px;flex-wrap:wrap}
+.pl-row>div{flex:1 1 180px;min-width:0}
+.pl-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pl-bar{height:8px;border-radius:99px;background:var(--bg);border:1px solid var(--border);overflow:hidden;margin:8px 0}
+.pl-bar>div{height:100%;width:0;background:var(--accent);transition:width .3s}
+.pl-tasks{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:6px}
+.pl-tasks li{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:10px;padding:9px 10px}
+.pl-tasks input{margin-top:4px;width:18px;height:18px;flex:0 0 auto}
+.pl-tasks label{flex:1;font-size:14.5px;line-height:1.45}
+.pl-tasks a{font-size:12.5px;font-weight:700;color:var(--accent);white-space:nowrap}
+.pl-next{border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14.5px}
+.pl-prog{border:1px solid var(--border);border-radius:12px;padding:12px;margin-top:10px;font-size:14px}
+.pl-prog small{display:block;color:var(--muted);margin:4px 0}
+.pl-file{display:none}
+@media(max-width:760px){.pl-grid{grid-template-columns:1fr}.ar-controls{grid-template-columns:1fr}}
