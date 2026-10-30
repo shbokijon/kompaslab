@@ -21,6 +21,9 @@ UI_HEAD = '<link rel="stylesheet" href="css/kompas-ui.css">\n<script src="js/kom
 SITE = "https://www.kompaslab.uz/"
 
 # Lab boʻyicha qoʻshimcha tab (sahifa mavjud boʻlsa)
+# Pullik modul oʻquvchisi bor Lablar: modul sahifasidagi qulf bloki obunachiga "Modulni ochish" tugmasini
+# koʻrsatadi (js/paid-module.js, fn_my_access). Kontentning oʻzi bazada, fn_paid_page() orqali beriladi.
+PAID_READER = {"master-lab": "master-lab-o.html"}
 EXTRA_TABS = {"master-lab": [("master-lab-manbalar.html", "Manbalar"), ("master-planner.html", "Shaxsiy reja")]}
 
 
@@ -318,6 +321,10 @@ def split(root, f, src):
         else:
             first = f'<a class="btn btn-g" href="{m0_page}">Bepul M0 dan boshlash</a>' if m0_page else f'<a class="btn btn-g" href="{stem}-dastur.html">Butun dastur</a>'
             lock = f'''<div class="kl-lock"><img src="img/3d/lock.webp" alt="" width="160" height="160"><div><b>Darslar obuna bilan ochiladi.</b><p>Har dars alohida sahifada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Onlayn toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz.</p><div class="row"><a class="btn btn-p" href="{stem}-narxlar.html">Narxlar va obuna</a>{first}</div></div></div>'''
+            if stem in PAID_READER and re.fullmatch(r"m\d+", m["slug"]):
+                n = m["slug"][1:]
+                lock = (f'''<div class="kl-lock" data-paid="{stem}" data-mod="{n}" data-reader="{PAID_READER[stem]}?m={n}"><img src="img/3d/lock.webp" alt="" width="160" height="160"><div><b data-paid-t>Darslar obuna bilan ochiladi.</b><p data-paid-d>Modul bitta interaktiv sahifada: har darsda Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq, oxirida vositalar va tayyor hujjat. Onlayn toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz.</p><div class="row" data-paid-row><a class="btn btn-p" href="{stem}-narxlar.html">Narxlar va obuna</a>{first}</div></div></div>'''
+                        + '<script src="js/paid-module.js" defer></script>')
         art = f'<div class="kl-mod-art"><img src="img/3d/memo.webp" alt="" width="28" height="28" style="width:28px;height:28px;flex:none"><span><b>Modul natijasi:</b> {esc(m["art"])}</span></div>' if m["art"] else ""
         lead = f'{len(m["lessons"])} dars' + (f'. {esc(m["group"])}' if m["group"] else "") + "."
         main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (stem + "-dastur.html", "Dastur"), (None, esc(m["id"]))], f'{esc(m["id"])}. {esc(m["title"])}', lead, icon)

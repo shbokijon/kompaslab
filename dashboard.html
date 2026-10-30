@@ -772,6 +772,7 @@ async function loadCourseData(courseId, courseSlug) {
     // Progress map: lesson_id → {completed, watched_percent}
     const progressMap = {}
     progress.forEach(p => { progressMap[p.lesson_id] = p })
+    if (PAGE_COURSES[courseSlug]) mergeLocalProgress(courseSlug, modules, progressMap)
 
     // Hisoblash
     const allLessons = modules.flatMap(m => m.lessons || [])
@@ -807,6 +808,35 @@ async function loadCourseData(courseId, courseSlug) {
   }
 }
 
+// ── Interaktiv sahifali kurslar (video pleyer emas) ──
+// Master Lab: M0 bepul sahifa, M1–M8 master-lab-o.html?m=N orqali (obuna serverda tekshiriladi).
+// Javoblar va yakunlangan darslar shu modullarning localStorage kalitida: kompas_master_m<N>_v1.
+const PAGE_COURSES = {
+  'master-lab': { href: n => n === 0 ? 'master-lab-m0.html' : `master-lab-o.html?m=${n}`, key: n => `kompas_master_m${n}_v1` }
+}
+function mergeLocalProgress(courseSlug, modules, progressMap) {
+  const pc = PAGE_COURSES[courseSlug]
+  modules.forEach(m => {
+    let st = null
+    try { st = JSON.parse(localStorage.getItem(pc.key(m.order_index)) || 'null') } catch (e) {}
+    const done = (st && st.done) || {}
+    ;(m.lessons || []).forEach(l => { if (done['l' + l.order_index]) progressMap[l.id] = { lesson_id: l.id, completed: true } })
+  })
+}
+function lessonHref(courseSlug, mod, lesson) {
+  const pc = PAGE_COURSES[courseSlug]
+  if (pc && mod) return pc.href(mod.order_index)
+  return `${APP_CONFIG.routes.lesson}?course=${courseSlug}&lesson=${lesson.id}`
+}
+// Modul obuna boʻyicha ochiqmi: unlocked_modules M0 ni ham sanaydi (pozitsiya = order_index + 1)
+function moduleOpen(mod) {
+  if (mod.is_free) return true
+  const e = _activeCourse
+  if (!e || !['paid', 'partial'].includes(e.payment_status) || e.frozen_at) return false
+  if (e.expires_at && new Date(e.expires_at) <= new Date()) return false
+  return e.unlocked_modules == null || mod.order_index + 1 <= e.unlocked_modules
+}
+
 // ════════════════════════════════════════════════════════
 //  4. STATS ROW
 // ════════════════════════════════════════════════════════
@@ -835,8 +865,8 @@ function renderCurrentLesson(lesson, module, pct, courseSlug) {
     document.getElementById('currentLessonMeta').textContent  =
       `📦 ${module?.title || 'Modul'} · ⏱ ${lesson.duration || '~30 daqiqa'}`
 
-    // Lesson sahifasiga URL parametrlari
-    const lessonUrl = `${APP_CONFIG.routes.lesson}?course=${courseSlug}&lesson=${lesson.id}`
+    // Dars sahifasi (Master: interaktiv modul sahifasi)
+    const lessonUrl = lessonHref(courseSlug, module, lesson)
     document.querySelector('.cc-btn').href = lessonUrl
     document.getElementById('nextLessonBadge').textContent = '▶'
   }
@@ -867,13 +897,11 @@ function renderModules(modules, progressMap, courseSlug) {
     const done  = lessons.filter(l => progressMap[l.id]?.completed).length
     const isCompleted = done === total && total > 0
     const isActive    = done > 0 && done < total
-    const isLocked    = done === 0 && !mod.is_free
+    const isLocked    = !moduleOpen(mod)
 
     // Birinchi ko'rilmagan dars
-    const nextLesson = lessons.find(l => !progressMap[l.id]?.completed)
-    const href = nextLesson && !isLocked
-      ? `${APP_CONFIG.routes.lesson}?course=${courseSlug}&lesson=${nextLesson.id}`
-      : '#'
+    const nextLesson = lessons.find(l => !progressMap[l.id]?.completed) || lessons[0]
+    const href = nextLesson && !isLocked ? lessonHref(courseSlug, mod, nextLesson) : '#'
 
     // Status
     let numClass = 'locked', statusClass = 'locked', statusText = 'Qulflangan'

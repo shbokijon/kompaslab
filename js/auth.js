@@ -341,7 +341,7 @@ async function getUserEnrollments(userId) {
         course:courses(id, title, slug, description)
       `)
       .eq('user_id', userId)
-      .eq('payment_status', 'paid')
+      .in('payment_status', ['paid', 'partial'])   // partial: boʻlib toʻlash, ochiq modullar unlocked_modules da
       .order('enrolled_at', { ascending: false })
 
     if (error) throw error

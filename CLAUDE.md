@@ -54,6 +54,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 - Manba: `src/<nom>.src.html` (`{{CSS}}` oʻrniga `m0.css`). Yigʻish: `python3 tools/modules/build.py [nom]`.
   - sayt versiyasi → repo ildizida `<nom>.html` (config.js, live-bar, protect, logotip, PWA, darvoza)
   - yuklab olinadigan → `tools/modules/dist/<nom>.html` (rasmlar ichida; git'ga kirmaydi). Foydalanuvchiga `SendUserFile` bilan yuboriladi.
+- **Pullik modullar (2026-10-30, Master M1–M8):** `build.py` dagi `paid=True` → `tools/modules/paid/<nom>.html` (git va saytga chiqmaydi) → `python3 tools/modules/paid_upload.py` → `paid/upload_*.sql` ni bazada ishga tushir (`paid_pages`). Talaba `master-lab-o.html?m=N` orqali oladi, `fn_paid_page()` obunani serverda tekshiradi. Modul sahifasidagi "Modulni ochish" tugmasi: `js/paid-module.js`. Batafsil: `docs/MASTER_LAB_RELEASE_POLICY.md`. Tekshiruv: `node tools/modules/test/paid_reader.js`. Kontent oʻzgarsa: qayta yigʻ → SQL → bazaga yukla.
 - Master M3–M8 manbalari umumiy generator bilan yaratilgan (qobiq M2 andozasi); endi `src/*.src.html` ni toʻgʻridan-toʻgʻri tahrirla. Pullik modullarda faktlar "16.10.2026 holatiga" belgilangan: har sikl yangilash kerak (M7, M8).
 - Yangi modul: eng yaqin manbadan nusxa ol → `build.py` dagi `MODULES` ga qoʻsh → yigʻ → tekshir → Lab sahifasi va dashboard'ga bogʻla.
 - Tekshiruv: `python3 -m http.server 8814 &` keyin `PW=$(npm root -g)/playwright node tools/modules/test/smoke.js <nom>` (JS xatosi, 390px, darvoza, 1-dars +XP; sayt va dist).
@@ -74,7 +75,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 | Lab | Slug | Modullar (darslar) | Tayyor |
 |---|---|---|---|
 | Bachelor | bachelor-lab | 17 (86) | M0 saytda |
-| Master | master-lab | 9 (59) | M0 saytda; M1–M8 faqat yuklab olinadigan (`dist/`) |
+| Master | master-lab | 9 (59) | M0 saytda; M1–M8 pullik yetkazish tayyor: `paid_pages` + `fn_paid_page()` + `master-lab-o.html?m=N` (toʻlov ochilgach ishlaydi) |
 | PhD | phd-lab | `phd-lab.html` ga qara | M0 saytda |
 | GKS | gks-lab | 12 (54) | M0 saytda |
 | USA | usa-lab | 12 (72) | M0 saytda |

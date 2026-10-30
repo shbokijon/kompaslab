@@ -4,8 +4,18 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 
 ## Product commitment
 - Fully self-service: no individual mentor feedback, admissions agency service or founder-operated support loop.
-- M0 (five-step decision module) is free. M1–M8 are paid-course drafts and must not become publicly accessible as unprotected HTML.
-- Existing authoring inputs: tools/modules/src/master-lab-m1.src.html through master-lab-m8.src.html. The build config intentionally has site:false for these.
+- M0 (five-step decision module) is free. M1–M8 are paid and are never published as public HTML files.
+- Authoring inputs: tools/modules/src/master-lab-m1.src.html … m8.src.html. build.py has site:false, paid:True for them.
+
+## Paid delivery (2026-10-30)
+- `python3 tools/modules/build.py master-lab-mN` writes the full single-page module to `tools/modules/paid/master-lab-mN.html` (gitignored, not deployed).
+- `python3 tools/modules/paid_upload.py` writes `tools/modules/paid/upload_*.sql`; running them upserts `public.paid_pages` (course_slug, module_index, html, sha256, version).
+- `paid_pages` RLS: admin only. Students get the HTML only from `fn_paid_page(course, module)` (security definer, authenticated only): checks enrollment payment_status paid/partial, frozen_at, expires_at and `fn_module_position(module) <= unlocked_modules`. Reasons returned: auth, no_access, frozen, expired, locked, missing.
+- `master-lab-o.html?m=N` (noindex) calls the RPC and renders the page with document.write in the same origin, so localStorage keys `kompas_master_mN_v1`, relative assets, sfx, watermark and protect.js keep working.
+- Module hubs `master-lab-mN.html` include `js/paid-module.js`: for admin or an entitled subscriber the lock box becomes "Modulni ochish". This is display only; the server check is in fn_paid_page.
+- dashboard.html: for master-lab, module rows link to M0 / master-lab-o.html?m=N, lock state comes from the enrollment (unlocked_modules), progress is read from the modules' localStorage.
+- Migration: `supabase/migrations/20261030_master_paid_pages.sql` (also fixes fn_set_module_access, which anonymous callers could run). Test: `tools/modules/test/paid_reader.js`.
+- After any content edit: rebuild, regenerate upload SQL, run it, compare sha256.
 - Existing marketing syllabus: master-lab.html lists M0–M8 (59 lesson positions). A list of lessons is not equal to 59 fully reviewed and published lessons.
 - New free product: master-planner.html: goal, intake year, user-maintained shortlist, tasks, export. It does NOT implement official eligibility, real-time deadline checks, or automatic source verification.
 - Secure payment checkout remains disabled while registration/e-signature, merchant contract and provider integration are pending.
@@ -26,14 +36,14 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 | Module | Topic | Current repository asset | Release readiness |
 |---|---|---|---|
 | M0 | Qanday ishlaydi, diagnostika | master-lab-m0.html | Public free experience exists; content refresh/audit pending |
-| M1 | Ilmiy yo‘nalish va universitet | master-lab-m1.src.html | Source draft, not public |
-| M2 | Muddatlar va ish tizimi | master-lab-m2.src.html | Source draft, not public |
-| M3 | Akademik CV | master-lab-m3.src.html | Source draft, not public |
-| M4 | Tavsiya xatlari va professor | master-lab-m4.src.html | Source draft, not public |
-| M5 | Maqsad bayonnomasi (SoP) | master-lab-m5.src.html | Source draft, not public |
-| M6 | Ilmiy loyiha taklifi | master-lab-m6.src.html | Source draft, not public |
-| M7 | Stipendiyalar va funding | master-lab-m7.src.html | Source draft, source audit required |
-| M8 | Intervyu, visa, jo‘nash | master-lab-m8.src.html | Source draft, immigration expert review required |
+| M1 | Ilmiy yo‘nalish va universitet | master-lab-m1.src.html | Built for paid delivery; editorial review pending |
+| M2 | Muddatlar va ish tizimi | master-lab-m2.src.html | Built for paid delivery; editorial review pending |
+| M3 | Akademik CV | master-lab-m3.src.html | Built for paid delivery; editorial review pending |
+| M4 | Tavsiya xatlari va professor | master-lab-m4.src.html | Built for paid delivery; editorial review pending |
+| M5 | Maqsad bayonnomasi (SoP) | master-lab-m5.src.html | Built for paid delivery; editorial review pending |
+| M6 | Ilmiy loyiha taklifi | master-lab-m6.src.html | Built for paid delivery; editorial review pending |
+| M7 | Stipendiyalar va funding | master-lab-m7.src.html | Built for paid delivery; facts dated 16.10.2026, source re-check required before sale |
+| M8 | Intervyu, visa, jo‘nash | master-lab-m8.src.html | Built for paid delivery; immigration expert review required before sale |
 
 ## No-payment release gate
 Keep payment.html closed until: production identity/legal documentation, merchant contract, proper provider-hosted checkout, signed webhook verification, correct product pricing, idempotency, receipt/refund handling, security tests, availability tests, RLS tests with two different accounts, and independent editorial signoff.

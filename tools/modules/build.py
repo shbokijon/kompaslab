@@ -27,6 +27,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 DIST = HERE / "dist"
+PAID = HERE / "paid"   # pullik sahifalar: git va saytga chiqmaydi, faqat bazaga yuklanadi
 
 # site: saytga chiqadimi; protect: nusxa olishdan himoya va suv belgisi; og: havola rasmi matni
 MODULES = {
@@ -41,15 +42,17 @@ MODULES = {
     "musofir-lab-m0":      dict(lab="musofir-lab.html", site=True, protect=False,
                                 og=("Musofir Lab M0: rasmiy yoʻl va firibgarlikdan himoya",
                                     "Xorijga ishga ketishdan oldin: firibgarlik belgilari, 4 mamlakatning rasmiy yoʻllari, xarajat va qarz xavfi. Bepul.")),
-    # Pullik modullar: hozircha faqat yuklab olinadigan fayl
-    "master-lab-m1":       dict(lab="master-lab.html", site=False),
-    "master-lab-m2":       dict(lab="master-lab.html", site=False),
-    "master-lab-m3":       dict(lab="master-lab.html", site=False),
-    "master-lab-m4":       dict(lab="master-lab.html", site=False),
-    "master-lab-m5":       dict(lab="master-lab.html", site=False),
-    "master-lab-m6":       dict(lab="master-lab.html", site=False),
-    "master-lab-m7":       dict(lab="master-lab.html", site=False),
-    "master-lab-m8":       dict(lab="master-lab.html", site=False),
+    # Pullik modullar (paid=True): saytda ochiq HTML yoʻq. Toʻliq sahifa tools/modules/paid/ ga
+    # yigʻiladi va Supabase paid_pages jadvaliga yuklanadi (tools/modules/paid_upload.py);
+    # oʻquvchiga faqat master-lab-o.html?m=N orqali, fn_paid_page() obunani tekshirgandan keyin beriladi.
+    "master-lab-m1":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    "master-lab-m2":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    "master-lab-m3":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    "master-lab-m4":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    "master-lab-m5":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    "master-lab-m6":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    "master-lab-m7":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    "master-lab-m8":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
 }
 
 SB = '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>'
@@ -125,6 +128,23 @@ def standalone(name, src, cfg):
     return t
 
 
+# master-lab-o.html sahifasida Supabase mijozi (window.supabase) allaqachon bor va document.write
+# oʻsha oynada ishlaydi: supabase-js/config.js qayta yuklansa, "const" eʼlonlari toʻqnashadi.
+# Shuning uchun pullik sahifaga faqat protect.js qoʻshiladi.
+PAID_JS = '<script src="js/protect.js"></script>\n'
+
+
+def paid(name, src, cfg):
+    """Pullik modulning sayt sahifasi (bitta sahifa). master-lab-o.html uni bazadan olib,
+    document.write bilan ochadi: nisbiy yoʻllar (img/, js/, css/) sayt ildiziga mos keladi."""
+    s = site(name, src, cfg)
+    if "js/config.js" not in s:
+        i = s.rfind("</body>")
+        s = s[:i] + PAID_JS + s[i:]
+    s = s.replace("</head>", '<meta name="robots" content="noindex, nofollow">\n</head>', 1)
+    return s
+
+
 UI_HEAD = '<link rel="stylesheet" href="css/kompas-ui.css">\n<script src="js/kompas-ui.js"></script>\n'
 
 
@@ -184,6 +204,9 @@ def build(name):
     if cfg.get("site"):
         for fn, html in views(name, site(name, src, cfg)).items():
             (ROOT / fn).write_text(html, encoding="utf-8"); out.append(fn)
+    if cfg.get("paid"):
+        PAID.mkdir(exist_ok=True)
+        (PAID / (name + ".html")).write_text(paid(name, src, cfg), encoding="utf-8"); out.append("paid/" + name + ".html")
     DIST.mkdir(exist_ok=True)
     (DIST / (name + ".html")).write_text(standalone(name, src, cfg), encoding="utf-8"); out.append("dist/" + name + ".html")
     print(name, "->", ", ".join(out))
