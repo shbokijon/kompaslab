@@ -90,6 +90,17 @@ def watermark(s):
     return s[:i] + WATERMARK + s[i:]
 
 
+SUGGEST = '<script src="js/suggest.js" defer></script>\n'
+
+
+def with_suggest(s):
+    """Avtomatik taklif (universitet, dastur, davlat…): js/suggest.js, oxirgi </body> oldidan."""
+    if "js/suggest.js" in s:
+        return s
+    i = s.rfind("</body>")
+    return s[:i] + SUGGEST + s[i:]
+
+
 def site(name, src, cfg):
     s = src.replace('<link rel="icon" href="img/3d/compass.webp" type="image/webp">\n', "")
     head = HEAD + (OG.format(t=cfg["og"][0], d=cfg["og"][1]) if cfg.get("og") else "")
@@ -98,6 +109,7 @@ def site(name, src, cfg):
     if SB in s:
         extra = '\n<script src="js/config.js"></script>\n<script src="js/live-bar.js"></script>' + ('\n<script src="js/protect.js"></script>' if cfg.get("protect") else "")
         s = s.replace(SB, SB + extra, 1)
+    s = with_suggest(s)
     # Darvoza: oʻz mijozini yaratish oʻrniga config.js yaratgan window.supabase dan foydalanadi
     s = re.sub(r'  var lib = window\.supabase;\n  if \(!lib \|\| !lib\.createClient\) \{(.*?)\}\n  var sb = lib\.createClient\([^\n]*\n',
                lambda m: "  var sb = window.supabase;\n  if (!sb || !sb.auth) {" + m.group(1) + "}\n", s, flags=re.S)
@@ -194,7 +206,7 @@ def views(name, s):
 def build(name):
     cfg = MODULES[name]
     if cfg.get("raw"):
-        src = watermark((HERE / "src" / (name + ".page.html")).read_text(encoding="utf-8"))
+        src = with_suggest(watermark((HERE / "src" / (name + ".page.html")).read_text(encoding="utf-8")))
         for fn, html in views(name, src).items():
             (ROOT / fn).write_text(html, encoding="utf-8")
         print(name, "-> sayt (raw)")
