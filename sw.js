@@ -6,7 +6,7 @@
 //  · js/ va boshqa domenlar (Supabase API): har doim internetdan.
 //  Yangilanganda V ni oshiring.
 // ═══════════════════════════════════════════════════════════════
-var V = "kl-v3", PAGES = V + "-pages", ASSETS = V + "-assets";
+var V = "kl-v4", PAGES = V + "-pages", ASSETS = V + "-assets";
 var PRECACHE = ["/offline.html", "/css/brand.css", "/favicon.ico", "/img/brand/logo-base.webp", "/img/brand/logo-arrow.webp", "/img/brand/icon-192.png"];
 
 self.addEventListener("install", function (e) {
