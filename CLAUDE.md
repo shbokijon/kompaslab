@@ -9,6 +9,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com (yagona admin).
 - **Soxta raqam yoʻq**: statistika, sharh, natija oʻylab topilmaydi. Jonli hisoblar 10 dan kam boʻlsa koʻrsatilmaydi.
 - Atamalar: avval oʻzbekcha, keyin qavsda inglizcha. Oʻzbek apostrofi: `oʻ`, `gʻ` (U+02BB), `ʼ` (U+02BC).
 - **Shrift zaxirasi (2026-10-17):** DM Serif Display, Outfit va JetBrains Mono'da U+02BB yoʻq (DM Serif'da U+02BC ham yoʻq). Har sahifada asosiy shrift havolasidan keyin `IBM Plex Sans` + `Playfair Display` faqat `text=%CA%BB%CA%BC` (2 belgi) bilan yuklanadi va har `font-family` roʻyxatida ikkinchi oʻrinda turadi. Yangi sahifa yoki shrift qoʻshilsa, shu juftlikni saqla. JetBrains Mono ishlatilgan har sahifada yuklanishi shart.
+- **Yangi alifbo (2026-10-30):** saytdagi koʻrinadigan matn `js/alifbo.js` orqali yangi alifboda (Ö, Ğ, Ş, Ç) chiqadi; manba fayllar **amaldagi alifboda yoziladi** (`oʻ` U+02BB, `ʼ` U+02BC). Skript har sahifada zaxira shrift havolasidan keyin turadi (yangi sahifada ham shart). Inglizcha/xorijiy soʻzlar `EX` roʻyxatida; yangi inglizcha atama sh/ch bilan qoʻshilsa, `EX` ga qoʻsh. Oʻgirilmasin: `translate="no"` yoki `data-alifbo="off"`. Eski alifboni koʻrish: `?alifbo=eski`.
 - Foydalanuvchi odatda tayyor ishni darhol saytga chiqarishni kutadi. Pul, toʻlov, maʼlumotlar bazasi xavfsizligi yoki maʼlumot oʻchirishga oid ishlarda avval soʻra.
 
 ## Texnologiya va joylash
@@ -98,5 +99,5 @@ Modul va dars nomlari: `tools/landing/mods.json` (DAAD: `labs_data.py` → `DAAD
 4. M0 progressi faqat brauzerda (qurilmalar orasida koʻchmaydi) — bazaga yozish rejada.
 5. **Roʻyxatdan oʻtish maʼlumoti:** `profiles.education/goal` hech qachon toʻldirilmagan (mijozda UPDATE huquqi yoʻq). 2026-10-17 dan ular `user_metadata` ga yoziladi; `fn_create_profile` triggeriga qoʻshish va eski yozuvlarni toʻldirish — bazaga oid, tasdiq kutilmoqda. Supabase Auth → Redirect URLs da `https://www.kompaslab.uz/reset-password.html` boʻlishi kerak (tekshirilmagan).
 6. Mobil ilova: hozir PWA; doʻkon ilovasi signal boʻlganda (Android avval).
-7. **Supabase toʻxtagan (2026-10-22):** loyiha `INACTIVE`, tiklash "unpaid invoices" sababli rad etildi. Toʻlov qilinmaguncha kutish roʻyxati, jonli narx va hisoblar ishlamaydi.
+7. **Supabase bepul tarif (2026-10-30 tiklandi):** 7 kun harakatsizlikda loyiha `INACTIVE` boʻladi; bunda hisoblagich, narxlar, kirish va M0 darvozasi ishlamaydi. Doimiy yechim: Pro tarif.
 8. **Soha savoli (2026-10-22):** bosh sahifa finderidagi ixtiyoriy 3-savol va kutish oynasidagi `#wlS` javobi hozircha `waitlist.source` ga `index_v5;soha=<kod>` koʻrinishida yoziladi. Toʻgʻri yechim: alohida `field_of_study` ustuni (baza tiklangach, tasdiq bilan).

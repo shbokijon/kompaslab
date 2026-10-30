@@ -10,7 +10,7 @@
 <link rel="canonical" href="https://www.kompaslab.uz/uk-sponsors">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7" rel="stylesheet"><script src="js/alifbo.js"></script>
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/brand.css">
 <link rel="stylesheet" href="css/kompas-ui.css">
@@ -145,7 +145,7 @@ body{min-height:100vh}
 <div class="panel-top"><div><h2>Kompaniyani toping</h2><p id="datasetInfo" role="status" aria-live="polite">Rasmiy maʼlumotlar yuklanmoqda…</p></div><div class="at-status" id="datasetStatus">Tekshirilmoqda</div></div>
 <div class="controls">
 <div class="field"><label for="q">Kompaniya nomi</label><input id="q" type="search" autocomplete="off" placeholder="Masalan: university, energy, technology" maxlength="100"></div>
-<div class="field"><label for="city">Shahar</label><select id="city"><option value="">Barcha shaharlar</option></select></div>
+<div class="field"><label for="city">Shahar</label><select id="city" translate="no"><option value="">Barcha shaharlar</option></select></div>
 <div class="field"><label for="rating">Sponsor reytingi</label><select id="rating"><option value="">Barchasi</option></select></div>
 </div>
 <div class="panel-foot"><p>Barcha kompaniyalar roʻyxati alfabet tartibida. Qidiruv natijalari tavsiya yoki ish eʼloni emas.</p><button id="reset" type="button" class="btn-quiet">Filtrlarni tozalash</button></div>
@@ -153,12 +153,12 @@ body{min-height:100vh}
 </section>
 
 <section class="ukmap" aria-label="UK sponsorlar shaharlar xaritasi">
-<div class="ukmap-canvas"><svg id="ukAtlasMap" viewBox="0 0 470 540" role="group" aria-label="UK xaritasi: shahar bo‘yicha sponsor registri yozuvlari"><g id="ukMapOutline"></g><g id="ukMapDots"></g></svg></div>
-<div class="ukmap-info"><span class="eyebrow">SHAHARLAR XARITASI</span><h2>Homiylik litsenziyalari qayerda koʻproq?</h2><p class="map-help">Doira ustiga bosing — shu shahar kompaniyalarini koʻrasiz. Sonlar filtrlangan registr yozuvlari, haqiqiy vakansiyalar soni emas.</p><div class="map-legend" id="ukMapCounts" aria-live="polite"></div><p class="map-source">Nuqtalar shaharlarning <strong>taxminiy markazi</strong>ni koʻrsatadi; ish beruvchining ofis manzili emas. Xarita chegaralari: Natural Earth 1:110m (jamoat mulki).</p></div>
+<div class="ukmap-canvas"><svg id="ukAtlasMap" translate="no" viewBox="0 0 470 540" role="group" aria-label="UK xaritasi: shahar bo‘yicha sponsor registri yozuvlari"><g id="ukMapOutline"></g><g id="ukMapDots"></g></svg></div>
+<div class="ukmap-info"><span class="eyebrow">SHAHARLAR XARITASI</span><h2>Homiylik litsenziyalari qayerda koʻproq?</h2><p class="map-help">Doira ustiga bosing — shu shahar kompaniyalarini koʻrasiz. Sonlar filtrlangan registr yozuvlari, haqiqiy vakansiyalar soni emas.</p><div class="map-legend" id="ukMapCounts" translate="no" aria-live="polite"></div><p class="map-source">Nuqtalar shaharlarning <strong>taxminiy markazi</strong>ni koʻrsatadi; ish beruvchining ofis manzili emas. Xarita chegaralari: Natural Earth 1:110m (jamoat mulki).</p></div>
 </section>
-<div class="at-cities" id="cities" aria-label="Eng koʻp qayd etilgan shaharlar"></div>
+<div class="at-cities" id="cities" translate="no" aria-label="Eng koʻp qayd etilgan shaharlar"></div>
 <div class="resultbar"><h2>Natijalar</h2><span id="resultsCount" aria-live="polite"></span></div>
-<div class="cards" id="results"></div>
+<div class="cards" id="results" translate="no"></div>
 <button class="load-more" id="more" type="button" hidden>Yana kompaniyalarni koʻrsatish</button>
 
 <section class="career-section" aria-label="Tekshirilgan rasmiy ish qidirish sahifalari">
