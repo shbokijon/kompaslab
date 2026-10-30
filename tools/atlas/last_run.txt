@@ -1,0 +1,4 @@
+run 2026-10-30T20:04Z
+Saved 13,018 IND recognised sponsors; register date 2026-10-05
+Latest resource: 2026-Q2 https://open.canada.ca/data/dataset/90fed587-1364-4f33-a9ee-208181dc0b97/resource/2b94f80d-fa27-4d2e-9b90-6f67fe69bf50/download/tfwp_2026q2_pos_en.xlsx
+ERROR: Existing snapshot preserved; Unexpected redirect host
