@@ -408,38 +408,38 @@
  "Master": [
   {
    "id": "M0",
-   "title": "Qaror darvozasi",
+   "title": "Magistratura boʻyicha qaror",
    "meta": "bepul, 5 dars",
-   "info": "Maqsad: talaba pul toʻlashdan oldin dastur unga mos-mosligini aniq biladi. Artefakt: Tayyorgarlik koʻrsatkichi + shaxsiy boshlash sanasi + rozilik qaydi. ",
+   "info": "Maqsad: talaba magistratura turi, rasmiy talab, muddat va oʻz tayyorgarligini tekshiradi. Natija: shaxsiy reja va keyingi vazifalar. ",
    "lessons": [
     {
      "num": "0.1",
-     "title": "Master Lab qanday ishlaydi",
-     "content": "Fazalar, artefaktlar, haftalik yuklama, nima beriladi va nima berilmaydi",
+     "title": "Master Lab qanday ishlaydi?",
+     "content": "Toʻrtta bosqich, kursning vazifasi va chegarasi, haftalik tayyorgarlik rejasi",
      "trek": ""
     },
     {
      "num": "0.2",
-     "title": "Magistratura dunyosi",
-     "content": "Oʻquv (taught) va tadqiqot (research) magistraturasi; 1 va 2 yillik dasturlar; mamlakatlar boʻyicha tuzilma farqi",
+     "title": "Magistratura turlari va oʻqish imkoniyatlari",
+     "content": "Oʻquv va tadqiqot magistraturasi; mamlakatlar, qabul shartlari, grantlar va rasmiy manbalar",
      "trek": ""
     },
     {
      "num": "0.3",
-     "title": "Ariza paketi anatomiyasi",
-     "content": "Ariza qaysi qismlardan iborat: CV, maqsad bayonnomasi, tavsiya xatlari, transkript, til sertifikati, ilmiy loyiha taklifi (talab qilinsa); komissiya har birida nimani qidiradi",
+     "title": "Magistraturaga arizada qanday hujjatlar kerak?",
+     "content": "CV, maqsad bayonnomasi, tavsiya xati, transkript, til dalili, ilmiy loyiha taklifi va dasturga xos talablar",
      "trek": ""
     },
     {
      "num": "0.4",
-     "title": "Tayyorgarlik diagnostikasi",
-     "content": "6 yoʻnalish boʻyicha oʻz-oʻzini baholash (2.5-boʻlim)",
+     "title": "Tayyorgarligingizni qanday baholaysiz?",
+     "content": "Subyektiv tayyorgarlik balli va rasmiy majburiy qabul talablarining farqi",
      "trek": ""
     },
     {
      "num": "0.5",
-     "title": "Qaror: boshlash, kechiktirish yoki boshqa Lab",
-     "content": "Kimga mos emas roʻyxati; toʻlov va bekor qilish shartlari toʻliq matnda; rozilik",
+     "title": "Master Lab sizga mosmi? Obunadan oldingi tekshiruv",
+     "content": "Maqsadga moslik, 99 000 / 499 000 / 899 000 soʻmlik tariflar, ketma-ket bosqichlar, toʻlov hali yopiq",
      "trek": ""
     }
    ]
@@ -526,7 +526,7 @@
     },
     {
      "num": "2.5",
-     "title": "I faza sintezi",
+     "title": "I bosqich yakuni",
      "content": "Strategik hujjat: kim, qayerga, qachon, qanday moliyalashtirish bilan",
      "trek": ""
     }

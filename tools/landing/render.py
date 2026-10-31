@@ -353,6 +353,10 @@ def maker(lab):
 def calc_html(y, m, slug):
     """Narx taqqoslash. 6 oylik narx bazada (courses.price_6m, admin kiritadi); boʻlsa,
     JS (LIVE_JS) 6 oylik qatorini ochadi va yillik chegarasini 6 oylik + oylik bilan qayta hisoblaydi."""
+    if slug == "master-lab":
+        return ('<div><b>396 000 soʻm</b>4 bosqichni alohida oylik toʻlov bilan ochish; har bosqichga 1 oy</div>'
+                '<div><b><span data-p6v="master-lab">499 000</span> soʻm</b>6 oy davomida barcha 4 bosqich ochiq</div>'
+                '<div><b>899 000 soʻm</b>12 oy davomida barcha 4 bosqich ochiq</div>')
     months = next((n for n in range(1, 13) if y < m * n), None)
     rows = [f'<div><b>{fmt(m * 12)} soʻm</b>12 oy faqat oylik reja bilan ({fmt(m)} × 12)</div>',
             f'<div data-p6box="{slug}" hidden><b><span data-p6x2="{slug}">—</span> soʻm</b>12 oy 6 oylik bilan (2 × <span data-p6v="{slug}">—</span>)</div>']
@@ -600,10 +604,23 @@ QUIZ_JS = '''
   }
 '''
 
+
+# Faqat Master Lab: tayyorgarlik balli qabul prognozi yoki toʻlovga ruxsat emas.
+MASTER_QUIZ_JS = (QUIZ_JS
+    .replace("Bu siklda topshira olmaysiz", "Majburiy talabni tekshiring")
+    .replace("Hozir boshlash mumkin", "Tayyorgarlik: yuqoriroq")
+    .replace("Avval boʻshliqlarni yoping", "Tayyorgarlik: oʻrtacha")
+    .replace("Bu siklga erta", "Tayyorgarlik: rivojlantirish kerak")
+    .replace("Asosiy yoʻnalishlar yetarli. M0 da shaxsiy vaqt chizigʻingizni tuzasiz.", "Bu taxminiy ball. M0 da dastur talablarini va tayyorgarlik rejasini tekshiring.")
+    .replace("Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak:", "Quyidagi yoʻnalishlar uchun amaliy reja tuzing:")
+    .replace("Hozir toʻlash tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:", "Ballga qarab toʻlov yoki qabul qarorini chiqarmang. Quyidagi yoʻnalishlarni tekshiring:")
+    .replace("if (answered === sels.length && (blocked || total < 70))", "if (answered === sels.length && (blocked || total < 100))")
+)
+
 def script(slug, source):
     return ('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>\n'
             '<script src="js/config.js"></script>\n<script>\n(function () {\n'
-            f'  var SLUG = "{slug}", SOURCE = "{source}";\n' + QUIZ_JS + WL_JS + LIVE_JS + '})();\n</script>')
+            f'  var SLUG = "{slug}", SOURCE = "{source}";\n' + (MASTER_QUIZ_JS if slug == "master-lab" else QUIZ_JS) + WL_JS + LIVE_JS + '})();\n</script>')
 
 # ── Matn qatlami: oʻzbek tili qoidalari va AI-shablonlarni tozalash ──
 TERMS = [  # (inglizcha atama, oʻzbekcha izoh) — matnda birinchi oʻzbekcha, keyin qavsda inglizcha

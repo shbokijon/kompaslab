@@ -408,7 +408,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 <section>
   <div class="wrap">
     <div class="head">
-      <h2>Kimga mos va kimga mos emas</h2>
+      <h2>Kimga mos va qaysi holatlarda boshqa yoʻl kerak?</h2>
       <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
     </div>
     <div class="ab">
@@ -418,7 +418,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     </div>
     <div class="fit">
       <div class="fit-col yes"><h3>Mos keladi</h3><ul><li>Bakalavr bitiruvchisi yoki 3–4-kurs talabasi (STEM, ingliz tili oʻrta yoki yuqori)</li><li>Ishlayotgan mutaxassis (1–5 yil tajriba) — Chevening kabi tajriba talab qiladigan dasturlar</li><li>Mahalliy magistratura talabasi yoki bitiruvchisi — tadqiqot magistraturasi, ilmiy rahbar</li><li>Ota-ona: kurs nima beradi va nima bermaydi</li></ul></div>
-      <div class="fit-col no"><h3>Mos emas</h3><ul><li>Bakalavriatga kirmoqchi boʻlganlar → <a href="bachelor-lab.html">Bachelor Lab</a></li><li>Faqat GKS yoki DAAD/MEXT izlayotganlar → <a href="gks-lab.html">GKS Lab</a>, DAAD Lab, MEXT Lab (tayyorlanmoqda)</li><li>Doktoranturaga topshirayotganlar → <a href="phd-lab.html">PhD Lab</a></li><li>Sohani almashtirmoqchi, lekin buni asoslaydigan tajriba yoki kurslari yoʻqlar — M0 avval shu boʻshliqni koʻrsatadi</li><li>"Qabul yoki stipendiya kafolati" izlayotganlar</li><li>Hujjatni kimdir oʻrniga yozib berishini kutayotganlar</li></ul></div>
+      <div class="fit-col no"><h3>Boshqa Lab yoki qoʻshimcha tekshiruv kerak boʻlishi mumkin</h3><ul><li>Bakalavriatga kirmoqchi boʻlganlar → <a href="bachelor-lab.html">Bachelor Lab</a></li><li>Faqat GKS yoki DAAD/MEXT izlayotganlar → <a href="gks-lab.html">GKS Lab</a>, DAAD Lab, MEXT Lab (tayyorlanmoqda)</li><li>Doktoranturaga topshirayotganlar → <a href="phd-lab.html">PhD Lab</a></li><li>Sohani almashtirmoqchi, lekin buni asoslaydigan tajriba yoki kurslari yoʻqlar — M0 avval shu boʻshliqni koʻrsatadi</li><li>"Qabul yoki stipendiya kafolati" izlayotganlar</li><li>Hujjatni kimdir oʻrniga yozib berishini kutayotganlar</li></ul></div>
     </div>
     <p class="honest"><b>Ochiq gap.</b> Kompas Lab yangi platforma: bitiruvchilar natijasi hali yoʻq, shuning uchun sahifada natija raqami ham, sharh ham yoʻq. Natijalar faqat talabaning yozma roziligi bilan eʼlon qilinadi va ular bilan birga maqsadga yetmagan holatlar ulushi ham koʻrsatiladi. Hech bir Lab qabul, stipendiya yoki viza kafolatini bermaydi.</p>
   </div>
@@ -481,22 +481,22 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       animateTo(total);
       bar.style.width = total + "%"; G.innerHTML = ""; V.style.color = "";
       if (blocked) {
-        V.textContent = "Bu siklda topshira olmaysiz"; V.style.color = "var(--red)";
+        V.textContent = "Majburiy talabni tekshiring"; V.style.color = "var(--red)";
         T.textContent = D.blockText; bar.style.background = "var(--red)";
       } else if (answered < sels.length) {
         V.textContent = "Javoblar: " + answered + " / " + sels.length;
         T.textContent = "Barcha savollarga javob bering."; bar.style.background = "var(--muted2)";
       } else if (total >= 70) {
-        V.textContent = "Hozir boshlash mumkin"; V.style.color = "var(--green)";
-        T.textContent = "Asosiy yoʻnalishlar yetarli. M0 da shaxsiy vaqt chizigʻingizni tuzasiz."; bar.style.background = "var(--green)";
+        V.textContent = "Tayyorgarlik: yuqoriroq"; V.style.color = "var(--green)";
+        T.textContent = "Bu taxminiy ball. M0 da dastur talablarini va tayyorgarlik rejasini tekshiring."; bar.style.background = "var(--green)";
       } else if (total >= 45) {
-        V.textContent = "Avval boʻshliqlarni yoping"; V.style.color = "var(--gold)";
-        T.textContent = "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak:"; bar.style.background = "var(--gold)";
+        V.textContent = "Tayyorgarlik: oʻrtacha"; V.style.color = "var(--gold)";
+        T.textContent = "Quyidagi yoʻnalishlar uchun amaliy reja tuzing:"; bar.style.background = "var(--gold)";
       } else {
-        V.textContent = "Bu siklga erta"; V.style.color = "var(--red)";
-        T.textContent = "Hozir toʻlash tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:"; bar.style.background = "var(--red)";
+        V.textContent = "Tayyorgarlik: rivojlantirish kerak"; V.style.color = "var(--red)";
+        T.textContent = "Ballga qarab toʻlov yoki qabul qarorini chiqarmang. Quyidagi yoʻnalishlarni tekshiring:"; bar.style.background = "var(--red)";
       }
-      if (answered === sels.length && (blocked || total < 70)) {
+      if (answered === sels.length && (blocked || total < 100)) {
         gaps.forEach(function (g) { var li = document.createElement("li"); li.textContent = g; G.appendChild(li); });
       }
       (D.warn || []).forEach(function (w, k) {
