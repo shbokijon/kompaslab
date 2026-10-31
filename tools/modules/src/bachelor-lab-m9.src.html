@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M9 Shaxsiy bayonot va insholar · Bachelor Lab · Kompas Lab</title>
+<meta name="description" content="Bachelor Lab M9: insho, shaxsiy bayonot va motivatsion xat farqi, Common App asosiy inshosi, hikoya topish, UCAS shaxsiy bayonoti (2026 qabulidan uch savol), qoʻshimcha insholar. Natija: asosiy insho v1, UCAS bayonoti v1 va qoʻshimcha insholar rejasi.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<style>
+{{CSS}}
+/* Bachelor M1–M16 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);}
+.meterw{margin-top:6px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.trk{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;background:var(--accent-lit);color:var(--accent);margin-right:4px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.paper{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:28px 30px;border:1px solid var(--border);border-radius:8px;}
+.paper h1{font-family:Georgia,serif;font-size:22px;color:#111;margin:0 0 4px;}
+.paper .ct{font-size:13px;color:#555;margin-bottom:12px;}
+.paper h4{font-family:Georgia,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;margin:16px 0 6px;padding-bottom:2px;}
+.paper p{margin:0 0 6px;white-space:pre-wrap;}
+.paper .ph{color:#999;font-style:italic;}
+@media(max-width:760px){.paper{padding:18px 16px;font-size:13.5px;}.artifact{padding:16px;}.artifact .row .btn{flex:1 1 100%;}}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
+}
+.path.pn{--pn:8;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="bachelor-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Bachelor Lab M9</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bachelor Lab</a> · Modul 9</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza III · Hikoya va moliya</span>
+        <h1>Shaxsiy bayonot va insholar</h1>
+        <p class="lead">Insho arizaning siz oʻzingiz gapiradigan yagona qismi. Bu modulda platforma nimani soʻrashini ajratasiz, kichik epizoddan hikoya topasiz va birinchi qoralamalarni yozasiz. Tahrir M10 da.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>3</b> hafta</span><span class="fact">Faza III</span><span class="fact"><b>250</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">9.1</span>Turlar</a><a class="node" href="#l2" data-node="l2"><span class="dot">9.2</span>Common App</a><a class="node" href="#l3" data-node="l3"><span class="dot">9.3</span>Qoralama</a><a class="node" href="#l4" data-node="l4"><span class="dot">9.4</span>UCAS</a><a class="node" href="#l5" data-node="l5"><span class="dot">9.5</span>Qoʻshimcha</a><a class="node" href="#insho" data-node="tool"><span class="dot">🛠</span>Insholar</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Insholar</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Asosiy insho qoralamasi v1:</b> Common App, 250–650 soʻz</span></li><li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span><b>UCAS shaxsiy bayonoti v1:</b> uch savol, jami 4 000 belgigacha (kerak boʻlsa)</span></li><li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Qoʻshimcha insholar rejasi:</b> har universitet savoli va manbasi</span></li>
+    </ul>
+    <div class="box warn" style="margin-top:14px">Insho mavzulari, soʻz va belgi chegaralari har sikl eʼlon qilinadi. Bu moduldagi maʼlumot 31.10.2026 holatiga. Kompas faqat freymvork va mezon beradi; insho matnini siz yozasiz.</div>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 9.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 9.1</span><span class="l-t" style="display:block">Shaxsiy bayonot nima</span>
+            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">"Insho", "shaxsiy bayonot", "motivatsion xat" koʻpincha bir xil narsa deb oʻylanadi. Aslida har biri boshqa savolga javob beradi.</div></div>
+          <div class="panel">
+<div class="tbl"><table><thead><tr><th>Hujjat</th><th>Asosiy savol</th><th>Qayerda</th></tr></thead><tbody>
+<tr><td>Shaxsiy insho (<span lang="en">personal essay</span>)</td><td>Siz qanday odamsiz?</td><td>Common App asosiy inshosi</td></tr>
+<tr><td>Shaxsiy bayonot (<span lang="en">personal statement</span>)</td><td>Nega shu fan va bunga qanday tayyorlangansiz?</td><td>UCAS</td></tr>
+<tr><td>Motivatsion xat (<span lang="en">motivation letter</span>)</td><td>Nega shu dastur va shu universitet?</td><td>Yevropa va Osiyo portallari, stipendiyalar</td></tr>
+<tr><td>Qoʻshimcha insho (<span lang="en">supplemental essay</span>)</td><td>Universitetning aniq savoli</td><td>AQSh universitetlari</td></tr>
+</tbody></table></div>
+<h4>Motivatsion xat freymvorki</h4>
+<p>Kompas Lab freymvorki: <b>Kimlik → Dalil → Maqsad → Moslik</b>. Kim siz, buni nima koʻrsatadi, nimaga intilasiz, va nega aynan shu dastur.</p>
+<div class="box info">Bitta matnni hamma platformaga yuborish xato. Har hujjat oʻz savoliga javob berishi kerak, lekin hammasi M3 dagi bitta profilga tayanadi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Insho shaxsni, UCAS bayonoti fan tanlovini, motivatsion xat dastur tanlovini koʻrsatadi. Hammasi bitta profilga tayanadi, lekin har biri oʻz savoliga javob beradi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="t"><p>“UCAS shaxsiy bayonoti asosan fan tanlovi va unga tayyorgarlik haqida.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: 2026 qabulidan uchta savol aynan shu haqda.</div></div><div class="qz" data-a="n"><p>“Common App inshosi va motivatsion xat bir xil matn boʻlishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: ular turli savollarga javob beradi.</div></div><div class="qz" data-a="t"><p>“Motivatsion xat nega shu dastur va universitetni tanlaganingizni tushuntiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Kimlik → Dalil → Maqsad → Moslik.</div></div><div class="qz" data-a="n"><p>“Qoʻshimcha insholar faqat Yevropa universitetlarida boʻladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: ular asosan AQSh universitetlarida.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Portfelingizdagi har universitet qaysi yozma hujjatni soʻrashini yozing.</li><li>Ularni toʻrt turga ajrating.</li></ul></div>
+            <textarea data-save="a1" placeholder="... — Common App insho + 2 qoʻshimcha; ... — UCAS bayonot; ... — motivatsion xat"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 9.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 9.2</span><span class="l-t" style="display:block">Common App asosiy inshosi</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧭 Mavzu tanlovi</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Etti mavzudan qaysi birini tanlash koʻp vaqt oladi. Lekin komissiya mavzuga emas, hikoyaga va siz haqingizda nima bilib olganiga qaraydi.</div></div>
+          <div class="panel">
+<h4>Asosiy faktlar</h4>
+<ul><li>Etti mavzu varianti; ulardan biri "oʻzingiz tanlagan mavzu".</li><li>Hajm: 250–650 soʻz.</li><li>Bitta insho Common App orqali ariza beradigan hamma universitetga boradi.</li></ul>
+<h4>Mavzular yoʻnalishi (qisqacha)</h4>
+<ol><li>Siz uchun muhim kelib chiqish, kimlik, qiziqish yoki isteʼdod.</li><li>Qiyinchilik, muvaffaqiyatsizlik va undan saboq.</li><li>Eʼtiqod yoki gʻoyani shubha ostiga qoʻygan payt.</li><li>Kimdir siz uchun qilgan va sizni minnatdor qilgan ish.</li><li>Oʻsishga olib kelgan yutuq yoki voqea.</li><li>Vaqtni unutib qoʻyadigan darajada qiziqtiradigan mavzu.</li><li>Oʻzingiz tanlagan mavzu.</li></ol>
+<p>Aniq matnni har yili rasmiy sahifadan oʻqing.</p>
+<h4>Mavzu emas, hikoya</h4>
+<p>Avval hikoyani toping (L3), keyin unga mos mavzuni tanlang. Koʻp kuchli insholar bir nechta mavzuga mos keladi.</p>
+<div class="srcs">Manba: <a href="https://www.commonapp.org/apply/essay-prompts" target="_blank" rel="noopener">Common App: insho mavzulari</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Common App: 7 mavzu, 250–650 soʻz, bitta insho hamma universitetga. Avval hikoyani toping, keyin mavzuni.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Joriy yil mavzularini rasmiy sahifadan oʻqing.</li><li>Sizga yaqin 2 mavzuni tanlang va har biri uchun bitta hikoya gʻoyasini yozing.</li></ul>
+            <textarea data-save="a2" placeholder="Mavzu ...: hikoya gʻoyasi ... Mavzu ...: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 9.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 9.3</span><span class="l-t" style="display:block">Hikoya topish va birinchi qoralama</span>
+            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🛠 Insho v1</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Eng yaxshi insholar koʻpincha katta voqeadan emas, kichik epizoddan boshlanadi: oshxonadagi suhbat, buzilgan velosiped, ukaga tushuntirilgan masala.</div></div>
+          <div class="panel">
+<h4>Epizoddan maʼnoga</h4>
+<ol><li><b>Epizod</b>: aniq joy, vaqt va harakat. 2–3 jumla bilan sahna.</li>
+<li><b>Fikr</b>: oʻsha paytda nima oʻylagansiz, nima qiyin boʻlgan.</li>
+<li><b>Oʻzgarish</b>: undan keyin nima qildingiz yoki qanday oʻylaydigan boʻldingiz.</li>
+<li><b>Maʼno</b>: bu sizning kimligingiz haqida nima deydi va kelajakka qanday bogʻlanadi.</li></ol>
+<h4>"Koʻrsat, aytma"</h4>
+<div class="tbl"><table><thead><tr><th>Aytish</th><th>Koʻrsatish (Kompas tuzgan namuna)</th></tr></thead><tbody>
+<tr><td>Men qiziquvchanman.</td><td>Radioni uchinchi marta ochganimda, onam vintlarni sanab qoʻyadigan boʻldi.</td></tr>
+<tr><td>Men qatʼiyatliman.</td><td>Dasturim 40-marta xato berganida, xatolarni daftarga yozishni boshladim.</td></tr>
+</tbody></table></div>
+<h4>Birinchi qoralama qoidasi</h4>
+<p>Birinchi qoralama yaxshi boʻlishi shart emas. 650 soʻzdan koʻp yozing, keyin qisqartirasiz. Bir oʻtirishda yozing, tahrirni keyinga qoldiring.</p>
+<div class="box warn">Boshqalarning inshosini oʻqish foydali, lekin undan jumla, tuzilma yoki hikoya olmang. Platformalar oʻxshashlikni tekshiradi (M10).</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p>Hikoya: epizod → fikr → oʻzgarish → maʼno. Xususiyatni aytmang, voqea orqali koʻrsating. Birinchi qoralamani tahrirsiz, bir oʻtirishda yozing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Hayotingizdan 5 ta kichik epizodni bitta jumladan yozing.</li><li>Eng kuchlisini tanlab, pastdagi vositada birinchi qoralamani yozing.</li></ul>
+            <textarea data-save="a3" placeholder="1) ... 2) ... 3) ... 4) ... 5) ... Tanlov: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 9.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 9.4</span><span class="l-t" style="display:block">UCAS shaxsiy bayonoti</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🗺 Uch savol</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">2026 yilda boshlanadigan qabuldan UCAS bayonoti erkin insho emas, uchta savolga javob. Bitta bayonot UK dagi barcha tanlovlaringizga boradi.</div></div>
+          <div class="panel">
+<h4>Uch savol</h4>
+<div class="tbl"><table><thead><tr><th>№</th><th>Savol (mazmuni)</th><th>Nima yozasiz</th></tr></thead><tbody>
+<tr><td>1</td><td>Nega shu kurs yoki fanni oʻqimoqchisiz?</td><td>Qiziqishingiz va uning kelib chiqishi (M3)</td></tr>
+<tr><td>2</td><td>Malakalaringiz va oʻqishingiz sizni bu kursga qanday tayyorladi?</td><td>Maktab fanlari, loyihalar, olimpiadalar</td></tr>
+<tr><td>3</td><td>Taʼlimdan tashqari yana nima qildingiz va bu tajriba nega foydali?</td><td>Faoliyatlar, ish, mustaqil oʻqish (M7)</td></tr>
+</tbody></table></div>
+<h4>Chegaralar</h4>
+<ul><li>Har javob kamida 350 belgi.</li><li>Jami 4 000 belgigacha (boʻsh joylar bilan).</li><li>Bitta bayonot barcha (odatda 5 tagacha) tanlovga boradi: shuning uchun tanlovlaringiz bir fan atrofida boʻlsin.</li></ul>
+<p>Uslub: akademik va aniq. Fanga qiziqish dalil bilan: oʻqigan kitob, qilgan tajriba, yechgan masala va undan nima oʻrgandingiz.</p>
+<div class="srcs">Manba: <a href="https://www.ucas.com/applying/applying-to-university/writing-personal-statement/personal-statement-dos-and-donts" target="_blank" rel="noopener">UCAS: shaxsiy bayonot, 2026 qabulidan</a>; <a href="https://www.timeshighereducation.com/counsellor/admissions-processes-and-funding/guide-2026-changes-ucas-personal-statement" target="_blank" rel="noopener">Times Higher Education: 2026 UCAS bayonoti oʻzgarishlari</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>UCAS 2026 qabulidan: uch savol, har biri kamida 350 belgi, jami 4 000 belgigacha. Bitta bayonot barcha UK tanloviga boradi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Har savolga 3 tadan dalil yozing.</li><li>Pastdagi vositada uch javobning birinchi qoralamasini yozing (UK ga ariza bermasangiz, motivatsion xat uchun Kimlik → Dalil → Maqsad → Moslik rejasini yozing).</li></ul>
+            <textarea data-save="a4" placeholder="1-savol dalillari: ... 2-savol: ... 3-savol: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 9.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 9.5</span><span class="l-t" style="display:block">Qoʻshimcha insholar</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🔎 Universitet tadqiqoti</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">"Nega aynan bizning universitet?" savoliga "chunki u reytingda yuqori" deb javob berish eng zaif javob. Komissiya siz universitetni oʻrganganingizni koʻrmoqchi.</div></div>
+          <div class="panel">
+<h4>Ikki asosiy savol</h4>
+<ul><li><b>"Nega aynan biz?"</b> (<span lang="en">Why us?</span>)</li><li><b>"Nega bu mutaxassislik?"</b> (<span lang="en">Why this major?</span>)</li></ul>
+<h4>Kuchli javob uchun manbalar</h4>
+<div class="tbl"><table><thead><tr><th>Manba</th><th>Nima topasiz</th></tr></thead><tbody>
+<tr><td>Oʻquv rejasi</td><td>Aniq fan nomlari va ular sizga nega kerak</td></tr>
+<tr><td>Laboratoriya va tadqiqot sahifalari</td><td>Bakalavrlar qatnasha oladigan loyihalar</td></tr>
+<tr><td>Talabalar tashkilotlari</td><td>Siz qoʻshiladigan yoki davom ettiradigan faoliyat</td></tr>
+<tr><td>Universitet oʻquv modeli</td><td>Masalan, birinchi kurs seminarlari, amaliyot dasturi</td></tr>
+</tbody></table></div>
+<h4>Tekshiruv</h4>
+<p>Javobingizdagi universitet nomini boshqa universitet nomi bilan almashtiring. Agar matn baribir toʻgʻri boʻlsa, u juda umumiy.</p>
+<div class="box warn">Universitet sahifasidan matnni koʻchirmang. Faktni oʻz soʻzingiz bilan va oʻzingizga bogʻlab yozing.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>"Nega biz?" javobida aniq fanlar, laboratoriya va faoliyatlar boʻlsin. Universitet nomini almashtirganda matn notoʻgʻri boʻlib qolishi kerak.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Portfelingizdagi qoʻshimcha insho savollarini yozing (universitet, savol, soʻz chegarasi).</li><li>Bitta "Nega biz?" uchun 3 ta aniq fakt va ularning sizga bogʻliqligini yozing.</li></ul>
+            <textarea data-save="a5" placeholder="... universiteti: "..." (250 soʻz). Faktlar: 1) ... — chunki men ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="insho">
+    <h2>Insholar qoralamalari v1</h2>
+    <p class="sub">Soʻz va belgi hisoblagichi moʻljalni koʻrsatadi. Bu birinchi qoralama: tahrir M10 da.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Insho ish varagʻi</h3><span>5 maydon · +30 XP</span></div></div>
+      <div class="box info" style="margin-bottom:12px">UCAS belgilarni boʻsh joylar bilan sanaydi. Pastdagi hisoblagich soʻzni koʻrsatadi; belgilar soni pastda alohida chiqadi.</div><div id="ucasOut" class="out" style="white-space:normal">UCAS javoblari: 0 belgi</div>
+      <div class="fld"><label for="f_ca">Common App asosiy inshosi v1 <small>250–650 soʻz</small></label><textarea id="f_ca" data-save="ca" data-wc="250-650" placeholder="..."></textarea><div class="meterw" data-meter="ca"></div></div><div class="fld"><label for="f_uq1">UCAS 1-savol: nega shu fan? <small>kamida 350 belgi</small></label><textarea id="f_uq1" data-save="uq1" placeholder="..."></textarea></div><div class="fld"><label for="f_uq2">UCAS 2-savol: oʻqishim qanday tayyorladi? <small>kamida 350 belgi</small></label><textarea id="f_uq2" data-save="uq2" placeholder="..."></textarea></div><div class="fld"><label for="f_uq3">UCAS 3-savol: taʼlimdan tashqari tayyorgarlik <small>kamida 350 belgi</small></label><textarea id="f_uq3" data-save="uq3" placeholder="..."></textarea></div><div class="fld"><label for="f_qosh">Qoʻshimcha insholar rejasi <small>universitet · savol · chegara · manbalar</small></label><textarea id="f_qosh" data-save="qosh" placeholder="..."></textarea></div>
+      <div id="toolOut" class="out" hidden></div>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="2" style="margin-top:14px">Qoralamani saqlash · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>Insho nazorati</h2>
+    <p class="sub">Qoralamani tahrirga berishdan oldin tekshiring.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>9 bandlik nazorat</h3><span>9 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Har universitet qaysi yozma hujjatni soʻrashi aniq.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Common App mavzulari joriy yil sahifasidan oʻqilgan.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Insho aniq epizoddan boshlanadi.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Xususiyatlar aytilmagan, voqea orqali koʻrsatilgan.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Insho M3 profilimga mos.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>UCAS javoblarining har biri kamida 350 belgi, jami 4 000 dan oshmaydi (kerak boʻlsa).</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Qoʻshimcha insholar uchun aniq universitet faktlari yigʻilgan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Hech qanday jumla boshqa matndan koʻchirilmagan.</span></label><label class="ck" data-ck="c9"><input type="checkbox"><span>Matn meniki, AI yoki boshqa odam yozmagan.</span></label></div>
+      <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges">
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Hikoyachi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Insholar<small>Yakun</small></div>
+    </div>
+  </section>
+
+  <section id="artefakt">
+    <h2 id="artTitle">Insholar qoralamalari v1</h2>
+    <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
+    <div class="artifact">
+      <div class="paper" id="artPaper"></div>
+      <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
+      <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>Qoralamani yozgach, uni 2–3 kun ochmang. Keyin ovoz chiqarib oʻqing: qoqilgan joylar tahrir talab qiladigan joylar.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>5 ta</div>
+      <div><b>Vaqt</b>~3 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Natija</b>Insholar qoralamalari v1</div>
+    </div>
+    <p class="srcs">Faktlar: <a href="https://www.commonapp.org/apply/essay-prompts" target="_blank" rel="noopener">Common App: insho mavzulari</a>; <a href="https://www.ucas.com/applying/applying-to-university/writing-personal-statement/personal-statement-dos-and-donts" target="_blank" rel="noopener">UCAS: shaxsiy bayonot, 2026 qabulidan</a>; <a href="https://www.timeshighereducation.com/counsellor/admissions-processes-and-funding/guide-2026-changes-ucas-personal-statement" target="_blank" rel="noopener">Times Higher Education: 2026 UCAS bayonoti oʻzgarishlari</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="bachelor-lab.html">← Bachelor Lab</a>
+    <a class="btn btn-p" href="bachelor-lab-m10.html">Keyingi: M10 Insho tahriri va yakuniy versiya →</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+<script>
+window.KGTool = { init: function () {
+  var o = document.getElementById("ucasOut");
+  function run() {
+    var n = [1, 2, 3].map(function (i) { return String(KG.nv("uq" + i)).length; }), t = n[0] + n[1] + n[2];
+    var low = n.filter(function (x) { return x > 0 && x < 350; }).length;
+    o.innerHTML = "UCAS javoblari: <b>" + t + "</b> / 4000 belgi (1: " + n[0] + ", 2: " + n[1] + ", 3: " + n[2] + ")" + (t > 4000 ? " <span class=\"pill no\">chegaradan oshdi</span>" : "") + (low ? " <span class=\"pill chk\">" + low + " ta javob 350 dan qisqa</span>" : "");
+  }
+  ["uq1", "uq2", "uq3"].forEach(function (k) { var el = document.querySelector("[data-save=\"" + k + "\"]"); if (el) el.addEventListener("input", function () { setTimeout(run, 400); }); });
+  run();
+} };
+</script>
+<script>
+(function () {
+  var KEY = "kompas_bachelor_m9_v1", MOD = "9", LXP = 24, NL = 5, FINXP = 40;
+  var ART = [{"h": "Platformalar va talab qilinadigan matnlar", "k": ["a1"]}, {"h": "Mavzu tanlovi va hikoya", "k": ["a2", "a3"]}, {"h": "Common App asosiy inshosi v1", "k": ["ca"]}, {"h": "UCAS 1-savol", "k": ["uq1"]}, {"h": "UCAS 2-savol", "k": ["uq2"]}, {"h": "UCAS 3-savol", "k": ["uq3", "a4"]}, {"h": "Qoʻshimcha insholar rejasi", "k": ["qosh", "a5"]}];
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  window.KG = { S: S, save: save, nv: nv, esc: esc, toast: function (m, i) { toast(m, i); } };
+
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp);
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd >= Math.ceil(NL / 2)) S.done.half = true;
+    if (nd >= NL) S.done.all = true;
+    save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M" + MOD + " yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang.";
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, LXP, "Dars " + parseInt(MOD, 10) + "." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else { var t = document.querySelector("section[id]:not(#darslar)"); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); } }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  function meterFor(t) {
+    var r = t.getAttribute("data-wc"); if (!r) return;
+    var el = document.querySelector('[data-meter="' + t.getAttribute("data-save") + '"]'); if (!el) return;
+    var lo = +r.split("-")[0], hi = +r.split("-")[1], n = wc(t.value), pct = Math.min(100, n / hi * 100);
+    el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : "");
+    el.innerHTML = '<div class="mt"><span>' + n + " soʻz</span><span>moʻljal: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>';
+  }
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    meterFor(t);
+    var tm; t.addEventListener("input", function () { meterFor(t); clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (r && qz.length && answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Asosiy qoidalarni bilasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { if (r.right >= 3) S.done.quizOk = true; award("quiz", 30, "Mini-test: " + r.right + "/" + qz.length, "books"); }
+      });
+    });
+  });
+
+  var tb = $("toolBtn");
+  if (tb) tb.addEventListener("click", function () {
+    var need = +tb.getAttribute("data-min"), keys = [], filled = 0;
+    tb.parentNode.querySelectorAll("[data-save]").forEach(function (t) { keys.push(t.getAttribute("data-save")); if (nv(t.getAttribute("data-save"))) filled++; });
+    if (filled < need) { toast("Kamida " + need + " ta maydonni toʻldiring (" + filled + " / " + keys.length + ")", "lock"); return; }
+    if (window.KGTool && window.KGTool.check) { var msg = window.KGTool.check(); if (msg) { toast(msg, "lock"); return; } }
+    award("tool", 30, "Vosita natijasi saqlandi", "memo");
+  });
+  var cb = $("ckBtn");
+  if (cb) cb.addEventListener("click", function () {
+    var all = document.querySelectorAll("#check [data-ck]"), on = 0;
+    all.forEach(function (c) { if (S.ck[c.getAttribute("data-ck")]) on++; });
+    if (on < all.length) { toast("Hali " + (all.length - on) + " ta band belgilanmagan", "lock"); return; }
+    award("ck", 30, "Nazorat roʻyxati yakunlandi", "shield");
+  });
+
+  function artText() {
+    var out = [];
+    ART.forEach(function (sec) {
+      var parts = sec.k.map(function (k) { return nv(k); }).filter(Boolean);
+      out.push({ h: sec.h, t: parts.join("\n\n") });
+    });
+    return out;
+  }
+  function renderArt() {
+    var p = $("artPaper"); if (!p) return;
+    var secs = artText(), filled = 0;
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">Bachelor Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
+    p.innerHTML = h;
+    $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
+    var fb = $("finBtn"); fb.disabled = !!S.done.fin; if (S.done.fin) fb.textContent = "✓ Yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd < NL) { toast("Avval barcha darslarni yakunlang (" + nd + " / " + NL + ")", "lock"); return; }
+    if ($("toolBtn") && !S.done.tool) { toast("Avval vosita natijasini saqlang", "lock"); return; }
+    if (!S.ck.hon) { toast("Halollik bayonotini belgilang", "lock"); return; }
+    var secs = artText(), empty = secs.filter(function (s) { return !s.t; }).length;
+    if (empty > Math.floor(secs.length / 3)) { toast("Hujjatda " + empty + " ta boʻsh boʻlim bor", "lock"); return; }
+    award("fin", FINXP, "Modul hujjati tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var p = $("artPaper");
+    download("Bachelor_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+  });
+  $("copyBtn").addEventListener("click", function () {
+    copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
+  });
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+  }
+  if (window.KGTool && window.KGTool.init) window.KGTool.init();
+  renderQuiz(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>

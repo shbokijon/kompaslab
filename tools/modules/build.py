@@ -65,6 +65,23 @@ MODULES = {
     "gks-lab-m5-m":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m3-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m4-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    # Bachelor Lab (2026-10-31): M1–M16, 4 faza. Manba tools/modules/bachelor/engine.py, oʻquvchi bachelor-lab-o.html?m=N
+    "bachelor-lab-m1":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m2":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m3":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m4":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m5":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m6":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m7":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m8":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m9":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m10":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m11":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m12":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m13":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m14":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m15":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    "bachelor-lab-m16":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m5-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
 }
 

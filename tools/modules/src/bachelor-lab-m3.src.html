@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M3 Yoʻnalish va akademik kimlik · Bachelor Lab · Kompas Lab</title>
+<meta name="description" content="Bachelor Lab M3: fanlar va qiziqishlardan profil, STEM ichida tanlov (fizika, muhandislik, informatika), bakalavrdan keyingi yoʻllar, qiziqish sohasi bayoni, izchil hikoya. Natija: 1 sahifalik qiziqish sohasi bayoni va bir jumlali profil.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<style>
+{{CSS}}
+/* Bachelor M1–M16 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);}
+.meterw{margin-top:6px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.trk{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;background:var(--accent-lit);color:var(--accent);margin-right:4px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.paper{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:28px 30px;border:1px solid var(--border);border-radius:8px;}
+.paper h1{font-family:Georgia,serif;font-size:22px;color:#111;margin:0 0 4px;}
+.paper .ct{font-size:13px;color:#555;margin-bottom:12px;}
+.paper h4{font-family:Georgia,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;margin:16px 0 6px;padding-bottom:2px;}
+.paper p{margin:0 0 6px;white-space:pre-wrap;}
+.paper .ph{color:#999;font-style:italic;}
+@media(max-width:760px){.paper{padding:18px 16px;font-size:13.5px;}.artifact{padding:16px;}.artifact .row .btn{flex:1 1 100%;}}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
+}
+.path.pn{--pn:8;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="bachelor-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Bachelor Lab M3</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bachelor Lab</a> · Modul 3</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza I · Strategiya</span>
+        <h1>Yoʻnalish va akademik kimlik</h1>
+        <p class="lead">Komissiya sizni hujjatlar orqali taniydi. Agar fanlaringiz, faoliyatingiz va inshoingiz turli tomonga qarasa, kuchli tomonlaringiz ham koʻrinmay qoladi. Bu modulda bitta aniq yoʻnalish va uni koʻrsatadigan hikoyani tuzasiz.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1–2</b> hafta</span><span class="fact">Faza I</span><span class="fact"><b>250</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">3.1</span>Profil</a><a class="node" href="#l2" data-node="l2"><span class="dot">3.2</span>STEM tanlovi</a><a class="node" href="#l3" data-node="l3"><span class="dot">3.3</span>Keyingi yoʻl</a><a class="node" href="#l4" data-node="l4"><span class="dot">3.4</span>Bayon</a><a class="node" href="#l5" data-node="l5"><span class="dot">3.5</span>Hikoya</a><a class="node" href="#bayon" data-node="tool"><span class="dot">🛠</span>Bayon</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Bayon</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span><b>Bir jumlali profil:</b> kim, nimaga qiziqasiz, buni nima koʻrsatadi</span></li><li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Qiziqish sohasi bayoni (1 sahifa):</b> keng qiziqishdan aniq savolga, dalil bilan</span></li><li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Izchil hikoya xaritasi:</b> fanlar, faoliyat va insho bitta yoʻnalishda</span></li>
+    </ul>
+    <div class="box warn" style="margin-top:14px">Bu modulda hech qanday tayyor matn berilmaydi. Namunalar "Kompas tuzgan namuna" deb belgilangan va faqat tuzilmani koʻrsatish uchun; ularni oʻz hujjatingizga koʻchirmang.</div>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 3.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.1</span><span class="l-t" style="display:block">Men kim sifatida ariza beryapman</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧭 Profil</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">"Men hamma fanni yaxshi koʻraman" degan abituriyent komissiyaga hech narsa demaydi. Aniq profil arizangizning har qismini bir-biriga bogʻlaydi.</div></div>
+          <div class="panel">
+<p>Akademik kimlik (<span lang="en">academic identity</span>) bu siz haqingizdagi bitta aniq fikr: qaysi sohaga qiziqasiz va buni nima koʻrsatadi.</p>
+<h4>Uch manba</h4>
+<ul><li><b>Fanlar</b>: qaysi fanlarda baholaringiz eng yuqori va qaysi fanga koʻproq vaqt sarflaysiz?</li>
+<li><b>Loyihalar</b>: oʻzingiz boshlagan yoki qatnashgan ishlar: olimpiada, dasturlash loyihasi, maktab tajribasi, toʻgarak.</li>
+<li><b>Qiziqishlar</b>: kitob, video, savol, sizni darsdan tashqari ham oʻylantiradigan muammo.</li></ul>
+<h4>Bir jumlali profil</h4>
+<p>Formula: <b>Men [soha]ga qiziqaman, chunki [savol yoki muammo]; buni [dalil 1] va [dalil 2] koʻrsatadi.</b></p>
+<div class="box info"><b>Kompas tuzgan namuna (faqat tuzilma uchun):</b> "Men energiya tizimlariga qiziqaman, chunki qishloqlarda elektr uzilishi nimadan kelib chiqishini tushunmoqchiman; buni fizika olimpiadasidagi ishtirokim va uyda yigʻgan quyosh paneli tajribam koʻrsatadi."</div>
+<p>Dalil boʻlmasa, profil faqat orzu boʻlib qoladi. Hozir dalilingiz kam boʻlsa, M6–M7 da uni yaratish rejasini tuzasiz.</p>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><p>Bir jumlali profil: soha, sabab va ikkita dalil. Dalilsiz profil komissiya uchun hech narsa anglatmaydi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Uch manbadan (fanlar, loyihalar, qiziqishlar) har biri boʻyicha 3 tadan faktni yozing.</li><li>Formula boʻyicha oʻz bir jumlali profilingizni tuzing.</li></ul>
+            <textarea data-save="a1" placeholder="Fanlar: ... Loyihalar: ... Qiziqishlar: ... Profil: Men ...ga qiziqaman, chunki ...; buni ... va ... koʻrsatadi."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.2</span><span class="l-t" style="display:block">Fizika, muhandislik, informatika: real farq</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Fizikani yaxshi koʻrgan oʻquvchi muhandislikka, matematikani yaxshi koʻrgan informatikaga borishi shart emas. Har soha boshqa ish turini va boshqa kelajakni beradi.</div></div>
+          <div class="panel">
+<div class="tbl"><table><thead><tr><th></th><th>Fizika</th><th>Muhandislik</th><th>Informatika</th></tr></thead><tbody>
+<tr><td>Asosiy savol</td><td>Tabiat qanday ishlaydi?</td><td>Buni qanday qurish va ishlatish mumkin?</td><td>Buni qanday hisoblash va avtomatlashtirish mumkin?</td></tr>
+<tr><td>Oʻqish tarkibi</td><td>Matematika va nazariya koʻp, laboratoriya</td><td>Matematika, loyiha ishi, chizma, amaliyot</td><td>Dasturlash, algoritmlar, diskret matematika</td></tr>
+<tr><td>Kundalik ish</td><td>Model, tajriba, tahlil</td><td>Loyiha, hisob-kitob, sinov, jamoa</td><td>Kod yozish, tizim loyihalash, maʼlumot bilan ishlash</td></tr>
+<tr><td>Keyingi yoʻl</td><td>Koʻpincha magistratura va tadqiqot</td><td>Sanoat yoki magistratura; baʼzi mamlakatlarda muhandislik litsenziyasi</td><td>Sanoat yoki tadqiqot</td></tr>
+</tbody></table></div>
+<h4>Tekshiruv usuli</h4>
+<ul><li>Uch universitetning birinchi kurs oʻquv rejasini oching va qaysi fanlar sizni qiziqtirishini belgilang.</li>
+<li>Sohada ishlaydigan odam bilan 15 daqiqa gaplashing: kuni qanday oʻtadi?</li>
+<li>Bepul onlayn kursning birinchi haftasini oʻtib koʻring.</li></ul>
+<div class="box warn">AQShda mutaxassislik (<span lang="en">major</span>) koʻpincha 2-kurs oxirida tanlanadi, UK va Yevropada esa ariza vaqtidayoq. Yevropada notoʻgʻri soha tanlash qimmatga tushadi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p>Fizika tushunishga, muhandislik qurishga, informatika hisoblashga qaratilgan. Tanlovdan oldin oʻquv rejasini oching va sohadagi odam bilan gaplashing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“Fizikani yaxshi koʻrgan har kim muhandislikka mos keladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: muhandislik loyiha va amaliy ishga, fizika nazariya va tajribaga koʻproq qaratilgan.</div></div><div class="qz" data-a="t"><p>“UK da soha odatda ariza vaqtidayoq tanlanadi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: UCAS arizasi aniq kursga beriladi.</div></div><div class="qz" data-a="n"><p>“AQShda mutaxassislik koʻpincha birinchi kunning oʻzida tanlanishi shart.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: koʻp kollejlarda keyinroq eʼlon qilinadi; ayrim muhandislik maktablari bundan mustasno.</div></div><div class="qz" data-a="t"><p>“Oʻquv rejasini oʻqish soha tanlovini tekshirishning ishonchli usuli.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: unda 4 yil davomida nima oʻqishingiz koʻrinadi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Ikkita soha oʻrtasida tanlayotgan boʻlsangiz, ikkalasining birinchi kurs fanlarini yozing.</li><li>Qaysi biri sizga yaqinroq va nima uchun, 3 jumlada.</li></ul></div>
+            <textarea data-save="a2" placeholder="Fizika 1-kurs: ... Muhandislik 1-kurs: ... Tanlov: ..., chunki ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.3</span><span class="l-t" style="display:block">Mutaxassislik va keyingi yoʻl</span>
+            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">🗺 Yoʻl xaritasi</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bakalavr 4 yil davom etadi, lekin tanlovingiz undan keyingi 10 yilga taʼsir qiladi. Keyingi yoʻllarni hozirdan bilish soha tanlovini aniqroq qiladi.</div></div>
+          <div class="panel">
+<h4>Bakalavrdan keyin toʻrt yoʻl</h4>
+<ol><li><b>Sanoatda ishlash</b>: oʻqigan mamlakatda (viza qoidalariga qarab) yoki Oʻzbekistonda.</li>
+<li><b>Magistratura</b>: oʻsha yoki boshqa mamlakatda. Tafsilotlar Master Labʼda.</li>
+<li><b>Tadqiqot va doktorantura</b>: baʼzi mamlakatlarda bakalavrdan toʻgʻridan-toʻgʻri PhDʼga oʻtish mumkin.</li>
+<li><b>Vatanga qaytish</b>: baʼzi davlat stipendiyalari qaytish shartini qoʻyadi (M11).</li></ol>
+<h4>Soha boʻyicha savollar</h4>
+<ul><li>Bu soha boʻyicha ish Oʻzbekistonda bormi va qanday darajadagi taʼlim talab qiladi?</li>
+<li>Soha litsenziya yoki sertifikat talab qiladimi (masalan, muhandislik va tibbiyot ayrim mamlakatlarda)?</li>
+<li>Tadqiqotga qiziqsangiz, bakalavrda tadqiqot imkoniyati bormi?</li></ul>
+<div class="box info">Keyingi yoʻlni hozir yakuniy tanlash shart emas. Lekin tanlagan sohangiz kamida ikkita yoʻlni ochiq qoldirishi kerak.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Bakalavrdan keyin sanoat, magistratura, tadqiqot yoki vatanga qaytish yoʻli bor. Tanlagan soha kamida ikkitasini ochiq qoldirsin.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Sohangiz uchun bakalavrdan keyingi ikki real yoʻlni yozing.</li><li>Har biri uchun bitta rasmiy yoki ishonchli manba toping.</li></ul>
+            <textarea data-save="a3" placeholder="1-yoʻl: ... (manba: ...). 2-yoʻl: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.4</span><span class="l-t" style="display:block">Qiziqish sohasi bayoni</span>
+            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 1 sahifa</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Keng qiziqish ("men texnologiyani yaxshi koʻraman") hech kimni ajratib koʻrsatmaydi. Aniq savol esa sizni boshqalardan farqlaydi.</div></div>
+          <div class="panel">
+<h4>Kenglikdan aniqlikka</h4>
+<p>Qiziqish sohasi bayoni 1 sahifali ichki hujjat. U ariza emas, lekin barcha insholar va intervyu uchun asos boʻladi.</p>
+<div class="tbl"><table><thead><tr><th>Daraja</th><th>Misol (Kompas tuzgan namuna)</th></tr></thead><tbody>
+<tr><td>Keng soha</td><td>Informatika</td></tr>
+<tr><td>Yoʻnalish</td><td>Sunʼiy intellekt</td></tr>
+<tr><td>Aniq savol</td><td>Kam maʼlumotli tillarda (masalan oʻzbek tilida) nutqni tanish qanday ishlaydi?</td></tr>
+</tbody></table></div>
+<h4>Bayon tuzilmasi (4 qism)</h4>
+<ol><li><b>Savol</b>: sizni qiziqtiradigan aniq savol.</li>
+<li><b>Kelib chiqishi</b>: bu savol qachon va qanday paydo boʻldi (aniq epizod).</li>
+<li><b>Dalil</b>: shu savol ustida nima qildingiz (kitob, loyiha, kurs, tajriba).</li>
+<li><b>Keyingi qadam</b>: universitetda bu savol bilan nima qilmoqchisiz.</li></ol>
+<div class="box warn">Bayon yuqori ilmiy ish emas. 16–17 yoshli abituriyentdan ilmiy kashfiyot kutilmaydi; aniq savol va oʻz qoʻlingiz bilan qilingan harakat kutiladi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>Qiziqish sohasi bayoni: savol, kelib chiqishi, dalil va keyingi qadam. U barcha insholar va intervyu uchun asos.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Keng soha → yoʻnalish → aniq savol zanjirini yozing.</li><li>Pastdagi vositada 4 qismli bayonni toʻldiring.</li></ul>
+            <textarea data-save="a4" placeholder="Soha: ... → yoʻnalish: ... → savol: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.5</span><span class="l-t" style="display:block">Izchil hikoya</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧩 Xarita</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Komissiya arizangizni bir necha qism boʻyicha koʻradi: fanlar, faoliyat, insho, tavsiya. Ular bir-birini tasdiqlasa, ishonch oshadi.</div></div>
+          <div class="panel">
+<h4>Izchillik nima</h4>
+<p>Izchil hikoya (<span lang="en">coherent narrative</span>) arizaning hamma qismi bitta yoʻnalishni koʻrsatishi. Bu "hammasi bitta mavzu haqida" degani emas: turli faoliyatlar ham bitta xarakterni koʻrsata oladi.</p>
+<div class="tbl"><table><thead><tr><th>Ariza qismi</th><th>Nimani koʻrsatadi</th><th>Savol</th></tr></thead><tbody>
+<tr><td>Fanlar va baholar</td><td>Akademik tayyorgarlik</td><td>Sohangizga yaqin fanlarda baholaringiz qanday?</td></tr>
+<tr><td>Faoliyatlar (M7)</td><td>Qiziqishning amaldagi isboti</td><td>Darsdan tashqari shu yoʻnalishda nima qildingiz?</td></tr>
+<tr><td>Insho (M9)</td><td>Shaxs va motivatsiya</td><td>Nega sizga bu soha muhim?</td></tr>
+<tr><td>Tavsiya (M8)</td><td>Boshqa odam koʻzi bilan dalil</td><td>Oʻqituvchi qaysi epizodni yoza oladi?</td></tr>
+</tbody></table></div>
+<h4>Boʻshliqni topish</h4>
+<p>Jadvalni toʻldirganda boʻsh qolgan katak sizning keyingi oylardagi ishingiz. Masalan, faoliyat ustuni boʻsh boʻlsa, M7 da bitta chuqur loyiha rejalaysiz.</p>
+<div class="box info">Hikoyani toʻqimang. Komissiya tavsiya xati va faoliyatlar roʻyxati orqali insho bilan solishtiradi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Fanlar, faoliyat, insho va tavsiya bitta yoʻnalishni tasdiqlasa, ariza kuchayadi. Boʻsh katak keyingi oylardagi ish rejasi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Toʻrt ustunli jadvalni oʻzingiz uchun toʻldiring.</li><li>Eng zaif ustunni va uni kuchaytirish uchun 1 aniq harakatni yozing.</li></ul>
+            <textarea data-save="a5" placeholder="Fanlar: ... Faoliyat: ... Insho gʻoyasi: ... Tavsiya: ... Zaif: ..., harakat: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="bayon">
+    <h2>Qiziqish sohasi bayoni</h2>
+    <p class="sub">1 sahifa: savol, kelib chiqishi, dalil, keyingi qadam. Soʻz hisoblagich moʻljalni koʻrsatadi.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Bayon ish varagʻi</h3><span>5 maydon · +30 XP</span></div></div>
+      
+      <div class="fld"><label for="f_profil">Bir jumlali profil</label><textarea id="f_profil" data-save="profil" placeholder="Men ...ga qiziqaman, chunki ...; buni ... va ... koʻrsatadi."></textarea></div><div class="fld"><label for="f_savol">1. Aniq savol</label><textarea id="f_savol" data-save="savol" data-wc="15-60" placeholder="..."></textarea><div class="meterw" data-meter="savol"></div></div><div class="fld"><label for="f_kelib">2. Kelib chiqishi (epizod)</label><textarea id="f_kelib" data-save="kelib" data-wc="60-150" placeholder="Qachon, qayerda, nima boʻldi ..."></textarea><div class="meterw" data-meter="kelib"></div></div><div class="fld"><label for="f_dalil">3. Dalil (nima qildim)</label><textarea id="f_dalil" data-save="dalil" data-wc="60-150" placeholder="Oʻqigan kitob, loyiha, kurs ..."></textarea><div class="meterw" data-meter="dalil"></div></div><div class="fld"><label for="f_keyin">4. Universitetda keyingi qadam</label><textarea id="f_keyin" data-save="keyin" data-wc="40-120" placeholder="Qaysi fan, laboratoriya yoki loyiha ..."></textarea><div class="meterw" data-meter="keyin"></div></div>
+      <div id="toolOut" class="out" hidden></div>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Bayonni saqlash · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>Kimlik nazorati</h2>
+    <p class="sub">Bayonni yakunlashdan oldin tekshiring.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Profil bitta jumla va unda ikkita dalil bor.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Savol aniq, "hamma narsa" emas.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Kelib chiqishi aniq epizod bilan yozilgan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Har dalil tekshiriladigan (hujjat, natija yoki guvoh).</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Soha tanlovi oʻquv rejasi bilan tekshirilgan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Bakalavrdan keyingi kamida ikki yoʻl yozilgan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Izchil hikoya jadvalidagi eng zaif ustun aniqlangan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Hech qanday voqea toʻqilmagan, tayyor matn koʻchirilmagan.</span></label></div>
+      <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges">
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Kimlik meʼmori<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Bayon<small>Yakun</small></div>
+    </div>
+  </section>
+
+  <section id="artefakt">
+    <h2 id="artTitle">Qiziqish sohasi bayoni</h2>
+    <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
+    <div class="artifact">
+      <div class="paper" id="artPaper"></div>
+      <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
+      <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>Profilingizni ota-onangiz yoki doʻstingizga ayting va ulardan qayta aytib berishni soʻrang. Ular boshqa soʻz bilan toʻgʻri aytsa, profil aniq.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>5 ta</div>
+      <div><b>Vaqt</b>~1–2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Natija</b>Qiziqish sohasi bayoni</div>
+    </div>
+    <p class="srcs">Faktlar: Universitetlarning rasmiy oʻquv rejalari (curriculum) va dastur sahifalari. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="bachelor-lab.html">← Bachelor Lab</a>
+    <a class="btn btn-p" href="bachelor-lab-m4.html">Keyingi: M4 Muddatlar arxitekturasi va ish tizimi →</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+<script>
+(function () {
+  var KEY = "kompas_bachelor_m3_v1", MOD = "3", LXP = 24, NL = 5, FINXP = 40;
+  var ART = [{"h": "Bir jumlali profil", "k": ["profil", "a1"]}, {"h": "Soha tanlovi", "k": ["a2", "a3"]}, {"h": "Aniq savol", "k": ["savol", "a4"]}, {"h": "Kelib chiqishi", "k": ["kelib"]}, {"h": "Dalil", "k": ["dalil"]}, {"h": "Universitetda keyingi qadam", "k": ["keyin"]}, {"h": "Izchil hikoya xaritasi", "k": ["a5"]}];
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  window.KG = { S: S, save: save, nv: nv, esc: esc, toast: function (m, i) { toast(m, i); } };
+
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp);
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd >= Math.ceil(NL / 2)) S.done.half = true;
+    if (nd >= NL) S.done.all = true;
+    save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M" + MOD + " yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang.";
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, LXP, "Dars " + parseInt(MOD, 10) + "." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else { var t = document.querySelector("section[id]:not(#darslar)"); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); } }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  function meterFor(t) {
+    var r = t.getAttribute("data-wc"); if (!r) return;
+    var el = document.querySelector('[data-meter="' + t.getAttribute("data-save") + '"]'); if (!el) return;
+    var lo = +r.split("-")[0], hi = +r.split("-")[1], n = wc(t.value), pct = Math.min(100, n / hi * 100);
+    el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : "");
+    el.innerHTML = '<div class="mt"><span>' + n + " soʻz</span><span>moʻljal: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>';
+  }
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    meterFor(t);
+    var tm; t.addEventListener("input", function () { meterFor(t); clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (r && qz.length && answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Asosiy qoidalarni bilasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { if (r.right >= 3) S.done.quizOk = true; award("quiz", 30, "Mini-test: " + r.right + "/" + qz.length, "books"); }
+      });
+    });
+  });
+
+  var tb = $("toolBtn");
+  if (tb) tb.addEventListener("click", function () {
+    var need = +tb.getAttribute("data-min"), keys = [], filled = 0;
+    tb.parentNode.querySelectorAll("[data-save]").forEach(function (t) { keys.push(t.getAttribute("data-save")); if (nv(t.getAttribute("data-save"))) filled++; });
+    if (filled < need) { toast("Kamida " + need + " ta maydonni toʻldiring (" + filled + " / " + keys.length + ")", "lock"); return; }
+    if (window.KGTool && window.KGTool.check) { var msg = window.KGTool.check(); if (msg) { toast(msg, "lock"); return; } }
+    award("tool", 30, "Vosita natijasi saqlandi", "memo");
+  });
+  var cb = $("ckBtn");
+  if (cb) cb.addEventListener("click", function () {
+    var all = document.querySelectorAll("#check [data-ck]"), on = 0;
+    all.forEach(function (c) { if (S.ck[c.getAttribute("data-ck")]) on++; });
+    if (on < all.length) { toast("Hali " + (all.length - on) + " ta band belgilanmagan", "lock"); return; }
+    award("ck", 30, "Nazorat roʻyxati yakunlandi", "shield");
+  });
+
+  function artText() {
+    var out = [];
+    ART.forEach(function (sec) {
+      var parts = sec.k.map(function (k) { return nv(k); }).filter(Boolean);
+      out.push({ h: sec.h, t: parts.join("\n\n") });
+    });
+    return out;
+  }
+  function renderArt() {
+    var p = $("artPaper"); if (!p) return;
+    var secs = artText(), filled = 0;
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">Bachelor Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
+    p.innerHTML = h;
+    $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
+    var fb = $("finBtn"); fb.disabled = !!S.done.fin; if (S.done.fin) fb.textContent = "✓ Yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd < NL) { toast("Avval barcha darslarni yakunlang (" + nd + " / " + NL + ")", "lock"); return; }
+    if ($("toolBtn") && !S.done.tool) { toast("Avval vosita natijasini saqlang", "lock"); return; }
+    if (!S.ck.hon) { toast("Halollik bayonotini belgilang", "lock"); return; }
+    var secs = artText(), empty = secs.filter(function (s) { return !s.t; }).length;
+    if (empty > Math.floor(secs.length / 3)) { toast("Hujjatda " + empty + " ta boʻsh boʻlim bor", "lock"); return; }
+    award("fin", FINXP, "Modul hujjati tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var p = $("artPaper");
+    download("Bachelor_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+  });
+  $("copyBtn").addEventListener("click", function () {
+    copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
+  });
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+  }
+  if (window.KGTool && window.KGTool.init) window.KGTool.init();
+  renderQuiz(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M11 Davlat stipendiyalari · Bachelor Lab · Kompas Lab</title>
+<meta name="description" content="Bachelor Lab M11: stipendiyalar manzarasi, GKS va MEXT bakalavriat yoʻnalishlari, Xitoy hukumati stipendiyasi (CSC), Stipendium Hungaricum va Italiya DSU, Türkiye Bursları va boshqa dasturlarni tekshirish. Natija: 5–8 dasturli stipendiya roʻyxati.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<style>
+{{CSS}}
+/* Bachelor M1–M16 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);}
+.meterw{margin-top:6px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.trk{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;background:var(--accent-lit);color:var(--accent);margin-right:4px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.paper{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:28px 30px;border:1px solid var(--border);border-radius:8px;}
+.paper h1{font-family:Georgia,serif;font-size:22px;color:#111;margin:0 0 4px;}
+.paper .ct{font-size:13px;color:#555;margin-bottom:12px;}
+.paper h4{font-family:Georgia,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;margin:16px 0 6px;padding-bottom:2px;}
+.paper p{margin:0 0 6px;white-space:pre-wrap;}
+.paper .ph{color:#999;font-style:italic;}
+@media(max-width:760px){.paper{padding:18px 16px;font-size:13.5px;}.artifact{padding:16px;}.artifact .row .btn{flex:1 1 100%;}}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
+}
+.path.pn{--pn:8;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="bachelor-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Bachelor Lab M11</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bachelor Lab</a> · Modul 11</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza III · Hikoya va moliya</span>
+        <h1>Davlat stipendiyalari</h1>
+        <p class="lead">Davlat stipendiyalari xorijda bakalavr oʻqishning eng toʻliq moliyalashtirish yoʻllaridan biri. Har birining oʻz muvofiqlik shartlari, ariza kanali va majburiyatlari bor. Bu modulda ularni bitta mezon bilan baholaysiz va oʻzingizga mos 5–8 dasturni tanlaysiz.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Faza III</span><span class="fact"><b>250</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">11.1</span>Manzara</a><a class="node" href="#l2" data-node="l2"><span class="dot">11.2</span>GKS, MEXT</a><a class="node" href="#l3" data-node="l3"><span class="dot">11.3</span>CSC</a><a class="node" href="#l4" data-node="l4"><span class="dot">11.4</span>SH, DSU</a><a class="node" href="#l5" data-node="l5"><span class="dot">11.5</span>Türkiye</a><a class="node" href="#royxat" data-node="tool"><span class="dot">🛠</span>Roʻyxat</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Stipendiya</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span><b>Stipendiya roʻyxati:</b> 5–8 dastur, rasmiy havola bilan</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Muvofiqlik tekshiruvi:</b> fuqarolik, yosh, baho, til, daraja</span></li><li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span><b>Majburiyatlar xaritasi:</b> qaytish sharti, til yili, oʻqish yoʻnalishi cheklovi</span></li>
+    </ul>
+    <div class="box warn" style="margin-top:14px">Stipendiya shartlari, kvotalari va muddatlari har yili yangi eʼlonda chiqadi. Bu moduldagi maʼlumot 31.10.2026 holatiga; ariza berishdan oldin joriy yil yoʻriqnomasini toʻliq oʻqing. Hech kim stipendiyani kafolatlay olmaydi.</div>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 11.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 11.1</span><span class="l-t" style="display:block">Stipendiyalar manzarasi</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Stipendiya lotereya emas, shartlari yozilgan dastur. Shartni oʻqimasdan ariza berish vaqtni yoʻqotadi, shartni oʻqib berish esa imkoniyatni oshiradi.</div></div>
+          <div class="panel">
+<h4>Uch manba</h4>
+<div class="tbl"><table><thead><tr><th>Manba</th><th>Kim beradi</th><th>Misol</th></tr></thead><tbody>
+<tr><td>Davlat</td><td>Qabul qiluvchi mamlakat hukumati</td><td>GKS, MEXT, CSC, Stipendium Hungaricum, Türkiye Bursları</td></tr>
+<tr><td>Universitet</td><td>Universitetning oʻzi (M12)</td><td>Ehtiyojga yoki yutuqqa asoslangan grantlar</td></tr>
+<tr><td>Tashkilot</td><td>Jamgʻarma, kompaniya</td><td>Har biri alohida tekshiriladi</td></tr>
+</tbody></table></div>
+<h4>Toʻliq va qisman</h4>
+<p>Toʻliq stipendiya odatda oʻqish toʻlovi, oylik nafaqa, baʼzan aviabilet, sugʻurta va til yilini qoplaydi. Qisman stipendiya faqat oʻqish toʻlovining bir qismini qoplaydi; qolganini boshqa manbadan topish kerak.</p>
+<h4>Muvofiqlik shartlarini oʻqish</h4>
+<ol><li><b>Fuqarolik</b>: Oʻzbekiston hamkor davlatlar roʻyxatidami?</li><li><b>Yosh</b>: yuqori chegara koʻpincha aniq sana bilan beriladi.</li><li><b>Baho</b>: minimal oʻrtacha yoki foiz.</li><li><b>Til</b>: sertifikat talab qilinadimi yoki til yili beriladimi.</li><li><b>Daraja va soha</b>: bakalavr uchun ochiqmi, qaysi sohalar.</li><li><b>Cheklovlar</b>: boshqa stipendiya bilan birga olish, qayta ariza.</li></ol>
+<div class="box warn">"Stipendiyani kafolatlaymiz" degan agent yoki kanal firibgar boʻlishi ehtimoli yuqori. Davlat stipendiyalariga ariza rasmiy portal orqali va odatda bepul beriladi (M12 L5).</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Stipendiya davlat, universitet yoki tashkilotdan; toʻliq yoki qisman. Avval olti muvofiqlik shartini tekshiring, keyin vaqt sarflang.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“Qisman stipendiya hamma xarajatni qoplaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: odatda faqat oʻqish toʻlovining bir qismini.</div></div><div class="qz" data-a="t"><p>“Davlat stipendiyasiga ariza odatda rasmiy portal orqali beriladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: agent shart emas.</div></div><div class="qz" data-a="t"><p>“Yosh chegarasi aniq sana bilan berilishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: masalan, "... yildan keyin tugʻilgan".</div></div><div class="qz" data-a="n"><p>“Agent toʻlov evaziga stipendiyani kafolatlay oladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: hech kim kafolat bera olmaydi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Sizga qiziq 6–8 stipendiyaning nomini va rasmiy saytini yozing.</li><li>Har biri uchun olti muvofiqlik shartidan qaysi biri sizga toʻsqinlik qilishi mumkinligini belgilang.</li></ul></div>
+            <textarea data-save="a1" placeholder="1) GKS-U — sayt: ... ; toʻsiq: ... 2) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 11.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 11.2</span><span class="l-t" style="display:block">Koreya va Yaponiya</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🗺 Ikki trek</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">GKS va MEXT bakalavriat stipendiyalari toʻliq moliyalashtirish va til yilini beradi. Ikkalasida ham ariza kanali (trek) strategik qaror.</div></div>
+          <div class="panel">
+<h4>GKS bakalavriat (GKS-U), Koreya</h4>
+<ul><li>Odatda qoplaydi: aviabilet, oʻqish toʻlovi, oylik nafaqa, joylashish puli, tibbiy sugʻurta va bir yillik koreys tili kursi.</li>
+<li>Ikki asosiy trek: <b>elchixona treki</b> (Koreya elchixonasi orqali, mamlakat kvotasi bilan) va <b>universitet treki</b> (toʻgʻridan-toʻgʻri Koreya universitetiga). Bir siklda odatda bitta trek tanlanadi.</li>
+<li>Muvofiqlik: Koreya fuqarosi boʻlmaslik, yosh chegarasi, baho talabi (masalan 100 ballik shkalada 80 yoki sinfda yuqori 20 foiz). Aniq qiymatlar joriy yoʻriqnomada.</li>
+<li>Batafsil tayyorgarlik: <a href="gks-lab.html">GKS Lab</a>.</li></ul>
+<h4>MEXT bakalavriat, Yaponiya</h4>
+<ul><li>Yaponiya Taʼlim vazirligi (MEXT) stipendiyasi: odatda oʻqish toʻlovi, oylik nafaqa, aviabilet va bir yillik tayyorlov (yapon tili va asosiy fanlar).</li>
+<li>Bakalavr uchun asosiy kanal: <b>elchixona tavsiyasi</b> (Yaponiya elchixonasi orqali yozma imtihon va intervyu). Baʼzi universitetlar oʻz tavsiyasi bilan ham nomzod koʻrsatadi.</li>
+<li>Yozma imtihon (matematika, fan, til) jiddiy tayyorgarlik talab qiladi.</li>
+<li>MEXT Lab tayyorlanmoqda; hozircha rasmiy manbalar.</li></ul>
+<div class="box info">Trek tanlovi: elchixona trekida raqobat mamlakat ichida, universitet trekida universitetga qarab. Oʻz profilingizga qarab tanlang va yoʻriqnomadagi qoidani oʻqing.</div>
+<div class="srcs">Manba: <a href="https://www.studyinkorea.go.kr" target="_blank" rel="noopener">Study in Korea (NIIED)</a>; <a href="https://www.studyinjapan.go.jp/en/smap-stopj-applications-scholarship.html" target="_blank" rel="noopener">Study in Japan: MEXT stipendiyasi</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy"><p>GKS-U va MEXT toʻliq stipendiya va til yilini beradi. GKSʼda elchixona yoki universitet treki, MEXTʼda asosan elchixona tavsiyasi va yozma imtihon.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>GKS-U va MEXT uchun muvofiqlik shartlarini joriy yoʻriqnomadan yozing.</li><li>Ikkalasidan biri mos boʻlsa, trekni va sababini yozing.</li></ul>
+            <textarea data-save="a2" placeholder="GKS-U: yosh ..., baho ..., trek: ... chunki ... MEXT: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 11.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 11.3</span><span class="l-t" style="display:block">Xitoy hukumati stipendiyasi (CSC)</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🧭 Kanallar</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Xitoy hukumati stipendiyasi bir nechta kanal orqali beriladi. Kanalni notoʻgʻri tushunish koʻp oʻquvchining arizasini boshidan toʻxtatadi.</div></div>
+          <div class="panel">
+<h4>Kanallar</h4>
+<div class="tbl"><table><thead><tr><th>Kanal</th><th>Qanday</th><th>Ariza kimga</th></tr></thead><tbody>
+<tr><td>Ikki tomonlama dastur (koʻpincha "A turi" deb ataladi)</td><td>Xitoy elchixonasi yoki mamlakatdagi masʼul tashkilot orqali</td><td>Elchixona/masʼul tashkilot va CSC portali</td></tr>
+<tr><td>Universitet dasturi ("B turi")</td><td>Xitoy universiteti nomzodlarni tanlab, CSC ga tavsiya qiladi</td><td>Universitetning oʻzi va CSC portali</td></tr>
+<tr><td>Boshqa maxsus dasturlar</td><td>Muayyan kelishuv yoki mintaqa uchun</td><td>Eʼlonga qarab</td></tr>
+</tbody></table></div>
+<h4>Hujjatlar (odatda)</h4>
+<p>CSC portalidagi ariza formasi, attestat va baholar (notarial tarjima), oʻqish rejasi, tavsiya xatlari, tibbiy koʻrik formasi (<span lang="en">Foreigner Physical Examination Form</span>), pasport, til sertifikati.</p>
+<h4>Universitet va til tanlash</h4>
+<ul><li>Bakalavr dasturlarining koʻpi xitoy tilida; stipendiya bir yillik til tayyorlovini oʻz ichiga olishi mumkin.</li><li>Ingliz tilidagi bakalavr dasturlari cheklangan; har universitet roʻyxatini alohida tekshiring.</li><li>Sohangiz boʻyicha kuchli universitetni tanlang (M2), keyin uning CSC kanalini.</li></ul>
+<div class="box warn">CSC portalida ariza bepul. "Universitetdan qabul xati olib beramiz" deb pul soʻraydigan vositachilardan ehtiyot boʻling; universitet xalqaro boʻlimi bilan toʻgʻridan-toʻgʻri yozishing.</div>
+<div class="srcs">Manba: <a href="https://www.campuschina.org" target="_blank" rel="noopener">Campus China (CSC rasmiy portali)</a>; <a href="https://www.studyinchina.edu.cn" target="_blank" rel="noopener">Study in China (Xitoy Taʼlim vazirligi)</a>; universitetlarning xalqaro talabalar sahifalari. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>CSC ikki tomonlama (elchixona) va universitet kanallari orqali beriladi. Avval sohangiz boʻyicha universitet va til, keyin kanal.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Sohangiz boʻyicha 2 Xitoy universitetini toping va ularning CSC kanalini yozing.</li><li>Dastur tili va til yili bor-yoʻqligini yozing.</li></ul>
+            <textarea data-save="a3" placeholder="... universiteti — kanal: ..., til: ..., til yili: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 11.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 11.4</span><span class="l-t" style="display:block">Vengriya va Italiya</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🗺 Yevropa</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Vengriya va Italiyada davlat taʼlimini moliyalashtirishning ikki xil mantigʻi bor: biri hukumatlararo stipendiya, ikkinchisi ehtiyojga asoslangan mintaqaviy yordam.</div></div>
+          <div class="panel">
+<h4>Stipendium Hungaricum (Vengriya)</h4>
+<ul><li>Vengriya hukumatining ikki tomonlama kelishuvlar asosidagi stipendiyasi. Oʻzbekiston hamkor davlat; Oʻzbekiston tomonidan masʼul tashkilot (<span lang="en">Sending Partner</span>) Oliy taʼlim, fan va innovatsiyalar vazirligi.</li>
+<li>gov.uz eʼloniga koʻra (25.12.2024), 2025/2026 oʻquv yili uchun Oʻzbekistonga 170 tagacha oʻrin ajratilgan; ariza Vengriyadagi koordinator, Tempus jamgʻarmasi platformasi orqali onlayn beriladi. Keyingi yillar kvotasi va muddati yangi eʼlonda.</li>
+<li>Odatda qoplaydi: oʻqish toʻlovidan ozod qilish, oylik nafaqa, yotoqxona yoki turar joy uchun hissa, tibbiy sugʻurta.</li></ul>
+<h4>Italiya: mintaqaviy taʼlim huquqi stipendiyalari (DSU)</h4>
+<ul><li>Bu yagona davlat dasturi emas: har mintaqaning oʻz agentligi (<span lang="en">diritto allo studio</span>) bor va xalqaro talabalar ham ariza bera oladi.</li>
+<li>Asosan <b>ehtiyojga asoslangan</b>: oila daromadi va mulki haqidagi hujjatlar (xalqaro talabalar uchun maxsus hisoblangan koʻrsatkich) talab qilinadi. Bu hujjatlarni Oʻzbekistonda tayyorlash, tarjima va legallashtirish vaqt oladi.</li>
+<li>Odatda: pul stipendiyasi, yotoqxona, ovqatlanish va oʻqish toʻlovidan ozod qilish. Keyingi yillarda baho (kreditlar) sharti bor.</li>
+<li>12 yillik taʼlim talabini unutmang (M1).</li></ul>
+<div class="srcs">Manba: <a href="https://stipendiumhungaricum.hu" target="_blank" rel="noopener">Stipendium Hungaricum (Tempus jamgʻarmasi)</a>; <a href="https://gov.uz/en/edu/news/view/32547" target="_blank" rel="noopener">gov.uz: Oliy taʼlim vazirligi, Stipendium Hungaricum eʼloni (25.12.2024)</a>; <a href="https://www.studiare-in-italia.it" target="_blank" rel="noopener">Study in Italy (Italiya Tashqi ishlar vazirligi portali)</a>; tegishli mintaqaviy DSU agentliklari sahifalari. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><p>Stipendium Hungaricum: Oʻzbekiston hamkor, Tempus platformasi orqali ariza. Italiya DSU: mintaqaviy, ehtiyojga asoslangan, daromad hujjatlari erta tayyorlanadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Stipendium Hungaricum joriy yil eʼlonini toping va muddat hamda sohangizdagi dasturlarni yozing.</li><li>Italiya qiziq boʻlsa, bitta mintaqa DSU agentligining xalqaro talabalar uchun hujjatlar roʻyxatini yozing.</li></ul>
+            <textarea data-save="a4" placeholder="SH: eʼlon ..., muddat ..., dasturlar ... DSU (...): hujjatlar ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 11.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 11.5</span><span class="l-t" style="display:block">Turkiya va boshqalar</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🛠 Baholash</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Türkiye Bursları bitta onlayn ariza bilan koʻp universitetni qamrab oladi. Boshqa dasturlarni esa bitta universal mezon bilan tez baholashni oʻrganasiz.</div></div>
+          <div class="panel">
+<h4>Türkiye Bursları</h4>
+<ul><li>Turkiya hukumati stipendiyasi; bitta onlayn ariza orqali bir nechta universitet va dastur tanlanadi.</li><li>Odatda qoplaydi: oʻqish toʻlovi, oylik nafaqa, yotoqxona, tibbiy sugʻurta, bir martalik aviabilet va bir yillik turk tili kursi.</li><li>Tanlov: hujjatlar va intervyu. Ariza oynasi odatda yilning boshida; joriy eʼlonni rasmiy saytdan tekshiring.</li></ul>
+<h4>Universal baholash: 6 nuqta</h4>
+<div class="tbl"><table><thead><tr><th>№</th><th>Mezon</th><th>Savol</th></tr></thead><tbody>
+<tr><td>1</td><td>Muvofiqlik</td><td>Fuqarolik, yosh, baho, daraja mosmi? (darvoza)</td></tr>
+<tr><td>2</td><td>Qoplov</td><td>Toʻliqmi yoki qisman? Nima kiradi?</td></tr>
+<tr><td>3</td><td>Kanal</td><td>Elchixona, universitet yoki toʻgʻridan-toʻgʻri?</td></tr>
+<tr><td>4</td><td>Muddat</td><td>Hujjatlarga ulguraman?</td></tr>
+<tr><td>5</td><td>Raqobat</td><td>Profilim qanchalik mos?</td></tr>
+<tr><td>6</td><td>Majburiyat</td><td>Qaytish sharti, xizmat, soha cheklovi bormi va u menga maqbulmi?</td></tr>
+</tbody></table></div>
+<p>Muvofiqlik "yoʻq" boʻlsa, boshqa mezonlarni koʻrmang: dastur siz uchun emas.</p>
+<div class="box warn">Stipendiya eʼlonini faqat rasmiy saytdan oling. Telegram kanallaridagi "toʻliq stipendiya, hujjatsiz" eʼlonlarining koʻpi firibgarlik yoki eskirgan.</div>
+<div class="srcs">Manba: <a href="https://www.turkiyeburslari.gov.tr" target="_blank" rel="noopener">Türkiye Bursları (rasmiy sayt)</a>; <a href="https://www.ftc.gov/business-guidance/resources/scholarship-scams" target="_blank" rel="noopener">FTC (AQSh): stipendiya firibgarligi belgilari</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Türkiye Bursları: bitta onlayn ariza, toʻliq qoplov va til yili. Har dasturni 6 nuqta bilan baholang; muvofiqlik darvoza.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Pastdagi vositada 5–8 dasturni 6 nuqta boʻyicha baholang.</li><li>Eng mos 3 tasini ustuvor deb belgilang.</li></ul>
+            <textarea data-save="a5" placeholder="Türkiye Bursları: muvofiqlik ha, qoplov toʻliq, kanal onlayn, muddat ..., raqobat ..., majburiyat ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="royxat">
+    <h2>Stipendiya roʻyxati</h2>
+    <p class="sub">5–8 dastur: muvofiqlik, qoplov, kanal, muddat, majburiyat va rasmiy havola.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Stipendiya roʻyxati</h3><span>5 maydon · +30 XP</span></div></div>
+      
+      <div class="fld"><label for="f_s13">1–3 dastur (ustuvor) <small>nomi · mamlakat · muvofiqlik · qoplov · kanal · muddat · majburiyat · havola</small></label><textarea id="f_s13" data-save="s13" placeholder="GKS-U · Koreya · mos · toʻliq · elchixona · ... · til yili · https://..."></textarea></div><div class="fld"><label for="f_s48">4–8 dastur</label><textarea id="f_s48" data-save="s48" placeholder="..."></textarea></div><div class="fld"><label for="f_mos_emas">Mos kelmagan dasturlar va sababi</label><textarea id="f_mos_emas" data-save="mos_emas" placeholder="... — yosh chegarasi"></textarea></div><div class="fld"><label for="f_hujjat">Stipendiyalar uchun umumiy hujjatlar</label><textarea id="f_hujjat" data-save="hujjat" placeholder="Attestat (apostil), tavsiya xatlari, oʻqish rejasi ..."></textarea></div><div class="fld"><label for="f_reja">Keyingi qadamlar <small>sana bilan</small></label><textarea id="f_reja" data-save="reja" placeholder="Joriy eʼlonni kuzatish: ..., hujjat: ..."></textarea></div>
+      <div id="toolOut" class="out" hidden></div>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Roʻyxatni saqlash · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>Stipendiya nazorati</h2>
+    <p class="sub">Roʻyxatni yakunlashdan oldin tekshiring.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Har dastur rasmiy saytdan olingan, Telegram eʼlonidan emas.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Muvofiqlik har dastur uchun tekshirilgan.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Qoplov toʻliq yoki qisman ekani yozilgan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Ariza kanali (trek) aniqlangan.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Muddat joriy eʼlondan yoki "kutilmoqda" deb belgilangan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Majburiyatlar (qaytish, til yili, soha) oʻqilgan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Hech qanday agentga toʻlov qilinmaydi.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Roʻyxatda 5–8 dastur bor.</span></label></div>
+      <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges">
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Stipendiya izlovchi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Stipendiya<small>Yakun</small></div>
+    </div>
+  </section>
+
+  <section id="artefakt">
+    <h2 id="artTitle">Stipendiya roʻyxati</h2>
+    <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
+    <div class="artifact">
+      <div class="paper" id="artPaper"></div>
+      <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
+      <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>Har stipendiya eʼlonini PDF qilib saqlang va yonidagi sanani yozing. Keyingi yil shartlar oʻzgarsa, nimani oʻzgarganini darhol koʻrasiz.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>5 ta</div>
+      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Natija</b>Stipendiya roʻyxati</div>
+    </div>
+    <p class="srcs">Faktlar: <a href="https://www.studyinkorea.go.kr" target="_blank" rel="noopener">Study in Korea (NIIED)</a>; <a href="https://www.studyinjapan.go.jp/en/smap-stopj-applications-scholarship.html" target="_blank" rel="noopener">Study in Japan: MEXT stipendiyasi</a>; <a href="https://www.campuschina.org" target="_blank" rel="noopener">Campus China (CSC rasmiy portali)</a>; <a href="https://www.studyinchina.edu.cn" target="_blank" rel="noopener">Study in China (Xitoy Taʼlim vazirligi)</a>; <a href="https://stipendiumhungaricum.hu" target="_blank" rel="noopener">Stipendium Hungaricum (Tempus jamgʻarmasi)</a>; <a href="https://gov.uz/en/edu/news/view/32547" target="_blank" rel="noopener">gov.uz: Oliy taʼlim vazirligi, Stipendium Hungaricum eʼloni (25.12.2024)</a>; <a href="https://www.turkiyeburslari.gov.tr" target="_blank" rel="noopener">Türkiye Bursları (rasmiy sayt)</a>; <a href="https://www.studiare-in-italia.it" target="_blank" rel="noopener">Study in Italy (Italiya Tashqi ishlar vazirligi portali)</a>; <a href="https://www.ftc.gov/business-guidance/resources/scholarship-scams" target="_blank" rel="noopener">FTC (AQSh): stipendiya firibgarligi belgilari</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="bachelor-lab.html">← Bachelor Lab</a>
+    <a class="btn btn-p" href="bachelor-lab-m12.html">Keyingi: M12 Universitet grantlari va moliyaviy reja →</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+<script>
+window.KGTool = { check: function () {
+  var t = (KG.nv("s13") + "\n" + KG.nv("s48")).split(/\n+/).filter(function (x) { return x.trim().length > 3; }).length;
+  return t < 5 ? ("Roʻyxatda kamida 5 dastur boʻlsin (hozir " + t + " qator)") : "";
+} };
+</script>
+<script>
+(function () {
+  var KEY = "kompas_bachelor_m11_v1", MOD = "11", LXP = 24, NL = 5, FINXP = 40;
+  var ART = [{"h": "Manzara va muvofiqlik", "k": ["a1"]}, {"h": "Ustuvor dasturlar (1–3)", "k": ["s13"]}, {"h": "Boshqa dasturlar (4–8)", "k": ["s48"]}, {"h": "Koreya, Yaponiya, Xitoy", "k": ["a2", "a3"]}, {"h": "Vengriya, Italiya, Turkiya", "k": ["a4", "a5"]}, {"h": "Mos kelmaganlar", "k": ["mos_emas"]}, {"h": "Umumiy hujjatlar", "k": ["hujjat"]}, {"h": "Keyingi qadamlar", "k": ["reja"]}];
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  window.KG = { S: S, save: save, nv: nv, esc: esc, toast: function (m, i) { toast(m, i); } };
+
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp);
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd >= Math.ceil(NL / 2)) S.done.half = true;
+    if (nd >= NL) S.done.all = true;
+    save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M" + MOD + " yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang.";
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, LXP, "Dars " + parseInt(MOD, 10) + "." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else { var t = document.querySelector("section[id]:not(#darslar)"); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); } }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  function meterFor(t) {
+    var r = t.getAttribute("data-wc"); if (!r) return;
+    var el = document.querySelector('[data-meter="' + t.getAttribute("data-save") + '"]'); if (!el) return;
+    var lo = +r.split("-")[0], hi = +r.split("-")[1], n = wc(t.value), pct = Math.min(100, n / hi * 100);
+    el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : "");
+    el.innerHTML = '<div class="mt"><span>' + n + " soʻz</span><span>moʻljal: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>';
+  }
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    meterFor(t);
+    var tm; t.addEventListener("input", function () { meterFor(t); clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (r && qz.length && answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Asosiy qoidalarni bilasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { if (r.right >= 3) S.done.quizOk = true; award("quiz", 30, "Mini-test: " + r.right + "/" + qz.length, "books"); }
+      });
+    });
+  });
+
+  var tb = $("toolBtn");
+  if (tb) tb.addEventListener("click", function () {
+    var need = +tb.getAttribute("data-min"), keys = [], filled = 0;
+    tb.parentNode.querySelectorAll("[data-save]").forEach(function (t) { keys.push(t.getAttribute("data-save")); if (nv(t.getAttribute("data-save"))) filled++; });
+    if (filled < need) { toast("Kamida " + need + " ta maydonni toʻldiring (" + filled + " / " + keys.length + ")", "lock"); return; }
+    if (window.KGTool && window.KGTool.check) { var msg = window.KGTool.check(); if (msg) { toast(msg, "lock"); return; } }
+    award("tool", 30, "Vosita natijasi saqlandi", "memo");
+  });
+  var cb = $("ckBtn");
+  if (cb) cb.addEventListener("click", function () {
+    var all = document.querySelectorAll("#check [data-ck]"), on = 0;
+    all.forEach(function (c) { if (S.ck[c.getAttribute("data-ck")]) on++; });
+    if (on < all.length) { toast("Hali " + (all.length - on) + " ta band belgilanmagan", "lock"); return; }
+    award("ck", 30, "Nazorat roʻyxati yakunlandi", "shield");
+  });
+
+  function artText() {
+    var out = [];
+    ART.forEach(function (sec) {
+      var parts = sec.k.map(function (k) { return nv(k); }).filter(Boolean);
+      out.push({ h: sec.h, t: parts.join("\n\n") });
+    });
+    return out;
+  }
+  function renderArt() {
+    var p = $("artPaper"); if (!p) return;
+    var secs = artText(), filled = 0;
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">Bachelor Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
+    p.innerHTML = h;
+    $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
+    var fb = $("finBtn"); fb.disabled = !!S.done.fin; if (S.done.fin) fb.textContent = "✓ Yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd < NL) { toast("Avval barcha darslarni yakunlang (" + nd + " / " + NL + ")", "lock"); return; }
+    if ($("toolBtn") && !S.done.tool) { toast("Avval vosita natijasini saqlang", "lock"); return; }
+    if (!S.ck.hon) { toast("Halollik bayonotini belgilang", "lock"); return; }
+    var secs = artText(), empty = secs.filter(function (s) { return !s.t; }).length;
+    if (empty > Math.floor(secs.length / 3)) { toast("Hujjatda " + empty + " ta boʻsh boʻlim bor", "lock"); return; }
+    award("fin", FINXP, "Modul hujjati tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var p = $("artPaper");
+    download("Bachelor_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+  });
+  $("copyBtn").addEventListener("click", function () {
+    copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
+  });
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+  }
+  if (window.KGTool && window.KGTool.init) window.KGTool.init();
+  renderQuiz(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>
