@@ -72,3 +72,6 @@ MOD = dict(
          ("Intervyu javoblari", ["q2", "a3"]), ("Natija, jo'nash va B-reja", ["a4"])],
     tip=lib(8)["tip"], sources=STD,
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> 2027 GKS-U qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."

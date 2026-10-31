@@ -81,3 +81,6 @@ MOD = dict(
          ("Semestrlar jadvali", ["p4"]), ("Annotatsiyalangan ro'yxat", ["lit"]), ("To'liq matn", ["pfull", "a4"]), ("Tahrir qaydi", ["a5"])],
     tip=V6["tip"], sources=STD,
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> GKS-G joriy sikli qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."

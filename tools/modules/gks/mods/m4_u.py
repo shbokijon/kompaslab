@@ -19,3 +19,6 @@ MOD = dict(
     tool=V5["tool"], check=V5["check"], art_title=V5["art_title"], art_short=V5["art_short"], art=V5["art"],
     tip=V5["tip"], sources=STD,
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> 2027 GKS-U qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."

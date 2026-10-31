@@ -21,7 +21,7 @@ SLUGS = ["m1", "m2", "m3-u", "m4-u", "m5-u", "m3-m", "m4-m", "m5-m", "m3-d", "m4
 # Bazadagi modul tartibi (modules.order_index, paid_pages.module_index): M0 = 0, keyin SLUGS tartibida 1..11
 INDEX = {s: i + 1 for i, s in enumerate(SLUGS)}
 TRACKS = {"U": "Trek U · bakalavriat", "M": "Trek M · magistratura", "D": "Trek D · doktorantura"}
-PHASE = {1: "Faza I", 2: "Faza I", 3: "Faza II", 4: "Faza III", 5: "Faza IV"}
+PHASE = {1: "Bosqich I", 2: "Bosqich I", 3: "Bosqich II", 4: "Bosqich III", 5: "Bosqich IV"}
 
 
 def code_of(slug):

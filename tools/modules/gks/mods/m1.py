@@ -40,3 +40,12 @@ MOD = dict(
     tip=V1["tip"],
     sources=STD,
 )
+
+
+# Editorial policy (2026-10-31): siklga bogʻliq qoidalar rasmiy NIIED
+# Application Guidelines va tanlangan topshirish yoʻlining joriy eʼlonidan tekshiriladi.
+# Mazkur izoh dars tarkibiga tushadi; grant yoki qabul kafolatlanmaydi.
+MOD["lead"] += " <strong>Muhim:</strong> Ushbu moduldagi muddat, muvofiqlik, hujjat va tanlov shartlarini 2026 GKS-G yoʻriqnomasi hamda Oʻzbekiston uchun tegishli rasmiy eʼlon bilan solishtiring. Boshqa sikldagi qoida avtomatik amal qilmaydi. GKS Lab stipendiya yoki qabulni kafolatlamaydi."
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> tanlangan GKS-U yoki GKS-G sikli qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."

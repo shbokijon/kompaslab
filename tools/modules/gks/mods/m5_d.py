@@ -80,3 +80,6 @@ MOD = dict(
     tip="Professor bilan suhbatdan keyin u sizni bir jumlada qanday tasvirlashini o'ylab ko'ring. Shu jumla sizning ilmiy rejangiz bilan bir xil bo'lishi kerak.",
     sources=STD,
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> GKS-G joriy sikli qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."

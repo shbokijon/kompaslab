@@ -45,3 +45,6 @@ MOD = dict(
          ("Zaif tomonlar javoblari", ["weak", "a4"]), ("Akademik profil izohi", ["prof"])],
     tip=lib(3)["tip"], sources=STD, js=V1["js"],
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> 2027 GKS-U qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."

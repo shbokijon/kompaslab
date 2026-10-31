@@ -104,3 +104,6 @@ MOD = dict(
     tip="Har nashr yoki loyiha yoniga \"mening hissam\" deb bitta jumla yozing. Professor birinchi suhbatda aynan shuni so'raydi.",
     sources=STD,
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> GKS-G joriy sikli qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."
