@@ -568,12 +568,12 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <div class="card">
         <div class="ch"><h2>🧭 Lablar va narxlar</h2></div>
         <div class="mb" style="font-size:12.5px;color:var(--muted);padding-bottom:0">
-          Narxni oʻzgartirib “Saqlash”ni bosing: kompaslab.uz bosh sahifasida sahifa keyingi ochilganda yangi narx chiqadi, deploy kerak emas.
+          Narx yoki saytdagi holatni oʻzgartirib “Saqlash”ni bosing: kompaslab.uz bosh sahifasida sahifa keyingi ochilganda yangi narx chiqadi, deploy kerak emas.
           Lab sahifalaridagi (bachelor-lab.html va boshqalar) narxlar ham shu bazadan oʻqiladi. Bazada yoʻq Lab uchun avval “Bazaga qoʻshish”ni bosing.
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>Lab</th><th>Yillik (soʻm)</th><th>6 oylik (soʻm)</th><th>Oylik (soʻm)</th><th>Kutish roʻyxati</th><th>Holat</th><th>Amal</th>
+            <th>Lab</th><th>Yillik (soʻm)</th><th>6 oylik (soʻm)</th><th>Oylik (soʻm)</th><th>Saytdagi holat</th><th>Kutish roʻyxati</th><th>Baza holati</th><th>Amal</th>
           </tr></thead><tbody id="tbLabs"></tbody></table>
         </div>
       </div>
@@ -1846,13 +1846,13 @@ let _labRows = {}
 function fmtSum(n) { return n == null ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }
 async function loadLabs() {
   const tb = document.getElementById('tbLabs')
-  tb.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
   const [c, w, st] = await Promise.all([
-    supabase.from(DB.courses).select('slug, title, status, price, price_yearly, price_monthly, price_6m'),
+    supabase.from(DB.courses).select('slug, title, status, price, price_yearly, price_monthly, price_6m, holat'),
     supabase.from(DB.waitlist).select('course_slug'),
     supabase.rpc('kompas_public_stats')
   ])
-  if (c.error) { tb.innerHTML = '<tr><td colspan="7" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
+  if (c.error) { tb.innerHTML = '<tr><td colspan="8" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
   _labRows = {}; (c.data || []).forEach(r => { _labRows[r.slug] = r })
   const wl = {}; (w.data || []).forEach(r => { wl[r.course_slug] = (wl[r.course_slug] || 0) + 1 })
   const extra = Object.keys(_labRows).filter(sl => !LAB_LIST.some(l => l[0] === sl)).map(sl => [sl, _labRows[sl].title || sl])
@@ -1863,7 +1863,7 @@ async function loadLabs() {
       ? '<button class="btn bp bsm" onclick="saveLabPrice(\'' + slug + '\')">💾 Saqlash</button>'
       : '<button class="btn bs bsm" onclick="addLabRow(\'' + slug + '\')">➕ Bazaga qoʻshish</button>'
     return '<tr><td><b>' + escHtml(name) + '</b><div style="font-size:11px;color:var(--muted)">' + slug + '</div></td>' +
-      '<td>' + (r ? inp('py-' + slug, y) : '—') + '</td><td>' + (r ? inp('p6-' + slug, s6, 'yoʻq') : '—') + '</td><td>' + (r ? inp('pm-' + slug, m) : '—') + '</td>' +
+      '<td>' + (r ? inp('py-' + slug, y) : '—') + '</td><td>' + (r ? inp('p6-' + slug, s6, 'yoʻq') : '—') + '</td><td>' + (r ? inp('pm-' + slug, m) : '—') + '</td><td>' + (r ? '<input id="ph-' + slug + '" type="text" maxlength="40" value="' + escHtml(r.holat || '') + '" placeholder="Tayyor" style="width:170px;padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit">' : '—') + '</td>' +
       '<td>' + (wl[slug] || 0) + ' kishi</td><td>' + (r ? escHtml(r.status) : '<span style="color:var(--red)">bazada yoʻq</span>') + '</td><td>' + act + '</td></tr>'
   }).join('')
   const box = document.getElementById('pubStats')
@@ -1876,14 +1876,15 @@ async function loadLabs() {
 async function saveLabPrice(slug) {
   const y = parseInt(document.getElementById('py-' + slug).value, 10), m = parseInt(document.getElementById('pm-' + slug).value, 10)
   const s6raw = document.getElementById('p6-' + slug).value.trim(), s6 = s6raw === '' ? null : parseInt(s6raw, 10)
+  const holat = document.getElementById('ph-' + slug).value.trim().replace(/([oOgG])['‘’`]/g, '$1\u02BB').replace(/['‘’`]/g, '\u02BC').slice(0, 40) || null
   if (!(y > 0) || !(m > 0)) { toast('⚠️ Narxni toʻgʻri kiriting'); return }
   if (s6 !== null && !(s6 > 0)) { toast('⚠️ 6 oylik narxni toʻgʻri kiriting yoki boʻsh qoldiring'); return }
   if (m * 12 < y) { toast('⚠️ 12 oylik narx yillikdan arzon boʻlib qoldi, tekshiring'); return }
   if (s6 !== null && s6 >= m * 6) { toast('⚠️ 6 oylik narx 6 × oylikdan arzon boʻlishi kerak, tekshiring'); return }
   if (s6 !== null && s6 >= y) { toast('⚠️ 6 oylik narx yillikdan arzon boʻlishi kerak, tekshiring'); return }
   const old = _labRows[slug]
-  if (!confirm(slug + ': yillik ' + fmtSum(old.price_yearly ?? old.price) + ' → ' + fmtSum(y) + ', 6 oylik ' + fmtSum(old.price_6m) + ' → ' + fmtSum(s6) + ', oylik ' + fmtSum(old.price_monthly) + ' → ' + fmtSum(m) + ' soʻm. Saqlansinmi?' + (s6 === null ? ' (6 oylik boʻsh: saytda bu tarif koʻrsatilmaydi)' : ''))) return
-  const { error } = await supabase.from(DB.courses).update({ price_yearly: y, price_monthly: m, price_6m: s6, price: y, updated_at: new Date().toISOString() }).eq('slug', slug)
+  if (!confirm(slug + ': yillik ' + fmtSum(old.price_yearly ?? old.price) + ' → ' + fmtSum(y) + ', 6 oylik ' + fmtSum(old.price_6m) + ' → ' + fmtSum(s6) + ', oylik ' + fmtSum(old.price_monthly) + ' → ' + fmtSum(m) + ' soʻm, holat “' + (old.holat || '—') + '” → “' + (holat || '—') + '”. Saqlansinmi?' + (s6 === null ? ' (6 oylik boʻsh: saytda bu tarif koʻrsatilmaydi)' : ''))) return
+  const { error } = await supabase.from(DB.courses).update({ price_yearly: y, price_monthly: m, price_6m: s6, holat: holat, price: y, updated_at: new Date().toISOString() }).eq('slug', slug)
   if (error) { toast('❌ ' + error.message); return }
   toast('✅ Saqlandi. Bosh sahifada yangilandi')
   loadLabs()

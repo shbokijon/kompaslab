@@ -16,7 +16,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com. Adminlar (2026-
 - Statik HTML/CSS/JS (framework yoʻq). Hosting: **Vercel** (project `prj_nY8UONOz7o0SHFbUFG264N0ISRZX`, team `team_8uGplJ2cOUVP74ZZ4DDHMsQ2`). `kompaslab.uz` → `www.kompaslab.uz`.
 - GitHub `shbokijon/kompaslab`, **`main` → production** avtomatik (~1 daqiqa).
 - Ish tartibi: `git checkout -b claude/<ish> origin/main` → commit → `git push -u origin claude/<ish>` → saytga: `git merge-base --is-ancestor origin/main HEAD && git push origin HEAD:main` → Vercel MCP `list_deployments` (target production) bilan READY ni tekshir.
-- **Supabase** project `usxpkmbjrdllnitlzdpq`. Anon kalit ochiq (`js/config.js`). Muhim jadvallar: `profiles` (role student/admin), `courses` (slug, price_yearly, price_monthly, status), `waitlist`, `enrollments`, `payments`, `site_visits`, `pwa_events`. RPC: `kompas_public_stats()` (anon), `kompas_track_visit(p_vid)`, `kompas_pwa_event(...)`, `kompas_pwa_stats()` (admin), `fn_is_admin()`.
+- **Supabase** project `usxpkmbjrdllnitlzdpq`. Anon kalit ochiq (`js/config.js`). Muhim jadvallar: `profiles` (role student/admin), `courses` (slug, price_yearly, price_6m, price_monthly, status, holat — `narxlar.html` jadvalidagi "Holat" matni, admin paneldan, `prices[slug].h`, sahifada `data-holat`), `waitlist`, `enrollments`, `payments`, `site_visits`, `pwa_events`. RPC: `kompas_public_stats()` (anon), `kompas_track_visit(p_vid)`, `kompas_pwa_event(...)`, `kompas_pwa_stats()` (admin), `fn_is_admin()`.
 - `supabase-js` doim **2.45.4** ga mahkamlangan (jsdelivr UMD).
 - `tools/`, `supabase/`, `schema.sql` saytga chiqmaydi (`.vercelignore`).
 
