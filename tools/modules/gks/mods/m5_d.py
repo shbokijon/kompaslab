@@ -82,4 +82,4 @@ MOD = dict(
 )
 
 # Editorial source-check notice; follow the current official application guidelines.
-MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> 2026 GKS-G qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> GKS-G joriy sikli qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."
