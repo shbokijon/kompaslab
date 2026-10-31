@@ -445,54 +445,54 @@
    ]
   },
   {
-   "id": "M1",
-   "title": "Ilmiy yoʻnalish va universitet tanlash",
-   "meta": "7 dars",
-   "info": "Maqsad: talaba oʻz ilmiy yoʻnalishini bir jumlada aytadi va 12–15 dasturdan iborat saralangan roʻyxat tuzadi. Artefakt: Saralangan roʻyxat (Shortlist) v1.0 + Ilmiy qiziqish bayoni. ",
-   "lessons": [
-    {
-     "num": "1.1",
-     "title": "Tadqiqotchi sifatida men kimman",
-     "content": "Oʻtgan kurslar, loyihalar va qiziqishlardan ilmiy profil chiqarish",
-     "trek": ""
-    },
-    {
-     "num": "1.2",
-     "title": "Qiziqish sohasini toraytirish",
-     "content": "Keng soha → yoʻnalish → aniq savol; \"Men energetikaga qiziqaman\" va \"Men past haroratli geotermal tizimlar modellashtirishga qiziqaman\" farqi",
-     "trek": ""
-    },
-    {
-     "num": "1.3",
-     "title": "Reytinglarni toʻgʻri oʻqish",
-     "content": "QS, THE, ARWU qanday hisoblanadi; umumiy va fan boʻyicha reyting farqi; reyting nimani koʻrsatmaydi",
-     "trek": ""
-    },
-    {
-     "num": "1.4",
-     "title": "Ilmiy moslik (Research fit)",
-     "content": "Dastur tarkibi, kafedra, laboratoriya, professorlar ishlari; moslikni dalil bilan koʻrsatish",
-     "trek": ""
-    },
-    {
-     "num": "1.5",
-     "title": "Uch darajali saralangan roʻyxat",
-     "content": "Orzu (Dream), Moʻljal (Target), Ishonchli (Safety) darajalari; har darajada nechta dastur",
-     "trek": ""
-    },
-    {
-     "num": "1.6",
-     "title": "Moliyalashtirish turlari",
-     "content": "Toʻliq stipendiya, qisman grant, universitet chegirmasi, assistentlik, oʻz hisobidan; har birining saralangan roʻyxatga taʼsiri",
-     "trek": ""
-    },
-    {
-     "num": "1.7",
-     "title": "Profilning izchil hikoyasi (Coherent narrative)",
-     "content": "Oʻtmish, hozir va maqsadni bir chiziqqa keltirish; hikoya keyingi barcha hujjatlar uchun asos",
-     "trek": ""
-    }
-   ]
+    "id": "M1",
+    "title": "Ilmiy yoʻnalish va universitet tanlash",
+    "meta": "7 dars",
+    "info": "Maqsad: qiziqish sohasi va mos dasturlarni rasmiy talablarga koʻra taqqoslash. Avval 12–15 ta dastlabki dastur, keyin odatda 6–10 ta tekshirilgan saralangan roʻyxat. Natija: ilmiy qiziqish bayoni + Saralangan roʻyxat v1.0.",
+    "lessons": [
+      {
+        "num": "1.1",
+        "title": "Akademik profilingizni tahlil qilish",
+        "content": "Fanlar, loyihalar, amaliyot, koʻnikmalar va ularni tasdiqlaydigan dalillar",
+        "trek": ""
+      },
+      {
+        "num": "1.2",
+        "title": "Qiziqish sohasini toraytirish",
+        "content": "Soha → yoʻnalish → muammo; oʻquv va tadqiqot magistraturasi oʻrtasidagi farq",
+        "trek": ""
+      },
+      {
+        "num": "1.3",
+        "title": "Reytinglarni toʻgʻri oʻqish",
+        "content": "QS, THE 2027 va ARWU 2026 metodologiyalari, reyting cheklovlari; 12–15 dastlabki dastur",
+        "trek": ""
+      },
+      {
+        "num": "1.4",
+        "title": "Dasturga ilmiy va oʻquv moslik",
+        "content": "Programme fit: kurs tarkibi, ilmiy rahbar (zarur boʻlsa), laboratoriya va resurslar; bu qabul ehtimoli emas",
+        "trek": ""
+      },
+      {
+        "num": "1.5",
+        "title": "Uch toifali saralangan roʻyxat",
+        "content": "12–15 dastlabki nomdan odatda 6–10 dastur: Orzu, Moʻljal, Nisbatan mos (qabul kafolatisiz)",
+        "trek": ""
+      },
+      {
+        "num": "1.6",
+        "title": "Moliyalashtirish turlari",
+        "content": "Tuition, yashash xarajatlari, grant qamrovi, assistentlik va rasmiy ariza shartlari",
+        "trek": ""
+      },
+      {
+        "num": "1.7",
+        "title": "Dalillarga asoslangan akademik bayon",
+        "content": "Oʻtmishdagi tajriba → hozirgi koʻnikmalar → magistratura maqsadi; tavsiya xati mustaqil hujjat",
+        "trek": ""
+      }
+    ]
   },
   {
    "id": "M2",

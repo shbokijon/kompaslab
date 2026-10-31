@@ -32,11 +32,21 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 9. Reviewer approval must be independent of original author for high-risk facts.
 10. Reviewer approval and rollback path recorded before publication.
 
+
+## M1 editorial revision — 2026-10-31
+- Source: `tools/modules/src/master-lab-m1.src.html` (7 lessons; four panels each). Public syllabus and module hub have aligned descriptions.
+- Preliminary pool: 12–15 programmes; evidence-checked shortlist: usually 6–10. This is editorial guidance, not an admission rule.
+- "Safe/Ishonchli" rephrased to "Nisbatan mos" with no probability guarantee. Programme fit evidence counts are not admission predictions.
+- QS official 2026 methodology, THE World University Rankings 2027 and ARWU 2026; check each official methodology before release.
+- Scholarship coverage is programme- and country-dependent. Funding examples do not establish eligibility or award.
+- Published paid module in Supabase `paid_pages` is **not automatically changed** by editing the GitHub source. The older paid_pages version remains until independent editorial sign-off, build, SHA comparison, RLS regression tests and controlled upload.
+- This revision does not authorise new student entitlements, checkout changes or relaxation of existing paid content access controls.
+
 ## Module readiness checklist (all require verification and integration)
 | Module | Topic | Current repository asset | Release readiness |
 |---|---|---|---|
 | M0 | Qanday ishlaydi, diagnostika | master-lab-m0.html | Public free experience exists; content refresh/audit pending |
-| M1 | Ilmiy yo‘nalish va universitet | master-lab-m1.src.html | Built for paid delivery; editorial review pending |
+| M1 | Ilmiy yo‘nalish va universitet | master-lab-m1.src.html | 2026-10-31 editorial draft revised; independent review, rebuild and paid_pages update pending |
 | M2 | Muddatlar va ish tizimi | master-lab-m2.src.html | Built for paid delivery; editorial review pending |
 | M3 | Akademik CV | master-lab-m3.src.html | Built for paid delivery; editorial review pending |
 | M4 | Tavsiya xatlari va professor | master-lab-m4.src.html | Built for paid delivery; editorial review pending |
