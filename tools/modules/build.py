@@ -82,6 +82,15 @@ MODULES = {
     "bachelor-lab-m14":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m15":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m16":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
+    # USA Lab (2026-10-31): M1–M8, 4 faza (1 faza = 2 modul). Manba tools/modules/usa/engine.py, oʻquvchi usa-lab-o.html?m=N
+    "usa-lab-m1":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
+    "usa-lab-m2":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
+    "usa-lab-m3":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
+    "usa-lab-m4":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
+    "usa-lab-m5":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
+    "usa-lab-m6":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
+    "usa-lab-m7":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
+    "usa-lab-m8":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m5-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
 }
 

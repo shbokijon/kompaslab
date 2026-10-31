@@ -117,6 +117,36 @@
       "source": "/master-lab-modul.html",
       "destination": "/master-lab-dastur",
       "permanent": false
+    },
+    {
+      "source": "/usa-lab-m9",
+      "destination": "/usa-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/usa-lab-m9.html",
+      "destination": "/usa-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/usa-lab-m10",
+      "destination": "/usa-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/usa-lab-m10.html",
+      "destination": "/usa-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/usa-lab-m11",
+      "destination": "/usa-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/usa-lab-m11.html",
+      "destination": "/usa-lab-dastur",
+      "permanent": true
     }
   ]
 }

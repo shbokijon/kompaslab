@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M8 Viza, maqom va ishlash huquqi · USA Lab · Kompas Lab</title>
+<meta name="description" content="USA Lab M8: F-1 va J-1 farqi, I-20 va DS-2019, SEVIS toʻlovi, Toshkentda viza arizasi bosqichlari, onlayn mavjudlik tekshiruvi, maqomni saqlash, F-1 da ishlash (kampus, CPT, OPT, STEM OPT) va siyosat oʻzgarishini kuzatish. Natija: viza va maqom nazorat roʻyxati.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<style>
+{{CSS}}
+/* USA M1–M8 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);}
+.meterw{margin-top:6px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.trk{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;background:var(--accent-lit);color:var(--accent);margin-right:4px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.paper{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:28px 30px;border:1px solid var(--border);border-radius:8px;}
+.paper h1{font-family:Georgia,serif;font-size:22px;color:#111;margin:0 0 4px;}
+.paper .ct{font-size:13px;color:#555;margin-bottom:12px;}
+.paper h4{font-family:Georgia,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;margin:16px 0 6px;padding-bottom:2px;}
+.paper p{margin:0 0 6px;white-space:pre-wrap;}
+.paper .ph{color:#999;font-style:italic;}
+@media(max-width:760px){.paper{padding:18px 16px;font-size:13.5px;}.artifact{padding:16px;}.artifact .row .btn{flex:1 1 100%;}}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
+}
+.path.pn{--pn:8;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="usa-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· USA Lab M8</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA Lab</a> · Modul 8</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza IV · Magistratura, PhD va viza</span>
+        <h1>Viza, maqom va ishlash huquqi</h1>
+        <p class="lead">Qabul va moliya hal boʻlgach, oxirgi toʻsiq viza. Bu modulda AQSh vizasining Toshkentdagi tartibini, AQShga kelgandan keyin maqomni saqlash qoidalarini va oʻqish davrida qayerda, qancha ishlash mumkinligini oʻrganasiz.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1–2</b> hafta</span><span class="fact">Faza IV</span><span class="fact"><b>250</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">8.1</span>F-1 / J-1</a><a class="node" href="#l2" data-node="l2"><span class="dot">8.2</span>Ariza</a><a class="node" href="#l3" data-node="l3"><span class="dot">8.3</span>Maqom</a><a class="node" href="#l4" data-node="l4"><span class="dot">8.4</span>Ish</a><a class="node" href="#l5" data-node="l5"><span class="dot">8.5</span>Kuzatuv</a><a class="node" href="#viza" data-node="tool"><span class="dot">🛠</span>Roʻyxat</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Roʻyxat</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Viza va maqom nazorat roʻyxati:</b> hujjatlar, sanalar, majburiyatlar</span></li><li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span><b>Viza kalendari:</b> I-20 dan joʻnashgacha</span></li><li><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span><b>Siyosat kuzatuv jadvali:</b> rasmiy manbalar va oylik tekshiruv</span></li>
+    </ul>
+    <div class="box warn" style="margin-top:14px">Kompas Lab viza boʻyicha yuridik maslahat bermaydi va viza natijasiga taʼsir qilmaydi: qarorni konsul qabul qiladi. Mamlakatlararo umumiy viza va joʻnash bosqichlari Bachelor Lab M16 va Master Lab M8 da; bu modul faqat AQSh tartibi. Qoidalar 31.10.2026 holatiga; rasmiy sahifadan qayta tekshiring.</div>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 8.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.1</span><span class="l-t" style="display:block">F-1 va J-1: qaysi viza, qaysi hujjat</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧭 Xarita</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Viza turi qabul qilingan dasturingizdan kelib chiqadi, siz tanlamaysiz. Lekin har birining qoidasi kelajak rejangizga boshqacha taʼsir qiladi.</div></div>
+          <div class="panel">
+<div class="tbl"><table><thead><tr><th></th><th>F-1</th><th>J-1</th></tr></thead><tbody>
+<tr><td>Kimga</td><td>Universitet yoki kollejda daraja uchun oʻqiydigan talaba</td><td>Almashinuv dasturi qatnashchisi (UGRAD, Fulbright va boshqalar)</td></tr>
+<tr><td>Hujjat</td><td>Form I-20 (SEVP tasdiqlagan muassasa beradi)</td><td>DS-2019 (dastur homiysi beradi)</td></tr>
+<tr><td>2 yillik talab</td><td>Yoʻq</td><td>Hukumat moliyalashtirgan boʻlsa, 212(e) qoʻllanadi (M5–M6)</td></tr>
+</tbody></table></div>
+<h4>Ketma-ketlik (F-1)</h4>
+<ol><li>SEVP tasdiqlagan muassasaga qabul (M1 dagi tekshiruv).</li><li>Muassasa sizni SEVIS ga kiritadi va Form I-20 beradi (pul dalili, M2).</li><li>SEVIS I-901 toʻlovi (ICE sahifasi).</li><li>DS-160 va viza suhbati (8.2).</li></ol>
+<h4>Sanalar</h4>
+<p>Davlat departamenti: yangi talabaga viza oʻqish boshlanishidan 365 kun oldingacha berilishi mumkin, lekin AQShga boshlanishdan 30 kundan oldin kirish mumkin emas. Viza AQShga kirishni kafolatlamaydi: qarorni chegaradagi CBP xodimi qabul qiladi.</p>
+<div class="srcs">Manba: <a href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">AQSh Davlat departamenti: talaba vizasi</a>; <a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">ICE: SEVIS I-901 toʻlovi</a>; <a href="https://studyinthestates.dhs.gov/school-search" target="_blank" rel="noopener">Study in the States (DHS): SEVP sertifikatli maktablar qidiruvi</a>; <a href="https://www.hio.harvard.edu/node/127" target="_blank" rel="noopener">Harvard International Office: 212(e) 2 yillik talab</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy"><p>F-1: daraja uchun, I-20 bilan. J-1: almashinuv uchun, DS-2019 bilan, baʼzan 2 yillik talab. Viza 365 kun oldin berilishi mumkin, kirish 30 kun oldin.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“F-1 uchun hujjat DS-2019.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: F-1 uchun I-20, J-1 uchun DS-2019.</div></div><div class="qz" data-a="t"><p>“Yangi talaba AQShga oʻqish boshlanishidan 30 kundan oldin kira olmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Davlat departamenti.</div></div><div class="qz" data-a="n"><p>“Viza AQShga kirishni kafolatlaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: chegarada CBP qaror qiladi.</div></div><div class="qz" data-a="t"><p>“I-20 ni faqat SEVP tasdiqlagan muassasa beradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Sizning yoʻlingizda qaysi viza va qaysi hujjat boʻladi?</li><li>Oʻqish boshlanish sanasidan 365 va 30 kunlik sanalarni hisoblang.</li></ul></div>
+            <textarea data-save="a1" placeholder="Viza: F-1, hujjat: I-20. Boshlanish: ... → viza ... dan, kirish ... dan erta emas"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.2</span><span class="l-t" style="display:block">Toshkentda viza arizasi</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📑 Bosqichlar</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Viza suhbati bir necha daqiqa davom etadi, lekin unga tayyorgarlik oylar oldin boshlanadi. Elchixona qaysi hujjat foydali, qaysi biri foydasiz ekanini ochiq yozgan.</div></div>
+          <div class="panel">
+<h4>Elchixona sahifasidagi bosqichlar</h4>
+<ol><li>Viza turini aniqlang (F yoki J).</li><li>DS-160 ni toʻldiring: har bir arizachi, yoshidan qatʼi nazar, alohida forma.</li><li>Viza yigʻimini onlayn yoki elchixona koʻrsatgan bank orqali toʻlang; toʻlov tasdigʻi 2 ish kunigacha olishi mumkin.</li><li>Suhbatga yoziling (elchixona koʻrsatgan onlayn tizim).</li><li>Tayyorlaning: talaba va almashinuv qatnashchilari uchun hujjatlar roʻyxati; Oʻzbekiston bilan iqtisodiy va ijtimoiy bogʻliqlik hujjatlari.</li><li>Suhbat: natija odatda darhol aytiladi; pasport tayyor boʻlganda email keladi.</li></ol>
+<div class="box info">Elchixona sahifasida aytilishicha, mehmonxona bandi, aviabilet va bank koʻchirmalari odatda foydali emas: konsul oʻzi kerakli deb bilgan hujjatnigina koʻradi. I-20 dagi pul dalili esa universitetga oldindan topshirilgan (M2).</div>
+<h4>Onlayn mavjudlik tekshiruvi</h4>
+<p>2025-yil iyunida Davlat departamenti F, M va J arizachilarini onlayn mavjudlikni ham oʻz ichiga olgan kengaytirilgan tekshiruvdan oʻtkazishini eʼlon qildi; arizachilarga barcha ijtimoiy tarmoq profillarini "public" holatga oʻtkazish koʻrsatmasi beriladi (MIT xalqaro ofisi xabari).</p>
+<div class="box warn">Suhbatda faqat haqiqatni gapiring. Davlat departamenti: muhim faktni notoʻgʻri koʻrsatish doimiy rad javobiga olib kelishi mumkin.</div>
+<div class="srcs">Manba: <a href="https://uz.usembassy.gov/applying-for-a-visa/" target="_blank" rel="noopener">AQSh elchixonasi: vizaga ariza berish</a>; <a href="https://uz.usembassy.gov/required-documents/" target="_blank" rel="noopener">AQSh elchixonasi: talab qilinadigan hujjatlar</a>; <a href="https://ceac.state.gov/genniv/" target="_blank" rel="noopener">DS-160 onlayn formasi (CEAC)</a>; <a href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">AQSh Davlat departamenti: talaba vizasi</a>; <a href="https://iso.mit.edu/news/student-and-scholar-f-j-m-visa-interviews-to-resume-with-new-vetting-procedures" target="_blank" rel="noopener">MIT ISO: F, J, M vizalari uchun kengaytirilgan tekshiruv (2025-iyun)</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Toshkentda: DS-160, yigʻim, navbat, hujjatlar, suhbat. Konsul faqat foydali deb bilgan hujjatni koʻradi. Ijtimoiy tarmoqlar tekshiriladi; faqat haqiqat.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>6 bosqich uchun sana va masʼulni yozing.</li><li>Oʻzbekiston bilan bogʻliqligingizni koʻrsatadigan 3 haqiqiy dalilni yozing (oʻqish rejasi, oila, ish va hokazo).</li></ul>
+            <textarea data-save="a2" placeholder="DS-160: ... ; yigʻim: ...; navbat: ...; dalillar: 1) ... 2) ... 3) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.3</span><span class="l-t" style="display:block">Maqomni saqlash</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">✅ Qoidalar</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Viza AQShga kirish uchun; AQSh ichida esa sizni maqom (F-1 yoki J-1 status) qoidalari himoya qiladi. Maqomni yoʻqotish oʻqishni ham, keyingi vizani ham xavf ostiga qoʻyadi.</div></div>
+          <div class="panel">
+<h4>Xalqaro boʻlimda tekshiriladigan bandlar</h4>
+<p>Quyidagi bandlar odatda maqom bilan bogʻliq; aniq talab va muddatni universitetingiz xalqaro talabalar boʻlimi sahifasidan oling.</p>
+<div class="tbl"><table><thead><tr><th>Band</th><th>Kim bilan tekshiriladi</th></tr></thead><tbody>
+<tr><td>Toʻliq oʻquv yuklamasi (har semestr)</td><td>Universitetning xalqaro talabalar boʻlimi (ISSS yoki OIS)</td></tr>
+<tr><td>I-20 yoki DS-2019 muddati va maʼlumotlari toʻgʻri</td><td>Shu boʻlim; oʻzgarish boʻlsa oldindan</td></tr>
+<tr><td>Ruxsatsiz ishlamaslik (8.4)</td><td>Ishga kirishdan oldin boʻlimdan yozma tasdiq</td></tr>
+<tr><td>Yashash manzili va dastur oʻzgarishlari haqida xabar berish</td><td>Boʻlim koʻrsatgan muddatda</td></tr>
+<tr><td>AQShdan chiqib qaytishdan oldin hujjatlarni tekshirish</td><td>Boʻlim</td></tr>
+</tbody></table></div>
+<p>Har universitetning xalqaro talabalar boʻlimi oʻz talablarini sahifasida yozadi: kelishingiz bilan shu sahifani oʻqing va boʻlim xodimining (DSO yoki RO) aloqasini saqlang.</p>
+<div class="box warn">Maqom qoidalari boʻyicha savolni doʻstdan emas, universitetning xalqaro boʻlimidan soʻrang va javobni yozma oling.</div>
+<div class="srcs">Manba: universitetingiz xalqaro talabalar boʻlimi sahifasi; ish qoidalari: <a href="https://oips.gmu.edu/f-1-employment/" target="_blank" rel="noopener">George Mason universiteti (OIPS): F-1 ishlash qoidalari</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Maqom: toʻliq yuklama, hujjatlar toʻgʻri, ruxsatsiz ish yoʻq, oʻzgarishlar haqida xabar. Har savol boʻyicha xalqaro talabalar boʻlimiga yozma murojaat.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Qabul qilingan yoki koʻzlagan universitetingizning xalqaro talabalar boʻlimi sahifasini toping.</li><li>Undagi maqom qoidalaridan 5 tasini yozing.</li></ul>
+            <textarea data-save="a3" placeholder="... universiteti ISSS (havola): 1) ... 2) ... 3) ... 4) ... 5) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.4</span><span class="l-t" style="display:block">F-1 da ishlash huquqi</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">💼 Qoidalar</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">"AQShda oʻqib ishlayman" rejasi qaysi ish, qayerda va qachon ekaniga bogʻliq. Notoʻgʻri ish bir martaning oʻzida maqomni yoʻqotishga olib kelishi mumkin.</div></div>
+          <div class="panel">
+<h4>George Mason universiteti tushuntirishi</h4>
+<div class="tbl"><table><thead><tr><th>Tur</th><th>Qoida</th></tr></thead><tbody>
+<tr><td>Kampusda ishlash</td><td>Kuz va bahor semestrlarida haftasiga 20 soatgacha; yozgi darslar davrida ham 20 soatdan oshirmaslik tavsiya etiladi; dastur tugagach toʻxtatiladi</td></tr>
+<tr><td>Kampusdan tashqari ish</td><td>Har doim yozma ruxsat kerak: xalqaro boʻlim (I-20 ning 2-sahifasiga yoziladi) yoki USCIS</td></tr>
+<tr><td>CPT (<span lang="en">Curricular Practical Training</span>)</td><td>Oʻquv rejasi bilan bogʻliq amaliyot; alohida ruxsat bilan</td></tr>
+<tr><td>OPT (<span lang="en">Optional Practical Training</span>)</td><td>Har daraja uchun 12 oy; oʻqish davomidagi OPT keyingisini qisqartiradi (har 2 oy uchun 1 oy)</td></tr>
+<tr><td>STEM OPT</td><td>DHS tasdiqlagan STEM yoʻnalishi bitiruvchisi uchun qoʻshimcha 24 oy</td></tr>
+</tbody></table></div>
+<h4>Rejaga taʼsiri</h4>
+<ul><li>Kampusdagi ish oʻqish toʻlovini qoplamaydi: uni M2 dagi asosiy manba qilmang.</li><li>Sohangiz DHS ning STEM roʻyxatida boʻlsa, bitirgandan keyin amaliy tajriba muddati uzunroq boʻlishi mumkin; roʻyxatni rasmiy manbadan tekshiring.</li><li>J-1 qatnashchilari uchun ish qoidalari boshqacha: dastur homiysidan soʻraladi.</li></ul>
+<div class="srcs">Manba: <a href="https://oips.gmu.edu/f-1-employment/" target="_blank" rel="noopener">George Mason universiteti (OIPS): F-1 ishlash qoidalari</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>F-1: kampusda semestr davomida haftasiga 20 soatgacha; kampusdan tashqarida faqat yozma ruxsat bilan; OPT 12 oy, STEM OPT qoʻshimcha 24 oy. J-1 da qoidalar boshqa.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Sohangiz STEM boʻlsa, OPT va STEM OPT bilan bitirgandan keyingi umumiy amaliy tajriba muddatini yozing.</li><li>Kampusdagi ishdan kutilgan oylik daromad M2 dagi narxning necha foizi?</li></ul>
+            <textarea data-save="a4" placeholder="Soha: ... (STEM: ha/yoʻq). OPT ... oy + STEM OPT ... oy. Kampus ishi: ... USD/oy = narxning ...%"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.5</span><span class="l-t" style="display:block">Siyosat oʻzgarishini kuzatish</span>
+            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">🔔 Kuzatuv</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">AQShning viza siyosati tez oʻzgaradi va har oʻzgarish haqida ijtimoiy tarmoqlarda notoʻgʻri talqinlar chiqadi. Faqat rasmiy manba va sana bilan ishlang.</div></div>
+          <div class="panel">
+<h4>31.10.2026 holatiga holat</h4>
+<p>Brown universiteti ISSS sahifasi (27.01.2026 yangilangan): 2026-yil 1-yanvardan amal qiluvchi prezident proklamatsiyalarida toʻliq va qisman cheklangan mamlakatlar roʻyxati bor; qisman cheklangan mamlakatlar uchun F-1 va J-1 vizalari ham cheklangan. Oʻzbekiston ikkala roʻyxatda ham yoʻq.</p>
+<h4>Kuzatuv manbalari</h4>
+<div class="tbl"><table><thead><tr><th>Manba</th><th>Nima uchun</th><th>Qanchalik tez-tez</th></tr></thead><tbody>
+<tr><td>AQSh elchixonasi (Toshkent) viza sahifalari</td><td>Mahalliy tartib, navbat, yigʻim</td><td>Oyiga bir marta; ariza davrida haftalik</td></tr>
+<tr><td>Davlat departamenti talaba vizasi sahifasi</td><td>Umumiy qoidalar</td><td>Oyiga bir marta</td></tr>
+<tr><td>Universitetingiz xalqaro boʻlimi</td><td>Oʻzgarishning sizga taʼsiri</td><td>Har yangilikda</td></tr>
+</tbody></table></div>
+<ol><li>Har oʻzgarish uchun yozing: sana, manba, kimga tegishli, sizga taʼsiri.</li><li>Ijtimoiy tarmoqdagi xabarni rasmiy sahifada topmaguningizcha qaror qilmang.</li></ol>
+<div class="box info">Kompas Lab USA Lab sahifasida siyosat holatini sana bilan yangilaydi. Siyosat talaba vizasini yopsa, faol obunachilarga boshqa Labga oʻtish taklif qilinadi.</div>
+<div class="srcs">Manba: <a href="https://isss.brown.edu/traveling/current-travel-and-visa-restrictions-presidential-proclamation" target="_blank" rel="noopener">Brown universiteti ISSS: prezident proklamatsiyalari boʻyicha cheklovlar</a>; <a href="https://uz.usembassy.gov/applying-for-a-visa/" target="_blank" rel="noopener">AQSh elchixonasi: vizaga ariza berish</a>; <a href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">AQSh Davlat departamenti: talaba vizasi</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p>Siyosatni faqat rasmiy manba va sana bilan kuzating: elchixona, Davlat departamenti, universitet xalqaro boʻlimi. 31.10.2026 holatiga Oʻzbekiston proklamatsiya roʻyxatlarida yoʻq.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Kuzatuv jadvalingizga 3 manba va eslatma sanasini qoʻshing.</li><li>Bugungi holatni sana bilan yozing.</li></ul>
+            <textarea data-save="a5" placeholder="31.10.2026: Oʻzbekiston proklamatsiya roʻyxatlarida yoʻq (Brown ISSS). Eslatma: har oy ... kuni"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="viza">
+    <h2>Viza va maqom nazorat roʻyxati</h2>
+    <p class="sub">Viza kalendari, hujjatlar va maqom qoidalari bir joyda.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Nazorat roʻyxati</h3><span>6 maydon · +30 XP</span></div></div>
+      
+      <div class="fld"><label for="f_tur">Viza turi va hujjat</label><select id="f_tur" data-save="tur"><option value="">— tanlang —</option><option value="F-1, I-20">F-1, I-20</option><option value="J-1, DS-2019">J-1, DS-2019</option><option value="Hali aniq emas">Hali aniq emas</option></select></div><div class="fld"><label for="f_boshlanish">Oʻqish boshlanish sanasi</label><input id="f_boshlanish" type="date" data-save="boshlanish" placeholder=""></div><div class="fld"><label for="f_kalendar">Viza kalendari <small>I-20 → SEVIS → DS-160 → yigʻim → suhbat → joʻnash</small></label><textarea id="f_kalendar" data-save="kalendar" placeholder="I-20: ...; SEVIS: ...; DS-160: ...; suhbat: ...; joʻnash: ..."></textarea></div><div class="fld"><label for="f_hujjat">Suhbat hujjatlari <small>elchixona roʻyxati boʻyicha</small></label><textarea id="f_hujjat" data-save="hujjat" placeholder="Pasport, I-20, DS-160 tasdigʻi, ..."></textarea></div><div class="fld"><label for="f_maqom">Maqom qoidalari va xalqaro boʻlim aloqasi</label><textarea id="f_maqom" data-save="maqom" placeholder="..."></textarea></div><div class="fld"><label for="f_kuzatuv">Siyosat kuzatuv jadvali</label><textarea id="f_kuzatuv" data-save="kuzatuv" placeholder="Manba — sana — holat — taʼsiri"></textarea></div>
+      <div id="toolOut" class="out" hidden></div>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="5" style="margin-top:14px">Roʻyxatni saqlash · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>M8 nazorati</h2>
+    <p class="sub">Roʻyxatni yakunlashdan oldin tekshiring.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Viza turi va hujjati aniqlangan.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>365 va 30 kunlik sanalar hisoblangan.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>SEVIS toʻlovi rejada bor.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Elchixonaning hujjatlar roʻyxati oʻqilgan.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Ijtimoiy tarmoq profillari koʻrsatmaga muvofiq tekshirilgan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Maqom qoidalari universitet sahifasidan yozilgan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Ish qoidalari bilan rejadagi daromad mos.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Siyosat kuzatuv eslatmasi qoʻyilgan.</span></label></div>
+      <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges">
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Viza tayyor<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Roʻyxat<small>Yakun</small></div>
+    </div>
+  </section>
+
+  <section id="artefakt">
+    <h2 id="artTitle">Viza va maqom nazorat roʻyxati</h2>
+    <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
+    <div class="artifact">
+      <div class="paper" id="artPaper"></div>
+      <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
+      <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>Viza suhbatida eng kuchli dalil izchil haqiqat: oʻqish rejangiz, moliyangiz va qaytish yoki keyingi rejangiz bir-biriga mos boʻlsin.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>5 ta</div>
+      <div><b>Vaqt</b>~1–2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Natija</b>Viza va maqom nazorat roʻyxati</div>
+    </div>
+    <p class="srcs">Faktlar: <a href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">AQSh Davlat departamenti: talaba vizasi</a>; <a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">ICE: SEVIS I-901 toʻlovi</a>; <a href="https://studyinthestates.dhs.gov/school-search" target="_blank" rel="noopener">Study in the States (DHS): SEVP sertifikatli maktablar qidiruvi</a>; <a href="https://uz.usembassy.gov/applying-for-a-visa/" target="_blank" rel="noopener">AQSh elchixonasi: vizaga ariza berish</a>; <a href="https://uz.usembassy.gov/required-documents/" target="_blank" rel="noopener">AQSh elchixonasi: talab qilinadigan hujjatlar</a>; <a href="https://ceac.state.gov/genniv/" target="_blank" rel="noopener">DS-160 onlayn formasi (CEAC)</a>; <a href="https://iso.mit.edu/news/student-and-scholar-f-j-m-visa-interviews-to-resume-with-new-vetting-procedures" target="_blank" rel="noopener">MIT ISO: F, J, M vizalari uchun kengaytirilgan tekshiruv (2025-iyun)</a>; <a href="https://oips.gmu.edu/f-1-employment/" target="_blank" rel="noopener">George Mason universiteti (OIPS): F-1 ishlash qoidalari</a>; <a href="https://www.hio.harvard.edu/node/127" target="_blank" rel="noopener">Harvard International Office: 212(e) 2 yillik talab</a>; <a href="https://isss.brown.edu/traveling/current-travel-and-visa-restrictions-presidential-proclamation" target="_blank" rel="noopener">Brown universiteti ISSS: prezident proklamatsiyalari boʻyicha cheklovlar</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov, summa va siyosatlar har yili oʻzgaradi.</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="usa-lab.html">← USA Lab</a>
+    <a class="btn btn-p" href="dashboard.html">Mening kabinetim →</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+<script>
+(function () {
+  var KEY = "kompas_usa_m8_v1", MOD = "8", LXP = 24, NL = 5, FINXP = 40;
+  var ART = [{"h": "Viza turi", "k": ["tur", "a1"]}, {"h": "Oʻqish boshlanishi", "k": ["boshlanish"]}, {"h": "Viza kalendari", "k": ["kalendar", "a2"]}, {"h": "Suhbat hujjatlari", "k": ["hujjat"]}, {"h": "Maqom qoidalari", "k": ["maqom", "a3"]}, {"h": "Ishlash huquqi", "k": ["a4"]}, {"h": "Siyosat kuzatuvi", "k": ["kuzatuv", "a5"]}];
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  window.KG = { S: S, save: save, nv: nv, esc: esc, toast: function (m, i) { toast(m, i); } };
+
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp);
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd >= Math.ceil(NL / 2)) S.done.half = true;
+    if (nd >= NL) S.done.all = true;
+    save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M" + MOD + " yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang.";
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, LXP, "Dars " + parseInt(MOD, 10) + "." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else { var t = document.querySelector("section[id]:not(#darslar)"); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); } }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  function meterFor(t) {
+    var r = t.getAttribute("data-wc"); if (!r) return;
+    var el = document.querySelector('[data-meter="' + t.getAttribute("data-save") + '"]'); if (!el) return;
+    var lo = +r.split("-")[0], hi = +r.split("-")[1], n = wc(t.value), pct = Math.min(100, n / hi * 100);
+    el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : "");
+    el.innerHTML = '<div class="mt"><span>' + n + " soʻz</span><span>moʻljal: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>';
+  }
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    meterFor(t);
+    var tm; t.addEventListener("input", function () { meterFor(t); clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (r && qz.length && answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Asosiy qoidalarni bilasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { if (r.right >= 3) S.done.quizOk = true; award("quiz", 30, "Mini-test: " + r.right + "/" + qz.length, "books"); }
+      });
+    });
+  });
+
+  var tb = $("toolBtn");
+  if (tb) tb.addEventListener("click", function () {
+    var need = +tb.getAttribute("data-min"), keys = [], filled = 0;
+    tb.parentNode.querySelectorAll("[data-save]").forEach(function (t) { keys.push(t.getAttribute("data-save")); if (nv(t.getAttribute("data-save"))) filled++; });
+    if (filled < need) { toast("Kamida " + need + " ta maydonni toʻldiring (" + filled + " / " + keys.length + ")", "lock"); return; }
+    if (window.KGTool && window.KGTool.check) { var msg = window.KGTool.check(); if (msg) { toast(msg, "lock"); return; } }
+    award("tool", 30, "Vosita natijasi saqlandi", "memo");
+  });
+  var cb = $("ckBtn");
+  if (cb) cb.addEventListener("click", function () {
+    var all = document.querySelectorAll("#check [data-ck]"), on = 0;
+    all.forEach(function (c) { if (S.ck[c.getAttribute("data-ck")]) on++; });
+    if (on < all.length) { toast("Hali " + (all.length - on) + " ta band belgilanmagan", "lock"); return; }
+    award("ck", 30, "Nazorat roʻyxati yakunlandi", "shield");
+  });
+
+  function artText() {
+    var out = [];
+    ART.forEach(function (sec) {
+      var parts = sec.k.map(function (k) { return nv(k); }).filter(Boolean);
+      out.push({ h: sec.h, t: parts.join("\n\n") });
+    });
+    return out;
+  }
+  function renderArt() {
+    var p = $("artPaper"); if (!p) return;
+    var secs = artText(), filled = 0;
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">USA Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
+    p.innerHTML = h;
+    $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
+    var fb = $("finBtn"); fb.disabled = !!S.done.fin; if (S.done.fin) fb.textContent = "✓ Yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd < NL) { toast("Avval barcha darslarni yakunlang (" + nd + " / " + NL + ")", "lock"); return; }
+    if ($("toolBtn") && !S.done.tool) { toast("Avval vosita natijasini saqlang", "lock"); return; }
+    if (!S.ck.hon) { toast("Halollik bayonotini belgilang", "lock"); return; }
+    var secs = artText(), empty = secs.filter(function (s) { return !s.t; }).length;
+    if (empty > Math.floor(secs.length / 3)) { toast("Hujjatda " + empty + " ta boʻsh boʻlim bor", "lock"); return; }
+    award("fin", FINXP, "Modul hujjati tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var p = $("artPaper");
+    download("USA_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+  });
+  $("copyBtn").addEventListener("click", function () {
+    copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
+  });
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+  }
+  if (window.KGTool && window.KGTool.init) window.KGTool.init();
+  renderQuiz(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M7 Magistratura va PhD moliyasi · USA Lab · Kompas Lab</title>
+<meta name="description" content="USA Lab M7: AQShda magistratura va PhD moliyalashtirishi farqi, PhD moliya paketi (stipendiya, oʻqish toʻlovidan ozod qilish, sugʻurta, TA va RA), kafedra sahifasini oʻqish, xalqaro talabaga yopiq tashqi grantlar, takliflarni solishtirish va 15-aprel qarori. Natija: moliya paketi taqqoslagichi.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<style>
+{{CSS}}
+/* USA M1–M8 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);}
+.meterw{margin-top:6px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.trk{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;background:var(--accent-lit);color:var(--accent);margin-right:4px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.paper{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:28px 30px;border:1px solid var(--border);border-radius:8px;}
+.paper h1{font-family:Georgia,serif;font-size:22px;color:#111;margin:0 0 4px;}
+.paper .ct{font-size:13px;color:#555;margin-bottom:12px;}
+.paper h4{font-family:Georgia,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;margin:16px 0 6px;padding-bottom:2px;}
+.paper p{margin:0 0 6px;white-space:pre-wrap;}
+.paper .ph{color:#999;font-style:italic;}
+@media(max-width:760px){.paper{padding:18px 16px;font-size:13.5px;}.artifact{padding:16px;}.artifact .row .btn{flex:1 1 100%;}}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
+}
+.path.pn{--pn:8;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="usa-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· USA Lab M7</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA Lab</a> · Modul 7</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza IV · Magistratura, PhD va viza</span>
+        <h1>Magistratura va PhD moliyasi</h1>
+        <p class="lead">AQShda PhD koʻpincha ish kabi moliyalashtiriladi: kafedra oʻqish toʻlovini qoplaydi va oylik beradi. Magistratura esa koʻpincha oʻz hisobidan. Bu modulda shu farqni hisobga olib dasturlarni tanlaysiz va takliflarni raqam bilan solishtirasiz.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Faza IV</span><span class="fact"><b>250</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">7.1</span>Farq</a><a class="node" href="#l2" data-node="l2"><span class="dot">7.2</span>Paket</a><a class="node" href="#l3" data-node="l3"><span class="dot">7.3</span>Kafedra</a><a class="node" href="#l4" data-node="l4"><span class="dot">7.4</span>Grantlar</a><a class="node" href="#l5" data-node="l5"><span class="dot">7.5</span>Taklif</a><a class="node" href="#taqqos" data-node="tool"><span class="dot">🛠</span>Taqqos</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Taqqos</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span><b>Moliya paketi taqqoslagichi:</b> 2 taklif: oylik sof qoldiq</span></li><li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Kafedra moliyasi jadvali:</b> har kafedra: yillar, summa, majburiyat, muddat</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Grant muvofiqlik filtri:</b> xalqaro talabaga yopiq grantlarni chiqarish</span></li>
+    </ul>
+    <div class="box warn" style="margin-top:14px">Ilmiy rahbar tanlash, professorga xat, ilmiy loyiha taklifi va maqsad bayonnomasi PhD Lab M2–M5 va Master Lab M4–M6 da. Bu modul faqat AQSh moliyalashtirish mexanizmi. Summalar 31.10.2026 holatiga; kafedra sahifasidan qayta tekshiring.</div>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 7.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 7.1</span><span class="l-t" style="display:block">Magistratura va PhD: pul qayerdan</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">⚖️ Farq</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bir xil universitetning bir xil kafedrasida PhD talabasi oylik oladi, magistratura talabasi esa oʻqish toʻlovini oʻzi toʻlaydi. Bu farqni bilmay magistraturaga ariza bersangiz, qabul xati bilan birga katta hisob ham keladi.</div></div>
+          <div class="panel">
+<div class="tbl"><table><thead><tr><th></th><th>Magistratura</th><th>PhD</th></tr></thead><tbody>
+<tr><td>Odatiy moliya</td><td>Koʻpincha oʻz hisobidan</td><td>Koʻpincha kafedra paketi</td></tr>
+<tr><td>Rasmiy misol</td><td>Buffalo universiteti: magistratura dasturlari asosan oʻz hisobidan, assistentlik cheklangan. Princeton Graduate School magistratura talabalarini markazdan moliyalashtirmaydi, lekin baʼzi kafedralar qisman yoki toʻliq moliyalashtiradi</td><td>EducationUSA: oʻqituvchi yoki tadqiqot assistentligi, oʻqish toʻlovidan ozod qilish va stipendiya bilan, PhD darajasida juda keng tarqalgan</td></tr>
+<tr><td>Kimga mos</td><td>Oila toʻlay oladigan yoki tashqi stipendiyasi bor (masalan, Fulbright, M6) talaba</td><td>Ilmiy tajribasi bor, 5 yillik tadqiqotga tayyor talaba</td></tr>
+</tbody></table></div>
+<h4>Xulosa: yoʻlni pulga qarab tanlash</h4>
+<ul><li>Moliyasiz magistratura + oila toʻlay olmaydi = real emas. Muqobil: Fulbright (M6), moliyalashtiradigan magistratura kafedralari yoki toʻgʻridan-toʻgʻri PhD.</li><li>AQSh PhD ga koʻpincha bakalavrdan keyin ham kirish mumkin (M1); kafedra qoidasini tekshiring.</li></ul>
+<div class="srcs">Manba: <a href="https://www.buffalo.edu/grad/explore/funding/masters-level-funding.html" target="_blank" rel="noopener">Buffalo universiteti: magistratura darajasida moliyalashtirish</a>; <a href="https://gradschool.princeton.edu/financial-support/financial-support-model/master%E2%80%99s-degree-funding" target="_blank" rel="noopener">Princeton Graduate School: magistratura moliyalashtirishi</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate" target="_blank" rel="noopener">EducationUSA: magistratura va doktoranturani moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy"><p>Magistratura koʻpincha oʻz hisobidan, PhD koʻpincha kafedra paketi bilan. Pulga qarab yoʻl tanlang: tashqi stipendiya, moliyalashtiradigan kafedra yoki toʻgʻridan-toʻgʻri PhD.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“AQShda magistratura har doim kafedra tomonidan moliyalashtiriladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: koʻp dasturlar asosan oʻz hisobidan.</div></div><div class="qz" data-a="t"><p>“Assistentlik PhD darajasida keng tarqalgan.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: EducationUSA.</div></div><div class="qz" data-a="t"><p>“Baʼzi kafedralar magistratura talabalarini ham moliyalashtiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Princeton misoli.</div></div><div class="qz" data-a="n"><p>“Magistraturaga moliyasiz qabul qilinsa, oila toʻlay olmasa ham bu real yoʻl.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: I-20 uchun pul dalili kerak (M2).</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Sizning maqsadingiz: magistratura yoki PhD? Moliya boʻyicha ikki dalil bilan yozing.</li></ul></div>
+            <textarea data-save="a1" placeholder="Maqsad: ... Chunki 1) oila ... 2) ilmiy tajribam ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 7.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 7.2</span><span class="l-t" style="display:block">PhD moliya paketi</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🧮 Paket</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">"Toʻliq moliyalashtirilgan" degan soʻz kafedradan kafedraga turlicha maʼno beradi: necha yil, yozda pul bormi, sugʻurta kimdan, qancha soat dars berasiz.</div></div>
+          <div class="panel">
+<h4>Paket qismlari</h4>
+<div class="tbl"><table><thead><tr><th>Qism</th><th>Savol</th></tr></thead><tbody>
+<tr><td>Stipendiya (<span lang="en">stipend</span>)</td><td>Oyiga yoki yiliga qancha; 9 oylikmi yoki 12 oylik?</td></tr>
+<tr><td>Oʻqish toʻlovidan ozod qilish (<span lang="en">tuition remission</span>)</td><td>Toʻliqmi; yigʻimlar (<span lang="en">fees</span>) ham kiradimi?</td></tr>
+<tr><td>Tibbiy sugʻurta</td><td>Kim toʻlaydi; oila aʼzolari uchun?</td></tr>
+<tr><td>Kafolatlangan yillar</td><td>Necha yil; undan keyin nima?</td></tr>
+<tr><td>Majburiyat</td><td>Oʻqituvchi assistent (TA) yoki tadqiqot assistenti (RA); haftasiga necha soat?</td></tr>
+</tbody></table></div>
+<h4>Ikki rasmiy misol</h4>
+<ul><li><b>Duke Graduate School:</b> birinchi 5 yil stipendiya, oʻqish toʻlovi va majburiy yigʻimlar kafolatlangan; stipendiya 12 oylik; birinchi 6 yil sogʻliq va stomatologiya sugʻurtasi badali qoplanadi; oila aʼzolari sugʻurtasi talabaning oʻzi hisobidan. Sahifada bu "umuman olganda" ekani va kafedralar farq qilishi yozilgan.</li><li><b>Boston universiteti, Earth &amp; Environment:</b> yaxshi akademik holatdagi talabaga 5 yilgacha stipendiya va sugʻurta; aralash: dars berish (TA), loyihada ishlash (RA) va birinchi yilda majburiyatsiz <span lang="en">fellowship</span>; toʻliq oʻqish toʻlovi va yigʻimlar qoplanadi.</li></ul>
+<div class="box info">Har ikki sahifada stipendiya summasi alohida jadvalda. Summani har doim manba yili bilan yozing.</div>
+<div class="srcs">Manba: <a href="https://gradschool.duke.edu/financial-support/phd-financial-support/" target="_blank" rel="noopener">Duke Graduate School: PhD kafolatlangan moliyalashtirish</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>PhD paketi: stipendiya, oʻqish va yigʻimlardan ozod qilish, sugʻurta, kafolatlangan yillar, TA yoki RA majburiyati. Har qismni kafedra sahifasidan alohida tekshiring.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Bitta PhD dasturining paketini 5 qism boʻyicha yozing (manba va yil bilan).</li></ul>
+            <textarea data-save="a2" placeholder="... universiteti, ... kafedrasi: stipendiya ... USD (12 oy, 2026–27), oʻqish: toʻliq, sugʻurta: ..., yillar: 5, majburiyat: TA ... soat"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 7.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 7.3</span><span class="l-t" style="display:block">Kafedra sahifasini oʻqish</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🔎 Tekshiruv</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Kafedra sahifasida qabul uchun eng muhim maʼlumotlar koʻpincha <span lang="en">FAQ</span> yoki <span lang="en">handbook</span> ichida yashiringan. 15 daqiqalik tekshiruv ariza toʻlovini behuda toʻlashdan saqlaydi.</div></div>
+          <div class="panel">
+<h4>10 savollik tekshiruv</h4>
+<ol><li>PhD qabul qilinganlarning hammasi moliyalashtiriladimi?</li><li>Necha yil kafolatlanadi?</li><li>Stipendiya summasi va davri (9 yoki 12 oy)?</li><li>Xalqaro talabaga bir xil paketmi?</li><li>GRE talab qilinadimi, ixtiyoriymi yoki qabul qilinmaydimi?</li><li>Ingliz tili testi va minimal ball?</li><li>Ariza toʻlovi va undan ozod qilish tartibi?</li><li>Muddat (kafedra muddati universitet muddatidan oldin boʻlishi mumkin)?</li><li>Professor bilan oldindan bogʻlanish tavsiya qilinadimi?</li><li>Ichki <span lang="en">fellowship</span> uchun alohida ariza kerakmi?</li></ol>
+<h4>Vaqt va professorlar</h4>
+<p>EducationUSA: stipendiya va grant muddatlari dastur boshlanishidan 18 oy oldin boʻlishi mumkin; professorlar koʻpincha grant va moliyalashtirish oluvchilarni tanlashda qatnashadi, shuning uchun kafedra professorlari bilan bogʻlanish foydali. Professorga xat yozish usuli PhD Lab M3 da.</p>
+<div class="box warn">Bu 10 savoldan birortasiga sahifada javob boʻlmasa, kafedraning <span lang="en">graduate coordinator</span> manziliga qisqa, aniq savol yozing. Javobni saqlang.</div>
+<div class="srcs">Manba: <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate" target="_blank" rel="noopener">EducationUSA: magistratura va doktoranturani moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Har kafedrada 10 savolga javob toping: moliya kafolati, yillar, summa, xalqaro talaba, GRE, til, toʻlov, muddat, professor, fellowship.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>2 kafedra sahifasini 10 savol boʻyicha tekshiring va javobsiz qolgan savollarni yozing.</li></ul>
+            <textarea data-save="a3" placeholder="... kafedrasi: 1) ha 2) 5 yil 3) ... 4) ... 5) GRE ixtiyoriy ... Javobsiz: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 7.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 7.4</span><span class="l-t" style="display:block">Tashqi grantlar: kimga ochiq</span>
+            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">✅ Filtr</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Internetdagi "AQShdagi eng yaxshi PhD grantlari" roʻyxatining katta qismi faqat AQSh fuqarolari uchun. Ularga vaqt sarflashdan oldin bitta qatorni tekshiring.</div></div>
+          <div class="panel">
+<h4>Muvofiqlik qatori</h4>
+<p>Har grant sahifasida <span lang="en">eligibility</span> boʻlimini oching va fuqarolik talabini toping. Misol: NSF ning <span lang="en">Graduate Research Fellowship Program</span> (GRFP) talabi "AQSh fuqarosi, fuqaroligi yoki doimiy rezidenti". Demak Oʻzbekiston fuqarosi uchun yopiq.</p>
+<div class="tbl"><table><thead><tr><th>Grant manbasi</th><th>Xalqaro talabaga</th></tr></thead><tbody>
+<tr><td>AQSh federal agentliklari (NSF GRFP kabi)</td><td>Koʻpincha yopiq; har birining sahifasini tekshiring</td></tr>
+<tr><td>Kafedra va universitet <span lang="en">fellowship</span>lari</td><td>Koʻpincha qabul paketi ichida (7.2)</td></tr>
+<tr><td>Oʻz mamlakati moliyalashtirishi</td><td>Boston universiteti xalqaro talabalar oʻz mamlakatidan moliya olishi mumkinligini yozadi</td></tr>
+<tr><td>Fulbright</td><td>Oʻzbekiston uchun magistratura (M6)</td></tr>
+</tbody></table></div>
+<div class="box info">Grant sahifasida "<span lang="en">U.S. citizen</span>", "<span lang="en">permanent resident</span>" yoki "<span lang="en">eligible noncitizen</span>" soʻzlari boʻlsa, u sizga yopiq boʻlishi ehtimoli yuqori. Bunday grantni roʻyxatdan chiqaring.</div>
+<div class="srcs">Manba: <a href="https://undergraduates.utexas.edu/odps/explore/nsf-grfp" target="_blank" rel="noopener">Texas universiteti (Ostin): NSF GRFP muvofiqligi</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Har grantni fuqarolik qatori bilan filtrlang. NSF GRFP kabi federal grantlar koʻpincha faqat AQSh fuqarolari va rezidentlari uchun.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Topgan 3 grantingizni fuqarolik qatori boʻyicha tekshiring: ochiq / yopiq, dalil bilan.</li></ul>
+            <textarea data-save="a4" placeholder="... — yopiq: "U.S. citizen..."; ... — ochiq: ...; ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+      <!-- 7.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 7.5</span><span class="l-t" style="display:block">Takliflarni solishtirish va 15-aprel</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📊 Taqqos</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Ikki moliyalashtirilgan PhD taklifi bir xil koʻrinadi, lekin biri qimmat shaharda, boshqasi yozda pul bermaydi. Raqam bilan solishtirmasangiz, oylik kamomadni birinchi qishda bilasiz.</div></div>
+          <div class="panel">
+<h4>Solishtirish formulasi</h4>
+<p>Oylik sof qoldiq = (yillik stipendiya − qoplanmagan yigʻimlar va sugʻurta) ÷ 12 − oylik ijara va yashash xarajati.</p>
+<ul><li>Stipendiya 9 oylik boʻlsa, yozgi oylar uchun manba bormi?</li><li>Kafolatlangan yillar soni bir xilmi?</li><li>TA soatlari tadqiqot vaqtini qanchalik kamaytiradi?</li></ul>
+<h4>15-aprel qarori (CGS)</h4>
+<p>Council of Graduate Schools ning <span lang="en">April 15 Resolution</span> hujjatiga koʻra, kuzgi semestrga qabul qilingan talaba moliyaviy yordam takliflarini (toʻliq oʻqish toʻlovi, <span lang="en">fellowship</span>, <span lang="en">traineeship</span>, assistentlik) 15-aprelgacha qabul qilish yoki rad etishga majbur emas; undan oldingi muddat qarorga zid. Qaror qabul taklifiga emas, faqat moliya takliflariga tegishli va uni imzolagan universitetlar uchun amal qiladi. 2027-yil kuzidan boshlanadigan dasturlar uchun universitetlar qarorni qayta imzolashi kerak.</p>
+<div class="box warn">Universitet qarorni imzolaganmi, tekshiring. 15-aprelgacha taklifni qabul qilib, keyin boshqasini tanlasangiz, voz kechishni yozma bildiring.</div>
+<div class="srcs">Manba: <a href="https://cgsnet.org/resources/for-current-prospective-graduate-students/april-15-resolution/" target="_blank" rel="noopener">CGS (Council of Graduate Schools): 15-aprel qarori</a>; <a href="https://gradschool.duke.edu/financial-support/phd-financial-support/" target="_blank" rel="noopener">Duke Graduate School: PhD kafolatlangan moliyalashtirish</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Takliflarni oylik sof qoldiq, yozgi moliya, kafolat yillari va majburiyat boʻyicha solishtiring. CGS 15-aprel qarorini imzolagan universitetlarda moliya taklifiga 15-aprelgacha javob berish majburiy emas.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>2 taklif (yoki 2 kafedra sahifasi) uchun oylik sof qoldiqni hisoblang.</li><li>Universitetlar CGS qarorini imzolaganini tekshiring.</li></ul>
+            <textarea data-save="a5" placeholder="A: stipendiya ... − ... = ...; ijara ... → oylik qoldiq ...; B: ...; CGS: A imzolagan / ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="taqqos">
+    <h2>Moliya paketi taqqoslagichi</h2>
+    <p class="sub">Ikki taklifni oylik sof qoldiq boʻyicha solishtiring (AQSh dollarida).</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Taqqoslagich</h3><span>5 maydon · +30 XP</span></div></div>
+      <div class="fld"><label>Hisoblagich <small>yillik summalar, ijara oylik</small></label>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+<input id="aS" type="number" min="0" placeholder="A: yillik stipendiya" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px">
+<input id="aF" type="number" min="0" placeholder="A: qoplanmagan yigʻim + sugʻurta" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px">
+<input id="aR" type="number" min="0" placeholder="A: oylik ijara va yashash" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px">
+<input id="bS" type="number" min="0" placeholder="B: yillik stipendiya" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px">
+<input id="bF" type="number" min="0" placeholder="B: qoplanmagan yigʻim + sugʻurta" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px">
+<input id="bR" type="number" min="0" placeholder="B: oylik ijara va yashash" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px">
+</div><div id="tOut" class="out" style="white-space:normal">Raqamlarni kiriting.</div></div>
+      <div class="fld"><label for="f_a">A taklif <small>universitet, kafedra, yillar, majburiyat</small></label><textarea id="f_a" data-save="a" placeholder="... — 5 yil, TA 20 soat, 12 oylik stipendiya"></textarea></div><div class="fld"><label for="f_b">B taklif</label><textarea id="f_b" data-save="b" placeholder="..."></textarea></div><div class="fld"><label for="f_yoz">Yozgi moliya va kafolatdan keyingi yillar</label><textarea id="f_yoz" data-save="yoz" placeholder="A: ...; B: ..."></textarea></div><div class="fld"><label for="f_cgs">15-aprel qarori va javob muddati</label><input id="f_cgs" type="text" data-save="cgs" placeholder="A: imzolagan, muddat ...; B: ..."></div><div class="fld"><label for="f_qaror">Qaror</label><select id="f_qaror" data-save="qaror"><option value="">— tanlang —</option><option value="A">A</option><option value="B">B</option><option value="Qoʻshimcha maʼlumot soʻrayman">Qoʻshimcha maʼlumot soʻrayman</option><option value="Ikkalasi ham mos emas">Ikkalasi ham mos emas</option></select></div>
+      <div id="toolOut" class="out" hidden></div>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Taqqoslashni saqlash · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>M7 nazorati</h2>
+    <p class="sub">Taqqoslashni yakunlashdan oldin tekshiring.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Magistratura va PhD moliyasi farqi hisobga olingan.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Har paketning 5 qismi manba bilan yozilgan.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Stipendiya 9 yoki 12 oylik ekani aniqlangan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Xalqaro talabaga bir xil paket ekani tekshirilgan.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Tashqi grantlar fuqarolik qatori bilan filtrlangan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Oylik sof qoldiq ikkala taklif uchun hisoblangan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>15-aprel qarori va javob muddati tekshirilgan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Javobsiz savollar kafedraga yozma yuborilgan.</span></label></div>
+      <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges">
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Paket tahlilchisi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Taqqos<small>Yakun</small></div>
+    </div>
+  </section>
+
+  <section id="artefakt">
+    <h2 id="artTitle">Moliya paketi taqqoslagichi</h2>
+    <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
+    <div class="artifact">
+      <div class="paper" id="artPaper"></div>
+      <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
+      <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>PhD taklifini maosh kabi solishtiring: summa, yillar, majburiyat va shahar narxi. "Toʻliq moliyalashtirilgan" degan soʻz hisob oʻrnini bosmaydi.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>5 ta</div>
+      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Natija</b>Moliya paketi taqqoslagichi</div>
+    </div>
+    <p class="srcs">Faktlar: <a href="https://www.buffalo.edu/grad/explore/funding/masters-level-funding.html" target="_blank" rel="noopener">Buffalo universiteti: magistratura darajasida moliyalashtirish</a>; <a href="https://gradschool.princeton.edu/financial-support/financial-support-model/master%E2%80%99s-degree-funding" target="_blank" rel="noopener">Princeton Graduate School: magistratura moliyalashtirishi</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate" target="_blank" rel="noopener">EducationUSA: magistratura va doktoranturani moliyalashtirish</a>; <a href="https://gradschool.duke.edu/financial-support/phd-financial-support/" target="_blank" rel="noopener">Duke Graduate School: PhD kafolatlangan moliyalashtirish</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>; <a href="https://undergraduates.utexas.edu/odps/explore/nsf-grfp" target="_blank" rel="noopener">Texas universiteti (Ostin): NSF GRFP muvofiqligi</a>; <a href="https://cgsnet.org/resources/for-current-prospective-graduate-students/april-15-resolution/" target="_blank" rel="noopener">CGS (Council of Graduate Schools): 15-aprel qarori</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov, summa va siyosatlar har yili oʻzgaradi.</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="usa-lab.html">← USA Lab</a>
+    <a class="btn btn-p" href="usa-lab-o.html?m=8">Keyingi: M8 Viza, maqom va ishlash huquqi →</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+<script>
+window.KGTool = { init: function () {
+  var ids = ["aS", "aF", "aR", "bS", "bF", "bR"], o = document.getElementById("tOut");
+  function v(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
+  function fmt(n) { return Math.round(n).toLocaleString("ru-RU"); }
+  function run() {
+    if (!v("aS") && !v("bS")) { o.textContent = "Raqamlarni kiriting."; return; }
+    var a = (v("aS") - v("aF")) / 12 - v("aR"), b = (v("bS") - v("bF")) / 12 - v("bR");
+    var best = a === b ? "teng" : (a > b ? "A" : "B");
+    var txt = "Oylik sof qoldiq: A " + fmt(a) + " USD, B " + fmt(b) + " USD. Pul boʻyicha ustun: " + best + ".";
+    var cls = Math.min(a, b) < 0 ? "no" : "ok";
+    o.innerHTML = "<span class=\"pill " + cls + "\">" + (Math.min(a, b) < 0 ? "Kamomad bor" : "Qoldiq musbat") + "</span> " + KG.esc(txt);
+    KG.S.notes.tcalc = txt; KG.S.notes.t_in = ids.map(v).join("|"); KG.save();
+  }
+  if (KG.S.notes.t_in) { var p = String(KG.S.notes.t_in).split("|"); ids.forEach(function (id, i) { if (p[i] && p[i] !== "0") document.getElementById(id).value = p[i]; }); }
+  ids.forEach(function (id) { document.getElementById(id).addEventListener("input", run); });
+  run();
+} };
+</script>
+<script>
+(function () {
+  var KEY = "kompas_usa_m7_v1", MOD = "7", LXP = 24, NL = 5, FINXP = 40;
+  var ART = [{"h": "Yoʻl tanlovi", "k": ["a1"]}, {"h": "PhD paketi", "k": ["a2"]}, {"h": "Kafedra tekshiruvi", "k": ["a3"]}, {"h": "Grant filtri", "k": ["a4"]}, {"h": "A taklif", "k": ["a"]}, {"h": "B taklif", "k": ["b"]}, {"h": "Hisob", "k": ["tcalc", "a5"]}, {"h": "Yozgi moliya", "k": ["yoz"]}, {"h": "15-aprel", "k": ["cgs"]}, {"h": "Qaror", "k": ["qaror"]}];
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  window.KG = { S: S, save: save, nv: nv, esc: esc, toast: function (m, i) { toast(m, i); } };
+
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp);
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd >= Math.ceil(NL / 2)) S.done.half = true;
+    if (nd >= NL) S.done.all = true;
+    save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M" + MOD + " yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang.";
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, LXP, "Dars " + parseInt(MOD, 10) + "." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else { var t = document.querySelector("section[id]:not(#darslar)"); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); } }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  function meterFor(t) {
+    var r = t.getAttribute("data-wc"); if (!r) return;
+    var el = document.querySelector('[data-meter="' + t.getAttribute("data-save") + '"]'); if (!el) return;
+    var lo = +r.split("-")[0], hi = +r.split("-")[1], n = wc(t.value), pct = Math.min(100, n / hi * 100);
+    el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : "");
+    el.innerHTML = '<div class="mt"><span>' + n + " soʻz</span><span>moʻljal: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>';
+  }
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    meterFor(t);
+    var tm; t.addEventListener("input", function () { meterFor(t); clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (r && qz.length && answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Asosiy qoidalarni bilasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { if (r.right >= 3) S.done.quizOk = true; award("quiz", 30, "Mini-test: " + r.right + "/" + qz.length, "books"); }
+      });
+    });
+  });
+
+  var tb = $("toolBtn");
+  if (tb) tb.addEventListener("click", function () {
+    var need = +tb.getAttribute("data-min"), keys = [], filled = 0;
+    tb.parentNode.querySelectorAll("[data-save]").forEach(function (t) { keys.push(t.getAttribute("data-save")); if (nv(t.getAttribute("data-save"))) filled++; });
+    if (filled < need) { toast("Kamida " + need + " ta maydonni toʻldiring (" + filled + " / " + keys.length + ")", "lock"); return; }
+    if (window.KGTool && window.KGTool.check) { var msg = window.KGTool.check(); if (msg) { toast(msg, "lock"); return; } }
+    award("tool", 30, "Vosita natijasi saqlandi", "memo");
+  });
+  var cb = $("ckBtn");
+  if (cb) cb.addEventListener("click", function () {
+    var all = document.querySelectorAll("#check [data-ck]"), on = 0;
+    all.forEach(function (c) { if (S.ck[c.getAttribute("data-ck")]) on++; });
+    if (on < all.length) { toast("Hali " + (all.length - on) + " ta band belgilanmagan", "lock"); return; }
+    award("ck", 30, "Nazorat roʻyxati yakunlandi", "shield");
+  });
+
+  function artText() {
+    var out = [];
+    ART.forEach(function (sec) {
+      var parts = sec.k.map(function (k) { return nv(k); }).filter(Boolean);
+      out.push({ h: sec.h, t: parts.join("\n\n") });
+    });
+    return out;
+  }
+  function renderArt() {
+    var p = $("artPaper"); if (!p) return;
+    var secs = artText(), filled = 0;
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">USA Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
+    p.innerHTML = h;
+    $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
+    var fb = $("finBtn"); fb.disabled = !!S.done.fin; if (S.done.fin) fb.textContent = "✓ Yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd < NL) { toast("Avval barcha darslarni yakunlang (" + nd + " / " + NL + ")", "lock"); return; }
+    if ($("toolBtn") && !S.done.tool) { toast("Avval vosita natijasini saqlang", "lock"); return; }
+    if (!S.ck.hon) { toast("Halollik bayonotini belgilang", "lock"); return; }
+    var secs = artText(), empty = secs.filter(function (s) { return !s.t; }).length;
+    if (empty > Math.floor(secs.length / 3)) { toast("Hujjatda " + empty + " ta boʻsh boʻlim bor", "lock"); return; }
+    award("fin", FINXP, "Modul hujjati tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var p = $("artPaper");
+    download("USA_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+  });
+  $("copyBtn").addEventListener("click", function () {
+    copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
+  });
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+  }
+  if (window.KGTool && window.KGTool.init) window.KGTool.init();
+  renderQuiz(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>

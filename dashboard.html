@@ -512,6 +512,7 @@ const PAGE_COURSES = {
   'bachelor-lab': { href: n => n === 0 ? 'bachelor-lab-m0.html' : `bachelor-lab-o.html?m=${n}`, key: n => `kompas_bachelor_m${n}_v1` },
   'master-lab': { href: n => n === 0 ? 'master-lab-m0.html' : `master-lab-o.html?m=${n}`, key: n => `kompas_master_m${n}_v1` },
   // GKS: order_index 1..11 = umumiy oʻzak + U/M/D treklari (gks-lab-o.html dagi MODS bilan bir xil tartib)
+  'usa-lab': { href: n => n === 0 ? 'usa-lab-m0.html' : `usa-lab-o.html?m=${n}`, key: n => `kompas_usa_m${n}_v1` },
   'gks-lab': { href: n => n === 0 ? 'gks-lab-m0.html' : `gks-lab-o.html?m=${GKS_KEYS[n - 1]}`, key: n => n === 0 ? 'kompas_gks_m0_v1' : `kompas_gks_${(GKS_KEYS[n - 1] || '').replace('-', '')}_v1` }
 }
 const GKS_KEYS = ['m1', 'm2', 'm3-u', 'm4-u', 'm5-u', 'm3-m', 'm4-m', 'm5-m', 'm3-d', 'm4-d', 'm5-d']
@@ -679,7 +680,7 @@ const M0_LIST = [
   { href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bachelor Lab M0',     sub: 'Bakalavr: xorijda oʻqish sizga mosmi' },
   { href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD Lab M0',          sub: 'Moliyalashtirilgan PhD: qaror darvozasi' },
   { href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS Lab M0',          sub: 'Koreya hukumati stipendiyasi' },
-  { href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA Lab M0',          sub: 'AQSh: yoʻllar va moliyalashtirish' },
+  { href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA Lab M0',          sub: 'AQSh: beshta yoʻl, pul va viza' },
   { href: 'tadbirkor-talaba-m0.html', key: 'kompas_tt_m0_v1',       icon: 'tt',       name: 'Tadbirkor Talaba M0', sub: 'Oʻqish va biznesni birga olib borish' },
   { href: 'musofir-lab-m0.html',      key: 'kompas_musofir_m0_v1',  icon: 'musofir',  name: 'Musofir Lab M0',      sub: 'Xorijda ish: rasmiy yoʻl va himoya' },
 ]

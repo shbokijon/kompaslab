@@ -2242,529 +2242,303 @@
  "USA": [
   {
    "id": "M0",
-   "title": "AQSh yoʻllari va qaror darvozasi",
+   "title": "AQSh yoʻllari va qaror",
    "meta": "bepul, 6 dars",
-   "info": "Artefakt: Dasturlar xaritasi + rasmiy manba konspekti + tayyorgarlik koʻrsatkichi + trek kalendari. ",
+   "info": "Artefakt: Yoʻllar xaritasi + yoʻl tanlovi + tayyorgarlik koʻrsatkichi + kalendar. ",
    "lessons": [
     {
      "num": "0.1",
-     "title": "AQSh davlat dasturlari xaritasi",
-     "content": "Fulbright, Global UGRAD va boshqa almashinuv dasturlari; universitet orqali doktorantura",
-     "trek": "Umumiy"
+     "title": "AQSh yoʻllari xaritasi",
+     "content": "Beshta yoʻl: bakalavr (universitet yordami), Global UGRAD, Fulbright, magistratura, PhD; har birining puli va vizasi"
     },
     {
      "num": "0.2",
      "title": "Eng keng tarqalgan miflar",
-     "content": "Fulbright orqali doktorantura va bakalavriat yoʻqligi; Fulbright — AQShda qolish yoʻli emas",
-     "trek": "Umumiy"
+     "content": "\"Faqat grant bilan\", \"Fulbright bilan PhD\", \"UGRAD diplom beradi\", \"ishlab oʻqish toʻlovini qoplayman\""
     },
     {
      "num": "0.3",
-     "title": "Raqobat va B reja",
-     "content": "Rad javobi oddiy holat; nazoratdagi va nazoratdan tashqaridagi omillar; artefaktlarni boshqa dasturlarda ishlatish",
-     "trek": "Umumiy"
+     "title": "Pul haqiqati",
+     "content": "Federal yordam xalqaro talabaga yopiq; toʻliq yordam beradigan universitetlar kam; oila byudjeti chegarasi"
     },
     {
      "num": "0.4",
-     "title": "Uch trek va personalar",
-     "content": "B, M, D treklar; 5 persona; muvofiqlik qizil bayroqlari",
-     "trek": "Umumiy"
+     "title": "Yoʻl tanlagich",
+     "content": "Holatingiz, tajriba, oila byudjeti va rejangiz boʻyicha yoʻl; qizil bayroqlar"
     },
     {
      "num": "0.5",
      "title": "Rasmiy manbalarni oʻqish",
-     "content": "Toshkentdagi AQSh elchixonasi, Davlat departamenti sahifalari; 6 savollik oʻqish usuli",
-     "trek": "Umumiy"
+     "content": "6 savollik oʻqish usuli; faqat universitet va masʼul tashkilot sahifalari"
     },
     {
      "num": "0.6",
      "title": "Tayyorgarlik, kalendar va shartlar",
-     "content": "Koʻrsatkich (2.5), trek muddatidan orqaga kalendar, obuna shartlari",
-     "trek": "Umumiy"
+     "content": "Koʻrsatkich, muddatdan orqaga kalendar, obuna shartlari"
     }
    ]
   },
   {
    "id": "M1",
-   "title": "Trek strategiyasi",
+   "title": "AQSh oliy taʼlimi: tizim va universitetni tekshirish",
    "meta": "5 dars",
-   "info": "Artefakt: Strategik hujjat v1.0 + trek kalendari. ",
+   "info": "Artefakt: Universitet tekshiruv kartasi. ",
    "lessons": [
     {
      "num": "1.1",
-     "title": "Global UGRAD mantigʻi",
-     "content": "Dastur maqsadi, tanlov, universitetni talaba tanlamasligi, kredit oʻtkazish masalasi",
-     "trek": "B"
+     "title": "Universitet turlari",
+     "content": "Toʻrt tur: ikki yillik kollej, liberal sanʼat kolleji, tadqiqot universiteti, davlat va xususiy"
     },
     {
      "num": "1.2",
-     "title": "Fulbright mantigʻi",
-     "content": "Dastur maqsadi, nomzod profili, joylashtirish",
-     "trek": "M"
+     "title": "Akkreditatsiya va SEVP sertifikati",
+     "content": "Akkreditatsiya (CHEA yoki DAPIP) va SEVP sertifikati (Study in the States) tekshirilmagan muassasa roʻyxatga kirmaydi"
     },
     {
      "num": "1.3",
-     "title": "AQSh doktoranturasi mantigʻi",
-     "content": "Kafedra qabuli, moliyalashtirish paketi, 5–6 yillik yoʻl",
-     "trek": "D"
+     "title": "AQSh darajalari qanday tuzilgan",
+     "content": "Bakalavriatda major koʻpincha keyinroq tanlanadi; magistratura dissertatsiyali yoki dissertatsiyasiz; PhD ga bakalavrdan keyin ham kirish mumkin"
     },
     {
      "num": "1.4",
-     "title": "Fulbright va boshqa moliyalashtirish",
-     "content": "Sherik moliyalashtirish imkoniyatlari (masalan, El-yurt umidi bilan) — faqat rasmiy eʼlonda boʻlsa",
-     "trek": "M"
+     "title": "Soha boʻyicha kuchli joyni topish",
+     "content": "Soha boʻyicha kuchni HERD ilmiy xarajat jadvali va kafedra sahifasi bilan tekshiring"
     },
     {
      "num": "1.5",
-     "title": "Strategik hujjat",
-     "content": "Kim, qaysi trek, qachon, B reja",
-     "trek": "Umumiy"
+     "title": "Universitetni raqamlar bilan oʻqish",
+     "content": "College Navigator va CDS bir xil shablondagi raqamlarni beradi"
     }
    ]
   },
   {
    "id": "M2",
-   "title": "Muvofiqlik va diskvalifikatsiya sabablari",
-   "meta": "6 dars",
-   "info": "Artefakt: Muvofiqlik xulosasi (har band rasmiy manba bilan). ",
+   "title": "Xarajat va pul oqimi",
+   "meta": "5 dars",
+   "info": "Artefakt: AQSh pul xaritasi. ",
    "lessons": [
     {
      "num": "2.1",
-     "title": "Shartlarni band-band oʻqish",
-     "content": "Joriy eʼlon va FAQ'ni oʻqish usuli",
-     "trek": "Umumiy"
+     "title": "Toʻliq narx: Cost of Attendance",
+     "content": "Toʻliq narx: oʻqish va yigʻimlar, yashash, sugʻurta, kitob va shaxsiy xarajatlar, bir martalik toʻlovlar"
     },
     {
      "num": "2.2",
-     "title": "Ish tajribasi va yashash talabi",
-     "content": "Qaysi tajriba hisoblanadi; Oʻzbekistonda yashash sharti",
-     "trek": "B+M"
+     "title": "I-20 uchun pul dalili",
+     "content": "I-20 uchun kamida birinchi yil taxminiy xarajati ishlatsa boʻladigan pul bilan koʻrsatiladi"
     },
     {
      "num": "2.3",
-     "title": "J-1 va F-1 farqi",
-     "content": "Almashinuv va talaba vizasi: maqsad, cheklovlar, ishlash huquqi",
-     "trek": "Umumiy"
+     "title": "Sizga ochiq va yopiq pul manbalari",
+     "content": "Federal yordam xalqaro talabaga yopiq"
     },
     {
      "num": "2.4",
-     "title": "2 yillik vatanda boʻlish talabi",
-     "content": "Talab qanday ishlaydi, AQShda qolish rejalariga taʼsiri",
-     "trek": "M"
+     "title": "Ehtiyojga va natijaga asoslangan yordam",
+     "content": "Ehtiyojga asoslangan yordam oila toʻlay olmaydigan farqni qoplaydi; natijaga asoslangan yordam yutuq uchun beriladi va koʻpincha qisman"
     },
     {
      "num": "2.5",
-     "title": "Halollik va AI qoidalari",
-     "content": "Dastur va universitetlarning insho, AI va plagiat boʻyicha qoidalari (rasmiy manbadan)",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "2.6",
-     "title": "Muvofiqlik xulosasi",
-     "content": "\"Mos / tekshirish kerak / mos emas\"",
-     "trek": "Umumiy"
+     "title": "Oilaviy byudjet chegarasi va yoʻl xulosasi",
+     "content": "Oila chegarasini dollarda, yillik raqam bilan aniqlang"
     }
    ]
   },
   {
    "id": "M3",
-   "title": "AQSh oliy taʼlimi va pul oqimi",
-   "meta": "6 dars",
-   "info": "Artefakt: Moliyalashtirish mantigʻi xaritasi + xarajat hisobi. ",
+   "title": "Yordam beradigan universitetlarni topish",
+   "meta": "5 dars",
+   "info": "Artefakt: Yordam boʻyicha saralangan roʻyxat. ",
    "lessons": [
     {
      "num": "3.1",
-     "title": "Universitet turlari va akkreditatsiya",
-     "content": "Davlat va xususiy, tadqiqot universitetlari, akkreditatsiyani tekshirish",
-     "trek": "Umumiy"
+     "title": "Toʻrt xil yordam siyosati",
+     "content": "A: xalqaro talabaga ham need-blind va toʻliq ehtiyoj; B: rasmiy soʻzlar aniqlashtirishni talab qiladi; C: need-aware; D: yordam juda cheklangan"
     },
     {
      "num": "3.2",
-     "title": "Magistratura va doktorantura tuzilmasi",
-     "content": "Kurslar, malaka imtihonlari, dissertatsiya",
-     "trek": "M, D"
+     "title": "Rasmiy sahifa soʻzlarini oʻqish",
+     "content": "Kuchli iboralar: need-blind for all applicants (xalqaro talaba aniq koʻrsatilgan), regardless of citizenship, meets 100% of demonstrated need, no-loan"
     },
     {
      "num": "3.3",
-     "title": "Kafedra va ilmiy rahbar (AQSh)",
-     "content": "Kafedra sahifasi, fakultet, qabul qoʻmitasi",
-     "trek": "D"
+     "title": "Common Data Set: H6 bandi",
+     "content": "H6: xalqaro bakalavrlarga grant siyosati, olganlar soni, oʻrtacha va jami summa"
     },
     {
      "num": "3.4",
-     "title": "Assistentlik va grantli stipendiya (fellowship)",
-     "content": "Oʻqituvchi assistent (TA), tadqiqot assistenti (RA), grantli stipendiya (fellowship): majburiyatlar va moliyaviy paket",
-     "trek": "D"
+     "title": "Net Price Calculator va natijaga asoslangan grantlar",
+     "content": "Net Price Calculator yordamdan keyingi taxminiy narxni beradi; xalqaro talabaga ishlashini tekshiring"
     },
     {
      "num": "3.5",
-     "title": "Fulbright joylashtirish",
-     "content": "Universitetlarni tanlash va joylashtirish mantigʻi (rasmiy tavsifdan)",
-     "trek": "M"
-    },
-    {
-     "num": "3.6",
-     "title": "Xarajat va hayot",
-     "content": "Yashash, sugʻurta, shahar tanlash",
-     "trek": "Umumiy"
+     "title": "Yordam boʻyicha saralangan roʻyxat",
+     "content": "Roʻyxat ikki oʻq bilan tuziladi: qabul ehtimoli va toʻlay olish"
     }
    ]
   },
   {
    "id": "M4",
-   "title": "Liderlik izi va jamiyatga taʼsir",
-   "meta": "6 dars",
-   "info": "Artefakt: 5 ta liderlik holati (STAR) + taʼsir vizyoni. ",
+   "title": "Moliyaviy yordam arizasi",
+   "meta": "5 dars",
+   "info": "Artefakt: Moliyaviy yordam arizasi paketi. ",
    "lessons": [
     {
      "num": "4.1",
-     "title": "Liderlik nima",
-     "content": "Lavozim emas, taʼsir va masʼuliyat",
-     "trek": "Umumiy"
+     "title": "Formalar xaritasi",
+     "content": "CSS Profile koʻp universitetlarda asosiy forma; baʼzilari oʻz formasini va daromad hujjatlarini rasmiy tarjima va dollar kursi bilan soʻraydi"
     },
     {
      "num": "4.2",
-     "title": "Holatlar banki",
-     "content": "STAR shaklida yozish",
-     "trek": "Umumiy"
+     "title": "Oʻzbekistondan oila daromadini hujjatlash",
+     "content": "Har daromad turi uchun rasmiy hujjat, bitta sana va kurs, barcha formalarda bir xil raqam"
     },
     {
      "num": "4.3",
-     "title": "Jamiyatga taʼsir dalillari",
-     "content": "Koʻngillilik, loyihalar, raqamli natijalar",
-     "trek": "B+M"
+     "title": "Yordam formasi toʻlovi va ozod qilish",
+     "content": "CSS Profile toʻlovidan ozod qilish xalqaro talabaga hamma joyda qoʻllanmaydi"
     },
     {
      "num": "4.4",
-     "title": "Oʻzbekistonga hissa",
-     "content": "Qaytgandan keyingi aniq reja",
-     "trek": "B+M"
+     "title": "Yordam xatini oʻqish",
+     "content": "Yordam xatini grant, kredit, ish va oila hissasiga ajrating"
     },
     {
      "num": "4.5",
-     "title": "Tadqiqot taʼsiri",
-     "content": "Ilmiy hissa va keng taʼsir",
-     "trek": "D"
-    },
-    {
-     "num": "4.6",
-     "title": "Holatlar bankini yakunlash",
-     "content": "Insholarda qayta ishlatish",
-     "trek": "Umumiy"
+     "title": "Qayta koʻrib chiqish va oʻzgargan holat",
+     "content": "Haqiqiy oʻzgarish yoki xato boʻlsa, universitet tartibi boʻyicha hujjatli va qisqa soʻrov qiling"
     }
    ]
   },
   {
    "id": "M5",
-   "title": "Shaxsiy bayonot",
-   "meta": "7 dars, Core asosida",
-   "info": "Artefakt: Trekka mos yakuniy shaxsiy bayonot. ",
+   "title": "Global UGRAD va almashinuv dasturlari",
+   "meta": "5 dars",
+   "info": "Artefakt: Almashinuv dasturi kartasi. ",
    "lessons": [
     {
      "num": "5.1",
-     "title": "Fulbright shaxsiy bayonoti",
-     "content": "Forma talablari (rasmiy koʻrsatmadan), baholovchi nimani qidiradi",
-     "trek": "M"
+     "title": "Global UGRAD nima",
+     "content": "Global UGRAD: bir semestr, daraja yoʻq, universitetni dastur tanlaydi, kredit oʻtkazish sizning ishingiz"
     },
     {
      "num": "5.2",
-     "title": "UGRAD insholari",
-     "content": "Savollar va hajm (rasmiy koʻrsatmadan)",
-     "trek": "B"
+     "title": "Muvofiqlik shartlari",
+     "content": "Asosiy shartlar: 18+, Oʻzbekistonda yashash va kunduzgi oʻqish, kamida bir yil oʻqish qolishi, ingliz tili, qaytish"
     },
     {
      "num": "5.3",
-     "title": "Doktorantura uchun shaxsiy tarix bayoni",
-     "content": "Baʼzi AQSh kafedralari soʻraydigan alohida bayonot",
-     "trek": "D"
+     "title": "Sikl holatini kuzatish",
+     "content": "UGRAD sikli rasman eʼlon qilinmaguncha muddat yoʻq"
     },
     {
      "num": "5.4",
-     "title": "Tuzilma",
-     "content": "Kimlik → Dalil → Maqsad → Moslik",
-     "trek": "Umumiy"
+     "title": "Ariza va tanlov",
+     "content": "Ariza onlayn, ingliz tilida, muddatdan keyin oʻzgarmaydi"
     },
     {
      "num": "5.5",
-     "title": "Birinchi qoralama",
-     "content": "Holatlar bankidan foydalanish",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "5.6",
-     "title": "Tahrir",
-     "content": "Klishe, mubolagʻa, tekshirib boʻlmaydigan daʼvo",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "5.7",
-     "title": "Yakuniy versiya",
-     "content": "Hajm, format, oʻzaro tahrir",
-     "trek": "Umumiy"
+     "title": "Boshqa almashinuv dasturlari va J-1",
+     "content": "UGRAD dan tashqari maktab, yozgi, kasbiy va ilmiy almashinuvlar bor"
     }
    ]
   },
   {
    "id": "M6",
-   "title": "Maqsad va tadqiqot bayoni",
-   "meta": "8 dars",
-   "info": "Artefakt: Fulbright uchun maqsad va tadqiqot bayoni (Study/Research Objective) yoki doktorantura uchun maqsad bayonnomasi (Statement of Purpose). ",
+   "title": "Fulbright magistraturasi",
+   "meta": "5 dars",
+   "info": "Artefakt: Fulbright muvofiqlik va reja kartasi. ",
    "lessons": [
     {
      "num": "6.1",
-     "title": "Maqsad va tadqiqot bayoni nima",
-     "content": "Rasmiy koʻrsatmadagi talablar; shaxsiy bayonotdan farqi",
-     "trek": "M"
+     "title": "Dastur va Oʻzbekiston uchun shartlar",
+     "content": "Fulbright Oʻzbekiston uchun: magistratura, 2 yilgacha; bakalavr diplomi, 2 yillik tajriba, Oʻzbekistonda yashash"
     },
     {
      "num": "6.2",
-     "title": "Joylashtirish uchun yozish",
-     "content": "Bayonot universitet joylashtirishda qanday ishlatiladi",
-     "trek": "M"
+     "title": "Tanlov bosqichlari va joylashtirish",
+     "content": "Bosqichlar: texnik tekshiruv, oʻquvchilar paneli, elchixonada intervyu, nomzodlik, testlar, kengash tasdigʻi va joylashtirish"
     },
     {
      "num": "6.3",
-     "title": "Dastur tanlash dalillari",
-     "content": "Kurslar, fakultet, laboratoriyalar",
-     "trek": "M"
+     "title": "Ariza tarkibi va halollik",
+     "content": "Ariza: onlayn shakl, original insholar, rezyume, elchixona formasidagi tavsiya, nomzodlar uchun testlar"
     },
     {
      "num": "6.4",
-     "title": "Kafedra uchun maqsad bayonnomasi",
-     "content": "AQSh kafedralari nimani qidiradi: tadqiqot tajribasi, moslik, kelajak",
-     "trek": "D"
+     "title": "Sikl kalendari",
+     "content": "2027–2028 muddati 30.06.2026 da yopilgan; keyingi sikl eʼlon qilinmagan"
     },
     {
      "num": "6.5",
-     "title": "Ilmiy rahbar bilan moslik",
-     "content": "Fakultet ishlarini bayonotda dalil sifatida ishlatish",
-     "trek": "D"
-    },
-    {
-     "num": "6.6",
-     "title": "Birinchi qoralama",
-     "content": "Tuzilma va dalillar",
-     "trek": "M, D"
-    },
-    {
-     "num": "6.7",
-     "title": "Tahrir",
-     "content": "Aniqlik, hajm, izchillik",
-     "trek": "M, D"
-    },
-    {
-     "num": "6.8",
-     "title": "Ikki inshoning izchilligi",
-     "content": "Shaxsiy bayonot bilan takrorlanmaslik va bir-birini toʻldirish",
-     "trek": "M"
+     "title": "J-1 va 2 yillik vatanda yashash talabi",
+     "content": "Fulbright J-1 bilan: grantdan keyin kamida 2 yil vatanda yashash talabi"
     }
    ]
   },
   {
    "id": "M7",
-   "title": "Tavsiya xatlari",
-   "meta": "5 dars, Core",
-   "info": "Artefakt: Yutuqlar varaqalari + tavsiya soʻrovlari + aloqalar jadvali. ",
+   "title": "Magistratura va PhD moliyasi",
+   "meta": "5 dars",
+   "info": "Artefakt: Moliya paketi taqqoslagichi. ",
    "lessons": [
     {
      "num": "7.1",
-     "title": "AQSh tavsiya madaniyati",
-     "content": "Batafsil va dalilga asoslangan xat kutiladi; solishtirma baho",
-     "trek": "Umumiy"
+     "title": "Magistratura va PhD: pul qayerdan",
+     "content": "Magistratura koʻpincha oʻz hisobidan, PhD koʻpincha kafedra paketi bilan"
     },
     {
      "num": "7.2",
-     "title": "Kimdan soʻrash",
-     "content": "Akademik va professional; trek boʻyicha",
-     "trek": "Umumiy"
+     "title": "PhD moliya paketi",
+     "content": "PhD paketi: stipendiya, oʻqish va yigʻimlardan ozod qilish, sugʻurta, kafolatlangan yillar, TA yoki RA majburiyati"
     },
     {
      "num": "7.3",
-     "title": "Yutuqlar varaqasi",
-     "content": "6 boʻlimli varaqa",
-     "trek": "Umumiy"
+     "title": "Kafedra sahifasini oʻqish",
+     "content": "Har kafedrada 10 savolga javob toping: moliya kafolati, yillar, summa, xalqaro talaba, GRE, til, toʻlov, muddat, professor, fellowship"
     },
     {
      "num": "7.4",
-     "title": "Portallar va muddatlar",
-     "content": "Onlayn yuklash, eslatmalar",
-     "trek": "Umumiy"
+     "title": "Tashqi grantlar: kimga ochiq",
+     "content": "Har grantni fuqarolik qatori bilan filtrlang"
     },
     {
      "num": "7.5",
-     "title": "Ingliz tilida yozmaydigan tavsiya beruvchi",
-     "content": "Rasmiy tarjima qoidalari (dastur talabidan); talaba xatni yozmaydi",
-     "trek": "Umumiy"
+     "title": "Takliflarni solishtirish va 15-aprel",
+     "content": "Takliflarni oylik sof qoldiq, yozgi moliya, kafolat yillari va majburiyat boʻyicha solishtiring"
     }
    ]
   },
   {
    "id": "M8",
-   "title": "Joylashtirish va professorlar bilan aloqa",
-   "meta": "7 dars",
-   "info": "Artefakt: Fulbright uchun universitet afzalliklari roʻyxati yoki doktorantura uchun 8–12 kafedra va aloqalar jadvali. ",
+   "title": "Viza, maqom va ishlash huquqi",
+   "meta": "5 dars",
+   "info": "Artefakt: Viza va maqom nazorat roʻyxati. ",
    "lessons": [
     {
      "num": "8.1",
-     "title": "Fulbright joylashtirish jarayoni",
-     "content": "Nomzod va joylashtiruvchi tashkilotning roli (rasmiy tavsifdan)",
-     "trek": "M"
+     "title": "F-1 va J-1: qaysi viza, qaysi hujjat",
+     "content": "F-1: daraja uchun, I-20 bilan"
     },
     {
      "num": "8.2",
-     "title": "Universitet afzalliklari",
-     "content": "Dalil bilan afzal koʻrilgan dasturlar",
-     "trek": "M"
+     "title": "Toshkentda viza arizasi",
+     "content": "Toshkentda: DS-160, yigʻim, navbat, hujjatlar, suhbat"
     },
     {
      "num": "8.3",
-     "title": "Kafedralar roʻyxati",
-     "content": "8–12 kafedra: moliyalashtirish, fakultet, natijalar",
-     "trek": "D"
+     "title": "Maqomni saqlash",
+     "content": "Maqom: toʻliq yuklama, hujjatlar toʻgʻri, ruxsatsiz ish yoʻq, oʻzgarishlar haqida xabar"
     },
     {
      "num": "8.4",
-     "title": "Professorga xat (Core)",
-     "content": "AQSh kontekstida: qabul qoʻmitasi qaror qiladi, professor xati qachon foydali",
-     "trek": "D"
+     "title": "F-1 da ishlash huquqi",
+     "content": "F-1: kampusda semestr davomida haftasiga 20 soatgacha; kampusdan tashqarida faqat yozma ruxsat bilan; OPT 12 oy, STEM OPT qoʻshimcha 24 oy"
     },
     {
      "num": "8.5",
-     "title": "Ariza portallari va toʻlovdan ozod qilish",
-     "content": "Har kafedra portali; ariza toʻlovidan ozod qilish soʻrash",
-     "trek": "D"
-    },
-    {
-     "num": "8.6",
-     "title": "Javoblarni boshqarish",
-     "content": "Intervyu takliflari, rad javoblari, kutish roʻyxati",
-     "trek": "D"
-    },
-    {
-     "num": "8.7",
-     "title": "Takliflarni taqqoslash",
-     "content": "Moliyalashtirish paketi, ilmiy rahbar, shahar",
-     "trek": "M, D"
-    }
-   ]
-  },
-  {
-   "id": "M9",
-   "title": "Testlar",
-   "meta": "5 dars",
-   "info": "Artefakt: Test rejasi va kalendari. ",
-   "lessons": [
-    {
-     "num": "9.1",
-     "title": "TOEFL va IELTS",
-     "content": "Dastur va universitet qaysi testni qabul qiladi; minimal ballar (rasmiy manbadan)",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "9.2",
-     "title": "GRE va GMAT",
-     "content": "Kim uchun; testni talab qilmaydigan kafedralar",
-     "trek": "M, D"
-    },
-    {
-     "num": "9.3",
-     "title": "Tayyorgarlik rejasi",
-     "content": "Haftalik reja, rasmiy tayyorgarlik materiallari",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "9.4",
-     "title": "Natijani yuborish",
-     "content": "Rasmiy natija yuborish tartibi",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "9.5",
-     "title": "Dastur toʻlaydigan testlar",
-     "content": "Dastur qachon test xarajatini qoplashi (rasmiy eʼlondan)",
-     "trek": "B, M"
-    }
-   ]
-  },
-  {
-   "id": "M10",
-   "title": "Intervyu",
-   "meta": "6 dars",
-   "info": "Artefakt: 3 ta yozib olingan javob + savollar banki + mezon bali. ",
-   "lessons": [
-    {
-     "num": "10.1",
-     "title": "Fulbright intervyusi",
-     "content": "Format va keng tarqalgan savol turlari",
-     "trek": "M"
-    },
-    {
-     "num": "10.2",
-     "title": "UGRAD tanlov bosqichi",
-     "content": "Tanlov bosqichlari (rasmiy tavsifdan)",
-     "trek": "B"
-    },
-    {
-     "num": "10.3",
-     "title": "Kafedra intervyusi",
-     "content": "Tadqiqot tajribasini tushuntirish, savollar berish",
-     "trek": "D"
-    },
-    {
-     "num": "10.4",
-     "title": "Konsullik suhbati",
-     "content": "Viza suhbati: maqsad, moliya, vatanga bogʻliqlik; halol va qisqa javob",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "10.5",
-     "title": "Yozib olish mashqi",
-     "content": "8 bandli mezon",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "10.6",
-     "title": "Savollar banki",
-     "content": "Trek boʻyicha 20 savol",
-     "trek": "Umumiy"
-    }
-   ]
-  },
-  {
-   "id": "M11",
-   "title": "Viza, joʻnash va qaytish",
-   "meta": "5 dars",
-   "info": "Artefakt: Viza nazorat roʻyxati + birinchi oy rejasi + qaytish yoki ish huquqi rejasi. ",
-   "lessons": [
-    {
-     "num": "11.1",
-     "title": "Viza hujjatlari",
-     "content": "DS-160, SEVIS toʻlovi, I-20 (F-1) yoki DS-2019 (J-1); rasmiy sahifalardan",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "11.2",
-     "title": "Siyosat holatini kuzatish",
-     "content": "Proklamatsiyalar, sud qarorlari, universitet xalqaro boʻlimi xabarlari; ishonchli va ishonchsiz manbalar",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "11.3",
-     "title": "Joʻnash va birinchi oy",
-     "content": "Kelish, roʻyxatdan oʻtish, xalqaro talabalar boʻlimi",
-     "trek": "Umumiy"
-    },
-    {
-     "num": "11.4",
-     "title": "Qaytish va Oʻzbekistonga taʼsir",
-     "content": "Qaytish majburiyatini rejalashtirish, alumni tarmogʻi",
-     "trek": "B+M"
-    },
-    {
-     "num": "11.5",
-     "title": "F-1 da ishlash huquqi",
-     "content": "Kampusda ishlash, CPT, OPT, STEM OPT (3.1)",
-     "trek": "D"
+     "title": "Siyosat oʻzgarishini kuzatish",
+     "content": "Siyosatni faqat rasmiy manba va sana bilan kuzating: elchixona, Davlat departamenti, universitet xalqaro boʻlimi"
     }
    ]
   }

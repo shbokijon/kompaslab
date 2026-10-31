@@ -15,7 +15,7 @@
     { id: "master", n: "Master Lab", lessons: 59, m0: "master-lab-m0.html", key: "kompas_master_m0_v1" },
     { id: "bachelor", n: "Bachelor Lab", lessons: 86, m0: "bachelor-lab-m0.html", key: "kompas_bachelor_m0_v1" },
     { id: "gks", n: "GKS Lab", lessons: 54, m0: "gks-lab-m0.html", key: "kompas_gks_m0_v1" },
-    { id: "usa", n: "USA Lab", lessons: 72, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
+    { id: "usa", n: "USA Lab", lessons: 46, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
     { id: "daad", n: "DAAD Lab", lessons: 51, m0: "daad-lab.html", key: null },
     { id: "tt", n: "Tadbirkor Talaba", lessons: 54, m0: "tadbirkor-talaba-m0.html", key: "kompas_tt_m0_v1" },
     { id: "musofir", n: "Musofir Lab", lessons: 44, m0: "musofir-lab-m0.html", key: "kompas_musofir_m0_v1" }

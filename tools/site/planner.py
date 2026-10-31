@@ -61,7 +61,7 @@ def build_labs() -> dict:
                 "opts": [["U", "Bakalavriat"], ["M", "Magistratura"], ["D", "Doktorantura"]],
                 "tasks": tasks("gks-lab", gks_all)},
         "usa": {"name": "USA Lab", "slug": "usa-lab", "key": "kompas-planner-usa-v1",
-                "goal": "AQShda qaysi yo'l: Global UGRAD, Fulbright yoki doktorantura?", "prog": "Dastur",
+                "goal": "AQShda qaysi yo'l: bakalavr, UGRAD, Fulbright, magistratura yoki PhD? Oila yiliga qancha bera oladi?", "prog": "Dastur",
                 "opts": [], "tasks": tasks("usa-lab", pick("USA"))},
         "daad": {"name": "DAAD Lab", "slug": "daad-lab", "key": "kompas-planner-daad-v1",
                  "goal": "Nima uchun Germaniya va qaysi DAAD dasturi?", "prog": "Dastur",
