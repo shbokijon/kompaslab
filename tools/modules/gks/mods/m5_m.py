@@ -78,3 +78,6 @@ MOD = dict(
          ("Shaxsiy bayonot", ["full", "a3"]), ("Izchillik auditi", ["audit", "a4"]), ("60 soniyalik taqdimot va B-reja", ["pitch", "a5"])],
     tip=lib(4)["tip"], sources=STD,
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> 2026 GKS-G qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."
