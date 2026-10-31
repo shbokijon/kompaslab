@@ -498,36 +498,36 @@
    "id": "M2",
    "title": "Muddatlar arxitekturasi va ish tizimi",
    "meta": "5 dars",
-   "info": "Maqsad: talaba maqsad sanasidan orqaga hisoblangan haftalik rejaga ega boʻladi. Artefakt: Asosiy nazorat jadvali (Master Tracker) + Gantt jadvali + Strategik hujjat v1.0. ",
+   "info": "Maqsad: rasmiy qabul, funding va hujjat sanalarini ishchi tizimda rejalash. Natija: Master Tracker, taxminiy Gantt vaqt xaritasi va I bosqich strategik hujjati v1.0.",
    "lessons": [
     {
      "num": "2.1",
-     "title": "Ariza sikli qanday ishlaydi",
-     "content": "Universitet muddati va stipendiya muddati ikki alohida sana; stipendiya koʻpincha qabuldan oldin yopiladi; muddatlarni faqat rasmiy sahifadan olish",
+     "title": "Ariza va stipendiya muddatlari",
+     "content": "Qabul va grant sanalari bir xil yoki turlicha boʻlishi mumkin; qabul yili, vaqt mintaqasi va rasmiy havola",
      "trek": ""
     },
     {
      "num": "2.2",
-     "title": "Teskari reja",
-     "content": "Muddatdan orqaga: til sertifikati, tavsiya xatlari, hujjat tarjimasi, yozish bloklari",
+     "title": "Teskari rejalashtirish",
+     "content": "Muddatdan orqaga rejalash; tavsiya, til imtihoni, tarjima va zarur zaxira vaqt",
      "trek": ""
     },
     {
      "num": "2.3",
      "title": "Asosiy nazorat jadvali (Master Tracker)",
-     "content": "Har bir dastur: holat, muddat, hujjatlar, toʻlov, natija",
+     "content": "Dastur va stipendiya: rasmiy sana, hujjat, holat, moliya va haftalik vazifalar",
      "trek": ""
     },
     {
      "num": "2.4",
      "title": "Parallel ariza portfeli",
-     "content": "3 stipendiya va 6–10 universitetga bir vaqtda; ustma-ust tushgan muddatlarni boshqarish",
+     "content": "6–10 dastur va 3 tagacha stipendiya — ishchi tavsiya; yaqin muddatlar va moslashtirilgan hujjatlar",
      "trek": ""
     },
     {
      "num": "2.5",
-     "title": "I bosqich yakuni",
-     "content": "Strategik hujjat: kim, qayerga, qachon, qanday moliyalashtirish bilan",
+     "title": "I bosqich yakuni: Strategik hujjat",
+     "content": "M1–M2 natijalari: akademik maqsad, tanlangan dasturlar, muddat, moliyalashtirish va xavflar",
      "trek": ""
     }
    ]

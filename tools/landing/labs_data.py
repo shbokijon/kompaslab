@@ -116,7 +116,7 @@ LABS["Master"] = dict(
     facts=["<b>9</b> modul", "<b>59</b> dars", "M0 <b>bepul</b>", "Haftasiga <b>4–6</b> soat", "<b>4–6</b> oy"],
     packet_kicker="DASTUR OXIRIDA", packet_title="Sizning ariza paketingiz",
     point_a="Bakalavrni tugatgansiz yoki tugatyapsiz. Qaysi dastur yo'nalishingizga mos va CV, maqsad bayonnomasi, tavsiyalarni qanday tayyorlash hali noaniq.",
-    packet=[("Saralangan ro'yxat v1.0", "12–15 dastlabki variant → 6–10 tekshirilgan dastur + qiziqish bayoni"), ("Asosiy nazorat jadvali va Gantt", "maqsad sanasidan orqaga 12–18 oylik reja"),
+    packet=[("Saralangan ro'yxat v1.0", "12–15 dastlabki variant → 6–10 tekshirilgan dastur + qiziqish bayoni"), ("Master Tracker va Gantt", "rasmiy muddatlardan orqaga hisoblangan taxminiy tayyorgarlik rejasi"),
             ("Akademik CV v1.0", "PDF va DOCX"), ("Yutuqlar varaqasi va professorlarga xatlar", "tavsiya so'rovlari + aloqalar jadvali"),
             ("Maqsad bayonnomasi (SoP)", "700–1 000 so'z + 2 ta moslashtirilgan variant"), ("Ilmiy loyiha taklifi", "1 500–3 000 so'z, dastur talabiga qarab"),
             ("Stipendiya portfeli", "3 dastur, muvofiqlik va muddat bilan"), ("Intervyu yozuvlari va jo'nash ro'yxati", "5 daqiqalik ilmiy taqdimot bilan")],

@@ -42,12 +42,22 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 - Published paid module in Supabase `paid_pages` is **not automatically changed** by editing the GitHub source. The older paid_pages version remains until independent editorial sign-off, build, SHA comparison, RLS regression tests and controlled upload.
 - This revision does not authorise new student entitlements, checkout changes or relaxation of existing paid content access controls.
 
+
+## M2 editorial revision — 2026-10-31
+- Changed 5 lesson texts and associated objectives. Source: `tools/modules/src/master-lab-m2.src.html`.
+- Official evidence: Oxford graduate application and referee deadlines; Cambridge programme versus funding deadlines. Examples are **not** universal rules.
+- `priority`, `rolling`, `rounds`, funding and document deadlines depend on each programme. Record cycle, time zone, official link and verification date.
+- 8-week reference notice, one-week buffer, 6–10 programmes / up to three scholarships, 14-day clash window are *planning heuristics*, not official requirements.
+- Tracker is a local-browser planning record. Gantt visualises approximate intervals based on user-supplied dates and a single preparation-weeks setting; it does not automatically sync official dates, contact referees or submit applications.
+- The Master Lab public module hub and programme descriptions were aligned. **The full paid HTML in Supabase `paid_pages` was not overwritten.**
+- Require independent review of claims, cross-browser interactive test (tracker, date/time-zone, import/export, Gantt), rebuild, SHA-256 comparison, RLS and controlled upload before paid module release.
+
 ## Module readiness checklist (all require verification and integration)
 | Module | Topic | Current repository asset | Release readiness |
 |---|---|---|---|
 | M0 | Qanday ishlaydi, diagnostika | master-lab-m0.html | Public free experience exists; content refresh/audit pending |
 | M1 | Ilmiy yo‘nalish va universitet | master-lab-m1.src.html | 2026-10-31 editorial draft revised; independent review, rebuild and paid_pages update pending |
-| M2 | Muddatlar va ish tizimi | master-lab-m2.src.html | Built for paid delivery; editorial review pending |
+| M2 | Muddatlar va ish tizimi | master-lab-m2.src.html | 2026-10-31 editorial revision in source; independent review, rebuild, SHA comparison, paid_pages update and RLS tests pending |
 | M3 | Akademik CV | master-lab-m3.src.html | Built for paid delivery; editorial review pending |
 | M4 | Tavsiya xatlari va professor | master-lab-m4.src.html | Built for paid delivery; editorial review pending |
 | M5 | Maqsad bayonnomasi (SoP) | master-lab-m5.src.html | Built for paid delivery; editorial review pending |
