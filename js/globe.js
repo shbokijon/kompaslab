@@ -13,7 +13,7 @@
   // Lablar va mamlakatlar: index.html dagi Lab tavsiflari va Master Lab M7 asosida; c — ob-havo olinadigan poytaxt
   var DEST = [
     { id: "GBR", n: "Buyuk Britaniya", c: "London", lat: 51.51, lon: -0.13, labs: [["master-lab", "Master Lab", "Chevening, magistratura"], ["phd-lab", "PhD Lab", "Doktorantura"], ["musofir-lab", "Musofir Lab", "Rasmiy mavsumiy ish"]] },
-    { id: "USA", n: "AQSh", c: "Vashington", lat: 38.9, lon: -77.04, labs: [["usa-lab", "USA Lab", "Global UGRAD, Fulbright, doktorantura"]] },
+    { id: "USA", n: "AQSh", c: "Vashington", lat: 38.9, lon: -77.04, labs: [["usa-lab", "USA Lab", "Bakalavr yordami, UGRAD, Fulbright, PhD"]] },
     { id: "DEU", n: "Germaniya", c: "Berlin", lat: 52.52, lon: 13.4, labs: [["daad-lab", "DAAD Lab", "Magistratura va doktorantura"], ["musofir-lab", "Musofir Lab", "Rasmiy ish"]] },
     { id: "KOR", n: "Koreya", c: "Seul", lat: 37.57, lon: 126.98, labs: [["gks-lab", "GKS Lab", "Global Korea Scholarship"], ["musofir-lab", "Musofir Lab", "EPS: rasmiy ish"]] },
     { id: "POL", n: "Polsha", c: "Varshava", lat: 52.23, lon: 21.01, labs: [["musofir-lab", "Musofir Lab", "Rasmiy ish va firibgarlikdan himoya"]] },
