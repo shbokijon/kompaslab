@@ -33,8 +33,8 @@
     });
   }
   function og(w) {
-    // oʻ/gʻ (va ' ‘ ` ’ variantlari) → ö/ğ; boshqa unli+ʻ → tutuq ʼ
-    return w.replace(/([OoGg])[ʻ‘'`’](?=[A-Za-zÀ-ÿ])/g, function (m, l) {
+    // oʻ/gʻ (va ' ‘ ` ’ variantlari) → ö/ğ, shu jumladan soʻz oxirida (obroʻ → obrö); boshqa unli+ʻ → tutuq ʼ
+    return w.replace(/([OoGg])[ʻ‘'`’](?=[A-Za-zÀ-ÿ]|$)/g, function (m, l) {
       return { O: "Ö", o: "ö", G: "Ğ", g: "ğ" }[l];
     }).replace(/([aeiuAEIU])ʻ/g, "$1ʼ");
   }
