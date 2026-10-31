@@ -82,8 +82,8 @@ input[type=file]{font:inherit;max-width:100%}
   $("f").addEventListener("change", function (e) {
     files = Array.prototype.slice.call(e.target.files || []);
     $("log").innerHTML = "";
-    var bad = files.filter(function (f) { return !/^(?:[a-z]+-lab)-m[1-9](?:-[umd])?\.html$/.test(f.name); });
-    bad.forEach(function (f) { log(f.name + ": nomi mos emas (master-lab-mN.html yoki gks-lab-m3-u.html kabi kutiladi)", "bad"); });
+    var bad = files.filter(function (f) { return !/^(?:[a-z]+-lab)-m[1-9][0-9]?(?:-[umd])?\.html$/.test(f.name); });
+    bad.forEach(function (f) { log(f.name + ": nomi mos emas (master-lab-mN.html, bachelor-lab-m16.html yoki gks-lab-m3-u.html kabi kutiladi)", "bad"); });
     files = files.filter(function (f) { return bad.indexOf(f) < 0; });
     $("go").disabled = !files.length;
     if (files.length) log(files.length + " ta fayl tanlandi.");
