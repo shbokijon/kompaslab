@@ -31,7 +31,18 @@
     { k: "kompas_master_m5_v1", n: "Maqsad bayonnomasi", s: "Master M5", ic: "memo" },
     { k: "kompas_master_m6_v1", n: "Loyiha taklifi", s: "Master M6", ic: "books" },
     { k: "kompas_master_m7_v1", n: "Stipendiya portfeli", s: "Master M7", ic: "money" },
-    { k: "kompas_master_m8_v1", n: "Joʻnash paketi", s: "Master M8", ic: "lock" }
+    { k: "kompas_master_m8_v1", n: "Joʻnash paketi", s: "Master M8", ic: "lock" },
+    { k: "kompas_gks_m1_v1", n: "Hujjatlar nazorat jadvali", s: "GKS M1", ic: "scroll" },
+    { k: "kompas_gks_m2_v1", n: "Universitet tanlovi", s: "GKS M2", ic: "telescope" },
+    { k: "kompas_gks_m3u_v1", n: "Nomzod profili", s: "GKS M3-U", ic: "bulb" },
+    { k: "kompas_gks_m4u_v1", n: "Shaxsiy bayonot", s: "GKS M4-U", ic: "memo" },
+    { k: "kompas_gks_m5u_v1", n: "Reja, paket va intervyu", s: "GKS M5-U", ic: "calendar" },
+    { k: "kompas_gks_m3m_v1", n: "STAR inventari va akademik CV", s: "GKS M3-M", ic: "scroll" },
+    { k: "kompas_gks_m4m_v1", n: "Oʻquv rejasi", s: "GKS M4-M", ic: "calendar" },
+    { k: "kompas_gks_m5m_v1", n: "Professor, bayonot va intervyu", s: "GKS M5-M", ic: "bell" },
+    { k: "kompas_gks_m3d_v1", n: "Ilmiy pozitsiya", s: "GKS M3-D", ic: "telescope" },
+    { k: "kompas_gks_m4d_v1", n: "Ilmiy reja", s: "GKS M4-D", ic: "books" },
+    { k: "kompas_gks_m5d_v1", n: "Professor bilan muloqot va yakuniy paket", s: "GKS M5-D", ic: "bell" }
   ];
   var PACE = [[2, "Sekin: 2 dars/hafta (~2 soat)"], [4, "Oʻrtacha: 4 dars/hafta (~4 soat)"], [6, "Tez: 6 dars/hafta (~6 soat)"]];
   var DAY = 86400000, MON = ["yan", "fev", "mar", "apr", "may", "iyn", "iyl", "avg", "sen", "okt", "noy", "dek"];

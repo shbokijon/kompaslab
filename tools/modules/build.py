@@ -44,7 +44,7 @@ MODULES = {
                                     "Xorijga ishga ketishdan oldin: firibgarlik belgilari, 4 mamlakatning rasmiy yoʻllari, xarajat va qarz xavfi. Bepul.")),
     # Pullik modullar (paid=True): saytda ochiq HTML yoʻq. Toʻliq sahifa tools/modules/paid/ ga
     # yigʻiladi va Supabase paid_pages jadvaliga yuklanadi (tools/modules/paid_upload.py);
-    # oʻquvchiga faqat master-lab-o.html?m=N orqali, fn_paid_page() obunani tekshirgandan keyin beriladi.
+    # oʻquvchiga faqat <lab>-o.html?m=N (master-lab-o, gks-lab-o) orqali, fn_paid_page() obunani tekshirgandan keyin beriladi.
     "master-lab-m1":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m2":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m3":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
@@ -53,6 +53,19 @@ MODULES = {
     "master-lab-m6":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m7":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m8":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    # GKS Lab (2026-10-31): umumiy oʻzak M1, M2 + U/M/D treklari M3–M5. Manba tools/modules/gks/engine.py,
+    # oʻquvchi gks-lab-o.html?m=<slug> (masalan m3-u)
+    "gks-lab-m1":           dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m2":           dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m3-u":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m4-u":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m5-u":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m3-m":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m4-m":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m5-m":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m3-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m4-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m5-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
 }
 
 SB = '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>'

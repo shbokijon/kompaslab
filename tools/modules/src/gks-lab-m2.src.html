@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M2 Universitet va dastur tanlash · GKS Lab · Kompas Lab</title>
+<meta name="description" content="GKS Lab M2: GKS universitetlari tizimi (yoʻllar, A/B turlari, kvota), saralangan roʻyxat, ilmiy moslik va keng tarqalgan xatolar filtri. Natija: 3 ta asoslangan universitet tanlovi.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<style>
+{{CSS}}
+/* GKS M1–M8 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);}
+.meterw{margin-top:6px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.trk{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;background:var(--accent-lit);color:var(--accent);margin-right:4px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.paper{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:28px 30px;border:1px solid var(--border);border-radius:8px;}
+.paper h1{font-family:Georgia,serif;font-size:22px;color:#111;margin:0 0 4px;}
+.paper .ct{font-size:13px;color:#555;margin-bottom:12px;}
+.paper h4{font-family:Georgia,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;margin:16px 0 6px;padding-bottom:2px;}
+.paper p{margin:0 0 6px;white-space:pre-wrap;}
+.paper .ph{color:#999;font-style:italic;}
+@media(max-width:760px){.paper{padding:18px 16px;font-size:13.5px;}.artifact{padding:16px;}.artifact .row .btn{flex:1 1 100%;}}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
+}
+.path.pn{--pn:7;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="gks-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· GKS Lab M2</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="gks-lab.html">GKS Lab</a> · Modul 2</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza I · Umumiy oʻzak</span>
+        <h1>Universitet va dastur tanlash</h1>
+        <p class="lead">GKS da universitet tanlovi qoidalar bilan cheklangan: qaysi yoʻl, nechta universitet, qaysi turdan. Bu modulda shu qoidalar ichida oʻzingizga mos 3 ta tanlovni dalil bilan asoslaysiz. Uch trek uchun umumiy; M3 dan boshlab oʻz trekingizga oʻtasiz.</p>
+        <div class="facts"><span class="fact"><b>4</b> dars</span><span class="fact">~<b>2–3</b> hafta</span><span class="fact">Treklar: <b>U · M · D</b></span><span class="fact"><b>250</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 7 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">2.1</span>Tizim</a><a class="node" href="#l2" data-node="l2"><span class="dot">2.2</span>Roʻyxat</a><a class="node" href="#l3" data-node="l3"><span class="dot">2.3</span>Moslik</a><a class="node" href="#l4" data-node="l4"><span class="dot">2.4</span>Filtr</a><a class="node" href="#tanlov" data-node="tool"><span class="dot">🛠</span>Tanlov</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Tanlov</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Yoʻl qarori:</b> elchixona yoki universitet treki, sababi bilan</span></li><li><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span><b>3 ta universitet tanlovi:</b> turi (A/B), fakultet va moslik dalili bilan</span></li><li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span><b>Xavf izohi:</b> kvota va raqobatni toʻgʻri oʻqish asosida</span></li>
+    </ul>
+    <div class="box warn" style="margin-top:14px">Universitetlar roʻyxati, A/B turlari va kvotalar har yil yoʻriqnoma ilovasida yangilanadi. Bu yerdagi raqamlar 2027 GKS-U va 2026 GKS-G yoʻriqnomalaridan, 31.10.2026 holatiga.</div>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. <span class="trk">U</span> bakalavriat, <span class="trk">M</span> magistratura, <span class="trk">D</span> doktorantura uchun alohida qismlar belgilangan. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 2.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 2.1</span><span class="l-t" style="display:block">GKS universitetlari tizimi</span>
+            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+30 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Ikki yoʻl ikki xil oʻyin: elchixona trekida avval Oʻzbekistondagi raqiblar bilan bellashasiz, universitet trekida esa bitta universitetning barcha nomzodlari bilan. Yoʻlni tanlash keyingi barcha qarorlarni belgilaydi.</div></div>
+          <div class="panel">
+<h4>Bosqichlar</h4>
+<div class="tbl"><table><thead><tr><th></th><th>Elchixona treki</th><th>Universitet treki</th></tr></thead><tbody>
+<tr><td>1-bosqich</td><td>Koreya elchixonasi</td><td>Universitet</td></tr>
+<tr><td>2-bosqich</td><td>NIIED</td><td>NIIED (yakuniy eʼlon)</td></tr>
+<tr><td>3-bosqich</td><td>Universitet</td><td>Yoʻq</td></tr>
+<tr><td>Universitetlar soni</td><td>3 tagacha (qoidalar 2-darsda)</td><td>Bitta universitet, bitta yoʻnalish</td></tr>
+</tbody></table></div>
+<h4><span class="trk">U</span> 2027 GKS-U: Oʻzbekiston uchun</h4>
+<ul><li><b>Elchixona treki:</b> Oʻzbekiston kvotasi 3 oʻrin: umumiy dastur 1, R-GKS (mintaqaviy universitetlar) 1, chet eldagi koreyslar 1.</li>
+<li><b>Universitet treki:</b> mamlakatlar boʻyicha kvota yoʻq. UIC dasturi (fan va muhandislik yoʻnalishlari) barcha mamlakatlarga ochiq.</li></ul>
+<h4><span class="trk">M</span> <span class="trk">D</span> 2026 GKS-G: Oʻzbekiston uchun</h4>
+<ul><li><b>Elchixona treki:</b> umumiy 13 oʻrin, chet eldagi koreyslar 6 oʻrin.</li>
+<li><b>Universitet treki:</b> umumiy 6 oʻrin, R-GKS 6 oʻrin.</li></ul>
+<div class="box info"><b>Qaror qoidasi.</b> Universitetni hali tanlamagan boʻlsangiz va bir nechtasini koʻrsatmoqchi boʻlsangiz, elchixona treki mantiqiyroq. Aniq universitet va (M, D uchun) professor bilan moslik dalili kuchli boʻlsa, universitet treki koʻrib chiqiladi. Ikkala yoʻlga bir siklda topshirish qoidalarini oʻz yoʻriqnomangizdan tekshiring.</div>
+<div class="srcs">Manba: <a href="https://gksscholarship.com/wp-content/uploads/2026/09/2027-GKS-U-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2027 GKS-U yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2026 GKS-G yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.koreajoongangdaily.com/korea/gksu-2027-what-international-students-need-to-know-before-applying/12878569" target="_blank" rel="noopener">Korea JoongAng Daily, 16.09.2026</a>. 31.10.2026 holatiga.</div>
+<h4>Elchixona treki qoidalari</h4>
+<ul><li><span class="trk">U</span> 2027 GKS-U: A turi 28, B turi 42 ta muassasa. Umumiy dastur nomzodi 3 tagacha universitet tanlaydi, <b>kamida bittasi B turidan</b>. R-GKS nomzodi faqat B turidan 2 tagacha universitet tanlaydi.</li>
+<li><span class="trk">M</span> <span class="trk">D</span> 2026 GKS-G: 3 tagacha <b>har xil</b> universitet, kamida bittasi B turidan. Bitta universitetning bir nechta boʻlimiga topshirilmaydi.</li>
+<li>B boʻlimida koʻrsatilgan joyga A turdagi universitetni yozish arizani chiqarib yuborishga olib kelishi mumkin.</li></ul>
+<h4>A va B nimani bildiradi</h4>
+<p>Turlar yoʻriqnoma ilovasidagi roʻyxat bilan belgilanadi; B turi asosan poytaxt hududidan tashqaridagi universitetlarni oʻz ichiga oladi. Bu "kuchli" va "kuchsiz" degani emas: koʻplab B turdagi universitetlar sizning sohangizda kuchli laboratoriyaga ega boʻlishi mumkin. Tanlovni nomga emas, fakultet va dasturga qarab qiling.</p>
+<div class="box warn"><b>Har yil tekshiring.</b> Universitet qaysi turda turgani va qaysi yoʻnalishlar ochiqligi ilovada har yili yangilanadi. Oʻtgan yilgi roʻyxatdan nusxa olmang.</div>
+<div class="srcs">Manba: <a href="https://gksscholarship.com/wp-content/uploads/2026/09/2027-GKS-U-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2027 GKS-U yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2026 GKS-G yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.koreajoongangdaily.com/korea/gksu-2027-what-international-students-need-to-know-before-applying/12878569" target="_blank" rel="noopener">Korea JoongAng Daily, 16.09.2026</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Elchixona treki: elchixona → NIIED → universitet, 3 tagacha universitet. Universitet treki: universitet → NIIED, bitta universitet. Kvota raqamlari yoʻlga qarab keskin farq qiladi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“Universitet trekida birinchi bosqichni Koreya elchixonasi oʻtkazadi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: universitet trekida birinchi bosqichni universitet oʻtkazadi.</div></div><div class="qz" data-a="t"><p>“2027 GKS-U da Oʻzbekistonning elchixona treki kvotasi jami 3 oʻrin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: umumiy 1, R-GKS 1, chet eldagi koreyslar 1.</div></div><div class="qz" data-a="t"><p>“Elchixona trekida 3 tagacha universitet tanlanadi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: 2027 GKS-U va 2026 GKS-G da shunday.</div></div><div class="qz" data-a="n"><p>“2027 GKS-U universitet trekida mamlakatlar boʻyicha kvota bor.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: universitet treki uchun mamlakat kvotasi berilmagan.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Ikki yoʻlni oʻz holatingizga qoʻyib solishtiring va bittasini tanlang.</li><li>Joriy (yoki eng soʻnggi) yoʻriqnoma ilovasidan sohangiz boʻyicha 6–8 universitetni yozing va har birining turini (A/B) belgilang.</li></ul></div>
+            <textarea data-save="a1" placeholder="Yoʻl: ... Sabab: ... Universitetlar: 1) ... (A) 2) ... (B)"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +30 XP</button></div>
+        </div>
+      </article>
+      <!-- 2.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 2.2</span><span class="l-t" style="display:block">Saralangan roʻyxat</span>
+            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 Matritsa</span><span class="tag xp">+30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Uchta oʻrinni bir xil xavfdagi universitetlarga sarflash bitta savatga barcha tuxumni qoʻyishdir. Saralangan roʻyxat (Shortlist) xavfni taqsimlaydi.</div></div>
+          <div class="panel">
+<h4>Baholash mezoni (Rubric)</h4>
+<div class="tbl"><table><thead><tr><th>Mezon</th><th>Savol</th><th>Ball</th></tr></thead><tbody>
+<tr><td>Ilmiy moslik</td><td>Dastur yoki laboratoriya mening tajribamga bevosita bogʻliqmi?</td><td>0–3</td></tr>
+<tr><td>Til</td><td>Oʻqitish tili va mening sertifikatim mosmi?</td><td>0–2</td></tr>
+<tr><td>Qoidalar</td><td>Turi (A/B) va yoʻl qoidasiga mosmi?</td><td>0 yoki 2</td></tr>
+<tr><td>Hayot</td><td>Shahar, xarajat, iqlim men uchun maqbulmi?</td><td>0–1</td></tr>
+<tr><td>Dalil sifati</td><td>Mosligimni bitta tekshiriladigan jumlada aytib bera olamanmi?</td><td>0–2</td></tr>
+</tbody></table></div>
+<h4>Taqsimot</h4>
+<ul><li>Uchta tanlovning hammasi bir xil xavfli boʻlmasin: kamida bittasi mosligi eng kuchli, B turidagi universitet boʻlsin.</li>
+<li>Qoidalar mezonidan 0 olgan universitet roʻyxatdan chiqadi.</li>
+<li>Ball teng boʻlsa, ilmiy moslik ustun.</li></ul>
+<div class="box info">Bu jadval Kompas tahlili, NIIED baholash mezoni emas. Rasmiy baholash mezonlari yoʻriqnomada eʼlon qilinadi; jadval faqat sizning tanlovingizni tartibga soladi.</div>
+<h4>Kvota nimani aytadi va nimani aytmaydi</h4>
+<ul><li><b>Aytadi:</b> shu yoʻl boʻyicha Oʻzbekistondan yakuniy tanlanadigan maksimal oʻrin.</li>
+<li><b>Aytmaydi:</b> nechta nomzod topshirishi, bosqichlarda nechta odam oʻtishi, sizning imkoningiz qancha.</li></ul>
+<p>Rasmiy yoʻriqnomalar topshirgan nomzodlar sonini eʼlon qilmaydi. Shuning uchun "qabul foizi" haqidagi har qanday raqamni manbasini tekshirmasdan ishlatmang.</p>
+<h4>Amaliy xulosa</h4>
+<ul><li><span class="trk">U</span> 2027 GKS-U da Oʻzbekiston elchixona trekida 3 oʻrin, universitet trekida mamlakat kvotasi yoʻq. Bu universitet trekining (masalan UIC, fan va muhandislik) ahamiyatini oshiradi, lekin u yerda butun dunyodan nomzodlar bilan bellashasiz.</li>
+<li><span class="trk">M</span> <span class="trk">D</span> 2026 GKS-G da elchixona treki umumiy kvotasi 13, universitet treki umumiy 6 va R-GKS 6. Ikki yoʻlni ham koʻrib chiqing.</li>
+<li>Kvota kichik boʻlsa, hujjat sifati va moslik dalili ogʻirroq vazn oladi. Tayyorgarlikni shunga moslang, umidni emas.</li></ul>
+<div class="srcs">Manba: <a href="https://gksscholarship.com/wp-content/uploads/2026/09/2027-GKS-U-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2027 GKS-U yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2026 GKS-G yoʻriqnomasi (inglizcha matn)</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Har universitetni bir xil mezon bilan ballang; qoidaga zid tanlov chiqadi, qolganlari orasida xavfni taqsimlang.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>6–8 universitetni jadval boʻyicha ballang va eng yaxshi 3 tasini tanlang.</li><li>Uchtasining kamida bittasi B turidanmi? Tekshiring.</li></ul>
+            <textarea data-save="a2" placeholder="1) ... 9/10 (B) 2) ... 3) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +30 XP</button></div>
+        </div>
+      </article>
+      <!-- 2.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 2.3</span><span class="l-t" style="display:block">Ilmiy moslik</span>
+            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🔎 Tadqiqot</span><span class="tag xp">+30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Universitet nomi komissiyaga hech narsa demaydi. "Nega aynan shu dastur?" savoliga javob fakultet sahifasida, oʻquv rejasida va laboratoriyalarda yotadi.</div></div>
+          <div class="panel">
+<h4>Nimani oʻqiysiz</h4>
+<ul><li><b>Yoʻriqnoma ilovasi:</b> universitetda GKS uchun ochiq yoʻnalishlar, oʻqitish tili, maxsus talablar.</li>
+<li><b>Fakultet sahifasi:</b> oʻquv rejasi (fanlar roʻyxati), oʻqitish tili, bitiruv talablari.</li>
+<li><span class="trk">U</span> 1–2-kurs fanlari: siz kuchli boʻlgan asosiy fanlar bilan bogʻliqmi?</li>
+<li><span class="trk">M</span> <span class="trk">D</span> Laboratoriya va professorlar: soʻnggi 3 yildagi maqolalar, loyihalar, foydalanilgan usullar. Bu M4 dagi professorga xat va M6 dagi oʻquv rejasi uchun xom ashyo.</li></ul>
+<h4>Moslik dalili</h4>
+<p>Har universitet uchun bitta jumlalik dalil yozing: <i>"Fakultetdagi X laboratoriyasi Y usulida ishlaydi; mening Z tajribam shu usulga yaqin."</i> Dalil tekshiriladigan boʻlishi kerak: havola, maqola nomi, fan nomi.</p>
+<div class="box info"><b>Kompas tuzgan namuna</b> (shartli): <span lang="en">The Department of Earth and Environmental Sciences offers a groundwater modelling track; my bachelor thesis used MODFLOW for a similar aquifer.</span> Bu namunada universitet nomi yoʻq; oʻzingiznikini haqiqiy havolalar bilan yozing.</div>
+<div class="box warn">Sharhlar va forumlardagi "eng yaxshi universitet" roʻyxatlariga tayanmang. Birlamchi manba: yoʻriqnoma ilovasi va universitetning rasmiy sahifasi.</div>
+<div class="srcs">Manba: <a href="https://www.studyinkorea.go.kr" target="_blank" rel="noopener">Study in Korea (NIIED rasmiy portali)</a>; <a href="https://gksscholarship.com/wp-content/uploads/2026/09/2027-GKS-U-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2027 GKS-U yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2026 GKS-G yoʻriqnomasi (inglizcha matn)</a>.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Tanlov fakultet, dastur va (M, D uchun) laboratoriya darajasida qilinadi. Har universitet uchun tekshiriladigan bitta moslik dalili yozing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Saralangan 6–8 universitetdan har biri uchun: dastur nomi, oʻqitish tili, bitta moslik dalili va havola.</li></ul>
+            <textarea data-save="a3" placeholder="Universitet · dastur · til · dalil · havola"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +30 XP</button></div>
+        </div>
+      </article>
+      <!-- 2.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 2.4</span><span class="l-t" style="display:block">Keng tarqalgan xatolar filtri</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🔍 Filtr</span><span class="tag xp">+30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Komissiya bir xil xatoni yuzlab arizada koʻradi. Ular sizning arizangizni oʻqishni shu xato bilan toʻxtatmasligi kerak.</div></div>
+          <div class="panel">
+<p>Kuchli nomzodlar ham koʻpincha mazmun emas, takrorlanadigan oddiy xatolar sababli yoʻqotadi. Universitet tanlovi va hujjatlarni boshlashdan oldin shu filtrni bilib oling: keyingi modullarda har hujjat undan oʻtadi.</p>
+<div class="tbl"><table><thead><tr><th>Xato</th><th>Qanday koʻrinadi</th><th>Tuzatish</th></tr></thead><tbody>
+<tr><td><b>Shablon matn</b></td><td>Boshqa universitet nomi qolgan, "[University name]" kabi qavslar, hamma universitetga bir xil jumla</td><td>Har tanlov uchun alohida moslik dalili (2.3)</td></tr>
+<tr><td><b>Mubolagʻa</b></td><td>"Eng iqtidorli", "mamlakatimni oʻzgartiraman"</td><td>Sifatni faktga almashtirish</td></tr>
+<tr><td><b>Tekshirilmaydigan daʼvo</b></td><td>Hujjati yoʻq mukofot, aniq boʻlmagan "yuqori natija"</td><td>Har raqam yoniga hujjat</td></tr>
+<tr><td><b>Format xatosi</b></td><td>Forma oʻzgartirilgan, hajm oshgan, imzo yoʻq, skaner oʻqilmaydi</td><td>Forma shablonida yozish, yoʻriqnoma bilan solishtirish</td></tr>
+<tr><td><b>Kech hujjat</b></td><td>Apostil, tavsiya yoki sertifikat muddatga ulgurmagan</td><td>Teskari taqvim (M1 jadvali)</td></tr>
+<tr><td><b>Mos kelmaydigan yoʻnalish</b></td><td>Diplom sohasi, tanlangan dastur va bayonotdagi maqsad bir-biriga ulanmaydi</td><td>Yoʻnalish koʻprigi yoki boshqa dastur</td></tr>
+</tbody></table></div>
+<div class="box warn">Bu jadval Kompas tahlili: NIIED rad sabablari roʻyxatini eʼlon qilmaydi. Lekin har band yoʻriqnoma talablariga (forma, muddat, apostil, haqiqiylik) bevosita bogʻliq.</div>
+<div class="srcs">Manba: <a href="https://gksscholarship.com/wp-content/uploads/2026/09/2027-GKS-U-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2027 GKS-U yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2026 GKS-G yoʻriqnomasi (inglizcha matn)</a>.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Olti xato: shablon, mubolagʻa, dalilsiz daʼvo, format, kechikish, mos kelmaydigan yoʻnalish. Har hujjat shu filtrdan oʻtadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Saralangan uchta tanlovingizni filtrdan oʻtkazing: qaysi xato xavfi bor va uni qanday oldini olasiz?</li></ul>
+            <textarea data-save="a4" placeholder="Tanlov 1: xavf ... oldini olish ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +30 XP</button></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="tanlov">
+    <h2>Universitet tanlovi matritsasi</h2>
+    <p class="sub">Uchta yakuniy tanlovingizni turi va dalili bilan yozing. Elchixona trekida kamida bittasi B turidan boʻlishi tekshiriladi.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><div><h3>3 ta tanlov</h3><span>yoʻl + 3 universitet · +30 XP</span></div></div>
+      
+      <div class="fld"><label for="f_yol">Ariza yoʻli</label><select id="f_yol" data-save="yol"><option value="">— tanlang —</option><option value="Elchixona treki">Elchixona treki</option><option value="Universitet treki">Universitet treki</option></select></div><div class="fld"><label for="f_u1">1-tanlov <small>universitet · dastur · dalil · havola</small></label><textarea id="f_u1" data-save="u1" placeholder="Universitet, dastur, moslik dalili, havola"></textarea></div><div class="fld"><label for="f_u1t">1-tanlov turi</label><select id="f_u1t" data-save="u1t"><option value="">— tanlang —</option><option value="A">A</option><option value="B">B</option></select></div><div class="fld"><label for="f_u2">2-tanlov</label><textarea id="f_u2" data-save="u2" placeholder="Universitet treki boʻlsa, boʻsh qoldiring"></textarea></div><div class="fld"><label for="f_u2t">2-tanlov turi</label><select id="f_u2t" data-save="u2t"><option value="">— tanlang —</option><option value="A">A</option><option value="B">B</option></select></div><div class="fld"><label for="f_u3">3-tanlov</label><textarea id="f_u3" data-save="u3" placeholder=""></textarea></div><div class="fld"><label for="f_u3t">3-tanlov turi</label><select id="f_u3t" data-save="u3t"><option value="">— tanlang —</option><option value="A">A</option><option value="B">B</option></select></div><div class="fld"><label for="f_xavf">Xavf izohi <small>kvota va taqsimot</small></label><textarea id="f_xavf" data-save="xavf" placeholder="Qaysi tanlov eng ishonchli va nega ..."></textarea></div>
+      <div id="toolOut" class="out" hidden></div>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="5" style="margin-top:14px">Tanlovni saqlash · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>Tanlov nazorati</h2>
+    <p class="sub">Roʻyxatni yakunlashdan oldin.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Universitet turi (A/B) joriy yil ilovasidan tekshirilgan.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Elchixona trekida kamida bitta B turi bor.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Bitta universitetning ikki boʻlimi tanlanmagan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Har tanlov uchun dastur oʻqitish tili va mening sertifikatim mos.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Har tanlov uchun tekshiriladigan moslik dalili va havola bor.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Kvota yoʻriqnomadan olingan, taxmin qilinmagan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Forum va reyting roʻyxatlariga emas, rasmiy sahifalarga tayanilgan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Tanlovlar xavf boʻyicha taqsimlangan.</span></label></div>
+      <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges">
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>2 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>4 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Strateg<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Tanlov<small>Yakun</small></div>
+    </div>
+  </section>
+
+  <section id="artefakt">
+    <h2 id="artTitle">Universitet tanlovi va moslik dalilnomasi</h2>
+    <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
+    <div class="artifact">
+      <div class="paper" id="artPaper"></div>
+      <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
+      <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>Har universitet uchun oʻzingizdan soʻrang: agar komissiya "nega biz?" desa, men ularning saytidan qaysi aniq faktni keltira olaman? Javob boʻlmasa, tanlov hali tayyor emas.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>4 ta</div>
+      <div><b>Vaqt</b>~2–3 hafta (haftasiga 4–6 soat)</div>
+      <div><b>Natija</b>Universitet tanlovi va moslik dalilnomasi</div>
+    </div>
+    <p class="srcs">Faktlar: <a href="https://gksscholarship.com/wp-content/uploads/2026/09/2027-GKS-U-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2027 GKS-U yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf" target="_blank" rel="noopener">2026 GKS-G yoʻriqnomasi (inglizcha matn)</a>; <a href="https://www.studyinkorea.go.kr" target="_blank" rel="noopener">Study in Korea (NIIED rasmiy portali)</a>. Faktlar 31.10.2026 holatiga; har sikl yangi yoʻriqnoma bilan qayta tekshiring. Koreyscha va inglizcha matn farq qilsa, koreyscha versiya ustun.</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="gks-lab.html">← GKS Lab</a>
+    <a class="btn btn-p" href="gks-lab-dastur.html">Keyingi: trekingizning M3 moduli →</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+<script>
+window.KGTool = { check: function () {
+  var n = window.KG && KG.S.notes;
+  if (!n || n.yol !== "Elchixona treki") return "";
+  var t = [n.u1t, n.u2t, n.u3t].filter(Boolean);
+  if (t.length && t.indexOf("B") < 0) return "Elchixona trekida kamida bitta B turdagi universitet boʻlishi shart";
+  return "";
+} };
+</script>
+<script>
+(function () {
+  var KEY = "kompas_gks_m2_v1", MOD = "2", LXP = 30, NL = 4, FINXP = 40;
+  var ART = [{"h": "Ariza yoʻli va universitetlar roʻyxati", "k": ["yol", "a1"]}, {"h": "1-tanlov", "k": ["u1t", "u1"]}, {"h": "2-tanlov", "k": ["u2t", "u2"]}, {"h": "3-tanlov", "k": ["u3t", "u3"]}, {"h": "Saralangan roʻyxat va ballar", "k": ["a2", "a3"]}, {"h": "Xavf izohi va xatolar filtri", "k": ["xavf", "a4"]}];
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  window.KG = { S: S, save: save, nv: nv, esc: esc, toast: function (m, i) { toast(m, i); } };
+
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp);
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd >= Math.ceil(NL / 2)) S.done.half = true;
+    if (nd >= NL) S.done.all = true;
+    save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M" + MOD + " yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang.";
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, LXP, "Dars " + parseInt(MOD, 10) + "." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else { var t = document.querySelector("section[id]:not(#darslar)"); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); } }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  function meterFor(t) {
+    var r = t.getAttribute("data-wc"); if (!r) return;
+    var el = document.querySelector('[data-meter="' + t.getAttribute("data-save") + '"]'); if (!el) return;
+    var lo = +r.split("-")[0], hi = +r.split("-")[1], n = wc(t.value), pct = Math.min(100, n / hi * 100);
+    el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : "");
+    el.innerHTML = '<div class="mt"><span>' + n + " soʻz</span><span>moʻljal: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>';
+  }
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    meterFor(t);
+    var tm; t.addEventListener("input", function () { meterFor(t); clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (r && qz.length && answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Asosiy qoidalarni bilasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { if (r.right >= 3) S.done.quizOk = true; award("quiz", 30, "Mini-test: " + r.right + "/" + qz.length, "books"); }
+      });
+    });
+  });
+
+  var tb = $("toolBtn");
+  if (tb) tb.addEventListener("click", function () {
+    var need = +tb.getAttribute("data-min"), keys = [], filled = 0;
+    tb.parentNode.querySelectorAll("[data-save]").forEach(function (t) { keys.push(t.getAttribute("data-save")); if (nv(t.getAttribute("data-save"))) filled++; });
+    if (filled < need) { toast("Kamida " + need + " ta maydonni toʻldiring (" + filled + " / " + keys.length + ")", "lock"); return; }
+    if (window.KGTool && window.KGTool.check) { var msg = window.KGTool.check(); if (msg) { toast(msg, "lock"); return; } }
+    award("tool", 30, "Vosita natijasi saqlandi", "memo");
+  });
+  var cb = $("ckBtn");
+  if (cb) cb.addEventListener("click", function () {
+    var all = document.querySelectorAll("#check [data-ck]"), on = 0;
+    all.forEach(function (c) { if (S.ck[c.getAttribute("data-ck")]) on++; });
+    if (on < all.length) { toast("Hali " + (all.length - on) + " ta band belgilanmagan", "lock"); return; }
+    award("ck", 30, "Nazorat roʻyxati yakunlandi", "shield");
+  });
+
+  function artText() {
+    var out = [];
+    ART.forEach(function (sec) {
+      var parts = sec.k.map(function (k) { return nv(k); }).filter(Boolean);
+      out.push({ h: sec.h, t: parts.join("\n\n") });
+    });
+    return out;
+  }
+  function renderArt() {
+    var p = $("artPaper"); if (!p) return;
+    var secs = artText(), filled = 0;
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">GKS Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
+    p.innerHTML = h;
+    $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
+    var fb = $("finBtn"); fb.disabled = !!S.done.fin; if (S.done.fin) fb.textContent = "✓ Yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd < NL) { toast("Avval barcha darslarni yakunlang (" + nd + " / " + NL + ")", "lock"); return; }
+    if ($("toolBtn") && !S.done.tool) { toast("Avval vosita natijasini saqlang", "lock"); return; }
+    if (!S.ck.hon) { toast("Halollik bayonotini belgilang", "lock"); return; }
+    var secs = artText(), empty = secs.filter(function (s) { return !s.t; }).length;
+    if (empty > Math.floor(secs.length / 3)) { toast("Hujjatda " + empty + " ta boʻsh boʻlim bor", "lock"); return; }
+    award("fin", FINXP, "Modul hujjati tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var p = $("artPaper");
+    download("GKS_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+  });
+  $("copyBtn").addEventListener("click", function () {
+    copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
+  });
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+  }
+  if (window.KGTool && window.KGTool.init) window.KGTool.init();
+  renderQuiz(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>

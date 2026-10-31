@@ -32,7 +32,7 @@ input[type=file]{font:inherit;max-width:100%}
 <body>
 <main class="wrap">
   <h1>Pullik modullar</h1>
-  <p>Master Lab M1–M8 sahifalarini bazaga (<code>paid_pages</code>) yuklash. Fayllar: <code>master-lab-m1.html</code> … <code>master-lab-m8.html</code> (<code>tools/modules/paid/</code> dan). Faqat admin; baza RLS ham faqat adminga yozishga ruxsat beradi.</p>
+  <p>Pullik modul sahifalarini bazaga (<code>paid_pages</code>) yuklash. Fayllar (<code>tools/modules/paid/</code> dan): Master <code>master-lab-m1.html</code> … <code>master-lab-m8.html</code>; GKS <code>gks-lab-m1.html</code>, <code>gks-lab-m2.html</code>, <code>gks-lab-m3-u.html</code> … <code>gks-lab-m5-d.html</code>. Faqat admin; baza RLS ham faqat adminga yozishga ruxsat beradi.</p>
   <div class="card" id="gate">Tekshirilmoqda…</div>
   <div class="card" id="ui" hidden>
     <p style="margin-top:0"><input type="file" id="f" accept=".html,text/html" multiple></p>
@@ -95,10 +95,15 @@ input[type=file]{font:inherit;max-width:100%}
     files.reduce(function (p, f) {
       return p.then(function () {
         return f.text().then(function (html) {
-          var m = f.name.match(/^([a-z]+-lab)-m(\d)\.html$/);
+          // GKS treklari: modul raqami gks-lab-o.html dagi MODS tartibi (m3-u → 3 … m5-d → 11)
+          var GKS = {"m1": 1, "m2": 2, "m3-u": 3, "m4-u": 4, "m5-u": 5, "m3-m": 6, "m4-m": 7, "m5-m": 8, "m3-d": 9, "m4-d": 10, "m5-d": 11};
+          var m = f.name.match(/^([a-z]+-lab)-(m\d(?:-[umd])?)\.html$/);
+          if (!m) { log(f.name + ": fayl nomi tanilmadi", "bad"); return; }
+          var idx = m[1] === "gks-lab" ? GKS[m[2]] : (/^m\d$/.test(m[2]) ? +m[2].slice(1) : 0);
+          if (!idx) { log(f.name + ": modul raqami aniqlanmadi", "bad"); return; }
           if (html.indexOf("<article class=\"lesson\"") < 0 || html.indexOf("kp-wm") < 0) { log(f.name + ": pullik modul sahifasiga oʻxshamaydi, oʻtkazib yuborildi", "bad"); return; }
           return sha(html).then(function (h) {
-            return sb.from("paid_pages").upsert({ course_slug: m[1], module_index: +m[2], html: html, sha256: h, version: stamp, updated_at: new Date().toISOString() }, { onConflict: "course_slug,module_index" })
+            return sb.from("paid_pages").upsert({ course_slug: m[1], module_index: idx, html: html, sha256: h, version: stamp, updated_at: new Date().toISOString() }, { onConflict: "course_slug,module_index" })
               .then(function (r) { log(f.name + ": " + (r.error ? "XATO " + r.error.message : "yuklandi, sha256 " + h.slice(0, 12)), r.error ? "bad" : "ok"); });
           });
         });

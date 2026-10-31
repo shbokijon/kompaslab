@@ -16,6 +16,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 PAID = HERE / "paid"
 TAG = "$kpaid$"
+GKS = {"m1": 1, "m2": 2, "m3-u": 3, "m4-u": 4, "m5-u": 5, "m3-m": 6, "m4-m": 7, "m5-m": 8, "m3-d": 9, "m4-d": 10, "m5-d": 11}
 
 
 def version():
@@ -30,10 +31,14 @@ def main(names):
     files = sorted(PAID.glob("*.html")) if not names else [PAID / (n + ".html") for n in names]
     ver = version()
     for f in files:
-        m = re.fullmatch(r"([a-z-]+-lab)-m(\d+)", f.stem)
+        m = re.fullmatch(r"([a-z-]+-lab)-(m\d+(?:-[umd])?)", f.stem)
         if not m:
             continue
-        course, idx = m.group(1), int(m.group(2))
+        course = m.group(1)
+        # GKS treklari: modul raqami gks-lab-o.html dagi MODS tartibi (m3-u → 3 … m5-d → 11)
+        idx = GKS[m.group(2)] if course == "gks-lab" else int(m.group(2)[1:]) if m.group(2)[1:].isdigit() else 0
+        if not idx:
+            continue
         html = f.read_text(encoding="utf-8")
         assert TAG not in html, f.name + ": dollar-tag ichida uchradi"
         sha = hashlib.sha256(html.encode("utf-8")).hexdigest()

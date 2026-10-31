@@ -1,4 +1,4 @@
-// Pullik modul oʻquvchisi (master-lab-o.html) va modul sahifasidagi tugma (js/paid-module.js).
+// Pullik modul oʻquvchisi (<lab>-o.html) va modul sahifasidagi tugma (js/paid-module.js).
 //   python3 -m http.server 8814 &   (repo ildizida)
 //   PW=$(npm root -g)/playwright node tools/modules/test/paid_reader.js
 // Supabase mock: sessiya va RPC javoblari stsenariy boʻyicha. Paid HTML tools/modules/paid/ dan.
@@ -7,6 +7,13 @@ const path = require("path");
 const { chromium } = require(process.env.PW || "playwright");
 const BASE = "http://127.0.0.1:8814/";
 const ROOT = path.resolve(__dirname, "../../..");
+// Lab: PAID_LAB=gks-lab node … (standart master-lab)
+const LAB = process.env.PAID_LAB || "master-lab";
+// Modul kalitlari (?m=) va bazadagi tartib raqami; GKS: umumiy oʻzak + U/M/D treklari
+const KEYS = LAB === "gks-lab" ? ["m1", "m2", "m3-u", "m4-u", "m5-u", "m3-m", "m4-m", "m5-m", "m3-d", "m4-d", "m5-d"] : ["1", "2", "3", "4", "5", "6", "7", "8"];
+const H = LAB === "gks-lab" ? { 3: "m3-u", 4: "m4-u", 5: "m5-u", 6: "m4-m", 8: "m5-d" } : {};   // test kalitlari
+const k = n => H[n] || String(n);
+const file = key => LAB + "-" + (key[0] === "m" ? key : "m" + key);
 
 function mock(sc) {
   return `(function(){var SC=${JSON.stringify(sc)};
@@ -31,7 +38,7 @@ async function run(browser, name, sc, url, check) {
   await ctx.route(/\/__paid\/\d+/, r => {
     const m = +r.request().url().match(/(\d+)$/)[1];
     let data = sc.paid;
-    if (data === "html") data = { ok: true, version: "t", html: fs.readFileSync(path.join(ROOT, "tools/modules/paid/master-lab-m" + m + ".html"), "utf8") };
+    if (data === "html") data = { ok: true, version: "t", html: fs.readFileSync(path.join(ROOT, "tools/modules/paid/" + file(KEYS[m - 1]) + ".html"), "utf8") };
     r.fulfill({ contentType: "application/json", body: JSON.stringify({ data, error: null }) });
   });
   const page = await ctx.newPage();
@@ -52,16 +59,16 @@ async function run(browser, name, sc, url, check) {
   let all = true;
   const R = async (...a) => { all = (await run(browser, ...a)) && all; };
 
-  await R("reader: kirmagan → Kirish", { session: false }, "master-lab-o.html?m=3",
-    async p => (await t("#t")(p)).includes("Avval kiring") && (await p.evaluate(() => sessionStorage.getItem("returnTo"))) === "master-lab-o.html?m=3");
-  await R("reader: obunasiz → Obuna kerak", { session: true, paid: { ok: false, reason: "no_access" } }, "master-lab-o.html?m=3",
+  await R("reader: kirmagan → Kirish", { session: false }, LAB + "-o.html?m=" + k(3),
+    async p => (await t("#t")(p)).includes("Avval kiring") && (await p.evaluate(() => sessionStorage.getItem("returnTo"))) === LAB + "-o.html?m=" + k(3));
+  await R("reader: obunasiz → Obuna kerak", { session: true, paid: { ok: false, reason: "no_access" } }, LAB + "-o.html?m=" + k(3),
     async p => (await t("#t")(p)).includes("Obuna kerak"));
-  await R("reader: qulf → keyinroq", { session: true, paid: { ok: false, reason: "locked", unlocked_modules: 3 } }, "master-lab-o.html?m=5",
+  await R("reader: qulf → keyinroq", { session: true, paid: { ok: false, reason: "locked", unlocked_modules: 3 } }, LAB + "-o.html?m=" + k(5),
     async p => (await t("#t")(p)).includes("Bu modul hali"));
-  await R("reader: notoʻgʻri m", { session: true }, "master-lab-o.html?m=12",
+  await R("reader: notoʻgʻri m", { session: true }, LAB + "-o.html?m=12",
     async p => (await t("#t")(p)).includes("topilmadi"));
-  for (let m = 1; m <= 8; m++) {
-    await R("reader: obunachi → M" + m + " ochildi", { session: true, paid: "html" }, "master-lab-o.html?m=" + m, async p => {
+  for (const key of KEYS) {
+    await R("reader: obunachi → " + key + " ochildi", { session: true, paid: "html" }, LAB + "-o.html?m=" + key, async p => {
       const n = await p.locator("article.lesson").count();
       if (!n) return "dars yoʻq";
       await p.locator("article.lesson .l-head").first().click();
@@ -70,14 +77,14 @@ async function run(browser, name, sc, url, check) {
       return tabs === 4 ? true : "tablar " + tabs;
     });
   }
-  await R("hub: mehmon → qulf", { session: false }, "master-lab-m4.html",
+  await R("hub: mehmon → qulf", { session: false }, file(k(4)) + ".html",
     async p => (await t(".kl-lock [data-paid-t]")(p)).includes("obuna bilan"));
-  await R("hub: obunachi → Modulni ochish", { session: true, access: { access: true, unlocked_modules: 9 } }, "master-lab-m4.html",
-    async p => (await p.getAttribute(".kl-lock [data-paid-row] a.btn-p", "href")) === "master-lab-o.html?m=4" && (await p.locator(".kl-lessons .kl-st.is-locked").count()) === 0);
-  await R("hub: boʻlib toʻlash, M6 hali yopiq", { session: true, access: { access: true, unlocked_modules: 3 } }, "master-lab-m6.html",
+  await R("hub: obunachi → Modulni ochish", { session: true, access: { access: true, unlocked_modules: 9 } }, file(k(4)) + ".html",
+    async p => (await p.getAttribute(".kl-lock [data-paid-row] a.btn-p", "href")) === LAB + "-o.html?m=" + (LAB === "gks-lab" ? k(4) : 4) && (await p.locator(".kl-lessons .kl-st.is-locked").count()) === 0);
+  await R("hub: boʻlib toʻlash, M6 hali yopiq", { session: true, access: { access: true, unlocked_modules: 3 } }, file(k(6)) + ".html",
     async p => (await t(".kl-lock [data-paid-t]")(p)).includes("keyinroq"));
-  await R("hub: admin → ochiq", { session: true, admin: true }, "master-lab-m8.html",
-    async p => (await p.getAttribute(".kl-lock [data-paid-row] a.btn-p", "href")) === "master-lab-o.html?m=8");
+  await R("hub: admin → ochiq", { session: true, admin: true }, file(k(8)) + ".html",
+    async p => (await p.getAttribute(".kl-lock [data-paid-row] a.btn-p", "href")) === LAB + "-o.html?m=" + (LAB === "gks-lab" ? k(8) : 8));
 
   await browser.close();
   console.log(all ? "\nHAMMASI OʻTDI" : "\nXATO BOR");
