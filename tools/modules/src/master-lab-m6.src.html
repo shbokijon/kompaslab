@@ -117,9 +117,9 @@
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Master Lab</a> · Modul 6</div>
-        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza III · Ilmiy ovoz</span>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">III bosqich · Ilmiy ovoz</span>
         <h1>Ilmiy loyiha taklifi</h1>
-        <p class="lead">Taklif komissiyaga siz tadqiqotchi sifatida qanday fikrlashingizni koʻrsatadi. Bu modulda boʻshliqni aniqlaysiz, uni adabiyot bilan asoslaysiz va bajarsa boʻladigan reja tuzasiz. Natija: <b>Ilmiy loyiha taklifi (Research Proposal)</b>, 1 500–3 000 soʻz.</p>
+        <p class="lead"><strong>Ilmiy loyiha taklifi barcha magistratura dasturlarida majburiy emas.</strong> Agar tanlangan dastur talab qilsa, aniq tadqiqot savolini, mavjud ilmiy dalillarni, metodologiyani va bajarish mumkin boʻlgan ish rejasini tuzasiz. Natija: <strong>Ilmiy loyiha taklifi (<em lang="en">Research Proposal</em>)</strong>, 1 500–3 000 soʻz.</p>
         <div class="facts"><span class="fact"><b>7</b> dars</span><span class="fact">~<b>4</b> hafta</span><span class="fact"><b>5</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/telescope.webp" width="160" height="160" alt="">
@@ -479,7 +479,7 @@
       <div class="bdg" data-badge="lit"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Adabiyot xaritasi<small>8+ manba</small></div>
       <div class="bdg" data-badge="plan"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy">Rejalashtiruvchi<small>Gantt</small></div>
       <div class="bdg" data-badge="cite"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Iqtibos ustasi<small>3 uslub</small></div>
-      <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">III faza yakuni<small>Taklif v1.0</small></div>
+      <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">III bosqich yakuni<small>Taklif v1.0</small></div>
     </div>
   </section>
 
@@ -571,7 +571,7 @@
   function uid() { return Date.now() + Math.floor(Math.random() * 1000); }
 
   // ── XP ──
-  var MAX = 300, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [100, "2-daraja: Izlanuvchi"], [200, "3-daraja: Kashfiyotchi"], [300, "III faza yakunlandi"]];
+  var MAX = 300, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [100, "2-daraja: Izlanuvchi"], [200, "3-daraja: Kashfiyotchi"], [300, "III bosqich yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
     var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
@@ -589,7 +589,7 @@
     if (S.done[id]) return false;
     S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp); save(); renderXp(true); renderAll();
     toast((xp ? "+" + xp + " XP · " : "") + msg, img);
-    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! III faza yakunlandi", "seedling"); }, 900);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! III bosqich yakunlandi", "seedling"); }, 900);
     return true;
   }
 
@@ -772,7 +772,7 @@
     if (!nv("prTitle")) miss.push("sarlavha"); if (n < R[0] || n > R[1]) miss.push("hajm " + R[0] + "–" + R[1] + " soʻz (hozir " + n + ")");
     if (!S.done.funnel) miss.push("voronka"); if (!S.done.lit) miss.push("8+ manba"); if (!S.done.plan) miss.push("Gantt rejasi");
     $("aMiss").textContent = miss.length ? "Yakunlash uchun yetishmayapti: " + miss.join(", ") + "." : "Hammasi tayyor.";
-    $("finBtn").disabled = !!S.done.fin; if (S.done.fin) $("finBtn").textContent = "✓ III faza yakunlangan";
+    $("finBtn").disabled = !!S.done.fin; if (S.done.fin) $("finBtn").textContent = "✓ III bosqich yakunlangan";
   }
   $("finBtn").addEventListener("click", function () {
     var R = range(), n = total();

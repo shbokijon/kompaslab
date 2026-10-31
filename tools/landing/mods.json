@@ -628,43 +628,43 @@
    "lessons": [
     {
      "num": "5.1",
-     "title": "Maqsad bayonnomasi va boshqa matnlar",
+     "title": "Maqsad bayonnomasi nima",
      "content": "SoP, Personal Statement va motivatsion xatning vazifasi; taught va research dasturlaridagi farqlar; prompt, hajm va baholash mezonini rasmiy sahifadan ajratish.",
      "trek": ""
     },
     {
      "num": "5.2",
-     "title": "Asosiy g‘oyani aniqlash",
+     "title": "Tuzilma: Kimlik → Dalil → Maqsad → Moslik",
      "content": "M1.7 dagi ilmiy profil va M2.5 dagi strategiyani bog‘lash: maqsad, tajriba, dalil va kelgusi qadam; bitta markaziy fikr.",
      "trek": ""
     },
     {
      "num": "5.3",
-     "title": "Tuzilma va mantiqiy oqim",
+     "title": "“Nega aynan shu dastur?”",
      "content": "Kirish → tayyorgarlik dalili → dasturga moslik → kelajak maqsadi; abzats vazifasi, takror va uzilishlarni tekshirish.",
      "trek": ""
     },
     {
      "num": "5.4",
-     "title": "Dasturga moslashtirish",
+     "title": "Dalil bilan yozish",
      "content": "M1.4 moslik matritsasidan kurs, loyiha, laboratoriya yoki imkoniyatlarni nomzod maqsadiga bog‘lash; tasdiqsiz professor va imkoniyatlarni keltirmaslik.",
      "trek": ""
     },
     {
      "num": "5.5",
-     "title": "Tajriba va natijani dalil bilan yozish",
+     "title": "Birinchi qoralama",
      "content": "M3 CV va M4 tavsiya materiallaridagi faktlarni takrorlamasdan izohlash; harakat, natija, o‘rganilgan saboq.",
      "trek": ""
     },
     {
      "num": "5.6",
-     "title": "Tahrir, akademik halollik va tekshiruv",
+     "title": "Tahrir",
      "content": "Promptga javob, ichki mantiq, dalil aniqligi, til va so‘z limiti; AI yordamidan foydalanish bo‘yicha dastur siyosatini tekshirish.",
      "trek": ""
     },
     {
      "num": "5.7",
-     "title": "Ikki dasturga yakuniy moslashtirish",
+     "title": "Namuna tahlili",
      "content": "Bir nomzodning ikki dasturga mos, dalilga asoslangan matnini tahlil qilish; uydirma yutuq va kafolatli iboralardan saqlanish.",
      "trek": ""
     }
@@ -678,43 +678,43 @@
    "lessons": [
     {
      "num": "6.1",
-     "title": "Ilmiy loyiha taklifi qachon kerak?",
+     "title": "Ilmiy loyiha taklifi kimga kerak",
      "content": "Research master va ayrim stipendiyalarda talab qilinishi mumkin; taught magistraturada shart bo‘lmasligi mumkin. Har dastur talabini tekshirish.",
      "trek": ""
     },
     {
      "num": "6.2",
-     "title": "Tadqiqot savoli va muammo",
+     "title": "Muammo bayoni",
      "content": "Keng mavzuni magistratura miqyosiga mos tekshiriladigan savolga toraytirish; mavjud bilim, bo‘shliq va ahamiyat.",
      "trek": ""
     },
     {
      "num": "6.3",
-     "title": "Dalillar va adabiyotlarni baholash",
+     "title": "Adabiyotlar sharhi (Literature Review)",
      "content": "Peer-reviewed va boshqa manbalarni farqlash; dolzarblik, qarama-qarshi natija va tadqiqot bo‘shlig‘ini ehtiyotkorlik bilan aniqlash.",
      "trek": ""
     },
     {
      "num": "6.4",
-     "title": "Maqsad, vazifalar va metodologiya",
+     "title": "Metodologiya",
      "content": "Savol → ma’lumot → metod → baholash mezoni; ma’lumotga kirish, etika va alternativ yondashuv.",
      "trek": ""
     },
     {
      "num": "6.5",
-     "title": "Xavf, cheklov va ish jadvali",
+     "title": "Ish rejasi va Gantt jadvali",
      "content": "Ma’lumot yoki metod ishlamasa alternativ reja; resurs, muddat va magistratura davriga mos Gantt.",
      "trek": ""
     },
     {
      "num": "6.6",
-     "title": "Kutilayotgan hissa va chegaralar",
+     "title": "Kutilayotgan natija va ahamiyati",
      "content": "Kutiladigan natija va kafolatlangan natijani farqlash; ilmiy va amaliy ahamiyatni dalillar bilan ko‘rsatish.",
      "trek": ""
     },
     {
      "num": "6.7",
-     "title": "Taklifni dastur talabiga mos yakunlash",
+     "title": "Tahrir, format, iqtibos uslubi",
      "content": "Hajm, bo‘lim, citation style va supervisor talabini tekshirish; kerak bo‘lmagan proposalni majburiy qilmaslik.",
      "trek": ""
     }
@@ -728,49 +728,49 @@
    "lessons": [
     {
      "num": "7.1",
-     "title": "Moliyalashtirish xaritasi",
+     "title": "Stipendiya turlari va muvofiqlik",
      "content": "Davlat stipendiyasi, universitet granti, tuition waiver, assistantship va o‘z hisobidan o‘qish farqi.",
      "trek": ""
     },
     {
      "num": "7.2",
-     "title": "Buyuk Britaniyada imkoniyat izlash",
+     "title": "Buyuk Britaniya",
      "content": "Chevening va universitet funding sahifalarida intake, eligibility, coverage va application deadline tekshiruvi; o‘zgaruvchi ma’lumot Qobiqda.",
      "trek": ""
     },
     {
      "num": "7.3",
-     "title": "AQShda imkoniyat izlash",
+     "title": "AQSh",
      "content": "Fulbright va universitet assistantship/grant farqlari; dastur va mamlakatga xos eligibility; rasmiy portal.",
      "trek": ""
     },
     {
      "num": "7.4",
-     "title": "Yevropa dasturlarini solishtirish",
+     "title": "Yevropa Ittifoqi",
      "content": "Erasmus Mundus, milliy grantlar va universitet stipendiyalari; konsorsium va individual ariza farqi.",
      "trek": ""
     },
     {
      "num": "7.5",
-     "title": "Osiyo bo‘yicha manbalarni topish",
+     "title": "Osiyo",
      "content": "GKS, MEXT, CSC rasmiy manbalari; fuqarolik, daraja va sikl bo‘yicha muvofiqlik; maxsus Lablarga yo‘naltirish.",
      "trek": ""
     },
     {
      "num": "7.6",
-     "title": "Turkiya va boshqa dasturlar",
+     "title": "Turkiya va boshqa yoʻnalishlar",
      "content": "Türkiye Bursları va boshqa dasturlarning eligibility, hujjat, davr va statusini amaldagi rasmiy sahifadan tekshirish.",
      "trek": ""
     },
     {
      "num": "7.7",
-     "title": "O‘zbekiston va universitet moliyalashtirishi",
+     "title": "Oʻzbekiston dasturlari va universitet grantlari",
      "content": "El-yurt umidi va universitetga xos funding; qabul va grant muddatlarini, shartnoma va majburiyatlarni ajratish.",
      "trek": ""
     },
     {
      "num": "7.8",
-     "title": "Uch variantli moliya portfeli",
+     "title": "Stipendiya portfeli",
      "content": "M1 shortlist, M2 kalendar, M5 SoP asosida moslik, to‘liq xarajat, xavf va muddat bo‘yicha uchta variantni tanlash.",
      "trek": ""
     }
@@ -784,49 +784,49 @@
    "lessons": [
     {
      "num": "8.1",
-     "title": "Intervyu formati va baholash",
+     "title": "Intervyu turlari",
      "content": "Akademik, stipendiya, texnik va research intervyulari; taklif xatidagi format va rasmiy ko‘rsatmani tekshirish.",
      "trek": ""
     },
     {
      "num": "8.2",
-     "title": "Javobni fakt va dalil bilan qurish",
+     "title": "10 asosiy savol",
      "content": "O‘zini tanishtirish, ilmiy qiziqish, dastur mosligi va kelajak rejasi; STAR; yodlangan javoblardan qochish.",
      "trek": ""
     },
     {
      "num": "8.3",
-     "title": "Stipendiya intervyusidagi farqlar",
+     "title": "Stipendiya intervyulari",
      "content": "Dastur maqsadi, liderlik, ta’sir va majburiyatlar; kafolatli javob yo‘q, rasmiy mezon ustuvor.",
      "trek": ""
     },
     {
      "num": "8.4",
-     "title": "Qisqa ilmiy taqdimot",
+     "title": "5 daqiqalik ilmiy taqdimot",
      "content": "Savol → metod → dalil → ahamiyat; auditoriyaga moslash; talab bo‘lmasa ortiqcha slayd tayyorlamaslik.",
      "trek": ""
     },
     {
      "num": "8.5",
-     "title": "Mustaqil mashq va baholash",
+     "title": "Oʻz-oʻzini yozib olish va baholash",
      "content": "Uchta telefon yozuvi orqali aniqlik, vaqt, mazmun va dalilni baholash; peer feedback ixtiyoriy, jonli mentoring va’da qilinmaydi.",
      "trek": ""
     },
     {
      "num": "8.6",
-     "title": "Qabul taklifini tahlil qilish",
+     "title": "Qabul xati keldi: birinchi 2 hafta",
      "content": "Conditional/unconditional offer, javob muddati, depozit va grant shartlari; offer funding tasdig‘i emas.",
      "trek": ""
     },
     {
      "num": "8.7",
-     "title": "Viza va jo‘nash tayyorgarligi",
+     "title": "Viza, sugʻurta, uy-joy, bank",
      "content": "Viza, hujjat, sug‘urta, moliya va turar joy; mamlakatga xos rasmiy talab; yuridik maslahat emas.",
      "trek": ""
     },
     {
      "num": "8.8",
-     "title": "Dastlabki 90 kun va keyingi qarorlar",
+     "title": "Birinchi 90 kun va oʻqishdan keyingi yoʻllar",
      "content": "Universitetga moslashish, supervisor bilan aloqa, kampus xizmatlari va majburiyatlar; ish/immigratsiya huquqlarini umumlashtirmaslik.",
      "trek": ""
     }
