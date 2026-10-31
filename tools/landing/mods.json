@@ -876,30 +876,30 @@
    "id": "M1",
    "title": "Hujjatlar infratuzilmasi",
    "meta": "4 dars",
-   "info": "Artefakt: Hujjatlar nazorat jadvali + legallashtirish yoʻl xaritasi + til rejasi + tavsiya beruvchilar uchun varaqalar. ",
+   "info": "Artefakt: Hujjatlar nazorat jadvali. ",
    "lessons": [
     {
      "num": "1.1",
-     "title": "Hujjatlarning toʻliq xaritasi",
-     "content": "Ariza formasi, shaxsiy bayonot, oʻquv rejasi, tavsiya xatlari, diplom va transkript, fuqarolik hujjatlari, sogʻliq formasi, til sertifikati; har birining formati va imzo talabi",
+     "title": "GKS hujjatlari xaritasi",
+     "content": "GKS toʻplami ikki qismdan iborat: oʻzingiz toʻldiradigan formalar (apostilsiz) va rasmiy guvohnomalar (apostil bilan). Roʻyxatni yoʻriqnomadan bandma-band jadvalga koʻchiring.",
      "trek": ""
     },
     {
      "num": "1.2",
-     "title": "Apostil, tarjima va tasdiq",
-     "content": "Oʻzbekistonda diplom va transkriptni legallashtirish yoʻli; tarjima talablari; asl nusxa va nusxa; real muddatlar",
+     "title": "Apostil, tarjima va nusxa qoidalari",
+     "content": "Guvohnomalar apostil yoki konsullik tasdigʻi bilan; oddiy va notarial nusxa oʻtmaydi. Tarjimani oʻzingiz tekshiring va legallashtirishni ariza oynasidan kamida 2 oy oldin boshlang.",
      "trek": ""
     },
     {
      "num": "1.3",
-     "title": "Tavsiya xatlari (Core + GKS formasi)",
-     "content": "Tavsiya beruvchi tanlash, yutuqlar varaqasi; GKS tavsiya formasi talablari va topshirish usuli",
+     "title": "Baholar: GPA talabi va konvertatsiya",
+     "content": "Talab: 80/100, yuqori 20 foiz yoki 2.64/4.0 (3.23/5.0) dan bittasi. Bahoni asl shkalada yozing; konvertatsiyani muassasa tasdiqlaydi.",
      "trek": ""
     },
     {
      "num": "1.4",
      "title": "Til strategiyasi: TOPIK va ingliz tili",
-     "content": "Koreys tili kursi mantigʻi, TOPIK darajalari taʼsiri, ingliz tilidagi dasturlar, sertifikat amal muddati",
+     "content": "TOPIK ixtiyoriy, lekin ball va til yiliga taʼsir qiladi. Bitta tilni tanlab, unga sana qoʻying.",
      "trek": ""
     }
    ]
@@ -907,349 +907,247 @@
   {
    "id": "M2",
    "title": "Universitet va dastur tanlash",
-   "meta": "4 dars",
-   "info": "Artefakt: 3 ta asoslangan universitet tanlovi + har biri uchun moslik dalilnomasi. ",
+   "meta": "5 dars",
+   "info": "Artefakt: Universitet tanlovi va moslik dalilnomasi. ",
    "lessons": [
     {
      "num": "2.1",
-     "title": "GKS universitetlari tizimi",
-     "content": "Yoʻriqnoma ilovalaridagi universitet va dastur roʻyxatlarini oʻqish; universitet turlari (yoʻriqnomadagi A/B kabi guruhlar); kvota, til va yoʻnalish filtrlari",
+     "title": "Elchixona treki yoki universitet treki",
+     "content": "Elchixona treki: elchixona → NIIED → universitet, 3 tagacha universitet. Universitet treki: universitet → NIIED, bitta universitet. Kvota raqamlari yoʻlga qarab keskin farq qiladi.",
      "trek": ""
     },
     {
      "num": "2.2",
-     "title": "Saralangan roʻyxat",
-     "content": "Ilmiy moslik, til talabi, joylashuv, dastur mazmuni; xavf taqsimoti",
+     "title": "A va B turdagi universitetlar",
+     "content": "Elchixona trekida 3 tagacha universitet, kamida bittasi B turidan; R-GKS da faqat B turi. Turni joriy yil ilovasidan tekshiring.",
      "trek": ""
     },
     {
      "num": "2.3",
-     "title": "Ilmiy moslik",
-     "content": "Fakultet va laboratoriya sahifalari, professorlarning soʻnggi nashrlari",
+     "title": "Dastur va fakultetni oʻqish",
+     "content": "Tanlov fakultet, dastur va (M, D uchun) laboratoriya darajasida qilinadi. Har universitet uchun tekshiriladigan bitta moslik dalili yozing.",
      "trek": ""
     },
     {
      "num": "2.4",
-     "title": "Keng tarqalgan xatolar filtri",
-     "content": "Shablon matn, mubolagʻa, tekshirilmaydigan daʼvo, format xatosi, kech hujjat, mos kelmaydigan yoʻnalish",
+     "title": "Saralangan roʻyxat va xavf taqsimoti",
+     "content": "Har universitetni bir xil mezon bilan ballang; qoidaga zid tanlov chiqadi, qolganlari orasida xavfni taqsimlang.",
+     "trek": ""
+    },
+    {
+     "num": "2.5",
+     "title": "Kvota va raqobatni toʻgʻri oʻqish",
+     "content": "Kvota raqobatchilar sonini aytmaydi. Imkon foizini taxmin qilmang; tayyorgarlik sifatini oshiring va ikkala yoʻlni koʻrib chiqing.",
      "trek": ""
     }
    ]
   },
   {
-   "id": "M3-U",
-   "title": "Nomzod profili",
+   "id": "M3",
+   "title": "Nomzod profili va dalillar",
    "meta": "4 dars",
-   "info": "Artefakt: Faoliyat vaqt chizigʻi + akademik profil izohi + zaif tomonlar javoblari. ",
+   "info": "Artefakt: Dalillar inventari va profil izohi. ",
    "lessons": [
     {
      "num": "3.1",
-     "title": "Potensial qanday isbotlanadi",
-     "content": "Olimpiada, mustaqil loyiha, oʻz-oʻzini oʻqitish, jamoaviy tashabbus; oʻsish traektoriyasi",
+     "title": "Dalillar inventari: STAR usuli",
+     "content": "Har tajribani Vaziyat → Vazifa → Harakat → Natija qatoriga keltiring; natija tekshiriladigan boʻlsin, shaxsiy hissangiz aniq koʻrinsin.",
      "trek": ""
     },
     {
      "num": "3.2",
-     "title": "Qiziqishning kelib chiqishi",
-     "content": "Kuzatuv → savol → harakat zanjiri",
+     "title": "Faoliyat va yutuqlarni formaga tayyorlash",
+     "content": "Har qator tegishli, yaqin, tasdiqlangan boʻlsin. Joy kam boʻlsa, kamroq lekin kuchliroq yutuqni qoldiring.",
      "trek": ""
     },
     {
      "num": "3.3",
-     "title": "Baholarni taqdim etish",
-     "content": "Oʻzbek baholash tizimini tushuntirish, yoʻriqnomadagi konvertatsiya jadvalidan foydalanish, sinfdagi oʻrin",
-     "trek": ""
-    },
-    {
-     "num": "3.4",
      "title": "Zaif tomonlarni boshqarish",
-     "content": "Past baho, tanaffus yili, yoʻnalish oʻzgarishi — javobgarlik va tuzatish harakati",
-     "trek": ""
-    }
-   ]
-  },
-  {
-   "id": "M4-U",
-   "title": "Shaxsiy bayonot",
-   "meta": "5 dars, Core asosida",
-   "info": "Artefakt: Yakuniy shaxsiy bayonot (GKS formasi talablariga mos) + tahrir qaydi. ",
-   "lessons": [
-    {
-     "num": "4.1",
-     "title": "GKS shaxsiy bayonoti formasi",
-     "content": "Forma savollari, hajm chegarasi, baholovchi nimani izlaydi",
-     "trek": ""
-    },
-    {
-     "num": "4.2",
-     "title": "Kimlik → Dalil → Maqsad → Moslik",
-     "content": "Toʻrt blok; \"nega Koreya, nega shu universitet\"",
-     "trek": ""
-    },
-    {
-     "num": "4.3",
-     "title": "Birinchi qoralama",
-     "content": "Skeletdan matnga; umumiy iboralardan qochish",
-     "trek": ""
-    },
-    {
-     "num": "4.4",
-     "title": "Tahrir",
-     "content": "Sifatni faktga almashtirish, mubolagʻani olib tashlash, tekshirib boʻlmaydigan daʼvoni oʻchirish",
-     "trek": ""
-    },
-    {
-     "num": "4.5",
-     "title": "Oʻzaro tahrir va yakuniy versiya",
-     "content": "Mezon boʻyicha baholash, moderatsiyali oʻzaro tahrir",
-     "trek": ""
-    }
-   ]
-  },
-  {
-   "id": "M5-U",
-   "title": "Oʻquv rejasi, topshirish va intervyu",
-   "meta": "4 dars",
-   "info": "Artefakt: Oʻquv rejasi + yigʻilgan paket + intervyu javoblari yozuvi. ",
-   "lessons": [
-    {
-     "num": "5.1",
-     "title": "Bakalavr oʻquv rejasi",
-     "content": "Til yili, 1–4-kurs fanlari va koʻnikmalar rejasi, bitiruvdan keyingi yoʻl va uning GKS maqsadiga aloqasi",
-     "trek": ""
-    },
-    {
-     "num": "5.2",
-     "title": "Paketni yigʻish va nazorat",
-     "content": "Fayl nomlari, format, nusxalar, onlayn yuklash; ikkinchi shaxs tekshiruvi",
-     "trek": ""
-    },
-    {
-     "num": "5.3",
-     "title": "Intervyu",
-     "content": "Elchixona intervyusi mantigʻi, keng tarqalgan savollar, qisqa javob tuzilmasi",
-     "trek": ""
-    },
-    {
-     "num": "5.4",
-     "title": "Natijadan keyin",
-     "content": "Bosqich natijalari, universitet qabuli, joʻnash oldi hujjatlar; rad javobidan keyingi reja",
-     "trek": ""
-    }
-   ]
-  },
-  {
-   "id": "M3-M",
-   "title": "Magistratura nomzodining pozitsiyasi",
-   "meta": "4 dars",
-   "info": "Artefakt: STAR inventari + akademik CV v1.0 + yoʻnalish koʻprigi matni (kerak boʻlsa). ",
-   "lessons": [
-    {
-     "num": "3.1",
-     "title": "Bakalavrdan magistraturaga",
-     "content": "\"Oʻqishni xohlayman\"dan \"nimani oʻrganmoqchiman\"ga; bakalavr ishlaridagi takrorlanuvchi mavzu",
-     "trek": ""
-    },
-    {
-     "num": "3.2",
-     "title": "Dalillar inventari",
-     "content": "Kurs ishi, bitiruv ishi, tezis, laboratoriya, dasturiy vositalar — STAR formatida",
-     "trek": ""
-    },
-    {
-     "num": "3.3",
-     "title": "Akademik CV (Core)",
-     "content": "Boʻlimlar tartibi, STAR bandlari, natijani raqam bilan",
+     "content": "Zaif tomonni fakt → tuzatish → hozirgi dalil tartibida qisqa tushuntiring; yashirmang va markazga ham qoʻymang.",
      "trek": ""
     },
     {
      "num": "3.4",
-     "title": "Yoʻnalish oʻzgarishini asoslash",
-     "content": "Eski sohadan olib kelinadigan koʻnikma, toʻldiriladigan boʻshliq, reja",
+     "title": "Oʻsish traektoriyasi va profil izohi",
+     "content": "Profil izohi: bugungi nuqta → traektoriya → boʻshliq → keyingi qadam. Bu paragraf keyingi hujjatlarning umurtqasi.",
      "trek": ""
     }
    ]
   },
   {
-   "id": "M4-M",
-   "title": "Oʻquv rejasi",
-   "meta": "5 dars",
-   "info": "Artefakt: Yakuniy oʻquv rejasi (GKS formasi boʻyicha) + semestrlar jadvali + 12 manbali annotatsiyalangan roʻyxat. ",
+   "id": "M4",
+   "title": "Tavsiya xati va professor bilan aloqa",
+   "meta": "4 dars",
+   "info": "Artefakt: Aloqa paketi. ",
    "lessons": [
     {
      "num": "4.1",
-     "title": "Nega oʻquv rejasi markaziy hujjat",
-     "content": "GKS formasidagi savollar, kuchli va kuchsiz reja farqi",
+     "title": "GKS tavsiya xati: talablar va tanlov",
+     "content": "GKS da bitta tavsiya xati; sanasi muddatdan oldingi bir yil ichida. Tavsiya beruvchini lavozim emas, yaqinlik va aniq dalil boʻyicha tanlang.",
      "trek": ""
     },
     {
      "num": "4.2",
-     "title": "Tadqiqot savolini shakllantirish",
-     "content": "Mavzudan tor savolga; oʻlchanadigan, javob beriladigan, ahamiyatli; Muammo → Yechim → Yangilik → Taʼsir",
+     "title": "Yutuqlar varaqasi va soʻrash tartibi",
+     "content": "Tavsiya beruvchiga faktlar beriladi, matn emas. 6–8 hafta oldin soʻrang, forma va muddatni bitta xatda yuboring.",
      "trek": ""
     },
     {
      "num": "4.3",
-     "title": "Adabiyot bilan ishlash minimumi",
-     "content": "Manba qidirish, tez oʻqish tartibi, 10–15 manbali baza, boʻshliqni aniqlash",
+     "title": "Professorga dastlabki xat (Cold email)",
+     "content": "Professorga xat: kimsiz, nega u (aniq ish), dalil, bitta savol. Ommaviy xat emas, 3–5 ta shaxsiy xat.",
      "trek": ""
     },
     {
      "num": "4.4",
-     "title": "Toʻliq oʻquv rejasi",
-     "content": "Fon → savol → metod → semestrlar boʻyicha reja → natija → uzoq muddatli maqsad",
-     "trek": ""
-    },
-    {
-     "num": "4.5",
-     "title": "Tahrir va oʻzaro tahrir",
-     "content": "Mutaxassis boʻlmagan oʻquvchi tushunadimi; hajm va atamalar",
+     "title": "Kuzatuv, javob va etik chegaralar",
+     "content": "Bitta eslatma, keyin toʻxtash; kafolat, sovgʻa va vositachi yoʻq. Har xatni jurnalga yozing.",
      "trek": ""
     }
    ]
   },
   {
-   "id": "M5-M",
-   "title": "Professor, paket va intervyu",
+   "id": "M5",
+   "title": "Shaxsiy bayonot",
    "meta": "5 dars",
-   "info": "Artefakt: Shaxsiy bayonot + 2 professorga xat + izchillik auditi jadvali + 60 soniyalik taqdimot yozuvi. ",
+   "info": "Artefakt: Shaxsiy bayonot. ",
    "lessons": [
     {
      "num": "5.1",
-     "title": "Professorni tanlash",
-     "content": "Laboratoriya sahifasi, nashrlar, joriy loyihalar, guruh",
+     "title": "Forma savollari va baholovchi mantiqi",
+     "content": "Bayonot formaning savollariga javob beradi; shablon va hajm chegarasini avval oʻqing. Har bosqichdagi baholovchi bitta savolga javob izlaydi.",
      "trek": ""
     },
     {
      "num": "5.2",
-     "title": "Professorga dastlabki xat (Core)",
-     "content": "Tuzilma, aniq ishga havola, soʻrov, biriktirma; universitet trekida ayniqsa muhim",
+     "title": "Kimlik → Dalil → Maqsad → Moslik",
+     "content": "Toʻrt blok: Kimlik, Dalil, Maqsad, Moslik. \"Nega Koreya\" javobi umumiy sabab emas, aniq soha, dastur va qaytgandan keyingi reja.",
      "trek": ""
     },
     {
      "num": "5.3",
-     "title": "GKS-G shaxsiy bayonoti",
-     "content": "Forma savollari; oʻquv rejasi bilan takrorlanmaslik",
+     "title": "Birinchi qoralama",
+     "content": "Qoralama: har blok bir paragraf, har paragrafda bitta aniq fakt, ochilish aniq voqea yoki savol. Avval toʻliq, keyin yaxshi.",
      "trek": ""
     },
     {
      "num": "5.4",
-     "title": "Izchillik auditi",
-     "content": "CV, bayonot, oʻquv rejasi va tavsiyalardagi faktlarning mosligi",
+     "title": "Tahrir: faktga almashtirish",
+     "content": "Tahrir uch oʻtishda: mazmun, aniqlik, til. Har sifatni faktga almashtiring, tekshirib boʻlmaydigan daʼvoni oʻchiring.",
      "trek": ""
     },
     {
      "num": "5.5",
-     "title": "Intervyu va keyingi bosqich",
-     "content": "\"Nega aynan shu tadqiqot?\"; savolni 60 soniyada tushuntirish; rad javobida B reja",
+     "title": "Oʻzaro tahrir va yakuniy versiya",
+     "content": "Yakuniy versiya 5 mezon boʻyicha baholanadi; tahrirchi izoh beradi, matnni siz oʻzgartirasiz va qaydini yuritasiz.",
      "trek": ""
     }
    ]
   },
   {
-   "id": "M3-D",
-   "title": "Doktorantura nomzodining ilmiy pozitsiyasi",
+   "id": "M6",
+   "title": "Oʻquv rejasi",
+   "meta": "5 dars",
+   "info": "Artefakt: Oʻquv rejasi. ",
+   "lessons": [
+    {
+     "num": "6.1",
+     "title": "Oʻquv rejasi nima uchun markaziy hujjat",
+     "content": "Oʻquv rejasi \"qanday\" savoliga javob beradi: aniq vaqt, aniq fan yoki tadqiqot va aniq keyingi qadam.",
+     "trek": ""
+    },
+    {
+     "num": "6.2",
+     "title": "Hozirgi holat → Boʻshliq → Strategiya → Vaqt",
+     "content": "Hozirgi holat → Boʻshliq → Strategiya → Vaqt: har qism oldingisidan kelib chiqadi va keyingisini asoslaydi.",
+     "trek": ""
+    },
+    {
+     "num": "6.3",
+     "title": "Til yili va daraja yillari rejasi",
+     "content": "Reja til yilidan boshlanadi va har davrga aniq oʻqish va oʻlchanadigan natija beradi. Fanlar rasmiy oʻquv rejasidan olinadi.",
+     "trek": ""
+    },
+    {
+     "num": "6.4",
+     "title": "Tadqiqot savoli yoki oʻqish yoʻnalishi",
+     "content": "M va D: mavzudan oʻlchanadigan savolga, Muammo → Yechim → Yangilik → Taʼsir. U: fanlar, koʻnikmalar va loyihalar rejasi.",
+     "trek": ""
+    },
+    {
+     "num": "6.5",
+     "title": "Bitiruvdan keyingi yoʻl va izchillik",
+     "content": "Bitiruvdan keyingi yoʻl aniq, bogʻliq va halol. Bayonot va reja soha, maqsad va dasturda bir xil gapiradi.",
+     "trek": ""
+    }
+   ]
+  },
+  {
+   "id": "M7",
+   "title": "Paketni yigʻish va topshirish",
    "meta": "4 dars",
-   "info": "Artefakt: Portfel auditi + PhD darajasidagi CV + 3 ta potensial doktorlik savoli. ",
+   "info": "Artefakt: Topshirish paketi va taqvim. ",
    "lessons": [
     {
-     "num": "3.1",
-     "title": "PhD nomzodi nimani taklif qiladi",
-     "content": "Laboratoriyaga keltiriladigan qiymat; magistratura va doktorantura arizasi farqi",
+     "num": "7.1",
+     "title": "Onlayn ariza va muddatlar",
+     "content": "Muddatlar KST bilan: Toshkentdan 4 soat oldin yopiladi. Oʻz muddatingizni rasmiydan kamida 3 kun oldin qoʻying.",
      "trek": ""
     },
     {
-     "num": "3.2",
-     "title": "Ilmiy portfel auditi",
-     "content": "Nashr, konferensiya, preprint, magistrlik ishi, kod va maʼlumotlar",
+     "num": "7.2",
+     "title": "Fayl, format va nusxalar",
+     "content": "Paket yoʻriqnoma tartibida, aniq skanerlar, tushunarli fayl nomlari va imzolar bilan. Hamma narsaning zaxirasi sizda qoladi.",
      "trek": ""
     },
     {
-     "num": "3.3",
-     "title": "PhD darajasidagi CV (Core)",
-     "content": "Nashrlar formati, mualliflik tartibi, metodik koʻnikmalar",
+     "num": "7.3",
+     "title": "Ikkinchi shaxs tekshiruvi va xatolar filtri",
+     "content": "Xatolar filtri va ikkinchi odam: ism, nomlar, shablon qoldiqlari, sanalar, hajm, dalilsiz daʼvo.",
      "trek": ""
     },
     {
-     "num": "3.4",
-     "title": "Magistrlik ishidan doktorlik yoʻnalishiga",
-     "content": "Cheklovlar va javobsiz savollardan kengaytirish",
+     "num": "7.4",
+     "title": "Teskari taqvim",
+     "content": "Har ishni muddatdan orqaga joylang; eng uzoq jarayonlar (apostil, tavsiya) birinchi. Shaxsiy muddat rasmiydan 3 kun oldin.",
      "trek": ""
     }
    ]
   },
   {
-   "id": "M4-D",
-   "title": "Ilmiy reja",
-   "meta": "6 dars, Core asosida",
-   "info": "Artefakt: GKS formasiga moslangan ilmiy reja (oʻquv rejasi boʻlimi) + 30 manbali baza + 3–4 yillik Gantt jadvali. ",
+   "id": "M8",
+   "title": "Intervyu, natija va joʻnash",
+   "meta": "5 dars",
+   "info": "Artefakt: Intervyu kartochkalari va joʻnash rejasi. ",
    "lessons": [
     {
-     "num": "4.1",
-     "title": "Tuzilma: Muammo → Yechim → Yangilik → Taʼsir",
-     "content": "Bloklar vazifasi va GKS formasi boʻlimlariga joylash",
+     "num": "8.1",
+     "title": "Intervyu mantiqi",
+     "content": "Intervyu hujjatlaringizning ogʻzaki tekshiruvi: muallif ekaningiz, aniqlik, uddalash va maqsad.",
      "trek": ""
     },
     {
-     "num": "4.2",
-     "title": "Muammo va adabiyotdagi boʻshliq",
-     "content": "25–40 manbali baza; boʻshliqni dalil bilan koʻrsatish",
+     "num": "8.2",
+     "title": "Savollar va javob tuzilmasi",
+     "content": "Har javob: bir jumlada javob, bitta aniq misol, dasturga bogʻlash. Yodlamang, kalit soʻzlar bilan mashq qiling.",
      "trek": ""
     },
     {
-     "num": "4.3",
-     "title": "Metodologiya",
-     "content": "Maʼlumot, usul, vositalar, cheklovlar, xavflar; Koreyadagi laboratoriya resurslari bilan moslik",
+     "num": "8.3",
+     "title": "Natijalar va universitet tanlovi",
+     "content": "Natija sanalarini va universitet tanlovi muddatini oldindan taqvimga qoʻying; tanlovni M2 mezonlari bilan tez qiling.",
      "trek": ""
     },
     {
-     "num": "4.4",
-     "title": "Yangilik va taʼsir",
-     "content": "Yangilik turlari; Oʻzbekiston va Koreya hamkorligi bilan aloqa (dalil bilan)",
+     "num": "8.4",
+     "title": "Joʻnash oldi tayyorgarlik va majburiyatlar",
+     "content": "Taklifnoma → viza → tibbiy → chipta → sugʻurta → moliya. Stipendiya qoidalari (chiqish, mutaxassislik) birinchi kundan amal qiladi.",
      "trek": ""
     },
     {
-     "num": "4.5",
-     "title": "Vaqt va resurs rejasi",
-     "content": "Bosqichlar, nashr va konferensiya rejasi, til kursi yili hisobga olingan",
-     "trek": ""
-    },
-    {
-     "num": "4.6",
-     "title": "Tahrir va oʻzaro tahrir",
-     "content": "Mezon, atama izchilligi, iqtibos uslubi, hajm",
-     "trek": ""
-    }
-   ]
-  },
-  {
-   "id": "M5-D",
-   "title": "Professor bilan muloqot va yakunlash",
-   "meta": "4 dars",
-   "info": "Artefakt: 3 professorga xat va 1 sahifalik reja konspekti + suhbat tayyorgarligi + yakuniy paket. ",
-   "lessons": [
-    {
-     "num": "5.1",
-     "title": "Professor tahlili va ilmiy xat (Core)",
-     "content": "Nashr trendi, guruh, sigʻim; maqolaga texnik izoh, hamkorlik nuqtasi",
-     "trek": ""
-    },
-    {
-     "num": "5.2",
-     "title": "Onlayn ilmiy suhbat",
-     "content": "Rejani 5 daqiqada bayon qilish, tanqidga javob, oʻz savollari",
-     "trek": ""
-    },
-    {
-     "num": "5.3",
-     "title": "Shaxsiy bayonot va izchillik auditi",
-     "content": "GKS-G bayonoti; barcha hujjatlarda faktlar mosligi",
-     "trek": ""
-    },
-    {
-     "num": "5.4",
-     "title": "Intervyu, natija va joʻnash",
-     "content": "Intervyu savollari; natijadan keyingi hujjatlar va joʻnash oldi roʻyxat",
+     "num": "8.5",
+     "title": "Rad javobidan keyingi reja",
+     "content": "Rad javobidan keyin: qaysi bosqich, qaysi hujjat, qaysi muqobil yoʻl. Muvofiqlikni yangi yoʻriqnoma bilan qayta tekshiring.",
      "trek": ""
     }
    ]

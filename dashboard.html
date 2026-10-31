@@ -509,7 +509,8 @@ function ls(k) { try { return JSON.parse(localStorage.getItem(k) || 'null') } ca
 const LAB_PAGE = { 'miggo': 'musofir-lab' }
 function labPage(slug) { return (LAB_PAGE[slug] || slug) }
 const PAGE_COURSES = {
-  'master-lab': { href: n => n === 0 ? 'master-lab-m0.html' : `master-lab-o.html?m=${n}`, key: n => `kompas_master_m${n}_v1` }
+  'master-lab': { href: n => n === 0 ? 'master-lab-m0.html' : `master-lab-o.html?m=${n}`, key: n => `kompas_master_m${n}_v1` },
+  'gks-lab': { href: n => n === 0 ? 'gks-lab-m0.html' : `gks-lab-o.html?m=${n}`, key: n => `kompas_gks_m${n}_v1` }
 }
 
 // ════════════════════════════════════════════════════════

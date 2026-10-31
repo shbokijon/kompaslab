@@ -44,7 +44,7 @@ MODULES = {
                                     "Xorijga ishga ketishdan oldin: firibgarlik belgilari, 4 mamlakatning rasmiy yoʻllari, xarajat va qarz xavfi. Bepul.")),
     # Pullik modullar (paid=True): saytda ochiq HTML yoʻq. Toʻliq sahifa tools/modules/paid/ ga
     # yigʻiladi va Supabase paid_pages jadvaliga yuklanadi (tools/modules/paid_upload.py);
-    # oʻquvchiga faqat master-lab-o.html?m=N orqali, fn_paid_page() obunani tekshirgandan keyin beriladi.
+    # oʻquvchiga faqat <lab>-o.html?m=N (master-lab-o, gks-lab-o) orqali, fn_paid_page() obunani tekshirgandan keyin beriladi.
     "master-lab-m1":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m2":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m3":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
@@ -53,6 +53,15 @@ MODULES = {
     "master-lab-m6":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m7":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m8":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
+    # GKS Lab M1–M8 (2026-10-31): manba tools/modules/gks/engine.py bilan yaratilgan, oʻquvchi gks-lab-o.html?m=N
+    "gks-lab-m1":          dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m2":          dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m3":          dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m4":          dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m5":          dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m6":          dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m7":          dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    "gks-lab-m8":          dict(lab="gks-lab.html", site=False, paid=True, protect=True),
 }
 
 SB = '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>'

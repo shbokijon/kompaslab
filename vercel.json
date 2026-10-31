@@ -117,6 +117,96 @@
       "source": "/master-lab-modul.html",
       "destination": "/master-lab-dastur",
       "permanent": false
+    },
+    {
+      "source": "/gks-lab-m3-u",
+      "destination": "/gks-lab-m3",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m3-u.html",
+      "destination": "/gks-lab-m3",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m3-m",
+      "destination": "/gks-lab-m3",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m3-m.html",
+      "destination": "/gks-lab-m3",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m3-d",
+      "destination": "/gks-lab-m3",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m3-d.html",
+      "destination": "/gks-lab-m3",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m4-u",
+      "destination": "/gks-lab-m5",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m4-u.html",
+      "destination": "/gks-lab-m5",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m4-m",
+      "destination": "/gks-lab-m6",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m4-m.html",
+      "destination": "/gks-lab-m6",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m4-d",
+      "destination": "/gks-lab-m6",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m4-d.html",
+      "destination": "/gks-lab-m6",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m5-u",
+      "destination": "/gks-lab-m8",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m5-u.html",
+      "destination": "/gks-lab-m8",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m5-m",
+      "destination": "/gks-lab-m7",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m5-m.html",
+      "destination": "/gks-lab-m7",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m5-d",
+      "destination": "/gks-lab-m7",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-m5-d.html",
+      "destination": "/gks-lab-m7",
+      "permanent": false
     }
   ]
 }

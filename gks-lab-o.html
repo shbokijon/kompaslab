@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<meta name="robots" content="noindex, nofollow">
+<title>Modul ochilmoqda · GKS Lab | Kompas Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="stylesheet" href="css/brand.css">
+<style>
+:root{--forest:#2d4a3e;--terra:#c4622d;--cream:#f4f3ef;--ink:#1a2e26;--muted:#5f7169;--line:#e2ded3;--card:#fffefb}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cream:#141a17;--ink:#e9efe9;--muted:#a3b2aa;--line:#2b3631;--card:#1b2420}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--cream);color:var(--ink);font-family:Outfit,"IBM Plex Sans",system-ui,sans-serif;padding:24px 16px}
+.box{width:100%;max-width:520px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 24px;text-align:center}
+.box img.ic{width:72px;height:72px}
+h1{font-family:"Cambria","Caladea","Playfair Display",Georgia,serif;font-weight:400;font-size:26px;margin:12px 0 8px}
+p{color:var(--muted);line-height:1.55;margin:0 0 18px}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:12px;font:600 15px Outfit,"IBM Plex Sans",system-ui,sans-serif;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-p{background:var(--terra);color:#fff}
+.btn-g{background:transparent;color:var(--ink);border-color:var(--line)}
+.spin{width:36px;height:36px;margin:8px auto 0;border-radius:50%;border:3px solid var(--line);border-top-color:var(--forest);animation:r 0.9s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main class="box" id="box" aria-live="polite">
+  <img class="ic" src="img/3d/gks.webp" alt="" width="160" height="160">
+  <h1 id="t">Modul ochilmoqda</h1>
+  <p id="d">Obunangiz tekshirilmoqda.</p>
+  <div class="spin" id="sp"></div>
+  <div class="row" id="act" hidden></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script>
+// Pullik modul oʻquvchisi. Toʻliq modul HTML saytda ochiq fayl sifatida yoʻq:
+// u Supabase paid_pages jadvalida turadi va faqat fn_paid_page() obuna (yoki admin)
+// huquqini server tomonida tekshirgandan keyin qaytariladi.
+(function () {
+  "use strict";
+  var COURSE = "gks-lab";
+  var NAMES = {1: "Hujjatlar infratuzilmasi", 2: "Universitet va dastur tanlash", 3: "Nomzod profili va dalillar",
+    4: "Tavsiya xati va professor bilan aloqa", 5: "Shaxsiy bayonot", 6: "Oʻquv rejasi",
+    7: "Paketni yigʻish va topshirish", 8: "Intervyu, natija va joʻnash"};
+  var m = parseInt(new URLSearchParams(location.search).get("m"), 10);
+  var $ = function (id) { return document.getElementById(id); };
+
+  function show(title, text, buttons) {
+    $("sp").hidden = true;
+    $("t").textContent = title;
+    $("d").textContent = text;
+    var act = $("act");
+    act.innerHTML = "";
+    (buttons || []).forEach(function (b) {
+      var a = document.createElement("a");
+      a.className = "btn " + (b.primary ? "btn-p" : "btn-g");
+      a.href = b.href;
+      a.textContent = b.label;
+      act.appendChild(a);
+    });
+    act.hidden = !(buttons && buttons.length);
+  }
+
+  var hub = "gks-lab-m" + m + ".html";
+  if (!(m >= 1 && m <= 8)) {
+    show("Modul topilmadi", "Havolada modul raqami yoʻq yoki notoʻgʻri.", [{label: "GKS Lab dasturi", href: "gks-lab-dastur.html", primary: true}]);
+    return;
+  }
+  document.title = "M" + m + ". " + NAMES[m] + " · GKS Lab | Kompas Lab";
+  var sb = window.supabase;
+  if (!sb || !sb.auth) {
+    show("Ulanib boʻlmadi", "Server bilan aloqa yoʻq. Internetni tekshirib, sahifani qayta yuklang.", [{label: "Qayta urinish", href: location.pathname + location.search, primary: true}, {label: "Modul sahifasi", href: hub}]);
+    return;
+  }
+
+  sb.auth.getSession().then(function (r) {
+    var session = r && r.data && r.data.session;
+    if (!session) {
+      try { sessionStorage.setItem("returnTo", "gks-lab-o.html?m=" + m); } catch (e) {}
+      show("Avval kiring", "M" + m + " obuna bilan ochiladi. Hisobingizga kiring, keyin shu sahifaga qaytasiz.",
+        [{label: "Kirish", href: "login.html", primary: true}, {label: "Roʻyxatdan oʻtish", href: "register.html"}]);
+      return;
+    }
+    return sb.rpc("fn_paid_page", {p_course_slug: COURSE, p_module_index: m}).then(function (res) {
+      if (res.error) {
+        show("Ochib boʻlmadi", "Server xatosi: " + (res.error.message || "nomaʼlum") + ". Birozdan keyin qayta urinib koʻring.",
+          [{label: "Qayta urinish", href: location.pathname + location.search, primary: true}, {label: "Modul sahifasi", href: hub}]);
+        return;
+      }
+      var d = res.data || {};
+      if (d.ok && d.html) {
+        document.open();
+        document.write(d.html);
+        document.close();
+        return;
+      }
+      if (d.reason === "locked") {
+        show("Bu modul hali ochilmagan", "Tarifingiz boʻyicha hozir " + (d.unlocked_modules || 0) + " ta modul ochiq (M0 bilan). Oylik obunada keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.",
+          [{label: "Mening kabinetim", href: "dashboard.html", primary: true}, {label: "Modul sahifasi", href: hub}]);
+      } else if (d.reason === "expired" || d.reason === "frozen") {
+        show("Obuna faol emas", d.reason === "expired" ? "Obuna muddati tugagan." : "Toʻlov kechikkani sababli kirish vaqtincha toʻxtatilgan.",
+          [{label: "Narxlar va obuna", href: "gks-lab-narxlar.html", primary: true}, {label: "Mening kabinetim", href: "dashboard.html"}]);
+      } else if (d.reason === "missing") {
+        show("Modul tayyorlanmoqda", "M" + m + " hali joylanmagan. Ochilganda kabinetingizda koʻrinadi.",
+          [{label: "Mening kabinetim", href: "dashboard.html", primary: true}, {label: "Modul sahifasi", href: hub}]);
+      } else {
+        show("Obuna kerak", "M" + m + ". " + NAMES[m] + " GKS Lab obunasi bilan ochiladi. Onlayn toʻlov ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz.",
+          [{label: "Narxlar va obuna", href: "gks-lab-narxlar.html", primary: true}, {label: "Bepul M0", href: "gks-lab-m0.html"}]);
+      }
+    });
+  }).catch(function () {
+    show("Ulanib boʻlmadi", "Server bilan aloqa yoʻq. Internetni tekshirib, sahifani qayta yuklang.", [{label: "Qayta urinish", href: location.pathname + location.search, primary: true}, {label: "Modul sahifasi", href: hub}]);
+  });
+})();
+</script>
+</body>
+</html>

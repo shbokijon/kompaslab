@@ -60,8 +60,9 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 - Manba: `src/<nom>.src.html` (`{{CSS}}` oʻrniga `m0.css`). Yigʻish: `python3 tools/modules/build.py [nom]`.
   - sayt versiyasi → repo ildizida `<nom>.html` (config.js, live-bar, protect, logotip, PWA, darvoza)
   - yuklab olinadigan → `tools/modules/dist/<nom>.html` (rasmlar ichida; git'ga kirmaydi). Foydalanuvchiga `SendUserFile` bilan yuboriladi.
-- **Pullik modullar (2026-10-30, Master M1–M8):** `build.py` dagi `paid=True` → `tools/modules/paid/<nom>.html` (git va saytga chiqmaydi) → bazaga yuklash: admin `admin-paid.html` da fayllarni tanlaydi (yoki `python3 tools/modules/paid_upload.py` → `paid/upload_*.sql`). Jadval: `paid_pages`. Talaba `master-lab-o.html?m=N` orqali oladi, `fn_paid_page()` obunani serverda tekshiradi. Modul sahifasidagi "Modulni ochish" tugmasi: `js/paid-module.js`. Batafsil: `docs/MASTER_LAB_RELEASE_POLICY.md`. Tekshiruv: `node tools/modules/test/paid_reader.js`. Kontent oʻzgarsa: qayta yigʻ → SQL → bazaga yukla.
+- **Pullik modullar (2026-10-30 Master M1–M8; 2026-10-31 GKS M1–M8):** `build.py` dagi `paid=True` → `tools/modules/paid/<nom>.html` (git va saytga chiqmaydi) → bazaga yuklash: admin `admin-paid.html` da fayllarni tanlaydi (yoki `python3 tools/modules/paid_upload.py` → `paid/upload_*.sql`). Jadval: `paid_pages`. Talaba `master-lab-o.html?m=N` / `gks-lab-o.html?m=N` orqali oladi, `fn_paid_page()` obunani serverda tekshiradi. Modul sahifasidagi "Modulni ochish" tugmasi: `js/paid-module.js`. Batafsil: `docs/MASTER_LAB_RELEASE_POLICY.md`. Tekshiruv: `node tools/modules/test/paid_reader.js` (GKS: `PAID_LAB=gks-lab`). Kontent oʻzgarsa: qayta yigʻ → SQL → bazaga yukla.
 - Master M3–M8 manbalari umumiy generator bilan yaratilgan (qobiq M2 andozasi); endi `src/*.src.html` ni toʻgʻridan-toʻgʻri tahrirla. Pullik modullarda faktlar "16.10.2026 holatiga" belgilangan: har sikl yangilash kerak (M7, M8).
+- **GKS M1–M8 (2026-10-31):** manbalar `tools/modules/gks/engine.py` + `gks/m1.py…m8.py` (kontent) bilan yaratiladi → `src/gks-lab-mN.src.html`. Kontentni `mN.py` da tahrirla, keyin `python3 tools/modules/gks/engine.py && python3 tools/modules/build.py gks-lab-mN`. Tekshiruv: `python3 tools/modules/gks/check.py` (8-boʻlim 1–6) va `node tools/modules/gks/browser_test.js` (toʻliq oqim, 250 XP). Treklar (U, M, D) bitta modulda, `<span class="trk">` belgisi bilan. Faktlar 31.10.2026 holatiga (2027 GKS-U, 2026 GKS-G); 2027 GKS-G yoʻriqnomasi chiqqach (2026 siklida fevral) M2, M7, M8 sanalari va kvotalari yangilanadi. Bazadagi katalog: `supabase/migrations/20261031_gks_lab_m1_m8.sql`.
 - Yangi modul: eng yaqin manbadan nusxa ol → `build.py` dagi `MODULES` ga qoʻsh → yigʻ → tekshir → Lab sahifasi va dashboard'ga bogʻla.
 - Tekshiruv: `python3 -m http.server 8814 &` keyin `PW=$(npm root -g)/playwright node tools/modules/test/smoke.js <nom>` (JS xatosi, 390px, darvoza, 1-dars +XP; sayt va dist).
 - Sandbox'dan Supabase va jsdelivr ochilmaydi: Playwright'da `route` bilan mock qilinadi (smoke.js ga qara).
@@ -83,7 +84,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 | Bachelor | bachelor-lab | 17 (86) | M0 saytda |
 | Master | master-lab | 9 (59) | M0 saytda; M1–M8 pullik yetkazish tayyor: `paid_pages` + `fn_paid_page()` + `master-lab-o.html?m=N` (toʻlov ochilgach ishlaydi) |
 | PhD | phd-lab | `phd-lab.html` ga qara | M0 saytda |
-| GKS | gks-lab | 12 (54) | M0 saytda |
+| GKS | gks-lab | 9 (41) | M0 saytda; M1–M8 pullik (4 faza: I M1–M2, II M3–M4, III M5–M6, IV M7–M8), `gks-lab-o.html?m=N`; eski trek sahifalari (`gks-lab-m3-u` …) `vercel.json` da redirect |
 | USA | usa-lab | 12 (72) | M0 saytda |
 | DAAD | daad-lab | 9 (51) | M0 yoʻq |
 | Tadbirkor Talaba | tadbirkor-talaba | 10 (54) | M0 saytda |

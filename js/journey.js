@@ -14,7 +14,7 @@
   var LABS = [
     { id: "master", n: "Master Lab", lessons: 59, m0: "master-lab-m0.html", key: "kompas_master_m0_v1" },
     { id: "bachelor", n: "Bachelor Lab", lessons: 86, m0: "bachelor-lab-m0.html", key: "kompas_bachelor_m0_v1" },
-    { id: "gks", n: "GKS Lab", lessons: 54, m0: "gks-lab-m0.html", key: "kompas_gks_m0_v1" },
+    { id: "gks", n: "GKS Lab", lessons: 41, m0: "gks-lab-m0.html", key: "kompas_gks_m0_v1" },
     { id: "usa", n: "USA Lab", lessons: 72, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
     { id: "daad", n: "DAAD Lab", lessons: 51, m0: "daad-lab.html", key: null },
     { id: "tt", n: "Tadbirkor Talaba", lessons: 54, m0: "tadbirkor-talaba-m0.html", key: "kompas_tt_m0_v1" },
@@ -31,7 +31,15 @@
     { k: "kompas_master_m5_v1", n: "Maqsad bayonnomasi", s: "Master M5", ic: "memo" },
     { k: "kompas_master_m6_v1", n: "Loyiha taklifi", s: "Master M6", ic: "books" },
     { k: "kompas_master_m7_v1", n: "Stipendiya portfeli", s: "Master M7", ic: "money" },
-    { k: "kompas_master_m8_v1", n: "Joʻnash paketi", s: "Master M8", ic: "lock" }
+    { k: "kompas_master_m8_v1", n: "Joʻnash paketi", s: "Master M8", ic: "lock" },
+    { k: "kompas_gks_m1_v1", n: "Hujjatlar nazorat jadvali", s: "GKS M1", ic: "scroll" },
+    { k: "kompas_gks_m2_v1", n: "Universitet tanlovi", s: "GKS M2", ic: "telescope" },
+    { k: "kompas_gks_m3_v1", n: "Dalillar inventari", s: "GKS M3", ic: "bulb" },
+    { k: "kompas_gks_m4_v1", n: "Aloqa paketi", s: "GKS M4", ic: "bell" },
+    { k: "kompas_gks_m5_v1", n: "Shaxsiy bayonot", s: "GKS M5", ic: "memo" },
+    { k: "kompas_gks_m6_v1", n: "Oʻquv rejasi", s: "GKS M6", ic: "calendar" },
+    { k: "kompas_gks_m7_v1", n: "Topshirish paketi", s: "GKS M7", ic: "hourglass" },
+    { k: "kompas_gks_m8_v1", n: "Intervyu va joʻnash", s: "GKS M8", ic: "lock" }
   ];
   var PACE = [[2, "Sekin: 2 dars/hafta (~2 soat)"], [4, "Oʻrtacha: 4 dars/hafta (~4 soat)"], [6, "Tez: 6 dars/hafta (~6 soat)"]];
   var DAY = 86400000, MON = ["yan", "fev", "mar", "apr", "may", "iyn", "iyl", "avg", "sen", "okt", "noy", "dek"];
