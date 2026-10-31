@@ -73,6 +73,19 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 - Supabase `paid_pages` module_index=3 remains at version `2026-10-30+suggest` until an independently reviewed rebuild and controlled update. No database write was made.
 - Before release: build HTML, compare content hash, verify quiz answer/XP, STAR builder, CV sections, print PDF and Word-mos DOC behaviour across browsers; check paid authorization, RLS and state backwards-compatibility. University-specific CV policy must not be presented as universal.
 
+
+## M4 editorial revision — 2026-10-31
+- Canonical lesson source: `tools/modules/src/master-lab-m4.src.html` (6 lessons, 4 panels each).
+- Fact-check: Oxford registers 3 referees and can assess once 2 references arrive; Cambridge normally needs 2, Gates Cambridge 3; Chevening nominates 2 and successful interview-stage applicants upload the letters. Reference submission is programme-specific.
+- Referee independence is essential; applicant may provide CV and factual evidence but must not misrepresent authored reference as referee's own.
+- FERPA waiver is a privacy/access choice, not an admission guarantee. The M4.1 interactive quiz answers were updated to reflect that.
+- A 6–8-week initial request, 150–200-word email and 7–10 working day follow-up are editorial planning guidance, not university requirements. The email builder's 150–200-word XP check is unchanged and explicitly described as an exercise-only gate.
+- Research supervisor pre-contact is programme- and department-dependent. Taught master's applicants are not expected to contact professors where it is unnecessary.
+- Outreach Log adds 10 **calendar** days and does not send reminders or emails. The referee scoring model is an unvalidated heuristic, not an admissions likelihood.
+- Replaced learner-facing "faza" with "bosqich" in M4 source and public hub, retained styles, modules, user state keys and interactive structure.
+- The GitHub source and public syllabus/hub are updated; Supabase paid module `master-lab` index 4 remains on version `2026-10-30+suggest`. Full paid lessons are **not** yet updated for subscribers.
+- Release gate: editorial approval, compiled HTML rebuild, hash confirmation, quiz/score, date calculations, email builder, CSV export, mobile/browser regression and RLS/paid-access checks before controlled `paid_pages` replacement.
+
 ## Module readiness checklist (all require verification and integration)
 | Module | Topic | Current repository asset | Release readiness |
 |---|---|---|---|
@@ -80,7 +93,7 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 | M1 | Ilmiy yo‘nalish va universitet | master-lab-m1.src.html | 2026-10-31 editorial draft revised; independent review, rebuild and paid_pages update pending |
 | M2 | Muddatlar va ish tizimi | master-lab-m2.src.html | 2026-10-31 editorial revision in source; independent review, rebuild, SHA comparison, paid_pages update and RLS tests pending |
 | M3 | Akademik CV | master-lab-m3.src.html | 2026-10-31 editorial revision in GitHub; paid_pages rebuild, security and browser tests pending |
-| M4 | Tavsiya xatlari va professor | master-lab-m4.src.html | Built for paid delivery; editorial review pending |
+| M4 | Tavsiya xatlari va professor | master-lab-m4.src.html | 2026-10-31 editorial revision in source; separate paid_pages build, QA and authorization tests pending |
 | M5 | Maqsad bayonnomasi (SoP) | master-lab-m5.src.html | Built for paid delivery; editorial review pending |
 | M6 | Ilmiy loyiha taklifi | master-lab-m6.src.html | Built for paid delivery; editorial review pending |
 | M7 | Stipendiyalar va funding | master-lab-m7.src.html | Built for paid delivery; facts dated 16.10.2026, source re-check required before sale |

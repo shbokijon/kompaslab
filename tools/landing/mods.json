@@ -580,42 +580,42 @@
    "id": "M4",
    "title": "Tavsiya xatlari va professor bilan aloqa",
    "meta": "6 dars, Core",
-   "info": "Maqsad: talaba 2–3 tavsiya beruvchini tanlaydi, ularga material tayyorlaydi va professorlar bilan yozishmani boshlaydi. Artefakt: Yutuqlar varaqasi (Brag Sheet) + tavsiya soʻrovlari + professorlarga xatlar + Aloqalar jadvali (Outreach Log). ",
+   "info": "Maqsad: dastur talabiga mos tavsiya beruvchilarni tanlash, ularga faktlarni tartibli taqdim etish va faqat zarur bo'lsa professor bilan bogʻlanishni rejalash. Natija: Yutuqlar varaqasi (Brag Sheet), tavsiya soʻrovlari, namunaviy email va Aloqalar jadvali (Outreach Log).",
    "lessons": [
     {
      "num": "4.1",
-     "title": "Tavsiya xati anatomiyasi",
-     "content": "Komissiya xatda nimani qidiradi: kuzatilgan dalil, solishtirma baho, aniq epizodlar",
+     "title": "Tavsiya xati: mustaqil baho va dalillar",
+     "content": "Tavsiya beruvchining mustaqil xati, real kuzatuvlar; Oxford, Cambridge va Chevening tizimlari farqlari",
      "trek": ""
     },
     {
      "num": "4.2",
-     "title": "Kimdan, qachon, qanday soʻrash",
-     "content": "Akademik va professional tavsiya beruvchi; muddatdan 8 hafta oldin soʻrash; rad etilsa nima qilish",
+     "title": "Tavsiya beruvchini tanlash va soʻrash",
+     "content": "Akademik va professional tavsiya; 6–8 hafta oldin murojaat qilish ishchi tavsiyasi, rasmiy dastur sharti ustuvor",
      "trek": ""
     },
     {
      "num": "4.3",
      "title": "Yutuqlar varaqasi (Brag Sheet)",
-     "content": "6 boʻlim: kim/qayerga/qachon, aloqa tarixi, nega bu dastur, faktlar, 2–3 STAR epizod, taʼkidlanishi soʻralgan sifatlar",
+     "content": "Tavsiya beruvchi uchun faktlar, shaxsiy hissa va kuzatilgan epizodlar; xatni o'zi yozadi",
      "trek": ""
     },
     {
      "num": "4.4",
-     "title": "Professorga dastlabki xat (cold email)",
-     "content": "Kimga yoziladi; mavzu qatori; 150–200 soʻzlik tuzilma; professor ishini oʻqiganini koʻrsatish; nimalar yozilmaydi",
+     "title": "Professorga xat: qachon va qanday",
+     "content": "Supervisor bilan oldindan aloqa talabi dasturga bogʻliq; professor ishiga asoslangan xat va bitta aniq savol",
      "trek": ""
     },
     {
      "num": "4.5",
-     "title": "Javob, qayta yozish va suhbat",
-     "content": "Javob kelmasa qachon qayta yozish; ijobiy javobdan keyin onlayn suhbatga tayyorlanish",
+     "title": "Javob, eslatma va suhbat",
+     "content": "7–10 ish kuni ishchi follow-up tavsiyasi; ijobiy javob qabul kafolati emas; suhbatga tayyorgarlik",
      "trek": ""
     },
     {
      "num": "4.6",
      "title": "Aloqalar jadvali (Outreach Log)",
-     "content": "Tavsiya va xatlarni bitta jadvalda boshqarish: sana, holat, eslatma",
+     "content": "Yuborilgan sana, holat, ishchi eslatma va CSV; 10 kalendar kuni, avtomatik xat yoki portal integratsiyasi yoʻq",
      "trek": ""
     }
    ]
