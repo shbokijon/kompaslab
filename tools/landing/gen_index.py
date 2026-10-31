@@ -11,7 +11,7 @@ LABS = [
     dict(slug="master-lab", name="Master Lab", icon="master", page="master-lab.html", group=0, ang=45,
          who="Xorijiy magistraturaga topshiruvchilar", chips=["9 modul", "59 dars"], lessons=59,
          text="Akademik CV, tavsiya xatlari, maqsad bayonnomasi (SoP), ilmiy loyiha taklifi va stipendiya portfeli.",
-         why="Magistratura: yoʻnalish, hujjatlar, stipendiya, viza va joʻnash.", y=699000, m=99000, status="Kutish roʻyxati"),
+         why="Magistratura: yoʻnalish, hujjatlar, stipendiya, viza va joʻnash.", y=899000, m=99000, status="Kutish roʻyxati"),
     dict(slug="phd-lab", name="PhD Lab", icon="phd", page="phd-lab.html", group=0, ang=90,
          who="Moliyalashtirilgan doktorantura", chips=["9 modul", "65 dars"], lessons=65,
          text="Ilmiy savol, ilmiy rahbarlar jadvali, professorlarga xat, ilmiy loyiha taklifi va moliyalashtirish atlasi.",
