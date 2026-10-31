@@ -509,6 +509,7 @@ function ls(k) { try { return JSON.parse(localStorage.getItem(k) || 'null') } ca
 const LAB_PAGE = { 'miggo': 'musofir-lab' }
 function labPage(slug) { return (LAB_PAGE[slug] || slug) }
 const PAGE_COURSES = {
+  'bachelor-lab': { href: n => n === 0 ? 'bachelor-lab-m0.html' : `bachelor-lab-o.html?m=${n}`, key: n => `kompas_bachelor_m${n}_v1` },
   'master-lab': { href: n => n === 0 ? 'master-lab-m0.html' : `master-lab-o.html?m=${n}`, key: n => `kompas_master_m${n}_v1` },
   // GKS: order_index 1..11 = umumiy oʻzak + U/M/D treklari (gks-lab-o.html dagi MODS bilan bir xil tartib)
   'gks-lab': { href: n => n === 0 ? 'gks-lab-m0.html' : `gks-lab-o.html?m=${GKS_KEYS[n - 1]}`, key: n => n === 0 ? 'kompas_gks_m0_v1' : `kompas_gks_${(GKS_KEYS[n - 1] || '').replace('-', '')}_v1` }

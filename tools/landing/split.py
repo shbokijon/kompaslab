@@ -23,7 +23,7 @@ SITE = "https://www.kompaslab.uz/"
 # Lab boʻyicha qoʻshimcha tab (sahifa mavjud boʻlsa)
 # Pullik modul oʻquvchisi bor Lablar: modul sahifasidagi qulf bloki obunachiga "Modulni ochish" tugmasini
 # koʻrsatadi (js/paid-module.js, fn_my_access). Kontentning oʻzi bazada, fn_paid_page() orqali beriladi.
-PAID_READER = {"master-lab": "master-lab-o.html", "gks-lab": "gks-lab-o.html"}
+PAID_READER = {"master-lab": "master-lab-o.html", "gks-lab": "gks-lab-o.html", "bachelor-lab": "bachelor-lab-o.html"}
 EXTRA_TABS = {"master-lab": [("master-lab-manbalar.html", "Manbalar"), ("master-planner.html", "Shaxsiy reja")]}
 
 
