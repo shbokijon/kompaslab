@@ -314,7 +314,7 @@ def split(root, f, src):
     nxt = [(stem + "-dastur.html", "Dastur", "Fazalar, modullar va har darsning mavzusi")]
     if have_test:
         nxt.append((stem + "-test.html", "Moslik testi", "6 savol: hozir boshlash kerakmi yoki avval boʻshliqlarni yopishmi"))
-    nxt += [(stem + "-narxlar.html", "Narxlar", "Oylik, 4 oylik Mavsum va yillik obuna"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
+    nxt += [(stem + "-narxlar.html", "Narxlar", "Oylik, 6 oylik va yillik obuna"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
     nxt_html = '<section class="alt"><div class="wrap"><div class="head"><h2>Keyingi qadam</h2></div><nav class="kl-next" aria-label="Lab sahifalari">' + "".join(
         f'<a href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in nxt) + "</nav></div></section>"
     main = "\n".join(x for x in [hero, B.get("dark", ""), path, nxt_html, B.get("cta", "")] if x)
@@ -346,7 +346,7 @@ def split(root, f, src):
     # ── 4. Narxlar ──
     h2, sub, sec = strip_head(B["narx"])
     main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Narxlar")], h2 or "Narxlar", sub, "money") + "\n" + sec
-    made.append(emit(stem + "-narxlar.html", "narxlar", f"Narxlar · {lab_name} | Kompas Lab", f"{lab_name} narxlari: oylik, Mavsum (4 oy) va yillik obuna. M0 bepul.", main, own=("narx",)))
+    made.append(emit(stem + "-narxlar.html", "narxlar", f"Narxlar · {lab_name} | Kompas Lab", f"{lab_name} narxlari: oylik, 6 oylik va yillik obuna. M0 bepul.", main, own=("narx",)))
 
     # ── 5. Savollar ──
     h2, sub, sec = strip_head(B["savollar"])

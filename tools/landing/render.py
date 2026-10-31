@@ -350,20 +350,15 @@ def maker(lab):
   </div>
 </section>'''
 
-def best_short(n, m):
-    """n oy uchun Mavsum (4 oy = 3 x oylik) va oylik obunaning eng arzon jamlanmasi."""
-    return min(k * 3 * m + max(0, n - 4 * k) * m for k in range(n // 4 + 2))
-
-def std_calc(y, m):
-    # Yillik reja oylik bilan emas, Mavsum + oylik jamlanmasining eng arzoni bilan solishtiriladi
-    months = next((n for n in range(1, 13) if y < best_short(n, m)), None)
-    rows = [(f"{fmt(m * 12)} soʻm", f"12 oy faqat oylik reja bilan ({fmt(m)} × 12)"),
-            (f"{fmt(m * 9)} soʻm", f"12 oy Mavsum bilan (3 × {fmt(m * 3)})")]
+def calc_html(y, m, slug):
+    """Narx taqqoslash. 6 oylik narx bazada (courses.price_6m, admin kiritadi); boʻlsa,
+    JS (LIVE_JS) 6 oylik qatorini ochadi va yillik chegarasini 6 oylik + oylik bilan qayta hisoblaydi."""
+    months = next((n for n in range(1, 13) if y < m * n), None)
+    rows = [f'<div><b>{fmt(m * 12)} soʻm</b>12 oy faqat oylik reja bilan ({fmt(m)} × 12)</div>',
+            f'<div data-p6box="{slug}" hidden><b><span data-p6x2="{slug}">—</span> soʻm</b>12 oy 6 oylik bilan (2 × <span data-p6v="{slug}">—</span>)</div>']
     if months:
-        rows.append((f"{months} oy va undan koʻp", "obuna shuncha davom etsa, yillik reja Mavsum va oylikdan arzon"))
-    else:
-        rows.append(("Mavsum arzonroq", "12 oyda ham 3 ta Mavsum yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun"))
-    return rows
+        rows.append(f'<div data-ybreak="{slug}"><b>{months} oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja oylikdan arzon</div>')
+    return "".join(rows)
 
 REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi. Oylik obunada har toʻlov bitta fazani ochadi; obuna tugasa, ochilgan modullar ham yopiladi."
 
@@ -373,8 +368,17 @@ PRO_PLANNED = """<div class="pro-plan"><span class="tag-plan">Rejada</span><b>Ko
       <ul><li>Shaxsiy muddat eslatmalari (Telegram yoki email)</li><li>Profilga mos stipendiyalar bazasi: rasmiy havola va tekshiruv sanasi bilan</li><li>Tayyorgarlik koʻrsatkichi tarixi: oyma-oy oʻzgarish</li><li>Javoblar va hujjatlarni telefon va kompyuter orasida sinxronlash</li></ul>
     </div>"""
 
-# Mavsum (4 oy) narxi = 3 × oylik; bazada alohida ustun yoʻq, sahifa oylik narxdan hisoblaydi
-SEASON_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 4 oy", "1 oy tekin: 4 oy 3 oy narxida", "Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni"]
+# 6 oylik narx bazada (courses.price_6m), admin har Lab uchun kiritadi; boʻsh boʻlsa karta yashirin
+SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni"]
+
+def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
+    return f'''<div class="{cls}" data-p6box="{slug}" hidden>
+        <span class="tag-top">Asosiy reja</span>
+        <h3>6 oylik</h3><p class="desc">Bitta ariza sikli uchun: 6 oy</p>
+        <div class="price" data-p6v="{slug}">—</div><div class="per">soʻm, 6 oy uchun</div>
+        <ul>{"".join(f"<li>{x}</li>" for x in SIX_ITEMS)}</ul>
+        <button type="button" class="btn btn-p" data-wl>{btn}</button>
+      </div>'''
 MONTHLY_EXTRA = ["Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
 
 def pricing(lab):
@@ -394,13 +398,7 @@ def pricing(lab):
         <ul>{"".join(f"<li>{x}</li>" for x in p["m_items"] + MONTHLY_EXTRA)}</ul>
         <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
-      <div class="plan main">
-        <span class="tag-top">Asosiy reja</span>
-        <h3>Mavsum, 4 oy</h3><p class="desc">Bitta ariza sikli uchun: 4 oy 3 oy narxida</p>
-        <div class="price" data-ps="{slug}">{fmt(mo * 3)}</div><div class="per">soʻm, 4 oy uchun</div>
-        <ul>{"".join(f"<li>{x}</li>" for x in SEASON_ITEMS)}</ul>
-        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
-      </div>
+      {six_card(slug)}
       <div class="plan">
         <h3>Yillik</h3><p class="desc">{p["y_desc"]}</p>
         <div class="price" data-py="{slug}">{fmt(y)}</div><div class="per">soʻm, 12 oy uchun</div>
@@ -408,7 +406,7 @@ def pricing(lab):
         <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
-    <div class="calc">{"".join(f"<div><b>{a}</b>{b}</div>" for a, b in std_calc(y, mo))}</div>
+    <div class="calc">{calc_html(y, mo, slug)}</div>
     {PRO_PLANNED}'''
     if p.get("pre_html"):
         plans = p["pre_html"] + plans
@@ -417,7 +415,7 @@ def pricing(lab):
     return f'''<section id="narx">
   <div class="wrap">
     <div class="head">
-      <h2>Obuna: oylik, 4 oy yoki yillik. M0 bepul.</h2>
+      <h2>Obuna: oylik, 6 oylik yoki yillik. M0 bepul.</h2>
       <p class="sub">{p["sub"]}</p>
     </div>
     <div class="pay-status"><span>⏳</span><span>{status}</span></div>
@@ -491,7 +489,19 @@ LIVE_JS = '''
     var pr = d.prices || {};
     document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
-    document.querySelectorAll("[data-ps]").forEach(function (el) { var p = pr[el.getAttribute("data-ps")]; if (p && p.m) el.textContent = nf(p.m * 3); });
+    // 6 oylik: narx bazada boʻlsagina karta va taqqoslash qatori ochiladi
+    function s6(sl) { var p = pr[sl]; return p && p.s6 > 0 ? p.s6 : 0; }
+    document.querySelectorAll("[data-p6v]").forEach(function (el) { var v = s6(el.getAttribute("data-p6v")); if (v) el.textContent = nf(v); });
+    document.querySelectorAll("[data-p6x2]").forEach(function (el) { var v = s6(el.getAttribute("data-p6x2")); if (v) el.textContent = nf(2 * v); });
+    document.querySelectorAll("[data-p6box]").forEach(function (el) { el.hidden = !s6(el.getAttribute("data-p6box")); });
+    document.querySelectorAll("[data-ybreak]").forEach(function (el) {
+      var sl = el.getAttribute("data-ybreak"), p = pr[sl], v = s6(sl);
+      if (!p || !p.y || !p.m) return;
+      function best(n) { var b = p.m * n; if (v) for (var k = 1; k <= Math.floor(n / 6) + 1; k++) b = Math.min(b, k * v + Math.max(0, n - 6 * k) * p.m); return b; }
+      var n = 0; for (var i = 1; i <= 12; i++) if (p.y < best(i)) { n = i; break; }
+      el.innerHTML = n ? "<b>" + n + " oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja " + (v ? "6 oylik va oylikdan" : "oylikdan") + " arzon"
+                       : "<b>6 oylik arzonroq</b>12 oyda ham 2 ta 6 oylik yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun";
+    });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;

@@ -8,7 +8,7 @@
 <title>Maxfiylik siyosati · Kompas Lab</title>
 <meta name="description" content="Kompas Lab qanday shaxsga doir maʼlumot yigʻadi, qayerda saqlaydi va siz uni qanday oʻchirishingiz mumkin.">
 <meta property="og:title" content="Kompas Lab">
-<meta property="og:description" content="Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul. Obuna: oylik, Mavsum (4 oy) yoki yillik.">
+<meta property="og:description" content="Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul. Obuna: oylik, 6 oylik yoki yillik.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -261,22 +261,23 @@
     });
   });
 
-  // ── Oylik, Mavsum (4 oy = 3 × oylik) yoki yillik: eng arzon yoʻl ──
+  // ── Oylik, 6 oylik (narx bazada, admin kiritadi) yoki yillik: eng arzon yoʻl ──
   var mcLab = document.getElementById("mcLab"), mcM = document.getElementById("mcM");
   function mcalc() {
     if (!mcLab || !mcM) return;
-    var l = bySlug[mcLab.value], n = parseInt(mcM.value, 10), s = l.m * 3;
+    var l = bySlug[mcLab.value], n = parseInt(mcM.value, 10), s = l.s6;
     document.getElementById("mcMv").textContent = n;
-    var k = Math.floor(n / 4), r = n % 4, rest = Math.min(r * l.m, r ? s : 0);
-    var opts = [
-      ["Oylik", l.m * n, n + " oy × " + nf(l.m) + " soʻm"],
-      ["Mavsum", k * s + rest, (k ? k + " × Mavsum (" + nf(s) + ")" : "") + (r ? (k ? " + " : "") + (r * l.m <= s ? r + " oy oylik" : "yana 1 Mavsum") : "")],
-      ["Yillik", l.y, "1 yil"]
-    ].sort(function (a, b) { return a[1] - b[1] || (a[0] === "Oylik") - (b[0] === "Oylik"); });   // teng boʻlsa uzoqroq davr
+    var opts = [["Oylik", l.m * n, n + " oy × " + nf(l.m) + " soʻm", n]];
+    if (s > 0) {
+      var k = Math.floor(n / 6), r = n % 6, extra = r && r * l.m > s;
+      opts.push(["6 oylik", k * s + (r ? (extra ? s : r * l.m) : 0), (k ? k + " × 6 oylik (" + nf(s) + ")" : "") + (r ? (k ? " + " : "") + (extra ? "yana 1 × 6 oylik" : r + " oy oylik") : ""), 6 * k + (r ? (extra ? 6 : r) : 0)]);
+    }
+    opts.push(["Yillik", l.y, "1 yil", 12]);
+    opts.sort(function (a, b) { return a[1] - b[1] || b[3] - a[3]; });   // teng boʻlsa uzoqroq davr
     var best = opts[0], mon = l.m * n;
     var B = document.getElementById("mcB"), S = document.getElementById("mcS");
     B.textContent = best[0] + " arzon: " + nf(best[1]) + " soʻm";
-    S.textContent = best[2] + "." + (best[0] === "Mavsum" && n % 4 === 3 ? " Shu narxga 4-oy ham kiradi." : "") + (best[0] !== "Oylik" && mon > best[1] ? " Oylikka nisbatan tejash: " + nf(mon - best[1]) + " soʻm." : "") + " Master Lab odatda 4–6 oy davom etadi (haftasiga ~4 dars).";
+    S.textContent = best[2] + "." + (best[0] === "6 oylik" && best[3] > n ? " Shu narxga " + best[3] + " oy kiradi." : "") + (best[0] !== "Oylik" && mon > best[1] ? " Oylikka nisbatan tejash: " + nf(mon - best[1]) + " soʻm." : "") + " Master Lab odatda 4–6 oy davom etadi (haftasiga ~4 dars).";
   }
   if (mcLab && mcM) { mcLab.addEventListener("change", mcalc); mcM.addEventListener("input", mcalc); mcalc(); }
 
@@ -302,7 +303,7 @@
   document.querySelectorAll("[data-count]").forEach(function (el) { countUp(el, parseInt(el.getAttribute("data-count"), 10)); });
   window.onKompasStats = function (d) {
     var pr = d.prices || {};
-    LABS.forEach(function (l) { var p = pr[l.slug]; if (p) { if (p.y) l.y = p.y; if (p.m) l.m = p.m; } });
+    LABS.forEach(function (l) { var p = pr[l.slug]; if (p) { if (p.y) l.y = p.y; if (p.m) l.m = p.m; l.s6 = p.s6 > 0 ? p.s6 : null; } });
     recalc(); mcalc();
     var any = false;
     [["stReg", d.registered], ["stWait", d.waitlist]].forEach(function (x) {
@@ -328,8 +329,10 @@
     var pr = d.prices || {};
     document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
-    // Mavsum (4 oy) = 3 × oylik narx; alohida ustun bazada yoʻq
-    document.querySelectorAll("[data-ps]").forEach(function (el) { var p = pr[el.getAttribute("data-ps")]; if (p && p.m) el.textContent = nf(p.m * 3); });
+    // 6 oylik narx bazada (courses.price_6m, admin kiritadi); yoʻq boʻlsa tarif koʻrsatilmaydi
+    var any6 = false;
+    document.querySelectorAll("[data-p6]").forEach(function (el) { var p = pr[el.getAttribute("data-p6")]; if (p && p.s6 > 0) { any6 = true; el.innerHTML = nf(p.s6) + " soʻm<small>6 oy uchun</small>"; } });
+    document.querySelectorAll("[data-p6seg]").forEach(function (el) { el.hidden = !any6; });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;

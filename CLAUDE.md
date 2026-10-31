@@ -72,7 +72,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 - Javoblar faqat `localStorage` da: kalit `kompas_<lab>_m0_v1` (masalan `kompas_usa_m0_v1`).
 - Oxirida avtomatik yigʻiladigan **Qaror va rozilik** bayonoti (18+, toʻlov qaytarilmasligi, Kompas vositachi emas).
 - **Tayyorgarlik koʻrsatkichi (Readiness Score)** Lab sahifasidagi test bilan **aynan bir xil** (ogʻirliklar, 70/45 chegaralari, "x" bloklovchi javoblar).
-- Narxlar `kompas_public_stats().prices[slug]` dan jonli olinadi (`data-py`, `data-pm`); HTML dagi raqam zaxira. **Mavsum (4 oy) = 3 × oylik** (`data-ps`), bazada alohida ustun yoʻq.
+- Narxlar `kompas_public_stats().prices[slug]` dan jonli olinadi (`data-py`, `data-pm`); HTML dagi raqam zaxira. **6 oylik (2026-10-31):** narx bazada `courses.price_6m` (admin har Lab uchun qoʻlda kiritadi, formula yoʻq), `prices[slug].s6`; sahifada `data-p6v` (qiymat), `data-p6box` (boʻsh boʻlsa yashirin), Lab narx sahifasida `data-p6x2`, `data-ybreak`. Narx kiritilmaguncha 6 oylik tarif hech qayerda koʻrsatilmaydi.
 - Faktlar bloki: "Tekshirildi / Rasmiy / Ehtiyot" belgisi, sana va havola.
 - Kirish darvozasi: sayt versiyasida faqat roʻyxatdan oʻtganlar (va admin); `file://` da ochiq. **Istisno: Musofir M0 hamma uchun ochiq**, himoyasiz, ulashish tugmasi bor.
 - **Suv belgisi ("kompaslab.uz") hamma modulda shart**: `build.py` `WATERMARK` ni har sayt va yuklab olinadigan versiyaga qoʻshadi (oxirgi `</body>` oldidan; kirishdan qatʼi nazar; chop etishda yashirin). Qoʻlda yuritiladigan `master-lab-m0.html` va `lesson.html` da ham bor.
@@ -91,10 +91,10 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 Modul va dars nomlari: `tools/landing/mods.json` (DAAD: `labs_data.py` → `DAAD_MODS`).
 
 ## Obuna modeli (2026-10-17 tasdiqlangan)
-- 3 tarif: **Oylik**, **Mavsum, 4 oy** (asosiy, 3 oy narxida), **Yillik**. M0 bepul.
-- **Oylik (2026-10-30 tasdiqlangan):** har toʻlov bitta fazani ochadi (Masterda faza = 2 modul: I M1–M2, II M3–M4, III M5–M6, IV M7–M8); keyingi faza navbatdagi toʻlov bilan, **toʻlov qilingan zahoti** ochiladi (oy oxirini kutmaydi; "natija topshirilsa ertaroq" qoidasi bekor). Obuna tugasa (`expires_at`), ochilgan modullar ham yopiladi; javoblar talaba brauzerida qoladi. Texnik: toʻlov webhooki `enrollments.unlocked_modules` ni +2 (M0 = 1-oʻrin, faza k → 1+2k) va `expires_at` ni +30 kun qiladi; `fn_paid_page()` shuni tekshiradi. Mavsum va Yillikda hammasi birdaniga (`unlocked_modules` NULL).
+- 3 tarif: **Oylik**, **6 oylik** (asosiy; 2026-10-31 da "Mavsum, 4 oy" oʻrniga, narxi `courses.price_6m` dan, admin kiritadi), **Yillik**. M0 bepul.
+- **Oylik (2026-10-30 tasdiqlangan):** har toʻlov bitta fazani ochadi (Masterda faza = 2 modul: I M1–M2, II M3–M4, III M5–M6, IV M7–M8); keyingi faza navbatdagi toʻlov bilan, **toʻlov qilingan zahoti** ochiladi (oy oxirini kutmaydi; "natija topshirilsa ertaroq" qoidasi bekor). Obuna tugasa (`expires_at`), ochilgan modullar ham yopiladi; javoblar talaba brauzerida qoladi. Texnik: toʻlov webhooki `enrollments.unlocked_modules` ni +2 (M0 = 1-oʻrin, faza k → 1+2k) va `expires_at` ni +30 kun qiladi; `fn_paid_page()` shuni tekshiradi. 6 oylik va Yillikda hammasi birdaniga (`unlocked_modules` NULL).
 - Hozircha faqat sahifalardagi matn va narx: haqiqiy cheklov toʻlov va server tomonidagi kirish huquqi bilan birga qilinadi (pastdagi 1–2-bandlar).
-- Narx taqqoslash (`render.std_calc`): yillik reja oylik bilan emas, **Mavsum + oylik jamlanmasining eng arzoni** bilan solishtiriladi (`best_short`). Natija: 699/99 → yillik 10+ oyda foydali; Tadbirkor va Musofirda 12 oyda ham 3 × Mavsum arzon (narxni qayta koʻrish kerak).
+- Narx taqqoslash (`render.calc_html`): statik HTML yillikni oylik bilan solishtiradi; 6 oylik narx bazada boʻlsa, `LIVE_JS` yillik chegarasini **6 oylik + oylik jamlanmasining eng arzoni** bilan qayta hisoblaydi. Bosh sahifa kalkulyatori (`mcalc`) ham shunday.
 - **Kompas Pro (2026-10-17):** yillik tarif ostida "Rejada" belgisi bilan (`render.PRO_PLANNED`, bosh sahifada ham): muddat eslatmalari, stipendiyalar bazasi, koʻrsatkich tarixi, sinxronlash. Qurilmaguncha narxga kirmaydi. Shu sababli tariflardan qurilmagan "muddat eslatmalari (Telegram)" vaʼdalari olib tashlandi.
 - Asoschi iqtiboslari: Master M0 iqtibosi ismsiz va EYUF siz ("Asoschi"), EYUF 3.4.13 yurist bilan hal boʻlguncha. Footerda YATT maʼlumoti hozircha yoʻq.
 - `robots.txt` va `sitemap.xml` ildizda; yangi ochiq sahifa qoʻshilsa, sitemap ga qoʻsh.

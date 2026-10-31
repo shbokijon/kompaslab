@@ -419,7 +419,7 @@ def build():
     <ol class="steps">
       <li><b>Bepul M0</b><span>Lab nima beradi va nima bermaydi, kimga mos emasligi ochiq yozilgan.</span></li>
       <li><b>Tayyorgarlik darajasi (Readiness Score)</b><span>100 ballik oʻzini oʻzi baholash. Natija “Bu siklga erta” boʻlsa, toʻlov oʻrniga boʻshliqlar roʻyxati va muqobil yoʻl beriladi.</span></li>
-      <li><b>Modullar va topshiriqlar</b><span>Mavsum va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi, keyingisi navbatdagi toʻlov bilan. Har dars: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.</span></li>
+      <li><b>Modullar va topshiriqlar</b><span>6 oylik va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi, keyingisi navbatdagi toʻlov bilan. Har dars: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.</span></li>
       <li><b>Tayyor hujjatlar</b><span>CV, xatlar, insho yoki ilmiy loyiha taklifi. Matnni siz yozasiz, Kompas tuzilma va mezon beradi.</span></li>
     </ol>
   </div>

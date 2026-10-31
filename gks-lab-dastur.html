@@ -180,6 +180,8 @@ table.scope{width:100%;border-collapse:collapse;background:var(--surface);border
 .pay-status{display:flex;gap:12px;align-items:flex-start;background:var(--gold-lit);border:1px solid #e8d48a;border-radius:14px;padding:14px 18px;font-size:16px;margin-bottom:28px;}
 .plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch;}
 .plan{background:var(--bg);border:2px solid var(--border);border-radius:20px;padding:26px;display:flex;flex-direction:column;}
+.plan[hidden]{display:none !important;}
+@media(min-width:1001px){.plans:has(> .plan[hidden]){grid-template-columns:repeat(3,minmax(0,1fr));}}
 .plan.main{background:var(--accent);border-color:var(--accent);color:#fff;position:relative;}
 .plan.main .tag-top{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent2);color:#fff;font-size:12.5px;font-weight:700;padding:4px 12px;border-radius:99px;font-family:"JetBrains Mono","IBM Plex Sans",monospace;white-space:nowrap;}
 .plan h3{font-size:17px;font-weight:800;margin-bottom:4px;}
@@ -593,7 +595,19 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     var pr = d.prices || {};
     document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
-    document.querySelectorAll("[data-ps]").forEach(function (el) { var p = pr[el.getAttribute("data-ps")]; if (p && p.m) el.textContent = nf(p.m * 3); });
+    // 6 oylik: narx bazada boʻlsagina karta va taqqoslash qatori ochiladi
+    function s6(sl) { var p = pr[sl]; return p && p.s6 > 0 ? p.s6 : 0; }
+    document.querySelectorAll("[data-p6v]").forEach(function (el) { var v = s6(el.getAttribute("data-p6v")); if (v) el.textContent = nf(v); });
+    document.querySelectorAll("[data-p6x2]").forEach(function (el) { var v = s6(el.getAttribute("data-p6x2")); if (v) el.textContent = nf(2 * v); });
+    document.querySelectorAll("[data-p6box]").forEach(function (el) { el.hidden = !s6(el.getAttribute("data-p6box")); });
+    document.querySelectorAll("[data-ybreak]").forEach(function (el) {
+      var sl = el.getAttribute("data-ybreak"), p = pr[sl], v = s6(sl);
+      if (!p || !p.y || !p.m) return;
+      function best(n) { var b = p.m * n; if (v) for (var k = 1; k <= Math.floor(n / 6) + 1; k++) b = Math.min(b, k * v + Math.max(0, n - 6 * k) * p.m); return b; }
+      var n = 0; for (var i = 1; i <= 12; i++) if (p.y < best(i)) { n = i; break; }
+      el.innerHTML = n ? "<b>" + n + " oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja " + (v ? "6 oylik va oylikdan" : "oylikdan") + " arzon"
+                       : "<b>6 oylik arzonroq</b>12 oyda ham 2 ta 6 oylik yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun";
+    });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;

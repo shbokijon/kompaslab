@@ -1,5 +1,5 @@
 # Kompas Lab — Lab sahifalari kontenti (manba: v3.0 / v1.0 spetsifikatsiyalari, 2026-10-03; narxlar 2026-10-15)
-# Narxni oʻzgartirish: Supabase → courses jadvali (price_yearly, price_monthly). Sahifa uni jonli oʻqiydi;
+# Narxni oʻzgartirish: Supabase → courses jadvali (price_yearly, price_6m, price_monthly). Sahifa uni jonli oʻqiydi;
 # bu fayldagi raqam faqat zaxira (ulanish boʻlmasa koʻrinadi).
 
 STD_NAV = [("dastur", "Dastur"), ("faktlar", "Faktlar"), ("narx", "Narx"), ("savollar", "Savollar")]
@@ -55,7 +55,7 @@ LABS["Bachelor"] = dict(
             "Ingliz tili boshlang'ich darajada va uni ko'tarish rejasi yo'q o'quvchilar", "Faqat GKS yoki MEXT izlayotganlar → <a href=\"gks-lab.html\">GKS Lab</a> yoki MEXT Lab (tayyorlanmoqda)",
             "Magistraturaga topshirayotganlar → <a href=\"master-lab.html\">Master Lab</a>", "Fan darsini (matematika, fizika, ingliz tili) izlayotganlar — Lab fan o'qitmaydi", "O'zbekistondagi OTMga kirmoqchi bo'lganlar — Abitur Lab (tayyorlanmoqda)", "\"Qabul kafolati\" yoki insho yozib berish xizmatini izlayotganlar"],
     program_title="17 modul, 86 dars, <em>4 faza.</em>",
-    program_sub="Mavsum va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi (keyingisi navbatdagi toʻlov bilan); fazalar tavsiya etilgan tartib. Muddatlar moduli I fazada: Oxford, Cambridge va tibbiyot muddatlari boshqa yo'nalishlardan oldin keladi, AQShda erta muddatlar oddiydan oldin.",
+    program_sub="6 oylik va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi (keyingisi navbatdagi toʻlov bilan); fazalar tavsiya etilgan tartib. Muddatlar moduli I fazada: Oxford, Cambridge va tibbiyot muddatlari boshqa yo'nalishlardan oldin keladi, AQShda erta muddatlar oddiydan oldin.",
     phases=[("FAZA 0 · BEPUL", "Qaror", "M0 · 5 dars · 1 hafta"), ("FAZA I", "Strategiya", "M1–M4 · 20 dars · 6–8 hafta"),
             ("FAZA II", "Akademik kapital", "M5–M8 · 20 dars · 8–10 hafta"), ("FAZA III", "Hikoya va moliya", "M9–M12 · 20 dars · 8–10 hafta"),
             ("FAZA IV", "Topshirish va jo'nash", "M13–M16 · 21 dars · 6–8 hafta")],
@@ -133,7 +133,7 @@ LABS["Master"] = dict(
     fit_no=["Bakalavriatga kirmoqchi bo'lganlar → <a href=\"bachelor-lab.html\">Bachelor Lab</a>", "Faqat GKS yoki DAAD/MEXT izlayotganlar → <a href=\"gks-lab.html\">GKS Lab</a>, DAAD Lab, MEXT Lab (tayyorlanmoqda)",
             "Doktoranturaga topshirayotganlar → <a href=\"phd-lab.html\">PhD Lab</a>", "Sohani almashtirmoqchi, lekin buni asoslaydigan tajriba yoki kurslari yo'qlar — M0 avval shu bo'shliqni ko'rsatadi", "\"Qabul yoki stipendiya kafolati\" izlayotganlar", "Hujjatni kimdir o'rniga yozib berishini kutayotganlar"],
     program_title="9 modul, 59 dars, <em>4 faza.</em>",
-    program_sub="Mavsum va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi (keyingisi navbatdagi toʻlov bilan); fazalar tavsiya etilgan tartib. Har dars to'rt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.",
+    program_sub="6 oylik va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi (keyingisi navbatdagi toʻlov bilan); fazalar tavsiya etilgan tartib. Har dars to'rt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.",
     phases=[("FAZA 0 · BEPUL", "Qaror", "M0 · 5 dars · 1 hafta"), ("FAZA I", "Strategiya", "M1–M2 · 12 dars · 3–4 hafta"), ("FAZA II", "Hujjat va aloqa", "M3–M4 · 12 dars · 4–6 hafta"),
             ("FAZA III", "Ilmiy ovoz", "M5–M6 · 14 dars · 6–8 hafta"), ("FAZA IV", "Stipendiya va jo'nash", "M7–M8 · 16 dars · 4–6 hafta")],
     facts_sec=dict(label="Stipendiyalar atlasi", title="Har dastur — <em>rasmiy havola va sana bilan.</em>",
@@ -384,7 +384,7 @@ LABS["Musofir"] = dict(
     slug="miggo", file="musofir-lab.html", source="musofir_landing", short="Musofir",
     name="Musofir Lab", emoji="🧳", version="v1.0", axis="Tez kunda",
     title="Musofir Lab — xorijda faqat rasmiy yo'l bilan ishlash | Kompas Lab",
-    meta="Musofir Lab: Koreya, Buyuk Britaniya, Germaniya va Polshada rasmiy mehnat yo'llari va firibgarlikdan himoya. M0 bepul va ochiq. Obuna: oylik, Mavsum (4 oy) yoki yillik. Kompas ish topib bermaydi.",
+    meta="Musofir Lab: Koreya, Buyuk Britaniya, Germaniya va Polshada rasmiy mehnat yo'llari va firibgarlikdan himoya. M0 bepul va ochiq. Obuna: oylik, 6 oylik yoki yillik. Kompas ish topib bermaydi.",
     nav=[("dastur", "Dastur"), ("faktlar", "Rasmiy yo'llar"), ("narx", "Narx"), ("savollar", "Savollar")],
     h1="Xorijda ishlash: <em>faqat rasmiy yo'l bilan.</em>",
     lead="Qaysi rasmiy yo'l sizga mosligini, uning talablari va xarajatlarini rasmiy manbadan tekshirishni, vositachi va shartnomani tekshirishni hamda borgan mamlakatdagi huquqlaringiz va yordam manzillarini o'rganasiz.",
@@ -488,7 +488,7 @@ LABS["DAAD"] = dict(
     fit_no=["Bakalavriatga kirmoqchi bo'lganlar → <a href=\"bachelor-lab.html\">Bachelor Lab</a>", "Nemis tili kursi izlayotganlar (til darsi berilmaydi)",
             "Ariza muddatigacha 3 oydan kam qolganlar", "Stipendiya kafolati yoki hujjat yozib berish xizmatini izlayotganlar"],
     program_title="9 modul, 51 dars, 4 faza.",
-    program_sub="Mavsum va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi (keyingisi navbatdagi toʻlov bilan); fazalar tavsiya etilgan tartib. Har dars to'rt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.",
+    program_sub="6 oylik va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi (keyingisi navbatdagi toʻlov bilan); fazalar tavsiya etilgan tartib. Har dars to'rt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.",
     phases=[("FAZA 0 · BEPUL", "Qaror", "M0 · 5 dars"), ("FAZA I", "Tizim va ilmiy rahbar", "M1–M2 · 11 dars"), ("FAZA II", "Hujjatlar", "M3–M5 · 17 dars"),
             ("FAZA III", "Dastur va topshirish", "M6–M7 · 12 dars"), ("FAZA IV", "Jo'nash", "M8 · 6 dars")],
     facts_sec=dict(label="DAAD faktlari", title="Raqamlar: manba va holati bilan.",

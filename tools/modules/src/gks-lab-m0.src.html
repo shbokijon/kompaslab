@@ -301,7 +301,7 @@ body.locked .gate{display:flex;}
             <ul><li>Ariza oynasidan <b>8–12 oy oldin</b>: ideal.</li><li><b>3–8 oy:</b> tigʻiz, lekin mumkin.</li><li><b>3 oydan kam:</b> hujjat legallashtirishga vaqt yetmasligi mumkin.</li><li>Oyna sanalarini Toshkentdagi elchixona eʼloni va yoʻriqnomadan oling. Hali eʼlon qilinmagan boʻlsa, oʻtgan yilgisini “taxminiy” deb belgilang.</li></ul>
             <h4>Toʻlov shartlari</h4>
             <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
-              <tr><td>Obuna</td><td><span data-py>699 000</span> soʻm/yil yoki <span data-pm>99 000</span> soʻm/oy, Mavsum (4 oy) <span data-ps>297 000</span> soʻm. Umumiy oʻzak + tanlangan trek; trekni almashtirish bepul</td></tr>
+              <tr><td>Obuna</td><td><span data-py>699 000</span> soʻm/yil yoki <span data-pm>99 000</span> soʻm/oy<span data-p6box hidden>, 6 oylik <span data-p6v>—</span> soʻm</span>. Umumiy oʻzak + tanlangan trek; trekni almashtirish bepul</td></tr>
               <tr><td>M0 (shu modul)</td><td>Bepul</td></tr>
               <tr><td>Muvofiqlik</td><td>Tekshiruvda “mos emas” chiqsa, toʻlash tavsiya etilmaydi</td></tr>
               <tr><td>18 yoshgacha (Trek U)</td><td>Obuna va toʻlovni ota-ona yoki vasiy rasmiylashtiradi</td></tr>
@@ -732,7 +732,7 @@ body.locked .gate{display:flex;}
         var p = d && d.prices && d.prices["gks-lab"]; if (!p) return;
         if (p.y) document.querySelectorAll("[data-py]").forEach(function (el) { el.textContent = nf(p.y); });
         if (p.m) document.querySelectorAll("[data-pm]").forEach(function (el) { el.textContent = nf(p.m); });
-        if (p.m) document.querySelectorAll("[data-ps]").forEach(function (el) { el.textContent = nf(p.m * 3); });
+        if (p.s6 > 0) { document.querySelectorAll("[data-p6v]").forEach(function (el) { el.textContent = nf(p.s6); }); document.querySelectorAll("[data-p6box]").forEach(function (el) { el.hidden = false; }); }
       }).catch(function () {});
   } catch (e) {}
 

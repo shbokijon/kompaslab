@@ -573,7 +573,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>Lab</th><th>Yillik (soʻm)</th><th>Oylik (soʻm)</th><th>Kutish roʻyxati</th><th>Holat</th><th>Amal</th>
+            <th>Lab</th><th>Yillik (soʻm)</th><th>6 oylik (soʻm)</th><th>Oylik (soʻm)</th><th>Kutish roʻyxati</th><th>Holat</th><th>Amal</th>
           </tr></thead><tbody id="tbLabs"></tbody></table>
         </div>
       </div>
@@ -650,6 +650,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <div class="fld"><label>Tarif *</label>
         <select id="sPlan" onchange="fillStudentAmount()">
           <option value="yearly">Yillik</option>
+          <option value="6m">6 oylik</option>
           <option value="monthly">Oylik</option>
         </select>
       </div>
@@ -827,7 +828,7 @@ async function init() {
 // ════════════════════════════════════════════════════════
 async function loadCourseMap() {
   try {
-    const { data, error } = await supabase.from(DB.courses).select("id, slug, title, emoji, status, price, price_yearly, price_monthly")
+    const { data, error } = await supabase.from(DB.courses).select("id, slug, title, emoji, status, price, price_yearly, price_monthly, price_6m")
     if (error) throw error
     if (data) data.forEach(c => { _courseMap[c.slug] = c })
   } catch(e) {
@@ -872,14 +873,14 @@ function populateCourseSelects() {
   if (sc) {
     sc.innerHTML = slugs.map(sl => {
       const c = _courseMap[sl] || {}, y = c.price_yearly ?? c.price, m = c.price_monthly
-      return "<option value=\"" + escHtml(sl) + "\">" + escHtml(courseLabel(sl)) + " \u2014 " + fmtSum(y) + " / " + fmtSum(m) + " soʻm</option>"
+      return "<option value=\"" + escHtml(sl) + "\">" + escHtml(courseLabel(sl)) + " \u2014 " + fmtSum(y) + " / " + fmtSum(c.price_6m) + " / " + fmtSum(m) + " soʻm</option>"
     }).join("") || "<option value=\"\">Kurslar yuklanmadi</option>"
     fillStudentAmount()
   }
 }
 function fillStudentAmount() {
   const sl = document.getElementById("sCourse")?.value, plan = document.getElementById("sPlan")?.value
-  const c = _courseMap[sl] || {}, amt = plan === "monthly" ? c.price_monthly : (c.price_yearly ?? c.price)
+  const c = _courseMap[sl] || {}, amt = plan === "monthly" ? c.price_monthly : plan === "6m" ? c.price_6m : (c.price_yearly ?? c.price)
   const inp = document.getElementById("sAmount")
   if (inp) inp.value = amt ?? ""
 }
@@ -1361,7 +1362,7 @@ async function saveStudent() {
     const plan = document.getElementById("sPlan").value
     const amount = parseInt(document.getElementById("sAmount").value, 10)
     if (!(amount > 0)) { toast("⚠️ Summani kiriting"); return }
-    if (!confirm(firstName + " " + lastName + " \u2192 " + courseLabel(courseSlug) + ", " + (plan === "monthly" ? "oylik" : "yillik") + ", " + fmtSum(amount) + " soʻm. Tasdiqlaysizmi?")) return
+    if (!confirm(firstName + " " + lastName + " \u2192 " + courseLabel(courseSlug) + ", " + (plan === "monthly" ? "oylik" : plan === "6m" ? "6 oylik" : "yillik") + ", " + fmtSum(amount) + " soʻm. Tasdiqlaysizmi?")) return
     const { data: pay, error: payErr } = await supabase.from(DB.payments).insert({
       user_id: profile.id, course_id: courseId,
       plan: "starter", amount: amount,
@@ -1845,24 +1846,24 @@ let _labRows = {}
 function fmtSum(n) { return n == null ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }
 async function loadLabs() {
   const tb = document.getElementById('tbLabs')
-  tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  tb.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
   const [c, w, st] = await Promise.all([
-    supabase.from(DB.courses).select('slug, title, status, price, price_yearly, price_monthly'),
+    supabase.from(DB.courses).select('slug, title, status, price, price_yearly, price_monthly, price_6m'),
     supabase.from(DB.waitlist).select('course_slug'),
     supabase.rpc('kompas_public_stats')
   ])
-  if (c.error) { tb.innerHTML = '<tr><td colspan="6" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
+  if (c.error) { tb.innerHTML = '<tr><td colspan="7" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
   _labRows = {}; (c.data || []).forEach(r => { _labRows[r.slug] = r })
   const wl = {}; (w.data || []).forEach(r => { wl[r.course_slug] = (wl[r.course_slug] || 0) + 1 })
   const extra = Object.keys(_labRows).filter(sl => !LAB_LIST.some(l => l[0] === sl)).map(sl => [sl, _labRows[sl].title || sl])
   tb.innerHTML = LAB_LIST.concat(extra).map(([slug, name]) => {
-    const r = _labRows[slug], y = r ? (r.price_yearly ?? r.price) : null, m = r ? r.price_monthly : null
-    const inp = (id, v) => '<input id="' + id + '" type="number" min="0" step="100" value="' + (v ?? '') + '" style="width:120px;padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit">'
+    const r = _labRows[slug], y = r ? (r.price_yearly ?? r.price) : null, m = r ? r.price_monthly : null, s6 = r ? r.price_6m : null
+    const inp = (id, v, ph) => '<input id="' + id + '" type="number" min="0" step="100" value="' + (v ?? '') + '"' + (ph ? ' placeholder="' + ph + '"' : '') + ' style="width:120px;padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit">'
     const act = r
       ? '<button class="btn bp bsm" onclick="saveLabPrice(\'' + slug + '\')">💾 Saqlash</button>'
       : '<button class="btn bs bsm" onclick="addLabRow(\'' + slug + '\')">➕ Bazaga qoʻshish</button>'
     return '<tr><td><b>' + escHtml(name) + '</b><div style="font-size:11px;color:var(--muted)">' + slug + '</div></td>' +
-      '<td>' + (r ? inp('py-' + slug, y) : '—') + '</td><td>' + (r ? inp('pm-' + slug, m) : '—') + '</td>' +
+      '<td>' + (r ? inp('py-' + slug, y) : '—') + '</td><td>' + (r ? inp('p6-' + slug, s6, 'yoʻq') : '—') + '</td><td>' + (r ? inp('pm-' + slug, m) : '—') + '</td>' +
       '<td>' + (wl[slug] || 0) + ' kishi</td><td>' + (r ? escHtml(r.status) : '<span style="color:var(--red)">bazada yoʻq</span>') + '</td><td>' + act + '</td></tr>'
   }).join('')
   const box = document.getElementById('pubStats')
@@ -1874,11 +1875,15 @@ async function loadLabs() {
 }
 async function saveLabPrice(slug) {
   const y = parseInt(document.getElementById('py-' + slug).value, 10), m = parseInt(document.getElementById('pm-' + slug).value, 10)
+  const s6raw = document.getElementById('p6-' + slug).value.trim(), s6 = s6raw === '' ? null : parseInt(s6raw, 10)
   if (!(y > 0) || !(m > 0)) { toast('⚠️ Narxni toʻgʻri kiriting'); return }
+  if (s6 !== null && !(s6 > 0)) { toast('⚠️ 6 oylik narxni toʻgʻri kiriting yoki boʻsh qoldiring'); return }
   if (m * 12 < y) { toast('⚠️ 12 oylik narx yillikdan arzon boʻlib qoldi, tekshiring'); return }
+  if (s6 !== null && s6 >= m * 6) { toast('⚠️ 6 oylik narx 6 × oylikdan arzon boʻlishi kerak, tekshiring'); return }
+  if (s6 !== null && s6 >= y) { toast('⚠️ 6 oylik narx yillikdan arzon boʻlishi kerak, tekshiring'); return }
   const old = _labRows[slug]
-  if (!confirm(slug + ': yillik ' + fmtSum(old.price_yearly ?? old.price) + ' → ' + fmtSum(y) + ', oylik ' + fmtSum(old.price_monthly) + ' → ' + fmtSum(m) + ' soʻm. Saqlansinmi?')) return
-  const { error } = await supabase.from(DB.courses).update({ price_yearly: y, price_monthly: m, price: y, updated_at: new Date().toISOString() }).eq('slug', slug)
+  if (!confirm(slug + ': yillik ' + fmtSum(old.price_yearly ?? old.price) + ' → ' + fmtSum(y) + ', 6 oylik ' + fmtSum(old.price_6m) + ' → ' + fmtSum(s6) + ', oylik ' + fmtSum(old.price_monthly) + ' → ' + fmtSum(m) + ' soʻm. Saqlansinmi?' + (s6 === null ? ' (6 oylik boʻsh: saytda bu tarif koʻrsatilmaydi)' : ''))) return
+  const { error } = await supabase.from(DB.courses).update({ price_yearly: y, price_monthly: m, price_6m: s6, price: y, updated_at: new Date().toISOString() }).eq('slug', slug)
   if (error) { toast('❌ ' + error.message); return }
   toast('✅ Saqlandi. Bosh sahifada yangilandi')
   loadLabs()
