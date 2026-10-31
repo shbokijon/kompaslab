@@ -91,3 +91,6 @@ MOD = dict(
     tip="CV ning har qatorini o'qib, o'zingizdan so'rang: komissiya bu qatordan men haqimda qanday yangi fakt bilib oladi? Javob bo'lmasa, qator kerak emas.",
     sources=STD,
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> 2026 GKS-G qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."
