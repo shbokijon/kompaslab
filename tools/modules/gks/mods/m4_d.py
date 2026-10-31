@@ -139,3 +139,6 @@ MOD = dict(
     tip="Ilmiy rejani o'qib bo'lgach, o'zingizdan so'rang: agar ertaga laboratoriyaga kelsam, birinchi haftada aynan nima qilaman? Javob rejada bo'lmasa, metod hali umumiy.",
     sources=STD,
 )
+
+# Editorial source-check notice; follow the current official application guidelines.
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> 2026 GKS-G qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."
