@@ -498,7 +498,7 @@
    "id": "M2",
    "title": "Muddatlar arxitekturasi va ish tizimi",
    "meta": "5 dars",
-   "info": "Maqsad: rasmiy qabul, funding va hujjat sanalarini ishchi tizimda rejalash. Natija: Master Tracker, taxminiy Gantt vaqt xaritasi va I bosqich strategik hujjati v1.0.",
+   "info": "Maqsad: rasmiy qabul, funding va hujjat sanalarini ishchi tizimda rejalash. Natija: Master Tracker, taxminiy Gantt vaqt xaritasi va magistraturaga tayyorgarlik rejasi.",
    "lessons": [
     {
      "num": "2.1",
@@ -526,8 +526,8 @@
     },
     {
      "num": "2.5",
-     "title": "I bosqich yakuni: Strategik hujjat",
-     "content": "M1–M2 natijalari: akademik maqsad, tanlangan dasturlar, muddat, moliyalashtirish va xavflar",
+     "title": "I bosqich yakuni: Shaxsiy strategik reja",
+     "content": "M1–M2 natijalarini birlashtirish: akademik maqsad, tanlangan dasturlar, muddatlar, moliyalashtirish va xavflar. Natija — magistraturaga tayyorgarlik rejasi.",
      "trek": ""
     }
    ]

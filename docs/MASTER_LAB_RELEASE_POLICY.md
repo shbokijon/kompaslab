@@ -52,6 +52,15 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 - The Master Lab public module hub and programme descriptions were aligned. **The full paid HTML in Supabase `paid_pages` was not overwritten.**
 - Require independent review of claims, cross-browser interactive test (tracker, date/time-zone, import/export, Gantt), rebuild, SHA-256 comparison, RLS and controlled upload before paid module release.
 
+## Learner-facing artifact naming — 2026-10-31
+- User-facing M2.5 lesson: **I bosqich yakuni: Shaxsiy strategik reja**.
+- User-facing M2 result/export: **Magistraturaga tayyorgarlik rejasi**.
+- The artifact is a living plan; record verification date and changes in the learner's own workflow. Do not show technical `v1.0` in M2 titles, module summary or export heading.
+- Preserve technical version fields, hashes, existing `localStorage` keys, database versions, authorization and release workflows.
+- Reviewed other Master modules: M1 shows `Saralangan roʻyxat v1.0`; M3 `Akademik CV v1.0`; M5 `SoP v1.0`; M6 `Research Proposal v1.0`. M4/M7/M8 do not use this artifact label. Propose simpler names in their **separate** editorial passes; do not silently rewrite those modules before their approved review.
+- M5's explicit document revision history and version field have a real instructional purpose. Retain that functionality and replace only confusing display labels if approved.
+- Paid modules are not published solely by GitHub source edits. Supabase `paid_pages` remains unchanged until independent content/build/security release checks.
+
 ## Module readiness checklist (all require verification and integration)
 | Module | Topic | Current repository asset | Release readiness |
 |---|---|---|---|
