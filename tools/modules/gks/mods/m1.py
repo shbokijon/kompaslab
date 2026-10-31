@@ -48,4 +48,4 @@ MOD = dict(
 MOD["lead"] += " <strong>Muhim:</strong> Ushbu moduldagi muddat, muvofiqlik, hujjat va tanlov shartlarini 2026 GKS-G yoʻriqnomasi hamda Oʻzbekiston uchun tegishli rasmiy eʼlon bilan solishtiring. Boshqa sikldagi qoida avtomatik amal qilmaydi. GKS Lab stipendiya yoki qabulni kafolatlamaydi."
 
 # Editorial source-check notice; follow the current official application guidelines.
-MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> 2026 GKS-G qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."
+MOD["lead"] += " <strong>Rasmiy manbani tekshiring:</strong> tanlangan GKS-U yoki GKS-G sikli qoidalarini va Oʻzbekiston uchun eʼlonni har ariza oldidan tekshiring. Muddat, hujjat va muvofiqlik talablari oʻzgarishi mumkin."
