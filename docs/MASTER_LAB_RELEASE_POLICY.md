@@ -61,13 +61,25 @@ Date: 2026-10-18. This file documents current development state, not an admissio
 - M5's explicit document revision history and version field have a real instructional purpose. Retain that functionality and replace only confusing display labels if approved.
 - Paid modules are not published solely by GitHub source edits. Supabase `paid_pages` remains unchanged until independent content/build/security release checks.
 
+
+## M3 editorial revision — 2026-10-31
+- Canonical authoring file: `tools/modules/src/master-lab-m3.src.html`; six lessons, four panels each. Public M3, syllabus and route descriptions aligned.
+- Verified against Oxford CV/résumé guidance, Cambridge postgraduate supporting documents, official Europass CV, Council of Europe CEFR, IELTS research and Think. Check. Submit.
+- Academic CV requirement is course-specific: Oxford says most courses do **not** require separate uploaded CV, Cambridge postgraduate requires CV. Course instructions override fixed country and page-count claims.
+- Europass can be an optional format; not mandatory-only. GPA remains in original scale, no invented STAR metrics, no fake publications or DOI. CEFR and IELTS scores are not automatically equated.
+- Actual Word button downloads an **HTML-based `.doc`**, not `.docx`. UI and marketing copy now reflect current implementation. PDF is browser print-to-PDF. Do not claim a native DOCX exporter exists.
+- Learner-facing M3 result: **Akademik CV**, with an actual supporting export format explanation. Remove superficial `v1.0` from M3 presentation only; preserve existing technical `localStorage` key `kompas_master_m3_v1`.
+- CSS, module panels, input identifiers, local state key and paid entitlement workflow unchanged.
+- Supabase `paid_pages` module_index=3 remains at version `2026-10-30+suggest` until an independently reviewed rebuild and controlled update. No database write was made.
+- Before release: build HTML, compare content hash, verify quiz answer/XP, STAR builder, CV sections, print PDF and Word-mos DOC behaviour across browsers; check paid authorization, RLS and state backwards-compatibility. University-specific CV policy must not be presented as universal.
+
 ## Module readiness checklist (all require verification and integration)
 | Module | Topic | Current repository asset | Release readiness |
 |---|---|---|---|
 | M0 | Qanday ishlaydi, diagnostika | master-lab-m0.html | Public free experience exists; content refresh/audit pending |
 | M1 | Ilmiy yo‘nalish va universitet | master-lab-m1.src.html | 2026-10-31 editorial draft revised; independent review, rebuild and paid_pages update pending |
 | M2 | Muddatlar va ish tizimi | master-lab-m2.src.html | 2026-10-31 editorial revision in source; independent review, rebuild, SHA comparison, paid_pages update and RLS tests pending |
-| M3 | Akademik CV | master-lab-m3.src.html | Built for paid delivery; editorial review pending |
+| M3 | Akademik CV | master-lab-m3.src.html | 2026-10-31 editorial revision in GitHub; paid_pages rebuild, security and browser tests pending |
 | M4 | Tavsiya xatlari va professor | master-lab-m4.src.html | Built for paid delivery; editorial review pending |
 | M5 | Maqsad bayonnomasi (SoP) | master-lab-m5.src.html | Built for paid delivery; editorial review pending |
 | M6 | Ilmiy loyiha taklifi | master-lab-m6.src.html | Built for paid delivery; editorial review pending |

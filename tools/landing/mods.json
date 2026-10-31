@@ -536,42 +536,42 @@
    "id": "M3",
    "title": "Akademik CV",
    "meta": "6 dars, Core",
-   "info": "Maqsad: talaba komissiya uchun moʻljallangan akademik CV yozadi. Artefakt: Akademik CV v1.0 (PDF va DOCX). ",
+   "info": "Maqsad: talaba akademik va amaliy tajribasini tanlangan dastur talabiga mos, tekshiriladigan CV’da jamlaydi. Natija: Akademik CV, 12 bandli tahrir nazorati va PDF yoki Word-mos .doc eksporti. Dastur alohida CV soʻrashini oldindan tekshiring.",
    "lessons": [
     {
      "num": "3.1",
-     "title": "Akademik CV va ishchi rezyume farqi",
-     "content": "Hajm, tartib, boʻlimlar; Yevropa, AQSh va Buyuk Britaniya kutganlari; Europass qachon talab qilinadi",
+     "title": "Akademik CV va rezyume: dastur talablari",
+     "content": "CV majburiyligi, hajmi, Europass va shaxsiy maʼlumotlar; Oxford/Cambridge misollari",
      "trek": ""
     },
     {
      "num": "3.2",
-     "title": "Taʼlim va mukofotlar",
-     "content": "GPA, baholash shkalasini tushuntirish, tegishli kurslar, olimpiadalar",
+     "title": "Taʼlim, GPA va akademik mukofotlar",
+     "content": "Taʼlim, GPA asl shkalada, tegishli fanlar, bitiruv ishi va tasdiqlangan mukofotlar",
      "trek": ""
     },
     {
      "num": "3.3",
-     "title": "Tadqiqot tajribasi va STAR",
-     "content": "Vaziyat, Vazifa, Harakat, Natija (STAR) usuli; \"tajribam yoʻq\" muammosi: kurs loyihasi, bitiruv ishi, amaliyot",
+     "title": "Tajriba va STAR usuli",
+     "content": "Vaziyat, vazifa, harakat, natija; dalillarni oshirmasdan loyiha va amaliyotni koʻrsatish",
      "trek": ""
     },
     {
      "num": "3.4",
      "title": "Nashrlar, taqdimotlar, loyihalar",
-     "content": "Iqtibos formati, konferensiya tezislari, GitHub va maʼlumotlar loyihalari",
+     "content": "Publication, presentation va project farqi, bibliografiya, maqom va Think. Check. Submit.",
      "trek": ""
     },
     {
      "num": "3.5",
      "title": "Koʻnikmalar, tillar, sertifikatlar",
-     "content": "Texnik koʻnikmalarni dalil bilan yozish; til darajasi (CEFR)",
+     "content": "Amalda qoʻllangan texnik koʻnikmalar, CEFR va test ballining farqi, sertifikat qabul muddati",
      "trek": ""
     },
     {
      "num": "3.6",
-     "title": "Tahrir va yakunlash",
-     "content": "3 bosqich: mazmun, tuzilma, imlo; 2 sahifa chegarasi; fayl nomi",
+     "title": "CV tahriri va yakuniy tekshiruv",
+     "content": "Mazmun, tuzilma, imlo, rasmiy format, 12 bandli checklist, PDF va Word-mos .doc",
      "trek": ""
     }
    ]
