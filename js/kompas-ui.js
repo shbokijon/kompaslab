@@ -235,3 +235,67 @@
   window.KUI_ME = { reset: function () { try { localStorage.removeItem(ME); } catch (e) {} } };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
 })();
+
+// ── Matn tuzatishlari (2026-10-31): admin paneldagi "Darslar → Matn tuzatishlari" (text_fixes, status=active).
+//    Mayda xato saytda darhol tuzaladi; keyin tools/site/apply_fixes.py bilan manba faylga yoziladi (status=baked).
+//    Pullik modullar (page "paid:…") bu yerda emas, serverda fn_paid_page() ichida qoʻllanadi.
+//    Sahifa kaliti: fayl nomi ("master-lab-m0-2.html"), prefiks ("master-lab-m0*") yoki "*". Oʻchirish: ?fixes=0
+(function () {
+  if (/[?&]fixes=0/.test(location.search)) return;
+  var file = location.pathname.split("/").pop() || "index.html";
+  if (!/\.html?$/.test(file)) file += ".html";
+  if (/^admin/.test(file)) return;
+  var URL_ = "https://usxpkmbjrdllnitlzdpq.supabase.co/rest/v1/text_fixes?select=id,page,old_text,new_text&status=eq.active&page=not.like.paid:*&order=id";
+  var KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8";
+  var CK = "kompas_fixes_v1", TTL = 10 * 60 * 1000;
+  function mine(list) {
+    return list.filter(function (f) {
+      var p = f.page;
+      return p === "*" || p === file || (p.slice(-1) === "*" && file.indexOf(p.slice(0, -1)) === 0);
+    });
+  }
+  function load() {
+    try { var c = JSON.parse(sessionStorage.getItem(CK) || "null"); if (c && Date.now() - c.t < TTL) return Promise.resolve(c.d); } catch (e) {}
+    if (!window.fetch) return Promise.resolve([]);
+    return fetch(URL_, { headers: { apikey: KEY, Authorization: "Bearer " + KEY } })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (d) { d = Array.isArray(d) ? d : []; try { sessionStorage.setItem(CK, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {} return d; })
+      .catch(function () { return []; });
+  }
+  var SKIP = { SCRIPT: 1, STYLE: 1, TEXTAREA: 1, INPUT: 1, NOSCRIPT: 1, TEMPLATE: 1, CODE: 1, PRE: 1 };
+  function variants(fx) {
+    var conv = window.KAlifbo && window.KAlifbo.conv;
+    return fx.map(function (f) {
+      var v = [f.old_text];
+      if (conv) { var c = conv(f.old_text); if (c !== f.old_text) v.push(c); }
+      return { v: v, n: f.new_text };
+    });
+  }
+  function fixNode(n, fx) {
+    var t = n.nodeValue, o = t;
+    for (var i = 0; i < fx.length; i++) for (var j = 0; j < fx[i].v.length; j++) {
+      var a = fx[i].v[j];
+      if (a && t.indexOf(a) !== -1) t = t.split(a).join(fx[i].n);
+    }
+    if (t !== o) n.nodeValue = t;
+  }
+  function walk(root, fx) {
+    if (!root) return;
+    if (root.nodeType === 3) { if (root.parentNode && !SKIP[root.parentNode.nodeName]) fixNode(root, fx); return; }
+    if (root.nodeType !== 1 || SKIP[root.nodeName]) return;
+    var tw = document.createTreeWalker(root, 4, null), n;
+    while ((n = tw.nextNode())) if (!SKIP[n.parentNode.nodeName]) fixNode(n, fx);
+  }
+  function ready(cb) { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", cb); else cb(); }
+  load().then(function (all) {
+    var fx = mine(all || []);
+    if (!fx.length) return;
+    ready(function () {
+      var vx = variants(fx);
+      walk(document.body, vx);
+      new MutationObserver(function (ms) {
+        for (var i = 0; i < ms.length; i++) for (var j = 0; j < ms[i].addedNodes.length; j++) walk(ms[i].addedNodes[j], vx);
+      }).observe(document.body, { childList: true, subtree: true });
+    });
+  });
+})();

@@ -436,6 +436,51 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div id="lBody"><div style="padding:24px;text-align:center;color:var(--muted);font-size:13px">Kursni tanlang →</div></div>
       </div>
+      <div class="card" id="fxCard" style="margin-top:16px">
+        <div class="ch">
+          <h2>✏️ Matn tuzatishlari</h2>
+          <div class="ch-r"><button class="btn bs bsm" onclick="loadFixes()">🔄 Yangilash</button></div>
+        </div>
+        <div class="mb" style="font-size:12.5px;color:var(--muted);padding-bottom:0">
+          Darsdagi imlo yoki mayda xatoni tuzatish: sahifani tanlang, xato matnni saytdan nusxa olib “Eski matn”ga, toʻgʻrisini “Yangi matn”ga yozing.
+          Saqlangach saytda darhol tuzaladi (pullik modulda ham). Keyin tuzatish manba faylga yoziladi va holati “Manbaga yozildi” boʻladi
+          (Claudeʼga “tuzatishlarni manbaga yoz” deyish kifoya). Matn bitta paragraf ichida boʻlishi kerak: qalin soʻz yoki havola chegarasidan oʻtgan matn topilmaydi.
+        </div>
+        <div class="mb">
+          <div class="fr">
+            <div class="fld"><label>Qayerda</label>
+              <select id="fxScope" onchange="fxScopeChange()">
+                <option value="page">Bitta sahifa</option>
+                <option value="module">Butun M0 moduli (hamma darslari)</option>
+                <option value="paid">Pullik modul (Master M1–M8)</option>
+                <option value="all">Hamma sahifalar</option>
+              </select>
+            </div>
+            <div class="fld" id="fxPageWrap"><label>Sahifa havolasi yoki fayl nomi</label>
+              <input id="fxPage" placeholder="https://www.kompaslab.uz/master-lab-m0-2" autocomplete="off">
+            </div>
+            <div class="fld" id="fxPaidWrap" style="display:none"><label>Pullik modul</label>
+              <select id="fxPaid">
+                <option value="paid:master-lab:1">Master M1</option><option value="paid:master-lab:2">Master M2</option>
+                <option value="paid:master-lab:3">Master M3</option><option value="paid:master-lab:4">Master M4</option>
+                <option value="paid:master-lab:5">Master M5</option><option value="paid:master-lab:6">Master M6</option>
+                <option value="paid:master-lab:7">Master M7</option><option value="paid:master-lab:8">Master M8</option>
+              </select>
+            </div>
+          </div>
+          <div class="fr">
+            <div class="fld"><label>Eski matn (xato)</label><textarea id="fxOld" maxlength="600" placeholder="Masalan: universtitet"></textarea></div>
+            <div class="fld"><label>Yangi matn (toʻgʻri)</label><textarea id="fxNew" maxlength="600" placeholder="Masalan: universitet"></textarea></div>
+          </div>
+          <div class="fld"><label>Izoh (ixtiyoriy)</label><input id="fxNote" maxlength="300" placeholder="Masalan: 3-dars, Asosiy qism"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn bs bsm" onclick="checkFix()">🔍 Tekshirish</button>
+            <button class="btn bp bsm" onclick="saveFix()">💾 Saqlash</button>
+          </div>
+          <div id="fxCheck" style="font-size:13px;margin-top:10px"></div>
+        </div>
+        <div class="tbl-scroll"><table class="tbl"><thead><tr><th>Sahifa</th><th>Eski → Yangi</th><th>Holat</th><th>Sana</th><th>Amal</th></tr></thead><tbody id="tbFixes"></tbody></table></div>
+      </div>
     </div>
 
     <!-- WAITLIST -->
@@ -1637,6 +1682,7 @@ function nav(name, el) {
     const sel = document.getElementById('lCourseSelect')
     const slug = sel?.value || 'bachelor-lab'
     loadLessonsSection(slug)
+    loadFixes()
   }
   // To'lovlar yangilash
   if (name === 'payments') loadPayments()
@@ -1896,6 +1942,126 @@ async function addLabRow(slug) {
   if (error) { toast('❌ ' + error.message); return }
   toast('✅ ' + name + ' qoʻshildi')
   loadLabs()
+}
+
+// ════════════════════════════════════════════════════════
+//  MATN TUZATISHLARI (text_fixes, 2026-10-31)
+//  Saytda: js/kompas-ui.js; pullik modulda: fn_paid_page(). Manbaga: tools/site/apply_fixes.py
+// ════════════════════════════════════════════════════════
+const FX_STATUS = { active: ['Faol', 'var(--green)'], baked: ['Manbaga yozildi', 'var(--muted)'], off: ['Oʻchirilgan', 'var(--red)'] }
+// Saytdan nusxa olingan matn yangi alifboda boʻlishi mumkin; manba amaldagi alifboda
+function fxNorm(s) {
+  return (s || '').replace(/\r/g, '').replace(/[ \t]+$/gm, '').trim()
+    .replace(/Ö/g, 'Oʻ').replace(/ö/g, 'oʻ').replace(/Ğ/g, 'Gʻ').replace(/ğ/g, 'gʻ')
+    .replace(/Ş/g, 'Sh').replace(/ş/g, 'sh').replace(/Ç/g, 'Ch').replace(/ç/g, 'ch')
+    .replace(/([oOgG])['‘’`ʼ](?=[A-Za-z])/g, '$1ʻ')
+    .replace(/([A-Za-z])['‘’`](?=[A-Za-z])/g, '$1ʼ')
+}
+function fxFile(v) {
+  v = (v || '').trim().replace(/^https?:\/\/[^/]+/i, '').replace(/[?#].*$/, '').replace(/^\/+/, '')
+  if (!v) return ''
+  if (!/\.html?$/.test(v)) v += '.html'
+  return v
+}
+function fxScopeChange() {
+  const s = document.getElementById('fxScope').value
+  document.getElementById('fxPageWrap').style.display = (s === 'page' || s === 'module') ? '' : 'none'
+  document.getElementById('fxPaidWrap').style.display = s === 'paid' ? '' : 'none'
+  document.getElementById('fxCheck').innerHTML = ''
+}
+// Tanlovdan text_fixes.page kaliti va tekshirish uchun yuklanadigan manba
+function fxTarget() {
+  const s = document.getElementById('fxScope').value
+  if (s === 'all') return { page: '*' }
+  if (s === 'paid') { const p = document.getElementById('fxPaid').value, m = p.split(':'); return { page: p, paid: [m[1], parseInt(m[2], 10)] } }
+  const f = fxFile(document.getElementById('fxPage').value)
+  if (!f) return { err: 'Sahifa havolasini kiriting' }
+  if (s === 'module') {
+    const m = /^(.+-m0)(?:-\d+|-yakun)?\.html$/.exec(f)
+    if (!m) return { err: 'Bu M0 modul sahifasi emas (masalan: master-lab-m0-2)' }
+    return { page: m[1] + '*', file: m[1] + '.html' }
+  }
+  return { page: f, file: f }
+}
+function fxCount(hay, needle) { let n = 0, i = 0; while ((i = hay.indexOf(needle, i)) !== -1) { n++; i += needle.length } return n }
+async function fxSource(t) {
+  if (t.paid) {
+    const { data, error } = await supabase.rpc('fn_paid_page', { p_course_slug: t.paid[0], p_module_index: t.paid[1] })
+    if (error || !data || !data.ok) throw new Error('Pullik modul oʻqilmadi: ' + (error?.message || data?.reason || ''))
+    return { html: data.html }
+  }
+  const r = await fetch('/' + t.file + '?fixes=0', { cache: 'no-store' })
+  if (!r.ok) throw new Error('Sahifa topilmadi: ' + t.file)
+  return { html: await r.text() }
+}
+async function checkFix(silent) {
+  const box = document.getElementById('fxCheck'), t = fxTarget(), old = fxNorm(document.getElementById('fxOld').value)
+  if (t.err) { box.innerHTML = '<span style="color:var(--red)">' + escHtml(t.err) + '</span>'; return null }
+  if (old.length < 2) { box.innerHTML = '<span style="color:var(--red)">Eski matnni kiriting</span>'; return null }
+  if (t.page === '*') { box.innerHTML = '<span style="color:var(--muted)">Hamma sahifa tanlangan: oldindan tekshirilmaydi. Juda umumiy soʻzni tanlamang.</span>'; return { t, old, n: -1 } }
+  box.innerHTML = '<span style="color:var(--muted)">Tekshirilmoqda...</span>'
+  try {
+    const src = await fxSource(t)
+    const doc = new DOMParser().parseFromString(src.html, 'text/html')
+    doc.querySelectorAll('script,style,noscript,template').forEach(e => e.remove())
+    const text = (doc.body ? doc.body.textContent : '')
+    const n = fxCount(text, old), raw = fxCount(src.html, old)
+    let ctx = ''
+    const i = text.indexOf(old)
+    if (i >= 0) ctx = '…' + escHtml(text.slice(Math.max(0, i - 60), i)) + '<mark>' + escHtml(old) + '</mark>' + escHtml(text.slice(i + old.length, i + old.length + 60)) + '…'
+    box.innerHTML = (n
+      ? '<span style="color:var(--green);font-weight:700">✓ Topildi: ' + n + ' ta</span>' + (n > 1 ? ' (hammasi tuzatiladi)' : '') + '<div style="margin-top:6px;padding:8px 10px;background:var(--bg);border-radius:8px;line-height:1.5">' + ctx + '</div>'
+      : '<span style="color:var(--red);font-weight:700">✗ Sahifa matnida topilmadi.</span> Matn bitta paragraf ichida ekanini, ortiqcha boʻsh joy yoʻqligini tekshiring.') +
+      (n && !raw && !t.paid ? '<div style="color:var(--muted);margin-top:4px">Eslatma: HTML manbada aynan shu koʻrinishda yoʻq (belgi kodi bilan yozilgan boʻlishi mumkin); manbaga yozishda qoʻlda koʻriladi.</div>' : '')
+    return { t, old, n }
+  } catch (e) { box.innerHTML = '<span style="color:var(--red)">' + escHtml(e.message) + '</span>'; return null }
+}
+async function saveFix() {
+  const nw = fxNorm(document.getElementById('fxNew').value), note = document.getElementById('fxNote').value.trim() || null
+  const c = await checkFix()
+  if (!c) return
+  if (c.old === nw) { toast('⚠️ Eski va yangi matn bir xil'); return }
+  if (c.n === 0 && !confirm('Matn sahifada topilmadi. Baribir saqlansinmi?')) return
+  if (!confirm(c.t.page + '\n\n“' + c.old + '”\n→\n“' + nw + '”\n\nSaqlansinmi? Saytda darhol tuzaladi.')) return
+  const { error } = await supabase.from('text_fixes').insert({ page: c.t.page, old_text: c.old, new_text: nw, note })
+  if (error) { toast('❌ ' + error.message); return }
+  try { sessionStorage.removeItem('kompas_fixes_v1') } catch (e) {}
+  toast('✅ Saqlandi. Saytda keyingi ochilishda tuzalgan boʻladi')
+  document.getElementById('fxOld').value = ''; document.getElementById('fxNew').value = ''; document.getElementById('fxNote').value = ''
+  document.getElementById('fxCheck').innerHTML = ''
+  loadFixes()
+}
+async function loadFixes() {
+  const tb = document.getElementById('tbFixes'); if (!tb) return
+  tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Yuklanmoqda...</td></tr>'
+  const { data, error } = await supabase.from('text_fixes').select('id, page, old_text, new_text, status, note, created_at, baked_at').order('id', { ascending: false }).limit(300)
+  if (error) { tb.innerHTML = '<tr><td colspan="5" style="color:var(--red);padding:16px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
+  if (!data.length) { tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Hozircha tuzatish yoʻq</td></tr>'; return }
+  tb.innerHTML = data.map(f => {
+    const st = FX_STATUS[f.status] || [f.status, 'var(--muted)']
+    const pg = f.page.indexOf('paid:') === 0 ? 'Master M' + f.page.split(':')[2] + ' (pullik)' : f.page === '*' ? 'Hamma sahifa' : f.page
+    const act = (f.status === 'active' ? '<button class="btn bs bsm" onclick="setFixStatus(' + f.id + ',\'off\')">⏸ Oʻchirish</button>' : '') +
+      (f.status === 'off' ? '<button class="btn bs bsm" onclick="setFixStatus(' + f.id + ',\'active\')">▶ Yoqish</button>' : '') +
+      ' <button class="btn bs bsm" onclick="deleteFix(' + f.id + ')" aria-label="Butunlay oʻchirish">🗑</button>'
+    return '<tr><td style="font-size:12px"><b>' + escHtml(pg) + '</b>' + (f.note ? '<div style="color:var(--muted)">' + escHtml(f.note) + '</div>' : '') + '</td>' +
+      '<td style="font-size:12.5px;max-width:420px"><span style="text-decoration:line-through;color:var(--red)">' + escHtml(f.old_text) + '</span><br><span style="color:var(--green)">' + escHtml(f.new_text) + '</span></td>' +
+      '<td><span style="font-weight:700;color:' + st[1] + '">' + st[0] + '</span></td>' +
+      '<td style="font-size:12px;white-space:nowrap">' + escHtml((f.created_at || '').slice(0, 10)) + (f.baked_at ? '<div style="color:var(--muted)">manba: ' + escHtml(f.baked_at.slice(0, 10)) + '</div>' : '') + '</td>' +
+      '<td style="white-space:nowrap">' + act + '</td></tr>'
+  }).join('')
+}
+async function setFixStatus(id, status) {
+  const { error } = await supabase.from('text_fixes').update({ status }).eq('id', id)
+  if (error) { toast('❌ ' + error.message); return }
+  toast(status === 'off' ? '⏸ Tuzatish oʻchirildi (saytda eski matn qaytadi)' : '▶ Tuzatish yoqildi')
+  loadFixes()
+}
+async function deleteFix(id) {
+  if (!confirm('Tuzatish butunlay oʻchirilsinmi? (Manbaga yozilmagan boʻlsa, saytda eski matn qaytadi)')) return
+  const { error } = await supabase.from('text_fixes').delete().eq('id', id)
+  if (error) { toast('❌ ' + error.message); return }
+  toast('🗑 Oʻchirildi')
+  loadFixes()
 }
 
 function exportStudentsCSV() {
