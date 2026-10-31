@@ -5,8 +5,10 @@ from render import six_card, calc_html, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLI
 
 Y, M = 999000, 129000
 
-def R(s, a, b, n=1):
+def R(s, a, b, n=1, opt=False):
     c = s.count(a)
+    if opt and c == 0:
+        return s
     assert c == n, (a[:70], c)
     return s.replace(a, b)
 
@@ -30,12 +32,12 @@ def build():
     sec = sec.replace('id="asoschi"', 'id="qanday"').replace('class="wrap founder"', 'class="wrap method"')
     sec = R(sec, "<h2>Faqat oʻzim oʻtgan <em>yoʻlni oʻrgataman.</em></h2>", "<h2>Shaxsiy tajriba qayerda bor va qayerda yoʻq</h2>")
     sec = R(sec, "Men hozir PhDʼning birinchi yilidaman. Shuning uchun dastur qamrovi tajribam bilan chegaralangan va bu ochiq yoziladi.", "Asoschi hozir PhDʼning birinchi yilida. Shuning uchun dastur qamrovi uning tajribasi bilan chegaralangan va bu ochiq yoziladi.")
-    sec = R(sec, "<tr><td>El-yurt umidi tanlovi va intervyusi</td><td class=\"y\">Ha</td><td>Toʻliq; raqamlar rasmiy manbadan</td></tr>\n", "")
+    sec = R(sec, "<tr><td>El-yurt umidi tanlovi va intervyusi</td><td class=\"y\">Ha</td><td>Toʻliq; raqamlar rasmiy manbadan</td></tr>\n", "", opt=True)
     s = s[:a] + sec + s[b:]
     s = R(s, "El-yurt umidi: asoschi tajribasi<small>Tanlov bosqichlari mantigʻi, hujjatlar, intervyuga tayyorgarlik — asoschining 2025-yil 2-tanlov tajribasi; kvota, yosh va til talablari faqat Qobiqʼda, rasmiy sahifadan</small>",
-          "El-yurt umidi: tanlov bosqichlari<small>Tanlov bosqichlari mantigʻi, hujjatlar, intervyuga tayyorgarlik; kvota, yosh va til talablari faqat Qobiqʼda, rasmiy sahifadan</small>")
-    s = R(s, "El-yurt umidi paneli (asoschi tajribasi) va boshqa panellar mantigʻi;", "El-yurt umidi va boshqa stipendiya panellari mantigʻi;")
-    s = R(s, "Darsda asoschining 2025-yil 2-tanlov tajribasi; yosh, til va kvota faqat rasmiy sahifadan.", "Yosh, til va kvota faqat rasmiy sahifadan.")
+          "El-yurt umidi: tanlov bosqichlari<small>Tanlov bosqichlari mantigʻi, hujjatlar, intervyuga tayyorgarlik; kvota, yosh va til talablari faqat Qobiqʼda, rasmiy sahifadan</small>", opt=True)
+    s = R(s, "El-yurt umidi paneli (asoschi tajribasi) va boshqa panellar mantigʻi;", "El-yurt umidi va boshqa stipendiya panellari mantigʻi;", opt=True)
+    s = R(s, "Darsda asoschining 2025-yil 2-tanlov tajribasi; yosh, til va kvota faqat rasmiy sahifadan.", "Yosh, til va kvota faqat rasmiy sahifadan.", opt=True)
     # narx
     s = R(s, "<h2>Obuna asosida. <em>M0 bepul.</em></h2>", "<h2>Obuna: oylik, 6 oylik yoki yillik. M0 bepul.</h2>")
     s = R(s, '<div class="price">999 000</div><div class="per">soʻm · 12 oy</div>', f'<div class="price" data-py="phd-lab">{fmt(Y)}</div><div class="per">soʻm, 12 oy uchun</div>')

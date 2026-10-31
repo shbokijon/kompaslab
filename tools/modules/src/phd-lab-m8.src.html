@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2d4a3e">
+<title>M8 Qabuldan keyingi tayyorgarlik va birinchi 90 kun · PhD Lab · Kompas Lab</title>
+<meta name="description" content="PhD Lab M8: taklif shartlarini yopish, viza va ATAS, uy, xavfsizlik va boshlangʻich xarajat, tadqiqotga kirishish tizimi, 90 kunlik ilmiy ritm, karyera yoʻllari. Natija: joʻnash oldi nazorat roʻyxati va 90 kunlik tadqiqot rejasi.">
+<link rel="icon" href="img/3d/compass.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
+<style>
+{{CSS}}
+/* PhD M1–M8 qoʻshimchalari */
+.path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
+@media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
+.fld{margin-bottom:12px;}
+.fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
+.fld label small{font-weight:500;color:var(--muted);}
+.fld input,.fld select{width:100%;min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--text);}
+.fld textarea{margin-top:0;}
+.fld input:focus,.fld select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+.srcs{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.srcs a{color:#1f5fa8;}
+.pill{font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;display:inline-block;}
+.pill.ok{background:var(--green-lit);color:var(--green);} .pill.no{background:var(--red-lit);color:var(--red);} .pill.chk{background:var(--gold-lit);color:var(--gold);}
+.meterw{margin-top:6px;}
+.meterw .mt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);}
+.meterw .mb{height:8px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:4px;}
+.meterw .mb i{display:block;height:100%;background:var(--accent);transition:width .3s;}
+.meterw.ok .mb i{background:var(--green);} .meterw.over .mb i{background:var(--red);}
+.out{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14.5px;white-space:pre-wrap;word-break:break-word;}
+.cklist{display:grid;gap:8px;margin-top:12px;}
+.trk{display:inline-block;font-size:11.5px;font-weight:900;padding:1px 8px;border-radius:99px;background:var(--accent-lit);color:var(--accent);margin-right:4px;}
+.artifact{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:22px;}
+.artifact .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.paper{background:#fff;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:28px 30px;border:1px solid var(--border);border-radius:8px;}
+.paper h1{font-family:Georgia,serif;font-size:22px;color:#111;margin:0 0 4px;}
+.paper .ct{font-size:13px;color:#555;margin-bottom:12px;}
+.paper h4{font-family:Georgia,serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;margin:16px 0 6px;padding-bottom:2px;}
+.paper p{margin:0 0 6px;white-space:pre-wrap;}
+.paper .ph{color:#999;font-style:italic;}
+@media(max-width:760px){.paper{padding:18px 16px;font-size:13.5px;}.artifact{padding:16px;}.artifact .row .btn{flex:1 1 100%;}}
+@media print{
+  .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
+  body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
+}
+.path.pn{--pn:9;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="phd-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· PhD Lab M8</small></a>
+    <div class="xp" aria-live="polite">
+      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
+      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+    </div>
+  </div>
+  <div class="xp-bar"><i id="xpBar"></i></div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="phd-lab.html">PhD Lab</a> · Modul 8</div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza IV · Ariza va boshlash</span>
+        <h1>Qabuldan keyingi tayyorgarlik va birinchi 90 kun</h1>
+        <p class="lead">Taklif shartlarini bajarasiz, viza va hujjatlarni tartibga solasiz va doktoranturaning birinchi 90 kunini aniq natijalar bilan rejalaysiz.</p>
+        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>1–3 (+90 kun)</b> hafta</span><span class="fact">Faza IV</span><span class="fact"><b>250</b> XP</span></div>
+      </div>
+      <img class="hero-art float" src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <nav class="map" aria-label="Modul xaritasi">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 9 bosqich</span></div>
+    <div class="path pn">
+      <a class="node" href="#l1" data-node="l1"><span class="dot">8.1</span>Shartlar</a><a class="node" href="#l2" data-node="l2"><span class="dot">8.2</span>Viza</a><a class="node" href="#l3" data-node="l3"><span class="dot">8.3</span>Uy</a><a class="node" href="#l4" data-node="l4"><span class="dot">8.4</span>Kirishish</a><a class="node" href="#l5" data-node="l5"><span class="dot">8.5</span>90 kun</a><a class="node" href="#l6" data-node="l6"><span class="dot">8.6</span>Karyera</a><a class="node" href="#reja90" data-node="tool"><span class="dot">🛠</span>90 kun</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Reja</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Modul yakunida sizda</h2>
+    <ul class="goal">
+      <li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Joʻnash oldi nazorat roʻyxati:</b> taklif shartlari, viza, ATAS, uy, pul</span></li><li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span><b>90 kunlik tadqiqot rejasi:</b> 30/60/90 kunlik oʻlchanadigan natijalar</span></li><li><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span><b>Koʻnikmalar yoʻl xaritasi:</b> 3 yillik, 2 karyera yoʻli</span></li>
+    </ul>
+    <div class="box warn" style="margin-top:14px">Kompas Lab viza boʻyicha yuridik maslahat bermaydi va viza natijasiga taʼsir qilmaydi. Viza va ATAS qoidalari shaxsiy holat, fan va davlatga bogʻliq: rasmiy sahifa va universitet xatini oʻqing. Faktlar 31.10.2026 holatiga.</div>
+  </section>
+
+  <section id="darslar">
+    <h2>Darslar</h2>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <div class="lessons">
+
+      <!-- 8.1 -->
+      <article class="lesson" id="l1">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.1</span><span class="l-t" style="display:block">Taklif shartlarini yopish</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">✅ Roʻyxat</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Taklifni qabul qilish dasturga yozilishning oxirgi qadami boʻlmasligi mumkin. Shartli taklifdagi har band yopilganini hujjat bilan koʻrsatish kerak.</div></div>
+          <div class="panel">
+<ul><li>Diplom va yakuniy transkript</li><li>Til sertifikati</li><li>Depozit (boʻlsa)</li><li>Moliyalashtirish tasdigʻi</li><li>Immigratsiya hujjatlari</li><li>Boshlanish sanasi va rahbar tasdigʻi</li></ul>
+<p>Shartlar, muddatlar va rasmiy qabul holatini portal orqali kuzating. Noaniq band boʻlsa, qabul boʻlimidan yozma aniqlik soʻrang.</p>
+<div class="box info">Shartli akademik taklif qoʻlingizda boʻlsa ham, moliyalashtirish xati shartlari alohida tekshiriladi.</div>
+<div class="box warn">"Taklif olindi" va "shartsiz va moliyalashtirilgan" degan holatlarni aralashtirmang.</div>
+<div class="srcs">Manba: <a href="https://www.leeds.ac.uk/research-applying/doc/applying-research-degrees" target="_blank" rel="noopener noreferrer"><span lang="en">University of Leeds: Applying for research degrees</span></a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Har shart uchun: kim bajaradi, qachongacha, qaysi hujjat isbotlaydi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Taklifdagi barcha shartlarni yozing.</li><li>Har biriga masʼul va sana qoʻying.</li><li>Bajarilganini isbotlovchi hujjatni saqlang.</li></ul>
+            <textarea data-save="a1" placeholder="Shart 1: ... — masʼul: ... — sana: ... — dalil: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.2 -->
+      <article class="lesson" id="l2">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.2</span><span class="l-t" style="display:block">Viza, ATAS va immigratsiya</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🛂 Rasmiy</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Viza va tadqiqot ruxsatnomasi qoidalari shaxsiy holatga, fanga va davlatga bogʻliq. Forumdagi oʻtgan yilgi javob sizning holatingiz uchun dalil emas.</div></div>
+          <div class="panel">
+<h4>Buyuk Britaniya (31.10.2026 holatiga)</h4>
+<ul><li><b>Talaba vizasi:</b> Buyuk Britaniyadan tashqarida ariza kurs boshlanishidan eng erta 6 oy oldin beriladi (GOV.UK).</li><li><b>ATAS:</b> magistratura yoki doktorantura darajasidagi ayrim fanlar uchun, ozod etilgan davlatlar fuqarolaridan tashqari nomzodlarga kerak. Fan CAH3 kodi bilan aniqlanadi; kod odatda taklif xatida yoziladi yoki universitet alohida tasdiqlaydi. Oʻzbekiston ozod etilgan davlatlar roʻyxatida yoʻq.</li></ul>
+<p>Boshqa mamlakatlar uchun oʻsha davlatning rasmiy immigratsiya organi va universitet xalqaro boʻlimi sahifasidan foydalaning.</p>
+<div class="box info">Geofizika yoki muhandislik loyihasi ATAS talabiga tushishi mumkin, lekin avtomatik "shart" demang: taklif xatidagi CAH3 kodi va universitet xati hal qiladi.</div>
+<div class="box warn">ATAS kerak boʻlsa, u viza arizasidan oldin olinadi: koʻrib chiqish vaqtini GOV.UK sahifasidan tekshirib, kalendarga zaxira bilan qoʻying.</div>
+<div class="srcs">Manba: <a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener noreferrer">GOV.UK: <span lang="en">Student visa</span></a>; <a href="https://www.gov.uk/guidance/academic-technology-approval-scheme" target="_blank" rel="noopener noreferrer">GOV.UK: <span lang="en">Academic Technology Approval Scheme</span> (yangilangan 24.03.2026)</a>. 31.10.2026 holatiga.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Viza: kurs boshlanishidan eng erta 6 oy oldin. ATAS: CAH3 kodi va fuqarolikka bogʻliq, vizadan oldin. Oʻzbekiston ozod etilganlar roʻyxatida yoʻq.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“ATAS Buyuk Britaniyada hamma talabalar uchun majburiy.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: fuqarolik va CAH3 kodiga bogʻliq.</div></div><div class="qz" data-a="t"><p>“Oʻzbekiston fuqarosi ATAS dan ozod etilgan davlatlar roʻyxatida emas.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri (GOV.UK, 24.03.2026 holatiga).</div></div><div class="qz" data-a="n"><p>“Etika ruxsati kerak boʻlsa, maʼlumot yigʻib boʻlgach olinadi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: ruxsat ish boshlanishidan oldin olinadi.</div></div><div class="qz" data-a="t"><p>“Viza boʻyicha kurs xulosasi shaxsiy yuridik maslahat oʻrnini bosmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: rasmiy manba va kerak boʻlsa mutaxassis.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Talaba vizasi sahifasini oching.</li><li>ATAS sizga tegishli-tegishli emasligini tekshiring.</li><li>Muddatlar va hujjatlar roʻyxatini tuzing.</li></ul></div>
+            <textarea data-save="a2" placeholder="Kurs boshlanishi: ... → viza arizasi ... dan erta emas; ATAS: kerak/kerak emas (CAH3: ...); hujjatlar: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.3 -->
+      <article class="lesson" id="l3">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.3</span><span class="l-t" style="display:block">Uy, xavfsizlik va boshlangʻich xarajat</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🏠 Amaliy</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Birinchi oyda ilmiy ishni boshlash uchun asosiy ehtiyojlar oldindan hal qilingan boʻlishi kerak: uy, aloqa, bank, sogʻliq.</div></div>
+          <div class="panel">
+<ul><li>Ijara shartnomasi va depozit</li><li>Kommunal xizmatlar va yoʻl</li><li>Tibbiy roʻyxatdan oʻtish va sugʻurta</li><li>Bank hisobi va telefon</li><li>Favqulodda aloqa raqamlari</li></ul>
+<p>Universitetning xalqaro talabalar xizmati va shahar rasmiy sahifalarini toping. Qoʻshimcha ishga tayanishdan oldin viza shartlarini tekshiring.</p>
+<div class="box info">Stipendiya bir oy kechiksa, boshlangʻich ijara uchun naqd pul boʻlishi muhim (M6 hisob-kitobi).</div>
+<div class="box warn">Uy uchun oldindan pul soʻraydigan va faqat messenjer orqali bogʻlanadigan vositachilardan ehtiyot boʻling: shartnomani koʻrmasdan pul oʻtkazmang.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>60 kunlik naqd pul rejasi, 3 ta ishonchli yordam aloqasi, oʻqilgan ijara shartnomasi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>60 kunlik naqd pul rejasini tuzing.</li><li>3 ta ishonchli yordam aloqasini toping.</li><li>Uy shartnomasini oʻqing va savollarni yozing.</li></ul>
+            <textarea data-save="a3" placeholder="60 kun: ijara ..., depozit ..., ovqat ... Aloqalar: 1) universitet ... 2) ... 3) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.4</span><span class="l-t" style="display:block">Tadqiqotga kirishish tizimi</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧭 Tizim</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Doktoranturani boshlash "tadqiqotni boshladim" degan mavhum his boʻlmasligi kerak. Birinchi oyda tizim qursangiz, keyingi yillar osonlashadi.</div></div>
+          <div class="panel">
+<ul><li>Universitetga kirishish (<span lang="en">induction</span>) va etika boʻyicha kurs</li><li>Maʼlumotlarni boshqarish va laboratoriya xavfsizligi</li><li>Hisoblash resurslariga kirish</li><li>Rahbar bilan uchrashuv tartibi</li><li>Bosqichlar va treninglar rejasi</li></ul>
+<p>Loyiha qamrovi birinchi oylarda oʻzgarishi mumkin: kelishilgan uchrashuv qaydlari va xavflar jadvali buni boshqaradi.</p>
+<div class="box info"><b>Kompas tuzgan namuna.</b> 1–2-hafta: kirish huquqlari va adabiyot xaritasi; 3–4-hafta: asosiy usul va takrorlanadigan muhit. Bu namuna: har fan uchun qatʼiy jadval emas.</div>
+<div class="box warn">Maxfiy maʼlumot va xavfsizlik ruxsatisiz dala ishini boshlamang.</div>
+<div class="srcs">Manba: <a href="https://www.ukri.org/publications/statement-of-expectations-for-doctoral-training/" target="_blank" rel="noopener noreferrer">UKRI: <span lang="en">Statement of Expectations for Doctoral Training</span> (2024)</a>; <a href="https://ukrio.org/research-integrity/the-concordat-to-support-research-integrity/" target="_blank" rel="noopener noreferrer">UKRIO: <span lang="en">The Concordat to Support Research Integrity</span> (2025)</a>.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Kirishish roʻyxati, rahbar bilan uchrashuv tartibi va kun tartibi, trening talablari.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Kirishish nazorat roʻyxatini tuzing.</li><li>Birinchi uchrashuv kun tartibini yozing.</li><li>Trening talablarini belgilang.</li></ul>
+            <textarea data-save="a4" placeholder="Roʻyxat: ... Uchrashuv kun tartibi: 1) ... 2) ... Treninglar: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.5 -->
+      <article class="lesson" id="l5">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.5</span><span class="l-t" style="display:block">90 kunlik ilmiy ritm</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📅 Ritm</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Ilmiy ishda bandlik emas, tekshiriladigan natija va fikr-mulohaza muhim. 90 kunlik reja birinchi chorakni aniq natijalarga aylantiradi.</div></div>
+          <div class="panel">
+<div class="tbl"><table><thead><tr><th>Davr</th><th>Natija</th></tr></thead><tbody>
+<tr><td>30 kun</td><td>Adabiyot xaritasi va ishchi savol</td></tr>
+<tr><td>60 kun</td><td>Bajarilishi mumkinlik sinovi va asosiy usul</td></tr>
+<tr><td>90 kun</td><td>Qayta koʻrilgan tadqiqot rejasi va xavflar tahlili</td></tr></tbody></table></div>
+<p>Bosqichlar soha va rahbar bilan kelishiladi. Haftalik qayd: bajarildi, oʻrganildi, toʻxtab qoldi, keyingi qadam.</p>
+<div class="box info">"Har kuni 8 soat ishlayman" oʻrniga "2 hafta ichida ochiq maʼlumotda asosiy usulni takrorlash va xatolar jadvali" aniqroq.</div>
+<div class="box warn">Qattiq kunlik reja va oʻzini ayblash ilmiy sifat oʻrnini bosmaydi: charchoq belgilarida universitet yordam xizmatlariga murojaat qiling.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>30/60/90 kunlik natijalar, haftalik qayd, rahbar bilan muntazam koʻrib chiqish.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>30/60/90 kunlik bosqichlarni yozing.</li><li>Haftalik koʻrib chiqish tartibini tuzing.</li><li>Xavf belgilari va yordam kanallarini yozing.</li></ul>
+            <textarea data-save="a5" placeholder="30 kun: ...; 60 kun: ...; 90 kun: ...; haftalik qayd: ... kuni"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.6</span><span class="l-t" style="display:block">Karyera va foydali tadqiqot</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🌱 Yoʻl</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">PhD davomida ham akademik, ham boshqa professional yoʻllar ochiq qolishi kerak. Koʻnikmalarni birinchi yildan rejalang.</div></div>
+          <div class="panel">
+<ul><li>Oʻtkaziladigan koʻnikmalar: dasturlash, maʼlumot tahlili, yozish, taqdimot, loyiha boshqaruvi</li><li>Sanoat hamkorligi va oʻqitish tajribasi</li><li>Takrorlanadigan tadqiqot va ochiq fan</li><li>Mualliflik odobi va ilmiy halollik</li></ul>
+<p>Oʻzbekistonga qaytish, xalqaro tadqiqot yoki sanoat yoʻllarini har biri uchun kerakli kompetensiya va real imkoniyat bilan baholang.</p>
+<div class="box info">Bitta ilmiy kod ombori, poster va sanoat misoli akademik va sanoat portfeliga turlicha yordam beradi.</div>
+<div class="box warn">PhD yakuni doimiy ish yoki immigratsiyani kafolatlamaydi.</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><p>3 yillik koʻnikmalar xaritasi, 2 ta karyera yoʻli, birinchi 90 kun uchun bitta koʻnikma.</p></div></div>
+          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>3 yillik koʻnikmalar xaritasini chizing.</li><li>2 ta ehtimoliy karyera yoʻlini solishtiring.</li><li>Birinchi 90 kun uchun bitta koʻnikma tanlang.</li></ul>
+            <textarea data-save="a6" placeholder="1-yil: ...; 2-yil: ...; 3-yil: ... Yoʻllar: A ..., B ... Birinchi koʻnikma: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="reja90">
+    <h2>Birinchi 90 kunlik tadqiqot rejasi</h2>
+    <p class="sub">Ish boshlashdan oldingi ruxsatlar, maʼlumot va rahbar bilan uchrashuvlarni rejalang.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><div><h3>90 kunlik reja</h3><span>5 maydon · +30 XP</span></div></div>
+      
+      <div class="fld"><label for="f_boshlanish">Dastur boshlanish sanasi</label><input id="f_boshlanish" type="date" data-save="boshlanish" placeholder=""></div><div class="fld"><label for="f_d30">1–30 kun: kirishish va resurslar</label><textarea id="f_d30" data-save="d30" placeholder="Rahbar bilan uchrashuv, uskunalar, maʼlumotga kirish"></textarea></div><div class="fld"><label for="f_d60">31–60 kun: adabiyot va sinov</label><textarea id="f_d60" data-save="d60" placeholder="Qidiruv jurnali, metod sinovi, xavflar jadvali"></textarea></div><div class="fld"><label for="f_d90">61–90 kun: koʻrib chiqish va bosqich</label><textarea id="f_d90" data-save="d90" placeholder="Sinov natijasi, etika, keyingi chorak"></textarea></div><div class="fld"><label for="f_halollik">Ilmiy halollik, etika va maʼlumot boshqaruvi</label><textarea id="f_halollik" data-save="halollik" placeholder="Qaysi ruxsat, maʼlumotga kirish va xavfsizlik talab qilinadi?"></textarea></div>
+      <div id="toolOut" class="out" hidden></div>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Rejani saqlash · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>M8 nazorati</h2>
+    <p class="sub">Rejani yakunlashdan oldin tekshiring.</p>
+    <div class="tool">
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Taklif shartlari va dalillari yozilgan.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Viza va ATAS holati rasmiy sahifadan tekshirilgan.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Uy va 60 kunlik naqd pul rejasi bor.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Rahbar bilan birinchi uchrashuv kun tartibi tayyor.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Etika va maʼlumot boshqaruvi talablari aniqlangan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>30/60/90 kunlik oʻlchanadigan natijalar yozilgan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Yordam kanallari aniqlangan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Har oʻzgaruvchan talab yonida sana va manba bor.</span></label></div>
+      <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
+    </div>
+  </section>
+
+  <section id="nishonlar">
+    <h2>Nishonlar</h2>
+    <div class="badges">
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>6 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Boshlovchi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Reja<small>Yakun</small></div>
+    </div>
+  </section>
+
+  <section id="artefakt">
+    <h2 id="artTitle">Joʻnash oldi nazorat roʻyxati va 90 kunlik reja</h2>
+    <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
+    <div class="artifact">
+      <div class="paper" id="artPaper"></div>
+      <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
+      <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
+      <div class="row">
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
+        <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
+        <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mentor">
+      <div class="av">KL</div>
+      <div>
+        <q>Birinchi 90 kunda katta natija emas, ishonchli tizim quring: kirish huquqlari, takrorlanadigan muhit va rahbar bilan muntazam uchrashuv.</q>
+        <small>Kompas Lab maslahati</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Modul pasporti</h2>
+    <div class="pass">
+      <div><b>Darslar</b>6 ta</div>
+      <div><b>Vaqt</b>~1–3 (+90 kun) hafta (haftasiga 3–5 soat)</div>
+      <div><b>Natija</b>Joʻnash oldi nazorat roʻyxati va 90 kunlik reja</div>
+    </div>
+    <p class="srcs">Faktlar: <a href="https://www.leeds.ac.uk/research-applying/doc/applying-research-degrees" target="_blank" rel="noopener noreferrer"><span lang="en">University of Leeds: Applying for research degrees</span></a>; <a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener noreferrer">GOV.UK: <span lang="en">Student visa</span></a>; <a href="https://www.gov.uk/guidance/academic-technology-approval-scheme" target="_blank" rel="noopener noreferrer">GOV.UK: <span lang="en">Academic Technology Approval Scheme</span> (yangilangan 24.03.2026)</a>; <a href="https://www.ukri.org/publications/statement-of-expectations-for-doctoral-training/" target="_blank" rel="noopener noreferrer">UKRI: <span lang="en">Statement of Expectations for Doctoral Training</span> (2024)</a>; <a href="https://ukrio.org/research-integrity/the-concordat-to-support-research-integrity/" target="_blank" rel="noopener noreferrer">UKRIO: <span lang="en">The Concordat to Support Research Integrity</span> (2025)</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, summa, muvofiqlik va viza qoidalari oʻzgaradi.</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn btn-g" href="phd-lab.html">← PhD Lab</a>
+    <a class="btn btn-p" href="dashboard.html">Mening kabinetim →</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
+<script src="js/sfx.js"></script>
+<script>
+(function () {
+  var KEY = "kompas_phd_m8_v1", MOD = "8", LXP = 20, NL = 6, FINXP = 40;
+  var ART = [{"h": "Taklif shartlari", "k": ["a1"]}, {"h": "Viza va ATAS", "k": ["a2"]}, {"h": "Uy va pul", "k": ["a3"]}, {"h": "Kirishish", "k": ["a4"]}, {"h": "90 kunlik reja", "k": ["boshlanish", "d30", "d60", "d90", "a5"]}, {"h": "Halollik va etika", "k": ["halollik"]}, {"h": "Karyera", "k": ["a6"]}];
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var ICON = {}; document.querySelectorAll("[data-icon]").forEach(function (i) { ICON[i.getAttribute("data-icon")] = i.src; });
+  function icon(n) { return ICON[n] || ("img/3d/" + n + ".webp"); }
+  function nv(k) { return String(S.notes[k] || "").trim(); }
+  function wc(s) { s = String(s || "").trim(); return s ? s.split(/\s+/).length : 0; }
+  function copyText(txt) { if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); }); else prompt("Nusxalang:", txt); }
+  function download(name, type, data) { var blob = new Blob([data], { type: type }); var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  window.KG = { S: S, save: save, nv: nv, esc: esc, toast: function (m, i) { toast(m, i); } };
+
+  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  function renderXp(bump) {
+    $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+  }
+  var tt;
+  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn"); $("toastT").textContent = msg; $("toastImg").src = icon(img || "bulb"); var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600); }
+  function confetti() {
+    if (window.KSfx) KSfx.play("win");
+    if (reduce) return;
+    var colors = ["#c4622d", "#2d4a3e", "#d9a441", "#1a7a4a", "#7a3cc4"];
+    for (var i = 0; i < 46; i++) { var c = document.createElement("i"); c.className = "cf"; c.style.left = Math.random() * 100 + "vw"; c.style.background = colors[i % colors.length]; c.style.animationDuration = (1.6 + Math.random() * 1.6) + "s"; document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600); }
+  }
+  function award(id, xp, msg, img) {
+    if (S.done[id]) return false;
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp);
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd >= Math.ceil(NL / 2)) S.done.half = true;
+    if (nd >= NL) S.done.all = true;
+    save(); renderXp(true); renderAll();
+    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
+    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M" + MOD + " yakunlandi", "seedling"); }, 900);
+    return true;
+  }
+
+  var lessons = document.querySelectorAll(".lesson");
+  function openLesson(id, scroll) {
+    lessons.forEach(function (l) { var on = l.id === id && !l.classList.contains("open"); l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false"); });
+    S.open = id; save();
+    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  function renderLesson(l) {
+    var id = l.id, seen = S.seen[id] || [];
+    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
+    l.classList.toggle("done", !!S.done[id]);
+    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Keyingi darsga oʻting."; }
+    else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang.";
+  }
+  lessons.forEach(function (l) {
+    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
+    S.seen[id] = S.seen[id] || [];
+    function show(i, mark) {
+      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
+      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
+      if (mark && S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
+      renderLesson(l);
+    }
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i, true); }); });
+    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); if (l.classList.contains("open") && S.seen[id].indexOf(0) < 0) { S.seen[id].push(0); save(); renderLesson(l); } });
+    show(0, false);
+  });
+  document.querySelectorAll("[data-complete]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-complete");
+      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
+      var n = +id.slice(1);
+      award(id, LXP, "Dars " + parseInt(MOD, 10) + "." + n + " yakunlandi", "seedling");
+      var next = $("l" + (n + 1));
+      setTimeout(function () { if (next) openLesson(next.id, true); else { var t = document.querySelector("section[id]:not(#darslar)"); if (t) t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); } }, 700);
+    });
+  });
+  if (S.open && $(S.open)) openLesson(S.open, false);
+  if (S.seen[S.open] && S.seen[S.open].indexOf(0) < 0) { S.seen[S.open].push(0); save(); }
+
+  function meterFor(t) {
+    var r = t.getAttribute("data-wc"); if (!r) return;
+    var el = document.querySelector('[data-meter="' + t.getAttribute("data-save") + '"]'); if (!el) return;
+    var lo = +r.split("-")[0], hi = +r.split("-")[1], n = wc(t.value), pct = Math.min(100, n / hi * 100);
+    el.className = "meterw" + (n > hi ? " over" : n >= lo ? " ok" : "");
+    el.innerHTML = '<div class="mt"><span>' + n + " soʻz</span><span>moʻljal: " + lo + "–" + hi + '</span></div><div class="mb"><i style="width:' + pct + '%"></i></div>';
+  }
+  document.querySelectorAll("[data-save]").forEach(function (t) {
+    var k = t.getAttribute("data-save"); if (S.notes[k] != null) t.value = S.notes[k];
+    meterFor(t);
+    var tm; t.addEventListener("input", function () { meterFor(t); clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); renderArt(); }, 350); });
+    t.addEventListener("change", function () { S.notes[k] = t.value; save(); renderArt(); });
+  });
+  document.querySelectorAll("[data-ck]").forEach(function (c) {
+    var k = c.getAttribute("data-ck"), inp = c.querySelector("input");
+    inp.checked = !!S.ck[k]; c.classList.toggle("on", inp.checked);
+    inp.addEventListener("change", function () { S.ck[k] = inp.checked; c.classList.toggle("on", inp.checked); save(); renderArt(); });
+  });
+
+  var qz = document.querySelectorAll("#quiz .qz");
+  function renderQuiz() {
+    var answered = 0, right = 0;
+    qz.forEach(function (q, i) {
+      var a = S.quiz[i]; if (a == null) return; answered++; if (a === q.getAttribute("data-a")) right++;
+      q.classList.add("ans");
+      q.querySelectorAll("button").forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("right", v === q.getAttribute("data-a")); b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a")); });
+    });
+    var r = $("quizRes");
+    if (r && qz.length && answered === qz.length) { r.className = "verdict show box " + (right >= 3 ? "info" : "warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Asosiy qoidalarni bilasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    return { answered: answered, right: right };
+  }
+  qz.forEach(function (q, i) {
+    q.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (S.quiz[i] != null) return; S.quiz[i] = b.getAttribute("data-v"); save();
+        var r = renderQuiz();
+        if (r.answered === qz.length) { if (r.right >= 3) S.done.quizOk = true; award("quiz", 30, "Mini-test: " + r.right + "/" + qz.length, "books"); }
+      });
+    });
+  });
+
+  var tb = $("toolBtn");
+  if (tb) tb.addEventListener("click", function () {
+    var need = +tb.getAttribute("data-min"), keys = [], filled = 0;
+    tb.parentNode.querySelectorAll("[data-save]").forEach(function (t) { keys.push(t.getAttribute("data-save")); if (nv(t.getAttribute("data-save"))) filled++; });
+    if (filled < need) { toast("Kamida " + need + " ta maydonni toʻldiring (" + filled + " / " + keys.length + ")", "lock"); return; }
+    if (window.KGTool && window.KGTool.check) { var msg = window.KGTool.check(); if (msg) { toast(msg, "lock"); return; } }
+    award("tool", 30, "Vosita natijasi saqlandi", "memo");
+  });
+  var cb = $("ckBtn");
+  if (cb) cb.addEventListener("click", function () {
+    var all = document.querySelectorAll("#check [data-ck]"), on = 0;
+    all.forEach(function (c) { if (S.ck[c.getAttribute("data-ck")]) on++; });
+    if (on < all.length) { toast("Hali " + (all.length - on) + " ta band belgilanmagan", "lock"); return; }
+    award("ck", 30, "Nazorat roʻyxati yakunlandi", "shield");
+  });
+
+  function artText() {
+    var out = [];
+    ART.forEach(function (sec) {
+      var parts = sec.k.map(function (k) { return nv(k); }).filter(Boolean);
+      out.push({ h: sec.h, t: parts.join("\n\n") });
+    });
+    return out;
+  }
+  function renderArt() {
+    var p = $("artPaper"); if (!p) return;
+    var secs = artText(), filled = 0;
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">PhD Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
+    p.innerHTML = h;
+    $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
+    var fb = $("finBtn"); fb.disabled = !!S.done.fin; if (S.done.fin) fb.textContent = "✓ Yakunlangan";
+  }
+  $("finBtn").addEventListener("click", function () {
+    var nd = 0; for (var i = 1; i <= NL; i++) if (S.done["l" + i]) nd++;
+    if (nd < NL) { toast("Avval barcha darslarni yakunlang (" + nd + " / " + NL + ")", "lock"); return; }
+    if ($("toolBtn") && !S.done.tool) { toast("Avval vosita natijasini saqlang", "lock"); return; }
+    if (!S.ck.hon) { toast("Halollik bayonotini belgilang", "lock"); return; }
+    var secs = artText(), empty = secs.filter(function (s) { return !s.t; }).length;
+    if (empty > Math.floor(secs.length / 3)) { toast("Hujjatda " + empty + " ta boʻsh boʻlim bor", "lock"); return; }
+    award("fin", FINXP, "Modul hujjati tayyor", "seedling"); confetti(); renderArt();
+  });
+  $("docBtn").addEventListener("click", function () {
+    var p = $("artPaper");
+    download("PhD_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+  });
+  $("copyBtn").addEventListener("click", function () {
+    copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
+  });
+
+  function renderAll() {
+    var nodes = document.querySelectorAll("[data-node]"), n = 0;
+    nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
+    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
+  }
+  if (window.KGTool && window.KGTool.init) window.KGTool.init();
+  renderQuiz(); renderArt(); renderAll(); renderXp(false);
+})();
+</script>
+</body>
+</html>

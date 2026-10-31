@@ -147,6 +147,16 @@
       "source": "/usa-lab-m11.html",
       "destination": "/usa-lab-dastur",
       "permanent": true
+    },
+    {
+      "source": "/phd-lab-m0-6",
+      "destination": "/phd-lab-m0-5",
+      "permanent": true
+    },
+    {
+      "source": "/phd-lab-m0-6.html",
+      "destination": "/phd-lab-m0-5",
+      "permanent": true
     }
   ]
 }
