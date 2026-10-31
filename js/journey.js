@@ -16,11 +16,11 @@
     { id: "bachelor", n: "Bachelor Lab", lessons: 86, m0: "bachelor-lab-m0.html", key: "kompas_bachelor_m0_v1" },
     { id: "gks", n: "GKS Lab", lessons: 54, m0: "gks-lab-m0.html", key: "kompas_gks_m0_v1" },
     { id: "usa", n: "USA Lab", lessons: 46, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
+    { id: "phd", n: "PhD Lab", lessons: 55, m0: "phd-lab-m0.html", key: "kompas_phd_m0_v1" },
     { id: "daad", n: "DAAD Lab", lessons: 51, m0: "daad-lab.html", key: null },
     { id: "tt", n: "Tadbirkor Talaba", lessons: 54, m0: "tadbirkor-talaba-m0.html", key: "kompas_tt_m0_v1" },
     { id: "musofir", n: "Musofir Lab", lessons: 44, m0: "musofir-lab-m0.html", key: "kompas_musofir_m0_v1" }
   ];
-  var PHD = { n: "PhD Lab M0", m0: "phd-lab-m0.html", key: "kompas_phd_m0_v1" };
   // Hujjatlar: qaysi modul yakunida qaysi hujjat tayyor boʻladi
   var DOCS = [
     { k: "kompas_master_m0_v1", m0: true, n: "Qaror bayonoti", s: "Master M0", ic: "seedling" },
@@ -64,7 +64,7 @@
 
   // ── Keyingi qadam ──
   function nextStep() {
-    var all = LABS.filter(function (l) { return l.key; }).map(function (l) { return { n: l.n + " M0", href: l.m0, pct: m0pct(l.key) }; }).concat([{ n: PHD.n, href: PHD.m0, pct: m0pct(PHD.key) }]);
+    var all = LABS.filter(function (l) { return l.key; }).map(function (l) { return { n: l.n + " M0", href: l.m0, pct: m0pct(l.key) }; });
     var go = all.filter(function (m) { return m.pct > 0 && m.pct < 100; }).sort(function (a, b) { return b.pct - a.pct; })[0];
     if (go) return { t: "Davom eting: " + go.n, s: go.pct + "% bajarildi. Bir dars ~20–40 daqiqa.", href: go.href, b: "Davom etish →" };
     var fin = all.filter(function (m) { return m.pct >= 100; })[0];

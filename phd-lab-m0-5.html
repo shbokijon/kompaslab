@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>Dars 0.5: Tayyorgarlik diagnostikasi · PhD Lab M0 | Kompas Lab</title>
-<meta name="description" content="PhD Lab bepul M0: PhD kimga kerak, uchta global model, “faqat moliyalashtirilgan” qoidasi, 12–18 oylik vaqt chizigʻi va Tayyorgarlik koʻrsatkichi.">
+<title>Dars 0.5: Shaxsiy yoʻl kartasi va birinchi qadam · PhD Lab M0 | Kompas Lab</title>
+<meta name="description" content="PhD Lab bepul M0: PhD nima va kim uchun, doktorantura yoʻllari, tayyorgarlikni halol baholash, xavflar va moliya, shaxsiy yoʻl kartasi va Tayyorgarlik koʻrsatkichi.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
@@ -258,7 +258,7 @@ body.locked .gate{display:flex;}
 .gate-c p{color:var(--muted);margin-bottom:18px;}
 .gate-c .btn{width:100%;margin-top:10px;}
 .gate-c small{display:block;color:var(--muted);font-size:13px;margin-top:14px;}
-.path.p9{grid-template-columns:repeat(9,minmax(0,1fr));}
+.path.p8{grid-template-columns:repeat(8,minmax(0,1fr));}
 .fld{margin-bottom:12px;}
 .fld label{display:block;font-size:14px;font-weight:700;margin-bottom:6px;}
 .fld label small{font-weight:500;color:var(--muted);}
@@ -308,8 +308,8 @@ body.locked .gate{display:flex;}
 .ph b{font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted);}
 .badges.b6{grid-template-columns:repeat(6,minmax(0,1fr));}
 @media(max-width:760px){
-  .path.p9{grid-template-columns:repeat(5,minmax(0,1fr));}
-  .path.p9 .node:nth-child(5)::after{display:none;}
+  .path.p8{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .path.p8 .node:nth-child(4)::after{display:none;}
   .grid2,.grid3,.flip,.cost-out{grid-template-columns:minmax(0,1fr);}
   .badges.b6{grid-template-columns:repeat(3,minmax(0,1fr));}
   .card3,.card3 .in{min-height:200px;}
@@ -364,21 +364,20 @@ body.locked .gate{display:flex;}
         <span class="badge">🔓 Bepul · Qaror darvozasi</span>
         <h1>PhD: avval “nega” va “kim toʻlaydi”.</h1>
         <p class="lead">Doktorantura 3–4 yillik ish. Bu modulda PhD sizga kerakmi, qaysi model mos, kim moliyalashtiradi va qachon boshlash kerakligini aniqlaysiz. Javob “hozir emas” boʻlishi ham mumkin.</p>
-        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>250</b> XP</span></div>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/phd.webp" width="160" height="160" alt="">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 9 bosqich</span></div>
-    <div class="path p9">
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="path p8">
       <a class="node" href="#l1" data-node="l1"><span class="dot">0.1</span>Nega</a>
-      <a class="node" href="#l2" data-node="l2"><span class="dot">0.2</span>Modellar</a>
-      <a class="node" href="#l3" data-node="l3"><span class="dot">0.3</span>Moliya</a>
-      <a class="node" href="#l4" data-node="l4"><span class="dot">0.4</span>Vaqt</a>
-      <a class="node" href="#l5" data-node="l5"><span class="dot">0.5</span>Diagnostika</a>
-      <a class="node" href="#l6" data-node="l6"><span class="dot">0.6</span>Qaror</a>
+      <a class="node" href="#l2" data-node="l2"><span class="dot">0.2</span>Yoʻllar</a>
+      <a class="node" href="#l3" data-node="l3"><span class="dot">0.3</span>Tayyorlik</a>
+      <a class="node" href="#l4" data-node="l4"><span class="dot">0.4</span>Xavflar</a>
+      <a class="node" href="#l5" data-node="l5"><span class="dot">0.5</span>Karta</a>
       <a class="node" href="#tool-rs" data-node="rs"><span class="dot">%</span>Koʻrsatkich</a>
       <a class="node" href="#tool-tl" data-node="tl"><span class="dot">📅</span>Vaqt</a>
       <a class="node" href="#qaror" data-node="dec"><span class="dot">✓</span>Rozilik</a>
@@ -403,19 +402,21 @@ body.locked .gate{display:flex;}
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">PhD nima va kimga kerak</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🤔 Motiv tekshiruvi</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">PhD nima va kim uchun?</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🤔 Motiv tekshiruvi</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">PhD “keyingi diplom” emas. Bu 3–4 yil davomida bitta savol ustida mustaqil ishlash: koʻpincha javobsiz kunlar, rad etilgan maqolalar va oʻzingiz qoʻygan muddatlar. Nega borayotganingizni bilmasangiz, ikkinchi yilda toʻxtab qolish xavfi katta.</div></div>
+          <div class="panel"><div class="hook">PhD 3–4 yil davomida hali javobi yoʻq bitta savol ustida mustaqil ishlash. Bu yangi diplom emas, kundalik ilmiy mehnat: javobsiz kunlar, rad etilgan maqolalar va oʻzingiz qoʻygan muddatlar. Nega borayotganingizni bilmasangiz, ikkinchi yilda toʻxtab qolish xavfi katta.</div></div>
           <div class="panel">
             <p><b>Doktorantura</b>: mustaqil tadqiqot orqali yangi bilim yaratish. Natija: dissertatsiya va odatda ilmiy maqolalar.</p>
+            <p>Magistraturada koʻpincha tayyor kurslarni oʻqiysiz. PhDʼda esa savolni oʻzingiz qoʻyasiz, dalil yigʻasiz, metod xatolarini boshqarasiz va natijani himoya qilasiz: tadqiqot uchun masʼuliyat sizda.</p>
             <h4>PhD qaysi yoʻllarga olib boradi</h4>
             <ul><li><b>Akademik karyera:</b> postdok, oʻqituvchi, tadqiqotchi. Raqobat kuchli, koʻpincha bir necha yillik postdok bosqichi bor.</li><li><b>Sanoat va tadqiqot markazlari:</b> R&amp;D, maʼlumotlar tahlili, muhandislik tadqiqotlari, davlat ilmiy institutlari.</li><li><b>Davlat va xalqaro tashkilotlar:</b> siyosat, ekspertiza, loyiha boshqaruvi.</li></ul>
             <h4>PhD qachon ortiqcha</h4>
             <ul><li>Maqsadingiz yaxshi maoshli ish boʻlsa va u PhD talab qilmasa: magistratura yoki ish tajribasi tezroq olib borishi mumkin.</li><li>Asosiy sabab “chet elga chiqish” boʻlsa: magistratura yoki rasmiy ish yoʻli kamroq xavfli.</li><li>Tadqiqot jarayoni sizga qiziq boʻlmasa: 3–4 yil faqat unvon uchun juda uzoq.</li></ul>
+            <div class="box warn"><b>PhD viza yoki barqaror ish kafolati emas.</b> Kuchsiz sabab: “chet elda qolish uchun PhD kerak”. Kuchli sabab: “shu muammoni oʻrganish uchun falon maʼlumot, metod va rahbar muhiti kerak; natijadan keyin ikki yoʻlim bor”.</div>
             <p>Quyidagi motivlardan oʻzingiznikini tanlang: har biriga halol izoh chiqadi.</p>
             <div class="motive" id="motive">
               <button type="button" class="mv" data-m="ok" aria-pressed="false">Ilmiy savol meni qiziqtiradi va tadqiqot bilan shugʻullanmoqchiman<small>✓ Kuchli motiv. M1 da uni aniq tadqiq qilinadigan savolga aylantirasiz.</small></button>
@@ -426,11 +427,11 @@ body.locked .gate{display:flex;}
               <button type="button" class="mv" data-m="bad" aria-pressed="false">Ish topa olmadim, yana oʻqiy qolay<small>✗ PhD ishsizlikdan qochish yoʻli emas. Bu holatda qisqa muddatli reja tuzish foydaliroq.</small></button>
             </div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy"><p>PhD: mustaqil tadqiqot orqali yangi bilim. Kuchli motiv tadqiqot savoli yoki tadqiqot karyerasi. “Chet elga chiqish” va “unvon” yolgʻiz motiv sifatida xavfli.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy"><p>PhD: mustaqil tadqiqot va unga masʼuliyat. Kuchli motiv aniq ilmiy savol yoki tadqiqot karyerasi; “chet elga chiqish” va “unvon” yolgʻiz motiv sifatida xavfli. PhDʼsiz erishsa boʻladigan maqsadni alohida yozing.</p></div></div>
           <div class="panel"><div class="assign"><b>Natija: “Nega PhD” bayoni (3–5 jumla)</b>
-            <ul><li>Nega PhD? PhDʼdan keyin 5 yilda qayerda boʻlmoqchisiz?</li><li>Bu maqsadga PhDʼsiz yetish mumkinmi? Halol javob bering.</li></ul>
-            <textarea data-save="a1" placeholder="Mening sababim: ..."></textarea><div class="hint">Matn faqat shu brauzerda saqlanadi.</div></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+            <ul><li>Bitta asosiy ilmiy savolingizni yozing.</li><li>Tadqiqotdagi qaysi kundalik ish sizga yoqishini yozing (oʻqish, tajriba, kod, dala ishi, yozish).</li><li>PhD qilmasangiz, qanday muqobil yoʻl bor va unga PhDʼsiz yetish mumkinmi?</li></ul>
+            <textarea data-save="a1" placeholder="Savolim: ... Menga yoqadigan ish: ... Muqobil yoʻl: ..."></textarea><div class="hint">Matn faqat shu brauzerda saqlanadi.</div></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
         </div>
       </article>
 
@@ -438,13 +439,13 @@ body.locked .gate{display:flex;}
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Uchta global model</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🃏 Kartalar</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Doktorantura yoʻllari xaritasi</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🃏 Kartalar</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Buyuk Britaniyada PhDʼga professor orqali, AQShda kafedra orqali, Niderlandiyada esa ish eʼloni orqali kirasiz. Bitta uslubda hammasiga topshirish ishlamaydi.</div></div>
+          <div class="panel"><div class="hook">Buyuk Britaniyada PhDʼga koʻpincha rahbar yoki eʼlon qilingan loyiha orqali, AQShda kafedra orqali, Niderlandiyada esa ish eʼloni orqali kirasiz. Bitta “PhD” nomi ortida turli ish modellari bor: bitta uslubda hammasiga topshirish ishlamaydi.</div></div>
           <div class="panel">
             <p>Doktorantura dunyoda uchta asosiy modelda tashkil qilinadi. Kartani bosing:</p>
             <div class="flip">
@@ -452,34 +453,67 @@ body.locked .gate{display:flex;}
               <button type="button" class="card3" data-card="str" aria-pressed="false"><span class="in"><span class="f"><em>🇺🇸🇪🇺</em><b>Tuzilmali doktorlik maktabi</b><span>Bosing</span></span><span class="b"><b>AQSh, koʻp Yevropa dasturlari</b>Birinchi yillarda kurslar va imtihonlar, keyin rahbar tanlanadi. Ariza kafedra yoki doktorlik maktabiga, belgilangan muddatda topshiriladi. AQShda odatda uzoqroq davom etadi.</span></span></button>
               <button type="button" class="card3" data-card="job" aria-pressed="false"><span class="in"><span class="f"><em>🇳🇱🇸🇪🇨🇭</em><b>Maoshli PhD (ish oʻrni)</b><span>Bosing</span></span><span class="b"><b>Niderlandiya, Skandinaviya, Shveytsariya</b>PhD ish shartnomasi bilan lavozim: maosh, ijtimoiy kafolatlar. Ariza ish eʼloniga, CV va motivatsion xat bilan topshiriladi; oʻrin topilgach ochiladi, sikl qatʼiy emas.</span></span></button>
             </div>
-            <div class="box warn"><b>Talablarni rasmiy sahifadan tekshiring.</b> Magistr darajasi talabi mamlakat va dasturga qarab farq qiladi: baʼzi tizimlar bakalavrdan keyin PhD qabul qiladi.</div>
+            <h4>Har eʼlonda uch savol</h4>
+            <ul><li>Doktorlik darajasini kim beradi?</li><li>Pulni kim toʻlaydi va nimani qoplaydi?</li><li>Kim rahbarlik qiladi?</li></ul>
+            <p>Ikki eʼlonning ikkalasi ham “moliyalashtirilgan PhD” deyishi mumkin: biri oʻqish toʻlovi va stipendiya, boshqasi ish shartnomasi. Qaysi biri sizga mosligini faqat eʼlon matni bilan tekshirasiz.</p>
+            <div class="box warn"><b>Talablarni rasmiy sahifadan tekshiring.</b> “Toʻliq moliyalashtirilgan” iborasi nimani qoplashi yozilmagan boʻlsa, uni xavfsiz deb hisoblamang. Magistr darajasi talabi mamlakat va dasturga qarab farq qiladi: baʼzi tizimlar bakalavrdan keyin PhD qabul qiladi.</div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Uch model: rahbar atrofida (UK, Avstraliya), tuzilmali maktab (AQSh, koʻp Yevropa dasturlari), maoshli PhD (NL, Skandinaviya, Shveytsariya). Har birida ariza boshqacha boshlanadi.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Uch model: rahbar atrofida (Buyuk Britaniya, Avstraliya), tuzilmali doktorlik maktabi (AQSh, koʻp Yevropa dasturlari), maoshli PhD (Niderlandiya, Skandinaviya, Shveytsariya). Har eʼlonda: kim daraja beradi, kim toʻlaydi, kim rahbar.</p></div></div>
           <div class="panel"><div class="assign"><b>Mini-test: qaysi model?</b>
             <div class="quiz" id="quiz">
-              <div class="qz" data-a="job"><p>“Universitet saytida ‘PhD candidate’ vakansiyasi chiqdi: maosh, ish shartnomasi, CV va motivatsion xat soʻraladi.”</p><div class="row"><button type="button" data-v="sup">👤 Rahbar</button><button type="button" data-v="str">🏫 Maktab</button><button type="button" data-v="job">💼 Maoshli</button></div><div class="why">Maoshli PhD: ish oʻrni sifatida.</div></div>
+              <div class="qz" data-a="job"><p>“Universitet saytida «<span lang="en">PhD candidate</span>» vakansiyasi chiqdi: maosh, ish shartnomasi, CV va motivatsion xat soʻraladi.”</p><div class="row"><button type="button" data-v="sup">👤 Rahbar</button><button type="button" data-v="str">🏫 Maktab</button><button type="button" data-v="job">💼 Maoshli</button></div><div class="why">Maoshli PhD: ish oʻrni sifatida.</div></div>
               <div class="qz" data-a="str"><p>“Birinchi ikki yil kurslar va malaka imtihoni, rahbarni keyin tanlayman.”</p><div class="row"><button type="button" data-v="sup">👤 Rahbar</button><button type="button" data-v="str">🏫 Maktab</button><button type="button" data-v="job">💼 Maoshli</button></div><div class="why">Tuzilmali doktorlik maktabi.</div></div>
               <div class="qz" data-a="sup"><p>“Avval professorga xat yozib, mavzu va moliyalashtirishni muhokama qilaman, keyin universitetga ariza beraman.”</p><div class="row"><button type="button" data-v="sup">👤 Rahbar</button><button type="button" data-v="str">🏫 Maktab</button><button type="button" data-v="job">💼 Maoshli</button></div><div class="why">Ilmiy rahbar atrofidagi model.</div></div>
               <div class="qz" data-a="sup"><p>“Ariza paketining markazida ilmiy loyiha taklifi va aniq rahbar bilan moslik turadi.”</p><div class="row"><button type="button" data-v="sup">👤 Rahbar</button><button type="button" data-v="str">🏫 Maktab</button><button type="button" data-v="job">💼 Maoshli</button></div><div class="why">Rahbar atrofidagi model (masalan, Buyuk Britaniya).</div></div>
             </div>
             <div class="verdict" id="quizRes"></div>
-            <textarea data-save="a2" placeholder="Menga qaysi model mos va nega: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+            <textarea data-save="a2" placeholder="Menga mos model: ..., chunki ... Topgan 2 ta rasmiy havola: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
         </div>
       </article>
 
       <!-- 0.3 -->
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.3</span><span class="l-t" style="display:block">“Faqat moliyalashtirilgan” qoidasi</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🧮 Xarajat kalkulyatori</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.3</span><span class="l-t" style="display:block">Tayyorgarlikni halol baholash</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📊 7 yoʻnalish</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">PhD Lab oʻz hisobidan PhDʼni maqsad sifatida oʻrgatmaydi. Bu qoida baʼzi nomzodlarni toʻlashdan qaytarishi mumkin, shuning uchun u toʻlovdan oldin, shu bepul darsda tushuntiriladi.</div></div>
+          <div class="panel"><div class="hook">Qabul ehtimoli bitta raqamga sigʻmaydi. Oʻz-oʻzini baholash faqat qaysi ishdan boshlashni koʻrsatadi: nashr yoʻqligi PhDʼga yoʻl yopiq degani emas, lekin savol aniq boʻlmasa va moliya yoʻli boʻlmasa, 18 oylik sikl ham yetmaydi.</div></div>
           <div class="panel">
+            <div class="tbl"><table><thead><tr><th>Yoʻnalish</th><th>Ball</th></tr></thead><tbody>
+              <tr><td>Akademik asos</td><td>15</td></tr><tr><td>Ilmiy yoʻnalish</td><td>20</td></tr><tr><td>Ilmiy natijalar</td><td>15</td></tr><tr><td>Til sertifikati</td><td>15</td></tr><tr><td>Tavsiya beruvchilar</td><td>10</td></tr><tr><td>Moliyalashtirish yoʻli</td><td>15</td></tr><tr><td>Boshlanishgacha vaqt</td><td>10</td></tr>
+            </tbody></table></div>
+            <ul><li><b>70+:</b> hozir boshlash mumkin.</li><li><b>45–69:</b> avval 1–2 boʻshliqni yoping.</li><li><b>45 dan past:</b> bu siklga erta. Muqobil: Master Lab yoki keyingi sikl.</li><li>Maksimal ballning yarmidan past yoʻnalish boʻshliq hisoblanadi.</li></ul>
+            <p>Har yoʻnalishda <b>taxmin</b> va <b>dalilni</b> ajrating: loyiha, kod, tezis, laboratoriya ishi, baho, tavsiya beruvchi yoki sertifikat. “Hali yoʻq” javobi rivojlanish rejasiga aylanadi.</p>
+            <div class="box warn"><b>Koʻrsatkich qabul yoki stipendiya ehtimoli emas.</b> Dasturga muvofiqlik (eligibility) alohida tekshiriladi: eʼlon nashr yoki muayyan daraja talab qilsa, bu ball bilan qoplanmaydi.</div>
+            <div class="box info"><b>Ilmiy natija faqat nashr emas.</b> Dissertatsiya, hisobot, konferensiya tezisi, preprint, kod va maʼlumotlar toʻplami ham hisoblanadi (M5).</div>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>7 yoʻnalish, 100 ball. Eng muhimi ilmiy yoʻnalish (20) va moliya yoʻli (15). Har past ballga bitta dalil va bitta keyingi harakat; muvofiqlikni alohida tekshiring.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: koʻrsatkich</b><ul><li>Pastdagi <a href="#tool-rs">Tayyorgarlik koʻrsatkichi</a> vositasida 7 savolga javob bering.</li><li>Har past ball uchun bitta dalil va bitta keyingi harakatni yozing.</li><li>Rasmiy minimal talablarni (daraja, til) alohida tekshiring.</li></ul>
+            <textarea data-save="a5" placeholder="Ballim: ... Boʻshliq: ... → keyingi harakat: ... Muvofiqlik: mos / tekshirish kerak"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+        </div>
+      </article>
+
+      <!-- 0.4 -->
+      <article class="lesson" id="l4">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Xavflar, moliya va oilaviy qaror</span>
+            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🧮 Xarajat kalkulyatori</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Doktoranturada ilmiy va shaxsiy murosalar bor: ularni oldindan ochiq koʻrish kerak. PhD Lab oʻz hisobidan PhDʼni maqsad sifatida oʻrgatmaydi; bu qoida toʻlovdan oldin, shu bepul darsda tushuntiriladi.</div></div>
+          <div class="panel">
+            <h4>Qarordan oldin koʻriladigan xavflar</h4>
+            <ul><li>Tadqiqot noaniqligi va vaqt</li><li>Daromadning muqobil qiymati: shu yillarda ishlasangiz nima topardingiz</li><li>Oila ehtiyojlari va koʻchish</li><li>Sogʻliq va ruhiy holat</li><li>Rahbar bilan ishlash sharoiti</li></ul>
+            <p>Sharoit yomon boʻlsa, kuchli taklifni rad etish ham toʻgʻri qaror boʻlishi mumkin. Moliyaviy noaniqlikni “borib ishlab topaman” degan tekshirilmagan rejaga suyamang.</p>
             <h4>Oʻz hisobidan PhD xavflari</h4>
             <ul><li><b>3–4 yillik xarajat:</b> oʻqish toʻlovi va yashash xarajati bir necha yil davomida.</li><li><b>Viza uchun moliyaviy dalil:</b> koʻp davlatlar mablagʻ borligini hujjat bilan soʻraydi.</li><li><b>Rahbar resurslariga bogʻliqlik:</b> moliyalashtirilgan doktorant odatda loyiha, uskunalar va konferensiyalarga kirish bilan birga keladi.</li></ul>
             <h4>Moliyalashtirish turlari</h4>
@@ -491,13 +525,13 @@ body.locked .gate{display:flex;}
             </tbody></table></div>
             <h4>Bilish kerak boʻlgan cheklovlar</h4>
             <ul>
-              <li>UKRI doktorlik oʻrinlarida xalqaro talabalar ulushi cheklangan (har kohortda 30% gacha) va ariza UKRIʼga emas, universitetga beriladi.</li>
+              <li>UKRI moliyalashtirgan oʻrinlarda xalqaro talabalar uchun oʻrinlar soni cheklangan; ariza UKRIʼga emas, universitetga beriladi (UKRI, 07.04.2026).</li>
               <li>MSCA doktorlik tarmoqlari istalgan fuqarolikka ochiq, lekin mobillik qoidasi bor.</li>
               <li>Erasmus Mundus doktoranturani moliyalashtirmaydi.</li>
               <li>AQShdagi NSF GRFP xalqaro talabalarga ochiq emas; Kanadadagi CGRS-D Kanada universitetida oʻqiyotgan xalqaro doktorantlarga ham ochiq.</li>
               <li>Avstraliya RTP: universitet mablagʻining 10% gacha qismi xalqaro talabalarga sarflanishi mumkin.</li>
             </ul>
-            <div class="srcs">Manbalar: <a href="https://www.ukri.org/apply-for-funding/studentships-and-doctoral-training/get-a-studentship-to-fund-your-doctorate/" target="_blank" rel="noopener">UKRI</a> · <a href="https://marie-sklodowska-curie-actions.ec.europa.eu/actions/doctoral-networks" target="_blank" rel="noopener">MSCA</a> · <a href="https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en" target="_blank" rel="noopener">Erasmus Mundus</a> · <a href="https://www.sgs.utoronto.ca/awards/canada-graduate-research-scholarship-doctoral-cgrs-d-program" target="_blank" rel="noopener">CGRS-D</a> · <a href="https://www.education.gov.au/node/8934" target="_blank" rel="noopener">Avstraliya RTP</a>. Shartlar oʻzgarishi mumkin: rasmiy sahifadan tekshiring.</div>
+            <div class="srcs">Manbalar: <a href="https://www.ukri.org/apply-for-funding/ukri-funded-studentships/" target="_blank" rel="noopener">UKRI</a> · <a href="https://marie-sklodowska-curie-actions.ec.europa.eu/actions/doctoral-networks" target="_blank" rel="noopener">MSCA</a> · <a href="https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en" target="_blank" rel="noopener">Erasmus Mundus</a> · <a href="https://www.sgs.utoronto.ca/awards/canada-graduate-research-scholarship-doctoral-cgrs-d-program" target="_blank" rel="noopener">CGRS-D</a> · <a href="https://www.education.gov.au/node/8934" target="_blank" rel="noopener">Avstraliya RTP</a>. Shartlar oʻzgarishi mumkin: rasmiy sahifadan tekshiring.</div>
             <h4>Kalkulyator: oʻz hisobidan PhD qancha turadi?</h4>
             <p class="hint" style="margin-bottom:8px">Maqsad universitetingiz sahifasidagi rasmiy raqamlarni kiriting. Kompas raqam toʻqimaydi.</p>
             <div class="grid3">
@@ -507,73 +541,31 @@ body.locked .gate{display:flex;}
             </div>
             <div class="cost-out" id="cOut"></div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>PhD Lab faqat moliyalashtirilgan PhDʼga tayyorlaydi: doktorlik oʻrni, maoshli PhD, assistentlik yoki stipendiya. Oʻz hisobidan PhD bir necha yillik xarajat va viza xavfini sizga yuklaydi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: moliyalashtirish yoʻlim</b><ul><li>Sizga mos 2 ta moliyalashtirish turini tanlang va har biri uchun bitta rasmiy sahifa toping.</li></ul>
-            <textarea data-save="a3" placeholder="1) ... | havola: ...&#10;2) ... | havola: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
-        </div>
-      </article>
-
-      <!-- 0.4 -->
-      <article class="lesson" id="l4">
-        <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">PhD vaqt chizigʻi: qarordan taklifgacha 12–18 oy</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📅 Teskari reja</span><span class="tag xp">+20 XP</span></span></span>
-          <span class="chev">▾</span>
-        </button>
-        <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Professorga xat yozish, javob kutish, ilmiy loyiha taklifini bir necha marta qayta yozish, stipendiya tanlovi, viza. Bularning har biri haftalar oladi. Shuning uchun PhD sikli odatda 12–18 oy.</div></div>
-          <div class="panel">
-            <p>Reja maqsad qilingan boshlanish sanasidan <b>orqaga</b> quriladi:</p>
-            <ul><li><b>Universitet va stipendiya muddatlari ikki alohida sana.</b> Stipendiya koʻpincha oldinroq yopiladi.</li><li><b>Rahbar bilan aloqa</b> arizadan bir necha oy oldin boshlanadi: javob kutish va muhokama vaqt oladi.</li><li><b>Qoʻshimcha muddatlar:</b> viza, Buyuk Britaniyada ayrim STEM PhD dasturlari uchun ATAS sertifikati (koʻrib chiqish kamida 30 ish kuni).</li></ul>
-            <div class="srcs">Manba: <a href="https://www.gov.uk/guidance/academic-technology-approval-scheme" target="_blank" rel="noopener">gov.uk: ATAS</a></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Boshlanishdan 12–18 oy oldin tayyorgarlikni boshlang. Universitet, stipendiya, viza va ATAS muddatlarini alohida yozing.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: shaxsiy vaqt chizigʻi</b><ul><li>Pastdagi <a href="#tool-tl">Vaqt chizigʻi</a> vositasida maqsad qilingan boshlanish sanasini kiriting.</li></ul>
-            <textarea data-save="a4" placeholder="Maqsad: ... yil ... oyida boshlash. Eng erta muddat: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>PhD Lab faqat moliyalashtirilgan PhDʼga tayyorlaydi. Har xavfga ehtimol, taʼsir, ogohlantiruvchi belgi va B reja yozing; oilangiz bilan qaror mezonlarini oldindan kelishing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: xavflar va moliya yoʻli</b><ul><li>5 ta xavfni ehtimol va taʼsir bilan yozing; har biriga ogohlantiruvchi belgi va B reja qoʻshing.</li><li>Sizga mos 2 ta moliyalashtirish turini tanlang va har biri uchun bitta rasmiy sahifa toping.</li><li>Qaror mezonlarini oila yoki ishongan maslahatchingiz bilan muhokama qiling.</li></ul>
+            <textarea data-save="a3" placeholder="Xavf 1: ... (ehtimol / taʼsir) → B reja: ...&#10;Moliya: 1) ... | havola: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
         </div>
       </article>
 
       <!-- 0.5 -->
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.5</span><span class="l-t" style="display:block">Tayyorgarlik diagnostikasi</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📊 7 yoʻnalish</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.5</span><span class="l-t" style="display:block">Shaxsiy yoʻl kartasi va birinchi qadam</span>
+            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📅 Teskari reja</span><span class="tag">✋ Mos emas roʻyxati</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Nashr yoʻqligi PhDʼga yoʻl yopiq degani emas. Lekin savolingiz aniq boʻlmasa va moliyalashtirish yoʻli boʻlmasa, 18 oylik sikl ham yetmaydi. Diagnostika qaysi biri sizning asosiy ishingiz ekanini koʻrsatadi.</div></div>
+          <div class="panel"><div class="hook">M0 oxirida savollar emas, tekshiriladigan qaror kartasi qolishi kerak. Rahbarga xat, taklifni qayta yozish, stipendiya tanlovi va viza haftalar oladi: shuning uchun PhD sikli odatda 12–18 oy.</div></div>
           <div class="panel">
-            <div class="tbl"><table><thead><tr><th>Yoʻnalish</th><th>Ball</th></tr></thead><tbody>
-              <tr><td>Akademik asos</td><td>15</td></tr><tr><td>Ilmiy yoʻnalish</td><td>20</td></tr><tr><td>Ilmiy natijalar</td><td>15</td></tr><tr><td>Til sertifikati</td><td>15</td></tr><tr><td>Tavsiya beruvchilar</td><td>10</td></tr><tr><td>Moliyalashtirish yoʻli</td><td>15</td></tr><tr><td>Boshlanishgacha vaqt</td><td>10</td></tr>
-            </tbody></table></div>
-            <ul><li><b>70+:</b> hozir boshlash mumkin.</li><li><b>45–69:</b> avval 1–2 boʻshliqni yoping.</li><li><b>45 dan past:</b> bu siklga erta. Muqobil: Master Lab, Research Lab yoki keyingi sikl.</li><li>Maksimal ballning yarmidan past yoʻnalish boʻshliq hisoblanadi.</li></ul>
-            <div class="box info"><b>Ilmiy natija faqat nashr emas.</b> Dissertatsiya, hisobot, konferensiya tezisi, preprint, kod va maʼlumotlar toʻplami ham hisoblanadi (M5.3).</div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>7 yoʻnalish, 100 ball. Eng muhimi ilmiy yoʻnalish (20) va moliyalashtirish yoʻli (15).</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: koʻrsatkich</b><ul><li>Pastdagi <a href="#tool-rs">Tayyorgarlik koʻrsatkichi</a> vositasida 7 savolga javob bering.</li></ul>
-            <textarea data-save="a5" placeholder="Ballim: ... Boʻshliqlarim: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
-        </div>
-      </article>
-
-      <!-- 0.6 -->
-      <article class="lesson" id="l6">
-        <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.6</span><span class="l-t" style="display:block">Qaror: boshlash, kechiktirish yoki boshqa Lab</span>
-            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">✋ Mos emas roʻyxati</span><span class="tag xp">+20 XP</span></span></span>
-          <span class="chev">▾</span>
-        </button>
-        <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bu dars sizni toʻlashdan qaytarishga harakat qiladi. Shu roʻyxatdan keyin ham davom etsangiz, bu oʻylangan qaror.</div></div>
-          <div class="panel">
+            <p>Reja maqsad qilingan boshlanish sanasidan <b>orqaga</b> quriladi:</p>
+            <ul><li><b>Universitet va stipendiya muddatlari ikki alohida sana.</b> Stipendiya koʻpincha oldinroq yopiladi.</li><li><b>Rahbar bilan aloqa</b> arizadan bir necha oy oldin boshlanadi: javob kutish va muhokama vaqt oladi.</li><li><b>Qoʻshimcha muddatlar:</b> viza, Buyuk Britaniyada ayrim STEM PhD dasturlari uchun ATAS sertifikati (koʻrib chiqish vaqtini GOV.UK sahifasidan tekshiring).</li></ul>
+            <div class="srcs">Manba: <a href="https://www.gov.uk/guidance/academic-technology-approval-scheme" target="_blank" rel="noopener">gov.uk: ATAS</a></div>
+            <h4>Qaror kartasi</h4>
+            <ul><li>“Menga PhD nima uchun kerak?” degan bir paragraf</li><li>Ustuvor mavzu va 2–3 ehtimoliy mamlakat yoki tizim</li><li>Hozirgi dalillar va 3 ta xavf</li><li>30 kunlik reja</li></ul>
+            <div class="box info"><b>Kompas tuzgan namuna.</b> “Avval 6 hafta ilmiy portfel, keyin 4 ta moliyalashtirilgan oʻrinni tekshirish, 2 ta rahbar haqida manbali qayd.” Bu qabul vaʼdasi emas, boshqariladigan jarayon. Muvofiqlik bandi yetishmasa, “mos emas” oʻrniga qayta tekshirish va tayyorlanish vaqtini yozing.</div>
             <h4>PhD Lab sizga mos emas, agar:</h4>
             <div class="checks" id="notFit">
               <label class="ck"><input type="checkbox" data-alt="Master Lab" data-href="master-lab.html">Magistraturaga topshiryapman</label>
@@ -594,10 +586,12 @@ body.locked .gate{display:flex;}
               <tr><td>Qaytarish</td><td>Toʻlangan obuna puli qaytarilmaydi. Istisno: texnik xato bilan ikki marta yechilgan yoki xizmat koʻrsatilmagan toʻlov</td></tr>
               <tr><td>Kirmaydi</td><td>Hujjatni oʻrningizga yozish, professorga tanishtirish, shaxsiy mentorlik, qabul yoki stipendiya kafolati</td></tr>
             </tbody></table></div>
+
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Roʻyxatdan biror band sizga tegishli boʻlsa, toʻlamaslik yoki boshqa Labni tanlash toʻgʻri qaror.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: qaror</b><ul><li>Sahifa oxiridagi <a href="#qaror">Qaror</a> boʻlimida bayonotingizni tasdiqlang.</li></ul></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Boshlanishdan 12–18 oy oldin tayyorgarlikni boshlang; universitet, stipendiya, viza va ATAS muddatlarini alohida yozing. Mos emas roʻyxatidan biror band sizga tegishli boʻlsa, toʻlamaslik yoki boshqa Labni tanlash toʻgʻri qaror.</p></div></div>
+          <div class="panel"><div class="assign"><b>Natija: qaror kartasi</b><ul><li>Pastdagi <a href="#tool-tl">Vaqt chizigʻi</a> vositasida maqsad qilingan boshlanish sanasini kiriting.</li><li>Keyingi 30 kunda bajariladigan 3 ta ishni yozing.</li><li>M1 da koʻriladigan ilmiy savolni tanlang va sahifa oxiridagi <a href="#qaror">Qaror</a> boʻlimida bayonotingizni tasdiqlang.</li></ul>
+            <textarea data-save="a4" placeholder="Maqsad: ... yil ... oyida boshlash. 30 kun: 1) ... 2) ... 3) ... M1 savoli: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
         </div>
       </article>
     </div>
@@ -668,9 +662,9 @@ body.locked .gate{display:flex;}
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
-      <div><b>Darslar</b>6 ta, bepul</div>
+      <div><b>Darslar</b>5 ta, bepul</div>
       <div><b>Vaqt</b>~1 hafta</div>
-      <div><b>Natija</b>Koʻrsatkich + vaqt chizigʻi + rozilik qaydi</div>
+      <div><b>Natija</b>PhD qaror kartasi: koʻrsatkich, vaqt chizigʻi, 30 kunlik reja va rozilik qaydi</div>
     </div>
   </section>
 </div>
@@ -782,7 +776,7 @@ body.locked .gate{display:flex;}
       var id = b.getAttribute("data-complete");
       if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
       var n = +id.slice(1);
-      award(id, 20, "Dars 0." + n + " yakunlandi", "seedling");
+      award(id, 24, "Dars 0." + n + " yakunlandi", "seedling");
       var next = $("l" + (n + 1));
       setTimeout(function () { if (next) openLesson(next.id, true); else $("tool-rs").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
     });
@@ -846,7 +840,7 @@ body.locked .gate{display:flex;}
   }
   ["cTui", "cLiv", "cYrs"].forEach(function (id) { $(id).addEventListener("input", renderCost); $(id).addEventListener("change", renderCost); });
 
-  // ── 0.6 Mos emas ──
+  // ── 0.5 Mos emas roʻyxati ──
   var fit = document.querySelectorAll("#notFit input");
   fit.forEach(function (x, i) { x.checked = S.fit.indexOf(i) >= 0; x.addEventListener("change", function () { S.fit = []; fit.forEach(function (y, j) { if (y.checked) S.fit.push(j); }); save(); renderFit(); }); });
   function renderFit() {
@@ -887,12 +881,12 @@ body.locked .gate{display:flex;}
     $("radar").innerHTML = g; $("rsTot").textContent = total();
   }
   Q.forEach(function (_, i) { $("q" + i).addEventListener("change", function (e) { ans[i] = e.target.value === "" ? null : +e.target.value; drawRadar(); }); });
-  function verdict(t) { return t >= 70 ? ["Hozir boshlash mumkin", "green", "Asosiy yoʻnalishlar yetarli."] : t >= 45 ? ["Avval 1–2 boʻshliqni yoping", "gold", "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak."] : ["Bu siklga erta", "red", "Toʻlov tavsiya etilmaydi. Muqobil: Master Lab, Research Lab yoki keyingi sikl."]; }
+  function verdict(t) { return t >= 70 ? ["Hozir boshlash mumkin", "green", "Asosiy yoʻnalishlar yetarli."] : t >= 45 ? ["Avval 1–2 boʻshliqni yoping", "gold", "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak."] : ["Bu siklga erta", "red", "Toʻlov tavsiya etilmaydi. Muqobil: Master Lab yoki keyingi sikl."]; }
   function renderRs() {
     if (!S.rs) return;
     var v = verdict(S.rs.total), r = $("rsRes"); r.className = "res show";
     r.innerHTML = '<div class="verd" style="color:var(--' + v[1] + ')">' + S.rs.total + " / 100 · " + v[0] + '</div><p style="margin-top:4px">' + v[2] + "</p>" + (S.rs.total < 70 && S.rs.gaps.length ? '<ul class="gaps">' + S.rs.gaps.map(function (g) { return "<li>" + g + "</li>"; }).join("") + "</ul>" : "") +
-      (S.rs.ans[5] === 0 ? '<div class="box warn">Oʻz hisobidan PhD: avval 0.3 darsini oʻqing: xarajat, viza va ilmiy rahbar resurslari bilan bogʻliq xavflar.</div>' : "") +
+      (S.rs.ans[5] === 0 ? '<div class="box warn">Oʻz hisobidan PhD: avval 0.4 darsini oʻqing: xarajat, viza va ilmiy rahbar resurslari bilan bogʻliq xavflar.</div>' : "") +
       (S.rs.ans[6] === 0 ? '<div class="box warn" style="margin-bottom:0">Boshlanishgacha 6 oydan kam: sikl odatda 12–18 oy. Keyingi siklni rejalashtirish tavsiya etiladi.</div>' : "");
   }
   $("rsBtn").addEventListener("click", function () {
@@ -961,7 +955,7 @@ body.locked .gate{display:flex;}
   });
 
   function renderAll() {
-    var keys = ["l1", "l2", "l3", "l4", "l5", "l6", "rs", "tl", "dec"], n = 0;
+    var keys = ["l1", "l2", "l3", "l4", "l5", "rs", "tl", "dec"], n = 0;
     document.querySelectorAll("[data-node]").forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
     $("mapN").textContent = n + " / " + keys.length + " bosqich";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
@@ -985,7 +979,7 @@ body.locked .gate{display:flex;}
 <style>.kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}@media print{.kp-wm{display:none!important}}</style>
 <script>(function(){function m(){if(document.querySelector(".kp-wm"))return;var c=document.createElement("canvas"),w=280,h=170,g=c.getContext&&c.getContext("2d");if(!g)return;c.width=w;c.height=h;g.translate(w/2,h/2);g.rotate(-0.4);g.fillStyle="#000";g.font="500 13px Outfit,system-ui,sans-serif";g.textAlign="center";g.fillText("kompaslab.uz",0,0);var d=document.createElement("div");d.className="kp-wm";d.setAttribute("aria-hidden","true");d.style.backgroundImage="url("+c.toDataURL()+")";document.body.appendChild(d);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",m);else m();})();</script>
 <script src="js/suggest.js" defer></script>
-<script>window.KMOD={"base": "phd-lab-m0", "key": "kompas_phd_m0_v1", "lab": "phd-lab.html", "labName": "PhD Lab", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "PhD nima va kimga kerak", "short": "Nega", "meta": "⏱ 25 daqiqa, 🤔 Motiv tekshiruvi"}, {"id": "l2", "num": "0.2", "title": "Uchta global model", "short": "Modellar", "meta": "⏱ 30 daqiqa, 🃏 Kartalar, 🎯 Mini-test"}, {"id": "l3", "num": "0.3", "title": "“Faqat moliyalashtirilgan” qoidasi", "short": "Moliya", "meta": "⏱ 30 daqiqa, 🧮 Xarajat kalkulyatori"}, {"id": "l4", "num": "0.4", "title": "PhD vaqt chizigʻi: qarordan taklifgacha 12–18 oy", "short": "Vaqt", "meta": "⏱ 25 daqiqa, 📅 Teskari reja"}, {"id": "l5", "num": "0.5", "title": "Tayyorgarlik diagnostikasi", "short": "Diagnostika", "meta": "⏱ 25 daqiqa, 📊 7 yoʻnalish"}, {"id": "l6", "num": "0.6", "title": "Qaror: boshlash, kechiktirish yoki boshqa Lab", "short": "Qaror", "meta": "⏱ 20 daqiqa, ✋ Mos emas roʻyxati"}], "yakunMeta": "Tayyorgarlik koʻrsatkichi, Shaxsiy vaqt chizigʻi, nishonlar, qaror va rozilik"};</script>
+<script>window.KMOD={"base": "phd-lab-m0", "key": "kompas_phd_m0_v1", "lab": "phd-lab.html", "labName": "PhD Lab", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "PhD nima va kim uchun?", "short": "Nega", "meta": "⏱ 25 daqiqa, 🤔 Motiv tekshiruvi"}, {"id": "l2", "num": "0.2", "title": "Doktorantura yoʻllari xaritasi", "short": "Yoʻllar", "meta": "⏱ 30 daqiqa, 🃏 Kartalar, 🎯 Mini-test"}, {"id": "l3", "num": "0.3", "title": "Tayyorgarlikni halol baholash", "short": "Tayyorlik", "meta": "⏱ 25 daqiqa, 📊 7 yoʻnalish"}, {"id": "l4", "num": "0.4", "title": "Xavflar, moliya va oilaviy qaror", "short": "Xavflar", "meta": "⏱ 30 daqiqa, 🧮 Xarajat kalkulyatori"}, {"id": "l5", "num": "0.5", "title": "Shaxsiy yoʻl kartasi va birinchi qadam", "short": "Karta", "meta": "⏱ 25 daqiqa, 📅 Teskari reja, ✋ Mos emas roʻyxati"}], "yakunMeta": "Tayyorgarlik koʻrsatkichi, Shaxsiy vaqt chizigʻi, nishonlar, qaror va rozilik"};</script>
 <script src="js/kompas-module.js"></script>
 </body>
 </html>

@@ -92,6 +92,15 @@ MODULES = {
     "usa-lab-m7":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
     "usa-lab-m8":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m5-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
+    # PhD Lab (2026-10-31, v4): M1–M8, 4 faza (1 faza = 2 modul). Manba tools/modules/phd/engine.py, oʻquvchi phd-lab-o.html?m=N
+    "phd-lab-m1":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
+    "phd-lab-m2":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
+    "phd-lab-m3":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
+    "phd-lab-m4":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
+    "phd-lab-m5":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
+    "phd-lab-m6":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
+    "phd-lab-m7":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
+    "phd-lab-m8":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
 }
 
 SB = '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>'
