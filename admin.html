@@ -957,7 +957,7 @@ async function loadStudents() {
         id, first_name, last_name, full_name, email, phone, role, created_at,
         enrollments(
           id, course_id, payment_status, enrolled_at, plan,
-          course:courses(id, slug, title, emoji),
+          course:courses(id, slug, title, emoji)
         )
       `)
       .neq('role', 'admin')
@@ -1558,7 +1558,7 @@ async function loadSdActivity(userId) {
     const module  = r.lesson?.module?.title || ''
     const course  = r.lesson?.module?.course?.title || ''
     const when    = r.completed_at ? timeSince(r.completed_at) : '—'
-    const done    = r.status === 'completed'
+    const done    = r.completed === true
     return `<div class="sd-act-row">
       <div class="sd-act-dot" style="background:${done?'var(--green)':'var(--gold)'}"></div>
       <div>
