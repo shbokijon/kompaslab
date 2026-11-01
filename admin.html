@@ -194,6 +194,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .ei{font-size:32px;margin-bottom:8px;}
 .et{font-size:13px;font-weight:600;}
 
+/* Additive responsive layout — original design tokens unchanged */
+@media(max-width:700px){#sec-system .ob-row{grid-template-columns:repeat(2,minmax(0,1fr));}}
 /* RESPONSIVE */
 @media(max-width:1200px){.kpi-row{grid-template-columns:repeat(3,1fr);}
   .twin{grid-template-columns:1fr;}.rp{display:grid;grid-template-columns:1fr 1fr;}}
@@ -291,7 +293,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sb-item" onclick="nav('analytics',this)">
       <span class="sb-icon">📈</span><span class="sb-label">Analitika</span>
     </button>
-    <button class="sb-item" onclick="nav('settings',this)">
+    <button class="sb-item" onclick="nav('system',this)"><span class="sb-icon">🩺</span><span class="sb-label">Tizim monitoringi</span></button>
+     <button class="sb-item" onclick="nav('settings',this)">
       <span class="sb-icon">⚙️</span><span class="sb-label">Sozlamalar</span>
     </button>
     <a class="sb-item" href="dashboard.html">
@@ -598,7 +601,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>#</th><th>Ism</th><th>Email</th><th>Telefon</th><th>Taʼlim</th><th>Maqsad</th><th>Kurs</th><th>Sana</th>
+            <th>#</th><th>Ism</th><th>Email</th><th>Telefon</th><th>Taʼlim</th><th>Maqsad</th><th>Kurs</th><th>Sana</th><th>Amal</th>
           </tr></thead><tbody id="tbRegs"></tbody></table>
         </div>
       </div>
@@ -624,7 +627,21 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       </div>
     </div>
 
-    <!-- SOZLAMALAR -->
+    <!-- TIZIM MONITORINGI -->
+     <div class="sec" id="sec-system">
+       <div class="card" style="margin-bottom:14px">
+         <div class="ch"><h2>🩺 Tizim monitoringi</h2><button class="btn bs bsm" onclick="loadSystemStats()">🔄 Yangilash</button></div>
+         <div class="mb"><div class="ob-row" id="sysMetrics" aria-live="polite">Maʼlumotlar yuklanmoqda…</div><div id="sysFresh" style="font-size:11px;color:var(--muted)"></div></div>
+       </div>
+       <div class="card"><div class="ch"><h2>Platformalar va usage</h2></div>
+         <div class="mb" style="font-size:13px;line-height:1.8">
+           <p>Yuqoridagi raqamlar Supabase PostgreSQL joriy holati, provider billing limiti emas.</p>
+           <p><a href="https://supabase.com/dashboard/project/usxpkmbjrdllnitlzdpq" target="_blank" rel="noopener noreferrer">Supabase Dashboard ↗</a> · <a href="https://vercel.com/dashboard" target="_blank" rel="noopener noreferrer">Vercel Usage ↗</a></p>
+           <p style="color:var(--muted)">Vercel billing/usage uchun server-side API integratsiyasi va maxsus token kerak. Tokendan browser ichida foydalanilmaydi.</p>
+         </div>
+       </div>
+     </div>
+     <!-- SOZLAMALAR -->
     <div class="sec" id="sec-settings">
       <div class="card">
         <div class="ch"><h2>⚙️ Sozlamalar</h2></div>
@@ -725,6 +742,20 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 
 <div class="toast" id="toastEl"></div>
 
+<!-- INDIVIDUAL LAB VA MODUL RUXSATLARI -->
+<div class="ovl" id="m-access"><div class="mdl" style="max-width:600px;max-height:90vh;overflow:auto">
+ <div class="mh"><h3>⚙️ Foydalanuvchi ruxsatlari</h3><button class="mx" onclick="closeMdl('access')" aria-label="Yopish">×</button></div>
+ <div class="mb">
+  <div id="accessPerson" style="font-size:13px;font-weight:700;margin-bottom:12px"></div>
+  <div class="fld"><label for="accessCourse">Lab</label><select id="accessCourse" onchange="accessLoadModules()"></select></div>
+  <div class="fld"><label for="accessModule">Modul</label><select id="accessModule"></select></div>
+  <div class="fld"><label for="accessExpiry">Ruxsat tugash sanasi (ixtiyoriy)</label><input id="accessExpiry" type="date"></div>
+  <div class="fld"><label for="accessNote">Sabab / Izoh (audit uchun)</label><textarea id="accessNote" maxlength="500" placeholder="Masalan: beta sinov, promo, texnik yordam"></textarea></div>
+  <p id="accessMessage" role="status" style="font-size:12px;color:var(--muted);margin-bottom:12px"></p>
+  <h4 style="margin-bottom:10px;font-size:13px">Faol maxsus ruxsatlar</h4><div id="accessActive" style="display:flex;flex-direction:column;gap:8px"></div>
+ </div>
+ <div class="mf"><button class="btn bs" onclick="closeMdl('access')">Yopish</button><button id="accessGrantBtn" class="btn bp" onclick="accessGrant()">＋ Ruxsat berish</button></div>
+</div></div>
 <!-- TALABA DETAIL MODALI -->
 <div class="ovl" id="m-student-detail"><div class="mdl" style="max-width:560px">
   <div class="mh">
@@ -1673,7 +1704,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Admin Dashboard', students: 'Talabalar',
     lessons: 'Darslar', payments: "To'lovlar", waitlist: 'Kutish roʻyxati',
-    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Roʻyxatdan oʻtganlar', labs: 'Lablar va narxlar'
+    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Roʻyxatdan oʻtganlar', labs: 'Lablar va narxlar', system:'Tizim monitoringi'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1691,6 +1722,7 @@ function nav(name, el) {
   if (name === 'labs') loadLabs()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
+   if (name === 'system') loadSystemStats()
   // Sozlamalar — saqlangan qiymatlarni yuklash
   if (name === 'settings') {
     const token = localStorage.getItem('tg_token') || ''
@@ -1832,12 +1864,12 @@ async function copyWaitEmails() {
 let _regs = []
 async function loadRegs() {
   const tb = document.getElementById('tbRegs')
-  tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  tb.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
   const { data, error } = await supabase.from(DB.profiles)
     .select('id, first_name, last_name, email, phone, education, goal, created_at, enrollments(payment_status, course:courses(slug, title))')
     .neq('role', 'admin')
     .order('created_at', { ascending: false })
-  if (error) { tb.innerHTML = '<tr><td colspan="8" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
+  if (error) { tb.innerHTML = '<tr><td colspan="9" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
   _regs = data || []
   document.getElementById('pRegs').textContent = _regs.length
   renderRegs()
@@ -1861,7 +1893,7 @@ function renderRegs() {
   if (!rows.length) { tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Hech kim topilmadi</td></tr>'; return }
   tb.innerHTML = rows.map((r, i) => '<tr><td>' + (i + 1) + '</td><td>' + escHtml(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || '—') +
     '</td><td>' + escHtml(r.email || '') + '</td><td>' + escHtml(r.phone || '—') + '</td><td>' + escHtml(r.education || '—') +
-    '</td><td>' + escHtml(r.goal || '—') + '</td><td>' + escHtml(regCourses(r) || '—') + '</td><td>' + escHtml((r.created_at || '').slice(0, 16).replace('T', ' ')) + '</td></tr>').join('')
+    '</td><td>' + escHtml(r.goal || '—') + '</td><td>' + escHtml(regCourses(r) || '—') + '</td><td>' + escHtml((r.created_at || '').slice(0, 16).replace('T', ' ')) + '</td><td><button class="btn bs bsm" onclick="openAccessFromReg(' + i + ')">⚙️ Sozlash</button></td></tr>').join('')
 }
 async function copyRegs(field) {
   const vals = [...new Set(regsFiltered().map(r => (r[field] || '').trim()).filter(Boolean))]
@@ -2199,5 +2231,6 @@ document.addEventListener('DOMContentLoaded', () => {
   init()
 })
 </script>
+<script src="js/admin-access.js" defer></script>
 </body>
 </html>
