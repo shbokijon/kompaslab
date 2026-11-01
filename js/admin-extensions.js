@@ -18,7 +18,7 @@
       '<div class="fr"><div class="fld"><label for="klxStatus">Hisob holati</label><select id="klxStatus"><option value="active">Faol</option><option value="restricted">Cheklangan (pullik kontent yopiq)</option><option value="suspended">Bloklangan (pullik kontent yopiq)</option></select></div>'+
       '<div class="fld"><label for="klxStaff">Admin roli</label><select id="klxStaff"><option value="student">Oʻquvchi</option><option value="support">Support Admin</option><option value="content">Content Admin</option><option value="finance">Finance Admin</option></select></div></div>'+
       '<div class="fld"><label for="klxReason">Sabab / audit izohi *</label><input id="klxReason" maxlength="400" placeholder="Masalan: 7 kunlik pilot kirish" autocomplete="off"></div>'+
-      '<div class="klx-actions"><button class="btn bs bsm" id="klxSaveStatus">Holatni saqlash</button><button class="btn bs bsm" id="klxSaveRole">Rolni saqlash</button></div>'+
+      '<div class="klx-actions"><button class="btn bs bsm" id="klxSaveStatus">Holatni saqlash</button><button class="btn bs bsm" id="klxSaveRole">Rolni saqlash</button><button class="btn bs bsm klx-danger" id="klxDeleteRequest">Oʻchirish soʻrovi</button></div>'+
       '<hr class="klx-sep"><b>Lab va modul ruxsati</b>'+
       '<div class="fr klx-two"><div class="fld"><label for="klxCourse">Lab</label><select id="klxCourse"></select></div>'+
       '<div class="fld"><label for="klxModule">Modul</label><select id="klxModule"><option value="">Barcha modullar</option></select></div></div>'+
@@ -34,6 +34,7 @@
     $('klxCourse').addEventListener('change',showModules);
     $('klxSaveStatus').addEventListener('click',()=>execute('set_status'));
     $('klxSaveRole').addEventListener('click',()=>execute('set_staff'));
+    $('klxDeleteRequest').addEventListener('click',requestDeletion);
     $('klxGrant').addEventListener('click',()=>execute('grant'));
     $('klxRevoke').addEventListener('click',()=>execute('revoke'));
   }
@@ -52,7 +53,7 @@
       if(!state)throw new Error('Ruxsat yetarli emas');
       courseCache=courses.data||[];moduleCache=modules.data||[];
       $('klxStatus').value=state.status||'active';$('klxStaff').value=state.staff||'student';
-      $('klxStaff').disabled=!isSuper;$('klxSaveRole').disabled=!isSuper;
+      $('klxStaff').disabled=!isSuper;$('klxSaveRole').disabled=!isSuper;$('klxDeleteRequest').hidden=!isSuper;
       $('klxCourse').innerHTML=selectOptions(courseCache.map(c=>({value:c.id,title:c.title||c.slug})));
       showModules(); renderGrants(state.grants||[]);
     }catch(e){notify('❌ '+e.message);}
@@ -88,6 +89,20 @@
       notify('✅ Oʻzgarish audit bilan saqlandi');
       const s=await rpc('kompas_admin_user_state',{p_target:selected.id});renderGrants(s.grants||[]);
     } catch(e) {notify('❌ '+e.message);}
+  }
+  async function requestDeletion(){
+    if(!selected||!isSuper)return;
+    const reason=$('klxReason').value.trim();
+    if(reason.length<8){notify('⚠️ Oʻchirish sababi kamida 8 belgidan iborat boʻlsin');return;}
+    const confirmText=prompt('Bu hisobni bloklaydi va oʻchirishni tekshirishga yuboradi. Toʻlov tarixi va Auth hisob hozir oʻchirilmaydi. Tasdiqlash uchun emailni aynan yozing:', '');
+    if(confirmText!==selected.email){notify('Oʻchirish soʻrovi bekor qilindi');return;}
+    try{
+      await rpc('kompas_admin_request_deletion',{p_target:selected.id,p_reason:reason});
+      $('klxStatus').value='suspended';
+      notify('✅ Oʻchirish soʻrovi qayd etildi; hisob cheklangan');
+      const state=await rpc('kompas_admin_user_state',{p_target:selected.id});
+      renderGrants(state.grants||[]);
+    }catch(e){notify('❌ '+e.message);}
   }
   // Preserve original register table rendering; extend with an extra action column.
   function decorateRegs() {
