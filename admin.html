@@ -909,7 +909,8 @@ async function init() {
   window.adminIsSuper = full
   // Sidbarda faqat shu xodimga tegishli boʻlimlar.
   document.querySelectorAll('.sb-item[onclick]').forEach(el => {
-    const m = el.getAttribute('onclick').match(/^nav\\('([^']+)'/);
+    const call = el.getAttribute('onclick') || '';
+    const m = call.startsWith("nav('") ? [null, call.split("'")[1]] : null;
     if (m && !window.adminAllowedSections.has(m[1])) el.hidden = true
   })
   document.body.style.display = ''
