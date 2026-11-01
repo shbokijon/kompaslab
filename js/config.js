@@ -24,6 +24,13 @@ window.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, 
     detectSessionInUrl: true,
   }
 })
+// On logout remove the server-side M0 access cookie too.
+window.supabase.auth.onAuthStateChange(function (event) {
+  if (event !== "SIGNED_OUT") return;
+  fetch("/api/m0-session", { method: "DELETE", credentials: "same-origin", keepalive: true })
+    .catch(function () {});
+});
+
 const supabase = window.supabase
 
 // ─── 3. LOYIHA SOZLAMALARI ───────────────────────────────────
