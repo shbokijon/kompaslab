@@ -105,6 +105,24 @@ async function loadSystemStats() {
   inner.append(val,label);item.appendChild(inner);return item;
  }));
  document.getElementById('sysFresh').textContent='Yangilandi: '+new Date(data.sampled_at).toLocaleString('uz-UZ');
+ const quota=document.getElementById('sysQuota');
+ if (quota && Number.isFinite(Number(data.database_bytes))) {
+   // Snapshot: confirmed Supabase Free on 2026-11-01. Not a billing API reading.
+   const maxBytes=500*1024*1024, used=Number(data.database_bytes);
+   const pct=Math.min(100,Math.max(0,used/maxBytes*100));
+   quota.replaceChildren();
+   const row=document.createElement('div');row.className='mp';row.style.justifyContent='space-between';
+   const label=document.createElement('span');label.textContent='Database / Free plan reference (500 MB)';
+   const value=document.createElement('strong');value.textContent=pct.toFixed(1)+'%';
+   row.append(label,value);
+   const track=document.createElement('div');track.style.cssText='margin:10px 0 6px;background:var(--border);height:8px;border-radius:8px;overflow:hidden';
+   const fill=document.createElement('div');fill.style.cssText='height:100%;background:var(--accent);border-radius:8px';
+   fill.style.width=pct+'%';track.appendChild(fill);
+   const caveat=document.createElement('p');caveat.style.cssText='font-size:11px;color:var(--muted)';
+   caveat.textContent='Database hajmi SQL orqali oʻlchandi. 500 MB — 2026-11-01 dagi Free tarif uchun maʼlumotnoma, joriy hisob-faktura emas.';
+   quota.append(row,track,caveat);
+ }
+
 }
 
 async function accessSaveStatus() {
@@ -136,4 +154,29 @@ async function accessRequestDeletion() {
  const {error}=await supabase.rpc('kompas_admin_request_deletion',{p_target:accessSelectedUser,p_reason:reason});
  if(error){accessUiMessage(error.message,true);return;}
  toast('Oʻchirish soʻrovi yaratildi. Auth hisobi hali oʻchirilmagan.');await accessLoadGrants();
+}
+
+async function loadAuditLog() {
+ const box=document.getElementById('adminAuditList');
+ if(!box)return;
+ box.textContent='Yuklanmoqda…';
+ const {data,error}=await supabase.from('kompas_admin_audit')
+ .select('id,action,created_at,actor_id,target_id,detail').order('created_at',{ascending:false}).limit(50);
+ if(error){box.textContent='Audit maʼlumotlari ochilmadi: '+error.message;return;}
+ if(!data?.length){box.textContent='Audit tarixi boʻsh.';return;}
+ const table=document.createElement('table');table.className='tbl';
+ const head=document.createElement('thead'),hrow=document.createElement('tr');
+ for(const title of ['Sana','Amal','Ijrochi','Nishon']) {
+  const th=document.createElement('th');th.textContent=title;hrow.appendChild(th);
+ }
+ head.append(hrow);table.append(head);
+ const body=document.createElement('tbody');
+ for(const entry of data) {
+  const tr=document.createElement('tr');
+  for(const value of [new Date(entry.created_at).toLocaleString('uz-UZ'),entry.action,entry.actor_id,entry.target_id||'—']) {
+   const td=document.createElement('td');td.textContent=value;td.style.wordBreak='break-word';tr.append(td);
+  }
+  body.append(tr);
+ }
+ table.append(body);box.replaceChildren(table);
 }
