@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#103D33">
+<title>M0 moduli — kirish · Kompas Lab</title>
+<link rel="stylesheet" href="css/brand.css"><script src="js/alifbo.js"></script>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#FAFCFA;color:#103D33;font-family:system-ui,-apple-system,Arial,sans-serif;padding:24px}
+main{width:min(440px,100%);background:#fff;border:1px solid #e2ede7;border-radius:24px;padding:36px 28px;box-shadow:0 20px 60px #103d3312;text-align:center}
+.logo{width:76px;height:76px;object-fit:contain;margin:0 auto 12px}h1{font-size:27px;line-height:1.2;margin:0 0 10px}p{line-height:1.65;color:#53665f;margin:0 0 22px}
+.actions{display:grid;gap:10px}.btn{display:block;text-decoration:none;border-radius:14px;font-weight:700;padding:13px 16px;min-height:48px}
+.primary{background:#103D33;color:white}.secondary{background:#CBF4DF;color:#103D33}
+#status{font-size:13px;margin-top:16px;min-height:20px}a:focus-visible{outline:3px solid #2a8066;outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+<img class="logo" src="img/brand/logo-base.webp" alt="">
+<h1>M0 — bepul oʻquv moduli</h1>
+<p>Barcha Lablarning M0 darslari bepul. Darslarni oʻqish va natijalaringizni saqlash uchun Kompas Lab hisobiga kiring.</p>
+<div class="actions">
+<a id="register" class="btn primary" href="register.html">Bepul roʻyxatdan oʻtish</a>
+<a id="login" class="btn secondary" href="login.html">Hisobga kirish</a>
+</div>
+<p id="status" role="status" aria-live="polite">Kirish holati tekshirilmoqda…</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script>
+(function(){
+  const raw = new URLSearchParams(location.search).get("next") || "/dashboard.html";
+  // Prevent open redirects, traversal and loops.
+  const allowed = /^\/(?:maktab-lab|bachelor-lab|master-lab|phd-lab|gks-lab|erasmus-lab|erasmus-plus-lab|usa-lab|daad-lab|mext-lab|tadbirkor-talaba|tt-lab|musofir-lab|ai-amaliyot-lab|research-lab)-m0(?:-[1-9]\d*|-yakun)?(?:\.html)?(?:\?.*)?$/i;
+  const next = allowed.test(raw) ? raw : "/dashboard.html";
+  const status = document.getElementById("status");
+  document.querySelectorAll(".actions a").forEach(function(a) {
+    a.addEventListener("click", function(){
+      try {
+        sessionStorage.setItem("returnTo", next);
+        localStorage.setItem("kompas_return", JSON.stringify({to:next,at:Date.now()}));
+      } catch (_) {}
+    });
+  });
+  if (!window.supabase?.auth) {status.textContent="Ulanish mavjud emas. Sahifani yangilang.";return;}
+  window.supabase.auth.getSession().then(async function(r){
+    const session = r?.data?.session;
+    if (!session?.access_token) {status.textContent="Davom etish uchun roʻyxatdan oʻting yoki kiring.";return;}
+    status.textContent="Hisob tekshirildi. Modul ochilmoqda…";
+    const res = await fetch("/api/m0-session",{
+      method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({access_token:session.access_token})
+    });
+    if (!res.ok) throw new Error("session_exchange_failed");
+    location.replace(next);
+  }).catch(function(){
+    status.textContent="Sessiyani tekshirib boʻlmadi. Qayta kirishga urinib koʻring.";
+  });
+})();
+</script>
+</body>
+</html>
