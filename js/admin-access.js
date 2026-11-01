@@ -203,6 +203,7 @@ async function loadVercelUsage() {
        AUTH_SERVER_NOT_CONFIGURED:'Serverda SUPABASE_ANON_KEY sozlanmagan.',
        VERCEL_PERMISSION_DENIED:'Ushbu token yoki jamoa rolida billing usage oʻqish ruxsati yoʻq.',
        VERCEL_TOKEN_INVALID:'Vercel tokeni yaroqsiz yoki muddati tugagan.',
+       VERCEL_BILLING_NOT_AVAILABLE:'Vercel billing xarajatlari topilmadi yoki ushbu tarifda mavjud emas. Bu 0 USD degani emas. Vercel Usage sahifasini tekshiring.',
        ADMIN_ONLY:'Bu maʼlumotni faqat Super Admin koʻradi.',
        LOGIN_REQUIRED:'Hisobingizga qayta kiring.'
      };
