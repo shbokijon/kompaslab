@@ -102,7 +102,7 @@
     });
   }
   function monitorTemplate() {
-    const navBtn=node('button','sb-item');navBtn.type='button';navBtn.innerHTML='<span class="sb-icon">🩺</span><span class="sb-label">Tizim holati</span>';
+    const navBtn=node('button','sb-item');navBtn.type='button';navBtn.id='klxNavSystem';navBtn.innerHTML='<span class="sb-icon">🩺</span><span class="sb-label">Tizim holati</span>';
     navBtn.addEventListener('click',()=>{nav('klx-system',navBtn);$('pgTitle').textContent='Tizim holati';loadSystem();});
     const navParent=document.querySelector('.sb-nav');
     const settings=navParent?.querySelector('[onclick*="settings"]');
@@ -160,14 +160,15 @@
       if(!isSuper){
         const role=await supabase.from('kompas_staff_roles').select('role').eq('user_id',s.data.session.user.id).maybeSingle();
         const staff=role.data?.role;
-        const allowed=staff==='support'?['regs','klx-system']:staff==='content'?['lessons']:staff==='finance'?['payments']:[];
+        const allowed=staff==='support'?['regs']:staff==='content'?['lessons']:staff==='finance'?['payments']:[];
         document.querySelectorAll('.sb-item[onclick]').forEach(btn=>{
           const match=btn.getAttribute('onclick')?.match(/nav\('([^']+)'/);
           if(match&&!allowed.includes(match[1]))btn.hidden=true;
         });
-        if(staff!=='support')document.querySelectorAll('[onclick*="klx-system"]').forEach(el=>el.hidden=true);
+        $('klxNavSystem').hidden=true;
         nav(allowed[0]||'overview',null);
       }
+      if($('sbRole'))$('sbRole').textContent=isSuper?'Super Admin':(await supabase.from('kompas_staff_roles').select('role').eq('user_id',s.data.session.user.id).maybeSingle()).data?.role||'Admin';
       decorateRegs();
     }catch(e){console.warn('Admin extras:',e.message);}
   }
