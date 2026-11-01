@@ -889,9 +889,29 @@ async function init() {
   const KUN = ['yakshanba','dushanba','seshanba','chorshanba','payshanba','juma','shanba']
   document.getElementById('pgDate').textContent = d.getDate() + '-' + OY[d.getMonth()] + ', ' + d.getFullYear() + ' · ' + KUN[d.getDay()]
 
-  // Admin tekshiruv
-  const auth = await requireAdmin()
+  // Server tekshiruvi: haqiqiy rol Supabase RLS/RPC orqali tekshiriladi.
+  const auth = await requireAuth()
   if (!auth) return
+  const full = auth.profile?.role === 'admin'
+  const scopes = full ? ['overview','students','lessons','regs','labs','waitlist','payments','announce','analytics','system','settings'] : []
+  if (!full) {
+    const [u,c,f] = await Promise.all([
+      supabase.rpc('kompas_staff_can',{p_scope:'users.read'}),
+      supabase.rpc('kompas_staff_can',{p_scope:'content.read'}),
+      supabase.rpc('kompas_staff_can',{p_scope:'payments.read'})
+    ])
+    if (u.data === true) scopes.push('regs')
+    if (c.data === true) scopes.push('lessons')
+    if (f.data === true) scopes.push('payments')
+  }
+  if (!scopes.length) { window.location.replace(APP_CONFIG.routes.dashboard); return }
+  window.adminAllowedSections = new Set(scopes)
+  window.adminIsSuper = full
+  // Sidbarda faqat shu xodimga tegishli boʻlimlar.
+  document.querySelectorAll('.sb-item[onclick]').forEach(el => {
+    const m = el.getAttribute('onclick').match(/^nav\\('([^']+)'/);
+    if (m && !window.adminAllowedSections.has(m[1])) el.hidden = true
+  })
   document.body.style.display = ''
 
   // Sidebar admin nomi
@@ -903,10 +923,16 @@ async function init() {
   // Kurs xaritasini yuklash
   await loadCourseMap()
 
-  // Barcha ma'lumotlarni yuklash
-  await loadAll()
-  loadWaitlist().catch(() => {})
-  loadRegs().catch(() => {})
+  // Super Admin toʻliq dashboard; staff faqat oʻz scope maʼlumotlarini koʻradi.
+  if (full) {
+    await loadAll()
+    loadWaitlist().catch(() => {})
+    loadRegs().catch(() => {})
+  } else {
+    const first = scopes[0]
+    const button = [...document.querySelectorAll('.sb-item[onclick]')].find(el => el.getAttribute('onclick').startsWith("nav('"+first+"'"))
+    nav(first, button || null)
+  }
 
   // Auth kuzatish
   onAuthChange(ev => { if (ev === 'SIGNED_OUT') window.location.href = APP_CONFIG.routes.login })
@@ -1706,6 +1732,9 @@ function renderActivity() {
 //  10. NAVIGATSIYA
 // ════════════════════════════════════════════════════════
 function nav(name, el) {
+  if (window.adminAllowedSections && !window.adminAllowedSections.has(name)) {
+    toast('⛔ Ushbu bo‘limga ruxsatingiz yo‘q'); return
+  }
   document.body.classList.remove('sb-open')
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'))
   const s = document.getElementById('sec-' + name)
