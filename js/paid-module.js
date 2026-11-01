@@ -42,7 +42,17 @@
 
   sb.auth.getSession().then(function (r) {
     if (!r || !r.data || !r.data.session) return;
-    return Promise.all([sb.rpc("fn_is_admin"), sb.rpc("fn_my_access", {p_course_slug: slug})]).then(function (res) {
+    return Promise.all([
+      sb.rpc("fn_is_admin"),
+      sb.rpc("fn_my_access", {p_course_slug: slug}),
+      sb.rpc("kompas_my_module_access", {p_course_slug: slug, p_module_index: mod})
+    ]).then(function (res) {
+      // The module-level RPC is authoritative when available; payment/grant checks remain on server.
+      if (res[2] && !res[2].error) {
+        if (res[2].data === true) open();
+        else setText("[data-paid-t]", "Bu modul hozircha yopiq.");
+        return;
+      }
       if (res[0] && res[0].data === true) { open(); return; }
       var a = res[1] && res[1].data;
       if (!a || !a.access) return;
