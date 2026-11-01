@@ -112,6 +112,7 @@ begin
  if v_actor=p_target or v_target_role='admin' then
   raise exception 'PROTECTED_ACCOUNT' using errcode='42501';
  end if;
+ perform public.kompas_check_staff_target(p_target);
  if p_action='set_status' then
   if p_value not in ('active','restricted','suspended') then raise exception 'INVALID_STATUS'; end if;
   insert into public.kompas_account_state(user_id,status,reason,changed_by,changed_at)
@@ -217,3 +218,61 @@ create policy kompas_granted_lesson_content_read on public.lesson_contents for s
 using (exists(select 1 from public.lessons l where l.id=lesson_id and l.status='published'
  and public.kompas_module_permitted(l.module_id)));
 comment on function public.kompas_admin_usage() is 'Database footprint and counts only; not Supabase billing, Vercel quota or egress.';
+
+-- All published lesson metadata remains available as intended; paid lesson data
+-- respects suspended/restricted status for subscriptions as well as individual grants.
+drop policy if exists "lessons: kirish darvozasi" on public.lessons;
+create policy "lessons: kirish darvozasi" on public.lessons for select to public
+using (
+ (status='published' and is_free=true) or public.fn_is_admin()
+ or (public.kompas_account_active() and status='published'
+   and exists(select 1 from public.enrollments e join public.modules m on m.course_id=e.course_id
+     where e.user_id=auth.uid() and m.id=lessons.module_id
+     and e.payment_status in ('paid','partial') and e.frozen_at is null
+     and (e.expires_at is null or e.expires_at>now())
+     and (e.unlocked_modules is null or public.fn_module_position(m.id)<=e.unlocked_modules)))
+);
+drop policy if exists "lesson_contents: gate" on public.lesson_contents;
+create policy "lesson_contents: gate" on public.lesson_contents for select to public
+using (
+ public.fn_is_admin()
+ or exists(select 1 from public.lessons l where l.id=lesson_id and l.status='published' and l.is_free)
+ or (public.kompas_account_active() and exists(
+   select 1 from public.lessons l join public.modules m on m.id=l.module_id
+    join public.enrollments e on e.course_id=m.course_id
+   where l.id=lesson_id and l.status='published' and e.user_id=auth.uid()
+    and e.payment_status in ('paid','partial') and e.frozen_at is null
+    and (e.expires_at is null or e.expires_at>now())
+    and (e.unlocked_modules is null or public.fn_module_position(m.id)<=e.unlocked_modules)))
+);
+-- Safe for anon queries: these functions only return false when auth.uid() is absent.
+grant execute on function public.kompas_account_active() to anon;
+grant execute on function public.kompas_module_permitted(uuid) to anon;
+drop policy if exists kompas_content_courses_read on public.courses;
+create policy kompas_content_courses_read on public.courses for select to authenticated
+using (public.kompas_staff_can('content.read'));
+drop policy if exists kompas_content_lessons_manage on public.lessons;
+create policy kompas_content_lessons_manage on public.lessons for all to authenticated
+using (public.kompas_staff_can('content.manage'))
+with check (public.kompas_staff_can('content.manage'));
+drop policy if exists kompas_content_lesson_contents_manage on public.lesson_contents;
+create policy kompas_content_lesson_contents_manage on public.lesson_contents for all to authenticated
+using (public.kompas_staff_can('content.manage'))
+with check (public.kompas_staff_can('content.manage'));
+drop policy if exists kompas_finance_payments_read on public.payments;
+create policy kompas_finance_payments_read on public.payments for select to authenticated
+using (public.kompas_staff_can('payments.read'));
+drop policy if exists kompas_finance_enrollments_read on public.enrollments;
+create policy kompas_finance_enrollments_read on public.enrollments for select to authenticated
+using (public.kompas_staff_can('payments.read'));
+drop policy if exists kompas_finance_profiles_read on public.profiles;
+create policy kompas_finance_profiles_read on public.profiles for select to authenticated
+using (public.kompas_staff_can('payments.read'));
+-- Forbid support staff from changing other staff accounts through the public RPC.
+create or replace function public.kompas_check_staff_target(p_target uuid)
+returns void language plpgsql stable security definer set search_path=public,pg_temp as $$
+begin
+ if not public.fn_is_admin() and exists(select 1 from public.kompas_staff_roles where user_id=p_target and active)
+ then raise exception 'PROTECTED_STAFF_ACCOUNT' using errcode='42501'; end if;
+end; $$;
+revoke all on function public.kompas_check_staff_target(uuid) from public,anon,authenticated;
