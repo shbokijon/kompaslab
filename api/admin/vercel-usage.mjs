@@ -56,6 +56,7 @@ export default async function handler(req, res) {
     });
     if (response.status === 403) return res.status(503).json({error:'VERCEL_PERMISSION_DENIED'});
     if (response.status === 401) return res.status(503).json({error:'VERCEL_TOKEN_INVALID'});
+    if (response.status === 404) return res.status(503).json({error:'VERCEL_BILLING_NOT_AVAILABLE'});
     if (!response.ok) return res.status(502).json({error:'VERCEL_API_ERROR',status:response.status});
 
     const limit = 5 * 1024 * 1024;
