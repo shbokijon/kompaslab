@@ -35,10 +35,12 @@ window.supabase={createClient:()=>({
   await ctx.route('**/supabase-js@**', r=>r.fulfill({contentType:'application/javascript',body:MOCK}));
   await ctx.route(/fonts\.googleapis|fonts\.gstatic|supabase\.co/, r=>r.abort());
   const p=await ctx.newPage(),errors=[];
+  p.setDefaultTimeout(7000);
   p.on('pageerror',e=>errors.push(e.message));
   await p.goto(BASE+'/admin.html',{waitUntil:'load'});
   await p.waitForTimeout(700);
   const panelVisible=await p.evaluate(()=>getComputedStyle(document.body).display!=='none');
+  if(width<=700)await p.click('.burger');
   await p.click('.sb-item[onclick*="regs"]');
   await p.waitForTimeout(100);
   const settings=await p.locator('#tbRegs .klx-cell button').count();
@@ -49,6 +51,7 @@ window.supabase={createClient:()=>({
   const modal=await p.locator('#m-access-settings.open').count();
   const course=await p.locator('#klxCourse option').count();
   await p.click('#klxClose');
+  if(width<=700)await p.click('.burger');
   await p.click('#klxNavSystem');
   await p.waitForTimeout(300);
   const metrics=await p.locator('.klx-metric').count();
