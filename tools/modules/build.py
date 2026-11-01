@@ -38,8 +38,8 @@ MODULES = {
     # Tayyor sahifa (avval master-lab-m0.html qoʻlda yuritilgan): faqat sayt versiyasi
     "master-lab-m0":       dict(lab="master-lab.html", site=True, raw=True),
     "usa-lab-m0":          dict(lab="usa-lab.html", site=True, protect=True),
-    # Musofir M0 hamma uchun ochiq (xavfsizlik maʼlumoti): darvoza va himoya yoʻq, ulashish bor
-    "musofir-lab-m0":      dict(lab="musofir-lab.html", site=True, protect=False,
+    # Musofir M0 ham roʻyxatdan oʻtganlarga bepul; server gate hamma Lablar uchun bir xil.
+    "musofir-lab-m0":      dict(lab="musofir-lab.html", site=True, protect=True,
                                 og=("Musofir Lab M0: rasmiy yoʻl va firibgarlikdan himoya",
                                     "Xorijga ishga ketishdan oldin: firibgarlik belgilari, 4 mamlakatning rasmiy yoʻllari, xarajat va qarz xavfi. Bepul.")),
     # Pullik modullar (paid=True): saytda ochiq HTML yoʻq. Toʻliq sahifa tools/modules/paid/ ga
