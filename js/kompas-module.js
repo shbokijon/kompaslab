@@ -10,9 +10,8 @@
 // ═══════════════════════════════════════════════════════════════
 (function () {
   var M = window.KMOD; if (!M) return;
-  // Free M0 reading is public. Registration is required only to sync/save a personal result.
-  // Do not auto-open underage Maktab Lab: it requires its own parent-consent flow.
-  if (!/^maktab-lab/.test(M.base || '')) document.body.classList.remove('locked');
+  // M0 is free for authenticated users only. Never override each page's auth gate.
+  // Vercel middleware also enforces access before HTML is served.
   var body = document.body, view = body.getAttribute("data-kview"), curId = body.getAttribute("data-klesson");
   var L = M.lessons, N = L.length;
   function $(s, r) { return (r || document).querySelector(s); }

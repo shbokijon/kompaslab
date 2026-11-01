@@ -1,12 +1,12 @@
 // ═══════════════════════════════════════════════════════════════
 //  KOMPAS LAB — sw.js (service worker)
-//  · Sahifalar: avval internet, boʻlmasa oxirgi saqlangan nusxa, u ham
-//    boʻlmasa offline.html. Ochilgan M0 darslar internetsiz ham ochiladi.
+//  · Oddiy sahifalar offline cacheʼdan ochilishi mumkin.
+//  · M0 darslari cache qilinmaydi (faqat tasdiqlangan login orqali).
 //  · Rasm, shrift, CSS: keshdan tez, orqada yangilanadi.
 //  · js/ va boshqa domenlar (Supabase API): har doim internetdan.
 //  Yangilanganda V ni oshiring.
 // ═══════════════════════════════════════════════════════════════
-var V = "kl-v6", PAGES = V + "-pages", ASSETS = V + "-assets";
+var V = "kl-v7", PAGES = V + "-pages", ASSETS = V + "-assets";
 var PRECACHE = ["/offline.html", "/css/brand.css", "/favicon.ico", "/img/brand/logo-base.webp", "/img/brand/logo-arrow.webp", "/img/brand/icon-192.png"];
 
 self.addEventListener("install", function (e) {
@@ -26,6 +26,12 @@ self.addEventListener("fetch", function (e) {
   var req = e.request, url = new URL(req.url);
   if (req.method !== "GET" || url.origin !== self.location.origin) return;
   if (url.pathname.indexOf("/js/") === 0 || url.pathname === "/sw.js") return;   // har doim yangi
+
+  // Authenticated content must never be restored from a public service-worker cache.
+  if (/^\/(?:maktab-lab|bachelor-lab|master-lab|phd-lab|gks-lab|erasmus-lab|erasmus-plus-lab|usa-lab|daad-lab|mext-lab|tadbirkor-talaba|tt-lab|musofir-lab|ai-amaliyot-lab|research-lab)-m0(?:-[1-9]\d*|-yakun)?(?:\.html)?\/?$/i.test(url.pathname)) {
+    e.respondWith(fetch(req, {cache:"no-store"}).catch(function(){return caches.match("/offline.html");}));
+    return;
+  }
 
   if (req.mode === "navigate") {
     e.respondWith(fetch(req).then(function (res) {

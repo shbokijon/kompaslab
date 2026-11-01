@@ -80,7 +80,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 - **Tayyorgarlik koʻrsatkichi (Readiness Score)** Lab sahifasidagi test bilan **aynan bir xil** (ogʻirliklar, 70/45 chegaralari, "x" bloklovchi javoblar).
 - Narxlar `kompas_public_stats().prices[slug]` dan jonli olinadi (`data-py`, `data-pm`); HTML dagi raqam zaxira. **6 oylik (2026-10-31):** narx bazada `courses.price_6m` (admin har Lab uchun qoʻlda kiritadi, formula yoʻq), `prices[slug].s6`; sahifada `data-p6v` (qiymat), `data-p6box` (boʻsh boʻlsa yashirin), Lab narx sahifasida `data-p6x2`, `data-ybreak`. Narx kiritilmaguncha 6 oylik tarif hech qayerda koʻrsatilmaydi.
 - Faktlar bloki: "Tekshirildi / Rasmiy / Ehtiyot" belgisi, sana va havola.
-- Kirish darvozasi: sayt versiyasida faqat roʻyxatdan oʻtganlar (va admin); `file://` da ochiq. **Istisno: Musofir M0 hamma uchun ochiq**, himoyasiz, ulashish tugmasi bor.
+- **M0 kirish qoidasi (2026-11-01): barcha 12 Lab uchun bepul, lekin roʻyxatdan oʻtish majburiy. Istisno yoʻq (Musofir ham yopiq).** Vercel `middleware.js` / `api/m0-session.js` JWT cookie bilan M0 HTML ni serverda himoyalaydi; `m0-access.html` login bridge. Siyosat: `docs/M0_ACCESS_POLICY.md`. Kompas Start ochiq qoladi.
 - **Suv belgisi ("kompaslab.uz") hamma modulda shart**: `build.py` `WATERMARK` ni har sayt va yuklab olinadigan versiyaga qoʻshadi (oxirgi `</body>` oldidan; kirishdan qatʼi nazar; chop etishda yashirin). Qoʻlda yuritiladigan `master-lab-m0.html` va `lesson.html` da ham bor.
 
 ### Holat (2026-10-17)
