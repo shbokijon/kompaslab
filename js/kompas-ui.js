@@ -89,6 +89,11 @@
       if(active.error || active.data !== true) {
         deny('Hisobingiz faol emas yoki kirish tekshiruvi muvaffaqiyatsiz. Yordam uchun administratorga murojaat qiling.',false);return;
       }
+      // Maktab Lab: guardian-consent verification is not yet deployed.
+      // Never open a minor-focused page based on a login alone.
+      if (m[1] === 'maktab-lab') {
+        deny('Maktab Lab M0 ochilishidan avval ota-ona yoki qonuniy vakil roziligini tekshirish tizimi ishga tushirilishi kerak.',false);return;
+      }
       allow();
     } catch (e) {deny('Ulanishda xatolik. Internetni tekshirib qayta urinib koʻring.',false);}
   }
