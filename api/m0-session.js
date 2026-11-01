@@ -45,7 +45,7 @@ export default {
     });
     if (!result.ok) return json({ error: "not_authenticated" }, 401);
     const user = await result.json();
-    if (!user?.id || user.role === "anon") return json({ error: "not_authenticated" }, 401);
+    if (!user?.id || user.role === "anon" || user.is_anonymous === true) return json({ error: "not_authenticated" }, 401);
 
     // Expiration is trusted only *after* Auth has verified the token.
     const rawPayload = token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
