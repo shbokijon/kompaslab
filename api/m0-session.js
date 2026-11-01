@@ -10,7 +10,8 @@ function json(data, status, extraHeaders = {}) {
   return new Response(JSON.stringify(data), { status, headers: { ...NO_STORE, ...extraHeaders } });
 }
 
-export default async function handler(request) {
+export default {
+  async fetch(request) {
   if (!["POST", "DELETE"].includes(request.method))
     return json({ error: "method_not_allowed" }, 405, { Allow: "POST, DELETE" });
 
@@ -58,4 +59,5 @@ export default async function handler(request) {
   } catch (_) {
     return json({ error: "auth_unavailable" }, 503);
   }
-}
+  }
+};
