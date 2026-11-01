@@ -194,6 +194,18 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .ei{font-size:32px;margin-bottom:8px;}
 .et{font-size:13px;font-weight:600;}
 
+.sys-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:16px;}
+.sys-metric{border:1px solid var(--border);background:var(--surface);border-radius:16px;padding:16px 18px;min-width:0;}
+.sys-metric-value{font:700 21px/1.2 'JetBrains Mono','IBM Plex Sans',monospace;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:anywhere;}
+.sys-metric-label{color:var(--muted);font-size:11px;font-weight:600;margin-top:4px;}
+.sys-fresh,.sys-reference-note{font-size:11px;color:var(--muted);line-height:1.5;}
+.sys-quota{margin-top:17px;}
+.sys-reference-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;}
+.sys-reference-track{height:8px;margin:10px 0 6px;background:var(--border);border-radius:8px;overflow:hidden;}
+.sys-reference-fill{height:100%;border-radius:8px;background:var(--accent);}
+@media(max-width:700px){.sys-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}.sys-metric{padding:13px 12px;}.sys-metric-value{font-size:17px;}}
+@media(max-width:370px){.sys-metrics{grid-template-columns:1fr;}}
+
 /* RESPONSIVE */
 @media(max-width:1200px){.kpi-row{grid-template-columns:repeat(3,1fr);}
   .twin{grid-template-columns:1fr;}.rp{display:grid;grid-template-columns:1fr 1fr;}}
@@ -291,6 +303,9 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     </button>
     <button class="sb-item" onclick="nav('analytics',this)">
       <span class="sb-icon">📈</span><span class="sb-label">Analitika</span>
+    </button>
+    <button class="sb-item" id="sysNav" onclick="nav('system',this)">
+      <span class="sb-icon">🩺</span><span class="sb-label">Tizim monitoringi</span>
     </button>
     <button class="sb-item" onclick="nav('settings',this)">
       <span class="sb-icon">⚙️</span><span class="sb-label">Sozlamalar</span>
@@ -625,6 +640,28 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       </div>
     </div>
 
+    <!-- SUPABASE — TIZIM MONITORINGI (read-only) -->
+    <div class="sec" id="sec-system">
+      <div class="card" style="margin-bottom:14px">
+        <div class="ch">
+          <h2>🩺 Tizim monitoringi</h2>
+          <button class="btn bs bsm" onclick="loadSystemStats()">🔄 Yangilash</button>
+        </div>
+        <div class="mb">
+          <div id="sysMetrics" class="sys-metrics" aria-live="polite">Statistika yuklanmoqda…</div>
+          <div id="sysFresh" class="sys-fresh"></div>
+          <div id="sysQuota" class="sys-quota" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><h2>Platformalar va usage</h2></div>
+        <div class="mb" style="font-size:13px;line-height:1.8">
+          <p>Yuqoridagi sonlar Supabase PostgreSQL holati. Vercel billing maʼlumotlari yoki hosting limitlari emas.</p>
+          <p><a href="https://supabase.com/dashboard/project/usxpkmbjrdllnitlzdpq" target="_blank" rel="noopener noreferrer">Supabase Dashboard ↗</a></p>
+        </div>
+      </div>
+    </div>
+
     <!-- SOZLAMALAR -->
     <div class="sec" id="sec-settings">
       <div class="card">
@@ -850,6 +887,11 @@ async function init() {
   const auth = await requireAdmin()
   if (!auth) return
   document.body.style.display = ''
+
+  // Monitoring sidebar faqat toʻliq Admin uchun; serverdagi RPC baribir mustaqil tekshiradi.
+  const systemNav = document.getElementById('sysNav')
+  const { data: systemAdmin, error: systemErr } = await supabase.rpc('fn_is_admin')
+  if (systemNav && (systemErr || systemAdmin !== true)) systemNav.style.display = 'none'
 
   // Sidebar admin nomi
   const profile = auth.profile
@@ -1672,7 +1714,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Admin Dashboard', students: 'Talabalar',
     lessons: 'Darslar', payments: "To'lovlar", waitlist: 'Kutish roʻyxati',
-    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Roʻyxatdan oʻtganlar', labs: 'Lablar va narxlar'
+    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Roʻyxatdan oʻtganlar', labs: 'Lablar va narxlar', system: 'Tizim monitoringi'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1690,6 +1732,7 @@ function nav(name, el) {
   if (name === 'labs') loadLabs()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
+  if (name === 'system') loadSystemStats()
   // Sozlamalar — saqlangan qiymatlarni yuklash
   if (name === 'settings') {
     const token = localStorage.getItem('tg_token') || ''
@@ -2198,6 +2241,7 @@ document.addEventListener('DOMContentLoaded', () => {
   init()
 })
 </script>
+<script src="js/admin-system.js"></script>
 <script src="js/admin-extensions.js"></script>
 </body>
 </html>
