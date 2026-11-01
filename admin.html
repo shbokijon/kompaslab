@@ -747,6 +747,19 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
  <div class="mh"><h3>⚙️ Foydalanuvchi ruxsatlari</h3><button class="mx" onclick="closeMdl('access')" aria-label="Yopish">×</button></div>
  <div class="mb">
   <div id="accessPerson" style="font-size:13px;font-weight:700;margin-bottom:12px"></div>
+  <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:14px">
+   <div class="fr">
+    <div class="fld"><label for="accessStatus">Hisob holati</label><select id="accessStatus"><option value="active">Faol</option><option value="restricted">Cheklangan</option><option value="suspended">Bloklangan</option></select></div>
+    <div class="fld"><label for="accessStaff">Admin roli</label><select id="accessStaff"><option value="student">Oʻquvchi</option><option value="support">Support admin</option><option value="content">Content admin</option><option value="finance">Finance admin</option></select></div>
+   </div>
+   <div class="fld"><label for="accessReason">Oʻzgartirish sababi</label><input id="accessReason" minlength="3" maxlength="400" placeholder="Sababni kiriting"></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn bs bsm" onclick="accessSaveStatus()">Holatni saqlash</button>
+    <button class="btn bs bsm" onclick="accessSaveStaff()">Rolni saqlash</button>
+    <button class="btn bd bsm" onclick="accessRequestDeletion()">Oʻchirish soʻrovi</button>
+   </div>
+   <p style="font-size:11px;color:var(--muted);margin-top:8px">Oʻchirish soʻrovi hisobni bloklaydi. Auth hisobini yakuniy oʻchirish alohida tekshiruvdan keyin bajariladi.</p>
+  </div>
   <div class="fld"><label for="accessCourse">Lab</label><select id="accessCourse" onchange="accessLoadModules()"></select></div>
   <div class="fld"><label for="accessModule">Modul</label><select id="accessModule"></select></div>
   <div class="fld"><label for="accessExpiry">Ruxsat tugash sanasi (ixtiyoriy)</label><input id="accessExpiry" type="date"></div>
