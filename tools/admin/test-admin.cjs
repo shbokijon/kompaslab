@@ -61,6 +61,20 @@ window.supabase={createClient:()=>({
   console.log(ok?'PASS':'FAIL',width,JSON.stringify({panelVisible,settings,modal,course,metrics,overflow,errors:errors.slice(0,3)}));
   await ctx.close();
  }
+ // Guest must read M0 without a login; profile synchronisation remains optional.
+ const guest=await browser.newContext({viewport:{width:390,height:844}});
+ const GUEST=`window.supabase={createClient:()=>({auth:{getSession:()=>Promise.resolve({data:{session:null}}),onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}})},rpc:()=>Promise.resolve({data:{registered:0,prices:{}},error:null}),from:()=>{const q={select(){return q},eq(){return q},limit(){return q},then(cb){return Promise.resolve({data:[],error:null}).then(cb)}};return q}})};`;
+ await guest.route('**/supabase-js@**',r=>r.fulfill({contentType:'application/javascript',body:GUEST}));
+ await guest.route(/fonts\\.googleapis|fonts\\.gstatic|supabase\\.co/,r=>r.abort());
+ const m=await guest.newPage(), guestErrors=[];
+ m.on('pageerror',e=>guestErrors.push(e.message));
+ await m.goto(BASE+'/master-lab-m0.html',{waitUntil:'load'});
+ await m.waitForTimeout(500);
+ const m0=await m.evaluate(()=>({locked:document.body.classList.contains('locked'),main:getComputedStyle(document.querySelector('main')).display,overflow:document.documentElement.scrollWidth>innerWidth+2}));
+ const m0ok=!m0.locked&&m0.main!=='none'&&!m0.overflow&&!guestErrors.length;
+ if(!m0ok)failures++;
+ console.log(m0ok?'PASS':'FAIL','M0 guest',JSON.stringify({m0,errors:guestErrors.slice(0,3)}));
+ await guest.close();
  await browser.close();
  process.exit(failures?1:0);
 })().catch(e=>{console.error(e);process.exit(1)});
