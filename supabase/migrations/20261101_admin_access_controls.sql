@@ -276,3 +276,8 @@ begin
  then raise exception 'PROTECTED_STAFF_ACCOUNT' using errcode='42501'; end if;
 end; $$;
 revoke all on function public.kompas_check_staff_target(uuid) from public,anon,authenticated;
+
+-- Expose draft course names only to staff who need them for access or finance workflows.
+drop policy if exists kompas_staff_courses_read on public.courses;
+create policy kompas_staff_courses_read on public.courses for select to authenticated
+using (public.kompas_staff_can('users.read') or public.kompas_staff_can('payments.read'));
