@@ -46,7 +46,7 @@ export default async function middleware(request) {
     });
     if (res.ok) {
       const user = await res.json();
-      if (user && user.id && user.role !== "anon") return next({ headers: NO_STORE });
+      if (user && user.id && user.role !== "anon" && user.is_anonymous !== true) return next({ headers: NO_STORE });
     }
   } catch (_) {
     // Fail closed; the bridge can renew a valid Supabase browser session.
