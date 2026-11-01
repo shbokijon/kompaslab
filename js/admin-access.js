@@ -180,3 +180,74 @@ async function loadAuditLog() {
  }
  table.append(body);box.replaceChildren(table);
 }
+
+/* Server-side Vercel billing usage. Backend validates Supabase JWT and Admin role,
+ * never receives a provider token from the browser. */
+async function loadVercelUsage() {
+ const box=document.getElementById('vercelUsageBox');
+ if(!box)return;
+ box.textContent='Vercel billing usage yuklanmoqda…';
+ try {
+   const {data,error}=await supabase.auth.getSession();
+   if(error || !data?.session?.access_token) throw new Error('Admin hisobingizga qayta kiring.');
+   const resp=await fetch('/api/admin/vercel-usage',{
+     method:'GET',
+     headers:{Authorization:'Bearer '+data.session.access_token},
+     cache:'no-store',
+     credentials:'same-origin'
+   });
+   const body=await resp.json();
+   if(!resp.ok) {
+     const messages={
+       VERCEL_TOKEN_NOT_CONFIGURED:'Vercel server tokeni hali sozlanmagan. Vercel → Project Settings → Environment Variables da VERCEL_API_TOKEN qoʻshing.',
+       AUTH_SERVER_NOT_CONFIGURED:'Serverda SUPABASE_ANON_KEY sozlanmagan.',
+       VERCEL_PERMISSION_DENIED:'Ushbu token yoki jamoa rolida billing usage oʻqish ruxsati yoʻq.',
+       VERCEL_TOKEN_INVALID:'Vercel tokeni yaroqsiz yoki muddati tugagan.',
+       ADMIN_ONLY:'Bu maʼlumotni faqat Super Admin koʻradi.',
+       LOGIN_REQUIRED:'Hisobingizga qayta kiring.'
+     };
+     throw new Error(messages[body.error] || ('Vercel: '+(body.error||resp.status)));
+   }
+   const fmt=new Intl.NumberFormat('en-US',{style:'currency',currency:body.currency||'USD'});
+   box.replaceChildren();
+   const heading=document.createElement('div');
+   heading.style.cssText='font-size:20px;font-weight:800;color:var(--accent)';
+   heading.textContent=fmt.format(body.totalBilled || 0);
+   const text=document.createElement('p');
+   text.style.cssText='font-size:12px;color:var(--muted);margin:5px 0 12px';
+   text.textContent='Jamoa miqyosidagi billed cost · '+new Date(body.from).toLocaleDateString('uz-UZ')+' — '+new Date(body.to).toLocaleDateString('uz-UZ')+' (UTC, oxirgi kun kiritilmagan)';
+   box.append(heading,text);
+   if(body.services?.length){
+     const table=document.createElement('table');table.className='tbl';
+     const tr=document.createElement('tr');
+     ['Servis','Toʻlov','Satrlar'].forEach(label=>{
+       const th=document.createElement('th');th.textContent=label;tr.appendChild(th);
+     });
+     const thead=document.createElement('thead');thead.append(tr);table.appendChild(thead);
+     const tbody=document.createElement('tbody');
+     body.services.forEach(item=>{
+       const tr=document.createElement('tr');
+       [item.service,fmt.format(item.billed),String(item.items)].forEach(label=>{
+         const td=document.createElement('td');td.textContent=label;tr.appendChild(td);
+       });
+       tbody.appendChild(tr);
+     });
+     table.appendChild(tbody);
+     const scroll=document.createElement('div');scroll.className='tbl-scroll';scroll.appendChild(table);
+     box.appendChild(scroll);
+   }else{
+     const empty=document.createElement('p');empty.textContent='Ushbu davrda hisoblangan charge mavjud emas.';box.appendChild(empty);
+   }
+   const caveat=document.createElement('p');
+   caveat.style.cssText='font-size:11px;color:var(--muted);margin-top:10px';
+   caveat.textContent='Manba: Vercel FOCUS billing API. Bu tarif limiti, qolgan quota yoki aynan Kompas Lab loyihasi xarajati emas.';
+   box.appendChild(caveat);
+ } catch(e) {
+   box.replaceChildren();
+   const err=document.createElement('p');err.style.cssText='font-size:12px;color:var(--red)';
+   err.textContent=e.message;
+   const link=document.createElement('a');link.href='https://vercel.com/dashboard';
+   link.target='_blank';link.rel='noopener noreferrer';link.textContent='Vercel Usage sahifasini ochish';
+   box.append(err,link);
+ }
+}
