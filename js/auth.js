@@ -154,9 +154,16 @@ async function requireAdmin() {
   const auth = await requireAuth()
   if (!auth) return null
 
-  const isAdmin =
-    auth.profile?.role === 'admin' ||
-    APP_CONFIG.adminEmails.includes(auth.user.email)
+  // Never authorize by a client-side email allowlist. RLS and staff permissions are server-side.
+  let isAdmin = auth.profile?.role === 'admin'
+  if (!isAdmin) {
+    const checks = await Promise.all([
+      supabase.rpc('kompas_staff_can', {p_scope:'users.read'}),
+      supabase.rpc('kompas_staff_can', {p_scope:'content.read'}),
+      supabase.rpc('kompas_staff_can', {p_scope:'payments.read'})
+    ])
+    isAdmin = checks.some(r => !r.error && r.data === true)
+  }
 
   if (!isAdmin) {
     if (typeof showToast === 'function') showToast('⛔ Bu sahifaga kirish uchun admin huquqi kerak', 'error')

@@ -8,6 +8,16 @@
   var slug = box.getAttribute("data-paid");
   var mod = parseInt(box.getAttribute("data-mod"), 10);
   var reader = box.getAttribute("data-reader");
+  // In GKS, U/M/D tracks share the visible M3-M5 labels, but paid_pages uses
+  // unique indices 3..11. Match the reader's actual backend module identifier.
+  var accessIndex = mod;
+  if (slug === "gks-lab" && reader) {
+    var key = new URL(reader, location.href).searchParams.get("m");
+    var trackIndex = {"m3-u":3,"m4-u":4,"m5-u":5,
+      "m3-m":6,"m4-m":7,"m5-m":8,
+      "m3-d":9,"m4-d":10,"m5-d":11};
+    if (Object.prototype.hasOwnProperty.call(trackIndex,key)) accessIndex = trackIndex[key];
+  }
   var sb = window.supabase;
   if (!sb || !sb.auth || !(mod >= 1)) return;
 
@@ -42,12 +52,22 @@
 
   sb.auth.getSession().then(function (r) {
     if (!r || !r.data || !r.data.session) return;
-    return Promise.all([sb.rpc("fn_is_admin"), sb.rpc("fn_my_access", {p_course_slug: slug})]).then(function (res) {
+    return Promise.all([
+      sb.rpc("fn_is_admin"),
+      sb.rpc("fn_my_access", {p_course_slug: slug}),
+      sb.rpc("kompas_my_module_access", {p_course_slug: slug, p_module_index: accessIndex})
+    ]).then(function (res) {
+      // The module-level RPC is authoritative when available; payment/grant checks remain on server.
+      if (res[2] && !res[2].error) {
+        if (res[2].data === true) open();
+        else setText("[data-paid-t]", "Bu modul hozircha yopiq.");
+        return;
+      }
       if (res[0] && res[0].data === true) { open(); return; }
       var a = res[1] && res[1].data;
       if (!a || !a.access) return;
       // unlocked_modules M0 ni ham sanaydi (M0 = 1-oʻrin), shuning uchun Mn uchun n+1 kerak
-      if ((a.unlocked_modules || 0) >= mod + 1) { open(); return; }
+      if ((a.unlocked_modules || 0) >= accessIndex + 1) { open(); return; }
       setText("[data-paid-t]", "Bu modul keyinroq ochiladi.");
       setText("[data-paid-d]", "Tarifingiz boʻyicha hozir " + (a.unlocked_modules || 0) + " ta modul ochiq (M0 bilan). Oylik obunada keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.");
       buttons([{label: "Mening kabinetim", href: "dashboard.html", primary: true}]);

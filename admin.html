@@ -246,6 +246,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 <script src="js/pwa.js" defer></script>
 <meta name="theme-color" content="#2d4a3e">
 <link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/admin-extensions.css">
 </head>
 <body style="display:none">
 
@@ -306,7 +307,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <div class="sb-av" id="sbAv">S</div>
       <div>
         <div class="sb-adm-name" id="sbName">Shokhrukh I.</div>
-        <div class="sb-adm-role">super_admin · Leeds, UK</div>
+        <div class="sb-adm-role" id="sbRole">Admin</div>
       </div>
     </div>
     <button class="sb-out" onclick="doLogout()">🚪 Chiqish</button>
@@ -956,8 +957,7 @@ async function loadStudents() {
         id, first_name, last_name, full_name, email, phone, role, created_at,
         enrollments(
           id, course_id, payment_status, enrolled_at, plan,
-          course:courses(id, slug, title, emoji),
-          progress:progress(count)
+          course:courses(id, slug, title, emoji)
         )
       `)
       .neq('role', 'admin')
@@ -1504,7 +1504,6 @@ async function saveStudentProfile() {
   const { error } = await supabase.from(DB.profiles).update({
     first_name: first,
     last_name:  last,
-    full_name:  `${first} ${last}`.trim(),
     phone:      phone || null,
     updated_at: new Date().toISOString()
   }).eq('id', _sdUserId)
@@ -1545,7 +1544,7 @@ async function loadSdActivity(userId) {
 
   const { data, error } = await supabase
     .from(DB.progress)
-    .select('completed_at, status, lesson:lessons(title, module:modules(title, course:courses(title)))')
+    .select('completed_at, completed, lesson:lessons(title, module:modules(title, course:courses(title)))')
     .eq('user_id', userId)
     .order('completed_at', { ascending: false })
     .limit(50)
@@ -1559,7 +1558,7 @@ async function loadSdActivity(userId) {
     const module  = r.lesson?.module?.title || ''
     const course  = r.lesson?.module?.course?.title || ''
     const when    = r.completed_at ? timeSince(r.completed_at) : '—'
-    const done    = r.status === 'completed'
+    const done    = r.completed === true
     return `<div class="sd-act-row">
       <div class="sd-act-dot" style="background:${done?'var(--green)':'var(--gold)'}"></div>
       <div>
@@ -2199,5 +2198,6 @@ document.addEventListener('DOMContentLoaded', () => {
   init()
 })
 </script>
+<script src="js/admin-extensions.js"></script>
 </body>
 </html>
