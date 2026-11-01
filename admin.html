@@ -755,8 +755,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
    <div class="fld"><label for="accessReason">Oʻzgartirish sababi</label><input id="accessReason" minlength="3" maxlength="400" placeholder="Sababni kiriting"></div>
    <div style="display:flex;gap:8px;flex-wrap:wrap">
     <button class="btn bs bsm" onclick="accessSaveStatus()">Holatni saqlash</button>
-    <button class="btn bs bsm" onclick="accessSaveStaff()">Rolni saqlash</button>
-    <button class="btn bd bsm" onclick="accessRequestDeletion()">Oʻchirish soʻrovi</button>
+    <span id="accessSuperActions" style="display:inline-flex;gap:8px;flex-wrap:wrap"><button class="btn bs bsm" onclick="accessSaveStaff()">Rolni saqlash</button>
+    <button class="btn bd bsm" onclick="accessRequestDeletion()">Oʻchirish soʻrovi</button></span>
    </div>
    <p style="font-size:11px;color:var(--muted);margin-top:8px">Oʻchirish soʻrovi hisobni bloklaydi. Auth hisobini yakuniy oʻchirish alohida tekshiruvdan keyin bajariladi.</p>
   </div>
@@ -907,11 +907,12 @@ async function init() {
   if (!scopes.length) { window.location.replace(APP_CONFIG.routes.dashboard); return }
   window.adminAllowedSections = new Set(scopes)
   window.adminIsSuper = full
+  if (!full) document.getElementById('accessSuperActions').style.display = 'none'
   // Sidbarda faqat shu xodimga tegishli boʻlimlar.
   document.querySelectorAll('.sb-item[onclick]').forEach(el => {
     const call = el.getAttribute('onclick') || '';
     const m = call.startsWith("nav('") ? [null, call.split("'")[1]] : null;
-    if (m && !window.adminAllowedSections.has(m[1])) el.hidden = true
+    if (m && !window.adminAllowedSections.has(m[1])) el.style.display = 'none'
   })
   document.body.style.display = ''
 
