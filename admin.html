@@ -634,7 +634,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
          <div class="ch"><h2>🩺 Tizim monitoringi</h2><button class="btn bs bsm" onclick="loadSystemStats()">🔄 Yangilash</button></div>
          <div class="mb"><div class="ob-row" id="sysMetrics" aria-live="polite">Maʼlumotlar yuklanmoqda…</div><div id="sysFresh" style="font-size:11px;color:var(--muted)"></div><div id="sysQuota" style="margin-top:16px" aria-live="polite"></div></div>
        </div>
-       <div class="card"><div class="ch"><h2>Platformalar va usage</h2></div>
+       <div class="card"><div class="ch"><h2>Vercel Usage · oxirgi 30 toʻliq kun</h2><button class="btn bs bsm" onclick="loadVercelUsage()">🔄 Yangilash</button></div><div class="mb" id="vercelUsageBox" aria-live="polite" style="font-size:13px">Admin ruxsati bilan Vercel billing usage tekshiriladi.</div></div>
+       <div class="card" style="margin-top:14px"><div class="ch"><h2>Platformalar va usage</h2></div>
          <div class="mb" style="font-size:13px;line-height:1.8">
            <p>Yuqoridagi raqamlar Supabase PostgreSQL joriy holati, provider billing limiti emas.</p>
            <p><a href="https://supabase.com/dashboard/project/usxpkmbjrdllnitlzdpq" target="_blank" rel="noopener noreferrer">Supabase Dashboard ↗</a> · <a href="https://vercel.com/dashboard" target="_blank" rel="noopener noreferrer">Vercel Usage ↗</a></p>
@@ -1773,7 +1774,7 @@ function nav(name, el) {
   if (name === 'labs') loadLabs()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
-   if (name === 'system') loadSystemStats()
+   if (name === 'system') { loadSystemStats(); loadVercelUsage(); }
    if (name === 'audit') loadAuditLog()
   // Sozlamalar — saqlangan qiymatlarni yuklash
   if (name === 'settings') {
