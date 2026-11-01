@@ -36,12 +36,12 @@ async function accessLoadModules() {
 }
 async function accessLoadGrants() {
  if(!accessSelectedUser)return;
- const {data,error}=await supabase.from('access_grants')
- .select('id,course_id,module_id,expires_at,revoked_at,note,created_at')
- .eq('user_id',accessSelectedUser).order('created_at',{ascending:false}).limit(60);
+ const {data,error}=await supabase.rpc('kompas_admin_user_state',{p_target:accessSelectedUser});
  const el=document.getElementById('accessActive');
  if(error){accessUiMessage('Migration hali qoʻllanmagan yoki ruxsat yoʻq: '+error.message,true);return;}
- const items=(data||[]).filter(g=>!g.revoked_at);
+ const items=(data?.grants||[]);
+ document.getElementById('accessStatus').value=data?.status||'active';
+ document.getElementById('accessStaff').value=data?.staff||'student';
  if(!items.length){el.innerHTML='<div class="empty">Maxsus ruxsat mavjud emas.</div>';accessUiMessage('Tayyor');return;}
  el.replaceChildren();
  items.forEach(g=>{
@@ -60,8 +60,7 @@ async function accessLoadGrants() {
 }
 async function accessRevoke(g) {
  if(!confirm('Ushbu maxsus ruxsatni bekor qilasizmi?'))return;
- const {error}=await supabase.rpc('admin_set_access',{p_user_id:accessSelectedUser,p_course_id:g.course_id,
- p_module_id:g.module_id,p_revoke:true,p_note:'Admin tomonidan bekor qilindi'});
+ const {error}=await supabase.rpc('kompas_admin_manage_user',{p_action:'revoke',p_target:accessSelectedUser,p_course:g.course_id,p_module:g.module_id,p_reason:'Individual ruxsat bekor qilindi'});
  if(error){accessUiMessage(error.message,true);return;}
  toast('Ruxsat bekor qilindi');await accessLoadGrants();
 }
@@ -76,9 +75,9 @@ async function accessGrant() {
  if(!confirm('Tanlangan Lab/modul uchun ruxsat berilsinmi?'))return;
  const btn=document.getElementById('accessGrantBtn');btn.disabled=true;
  try {
-  const {error}=await supabase.rpc('admin_set_access',{
-   p_user_id:accessSelectedUser,p_course_id:cid,p_module_id:mod||null,
-   p_expires_at:expiry?new Date(expiry).toISOString():null,p_note:note,p_revoke:false
+  const {error}=await supabase.rpc('kompas_admin_manage_user',{
+   p_action:'grant',p_target:accessSelectedUser,p_course:cid,p_module:mod||null,
+   p_expires:expiry?new Date(expiry).toISOString():null,p_reason:note||'Admin tomonidan individual ruxsat'
   });
   if(error)throw error;
   toast('✅ Ruxsat saqlandi');await accessLoadGrants();
@@ -88,12 +87,12 @@ async function accessGrant() {
 async function loadSystemStats() {
  const box=document.getElementById('sysMetrics');
  box.textContent='Yuklanmoqda…';
- const {data,error}=await supabase.rpc('admin_system_stats');
+ const {data,error}=await supabase.rpc('kompas_admin_usage');
  if(error){box.textContent='Statistika mavjud emas: '+error.message;return;}
  const metrics=[
   ['Database hajmi',data.database_bytes!=null?(data.database_bytes/1048576).toFixed(2)+' MB':'—'],
-  ['Database connections',data.database_connections??'—'],
-  ['Roʻyxatdan oʻtganlar',data.registered_count??'—'],
+  ['Database connections','SQL monitoring'],
+  ['Roʻyxatdan oʻtganlar',data.profiles_count??'—'],
   ['Lablar',data.course_count??'—'],
   ['Modullar',data.module_count??'—'],
   ['Darslar',data.lesson_count??'—']
@@ -105,5 +104,36 @@ async function loadSystemStats() {
   const label=document.createElement('div');label.className='ob-l';label.textContent=name;
   inner.append(val,label);item.appendChild(inner);return item;
  }));
- document.getElementById('sysFresh').textContent='Yangilandi: '+new Date(data.captured_at).toLocaleString('uz-UZ');
+ document.getElementById('sysFresh').textContent='Yangilandi: '+new Date(data.sampled_at).toLocaleString('uz-UZ');
+}
+
+async function accessSaveStatus() {
+ const status=document.getElementById('accessStatus').value;
+ const reason=document.getElementById('accessReason').value.trim();
+ if(reason.length<3){accessUiMessage('Sabab kamida 3 belgi boʻlishi shart',true);return;}
+ if(!confirm('Foydalanuvchi holatini '+status+' qilib oʻzgartirasizmi?'))return;
+ const {error}=await supabase.rpc('kompas_admin_manage_user',{
+   p_action:'set_status',p_target:accessSelectedUser,p_value:status,p_reason:reason
+ });
+ if(error){accessUiMessage(error.message,true);return;}
+ toast('Holat saqlandi');await accessLoadGrants();
+}
+async function accessSaveStaff() {
+ const v=document.getElementById('accessStaff').value;
+ const reason=document.getElementById('accessReason').value.trim();
+ if(reason.length<3){accessUiMessage('Sabab kamida 3 belgi boʻlishi shart',true);return;}
+ if(!confirm('Cheklangan admin rolini '+v+' qilib oʻzgartirasizmi?'))return;
+ const {error}=await supabase.rpc('kompas_admin_manage_user',{
+   p_action:'set_staff',p_target:accessSelectedUser,p_value:v==='student'?'none':v,p_reason:reason
+ });
+ if(error){accessUiMessage(error.message,true);return;}
+ toast('Rol saqlandi');await accessLoadGrants();
+}
+async function accessRequestDeletion() {
+ const reason=document.getElementById('accessReason').value.trim();
+ if(reason.length<8){accessUiMessage('Oʻchirish soʻrovi sababi kamida 8 belgi',true);return;}
+ if(!confirm('Hisob SUSPENDED boʻladi va oʻchirish tekshiruvi yaratiladi. Davom etilsinmi?'))return;
+ const {error}=await supabase.rpc('kompas_admin_request_deletion',{p_target:accessSelectedUser,p_reason:reason});
+ if(error){accessUiMessage(error.message,true);return;}
+ toast('Oʻchirish soʻrovi yaratildi. Auth hisobi hali oʻchirilmagan.');await accessLoadGrants();
 }
