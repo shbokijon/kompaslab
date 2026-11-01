@@ -1,3 +1,102 @@
+/* M0 Access Policy v1.1 (shared across every generated / hand-authored M0 page).
+ * Current rule: registered + active accounts only, except Musofir's
+ * public fraud/safe-migration awareness M0. M0 remains free (no payment).
+ * This is a UI access gate only: static HTML source cannot be kept secret.
+ */
+(function () {
+  'use strict';
+  var file = location.pathname.split('/').pop() || '';
+  var m = /^([a-z0-9-]+)-m0(?:-(?:[0-9]+|yakun))?(?:\.html)?$/.exec(file);
+  if (!m || location.protocol === 'file:') return;
+  // Safety information is published without login by explicit programme policy.
+  if (m[1] === 'musofir-lab') return;
+  var root = document.documentElement, done = false;
+  root.classList.add('kl-m0-checking');
+  var css = document.createElement('style');
+  css.textContent =
+   'html.kl-m0-checking body>*,html.kl-m0-denied body>*:not(#kl-m0-access){visibility:hidden!important}' +
+   'html.kl-m0-denied #kl-m0-access{visibility:visible!important}' +
+   '#kl-m0-access{position:fixed;inset:0;z-index:10000;overflow-y:auto;display:flex;align-items:center;justify-content:center;background:var(--bg,#f4f3ef);padding:24px 16px;font-family:Outfit,"IBM Plex Sans",sans-serif}' +
+   '#kl-m0-access .kl-m0-card{background:var(--surface,#fffefb);border:1px solid var(--border,#e2ded3);border-radius:22px;padding:30px 24px;max-width:460px;width:100%;text-align:center;box-shadow:0 22px 55px rgba(45,74,62,.1)}' +
+   '#kl-m0-access h2{color:var(--accent,#2d4a3e);font-size:26px;line-height:1.2;margin:0 0 12px}' +
+   '#kl-m0-access p{color:var(--muted,#5f7169);line-height:1.6;font-size:14px;margin:0 0 18px}' +
+   '#kl-m0-access .kl-m0-btn{display:block;width:100%;border-radius:11px;padding:12px 16px;font-weight:700;text-decoration:none;margin-top:9px;border:1px solid var(--accent,#2d4a3e)}' +
+   '#kl-m0-access .kl-m0-btn.primary{background:var(--accent,#2d4a3e);color:#fff}' +
+   '#kl-m0-access .kl-m0-btn.secondary{color:var(--accent,#2d4a3e);background:transparent}' +
+   '#kl-m0-access a:focus-visible{outline:3px solid var(--accent2,#c4622d);outline-offset:3px}';
+  document.head.appendChild(css);
+  var ret = file;
+  function remember() {
+    try { sessionStorage.setItem('returnTo',ret); } catch (e) {}
+    try { localStorage.setItem('kompas_return',JSON.stringify({to:ret,at:Date.now()})); } catch (e) {}
+  }
+  function deny(message, actions) {
+    if (done) return;
+    done = true;
+    root.classList.remove('kl-m0-checking');
+    root.classList.add('kl-m0-denied');
+    var box = document.createElement('div');
+    box.id = 'kl-m0-access';
+    box.setAttribute('role','alertdialog');
+    box.setAttribute('aria-modal','true');
+    box.setAttribute('aria-labelledby','kl-m0-title');
+    var card = document.createElement('div');
+    card.className = 'kl-m0-card';
+    var icon = document.createElement('div');
+    icon.style.cssText='font-size:36px;margin-bottom:8px';
+    icon.textContent='🧭';
+    var heading=document.createElement('h2');
+    heading.id='kl-m0-title';
+    heading.textContent=actions?'Bepul M0 — roʻyxatdan oʻtish kerak':'Kirishni tekshirib boʻlmadi';
+    var detail=document.createElement('p');
+    detail.textContent=message;
+    card.append(icon,heading,detail);
+    if(actions) {
+      remember();
+      [['Bepul roʻyxatdan oʻtish','register.html','primary'],
+       ['Hisobga kirish','login.html','secondary']].forEach(function(item){
+        var a=document.createElement('a');
+        a.href=item[1];a.className='kl-m0-btn '+item[2];a.textContent=item[0];
+        a.addEventListener('click',remember);
+        card.appendChild(a);
+      });
+    } else {
+      var retry=document.createElement('a');
+      retry.href=location.href;retry.className='kl-m0-btn secondary';
+      retry.textContent='Sahifani yangilash';card.appendChild(retry);
+    }
+    box.appendChild(card);document.body.appendChild(box);
+    heading.setAttribute('tabindex','-1');heading.focus();
+  }
+  function allow() {
+    if(done)return;
+    done=true;
+    root.classList.remove('kl-m0-checking');
+    try { localStorage.removeItem('kompas_return'); } catch(e) {}
+  }
+  async function check() {
+    var sb=window.supabase;
+    if(!sb?.auth?.getUser) {
+      deny('Server bilan aloqa oʻrnatilmadi. Sahifani yangilang.',false);return;
+    }
+    try {
+      // getUser() revalidates access token server-side; getSession() alone is not enough.
+      var result=await sb.auth.getUser();
+      if(result.error || !result.data?.user) {
+        deny('M0 bepul. Koʻrish uchun hisobingizga kiring yoki roʻyxatdan oʻting.',true);return;
+      }
+      var active=await sb.rpc('kompas_account_active');
+      if(active.error || active.data !== true) {
+        deny('Hisobingiz faol emas yoki kirish tekshiruvi muvaffaqiyatsiz. Yordam uchun administratorga murojaat qiling.',false);return;
+      }
+      allow();
+    } catch (e) {deny('Ulanishda xatolik. Internetni tekshirib qayta urinib koʻring.',false);}
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',check,{once:true});
+  else check();
+  setTimeout(function(){if(!done)deny('Kirish tekshiruvi uzoq davom etdi. Sahifani yangilang.',false);},15000);
+})();
+
 // ═══════════════════════════════════════════════════════════════
 //  KOMPAS LAB — kompas-ui.js (2026-10-18)
 //  Har sahifada <head> ichida (defer emas) yuklanadi:
