@@ -293,7 +293,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sb-item" onclick="nav('analytics',this)">
       <span class="sb-icon">📈</span><span class="sb-label">Analitika</span>
     </button>
-    <button class="sb-item" onclick="nav('system',this)"><span class="sb-icon">🩺</span><span class="sb-label">Tizim monitoringi</span></button>
+    <button class="sb-item" onclick="nav('audit',this)"><span class="sb-icon">📜</span><span class="sb-label">Audit tarixi</span></button>
+     <button class="sb-item" onclick="nav('system',this)"><span class="sb-icon">🩺</span><span class="sb-label">Tizim monitoringi</span></button>
      <button class="sb-item" onclick="nav('settings',this)">
       <span class="sb-icon">⚙️</span><span class="sb-label">Sozlamalar</span>
     </button>
@@ -631,7 +632,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
      <div class="sec" id="sec-system">
        <div class="card" style="margin-bottom:14px">
          <div class="ch"><h2>🩺 Tizim monitoringi</h2><button class="btn bs bsm" onclick="loadSystemStats()">🔄 Yangilash</button></div>
-         <div class="mb"><div class="ob-row" id="sysMetrics" aria-live="polite">Maʼlumotlar yuklanmoqda…</div><div id="sysFresh" style="font-size:11px;color:var(--muted)"></div></div>
+         <div class="mb"><div class="ob-row" id="sysMetrics" aria-live="polite">Maʼlumotlar yuklanmoqda…</div><div id="sysFresh" style="font-size:11px;color:var(--muted)"></div><div id="sysQuota" style="margin-top:16px" aria-live="polite"></div></div>
        </div>
        <div class="card"><div class="ch"><h2>Platformalar va usage</h2></div>
          <div class="mb" style="font-size:13px;line-height:1.8">
@@ -640,6 +641,12 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
            <p style="color:var(--muted)">Vercel billing/usage uchun server-side API integratsiyasi va maxsus token kerak. Tokendan browser ichida foydalanilmaydi.</p>
          </div>
        </div>
+     </div>
+     <div class="sec" id="sec-audit">
+      <div class="card">
+       <div class="ch"><h2>📜 Admin audit tarixi</h2><button class="btn bs bsm" onclick="loadAuditLog()">🔄 Yangilash</button></div>
+       <div id="adminAuditList" class="mb">Yuklanmoqda…</div>
+      </div>
      </div>
      <!-- SOZLAMALAR -->
     <div class="sec" id="sec-settings">
@@ -893,7 +900,7 @@ async function init() {
   const auth = await requireAuth()
   if (!auth) return
   const full = auth.profile?.role === 'admin'
-  const scopes = full ? ['overview','students','lessons','regs','labs','waitlist','payments','announce','analytics','system','settings'] : []
+  const scopes = full ? ['overview','students','lessons','regs','labs','waitlist','payments','announce','analytics','system','audit','settings'] : []
   if (!full) {
     const [u,c,f] = await Promise.all([
       supabase.rpc('kompas_staff_can',{p_scope:'users.read'}),
@@ -1748,7 +1755,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Admin Dashboard', students: 'Talabalar',
     lessons: 'Darslar', payments: "To'lovlar", waitlist: 'Kutish roʻyxati',
-    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Roʻyxatdan oʻtganlar', labs: 'Lablar va narxlar', system:'Tizim monitoringi'
+    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Roʻyxatdan oʻtganlar', labs: 'Lablar va narxlar', system:'Tizim monitoringi', audit:'Audit tarixi'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1767,6 +1774,7 @@ function nav(name, el) {
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
    if (name === 'system') loadSystemStats()
+   if (name === 'audit') loadAuditLog()
   // Sozlamalar — saqlangan qiymatlarni yuklash
   if (name === 'settings') {
     const token = localStorage.getItem('tg_token') || ''
