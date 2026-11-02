@@ -1,13 +1,13 @@
 from common import CA, UCAS_DATES, UNIASSIST, UNIVERSITALY, CAMPUSCHINA, HOL, STD
 
 MOD = dict(
-    title="Muddatlar arxitekturasi va ish tizimi",
-    desc="Bachelor Lab M4: ariza oynalari (ED, EA, RD, UCAS, portallar), teskari reja, Asosiy nazorat jadvali (Master Tracker), maktab bilan muvozanat, I faza sintezi. Natija: nazorat jadvali, teskari Gantt jadvali va Strategik hujjat v1.0.",
-    lead="Ko'p arizalar mazmun emas, vaqt tufayli buziladi: test natijasi kech keladi, tavsiya xati muddatdan keyin yuboriladi. Bu modulda barcha muddatlarni bitta tizimga yig'asiz va I fazani yakunlovchi strategik hujjatni yozasiz.",
+    title="Ariza muddatlari va ish rejasi va ish tizimi",
+    desc="Bachelor Lab M4: ariza oynalari (ED, EA, RD, UCAS, portallar), teskari reja, Asosiy nazorat jadvali (Master Tracker), maktab bilan muvozanat, Birinchi bosqichdagi ishlar xulosasi. Natija: nazorat jadvali, muddatdan orqaga tuzilgan ish jadvali (Gantt) va Tayyorgarlik rejasi v1.0.",
+    lead="Ko'p arizalar mazmun emas, vaqt tufayli buziladi: test natijasi kech keladi, tavsiya xati muddatdan keyin yuboriladi. Bu modulda barcha muddatlarni bitta tizimga yig'asiz va I bosqichni yakunlovchi tayyorgarlik rejasini yozasiz.",
     hero="calendar", weeks="1–2", next="M5 Baholar va testlar", next_href="bachelor-lab-m5.html",
     goals=[("calendar", "Asosiy nazorat jadvali (Master Tracker)", "har universitet: holat, muddat, hujjatlar, to'lov, natija"),
-           ("hourglass", "Teskari Gantt jadvali", "muddatdan orqaga hisoblangan ishlar"),
-           ("scroll", "Strategik hujjat v1.0", "kim, qayerga, qachon, qanday moliyalashtirish bilan")],
+           ("hourglass", "Muddatdan orqaga tuzilgan ish jadvali (Gantt)", "muddatdan orqaga hisoblangan ishlar"),
+           ("scroll", "Tayyorgarlik rejasi v1.0", "kim, qayerga, qachon, qanday moliyalashtirish bilan")],
     warn=f"Bu modulda muddatlarning umumiy tuzilmasi o'rgatiladi. Aniq sanalar har yili e'lon qilinadi: ularni faqat platforma va universitet sahifasidan oling ({HOL}).",
     lessons=[
         dict(t="Ariza oynalari", short="Oynalar", min=30, kind="🎯 Mini-test", ic="calendar",
@@ -30,11 +30,11 @@ MOD = dict(
                    ("Early Action ham ED kabi majburiy.", "n", "Noto'g'ri: EA majburiy emas, lekin Restrictive EA boshqa erta arizalarni cheklaydi."),
                    ("Oksford va Kembrij uchun UCAS muddati boshqa dasturlarnikidan erta.", "t", "To'g'ri: odatda oktabr o'rtasida."),
                    ("O'tgan yilgi muddatni bu yil ham ishlatish xavfsiz.", "n", "Noto'g'ri: sanalar har yili e'lon qilinadi va o'zgarishi mumkin.")],
-             task="<ul><li>Portfelingizdagi har universitet uchun ariza oynasini va muddatni rasmiy sahifadan yozing.</li><li>ED yoki EA ni ko'rib chiqayotgan bo'lsangiz, nima uchun ekanini yozing.</li></ul>",
+             task="<ul><li>Roʻyxatingizdagi har universitet uchun ariza oynasini va muddatni rasmiy sahifadan yozing.</li><li>ED yoki EA ni ko'rib chiqayotgan bo'lsangiz, nima uchun ekanini yozing.</li></ul>",
              ph="... — RD, muddat: ... (manba, sana). ... — EA ..."),
         dict(t="Teskari reja", short="Teskari reja", min=30, kind="🛠 Gantt", ic="hourglass",
              hook="Muddatdan boshlab orqaga hisoblash \"qachon boshlashim kerak?\" degan savolga aniq javob beradi. Ko'p ishlar bir-biriga bog'liq: test natijasisiz ariza yo'q, tarjimasiz apostil yo'q.",
-             body="""<h4>Teskari Gantt jadvali</h4>
+             body="""<h4>Muddatdan orqaga tuzilgan ish jadvali (Gantt)</h4>
 <p>Gantt jadvali ([[Gantt chart]]) ishlarni vaqt chizig'ida ko'rsatadi. Teskari variantda eng erta muddatdan boshlab orqaga yurasiz.</p>
 <div class="tbl"><table><thead><tr><th>Ish</th><th>Muddatdan necha hafta oldin</th><th>Nimaga bog'liq</th></tr></thead><tbody>
 <tr><td>Arizani topshirish</td><td>1 hafta (zaxira)</td><td>Hamma narsa</td></tr>
@@ -81,9 +81,9 @@ MOD = dict(
              take="Haftasiga 3–5 soat, uch blok. Imtihon haftalarini oldindan yengil qiling va haftada bir kun dam oling.",
              task="<ul><li>Haftalik jadvalingizda 3 blok uchun aniq kun va vaqtni belgilang.</li><li>Keyingi 3 oydagi imtihon haftalarini yozing.</li></ul>",
              ph="Blok 1: seshanba 19:00–20:30 ... Imtihonlar: ..."),
-        dict(t="I faza sintezi", short="Sintez", min=30, kind="🧩 Strategik hujjat", ic="memo",
-             hook="Birinchi to'rt modulda to'plangan qarorlar alohida varaqlarda yotsa, foydasi kam. Strategik hujjat ularni bitta sahifaga yig'adi va keyingi fazalar uchun yo'l ko'rsatadi.",
-             body="""<h4>Strategik hujjat v1.0: to'rt savol</h4>
+        dict(t="Birinchi bosqichdagi ishlar xulosasi", short="Xulosa", min=30, kind="🧩 Tayyorgarlik rejasi", ic="memo",
+             hook="Birinchi to'rt modulda to'plangan qarorlar alohida varaqlarda yotsa, foydasi kam. Tayyorgarlik rejasi ularni bitta sahifaga yig'adi va keyingi bosqichlar uchun yo'l ko'rsatadi.",
+             body="""<h4>Tayyorgarlik rejasi v1.0: to'rt savol</h4>
 <div class="tbl"><table><thead><tr><th>Savol</th><th>Javob qayerdan</th></tr></thead><tbody>
 <tr><td><b>Kim?</b> Profil va soha</td><td>M3: bir jumlali profil, qiziqish sohasi bayoni</td></tr>
 <tr><td><b>Qayerga?</b> Mamlakatlar va universitetlar</td><td>M1–M2: talablar jadvali, saralangan ro'yxat</td></tr>
@@ -92,25 +92,25 @@ MOD = dict(
 </tbody></table></div>
 <h4>Xavflar</h4>
 <p>Hujjat oxiriga 3 ta asosiy xavfni yozing (masalan: til testi natijasi yetmasligi, attestat talabi, oilaviy byudjet) va har biri uchun bitta zaxira harakat.</p>
-<div class="box info">Bu hujjat \"v1.0\": II va III fazalarda yangilanadi. Uni oila bilan muhokama qilish uchun ham ishlating.</div>""",
-             take="Strategik hujjat to'rt savolga javob beradi: kim, qayerga, qachon, qanday moliyalashtirish bilan; oxirida 3 xavf va zaxira harakatlar.",
-             task="<ul><li>Pastdagi vositada Strategik hujjatni to'ldiring.</li><li>3 xavf va har biri uchun zaxira harakatni yozing.</li></ul>",
+<div class="box info">Bu hujjat \"v1.0\": II va III bosqichlarda yangilanadi. Uni oila bilan muhokama qilish uchun ham ishlating.</div>""",
+             take="Tayyorgarlik rejasi to'rt savolga javob beradi: kim, qayerga, qachon, qanday moliyalashtirish bilan; oxirida 3 xavf va zaxira harakatlar.",
+             task="<ul><li>Pastdagi vositada Tayyorgarlik rejasini to'ldiring.</li><li>3 xavf va har biri uchun zaxira harakatni yozing.</li></ul>",
              ph="Xavf 1: ... → zaxira: ... Xavf 2: ..."),
     ],
-    tool=dict(id="strategiya", short="Strategiya", h2="Strategik hujjat v1.0", sub="I faza yakuni: barcha qarorlar bitta sahifada.",
-              h3="Strategik hujjat", tag="6 maydon", ic="memo", btn="Hujjatni saqlash", badge="Strateg", min=5,
+    tool=dict(id="strategiya", short="Strategiya", h2="Tayyorgarlik rejasi v1.0", sub="I bosqich yakuni: barcha qarorlar bitta sahifada.",
+              h3="Tayyorgarlik rejasi", tag="6 maydon", ic="memo", btn="Hujjatni saqlash", badge="Strateg", min=5,
               fields=[dict(k="kim", label="Kim? Profil va soha", type="area", ph="Profil: ... Soha: ..."),
                       dict(k="qayer", label="Qayerga? Mamlakatlar va 8–12 universitet", type="area", ph="Orzu: ... Mo'ljal: ... Ishonchli: ..."),
                       dict(k="qachon", label="Qachon? Asosiy muddatlar", hint="manba va sana bilan", type="area", ph="Eng erta: ... ; asosiy: ..."),
                       dict(k="pul", label="Qanday moliyalashtirish bilan?", type="area", ph="Oila: ... Stipendiyalar: ... Arizalar byudjeti: ..."),
                       dict(k="tracker", label="Nazorat jadvali qayerda va yangilash kuni", ph="Google Sheets, har yakshanba"),
                       dict(k="xavf", label="3 xavf va zaxira harakat", type="area", ph="1) ... → ... 2) ... → ... 3) ... → ...")]),
-    check=dict(h2="I faza nazorati", sub="II fazaga o'tishdan oldin tekshiring.", h3="9 bandlik nazorat",
+    check=dict(h2="I bosqich nazorati", sub="II bosqichga o'tishdan oldin tekshiring.", h3="9 bandlik nazorat",
                items=["Har universitet uchun ariza oynasi va muddat manba bilan yozilgan.", "ED ni tanlasam, uning majburiyatini va moliyaviy yordam qoidasini o'qidim.",
-                      "Teskari Gantt jadvalida test, tavsiya, tarjima va insho haftalari bor.", "Asosiy nazorat jadvali yaratilgan va kamida 5 universitet kiritilgan.",
+                      "Muddatdan orqaga tuzilgan ish jadvali (Gantt)da test, tavsiya, tarjima va insho haftalari bor.", "Asosiy nazorat jadvali yaratilgan va kamida 5 universitet kiritilgan.",
                       "Haftalik yangilash kuni belgilangan.", "Imtihon haftalari \"yengil hafta\" deb belgilangan.",
-                      "Strategik hujjatning to'rt savoliga javob bor.", "3 xavf va zaxira harakat yozilgan.", "Strategik hujjat oila bilan muhokama qilingan."]),
-    art_title="Strategik hujjat v1.0", art_short="Strategiya",
+                      "Tayyorgarlik rejasining to'rt savoliga javob bor.", "3 xavf va zaxira harakat yozilgan.", "Tayyorgarlik rejasi oila bilan muhokama qilingan."]),
+    art_title="Tayyorgarlik rejasi v1.0", art_short="Strategiya",
     art=[("Kim", ["kim"]), ("Qayerga", ["qayer"]), ("Qachon", ["qachon", "a1"]), ("Teskari reja", ["a2"]),
          ("Nazorat jadvali va ritm", ["tracker", "a3", "a4"]), ("Moliyalashtirish", ["pul"]), ("Xavflar va zaxira", ["xavf", "a5"])],
     tip="Jadvalni yangilash 15 daqiqa oladi, unutilgan muddat esa bir yil. Har hafta bir xil kunda, bir xil vaqtda yangilang.",
