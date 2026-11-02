@@ -4,7 +4,7 @@ MOD = dict(
     title="Ariza platformalari",
     desc="Bachelor Lab M13: Common App, UCAS, to'g'ridan-to'g'ri portallar (uni-assist, Universitaly, CSC, universitet portallari), amaliy topshirish va 40 bandli topshirish oldi nazorat ro'yxati. Natija: kamida bitta topshirilgan ariza.",
     lead="Oylar davomida tayyorlangan hujjatlar oxirgi bosqichda texnik xato tufayli to'liq yetib bormasligi mumkin. Bu modulda har platformaning tuzilmasini o'rganasiz va kamida bitta arizani tekshirib topshirasiz.",
-    hero="scroll", weeks="2–3", next="M14 Mintaqaviy yo'nalishlar: Xitoy, Italiya, Singapur", next_href="bachelor-lab-m14.html",
+    hero="scroll", weeks="2–3", next="M14 Mamlakatlar boʻyicha imkoniyatlar: Xitoy, Italiya, Singapur", next_href="bachelor-lab-m14.html",
     goals=[("scroll", "Kamida bitta topshirilgan ariza", "tasdiq xati saqlangan"),
            ("shield", "40 bandli nazorat ro'yxati", "har ariza oldidan"),
            ("calendar", "Kuzatuv rejasi", "portal, email, hujjat holati")],
@@ -57,7 +57,7 @@ MOD = dict(
 <ul><li>Har portal uchun login, parol va email'ni xavfsiz joyda saqlang (parolni boshqa odamga bermang).</li><li>Hisob ochilgan email'ni har kuni tekshiring; spam papkasini ham.</li><li>Yo'riqnomani to'liq o'qing: fayl formati (PDF), hajm, nom, tasdiq turi.</li></ul>
 <div class="srcs">Manba: {UNIASSIST}; {UNIVERSITALY}; {CAMPUSCHINA}. {HOL}.</div>""",
              take="To'g'ridan-to'g'ri portallarda har universitetning o'z qoidasi. uni-assist hujjatlarni tekshiradi, Universitaly viza bosqichi, Xitoyda ikki portal bo'lishi mumkin.",
-             task="<ul><li>Portfelingizdagi har portal uchun: hisob ochilganmi, email, fayl talablari.</li><li>Eng murakkab portalning yo'riqnomasidan 5 ta talabni yozing.</li></ul>",
+             task="<ul><li>Roʻyxatingizdagi har portal uchun: hisob ochilganmi, email, fayl talablari.</li><li>Eng murakkab portalning yo'riqnomasidan 5 ta talabni yozing.</li></ul>",
              ph="uni-assist: hisob ✓, email ..., talablar: ..."),
         dict(t="Amaliy topshirish", short="Topshirish", min=25, kind="🛠 Topshirish", ic="memo",
              hook="Arizani topshirish tugmasini bosish oxirgi qadam emas. Tasdiq xati, to'lov kvitansiyasi va hujjatlar holatini kuzatish arizaning to'liq yetib borishini ta'minlaydi.",
