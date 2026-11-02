@@ -1,7 +1,7 @@
 from common import CA, UCAS_DATES, UNIASSIST, UNIVERSITALY, CAMPUSCHINA, HOL, STD
 
 MOD = dict(
-    title="Ariza muddatlari va ish rejasi va ish tizimi",
+    title="Ariza muddatlari va ish rejasi",
     desc="Bachelor Lab M4: ariza oynalari (ED, EA, RD, UCAS, portallar), teskari reja, Asosiy nazorat jadvali (Master Tracker), maktab bilan muvozanat, Birinchi bosqichdagi ishlar xulosasi. Natija: nazorat jadvali, muddatdan orqaga tuzilgan ish jadvali (Gantt) va Tayyorgarlik rejasi v1.0.",
     lead="Ko'p arizalar mazmun emas, vaqt tufayli buziladi: test natijasi kech keladi, tavsiya xati muddatdan keyin yuboriladi. Bu modulda barcha muddatlarni bitta tizimga yig'asiz va I bosqichni yakunlovchi tayyorgarlik rejasini yozasiz.",
     hero="calendar", weeks="1–2", next="M5 Baholar va testlar", next_href="bachelor-lab-m5.html",
