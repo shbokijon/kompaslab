@@ -4,11 +4,11 @@ MOD = dict(
     title="Shaxsiy bayonot va insholar",
     desc="Bachelor Lab M9: insho, shaxsiy bayonot va motivatsion xat farqi, Common App asosiy inshosi, hikoya topish, UCAS shaxsiy bayonoti (2026 qabulidan uch savol), qo'shimcha insholar. Natija: asosiy insho v1, UCAS bayonoti v1 va qo'shimcha insholar rejasi.",
     lead="Insho arizaning siz o'zingiz gapiradigan yagona qismi. Bu modulda platforma nimani so'rashini ajratasiz, kichik epizoddan hikoya topasiz va birinchi qoralamalarni yozasiz. Tahrir M10 da.",
-    hero="memo", weeks="3", next="M10 Insho tahriri va yakuniy versiya", next_href="bachelor-lab-m10.html",
+    hero="memo", weeks="3", next="M10 Inshoni tahrirlash va yakuniy matn", next_href="bachelor-lab-m10.html",
     goals=[("memo", "Asosiy insho qoralamasi v1", "Common App, 250–650 so'z"),
            ("scroll", "UCAS shaxsiy bayonoti v1", "uch savol, jami 4 000 belgigacha (kerak bo'lsa)"),
            ("compass", "Qo'shimcha insholar rejasi", "har universitet savoli va manbasi")],
-    warn=f"Insho mavzulari, so'z va belgi chegaralari har sikl e'lon qilinadi. Bu moduldagi ma'lumot {HOL}. Kompas faqat freymvork va mezon beradi; insho matnini siz yozasiz.",
+    warn=f"Insho mavzulari, so'z va belgi chegaralari har sikl e'lon qilinadi. Bu moduldagi ma'lumot {HOL}. Kompas faqat matn tuzilishi va baholash mezonlari beradi; insho matnini siz yozasiz.",
     lessons=[
         dict(t="Shaxsiy bayonot nima", short="Turlar", min=20, kind="🎯 Mini-test", ic="books",
              hook="\"Insho\", \"shaxsiy bayonot\", \"motivatsion xat\" ko'pincha bir xil narsa deb o'ylanadi. Aslida har biri boshqa savolga javob beradi.",
@@ -18,15 +18,15 @@ MOD = dict(
 <tr><td>Motivatsion xat ([[motivation letter]])</td><td>Nega shu dastur va shu universitet?</td><td>Yevropa va Osiyo portallari, stipendiyalar</td></tr>
 <tr><td>Qo'shimcha insho ([[supplemental essay]])</td><td>Universitetning aniq savoli</td><td>AQSh universitetlari</td></tr>
 </tbody></table></div>
-<h4>Motivatsion xat freymvorki</h4>
-<p>Kompas Lab freymvorki: <b>Kimlik → Dalil → Maqsad → Moslik</b>. Kim siz, buni nima ko'rsatadi, nimaga intilasiz, va nega aynan shu dastur.</p>
+<h4>Motivatsion xat tuzilishi</h4>
+<p>Kompas Lab tavsiya etadigan tuzilma: <b>Oʻzingiz haqingizda → Dalillar → Maqsad → Moslik</b>. Kim siz, buni nima ko'rsatadi, nimaga intilasiz, va nega aynan shu dastur.</p>
 <div class="box info">Bitta matnni hamma platformaga yuborish xato. Har hujjat o'z savoliga javob berishi kerak, lekin hammasi M3 dagi bitta profilga tayanadi.</div>""",
              take="Insho shaxsni, UCAS bayonoti fan tanlovini, motivatsion xat dastur tanlovini ko'rsatadi. Hammasi bitta profilga tayanadi, lekin har biri o'z savoliga javob beradi.",
              quiz=[("UCAS shaxsiy bayonoti asosan fan tanlovi va unga tayyorgarlik haqida.", "t", "To'g'ri: 2026 qabulidan uchta savol aynan shu haqda."),
                    ("Common App inshosi va motivatsion xat bir xil matn bo'lishi mumkin.", "n", "Noto'g'ri: ular turli savollarga javob beradi."),
-                   ("Motivatsion xat nega shu dastur va universitetni tanlaganingizni tushuntiradi.", "t", "To'g'ri: Kimlik → Dalil → Maqsad → Moslik."),
+                   ("Motivatsion xat nega shu dastur va universitetni tanlaganingizni tushuntiradi.", "t", "To'g'ri: Oʻzingiz haqingizda → Dalillar → Maqsad → Moslik."),
                    ("Qo'shimcha insholar faqat Yevropa universitetlarida bo'ladi.", "n", "Noto'g'ri: ular asosan AQSh universitetlarida.")],
-             task="<ul><li>Portfelingizdagi har universitet qaysi yozma hujjatni so'rashini yozing.</li><li>Ularni to'rt turga ajrating.</li></ul>",
+             task="<ul><li>Roʻyxatingizdagi har universitet qaysi yozma hujjatni so'rashini yozing.</li><li>Ularni to'rt turga ajrating.</li></ul>",
              ph="... — Common App insho + 2 qo'shimcha; ... — UCAS bayonot; ... — motivatsion xat"),
         dict(t="Common App asosiy inshosi", short="Common App", min=25, kind="🧭 Mavzu tanlovi", ic="compass",
              hook="Etti mavzudan qaysi birini tanlash ko'p vaqt oladi. Lekin komissiya mavzuga emas, hikoyaga va siz haqingizda nima bilib olganiga qaraydi.",
@@ -72,7 +72,7 @@ MOD = dict(
 <p>Uslub: akademik va aniq. Fanga qiziqish dalil bilan: o'qigan kitob, qilgan tajriba, yechgan masala va undan nima o'rgandingiz.</p>
 <div class="srcs">Manba: {UCAS_PS}; {THE_PS}. {HOL}.</div>""",
              take="UCAS 2026 qabulidan: uch savol, har biri kamida 350 belgi, jami 4 000 belgigacha. Bitta bayonot barcha UK tanloviga boradi.",
-             task="<ul><li>Har savolga 3 tadan dalil yozing.</li><li>Pastdagi vositada uch javobning birinchi qoralamasini yozing (UK ga ariza bermasangiz, motivatsion xat uchun Kimlik → Dalil → Maqsad → Moslik rejasini yozing).</li></ul>",
+             task="<ul><li>Har savolga 3 tadan dalil yozing.</li><li>Pastdagi vositada uch javobning birinchi qoralamasini yozing (UK ga ariza bermasangiz, motivatsion xat uchun Oʻzingiz haqingizda → Dalillar → Maqsad → Moslik rejasini yozing).</li></ul>",
              ph="1-savol dalillari: ... 2-savol: ... 3-savol: ..."),
         dict(t="Qo'shimcha insholar", short="Qo'shimcha", min=30, kind="🔎 Universitet tadqiqoti", ic="telescope",
              hook="\"Nega aynan bizning universitet?\" savoliga \"chunki u reytingda yuqori\" deb javob berish eng zaif javob. Komissiya siz universitetni o'rganganingizni ko'rmoqchi.",
@@ -89,7 +89,7 @@ MOD = dict(
 <p>Javobingizdagi universitet nomini boshqa universitet nomi bilan almashtiring. Agar matn baribir to'g'ri bo'lsa, u juda umumiy.</p>
 <div class="box warn">Universitet sahifasidan matnni ko'chirmang. Faktni o'z so'zingiz bilan va o'zingizga bog'lab yozing.</div>""",
              take="\"Nega biz?\" javobida aniq fanlar, laboratoriya va faoliyatlar bo'lsin. Universitet nomini almashtirganda matn noto'g'ri bo'lib qolishi kerak.",
-             task="<ul><li>Portfelingizdagi qo'shimcha insho savollarini yozing (universitet, savol, so'z chegarasi).</li><li>Bitta \"Nega biz?\" uchun 3 ta aniq fakt va ularning sizga bog'liqligini yozing.</li></ul>",
+             task="<ul><li>Roʻyxatingizdagi qo'shimcha insho savollarini yozing (universitet, savol, so'z chegarasi).</li><li>Bitta \"Nega biz?\" uchun 3 ta aniq fakt va ularning sizga bog'liqligini yozing.</li></ul>",
              ph="... universiteti: \"...\" (250 so'z). Faktlar: 1) ... — chunki men ..."),
     ],
     tool=dict(id="insho", short="Insholar", h2="Insholar qoralamalari v1", sub="So'z va belgi hisoblagichi mo'ljalni ko'rsatadi. Bu birinchi qoralama: tahrir M10 da.",
