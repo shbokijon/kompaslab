@@ -57,7 +57,7 @@ MOD = dict(
              task="<ul><li>Bitta yetakchilik yoki ijtimoiy faoliyatingizni \"kuchsiz\" va \"kuchli\" ko'rinishda yozing.</li><li>Natijani qanday tasdiqlay olishingizni yozing.</li></ul>",
              ph="Kuchsiz: ... Kuchli: ... Tasdiq: ..."),
         dict(t="Yozgi dasturlar", short="Yozgi", min=20, kind="⚖️ Saralash", ic="money",
-             hook="Ba'zi yozgi dasturlar katta pul turadi va \"top universitetda o'qish\" va'da qiladi. Lekin pullik dasturning o'zi qabul komissiyasi uchun signal emas.",
+             hook="Ba'zi yozgi dasturlar katta pul turadi va \"top universitetda o'qish\" va'da qiladi. Lekin pullik dasturning o'zi qabul komissiyasi uchun qabulda ustunlik bermaydi.",
              body="""<h4>Ikki tur</h4>
 <div class="tbl"><table><thead><tr><th></th><th>Tanlovli dastur</th><th>Pullik dastur</th></tr></thead><tbody>
 <tr><td>Kirish</td><td>Ariza, tanlov, ko'pincha past qabul foizi</td><td>To'lov qilgan hamma qatnashadi</td></tr>
@@ -67,7 +67,7 @@ MOD = dict(
 <h4>Muqobillar</h4>
 <ul><li>O'zbekistondagi universitet yoki laboratoriyada yozgi amaliyot.</li><li>Mustaqil loyiha (M6 L3, M7 L2).</li><li>Ish yoki oilaviy biznesda mas'uliyat.</li><li>Bepul onlayn yozgi maktablar (tanlovli bo'lsa).</li></ul>
 <div class="box warn">\"Bu dastur qabulni kafolatlaydi\" yoki \"universitet tavsiya xati beradi\" degan va'dalarga ishonmang. Universitet nomi ostida o'tadigan pullik dastur ko'pincha qabul bo'limi bilan bog'liq emas.</div>""",
-             take="Tanlovli yozgi dastur kuchli signal, pullik dasturning o'zi signal emas. Muqobil: amaliyot, mustaqil loyiha, ish.",
+             take="Tanlovli yozgi dastur muhim dalil, pullik dasturning o'zi qabulda ustunlik bermaydi. Muqobil: amaliyot, mustaqil loyiha, ish.",
              task="<ul><li>Keyingi yoz uchun 2 ta tanlovli yoki bepul imkoniyat toping.</li><li>Ularning ariza muddatini va tanlov mezonini yozing.</li></ul>",
              ph="1) ... — muddat: ..., mezon: ... 2) ..."),
         dict(t="Faoliyatlar ro'yxatini yozish", short="Ro'yxat", min=30, kind="🛠 10 yozuv", ic="memo",
