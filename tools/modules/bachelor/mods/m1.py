@@ -4,7 +4,7 @@ MOD = dict(
     title="Qabul qanday qaror qabul qiladi",
     desc="Bachelor Lab M1: qabul komissiyasi ishi, yaxlit va ball asosidagi qabul, 11 yillik attestat xorijda, reyting tuzog'i, QS/THE/US News metodologiyasi. Natija: 3 universitet talablari jadvali.",
     lead="Ariza yozishdan oldin uni kim o'qishini va qaysi mantiq bilan qaror chiqarishini bilish kerak. Bu modulda qabulning ikki usulini ajratasiz, attestatingiz xorijda qanday baholanishini tekshirasiz va reytinglarni to'g'ri o'qishni o'rganasiz.",
-    hero="telescope", weeks="1–2", next="M2 Universitet tanlash va universitetlar roʻyxati", next_href="bachelor-lab-m2.html",
+    hero="telescope", weeks="1–2", next="M2 Universitet tanlash va roʻyxat tuzish", next_href="bachelor-lab-m2.html",
     goals=[("telescope", "Qabul usulini aniqlash", "har universitet uchun: yaxlit yoki ball asosidagi"),
            ("scroll", "3 universitet talablari jadvali", "rasmiy sahifadan, havola va sana bilan"),
            ("chart", "Reytingni o'qish ko'nikmasi", "umumiy va fan bo'yicha reyting farqi")],

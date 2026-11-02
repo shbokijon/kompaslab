@@ -1,10 +1,10 @@
 from common import CDS, DAAD_ADM, UNIPI, SIK, CAMPUSCHINA, SH, TB, NUS, NTU, MEXT, HOL, STD
 
 MOD = dict(
-    title="Universitet tanlash va universitetlar roʻyxati",
+    title="Universitet tanlash va roʻyxat tuzish",
     desc="Bachelor Lab M2: uch darajali ro'yxat, moslik tahlili, an'anaviy va boshqa yo'nalishlar, universitetlar roʻyxatini xavf va narx bo'yicha muvozanatlash. Natija: Saralangan ro'yxat v1.0 (8–12 universitet).",
     lead="Ko'p abituriyent 2–3 ta \"orzu\" universitetga ariza berib, hammasidan rad oladi. Bu modulda ro'yxatni xavf darajasi bo'yicha muvozanatlaysiz, har universitetni moslik bo'yicha tekshirasiz va arizalar narxini oldindan hisoblaysiz.",
-    hero="compass", weeks="2", next="M3 Yo'nalish va akademik qiziqish va maqsad", next_href="bachelor-lab-m3.html",
+    hero="compass", weeks="2", next="M3 Yoʻnalish, qiziqish va maqsad", next_href="bachelor-lab-m3.html",
     goals=[("compass", "Saralangan ro'yxat v1.0", "8–12 universitet, uch daraja bo'yicha"),
            ("chart", "Moslik baholari", "dastur, xarajat, til, shahar bo'yicha"),
            ("money", "Arizalar byudjeti", "ariza to'lovlari, testlar va hujjatlar narxi")],

@@ -1,10 +1,10 @@
 from common import HOL, STD
 
 MOD = dict(
-    title="Yo'nalish va akademik qiziqish va maqsad",
+    title="Yoʻnalish, qiziqish va maqsad",
     desc="Bachelor Lab M3: fanlar va qiziqishlardan profil, STEM ichida tanlov (fizika, muhandislik, informatika), bakalavrdan keyingi yo'llar, qiziqish sohasi bayoni, izchil hikoya. Natija: 1 sahifalik qiziqish sohasi bayoni va bir jumlali profil.",
     lead="Komissiya sizni hujjatlar orqali taniydi. Agar fanlaringiz, faoliyatingiz va inshoingiz turli tomonga qarasa, kuchli tomonlaringiz ham ko'rinmay qoladi. Bu modulda bitta aniq yo'nalish va uni ko'rsatadigan hikoyani tuzasiz.",
-    hero="seedling", weeks="1–2", next="M4 Ariza muddatlari va ish rejasi va ish tizimi", next_href="bachelor-lab-m4.html",
+    hero="seedling", weeks="1–2", next="M4 Ariza muddatlari va ish rejasi", next_href="bachelor-lab-m4.html",
     goals=[("seedling", "Bir jumlali profil", "kim, nimaga qiziqasiz, buni nima ko'rsatadi"),
            ("memo", "Qiziqish sohasi bayoni (1 sahifa)", "keng qiziqishdan aniq savolga, dalil bilan"),
            ("compass", "Izchil hikoya xaritasi", "fanlar, faoliyat va insho bitta yo'nalishda")],
