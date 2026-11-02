@@ -49,7 +49,7 @@ p{color:var(--muted);line-height:1.55;margin:0 0 18px}
   var COURSE = "bachelor-lab";
   // Modul kaliti (URL ?m=) → nomi va bazadagi tartib raqami (paid_pages.module_index, modules.order_index)
   // Modul raqami (URL ?m=1..16) → nomi va bazadagi tartib raqami (paid_pages.module_index = modules.order_index)
-  var MODS = {"1": [1, "M1. Qabul qanday qaror qabul qiladi"], "2": [2, "M2. Universitet tanlash va ariza portfeli"], "3": [3, "M3. Yoʻnalish va akademik kimlik"], "4": [4, "M4. Muddatlar arxitekturasi va ish tizimi"], "5": [5, "M5. Baholar va testlar"], "6": [6, "M6. Yutuqlar, CV va hujjatlar"], "7": [7, "M7. Darsdan tashqari faoliyat"], "8": [8, "M8. Tavsiya xatlari"], "9": [9, "M9. Shaxsiy bayonot va insholar"], "10": [10, "M10. Insho tahriri va yakuniy versiya"], "11": [11, "M11. Davlat stipendiyalari"], "12": [12, "M12. Universitet grantlari va moliyaviy reja"], "13": [13, "M13. Ariza platformalari"], "14": [14, "M14. Mintaqaviy yoʻnalishlar: Xitoy, Italiya, Singapur"], "15": [15, "M15. Intervyu va qabul qarori"], "16": [16, "M16. Qabuldan keyin: viza va joʻnash"]};
+  var MODS = {"1": [1, "M1. Qabul qanday qaror qabul qiladi"], "2": [2, "M2. Universitet tanlash va universitetlar roʻyxati"], "3": [3, "M3. Yoʻnalish va akademik qiziqish va maqsad"], "4": [4, "M4. Ariza muddatlari va ish rejasi va ish tizimi"], "5": [5, "M5. Baholar va testlar"], "6": [6, "M6. Yutuqlar, CV va hujjatlar"], "7": [7, "M7. Darsdan tashqari faoliyat"], "8": [8, "M8. Tavsiya xatlari"], "9": [9, "M9. Shaxsiy bayonot va insholar"], "10": [10, "M10. Inshoni tahrirlash va yakuniy matn"], "11": [11, "M11. Davlat stipendiyalari"], "12": [12, "M12. Universitet grantlari va moliyaviy reja"], "13": [13, "M13. Ariza platformalari"], "14": [14, "M14. Mamlakatlar boʻyicha imkoniyatlar: Xitoy, Italiya, Singapur"], "15": [15, "M15. Intervyu va qabul qarori"], "16": [16, "M16. Qabuldan keyin: viza va joʻnash"]};
   var key = String(new URLSearchParams(location.search).get("m") || "").toLowerCase().replace(/^m/, "");
   var mod = MODS[key], m = mod ? mod[0] : 0;
   var $ = function (id) { return document.getElementById(id); };
@@ -104,7 +104,7 @@ p{color:var(--muted);line-height:1.55;margin:0 0 18px}
         return;
       }
       if (d.reason === "locked") {
-        show("Bu modul hali ochilmagan", "Tarifingiz boʻyicha hozir " + (d.unlocked_modules || 0) + " ta modul ochiq (M0 bilan). Oylik obunada keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.",
+        show("Bu modul hali ochilmagan", "Tarifingiz boʻyicha hozir " + (d.unlocked_modules || 0) + " ta modul ochiq (M0 bilan). Oylik obunada keyingi bosqich navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.",
           [{label: "Mening kabinetim", href: "dashboard.html", primary: true}, {label: "Modul sahifasi", href: hub}]);
       } else if (d.reason === "expired" || d.reason === "frozen") {
         show("Obuna faol emas", d.reason === "expired" ? "Obuna muddati tugagan." : "Toʻlov kechikkani sababli kirish vaqtincha toʻxtatilgan.",

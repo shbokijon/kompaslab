@@ -1,7 +1,7 @@
 from common import CA_FRAUD, UCAS_SIM, UCAS_PS, UCAS_AI, CA, HOL, STD
 
 MOD = dict(
-    title="Insho tahriri va yakuniy versiya",
+    title="Inshoni tahrirlash va yakuniy matn",
     desc="Bachelor Lab M10: uch bosqichli tahrir (mazmun, tuzilma, til), klishe va ortiqcha so'zlar, o'zaro tahrir, AI davrida insho qoidalari, yakuniy versiyani platformaga joylash. Natija: yakuniy insholar va tahrir qaydi.",
     lead="Birinchi qoralama faqat boshlanish. Kuchli insho 3–5 marta qayta yoziladi. Bu modulda tahrirni tartibli qilasiz, fikr olishni o'rganasiz va AI dan halol foydalanish chegarasini aniqlaysiz.",
     hero="memo", weeks="2–3", next="M11 Davlat stipendiyalari", next_href="bachelor-lab-m11.html",

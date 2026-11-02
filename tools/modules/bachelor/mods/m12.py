@@ -43,7 +43,7 @@ MOD = dict(
 <ul><li>Bir yillikmi yoki 4 yilga?</li><li>Keyingi yillarda baho sharti bormi?</li><li>Summa qat'iymi yoki foiz?</li></ul>
 <div class="box info">Birinchi yil uchun katta, keyingi yillar uchun yo'q stipendiya 4 yillik rejada katta bo'shliq qoldiradi.</div>""",
              take="Universitet stipendiyalari avtomatik yoki ariza bilan. Muddat, davomiylik (1 yil yoki 4 yil) va baho shartini o'qing.",
-             task="<ul><li>Portfelingizdagi 3 universitetning xalqaro talabalar stipendiyalarini toping.</li><li>Har biri uchun: tur, summa, davomiylik, shart, muddat.</li></ul>",
+             task="<ul><li>Roʻyxatingizdagi 3 universitetning xalqaro talabalar stipendiyalarini toping.</li><li>Har biri uchun: tur, summa, davomiylik, shart, muddat.</li></ul>",
              ph="... — avtomatik, o'qish to'lovining ...%, 4 yil, baho ... saqlansa"),
         dict(t="To'liq xarajat modeli", short="Xarajat", min=30, kind="🛠 Model", ic="chart",
              hook="O'qish to'lovi xarajatning faqat bir qismi. Yashash, sug'urta, viza va yo'l ko'pincha o'qish to'lovidan kam emas.",

@@ -3,16 +3,16 @@ from common import APO, MYGOV, CA, HOL, STD
 MOD = dict(
     title="Yutuqlar, CV va hujjatlar",
     desc="Bachelor Lab M6: olimpiada va tanlovlar, onlayn kurslar, maktab yoshida ilmiy loyiha, bakalavr CV (STAR usuli), tarjima, notarius va apostil. Natija: Bakalavr CV v1.0 va hujjatlar nazorat ro'yxati.",
-    lead="Yutuqlaringiz faqat hujjatda to'g'ri yozilganda ko'rinadi. Bu modulda qaysi yutuq signal berishini ajratasiz, CV ni STAR usulida yozasiz va hujjatlarni legallashtirish zanjirini rejalaysiz.",
+    lead="Yutuqlaringiz faqat hujjatda to'g'ri yozilganda ko'rinadi. Bu modulda qaysi yutuq qabulda ahamiyatli ekanini ajratasiz, CV ni STAR usulida yozasiz va hujjatlarni legallashtirish zanjirini rejalaysiz.",
     hero="memo", weeks="2", next="M7 Darsdan tashqari faoliyat", next_href="bachelor-lab-m7.html",
     goals=[("memo", "Bakalavr CV v1.0", "1–2 sahifa, har band STAR usulida"),
            ("shield", "Hujjatlar nazorat ro'yxati", "har hujjat: asl, tarjima, notarius yoki apostil, nusxa soni"),
-           ("bulb", "Yutuqlar saralashi", "qaysi yutuq signal beradi, qaysi biri shovqin")],
+           ("bulb", "Yutuqlar saralashi", "qaysi yutuq ahamiyatli, qaysi biri uncha foydali emas")],
     warn=f"Apostil tartibi va yig'imi, notarial tarjima talablari o'zgarishi mumkin. Bu moduldagi ma'lumot {HOL} gov.uz manbasidan; topshirishdan oldin qayta tekshiring.",
     lessons=[
         dict(t="Olimpiadalar va tanlovlar", short="Olimpiada", min=25, kind="🎯 Mini-test", ic="chart",
              hook="Viloyat olimpiadasidagi g'alaba ham, xalqaro tanlovdagi ishtirok ham CV ga yoziladi. Lekin komissiya ularni bir xil baholamaydi.",
-             body="""<h4>Qaysi darajalar signal beradi</h4>
+             body="""<h4>Qaysi darajadagi yutuqlar muhim</h4>
 <div class="tbl"><table><thead><tr><th>Daraja</th><th>Signal</th><th>Izoh</th></tr></thead><tbody>
 <tr><td>Xalqaro fan olimpiadasi (IMO, IPhO, IOI va boshqalar) ishtiroki yoki medali</td><td>Juda kuchli</td><td>Juda kam o'quvchi erishadi</td></tr>
 <tr><td>Respublika olimpiadasi g'olibi yoki sovrindori</td><td>Kuchli</td><td>O'zbekistonda tanlovning eng yuqori ichki darajasi</td></tr>
@@ -23,8 +23,8 @@ MOD = dict(
 <h4>To'g'ri yozish</h4>
 <p>Format: <b>nomi, daraja, natija, yil, kontekst</b>. Masalan (Kompas tuzgan namuna): \"Fizika bo'yicha respublika olimpiadasi, 2-o'rin (2026), viloyatdan tanlangan 3 o'quvchidan biri\".</p>
 <div class="box warn">Ishtirokchilar sonini yoki o'rinni bilmasangiz, yozmang. Tekshirib bo'lmaydigan raqam ishonchni pasaytiradi.</div>""",
-             take="Xalqaro va respublika darajasi kuchli signal; pullik ommaviy tanlov signal bermaydi. Har yutuqni nomi, daraja, natija, yil va kontekst bilan yozing.",
-             quiz=[("Hamma qatnashuvchiga beriladigan pullik \"xalqaro\" sertifikat kuchli signal.", "n", "Noto'g'ri: tanlovli bo'lmagan tanlov signal bermaydi."),
+             take="Xalqaro va respublika darajasidagi yutuqlar muhim dalil; pullik ommaviy tanlovning oʻzi ustunlik bermaydi. Har yutuqni nomi, daraja, natija, yil va kontekst bilan yozing.",
+             quiz=[("Hamma qatnashuvchiga beriladigan pullik \"xalqaro\" sertifikat muhim dalil.", "n", "Noto'g'ri: saralashsiz oʻtkaziladigan tanlovning oʻzi ustunlik bermaydi."),
                    ("Respublika olimpiadasi sovrindori kuchli yutuq.", "t", "To'g'ri: bu ichki tanlovning eng yuqori darajasi."),
                    ("Ishtirokchilar sonini taxminan yozib qo'yish mumkin.", "n", "Noto'g'ri: tekshirib bo'lmaydigan raqamni yozmang."),
                    ("Yutuq yozuvida yil va daraja bo'lishi kerak.", "t", "To'g'ri: komissiya vaqt va miqyosni ko'radi.")],
@@ -36,14 +36,14 @@ MOD = dict(
 <ul><li>Maktabda o'tilmaydigan fanni o'rganganingizni ko'rsatsa (masalan, dasturlash, chiziqli algebra).</li>
 <li>Kurs natijasida biror narsa qilgan bo'lsangiz: loyiha, dastur, tadqiqot.</li>
 <li>Kurs universitet darajasida va baholangan topshiriqlari bo'lsa.</li></ul>
-<h4>Qachon shovqin</h4>
+<h4>Qachon ahamiyati kam maʼlumot</h4>
 <ul><li>Faqat videolarni ko'rib olingan \"tugatish sertifikati\".</li><li>Sohangizga aloqasi yo'q ko'p qisqa kurslar.</li><li>Pullik sertifikat, lekin hech qanday natija yo'q.</li></ul>
 <h4>Yozish usuli</h4>
 <p>CV da kursni alohida qator qilib emas, u bilan qilgan ishingiz bilan birga yozing: \"Onlayn kurs asosida maktab uchun dars jadvali dasturini yozdim (Python)\".</p>
 <div class="box info">2–3 ta kurs yetarli. Ularni M3 dagi qiziqish sohasi bayoni bilan bog'lang.</div>""",
-             take="Onlayn kurs natija bilan birga yozilsa foydali, yolg'iz sertifikat shovqin. 2–3 ta sohaga yaqin kurs yetarli.",
-             task="<ul><li>Olgan kurslaringizni \"foydali\" va \"shovqin\" deb ajrating.</li><li>Foydali kurslar uchun ular bilan qilgan aniq ishingizni yozing.</li></ul>",
-             ph="Foydali: ... → natija: ... Shovqin: ..."),
+             take="Onlayn kurs natija bilan birga yozilsa foydali, yolg'iz sertifikat ahamiyati kam maʼlumot. 2–3 ta sohaga yaqin kurs yetarli.",
+             task="<ul><li>Olgan kurslaringizni \"foydali\" va \"ahamiyati kam maʼlumot\" deb ajrating.</li><li>Foydali kurslar uchun ular bilan qilgan aniq ishingizni yozing.</li></ul>",
+             ph="Foydali: ... → natija: ... Ahamiyati kam maʼlumot: ..."),
         dict(t="Maktab yoshida ilmiy loyiha", short="Loyiha", min=30, kind="🔬 Reja", ic="telescope",
              hook="Ilmiy loyiha maktab o'quvchisi uchun eng kuchli dalillardan biri, chunki u sizning savol berish va javob izlash qobiliyatingizni ko'rsatadi. Lekin uni boshlash 6–12 oy oladi.",
              body="""<h4>Mavzu topish</h4>

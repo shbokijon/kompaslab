@@ -1,7 +1,7 @@
 # ═══════════════════════════════════════════════════════════════
 #  Bachelor Lab pullik modullari (M1–M16) manbasini yaratish (2026-10-31)
 #  Qobiq va JS: GKS engine bilan bir xil andoza (B · Ish stoli emas, bitta sahifali modul).
-#  Fazalar (oylik obunada 1 toʻlov = 1 faza): I M1–M4, II M5–M8, III M9–M12, IV M13–M16.
+#  Bosqichlar (oylik obunada 1 toʻlov = 1 bosqich): I M1–M4, II M5–M8, III M9–M12, IV M13–M16.
 #
 #  python3 tools/modules/bachelor/engine.py          # hammasi
 #  python3 tools/modules/bachelor/engine.py 3 11     # tanlanganlar
@@ -18,7 +18,7 @@ SRC = HERE.parent / "src"
 SLUGS = [str(i) for i in range(1, 17)]
 PHASE = {}
 for _n in range(1, 17):
-    PHASE[_n] = ["Faza I · Strategiya", "Faza II · Akademik kapital", "Faza III · Hikoya va moliya", "Faza IV · Topshirish va joʻnash"][(_n - 1) // 4]
+    PHASE[_n] = ["Bosqich I · Strategiya", "Bosqich II · Baholar, yutuqlar va tajriba", "Bosqich III · Hikoya va moliya", "Bosqich IV · Topshirish va joʻnash"][(_n - 1) // 4]
 
 
 def code_of(slug):

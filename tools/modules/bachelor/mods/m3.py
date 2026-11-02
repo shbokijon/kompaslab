@@ -1,10 +1,10 @@
 from common import HOL, STD
 
 MOD = dict(
-    title="Yo'nalish va akademik kimlik",
+    title="Yo'nalish va akademik qiziqish va maqsad",
     desc="Bachelor Lab M3: fanlar va qiziqishlardan profil, STEM ichida tanlov (fizika, muhandislik, informatika), bakalavrdan keyingi yo'llar, qiziqish sohasi bayoni, izchil hikoya. Natija: 1 sahifalik qiziqish sohasi bayoni va bir jumlali profil.",
     lead="Komissiya sizni hujjatlar orqali taniydi. Agar fanlaringiz, faoliyatingiz va inshoingiz turli tomonga qarasa, kuchli tomonlaringiz ham ko'rinmay qoladi. Bu modulda bitta aniq yo'nalish va uni ko'rsatadigan hikoyani tuzasiz.",
-    hero="seedling", weeks="1–2", next="M4 Muddatlar arxitekturasi va ish tizimi", next_href="bachelor-lab-m4.html",
+    hero="seedling", weeks="1–2", next="M4 Ariza muddatlari va ish rejasi va ish tizimi", next_href="bachelor-lab-m4.html",
     goals=[("seedling", "Bir jumlali profil", "kim, nimaga qiziqasiz, buni nima ko'rsatadi"),
            ("memo", "Qiziqish sohasi bayoni (1 sahifa)", "keng qiziqishdan aniq savolga, dalil bilan"),
            ("compass", "Izchil hikoya xaritasi", "fanlar, faoliyat va insho bitta yo'nalishda")],
@@ -12,7 +12,7 @@ MOD = dict(
     lessons=[
         dict(t="Men kim sifatida ariza beryapman", short="Profil", min=25, kind="🧭 Profil", ic="seedling",
              hook="\"Men hamma fanni yaxshi ko'raman\" degan abituriyent komissiyaga hech narsa demaydi. Aniq profil arizangizning har qismini bir-biriga bog'laydi.",
-             body="""<p>Akademik kimlik ([[academic identity]]) bu siz haqingizdagi bitta aniq fikr: qaysi sohaga qiziqasiz va buni nima ko'rsatadi.</p>
+             body="""<p>Akademik qiziqish va maqsad ([[academic identity]]) bu siz haqingizdagi bitta aniq fikr: qaysi sohaga qiziqasiz va buni nima ko'rsatadi.</p>
 <h4>Uch manba</h4>
 <ul><li><b>Fanlar</b>: qaysi fanlarda baholaringiz eng yuqori va qaysi fanga ko'proq vaqt sarflaysiz?</li>
 <li><b>Loyihalar</b>: o'zingiz boshlagan yoki qatnashgan ishlar: olimpiada, dasturlash loyihasi, maktab tajribasi, to'garak.</li>

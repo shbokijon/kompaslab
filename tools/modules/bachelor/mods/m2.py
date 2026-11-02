@@ -1,10 +1,10 @@
 from common import CDS, DAAD_ADM, UNIPI, SIK, CAMPUSCHINA, SH, TB, NUS, NTU, MEXT, HOL, STD
 
 MOD = dict(
-    title="Universitet tanlash va ariza portfeli",
-    desc="Bachelor Lab M2: uch darajali ro'yxat, moslik tahlili, an'anaviy va boshqa yo'nalishlar, ariza portfelini xavf va narx bo'yicha muvozanatlash. Natija: Saralangan ro'yxat v1.0 (8–12 universitet).",
+    title="Universitet tanlash va universitetlar roʻyxati",
+    desc="Bachelor Lab M2: uch darajali ro'yxat, moslik tahlili, an'anaviy va boshqa yo'nalishlar, universitetlar roʻyxatini xavf va narx bo'yicha muvozanatlash. Natija: Saralangan ro'yxat v1.0 (8–12 universitet).",
     lead="Ko'p abituriyent 2–3 ta \"orzu\" universitetga ariza berib, hammasidan rad oladi. Bu modulda ro'yxatni xavf darajasi bo'yicha muvozanatlaysiz, har universitetni moslik bo'yicha tekshirasiz va arizalar narxini oldindan hisoblaysiz.",
-    hero="compass", weeks="2", next="M3 Yo'nalish va akademik kimlik", next_href="bachelor-lab-m3.html",
+    hero="compass", weeks="2", next="M3 Yo'nalish va akademik qiziqish va maqsad", next_href="bachelor-lab-m3.html",
     goals=[("compass", "Saralangan ro'yxat v1.0", "8–12 universitet, uch daraja bo'yicha"),
            ("chart", "Moslik baholari", "dastur, xarajat, til, shahar bo'yicha"),
            ("money", "Arizalar byudjeti", "ariza to'lovlari, testlar va hujjatlar narxi")],
@@ -80,7 +80,7 @@ MOD = dict(
              take="Xitoy, Italiya, Vengriya, Turkiya va Singapur ayrim sohalarda kuchli va stipendiyali. Kam tanish yo'nalishda sifatni soha reytingi va dastur tarkibi bilan tekshiring.",
              task="<ul><li>Bitta kam tanlanadigan mamlakatni tanlang.</li><li>Sohangiz bo'yicha 2 universitet toping va ingliz tilidagi dastur hamda stipendiya bor-yo'qligini yozing.</li></ul>",
              ph="Italiya: Politecnico ... — ingliz tilida ..., DSU ..."),
-        dict(t="Ariza portfeli", short="Portfel", min=30, kind="💰 Byudjet", ic="money",
+        dict(t="Universitetlar roʻyxati", short="Portfel", min=30, kind="💰 Byudjet", ic="money",
              hook="Har ariza pul turadi: ariza to'lovi, test natijasini yuborish, tarjima, apostil. 12 ta ariza oilaviy byudjetga sezilarli yuk bo'lishi mumkin.",
              body="""<h4>Muvozanat</h4>
 <p>8–12 universitetdan iborat portfel tuzing. Har qatorda: daraja (orzu, mo'ljal, ishonchli), moslik bali (L2), ariza turi (Common App, UCAS, portal) va narx.</p>
@@ -95,7 +95,7 @@ MOD = dict(
 <p>Byudjet yetmasa, avval moslik bali eng past universitetni olib tashlang, darajalar muvozanatini saqlang. Ishonchli darajani hech qachon nolga tushirmang.</p>
 <div class="box warn">Narxlarni so'mda emas, asl valyutada yozing va hisoblagan kuningizdagi kursni qo'shing. Valyuta kursi o'zgarsa, byudjetni qayta hisoblang.</div>""",
              take="8–12 universitetli portfel uch darajani muvozanatlaydi va har arizaning narxini oldindan hisoblaydi. Qisqartirish kerak bo'lsa, moslik bali pastidan boshlang.",
-             task="<ul><li>Portfelingizdagi har ariza uchun taxminiy narxni asl valyutada yozing.</li><li>Jami summani va to'lovdan ozod qilish mumkin bo'lgan arizalarni belgilang.</li></ul>",
+             task="<ul><li>Roʻyxatingizdagi har ariza uchun taxminiy narxni asl valyutada yozing.</li><li>Jami summani va to'lovdan ozod qilish mumkin bo'lgan arizalarni belgilang.</li></ul>",
              ph="1) ... — Common App, $... 2) ... — UCAS, £... Jami: ..."),
     ],
     tool=dict(id="royxat", short="Ro'yxat", h2="Saralangan ro'yxat v1.0", sub="8–12 universitet: daraja, talab, xarajat, stipendiya imkoniyati, qabul modeli.",
