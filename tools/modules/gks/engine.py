@@ -543,7 +543,8 @@ def page(slug, M):
 </body>
 </html>
 '''
-    return html
+    from copyedit import polish_gks_html
+    return polish_gks_html(html)
 
 
 def load(slug):
