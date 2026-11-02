@@ -863,7 +863,7 @@ body.locked .gate{display:flex;}
       '<span class="mk" style="left:' + x(today) + '%"><i style="background:#c4622d"></i><span>Bugun</span></span>' +
       '<span class="mk" style="left:' + x(dead) + '%;transform:translateX(-100%)"><i style="background:#b42318;margin-left:auto;margin-right:0"></i><span>Deadline</span></span></div>' +
       '<div class="legend"><span><i style="background:#2d4a3e"></i>Tayyorgarlik (' + S.dl.weeks + ' hafta)</span><span><i style="background:#d9a441"></i>Zaxira (4 hafta)</span></div>' +
-      '<p style="margin-top:10px">Boshlash kerak boʻlgan sana: <b>' + fmt(start) + "</b>. Hujjatlar tayyor boʻlishi kerak: <b>" + fmt(target) + "</b>. Rasmiy deadline: <b>" + fmt(dead) + '</b>.</p><p style="margin-top:6px;font-weight:800;color:var(--' + v[1] + ')">' + v[0] + "</p>";
+      '<p style="margin-top:10px">Boshlash kerak boʻlgan sana: <b>' + fmt(start) + "</b>. Hujjatlar tayyor boʻlishi kerak: <b>" + fmt(target) + "</b>. Rasmiy topshirish muddati: <b>" + fmt(dead) + '</b>.</p><p style="margin-top:6px;font-weight:800;color:var(--' + v[1] + ')">' + v[0] + "</p>";
     S.dl.verdict = left > 14 ? "yetarli" : left >= 0 ? "tigʻiz" : "yetarli emas";
   }
   if (S.dl) { $("dlDate").value = S.dl.date; $("dlW").value = S.dl.weeks; }
