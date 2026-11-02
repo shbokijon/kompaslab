@@ -4,7 +4,7 @@ CIMEA = a("https://www.cimea.it", "CIMEA (Italiya, xorijiy malakalarni baholash 
 CISIA = a("https://www.cisiaonline.it", "CISIA (Italiya, TOLC kirish testlari)")
 
 MOD = dict(
-    title="Mintaqaviy yo'nalishlar: Xitoy, Italiya, Singapur",
+    title="Mamlakatlar boʻyicha imkoniyatlar: Xitoy, Italiya, Singapur",
     desc="Bachelor Lab M14: Xitoyda STEM universitetlari, Xitoyga ariza va motivatsion xat, Italiyada STEM va kirish testlari, Universitaly va talaba vizasi, Singapur (NUS, NTU) talablari va ariza strategiyasi. Natija: tanlangan yo'nalish bo'yicha ariza paketi.",
     lead="Bu modul uchta kam tanlanadigan, lekin STEM uchun kuchli yo'nalishni chuqur ko'rib chiqadi. Hammasini o'qing, lekin ariza paketini bittasi uchun tuzing: o'zingizga eng mos bo'lgani uchun.",
     hero="telescope", weeks="2–3", next="M15 Intervyu va qabul qarori", next_href="bachelor-lab-m15.html",
