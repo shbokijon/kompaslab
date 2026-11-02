@@ -3,9 +3,9 @@ from common import CA, CDS, UCAS, ANABIN, DAAD_ADM, QS, THE, USN, UNIPI, HOL, ST
 MOD = dict(
     title="Qabul qanday qaror qabul qiladi",
     desc="Bachelor Lab M1: qabul komissiyasi ishi, yaxlit va ball asosidagi qabul, 11 yillik attestat xorijda, reyting tuzog'i, QS/THE/US News metodologiyasi. Natija: 3 universitet talablari jadvali.",
-    lead="Ariza yozishdan oldin uni kim o'qishini va qaysi mantiq bilan qaror chiqarishini bilish kerak. Bu modulda qabulning ikki mantig'ini ajratasiz, attestatingiz xorijda qanday baholanishini tekshirasiz va reytinglarni to'g'ri o'qishni o'rganasiz.",
-    hero="telescope", weeks="1–2", next="M2 Universitet tanlash va ariza portfeli", next_href="bachelor-lab-m2.html",
-    goals=[("telescope", "Qabul modeli belgisi", "har universitet uchun: yaxlit yoki ball asosidagi"),
+    lead="Ariza yozishdan oldin uni kim o'qishini va qaysi mantiq bilan qaror chiqarishini bilish kerak. Bu modulda qabulning ikki usulini ajratasiz, attestatingiz xorijda qanday baholanishini tekshirasiz va reytinglarni to'g'ri o'qishni o'rganasiz.",
+    hero="telescope", weeks="1–2", next="M2 Universitet tanlash va universitetlar roʻyxati", next_href="bachelor-lab-m2.html",
+    goals=[("telescope", "Qabul usulini aniqlash", "har universitet uchun: yaxlit yoki ball asosidagi"),
            ("scroll", "3 universitet talablari jadvali", "rasmiy sahifadan, havola va sana bilan"),
            ("chart", "Reytingni o'qish ko'nikmasi", "umumiy va fan bo'yicha reyting farqi")],
     warn=f"Kirish talablari, testlar siyosati va reytinglar har yili yangilanadi. Bu moduldagi misollar {HOL}; o'z universitetingiz talabini uning rasmiy qabul sahifasidan tekshiring.",
@@ -32,9 +32,9 @@ MOD = dict(
                    ("Shartli qabul odatda til testi yoki attestat kabi shart bajarilishini talab qiladi.", "t", "To'g'ri: shart bajarilmasa, qabul kuchini yo'qotadi."),
                    ("Komissiya sizning maktabingiz imkoniyatlarini ham hisobga olishi mumkin.", "t", "To'g'ri: AQShda kontekst baholashning bir qismi; maktab hisoboti ([[school profile]]) shu uchun kerak."),
                    ("Kutish ro'yxati rad javobi bilan bir xil.", "n", "Noto'g'ri: kutish ro'yxatidan joy bo'shasa qabul qilinishi mumkin, lekin kafolat yo'q.")],
-             task="<ul><li>Uchta nishon universitetingizning qabul sahifasini oching.</li><li>Har biri arizani kim o'qishi va qaysi qismlarga qarashi haqida nima deyishini 2–3 jumlada yozing.</li></ul>",
+             task="<ul><li>Tanlagan uchta universitetingizning qabul sahifasini oching.</li><li>Har biri arizani kim o'qishi va qaysi qismlarga qarashi haqida nima deyishini 2–3 jumlada yozing.</li></ul>",
              ph="1) ... universiteti: qabul bo'limi ..., qaraydi: ... 2) ..."),
-        dict(t="Yaxlit va ball asosidagi qabul", short="Ikki mantiq", min=30, kind="🧭 Model belgisi", ic="compass",
+        dict(t="Yaxlit va ball asosidagi qabul", short="Ikki mantiq", min=30, kind="🧭 Qabul usulini aniqlash", ic="compass",
              hook="Bir universitet uchun insho hal qiluvchi, boshqasi uni umuman so'ramaydi. Vaqtingizni qayerga sarflashni qabul mantig'i belgilaydi.",
              body=f"""<h4>Ikki mantiq</h4>
 <div class="tbl"><table><thead><tr><th></th><th>Yaxlit ([[holistic]])</th><th>Ball asosidagi ([[numbers-based]])</th></tr></thead><tbody>
@@ -70,7 +70,7 @@ MOD = dict(
              take="11 yillik attestat AQShda ko'pincha yetarli, UK, Germaniya va Italiyada ko'pincha qo'shimcha yil yoki malaka talab qiladi. Har universitet uchun rasmiy sahifadan tekshiring.",
              task="<ul><li>3 nishon mamlakat uchun attestatingiz bilan to'g'ridan-to'g'ri kirish mumkinmi yoki qo'shimcha yil kerakmi, rasmiy manbadan aniqlang.</li><li>Havola va tekshirilgan sanani yozing.</li></ul>",
              ph="Germaniya: anabin bo'yicha ... ; havola: ... ; sana: ..."),
-        dict(t="Reyting tuzog'i", short="Reyting", min=20, kind="⚖️ Tahlil", ic="chart",
+        dict(t="Reytingga aldanmaslik", short="Reyting", min=20, kind="⚖️ Tahlil", ic="chart",
              hook="Reytingdagi 50-o'rin sizning fakultetingiz uchun 150-o'rin bo'lishi mumkin. Umumiy reyting butun universitetni o'lchaydi, sizning dasturingizni emas.",
              body="""<h4>Umumiy va fan bo'yicha reyting</h4>
 <p>Umumiy reyting ([[overall ranking]]) universitetning hamma fakultetlarini, ilmiy maqolalar, obro' so'rovlari va xalqarolikni birga hisoblaydi. Fan bo'yicha reyting ([[subject ranking]]) aniq soha bo'yicha tuziladi. Muhandislik yoki informatikada o'qimoqchi bo'lsangiz, aynan shu sohadagi o'rinni qarang.</p>
