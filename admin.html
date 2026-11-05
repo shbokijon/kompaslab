@@ -577,6 +577,17 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <!-- ANALYTICS -->
     <div class="sec" id="sec-analytics">
       <div class="card" style="margin-bottom:14px">
+        <div class="ch"><h2>🧭 M0 voronkasi va talabalar</h2><button class="btn bs bsm" onclick="loadM0Overview()">🔄 Yangilash</button></div>
+        <div id="m0Funnel" style="padding:4px 2px 8px;font-size:14px;color:var(--muted)">Yuklanmoqda...</div>
+        <div id="m0Lessons" style="margin-bottom:10px"></div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr>
+            <th>Talaba</th><th>Bosqich</th><th>Lab</th><th>Darslar</th><th>Qayerda</th><th>Vaqt</th><th>Oxirgi faollik</th>
+          </tr></thead><tbody id="tbM0"></tbody></table>
+        </div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:8px">Hisob 2026-11-05 dan. Faqat voqealar yoziladi (dars, qism, yakun, faol vaqt); javob matni yozilmaydi. "Toʻxtagan": 3 kundan beri faollik yoʻq va M0 tugamagan.</div>
+      </div>
+      <div class="card" style="margin-bottom:14px">
         <div class="ch"><h2>📱 Ilova (telefonga oʻrnatish)</h2><button class="btn bs bsm" onclick="loadPwaStats()">🔄 Yangilash</button></div>
         <div id="pwaStats" style="padding:4px 2px 2px;font-size:14px;color:var(--muted)">Yuklanmoqda...</div>
       </div>
@@ -2135,6 +2146,35 @@ function exportPaymentsCSV() {
 // ════════════════════════════════════════════════════════
 //  13. KURS STATISTIKASI
 // ════════════════════════════════════════════════════════
+const m0esc = v => escHtml(String(v == null ? '' : v))
+const M0_LESSONS = { 'master-lab': 5, 'bachelor-lab': 5, 'phd-lab': 6, 'gks-lab': 5, 'usa-lab': 6, 'tadbirkor-talaba': 5, 'musofir-lab': 6 }
+const STAGE_UZ = { school: 'Maktab', college: 'Litsey/kollej', bachelor: 'Bakalavr', bachelor_done: 'Bakalavr bitirgan', master: 'Magistrant', master_done: 'Magistr bitirgan', phd: 'Doktorant', work: 'Ishlaydi' }
+const SECT_UZ = ['Diqqat 🔥', 'Asosiy qism', 'Xulosa', 'Topshiriq']
+async function loadM0Overview() {
+  const box = document.getElementById('m0Funnel'), tb = document.getElementById('tbM0'), lb = document.getElementById('m0Lessons')
+  if (!box) return
+  const { data, error } = await supabase.rpc('kompas_admin_m0_overview')
+  if (error || !data) { box.textContent = 'Oʻqilmadi: ' + (error?.message || ''); return }
+  const f = data.funnel || {}
+  const step = (n, t) => '<b style="color:var(--text);font-size:18px">' + (n || 0) + '</b> ' + t
+  box.innerHTML = [step(f.registered, 'roʻyxatdan oʻtgan'), step(f.confirmed, 'emailni tasdiqlagan'), step(f.onboarded, 'savolga javob bergan'),
+    step(f.started, 'M0 ni ochgan'), step(f.lesson1, 'kamida 1 dars tugatgan'), step(f.finished, 'M0 ni yakunlagan')].join(' → ')
+  const byLab = {}
+  ;(data.lessons || []).forEach(l => { (byLab[l.lab] = byLab[l.lab] || []).push(l) })
+  lb.innerHTML = Object.keys(byLab).map(lab => '<div style="font-size:13px;margin:6px 0"><b>' + m0esc(lab) + ':</b> ' +
+    byLab[lab].sort((a, b) => a.lesson.localeCompare(b.lesson, 'en', { numeric: true })).map(l => m0esc(l.lesson.replace('l', '')) + '-dars ' + l.reached + ' ochgan / ' + l.done + ' tugatgan').join(' · ') + '</div>').join('')
+  const now = Date.now()
+  tb.innerHTML = (data.users || []).map(u => {
+    const total = M0_LESSONS[u.lab] || '?'
+    const stuck = u.lab && !u.finished && u.last_seen && now - Date.parse(u.last_seen) > 3 * 86400000
+    const where = !u.lab ? (u.confirmed ? 'M0 ochilmagan' : 'Email tasdiqlanmagan') : u.finished ? 'Yakunlagan ✓' :
+      (u.last_lesson ? u.last_lesson.replace('l', '') + '-dars' : 'Modul sahifasi') + (u.last_section != null ? ', ' + SECT_UZ[u.last_section] : '')
+    const stage = u.stage ? (STAGE_UZ[u.stage] || u.stage) + (u.detail ? ' · ' + u.detail : '') + (u.works ? ' · ishlaydi' : '') : '—'
+    return '<tr><td>' + m0esc(u.name || '—') + '<div style="font-size:12px;color:var(--muted)">' + m0esc(u.email || '') + '</div></td><td>' + m0esc(stage) + '</td><td>' + m0esc(u.lab || '—') +
+      '</td><td>' + (u.lab ? (u.done || 0) + ' / ' + total : '—') + '</td><td>' + m0esc(where) + (stuck ? ' <span class="tag" style="background:#fdecea;color:#b3261e">toʻxtagan</span>' : '') +
+      '</td><td>' + (u.minutes || 0) + ' daq</td><td>' + (u.last_seen ? new Date(u.last_seen).toLocaleDateString('ru-RU') : '—') + '</td></tr>'
+  }).join('') || '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:16px">Hozircha maʼlumot yoʻq</td></tr>'
+}
 async function loadPwaStats() {
   const box = document.getElementById('pwaStats'); if (!box) return
   const { data, error } = await supabase.rpc('kompas_pwa_stats')
@@ -2146,6 +2186,7 @@ async function loadPwaStats() {
 }
 async function loadCourseStats() {
   loadPwaStats()
+  loadM0Overview()
   const tbStats = document.getElementById('tbStats')
   if (tbStats) tbStats.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Yuklanmoqda...</td></tr>'
 

@@ -192,6 +192,15 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         ✓ <span>Muvaffaqiyatli kirdingiz! Yoʻnaltirilmoqda...</span>
       </div>
 
+      <div id="otpBox" hidden style="margin:0 0 18px;padding:16px;border:1px solid var(--border);border-radius:14px">
+        <label class="field-label" for="otpCode">Emailga kelgan 6 xonali kod</label>
+        <div style="display:flex;gap:8px">
+          <input type="text" id="otpCode" class="field-input" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="123456" style="letter-spacing:6px;text-align:center;font-family:'JetBrains Mono','IBM Plex Sans',monospace">
+          <button type="button" class="btn-submit" id="otpBtn" style="width:auto;margin:0;padding:0 18px">Tasdiqlash</button>
+        </div>
+        <div class="field-error" id="otpError">Kod notoʻgʻri yoki eskirgan. "Xatni qayta yuborish" ni bosing.</div>
+      </div>
+
       <form id="loginForm" onsubmit="handleLogin(event)">
 
         <div class="field">
@@ -319,6 +328,26 @@ document.getElementById('resendBtn').addEventListener('click', async function ()
   const { error } = await window.supabase.auth.resend({ type: 'signup', email, options: { emailRedirectTo: location.origin + '/dashboard.html' } })
   b.textContent = error ? 'Keyinroq urinib koʻring' : 'Yuborildi ✓'
 })
+// ─── KOD BILAN TASDIQLASH (OTP) ───────────────────────
+async function verifyLoginCode() {
+  const email = document.getElementById('emailInput').value.trim().toLowerCase()
+  const code = document.getElementById('otpCode').value.replace(/\D/g, '')
+  const err = document.getElementById('otpError'), btn = document.getElementById('otpBtn')
+  err.classList.remove('show')
+  if (!/^\d{6,10}$/.test(code)) { err.classList.add('show'); return }
+  btn.disabled = true
+  let res = await window.supabase.auth.verifyOtp({ email, token: code, type: 'email' })
+  if (res.error) res = await window.supabase.auth.verifyOtp({ email, token: code, type: 'signup' })
+  btn.disabled = false
+  if (res.error || !res.data?.session) { err.classList.add('show'); return }
+  document.getElementById('successAlert').classList.add('show')
+  window.location.href = kompasReturnTo() || 'dashboard.html'
+}
+document.getElementById('otpBtn').addEventListener('click', verifyLoginCode)
+document.getElementById('otpCode').addEventListener('input', function () {
+  this.value = this.value.replace(/\D/g, '').slice(0, 10)
+  if (this.value.length === 6) verifyLoginCode()
+})
 // ─── LOGIN HANDLER ───────────────────────────────────
 async function handleLogin(e) {
   e.preventDefault()
@@ -358,11 +387,12 @@ async function handleLogin(e) {
         error.message.includes('Invalid') || error.message.includes('credentials')
           ? 'Email yoki parol noto\'g\'ri.'
           : error.message.includes('confirm')
-          ? 'Email hali tasdiqlanmagan. Pochtangizdagi havolani bosing.'
+          ? 'Email hali tasdiqlanmagan. Emailga kelgan kodni pastga kiriting.'
           : /rate|seconds/i.test(error.message)
           ? 'Juda koʻp urinish. Bir necha daqiqadan keyin qayta urinib koʻring.'
           : 'Kirib boʻlmadi. Internetni tekshirib, qayta urinib koʻring.'
       document.getElementById('resendBtn').hidden = !error.message.includes('confirm')
+      document.getElementById('otpBox').hidden = !error.message.includes('confirm')
       btn.disabled = false
       btn.innerHTML = '<span id="btnText">Kirish</span><span>→</span>'
       return

@@ -10,6 +10,10 @@
 // ═══════════════════════════════════════════════════════════════
 (function () {
   var M = window.KMOD; if (!M) return;
+  // Progressni hisobga bogʻlash va oʻqish voqealari (js/kompas-sync.js)
+  if (!window.KompasSync && !document.querySelector('script[src$="kompas-sync.js"]')) {
+    var ks = document.createElement("script"); ks.src = "js/kompas-sync.js"; ks.defer = true; document.head.appendChild(ks);
+  }
   // M0 is free for authenticated users only. Never override each page's auth gate.
   // Vercel middleware also enforces access before HTML is served.
   var body = document.body, view = body.getAttribute("data-kview"), curId = body.getAttribute("data-klesson");

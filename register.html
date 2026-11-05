@@ -344,21 +344,25 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <!-- ─── STEP 3: MUVAFFAQIYAT ─── -->
       <div class="form-step" id="step3">
         <div class="success-state">
-          <div class="success-icon">🎉</div>
-          <h3 class="success-title">Hisob yaratildi!</h3>
+          <div class="success-icon">📧</div>
+          <h3 class="success-title">Emailingizga kod yubordik</h3>
           <p class="success-sub">
-            Emailingizga tasdiqlash xati yuborildi. 
-            Iltimos, emailingizni tekshiring va havolani bosing.
+            <b id="otpEmail"></b> manziliga 6 xonali kod keldi. Kodni shu yerga kiriting: hisob tasdiqlanadi va M0 darslari ochiladi.
           </p>
-          <div class="alert info show" style="justify-content:center;text-align:left;">
-            📧 <span>Spam papkasini ham tekshiring</span>
+          <div class="field" style="text-align:left">
+            <label class="field-label" for="otpCode">Tasdiqlash kodi</label>
+            <input type="text" id="otpCode" class="field-input" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="10" placeholder="123456" style="font-size:24px;letter-spacing:8px;text-align:center;font-family:'JetBrains Mono','IBM Plex Sans',monospace">
+            <div class="field-error" id="otpError">Kod notoʻgʻri yoki eskirgan. Qayta urinib koʻring yoki yangi kod soʻrang.</div>
           </div>
-          <button class="btn-next" onclick="window.location.href='login.html'" style="margin-top:8px;">
-            Tasdiqlagach, kiring →
+          <button class="btn-next" id="otpBtn" onclick="verifyCode()" style="margin-top:4px;">
+            Tasdiqlash va boshlash →
           </button>
+          <div class="alert info show" style="justify-content:center;text-align:left;margin-top:12px">
+            📥 <span>Xat koʻrinmasa, Spam papkasini tekshiring. Xatdagi havolani bosish ham mumkin.</span>
+          </div>
           <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;">
-            <button type="button" id="resendBtn" onclick="resendConfirm(this)" style="border:none;background:none;color:var(--accent);font:inherit;font-weight:700;cursor:pointer;">Xat kelmadimi? Qayta yuborish</button>
-            <a href="index.html#labs" style="color:var(--muted);text-decoration:none;">Lablar bilan tanishish</a>
+            <button type="button" id="resendBtn" onclick="resendConfirm(this)" style="border:none;background:none;color:var(--accent);font:inherit;font-weight:700;cursor:pointer">Yangi kod yuborish</button>
+            <a href="login.html" style="color:var(--muted);text-decoration:none;">Tasdiqlagan boʻlsam, kirish</a>
           </div>
         </div>
       </div>
@@ -473,7 +477,48 @@ async function resendConfirm(b) {
   if (!regEmail) return
   b.disabled = true; b.textContent = 'Yuborilmoqda...'
   const { error } = await supabase.auth.resend({ type: 'signup', email: regEmail, options: { emailRedirectTo: `${APP_CONFIG.baseUrl}/${APP_CONFIG.routes.dashboard}` } })
-  b.textContent = error ? 'Bir necha daqiqadan keyin urinib koʻring' : 'Yuborildi ✓'
+  b.textContent = error ? 'Bir necha daqiqadan keyin urinib koʻring' : 'Yangi kod yuborildi ✓'
+  setTimeout(() => { b.disabled = false; b.textContent = 'Yangi kod yuborish' }, 60000)
+}
+// ─── KOD BILAN TASDIQLASH (OTP) ───────────────────────
+// Kod emailda {{ .Token }} orqali keladi (Supabase → Auth → Email Templates → Confirm signup).
+// Tasdiqlangach sessiya ochiladi: avval kelgan M0 sahifasiga, boʻlmasa kabinetga.
+function kompasNextAfterAuth() {
+  let to = null
+  try { to = sessionStorage.getItem('returnTo') } catch (e) {}
+  if (!to) { try { const r = JSON.parse(localStorage.getItem('kompas_return') || 'null'); if (r && Date.now() - r.at < 86400000) to = r.to } catch (e) {} }
+  try { sessionStorage.removeItem('returnTo'); localStorage.removeItem('kompas_return') } catch (e) {}
+  if (to && /-m0(?:-[1-9]\d*|-yakun)?(?:\.html)?(?:\?.*)?$/i.test(to)) return 'm0-access.html?next=' + encodeURIComponent(to.startsWith('/') ? to : '/' + to)
+  return 'dashboard.html'
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const inp = document.getElementById('otpCode')
+  if (!inp) return
+  inp.addEventListener('input', () => {
+    inp.value = inp.value.replace(/\D/g, '').slice(0, 10)
+    clearErr('otpCode', 'otpError')
+    if (inp.value.length === 6) verifyCode()
+  })
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') verifyCode() })
+})
+let otpBusy = false
+async function verifyCode() {
+  const code = document.getElementById('otpCode').value.trim()
+  if (otpBusy || !regEmail) return
+  if (!/^\d{6,10}$/.test(code)) { showErr('otpCode', 'otpError'); return }
+  otpBusy = true
+  const btn = document.getElementById('otpBtn')
+  btn.disabled = true; btn.innerHTML = '<div class="spinner"></div>'
+  let res = await supabase.auth.verifyOtp({ email: regEmail, token: code, type: 'email' })
+  if (res.error) res = await supabase.auth.verifyOtp({ email: regEmail, token: code, type: 'signup' })
+  otpBusy = false
+  if (res.error || !res.data || !res.data.session) {
+    showErr('otpCode', 'otpError')
+    btn.disabled = false; btn.innerHTML = 'Tasdiqlash va boshlash →'
+    return
+  }
+  btn.innerHTML = 'Tasdiqlandi ✓'
+  window.location.href = kompasNextAfterAuth()
 }
 // ─── REGISTER ──────────────────────────────────────
 async function handleRegister() {
@@ -539,7 +584,9 @@ async function handleRegister() {
     // Profil auth.users trigger (fn_create_profile) orqali yaratiladi; taʼlim va maqsad
     // user_metadata da saqlanadi (mijoz profiles ni yangilash huquqiga ega emas)
     regEmail = email
+    document.getElementById('otpEmail').textContent = email
     goStep(3)
+    setTimeout(() => document.getElementById('otpCode').focus(), 50)
 
   } catch(err) {
     document.getElementById('errorAlert').classList.add('show')

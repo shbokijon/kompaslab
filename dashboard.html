@@ -303,6 +303,28 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .dl-name small{display:block;font-weight:600;color:var(--muted);font-size:12.5px;}
 .dl-left{font-size:12.5px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-weight:800;padding:3px 8px;border-radius:6px;background:var(--accent-light);color:var(--accent);white-space:nowrap;}
 .dl-left.soon{background:#fdecea;color:#b42318;}
+.onb-card{margin-bottom:18px}
+.onb-card h3{margin-bottom:6px}
+.onb-card .onb-why{font-size:14.5px;color:var(--muted);margin:0 0 12px;line-height:1.55}
+.onb-labs{display:grid;gap:8px}
+.onb-lab{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--border);border-radius:12px;text-decoration:none;color:inherit;background:white}
+.onb-lab:hover{border-color:var(--accent)}
+.onb-lab.main{border-color:var(--accent);background:rgba(196,98,45,0.05)}
+.onb-lab b{font-size:15px}.onb-lab small{display:block;font-size:13px;color:var(--muted)}
+.onb-edit{border:none;background:none;color:var(--accent);font:inherit;font-weight:700;cursor:pointer;padding:0;margin-top:10px;font-size:13.5px}
+.onb-modal{position:fixed;inset:0;background:rgba(16,30,25,0.55);display:grid;place-items:center;padding:16px;z-index:200}
+.onb-modal[hidden]{display:none}
+.onb-box{background:white;border-radius:20px;padding:26px 22px;width:min(480px,100%);max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,0.25)}
+.onb-box h2{font-size:21px;font-weight:800;margin:6px 0 6px}
+.onb-step{font-size:12.5px;font-weight:700;color:var(--accent);font-family:'JetBrains Mono','IBM Plex Sans',monospace}
+.onb-sub{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+.onb-opts{display:grid;gap:8px}
+.onb-opt{text-align:left;border:1px solid var(--border);background:white;border-radius:12px;padding:12px 14px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;color:inherit;min-height:48px}
+.onb-opt:hover,.onb-opt:focus-visible{border-color:var(--accent);outline:none}
+.onb-opt small{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
+.onb-foot{display:flex;justify-content:space-between;margin-top:16px}
+.onb-back,.onb-skip{border:none;background:none;font:inherit;font-size:14px;color:var(--muted);cursor:pointer;padding:6px 0}
+.onb-skip{margin-left:auto}
 .m0-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
 .m0-card{display:flex;gap:12px;align-items:center;background:white;border:1px solid var(--border);border-radius:12px;padding:14px;text-decoration:none;color:inherit;}
 .m0-card:hover{border-color:var(--accent);}
@@ -419,12 +441,12 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         <div class="stat-change neutral">oxirgi 8 haftada</div>
       </div>
     </div>
-    <p class="stats-note">Raqamlar shu qurilmadagi javoblaringizdan hisoblanadi. Boshqa qurilmaga oʻtsangiz, <a href="#sozlamalar">zaxira nusxadan</a> tiklang.</p>
+    <p class="stats-note">Dars progressi hisobingizga bogʻlangan: boshqa qurilmadan kirsangiz ham davom etadi. Javob matnlari (CV, roʻyxatlar) faqat shu brauzerda, ularni <a href="#sozlamalar">zaxira nusxa</a> bilan koʻchiring.</p>
 
     <div class="content-grid">
       <!-- CHAP USTUN -->
       <div class="left-col">
-        <!-- Obunachi: davom etish kartasi -->
+        <!-- Davom etish kartasi: obunachi kursi yoki oxirgi boshlangan M0 -->
         <div class="current-card" id="currentCard" hidden>
           <div class="cc-badge">▶ Davom etish</div>
           <h2 class="cc-title" id="currentLessonTitle"></h2>
@@ -435,6 +457,9 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           </div>
           <a href="#" class="cc-btn" id="currentBtn">Davom etish →</a>
         </div>
+
+        <!-- Birinchi kirish savoli natijasi: sizga mos yoʻl -->
+        <div class="side-card onb-card" id="onbCard" hidden></div>
 
         <div class="section-title-row">
           <h2 id="modulesTitle">Kurs modullari</h2>
@@ -485,9 +510,24 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     </div>
   </main>
 
+  <!-- BIRINCHI KIRISH SAVOLI (modal) -->
+  <div class="onb-modal" id="onbModal" hidden role="dialog" aria-modal="true" aria-labelledby="onbTitle">
+    <div class="onb-box">
+      <div class="onb-step" id="onbStep">1 / 3</div>
+      <h2 id="onbTitle">Hozir qaysi bosqichdasiz?</h2>
+      <p class="onb-sub" id="onbSub">Javobingizga qarab qaysi Lab va qaysi M0 dan boshlash kerakligini aytamiz.</p>
+      <div class="onb-opts" id="onbOpts"></div>
+      <div class="onb-foot">
+        <button type="button" class="onb-back" id="onbBack" hidden>← Orqaga</button>
+        <button type="button" class="onb-skip" id="onbSkip">Keyinroq</button>
+      </div>
+    </div>
+  </div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/kompas-sync.js"></script>
 <script>
 // ════════════════════════════════════════════════════════
 //  KOMPAS LAB — dashboard.js (inline, 2026-10-30)
@@ -535,7 +575,11 @@ async function init() {
     const firstName = (_profile && _profile.first_name) || (_user.user_metadata && _user.user_metadata.first_name) || ''
     document.getElementById('greetingText').textContent = firstName ? `${getGreeting()}, ${firstName}!` : getGreeting() + '!'
 
+    // Boshqa qurilmadagi progress shu brauzerga qoʻshilsin (koʻpi bilan 3 soniya kutamiz)
+    if (window.KompasSync) await Promise.race([KompasSync.ready, new Promise(r => setTimeout(r, 3000))])
+    renderLocalStats()
     _enrollments = await getUserEnrollments(_user.id)
+    initOnboarding()
     await renderSubscriptions()
     if (!_enrollments.length) { renderNoCourse(); return }
     _activeCourse = _enrollments[0]
@@ -676,28 +720,243 @@ function renderModules(modules, progressMap, courseSlug) {
 //  5. OBUNASIZ: bepul M0 modullar (birinchi oʻrinda)
 // ════════════════════════════════════════════════════════
 const M0_LIST = [
-  { href: 'master-lab-m0.html',       key: 'kompas_master_m0_v1',   icon: 'master',   name: 'Master Lab M0',       sub: 'Magistratura: tayyorgarlik va muddatlar' },
-  { href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bachelor Lab M0',     sub: 'Bakalavr: xorijda oʻqish sizga mosmi' },
-  { href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD Lab M0',          sub: 'Moliyalashtirilgan PhD: qaror darvozasi' },
-  { href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS Lab M0',          sub: 'Koreya hukumati stipendiyasi' },
-  { href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA Lab M0',          sub: 'AQSh: beshta yoʻl, pul va viza' },
-  { href: 'tadbirkor-talaba-m0.html', key: 'kompas_tt_m0_v1',       icon: 'tt',       name: 'Tadbirkor Talaba M0', sub: 'Oʻqish va biznesni birga olib borish' },
-  { href: 'musofir-lab-m0.html',      key: 'kompas_musofir_m0_v1',  icon: 'musofir',  name: 'Musofir Lab M0',      sub: 'Xorijda ish: rasmiy yoʻl va himoya' },
+  { lab: 'master-lab',       href: 'master-lab-m0.html',       key: 'kompas_master_m0_v1',   icon: 'master',   name: 'Master Lab M0',       sub: 'Magistratura: tayyorgarlik va muddatlar',
+    lessons: ["Master Lab qanday ishlaydi?", "Magistratura turlari va oʻqish imkoniyatlari", "Magistraturaga arizada qanday hujjatlar kerak?", "Tayyorgarligingizni qanday baholaysiz?", "Master Lab sizga mosmi? Obunadan oldingi tekshiruv"] },
+  { lab: 'bachelor-lab',     href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bachelor Lab M0',     sub: 'Bakalavr: xorijda oʻqish sizga mosmi',
+    lessons: ["Bachelor Lab qanday ishlaydi", "Xalqaro bakalavr qabuli: umumiy manzara", "Tayyorgarlikni baholash", "Bachelor Lab sizga mos emas, agar…", "Vaqt chizigʻi, toʻlov va rozilik"] },
+  { lab: 'phd-lab',          href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD Lab M0',          sub: 'Moliyalashtirilgan PhD: qaror darvozasi',
+    lessons: ["PhD nima va kimga kerak", "Uchta global model", "“Faqat moliyalashtirilgan” qoidasi", "PhD vaqt chizigʻi: qarordan taklifgacha 12–18 oy", "Tayyorgarlik diagnostikasi", "Qaror: boshlash, kechiktirish yoki boshqa Lab"] },
+  { lab: 'gks-lab',          href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS Lab M0',          sub: 'Koreya hukumati stipendiyasi',
+    lessons: ["GKS nima va kimga beriladi", "Ikki trek va tanlov bosqichlari", "Muvofiqlik tekshiruvi", "Trek tanlovi", "Vaqt chizigʻi, toʻlov va rozilik"] },
+  { lab: 'usa-lab',          href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA Lab M0',          sub: 'AQSh: beshta yoʻl, pul va viza',
+    lessons: ["AQSh yoʻllari xaritasi", "Eng keng tarqalgan miflar", "Pul haqiqati va B reja", "Yoʻl tanlagich", "Rasmiy manbalarni oʻqish", "Tayyorgarlik, kalendar va shartlar"] },
+  { lab: 'tadbirkor-talaba', href: 'tadbirkor-talaba-m0.html', key: 'kompas_tt_m0_v1',       icon: 'tt',       name: 'Tadbirkor Talaba M0', sub: 'Oʻqish va biznesni birga olib borish',
+    lessons: ["Talaba tadbirkorligi nima va nima emas", "Vaqt, oʻqish va pul", "Huquqiy shakllar xaritasi", "Tayyorgarlik koʻrsatkichi", "Kimga mos emas va shartlar"] },
+  { lab: 'musofir-lab',      href: 'musofir-lab-m0.html',      key: 'kompas_musofir_m0_v1',  icon: 'musofir',  name: 'Musofir Lab M0',      sub: 'Xorijda ish: rasmiy yoʻl va himoya',
+    lessons: ["Rasmiy va norasmiy yoʻl", "Firibgarlik belgilari", "Mamlakatlar xaritasi", "Kim uchun qaysi yoʻl", "Xarajat va qarz xavfi", "Keyingi qadam va shartlar"] },
 ]
 function m0Progress(key) { const o = ls(key); return o && o.xp ? Math.min(100, Math.round(o.xp / 250 * 100)) : 0 }
+// M0 holati: nechta dars tugagan, keyingi dars, unda nechta qism ochilgan, oxirgi faollik
+function m0State(m) {
+  const o = ls(m.key) || {}, done = o.done || {}, seen = o.seen || {}, n = m.lessons.length
+  const doneN = m.lessons.filter((_, i) => done['l' + (i + 1)]).length
+  let next = m.lessons.findIndex((_, i) => !done['l' + (i + 1)])
+  const pct = m0Progress(m.key)
+  const started = pct > 0 || Object.keys(seen).length > 0
+  const t = ((ls('kompas_sync_meta_v1') || {})[m.key]) || 0
+  return { doneN, n, next, pct, started, t, sections: next >= 0 ? (seen['l' + (next + 1)] || []).length : 4,
+    finished: pct >= 100, base: m.href.replace(/\.html$/, '') }
+}
+function agoText(t) {
+  if (!t) return ''
+  const d = Math.floor((Date.now() - t) / 86400000)
+  return d <= 0 ? 'bugun' : d === 1 ? 'kecha' : d + ' kun oldin'
+}
+// Obunasiz: tepada bitta "Davom etish" kartasi (oxirgi boshlangan, tugallanmagan M0)
+function renderM0Continue() {
+  const list = M0_LIST.map(m => ({ m, s: m0State(m) })).filter(x => x.s.started && !x.s.finished)
+    .sort((a, b) => b.s.t - a.s.t || b.s.pct - a.s.pct)
+  const card = document.getElementById('currentCard')
+  if (!list.length) { card.hidden = true; return }
+  const { m, s } = list[0]
+  let href, title, meta
+  if (s.next >= 0) {
+    href = `${s.base}-${s.next + 1}.html`
+    title = `${m.name} · ${s.next + 1}-dars: ${m.lessons[s.next]}`
+    meta = s.sections > 0 ? `Shu darsda ${s.sections} / 4 qism ochilgan` : 'Darsni boshlang: Diqqat 🔥 qismidan'
+  } else {
+    href = `${s.base}-yakun.html`
+    title = `${m.name} · yakuniy qism`
+    meta = 'Darslar tugadi: vositalar, nishonlar va qaror qoldi'
+  }
+  const ago = agoText(s.t)
+  if (ago) meta += ` · oxirgi marta ${ago}`
+  document.getElementById('currentLessonTitle').textContent = title
+  document.getElementById('currentLessonMeta').textContent = meta
+  const lp = Math.round(s.doneN / s.n * 100)
+  document.querySelector('#currentCard .cc-prog-row span').textContent = `${s.doneN} / ${s.n} dars`
+  document.getElementById('currentPct').textContent = lp + '%'
+  document.getElementById('currentProgFill').style.width = lp + '%'
+  const btn = document.getElementById('currentBtn')
+  btn.href = href; btn.textContent = 'Davom etish →'
+  card.hidden = false
+}
 function renderNoCourse() {
   document.getElementById('modulesTitle').textContent = 'Bepul M0 modullar'
-  const list = M0_LIST.map(m => ({ ...m, pct: m0Progress(m.key) })).sort((a, b) => (b.pct > 0 && b.pct < 100) - (a.pct > 0 && a.pct < 100))
+  renderM0Continue()
+  const rec = recommendLabs(_profile)
+  const order = rec ? rec.labs : []
+  const list = M0_LIST.map(m => ({ ...m, st: m0State(m), pct: m0Progress(m.key) }))
+    .sort((a, b) => (b.st.started && !b.st.finished) - (a.st.started && !a.st.finished) || b.st.t - a.st.t ||
+      (order.indexOf(a.lab) < 0 ? 99 : order.indexOf(a.lab)) - (order.indexOf(b.lab) < 0 ? 99 : order.indexOf(b.lab)))
   document.getElementById('modulesList').innerHTML = `
     <p class="side-muted">Har Labning M0 qismi bepul: toʻlovdan oldin dastur sizga mosligini tekshirasiz.</p>
     <div class="m0-grid">${list.map(m => {
-      const btn = m.pct >= 100 ? 'Koʻrib chiqish' : m.pct > 0 ? 'Davom etish →' : 'Boshlash →'
+      const btn = m.pct >= 100 ? 'Koʻrib chiqish' : m.st.started ? 'Davom etish →' : 'Boshlash →'
+      const label = m.st.started ? `${m.st.doneN} / ${m.st.n} dars` : `${m.st.n} dars`
       return `<a class="m0-card" href="${m.href}"><img src="img/3d/${m.icon}.webp" width="52" height="52" alt="" style="flex:none">
-        <div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:700">${m.name}</div>
+        <div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:700">${m.name}${order[0] === m.lab ? ' <span style="font-size:12px;color:var(--accent);font-weight:700">· sizga mos</span>' : ''}</div>
         <div style="font-size:13.5px;color:var(--muted);margin:2px 0 8px">${m.sub}</div>
         <div class="m0-bar"><i style="width:${m.pct}%"></i></div>
-        <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-top:4px;color:var(--muted)"><span>${m.pct}%</span><b style="color:var(--accent)">${btn}</b></div></div></a>`
+        <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-top:4px;color:var(--muted)"><span>${label}</span><b style="color:var(--accent)">${btn}</b></div></div></a>`
     }).join('')}</div>`
+}
+
+// ════════════════════════════════════════════════════════
+//  5b. BIRINCHI KIRISH SAVOLI va SIZGA MOS YOʻL
+//  Javob profiles.stage / stage_detail / works ga kompas_save_onboarding() orqali yoziladi.
+//  Server ishlamasa, shu qurilmada saqlanadi (kompas_onb_v1) va keyingi kirishda yuboriladi.
+// ════════════════════════════════════════════════════════
+const STAGES = [
+  { v: 'school',        t: 'Maktabda oʻqiyman',               q: 'Nechanchi sinfdasiz?',   o: [['8','8-sinf'],['9','9-sinf'],['10','10-sinf'],['11','11-sinf']] },
+  { v: 'college',       t: 'Litsey yoki kollejda oʻqiyman',   q: 'Nechanchi kursdasiz?',   o: [['1','1-kurs'],['2','2-kurs'],['3','3-kurs']] },
+  { v: 'bachelor',      t: 'Bakalavrda oʻqiyman',             q: 'Nechanchi kursdasiz?',   o: [['1','1-kurs'],['2','2-kurs'],['3','3-kurs'],['4','4-kurs yoki undan yuqori']] },
+  { v: 'bachelor_done', t: 'Bakalavrni bitirganman',          q: 'Qachon bitirgansiz?',    o: [['y0','Shu yil'],['y1_2','1–2 yil oldin'],['y3_5','3–5 yil oldin'],['y5p','5 yildan koʻp']] },
+  { v: 'master',        t: 'Magistraturada oʻqiyman',         q: 'Nechanchi kursdasiz?',   o: [['1','1-kurs'],['2','2-kurs']] },
+  { v: 'master_done',   t: 'Magistraturani bitirganman',      q: 'Qachon bitirgansiz?',    o: [['y0','Shu yil'],['y1_2','1–2 yil oldin'],['y3_5','3–5 yil oldin'],['y5p','5 yildan koʻp']] },
+  { v: 'phd',           t: 'Doktoranturada oʻqiyman',         q: null },
+  { v: 'work',          t: 'Oʻqimayman, ishlayman',           q: 'Oxirgi taʼlimingiz qaysi?', o: [['edu_school','Maktab yoki kollej'],['edu_bachelor','Bakalavr'],['edu_master','Magistratura yoki undan yuqori']] },
+]
+const GOALS = [
+  ['bachelor','Xorijda bakalavriat'], ['masters','Xorijda magistratura'], ['phd','Xorijda PhD'],
+  ['grant','Davlat stipendiyasi (GKS, DAAD va boshqalar)'], ['work','Xorijda rasmiy ish'],
+  ['business','Oʻqish bilan birga biznes'], ['unsure','Hali bilmayman']
+]
+const LAB_INFO = Object.fromEntries(M0_LIST.map(m => [m.lab, m]))
+function onbLocal() { return ls('kompas_onb_v1') }
+function onbAnswer(p) {
+  if (p && p.stage) return { stage: p.stage, detail: p.stage_detail, works: p.works, goal: p.goal }
+  return onbLocal()
+}
+// Tavsiya: bosqich va maqsaddan 1 ta asosiy va 1–2 ta qoʻshimcha Lab. Bu qoida, faktga daʼvo emas.
+function recommendLabs(p) {
+  const a = onbAnswer(p); if (!a || !a.stage) return null
+  const d = a.detail || '', g = a.goal || ''
+  let labs, why
+  switch (a.stage) {
+    case 'school':
+      labs = ['bachelor-lab', 'usa-lab', 'gks-lab']
+      why = (d === '8' || d === '9')
+        ? 'Sizda vaqt bor: avval yoʻllarni va til, baho talablarini bilib oling, keyin tayyorlanishni rejalang.'
+        : 'Ariza yili yaqin: avval qaysi mamlakat va qaysi yoʻl mosligini aniqlang, keyin muddatlarni rasmiy sahifadan tekshiring.'
+      break
+    case 'college':
+      labs = ['bachelor-lab', 'gks-lab', 'usa-lab']
+      why = 'Litsey yoki kollejdan keyin xorijda bakalavr: avval qabul tizimi va tayyorgarligingizni baholang.'
+      break
+    case 'bachelor':
+      labs = (d === '1' || d === '2') ? ['master-lab', 'tadbirkor-talaba', 'gks-lab'] : ['master-lab', 'gks-lab', 'usa-lab']
+      why = (d === '1' || d === '2')
+        ? 'Magistraturaga hali erta, lekin hozirgi baholar, tadqiqot va tavsiya beradigan oʻqituvchilar keyin hal qiladi.'
+        : 'Bitiruv yaqin: magistratura arizasi uchun hujjatlar va muddatlarni hozirdan rejalang.'
+      break
+    case 'bachelor_done':
+      labs = ['master-lab', 'gks-lab', 'usa-lab']
+      why = d === 'y5p'
+        ? 'Bitirganingizga koʻp vaqt boʻlgan: ish tajribangiz arizada kuchli dalil boʻladi, lekin ayrim stipendiyalarda yosh va muddat cheklovi bor, rasmiy shartlarni tekshiring.'
+        : 'Bakalavr diplomi bor: keyingi qadam magistratura va unga mos stipendiya.'
+      break
+    case 'master':
+      labs = d === '1' ? ['phd-lab', 'master-lab'] : ['phd-lab']
+      why = 'Magistraturadan keyingi bosqich PhD: avval moliyalashtirilgan yoʻllarni va tadqiqot mavzungizni aniqlang.'
+      break
+    case 'master_done':
+      labs = ['phd-lab']
+      why = 'Magistr diplomi bor: moliyalashtirilgan PhD yoʻli va professor bilan aloqa sizning keyingi qadamingiz.'
+      break
+    case 'phd':
+      labs = ['phd-lab']
+      why = 'Siz allaqachon doktorantsiz: PhD Lab M0 dagi vaqt chizigʻi va qaror qismi foydali boʻlishi mumkin.'
+      break
+    default: // work
+      labs = d === 'edu_master' ? ['phd-lab', 'musofir-lab'] : d === 'edu_bachelor' ? ['master-lab', 'musofir-lab'] : ['musofir-lab', 'bachelor-lab']
+      why = 'Ishlayapsiz: oʻqishga qaytish yoki xorijda rasmiy ish, ikkala yoʻlni ham solishtirib koʻring.'
+  }
+  const pri = { work: 'musofir-lab', business: 'tadbirkor-talaba', phd: 'phd-lab', masters: 'master-lab', bachelor: 'bachelor-lab' }[g]
+  if (pri) labs = [pri].concat(labs.filter(x => x !== pri))
+  if (a.works && a.stage !== 'work' && a.stage !== 'school') why += ' Ish bilan birga: haftasiga qancha vaqt ajrata olishingizni oldindan belgilang.'
+  return { labs: labs.slice(0, 3), why, a }
+}
+function stageLabel(a) {
+  const st = STAGES.find(x => x.v === a.stage); if (!st) return ''
+  const det = st.o && (st.o.find(o => o[0] === a.detail) || [])[1]
+  return st.t + (det ? ', ' + det.toLowerCase() : '')
+}
+function renderOnbCard() {
+  const box = document.getElementById('onbCard'), rec = recommendLabs(_profile)
+  if (!rec) {
+    box.innerHTML = '<h3>🧭 Qayerdan boshlash kerak?</h3><p class="onb-why">Uchta qisqa savolga javob bering: bosqichingizga qarab sizga mos Lab va M0 ni koʻrsatamiz.</p><button type="button" class="side-btn" id="onbOpen">Savollarga javob berish</button>'
+    box.hidden = false
+    document.getElementById('onbOpen').onclick = openOnb
+    return
+  }
+  box.innerHTML = `<h3>🧭 Sizga mos yoʻl</h3>
+    <p class="onb-why"><b>${esc(stageLabel(rec.a))}.</b> ${esc(rec.why)}</p>
+    <div class="onb-labs">${rec.labs.map((l, i) => { const m = LAB_INFO[l]; if (!m) return ''; const st = m0State(m)
+      return `<a class="onb-lab${i === 0 ? ' main' : ''}" href="${st.started && st.next >= 0 ? st.base + '-' + (st.next + 1) + '.html' : m.href}">
+        <img src="img/3d/${m.icon}.webp" width="36" height="36" alt="" style="flex:none">
+        <span style="flex:1;min-width:0"><b>${i === 0 ? 'Boshlang: ' : ''}${m.name}</b><small>${m.sub}</small></span>
+        <span style="color:var(--accent);font-weight:700;font-size:13px">${st.finished ? 'Tugagan ✓' : st.started ? st.doneN + '/' + st.n : 'Boshlash →'}</span></a>` }).join('')}</div>
+    <button type="button" class="onb-edit" id="onbEdit">Javobni oʻzgartirish</button>`
+  box.hidden = false
+  document.getElementById('onbEdit').onclick = openOnb
+}
+let onbDraft = {}
+function openOnb() { onbDraft = {}; onbShow(1); document.getElementById('onbModal').hidden = false }
+function closeOnb() { document.getElementById('onbModal').hidden = true }
+function onbShow(step) {
+  const opts = document.getElementById('onbOpts'), back = document.getElementById('onbBack')
+  const st = STAGES.find(x => x.v === onbDraft.stage)
+  const hasDetail = st && st.q
+  const total = hasDetail ? (onbDraft.stage === 'work' ? 3 : 4) : 3
+  let title, sub = '', items, on
+  if (step === 1) {
+    title = 'Hozir qaysi bosqichdasiz?'; sub = 'Javobingizga qarab qaysi Lab va qaysi M0 dan boshlash kerakligini aytamiz.'
+    items = STAGES.map(x => [x.v, x.t]); on = v => { onbDraft = { stage: v }; onbShow(STAGES.find(x => x.v === v).q ? 2 : 3) }
+  } else if (step === 2) {
+    title = st.q; items = st.o; on = v => { onbDraft.detail = v; onbShow(onbDraft.stage === 'work' ? 4 : 3) }
+  } else if (step === 3) {
+    title = 'Hozir ishlayapsizmi?'; sub = 'Toʻliq yoki yarim stavka, rasmiy yoki norasmiy: farqi yoʻq.'
+    items = [['yes', 'Ha, ishlayman'], ['no', 'Yoʻq']]; on = v => { onbDraft.works = v === 'yes'; onbShow(4) }
+  } else {
+    title = 'Asosiy maqsadingiz qaysi?'; sub = 'Keyin oʻzgartirish mumkin.'
+    items = GOALS; on = v => { onbDraft.goal = v; if (onbDraft.stage === 'work') onbDraft.works = true; saveOnb() }
+  }
+  const idx = step === 1 ? 1 : step === 2 ? 2 : step === 3 ? (hasDetail ? 3 : 2) : total
+  document.getElementById('onbStep').textContent = idx + ' / ' + total
+  document.getElementById('onbTitle').textContent = title
+  document.getElementById('onbSub').textContent = sub
+  opts.innerHTML = items.map(([v, t]) => `<button type="button" class="onb-opt" data-v="${v}">${t}</button>`).join('')
+  opts.querySelectorAll('.onb-opt').forEach(b => b.onclick = () => on(b.dataset.v))
+  back.hidden = step === 1
+  back.onclick = () => onbShow(step === 4 ? (onbDraft.stage === 'work' ? (hasDetail ? 2 : 1) : 3) : step === 3 ? (hasDetail ? 2 : 1) : 1)
+  const f = opts.querySelector('.onb-opt'); if (f) f.focus()
+}
+async function saveOnb() {
+  const a = { stage: onbDraft.stage, detail: onbDraft.detail || null, works: !!onbDraft.works, goal: onbDraft.goal || null }
+  try { localStorage.setItem('kompas_onb_v1', JSON.stringify({ ...a, at: Date.now(), sent: false })) } catch (e) {}
+  const ok = await sendOnb(a)
+  if (ok && _profile) Object.assign(_profile, { stage: a.stage, stage_detail: a.detail, works: a.works, goal: a.goal || _profile.goal })
+  closeOnb()
+  renderOnbCard()
+  if (!_enrollments.length) renderNoCourse()
+}
+async function sendOnb(a) {
+  try {
+    const { error } = await supabase.rpc('kompas_save_onboarding', { p_stage: a.stage, p_detail: a.detail, p_works: a.works, p_goal: a.goal })
+    if (error) return false
+    const l = onbLocal(); if (l) localStorage.setItem('kompas_onb_v1', JSON.stringify({ ...l, sent: true }))
+    return true
+  } catch (e) { return false }
+}
+function initOnboarding() {
+  document.getElementById('onbSkip').onclick = () => { try { sessionStorage.setItem('kompas_onb_skip', '1') } catch (e) {} closeOnb() }
+  document.getElementById('onbModal').addEventListener('keydown', e => { if (e.key === 'Escape') closeOnb() })
+  const l = onbLocal()
+  if (l && !l.sent && !(_profile && _profile.stage)) sendOnb(l)
+  renderOnbCard()
+  let skipped = false; try { skipped = !!sessionStorage.getItem('kompas_onb_skip') } catch (e) {}
+  if (!onbAnswer(_profile) && !skipped) openOnb()
 }
 
 // ════════════════════════════════════════════════════════
