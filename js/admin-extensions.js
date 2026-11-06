@@ -177,7 +177,7 @@
       '<div class="fr klx-two"><div class="fld"><label for="klxaEmail">Email *</label><input id="klxaEmail" type="email" maxlength="254" autocomplete="off" placeholder="ism@example.com"></div>'+
       '<div class="fld"><label for="klxaKind">Turi</label><select id="klxaKind"><option value="team">Jamoa</option><option value="partner">Hamkor</option><option value="mentor">Mentor</option></select></div></div>'+
       '<div class="fr klx-two"><div class="fld"><label for="klxaCourse">Lab</label><select id="klxaCourse"></select></div>'+
-      '<div class="fld"><label for="klxaModule">Modul</label><select id="klxaModule"><option value="">Barcha modullar</option></select></div></div>'+
+      '<div class="fld"><label>Modullar</label><div id="klxaModules" class="klx-mods"></div></div></div>'+
       '<div class="fr klx-two"><div class="fld"><label for="klxaExpiry">Tugash sanasi (ixtiyoriy)</label><input id="klxaExpiry" type="datetime-local"></div>'+
       '<div class="fld"><label for="klxaReason">Sabab / audit izohi *</label><input id="klxaReason" maxlength="400" autocomplete="off" placeholder="Masalan: Strategiya hamkori, kontent tekshiruvi"></div></div>'+
       '<div class="klx-actions"><button class="btn bp bsm" id="klxaGrant" type="button">+ Ruxsat berish</button></div></div></div>'+
@@ -190,7 +190,12 @@
   function showAccessModules(){
     const id=$('klxaCourse').value;
     const list=moduleCache.filter(m=>m.course_id===id);
-    $('klxaModule').innerHTML='<option value="">Barcha modullar</option>'+selectOptions(list.map(m=>({value:m.id,title:'M'+m.order_index+' — '+(m.title||'Modul')})));
+    const box=$('klxaModules');box.replaceChildren();
+    const mk=(value,text,cls)=>{const l=node('label','klx-modopt'+(cls?' '+cls:''));const i=document.createElement('input');i.type='checkbox';i.value=value;l.appendChild(i);l.appendChild(document.createTextNode(' '+text));box.appendChild(l);return i;};
+    const all=mk('','Barcha modullar (butun Lab)','klx-modall');all.checked=true;
+    const items=list.map(m=>mk(m.id,'M'+m.order_index+' — '+(m.title||'Modul')));
+    all.addEventListener('change',()=>{if(all.checked)items.forEach(i=>{i.checked=false;});});
+    items.forEach(i=>i.addEventListener('change',()=>{if(i.checked)all.checked=false;else if(!items.some(x=>x.checked))all.checked=true;}));
   }
   async function loadAccessRefs(){
     if(courseCache.length&&moduleCache.length)return;
@@ -233,17 +238,23 @@
     const email=$('klxaEmail').value.trim().toLowerCase(),reason=$('klxaReason').value.trim();
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){notify('⚠️ Emailni toʻgʻri yozing');$('klxaEmail').focus();return;}
     if(reason.length<3){notify('⚠️ Sababni yozing (kamida 3 belgi)');$('klxaReason').focus();return;}
-    const course=$('klxaCourse').value,mod=$('klxaModule').value||null;
+    const course=$('klxaCourse').value;
     if(!course){notify('⚠️ Labni tanlang');return;}
+    const picked=Array.from($('klxaModules').querySelectorAll('input:checked')).map(i=>i.value);
+    const mods=(!picked.length||picked.includes(''))?[null]:picked;
     const expiry=$('klxaExpiry').value?new Date($('klxaExpiry').value).toISOString():null;
-    const what=$('klxaCourse').selectedOptions[0].textContent+' · '+(mod?$('klxaModule').selectedOptions[0].textContent:'barcha modullar');
+    const what=$('klxaCourse').selectedOptions[0].textContent+' · '+(mods[0]===null?'barcha modullar':mods.length+' ta modul');
     if(!confirm(email+' uchun ruxsat: '+what+'. Davom etilsinmi?'))return;
+    let done=0,status='granted';
     try{
-      const r=await rpc('kompas_admin_grant_by_email',{p_email:email,p_course:course,p_module:mod,p_expires:expiry,p_kind:$('klxaKind').value,p_reason:reason});
-      notify(r.status==='pending'?'✅ Saqlandi: roʻyxatdan oʻtib, emailni tasdiqlagach faollashadi':'✅ Ruxsat berildi');
+      for(const mod of mods){
+        const r=await rpc('kompas_admin_grant_by_email',{p_email:email,p_course:course,p_module:mod,p_expires:expiry,p_kind:$('klxaKind').value,p_reason:reason});
+        done++;status=r.status;
+      }
+      notify(status==='pending'?'✅ Saqlandi: roʻyxatdan oʻtib, emailni tasdiqlagach faollashadi':'✅ Ruxsat berildi');
       $('klxaEmail').value='';$('klxaReason').value='';$('klxaExpiry').value='';
       loadAccess();
-    }catch(e){notify('❌ '+accessError(e.message));}
+    }catch(e){notify('❌ '+accessError(e.message)+(done?' (oldingi '+done+' ta saqlandi)':''));if(done)loadAccess();}
   }
   async function revokeAccess(kind,id,email){
     const reason=(prompt(email+' uchun ruxsatni bekor qilish sababi:','')||'').trim();

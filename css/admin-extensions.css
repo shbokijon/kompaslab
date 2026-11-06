@@ -7,6 +7,9 @@
 .klx-small-title{font-size:13px;margin:18px 0 8px;}
 .klx-grants{max-height:190px;overflow:auto;}
 .klx-grant{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.klx-mods{max-height:170px;overflow:auto;border:1px solid var(--border);border-radius:10px;padding:6px 10px;}
+.klx-modopt{display:block;font-size:13px;padding:4px 0;cursor:pointer;}
+.klx-modall{font-weight:700;border-bottom:1px solid var(--border);margin-bottom:4px;}
 .klx-monitor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:14px;}
 .klx-metric{padding:15px 17px;border:1px solid var(--border);background:var(--bg);border-radius:14px;display:flex;flex-direction:column;gap:5px;}
 .klx-number{font-size:22px;font-weight:800;color:var(--text);}
