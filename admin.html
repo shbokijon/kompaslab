@@ -407,6 +407,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         <div class="ch">
           <h2>👥 Barcha talabalar</h2>
           <div class="ch-r">
+            <button class="btn bd bsm" id="delBtn2" onclick="deleteSelected('tb2')" disabled>🗑 Oʻchirish (0)</button>
             <button class="btn bs bsm" onclick="exportStudentsCSV()">📤 CSV</button>
             <button class="btn bp bsm" onclick="openMdl('student')">+ Qoʻshish</button>
           </div>
@@ -427,7 +428,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>#</th><th>Talaba</th><th>Kurs</th><th>Progress</th><th>Sana</th><th>Toʻlov</th><th>Holat</th><th>Amal</th>
+            <th><input type="checkbox" id="selAll2" title="Hammasini tanlash" onchange="delToggleAll('tb2', this.checked)"></th><th>#</th><th>Talaba</th><th>Kurs</th><th>Progress</th><th>Sana</th><th>Toʻlov</th><th>Holat</th><th>Amal</th>
           </tr></thead><tbody id="tb2"></tbody></table>
         </div>
       </div>
@@ -608,6 +609,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         <div class="ch">
           <h2>📋 Roʻyxatdan oʻtganlar</h2>
           <div class="ch-r">
+            <button class="btn bd bsm" id="delBtnR" onclick="deleteSelected('tbRegs')" disabled>🗑 Oʻchirish (0)</button>
             <button class="btn bs bsm" onclick="copyRegs('email')">📋 Emaillar</button>
             <button class="btn bs bsm" onclick="copyRegs('phone')">📞 Telefonlar</button>
             <button class="btn bs bsm" onclick="exportRegsCSV()">📤 CSV</button>
@@ -625,7 +627,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>#</th><th>Ism</th><th>Email</th><th>Telefon</th><th>Taʼlim</th><th>Maqsad</th><th>Kurs</th><th>Sana</th>
+            <th><input type="checkbox" id="selAllR" title="Hammasini tanlash" onchange="delToggleAll('tbRegs', this.checked)"></th><th>#</th><th>Ism</th><th>Email</th><th>Telefon</th><th>Taʼlim</th><th>Maqsad</th><th>Kurs</th><th>Sana</th>
           </tr></thead><tbody id="tbRegs"></tbody></table>
         </div>
       </div>
@@ -1059,6 +1061,7 @@ function renderStudentsTable(tbId, students, full = false) {
 
   tb.innerHTML = students.map((s, i) => `
     <tr data-course="${s.courseSlug || ''}" data-status="${s.payStatus}">
+      ${full ? `<td><input type="checkbox" class="dsel" value="${s.id}" onchange="delRefresh('tb2')"></td>` : ''}
       ${full ? `<td style="color:var(--muted);font-size:11px;font-family:'JetBrains Mono','IBM Plex Sans',monospace">${String(i+1).padStart(2,'0')}</td>` : ''}
       <td>
         <div class="sr">
@@ -1083,9 +1086,11 @@ function renderStudentsTable(tbId, students, full = false) {
         <div style="display:flex;gap:4px">
           <button class="btn bs bsm" onclick="viewStudent('${s.id}','${escHtml(s.name)}')">Ko'rish</button>
           ${s.payStatus === 'pending' ? `<button class="btn bp bsm" onclick="enrollDirect('${s.enrollId}','${escHtml(s.name)}')">✓ Faollashtir</button>` : ''}
+          ${full ? `<button class="btn bd bsm" title="Hisobni oʻchirish" onclick="deleteUsers(['${s.id}'])">🗑</button>` : ''}
         </div>
       </td>
     </tr>`).join('')
+  if (full) delRefresh(tbId)
 }
 
 function applyStudentFilter() {
@@ -1799,6 +1804,7 @@ function filterTbl(q, id) {
   document.querySelectorAll('#' + id + ' tr').forEach(r => {
     r.style.display = r.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none'
   })
+  if (typeof DEL_UI !== 'undefined' && DEL_UI[id]) delRefresh(id)
 }
 function openMdl(n) {
   document.getElementById('m-' + n).classList.add('open')
@@ -1885,12 +1891,12 @@ async function copyWaitEmails() {
 let _regs = []
 async function loadRegs() {
   const tb = document.getElementById('tbRegs')
-  tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  tb.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
   const { data, error } = await supabase.from(DB.profiles)
     .select('id, first_name, last_name, email, phone, education, goal, created_at, enrollments(payment_status, course:courses(slug, title))')
     .neq('role', 'admin')
     .order('created_at', { ascending: false })
-  if (error) { tb.innerHTML = '<tr><td colspan="8" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
+  if (error) { tb.innerHTML = '<tr><td colspan="9" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
   _regs = data || []
   document.getElementById('pRegs').textContent = _regs.length
   renderRegs()
@@ -1911,11 +1917,63 @@ function regCourses(r) {
 function renderRegs() {
   const rows = regsFiltered(), tb = document.getElementById('tbRegs')
   document.getElementById('regSummary').textContent = rows.length + ' / ' + _regs.length + ' kishi'
-  if (!rows.length) { tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Hech kim topilmadi</td></tr>'; return }
-  tb.innerHTML = rows.map((r, i) => '<tr><td>' + (i + 1) + '</td><td>' + escHtml(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || '—') +
+  if (!rows.length) { tb.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:20px">Hech kim topilmadi</td></tr>'; delRefresh('tbRegs'); return }
+  tb.innerHTML = rows.map((r, i) => '<tr><td><input type="checkbox" class="dsel" value="' + r.id + '" onchange="delRefresh(\'tbRegs\')"></td><td>' + (i + 1) + '</td><td>' + escHtml(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || '—') +
     '</td><td>' + escHtml(r.email || '') + '</td><td>' + escHtml(r.phone || '—') + '</td><td>' + escHtml(r.education || '—') +
     '</td><td>' + escHtml(r.goal || '—') + '</td><td>' + escHtml(regCourses(r) || '—') + '</td><td>' + escHtml((r.created_at || '').slice(0, 16).replace('T', ' ')) + '</td></tr>').join('')
+  delRefresh('tbRegs')
 }
+
+// ════════════════════════════════════════════════════════
+//  HISOBNI OʻCHIRISH (talabalar va roʻyxatdan oʻtganlar)
+//  Server: fn_admin_delete_users (admin, toʻlovi bor hisoblar va adminlar oʻchmaydi)
+// ════════════════════════════════════════════════════════
+const DEL_UI = { tb2: ["delBtn2", "selAll2"], tbRegs: ["delBtnR", "selAllR"] }
+function delVisibleBoxes(tbId) {
+  return [...document.querySelectorAll("#" + tbId + " input.dsel")].filter(c => c.closest("tr").style.display !== "none")
+}
+function delSelectedIds(tbId) {
+  return [...new Set(delVisibleBoxes(tbId).filter(c => c.checked).map(c => c.value))]
+}
+function delRefresh(tbId) {
+  const ui = DEL_UI[tbId]
+  if (!ui) return
+  const n = delSelectedIds(tbId).length
+  const btn = document.getElementById(ui[0]), all = document.getElementById(ui[1])
+  if (btn) { btn.disabled = !n; btn.textContent = "🗑 Oʻchirish (" + n + ")" }
+  if (all) {
+    const boxes = delVisibleBoxes(tbId)
+    all.checked = boxes.length > 0 && boxes.every(c => c.checked)
+  }
+}
+function delToggleAll(tbId, on) {
+  delVisibleBoxes(tbId).forEach(c => { c.checked = on })
+  delRefresh(tbId)
+}
+function deleteSelected(tbId) { deleteUsers(delSelectedIds(tbId)) }
+function delLabel(id) {
+  const r = _regs.find(x => x.id === id)
+  if (r) return r.email || id
+  const s = _allStudents.find(x => x.id === id)
+  return s ? (s.email || s.name || id) : id
+}
+async function deleteUsers(ids) {
+  ids = [...new Set(ids)]
+  if (!ids.length) { toast("⚠️ Hech kim tanlanmagan"); return }
+  const list = ids.slice(0, 10).map(delLabel).join("\n") + (ids.length > 10 ? "\n… va yana " + (ids.length - 10) + " ta" : "")
+  const ok = confirm(ids.length + " ta hisob butunlay oʻchiriladi:\n\n" + list +
+    "\n\nKirish, progress, obuna va oʻquv yozuvlari ketadi. Qaytarib boʻlmaydi.\nAdminlar va toʻlovi bor hisoblar oʻchmaydi.\n\nDavom etasizmi?")
+  if (!ok) return
+  const { data, error } = await supabase.rpc("fn_admin_delete_users", { p_ids: ids })
+  if (error) { toast("❌ " + error.message); return }
+  const skipped = (data && data.skipped) || []
+  if (skipped.length) {
+    alert("Oʻchirilmadi (" + skipped.length + " ta):\n\n" + skipped.map(s => (s.email || s.id) + " — " + s.reason).join("\n"))
+  }
+  toast("✅ " + ((data && data.deleted) || 0) + " ta hisob oʻchirildi")
+  await Promise.all([loadStudents(), loadRegs()])
+}
+
 async function copyRegs(field) {
   const vals = [...new Set(regsFiltered().map(r => (r[field] || '').trim()).filter(Boolean))]
   if (!vals.length) { toast('⚠️ Roʻyxat boʻsh'); return }
