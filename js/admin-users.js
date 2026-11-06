@@ -23,7 +23,7 @@
   function ddmm(iso) { var d = new Date(iso); return isNaN(d) ? '' : ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear(); }
   function ok(r) { return r && !r.error ? (r.data || []) : []; }
 
-  function build(p, st, evLast, grants, acct) {
+  function build(p, st, evLast, grants, acct, signins) {
     var now = Date.now(), enr = p.enrollments || [];
     var live = [], expired = [], pending = [], frozen = [];
     enr.forEach(function (e) {
@@ -52,7 +52,7 @@
     else if (pending.length) { status = 'Toʻlov kutilmoqda'; cls = 'tgd'; }
     else if (g) { status = 'Qoʻlda ruxsat'; cls = 'ta'; }
     else { status = 'Roʻyxatdan oʻtgan'; cls = 'tg'; }
-    var last = Math.max(evLast[p.id] || 0, lastState);
+    var last = Math.max(evLast[p.id] || 0, lastState, signins[p.id] || 0);
     p._x = {
       live: live, expired: expired, pending: pending, status: status, cls: cls, pct: best.pct, m0lab: best.lab, nextExp: nextExp, grants: g,
       tip: m0.map(function (x) { return x.lab + ' M0: ' + x.pct + '%'; }).join('\n'),
@@ -82,15 +82,18 @@
       supabase.from('kompas_user_state').select('user_id, key, value, updated_at').limit(10000),
       supabase.from('kompas_m0_events').select('user_id, created_at').order('created_at', { ascending: false }).limit(5000),
       supabase.from('kompas_access_grants').select('user_id, expires_at').is('revoked_at', null),
-      supabase.from('kompas_account_state').select('user_id, status')
+      supabase.from('kompas_account_state').select('user_id, status'),
+      // Oxirgi kirish: migratsiya 20261106_admin_last_sign_in.sql qoʻllangach ishlaydi; boʻlmasa jim oʻtkaziladi
+      supabase.rpc('kompas_admin_last_sign_ins')
     ]);
     if (res[0].error) { tb.innerHTML = '<tr><td colspan="10" style="color:var(--red);padding:20px">Xatolik: ' + esc(res[0].error.message) + '</td></tr>'; return; }
-    var st = {}, evLast = {}, grants = {}, acct = {}, now = Date.now();
+    var st = {}, evLast = {}, grants = {}, acct = {}, signins = {}, now = Date.now();
+    ok(res[5]).forEach(function (r) { var t = Date.parse(r.last_sign_in_at) || 0; if (t) signins[r.user_id] = t; });
     ok(res[1]).forEach(function (r) { (st[r.user_id] = st[r.user_id] || []).push(r); });
     ok(res[2]).forEach(function (r) { var t = Date.parse(r.created_at) || 0; if (t > (evLast[r.user_id] || 0)) evLast[r.user_id] = t; });
     ok(res[3]).forEach(function (r) { if (!r.expires_at || new Date(r.expires_at).getTime() > now) grants[r.user_id] = (grants[r.user_id] || 0) + 1; });
     ok(res[4]).forEach(function (r) { acct[r.user_id] = r.status; });
-    window._regs = (res[0].data || []).map(function (p) { return build(p, st, evLast, grants, acct); });
+    window._regs = (res[0].data || []).map(function (p) { return build(p, st, evLast, grants, acct, signins); });
     var pill = $('pRegs'); if (pill) pill.textContent = window._regs.length;
     window.renderRegs();
   };
