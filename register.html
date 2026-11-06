@@ -80,6 +80,12 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .field-input.error{border-color:var(--red);background:var(--red-light);}
 .field-input::placeholder{color:var(--muted);}
 .field-input-wrap{position:relative;}
+/* Telefon: +998 qotirilgan, yonida 9 xonali raqam */
+.phone-group{display:flex;align-items:stretch;border:2px solid var(--border);border-radius:10px;background:var(--bg);transition:all 0.2s;}
+.phone-group:focus-within{border-color:var(--accent);background:white;box-shadow:0 0 0 3px rgba(45,74,62,0.08);}
+.phone-group:has(.field-input.error){border-color:var(--red);background:var(--red-light);}
+.phone-cc{display:flex;align-items:center;padding:0 12px 0 16px;font-size:14px;font-weight:700;color:var(--text);border-right:2px solid var(--border);user-select:none;letter-spacing:0.2px;}
+.phone-group .field-input,.phone-group .field-input:focus,.phone-group .field-input.error{border:0;background:transparent;box-shadow:none;border-radius:0 8px 8px 0;flex:1;min-width:0;letter-spacing:0.4px;}
 .field-eye{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:var(--muted);padding:4px;}
 .field-hint{font-size:11px;color:var(--muted);margin-top:5px;}
 .field-error{font-size:12px;color:var(--red);margin-top:5px;display:none;}
@@ -143,6 +149,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 <meta name="apple-mobile-web-app-title" content="Kompas Lab">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script src="js/pwa.js" defer></script>
+<script src="js/phone.js"></script>
 <meta name="theme-color" content="#2d4a3e">
 <link rel="stylesheet" href="css/brand.css">
 <meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
@@ -251,9 +258,12 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 
         <div class="field">
           <label class="field-label" for="phone">Telefon raqam *</label>
-          <input type="tel" id="phone" class="field-input" placeholder="+998 90 123 45 67" autocomplete="tel" inputmode="tel" required>
-          <div class="field-hint">Toʻlov va bildirishnomalar uchun</div>
-          <div class="field-error" id="phoneError">Telefon raqamni toʻgʻri kiriting</div>
+          <div class="phone-group">
+            <span class="phone-cc" aria-hidden="true">+998</span>
+            <input type="tel" id="phone" class="field-input" data-phone placeholder="91-123-4567" autocomplete="tel-national" inputmode="numeric" aria-describedby="phoneHint" required>
+          </div>
+          <div class="field-hint" id="phoneHint">Toʻlov va bildirishnomalar uchun. Masalan: 91-123-4567</div>
+          <div class="field-error" id="phoneError">Telefon raqamni toʻliq kiriting: 9 ta raqam, masalan 91-123-4567</div>
         </div>
 
         <div class="field">
@@ -444,7 +454,7 @@ function goStep2() {
   let ok = true
   if (!firstName) { showErr('firstName','firstNameError'); ok = false }
   if (!lastName)  { showErr('lastName','lastNameError');  ok = false }
-  if (phone.replace(/\D/g, '').length < 9) { showErr('phone','phoneError'); ok = false }
+  if (!KompasPhone.valid(phone)) { showErr('phone','phoneError'); ok = false }
   if (ok) goStep(2)
 }
 
@@ -492,6 +502,10 @@ function kompasNextAfterAuth() {
   return 'dashboard.html'
 }
 document.addEventListener('DOMContentLoaded', () => {
+  const ph = document.getElementById('phone')
+  if (ph) ph.addEventListener('input', () => clearErr('phone', 'phoneError'))
+})
+document.addEventListener('DOMContentLoaded', () => {
   const inp = document.getElementById('otpCode')
   if (!inp) return
   inp.addEventListener('input', () => {
@@ -529,7 +543,7 @@ async function handleRegister() {
   const terms     = document.getElementById('termsCheck').checked
   const firstName = document.getElementById('firstName').value.trim()
   const lastName  = document.getElementById('lastName').value.trim()
-  const phone     = document.getElementById('phone').value.trim()
+  const phone     = KompasPhone.value(document.getElementById('phone').value)
   const education = document.getElementById('education').value
   const goal      = document.getElementById('goal').value
 

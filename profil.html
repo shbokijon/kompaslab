@@ -24,6 +24,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script src="js/pwa.js" defer></script>
 <script src="js/sfx.js" defer></script>
+<script src="js/phone.js"></script>
 <link rel="stylesheet" href="css/brand.css">
 <meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -76,6 +77,11 @@
 .pf-form input,.pf-form select{font:inherit;font-size:15px;padding:11px 12px;border-radius:10px;border:1px solid var(--border,#e0e8e2);background:var(--surface,#fff);color:var(--text,#1a2e26);min-height:44px;}
 .pf-form input:focus,.pf-form select:focus{outline:2px solid #c4622d;outline-offset:1px;}
 .pf-form .full{grid-column:1/-1;}
+.pf-phone{display:flex;align-items:stretch;border:1px solid var(--border,#e0e8e2);border-radius:10px;background:var(--surface,#fff);min-height:44px;}
+.pf-phone:focus-within{outline:2px solid #c4622d;outline-offset:1px;}
+.pf-phone .cc{display:flex;align-items:center;padding:0 10px 0 12px;font-size:15px;font-weight:700;color:var(--text,#1a2e26);border-right:1px solid var(--border,#e0e8e2);user-select:none;}
+.pf-form .pf-phone input{border:0;background:transparent;border-radius:0 10px 10px 0;flex:1;min-width:0;}
+.pf-form .pf-phone input:focus{outline:none;}
 .pf-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px;}
 .pf-msg{font-size:14px;font-weight:600;}
 .pf-msg.ok{color:#2d4a3e;}
@@ -117,7 +123,7 @@
         <form class="pf-form" id="pfForm" autocomplete="on">
           <label>Ism<input id="fFirst" maxlength="60" autocomplete="given-name" required></label>
           <label>Familiya<input id="fLast" maxlength="60" autocomplete="family-name"></label>
-          <label>Telefon<input id="fPhone" type="tel" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+998 90 123 45 67"></label>
+          <label>Telefon<span class="pf-phone"><span class="cc" aria-hidden="true">+998</span><input id="fPhone" type="tel" data-phone placeholder="91-123-4567" autocomplete="tel-national" inputmode="numeric"></span></label>
           <label>Hozirgi taʼlim
             <select id="fEdu">
               <option value="">Tanlang…</option>
@@ -206,7 +212,7 @@
     $("pfAdmin").hidden = profile.role !== "admin";
     $("fFirst").value = first;
     $("fLast").value = last;
-    $("fPhone").value = profile.phone || md.phone || "";
+    KompasPhone.set($("fPhone"), profile.phone || md.phone || "");
     $("fEdu").value = profile.education || md.education || "";
     $("fGoal").value = profile.goal || md.goal || "";
   }
@@ -248,9 +254,11 @@
     var msg = $("fMsg"), btn = $("fSave");
     var first = $("fFirst").value.trim(), last = $("fLast").value.trim();
     if (!first) { msg.className = "pf-msg err"; msg.textContent = "Ismni kiriting."; return; }
+    var rawPhone = $("fPhone").value.trim();
+    if (rawPhone && !KompasPhone.valid(rawPhone)) { msg.className = "pf-msg err"; msg.textContent = "Telefon raqamni toʻliq kiriting: 9 ta raqam, masalan 91-123-4567."; $("fPhone").focus(); return; }
     var upd = {
       first_name: first, last_name: last || null,
-      phone: $("fPhone").value.trim() || null, education: $("fEdu").value || null, goal: $("fGoal").value || null,
+      phone: KompasPhone.value(rawPhone) || null, education: $("fEdu").value || null, goal: $("fGoal").value || null,
       updated_at: new Date().toISOString()
     };
     btn.disabled = true; msg.className = "pf-msg"; msg.textContent = "Saqlanmoqda…";
