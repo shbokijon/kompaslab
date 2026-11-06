@@ -249,6 +249,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .sd-act-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
 .sd-act-row:last-child{border-bottom:none;}
 .sd-act-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;}
+.lab-note{font-size:11px;color:var(--muted);margin-top:4px;white-space:nowrap}.lab-note.warn{color:var(--red);font-weight:600}
 </style>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
@@ -616,13 +617,16 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       </div>
       <div class="card">
         <div class="ch"><h2>🧭 Lablar va narxlar</h2></div>
-        <div class="mb" style="font-size:12.5px;color:var(--muted);padding-bottom:0">
-          Narx yoki saytdagi holatni oʻzgartirib “Saqlash”ni bosing: kompaslab.uz bosh sahifasida sahifa keyingi ochilganda yangi narx chiqadi, deploy kerak emas.
-          Lab sahifalaridagi (bachelor-lab.html va boshqalar) narxlar ham shu bazadan oʻqiladi. Bazada yoʻq Lab uchun avval “Bazaga qoʻshish”ni bosing.
+        <div class="mb" style="font-size:12.5px;color:var(--muted);padding-bottom:0;line-height:1.6">
+          Oʻzgartirib “Saqlash”ni bosing: sayt sahifa keyingi ochilganda yangilanadi, deploy kerak emas.<br>
+          <b>Narxlar</b>: bosh sahifa, narxlar sahifasi, Lab narx sahifalari va toʻlov sahifasi. 6 oylik boʻsh boʻlsa, bu tarif saytda koʻrsatilmaydi.<br>
+          <b>Saytda</b>: “Koʻrinadi” boʻlmasa, Lab kartasi bosh sahifa katalogidan, narxlar jadvalidan va tanlov roʻyxatlaridan yashiriladi. Lab sahifasining oʻzi havola orqali ochilaveradi.<br>
+          <b>Sotuvda</b>: belgilanmasa, toʻlovni faqat adminlar qila oladi (sinov). Belgilansa, toʻlov tugmasi hammaga chiqadi; bu uchun <code>js/checkout.js</code> da <code>MODE: "on"</code> va ommaviy oferta havolasi ham kerak. Pullik modul yuklanmagan Labni sotuvga qoʻyib boʻlmaydi.<br>
+          <b>Holat matni</b>: faqat narxlar sahifasidagi jadvalning “Holat” katagida chiqadi.
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>Lab</th><th>Yillik (soʻm)</th><th>6 oylik (soʻm)</th><th>Oylik (soʻm)</th><th>Saytdagi holat</th><th>Kutish roʻyxati</th><th>Baza holati</th><th>Amal</th>
+            <th>Lab</th><th>Yillik (soʻm)</th><th>6 oylik (soʻm)</th><th>Oylik (soʻm)</th><th>Saytda</th><th>Sotuvda</th><th>Holat matni</th><th>Kutish roʻyxati</th><th>Amal</th>
           </tr></thead><tbody id="tbLabs"></tbody></table>
         </div>
       </div>
@@ -2032,35 +2036,65 @@ async function copyRegs(field) {
 //  LABLAR VA NARXLAR (courses)
 // ════════════════════════════════════════════════════════
 const LAB_LIST = [
-  ['bachelor-lab', 'Bachelor Lab'], ['master-lab', 'Master Lab'], ['phd-lab', 'PhD Lab'],
-  ['gks-lab', 'GKS Lab'], ['usa-lab', 'USA Lab'], ['daad-lab', 'DAAD Lab'],
-  ['tadbirkor-talaba', 'Tadbirkor Talaba'], ['miggo', 'Musofir Lab'],
-  ['maktab-lab', 'Maktab Lab'], ['research-lab', 'Research Lab'], ['ai-tools', 'AI Amaliyot Lab']
+  ['bachelor-lab', 'Bachelor Lab', 'bachelor-lab.html'], ['master-lab', 'Master Lab', 'master-lab.html'], ['phd-lab', 'PhD Lab', 'phd-lab.html'],
+  ['gks-lab', 'GKS Lab', 'gks-lab.html'], ['usa-lab', 'USA Lab', 'usa-lab.html'], ['daad-lab', 'DAAD Lab', 'daad-lab.html'],
+  ['tadbirkor-talaba', 'Tadbirkor Talaba', 'tadbirkor-talaba.html'], ['miggo', 'Musofir Lab', 'musofir-lab.html'],
+  ['maktab-lab', 'Maktab Lab', ''], ['research-lab', 'Research Lab', ''], ['ai-tools', 'AI Amaliyot Lab', '']
 ]
-const LAB_DEFAULT_PRICE = { 'usa-lab': [899000, 99000], 'tadbirkor-talaba': [299000, 29000], 'miggo': [499000, 49000] }
-let _labRows = {}
+// Yangi Lab bazaga qoʻshilganda boshlangʻich narx (yillik, 6 oylik, oylik): asosiy tarif, keyin oʻzgartiriladi
+const LAB_DEFAULT_PRICE = [899000, 499000, 99000]
+const LAB_STATUS = { active: 'Koʻrinadi', draft: 'Yashirin', archived: 'Arxiv' }
+let _labRows = {}, _labStats = {}
 function fmtSum(n) { return n == null ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }
+// Oylik yoʻl bilan butun kurs narxi: fazalar × oylik; 6 oylik yoki yillikdan arzon boʻlsa ogohlantiradi
+function labPhaseNote(slug, m, s6, y) {
+  const ph = (_labStats[slug] || {}).ph
+  if (!ph) return '<div class="lab-note">Oylik tarif yoʻq (fazalar kiritilmagan)</div>'
+  if (!(m > 0)) return ''
+  const full = ph * m, cheap = (s6 > 0 && full < s6) || (y > 0 && full < y)
+  return '<div class="lab-note' + (cheap ? ' warn' : '') + '">Butun kurs oylik bilan: ' + ph + ' × ' + fmtSum(m) + ' = ' + fmtSum(full) +
+    (cheap ? ' · ' + (s6 > 0 && full < s6 ? '6 oylikdan' : 'yillikdan') + ' arzon' : '') + '</div>'
+}
+function labPhaseRefresh(slug) {
+  const v = id => { const x = document.getElementById(id + '-' + slug); return x && x.value.trim() !== '' ? parseInt(x.value, 10) : null }
+  const box = document.getElementById('pn-' + slug)
+  if (box) box.innerHTML = labPhaseNote(slug, v('pm'), v('p6'), v('py'))
+}
 async function loadLabs() {
   const tb = document.getElementById('tbLabs')
-  tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  tb.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
   const [c, w, st] = await Promise.all([
-    supabase.from(DB.courses).select('slug, title, status, price, price_yearly, price_monthly, price_6m, holat'),
+    supabase.from(DB.courses).select('slug, title, status, on_sale, price, price_yearly, price_monthly, price_6m, holat'),
     supabase.from(DB.waitlist).select('course_slug'),
     supabase.rpc('kompas_public_stats')
   ])
-  if (c.error) { tb.innerHTML = '<tr><td colspan="8" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
+  if (c.error) { tb.innerHTML = '<tr><td colspan="9" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
   _labRows = {}; (c.data || []).forEach(r => { _labRows[r.slug] = r })
+  _labStats = (st.data && st.data.prices) || {}
   const wl = {}; (w.data || []).forEach(r => { wl[r.course_slug] = (wl[r.course_slug] || 0) + 1 })
-  const extra = Object.keys(_labRows).filter(sl => !LAB_LIST.some(l => l[0] === sl)).map(sl => [sl, _labRows[sl].title || sl])
-  tb.innerHTML = LAB_LIST.concat(extra).map(([slug, name]) => {
+  const extra = Object.keys(_labRows).filter(sl => sl !== 'test-lab' && !LAB_LIST.some(l => l[0] === sl)).map(sl => [sl, _labRows[sl].title || sl, ''])
+  const fld = 'padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit'
+  tb.innerHTML = LAB_LIST.concat(extra).map(([slug, name, page]) => {
     const r = _labRows[slug], y = r ? (r.price_yearly ?? r.price) : null, m = r ? r.price_monthly : null, s6 = r ? r.price_6m : null
-    const inp = (id, v, ph) => '<input id="' + id + '" type="number" min="0" step="100" value="' + (v ?? '') + '"' + (ph ? ' placeholder="' + ph + '"' : '') + ' style="width:120px;padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit">'
-    const act = r
-      ? '<button class="btn bp bsm" onclick="saveLabPrice(\'' + slug + '\')">💾 Saqlash</button>'
-      : '<button class="btn bs bsm" onclick="addLabRow(\'' + slug + '\')">➕ Bazaga qoʻshish</button>'
-    return '<tr><td><b>' + escHtml(name) + '</b><div style="font-size:11px;color:var(--muted)">' + slug + '</div></td>' +
-      '<td>' + (r ? inp('py-' + slug, y) : '—') + '</td><td>' + (r ? inp('p6-' + slug, s6, 'yoʻq') : '—') + '</td><td>' + (r ? inp('pm-' + slug, m) : '—') + '</td><td>' + (r ? '<input id="ph-' + slug + '" type="text" maxlength="40" value="' + escHtml(r.holat || '') + '" placeholder="Tayyor" style="width:170px;padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit">' : '—') + '</td>' +
-      '<td>' + (wl[slug] || 0) + ' kishi</td><td>' + (r ? escHtml(r.status) : '<span style="color:var(--red)">bazada yoʻq</span>') + '</td><td>' + act + '</td></tr>'
+    const pp = !!(_labStats[slug] || {}).pp
+    const inp = (id, v, ph) => '<input id="' + id + '" type="number" min="0" step="1000" value="' + (v ?? '') + '"' + (ph ? ' placeholder="' + ph + '"' : '') + ' oninput="labPhaseRefresh(\'' + slug + '\')" style="width:120px;' + fld + '">'
+    const pageInfo = page ? '<a href="' + page + '" target="_blank" rel="noopener" style="font-size:11px">' + page + '</a>' : '<span style="font-size:11px;color:var(--red)">saytda sahifasi yoʻq</span>'
+    if (!r) {
+      return '<tr><td><b>' + escHtml(name) + '</b><div style="font-size:11px;color:var(--muted)">' + slug + '</div>' + pageInfo + '</td>' +
+        '<td colspan="6" style="color:var(--red)">bazada yoʻq</td><td>' + (wl[slug] || 0) + ' kishi</td>' +
+        '<td><button class="btn bs bsm" onclick="addLabRow(\'' + slug + '\')">➕ Bazaga qoʻshish</button></td></tr>'
+    }
+    const sel = '<select id="pst-' + slug + '" style="' + fld + '">' + Object.keys(LAB_STATUS).map(k => '<option value="' + k + '"' + (r.status === k ? ' selected' : '') + '>' + LAB_STATUS[k] + '</option>').join('') + '</select>'
+    const sale = '<label style="display:flex;align-items:center;gap:6px;white-space:nowrap;cursor:' + (pp ? 'pointer' : 'not-allowed') + '"' + (pp ? '' : ' title="Pullik modul (paid_pages) yuklanmagan"') + '>' +
+      '<input id="psl-' + slug + '" type="checkbox" style="width:auto;margin:0"' + (r.on_sale ? ' checked' : '') + (pp || r.on_sale ? '' : ' disabled') + '>' +
+      (pp ? (r.on_sale ? 'Hammaga' : 'Faqat admin') : 'Modul yoʻq') + '</label>'
+    return '<tr><td><b>' + escHtml(name) + '</b><div style="font-size:11px;color:var(--muted)">' + slug + '</div>' + pageInfo + '</td>' +
+      '<td>' + inp('py-' + slug, y) + '</td><td>' + inp('p6-' + slug, s6, 'yoʻq') + '</td>' +
+      '<td>' + inp('pm-' + slug, m) + '<div id="pn-' + slug + '">' + labPhaseNote(slug, m, s6, y) + '</div></td>' +
+      '<td>' + sel + '</td><td>' + sale + '</td>' +
+      '<td><input id="ph-' + slug + '" type="text" maxlength="40" value="' + escHtml(r.holat || '') + '" placeholder="Tayyor" style="width:160px;' + fld + '"></td>' +
+      '<td>' + (wl[slug] || 0) + ' kishi</td>' +
+      '<td><button class="btn bp bsm" onclick="saveLabPrice(\'' + slug + '\')">💾 Saqlash</button></td></tr>'
   }).join('')
   const box = document.getElementById('pubStats')
   if (st.error || !st.data) { box.textContent = 'Statistika oʻqilmadi: ' + (st.error?.message || ''); return }
@@ -2072,23 +2106,35 @@ async function loadLabs() {
 async function saveLabPrice(slug) {
   const y = parseInt(document.getElementById('py-' + slug).value, 10), m = parseInt(document.getElementById('pm-' + slug).value, 10)
   const s6raw = document.getElementById('p6-' + slug).value.trim(), s6 = s6raw === '' ? null : parseInt(s6raw, 10)
-  const holat = document.getElementById('ph-' + slug).value.trim().replace(/([oOgG])['‘’`]/g, '$1\u02BB').replace(/['‘’`]/g, '\u02BC').slice(0, 40) || null
+  // Holat matni manbada amaldagi alifboda saqlanadi (saytda alifbo.js yangisiga oʻgiradi)
+  const holat = fxNorm(document.getElementById('ph-' + slug).value).slice(0, 40) || null
+  const status = document.getElementById('pst-' + slug).value
+  const onSale = document.getElementById('psl-' + slug).checked
   if (!(y > 0) || !(m > 0)) { toast('⚠️ Narxni toʻgʻri kiriting'); return }
   if (s6 !== null && !(s6 > 0)) { toast('⚠️ 6 oylik narxni toʻgʻri kiriting yoki boʻsh qoldiring'); return }
-  if (m * 12 < y) { toast('⚠️ 12 oylik narx yillikdan arzon boʻlib qoldi, tekshiring'); return }
   if (s6 !== null && s6 >= m * 6) { toast('⚠️ 6 oylik narx 6 × oylikdan arzon boʻlishi kerak, tekshiring'); return }
   if (s6 !== null && s6 >= y) { toast('⚠️ 6 oylik narx yillikdan arzon boʻlishi kerak, tekshiring'); return }
-  const old = _labRows[slug]
-  if (!confirm(slug + ': yillik ' + fmtSum(old.price_yearly ?? old.price) + ' → ' + fmtSum(y) + ', 6 oylik ' + fmtSum(old.price_6m) + ' → ' + fmtSum(s6) + ', oylik ' + fmtSum(old.price_monthly) + ' → ' + fmtSum(m) + ' soʻm, holat “' + (old.holat || '—') + '” → “' + (holat || '—') + '”. Saqlansinmi?' + (s6 === null ? ' (6 oylik boʻsh: saytda bu tarif koʻrsatilmaydi)' : ''))) return
-  const { error } = await supabase.from(DB.courses).update({ price_yearly: y, price_monthly: m, price_6m: s6, holat: holat, price: y, updated_at: new Date().toISOString() }).eq('slug', slug)
+  if (m * 12 < y) { toast('⚠️ 12 oylik narx yillikdan arzon boʻlib qoldi, tekshiring'); return }
+  if (onSale && status !== 'active') { toast('⚠️ Sotuvdagi Lab saytda “Koʻrinadi” boʻlishi kerak'); return }
+  const old = _labRows[slug], lines = []
+  const ch = (label, a, b) => { if (String(a ?? '') !== String(b ?? '')) lines.push(label + ': ' + (a ?? '—') + ' → ' + (b ?? '—')) }
+  ch('Yillik', fmtSum(old.price_yearly ?? old.price), fmtSum(y)); ch('6 oylik', fmtSum(old.price_6m), fmtSum(s6)); ch('Oylik', fmtSum(old.price_monthly), fmtSum(m))
+  ch('Saytda', LAB_STATUS[old.status] || old.status, LAB_STATUS[status]); ch('Sotuvda', old.on_sale ? 'hammaga' : 'faqat admin', onSale ? 'hammaga' : 'faqat admin'); ch('Holat matni', old.holat, holat)
+  if (!lines.length) { toast('Oʻzgarish yoʻq'); return }
+  const ph = (_labStats[slug] || {}).ph, warn = []
+  if (ph && s6 && ph * m < s6) warn.push('Oylik yoʻl bilan butun kurs (' + ph + ' × ' + fmtSum(m) + ' = ' + fmtSum(ph * m) + ') 6 oylikdan arzon.')
+  if (s6 === null) warn.push('6 oylik boʻsh: saytda bu tarif koʻrsatilmaydi.')
+  if (onSale && !old.on_sale) warn.push('SOTUV: toʻlov tugmasi hammaga chiqadi (checkout.js MODE "on" va oferta boʻlsa). Server hamma uchun buyurtma qabul qiladi.')
+  if (!confirm(slug + '\n\n' + lines.join('\n') + (warn.length ? '\n\n⚠️ ' + warn.join('\n⚠️ ') : '') + '\n\nSaqlansinmi?')) return
+  const { error } = await supabase.from(DB.courses).update({ price_yearly: y, price_monthly: m, price_6m: s6, holat: holat, price: y, status: status, on_sale: onSale, updated_at: new Date().toISOString() }).eq('slug', slug)
   if (error) { toast('❌ ' + error.message); return }
-  toast('✅ Saqlandi. Bosh sahifada yangilandi')
+  toast('✅ Saqlandi. Saytda sahifa keyingi ochilganda yangilanadi')
   loadLabs()
 }
 async function addLabRow(slug) {
-  const name = (LAB_LIST.find(l => l[0] === slug) || [slug, slug])[1], p = LAB_DEFAULT_PRICE[slug] || [899000, 99000]
-  if (!confirm(name + ' bazaga “draft” holatida qoʻshilsinmi? Narx: ' + fmtSum(p[0]) + ' / ' + fmtSum(p[1]) + ' soʻm (keyin oʻzgartirasiz).')) return
-  const { error } = await supabase.from(DB.courses).insert({ slug, title: name, status: 'draft', price: p[0], price_yearly: p[0], price_monthly: p[1] })
+  const name = (LAB_LIST.find(l => l[0] === slug) || [slug, slug])[1], p = LAB_DEFAULT_PRICE
+  if (!confirm(name + ' bazaga “Yashirin” holatida, sotuvsiz qoʻshilsinmi? Narx: ' + fmtSum(p[0]) + ' / ' + fmtSum(p[1]) + ' / ' + fmtSum(p[2]) + ' soʻm (keyin oʻzgartirasiz).')) return
+  const { error } = await supabase.from(DB.courses).insert({ slug, title: name, status: 'draft', on_sale: false, price: p[0], price_yearly: p[0], price_6m: p[1], price_monthly: p[2] })
   if (error) { toast('❌ ' + error.message); return }
   toast('✅ ' + name + ' qoʻshildi')
   loadLabs()

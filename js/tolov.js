@@ -125,14 +125,14 @@
 
   function init() {
     var S = window.KOMPAS_SALE;
-    if (!LABS[slug] || !S || S.LABS.indexOf(slug) < 0 || !window.supabase) { show("tvGate"); return; }
+    if (!LABS[slug] || !S || !window.supabase) { show("tvGate"); return; }
     $("tvLab").textContent = LABS[slug].name;
     $("tvBack").href = LABS[slug].page;
     Array.prototype.forEach.call(document.querySelectorAll("[data-tv-back]"), function (a) { a.href = LABS[slug].page; });
     if (S.OFERTA_URL) {
       $("tvOferta").innerHTML = "<a href=\"" + S.OFERTA_URL + "\" target=\"_blank\" rel=\"noopener\">Ommaviy oferta</a>";
     }
-    if (S.isTest()) $("tvTest").hidden = false;
+    S.isTestLab(slug).then(function (t) { if (t) $("tvTest").hidden = false; });
 
     window.supabase.auth.getSession().then(function (r) {
       if (!r || !r.data || !r.data.session) {
@@ -140,7 +140,7 @@
         try { localStorage.setItem("kompas_return", JSON.stringify({ to: "tolov.html" + location.search, at: Date.now() })); } catch (e) {}
         show("tvLogin"); return;
       }
-      S.canBuy().then(function (ok) {
+      S.canBuyLab(slug).then(function (ok) {
         if (!ok) { show("tvGate"); return; }
         show("tvForm");
         window.supabase.rpc("kompas_public_stats").then(function (x) {

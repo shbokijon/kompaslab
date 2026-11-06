@@ -653,3 +653,6 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .dn-thanks{padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--border);color:var(--green);margin-bottom:12px;}
 @media (max-width:760px){.dn-money{grid-template-columns:1fr;gap:20px;}}
 @media (prefers-reduced-motion:reduce){.dn-dot{animation:none;}}
+
+/* Admin paneldan yashirilgan Lab (courses.status) */
+[data-lab-card][hidden]{display:none!important}
