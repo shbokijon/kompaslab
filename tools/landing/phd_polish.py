@@ -3,7 +3,7 @@
 import re
 from render import six_card, calc_html, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, PRO_PLANNED, HONEST_NOTE, icon, polish, uz_fix, fmt
 
-Y, M = 999000, 129000
+Y, M = 1499000, 149000
 
 def R(s, a, b, n=1):
     c = s.count(a)

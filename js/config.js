@@ -52,14 +52,14 @@ const APP_CONFIG = {
 
   // Kurslar (slug Supabase courses.slug bilan mos bo'lishi kerak)
   courses: {
-    bachelor: { slug: 'bachelor-lab', name: 'Bachelor Lab', emoji: '🎓', modules: 17, lessons: 86,  price: 699000, priceMonthly: 99000 },
-    master:   { slug: 'master-lab',   name: 'Master Lab',   emoji: '🔬', modules: 9,  lessons: 59,  price: 699000, priceMonthly: 99000 },
-    gks:      { slug: 'gks-lab',      name: 'GKS Lab',      emoji: '🇰🇷', modules: 12, lessons: 54,  price: 699000, priceMonthly: 99000 },
-    usa:      { slug: 'usa-lab',      name: 'USA Lab',      emoji: '🇺🇸', modules: 12, lessons: 72,  price: 699000, priceMonthly: 99000 },
-    phd:      { slug: 'phd-lab',      name: 'PhD Lab',      emoji: '⚗️', modules: 9,  lessons: 65,  price: 999000, priceMonthly: 129000 },
-    daad:     { slug: 'daad-lab',     name: 'DAAD Lab',     emoji: '🇩🇪', modules: 9,  lessons: 51,  price: 699000, priceMonthly: 99000 },
-    tt:       { slug: 'tadbirkor-talaba', name: 'Tadbirkor Talaba Lab', emoji: '💼', modules: 10, lessons: 54, price: 299000, priceMonthly: 29900 },
-    musofir:  { slug: 'miggo',        name: 'Musofir Lab',  emoji: '🧳', modules: 8,  lessons: 44,  price: 499000, priceMonthly: 49900 },
+    bachelor: { slug: 'bachelor-lab', name: 'Bachelor Lab', emoji: '🎓', modules: 17, lessons: 86,  price: 899000, priceMonthly: 99000 },
+    master:   { slug: 'master-lab',   name: 'Master Lab',   emoji: '🔬', modules: 9,  lessons: 59,  price: 899000, priceMonthly: 99000 },
+    gks:      { slug: 'gks-lab',      name: 'GKS Lab',      emoji: '🇰🇷', modules: 12, lessons: 54,  price: 899000, priceMonthly: 99000 },
+    usa:      { slug: 'usa-lab',      name: 'USA Lab',      emoji: '🇺🇸', modules: 9,  lessons: 46,  price: 899000, priceMonthly: 99000 },
+    phd:      { slug: 'phd-lab',      name: 'PhD Lab',      emoji: '⚗️', modules: 9,  lessons: 65,  price: 1499000, priceMonthly: 149000 },
+    daad:     { slug: 'daad-lab',     name: 'DAAD Lab',     emoji: '🇩🇪', modules: 9,  lessons: 51,  price: 899000, priceMonthly: 99000 },
+    tt:       { slug: 'tadbirkor-talaba', name: 'Tadbirkor Talaba Lab', emoji: '💼', modules: 10, lessons: 54, price: 299000, priceMonthly: 29000 },
+    musofir:  { slug: 'miggo',        name: 'Musofir Lab',  emoji: '🧳', modules: 8,  lessons: 44,  price: 499000, priceMonthly: 49000 },
   },
 
   // Admin email ro'yxati

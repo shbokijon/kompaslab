@@ -1998,7 +1998,7 @@ const LAB_LIST = [
   ['tadbirkor-talaba', 'Tadbirkor Talaba'], ['miggo', 'Musofir Lab'],
   ['maktab-lab', 'Maktab Lab'], ['research-lab', 'Research Lab'], ['ai-tools', 'AI Amaliyot Lab']
 ]
-const LAB_DEFAULT_PRICE = { 'usa-lab': [699000, 99000], 'tadbirkor-talaba': [299000, 29900], 'miggo': [499000, 49900] }
+const LAB_DEFAULT_PRICE = { 'usa-lab': [899000, 99000], 'tadbirkor-talaba': [299000, 29000], 'miggo': [499000, 49000] }
 let _labRows = {}
 function fmtSum(n) { return n == null ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }
 async function loadLabs() {
@@ -2047,7 +2047,7 @@ async function saveLabPrice(slug) {
   loadLabs()
 }
 async function addLabRow(slug) {
-  const name = (LAB_LIST.find(l => l[0] === slug) || [slug, slug])[1], p = LAB_DEFAULT_PRICE[slug] || [699000, 99000]
+  const name = (LAB_LIST.find(l => l[0] === slug) || [slug, slug])[1], p = LAB_DEFAULT_PRICE[slug] || [899000, 99000]
   if (!confirm(name + ' bazaga “draft” holatida qoʻshilsinmi? Narx: ' + fmtSum(p[0]) + ' / ' + fmtSum(p[1]) + ' soʻm (keyin oʻzgartirasiz).')) return
   const { error } = await supabase.from(DB.courses).insert({ slug, title: name, status: 'draft', price: p[0], price_yearly: p[0], price_monthly: p[1] })
   if (error) { toast('❌ ' + error.message); return }
