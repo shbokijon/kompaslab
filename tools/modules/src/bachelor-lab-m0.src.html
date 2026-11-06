@@ -290,7 +290,7 @@ body.locked .gate{display:flex;}
             <ul><li><b>Birinchi muddat</b> sizning roʻyxatingizdagi eng erta sana: koʻpincha AQShdagi erta muddatlar yoki Oxford, Cambridge va tibbiyot muddati.</li><li>Aniq sanani universitetning rasmiy sahifasidan oling. Hali eʼlon qilinmagan boʻlsa, oʻtgan yilgisini “taxminiy” deb belgilang.</li></ul>
             <h4>Toʻlov shartlari</h4>
             <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
-              <tr><td>Obuna</td><td><span data-py>899 000</span> soʻm/yil yoki <span data-pm>99 000</span> soʻm/oy<span data-p6box hidden>, 6 oylik <span data-p6v>—</span> soʻm</span></td></tr>
+              <tr><td>Obuna</td><td><span data-pm>99 000</span> soʻm/oy yoki <span data-p6v>499 000</span> soʻm/6 oy</td></tr>
               <tr><td>M0 (shu modul)</td><td>Bepul</td></tr>
               <tr><td>18 yoshgacha</td><td>Obuna va toʻlovni ota-ona yoki vasiy rasmiylashtiradi, shartnoma tomoni ota-ona</td></tr>
               <tr><td>Bekor qilish</td><td>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz; toʻlangan davr tugashi bilan kirish yopiladi</td></tr>
@@ -647,7 +647,7 @@ body.locked .gate{display:flex;}
   });
   $("parentBtn").addEventListener("click", function () {
     var t = "Assalomu alaykum! Kompas Lab Bachelor Lab M0 natijam:\n" + (stmtText() || "(hali toʻldirilmagan)") +
-      "\n\nObuna: " + $("pyTxt").textContent + " soʻm/yil yoki " + $("pmTxt").textContent + " soʻm/oy. M0 bepul. Toʻlangan obuna puli qaytarilmaydi, obunani istalgan vaqtda toʻxtatish mumkin. 18 yoshgacha obunani ota-ona rasmiylashtiradi.\nBatafsil: https://kompaslab.uz/bachelor-lab";
+      "\n\nObuna: " + $("pmTxt").textContent + " soʻm/oy yoki " + $("pyTxt").textContent + " soʻm/6 oy. M0 bepul. Toʻlangan obuna puli qaytarilmaydi, obunani istalgan vaqtda toʻxtatish mumkin. 18 yoshgacha obunani ota-ona rasmiylashtiradi.\nBatafsil: https://kompaslab.uz/bachelor-lab";
     if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { toast("Nusxalandi: Telegramga joylang", "memo"); }, function () { prompt("Nusxalang:", t); }); else prompt("Nusxalang:", t);
   });
 
@@ -660,7 +660,7 @@ body.locked .gate{display:flex;}
   }
 
   // Narx bazadan (admin panelda oʻzgartirilsa shu yerda ham yangilanadi)
-  document.querySelector("[data-py]").id = "pyTxt"; document.querySelector("[data-pm]").id = "pmTxt";
+  document.querySelector("[data-p6v]").id = "pyTxt"; document.querySelector("[data-pm]").id = "pmTxt";
   try {
     fetch("https://usxpkmbjrdllnitlzdpq.supabase.co/rest/v1/rpc/kompas_public_stats", { method: "POST", headers: { "Content-Type": "application/json", apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8" }, body: "{}" })
       .then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {

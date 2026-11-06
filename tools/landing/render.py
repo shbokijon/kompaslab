@@ -351,24 +351,20 @@ def maker(lab):
 </section>'''
 
 def calc_html(y, m, slug):
-    """Narx taqqoslash. 6 oylik narx bazada (courses.price_6m, admin kiritadi); boʻlsa,
-    JS (LIVE_JS) 6 oylik qatorini ochadi va yillik chegarasini 6 oylik + oylik bilan qayta hisoblaydi."""
-    if slug == "master-lab":
-        return ('<div><b>396 000 soʻm</b>4 bosqichni alohida oylik toʻlov bilan ochish; har bosqichga 1 oy</div>'
-                '<div><b><span data-p6v="master-lab">499 000</span> soʻm</b>6 oy davomida barcha 4 bosqich ochiq</div>'
-                '<div><b>899 000 soʻm</b>12 oy davomida barcha 4 bosqich ochiq</div>')
-    months = next((n for n in range(1, 13) if y < m * n), None)
-    rows = [f'<div><b>{fmt(m * 12)} soʻm</b>12 oy faqat oylik reja bilan ({fmt(m)} × 12)</div>',
-            f'<div data-p6box="{slug}" hidden><b><span data-p6x2="{slug}">—</span> soʻm</b>12 oy 6 oylik bilan (2 × <span data-p6v="{slug}">—</span>)</div>']
-    if months:
-        rows.append(f'<div data-ybreak="{slug}"><b>{months} oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja oylikdan arzon</div>')
-    return "".join(rows)
+    """Narx taqqoslash (2026-11-06: yillik tarif yoʻq). 6 oylik narx bazada (courses.price_6m); JS `data-p6v` ni yangilaydi."""
+    s6 = PR6.get(slug, m * 5)
+    return (f'<div><b>{fmt(m * 6)} soʻm</b>6 oy faqat oylik reja bilan ({fmt(m)} × 6)</div>'
+            f'<div><b><span data-p6v="{slug}">{fmt(s6)}</span> soʻm</b>6 oy 6 oylik reja bilan: barcha modullar birdaniga ochiq</div>')
+
+# Bazadagi 6 oylik narx (2026-11-06); sahifada zaxira, jonli qiymat kompas_public_stats dan
+PR6 = {"bachelor-lab": 499000, "master-lab": 499000, "usa-lab": 499000, "gks-lab": 499000, "daad-lab": 499000,
+       "phd-lab": 849000, "tadbirkor-talaba": 149000, "miggo": 249000}
 
 REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi. Oylik obunada har toʻlov bitta fazani ochadi; obuna tugasa, ochilgan modullar ham yopiladi."
 
 # Kompas Pro: rejadagi funksiyalar (2026-10-17 qarori). Qurilmaguncha "Rejada" belgisi bilan, narxga kirmaydi
 PRO_PLANNED = """<div class="pro-plan"><span class="tag-plan">Rejada</span><b>Kompas Pro: hali ishlamaydi</b>
-      <p>Yillik obunaga qoʻshish rejalashtirilgan funksiyalar. Hozirgi narxga kirmaydi, ishga tushish sanasi eʼlon qilinmagan.</p>
+      <p>6 oylik obunaga qoʻshish rejalashtirilgan funksiyalar. Hozirgi narxga kirmaydi, ishga tushish sanasi eʼlon qilinmagan.</p>
       <ul><li>Shaxsiy muddat eslatmalari (Telegram yoki email)</li><li>Profilga mos stipendiyalar bazasi: rasmiy havola va tekshiruv sanasi bilan</li><li>Tayyorgarlik koʻrsatkichi tarixi: oyma-oy oʻzgarish</li><li>Javoblar va hujjatlarni telefon va kompyuter orasida sinxronlash</li></ul>
     </div>"""
 
@@ -403,12 +399,6 @@ def pricing(lab):
         <button type="button" class="btn btn-g" data-wl data-buy="{slug}|monthly">Kutish roʻyxatiga yozilish</button>
       </div>
       {six_card(slug)}
-      <div class="plan">
-        <h3>Yillik</h3><p class="desc">{p["y_desc"]}</p>
-        <div class="price" data-py="{slug}">{fmt(y)}</div><div class="per">soʻm, 12 oy uchun</div>
-        <ul>{"".join(f"<li>{x}</li>" for x in p["y_items"])}</ul>
-        <button type="button" class="btn btn-g" data-wl data-buy="{slug}|yearly">Kutish roʻyxatiga yozilish</button>
-      </div>
     </div>
     <div class="calc">{calc_html(y, mo, slug)}</div>
     {PRO_PLANNED}'''
@@ -419,7 +409,7 @@ def pricing(lab):
     return f'''<section id="narx">
   <div class="wrap">
     <div class="head">
-      <h2>Obuna: oylik, 6 oylik yoki yillik. M0 bepul.</h2>
+      <h2>Obuna: oylik yoki 6 oylik. M0 bepul.</h2>
       <p class="sub">{p["sub"]}</p>
     </div>
     <div class="pay-status"><span>⏳</span><span data-paystatus="{slug}">{status}</span></div>

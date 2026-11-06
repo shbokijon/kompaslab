@@ -587,7 +587,7 @@ body.locked .gate{display:flex;}
             <div class="verdict" id="fitRes"></div>
             <h4>Toʻlov shartlari</h4>
             <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
-              <tr><td>Obuna</td><td><span data-py>1 499 000</span> soʻm/yil yoki <span data-pm>149 000</span> soʻm/oy<span data-p6box hidden>, 6 oylik <span data-p6v>—</span> soʻm</span></td></tr>
+              <tr><td>Obuna</td><td><span data-pm>149 000</span> soʻm/oy yoki <span data-p6v>849 000</span> soʻm/6 oy</td></tr>
               <tr><td>M0 (shu modul)</td><td>Bepul</td></tr>
               <tr><td>Tayyorgarlik darvozasi</td><td>Natija “Bu siklga erta” boʻlsa, toʻlov oʻrniga muqobil yoʻl tavsiya qilinadi</td></tr>
               <tr><td>Bekor qilish</td><td>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz; toʻlangan davr tugashi bilan kirish yopiladi</td></tr>
@@ -956,7 +956,7 @@ body.locked .gate{display:flex;}
     award("dec", 40, "Qaror qildi nishoni", "seedling"); confetti(); renderStmt();
   });
   $("copyBtn").addEventListener("click", function () {
-    var t = "Kompas Lab PhD Lab M0 natijam:\n" + (stmtText() || "(hali toʻldirilmagan)") + "\n\nObuna: " + $("pyTxt").textContent + " soʻm/yil yoki " + $("pmTxt").textContent + " soʻm/oy. M0 bepul.\nBatafsil: https://kompaslab.uz/phd-lab";
+    var t = "Kompas Lab PhD Lab M0 natijam:\n" + (stmtText() || "(hali toʻldirilmagan)") + "\n\nObuna: " + $("pmTxt").textContent + " soʻm/oy yoki " + $("pyTxt").textContent + " soʻm/6 oy. M0 bepul.\nBatafsil: https://kompaslab.uz/phd-lab";
     if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", t); }); else prompt("Nusxalang:", t);
   });
 
@@ -968,7 +968,7 @@ body.locked .gate{display:flex;}
     lessons.forEach(renderLesson);
   }
 
-  document.querySelector("[data-py]").id = "pyTxt"; document.querySelector("[data-pm]").id = "pmTxt";
+  document.querySelector("[data-p6v]").id = "pyTxt"; document.querySelector("[data-pm]").id = "pmTxt";
   try {
     fetch("https://usxpkmbjrdllnitlzdpq.supabase.co/rest/v1/rpc/kompas_public_stats", { method: "POST", headers: { "Content-Type": "application/json", apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8" }, body: "{}" })
       .then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {

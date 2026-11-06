@@ -62,7 +62,7 @@
   };
   CFG.isTest = function () { return !open(); };
 
-  var LABEL = { monthly: "Oylik obunani toʻlash", "6m": "6 oylik obunani toʻlash", yearly: "Yillik obunani toʻlash" };
+  var LABEL = { monthly: "Oylik obunani toʻlash", "6m": "6 oylik obunani toʻlash" };
 
   function enhance() {
     var btns = document.querySelectorAll("[data-buy]");

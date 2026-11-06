@@ -26,13 +26,7 @@
     "6m": {
       name: "6 oylik",
       rule: function () {
-        return "Hamma modullar birdaniga ochiladi, muddat 6 oy. Amaldagi 6 oylik yoki yillik obunangiz boʻlsa, yangi muddat uning oxiriga qoʻshiladi.";
-      }
-    },
-    yearly: {
-      name: "Yillik",
-      rule: function () {
-        return "Hamma modullar birdaniga ochiladi, muddat 12 oy. Amaldagi 6 oylik yoki yillik obunangiz boʻlsa, yangi muddat uning oxiriga qoʻshiladi.";
+        return "Hamma modullar birdaniga ochiladi, muddat 6 oy. Amaldagi 6 oylik obunangiz boʻlsa, yangi muddat uning oxiriga qoʻshiladi.";
       }
     }
   };
@@ -44,8 +38,8 @@
     MONTHLY_NOT_AVAILABLE: "Bu Labda oylik tarif yoʻq.",
     INSTALLMENT_ACTIVE: "Sizda boʻlib toʻlash davom etmoqda. Yangi obuna uchun bizga yozing.",
     ALREADY_ENROLLED: "Bu Lab sizga muddatsiz ochiq. Toʻlash shart emas.",
-    HAS_FULL_PLAN: "Sizda 6 oylik yoki yillik obuna bor, unda hamma modullar ochiq. Oylik toʻlov shart emas.",
-    ALL_PHASES_PAID: "Barcha fazalar toʻlangan. Muddatni uzaytirish uchun 6 oylik yoki yillik tarifni tanlang.",
+    HAS_FULL_PLAN: "Sizda 6 oylik obuna bor, unda hamma modullar ochiq. Oylik toʻlov shart emas.",
+    ALL_PHASES_PAID: "Barcha fazalar toʻlangan. Muddatni uzaytirish uchun 6 oylik tarifni tanlang.",
     TRACK_REQUIRED: "Keyingi faza trekka bogʻliq. Trekni tanlang."
   };
 
@@ -71,7 +65,7 @@
   function renderPlans(prices) {
     var box = $("tvPlans"), lab = LABS[slug];
     box.innerHTML = "";
-    var vals = { monthly: prices && prices.m, "6m": prices && prices.s6, yearly: prices && prices.y };
+    var vals = { monthly: prices && prices.m, "6m": prices && prices.s6 };
     Object.keys(PLANS).forEach(function (k) {
       if (!(vals[k] > 0)) return;
       var l = document.createElement("label");

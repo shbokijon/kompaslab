@@ -288,11 +288,11 @@ PAGE_JS = """
   function recalc() {
     var v = parseAmt(), uzs = cur === "usd" ? v * USD : v, l = bySlug[labSel.value];
     if (!uzs || !l) { big.innerHTML = "–"; cmpT.textContent = "Agentlik aytgan narxni kiriting."; cmpS.textContent = ""; return; }
-    var r = uzs / l.y;
-    if (r < 1) { big.innerHTML = "–"; cmpT.textContent = "Bu narx " + l.name + " yillik obunasidan (" + nf(l.y) + " soʻm) past."; cmpS.textContent = ""; return; }
+    var base = l.s6 > 0 ? l.s6 : l.m * 6, r = uzs / base;
+    if (r < 1) { big.innerHTML = "–"; cmpT.textContent = "Bu narx " + l.name + " 6 oylik obunasidan (" + nf(base) + " soʻm) past."; cmpS.textContent = ""; return; }
     big.innerHTML = (r >= 10 ? nf(r) : r.toFixed(1).replace(".", ",")) + "<small>barobar</small>";
-    cmpT.textContent = l.name + " yillik obunasi (" + nf(l.y) + " soʻm) bu narxdan shuncha marta arzon.";
-    cmpS.textContent = "Farq: " + nf(uzs - l.y) + " soʻm" + (cur === "usd" ? " (1 $ = " + nf(USD) + " soʻm, Markaziy bank, 2026-10-06)" : "");
+    cmpT.textContent = l.name + " 6 oylik obunasi (" + nf(base) + " soʻm) bu narxdan shuncha marta arzon.";
+    cmpS.textContent = "Farq: " + nf(uzs - base) + " soʻm" + (cur === "usd" ? " (1 $ = " + nf(USD) + " soʻm, Markaziy bank, 2026-10-06)" : "");
   }
   amt.addEventListener("input", function () {
     var raw = amt.value.replace(/[^0-9]/g, "");
@@ -314,7 +314,7 @@ PAGE_JS = """
     });
   });
 
-  // ── Narx jadvali: yillik / oylik ──
+  // ── Narx jadvali: oylik / 6 oylik ──
   document.querySelectorAll("[data-period]").forEach(function (b) {
     b.addEventListener("click", function () {
       document.querySelectorAll("[data-period]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
@@ -419,7 +419,7 @@ def build():
     <ol class="steps">
       <li><b>Bepul M0</b><span>Lab nima beradi va nima bermaydi, kimga mos emasligi ochiq yozilgan.</span></li>
       <li><b>Tayyorgarlik darajasi (Readiness Score)</b><span>100 ballik oʻzini oʻzi baholash. Natija “Bu siklga erta” boʻlsa, toʻlov oʻrniga boʻshliqlar roʻyxati va muqobil yoʻl beriladi.</span></li>
-      <li><b>Modullar va topshiriqlar</b><span>6 oylik va yillik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi, keyingisi navbatdagi toʻlov bilan. Har dars: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.</span></li>
+      <li><b>Modullar va topshiriqlar</b><span>6 oylik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi, keyingisi navbatdagi toʻlov bilan. Har dars: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.</span></li>
       <li><b>Tayyor hujjatlar</b><span>CV, xatlar, insho yoki ilmiy loyiha taklifi. Matnni siz yozasiz, Kompas tuzilma va mezon beradi.</span></li>
     </ol>
   </div>
@@ -446,14 +446,14 @@ def build():
       <div><b>Farqi nimada</b>Koʻp agentliklar hujjatni siz bilan birga tayyorlaydi yoki topshirishga yordam beradi. Kompas hujjatni oʻrningizga yozmaydi va topshirmaydi.</div>
       <div><b>Sizda nima qoladi</b>Kompasda oʻrgangan usul oʻzingizda qoladi: keyingi ariza, stipendiya yoki ish uchun ham ishlatasiz.</div>
       <div><b>Agentlik tanlasangiz</b>Shartnoma, litsenziya va “kafolat” vaʼdasini tekshiring. <a href="https://raqobat.gov.uz/uz/xorijda-ishlash-va-oqish-uchun-oson-borishni-vada-qilayotgan-konsalting-firmalardan-ogoh-boling/" target="_blank" rel="noopener">Raqobat qoʻmitasi ogohlantirishi</a></div>
-      <div><b>Hisob qanday</b>Narx Lab yillik obunasiga boʻlinadi. Dollar Markaziy bank kursida (2026-10-06): 1 $ = {fmt(round(USD))} soʻm.</div>
+      <div><b>Hisob qanday</b>Narx Lab 6 oylik obunasiga boʻlinadi. Dollar Markaziy bank kursida (2026-10-06): 1 $ = {fmt(round(USD))} soʻm.</div>
     </div>
   </div>
 </section>
 
 <section id="narx">
   <div class="wrap">
-    <div class="head"><h2>Narxlar</h2><p class="sub">Obuna: yillik yoki oylik. M0 hamma Labda bepul. Yillik obuna bitta ariza siklini qamraydi.</p></div>
+    <div class="head"><h2>Narxlar</h2><p class="sub">Obuna: yillik yoki oylik. M0 hamma Labda bepul. 6 oylik obuna bitta ariza siklini qamraydi.</p></div>
     <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
     <div class="ptop"><div class="seg" role="group" aria-label="Davr"><button type="button" data-period="y" aria-pressed="true">Yillik</button><button type="button" data-period="m" aria-pressed="false">Oylik</button></div></div>
     <div class="tblwrap"><table class="cmp ptbl" id="ptbl" style="margin-top:0"><thead><tr><th>Lab</th><th>Narx</th><th>Holat</th></tr></thead><tbody>{price_rows()}</tbody></table></div>

@@ -100,7 +100,7 @@ emit("qanday-ishlaydi.html", "qanday", "Qanday ishlaydi · Kompas Lab", "Kompas 
      pagehead("Qanday ishlaydi", "Kompas Lab qanday ishlaydi", "Har Lab bepul qaror modulidan boshlanadi. Darslar Topshiriq bilan tugaydi, modullar tayyor hujjat bilan yopiladi.", "compass") + "\n" + nega + "\n" + B["qoidalar"])
 
 h1, lead, narx = head_of(B["narx"])
-emit("narxlar.html", "narxlar", "Narxlar · Kompas Lab", "Kompas Lab narxlari: har Lab uchun oylik, 6 oylik va yillik obuna. M0 bepul. Agentlik narxi bilan solishtirish.",
+emit("narxlar.html", "narxlar", "Narxlar · Kompas Lab", "Kompas Lab narxlari: har Lab uchun oylik va 6 oylik obuna. M0 bepul. Agentlik narxi bilan solishtirish.",
      pagehead("Narxlar", h1 or "Narxlar", lead, "money") + "\n" + narx + "\n" + B["solishtirish"])
 
 h1, lead, sav = head_of(B["savollar"])

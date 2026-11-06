@@ -626,7 +626,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>Lab</th><th>Yillik (soʻm)</th><th>6 oylik (soʻm)</th><th>Oylik (soʻm)</th><th>Saytda</th><th>Sotuvda</th><th>Holat matni</th><th>Kutish roʻyxati</th><th>Amal</th>
+            <th>Lab</th><th>6 oylik (soʻm)</th><th>Oylik (soʻm)</th><th>Saytda</th><th>Sotuvda</th><th>Holat matni</th><th>Kutish roʻyxati</th><th>Amal</th>
           </tr></thead><tbody id="tbLabs"></tbody></table>
         </div>
       </div>
@@ -724,7 +724,6 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <div class="fr">
       <div class="fld"><label>Tarif *</label>
         <select id="sPlan" onchange="fillStudentAmount()">
-          <option value="yearly">Yillik</option>
           <option value="6m">6 oylik</option>
           <option value="monthly">Oylik</option>
         </select>
@@ -957,15 +956,15 @@ function populateCourseSelects() {
   const sc = document.getElementById("sCourse")
   if (sc) {
     sc.innerHTML = slugs.map(sl => {
-      const c = _courseMap[sl] || {}, y = c.price_yearly ?? c.price, m = c.price_monthly
-      return "<option value=\"" + escHtml(sl) + "\">" + escHtml(courseLabel(sl)) + " \u2014 " + fmtSum(y) + " / " + fmtSum(c.price_6m) + " / " + fmtSum(m) + " soʻm</option>"
+      const c = _courseMap[sl] || {}, m = c.price_monthly
+      return "<option value=\"" + escHtml(sl) + "\">" + escHtml(courseLabel(sl)) + " \u2014 6 oylik " + fmtSum(c.price_6m) + " / oylik " + fmtSum(m) + " soʻm</option>"
     }).join("") || "<option value=\"\">Kurslar yuklanmadi</option>"
     fillStudentAmount()
   }
 }
 function fillStudentAmount() {
   const sl = document.getElementById("sCourse")?.value, plan = document.getElementById("sPlan")?.value
-  const c = _courseMap[sl] || {}, amt = plan === "monthly" ? c.price_monthly : plan === "6m" ? c.price_6m : (c.price_yearly ?? c.price)
+  const c = _courseMap[sl] || {}, amt = plan === "monthly" ? c.price_monthly : c.price_6m
   const inp = document.getElementById("sAmount")
   if (inp) inp.value = amt ?? ""
 }
@@ -2041,47 +2040,47 @@ const LAB_LIST = [
   ['tadbirkor-talaba', 'Tadbirkor Talaba', 'tadbirkor-talaba.html'], ['miggo', 'Musofir Lab', 'musofir-lab.html'],
   ['maktab-lab', 'Maktab Lab', ''], ['research-lab', 'Research Lab', ''], ['ai-tools', 'AI Amaliyot Lab', '']
 ]
-// Yangi Lab bazaga qoʻshilganda boshlangʻich narx (yillik, 6 oylik, oylik): asosiy tarif, keyin oʻzgartiriladi
-const LAB_DEFAULT_PRICE = [899000, 499000, 99000]
+// Yangi Lab bazaga qoʻshilganda boshlangʻich narx (6 oylik, oylik); yillik tarif 2026-11-06 dan yoʻq
+const LAB_DEFAULT_PRICE = [499000, 99000]
 const LAB_STATUS = { active: 'Koʻrinadi', draft: 'Yashirin', archived: 'Arxiv' }
 let _labRows = {}, _labStats = {}
 function fmtSum(n) { return n == null ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }
-// Oylik yoʻl bilan butun kurs narxi: fazalar × oylik; 6 oylik yoki yillikdan arzon boʻlsa ogohlantiradi
-function labPhaseNote(slug, m, s6, y) {
+// Oylik yoʻl bilan butun kurs narxi: fazalar × oylik; 6 oylikdan arzon boʻlsa ogohlantiradi
+function labPhaseNote(slug, m, s6) {
   const ph = (_labStats[slug] || {}).ph
   if (!ph) return '<div class="lab-note">Oylik tarif yoʻq (fazalar kiritilmagan)</div>'
   if (!(m > 0)) return ''
-  const full = ph * m, cheap = (s6 > 0 && full < s6) || (y > 0 && full < y)
+  const full = ph * m, cheap = s6 > 0 && full < s6
   return '<div class="lab-note' + (cheap ? ' warn' : '') + '">Butun kurs oylik bilan: ' + ph + ' × ' + fmtSum(m) + ' = ' + fmtSum(full) +
-    (cheap ? ' · ' + (s6 > 0 && full < s6 ? '6 oylikdan' : 'yillikdan') + ' arzon' : '') + '</div>'
+    (cheap ? ' · 6 oylikdan arzon' : '') + '</div>'
 }
 function labPhaseRefresh(slug) {
   const v = id => { const x = document.getElementById(id + '-' + slug); return x && x.value.trim() !== '' ? parseInt(x.value, 10) : null }
   const box = document.getElementById('pn-' + slug)
-  if (box) box.innerHTML = labPhaseNote(slug, v('pm'), v('p6'), v('py'))
+  if (box) box.innerHTML = labPhaseNote(slug, v('pm'), v('p6'))
 }
 async function loadLabs() {
   const tb = document.getElementById('tbLabs')
-  tb.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
+  tb.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
   const [c, w, st] = await Promise.all([
     supabase.from(DB.courses).select('slug, title, status, on_sale, price, price_yearly, price_monthly, price_6m, holat'),
     supabase.from(DB.waitlist).select('course_slug'),
     supabase.rpc('kompas_public_stats')
   ])
-  if (c.error) { tb.innerHTML = '<tr><td colspan="9" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
+  if (c.error) { tb.innerHTML = '<tr><td colspan="8" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(c.error.message) + '</td></tr>'; return }
   _labRows = {}; (c.data || []).forEach(r => { _labRows[r.slug] = r })
   _labStats = (st.data && st.data.prices) || {}
   const wl = {}; (w.data || []).forEach(r => { wl[r.course_slug] = (wl[r.course_slug] || 0) + 1 })
   const extra = Object.keys(_labRows).filter(sl => sl !== 'test-lab' && !LAB_LIST.some(l => l[0] === sl)).map(sl => [sl, _labRows[sl].title || sl, ''])
   const fld = 'padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;font:inherit'
   tb.innerHTML = LAB_LIST.concat(extra).map(([slug, name, page]) => {
-    const r = _labRows[slug], y = r ? (r.price_yearly ?? r.price) : null, m = r ? r.price_monthly : null, s6 = r ? r.price_6m : null
+    const r = _labRows[slug], m = r ? r.price_monthly : null, s6 = r ? r.price_6m : null
     const pp = !!(_labStats[slug] || {}).pp
     const inp = (id, v, ph) => '<input id="' + id + '" type="number" min="0" step="1000" value="' + (v ?? '') + '"' + (ph ? ' placeholder="' + ph + '"' : '') + ' oninput="labPhaseRefresh(\'' + slug + '\')" style="width:120px;' + fld + '">'
     const pageInfo = page ? '<a href="' + page + '" target="_blank" rel="noopener" style="font-size:11px">' + page + '</a>' : '<span style="font-size:11px;color:var(--red)">saytda sahifasi yoʻq</span>'
     if (!r) {
       return '<tr><td><b>' + escHtml(name) + '</b><div style="font-size:11px;color:var(--muted)">' + slug + '</div>' + pageInfo + '</td>' +
-        '<td colspan="6" style="color:var(--red)">bazada yoʻq</td><td>' + (wl[slug] || 0) + ' kishi</td>' +
+        '<td colspan="5" style="color:var(--red)">bazada yoʻq</td><td>' + (wl[slug] || 0) + ' kishi</td>' +
         '<td><button class="btn bs bsm" onclick="addLabRow(\'' + slug + '\')">➕ Bazaga qoʻshish</button></td></tr>'
     }
     const sel = '<select id="pst-' + slug + '" style="' + fld + '">' + Object.keys(LAB_STATUS).map(k => '<option value="' + k + '"' + (r.status === k ? ' selected' : '') + '>' + LAB_STATUS[k] + '</option>').join('') + '</select>'
@@ -2089,8 +2088,8 @@ async function loadLabs() {
       '<input id="psl-' + slug + '" type="checkbox" style="width:auto;margin:0"' + (r.on_sale ? ' checked' : '') + (pp || r.on_sale ? '' : ' disabled') + '>' +
       (pp ? (r.on_sale ? 'Hammaga' : 'Faqat admin') : 'Modul yoʻq') + '</label>'
     return '<tr><td><b>' + escHtml(name) + '</b><div style="font-size:11px;color:var(--muted)">' + slug + '</div>' + pageInfo + '</td>' +
-      '<td>' + inp('py-' + slug, y) + '</td><td>' + inp('p6-' + slug, s6, 'yoʻq') + '</td>' +
-      '<td>' + inp('pm-' + slug, m) + '<div id="pn-' + slug + '">' + labPhaseNote(slug, m, s6, y) + '</div></td>' +
+      '<td>' + inp('p6-' + slug, s6, 'yoʻq') + '</td>' +
+      '<td>' + inp('pm-' + slug, m) + '<div id="pn-' + slug + '">' + labPhaseNote(slug, m, s6) + '</div></td>' +
       '<td>' + sel + '</td><td>' + sale + '</td>' +
       '<td><input id="ph-' + slug + '" type="text" maxlength="40" value="' + escHtml(r.holat || '') + '" placeholder="Tayyor" style="width:160px;' + fld + '"></td>' +
       '<td>' + (wl[slug] || 0) + ' kishi</td>' +
@@ -2104,21 +2103,19 @@ async function loadLabs() {
     '<br>Bosh sahifada son faqat 10 va undan koʻp boʻlsa koʻrsatiladi (soxta raqam yozilmaydi).'
 }
 async function saveLabPrice(slug) {
-  const y = parseInt(document.getElementById('py-' + slug).value, 10), m = parseInt(document.getElementById('pm-' + slug).value, 10)
+  const m = parseInt(document.getElementById('pm-' + slug).value, 10)
   const s6raw = document.getElementById('p6-' + slug).value.trim(), s6 = s6raw === '' ? null : parseInt(s6raw, 10)
   // Holat matni manbada amaldagi alifboda saqlanadi (saytda alifbo.js yangisiga oʻgiradi)
   const holat = fxNorm(document.getElementById('ph-' + slug).value).slice(0, 40) || null
   const status = document.getElementById('pst-' + slug).value
   const onSale = document.getElementById('psl-' + slug).checked
-  if (!(y > 0) || !(m > 0)) { toast('⚠️ Narxni toʻgʻri kiriting'); return }
+  if (!(m > 0)) { toast('⚠️ Oylik narxni toʻgʻri kiriting'); return }
   if (s6 !== null && !(s6 > 0)) { toast('⚠️ 6 oylik narxni toʻgʻri kiriting yoki boʻsh qoldiring'); return }
   if (s6 !== null && s6 >= m * 6) { toast('⚠️ 6 oylik narx 6 × oylikdan arzon boʻlishi kerak, tekshiring'); return }
-  if (s6 !== null && s6 >= y) { toast('⚠️ 6 oylik narx yillikdan arzon boʻlishi kerak, tekshiring'); return }
-  if (m * 12 < y) { toast('⚠️ 12 oylik narx yillikdan arzon boʻlib qoldi, tekshiring'); return }
   if (onSale && status !== 'active') { toast('⚠️ Sotuvdagi Lab saytda “Koʻrinadi” boʻlishi kerak'); return }
   const old = _labRows[slug], lines = []
   const ch = (label, a, b) => { if (String(a ?? '') !== String(b ?? '')) lines.push(label + ': ' + (a ?? '—') + ' → ' + (b ?? '—')) }
-  ch('Yillik', fmtSum(old.price_yearly ?? old.price), fmtSum(y)); ch('6 oylik', fmtSum(old.price_6m), fmtSum(s6)); ch('Oylik', fmtSum(old.price_monthly), fmtSum(m))
+  ch('6 oylik', fmtSum(old.price_6m), fmtSum(s6)); ch('Oylik', fmtSum(old.price_monthly), fmtSum(m))
   ch('Saytda', LAB_STATUS[old.status] || old.status, LAB_STATUS[status]); ch('Sotuvda', old.on_sale ? 'hammaga' : 'faqat admin', onSale ? 'hammaga' : 'faqat admin'); ch('Holat matni', old.holat, holat)
   if (!lines.length) { toast('Oʻzgarish yoʻq'); return }
   const ph = (_labStats[slug] || {}).ph, warn = []
@@ -2126,15 +2123,15 @@ async function saveLabPrice(slug) {
   if (s6 === null) warn.push('6 oylik boʻsh: saytda bu tarif koʻrsatilmaydi.')
   if (onSale && !old.on_sale) warn.push('SOTUV: toʻlov tugmasi hammaga chiqadi (checkout.js MODE "on" va oferta boʻlsa). Server hamma uchun buyurtma qabul qiladi.')
   if (!confirm(slug + '\n\n' + lines.join('\n') + (warn.length ? '\n\n⚠️ ' + warn.join('\n⚠️ ') : '') + '\n\nSaqlansinmi?')) return
-  const { error } = await supabase.from(DB.courses).update({ price_yearly: y, price_monthly: m, price_6m: s6, holat: holat, price: y, status: status, on_sale: onSale, updated_at: new Date().toISOString() }).eq('slug', slug)
+  const { error } = await supabase.from(DB.courses).update({ price_yearly: null, price_monthly: m, price_6m: s6, holat: holat, price: s6 ?? m * 6, status: status, on_sale: onSale, updated_at: new Date().toISOString() }).eq('slug', slug)
   if (error) { toast('❌ ' + error.message); return }
   toast('✅ Saqlandi. Saytda sahifa keyingi ochilganda yangilanadi')
   loadLabs()
 }
 async function addLabRow(slug) {
   const name = (LAB_LIST.find(l => l[0] === slug) || [slug, slug])[1], p = LAB_DEFAULT_PRICE
-  if (!confirm(name + ' bazaga “Yashirin” holatida, sotuvsiz qoʻshilsinmi? Narx: ' + fmtSum(p[0]) + ' / ' + fmtSum(p[1]) + ' / ' + fmtSum(p[2]) + ' soʻm (keyin oʻzgartirasiz).')) return
-  const { error } = await supabase.from(DB.courses).insert({ slug, title: name, status: 'draft', on_sale: false, price: p[0], price_yearly: p[0], price_6m: p[1], price_monthly: p[2] })
+  if (!confirm(name + ' bazaga “Yashirin” holatida, sotuvsiz qoʻshilsinmi? Narx: 6 oylik ' + fmtSum(p[0]) + ' / oylik ' + fmtSum(p[1]) + ' soʻm (keyin oʻzgartirasiz).')) return
+  const { error } = await supabase.from(DB.courses).insert({ slug, title: name, status: 'draft', on_sale: false, price: p[0], price_yearly: null, price_6m: p[0], price_monthly: p[1] })
   if (error) { toast('❌ ' + error.message); return }
   toast('✅ ' + name + ' qoʻshildi')
   loadLabs()
