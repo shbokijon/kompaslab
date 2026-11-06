@@ -162,8 +162,101 @@
       });
     }catch(e){el.textContent='Metrika olinmadi: '+e.message;$('klxAudit').textContent='Audit maʼlumotlari olinmadi';}
   }
+  // ---- Hamkor, mentor va jamoa ruxsatlari: email boʻyicha, roʻyxatdan oʻtmagan boʻlsa ham ----
+  const KIND_LABEL={team:'Jamoa',partner:'Hamkor',mentor:'Mentor',manual:'Qoʻlda'};
+  function fmtDate(v){return v?new Date(v).toLocaleDateString('uz-Latn'):'Muddatsiz';}
+  function accessTemplate(){
+    const navBtn=node('button','sb-item');navBtn.type='button';navBtn.id='klxNavAccess';
+    navBtn.innerHTML='<span class="sb-icon">🤝</span><span class="sb-label">Ruxsatlar</span>';
+    navBtn.addEventListener('click',()=>{nav('klx-access',navBtn);$('pgTitle').textContent='Hamkor va mentor ruxsatlari';loadAccess();});
+    const before=$('klxNavSystem');
+    if(before)before.before(navBtn);else document.querySelector('.sb-nav')?.appendChild(navBtn);
+    const sec=node('div','sec');sec.id='sec-klx-access';
+    sec.innerHTML='<div class="card"><div class="ch"><h2>🤝 Ruxsat berish</h2></div><div class="mb">'+
+      '<p class="klx-muted">Jamoa aʼzosi, hamkor yoki mentorga Lab yoki bitta modulni ochadi. Email hali roʻyxatdan oʻtmagan boʻlsa, ruxsat kutiladi va email tasdiqlangach avtomatik faollashadi. Toʻlov yozuvi yaratilmaydi; obuna alohida boshqariladi.</p>'+
+      '<div class="fr klx-two"><div class="fld"><label for="klxaEmail">Email *</label><input id="klxaEmail" type="email" maxlength="254" autocomplete="off" placeholder="ism@example.com"></div>'+
+      '<div class="fld"><label for="klxaKind">Turi</label><select id="klxaKind"><option value="team">Jamoa</option><option value="partner">Hamkor</option><option value="mentor">Mentor</option></select></div></div>'+
+      '<div class="fr klx-two"><div class="fld"><label for="klxaCourse">Lab</label><select id="klxaCourse"></select></div>'+
+      '<div class="fld"><label for="klxaModule">Modul</label><select id="klxaModule"><option value="">Barcha modullar</option></select></div></div>'+
+      '<div class="fr klx-two"><div class="fld"><label for="klxaExpiry">Tugash sanasi (ixtiyoriy)</label><input id="klxaExpiry" type="datetime-local"></div>'+
+      '<div class="fld"><label for="klxaReason">Sabab / audit izohi *</label><input id="klxaReason" maxlength="400" autocomplete="off" placeholder="Masalan: Strategiya hamkori, kontent tekshiruvi"></div></div>'+
+      '<div class="klx-actions"><button class="btn bp bsm" id="klxaGrant" type="button">+ Ruxsat berish</button></div></div></div>'+
+      '<div class="card klx-margin"><div class="ch"><h2>Faol ruxsatlar</h2><button class="btn bs bsm" id="klxaRefresh" type="button">🔄 Yangilash</button></div><div id="klxaList" class="mb klx-muted">Yuklanmoqda...</div></div>';
+    document.querySelector('.pg')?.appendChild(sec);
+    $('klxaCourse').addEventListener('change',showAccessModules);
+    $('klxaGrant').addEventListener('click',grantByEmail);
+    $('klxaRefresh').addEventListener('click',loadAccess);
+  }
+  function showAccessModules(){
+    const id=$('klxaCourse').value;
+    const list=moduleCache.filter(m=>m.course_id===id);
+    $('klxaModule').innerHTML='<option value="">Barcha modullar</option>'+selectOptions(list.map(m=>({value:m.id,title:'M'+m.order_index+' — '+(m.title||'Modul')})));
+  }
+  async function loadAccessRefs(){
+    if(courseCache.length&&moduleCache.length)return;
+    const [c,m]=await Promise.all([
+      supabase.from('courses').select('id,slug,title').order('title'),
+      supabase.from('modules').select('id,course_id,order_index,title').order('order_index')
+    ]);
+    if(c.error||m.error)throw new Error((c.error||m.error).message);
+    courseCache=c.data||[];moduleCache=m.data||[];
+  }
+  async function loadAccess(){
+    const box=$('klxaList');box.textContent='Yuklanmoqda...';
+    try{
+      await loadAccessRefs();
+      const withModules=courseCache.filter(c=>moduleCache.some(m=>m.course_id===c.id));
+      const keep=$('klxaCourse').value;
+      $('klxaCourse').innerHTML=selectOptions(withModules.map(c=>({value:c.id,title:c.title||c.slug})));
+      if(keep)$('klxaCourse').value=keep;
+      showAccessModules();
+      const d=await rpc('kompas_admin_list_grants');
+      renderAccessList(d.grants||[],d.pending||[]);
+    }catch(e){box.textContent='Ruxsatlar olinmadi: '+e.message;}
+  }
+  function accessRow(x,pending){
+    const row=node('div','klx-grant');
+    const left=node('div');
+    left.appendChild(node('div','',(pending?x.email:(x.name?x.name+' · ':'')+x.email)));
+    left.appendChild(node('small','klx-muted',x.course_title+' · '+(x.module_index!=null?'M'+x.module_index:'Barcha modullar')+' · '+(KIND_LABEL[x.kind]||x.kind)+' · '+fmtDate(x.expires_at)+(pending?' · roʻyxatdan oʻtishni kutmoqda':'')+' · '+x.reason));
+    const btn=node('button','btn bs bsm','Bekor qilish');btn.type='button';
+    btn.addEventListener('click',()=>revokeAccess(pending?'pending':'grant',x.id,x.email));
+    row.appendChild(left);row.appendChild(btn);return row;
+  }
+  function renderAccessList(grants,pending){
+    const box=$('klxaList');box.replaceChildren();
+    if(!grants.length&&!pending.length){box.textContent='Hozircha qoʻlda berilgan ruxsat yoʻq';return;}
+    pending.forEach(x=>box.appendChild(accessRow(x,true)));
+    grants.forEach(x=>box.appendChild(accessRow(x,false)));
+  }
+  async function grantByEmail(){
+    const email=$('klxaEmail').value.trim().toLowerCase(),reason=$('klxaReason').value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){notify('⚠️ Emailni toʻgʻri yozing');$('klxaEmail').focus();return;}
+    if(reason.length<3){notify('⚠️ Sababni yozing (kamida 3 belgi)');$('klxaReason').focus();return;}
+    const course=$('klxaCourse').value,mod=$('klxaModule').value||null;
+    if(!course){notify('⚠️ Labni tanlang');return;}
+    const expiry=$('klxaExpiry').value?new Date($('klxaExpiry').value).toISOString():null;
+    const what=$('klxaCourse').selectedOptions[0].textContent+' · '+(mod?$('klxaModule').selectedOptions[0].textContent:'barcha modullar');
+    if(!confirm(email+' uchun ruxsat: '+what+'. Davom etilsinmi?'))return;
+    try{
+      const r=await rpc('kompas_admin_grant_by_email',{p_email:email,p_course:course,p_module:mod,p_expires:expiry,p_kind:$('klxaKind').value,p_reason:reason});
+      notify(r.status==='pending'?'✅ Saqlandi: roʻyxatdan oʻtib, emailni tasdiqlagach faollashadi':'✅ Ruxsat berildi');
+      $('klxaEmail').value='';$('klxaReason').value='';$('klxaExpiry').value='';
+      loadAccess();
+    }catch(e){notify('❌ '+accessError(e.message));}
+  }
+  async function revokeAccess(kind,id,email){
+    const reason=(prompt(email+' uchun ruxsatni bekor qilish sababi:','')||'').trim();
+    if(reason.length<3){notify('Bekor qilish toʻxtatildi: sabab kerak');return;}
+    try{await rpc('kompas_admin_revoke_access',{p_kind:kind,p_id:id,p_reason:reason});notify('✅ Ruxsat bekor qilindi');loadAccess();}
+    catch(e){notify('❌ '+accessError(e.message));}
+  }
+  function accessError(m){
+    const map={PROTECTED_ACCOUNT:'Admin yoki oʻzingizning hisobingizga ruxsat berib boʻlmaydi',PROTECTED_STAFF_ACCOUNT:'Boshqa xodim hisobini faqat Super Admin oʻzgartiradi',INVALID_EMAIL:'Email notoʻgʻri',REASON_REQUIRED:'Sabab kerak',INVALID_EXPIRY:'Tugash sanasi kelajakda va 5 yildan oshmasligi kerak',ACCESS_DENIED:'Ruxsat yetarli emas',NOT_FOUND:'Yozuv topilmadi (allaqachon bekor qilingan boʻlishi mumkin)'};
+    const k=Object.keys(map).find(k=>String(m).includes(k));return k?map[k]:m;
+  }
   async function initialize(){
-    modalTemplate();monitorTemplate();
+    modalTemplate();monitorTemplate();accessTemplate();
     const old=window.renderRegs;
     if(typeof old==='function')window.renderRegs=function(){const result=old.apply(this,arguments);decorateRegs();return result;};
     try {
@@ -181,6 +274,7 @@
           if(match&&!allowed.includes(match[1]))btn.hidden=true;
         });
         $('klxNavSystem').hidden=true;
+        $('klxNavAccess').hidden=staff!=='support';
         nav(allowed[0]||'overview',null);
       }
       if($('sbRole'))$('sbRole').textContent=isSuper?'Super Admin':(await supabase.from('kompas_staff_roles').select('role').eq('user_id',s.data.session.user.id).maybeSingle()).data?.role||'Admin';
