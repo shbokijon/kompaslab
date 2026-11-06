@@ -4,35 +4,35 @@
   "rewrites": [
     {
       "source": "/dashboard",
-      "destination": "/dashboard.html"
+      "destination": "/dashboard"
     },
     {
       "source": "/lesson",
-      "destination": "/lesson.html"
+      "destination": "/lesson"
     },
     {
       "source": "/admin",
-      "destination": "/admin.html"
+      "destination": "/admin"
     },
     {
       "source": "/login",
-      "destination": "/login.html"
+      "destination": "/login"
     },
     {
       "source": "/register",
-      "destination": "/register.html"
+      "destination": "/register"
     },
     {
       "source": "/payment",
-      "destination": "/payment.html"
+      "destination": "/payment"
     },
     {
       "source": "/reset",
-      "destination": "/reset-password.html"
+      "destination": "/reset-password"
     },
     {
       "source": "/donat",
-      "destination": "/qollab-quvvatlash.html"
+      "destination": "/qollab-quvvatlash"
     }
   ],
   "headers": [
