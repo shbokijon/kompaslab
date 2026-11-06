@@ -353,7 +353,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         <div class="kpi"><div class="kpi-ico">👥</div><div class="kpi-val" id="kS">—</div><div class="kpi-lbl">Jami talabalar</div><div class="kpi-sub ku">↑ Bu hafta</div></div>
         <div class="kpi"><div class="kpi-ico">✅</div><div class="kpi-val" id="kA">—</div><div class="kpi-lbl">Faol talabalar</div><div class="kpi-sub kn">Bugun online</div></div>
         <div class="kpi"><div class="kpi-ico">💰</div><div class="kpi-val" id="kR">—</div><div class="kpi-lbl">Bu oy daromad</div><div class="kpi-sub ku">↑ Oʻtgan oydan</div></div>
-        <div class="kpi"><div class="kpi-ico">📊</div><div class="kpi-val" id="kP">—</div><div class="kpi-lbl">Oʻrtacha progress</div><div class="kpi-sub kn">Barcha talabalar</div></div>
+        <div class="kpi"><div class="kpi-ico">📊</div><div class="kpi-val" id="kP">—</div><div class="kpi-lbl">Oʻrtacha jarayon (M0)</div><div class="kpi-sub kn">Barcha talabalar</div></div>
         <div class="kpi"><div class="kpi-ico">⚠️</div><div class="kpi-val" id="kPend">—</div><div class="kpi-lbl">Tasdiq kutmoqda</div><div class="kpi-sub kd">Toʻlovlar</div></div>
       </div>
       <div class="twin">
@@ -380,7 +380,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           </div>
           <div class="tbl-scroll">
             <table class="tbl"><thead><tr>
-              <th>Talaba</th><th>Kurs</th><th>Progress</th><th>Holat</th><th>Amal</th>
+              <th>Talaba</th><th>Kurs</th><th>Jarayon</th><th>Holat</th><th>Amal</th>
             </tr></thead><tbody id="tb1"></tbody></table>
           </div>
         </div>
@@ -428,7 +428,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th><input type="checkbox" id="selAll2" title="Hammasini tanlash" onchange="delToggleAll('tb2', this.checked)"></th><th>#</th><th>Talaba</th><th>Kurs</th><th>Progress</th><th>Sana</th><th>Toʻlov</th><th>Holat</th><th>Amal</th>
+            <th><input type="checkbox" id="selAll2" title="Hammasini tanlash" onchange="delToggleAll('tb2', this.checked)"></th><th>#</th><th>Talaba</th><th>Kurs</th><th>Jarayon</th><th>Sana</th><th>Toʻlov</th><th>Holat</th><th>Amal</th>
           </tr></thead><tbody id="tb2"></tbody></table>
         </div>
       </div>
@@ -1020,6 +1020,20 @@ async function loadStudents() {
 
     if (error) throw error
 
+    // Jarayon: kompas_user_state dagi M0 XP (250 XP = 100%); admin RLS orqali hammasini oʻqiydi
+    const M0N = { master:'Master', bachelor:'Bachelor', phd:'PhD', gks:'GKS', usa:'USA', daad:'DAAD', tt:'Tadbirkor Talaba', musofir:'Musofir' }
+    const m0 = {}
+    try {
+      const st = await supabase.from('kompas_user_state').select('user_id,key,value').like('key', 'kompas_%_m0_v1').limit(5000)
+      ;(st.data || []).forEach(r => {
+        const m = /^kompas_([a-z]+)_m0_v1$/.exec(r.key); if (!m) return
+        const pct = Math.min(100, Math.round((+((r.value || {}).xp) || 0) / 250 * 100))
+        ;(m0[r.user_id] = m0[r.user_id] || []).push({ lab: M0N[m[1]] || m[1], pct })
+      })
+    } catch (e) { console.warn('M0 jarayon:', e.message) }
+    const top = id => (m0[id] || []).slice().sort((a, b) => b.pct - a.pct)
+    const tip = id => top(id).map(x => x.lab + ' M0: ' + x.pct + '%').join('\n')
+
     // Flatten: har enrollment uchun alohida qator
     _allStudents = (data || []).flatMap(p => {
       const enrollments = p.enrollments || []
@@ -1027,7 +1041,7 @@ async function loadStudents() {
         return [{
           id: p.id, name: p.full_name || `${p.first_name || ''} ${p.last_name || ''}`.trim() || p.email,
           email: p.email, course: null, courseSlug: null,
-          payStatus: 'none', enrollDate: p.created_at?.slice(0,10), progress: 0,
+          payStatus: 'none', enrollDate: p.created_at?.slice(0,10), progress: (top(p.id)[0] || {}).pct || 0, m0lab: (top(p.id)[0] || {}).lab || null, tip: tip(p.id),
         }]
       }
       return enrollments.map(en => ({
@@ -1039,7 +1053,7 @@ async function loadStudents() {
         courseEmoji:en.course?.emoji || '📚',
         payStatus:  en.payment_status || 'pending',
         enrollDate: en.enrolled_at?.slice(0,10) || p.created_at?.slice(0,10),
-        progress:   0, // Keyinroq progress hisoblash
+        progress:   (top(p.id)[0] || {}).pct || 0, m0lab: (top(p.id)[0] || {}).lab || null, tip: tip(p.id),
         enrollId:   en.id,
       }))
     })
@@ -1072,9 +1086,9 @@ function renderStudentsTable(tbId, students, full = false) {
           </div>
         </div>
       </td>
-      <td>${s.course ? `<span class="tag ta">${s.courseEmoji || ''} ${escHtml(s.course)}</span>` : '<span class="tag tg">—</span>'}</td>
+      <td>${s.course ? `<span class="tag ta">${s.courseEmoji || ''} ${escHtml(s.course)}</span>` : (s.m0lab ? `<span class="tag tg" title="Bepul M0 moduli">🧭 ${escHtml(s.m0lab)} M0</span>` : '<span class="tag tg">—</span>')}</td>
       <td>
-        <div class="mp">
+        <div class="mp" title="${escHtml(s.tip || 'M0 boshlanmagan')}">
           <div class="mpb"><div class="mpf" style="width:${s.progress}%"></div></div>
           <span class="mpv">${s.progress}%</span>
         </div>
@@ -1647,8 +1661,10 @@ function renderKPIs() {
   document.getElementById('pStudents').textContent = total
   document.getElementById('pPending').textContent  = pending || '—'
 
-  // O'rtacha progress (hozircha statik — progress aggregate keyinroq)
-  document.getElementById('kP').textContent = '—'
+  // Oʻrtacha jarayon: M0 boshlagan talabalar boʻyicha (id boʻyicha takrorsiz)
+  const seenP = {}; _allStudents.forEach(x => { seenP[x.id] = Math.max(seenP[x.id] || 0, x.progress || 0) })
+  const pv = Object.values(seenP).filter(v => v > 0)
+  document.getElementById('kP').textContent = pv.length ? Math.round(pv.reduce((a, b) => a + b, 0) / pv.length) + '%' : '—'
 }
 
 // ════════════════════════════════════════════════════════

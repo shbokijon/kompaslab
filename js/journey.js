@@ -110,6 +110,27 @@
     '.jy-wk i{width:100%;max-width:34px;height:34px;border-radius:9px;background:var(--accent-light,#e8f0ec);transform:scale(.6);opacity:.5;transition:transform .5s,opacity .5s,background .5s;}' +
     '.jy-wk i.on{background:var(--accent,#2d4a3e);}.jy-wk i.show{transform:none;opacity:1;}' +
     '.jy-wk span.cur i{outline:2px solid var(--accent2,#c4622d);outline-offset:2px;}' +
+    '.jy-cal{margin-top:14px;}' +
+    '.jy-ch{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;}' +
+    '.jy-ch b{font-size:15px;color:var(--accent,#2d4a3e);}' +
+    '.jy-ca{display:flex;gap:6px;flex-wrap:wrap;}' +
+    '.jy-mini{border:1.5px solid var(--border,#e0e8e4);background:#fff;color:var(--accent,#2d4a3e);font:inherit;font-weight:700;font-size:13.5px;padding:6px 11px;border-radius:9px;cursor:pointer;min-height:34px;}' +
+    '.jy-mini:hover{background:var(--accent-light,#e8f0ec);}' +
+    '.jy-g{display:grid;grid-template-columns:84px repeat(7,minmax(0,1fr));gap:5px;align-items:center;}' +
+    '.jy-gh{font-size:12px;font-weight:800;color:var(--muted2,#9aada6);text-align:center;}' +
+    '.jy-wl2{font-size:12px;color:var(--muted,#6b7f76);font-weight:700;white-space:nowrap;}' +
+    '.jy-d{position:relative;height:38px;border-radius:9px;border:1.5px solid transparent;background:#f1f4f2;color:#8a9c94;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;padding:0;transition:transform .12s,background .2s;}' +
+    '.jy-d:hover{transform:scale(1.07);}' +
+    '.jy-d.p{background:#fbe9a8;border-color:#e6c94f;color:#6e5600;}' +
+    '.jy-d.ok{background:#bfe5c9;border-color:#5fb176;color:#175c2d;}' +
+    '.jy-d.miss{background:#f6c3bd;border-color:#dc6a60;color:#8a241b;}' +
+    '.jy-d.past:not(.p):not(.ok):not(.miss){opacity:.55;}' +
+    '.jy-d.td{outline:2px solid var(--accent,#2d4a3e);outline-offset:1px;}' +
+    '.jy-d.dl::after{content:"\\1F6A9";position:absolute;right:1px;top:-7px;font-size:13px;}' +
+    '.jy-lg{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:13px;color:var(--muted,#6b7f76);}' +
+    '.jy-lg i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:5px;vertical-align:-1px;border:1.5px solid transparent;}' +
+    '.jy-sum{font-size:14.5px;margin-top:10px;}.jy-sum b{color:var(--accent,#2d4a3e);}' +
+    '@media(max-width:600px){.jy-g{grid-template-columns:66px repeat(7,minmax(0,1fr));gap:4px;}.jy-d{height:34px;font-size:12px;}.jy-wl2{font-size:10.5px;}}' +
     '@media(max-width:600px){.jy-next{grid-template-columns:64px minmax(0,1fr);}.jy-cmp{width:64px;height:64px;}}' +
     '@media(prefers-reduced-motion:reduce){.jy-ndl,.jy-need,.jy-wk i{transition:none!important;}.jy-doc.drop{animation:none;}}';
 
@@ -128,7 +149,7 @@
       '<div class="jy-row"><label>Lab<select data-j="lab"><option value="">— tanlang —</option>' + LABS.map(function (l) { return '<option value="' + l.id + '"' + (S.lab === l.id ? " selected" : "") + ">" + l.n + " (" + l.lessons + " dars)</option>"; }).join("") + "</select></label>" +
       '<label>Ariza muddati<input type="date" data-j="date" value="' + esc(S.date || "") + '"></label>' +
       '<label>Surʼat<select data-j="pace">' + PACE.map(function (p) { return '<option value="' + p[0] + '"' + (+S.pace === p[0] || (!S.pace && p[0] === 4) ? " selected" : "") + ">" + p[1] + "</option>"; }).join("") + "</select></label></div>" +
-      '<div class="jy-tl"><div class="jy-track"><div class="jy-need"></div></div><div class="jy-flag jy-now">Bugun<i></i></div><div class="jy-flag jy-dl"><i></i></div></div><div class="jy-v"></div></div>' +
+      '<div class="jy-tl"><div class="jy-track"><div class="jy-need"></div></div><div class="jy-flag jy-now">Bugun<i></i></div><div class="jy-flag jy-dl"><i></i></div></div><div class="jy-v"></div><div class="jy-cal"></div></div>' +
       // 3. Hujjatlar javoni
       '<div class="jy-c"><div class="jy-h"><b>Hujjatlar javoni</b><span class="jy-cnt"></span></div><div class="jy-shelf"></div></div>' +
       // 4. Haftalik ritm
@@ -140,9 +161,9 @@
     else { ndl.style.transform = "rotate(-140deg)"; requestAnimationFrame(function () { requestAnimationFrame(function () { ndl.style.transform = "rotate(62deg)"; }); }); }
 
     root.querySelectorAll("[data-j]").forEach(function (el) {
-      el.addEventListener("change", function () { S[el.getAttribute("data-j")] = el.value; save(); timeline(root, true); });
+      el.addEventListener("change", function () { S[el.getAttribute("data-j")] = el.value; save(); timeline(root, true); calendar(root); });
     });
-    timeline(root, false); shelf(root); rhythm(root);
+    timeline(root, false); calendar(root); shelf(root); rhythm(root);
   }
 
   function timeline(root, again) {
@@ -160,6 +181,63 @@
     v.innerHTML = over
       ? "<b>" + lab.n + " uchun ~" + weeksNeed + " hafta kerak, sizda " + weeksLeft + " hafta bor.</b> Surʼatni oshiring yoki keyingi siklni koʻzlang."
       : "<b>" + lab.n + ": ~" + weeksNeed + " hafta (taxminan " + fmt(end) + " gacha).</b> Muddatgacha " + weeksLeft + " hafta, zaxira " + (weeksLeft - weeksNeed) + " hafta.";
+  }
+
+
+  // ── Interaktiv kalendar: hafta × kun katakchalari ──
+  // Katak holati (S.cal[YYYY-MM-DD]): 1 = reja (sariq), 2 = bajarildi (yashil).
+  // Oʻtib ketgan rejali kun bajarilmagan boʻlsa qizil. Bosish: boʻsh → reja → bajarildi → boʻsh.
+  // Faqat foydalanuvchi oʻzi belgilagan kunlar; avtomatik hisob-kitob yoʻq.
+  var DN = ["Du", "Se", "Cho", "Pa", "Ju", "Sha", "Ya"];
+  function ymd(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function monday(d) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; }
+  function calendar(root) {
+    var box = root.querySelector(".jy-cal"); if (!box) return;
+    S.cal = S.cal || {};
+    var t = today(), tk = ymd(t), dl = S.date ? new Date(S.date + "T00:00:00") : null, dk = dl ? ymd(dl) : "";
+    var start = new Date(monday(t).getTime() - 7 * DAY);
+    var weeks = 8;
+    if (dl && dl >= t) weeks = Math.min(60, Math.max(4, Math.ceil((monday(dl).getTime() - start.getTime()) / DAY / 7) + 1));
+    var pace = +(S.pace || 4);
+    var rows = "", nOk = 0, nPlan = 0, nMiss = 0;
+    for (var w = 0; w < weeks; w++) {
+      var ws = new Date(start.getTime() + w * 7 * DAY), we = new Date(ws.getTime() + 6 * DAY);
+      rows += '<div class="jy-wl2">' + ws.getDate() + (ws.getMonth() !== we.getMonth() ? "-" + MON[ws.getMonth()] : "") + "–" + we.getDate() + " " + MON[we.getMonth()] + "</div>";
+      for (var i = 0; i < 7; i++) {
+        var d = new Date(ws.getTime() + i * DAY), k = ymd(d), v = S.cal[k] || 0, past = k < tk, cls = "jy-d";
+        if (v === 2) { cls += " ok"; nOk++; } else if (v === 1 && past) { cls += " miss"; nMiss++; } else if (v === 1) { cls += " p"; nPlan++; }
+        if (past) cls += " past"; if (k === tk) cls += " td"; if (k === dk) cls += " dl";
+        var st = v === 2 ? "bajarildi" : v === 1 ? (past ? "oʻtkazib yuborilgan" : "rejalashtirilgan") : "boʻsh";
+        rows += '<button type="button" class="' + cls + '" data-k="' + k + '" title="' + fmt(d) + ": " + st + (k === dk ? " (ariza muddati)" : "") + '" aria-label="' + fmt(d) + ", " + st + '">' + d.getDate() + "</button>";
+      }
+    }
+    box.innerHTML =
+      '<div class="jy-ch"><b>Haftalik reja</b><div class="jy-ca"><button type="button" class="jy-mini" data-a="auto">Surʼat boʻyicha toʻldirish</button><button type="button" class="jy-mini" data-a="clear">Tozalash</button></div></div>' +
+      '<div class="jy-g"><span></span>' + DN.map(function (n) { return '<span class="jy-gh">' + n + "</span>"; }).join("") + rows + "</div>" +
+      '<div class="jy-lg"><span><i style="background:#fbe9a8;border-color:#e6c94f"></i>Reja</span><span><i style="background:#bfe5c9;border-color:#5fb176"></i>Bajarildi</span><span><i style="background:#f6c3bd;border-color:#dc6a60"></i>Oʻtkazib yuborilgan</span><span><i style="background:#f1f4f2"></i>Boʻsh</span>' + (dl ? "<span>🚩 Ariza muddati</span>" : "") + "</div>" +
+      '<div class="jy-sum">Bajarildi: <b>' + nOk + "</b> · Oldinda: <b>" + nPlan + "</b> · Oʻtkazib yuborilgan: <b>" + nMiss + "</b>. Katakni bosing: reja → bajarildi → boʻsh.</div>";
+    box.querySelectorAll(".jy-d").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var k = b.getAttribute("data-k"), v = ((S.cal[k] || 0) + 1) % 3;
+        if (v) S.cal[k] = v; else delete S.cal[k];
+        save(); calendar(root);
+        var nb = root.querySelector('.jy-d[data-k="' + k + '"]'); if (nb) nb.focus();
+      });
+    });
+    box.querySelector('[data-a="clear"]').addEventListener("click", function () {
+      if (Object.keys(S.cal).length && !confirm("Hamma belgilar oʻchirilsinmi?")) return;
+      S.cal = {}; save(); calendar(root);
+    });
+    box.querySelector('[data-a="auto"]').addEventListener("click", function () {
+      // Haftasiga `pace` ta kun: dushanbadan boshlab teng taqsimlangan (bugundan keyingi kunlar)
+      var PAT = { 1: [3], 2: [1, 4], 3: [0, 2, 4], 4: [0, 1, 3, 4], 5: [0, 1, 2, 3, 4], 6: [0, 1, 2, 3, 4, 5] };
+      var pat = PAT[Math.min(6, Math.max(1, pace))] || PAT[4], last = dl && dl >= t ? dl : new Date(start.getTime() + weeks * 7 * DAY - DAY);
+      for (var w2 = 0; w2 < weeks; w2++) pat.forEach(function (di) {
+        var d2 = new Date(start.getTime() + (w2 * 7 + di) * DAY), k2 = ymd(d2);
+        if (k2 >= tk && d2 <= last && !S.cal[k2]) S.cal[k2] = 1;
+      });
+      save(); calendar(root);
+    });
   }
 
   function shelf(root) {

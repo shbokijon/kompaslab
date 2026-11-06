@@ -225,12 +225,38 @@
       render(u, next);
     }).catch(function () {});
   }
+  // Eski sessiyani serverda tekshirish (2026-11-06): admin hisobni oʻchirgach, brauzerdagi JWT
+  // ~1 soat amal qiladi va nav'da oʻchirilgan hisob koʻrinib qolardi. Auth serveri tokenni rad etsa,
+  // mahalliy sessiya, kesh va M0 cookie tozalanadi. Tarmoq xatosida hech narsa oʻzgarmaydi.
+  var VK = "kompas_vfy_v1", VTTL = 120000;
+  function dead() {
+    try { localStorage.removeItem(TOK); localStorage.removeItem(ME); sessionStorage.removeItem("kompas_fixes_v1"); } catch (e) {}
+    try { fetch("/api/m0-session", { method: "DELETE", credentials: "same-origin" }).catch(function () {}); } catch (e) {}
+    if (chip && chip.parentNode) { var a = document.createElement("a"); a.href = "login.html"; a.className = "btn"; a.textContent = "Kirish"; chip.parentNode.replaceChild(a, chip); }
+  }
+  function verify(u) {
+    var s = rd(TOK), t = s && s.access_token;
+    if (!t || !window.fetch) return;
+    try { var v = JSON.parse(sessionStorage.getItem(VK) || "null"); if (v && v.u === u.id && Date.now() - v.at < VTTL) return; } catch (e) {}
+    fetch("https://usxpkmbjrdllnitlzdpq.supabase.co/auth/v1/user", { headers: { apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8", Authorization: "Bearer " + t }, cache: "no-store" })
+      .then(function (r) {
+        if (r.ok) { try { sessionStorage.setItem(VK, JSON.stringify({ u: u.id, at: Date.now() })); } catch (e) {} return; }
+        // Faqat hisob bazada yoʻqligi aniq boʻlsa chiqariladi; muddati oʻtgan token (yangilanadi) tegilmaydi
+        if (r.status === 401 || r.status === 403 || r.status === 404) {
+          r.json().then(function (j) {
+            var m = ((j && (j.error_code || j.code)) || "") + " " + ((j && (j.msg || j.message)) || "");
+            if (/user_not_found|does not exist/i.test(m)) dead();
+          }).catch(function () {});
+        }
+      }).catch(function () {});
+  }
   function run() {
     var u = user();
     if (!u) { try { localStorage.removeItem(ME); } catch (e) {} return; }
     mount(render(u, rd(ME)));
     footer();
     refresh(u);
+    verify(u);
   }
   window.KUI_ME = { reset: function () { try { localStorage.removeItem(ME); } catch (e) {} } };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
