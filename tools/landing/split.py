@@ -177,6 +177,9 @@ def strip_head(sec):
     return m.group(1), m.group(2) or "", sec[:m.start()] + sec[m.end():]
 
 
+LOCK_WAIT = "Onlayn toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz."
+LOCK_PAY = {k: "Obuna Click orqali ochiladi: narx sahifasida tarifni tanlang, toʻlov tasdiqlangan zahoti modul ochiladi." for k in ("bachelor-lab", "master-lab", "usa-lab", "gks-lab")}
+
 def route(stem, mods, m0_page, here=None):
     lis, last = [], None
     for m in mods:
@@ -374,14 +377,14 @@ def split(root, f, src):
             lock = f'''<div class="kl-lock"><img src="img/3d/seedling.webp" alt="" width="160" height="160"><div><b>{esc(m["id"])} bepul boʻladi.</b><p>Interaktiv versiyasi tayyorlanmoqda. Ochilganda kutish roʻyxatidagilarga xabar beramiz.</p><div class="row"><button type="button" class="btn btn-p" data-wl>Ochilganda xabar bering</button><a class="btn btn-g" href="{stem}-dastur.html">Butun dastur</a></div></div></div>'''
         else:
             first = f'<a class="btn btn-g" href="{m0_page}">Bepul M0 dan boshlash</a>' if m0_page else f'<a class="btn btn-g" href="{stem}-dastur.html">Butun dastur</a>'
-            lock = f'''<div class="kl-lock"><img src="img/3d/lock.webp" alt="" width="160" height="160"><div><b>Darslar obuna bilan ochiladi.</b><p>Har dars alohida sahifada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Onlayn toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz.</p><div class="row"><a class="btn btn-p" href="{stem}-narxlar.html">Narxlar va obuna</a>{first}</div></div></div>'''
+            lock = f'''<div class="kl-lock"><img src="img/3d/lock.webp" alt="" width="160" height="160"><div><b>Darslar obuna bilan ochiladi.</b><p>Har dars alohida sahifada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. {LOCK_PAY.get(stem, LOCK_WAIT)}</p><div class="row"><a class="btn btn-p" href="{stem}-narxlar.html">Narxlar va obuna</a>{first}</div></div></div>'''
             pm = re.fullmatch(r"m(\d+)(-[umd])?", m["slug"])
             if stem in PAID_READER and pm:
                 # data-mod: modul raqami (oylik obunada ochilish tartibi: M1–M2 I faza, keyin M3, M4, M5);
                 # GKS treklarida oʻquvchi kaliti slug (m3-u), Masterda raqam
                 n = pm.group(1)
                 rk = m["slug"] if pm.group(2) else n
-                lock = (f'''<div class="kl-lock" data-paid="{stem}" data-mod="{n}" data-reader="{PAID_READER[stem]}?m={rk}"><img src="img/3d/lock.webp" alt="" width="160" height="160"><div><b data-paid-t>Darslar obuna bilan ochiladi.</b><p data-paid-d>Modul bitta interaktiv sahifada: har darsda Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq, oxirida vositalar va tayyor hujjat. Onlayn toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz.</p><div class="row" data-paid-row><a class="btn btn-p" href="{stem}-narxlar.html">Narxlar va obuna</a>{first}</div></div></div>'''
+                lock = (f'''<div class="kl-lock" data-paid="{stem}" data-mod="{n}" data-reader="{PAID_READER[stem]}?m={rk}"><img src="img/3d/lock.webp" alt="" width="160" height="160"><div><b data-paid-t>Darslar obuna bilan ochiladi.</b><p data-paid-d>Modul bitta interaktiv sahifada: har darsda Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq, oxirida vositalar va tayyor hujjat. {LOCK_PAY.get(stem, LOCK_WAIT)}</p><div class="row" data-paid-row><a class="btn btn-p" href="{stem}-narxlar.html">Narxlar va obuna</a>{first}</div></div></div>'''
                         + '<script src="js/paid-module.js" defer></script>')
         art = f'<div class="kl-mod-art"><img src="img/3d/memo.webp" alt="" width="28" height="28" style="width:28px;height:28px;flex:none"><span><b>Modul natijasi:</b> {esc(m["art"])}</span></div>' if m["art"] else ""
         lead = f'{len(m["lessons"])} dars' + (f'. {esc(m["group"])}' if m["group"] else "") + "."

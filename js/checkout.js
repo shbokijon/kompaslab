@@ -12,8 +12,8 @@
   "use strict";
 
   var CFG = window.KOMPAS_SALE = window.KOMPAS_SALE || {
-    MODE: "admin",
-    OFERTA_URL: "",
+    MODE: "on",
+    OFERTA_URL: "oferta.html",
     LABS: ["bachelor-lab", "master-lab", "usa-lab", "gks-lab"],
     SERVICE_ID: "114929",
     MERCHANT_ID: "66329"

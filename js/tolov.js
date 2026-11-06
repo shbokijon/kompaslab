@@ -130,7 +130,7 @@
     $("tvBack").href = LABS[slug].page;
     Array.prototype.forEach.call(document.querySelectorAll("[data-tv-back]"), function (a) { a.href = LABS[slug].page; });
     if (S.OFERTA_URL) {
-      $("tvOferta").innerHTML = "<a href=\"" + S.OFERTA_URL + "\" target=\"_blank\" rel=\"noopener\">ommaviy oferta</a>";
+      $("tvOferta").innerHTML = "<a href=\"" + S.OFERTA_URL + "\" target=\"_blank\" rel=\"noopener\">Ommaviy oferta</a>";
     }
     if (S.isTest()) $("tvTest").hidden = false;
 
