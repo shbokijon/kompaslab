@@ -1,5 +1,5 @@
 -- 2026-11-06 · Donatlar (ixtiyoriy qoʻllab-quvvatlash) Click SHOP-API orqali
--- Click merchant_trans_id: "D<order_no>" (obuna toʻlovlari raqam bilan, donatlar D bilan).
+-- Click merchant_trans_id: T<n> obuna, D<n> donat, H<n> hadya, S<n> sinov (eski: faqat raqam = payments.order_no).
 -- Kirish shart emas. Donat hech qanday kirish huquqi bermaydi.
 
 create table if not exists public.donations(
@@ -87,19 +87,206 @@ create or replace function public.fn_donation_status(p_ref text)
 returns table(status text, amount bigint)
 language sql stable security definer set search_path to 'public','pg_temp' as $function$
   select d.status, d.amount from public.donations d
-  where p_ref ~ '^D[0-9]{1,18}$' and d.order_no = substr(p_ref,2)::bigint;
+  where d.order_no = case when p_ref ~ '^D[0-9]{1,18}$' then substr(p_ref,2)::bigint end;
 $function$;
 revoke all on function public.fn_donation_status(text) from public;
 grant execute on function public.fn_donation_status(text) to anon, authenticated;
 
+
+-- ===================== Prefikslar, raqamlar, chek raqami (2026-11-06) =====================
+-- Click ref: T (obuna), D (donat), H (hadya, keyin), S (sinov). Har prefiks oʻz raqami bilan 1 dan.
+-- receipt_no: faqat Click "paid" tasdiqlaganda, prefiks ichida boʻshliqsiz.
+create table if not exists public.ref_counters(
+  kind char(1) not null check (kind in ('T','D','H','S')),
+  what text not null check (what in ('order','receipt')),
+  last bigint not null default 0,
+  primary key (kind, what)
+);
+alter table public.ref_counters enable row level security;
+revoke all on public.ref_counters from anon, authenticated;
+insert into public.ref_counters(kind, what) select k, w from unnest(array['T','D','H','S']) k, unnest(array['order','receipt']) w
+on conflict do nothing;
+
+create or replace function public.fn_next_ref(p_kind char, p_what text)
+returns bigint language sql security definer set search_path to 'public','pg_temp' as $function$
+  update public.ref_counters set last = last + 1 where kind = p_kind and what = p_what returning last;
+$function$;
+revoke all on function public.fn_next_ref(char, text) from public, anon, authenticated;
+
+alter table public.payments add column if not exists kind char(1) check (kind in ('T','H','S'));
+alter table public.payments add column if not exists ref_no bigint;
+alter table public.payments add column if not exists receipt_no bigint;
+create unique index if not exists uq_payments_kind_ref on public.payments(kind, ref_no) where ref_no is not null;
+create unique index if not exists uq_payments_kind_receipt on public.payments(kind, receipt_no) where receipt_no is not null;
+alter table public.donations add column if not exists receipt_no bigint unique;
+
+-- 16-buyurtma (2026-11-06, 1 000 soʻm, test-lab) → S1, chek S-1
+update public.payments set kind='S', ref_no=1, receipt_no=1 where order_no=16 and kind is null;
+update public.ref_counters set last = greatest(last,1) where kind='S';
+
+create or replace function public.fn_assign_receipt()
+returns trigger language plpgsql security definer set search_path to 'public','pg_temp' as $function$
+begin
+  if NEW.status='paid' and NEW.receipt_no is null and (TG_OP='INSERT' or OLD.status is distinct from 'paid') then
+    NEW.receipt_no := public.fn_next_ref(case when TG_TABLE_NAME='donations' then 'D' else coalesce(NEW.kind,'T') end, 'receipt');
+  end if;
+  return NEW;
+end; $function$;
+drop trigger if exists trg_payments_receipt on public.payments;
+create trigger trg_payments_receipt before insert or update of status on public.payments for each row execute function public.fn_assign_receipt();
+drop trigger if exists trg_donations_receipt on public.donations;
+create trigger trg_donations_receipt before insert or update of status on public.donations for each row execute function public.fn_assign_receipt();
+revoke all on function public.fn_assign_receipt() from public, anon, authenticated;
+
+-- Buyurtma: prefiks bilan (T/S)
+drop function if exists public.fn_create_pending_payment(text, public.payment_method);
+drop function if exists public.fn_create_pending_payment(text, text, text);
+create or replace function public.fn_create_pending_payment(p_course_slug text, p_plan text, p_track text default null)
+returns table(order_ref text, order_no bigint, amount bigint, course_title text, plan text, phase int, track text, phase_modules int[])
+language plpgsql security definer set search_path to 'public','pg_temp' as $function$
+#variable_conflict use_column
+declare
+ v_user uuid := auth.uid(); v_c public.courses%rowtype; v_e public.enrollments%rowtype;
+ v_has boolean; v_active boolean; v_amount bigint; v_phase int; v_track text; v_max int; v_no bigint; v_mods int[];
+ v_kind char(1); v_ref bigint;
+begin
+ if v_user is null then raise exception 'AUTH_REQUIRED' using errcode='28000'; end if;
+ if not public.kompas_account_active() then raise exception 'ACCOUNT_SUSPENDED'; end if;
+ if p_plan is null or p_plan not in ('monthly','6m','yearly') then raise exception 'BAD_PLAN'; end if;
+
+ select * into v_c from public.courses where slug=p_course_slug;
+ if not found then raise exception 'COURSE_NOT_FOUND'; end if;
+ if v_c.slug='test-lab' then
+   if not public.fn_is_admin() then raise exception 'COURSE_NOT_FOR_SALE'; end if;
+ elsif not exists (select 1 from public.paid_pages where course_slug=v_c.slug) then
+   raise exception 'COURSE_NOT_FOR_SALE';
+ end if;
+
+ v_amount := case p_plan when 'monthly' then v_c.price_monthly when '6m' then v_c.price_6m
+                         else coalesce(v_c.price_yearly, v_c.price) end;
+ if v_amount is null or v_amount < 1000 then raise exception 'PLAN_NOT_AVAILABLE'; end if;
+
+ select * into v_e from public.enrollments where user_id=v_user and course_id=v_c.id;
+ v_has := found;
+ v_active := v_has and v_e.payment_status in ('paid','partial') and v_e.frozen_at is null
+             and (v_e.expires_at is null or v_e.expires_at>now());
+ if v_active and v_e.installment_id is not null and v_e.payment_status<>'paid' then
+   raise exception 'INSTALLMENT_ACTIVE';
+ end if;
+ if v_active and v_e.expires_at is null then raise exception 'ALREADY_ENROLLED'; end if;
+
+ if p_plan='monthly' then
+   if v_active and v_e.plan::text in ('6m','yearly') then raise exception 'HAS_FULL_PLAN'; end if;
+   select max(cp.phase) into v_max from public.course_phases cp where cp.course_slug=v_c.slug;
+   if v_max is null then raise exception 'MONTHLY_NOT_AVAILABLE'; end if;
+   v_phase := case when v_has and v_e.plan::text='monthly' then coalesce(v_e.phase,0)+1 else 1 end;
+   if v_phase > v_max then raise exception 'ALL_PHASES_PAID'; end if;
+   v_track := case when v_has then v_e.track end;
+   if exists (select 1 from public.course_phases cp where cp.course_slug=v_c.slug and cp.phase=v_phase and cp.track<>'') then
+     v_track := coalesce(v_track, lower(nullif(trim(p_track),'')));
+     if v_track is null or not exists (select 1 from public.course_phases cp
+          where cp.course_slug=v_c.slug and cp.phase=v_phase and cp.track=v_track) then
+       raise exception 'TRACK_REQUIRED';
+     end if;
+   end if;
+   select coalesce(array_agg(x order by x), '{}') into v_mods
+     from public.course_phases cp, unnest(cp.module_indexes) x
+    where cp.course_slug=v_c.slug and cp.phase=v_phase and (cp.track='' or cp.track=coalesce(v_track,''));
+ end if;
+
+ -- Click hali tekshirmagan eski buyurtmalar bekor (ikki marta toʻlovning oldini olish)
+ update public.payments p set status='rejected', note=concat_ws('; ', p.note, 'yangi buyurtma bilan almashtirildi')
+  where p.user_id=v_user and p.course_id=v_c.id and p.status='pending'
+    and p.installment_item_id is null and p.provider_trans_id is null;
+
+ v_kind := case when v_c.slug='test-lab' then 'S' else 'T' end;
+ v_ref := public.fn_next_ref(v_kind, 'order');
+ insert into public.payments(user_id, course_id, plan, amount, method, status, phase, track, kind, ref_no)
+ values (v_user, v_c.id, p_plan::public.enrollment_plan, v_amount, 'click', 'pending', v_phase, v_track, v_kind, v_ref)
+ returning payments.order_no into v_no;
+
+ return query select v_kind||v_ref, v_no, v_amount, v_c.title, p_plan, v_phase, v_track, v_mods;
+end; $function$;
+revoke all on function public.fn_create_pending_payment(text, text, text) from public, anon;
+grant execute on function public.fn_create_pending_payment(text, text, text) to authenticated;
+
+-- Click dispetcheri: merchant_trans_id → toʻgʻri jadval va funksiya
+create or replace function public.fn_click_prepare(p_ref text, p_trans_id text, p_amount numeric, p_payload jsonb default null)
+returns table(code int, note text, prepare_id bigint)
+language plpgsql security definer set search_path to 'public','pg_temp' as $function$
+declare k text; n bigint; v_no bigint;
+begin
+ if p_ref !~ '^[TDHS]?[0-9]{1,18}$' then return query select -5, 'User does not exist'::text, null::bigint; return; end if;
+ k := case when p_ref ~ '^[0-9]' then '' else left(p_ref,1) end;
+ n := ltrim(p_ref,'TDHS')::bigint;
+ if k='D' then return query select * from public.fn_donation_prepare(n, p_trans_id, p_amount, p_payload); return; end if;
+ if k='' then v_no := n;
+ else select p.order_no into v_no from public.payments p where p.kind=k and p.ref_no=n; end if;
+ if v_no is null then return query select -5, 'User does not exist'::text, null::bigint; return; end if;
+ return query select * from public.fn_payment_prepare(v_no, 'click', p_trans_id, p_amount, p_payload);
+end; $function$;
+
+create or replace function public.fn_click_complete(p_ref text, p_prepare_id bigint, p_trans_id text, p_amount numeric,
+  p_provider_error int, p_payload jsonb default null)
+returns table(code int, note text, confirm_id bigint)
+language plpgsql security definer set search_path to 'public','pg_temp' as $function$
+declare k text; n bigint; v_no bigint;
+begin
+ if p_ref !~ '^[TDHS]?[0-9]{1,18}$' then return query select -6, 'Transaction does not exist'::text, null::bigint; return; end if;
+ k := case when p_ref ~ '^[0-9]' then '' else left(p_ref,1) end;
+ n := ltrim(p_ref,'TDHS')::bigint;
+ if k='D' then return query select * from public.fn_donation_complete(n, p_prepare_id, p_trans_id, p_amount, p_provider_error, p_payload); return; end if;
+ if k='' then v_no := n;
+ else select p.order_no into v_no from public.payments p where p.kind=k and p.ref_no=n; end if;
+ if v_no is null then return query select -6, 'Transaction does not exist'::text, null::bigint; return; end if;
+ return query select * from public.fn_payment_complete(v_no, p_prepare_id, 'click', p_trans_id, p_amount, p_provider_error, p_payload);
+end; $function$;
+revoke all on function public.fn_click_prepare(text, text, numeric, jsonb) from public, anon, authenticated;
+revoke all on function public.fn_click_complete(text, bigint, text, numeric, int, jsonb) from public, anon, authenticated;
+grant execute on function public.fn_click_prepare(text, text, numeric, jsonb) to service_role;
+grant execute on function public.fn_click_complete(text, bigint, text, numeric, int, jsonb) to service_role;
+
+-- Holat (qaytish sahifasi): T5 / H5 / S5 yoki eski raqam
 create or replace function public.fn_my_payment_status(p_ref text)
-returns table(status text, plan text, amount bigint, course_slug text, course_title text, phase int, expires_at timestamptz)
+returns table(status text, plan text, amount bigint, course_slug text, course_title text, phase int, expires_at timestamptz, receipt text)
 language sql stable security definer set search_path to 'public','pg_temp' as $function$
-  select p.status::text, p.plan::text, p.amount, c.slug, c.title, p.phase, e.expires_at
+  select p.status::text, p.plan::text, p.amount, c.slug, c.title, p.phase, e.expires_at,
+         case when p.receipt_no is not null then p.kind||'-'||p.receipt_no end
   from public.payments p join public.courses c on c.id=p.course_id
   left join public.enrollments e on e.user_id=p.user_id and e.course_id=p.course_id
   where auth.uid() is not null and p.user_id=auth.uid()
-    and p_ref ~ '^T?[0-9]{1,18}$' and p.order_no = ltrim(p_ref,'T')::bigint;
+    and (p.order_no = case when p_ref ~ '^[0-9]{1,18}$' then p_ref::bigint end
+      or (p.kind = left(p_ref,1) and p.ref_no = case when p_ref ~ '^[THS][0-9]{1,18}$' then substr(p_ref,2)::bigint end));
 $function$;
+
+-- ===================== Anon ruxsatlarini yopish (Supabase advisor, 2026-11-06) =====================
+-- Trigger funksiyalari: hech kim RPC orqali chaqirmaydi (trigger EXECUTE huquqini tekshirmaydi)
+revoke execute on function public.fn_activate_enrollment() from public, anon, authenticated;
+revoke execute on function public.fn_create_profile() from public, anon, authenticated;
+revoke execute on function public.fn_guard_profile_update() from public, anon, authenticated;
+revoke execute on function public.fn_installment_on_payment() from public, anon, authenticated;
+revoke execute on function public.fn_sync_enrollment_on_refund() from public, anon, authenticated;
+revoke execute on function public.notify_new_user() from public, anon, authenticated;
+revoke execute on function public.rls_auto_enable() from public, anon, authenticated;
+revoke execute on function public.fn_coupon_percent(text, uuid, bigint) from public, anon, authenticated;
+-- Faqat kirgan foydalanuvchi uchun (ichida admin/egasi tekshiruvi bor)
+do $$
+declare f text;
+begin
+  foreach f in array array[
+    'public.fn_admin_cancel_installment(uuid, text)',
+    'public.fn_admin_confirm_installment_item(uuid, public.payment_method, text)',
+    'public.fn_admin_installments(text)',
+    'public.fn_create_installment(text, text, text, public.payment_method)',
+    'public.fn_installment_pay_next(uuid, public.payment_method)',
+    'public.fn_installment_quote(text, text, text)',
+    'public.fn_my_access(text)',
+    'public.fn_my_installments()',
+    'public.kompas_pwa_stats()']
+  loop
+    execute format('revoke execute on function %s from public, anon', f);
+    execute format('grant execute on function %s to authenticated', f);
+  end loop;
+end $$;
 revoke all on function public.fn_my_payment_status(text) from public, anon;
 grant execute on function public.fn_my_payment_status(text) to authenticated;

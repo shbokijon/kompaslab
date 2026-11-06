@@ -1064,9 +1064,9 @@ document.querySelector('.sidebar').addEventListener('click', function (e) { if (
 </script>
 <script src="js/kompas-celebrate.js"></script>
 <script>
-// Click'dan qaytish: ?tolov=T17. Tabrik faqat server "paid" deganda (fn_my_payment_status).
+// Click'dan qaytish: ?tolov=T17 (H, S ham). Tabrik faqat server "paid" deganda (fn_my_payment_status).
 (function () {
-  var m = /[?&]tolov=(T?\d{1,18})/.exec(location.search);
+  var m = /[?&]tolov=([THS]?\d{1,18})/.exec(location.search);
   if (!m || !window.supabase) return;
   var ref = m[1], tries = 0;
   var PLAN = { monthly: "Oylik", "6m": "6 oylik", yearly: "Yillik" };

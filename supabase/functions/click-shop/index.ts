@@ -4,7 +4,7 @@
 //   Complete URL: https://usxpkmbjrdllnitlzdpq.supabase.co/functions/v1/click-shop/complete
 // Deploy: verify_jwt = false (Click JWT yubormaydi; haqiqiylik sign_string bilan tekshiriladi).
 // Secrets: CLICK_SECRET_KEY (asoschi oʻzi kiritadi), CLICK_SERVICE_ID=114929.
-// Pul va obuna mantigʻi bazada: fn_payment_prepare / fn_payment_complete (faqat service_role).
+// Pul va obuna mantigʻi bazada: fn_click_prepare / fn_click_complete (faqat service_role).
 import { createClient } from "jsr:@supabase/supabase-js@2";
 import { crypto } from "jsr:@std/crypto@1";
 import { encodeHex } from "jsr:@std/encoding@1/hex";
@@ -78,25 +78,19 @@ export async function handle(req: Request): Promise<Response> {
   const expected = await md5(signSource(p, SECRET));
   if (!safeEq(expected, p.sign_string.toLowerCase())) return reply(p, -1, "SIGN CHECK FAILED!", null);
 
-  // Obuna toʻlovi: "T17" (eski: "16"); donat: "D17"
-  const m = /^([DT]?)(\d{1,18})$/.exec(p.merchant_trans_id);
-  if (!m) return reply(p, -5, "User does not exist", null);
-  const isDonation = m[1] === "D";
-  const orderNo = Number(m[2]);
+  // T<n> obuna, D<n> donat, H<n> hadya, S<n> sinov (eski: faqat raqam). Qaysi jadval: bazadagi fn_click_* hal qiladi.
+  if (!/^[TDHS]?\d{1,18}$/.test(p.merchant_trans_id)) return reply(p, -5, "User does not exist", null);
   const amount = Number(p.amount);
   if (!Number.isFinite(amount)) return reply(p, -2, "Incorrect parameter amount", null);
 
   const payload = { ...p, sign_string: undefined, received_at: new Date().toISOString() };
-  const common = { p_order_no: orderNo, p_trans_id: p.click_trans_id, p_amount: amount, p_payload: payload };
-  const done = { p_prepare_id: Number(p.merchant_prepare_id), p_provider_error: Number(p.error || 0) };
+  const common = { p_ref: p.merchant_trans_id, p_trans_id: p.click_trans_id, p_amount: amount, p_payload: payload };
 
-  const { data, error } = isDonation
-    ? (p.action === "0"
-      ? await sb.rpc("fn_donation_prepare", common)
-      : await sb.rpc("fn_donation_complete", { ...common, ...done }))
-    : (p.action === "0"
-      ? await sb.rpc("fn_payment_prepare", { ...common, p_method: "click" })
-      : await sb.rpc("fn_payment_complete", { ...common, ...done, p_method: "click" }));
+  const { data, error } = p.action === "0"
+    ? await sb.rpc("fn_click_prepare", common)
+    : await sb.rpc("fn_click_complete", {
+      ...common, p_prepare_id: Number(p.merchant_prepare_id), p_provider_error: Number(p.error || 0),
+    });
 
   if (error || !data || !data[0]) {
     console.error("click-shop db", p.action, p.merchant_trans_id, error?.message);
