@@ -434,7 +434,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
               <select id="fxScope" onchange="fxScopeChange()">
                 <option value="page">Bitta sahifa</option>
                 <option value="module">Butun M0 moduli (hamma darslari)</option>
-                <option value="paid">Pullik modul (Master M1–M8)</option>
+                <option value="paid">Pullik modul (Master, Bachelor, GKS, USA)</option>
                 <option value="all">Hamma sahifalar</option>
               </select>
             </div>
@@ -443,10 +443,10 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
             </div>
             <div class="fld" id="fxPaidWrap" style="display:none"><label>Pullik modul</label>
               <select id="fxPaid">
-                <option value="paid:master-lab:1">Master M1</option><option value="paid:master-lab:2">Master M2</option>
-                <option value="paid:master-lab:3">Master M3</option><option value="paid:master-lab:4">Master M4</option>
-                <option value="paid:master-lab:5">Master M5</option><option value="paid:master-lab:6">Master M6</option>
-                <option value="paid:master-lab:7">Master M7</option><option value="paid:master-lab:8">Master M8</option>
+                <optgroup label="Master Lab"><option value="paid:master-lab:1">Master M1</option><option value="paid:master-lab:2">Master M2</option><option value="paid:master-lab:3">Master M3</option><option value="paid:master-lab:4">Master M4</option><option value="paid:master-lab:5">Master M5</option><option value="paid:master-lab:6">Master M6</option><option value="paid:master-lab:7">Master M7</option><option value="paid:master-lab:8">Master M8</option></optgroup>
+                <optgroup label="Bachelor Lab"><option value="paid:bachelor-lab:1">Bachelor M1</option><option value="paid:bachelor-lab:2">Bachelor M2</option><option value="paid:bachelor-lab:3">Bachelor M3</option><option value="paid:bachelor-lab:4">Bachelor M4</option><option value="paid:bachelor-lab:5">Bachelor M5</option><option value="paid:bachelor-lab:6">Bachelor M6</option><option value="paid:bachelor-lab:7">Bachelor M7</option><option value="paid:bachelor-lab:8">Bachelor M8</option><option value="paid:bachelor-lab:9">Bachelor M9</option><option value="paid:bachelor-lab:10">Bachelor M10</option><option value="paid:bachelor-lab:11">Bachelor M11</option><option value="paid:bachelor-lab:12">Bachelor M12</option><option value="paid:bachelor-lab:13">Bachelor M13</option><option value="paid:bachelor-lab:14">Bachelor M14</option><option value="paid:bachelor-lab:15">Bachelor M15</option><option value="paid:bachelor-lab:16">Bachelor M16</option></optgroup>
+                <optgroup label="GKS Lab"><option value="paid:gks-lab:1">GKS M1</option><option value="paid:gks-lab:2">GKS M2</option><option value="paid:gks-lab:3">GKS M3-U</option><option value="paid:gks-lab:4">GKS M4-U</option><option value="paid:gks-lab:5">GKS M5-U</option><option value="paid:gks-lab:6">GKS M3-M</option><option value="paid:gks-lab:7">GKS M4-M</option><option value="paid:gks-lab:8">GKS M5-M</option><option value="paid:gks-lab:9">GKS M3-D</option><option value="paid:gks-lab:10">GKS M4-D</option><option value="paid:gks-lab:11">GKS M5-D</option></optgroup>
+                <optgroup label="USA Lab"><option value="paid:usa-lab:1">USA M1</option><option value="paid:usa-lab:2">USA M2</option><option value="paid:usa-lab:3">USA M3</option><option value="paid:usa-lab:4">USA M4</option><option value="paid:usa-lab:5">USA M5</option><option value="paid:usa-lab:6">USA M6</option><option value="paid:usa-lab:7">USA M7</option><option value="paid:usa-lab:8">USA M8</option></optgroup>
               </select>
             </div>
           </div>
@@ -675,9 +675,9 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 
 <!-- MODALS -->
 <div class="ovl" id="m-lesson"><div class="mdl">
-  <div class="mh"><h3>🎬 Yangi dars qoʻshish</h3><button class="mx" onclick="closeMdl('lesson')">×</button></div>
+  <div class="mh"><h3 id="lMdlTitle">🎬 Yangi dars qoʻshish</h3><button class="mx" onclick="closeMdl('lesson')">×</button></div>
   <div class="mb">
-    <div class="fr">
+    <div class="fr" id="lCourseRow">
       <div class="fld"><label>Kurs *</label>
         <select id="lCourse" onchange="loadModulesForSelect(this.value)">
           <option value="bachelor-lab">🎓 Bachelor Lab</option>
@@ -691,13 +691,13 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     </div>
     <div class="fld"><label>Dars nomi *</label><input id="lT" placeholder="Research Identity Framework"></div>
     <div class="fr">
-      <div class="fld"><label>Vimeo URL *</label><input id="lV" placeholder="https://vimeo.com/123456789" style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px"></div>
+      <div class="fld"><label>Video havolasi (ixtiyoriy)</label><input id="lV" placeholder="Hozircha video yoʻq: boʻsh qoldiring" style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px"></div>
       <div class="fld"><label>Davomiyligi</label><input id="lD" placeholder="45:30"></div>
     </div>
     <div class="fld"><label>Tavsif</label><textarea id="lDesc" placeholder="Bu darsda..."></textarea></div>
     <div class="fld" style="display:flex;align-items:center;gap:8px;">
       <input type="checkbox" id="lFree" style="width:auto;margin:0">
-      <label for="lFree" style="margin:0;cursor:pointer;">Bepul dars (preview)</label>
+      <label for="lFree" style="margin:0;cursor:pointer;">Bepul dars (obunasiz koʻrinadi)</label>
     </div>
   </div>
   <div class="mf"><button class="btn bs" onclick="closeMdl('lesson')">Bekor</button><button class="btn bp" onclick="saveLesson()">💾 Saqlash</button></div>
@@ -845,6 +845,10 @@ let _allStudents   = []   // profiles + enrollments
 let _allPayments   = []   // payments + profiles + courses
 let _allLessons    = {}   // { courseSlug: [ modules+lessons ] }
 let _courseMap     = {}   // slug → { id, title, emoji }
+let _lessonById    = {}   // id → dars (tahrirlash uchun)
+let _editLessonId  = null
+let _showArchive   = false
+const isArchived = l => (l.order_index || 0) >= 100 || /^\[arxiv\]/i.test(l.title || '')
 
 const COURSE_META = {
 
@@ -937,10 +941,11 @@ function populateCourseSelects() {
     el.innerHTML = "<option value=\"\">Barcha kurslar</option>" + opts
     el.value = slugs.includes(cur) ? cur : ""
   })
+  const lOpts = slugs.filter(sl => sl !== "test-lab").map(sl => "<option value=\"" + escHtml(sl) + "\">" + escHtml(courseLabel(sl)) + "</option>").join("")
   ;["lCourseSelect", "lCourse"].forEach(id => {
     const el = document.getElementById(id); if (!el) return
     const cur = el.value
-    el.innerHTML = opts
+    el.innerHTML = lOpts
     if (slugs.includes(cur)) el.value = cur
   })
   const au = document.getElementById("aAu")
@@ -1283,46 +1288,51 @@ async function loadLessonsSection(courseSlug) {
 
     const { data: modules, error } = await supabase
       .from(DB.modules)
-      .select(`id, title, order_index, is_free, lessons(id, title, vimeo_url, duration, order_index, status, is_free)`)
+      .select(`id, title, order_index, is_free, lessons(id, title, description, vimeo_url, duration, order_index, status, is_free)`)
       .eq('course_id', courseId)
       .order('order_index', { ascending: true })
 
     if (error) throw error
 
     if (!modules || modules.length === 0) {
-      container.innerHTML = `<div class="empty"><div class="ei">📭</div><div class="et">Hali darslar qo'shilmagan</div></div>`
+      container.innerHTML = `<div class="empty"><div class="ei">📭</div><div class="et">Bu kursda hali modul va dars yoʻq</div></div>`
       return
     }
 
     let html = ''
-    let totalLessons = 0
+    let totalLessons = 0, pubLessons = 0, archived = 0
     modules.forEach(mod => {
-      const lessons = (mod.lessons || []).sort((a, b) => a.order_index - b.order_index)
-      totalLessons += lessons.length
+      const all = (mod.lessons || []).sort((a, b) => a.order_index - b.order_index)
+      all.forEach(l => { _lessonById[l.id] = l })
+      const arch = all.filter(isArchived)
+      archived += arch.length
+      const lessons = _showArchive ? all : all.filter(l => !isArchived(l))
+      const live = all.filter(l => !isArchived(l))
+      totalLessons += live.length
+      pubLessons += live.filter(l => l.status === 'published').length
       html += `<div style="background:var(--bg);padding:7px 14px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'JetBrains Mono','IBM Plex Sans',monospace;display:flex;justify-content:space-between;">
         <span>${escHtml(mod.title)}</span>
-        <span>${lessons.length} dars</span>
+        <span>${live.length} dars${arch.length ? ' · ' + arch.length + ' arxiv' : ''}</span>
       </div>`
       if (lessons.length === 0) {
-        html += `<div class="lr" style="color:var(--muted);font-size:12px;font-style:italic">Bu modulda hali dars yo'q</div>`
+        html += `<div class="lr" style="color:var(--muted);font-size:12px;font-style:italic">Bu modulda hali dars yoʻq</div>`
       }
       lessons.forEach(l => {
         const statusDot = l.status === 'published'
-          ? `<span style="color:var(--green);font-size:10px">● nashr</span>`
-          : `<span style="color:var(--gold);font-size:10px">● draft</span>`
-        const vimeoShort = l.vimeo_url
-          ? l.vimeo_url.replace('https://vimeo.com/','').replace('https://player.vimeo.com/video/','').slice(0,12) + '…'
-          : '—'
-        html += `<div class="lr">
-          <div class="lnum">${mod.order_index}.${l.order_index}</div>
+          ? `<span style="color:var(--green);font-size:10px">● Nashrda</span>`
+          : `<span style="color:var(--gold);font-size:10px">● Qoralama</span>`
+        const meta = [l.duration ? '⏱ ' + escHtml(l.duration) : '', l.vimeo_url ? '🎥 video' : '', statusDot].filter(Boolean).join(' · ')
+        const ar = isArchived(l)
+        html += `<div class="lr"${ar ? ' style="opacity:.55"' : ''}>
+          <div class="lnum">${ar ? 'arx' : mod.order_index + '.' + l.order_index}</div>
           <div class="li">
             <div class="lt">${escHtml(l.title)}${l.is_free ? ' <span style="font-size:9px;background:var(--green-lit);color:var(--green);padding:1px 6px;border-radius:4px;font-family:JetBrains Mono">FREE</span>' : ''}</div>
-            <div class="lm">⏱ ${l.duration || '—'} · 🎥 <span style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:10px">${vimeoShort}</span> · ${statusDot}</div>
+            <div class="lm">${meta}</div>
           </div>
           <div style="display:flex;gap:5px;flex-shrink:0">
-            <button class="btn bs bsm" onclick="editLesson('${l.id}')">✏️</button>
-            <button class="btn ${l.status==='published'?'bs':'bp'} bsm" onclick="toggleLessonStatus('${l.id}','${l.status}')">
-              ${l.status === 'published' ? '📦 Draft' : '🚀 Nashr'}
+            <button class="btn bs bsm" onclick="editLesson('${escHtml(l.id)}')" aria-label="Tahrirlash">✏️</button>
+            <button class="btn ${l.status==='published'?'bs':'bp'} bsm" onclick="toggleLessonStatus('${escHtml(l.id)}','${escHtml(l.status)}')">
+              ${l.status === 'published' ? '📦 Qoralamaga' : '🚀 Nashr'}
             </button>
           </div>
         </div>`
@@ -1331,28 +1341,31 @@ async function loadLessonsSection(courseSlug) {
 
     // Sarlavha yangilash
     const header = document.querySelector('#sec-lessons .ch h2')
-    if (header) header.innerHTML = `🎬 ${COURSE_META[courseSlug]?.emoji || ''} ${COURSE_META[courseSlug]?.label || courseSlug} · <span style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:13px;color:var(--muted);font-weight:400">${totalLessons} dars</span>`
+    if (header) header.innerHTML = `🎬 ${COURSE_META[courseSlug]?.emoji || ''} ${escHtml(COURSE_META[courseSlug]?.label || courseSlug)} · <span style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:13px;color:var(--muted);font-weight:400">${totalLessons} dars, ${pubLessons} nashrda</span>`
 
-    container.innerHTML = html
+    const note = `<div style="padding:9px 14px;font-size:11.5px;color:var(--muted);border-bottom:1px solid var(--border);line-height:1.5">Bu roʻyxat katalog: dars matni M0 sahifalarida va pullik modul fayllarida (<code>paid_pages</code>). Holat tugmasi saytdagi dars matnini oʻzgartirmaydi.${archived ? ` <label style="margin-left:6px;cursor:pointer;white-space:nowrap"><input type="checkbox" ${_showArchive ? 'checked' : ''} onchange="_showArchive=this.checked;loadLessonsSection('${escHtml(courseSlug)}')" style="width:auto;margin:0 4px 0 0;vertical-align:middle">Arxivni koʻrsatish (${archived})</label>` : ''}</div>`
+    container.innerHTML = note + html
 
   } catch(err) {
     console.error('loadLessons:', err.message)
-    container.innerHTML = `<div class="empty"><div class="ei">❌</div><div class="et">Xatolik: ${err.message}</div></div>`
+    container.innerHTML = `<div class="empty"><div class="ei">❌</div><div class="et">Xatolik: ${escHtml(err.message)}</div></div>`
   }
 }
 
-// ── Dars statusini o'zgartirish ───────────────────────
+// ── Dars statusini oʻzgartirish ───────────────────────
 async function toggleLessonStatus(lessonId, currentStatus) {
   const newStatus = currentStatus === 'published' ? 'draft' : 'published'
   try {
-    await supabase.from(DB.lessons).update({ status: newStatus }).eq('id', lessonId)
-    toast(newStatus === 'published' ? '🚀 Nashr etildi' : '📦 Draftga o\'tkazildi')
+    const { data, error } = await supabase.from(DB.lessons).update({ status: newStatus }).eq('id', lessonId).select('id')
+    if (error) throw error
+    if (!data || !data.length) throw new Error('Oʻzgarmadi: ruxsat yoʻq yoki dars topilmadi')
+    toast(newStatus === 'published' ? '🚀 Nashr etildi' : '📦 Qoralamaga oʻtkazildi')
     const activeSlug = document.getElementById('lCourseSelect')?.value || 'bachelor-lab'
     loadLessonsSection(activeSlug)
   } catch(err) { toast('❌ ' + err.message) }
 }
 
-// ── Dars qo'shish: modullar ro'yxatini yuklash ────────
+// ── Dars qoʻshish: modullar roʻyxatini yuklash ────────
 async function loadModulesForSelect(courseSlug) {
   const sel = document.getElementById('lModule')
   sel.innerHTML = '<option value="">Yuklanmoqda...</option>'
@@ -1374,11 +1387,11 @@ async function loadModulesForSelect(courseSlug) {
       .order('order_index', { ascending: true })
 
     if (!modules || modules.length === 0) {
-      sel.innerHTML = '<option value="">Bu kursda modul yo\'q</option>'
+      sel.innerHTML = '<option value="">Bu kursda modul yoʻq</option>'
       return
     }
     sel.innerHTML = modules.map(m =>
-      `<option value="${m.id}">${m.order_index}. ${m.title}</option>`
+      `<option value="${escHtml(m.id)}">${m.order_index}. ${escHtml(m.title)}</option>`
     ).join('')
   } catch(err) {
     sel.innerHTML = '<option>Xatolik</option>'
@@ -1394,9 +1407,23 @@ async function saveLesson() {
   const desc     = document.getElementById('lDesc').value.trim()
   const isFree   = document.getElementById('lFree').checked
 
-  if (!moduleId)  { toast('⚠️ Modulni tanlang'); return }
   if (!title)     { toast('⚠️ Dars nomini kiriting'); return }
-  if (!vimeoUrl)  { toast('⚠️ Vimeo URL kiriting'); return }
+  if (vimeoUrl && !/^https:\/\/(player\.)?vimeo\.com\//.test(vimeoUrl)) { toast('⚠️ Video havolasi vimeo.com bilan boshlanishi kerak'); return }
+
+  if (_editLessonId) {
+    try {
+      const { data, error } = await supabase.from(DB.lessons).update({
+        title, vimeo_url: vimeoUrl || null, duration: duration || null, description: desc || null, is_free: isFree
+      }).eq('id', _editLessonId).select('id')
+      if (error) throw error
+      if (!data || !data.length) throw new Error('Oʻzgarmadi: ruxsat yoʻq yoki dars topilmadi')
+      toast('✅ Saqlandi: ' + title)
+      closeMdl('lesson')
+      loadLessonsSection(document.getElementById('lCourseSelect')?.value || 'bachelor-lab')
+    } catch(err) { toast('❌ ' + err.message) }
+    return
+  }
+  if (!moduleId)  { toast('⚠️ Modulni tanlang'); return }
 
   try {
     // Joriy eng katta order_index ni topish
@@ -1404,6 +1431,7 @@ async function saveLesson() {
       .from(DB.lessons)
       .select('order_index')
       .eq('module_id', moduleId)
+      .lt('order_index', 100)   // arxiv qatorlari (101+) hisobga kirmaydi
       .order('order_index', { ascending: false })
       .limit(1)
 
@@ -1412,22 +1440,22 @@ async function saveLesson() {
     const { error } = await supabase.from(DB.lessons).insert({
       module_id:   moduleId,
       title:       title,
-      vimeo_url:   vimeoUrl,
+      vimeo_url:   vimeoUrl || null,
       duration:    duration || null,
       description: desc || null,
       is_free:     isFree,
       order_index: nextOrder,
-      status:      'draft',   // draft — admin nashr etib qo'yadi
+      status:      'draft',   // qoralama: admin keyin nashr qiladi
     })
     if (error) throw error
 
-    toast(`✅ Dars qo'shildi: ${title} (draft)`)
+    toast(`✅ Dars qoʻshildi: ${title} (qoralama)`)
     closeMdl('lesson')
     // Formani tozalash
     ;['lT','lV','lD','lDesc'].forEach(id => { document.getElementById(id).value = '' })
     document.getElementById('lFree').checked = false
 
-    // Darslar bo'limini yangilash
+    // Darslar boʻlimini yangilash
     const slug = document.getElementById('lCourse').value
     if (slug) loadLessonsSection(slug)
 
@@ -1840,13 +1868,36 @@ function filterTbl(q, id) {
 function openMdl(n) {
   document.getElementById('m-' + n).classList.add('open')
   // Dars modali ochilganda modullarni yuklash
-  if (n === 'lesson') {
-    const slug = document.getElementById('lCourse').value || 'bachelor-lab'
-    loadModulesForSelect(slug)
+  if (n === 'lesson' && !_editLessonId) {
+    document.getElementById('lMdlTitle').textContent = '🎬 Yangi dars qoʻshish'
+    document.getElementById('lCourseRow').style.display = ''
+    const cur = document.getElementById('lCourseSelect')?.value
+    const lc = document.getElementById('lCourse')
+    if (cur && [...lc.options].some(o => o.value === cur)) lc.value = cur
+    loadModulesForSelect(lc.value || 'bachelor-lab')
   }
 }
-function closeMdl(n)    { document.getElementById('m-' + n).classList.remove('open') }
-function editLesson(id) { toast('✏️ Tahrirlash modali tez kunda — lesson_id: ' + id) }
+function closeMdl(n) {
+  document.getElementById('m-' + n).classList.remove('open')
+  if (n === 'lesson' && _editLessonId) {
+    _editLessonId = null
+    ;['lT','lV','lD','lDesc'].forEach(id => { document.getElementById(id).value = '' })
+    document.getElementById('lFree').checked = false
+  }
+}
+function editLesson(id) {
+  const l = _lessonById[id]
+  if (!l) { toast('⚠️ Dars topilmadi, roʻyxatni yangilang'); return }
+  _editLessonId = id
+  document.getElementById('lMdlTitle').textContent = '✏️ Darsni tahrirlash'
+  document.getElementById('lCourseRow').style.display = 'none'
+  document.getElementById('lT').value = l.title || ''
+  document.getElementById('lV').value = l.vimeo_url || ''
+  document.getElementById('lD').value = l.duration || ''
+  document.getElementById('lDesc').value = l.description || ''
+  document.getElementById('lFree').checked = !!l.is_free
+  openMdl('lesson')
+}
 async function reload()  { await loadAll(); toast('🔄 Ma\'lumotlar yangilandi') }
 async function doLogout() { await logout() }
 
