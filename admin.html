@@ -97,6 +97,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .ch-r{display:flex;gap:8px;align-items:center;}
 
 /* TABLE CONTROLS */
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px 0;}.chip{border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:12px;font-weight:600;border-radius:99px;padding:6px 12px;cursor:pointer;}.chip b{color:var(--muted);margin-left:3px;}.chip.on{background:var(--accent);border-color:var(--accent);color:#fff;}.chip.on b{color:#dfeee6;}.lnk-user{all:unset;cursor:pointer;display:block;}.lnk-user:hover .snm{text-decoration:underline;}.lnk-user .snm,.lnk-user .sem{display:block;}.lnk-user .sem{font-size:11px;color:var(--muted);}
+.sd-h{font-size:12px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;}.sd-empty{color:var(--muted);font-size:13px;padding:6px 0;}.sd-m0{display:flex;align-items:center;gap:10px;font-size:13px;padding:5px 0;}.sd-m0 b{min-width:38px;text-align:right;}.sd-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}.sd-stat{background:var(--accent-lit);border-radius:10px;padding:10px 12px;}.sd-stat b{display:block;font-size:16px;color:var(--accent);}.sd-stat span{font-size:11px;color:var(--muted);}.sd-note{font-size:12.5px;color:var(--muted);margin-top:10px;}
 .tctrl{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
 .srch{padding:7px 13px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'Outfit','IBM Plex Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);flex:1;min-width:120px;max-width:240px;}
 .srch:focus{border-color:var(--accent);background:#fff;}
@@ -274,16 +276,12 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sb-item active" onclick="nav('overview',this)">
       <span class="sb-icon">📊</span><span class="sb-label">Dashboard</span>
     </button>
-    <button class="sb-item" onclick="nav('students',this)">
-      <span class="sb-icon">👥</span><span class="sb-label">Talabalar</span>
-      <span class="sb-pill sp-gray" id="pStudents">—</span>
-    </button>
     <button class="sb-item" onclick="nav('lessons',this)">
       <span class="sb-icon">🎬</span><span class="sb-label">Darslar</span>
       <span class="sb-pill sp-gray">35</span>
     </button>
     <button class="sb-item" onclick="nav('regs',this)">
-      <span class="sb-icon">📋</span><span class="sb-label">Roʻyxatdan oʻtganlar</span>
+      <span class="sb-icon">👥</span><span class="sb-label">Foydalanuvchilar</span>
       <span class="sb-pill sp-gray" id="pRegs">—</span>
     </button>
     <button class="sb-item" onclick="nav('labs',this)">
@@ -305,7 +303,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <span class="sb-icon">📈</span><span class="sb-label">Analitika</span>
     </button>
     <button class="sb-item" id="sysNav" onclick="nav('system',this)">
-      <span class="sb-icon">🩺</span><span class="sb-label">Tizim monitoringi</span>
+      <span class="sb-icon">🩺</span><span class="sb-label">Tizim</span>
     </button>
     <button class="sb-item" onclick="nav('settings',this)">
       <span class="sb-icon">⚙️</span><span class="sb-label">Sozlamalar</span>
@@ -397,39 +395,6 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
             <div class="ch"><h2>⚡ Faoliyat lenti</h2><span style="font-size:11px;color:var(--muted)">Real-time</span></div>
             <div class="al" id="actFeed"></div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STUDENTS -->
-    <div class="sec" id="sec-students">
-      <div class="card">
-        <div class="ch">
-          <h2>👥 Barcha talabalar</h2>
-          <div class="ch-r">
-            <button class="btn bd bsm" id="delBtn2" onclick="deleteSelected('tb2')" disabled>🗑 Oʻchirish (0)</button>
-            <button class="btn bs bsm" onclick="exportStudentsCSV()">📤 CSV</button>
-            <button class="btn bp bsm" onclick="openMdl('student')">+ Qoʻshish</button>
-          </div>
-        </div>
-        <div class="tctrl">
-          <input class="srch" placeholder="🔍 Ism, email..." oninput="filterTbl(this.value,'tb2')">
-          <select class="flt" id="filterCourse2" onchange="applyStudentFilter()">
-            <option value="">Barcha kurslar</option>
-            <option value="bachelor-lab">Bachelor Lab</option>
-            <option value="master-lab">Master Lab</option>
-            <option value="phd-lab">PhD Lab</option>
-          </select>
-          <select class="flt" id="filterStatus" onchange="applyStudentFilter()">
-            <option value="">Holat</option>
-            <option value="active">Faol</option>
-            <option value="pending">Kutmoqda</option>
-          </select>
-        </div>
-        <div class="tbl-scroll">
-          <table class="tbl"><thead><tr>
-            <th><input type="checkbox" id="selAll2" title="Hammasini tanlash" onchange="delToggleAll('tb2', this.checked)"></th><th>#</th><th>Talaba</th><th>Kurs</th><th>Jarayon</th><th>Sana</th><th>Toʻlov</th><th>Holat</th><th>Amal</th>
-          </tr></thead><tbody id="tb2"></tbody></table>
         </div>
       </div>
     </div>
@@ -536,8 +501,11 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           <input class="srch" placeholder="🔍 Qidirish..." oninput="filterTbl(this.value,'tb3')">
           <select class="flt" id="filterPayStatus" onchange="loadPayments()">
             <option value="">Barcha statuslar</option>
-            <option value="pending">Tasdiqlanmagan</option>
-            <option value="confirmed">Tasdiqlangan</option>
+            <option value="pending">Kutilmoqda</option>
+            <option value="paid">Toʻlangan (Click)</option>
+            <option value="confirmed">Tasdiqlangan (qoʻlda)</option>
+            <option value="refunded">Qaytarilgan</option>
+            <option value="failed">Muvaffaqiyatsiz</option>
             <option value="rejected">Rad etilgan</option>
           </select>
           <select class="flt" id="filterPayCourse" onchange="loadPayments()">
@@ -549,8 +517,14 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th>Sana</th><th>Talaba</th><th>Kurs</th><th>Summa</th><th>Usul</th><th>Status</th><th>Amal</th>
+            <th>Sana</th><th>№</th><th>Talaba</th><th>Kurs</th><th>Summa</th><th>Usul</th><th>Status</th><th>Amal</th>
           </tr></thead><tbody id="tb3"></tbody></table>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <div class="ch"><h2>🤝 Donatlar</h2><span id="donSum" style="font-size:12px;color:var(--muted)"></span></div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr><th>№</th><th>Summa (soʻm)</th><th>Holat</th><th>Yaratilgan</th><th>Toʻlangan</th></tr></thead><tbody id="tbDon"></tbody></table>
         </div>
       </div>
     </div>
@@ -607,7 +581,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <div class="sec" id="sec-regs">
       <div class="card">
         <div class="ch">
-          <h2>📋 Roʻyxatdan oʻtganlar</h2>
+          <h2>👥 Foydalanuvchilar</h2>
           <div class="ch-r">
             <button class="btn bd bsm" id="delBtnR" onclick="deleteSelected('tbRegs')" disabled>🗑 Oʻchirish (0)</button>
             <button class="btn bs bsm" onclick="copyRegs('email')">📋 Emaillar</button>
@@ -615,6 +589,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
             <button class="btn bs bsm" onclick="exportRegsCSV()">📤 CSV</button>
           </div>
         </div>
+        <div class="chips" id="regChips" role="tablist" aria-label="Filtr"></div>
         <div class="tctrl">
           <input class="srch" id="regQ" placeholder="🔍 Ism, email, telefon..." oninput="renderRegs()">
           <select class="flt" id="regPeriod" onchange="renderRegs()">
@@ -627,7 +602,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th><input type="checkbox" id="selAllR" title="Hammasini tanlash" onchange="delToggleAll('tbRegs', this.checked)"></th><th>#</th><th>Ism</th><th>Email</th><th>Telefon</th><th>Taʼlim</th><th>Maqsad</th><th>Kurs</th><th>Sana</th>
+            <th><input type="checkbox" id="selAllR" title="Hammasini tanlash" onchange="delToggleAll('tbRegs', this.checked)"></th><th>#</th><th>Foydalanuvchi</th><th>Telefon</th><th>Kurs</th><th>Jarayon</th><th>Holat</th><th>Oxirgi faoliyat</th><th>Roʻyxatdan oʻtgan</th>
           </tr></thead><tbody id="tbRegs"></tbody></table>
         </div>
       </div>
@@ -657,7 +632,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <div class="sec" id="sec-system">
       <div class="card" style="margin-bottom:14px">
         <div class="ch">
-          <h2>🩺 Tizim monitoringi</h2>
+          <h2>🩺 Tizim holati</h2>
           <button class="btn bs bsm" onclick="loadSystemStats()">🔄 Yangilash</button>
         </div>
         <div class="mb">
@@ -956,7 +931,7 @@ function courseLabel(sl) {
 function populateCourseSelects() {
   const slugs = courseSlugsSorted()
   const opts = slugs.map(sl => "<option value=\"" + escHtml(sl) + "\">" + escHtml(courseLabel(sl)) + "</option>").join("")
-  ;["filterCourse1", "filterCourse2", "filterPayCourse"].forEach(id => {
+  ;["filterCourse1", "filterPayCourse"].forEach(id => {
     const el = document.getElementById(id); if (!el) return
     const cur = el.value
     el.innerHTML = "<option value=\"\">Barcha kurslar</option>" + opts
@@ -1059,13 +1034,11 @@ async function loadStudents() {
     })
 
     renderStudentsTable('tb1', _allStudents.slice(0,10), false)
-    renderStudentsTable('tb2', _allStudents, true)
-    updateSidebarBadges()
+        updateSidebarBadges()
 
   } catch(err) {
     console.error('loadStudents:', err.message)
     renderEmpty('tb1', '👥', 'Talabalar yuklanmadi')
-    renderEmpty('tb2', '👥', 'Talabalar yuklanmadi')
   }
 }
 
@@ -1108,13 +1081,8 @@ function renderStudentsTable(tbId, students, full = false) {
 }
 
 function applyStudentFilter() {
-  const course = document.getElementById('filterCourse2')?.value || ''
-  const status = document.getElementById('filterStatus')?.value  || ''
-  const filtered = _allStudents.filter(s =>
-    (!course || s.courseSlug === course) &&
-    (!status || s.payStatus === status)
-  )
-  renderStudentsTable('tb2', filtered, true)
+  const course = document.getElementById('filterCourse1')?.value || ''
+  renderStudentsTable('tb1', _allStudents.filter(s => !course || s.courseSlug === course).slice(0, 10), false)
 }
 
 // ════════════════════════════════════════════════════════
@@ -1128,7 +1096,7 @@ async function loadPayments() {
     let q = supabase
       .from(DB.payments)
       .select(`
-        id, amount, method, status, note, created_at,
+        id, amount, method, status, note, created_at, kind, ref_no, receipt_no,
         profile:profiles(full_name, first_name, last_name, email),
         course:courses(slug, title, emoji)
       `)
@@ -1166,8 +1134,11 @@ function renderPaymentsTable(payments) {
     const course = p.course ? `${p.course.emoji || ''} ${p.course.title}` : '—'
     const method = methodLabels[p.method] || p.method || '—'
 
+    const ref = p.kind && p.ref_no ? p.kind + p.ref_no : '—'
+    const stale = p.status === 'pending' && p.kind && (Date.now() - new Date(p.created_at)) > 86400000
     return `<tr>
       <td style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:11px;color:var(--muted)">${date}</td>
+      <td style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px" title="${p.kind === 'S' ? 'Sinov buyurtmasi: daromadga kirmaydi' : ''}">${ref}${p.receipt_no ? '<br><span style="color:var(--muted);font-size:10px">chek ' + escHtml(p.kind || '') + '-' + p.receipt_no + '</span>' : ''}</td>
       <td>
         <div class="sr">
           <div class="sav">${(name[0] || '?').toUpperCase()}</div>
@@ -1177,12 +1148,14 @@ function renderPaymentsTable(payments) {
       <td><span class="tag ta" style="font-size:10px">${escHtml(course)}</span></td>
       <td style="font-weight:700;font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px">${formatMoney(p.amount)}</td>
       <td><span class="tag tg">${method}</span></td>
-      <td>${pyTag(p.status)}</td>
+      <td>${pyTag(p.status)}${stale ? '<br><span class="tag trd" title="24 soatdan oshdi: Click kabinetida tekshiring">⚠ 24 soat+</span>' : ''}</td>
       <td>
         <div style="display:flex;gap:4px">
           ${p.status === 'pending' ? `
             <button class="btn bp bsm" onclick="confirmPayment('${p.id}','${escHtml(name)}')">✓ Tasdiqlash</button>
             <button class="btn bd bsm" onclick="rejectPayment('${p.id}','${escHtml(name)}')">✗ Rad</button>
+          ` : (p.status === 'paid' || p.status === 'confirmed') ? `
+            <button class="btn bs bsm" title="Pulni Click kabinetida qaytarasiz; bu tugma faqat holatni belgilaydi" onclick="refundPayment('${p.id}','${escHtml(name)}')">↩ Qaytarilgan deb belgilash</button>
           ` : `
             <button class="btn bs bsm" onclick="toast('🧾 ${escHtml(name)} · ${formatMoney(p.amount)} so\'m')">🧾 Chek</button>
           `}
@@ -1229,6 +1202,28 @@ async function confirmPayment(paymentId, name) {
 }
 
 // ── To'lovni rad etish ────────────────────────────────
+// Qaytarish qoidasi (asoschi): refund avtomatik emas. Pul Click kabinetida qaytariladi,
+// bu yerda faqat payments.status='refunded' va sabab belgilanadi (audit uchun note ga yoziladi).
+async function refundPayment(paymentId, name) {
+  const reason = (prompt(`${name} toʻlovi qaytarilganini belgilash.\nPulni avval Click kabinetida qaytaring; bu tugma faqat holatni oʻzgartiradi.\n\nSabab (kamida 3 belgi):`, '') || '').trim()
+  if (reason.length < 3) { toast('Toʻxtatildi: sabab kerak'); return }
+  const old = _allPayments.find(p => p.id === paymentId)
+  const note = ((old?.note ? old.note + ' | ' : '') + 'qaytarildi: ' + reason + ' (' + new Date().toISOString().slice(0, 10) + ')').slice(0, 500)
+  const { data, error } = await supabase.from(DB.payments).update({ status: 'refunded', note }).eq('id', paymentId).select('id')
+  if (error || !data?.length) { toast('❌ ' + (error?.message || 'Oʻzgarmadi: ruxsat yoʻq')); return }
+  toast('✅ Qaytarilgan deb belgilandi. Obuna kirishini alohida tekshiring.')
+  await loadPayments(); renderKPIs()
+}
+
+async function loadDonations() {
+  const tb = document.getElementById('tbDon'); if (!tb) return
+  const { data, error } = await supabase.from('donations').select('order_no, amount, status, created_at, paid_at, receipt_no').order('created_at', { ascending: false }).limit(100)
+  if (error) { tb.innerHTML = '<tr><td colspan="5" style="color:var(--red);padding:14px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
+  const paid = (data || []).filter(d => d.status === 'paid')
+  document.getElementById('donSum').textContent = paid.length ? paid.length + ' ta toʻlangan · ' + formatMoney(paid.reduce((t, d) => t + (d.amount || 0), 0)) + ' soʻm' : 'Hali toʻlangan donat yoʻq'
+  tb.innerHTML = (data || []).length ? data.map(d => `<tr><td style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px">D${d.order_no}${d.receipt_no ? '<br><span style="color:var(--muted);font-size:10px">chek D-' + d.receipt_no + '</span>' : ''}</td><td style="font-weight:700">${formatMoney(d.amount)}</td><td>${d.status === 'paid' ? '<span class="tag tgr">✓ Toʻlangan</span>' : d.status === 'pending' ? '<span class="tag tgd">⏳ Kutilmoqda</span>' : '<span class="tag tg">' + escHtml(d.status) + '</span>'}</td><td style="font-size:11px;color:var(--muted)">${(d.created_at || '').slice(0, 16).replace('T', ' ')}</td><td style="font-size:11px;color:var(--muted)">${(d.paid_at || '').slice(0, 16).replace('T', ' ') || '—'}</td></tr>`).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Donat yoʻq</td></tr>'
+}
+
 async function rejectPayment(paymentId, name) {
   if (!confirm(`${name} to'lovini RAD etasizmi?`)) return
 
@@ -1530,33 +1525,52 @@ async function viewStudent(userId, name) {
 let _sdStudentData = null
 let _sdEnrollments = []
 
+const PLAN_UZ = { monthly: 'Oylik', '6m': '6 oylik', yearly: 'Yillik', starter: 'Boshlangʻich' }
+const M0_LAB_UZ = { master: 'Master', bachelor: 'Bachelor', phd: 'PhD', gks: 'GKS', usa: 'USA', daad: 'DAAD', tt: 'Tadbirkor Talaba', musofir: 'Musofir' }
+let _sdGrants = [], _sdM0 = []
+
 async function loadSdCourses(userId) {
-  const { data } = await supabase
-    .from(DB.enrollments)
-    .select('id, payment_status, plan, enrolled_at, course:courses(title, slug, emoji)')
-    .eq('user_id', userId)
-  _sdEnrollments = data || []
+  const [en, st, gr, co] = await Promise.all([
+    supabase.from(DB.enrollments).select('id, payment_status, plan, enrolled_at, expires_at, frozen_at, unlocked_modules, track, course:courses(title, slug, emoji)').eq('user_id', userId),
+    supabase.from('kompas_user_state').select('key, value, updated_at').eq('user_id', userId),
+    supabase.from('kompas_access_grants').select('id, course_id, module_id, expires_at, kind, reason').eq('user_id', userId).is('revoked_at', null),
+    supabase.from(DB.courses).select('id, title')
+  ])
+  _sdEnrollments = en.data || []
+  _sdM0 = (st.data || []).map(r => {
+    const m = /^kompas_([a-z]+)_m0_v1$/.exec(r.key); if (!m) return null
+    return { lab: M0_LAB_UZ[m[1]] || m[1], pct: Math.min(100, Math.round((+((r.value || {}).xp) || 0) / 250 * 100)), at: r.updated_at }
+  }).filter(Boolean).sort((a, b) => b.pct - a.pct)
+  const cm = {}; (co.data || []).forEach(c => { cm[c.id] = c.title })
+  _sdGrants = (gr.data || []).filter(g => !g.expires_at || new Date(g.expires_at) > new Date()).map(g => ({ ...g, title: cm[g.course_id] || 'Lab' }))
   renderSdCourses()
 }
 
 function renderSdCourses() {
   const el = document.getElementById('sdCoursesList')
-  if (!_sdEnrollments.length) {
-    el.innerHTML = '<div style="text-align:center;color:var(--muted);padding:24px">Hech qanday kursga yozilmagan</div>'
-    return
-  }
-  el.innerHTML = _sdEnrollments.map(en => `
+  const d = iso => iso ? iso.slice(0, 10).split('-').reverse().join('.') : '—'
+  const left = iso => { if (!iso) return ''; const n = Math.ceil((new Date(iso) - Date.now()) / 86400000); return n >= 0 ? ` (${n} kun qoldi)` : ' (tugagan)' }
+  let h = '<div class="sd-h">Obunalar</div>'
+  h += _sdEnrollments.length ? _sdEnrollments.map(en => `
     <div class="sd-course-row">
       <div class="sd-course-info">
-        <div style="font-weight:700;font-size:14px">${escHtml(en.course?.emoji||'📚')} ${escHtml(en.course?.title||'—')}</div>
-        <div style="font-size:11px;color:var(--muted)">${pyTag(en.payment_status)} · ${en.enrolled_at?.slice(0,10)||'—'}</div>
+        <div style="font-weight:700;font-size:14px">${escHtml(en.course?.emoji || '📚')} ${escHtml(en.course?.title || '—')} <span class="tag tg">${escHtml(PLAN_UZ[en.plan] || en.plan || '—')}</span></div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.7">${pyTag(en.payment_status)}${en.frozen_at ? ' <span class="tag tgd">❄ muzlatilgan</span>' : ''}
+          · boshlangan ${d(en.enrolled_at)} · tugaydi ${d(en.expires_at)}${left(en.expires_at)}<br>
+          Ochiq modullar: ${en.unlocked_modules == null ? 'hammasi' : 'M0 + ' + Math.max(0, en.unlocked_modules - 1) + ' ta'}${en.track ? ' · trek: ' + escHtml(en.track) : ''}</div>
       </div>
       <button class="btn bsm" style="background:#fdecea;color:#c0392b;border-color:#f5c6c2"
-        onclick="unenrollStudent('${en.id}','${escHtml(en.course?.title||'')}')">
-        ✕ Chiqarish
-      </button>
-    </div>`).join('')
+        onclick="unenrollStudent('${en.id}','${escHtml(en.course?.title || '')}')">✕ Chiqarish</button>
+    </div>`).join('') : '<div class="sd-empty">Pullik obunasi yoʻq (faqat bepul M0).</div>'
+  h += '<div class="sd-h">Bepul M0 jarayoni</div>'
+  h += _sdM0.length ? _sdM0.map(m => `<div class="sd-m0"><span>${escHtml(m.lab)} M0</span><div class="mpb" style="flex:1"><div class="mpf" style="width:${m.pct}%"></div></div><b>${m.pct}%</b></div>`).join('') : '<div class="sd-empty">M0 hali boshlanmagan.</div>'
+  if (_sdGrants.length) {
+    h += '<div class="sd-h">Qoʻlda berilgan ruxsatlar</div>' + _sdGrants.map(g =>
+      `<div class="sd-m0"><span>${escHtml(g.title)}${g.module_id ? ' · modul' : ''}</span><span style="color:var(--muted);font-size:11px">${g.expires_at ? d(g.expires_at) + ' gacha' : 'muddatsiz'}${g.reason ? ' · ' + escHtml(g.reason) : ''}</span></div>`).join('')
+  }
+  el.innerHTML = h
 }
+
 
 function sdTab(name, el) {
   document.querySelectorAll('.sd-pane').forEach(p => p.style.display = 'none')
@@ -1583,6 +1597,7 @@ async function saveStudentProfile() {
   if (error) { toast('❌ ' + error.message); return }
   toast('✅ Profil yangilandi')
   await loadStudents()
+  if (typeof loadRegs === 'function') loadRegs()
 }
 
 async function changeStudentPassword() {
@@ -1607,38 +1622,35 @@ async function unenrollStudent(enrollId, courseTitle) {
   toast(`✅ ${courseTitle} kursidan chiqarildi`)
   await loadSdCourses(_sdUserId)
   await loadStudents()
+  loadRegs()
 }
 
+const EV_UZ = { view: 'Modul sahifasi ochildi', section: 'Dars qismi ochildi', done: 'Dars tugatildi', active: 'Faol vaqt', finish: 'Modul yakunlandi' }
 async function loadSdActivity(userId) {
   if (!userId) return
   const el = document.getElementById('sdActivityList')
   el.innerHTML = '<div style="color:var(--muted);padding:16px;text-align:center">Yuklanmoqda...</div>'
-
-  const { data, error } = await supabase
-    .from(DB.progress)
-    .select('completed_at, completed, lesson:lessons(title, module:modules(title, course:courses(title)))')
-    .eq('user_id', userId)
-    .order('completed_at', { ascending: false })
-    .limit(50)
-
-  if (error || !data?.length) {
-    el.innerHTML = '<div style="text-align:center;color:var(--muted);padding:24px">Hali faoliyat yo\'q</div>'
-    return
-  }
-  el.innerHTML = data.map(r => {
-    const lesson  = r.lesson?.title || '—'
-    const module  = r.lesson?.module?.title || ''
-    const course  = r.lesson?.module?.course?.title || ''
-    const when    = r.completed_at ? timeSince(r.completed_at) : '—'
-    const done    = r.completed === true
-    return `<div class="sd-act-row">
-      <div class="sd-act-dot" style="background:${done?'var(--green)':'var(--gold)'}"></div>
-      <div>
-        <div style="font-size:13px;font-weight:600">${escHtml(lesson)}</div>
-        <div style="font-size:11px;color:var(--muted)">${escHtml(course)}${module?' · '+escHtml(module):''} · ${when}</div>
-      </div>
-    </div>`
-  }).join('')
+  const [ev, pay] = await Promise.all([
+    supabase.from('kompas_m0_events').select('lab, lesson, section, event, active_sec, created_at').eq('user_id', userId).order('created_at', { ascending: false }).limit(300),
+    supabase.from(DB.payments).select('amount, status, kind, ref_no, receipt_no, created_at').eq('user_id', userId).order('created_at', { ascending: false }).limit(20)
+  ])
+  const rows = ev.data || [], P = pay.data || []
+  const doneSet = new Set(rows.filter(r => r.event === 'done').map(r => r.lab + ':' + r.lesson))
+  const sec = rows.reduce((t, r) => t + (r.event === 'active' ? (r.active_sec || 0) : 0), 0)
+  const last = rows[0]?.created_at, reg = _sdStudentData?.created_at
+  const stat = (k, v) => `<div class="sd-stat"><b>${v}</b><span>${k}</span></div>`
+  let h = '<div class="sd-stats">' +
+    stat('Roʻyxatdan oʻtgan', reg ? reg.slice(0, 10).split('-').reverse().join('.') : '—') +
+    stat('Oxirgi faoliyat', last ? timeSince(last) : 'hali yoʻq') +
+    stat('Tugatilgan dars', doneSet.size) +
+    stat('Faol vaqt', Math.round(sec / 60) + ' daq') + '</div>'
+  if (_sdStudentData?.stage) h += `<div class="sd-note">Bosqichi: ${escHtml(_sdStudentData.stage)}${_sdStudentData.stage_detail ? ' · ' + escHtml(_sdStudentData.stage_detail) : ''}${_sdStudentData.goal ? ' · maqsad: ' + escHtml(_sdStudentData.goal) : ''}</div>`
+  h += '<div class="sd-h">Toʻlovlar</div>'
+  h += P.length ? P.map(p => `<div class="sd-m0"><span>${p.kind ? escHtml(p.kind) + (p.ref_no || '') : '—'}${p.receipt_no ? ' · chek ' + escHtml(p.kind || '') + '-' + p.receipt_no : ''}</span><span>${formatMoney(p.amount)} soʻm</span>${pyTag(p.status)}<span style="color:var(--muted);font-size:11px">${p.created_at.slice(0, 10)}</span></div>`).join('') : '<div class="sd-empty">Toʻlov yoʻq.</div>'
+  h += '<div class="sd-h">Soʻnggi harakatlar</div>'
+  const list = rows.filter(r => r.event !== 'active').slice(0, 40)
+  h += list.length ? list.map(r => `<div class="sd-act-row"><div class="sd-act-dot" style="background:${r.event === 'done' || r.event === 'finish' ? 'var(--green)' : 'var(--gold)'}"></div><div><div style="font-size:13px;font-weight:600">${EV_UZ[r.event] || escHtml(r.event)}${r.lesson && r.lesson !== 'hub' ? ' · ' + escHtml(r.lesson) : ''}</div><div style="font-size:11px;color:var(--muted)">${escHtml(M0_LAB_UZ[r.lab] || r.lab)} M0 · ${timeSince(r.created_at)}</div></div></div>`).join('') : '<div class="sd-empty">Hali harakat yoʻq.</div>'
+  el.innerHTML = h
 }
 
 // ════════════════════════════════════════════════════════
@@ -1649,7 +1661,7 @@ function renderKPIs() {
   const active   = _allStudents.filter(s => s.payStatus === 'paid').length
   const pending  = _allPayments.filter(p => p.status === 'pending').length
   const revenue  = _allPayments
-    .filter(p => p.status === 'confirmed')
+    .filter(isRevenue)
     .reduce((sum, p) => sum + (p.amount || 0), 0)
 
   document.getElementById('kS').textContent    = total
@@ -1658,8 +1670,7 @@ function renderKPIs() {
     ? (revenue / 1000000).toFixed(1) + 'M'
     : formatMoney(revenue)
   document.getElementById('kPend').textContent = pending
-  document.getElementById('pStudents').textContent = total
-  document.getElementById('pPending').textContent  = pending || '—'
+    document.getElementById('pPending').textContent  = pending || '—'
 
   // Oʻrtacha jarayon: M0 boshlagan talabalar boʻyicha (id boʻyicha takrorsiz)
   const seenP = {}; _allStudents.forEach(x => { seenP[x.id] = Math.max(seenP[x.id] || 0, x.progress || 0) })
@@ -1684,7 +1695,7 @@ function renderChart() {
     })
   }
 
-  _allPayments.filter(p => p.status === 'confirmed').forEach(p => {
+  _allPayments.filter(isRevenue).forEach(p => {
     const d = new Date(p.created_at)
     const m = months.find(mo => mo.year === d.getFullYear() && mo.month === d.getMonth())
     if (m) m.total += p.amount || 0
@@ -1716,7 +1727,7 @@ function renderActivity() {
     const when = timeSince(p.created_at)
     let color = '#1a56a0', text = ''
     if (p.status === 'pending') { color = '#b08a00'; text = `⏳ Yangi to'lov — ${name} (${course})` }
-    else if (p.status === 'confirmed') { color = '#1a7a4a'; text = `✅ To'lov tasdiqlandi — ${name}` }
+    else if (p.status === 'confirmed' || p.status === 'paid') { color = '#1a7a4a'; text = `✅ To'lov tasdiqlandi — ${name}` }
     else { color = '#c0392b'; text = `✗ Rad etildi — ${name}` }
     return { color, text, when }
   })
@@ -1735,6 +1746,7 @@ function renderActivity() {
 //  10. NAVIGATSIYA
 // ════════════════════════════════════════════════════════
 function nav(name, el) {
+  if (name === 'students') name = 'regs'
   document.body.classList.remove('sb-open')
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('on'))
   const s = document.getElementById('sec-' + name)
@@ -1744,9 +1756,9 @@ function nav(name, el) {
     el.classList.add('active')
   }
   const titles = {
-    overview: 'Admin Dashboard', students: 'Talabalar',
+    overview: 'Admin Dashboard', students: 'Foydalanuvchilar',
     lessons: 'Darslar', payments: "To'lovlar", waitlist: 'Kutish roʻyxati',
-    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Roʻyxatdan oʻtganlar', labs: 'Lablar va narxlar', system: 'Tizim monitoringi'
+    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1758,13 +1770,13 @@ function nav(name, el) {
     loadFixes()
   }
   // To'lovlar yangilash
-  if (name === 'payments') loadPayments()
+  if (name === 'payments') { loadPayments(); loadDonations() }
   if (name === 'waitlist') loadWaitlist()
   if (name === 'regs') loadRegs()
   if (name === 'labs') loadLabs()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
-  if (name === 'system') loadSystemStats()
+  if (name === 'system') { loadSystemStats(); window.klxLoadAudit && window.klxLoadAudit() }
   // Sozlamalar — saqlangan qiymatlarni yuklash
   if (name === 'settings') {
     const token = localStorage.getItem('tg_token') || ''
@@ -1787,8 +1799,12 @@ function pyTag(s) {
   if (s === 'confirmed' || s === 'paid') return '<span class="tag tgr">✓ Tasdiqlandi</span>'
   if (s === 'pending')                   return '<span class="tag tgd">⏳ Kutmoqda</span>'
   if (s === 'rejected')                  return '<span class="tag trd">✗ Rad</span>'
+  if (s === 'refunded')                  return '<span class="tag tgd">↩ Qaytarilgan</span>'
+  if (s === 'failed')                    return '<span class="tag trd">✗ Muvaffaqiyatsiz</span>'
   return '<span class="tag tg">' + (s || '—') + '</span>'
 }
+// Haqiqiy daromad: 'paid' (Click) va eski 'confirmed' (qoʻlda); sinov (kind=S) hisobga kirmaydi
+const isRevenue = p => (p.status === 'paid' || p.status === 'confirmed') && p.kind !== 'S'
 function formatMoney(n) { return (n||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') }
 function escHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
 function timeSince(iso) {
@@ -1800,7 +1816,6 @@ function timeSince(iso) {
   return `${Math.floor(sec/86400)} kun oldin`
 }
 function updateSidebarBadges() {
-  document.getElementById('pStudents').textContent = _allStudents.length || '—'
   const pending = _allPayments.filter(p => p.status === 'pending').length
   const pBadge  = document.getElementById('pPending')
   if (pBadge) { pBadge.textContent = pending || '—'; pBadge.className = pending ? 'sb-pill sp-red' : 'sb-pill sp-gray' }
@@ -1904,41 +1919,7 @@ async function copyWaitEmails() {
 // ════════════════════════════════════════════════════════
 //  ROʻYXATDAN OʻTGANLAR (profiles)
 // ════════════════════════════════════════════════════════
-let _regs = []
-async function loadRegs() {
-  const tb = document.getElementById('tbRegs')
-  tb.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:20px">Yuklanmoqda...</td></tr>'
-  const { data, error } = await supabase.from(DB.profiles)
-    .select('id, first_name, last_name, email, phone, education, goal, created_at, enrollments(payment_status, course:courses(slug, title))')
-    .neq('role', 'admin')
-    .order('created_at', { ascending: false })
-  if (error) { tb.innerHTML = '<tr><td colspan="9" style="color:var(--red);padding:20px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
-  _regs = data || []
-  document.getElementById('pRegs').textContent = _regs.length
-  renderRegs()
-}
-function regsFiltered() {
-  const q = (document.getElementById('regQ').value || '').trim().toLowerCase()
-  const days = parseInt(document.getElementById('regPeriod').value || '0', 10)
-  const since = days ? Date.now() - days * 86400000 : 0
-  return _regs.filter(r => {
-    if (since && new Date(r.created_at).getTime() < since) return false
-    if (!q) return true
-    return [r.first_name, r.last_name, r.email, r.phone].join(' ').toLowerCase().includes(q)
-  })
-}
-function regCourses(r) {
-  return (r.enrollments || []).map(e => (e.course?.title || e.course?.slug || '?') + ' (' + e.payment_status + ')').join(', ')
-}
-function renderRegs() {
-  const rows = regsFiltered(), tb = document.getElementById('tbRegs')
-  document.getElementById('regSummary').textContent = rows.length + ' / ' + _regs.length + ' kishi'
-  if (!rows.length) { tb.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:20px">Hech kim topilmadi</td></tr>'; delRefresh('tbRegs'); return }
-  tb.innerHTML = rows.map((r, i) => '<tr><td><input type="checkbox" class="dsel" value="' + r.id + '" onchange="delRefresh(\'tbRegs\')"></td><td>' + (i + 1) + '</td><td>' + escHtml(((r.first_name || '') + ' ' + (r.last_name || '')).trim() || '—') +
-    '</td><td>' + escHtml(r.email || '') + '</td><td>' + escHtml(r.phone || '—') + '</td><td>' + escHtml(r.education || '—') +
-    '</td><td>' + escHtml(r.goal || '—') + '</td><td>' + escHtml(regCourses(r) || '—') + '</td><td>' + escHtml((r.created_at || '').slice(0, 16).replace('T', ' ')) + '</td></tr>').join('')
-  delRefresh('tbRegs')
-}
+// Foydalanuvchilar jadvali (loadRegs, renderRegs, regsFiltered, exportRegsCSV): js/admin-users.js
 
 // ════════════════════════════════════════════════════════
 //  HISOBNI OʻCHIRISH (talabalar va roʻyxatdan oʻtganlar)
@@ -1968,7 +1949,7 @@ function delToggleAll(tbId, on) {
 }
 function deleteSelected(tbId) { deleteUsers(delSelectedIds(tbId)) }
 function delLabel(id) {
-  const r = _regs.find(x => x.id === id)
+  const r = (window._regs || []).find(x => x.id === id)
   if (r) return r.email || id
   const s = _allStudents.find(x => x.id === id)
   return s ? (s.email || s.name || id) : id
@@ -1996,15 +1977,6 @@ async function copyRegs(field) {
   try { await navigator.clipboard.writeText(vals.join(field === 'email' ? ', ' : '\n')); toast('✅ ' + vals.length + ' ta nusxalandi') }
   catch (e) { prompt('Nusxalang:', vals.join(', ')) }
 }
-function exportRegsCSV() {
-  const rows = regsFiltered()
-  if (!rows.length) { toast('⚠️ Roʻyxat boʻsh'); return }
-  downloadCSV('royxatdan-otganlar-' + new Date().toISOString().slice(0, 10) + '.csv',
-    ['Ism', 'Familiya', 'Email', 'Telefon', 'Taʼlim', 'Maqsad', 'Kurslar', 'Sana'],
-    rows.map(r => [r.first_name || '', r.last_name || '', r.email || '', r.phone || '', r.education || '', r.goal || '', regCourses(r), (r.created_at || '').slice(0, 19).replace('T', ' ')]))
-  toast('✅ CSV yuklab olindi')
-}
-
 // ════════════════════════════════════════════════════════
 //  LABLAR VA NARXLAR (courses)
 // ════════════════════════════════════════════════════════
@@ -2191,16 +2163,6 @@ async function deleteFix(id) {
   loadFixes()
 }
 
-function exportStudentsCSV() {
-  if (!_allStudents.length) { toast('⚠️ Talabalar yuklanmagan'); return }
-  const headers = ['Ism', 'Email', 'Kurs', "To'lov holati", 'Yozilgan sana']
-  const rows = _allStudents.map(s => [
-    s.name, s.email, s.course || '—', s.payStatus, s.enrollDate || '—'
-  ])
-  downloadCSV('talabalar.csv', headers, rows)
-  toast('✅ talabalar.csv yuklab olindi')
-}
-
 function exportPaymentsCSV() {
   if (!_allPayments.length) { toast("⚠️ To'lovlar yuklanmagan"); return }
   const headers = ['Sana', 'Talaba', 'Email', 'Kurs', "Summa (so'm)", 'Usul', 'Status']
@@ -2271,12 +2233,12 @@ async function loadCourseStats() {
     const results = await Promise.all((courses || []).map(async c => {
       const [enRows, pyRows] = await Promise.all([
         supabase.from(DB.enrollments).select('id, payment_status').eq('course_id', c.id),
-        supabase.from(DB.payments).select('amount, status').eq('course_id', c.id).eq('status', 'confirmed')
+        supabase.from(DB.payments).select('amount, status, kind').eq('course_id', c.id).in('status', ['confirmed', 'paid'])
       ])
       const all     = enRows.data || []
       const paid    = all.filter(e => e.payment_status === 'paid').length
       const pending = all.filter(e => e.payment_status === 'pending').length
-      const revenue = (pyRows.data || []).reduce((s, p) => s + (p.amount || 0), 0)
+      const revenue = (pyRows.data || []).filter(p => p.kind !== 'S').reduce((s, p) => s + (p.amount || 0), 0)
       return { ...c, paid, pending, revenue, avg: paid ? Math.round(revenue / paid) : 0 }
     }))
 
@@ -2357,6 +2319,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 </script>
 <script src="js/admin-system.js"></script>
+<script src="js/admin-users.js"></script>
 <script src="js/admin-extensions.js"></script>
 </body>
 </html>

@@ -116,42 +116,21 @@
       td.appendChild(btn);tr.appendChild(td);
     });
   }
+  // "Tizim holati" alohida boʻlim boʻlishi toʻxtatildi (2026-11-06): ikkalasi ham kompas_admin_usage ni oʻqirdi.
+  // Endi bitta "Tizim" boʻlimi (admin.html #sec-system); bu yerdan faqat Admin Audit kartasi qoʻshiladi.
   function monitorTemplate() {
-    const navBtn=node('button','sb-item');navBtn.type='button';navBtn.id='klxNavSystem';navBtn.innerHTML='<span class="sb-icon">🩺</span><span class="sb-label">Tizim holati</span>';
-    navBtn.addEventListener('click',()=>{nav('klx-system',navBtn);$('pgTitle').textContent='Tizim holati';loadSystem();});
-    const navParent=document.querySelector('.sb-nav');
-    const settings=navParent?.querySelector('[onclick*="settings"]');
-    if(settings)settings.before(navBtn); else navParent?.appendChild(navBtn);
-    const sec=node('div','sec');sec.id='sec-klx-system';
-    sec.innerHTML='<div class="card"><div class="ch"><h2>🩺 Supabase va Vercel</h2><button class="btn bs bsm" id="klxRefresh">🔄 Yangilash</button></div><div class="mb">'+
-      '<p class="klx-muted">Faqat tasdiqlangan real metrikalar koʻrsatiladi; hisoblanmagan usage nol sifatida tasvirlanmaydi.</p>'+
-      '<div id="klxUsage" class="klx-monitor-grid">Yuklanmoqda...</div></div></div>'+
-      '<div class="card klx-margin"><div class="ch"><h2>🛡️ Admin Audit</h2></div><div id="klxAudit" class="mb klx-muted">Yuklanmoqda...</div></div>';
-    document.querySelector('.pg')?.appendChild(sec);
+    const sec=$('sec-system');if(!sec)return;
+    const card=node('div','card klx-margin');
+    card.innerHTML='<div class="ch"><h2>🛡️ Admin Audit</h2><button class="btn bs bsm" id="klxRefresh">🔄 Yangilash</button></div><div id="klxAudit" class="mb klx-muted">Yuklanmoqda...</div>';
+    sec.appendChild(card);
     $('klxRefresh').addEventListener('click',loadSystem);
   }
   async function loadSystem() {
-    const el=$('klxUsage'); el.textContent='Yuklanmoqda...';
+    const audit=$('klxAudit');if(!audit)return;
+    audit.textContent='Yuklanmoqda...';
     try {
-      const d=await rpc('kompas_admin_usage');
-      const dbSize=fmtBytes(d.database_bytes);
-      const figures=[
-        ['Database footprint',dbSize,'PostgreSQL umumiy hajmi, quota emas'],
-        ['Lablar',d.course_count,'Supabase courses'],
-        ['Modullar',d.module_count,'Supabase modules'],
-        ['Darslar',d.lesson_count,'Supabase lessons'],
-        ['Foydalanuvchilar',d.profiles_count,'Supabase profiles'],
-        ['Vercel usage','Ulanmagan','Maxfiy API token serverda konfiguratsiya qilinishi kerak']
-      ];
-      el.replaceChildren();
-      figures.forEach(([name,value,help])=>{
-        const card=node('div','klx-metric');
-        card.appendChild(node('div','klx-muted',name));card.appendChild(node('strong','klx-number',String(value)));
-        card.appendChild(node('small','klx-muted',help));el.appendChild(card);
-      });
       const x=await supabase.from('kompas_admin_audit').select('action,created_at,detail').order('created_at',{ascending:false}).limit(15);
       if(x.error)throw x.error;
-      const audit=$('klxAudit');
       audit.replaceChildren();
       if(!x.data?.length){audit.textContent='Hozircha audit yozuvlari yoʻq';return;}
       x.data.forEach(a=>{
@@ -160,8 +139,9 @@
         row.appendChild(node('div','',new Date(a.created_at).toLocaleString('uz-Latn')+' · '+a.action+' · '+(a.detail?.reason||'')));
         audit.appendChild(row);
       });
-    }catch(e){el.textContent='Metrika olinmadi: '+e.message;$('klxAudit').textContent='Audit maʼlumotlari olinmadi';}
+    }catch(e){audit.textContent='Audit maʼlumotlari olinmadi: '+e.message;}
   }
+  window.klxLoadAudit=loadSystem;
   // ---- Hamkor, mentor va jamoa ruxsatlari: email boʻyicha, roʻyxatdan oʻtmagan boʻlsa ham ----
   const KIND_LABEL={team:'Jamoa',partner:'Hamkor',mentor:'Mentor',manual:'Qoʻlda'};
   function fmtDate(v){return v?new Date(v).toLocaleDateString('uz-Latn'):'Muddatsiz';}
@@ -169,7 +149,7 @@
     const navBtn=node('button','sb-item');navBtn.type='button';navBtn.id='klxNavAccess';
     navBtn.innerHTML='<span class="sb-icon">🤝</span><span class="sb-label">Ruxsatlar</span>';
     navBtn.addEventListener('click',()=>{nav('klx-access',navBtn);$('pgTitle').textContent='Hamkor va mentor ruxsatlari';loadAccess();});
-    const before=$('klxNavSystem');
+    const before=$('sysNav');
     if(before)before.before(navBtn);else document.querySelector('.sb-nav')?.appendChild(navBtn);
     const sec=node('div','sec');sec.id='sec-klx-access';
     sec.innerHTML='<div class="card"><div class="ch"><h2>🤝 Ruxsat berish</h2></div><div class="mb">'+
@@ -284,7 +264,6 @@
           const match=btn.getAttribute('onclick')?.match(/nav\('([^']+)'/);
           if(match&&!allowed.includes(match[1]))btn.hidden=true;
         });
-        $('klxNavSystem').hidden=true;
         $('klxNavAccess').hidden=staff!=='support';
         nav(allowed[0]||'overview',null);
       }
