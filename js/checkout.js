@@ -92,7 +92,7 @@
         if (ico) ico.textContent = "💳";
         var sec = st.closest("section"), rf = sec && sec.querySelector(".refund");
         if (rf) rf.innerHTML = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. " +
-          "Istisno faqat texnik xato: pul ikki marta yechilgan, 24 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi.";
+          "Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi.";
       });
     });
   }
