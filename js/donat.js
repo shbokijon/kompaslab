@@ -1,8 +1,8 @@
-/* Kompas Lab — Qoʻllab-quvvatlash (donat) bloki, qollab-quvvatlash.html (2026-10-30)
+/* Kompas Lab — Qoʻllab-quvvatlash (donat) bloki, qollab-quvvatlash.html
  *
- * Toʻlov ulanmaguncha ENABLED = false: sahifada faqat "Tayyorlanmoqda" holati chiqadi.
- * Yoqish (asoschi qarori bilan): Click yoki Payme bergan rasmiy toʻlov havolasini URL ga
- * yozing, PROVIDER ni belgilang va ENABLED = true qiling.
+ * 2026-11-06: Click SHOP-API orqali. Oqim: summa → fn_create_donation (baza "D<raqam>" beradi)
+ * → my.click.uz toʻlov sahifasi → Click Prepare/Complete → Edge Function click-shop → donations jadvali.
+ * Kirish shart emas. ENABLED = false qilinsa, blok "Tayyorlanmoqda" holatiga qaytadi.
  *
  * Ataylab qoʻllab-quvvatlanmaydi: karta raqami, P2P oʻtkazma, shaxsiy hisob rekvizitlari.
  * Sabab: biznes tushumi shaxsiy kartaga kelsa, soliq xavfi (P2P monitoringi) va
@@ -12,33 +12,80 @@
   "use strict";
 
   var DONAT = {
-    ENABLED: false,
-    PROVIDER: "",   // "Click" yoki "Payme"
-    URL: ""         // faqat rasmiy toʻlov sahifasi (https), pastdagi HOSTS roʻyxatidan
+    ENABLED: true,
+    SERVICE_ID: "114929",
+    MERCHANT_ID: "66329",
+    MIN: 1000,
+    MAX: 10000000
   };
 
-  // Ruxsat etilgan toʻlov sahifalari. Merchant havolasi berilganda domenini tekshirib, kerak boʻlsa qoʻshing.
-  var HOSTS = ["my.click.uz", "indoor.click.uz", "checkout.paycom.uz", "payme.uz"];
+  var amt = 25000;
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function $(id) { return document.getElementById(id); }
 
-  function okUrl(u) {
-    try {
-      var x = new URL(u);
-      return x.protocol === "https:" && HOSTS.indexOf(x.hostname) !== -1;
-    } catch (e) { return false; }
+  function setAmt(n) {
+    amt = n;
+    var go = $("donatGo");
+    if (go) go.textContent = n ? "Click orqali " + fmt(n) + " soʻm" : "Summani kiriting";
+    if (go) go.disabled = !n;
   }
 
-  function render() {
-    var box = document.getElementById("donatBox");
+  function payUrl(ref, sum) {
+    var ret = location.origin + location.pathname + "?rahmat=1#donat";
+    return "https://my.click.uz/services/pay?service_id=" + DONAT.SERVICE_ID +
+      "&merchant_id=" + DONAT.MERCHANT_ID +
+      "&amount=" + sum.toFixed(2) +
+      "&transaction_param=" + encodeURIComponent(ref) +
+      "&return_url=" + encodeURIComponent(ret);
+  }
+
+  function initDonat() {
+    var box = $("donatBox");
     if (!box) return;
-    var live = DONAT.ENABLED && okUrl(DONAT.URL) && (DONAT.PROVIDER === "Click" || DONAT.PROVIDER === "Payme");
+    var live = DONAT.ENABLED && window.supabase && typeof window.supabase.rpc === "function";
     box.setAttribute("data-state", live ? "on" : "off");
-    var off = document.getElementById("donatOff"), on = document.getElementById("donatOn"), a = document.getElementById("donatGo");
-    if (off) off.hidden = live;
-    if (on) on.hidden = !live;
-    if (live && a) {
-      a.href = DONAT.URL;
-      a.textContent = DONAT.PROVIDER + " orqali qoʻllab-quvvatlash";
-    }
+    if ($("donatOff")) $("donatOff").hidden = live;
+    if ($("donatOn")) $("donatOn").hidden = !live;
+    if (!live) return;
+
+    if (/[?&]rahmat=1/.test(location.search) && $("donatThanks")) $("donatThanks").hidden = false;
+
+    var btns = box.querySelectorAll(".dn-amt"), own = $("donatSum"), msg = $("donatMsg"), go = $("donatGo");
+    function say(t) { if (msg) msg.textContent = t || ""; }
+    Array.prototype.forEach.call(btns, function (b) {
+      b.addEventListener("click", function () {
+        Array.prototype.forEach.call(btns, function (x) { x.classList.remove("is-on"); });
+        b.classList.add("is-on");
+        if (own) own.value = "";
+        say(""); setAmt(parseInt(b.getAttribute("data-amt"), 10));
+      });
+    });
+    if (own) own.addEventListener("input", function () {
+      Array.prototype.forEach.call(btns, function (x) { x.classList.remove("is-on"); });
+      var n = Math.round(Number(own.value));
+      if (!own.value) { setAmt(0); say(""); return; }
+      if (!(n >= DONAT.MIN && n <= DONAT.MAX)) { setAmt(0); say("Summa 1 000 dan 10 000 000 soʻmgacha boʻlishi kerak."); return; }
+      say(""); setAmt(n);
+    });
+    setAmt(amt);
+
+    go.addEventListener("click", function () {
+      if (!amt) return;
+      go.disabled = true; say("");
+      var sum = amt;
+      window.supabase.rpc("fn_create_donation", { p_amount: sum }).then(function (r) {
+        var row = r && r.data && r.data[0];
+        if (r.error || !row || !row.order_ref) {
+          go.disabled = false;
+          say("Hozir buyurtma yaratib boʻlmadi. Birozdan keyin qayta urinib koʻring.");
+          return;
+        }
+        location.href = payUrl(row.order_ref, Number(row.amount));
+      }, function () {
+        go.disabled = false;
+        say("Internet aloqasini tekshirib, qayta urinib koʻring.");
+      });
+    });
   }
 
   // Ulashish: telefonda tizim oynasi, kompyuterda havolani nusxalash
@@ -61,7 +108,7 @@
     });
   }
 
-  function init() { render(); initShare(); }
+  function init() { initDonat(); initShare(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

@@ -78,22 +78,25 @@ export async function handle(req: Request): Promise<Response> {
   const expected = await md5(signSource(p, SECRET));
   if (!safeEq(expected, p.sign_string.toLowerCase())) return reply(p, -1, "SIGN CHECK FAILED!", null);
 
-  if (!/^\d{1,18}$/.test(p.merchant_trans_id)) return reply(p, -5, "User does not exist", null);
+  // Obuna buyurtmasi: "16"; donat: "D17"
+  const m = /^(D?)(\d{1,18})$/.exec(p.merchant_trans_id);
+  if (!m) return reply(p, -5, "User does not exist", null);
+  const isDonation = m[1] === "D";
+  const orderNo = Number(m[2]);
   const amount = Number(p.amount);
   if (!Number.isFinite(amount)) return reply(p, -2, "Incorrect parameter amount", null);
 
   const payload = { ...p, sign_string: undefined, received_at: new Date().toISOString() };
+  const common = { p_order_no: orderNo, p_trans_id: p.click_trans_id, p_amount: amount, p_payload: payload };
+  const done = { p_prepare_id: Number(p.merchant_prepare_id), p_provider_error: Number(p.error || 0) };
 
-  const { data, error } = p.action === "0"
-    ? await sb.rpc("fn_payment_prepare", {
-      p_order_no: Number(p.merchant_trans_id), p_method: "click",
-      p_trans_id: p.click_trans_id, p_amount: amount, p_payload: payload,
-    })
-    : await sb.rpc("fn_payment_complete", {
-      p_order_no: Number(p.merchant_trans_id), p_prepare_id: Number(p.merchant_prepare_id),
-      p_method: "click", p_trans_id: p.click_trans_id, p_amount: amount,
-      p_provider_error: Number(p.error || 0), p_payload: payload,
-    });
+  const { data, error } = isDonation
+    ? (p.action === "0"
+      ? await sb.rpc("fn_donation_prepare", common)
+      : await sb.rpc("fn_donation_complete", { ...common, ...done }))
+    : (p.action === "0"
+      ? await sb.rpc("fn_payment_prepare", { ...common, p_method: "click" })
+      : await sb.rpc("fn_payment_complete", { ...common, ...done, p_method: "click" }));
 
   if (error || !data || !data[0]) {
     console.error("click-shop db", p.action, p.merchant_trans_id, error?.message);

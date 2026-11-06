@@ -644,5 +644,12 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .dn-rules{padding:20px 22px;border-radius:16px;background:var(--bg);border:1px solid var(--border);font-size:14.5px;}
 .dn-rules ul{margin:10px 0 0 18px;display:flex;flex-direction:column;gap:8px;}
 .dn-rules a{color:var(--accent2);}
+.dn-amts{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 10px;}
+.dn-amt{font:inherit;font-weight:600;padding:9px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;}
+.dn-amt.is-on{background:var(--accent);border-color:var(--accent);color:#fff;}
+.dn-own{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted);margin-bottom:14px;max-width:260px;}
+.dn-own input{font:inherit;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);}
+.dn-err{display:block;margin-top:8px;color:var(--accent2);}
+.dn-thanks{padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--border);color:var(--green);margin-bottom:12px;}
 @media (max-width:760px){.dn-money{grid-template-columns:1fr;gap:20px;}}
 @media (prefers-reduced-motion:reduce){.dn-dot{animation:none;}}
