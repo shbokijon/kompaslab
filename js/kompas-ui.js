@@ -299,3 +299,13 @@
     });
   });
 })();
+
+// ── Koʻrinma tahrir (2026-11-06): faqat ?edit=1 da js/admin-edit.js ni yuklaydi. Skript oʻzi fn_is_admin() ni tekshiradi,
+//    admin boʻlmasa hech narsa qilmaydi. Kirish: admin.html → Darslar → "Sahifani tahrirlash". Natija text_fixes ga yoziladi.
+(function () {
+  if (!/[?&]edit=1/.test(location.search)) return;
+  function go() {
+    try { var s = document.createElement("script"); s.src = "/js/admin-edit.js"; document.head.appendChild(s); } catch (e) {}
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", go); else go();
+})();

@@ -457,6 +457,18 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           <h2>✏️ Matn tuzatishlari</h2>
           <div class="ch-r"><button class="btn bs bsm" onclick="loadFixes()">🔄 Yangilash</button></div>
         </div>
+        <div class="mb" style="padding-bottom:0">
+          <div class="fld"><label>Sahifani koʻrinma tahrirlash (matnga bosib yozing)</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <input id="veFile" placeholder="Masalan: master-lab-m0-2 yoki https://www.kompaslab.uz/master-lab-m0-2" autocomplete="off" style="flex:1;min-width:240px">
+              <button class="btn bp bsm" onclick="openVisualEdit()">✏️ Sahifani tahrirlash</button>
+            </div>
+          </div>
+          <div style="font-size:12.5px;color:var(--muted)">
+            Sahifa yangi oynada tahrir rejimida ochiladi: matnga bosing, yozing, pastdagi “Saqlash” ni bosing. Darslarda matn tablar ortida: kerakli tabni oching.
+            Saqlagach shu yerga qaytib “🔄 Yangilash” ni bosing. Qalin soʻz yoki havolani oʻchirib boʻlmaydi (tuzilma buzilsa, saqlanmaydi). Pullik modullar (Master M1–M8) uchun pastdagi qoʻlda shakldan foydalaning.
+          </div>
+        </div>
         <div class="mb" style="font-size:12.5px;color:var(--muted);padding-bottom:0">
           Darsdagi imlo yoki mayda xatoni tuzatish: sahifani tanlang, xato matnni saytdan nusxa olib “Eski matn”ga, toʻgʻrisini “Yangi matn”ga yozing.
           Saqlangach saytda darhol tuzaladi (pullik modulda ham). Keyin tuzatish manba faylga yoziladi va holati “Manbaga yozildi” boʻladi
@@ -2115,6 +2127,14 @@ async function deleteFix(id) {
   if (error) { toast('❌ ' + error.message); return }
   toast('🗑 Oʻchirildi')
   loadFixes()
+}
+
+// Koʻrinma tahrir (2026-11-06): sahifani yangi oynada ?edit=1 bilan ochadi; skript js/admin-edit.js (kompas-ui.js yuklaydi)
+function openVisualEdit() {
+  const f = fxFile(document.getElementById('veFile').value)
+  if (!f) { toast('⚠️ Sahifa havolasini kiriting'); return }
+  if (/^(admin|login|register)/.test(f) || /-o\.html$/.test(f)) { toast('⚠️ Bu sahifa koʻrinma tahrirni qoʻllamaydi (pullik modul yoki admin)'); return }
+  window.open('/' + f + '?edit=1&fixes=0', '_blank', 'noopener')
 }
 
 function exportStudentsCSV() {
