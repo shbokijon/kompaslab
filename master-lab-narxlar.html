@@ -407,7 +407,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 </header>
 <section id="narx">
   <div class="wrap">
-    <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
+    <div class="pay-status"><span>⏳</span><span data-paystatus="master-lab"><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
     <div class="plans">
       <div class="plan">
         <h3>M0, qaror moduli</h3><p class="desc">Master Lab sizga mosligini tekshirish</p>
@@ -419,20 +419,20 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
         <h3>Oylik</h3><p class="desc">Bitta bosqichga 1 oy kirish</p>
         <div class="price" data-pm="master-lab">99 000</div><div class="per">soʻm, har oy</div>
         <ul><li>Bir oyda navbatdagi bitta bosqich (2 modul)</li><li>Keyingi bosqich uchun alohida 99 000 soʻm</li><li>Barcha bosqichlar birdaniga ochilmaydi</li><li>Har bir oylik toʻlov navbatdagi bitta bosqichni (2 modul) bir oyga ochadi. Keyingi bosqichni darhol ochish uchun yana 99 000 soʻm toʻlanadi</li><li>Barcha 4 bosqich oylik tarifda bir vaqtda ochilmaydi</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-g" data-wl data-buy="master-lab|monthly">Kutish roʻyxatiga yozilish</button>
       </div>
       <div class="plan main" data-p6box="master-lab">
         <span class="tag-top">Asosiy reja</span>
         <h3>6 oylik</h3><p class="desc">Bitta ariza sikli uchun: 6 oy</p>
         <div class="price" data-p6v="master-lab">499 000</div><div class="per">soʻm, 6 oy uchun</div>
         <ul><li>Barcha 4 bosqich (M1–M8) darhol ochiladi</li><li>6 oy foydalanish</li></ul>
-        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-p" data-wl data-buy="master-lab|6m">Kutish roʻyxatiga yozilish</button>
       </div>
       <div class="plan">
         <h3>Yillik</h3><p class="desc">Toʻliq ariza sikli uchun</p>
         <div class="price" data-py="master-lab">899 000</div><div class="per">soʻm, 12 oy uchun</div>
         <ul><li>Barcha 4 bosqich (M1–M8) darhol ochiladi</li><li>12 oy foydalanish</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-g" data-wl data-buy="master-lab|yearly">Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
     <div class="calc"><div><b>396 000 soʻm</b>4 bosqichni alohida oylik toʻlov bilan ochish; har bosqichga 1 oy</div><div><b><span data-p6v="master-lab">499 000</span> soʻm</b>6 oy davomida barcha 4 bosqich ochiq</div><div><b>899 000 soʻm</b>12 oy davomida barcha 4 bosqich ochiq</div></div>
@@ -443,6 +443,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     <div class="refund"><b>Toʻlov hozir qabul qilinmaydi.</b> Bekor qilish va mablagʻni qaytarish shartlari xarid ochilishidan oldin eʼlon qilinadi. Oylik tarif har toʻlovda bitta bosqichni, 6 oylik va yillik tariflar esa barcha bosqichlarni ochadi.</div>
     <div class="rules"><div><b>Bekor qilish</b>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz. Toʻlamasangiz, toʻlangan davr tugashi bilan kirish yopiladi.</div><div><b>Tayyorgarlik darvozasi</b>M0 natijasi "Tayyorgarlik: rivojlantirish kerak" boʻlsa, toʻlov oʻrniga aniq boʻshliqlar roʻyxati va muqobil yoʻl tavsiya qilinadi.</div><div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div><div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div></div>
   </div>
+  <script src="js/checkout.js" defer></script>
 </section>
 <footer>
   <div class="wrap">

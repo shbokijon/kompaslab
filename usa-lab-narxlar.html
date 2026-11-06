@@ -407,7 +407,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 </header>
 <section id="narx">
   <div class="wrap">
-    <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
+    <div class="pay-status"><span>⏳</span><span data-paystatus="usa-lab"><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
     <div class="plans">
       <div class="plan">
         <h3>M0, qaror moduli</h3><p class="desc">AQSh yoʻllari va qaror</p>
@@ -419,20 +419,20 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
         <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
         <div class="price" data-pm="usa-lab">99 000</div><div class="per">soʻm, har oy</div>
         <ul><li>Bir toʻlov: bitta faza (2 modul)</li><li>Istalgan oy toʻxtatiladi</li><li>Keyinroq yillikka oʻtish mumkin</li><li>Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi</li><li>Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-g" data-wl data-buy="usa-lab|monthly">Kutish roʻyxatiga yozilish</button>
       </div>
       <div class="plan main" data-p6box="usa-lab" hidden>
         <span class="tag-top">Asosiy reja</span>
         <h3>6 oylik</h3><p class="desc">Bitta ariza sikli uchun: 6 oy</p>
         <div class="price" data-p6v="usa-lab">—</div><div class="per">soʻm, 6 oy uchun</div>
         <ul><li>Barcha modullar birdaniga ochiladi</li><li>Bitta ariza siklini qamraydi: 6 oy</li><li>Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni</li></ul>
-        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-p" data-wl data-buy="usa-lab|6m">Kutish roʻyxatiga yozilish</button>
       </div>
       <div class="plan">
         <h3>Yillik</h3><p class="desc">Toʻliq ariza sikli uchun</p>
         <div class="price" data-py="usa-lab">899 000</div><div class="per">soʻm, 12 oy uchun</div>
         <ul><li>9 modul, 46 dars, barcha vositalar</li><li>Siyosat oʻzgarishi ogohlantirishlari</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-g" data-wl data-buy="usa-lab|yearly">Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
     <div class="calc"><div><b>1 188 000 soʻm</b>12 oy faqat oylik reja bilan (99 000 × 12)</div><div data-p6box="usa-lab" hidden><b><span data-p6x2="usa-lab">—</span> soʻm</b>12 oy 6 oylik bilan (2 × <span data-p6v="usa-lab">—</span>)</div><div data-ybreak="usa-lab"><b>10 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja oylikdan arzon</div></div>
@@ -443,6 +443,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi. Oylik obunada har toʻlov bitta fazani ochadi; obuna tugasa, ochilgan modullar ham yopiladi.</div>
     <div class="rules"><div><b>Siyosat xavfi</b>Talaba yoki almashinuv vizalari cheklansa: yangi obunachilar uchun sahifada ogohlantirish chiqadi; faol yillik obunachilarga qolgan muddat uchun boshqa Labga oʻtish taklif qilinadi.</div><div><b>Bekor qilish</b>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz. Toʻlamasangiz, toʻlangan davr tugashi bilan kirish yopiladi.</div><div><b>Toʻlov xavfsizligi</b>Toʻlov Click va Payme orqali. Karta raqami Kompas serverlarida saqlanmaydi.</div><div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div></div>
   </div>
+  <script src="js/checkout.js" defer></script>
 </section>
 <footer>
   <div class="wrap">

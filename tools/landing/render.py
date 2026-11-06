@@ -381,7 +381,7 @@ def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
         <h3>6 oylik</h3><p class="desc">Bitta ariza sikli uchun: 6 oy</p>
         <div class="price" data-p6v="{slug}">—</div><div class="per">soʻm, 6 oy uchun</div>
         <ul>{"".join(f"<li>{x}</li>" for x in SIX_ITEMS)}</ul>
-        <button type="button" class="btn btn-p" data-wl>{btn}</button>
+        <button type="button" class="btn btn-p" data-wl data-buy="{slug}|6m">{btn}</button>
       </div>'''
 MONTHLY_EXTRA = ["Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
 
@@ -400,14 +400,14 @@ def pricing(lab):
         <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
         <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, har oy</div>
         <ul>{"".join(f"<li>{x}</li>" for x in p["m_items"] + MONTHLY_EXTRA)}</ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-g" data-wl data-buy="{slug}|monthly">Kutish roʻyxatiga yozilish</button>
       </div>
       {six_card(slug)}
       <div class="plan">
         <h3>Yillik</h3><p class="desc">{p["y_desc"]}</p>
         <div class="price" data-py="{slug}">{fmt(y)}</div><div class="per">soʻm, 12 oy uchun</div>
         <ul>{"".join(f"<li>{x}</li>" for x in p["y_items"])}</ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-g" data-wl data-buy="{slug}|yearly">Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
     <div class="calc">{calc_html(y, mo, slug)}</div>
@@ -422,11 +422,12 @@ def pricing(lab):
       <h2>Obuna: oylik, 6 oylik yoki yillik. M0 bepul.</h2>
       <p class="sub">{p["sub"]}</p>
     </div>
-    <div class="pay-status"><span>⏳</span><span>{status}</span></div>
+    <div class="pay-status"><span>⏳</span><span data-paystatus="{slug}">{status}</span></div>
     {plans}
     <div class="refund">{REFUND}</div>
     <div class="rules">{rules}</div>
   </div>
+  <script src="js/checkout.js" defer></script>
 </section>'''
 
 WHY_LAB_FAQ = ("Nega “Lab” deyiladi?", "Lab soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi. Kompas Lablari ham shunday ishlaydi: har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi.")

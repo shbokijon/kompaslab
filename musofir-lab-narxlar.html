@@ -407,7 +407,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 </header>
 <section id="narx">
   <div class="wrap">
-    <div class="pay-status"><span>✅</span><span><b>M0 ochiq va bepul. Onlayn toʻlov hali ochilmagan.</b> M1–M7 ochilganda kutish roʻyxatidagilarga xabar beramiz.</span></div>
+    <div class="pay-status"><span>⏳</span><span data-paystatus="miggo"><b>M0 tayyorlanmoqda, onlayn toʻlov hali ochilmagan.</b> Ochilganda kutish roʻyxatidagilarga xabar beramiz.</span></div>
     <div class="plans">
       <div class="plan">
         <h3>M0, qaror moduli</h3><p class="desc">Rasmiy yoʻl va firibgarlikdan himoya</p>
@@ -419,20 +419,20 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
         <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
         <div class="price" data-pm="miggo">49 000</div><div class="per">soʻm, har oy</div>
         <ul><li>Bir oylik kirish</li><li>Istalgan oy toʻxtatiladi</li><li>Bitta mamlakatni oʻrganish uchun qulay</li><li>Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi</li><li>Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-g" data-wl data-buy="miggo|monthly">Kutish roʻyxatiga yozilish</button>
       </div>
       <div class="plan main" data-p6box="miggo" hidden>
         <span class="tag-top">Asosiy reja</span>
         <h3>6 oylik</h3><p class="desc">Bitta ariza sikli uchun: 6 oy</p>
         <div class="price" data-p6v="miggo">—</div><div class="per">soʻm, 6 oy uchun</div>
         <ul><li>Barcha modullar birdaniga ochiladi</li><li>Bitta ariza siklini qamraydi: 6 oy</li><li>Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni</li></ul>
-        <button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-p" data-wl data-buy="miggo|6m">Kutish roʻyxatiga yozilish</button>
       </div>
       <div class="plan">
         <h3>Yillik</h3><p class="desc">Toʻliq mamlakat yoʻllari va xavfsizlik</p>
         <div class="price" data-py="miggo">499 000</div><div class="per">soʻm, 12 oy uchun</div>
         <ul><li>7 modul: Koreya, Buyuk Britaniya, Germaniya, Polsha, hujjatlar, moliya, qaytish</li><li>Vositachi va shartnomani tekshirish roʻyxatlari</li><li>Qoidalar oʻzgarganda ogohlantirish</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxatiga yozilish</button>
+        <button type="button" class="btn btn-g" data-wl data-buy="miggo|yearly">Kutish roʻyxatiga yozilish</button>
       </div>
     </div>
     <div class="calc"><div><b>588 000 soʻm</b>12 oy faqat oylik reja bilan (49 000 × 12)</div><div data-p6box="miggo" hidden><b><span data-p6x2="miggo">—</span> soʻm</b>12 oy 6 oylik bilan (2 × <span data-p6v="miggo">—</span>)</div><div data-ybreak="miggo"><b>11 oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja oylikdan arzon</div></div>
@@ -443,6 +443,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi. Oylik obunada har toʻlov bitta fazani ochadi; obuna tugasa, ochilgan modullar ham yopiladi.</div>
     <div class="rules"><div><b>Kompas qilmaydi</b>Ish topish, ish beruvchi bilan bogʻlash, vakansiya joylashtirish, hujjat topshirish.</div><div><b>Shaxsiy maʼlumot</b>Pasport nusxasi va shaxsiy hujjatlar Kompas serverlariga yuklanmaydi; ish izlash holatingiz haqida maʼlumot yigʻilmaydi.</div><div><b>Vositachisiz</b>Kompas hech qanday vositachi, agentlik yoki operatordan pul yoki komissiya olmaydi.</div></div>
   </div>
+  <script src="js/checkout.js" defer></script>
 </section>
 <footer>
   <div class="wrap">
