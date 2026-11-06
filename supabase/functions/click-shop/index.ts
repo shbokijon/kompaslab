@@ -78,8 +78,8 @@ export async function handle(req: Request): Promise<Response> {
   const expected = await md5(signSource(p, SECRET));
   if (!safeEq(expected, p.sign_string.toLowerCase())) return reply(p, -1, "SIGN CHECK FAILED!", null);
 
-  // Obuna buyurtmasi: "16"; donat: "D17"
-  const m = /^(D?)(\d{1,18})$/.exec(p.merchant_trans_id);
+  // Obuna toʻlovi: "T17" (eski: "16"); donat: "D17"
+  const m = /^([DT]?)(\d{1,18})$/.exec(p.merchant_trans_id);
   if (!m) return reply(p, -5, "User does not exist", null);
   const isDonation = m[1] === "D";
   const orderNo = Number(m[2]);

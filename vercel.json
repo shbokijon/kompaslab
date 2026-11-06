@@ -29,6 +29,10 @@
     {
       "source": "/reset",
       "destination": "/reset-password.html"
+    },
+    {
+      "source": "/donat",
+      "destination": "/qollab-quvvatlash.html"
     }
   ],
   "headers": [

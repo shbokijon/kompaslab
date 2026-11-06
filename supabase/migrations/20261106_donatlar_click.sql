@@ -81,3 +81,25 @@ revoke all on function public.fn_donation_prepare(bigint, text, numeric, jsonb) 
 revoke all on function public.fn_donation_complete(bigint, bigint, text, numeric, int, jsonb) from public, anon, authenticated;
 grant execute on function public.fn_donation_prepare(bigint, text, numeric, jsonb) to service_role;
 grant execute on function public.fn_donation_complete(bigint, bigint, text, numeric, int, jsonb) to service_role;
+
+-- Qaytish sahifasi uchun holat (tabrik faqat "paid" da). Donat: hamma; obuna: faqat egasi.
+create or replace function public.fn_donation_status(p_ref text)
+returns table(status text, amount bigint)
+language sql stable security definer set search_path to 'public','pg_temp' as $function$
+  select d.status, d.amount from public.donations d
+  where p_ref ~ '^D[0-9]{1,18}$' and d.order_no = substr(p_ref,2)::bigint;
+$function$;
+revoke all on function public.fn_donation_status(text) from public;
+grant execute on function public.fn_donation_status(text) to anon, authenticated;
+
+create or replace function public.fn_my_payment_status(p_ref text)
+returns table(status text, plan text, amount bigint, course_slug text, course_title text, phase int, expires_at timestamptz)
+language sql stable security definer set search_path to 'public','pg_temp' as $function$
+  select p.status::text, p.plan::text, p.amount, c.slug, c.title, p.phase, e.expires_at
+  from public.payments p join public.courses c on c.id=p.course_id
+  left join public.enrollments e on e.user_id=p.user_id and e.course_id=p.course_id
+  where auth.uid() is not null and p.user_id=auth.uid()
+    and p_ref ~ '^T?[0-9]{1,18}$' and p.order_no = ltrim(p_ref,'T')::bigint;
+$function$;
+revoke all on function public.fn_my_payment_status(text) from public, anon;
+grant execute on function public.fn_my_payment_status(text) to authenticated;

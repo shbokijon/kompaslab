@@ -31,12 +31,41 @@
   }
 
   function payUrl(ref, sum) {
-    var ret = location.origin + location.pathname + "?rahmat=1#donat";
+    var ret = location.origin + "/donat?d=" + encodeURIComponent(ref) + "#donat";
     return "https://my.click.uz/services/pay?service_id=" + DONAT.SERVICE_ID +
       "&merchant_id=" + DONAT.MERCHANT_ID +
       "&amount=" + sum.toFixed(2) +
       "&transaction_param=" + encodeURIComponent(ref) +
       "&return_url=" + encodeURIComponent(ret);
+  }
+
+  // Click sahifasidan qaytganda: holatni serverdan soʻraymiz, "paid" boʻlsagina tabriklaymiz
+  function checkReturn() {
+    var m = /[?&]d=(D\d{1,18})/.exec(location.search);
+    var note = $("donatThanks");
+    if (!m || !note) return;
+    var ref = m[1], tries = 0;
+    note.hidden = false;
+    note.textContent = "Toʻlov holati tekshirilmoqda…";
+    function ask() {
+      tries++;
+      window.supabase.rpc("fn_donation_status", { p_ref: ref }).then(function (r) {
+        var row = r && r.data && r.data[0], st = row && row.status;
+        if (st === "paid") {
+          note.textContent = "Rahmat! " + fmt(row.amount) + " soʻm qabul qilindi.";
+          if (window.KCelebrate) window.KCelebrate.show({
+            kind: "donat", title: "Rahmat!", amount: row.amount,
+            text: "Donatingiz Kompas Labga tushdi. U yangi darslar, manbalarni tekshirish va saytni yuritishga sarflanadi."
+          });
+          try { history.replaceState(null, "", "/donat#donat"); } catch (e) {}
+          return;
+        }
+        if (st === "failed" || st === "rejected") { note.textContent = "Toʻlov amalga oshmadi. Pul yechilgan boʻlsa, Click chekidagi raqam bilan bizga yozing."; return; }
+        if (tries < 8) { setTimeout(ask, 2000); return; }
+        note.textContent = "Click hali tasdiqlamadi. Bir necha daqiqadan keyin sahifani yangilang yoki Click ilovasidagi chekni koʻring.";
+      }, function () { if (tries < 8) setTimeout(ask, 2000); });
+    }
+    ask();
   }
 
   function initDonat() {
@@ -48,7 +77,7 @@
     if ($("donatOn")) $("donatOn").hidden = !live;
     if (!live) return;
 
-    if (/[?&]rahmat=1/.test(location.search) && $("donatThanks")) $("donatThanks").hidden = false;
+    checkReturn();
 
     var btns = box.querySelectorAll(".dn-amt"), own = $("donatSum"), msg = $("donatMsg"), go = $("donatGo");
     function say(t) { if (msg) msg.textContent = t || ""; }

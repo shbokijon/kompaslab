@@ -1062,5 +1062,32 @@ document.addEventListener('DOMContentLoaded', init)
 <script>
 document.querySelector('.sidebar').addEventListener('click', function (e) { if (e.target.closest('a')) document.body.classList.remove('sb-open') })
 </script>
+<script src="js/kompas-celebrate.js"></script>
+<script>
+// Click'dan qaytish: ?tolov=T17. Tabrik faqat server "paid" deganda (fn_my_payment_status).
+(function () {
+  var m = /[?&]tolov=(T?\d{1,18})/.exec(location.search);
+  if (!m || !window.supabase) return;
+  var ref = m[1], tries = 0;
+  var PLAN = { monthly: "Oylik", "6m": "6 oylik", yearly: "Yillik" };
+  function ask() {
+    tries++;
+    window.supabase.rpc("fn_my_payment_status", { p_ref: ref }).then(function (r) {
+      var row = r && r.data && r.data[0];
+      if (row && row.status === "paid") {
+        var till = row.expires_at ? new Date(row.expires_at).toLocaleDateString("uz-UZ", { day: "numeric", month: "long", year: "numeric" }) : "";
+        var what = row.plan === "monthly" && row.phase ? row.phase + "-faza ochildi." : "Barcha modullar ochildi.";
+        KCelebrate.show({ kind: "tolov", title: "Obuna ochildi", amount: row.amount,
+          text: row.course_title + " · " + (PLAN[row.plan] || "") + ". " + what + (till ? " Amal qiladi: " + till + " gacha." : ""),
+          button: "Darslarga oʻtish" });
+        try { history.replaceState(null, "", location.pathname); } catch (e) {}
+        return;
+      }
+      if (tries < 8) setTimeout(ask, 2000);
+    }, function () { if (tries < 8) setTimeout(ask, 2000); });
+  }
+  window.supabase.auth.getSession().then(function (s) { if (s && s.data && s.data.session) ask(); });
+})();
+</script>
 </body>
 </html>
