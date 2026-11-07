@@ -409,7 +409,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 </header>
 <section id="narx">
   <div class="wrap">
-    <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
+    <div class="pay-status"><span>⏳</span><span data-paystatus="phd-lab"><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
     <div class="plans">
       <div class="plan">
         <h3>M0, qaror moduli</h3><p class="desc">PhD hozir sizga mosmi: shuni bilish</p>
@@ -420,8 +420,8 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       <div class="plan">
         <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki bitta faza uchun</p>
         <div class="price" data-pm="phd-lab">149 000</div><div class="per">soʻm, har oy</div>
-        <ul><li>Bir oylik kirish</li><li>Istalgan oy toʻxtatiladi</li><li>Keyinroq 6 oylikka oʻtish mumkin</li><li>Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi</li><li>Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi</li></ul>
-        <button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</button>
+        <ul><li>Bir oylik kirish</li><li>Istalgan oy toʻxtatiladi</li><li>Keyinroq 6 oylikka oʻtish mumkin</li><li>Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi</li><li>Fazalar: I M1–M3, II M4–M5, III M6–M7, IV M8–M9</li><li>Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi</li></ul>
+        <button type="button" class="btn btn-g" data-wl data-buy="phd-lab|monthly">Kutish roʻyxati</button>
       </div>
       <div class="plan main" data-p6box="phd-lab" hidden>
         <span class="tag-top">Asosiy reja</span>
@@ -444,6 +444,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       <div><b>Kirmaydi</b>Hujjatni oʻrningizga yozish, professorga tanishtirish, shaxsiy mentorlik, qabul yoki stipendiya kafolati.</div>
     </div>
   </div>
+  <script src="js/checkout.js" defer></script>
 </section>
 
 <!-- SAVOLLAR -->
