@@ -32,25 +32,19 @@ def build():
     sec = R(sec, "Men hozir PhDʼning birinchi yilidaman. Shuning uchun dastur qamrovi tajribam bilan chegaralangan va bu ochiq yoziladi.", "Asoschi hozir PhDʼning birinchi yilida. Shuning uchun dastur qamrovi uning tajribasi bilan chegaralangan va bu ochiq yoziladi.")
     sec = R(sec, "<tr><td>El-yurt umidi tanlovi va intervyusi</td><td class=\"y\">Ha</td><td>Toʻliq; raqamlar rasmiy manbadan</td></tr>\n", "")
     s = s[:a] + sec + s[b:]
-    s = R(s, "El-yurt umidi: asoschi tajribasi<small>Tanlov bosqichlari mantigʻi, hujjatlar, intervyuga tayyorgarlik — asoschining 2025-yil 2-tanlov tajribasi; kvota, yosh va til talablari faqat Qobiqʼda, rasmiy sahifadan</small>",
-          "El-yurt umidi: tanlov bosqichlari<small>Tanlov bosqichlari mantigʻi, hujjatlar, intervyuga tayyorgarlik; kvota, yosh va til talablari faqat Qobiqʼda, rasmiy sahifadan</small>")
-    s = R(s, "El-yurt umidi paneli (asoschi tajribasi) va boshqa panellar mantigʻi;", "El-yurt umidi va boshqa stipendiya panellari mantigʻi;")
     s = R(s, "Darsda asoschining 2025-yil 2-tanlov tajribasi; yosh, til va kvota faqat rasmiy sahifadan.", "Yosh, til va kvota faqat rasmiy sahifadan.")
     # narx
     s = R(s, "<h2>Obuna asosida. <em>M0 bepul.</em></h2>", "<h2>Obuna: oylik yoki 6 oylik. M0 bepul.</h2>")
-    s = R(s, '<div class="price">999 000</div><div class="per">soʻm · 12 oy</div>', f'<div class="price" data-py="phd-lab">{fmt(Y)}</div><div class="per">soʻm, 12 oy uchun</div>')
     s = R(s, '<div class="price">129 000</div><div class="per">soʻm · har oy uzaytiriladi</div>', f'<div class="price" data-pm="phd-lab">{fmt(M)}</div><div class="per">soʻm, har oy</div>')
     s = R(s, '<div class="price">0</div><div class="per">soʻm · muddatsiz</div>', '<div class="price">0</div><div class="per">soʻm, muddatsiz</div>')
     s = s.replace("<li>Istalgan oy bekor qilinadi</li>", "<li>Istalgan oy toʻxtatiladi</li>")
-    # Tartib: M0, Oylik, 6 oylik (asosiy, narx bazada boʻlsa), Yillik — render.pricing bilan bir xil
-    a = s.index('      <div class="plan main reveal">')
-    blk = s[a:s.index('    <div class="calc', a)]
-    y_card = blk[:blk.index('      <div class="plan reveal">')]
-    m_card = blk[blk.index('      <div class="plan reveal">'):blk.rindex('    </div>')]
-    y_card = y_card.replace('<div class="plan main reveal">\n        <span class="tag-top">Asosiy reja</span>\n', '<div class="plan reveal">\n').replace('class="btn btn-p" data-wl', 'class="btn btn-g" data-wl')
+    # Tartib: M0, Oylik, 6 oylik (asosiy, narx bazada boʻlsa). Yillik tarif 2026-11-06 dan yoʻq.
+    a = s.index('      <div class="plan reveal">\n        <h3>Oylik</h3>')
+    e = s.index('    </div>\n    <div class="calc', a)
+    m_card = s[a:e]
     m_card = m_card.replace("<li>Barcha modullar, obuna faol ekan</li>", "<li>Bir oylik kirish</li>").replace("</ul>", "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "</ul>", 1)
     s_card = "      " + six_card("phd-lab", "Kutish roʻyxati", "plan main reveal") + "\n"
-    s = s[:a] + m_card + s_card + y_card + blk[blk.rindex('    </div>'):] + s[a + len(blk):]
+    s = s[:a] + m_card + s_card + s[e:]
     calc = calc_html(Y, M, "phd-lab")
     s = re.sub(r'<div class="calc reveal">.*?</div>\s*</div>', '<div class="calc">' + calc + "</div>\n    " + PRO_PLANNED + "\n    <div class=\"refund\">" + REFUND + "</div>", s, count=1, flags=re.S)
     s = R(s, "<div><b>Bekor qilish</b>Obuna istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Qaytarish shartlari toʻlovdan oldin toʻliq matnda koʻrsatiladi.</div>",
