@@ -1,7 +1,5 @@
--- 2026-11-07 · PhD Lab katalogi (v0.9 kontenti → sayt andozasi): M0 (bepul, oʻzgarmaydi) + M1–M8 = 9 modul, 56 dars.
--- QORALAMA: hali qoʻllanmagan. Asoschi tasdigʻi kerak, chunki:
---   1) M1–M9 dagi eski darslar (M1–M8 qayta yoziladi) va M9 moduli oʻchiriladi;
---   2) course_phases 2026-11-07 dagi {1,2,3},{4,5},{6,7},{8,9} oʻrniga {1,2},{3,4},{5,6},{7,8} boʻladi.
+-- 2026-11-11 · PhD Lab katalogi (v0.9 kontenti → sayt andozasi): M0 (bepul, oʻzgarmaydi) + M1–M8 = 9 modul, 56 dars.
+-- Asoschi tasdigʻi 2026-11-11: fazalar I M1–M2, II M3–M4, III M5–M6, IV M7–M8. Eski M1–M8 darslari almashtiriladi, M9 oʻchiriladi.
 -- order_index = modul raqami = paid_pages.module_index (phd-lab-o.html?m=N). on_sale bu faylda oʻzgarmaydi.
 begin;
 do $$
