@@ -26,3 +26,5 @@ postprocess.run(ROOT, [lab["file"] for lab in LABS.values()] + ["phd-lab.html"])
 import split
 made = split.run(ROOT, [lab["file"] for lab in LABS.values()] + ["phd-lab.html"])
 print(len(made), "sahifa ajratildi")
+import phd_sale
+print("PhD sotuv matni:", phd_sale.run())

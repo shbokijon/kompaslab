@@ -178,7 +178,7 @@ def strip_head(sec):
 
 
 LOCK_WAIT = "Onlayn toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz."
-LOCK_PAY = {k: "Obuna Click orqali ochiladi: narx sahifasida tarifni tanlang, toʻlov tasdiqlangan zahoti modul ochiladi." for k in ("bachelor-lab", "master-lab", "usa-lab", "gks-lab")}
+LOCK_PAY = {k: "Obuna Click orqali ochiladi: narx sahifasida tarifni tanlang, toʻlov tasdiqlangan zahoti modul ochiladi." for k in ("bachelor-lab", "master-lab", "usa-lab", "gks-lab", "phd-lab")}
 
 def route(stem, mods, m0_page, here=None):
     lis, last = [], None
