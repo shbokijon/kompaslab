@@ -193,6 +193,9 @@
     return chip;
   }
   function mount(c) {
+    // Kirgan foydalanuvchiga "Bepul boshlash" (register.html) kerak emas: kabinetga yoʻnaltiramiz
+    var st = document.querySelectorAll("[data-kl-start]");
+    for (var i = 0; i < st.length; i++) { st[i].href = "dashboard.html"; st[i].textContent = "Kabinet"; }
     if (c.parentNode) return;
     var nav = document.querySelector("nav.nav .wrap");
     var login = nav && nav.querySelector('a[href="login.html"]');

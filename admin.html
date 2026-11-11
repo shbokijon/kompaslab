@@ -275,11 +275,10 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
   <nav class="sb-nav">
     <div class="sb-grp">Asosiy</div>
     <button class="sb-item active" onclick="nav('overview',this)">
-      <span class="sb-icon">📊</span><span class="sb-label">Dashboard</span>
+      <span class="sb-icon">📊</span><span class="sb-label">Umumiy holat</span>
     </button>
     <button class="sb-item" onclick="nav('lessons',this)">
       <span class="sb-icon">🎬</span><span class="sb-label">Darslar</span>
-      <span class="sb-pill sp-gray">35</span>
     </button>
     <button class="sb-item" onclick="nav('regs',this)">
       <span class="sb-icon">👥</span><span class="sb-label">Foydalanuvchilar</span>
@@ -288,15 +287,15 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sb-item" onclick="nav('labs',this)">
       <span class="sb-icon">🧭</span><span class="sb-label">Lablar va narxlar</span>
     </button>
-    <button class="sb-item" onclick="nav('waitlist',this)">
-      <span class="sb-icon">🔔</span><span class="sb-label">Kutish roʻyxati</span>
-      <span class="sb-pill sp-gray" id="pWait">—</span>
-    </button>
     <button class="sb-item" onclick="nav('payments',this)">
       <span class="sb-icon">💳</span><span class="sb-label">Toʻlovlar</span>
       <span class="sb-pill sp-red" id="pPending">—</span>
     </button>
     <div class="sb-grp">Boshqaruv</div>
+    <button class="sb-item" onclick="nav('waitlist',this)">
+      <span class="sb-icon">🔔</span><span class="sb-label">Kutish roʻyxati</span>
+      <span class="sb-pill sp-gray" id="pWait">—</span>
+    </button>
     <button class="sb-item" onclick="nav('announce',this)">
       <span class="sb-icon">📢</span><span class="sb-label">Eʼlonlar</span>
     </button>
@@ -309,6 +308,10 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sb-item" onclick="nav('settings',this)">
       <span class="sb-icon">⚙️</span><span class="sb-label">Sozlamalar</span>
     </button>
+    <div class="sb-grp">Havolalar</div>
+    <a class="sb-item" href="index.html">
+      <span class="sb-icon">🌐</span><span class="sb-label">Sayt</span>
+    </a>
     <a class="sb-item" href="dashboard.html">
       <span class="sb-icon">🎓</span><span class="sb-label">Talaba koʻrinishi</span>
     </a>
@@ -745,8 +748,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 <div class="ovl" id="m-announce"><div class="mdl">
   <div class="mh"><h3>📢 Yangi eʼlon</h3><button class="mx" onclick="closeMdl('announce')">×</button></div>
   <div class="mb">
-    <div class="fld"><label>Sarlavha *</label><input id="aT" placeholder="E'lon sarlavhasi..."></div>
-    <div class="fld"><label>Matn</label><textarea id="aB" placeholder="E'lon matni..."></textarea></div>
+    <div class="fld"><label>Sarlavha *</label><input id="aT" placeholder="Eʼlon sarlavhasi..."></div>
+    <div class="fld"><label>Matn</label><textarea id="aB" placeholder="Eʼlon matni..."></textarea></div>
     <div class="fld"><label>Kimga</label><select id="aAu"><option value="all">Barcha talabalar</option><option value="bachelor-lab">Bachelor Lab</option><option value="master-lab">Master Lab</option><option value="phd-lab">PhD Lab</option><option value="gks-lab">GKS Lab</option><option value="daad-lab">DAAD Lab</option></select></div>
   </div>
   <div class="mf"><button class="btn bs" onclick="closeMdl('announce')">Bekor</button><button class="btn bp" onclick="toast('📢 E\'lon yuborildi!');closeMdl('announce')">📢 Yuborish</button></div>
@@ -897,7 +900,7 @@ async function init() {
   // Kurs xaritasini yuklash
   await loadCourseMap()
 
-  // Barcha ma'lumotlarni yuklash
+  // Barcha maʼlumotlarni yuklash
   await loadAll()
   loadWaitlist().catch(() => {})
   loadRegs().catch(() => {})
@@ -1079,7 +1082,7 @@ function renderStudentsTable(tbId, students, full = false) {
       <td>${statusTag(s.payStatus)}</td>
       <td>
         <div style="display:flex;gap:4px">
-          <button class="btn bs bsm" onclick="viewStudent('${s.id}','${escHtml(s.name)}')">Ko'rish</button>
+          <button class="btn bs bsm" onclick="viewStudent('${s.id}','${escHtml(s.name)}')">Koʻrish</button>
           ${s.payStatus === 'pending' ? `<button class="btn bp bsm" onclick="enrollDirect('${s.enrollId}','${escHtml(s.name)}')">✓ Faollashtir</button>` : ''}
           ${full ? `<button class="btn bd bsm" title="Hisobni oʻchirish" onclick="deleteUsers(['${s.id}'])">🗑</button>` : ''}
         </div>
@@ -1125,13 +1128,13 @@ async function loadPayments() {
 
   } catch(err) {
     console.error('loadPayments:', err.message)
-    renderEmpty('tb3', '💳', "To'lovlar yuklanmadi")
+    renderEmpty('tb3', '💳', "Toʻlovlar yuklanmadi")
   }
 }
 
 function renderPaymentsTable(payments) {
   const tb = document.getElementById('tb3')
-  if (!payments.length) { renderEmpty('tb3', '💳', "To'lovlar topilmadi"); return }
+  if (!payments.length) { renderEmpty('tb3', '💳', "Toʻlovlar topilmadi"); return }
 
   const methodLabels = { click: 'Click.uz', payme: 'Payme', bank: 'Bank kartasi', cash: 'Naqd', admin: 'Admin', manual: 'Admin' }
 
@@ -1159,13 +1162,15 @@ function renderPaymentsTable(payments) {
       <td>${pyTag(p.status)}${stale ? '<br><span class="tag trd" title="24 soatdan oshdi: Click kabinetida tekshiring">⚠ 24 soat+</span>' : ''}</td>
       <td>
         <div style="display:flex;gap:4px">
-          ${p.status === 'pending' ? `
+          ${p.status === 'pending' && !needsAction(p) ? `
+            <span class="tag tg" title="Click buyurtmasi: pul tushsa holat oʻzi paid boʻladi. Qoʻlda tasdiqlamang">Click kutilmoqda</span>
+          ` : p.status === 'pending' ? `
             <button class="btn bp bsm" onclick="confirmPayment('${p.id}','${escHtml(name)}')">✓ Tasdiqlash</button>
             <button class="btn bd bsm" onclick="rejectPayment('${p.id}','${escHtml(name)}')">✗ Rad</button>
           ` : (p.status === 'paid' || p.status === 'confirmed') ? `
             <button class="btn bs bsm" title="Pulni Click kabinetida qaytarasiz; bu tugma faqat holatni belgilaydi" onclick="refundPayment('${p.id}','${escHtml(name)}')">↩ Qaytarilgan deb belgilash</button>
           ` : `
-            <button class="btn bs bsm" onclick="toast('🧾 ${escHtml(name)} · ${formatMoney(p.amount)} so\'m')">🧾 Chek</button>
+            <button class="btn bs bsm" onclick="toast('🧾 ${escHtml(name)} · ${formatMoney(p.amount)} soʻm')">🧾 Chek</button>
           `}
         </div>
       </td>
@@ -1173,9 +1178,9 @@ function renderPaymentsTable(payments) {
   }).join('')
 }
 
-// ── To'lovni tasdiqlash ───────────────────────────────
+// ── Toʻlovni tasdiqlash ───────────────────────────────
 async function confirmPayment(paymentId, name) {
-  if (!confirm(`${name} to'lovini tasdiqlaysizmi?`)) return
+  if (!confirm(`${name} toʻlovini tasdiqlaysizmi?`)) return
 
   try {
     // 1. Payment → confirmed
@@ -1185,7 +1190,7 @@ async function confirmPayment(paymentId, name) {
       .eq('id', paymentId)
     if (e1) throw e1
 
-    // 2. Enrollment → active (trigger ham ishlaydigan bo'lsa ham qo'lda)
+    // 2. Enrollment → active (trigger ham ishlaydigan boʻlsa ham qoʻlda)
     const { error: e2 } = await supabase
       .from(DB.enrollments)
       .update({ payment_status: 'paid', enrolled_at: new Date().toISOString() })
@@ -1194,11 +1199,11 @@ async function confirmPayment(paymentId, name) {
 
     toast(`✅ Tasdiqlandi: ${name}`)
 
-    // To'lov summasi va kursni olish
+    // Toʻlov summasi va kursni olish
     const pay = _allPayments.find(p => p.id === paymentId)
-    const amount = pay?.amount ? formatMoney(pay.amount) + " so'm" : ''
+    const amount = pay?.amount ? formatMoney(pay.amount) + " soʻm" : ''
     const course = pay?.course?.title || ''
-    sendTelegram(`💰 <b>Yangi to'lov tasdiqlandi!</b>\n👤 ${name}\n📚 ${course}\n💵 ${amount}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
+    sendTelegram(`💰 <b>Yangi toʻlov tasdiqlandi!</b>\n👤 ${name}\n📚 ${course}\n💵 ${amount}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
 
     await loadPayments()
     await loadStudents()
@@ -1209,7 +1214,7 @@ async function confirmPayment(paymentId, name) {
   }
 }
 
-// ── To'lovni rad etish ────────────────────────────────
+// ── Toʻlovni rad etish ────────────────────────────────
 // Qaytarish qoidasi (asoschi): refund avtomatik emas. Pul Click kabinetida qaytariladi,
 // bu yerda faqat payments.status='refunded' va sabab belgilanadi (audit uchun note ga yoziladi).
 async function refundPayment(paymentId, name) {
@@ -1233,7 +1238,7 @@ async function loadDonations() {
 }
 
 async function rejectPayment(paymentId, name) {
-  if (!confirm(`${name} to'lovini RAD etasizmi?`)) return
+  if (!confirm(`${name} toʻlovini RAD etasizmi?`)) return
 
   try {
     const { error } = await supabase
@@ -1243,7 +1248,7 @@ async function rejectPayment(paymentId, name) {
     if (error) throw error
 
     toast(`⛔ Rad etildi: ${name}`)
-    sendTelegram(`⛔ <b>To'lov rad etildi</b>\n👤 ${name}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
+    sendTelegram(`⛔ <b>Toʻlov rad etildi</b>\n👤 ${name}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
     await loadPayments()
     renderKPIs()
 
@@ -1252,16 +1257,16 @@ async function rejectPayment(paymentId, name) {
   }
 }
 
-// ── To'lovsiz enrollment (admin qo'lda) ──────────────
+// ── Toʻlovsiz enrollment (admin qoʻlda) ──────────────
 async function enrollDirect(enrollId, name) {
-  if (!enrollId || !confirm(`${name} ni to'lovsiz faollashtiraysizmi?`)) return
+  if (!enrollId || !confirm(`${name} ni toʻlovsiz faollashtiraysizmi?`)) return
   try {
     await supabase
       .from(DB.enrollments)
       .update({ payment_status: 'paid', enrolled_at: new Date().toISOString() })
       .eq('id', enrollId)
     toast(`✅ Faollashtirildi: ${name}`)
-    sendTelegram(`✅ <b>To'lov tasdiqlandi</b>\n👤 ${name}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
+    sendTelegram(`✅ <b>Toʻlov tasdiqlandi</b>\n👤 ${name}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
     await loadStudents()
     renderKPIs()
   } catch(err) {
@@ -1465,7 +1470,7 @@ async function saveLesson() {
   } catch(err) { toast('❌ ' + err.message) }
 }
 
-// ── Talaba qo'shish (manual enrollment) ──────────────
+// ── Talaba qoʻshish (manual enrollment) ──────────────
 async function saveStudent() {
   const firstName = document.getElementById('sF').value.trim()
   const lastName  = document.getElementById('sL').value.trim()
@@ -1537,7 +1542,7 @@ async function viewStudent(userId, name) {
   sdTab('profile', document.querySelector('.sd-tab'))
   openMdl('student-detail')
 
-  // Profil ma'lumotlarini yuklash
+  // Profil maʼlumotlarini yuklash
   const { data: p } = await supabase
     .from(DB.profiles).select('*').eq('id', userId).single()
   if (!p) return
@@ -1690,7 +1695,7 @@ async function loadSdActivity(userId) {
 function renderKPIs() {
   const total    = _allStudents.length
   const active   = _allStudents.filter(s => s.payStatus === 'paid').length
-  const pending  = _allPayments.filter(p => p.status === 'pending').length
+  const pending  = _allPayments.filter(needsAction).length
   const revenue  = _allPayments
     .filter(isRevenue)
     .reduce((sum, p) => sum + (p.amount || 0), 0)
@@ -1713,7 +1718,7 @@ function renderKPIs() {
 //  8. CHART (so'nggi 6 oy daromad)
 // ════════════════════════════════════════════════════════
 function renderChart() {
-  // To'lov ma'lumotlaridan oylik daromad
+  // Toʻlov maʼlumotlaridan oylik daromad
   const months = []
   const now = new Date()
   for (let i = 5; i >= 0; i--) {
@@ -1743,22 +1748,22 @@ function renderChart() {
   const thisMonth = months[months.length - 1]
   document.getElementById('tTotal').textContent =
     thisMonth.total >= 1000000
-      ? (thisMonth.total/1000000).toFixed(1) + 'M so\'m'
-      : formatMoney(thisMonth.total) + ' so\'m'
+      ? (thisMonth.total/1000000).toFixed(1) + 'M soʻm'
+      : formatMoney(thisMonth.total) + ' soʻm'
 }
 
 // ════════════════════════════════════════════════════════
 //  9. FAOLIYAT LENTI
 // ════════════════════════════════════════════════════════
 function renderActivity() {
-  // So'nggi 5 ta to'lov / enrollment
+  // So'nggi 5 ta toʻlov / enrollment
   const feed = _allPayments.slice(0, 5).map(p => {
     const name = p.profile?.full_name || p.profile?.first_name || '—'
     const course = p.course?.title || '—'
     const when = timeSince(p.created_at)
     let color = '#1a56a0', text = ''
-    if (p.status === 'pending') { color = '#b08a00'; text = `⏳ Yangi to'lov — ${name} (${course})` }
-    else if (p.status === 'confirmed' || p.status === 'paid') { color = '#1a7a4a'; text = `✅ To'lov tasdiqlandi — ${name}` }
+    if (p.status === 'pending') { color = '#b08a00'; text = `⏳ Yangi toʻlov — ${name} (${course})` }
+    else if (p.status === 'confirmed' || p.status === 'paid') { color = '#1a7a4a'; text = `✅ Toʻlov tasdiqlandi — ${name}` }
     else { color = '#c0392b'; text = `✗ Rad etildi — ${name}` }
     return { color, text, when }
   })
@@ -1787,20 +1792,20 @@ function nav(name, el) {
     el.classList.add('active')
   }
   const titles = {
-    overview: 'Admin Dashboard', students: 'Foydalanuvchilar',
-    lessons: 'Darslar', payments: "To'lovlar", waitlist: 'Kutish roʻyxati',
-    announce: "E'lonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim'
+    overview: 'Umumiy holat', students: 'Foydalanuvchilar',
+    lessons: 'Darslar', payments: "Toʻlovlar", waitlist: 'Kutish roʻyxati',
+    announce: "Eʼlonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
-  // Darslar bo'limiga kirilganda default kursni yuklash
+  // Darslar boʻlimiga kirilganda default kursni yuklash
   if (name === 'lessons') {
     const sel = document.getElementById('lCourseSelect')
     const slug = sel?.value || 'bachelor-lab'
     loadLessonsSection(slug)
     loadFixes()
   }
-  // To'lovlar yangilash
+  // Toʻlovlar yangilash
   if (name === 'payments') { loadPayments(); loadDonations() }
   if (name === 'waitlist') loadWaitlist()
   if (name === 'regs') loadRegs()
@@ -1846,8 +1851,11 @@ function timeSince(iso) {
   if (sec < 86400) return `${Math.floor(sec/3600)} soat oldin`
   return `${Math.floor(sec/86400)} kun oldin`
 }
+// Click buyurtmasi (kind T/D/S yoki method click) pending boʻlsa: talaba toʻlamay chiqib ketgan, admin ishi yoʻq.
+// Admin tasdigʻi faqat qoʻlda (bank, naqd) toʻlovlarga kerak.
+function needsAction(p) { return p.status === 'pending' && !(p.method === 'click' || p.kind) }
 function updateSidebarBadges() {
-  const pending = _allPayments.filter(p => p.status === 'pending').length
+  const pending = _allPayments.filter(needsAction).length
   const pBadge  = document.getElementById('pPending')
   if (pBadge) { pBadge.textContent = pending || '—'; pBadge.className = pending ? 'sb-pill sp-red' : 'sb-pill sp-gray' }
 }
@@ -2258,8 +2266,8 @@ async function deleteFix(id) {
 }
 
 function exportPaymentsCSV() {
-  if (!_allPayments.length) { toast("⚠️ To'lovlar yuklanmagan"); return }
-  const headers = ['Sana', 'Talaba', 'Email', 'Kurs', "Summa (so'm)", 'Usul', 'Status']
+  if (!_allPayments.length) { toast("⚠️ Toʻlovlar yuklanmagan"); return }
+  const headers = ['Sana', 'Talaba', 'Email', 'Kurs', "Summa (soʻm)", 'Usul', 'Status']
   const rows = _allPayments.map(p => [
     p.created_at?.slice(0, 10),
     p.profile?.full_name || p.profile?.first_name || '—',
@@ -2269,8 +2277,8 @@ function exportPaymentsCSV() {
     p.method || '—',
     p.status
   ])
-  downloadCSV("to'lovlar.csv", headers, rows)
-  toast("✅ to'lovlar.csv yuklab olindi")
+  downloadCSV("toʻlovlar.csv", headers, rows)
+  toast("✅ toʻlovlar.csv yuklab olindi")
 }
 
 // ════════════════════════════════════════════════════════
@@ -2345,7 +2353,7 @@ async function loadCourseStats() {
         <div style="display:flex;flex-direction:column;gap:4px;font-size:13px">
           <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Faol talabalar</span><b>${c.paid}</b></div>
           <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Kutmoqda</span><b style="color:var(--gold)">${c.pending}</b></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Daromad</span><b style="color:var(--green)">${formatMoney(c.revenue)} so'm</b></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Daromad</span><b style="color:var(--green)">${formatMoney(c.revenue)} soʻm</b></div>
         </div>
       </div>`).join('')
 
@@ -2355,8 +2363,8 @@ async function loadCourseStats() {
         <td><b>${c.emoji || ''} ${escHtml(c.title)}</b></td>
         <td><span class="tag tgr">${c.paid}</span></td>
         <td><span class="tag tgd">${c.pending}</span></td>
-        <td><b style="color:var(--green)">${formatMoney(c.revenue)} so'm</b></td>
-        <td>${formatMoney(c.avg)} so'm</td>
+        <td><b style="color:var(--green)">${formatMoney(c.revenue)} soʻm</b></td>
+        <td>${formatMoney(c.avg)} soʻm</td>
       </tr>`).join('')
   } catch(e) {
     if (tbStats) renderEmpty('tbStats', '📊', e.message)

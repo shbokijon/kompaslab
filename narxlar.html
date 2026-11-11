@@ -41,14 +41,14 @@
     <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab</span></a>
     <div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html" aria-current="page">Narxlar</a><a href="atlas.html">Atlas</a><a href="savollar.html">Savollar</a></div>
     <span class="kl-sfx" data-sfx-slot></span><a href="login.html" class="btn btn-g btn-sm">Kirish</a>
-    <button type="button" class="btn btn-p btn-sm" style="margin-left:0" data-wl="">Kutish roʻyxati</button>
+    <a href="register.html" class="btn btn-p btn-sm" style="margin-left:0" data-kl-start>Boshlash</a>
   </div>
 </nav>
 <div class="kl-tabbar" data-sfx><div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs">Lablar</a><a href="master-planner.html">Bepul reja</a><a href="qanday-ishlaydi.html">Qanday ishlaydi</a><a href="narxlar.html" aria-current="page">Narxlar</a><a href="atlas.html">Atlas</a><a href="savollar.html">Savollar</a></div></div>
 <header class="kl-pagehead">
   <div class="wrap">
     <nav class="kl-crumb" aria-label="Yoʻl"><a href="index.html">Kompas Lab</a><span aria-hidden="true">/</span><span>Narxlar</span></nav>
-    <div class="kl-head-row"><div><h1>Narxlar</h1><p class="lead">Bachelor, Master, USA va GKS Lab obunasi Click orqali ochiq. Qolgan Lablarning narxi rejalashtirilgan. Har Labning M0 darslari bepul (roʻyxatdan oʻtgach), <a href="master-planner.html">magistratura rejalashtirgichi</a> ham ochiq.</p></div><img class="kl-head-art float" src="img/3d/money.webp" alt="" width="160" height="160"></div>
+    <div class="kl-head-row"><div><h1>Narxlar</h1><p class="lead">Sotuvdagi Lablar obunasi Click orqali ochiq: jadvalda “Obuna” havolasini bosing. Har Labning M0 darslari bepul (roʻyxatdan oʻtgach), <a href="master-planner.html">magistratura rejalashtirgichi</a> ham ochiq.</p></div><img class="kl-head-art float" src="img/3d/money.webp" alt="" width="160" height="160"></div>
   </div>
 </header>
 <section id="narx">
@@ -107,7 +107,7 @@
     <h2>Bepul M0 dan boshlang.</h2>
     <p class="sub">Avval Lab sizga mosligini tekshiring, keyin qaror qiling.</p>
     <div class="cta-row" style="justify-content:center">
-      <a href="index.html#labs" class="btn btn-p">Lab tanlab, M0 ni ochish</a><button type="button" class="btn btn-g" data-wl="">Kutish roʻyxati</button>
+      <a href="index.html#labs" class="btn btn-p">Lab tanlab, M0 ni ochish</a>
       <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">Telegramda savol berish</a>
     </div>
   </div>
@@ -351,13 +351,30 @@
   // Bazadan oʻqish: sahifa ochilganda va ochiq turganda har 60 soniyada
   function loadStats() {
     if (document.hidden || !window.supabase || typeof window.supabase.rpc !== "function") return;
-    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) applyStats(r.data); });
+    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) { applyStats(r.data); klSale(r.data.prices || {}); } });
   }
   loadStats();
   setInterval(loadStats, 60000);
   document.addEventListener("visibilitychange", loadStats);
 
 })();
+</script>
+<script>
+/* Sotuvdagi Lab: kutish roʻyxati tugmasi oʻrniga narx sahifasiga havola (2026-11-12). Sotuv holati bazadan: prices[slug].sale && .pp */
+function klSale(p) {
+  var PG = { "bachelor-lab": "bachelor-lab-narxlar.html", "master-lab": "master-lab-narxlar.html", "phd-lab": "phd-lab-narxlar.html", "gks-lab": "gks-lab-narxlar.html", "usa-lab": "usa-lab-narxlar.html", "daad-lab": "daad-lab-narxlar.html", "tadbirkor-talaba": "tadbirkor-talaba-narxlar.html", "miggo": "musofir-lab-narxlar.html" };
+  Object.keys(PG).forEach(function (s) {
+    if (!(p[s] && p[s].sale === true && p[s].pp)) return;
+    document.querySelectorAll('[data-wl="' + s + '"]').forEach(function (b) {
+      var a = document.createElement("a");
+      a.className = b.className.replace("btn-g", "btn-p");
+      a.href = PG[s]; a.textContent = "Narx va obuna"; a.setAttribute("data-snd", "nav");
+      b.parentNode.replaceChild(a, b);
+    });
+    var h = document.querySelector('[data-holat="' + s + '"]');
+    if (h && !h.querySelector("a")) { var a = document.createElement("a"); a.href = PG[s]; a.textContent = "Obuna"; a.style.marginLeft = "6px"; h.appendChild(document.createTextNode(" · ")); h.appendChild(a); }
+  });
+}
 </script>
 </body>
 </html>
