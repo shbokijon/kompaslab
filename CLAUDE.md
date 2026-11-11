@@ -89,7 +89,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 |---|---|---|---|
 | Bachelor | bachelor-lab | 17 (86) | M0 saytda; M1–M16 pullik, `bachelor-lab-o.html?m=N` (toʻlov ochilgach) |
 | Master | master-lab | 9 (59) | M0 saytda; M1–M8 pullik yetkazish tayyor: `paid_pages` + `fn_paid_page()` + `master-lab-o.html?m=N` (toʻlov ochilgach ishlaydi) |
-| PhD | phd-lab | 9 (56) | M0 saytda; M1–M8 pullik, `phd-lab-o.html?m=N` (baza katalogi va yuklash tasdiq kutmoqda) |
+| PhD | phd-lab | 9 (56) | M0 saytda; M1–M8 pullik, `phd-lab-o.html?m=N`; 2026-11-11 dan sotuvda (`on_sale`), narx 149 000 / 849 000 |
 | GKS | gks-lab | 12 (54) | M0 saytda; M1, M2 + U/M/D treklari M3–M5 pullik, `gks-lab-o.html?m=<kalit>` (toʻlov ochilgach) |
 | USA | usa-lab | 9 (46) | M0 saytda; M1–M8 pullik, `usa-lab-o.html?m=N` (toʻlov ochilgach) |
 | DAAD | daad-lab | 9 (51) | M0 yoʻq |
