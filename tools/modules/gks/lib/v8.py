@@ -49,7 +49,7 @@ MOD = dict(
              hook="Bir nechta universitet qabul qilsa, tanlov uchun bir necha kun bo'ladi. O'ylanib qolgan nomzod muddatni o'tkazib yuborishi mumkin.",
              body=f"""<h4><span class="trk">U</span> 2027 GKS-U natijalari</h4>
 <ul><li>Elchixona treki: 1-bosqich natijasi 16-oktabrgacha, NIIED 2-bosqichi noyabrda, universitet 3-bosqichi 23-dekabr 18:00 gacha.</li>
-<li>Elchixona trekida tanlangan nomzod yakuniy universitetni Study in Korea saytida 29-dekabr, 18:00 (KST) gacha tanlaydi.</li>
+<li>Elchixona trekida tanlansangiz, yakuniy universitetni Study in Korea saytida 29-dekabr, 18:00 (KST) gacha tanlaysiz.</li>
 <li>Yakuniy e'lon taxminan 07.01.2027; taklifnomalar 2027-yil yanvarida.</li></ul>
 <h4><span class="trk">M</span> <span class="trk">D</span> 2026 GKS-G (o'tgan sikl)</h4>
 <ul><li>Universitet natijasi iyun boshida, universitet tanlovini bildirish 12-iyun 18:00 gacha, yakuniy e'lon iyun oxiri.</li></ul>
@@ -71,7 +71,7 @@ MOD = dict(
              body=f"""<h4>Jo'nash oldi nazorat ro'yxati (Pre-departure checklist)</h4>
 <ul><li><b>Taklifnoma:</b> universitet yoki NIIED dan; viza uchun asosiy hujjat.</li>
 <li><b>Viza:</b> turi va hujjatlar ro'yxati taklifnoma va Koreya elchixonasi e'lonidan. Pasport amal muddatini tekshiring.</li>
-<li><b>Tibbiy:</b> yo'riqnoma nomzoddan butun dastur davomida sog'lom bo'lishni talab qiladi; keyingi bosqichdagi tibbiy ko'rik talablari xabarnomada.</li>
+<li><b>Tibbiy:</b> yo'riqnoma sizdan butun dastur davomida sog'lom bo'lishni talab qiladi; keyingi bosqichdagi tibbiy ko'rik talablari xabarnomada.</li>
 <li><span class="trk">U</span> <b>Chipta:</b> 2027 GKS-U borish-qaytish aviachiptasini qoplaydi.</li>
 <li><span class="trk">M</span> <span class="trk">D</span> <b>Chipta:</b> 2026 GKS-G ekonom-klass chiptani qoplaydi; xarid tartibi (universitet sotib oladi yoki xarajat qaytariladi) yo'riqnomada.</li>
 <li><span class="trk">M</span> <span class="trk">D</span> <b>Sug'urta:</b> 2026 GKS-G ga ko'ra Koreyaga kirishdan oldingi sug'urta badallari qoplanmaydi; o'zingiz rejalang.</li>

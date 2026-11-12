@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("bell", "Tavsiya beruvchi va reja", "kim, nega u, qachon so'raladi"),
            ("memo", "Yutuqlar varaqasi (Brag Sheet)", "tavsiya beruvchiga beriladigan faktlar to'plami"),
            ("telescope", "Professorga dastlabki xat", "M va D uchun; U uchun universitetga savol xati")],
-    warn="Tavsiya xatini tavsiya beruvchi o'zi yozadi va imzolaydi. Kompas va nomzod uning o'rniga yozmaydi: bu GKS kelishuviga va akademik halollikka zid. Siz faqat tekshiriladigan faktlar berasiz.",
+    warn="Tavsiya xatini tavsiya beruvchi o'zi yozadi va imzolaydi. Kompas ham, siz ham uning o'rniga yozmaysiz: bu GKS kelishuviga va akademik halollikka zid. Siz faqat tekshiriladigan faktlar berasiz.",
     lessons=[
         dict(t="GKS tavsiya xati: talablar va tanlov", short="Talab", min=30, kind="🎯 Mini-test", ic="scroll",
              hook="GKS da tavsiya xati bitta. Ikkinchi imkoniyat yo'q: kim yozishi xat matnidan ham muhimroq bo'lishi mumkin.",

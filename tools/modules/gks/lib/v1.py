@@ -59,7 +59,7 @@ MOD = dict(
         dict(t="Baholar: GPA talabi va konvertatsiya", short="GPA", min=30, kind="🛠 GPA tekshiruvi", ic="chart",
              hook="Komissiya O'zbekiston baholash tizimini bilmaydi. Shkalasi ko'rsatilmagan \"4.6\" raqami eng kuchli dalilingizni noaniq qilib qo'yadi.",
              body=f"""<h4>Talab: uchtadan biri</h4>
-<p>2027 GKS-U va 2026 GKS-G yo'riqnomalarida baho talabi bir xil, nomzod quyidagilardan <b>bittasiga</b> javob berishi kerak:</p>
+<p>2027 GKS-U va 2026 GKS-G yo'riqnomalarida baho talabi bir xil, siz quyidagilardan <b>bittasiga</b> javob berishingiz kerak:</p>
 <ol><li>100 ballik shkalada 80 va undan yuqori;</li>
 <li>sinf (kurs) bo'yicha yuqori 20 foiz ichida;</li>
 <li>CGPA kamida 2.64/4.0, 2.80/4.3, 2.91/4.5 yoki 3.23/5.0.</li></ol>

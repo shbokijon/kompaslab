@@ -58,8 +58,8 @@ MOD = dict(
         dict(t="AI davrida insho", short="AI qoidalari", min=30, kind="⚖️ Chegara", ic="shield",
              hook="AI bir necha soniyada \"chiroyli\" insho yozib beradi. Lekin platformalar va universitetlar buni firibgarlik deb hisoblashi mumkin, va eng muhimi, u sizning hikoyangiz emas.",
              body=f"""<h4>Platforma qoidalari</h4>
-<ul><li><b>Common App</b>: firibgarlik siyosati AI platformasi yaratgan mazmunni o'z ishi sifatida topshirishni firibgarlik qatoriga kiritadi. Ariza imzolanganda abituriyent matn o'ziniki ekanini tasdiqlaydi.</li>
-<li><b>UCAS</b>: AI dan g'oya to'plash, tuzilma taklifi va o'qilishni tekshirish uchun foydalanish mumkin. Bayonotning hammasini yoki katta qismini AI ga yozdirib, o'ziniki sifatida topshirish universitetlar tomonidan ko'chirish ([[cheating]]) deb hisoblanadi. Abituriyent bayonot boshqa manbadan, jumladan AI dan ko'chirilmaganini tasdiqlaydi. UCAS tekshiruv jamoasi bayonotlar orasidagi o'xshashlikni tekshiradi; o'xshashlik topilsa universitetlarga xabar berilishi, taklif berilmasligi yoki qaytarib olinishi mumkin.</li>
+<ul><li><b>Common App</b>: firibgarlik siyosati AI platformasi yaratgan mazmunni o'z ishi sifatida topshirishni firibgarlik qatoriga kiritadi. Arizani imzolaganingizda matn o'zingizniki ekanini tasdiqlaysiz.</li>
+<li><b>UCAS</b>: AI dan g'oya to'plash, tuzilma taklifi va o'qilishni tekshirish uchun foydalanish mumkin. Bayonotning hammasini yoki katta qismini AI ga yozdirib, o'ziniki sifatida topshirish universitetlar tomonidan ko'chirish ([[cheating]]) deb hisoblanadi. Siz bayonot boshqa manbadan, jumladan AI dan ko'chirilmaganini tasdiqlaysiz. UCAS tekshiruv jamoasi bayonotlar orasidagi o'xshashlikni tekshiradi; o'xshashlik topilsa universitetlarga xabar berilishi, taklif berilmasligi yoki qaytarib olinishi mumkin.</li>
 <li><b>Universitetlar</b>: ko'pchiligi o'z qoidasini e'lon qiladi. Ariza beradigan har universitet sahifasini tekshiring.</li></ul>
 <h4>Chegara</h4>
 <div class="tbl"><table><thead><tr><th>Odatda maqbul</th><th>Maqbul emas</th></tr></thead><tbody>

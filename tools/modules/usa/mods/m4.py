@@ -15,7 +15,7 @@ MOD = dict(
              body=f"""<h4>CSS Profile</h4>
 <p>College Board ning [[CSS Profile]] tizimi: kollejlar va stipendiya dasturlari uni federal bo'lmagan, universitetning o'z yordamini taqsimlash uchun ishlatadi. Uning sahifasida xalqaro abituriyentlar uchun alohida bo'lim bor: valyuta, ikki valyutadagi daromad, ota-ona soliq holati va AQSh soliq deklaratsiyasini topshirmaydigan oilalar uchun IDOC ga nima yuborish haqida savollar.</p>
 <h4>Universitet formasi va qo'shimcha hujjatlar (Northwestern namunasi)</h4>
-<ul><li>CSS Profile; uni o'z mamlakatingizdan topshira olmasangiz yoki jiddiy moliyaviy qiyinchilik bo'lsa, universitetning o'z formasi (ISAFA).</li><li>Ota-onaning so'nggi yil soliq hujjati yoki, mamlakatda yillik soliq deklaratsiyasi bo'lmasa, ish beruvchidan rasmiy imzo yoki muhr bilan daromad haqida xat.</li><li>Har hujjatda talabaning ismi va tug'ilgan sanasi, to'ldirilgan muqova varaq.</li><li>Barcha soliq va daromad hujjatlari rasmiy tarjima bilan va AQSh dollariga o'girilgan holda, kurs ko'rsatilib.</li></ul>
+<ul><li>CSS Profile; uni o'z mamlakatingizdan topshira olmasangiz yoki jiddiy moliyaviy qiyinchilik bo'lsa, universitetning o'z formasi (ISAFA).</li><li>Ota-onaning so'nggi yil soliq hujjati yoki, mamlakatda yillik soliq deklaratsiyasi bo'lmasa, ish beruvchidan rasmiy imzo yoki muhr bilan daromad haqida xat.</li><li>Har hujjatda sizning ismingiz va tug'ilgan sanangiz, to'ldirilgan muqova varaq.</li><li>Barcha soliq va daromad hujjatlari rasmiy tarjima bilan va AQSh dollariga o'girilgan holda, kurs ko'rsatilib.</li></ul>
 <div class="tbl"><table><thead><tr><th>Universitet</th><th>Forma</th><th>Qo'shimcha hujjat</th><th>Muddat</th></tr></thead><tbody>
 <tr><td>...</td><td>CSS Profile / o'z formasi</td><td>Soliq yoki daromad xati, tarjima</td><td>Rasmiy sahifadan</td></tr>
 </tbody></table></div>
@@ -67,7 +67,7 @@ MOD = dict(
 </tbody></table></div>
 <h4>Hisob</h4>
 <p>Qolgan summa = to'liq narx − grant − kredit − ish. Siz va oila uchun haqiqiy summa: qolgan summa + kredit (keyin qaytariladi).</p>
-<p>Harvard ham talabalardan o'z ish haqi va jamg'armasidan hissa kutishini yozadi: \"ota-ona hissasi nol\" talaba hech narsa to'lamaydi degani emas.</p>
+<p>Harvard ham talabalardan o'z ish haqi va jamg'armasidan hissa kutishini yozadi: \"ota-ona hissasi nol\" siz hech narsa to'lamaysiz degani emas.</p>
 <h4>Har yil uchun</h4>
 <ul><li>Yordam keyingi yillarda qayta hisoblanadimi, har yili ariza kerakmi: xatda yoki sahifada.</li><li>Natijaga asoslangan grant bo'lsa, baho sharti.</li></ul>
 <div class="srcs">Manba: {HARVARD}. {HOL}.</div>""",

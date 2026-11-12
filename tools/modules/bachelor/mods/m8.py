@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("memo", "Yutuqlar varaqasi (Brag Sheet)", "tavsiya beruvchiga beriladigan faktlar va epizodlar"),
            ("bell", "2–3 tavsiya so'rovi", "kimga, qachon, qanday"),
            ("scroll", "Aloqalar jadvali", "tavsiya beruvchilar, muddatlar, holat")],
-    warn="Tavsiya xatini abituriyent yozib, o'qituvchiga imzolatishi akademik halollikni buzadi va platformalar qoidalariga zid. Bu modulda faqat tavsiya beruvchiga faktlar berish o'rgatiladi.",
+    warn="Tavsiya xatini o'zingiz yozib, o'qituvchiga imzolatsangiz, bu akademik halollikni buzadi va platformalar qoidalariga zid. Bu modulda faqat tavsiya beruvchiga faktlar berish o'rgatiladi.",
     lessons=[
         dict(t="Kuchli tavsiya xati", short="Kuchli xat", min=25, kind="🎯 Mini-test", ic="memo",
              hook="\"U a'lochi va mehnatkash o'quvchi\" degan xatni komissiya minglab o'qigan. Kuchli xat aniq epizod va kuzatilgan dalil bilan ajralib turadi.",

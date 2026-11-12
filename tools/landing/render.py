@@ -177,7 +177,7 @@ def dark_block(lab):
 </section>'''
 
 HONEST_NOTE = ("<b>Ochiq gap.</b> Kompas Lab yangi platforma: bitiruvchilar natijasi hali yoʻq, shuning uchun sahifada natija raqami ham, sharh ham yoʻq. "
-               "Natijalar faqat talabaning yozma roziligi bilan eʼlon qilinadi va ular bilan birga maqsadga yetmagan holatlar ulushi ham koʻrsatiladi. "
+               "Natijangiz faqat sizning yozma roziligingiz bilan eʼlon qilinadi; natijalar bilan birga maqsadga yetmagan holatlar ulushi ham koʻrsatiladi. "
                "Hech bir Lab qabul, stipendiya yoki viza kafolatini bermaydi.")
 
 def ab_strip(lab):

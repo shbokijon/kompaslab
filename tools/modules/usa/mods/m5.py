@@ -13,15 +13,15 @@ MOD = dict(
         dict(t="Global UGRAD nima", short="UGRAD", min=25, kind="🧭 Xarita", ic="usa",
              hook="\"AQShga grant bilan bakalavr\" degan e'lonlar ko'pincha Global UGRAD ni anglatadi. Lekin u daraja bermaydi va universitetni siz tanlamaysiz. Buni bilmasdan ariza bersangiz, kutganingiz boshqa bo'ladi.",
              body=f"""<h4>Asosiy faktlar (elchixona sahifasi)</h4>
-<ul><li>AQSh Davlat departamentining Ta'lim va madaniyat ishlari byurosi dasturi; World Learning boshqaradi.</li><li>AQSh kolleji yoki universitetida bir semestr daraja bermaydigan ([[non-degree]]) o'qish.</li><li>Talaba AQShlik talabalar bilan kampusda yashaydi, kunduzgi bakalavriat kurslarini (jumladan AQSh haqidagi bitta kursni) o'qiydi va 20 soat jamoat ishida qatnashadi.</li><li>Dastur oxirida Vashingtonda yetakchilik, aloqalar va vatanga qaytishga tayyorgarlik bo'yicha seminar.</li><li>Universitetni talaba tanlamaydi: joylashtirish akademik qiziqishga qarab.</li><li>Kreditni o'z universitetingizga o'tkazish talabaning o'z mas'uliyati; dastur yordam bermaydi.</li><li>Klinik yo'nalishlarda (tibbiyot, hamshiralik, veterinariya, farmakologiya) J-1 qoidalari tufayli kurslar cheklangan bo'lishi mumkin.</li></ul>
+<ul><li>AQSh Davlat departamentining Ta'lim va madaniyat ishlari byurosi dasturi; World Learning boshqaradi.</li><li>AQSh kolleji yoki universitetida bir semestr daraja bermaydigan ([[non-degree]]) o'qish.</li><li>Siz AQShlik talabalar bilan kampusda yashaysiz, kunduzgi bakalavriat kurslarini (jumladan AQSh haqidagi bitta kursni) o'qiydi va 20 soat jamoat ishida qatnashadi.</li><li>Dastur oxirida Vashingtonda yetakchilik, aloqalar va vatanga qaytishga tayyorgarlik bo'yicha seminar.</li><li>Universitetni siz tanlamaysiz: joylashtirish akademik qiziqishingizga qarab.</li><li>Kreditni o'z universitetingizga o'tkazish sizning o'z mas'uliyatingiz; dastur yordam bermaydi.</li><li>Klinik yo'nalishlarda (tibbiyot, hamshiralik, veterinariya, farmakologiya) J-1 qoidalari tufayli kurslar cheklangan bo'lishi mumkin.</li></ul>
 <h4>Nima qoplanadi</h4>
 <p>AQShga borish-kelish, o'qish to'lovi, kampusda yashash va ovqat, tibbiy sug'urta, majburiy kitoblar, oylik kichik stipendiya va finalistlar uchun TOEFL imtihoni.</p>
 <div class="box info">World Learning sahifasi: AQShning 60 dan ortiq oliy ta'lim muassasasi har yili talaba qabul qiladi va dastur arizalari odatda har yili noyabr boshidan dekabrgacha ochiladi.</div>
 <div class="srcs">Manba: {EMB_UGRAD}; {UGRAD_WL}. {HOL}.</div>""",
              take="Global UGRAD: bir semestr, daraja yo'q, universitetni dastur tanlaydi, kredit o'tkazish sizning ishingiz. Xarajatlar dastur tomonidan qoplanadi.",
              quiz=[("Global UGRAD AQSh bakalavr diplomini beradi.", "n", "Noto'g'ri: bir semestrlik daraja bermaydigan o'qish."),
-                   ("Talaba AQSh universitetini o'zi tanlaydi.", "n", "Noto'g'ri: joylashtirish akademik qiziqishga qarab dastur tomonidan."),
-                   ("Kreditni o'z universitetiga o'tkazish talabaning mas'uliyati.", "t", "To'g'ri: dastur bunda yordam bermaydi."),
+                   ("AQSh universitetini o'zingiz tanlaysiz.", "n", "Noto'g'ri: joylashtirish akademik qiziqishga qarab dastur tomonidan."),
+                   ("Kreditni o'z universitetingizga o'tkazish sizning mas'uliyatingiz.", "t", "To'g'ri: dastur bunda yordam bermaydi."),
                    ("Dastur aviabilet, o'qish va yashashni qoplaydi.", "t", "To'g'ri: elchixona sahifasidagi ro'yxat.")],
              task="<ul><li>UGRAD sizga nima beradi va nima bermaydi: 3 tadan band yozing.</li><li>O'z universitetingizda kredit o'tkazish tartibini kimdan so'rashingizni yozing.</li></ul>",
              ph="Beradi: 1) ... Bermaydi: 1) ... Kredit: ... dekanat / xalqaro bo'lim"),
