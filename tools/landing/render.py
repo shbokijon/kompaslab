@@ -184,11 +184,11 @@ def ab_strip(lab):
     a = lab.get("point_a")
     if not a:
         return ""
-    b = f"{esc(lab['packet_title'])}: yuqoridagi {len(lab['packet'])} band. Hujjatlarni oʻzingiz yozasiz; Lab freymvork va baholash mezonini (rubrika) beradi."
+    b = f"{esc(lab['packet_title'])}: {len(lab['packet'])} ta hujjat va jadval, roʻyxati Umumiy sahifada. Hujjatlarni oʻzingiz yozasiz; Lab tuzilma va baholash mezonini beradi."
     return f'''<div class="ab">
-      <div class="ab-c"><small>A nuqta: hozir</small><p>{a}</p></div>
+      <div class="ab-c"><small>Hozir</small><p>{a}</p></div>
       <div class="ab-arrow" aria-hidden="true"></div>
-      <div class="ab-c b"><small>B nuqta: Lab oxirida</small><p>{b}</p></div>
+      <div class="ab-c b"><small>Lab oxirida</small><p>{b}</p></div>
     </div>'''
 
 def fit(lab):
@@ -364,7 +364,7 @@ PR6 = {"bachelor-lab": 499000, "master-lab": 499000, "usa-lab": 499000, "gks-lab
 REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi."
 
 # 6 oylik narx bazada (courses.price_6m), admin har Lab uchun kiritadi; boʻsh boʻlsa karta yashirin
-SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni"]
+SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Har oy qayta toʻlash kerak emas"]
 
 def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
     sale = slug in ON_SALE

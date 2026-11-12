@@ -43,7 +43,7 @@ def build_labs() -> dict:
     phd = []
     for i in range(9):
         t = re.search(r"<title>([^<]*)", (ROOT / f"phd-lab-m{i}.html").read_text(encoding="utf-8")).group(1)
-        t = re.sub(r"^M\d+\.?\s*", "", t.split(" · ")[0]).strip()
+        t = re.sub(r"^M\d+[.:]?\s*", "", t.split(" · ")[0]).strip()
         phd.append((f"M{i}", t))
     gks_all = pick("GKS")
     return {
