@@ -51,6 +51,15 @@
     sel.textContent = "";
     LAB.opts.forEach(function (o) { var op = el("option", o[1]); op.value = o[0]; sel.appendChild(op); });
     $("degreeBox").hidden = !LAB.opts.length;
+    var ps = $("plSale");
+    if (ps) {
+      ps.textContent = "";
+      if (LAB.sale) {
+        ps.appendChild(document.createTextNode("M0 bepul. Qolgan modullar " + LAB.name + " obunasida ochiladi: oylik tarif navbatdagi bosqichni, 6 oylik hammasini. "));
+        var a = el("a", "Narx va obuna"); a.href = LAB.slug + "-narxlar.html"; ps.appendChild(a);
+      }
+      ps.hidden = !LAB.sale;
+    }
   }
 
   function fields() {
@@ -79,6 +88,12 @@
       nx.appendChild(document.createTextNode(next.id + ", " + next.t + ". "));
       var a = el("a", next.id === "M0" ? "Bepul M0 ni ochish" : "Modul sahifasi"); a.href = next.h;
       nx.appendChild(a);
+      // Sotuvdagi Lab: M0 dan keyingi qadam obuna bilan ochiladi (2026-11-12)
+      if (LAB.sale && next.id !== "M0") {
+        nx.appendChild(document.createTextNode(" · "));
+        var pr = el("a", "Narx va obuna"); pr.href = LAB.slug + "-narxlar.html";
+        nx.appendChild(pr);
+      }
     } else {
       nx.appendChild(el("b", "Hamma bosqich belgilangan. "));
       nx.appendChild(document.createTextNode("Saralangan roʻyxatdagi har muddatni rasmiy saytda yana bir bor tekshiring."));

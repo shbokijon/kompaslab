@@ -29,8 +29,6 @@ M0 = {
 }
 # Musofir M0 hamma uchun ochiq: matnni shunga moslash
 MUSOFIR_TEXT = [
-    ("M0 roʻyxatdan oʻtmasdan ochiq boʻladi.", "M0 roʻyxatdan oʻtmasdan ochiq."),
-    ("M0 hamma uchun bepul va roʻyxatdan oʻtmasdan ochiq boʻladi.", "M0 hamma uchun bepul va roʻyxatdan oʻtmasdan ochiq."),
     ('<div class="pay-status"><span>⏳</span><span><b>M0 tayyorlanmoqda, onlayn toʻlov hali ochilmagan.</b> Ochilganda kutish roʻyxatidagilarga xabar beramiz.</span></div>',
      '<div class="pay-status"><span>✅</span><span><b>M0 ochiq va bepul. Onlayn toʻlov hali ochilmagan.</b> M1–M7 ochilganda kutish roʻyxatidagilarga xabar beramiz.</span></div>'),
     ("M0 ochilganda xabar olish uchun kutish roʻyxatiga yoziling.", "M1–M7 ochilganda xabar olish uchun kutish roʻyxatiga yoziling."),

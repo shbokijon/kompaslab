@@ -5,7 +5,7 @@
 #  sahifasini yozadi. Bu skript uni build.py oxirida quyidagilarga ajratadi:
 #    <lab>.html            Umumiy: hero, A→B, modullar yoʻli, keyingi sahifalar
 #    <lab>-dastur.html     Dastur: fazalar, modullar va darslar, metod, faktlar
-#    <lab>-test.html       Moslik testi (Tayyorgarlik koʻrsatkichi), boʻlsa
+#    <lab>-test.html       "Tayyormisiz?" (tayyorgarlik testi), boʻlsa
 #    <lab>-narxlar.html    Narxlar va obuna shartlari
 #    <lab>-savollar.html   Kimga mos, savollar
 #    <lab>-mN.html         Har modul sahifasi: darslar roʻyxati (M0 interaktiv
@@ -154,7 +154,7 @@ def modules(dastur):
 def tabs_html(stem, have_test, cur, extra):
     items = [(stem + ".html", "Umumiy"), (stem + "-dastur.html", "Dastur")]
     if have_test:
-        items.append((stem + "-test.html", "Moslik testi"))
+        items.append((stem + "-test.html", "Tayyormisiz?"))
     items += [(stem + "-narxlar.html", "Narxlar"), (stem + "-savollar.html", "Savollar")] + extra
     return '<div class="kl-tabs" role="navigation" aria-label="Lab sahifalari">' + "".join(
         f'<a href="{h}"{" aria-current=\"page\"" if h == cur else ""}>{t}</a>' for h, t in items) + "</div>"
@@ -181,6 +181,20 @@ def strip_head(sec):
 
 
 LOCK_WAIT = "Bu Lab uchun toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga xabar beramiz."
+
+# Sotuvdagi Lab testida natijadan keyin narx yoʻli (2026-11-12). Tugma faqat natija
+# yashil yoki sariq boʻlsa chiqadi; "Bu siklga erta" (qizil) holatida toʻlov tugmasi yoʻq.
+def add_buy(sec, stem):
+    m = re.search(r'(<a class="btn btn-p" style="width:100%;margin-top:14px" href="[^"]+">Bepul M0 ni boshlash</a>)', sec)
+    if not m:
+        return sec
+    buy = (m.group(1) + f'\n        <div class="kl-buy" id="sBuy" hidden><a class="btn btn-g" style="width:100%;margin-top:10px" href="{stem}-narxlar.html" data-snd="nav">Narx va obunani koʻrish</a>'
+           '<p style="font-size:13px;color:var(--muted);margin:8px 0 0">Oylik obuna bitta bosqichni ochadi, 6 oylik hammasini. Avval bepul M0 ni tugatishingiz mumkin.</p></div>'
+           '\n        <script>(function(){var b=document.getElementById("sB"),x=document.getElementById("sBuy");if(!b||!x)return;'
+           'function f(){var c=b.style.background||"";x.hidden=!(c.indexOf("--green")>-1||c.indexOf("--gold")>-1);}'
+           'document.addEventListener("change",function(){setTimeout(f,0);});})();</script>')
+    return sec[:m.start()] + buy + sec[m.end():]
+
 LOCK_PAY = {k: "Obuna Click orqali ochiladi: narx sahifasida tarifni tanlang, toʻlov tasdiqlangan zahoti modul ochiladi." for k in ON_SALE}
 
 def route(stem, mods, m0_page, here=None):
@@ -301,7 +315,7 @@ def split(root, f, src):
     hero = B["hero"].replace('href="#dastur" class="btn btn-g">Dasturni koʻrish</a>', f'href="{stem}-dastur.html" class="btn btn-g">Dasturni koʻrish</a>')
     hero = hero.replace('<a href="index.html#labs">Lablar</a>', '<a href="index.html#labs">Lablar</a>')
     m0_btn = f'<a class="btn btn-p" href="{m0_page}">Bepul M0 ni boshlash</a>' if m0_page else (f'<a class="btn btn-p" href="{stem}-m0.html">M0 dasturini koʻrish</a>')
-    test_btn = f'<a class="btn btn-g" href="{stem}-test.html">Moslik testini topshirish</a>' if have_test else f'<a class="btn btn-g" href="{stem}-narxlar.html">Narxlarni koʻrish</a>'
+    test_btn = f'<a class="btn btn-g" href="{stem}-test.html">Tayyorligingizni tekshiring</a>' if have_test else f'<a class="btn btn-g" href="{stem}-narxlar.html">Narxlarni koʻrish</a>'
     path = f'''<section id="yol">
   <div class="wrap">
     <div class="head"><h2>Dastur yoʻli</h2><p class="sub">{len(mods)} modul, {nlessons} dars. Har modul sahifasida darslar roʻyxati, natija va kirish holati bor. Darslar tartib bilan qurilgan, har biri bitta Topshiriq bilan tugaydi.</p></div>
@@ -319,7 +333,7 @@ def split(root, f, src):
 </section>'''
     nxt = [(stem + "-dastur.html", "Dastur", "Bosqichlar, modullar va har darsning mavzusi")]
     if have_test:
-        nxt.append((stem + "-test.html", "Moslik testi", "6 savol: tayyorgarlikni taxminiy baholash, qabul ehtimoli emas"))
+        nxt.append((stem + "-test.html", "Tayyormisiz?", "Bir necha savol: tayyorgarligingizni taxminiy baholaysiz, qabul ehtimoli emas"))
     nxt += [(stem + "-narxlar.html", "Narxlar", "Oylik va 6 oylik obuna"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
     nxt_html = '<section class="alt"><div class="wrap"><div class="head"><h2>Keyingi qadam</h2></div><nav class="kl-next" aria-label="Lab sahifalari">' + "".join(
         f'<a href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in nxt) + "</nav></div></section>"
@@ -346,8 +360,10 @@ def split(root, f, src):
     # ── 3. Test ──
     if have_test:
         h2, sub, sec = strip_head(B["test"])
-        main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Moslik testi")], h2 or "Moslik testi", sub, "chart") + "\n" + sec
-        made.append(emit(stem + "-test.html", "test", f"Moslik testi · {lab_name} | Kompas Lab", f"{lab_name}: 6 savollik tayyorgarlik koʻrsatkichi. Toʻlashdan oldin boshlash vaqti kelganini tekshiring.", main, own=("test",)))
+        if stem in ON_SALE:
+            sec = add_buy(sec, stem)
+        main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Tayyormisiz?")], h2 or "Tayyorgarlik darajasi", sub, "chart") + "\n" + sec
+        made.append(emit(stem + "-test.html", "test", f"Tayyormisiz? Tayyorgarlik testi · {lab_name} | Kompas Lab", f"{lab_name}: tayyorgarlik testi. Toʻlashdan oldin boshlash vaqtingiz kelganini tekshiring.", main, own=("test",)))
 
     # ── 4. Narxlar ──
     h2, sub, sec = strip_head(B["narx"])

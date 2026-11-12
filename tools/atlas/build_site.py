@@ -26,7 +26,7 @@ CHECKED = "30.10.2026"
 ISO = "2026-10-30"
 
 LABS = {
-    "musofir": ('musofir-lab-m0.html', "Musofir Lab M0 (ochiq)"),
+    "musofir": ('musofir-lab-m0.html', "Musofir Lab M0"),
     "master": ("master-lab-m0.html", "Master Lab M0"),
     "phd": ("phd-lab-m0.html", "PhD Lab M0"),
     "bachelor": ("bachelor-lab-m0.html", "Bachelor Lab M0"),
@@ -39,6 +39,21 @@ LABS = {
 
 def lab_links(*keys: str) -> str:
     return '<div class="at-labs">' + "".join(f'<a href="{LABS[k][0]}">{LABS[k][1]}</a>' for k in keys) + "</div>"
+
+
+# Sotuvdagi Lablar (tools/landing/labs_data.ON_SALE bilan bir xil): maqola oxirida narx sahifasiga havola.
+# Narx raqami yozilmaydi: yagona manba bazadagi courses jadvali.
+SALE = {"master": ("master-lab-narxlar.html", "Master Lab"), "phd": ("phd-lab-narxlar.html", "PhD Lab"),
+        "bachelor": ("bachelor-lab-narxlar.html", "Bachelor Lab"), "gks": ("gks-lab-narxlar.html", "GKS Lab"),
+        "usa": ("usa-lab-narxlar.html", "USA Lab")}
+
+
+def sale_links(*keys: str) -> str:
+    ks = [k for k in keys if k in SALE]
+    if not ks:
+        return ""
+    links = "".join(f'<a href="{SALE[k][0]}">{SALE[k][1]}: narx va obuna</a>' for k in ks)
+    return f'<p style="margin-top:14px">To\'liq dastur obuna bilan ochiladi: oylik tarif bitta bosqichni, 6 oylik hammasini.</p><div class="at-labs">{links}</div>'
 
 
 def ext(url: str, label: str, lang: str = "") -> str:
@@ -99,7 +114,7 @@ ARTICLES = [
         title=f"Talaba vizasida ishlash: 8 mamlakat qoidalari ({CHECKED} holatiga)",
         card="Buyuk Britaniya, Germaniya, Niderlandiya, Kanada, AQSh, Yaponiya, Polsha va Koreya: o'qish davrida haftasiga necha soat ishlash mumkin va qanday shartlar bilan.",
         desc="Talaba vizasida ishlash qoidalari: Buyuk Britaniya, Germaniya, Niderlandiya, Kanada, AQSh, Yaponiya, Polsha va Janubiy Koreya. Rasmiy manbalar bilan, 30.10.2026 holatiga.",
-        labs=("master", "bachelor", "musofir", "reja"),
+        labs=("master", "usa", "bachelor", "musofir", "reja"),
         body=f"""
 <p class="at-short"><b>Qisqa javob.</b> Ko'p mamlakatda talaba o'qish davrida qisman, ta'tilda ko'proq ishlay oladi. Lekin limit soatda, kunda yoki ruxsatnomada belgilanadi va har mamlakatda boshqacha. Quyidagi jadval {CHECKED} holatiga rasmiy yoki universitet sahifalaridan olingan. Topshirishdan oldin har birini qayta tekshiring.</p>
 
@@ -247,7 +262,7 @@ def article(a: dict) -> str:
 {a["body"]}
 <h2>Manbalar</h2>
 <ol class="at-sources">{src}</ol>
-<div class="at-cta"><h3>Keyingi qadam</h3><p>Bu mavzu Lablarda topshiriq va vositalar bilan o'tiladi. M0 bepul.</p>{lab_links(*a["labs"])}</div>
+<div class="at-cta"><h3>Keyingi qadam</h3><p>Bu mavzu Lablarda topshiriq va vositalar bilan o'tiladi. M0 bepul.</p>{lab_links(*a["labs"])}{sale_links(*a["labs"])}</div>
 <p class="at-meta" style="margin-top:18px"><a href="atlas.html">← Atlasga qaytish</a></p>
 </article></div></main>
 """
@@ -306,7 +321,7 @@ def registry(r: dict) -> str:
 <div class="ar-bar"><h2>Natijalar</h2><span id="arCount"></span></div>
 <div id="arList" class="ar-list" data-alifbo="off" aria-live="polite"></div>
 <button id="arMore" class="btn btn-g ar-more" type="button" hidden>Yana ko'rsatish</button>
-<div class="at-cta"><h3>Topgach nima qilish kerak</h3><p>Kompaniyaning o'z sahifasidan vakansiyani toping va homiylik shartini to'g'ridan-to'g'ri tekshiring. Rasmiy ish yo'llari va firibgarlik belgilari Musofir Lab M0 da (ro'yxatdan o'tmasdan ochiq).</p>{lab_links("musofir")}</div>
+<div class="at-cta"><h3>Topgach nima qilish kerak</h3><p>Kompaniyaning o'z sahifasidan vakansiyani toping va homiylik shartini to'g'ridan-to'g'ri tekshiring. Rasmiy ish yo'llari va firibgarlik belgilari Musofir Lab M0 da (bepul, ro'yxatdan o'tib ochiladi).</p>{lab_links("musofir")}</div>
 <p class="at-src">Manba: {ext(r["source"][0], r["source"][1], "en")}. Qoidalar: {ext(r["rules"][0], r["rules"][1], "en")}. {r["licence"]} Kompas Atlas mustaqil ta'limiy vosita, davlat idorasi bilan bog'liq emas. <a href="atlas.html#ish">← Atlas</a></p>
 </div></main>
 """

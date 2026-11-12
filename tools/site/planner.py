@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1].parent
 sys.path.insert(0, str(ROOT / "tools" / "site"))
 sys.path.insert(0, str(ROOT / "tools" / "landing"))
 from shell import head, nav, page, pagehead  # noqa: E402
+from labs_data import ON_SALE  # noqa: E402
 
 
 def fix(s: str) -> str:
@@ -78,6 +79,7 @@ def main() -> None:
                 raise SystemExit(f"{k}: modul sahifasi yo'q: {t['h']}")
         v["opts"] = [[a, fix(b)] for a, b in v["opts"]]
         v["goal"], v["prog"] = fix(v["goal"]), fix(v["prog"])
+        v["sale"] = v["slug"] in ON_SALE  # sotuvdagi Lab: narx sahifasiga havola
     cfg = json.dumps(labs, ensure_ascii=False, separators=(",", ":"))
     chips = "".join(f'<a href="master-planner.html?lab={k}" data-lab="{k}">{v["name"]}</a>' for k, v in labs.items())
     body = nav("reja", "reja") + pagehead(
@@ -98,6 +100,7 @@ def main() -> None:
 <p class="pl-note">Lab modullari bo'yicha. Belgi faqat siz bajargan ishni bildiradi, universitet yoki stipendiya tasdig'ini emas.</p>
 <div class="pl-bar"><div id="bar"></div></div><p id="progressText" class="pl-note" aria-live="polite"></p>
 <ul id="taskList" class="pl-tasks"></ul>
+<p id="plSale" class="pl-note" hidden></p>
 <div id="next" class="pl-next" hidden></div>
 </section>
 <section class="pl-card full"><h2>3. Saralangan ro'yxat (Shortlist)</h2>

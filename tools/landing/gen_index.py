@@ -34,7 +34,7 @@ LABS = [
          why="Oʻqish bilan birga kichik, qonuniy biznes sinovi.", y=299000, m=29000, status="Ishlab chiqilmoqda"),
     dict(slug="miggo", name="Musofir Lab", icon="musofir", page="musofir-lab.html", group=2, ang=315,
          who="Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha", chips=["8 modul", "44 dars"], lessons=44,
-         text="Rasmiy yoʻllar va firibgarlik belgilari. M0 roʻyxatdan oʻtmasdan ochiq. Kompas ish yoki viza topib bermaydi.",
+         text="Rasmiy yoʻllar va firibgarlik belgilari. M0 bepul, roʻyxatdan oʻtib ochiladi. Kompas ish yoki viza topib bermaydi.",
          why="Xorijda faqat rasmiy yoʻl bilan ishlash va firibgarlikdan himoya.", y=499000, m=49000, status="M0 tayyorlanmoqda"),
 ]
 MIYA = dict(slug="ikki-miya", name="2-Miya", icon="miya", who="Bilimni tizimlashtirish (PKM)",
