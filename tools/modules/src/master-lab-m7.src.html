@@ -186,7 +186,7 @@
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Chevening uchun eng koʻp beriladigan savol: “Hali ishlamaganman, topshirsam boʻladimi?” Javob rasmiy shartda yozilgan, va u esse sifatidan oldin tekshiriladi.</div></div>
+          <div class="panel"><div class="hook">Chevening uchun eng koʻp beriladigan savol: “Hali ishlamaganman, topshirsam boʻladimi?” Javob rasmiy shartda yozilgan va u esse sifatidan oldin tekshiriladi.</div></div>
           <div class="panel">
             <h4>Chevening</h4>
             <p>Buyuk Britaniya hukumatining bir yillik magistratura stipendiyasi. Yetakchilik salohiyati va kasbiy tajribaga urgʻu beradi.</p>
@@ -422,7 +422,7 @@
 
   <!-- ARTIFACT -->
   <section id="artefakt">
-    <h2>Stipendiyalar roʻyxati</h2>
+    <h2>Sizning stipendiya portfelingiz</h2>
     <p class="sub">Uchta stipendiya: muvofiqlik, ball, muddat va Maqsad bayonnomasini (SoP) moslashtirish rejasi. PDF uchun “Chop etish”.</p>
     <div class="artifact">
       <h3>Profil</h3><p id="aProf">—</p>
@@ -442,7 +442,7 @@
     <div class="mentor">
       <div class="av">KL</div>
       <div>
-        <q>Stipendiya qidirishni muddatdan emas, muvofiqlikdan boshlang. Bitta mos kelmaydigan shart uchun yozilgan eng yaxshi esse ham oʻqilmaydi.</q>
+        <q>Stipendiya qidirishni muddatdan emas, muvofiqlikdan boshlang. Bitta majburiy shartga mos kelmasangiz, eng yaxshi esse ham oʻqilmaydi.</q>
         <small>Kompas Lab maslahati</small>
       </div>
     </div>
@@ -544,7 +544,7 @@
     l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
     l.classList.toggle("done", !!S.done[id]);
     var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
-    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Ajoyib! Keyingi darsga oʻting."; }
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Dars yakunlandi. Keyingi darsga oʻting."; }
     else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!";
   }
   document.querySelectorAll("[data-complete]").forEach(function (b) {

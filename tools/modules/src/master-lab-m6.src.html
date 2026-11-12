@@ -185,9 +185,9 @@
           <div class="panel"><div class="assign"><b>Qisqa test: toʻgʻri yoki notoʻgʻri?</b>
             <div class="quiz" id="quiz">
               <div class="qz" data-a="t"><p>“Oʻquv magistraturasi arizalarining koʻpchiligida ilmiy loyiha taklifi talab qilinmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: u yerda SoP asosiy matn.</div></div>
-              <div class="qz" data-a="n"><p>“Taklif qabul qilingach, mavzuni oʻqish davomida oʻzgartirib boʻlmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: mavzu ilmiy rahbar bilan birga aniqlashadi.</div></div>
+              <div class="qz" data-a="n"><p>“Taklif qabul qilingach, mavzuni oʻqish davomida oʻzgartirib boʻlmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: mavzu ilmiy rahbar bilan birga aniqlanadi.</div></div>
               <div class="qz" data-a="t"><p>“Taklifning vazifasi: aniq savol va uni bajarish yoʻlini koʻrsatish.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: komissiya fikrlash usulingizni baholaydi.</div></div>
-              <div class="qz" data-a="n"><p>“Magistraturada doktorantura miqyosidagi katta loyiha komissiyani koʻproq taassurotlantiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: muddatga mos kelmaydigan reja bajarib boʻlmaydigan reja hisoblanadi.</div></div>
+              <div class="qz" data-a="n"><p>“Magistraturada doktorantura miqyosidagi katta loyiha komissiyada yaxshiroq taassurot qoldiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: muddatga mos kelmaydigan reja bajarib boʻlmaydigan reja hisoblanadi.</div></div>
               </div>
             <div class="verdict" id="quizRes"></div>
             <ul style="margin-top:14px"><li>Trackeringizdagi qaysi dasturlar taklif soʻraydi? Hajm va boʻlim talablarini yozing.</li></ul>
@@ -479,13 +479,13 @@
       <div class="bdg" data-badge="lit"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Adabiyot xaritasi<small>8+ manba</small></div>
       <div class="bdg" data-badge="plan"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy">Rejalashtiruvchi<small>Gantt</small></div>
       <div class="bdg" data-badge="cite"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Iqtibos ustasi<small>3 uslub</small></div>
-      <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">III bosqich yakuni<small>Taklif v1.0</small></div>
+      <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">III bosqich yakuni<small>Taklif tayyor</small></div>
     </div>
   </section>
 
   <!-- ARTIFACT -->
   <section id="artefakt">
-    <h2>Ilmiy loyiha taklifi v1.0</h2>
+    <h2>Sizning ilmiy loyiha taklifingiz</h2>
     <p class="sub">“Skeletni qoʻyish” vositalardagi yozuvlarni boʻsh boʻlimlarga joylaydi. Keyin har boʻlimni toʻliq matnga aylantiring. Adabiyotlar roʻyxati matritsadan APA 7 da yigʻiladi.</p>
     <div class="artifact">
       <div class="noprint">
@@ -505,7 +505,7 @@
       <div id="prDoc" class="prdoc"></div>
       <div id="aMiss" class="noprint" style="font-size:13.5px;color:var(--muted);margin-top:10px"></div>
       <div class="row">
-        <button class="btn btn-p" type="button" id="finBtn">III fazani yakunlash · +30 XP</button>
+        <button class="btn btn-p" type="button" id="finBtn">III bosqichni yakunlash · +30 XP</button>
         <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
         <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
       </div>
@@ -536,7 +536,7 @@
 <footer>
   <div class="wrap">
     <a class="btn btn-g" href="master-lab.html">← Master Lab</a>
-    <span class="btn btn-g" style="cursor:default;opacity:.7">Keyingi: M7 Stipendiyalar atlasi</span>
+    <span class="btn btn-g" style="cursor:default;opacity:.7">Keyingi: M7 Stipendiyalar va moliyalashtirish</span>
   </div>
 </footer>
 
@@ -618,7 +618,7 @@
     l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
     l.classList.toggle("done", !!S.done[id]);
     var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
-    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Ajoyib! Keyingi darsga oʻting."; }
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Dars yakunlandi. Keyingi darsga oʻting."; }
     else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!";
   }
   document.querySelectorAll("[data-complete]").forEach(function (b) {
@@ -777,7 +777,7 @@
   $("finBtn").addEventListener("click", function () {
     var R = range(), n = total();
     if (!nv("prTitle") || n < R[0] || n > R[1] || !S.done.funnel || !S.done.lit || !S.done.plan) { toast("Avval yetishmayotgan qismlarni yakunlang", "lock"); return; }
-    award("fin", 30, "Loyiha taklifi v1.0 tayyor", "seedling"); confetti(); renderArt();
+    award("fin", 30, "Loyiha taklifingiz tayyor", "seedling"); confetti(); renderArt();
   });
   $("docBtn").addEventListener("click", function () {
     var nm = (nv("prTitle") || "Research_Proposal").replace(/[^A-Za-z0-9]+/g, "_").slice(0, 60);

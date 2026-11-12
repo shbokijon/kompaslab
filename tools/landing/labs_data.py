@@ -139,7 +139,7 @@ LABS["Master"] = dict(
     fit_yes=["Bakalavr bitiruvchisi yoki 3–4-kurs talabasi (STEM, ingliz tili o'rta yoki yuqori)", "Ishlayotgan mutaxassis (1–5 yil tajriba): Chevening kabi ish tajribasi talab qiladigan dasturlar",
              "Mahalliy magistratura talabasi yoki bitiruvchisi: tadqiqot magistraturasi, ilmiy rahbar", "Farzandiga yoʻl tanlayotgan ota-ona: kurs nima beradi va nima bermaydi"],
     fit_no=["Bakalavriatga kirmoqchi bo'lganlar → <a href=\"bachelor-lab.html\">Bachelor Lab</a>", "Faqat GKS yoki DAAD/MEXT izlayotganlar → <a href=\"gks-lab.html\">GKS Lab</a>, <a href=\"daad-lab.html\">DAAD Lab</a>, MEXT Lab (tayyorlanmoqda)",
-            "Doktoranturaga topshirayotganlar → <a href=\"phd-lab.html\">PhD Lab</a>", "Sohani almashtirmoqchi, lekin buni asoslaydigan tajriba yoki kurslari yoʻqlar (M0 avval shu boʻshliqni koʻrsatadi)", "\"Qabul yoki stipendiya kafolati\" izlayotganlar", "Hujjatni kimdir o'rniga yozib berishini kutayotganlar"],
+            "Doktoranturaga topshirayotganlar → <a href=\"phd-lab.html\">PhD Lab</a>", "Sohani almashtirmoqchi, lekin buni asoslaydigan tajriba yoki kurslari yoʻqlar (M0 avval shu boʻshliqni koʻrsatadi)", "\"Qabul yoki stipendiya kafolati\" izlayotganlar", "Hujjatini boshqa odam yozib berishini kutayotganlar"],
     program_title="9 modul, 59 dars, <em>4 bosqich.</em>",
     program_sub="M0 bepul. Oylik toʻlov navbatdagi bitta bosqichni (2 modul) bir oyga ochadi; 6 oylik tarif barcha 4 bosqichni birdaniga ochadi. Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.",
     phases=[("BOSQICH 0 · BEPUL", "Tanishuv", "M0 · 5 dars · 1 hafta"), ("BOSQICH I", "Strategiya", "M1–M2 · 12 dars · 3–4 hafta"), ("BOSQICH II", "Hujjatlar va muloqot", "M3–M4 · 12 dars · 4–6 hafta"),

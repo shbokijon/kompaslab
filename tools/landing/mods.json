@@ -410,7 +410,7 @@
    "id": "M0",
    "title": "Magistraturaga tayyorgarlik",
    "meta": "bepul, 5 dars",
-   "info": "Maqsad: magistratura turini, rasmiy talab va muddatlarni tekshirish. Natija: shaxsiy tayyorgarlik rejasi va keyingi qadamlar.",
+   "info": "Maqsad: magistratura turini, rasmiy talab va muddatlarni tekshirish. Natija: sizning tayyorgarlik rejangiz va keyingi qadamlaringiz.",
    "lessons": [
     {
      "num": "0.1",
@@ -448,7 +448,7 @@
    "id": "M1",
    "title": "Ilmiy yoʻnalish va universitet tanlash",
    "meta": "7 dars",
-   "info": "Maqsad: 12–15 dasturdan 6–10 tasini talab, moslik va xarajat boʻyicha saralash. Natija: dasturlar roʻyxati va ilmiy qiziqish bayoni.",
+   "info": "Maqsad: 12–15 dasturdan sizga mos 6–10 tasini talab, moslik va xarajat boʻyicha saralash. Natija: sizning saralangan dasturlar roʻyxatingiz va ilmiy qiziqish bayoningiz.",
    "lessons": [
     {
      "num": "1.1",
@@ -498,7 +498,7 @@
    "id": "M2",
    "title": "Muddatlar va shaxsiy tayyorgarlik rejasi",
    "meta": "5 dars",
-   "info": "Maqsad: qabul va stipendiya muddatlarini tartibga solish. Natija: arizalarni kuzatish jadvali (Master Tracker), Gantt diagrammasi va shaxsiy reja.",
+   "info": "Maqsad: qabul va stipendiya muddatlarini tartibga solish. Natija: sizning arizalar jadvalingiz (Master Tracker), Gantt diagrammasi va shaxsiy rejangiz.",
    "lessons": [
     {
      "num": "2.1",
@@ -536,7 +536,7 @@
    "id": "M3",
    "title": "Akademik tarjimayi hol (CV)",
    "meta": "6 dars",
-   "info": "Maqsad: dastur talabiga mos akademik tarjimayi hol (CV) tayyorlash. Natija: tekshirilgan tarjimayi hol va PDF yoki Word hujjati.",
+   "info": "Maqsad: dastur talabiga mos akademik tarjimayi hol (CV) tayyorlash. Natija: tekshirilgan akademik CVʼingiz, PDF yoki Word hujjati.",
    "lessons": [
     {
      "num": "3.1",
@@ -580,7 +580,7 @@
    "id": "M4",
    "title": "Tavsiya xatlari va professor bilan aloqa",
    "meta": "6 dars",
-   "info": "Maqsad: tavsiya beruvchilarni tanlash va zarur hollarda professorlarga yozish. Natija: yutuqlar varaqasi va murojaatlar qaydnomasi.",
+   "info": "Maqsad: tavsiya beruvchilarni tanlash va zarur hollarda professorlarga yozish. Natija: sizning yutuqlar varaqangiz va murojaatlar qaydnomangiz.",
    "lessons": [
     {
      "num": "4.1",
@@ -624,7 +624,7 @@
    "id": "M5",
    "title": "Maqsad bayonnomasi",
    "meta": "7 dars",
-   "info": "Maqsad: tanlangan dastur savollariga mos, dalillarga asoslangan bayonot yozish. Natija: maqsad bayonnomasi (SoP) va ikki moslashtirilgan variant.",
+   "info": "Maqsad: tanlangan dastur savollariga mos, dalillarga asoslangan bayonot yozish. Natija: sizning maqsad bayonnomangiz (SoP) va uning ikki moslashtirilgan varianti.",
    "lessons": [
     {
      "num": "5.1",
@@ -674,7 +674,7 @@
    "id": "M6",
    "title": "Ilmiy loyiha taklifi",
    "meta": "7 dars",
-   "info": "Maqsad: dastur talab etsa, ilmiy loyiha taklifi tuzish. Natija: tadqiqot savoli, adabiyotlar tahlili, metodologiya va ish rejasi.",
+   "info": "Maqsad: dastur talab etsa, ilmiy loyiha taklifi tuzish. Natija: sizning tadqiqot savolingiz, adabiyotlar tahlili, metodologiya va ish rejasi.",
    "lessons": [
     {
      "num": "6.1",
@@ -724,7 +724,7 @@
    "id": "M7",
    "title": "Stipendiyalar va moliyalashtirish",
    "meta": "8 dars",
-   "info": "Maqsad: stipendiya shartlarini rasmiy manbadan tekshirish. Natija: uchta dastur boʻyicha saralangan roʻyxat.",
+   "info": "Maqsad: stipendiya shartlarini rasmiy manbadan tekshirish. Natija: sizning uchta stipendiyadan iborat portfelingiz.",
    "lessons": [
     {
      "num": "7.1",
@@ -780,7 +780,7 @@
    "id": "M8",
    "title": "Viza, intervyu va joʻnash",
    "meta": "8 dars",
-   "info": "Maqsad: intervyuga, viza hujjatlariga va joʻnashga tayyorlanish. Natija: intervyu mashqlari, ilmiy taqdimot va joʻnash nazorat roʻyxati.",
+   "info": "Maqsad: intervyuga, viza hujjatlariga va joʻnashga tayyorlanish. Natija: sizning intervyu mashqlaringiz, ilmiy taqdimotingiz va joʻnash nazorat roʻyxatingiz.",
    "lessons": [
     {
      "num": "8.1",

@@ -154,7 +154,7 @@
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Suhbatga “oʻzim haqimda” savoliga tayyorlanib bordingiz. Panelda uch kishi oʻtiribdi, biri sohangiz professori, va birinchi savol: “Tezisingizdagi usulning cheklovi nima edi?”</div></div>
+          <div class="panel"><div class="hook">Suhbatga “oʻzim haqimda” savoliga tayyorlanib bordingiz. Panelda uch kishi oʻtiribdi, biri sohangiz professori. Birinchi savol: “Tezisingizdagi usulning cheklovi nima edi?”</div></div>
           <div class="panel">
             <div class="tbl"><table><thead><tr><th>Tur</th><th>Nimani tekshiradi</th><th>Tayyorgarlik</th></tr></thead><tbody>
               <tr><td><b>Motivatsion</b></td><td>Nega shu dastur, maqsad, izchillik</td><td>SoP va CV dagi har daʼvoni misol bilan aytib bera olish</td></tr>
@@ -225,7 +225,7 @@
             <h4>Komissiya mantiqi</h4>
             <ul><li><b>Izchillik:</b> suhbatdagi har javob arizangizdagi matn bilan mos. Arizani suhbat oldidan qayta oʻqing.</li><li><b>Aniqlik:</b> “jamiyatga foyda” emas, “X vazirligidagi Y boʻlimida Z tizimi”.</li><li><b>Dalil:</b> yetakchilik haqida daʼvo emas, natijali epizod.</li><li><b>Qaytish rejasi:</b> qaytish majburiyati boʻlgan dasturlarda uni ishonchli va real koʻrsatish.</li></ul>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Stipendiya suhbati sarmoya mantiqida: izchillik, aniqlik, dalil va qaytish rejasi. Javoblar arizangiz bilan bir xil boʻlishi shart.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Stipendiya suhbati sarmoya mantiqida: izchillik, aniqlik, dalil va qaytish rejasi. Javoblar arizangizdagi maʼlumot bilan mos boʻlishi shart.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>M7 portfelingizdagi stipendiyalardan biri uchun 3 ta ehtimoliy savol va har biriga bitta epizod yozing.</li></ul>
             <textarea data-save="a3" style="min-height:120px" placeholder="Savol 1: ... Epizod: ..."></textarea></div></div>
@@ -443,7 +443,7 @@
 
   <!-- ARTIFACT -->
   <section id="artefakt">
-    <h2>Suhbat va joʻnash paketi</h2>
+    <h2>Sizning suhbat va joʻnash paketingiz</h2>
     <p class="sub">3 ta baholangan suhbat javobi, 5 daqiqalik taqdimot rejasi va joʻnash oldi nazorat roʻyxati. PDF uchun “Chop etish”.</p>
     <div class="artifact">
       <h3>Suhbat javoblari</h3><div id="aIv">—</div>
@@ -564,7 +564,7 @@
     l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
     l.classList.toggle("done", !!S.done[id]);
     var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
-    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Ajoyib! Keyingi darsga oʻting."; }
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Dars yakunlandi. Keyingi darsga oʻting."; }
     else h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!";
   }
   document.querySelectorAll("[data-complete]").forEach(function (b) {
