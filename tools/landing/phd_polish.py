@@ -17,8 +17,8 @@ def build():
     s = R(s, '<div class="logo-m">🧭</div><span class="logo-t">Kompas Lab <span>· PhD</span></span>', '<div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div><span class="logo-t">Kompas Lab <span>PhD</span></span>')
     s = R(s, '<a href="#asoschi">Asoschi</a>', '<a href="#qanday">Qanday tuzilgan</a>')
     # "Ochiq gap": natija va kafolat boʻyicha umumiy izoh (render.HONEST_NOTE)
-    s = R(s, "<li>\"PhD kafolati\" izlayotganlar — bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>",
-          "<li>\"PhD kafolati\" izlayotganlar — bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>\n    <p class=\"honest\">" + HONEST_NOTE + "</p>")
+    s = R(s, "<li>\"PhD kafolati\" izlayotganlar: bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>",
+          "<li>\"PhD kafolati\" izlayotganlar: bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>\n    <p class=\"honest\">" + HONEST_NOTE + "</p>")
     s = s.replace('<button type="button" class="btn btn-p btn-sm" data-wl>🔔 Kutish roʻyxati</button>', '<a href="register.html" class="btn btn-p btn-sm" data-kl-start>Boshlash</a>')
     s = s.replace("🔔 Kutish roʻyxati", "Kutish roʻyxati").replace("Ochilganda xabar</button>", "Ochilganda xabar bering</button>")
     s = R(s, '<div class="badge">⚗️ PhD Lab · v3.1</div>', icon("phd", "hero-i float", "PhD Lab"))
@@ -52,7 +52,8 @@ def build():
     s = re.sub(r'<div class="calc reveal">.*?</div>\s*</div>', '<div class="calc">' + calc + "</div>\n    <div class=\"refund\">" + REFUND + "</div>", s, count=1, flags=re.S)
     s = R(s, "<div><b>Bekor qilish</b>Obuna istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Qaytarish shartlari toʻlovdan oldin toʻliq matnda koʻrsatiladi.</div>",
           "<div><b>Bekor qilish</b>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz. Toʻlamasangiz, toʻlangan davr tugashi bilan kirish yopiladi.</div>")
-    s = s.replace("<h3>M0 — Qaror darvozasi</h3>", "<h3>M0, qaror moduli</h3>")
+    # PhD sikli 12–18 oy: 6 oylik obuna butun siklni qamramaydi
+    s = s.replace("<li>Bitta ariza siklini qamraydi: 6 oy</li>", "<li>6 oy davomida hamma modullarga kirish</li>").replace('<p class="desc">Bitta ariza sikli uchun: 6 oy</p>', '<p class="desc">Hamma bosqich bitta toʻlovda</p>')
     k = s.index("<!-- SAVOLLAR -->"); k = s.rindex("</section>", 0, k)
     s = s[:k] + '  <script src="js/checkout.js" defer></script>\n' + s[k:]
     # savollar: «Nega Lab?»

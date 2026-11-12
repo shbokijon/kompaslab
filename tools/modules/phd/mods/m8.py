@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("shield", "Jo'nash oldi nazorat ro'yxati (Pre-departure checklist)", "har shart: kim bajaradi va qachongacha"),
            ("calendar", "30/60/90 kunlik reja", "har bosqich natijasi bilan"),
            ("bulb", "Rahbar bilan birinchi uchrashuv rejasi", "kutilmalar, uchrashuvlar tartibi, o'quv kurslari")],
-    warn="Bu kurs huquqiy yoki immigratsiya maslahati bermaydi. Viza va ATAS bo'yicha yakuniy javobni rasmiy idora va universitetingiz beradi. Dastlabki 90 kun rejasi universitetdagi yordam xizmatlari o'rnini bosmaydi; tadqiqot dizayni, etika va nashr bo'yicha chuqur mavzular Research Lab da.",
+    warn="Bu kurs huquqiy yoki immigratsiya maslahati bermaydi. Viza va ATAS bo'yicha yakuniy javobni rasmiy idora va universitetingiz beradi. Dastlabki 90 kun rejasi universitetdagi yordam xizmatlari o'rnini bosmaydi; tadqiqot dizayni, etika va nashr bo'yicha chuqur mavzular bu modulga kirmaydi.",
     lessons=[
         dict(t="Taklif shartlarini bajarish", short="Shartlar", min=20, kind="✅ Nazorat", ic="shield",
              hook="Taklifni qabul qilish bilan dasturga yozilish tugamasligi mumkin. <b>Bitta shart</b> bajarilmasa, taklif kuchini yo'qotishi mumkin.",

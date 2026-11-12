@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Savollar · PhD Lab | Kompas Lab</title>
 <meta name="description" content="PhD Lab: kimga mos va kimga mos emas, koʻp soʻraladigan savollar.">
-<meta property="og:title" content="PhD Lab — Kompas Lab">
+<meta property="og:title" content="PhD Lab · Kompas Lab">
 <meta property="og:description" content="PhD Lab: kimga mos va kimga mos emas, koʻp soʻraladigan savollar.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -414,7 +414,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       <h2>Koʻp soʻraladigan savollar.</h2>
     </div>
     <div class="faq">
-      <details><summary>Nashrim yoʻq. PhDʼga topshira olamanmi?</summary><p>M5 modulining 5.1–5.2 darslari aynan shu holat uchun: dissertatsiya, hisobot, konferensiya tezisi, preprint, kod va maʼlumotlar toʻplami ham ilmiy natija. Darsda 3–6 oyda qoʻshiladigan real chiqishlar rejasini tuzasiz. Muayyan dastur nashr talab qiladimi — rasmiy sahifasidan tekshiriladi.</p></details>
+      <details><summary>Nashrim yoʻq. PhDʼga topshira olamanmi?</summary><p>Ha. M5 modulining 5.1–5.2 darslari shu holat uchun: dissertatsiya, hisobot, konferensiya tezisi, preprint, kod va maʼlumotlar toʻplami ham ilmiy natija. Darsda 3–6 oyda qoʻshiladigan real chiqishlar rejasini tuzasiz. Dastur nashr talab qiladimi, buni uning rasmiy sahifasidan tekshiring.</p></details>
       <details><summary>Magistr darajam yoʻq. Bu dastur menga mosmi?</summary><p>Magistr talabi mamlakat va dasturga qarab farq qiladi; baʼzi tizimlar bakalavrdan keyin PhD qabul qiladi. M0.2 da dastur talablarini rasmiy sahifadan tekshirishni oʻrganasiz. Tayyorgarlik darajasi (Readiness Score) past chiqsa, avval <a href="index.html#labs">Master Lab</a> tavsiya qilinadi.</p></details>
       <details><summary>Professor yoki universitetga tanishtirasizmi?</summary><p>Yoʻq. Xatlarni oʻzingiz yozasiz va yuborasiz. Kompas hech kim nomidan professorlarga murojaat qilmaydi va "tanish orqali joylashtirish" xizmatini koʻrsatmaydi.</p></details>
       <details><summary>Ilmiy loyiha taklifini yozib berasizmi?</summary><p>Yoʻq. M4 modulida 7 dars: tuzilma, fon va boʻshliq, usul va tekshiruv, Gantt jadvali, etika va baholash mezoni bilan uch bosqichli tahrir. Matn sizniki boʻladi. Sunʼiy intellekt vositalaridan foydalanish qoidalari alohida darsda (M5.6).</p></details>
@@ -442,13 +442,13 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
     <div style="font-size:34px;margin-bottom:8px">⚗️</div>
     <h3 id="wlT">PhD Lab: kutish roʻyxati</h3>
-    <p>Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi (<a href="maxfiylik.html">maxfiylik siyosati</a>).</p>
+    <p>Email manzilingizni qoldiring: yangiliklar haqida xabar beramiz. Email boshqa maqsadda ishlatilmaydi (<a href="maxfiylik.html">maxfiylik siyosati</a>).</p>
     <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email">
     <div id="wlMsg"></div>
     <button type="button" class="btn btn-p" id="wlB">🔔 Xabardor qiling</button>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/live-bar.js"></script>
 <script>
@@ -495,7 +495,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       bar.style.background = "var(--gold)";
     } else {
       V.textContent = "Bu siklga erta"; V.style.color = "var(--red)";
-      T.textContent = "Toʻlov tavsiya etilmaydi. Muqobil: Master Lab, Research Lab yoki keyingi sikl. Boʻshliqlar:";
+      T.textContent = "Toʻlov tavsiya etilmaydi. Boshqa yoʻl: Master Lab yoki keyingi sikl. Boʻshliqlar:";
       bar.style.background = "var(--red)";
     }
     if (answered === sels.length && total < 70) {

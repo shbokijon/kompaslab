@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Moslik testi · PhD Lab | Kompas Lab</title>
 <meta name="description" content="PhD Lab: 6 savollik tayyorgarlik koʻrsatkichi. Toʻlashdan oldin boshlash vaqti kelganini tekshiring.">
-<meta property="og:title" content="PhD Lab — Kompas Lab">
+<meta property="og:title" content="PhD Lab · Kompas Lab">
 <meta property="og:description" content="PhD Lab: 6 savollik tayyorgarlik koʻrsatkichi. Toʻlashdan oldin boshlash vaqti kelganini tekshiring.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -432,7 +432,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
         <div class="verdict" id="sV">Savollarga javob bering</div>
         <div class="verdict-t" id="sT">Natija javoblaringiz boʻyicha shu yerda hisoblanadi.</div>
         <ul class="gaps" id="sG"></ul>
-        <div class="warn" id="wSelf">Oʻz hisobidan PhD: avval M0.3 darsini oʻqing — xarajat, viza va ilmiy rahbar resurslari bilan bogʻliq xavflar.</div>
+        <div class="warn" id="wSelf">Oʻz hisobidan PhD: avval M0.3 darsini oʻqing: xarajat, viza va ilmiy rahbar resurslari bilan bogʻliq xavflar.</div>
         <div class="warn" id="wTime">Boshlanishgacha 6 oydan kam: sikl odatda 12–18 oy. Keyingi siklni rejalashtirish tavsiya etiladi.</div>
         <a class="btn btn-p" style="width:100%;margin-top:14px" href="phd-lab-m0.html">Bepul M0 ni boshlash</a>
       </div>
@@ -454,13 +454,13 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
     <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
     <div style="font-size:34px;margin-bottom:8px">⚗️</div>
     <h3 id="wlT">PhD Lab: kutish roʻyxati</h3>
-    <p>Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi (<a href="maxfiylik.html">maxfiylik siyosati</a>).</p>
+    <p>Email manzilingizni qoldiring: yangiliklar haqida xabar beramiz. Email boshqa maqsadda ishlatilmaydi (<a href="maxfiylik.html">maxfiylik siyosati</a>).</p>
     <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email">
     <div id="wlMsg"></div>
     <button type="button" class="btn btn-p" id="wlB">🔔 Xabardor qiling</button>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/live-bar.js"></script>
 <script>
@@ -507,7 +507,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
       bar.style.background = "var(--gold)";
     } else {
       V.textContent = "Bu siklga erta"; V.style.color = "var(--red)";
-      T.textContent = "Toʻlov tavsiya etilmaydi. Muqobil: Master Lab, Research Lab yoki keyingi sikl. Boʻshliqlar:";
+      T.textContent = "Toʻlov tavsiya etilmaydi. Boshqa yoʻl: Master Lab yoki keyingi sikl. Boʻshliqlar:";
       bar.style.background = "var(--red)";
     }
     if (answered === sels.length && total < 70) {

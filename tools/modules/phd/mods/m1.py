@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("telescope", "Bitta asosiy tadqiqot savoli", "nima, qayerda, qaysi davrda va natija nimada ko'rinishi yozilgan"),
            ("books", "12 manbali adabiyot jadvali", "har birida DOI yoki havola, usul, natija va cheklov"),
            ("memo", "Ikki betlik yo'nalish bayoni", "M3 da ilmiy rahbarga yozishdan oldin kerak bo'ladi")],
-    warn="Bu modul ilmiy uslubni to'liq o'rgatmaydi: tizimli adabiyot sharhi (systematic review) va chuqur statistika Research Lab da. Bu yerda PhD arizasi uchun savol va qisqa bayon tayyorlanadi. Namunalar Kompas tuzgan o'quv misollari; faktlarni o'z sohangiz manbalaridan oling.",
+    warn="Bu modul ilmiy uslubni to'liq o'rgatmaydi: tizimli adabiyot sharhi (systematic review) va chuqur statistika bu yerda yo'q. Bu yerda PhD arizasi uchun savol va qisqa bayon tayyorlanadi. Namunalar Kompas tuzgan o'quv misollari; faktlarni o'z sohangiz manbalaridan oling.",
     lessons=[
         dict(t="Qiziqishdan savolga", short="Savol", min=25, kind="🎯 Toraytirish", ic="telescope",
              hook="Professor va qabul komissiyasi sizdan <b>javobini izlab topsa bo'ladigan savol</b> kutadi. Mavzu keng bo'lsa, qaysi ma'lumotni yig'ish va qaysi usulni tanlash ham noaniq qoladi.",
