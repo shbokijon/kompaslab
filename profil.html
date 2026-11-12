@@ -234,7 +234,7 @@
     var r = await sb.from("enrollments").select("payment_status,expires_at,frozen_at,unlocked_modules,courses(slug,title)").eq("user_id", user.id);
     var list = (r.data || []).filter(function (e) { return e.courses && e.courses.slug && e.payment_status !== "pending" && e.payment_status !== "rejected" && e.payment_status !== "failed"; });
     if (!list.length) {
-      $("pfSubs").innerHTML = '<div class="pf-empty"><p>Hozircha obuna yoʻq. Onlayn toʻlov hali ochilmagan; ochilganda obuna shu yerda koʻrinadi.</p>' +
+      $("pfSubs").innerHTML = '<div class="pf-empty"><p>Hozircha obuna yoʻq. Obuna olsangiz, u shu yerda koʻrinadi.</p>' +
         '<div class="pf-links"><a class="btn btn-p" href="index.html#labs">Bepul M0 darslari</a><a class="btn btn-g" href="narxlar.html">Narxlar</a></div></div>';
       return;
     }
