@@ -251,6 +251,7 @@ async function register({ email, password, firstName, lastName, phone, education
         data: {
           full_name: `${firstName.trim()} ${lastName.trim()}`,
           phone:     phone,
+          utm:       (window.KompasUTM && window.KompasUTM.get()) || null,
         },
         emailRedirectTo: `${APP_CONFIG.baseUrl}/${APP_CONFIG.routes.dashboard}`
       }

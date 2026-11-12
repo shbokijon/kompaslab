@@ -567,6 +567,13 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         <div style="font-size:12.5px;color:var(--muted);margin-top:8px">Hisob 2026-11-05 dan. Faqat voqealar yoziladi (dars, qism, yakun, faol vaqt); javob matni yozilmaydi. "Toʻxtagan": 3 kundan beri faollik yoʻq va M0 tugamagan.</div>
       </div>
       <div class="card" style="margin-bottom:14px">
+        <div class="ch"><h2>📣 Kanallar (UTM, oxirgi 30 kun)</h2><button class="btn bs bsm" onclick="loadChannels()">🔄 Yangilash</button></div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr><th>Manba</th><th>Tashrif</th><th>Roʻyxatdan oʻtgan</th><th>M0 boshlagan</th><th>Toʻlov</th><th>Summa</th></tr></thead><tbody id="tbChan"></tbody></table>
+        </div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:8px">Birinchi teginish, 30 kun. Hisob 2026-11-12 dan; avvalgilar "(belgisiz)". Toʻlov: paid/confirmed, sinov (S) kirmaydi. Havolalar standarti: docs/UTM.md.</div>
+      </div>
+      <div class="card" style="margin-bottom:14px">
         <div class="ch"><h2>📱 Ilova (telefonga oʻrnatish)</h2><button class="btn bs bsm" onclick="loadPwaStats()">🔄 Yangilash</button></div>
         <div id="pwaStats" style="padding:4px 2px 2px;font-size:14px;color:var(--muted)">Yuklanmoqda...</div>
       </div>
@@ -2322,7 +2329,16 @@ async function loadPwaStats() {
     '</b> kishi ilova rejimida ochgan, shundan oxirgi 7 kunda <b style="color:var(--text)">' + data.standalone_7d + '</b> · taklif koʻrganlar: ' + data.prompt_shown +
     '<br>Platforma: Android ' + (p.android || 0) + ', iPhone ' + (p.ios || 0) + '. iPhone oʻrnatishni bildirmaydi: u faqat ilova rejimida ochilganda sanaladi. Hisob 2026-10-16 dan boshlangan.'
 }
+async function loadChannels() {
+  const tb = document.getElementById('tbChan'); if (!tb) return
+  const { data, error } = await supabase.rpc('kompas_admin_channels', { p_days: 30 })
+  if (error || !Array.isArray(data)) { tb.innerHTML = '<tr><td colspan="6" style="color:var(--muted);padding:12px">Oʻqilmadi: ' + m0esc(error?.message || '') + '</td></tr>'; return }
+  const nf = n => Number(n || 0).toLocaleString('ru-RU')
+  tb.innerHTML = data.map(r => '<tr><td>' + m0esc(r.source) + '</td><td>' + nf(r.visits) + '</td><td>' + nf(r.registered) + '</td><td>' + nf(r.m0_started) + '</td><td>' + nf(r.paid) + '</td><td>' + nf(r.revenue) + '</td></tr>').join('')
+    || '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:16px">Hozircha maʼlumot yoʻq</td></tr>'
+}
 async function loadCourseStats() {
+  loadChannels()
   loadPwaStats()
   loadM0Overview()
   const tbStats = document.getElementById('tbStats')

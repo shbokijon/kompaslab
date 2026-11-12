@@ -109,6 +109,16 @@
     return id;
   }
 
+  // Kanal oʻlchovi: utm.js sahifada boʻlmasa, shu yerdan yuklanadi (tashrifdan oldin)
+  function withUtm(cb) {
+    if (window.KompasUTM) return cb();
+    var s = document.createElement("script"), done = false;
+    s.src = "js/utm.js";
+    s.onload = s.onerror = function () { if (!done) { done = true; cb(); } };
+    setTimeout(function () { if (!done) { done = true; cb(); } }, 1500);
+    document.head.appendChild(s);
+  }
+
   function start() {
     var bar = mount(), sb = client();
     if (!sb) return;
@@ -125,16 +135,22 @@
     document.addEventListener("visibilitychange", loadReg);
 
     // Tashriflar: sahifa ochilganda 1 marta yoziladi (bir kunda takror sanalmaydi), har 5 daqiqada yangilanadi
+    // UTM (js/utm.js): birinchi soʻrovda kanal ham yuboriladi; baza p_utm ni bilmasa, usiz qayta soʻraladi
+    var utmSent = false, utmOff = false;
     function loadVisits() {
       if (document.hidden || typeof sb.rpc !== "function") return;
-      sb.rpc("kompas_track_visit", { p_vid: visitorId() }).then(function (r) {
+      var u = !utmSent && !utmOff && window.KompasUTM ? window.KompasUTM.get() : null;
+      var args = u ? { p_vid: visitorId(), p_utm: u } : { p_vid: visitorId() };
+      sb.rpc("kompas_track_visit", args).then(function (r) {
+        if (u && r && r.error) { utmOff = true; loadVisits(); return; }
+        if (u) utmSent = true;
         var d = r && !r.error && r.data;
         if (!d || typeof d.day !== "number") return;
         setVal(bar, "klbD", d.day); setVal(bar, "klbW", d.week); setVal(bar, "klbM", d.month); setVal(bar, "klbY", d.year);
         document.getElementById("klbSep").hidden = false;
       });
     }
-    loadVisits(); setInterval(loadVisits, 300000);
+    withUtm(loadVisits); setInterval(loadVisits, 300000);
 
     // Hozir saytda: Realtime Presence (bitta brauzer bir nechta tabda ham 1 marta sanaladi)
     if (typeof sb.channel !== "function") return;
