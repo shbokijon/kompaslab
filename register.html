@@ -377,6 +377,26 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
       </div>
 
+      <!-- ─── STEP 4: TELEGRAM BOT (2026-11-12, js/tg-link.js) ─── -->
+      <div class="form-step" id="step4">
+        <div class="success-state">
+          <div class="success-icon">✓</div>
+          <h3 class="success-title" id="tgTitle">Hisobingiz tayyor</h3>
+          <p class="success-sub">
+            M0 darslaringiz ochildi. Oxirgi qadam: Telegram botni hisobingizga ulang. Toʻlovingiz qabul qilingani, obunangiz muddati va savollaringizga javob shu botga keladi.
+          </p>
+          <a class="btn-next" id="tgLinkBtn" href="https://t.me/yordam_klab_bot" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;">
+            Telegramda ulash
+          </a>
+          <div class="alert info show" id="tgHint" style="justify-content:center;text-align:left;margin-top:12px">
+            <span>Telegram ochiladi: «Start» (Boshlash) tugmasini bosing. Bot faqat sizning hisobingizga oid xabar yozadi.</span>
+          </div>
+          <div style="margin-top:14px;font-size:13px;">
+            <a href="dashboard.html" id="tgSkip" style="color:var(--muted);text-decoration:none;">Keyinroq ulayman, darslarga oʻtish →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -396,6 +416,7 @@ const APP_CONFIG = {
 }
 </script>
 <script src="js/auth.js"></script>
+<script src="js/tg-link.js"></script>
 <script>
 // ─── SESSION CHECK ── Allaqachon kirgan bo'lsa → dashboard
 document.addEventListener('DOMContentLoaded', () => {
@@ -533,7 +554,31 @@ async function verifyCode() {
     return
   }
   btn.innerHTML = 'Tasdiqlandi ✓'
-  window.location.href = kompasNextAfterAuth()
+  showTgStep()
+}
+
+// ─── STEP 4: Telegram bot (ixtiyoriy) ──────────────
+// Bot foydalanuvchiga birinchi boʻlib yoza olmaydi; «Start» bosilgach fn_tg_consume_token
+// hisobni ulaydi va bot shaxsiy salomlashuv xabarini yuboradi (supabase/functions/tg-bot).
+function showTgStep() {
+  const next = kompasNextAfterAuth()
+  if (!window.KompasTgLink) { window.location.href = next; return }
+  const first = (document.getElementById('firstName').value || '').trim()
+  if (first) document.getElementById('tgTitle').textContent = first + ', hisobingiz tayyor'
+  document.getElementById('tgSkip').href = next
+  goStep(4)
+  const a = document.getElementById('tgLinkBtn')
+  KompasTgLink.prepare(a, function () {
+    document.querySelector('#tgHint span').textContent = 'Botda «Start» ni bosgach, bu sahifa oʻzi yangilanadi.'
+    KompasTgLink.watch(function () {
+      document.querySelector('#tgHint span').textContent = 'Telegram ulandi. Botdagi xabarni koʻring.'
+      a.dataset.ktgDone = '1'
+      a.removeAttribute('target')
+      a.href = next
+      a.textContent = 'Darslarga oʻtish →'
+      document.getElementById('tgSkip').hidden = true
+    })
+  })
 }
 // ─── REGISTER ──────────────────────────────────────
 async function handleRegister() {
