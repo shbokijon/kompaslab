@@ -85,7 +85,7 @@ MOD = dict(
 <ul><li>Turkiya hukumati stipendiyasi; bitta onlayn ariza orqali bir nechta universitet va dastur tanlanadi.</li><li>Odatda qoplaydi: o'qish to'lovi, oylik nafaqa, yotoqxona, tibbiy sug'urta, bir martalik aviabilet va bir yillik turk tili kursi.</li><li>Tanlov: hujjatlar va intervyu. Ariza oynasi odatda yilning boshida; joriy e'lonni rasmiy saytdan tekshiring.</li></ul>
 <h4>Universal baholash: 6 nuqta</h4>
 <div class="tbl"><table><thead><tr><th>№</th><th>Mezon</th><th>Savol</th></tr></thead><tbody>
-<tr><td>1</td><td>Muvofiqlik</td><td>Fuqarolik, yosh, baho, daraja mosmi? (darvoza)</td></tr>
+<tr><td>1</td><td>Muvofiqlik</td><td>Fuqarolik, yosh, baho, daraja mosmi? (majburiy shart)</td></tr>
 <tr><td>2</td><td>Qoplov</td><td>To'liqmi yoki qisman? Nima kiradi?</td></tr>
 <tr><td>3</td><td>Kanal</td><td>Elchixona, universitet yoki to'g'ridan-to'g'ri?</td></tr>
 <tr><td>4</td><td>Muddat</td><td>Hujjatlarga ulguraman?</td></tr>
@@ -95,7 +95,7 @@ MOD = dict(
 <p>Muvofiqlik \"yo'q\" bo'lsa, boshqa mezonlarni ko'rmang: dastur siz uchun emas.</p>
 <div class="box warn">Stipendiya e'lonini faqat rasmiy saytdan oling. Telegram kanallaridagi \"to'liq stipendiya, hujjatsiz\" e'lonlarining ko'pi firibgarlik yoki eskirgan.</div>
 <div class="srcs">Manba: {TB}; {FTC}. {HOL}.</div>""",
-             take="Türkiye Bursları: bitta onlayn ariza, to'liq qoplov va til yili. Har dasturni 6 nuqta bilan baholang; muvofiqlik darvoza.",
+             take="Türkiye Bursları: bitta onlayn ariza, to'liq qoplov va til yili. Har dasturni 6 nuqta bilan baholang; muvofiqlik majburiy shart: u bajarilmasa, qolgan ball hisobga olinmaydi.",
              task="<ul><li>Pastdagi vositada 5–8 dasturni 6 nuqta bo'yicha baholang.</li><li>Eng mos 3 tasini ustuvor deb belgilang.</li></ul>",
              ph="Türkiye Bursları: muvofiqlik ha, qoplov to'liq, kanal onlayn, muddat ..., raqobat ..., majburiyat ..."),
     ],

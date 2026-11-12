@@ -181,7 +181,7 @@ body.locked .gate{display:flex;}
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bitta oʻquvchi AQShga ham, Germaniyaga ham bir xil tayyorlansa, ikkalasida ham zaif boʻladi. Birida insho va faoliyat hal qiladi, ikkinchisida attestat va til. Avval qaysi oʻyinda oʻynayotganingizni biling.</div></div>
+          <div class="panel"><div class="hook">Bitta oʻquvchi AQShga ham, Germaniyaga ham bir xil tayyorlansa, ikkalasida ham zaif boʻladi. Birida insho va faoliyat hal qiladi, ikkinchisida attestat va til. Avval qaysi tizimga topshirayotganingizni aniqlang.</div></div>
           <div class="panel">
             <p>Qabul ikki asosiy mantiqda ishlaydi:</p>
             <ul><li><b>Yaxlit (holistic) qabul:</b> baholar, testlar (talab qilinsa), insholar, faoliyatlar va tavsiyalar birga koʻriladi. AQShda keng tarqalgan.</li><li><b>Ball asosidagi qabul:</b> asosan attestat, imtihon natijalari va til sertifikati hal qiladi. Koʻp Yevropa davlatlarida shunday.</li></ul>
@@ -340,7 +340,7 @@ body.locked .gate{display:flex;}
       <div class="bdg" data-badge="l1"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Kuzatuvchi<small>0.1</small></div>
       <div class="bdg" data-badge="cards"><img src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy">Sayyoh<small>4 karta</small></div>
       <div class="bdg" data-badge="quiz"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Qabul bilimdoni<small>Test 3+/4</small></div>
-      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Halol koʻzgu<small>Koʻrsatkich</small></div>
+      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Oʻz bahom<small>Koʻrsatkich</small></div>
       <div class="bdg" data-badge="tl"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy">Vaqt ustasi<small>Boshlash sanasi</small></div>
       <div class="bdg" data-badge="dec"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Qaror qildi<small>Rozilik</small></div>
     </div>
@@ -587,7 +587,7 @@ body.locked .gate{display:flex;}
     var miss = ans.filter(function (v) { return v == null; }).length;
     if (miss) { toast("Yana " + miss + " ta savolga javob bering", "chart"); return; }
     S.rs = { ans: ans.slice(), total: total(), gaps: gaps() }; save(); renderRs(); renderStmt();
-    if (!award("rs", 40, "Halol koʻzgu nishoni", "chart")) toast("Natija yangilandi", "chart");
+    if (!award("rs", 40, "Oʻz bahom nishoni", "chart")) toast("Natija yangilandi", "chart");
   });
   drawRadar();
 

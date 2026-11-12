@@ -411,13 +411,13 @@
       <div class="bdg" data-badge="sl"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Saralovchi<small>6+ dastur</small></div>
       <div class="bdg" data-badge="fund"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy">Moliya rejasi<small>Hammasida</small></div>
       <div class="bdg" data-badge="nar"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Hikoyachi<small>1.7</small></div>
-      <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">M1 yakuni<small>Artefakt</small></div>
+      <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">M1 yakuni<small>Natija</small></div>
     </div>
   </section>
 
   <!-- ARTIFACT -->
   <section id="artefakt">
-    <h2>Modul artefakti</h2>
+    <h2>Modul natijasi</h2>
     <p class="sub">Bu yerda yozgan maʼlumotlaringizdan dastlabki hujjat shakllanadi. Rasmiy talablar va dastur maʼlumotlari avtomatik tekshirilmaydi. PDF olish uchun “Chop etish” → “PDF sifatida saqlash”ni tanlang.</p>
     <div class="artifact">
       <h3>Ilmiy qiziqish bayoni</h3>
@@ -428,7 +428,7 @@
       <div class="tbl"><table><thead><tr><th>#</th><th>Universitet va dastur</th><th>Daraja</th><th>Moliyalashtirish</th><th>Moslik</th></tr></thead><tbody id="artTbl"></tbody></table></div>
       <div class="missing" id="artMiss" style="font-size:13.5px;color:var(--muted);margin-top:10px"></div>
       <div class="row">
-        <button class="btn btn-p" type="button" id="finBtn">Artefaktni yakunlash · +20 XP</button>
+        <button class="btn btn-p" type="button" id="finBtn">Natijani yakunlash · +20 XP</button>
         <button class="btn btn-g" type="button" id="csvBtn">📤 Roʻyxatni CSV</button>
         <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
         <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
@@ -661,7 +661,7 @@
     $("artTbl").innerHTML = rows.length ? rows.map(function (p, i) { return "<tr><td>" + (i + 1) + "</td><td><b>" + esc(p.uni) + "</b><br>" + esc(p.prog) + (p.country ? ", " + esc(p.country) : "") + "</td><td>" + TIER[p.tier] + "</td><td>" + esc(p.fund || "—") + "</td><td>" + p.fit.length + "/4" + (p.fit.length ? ": " + esc(p.fit.join(", ")) : "") + "</td></tr>"; }).join("") : '<tr><td colspan="5" style="color:var(--muted)">Roʻyxat boʻsh</td></tr>';
     var miss = []; if (!S.fun) miss.push("ilmiy qiziqish bayoni"); if (!S.done.nar) miss.push("hikoya"); if (!S.done.sl) miss.push("6+ dasturli, uch darajali roʻyxat");
     $("artMiss").textContent = miss.length ? "Yakunlash uchun yetishmayapti: " + miss.join(", ") + "." : "Hammasi tayyor.";
-    $("finBtn").disabled = !!S.done.fin; if (S.done.fin) $("finBtn").textContent = "✓ Artefakt yakunlangan";
+    $("finBtn").disabled = !!S.done.fin; if (S.done.fin) $("finBtn").textContent = "✓ Natija yakunlangan";
   }
   $("finBtn").addEventListener("click", function () {
     if (!S.fun || !S.done.nar || !S.done.sl) { toast("Avval bayon, hikoya va roʻyxatni toʻldiring", "lock"); return; }

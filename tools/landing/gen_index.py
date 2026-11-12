@@ -471,7 +471,7 @@ def build():
   <div class="wrap rule-box">
     <div>
       <h2>Ishlash qoidalari</h2>
-      <p>Har Lab bitta spetsifikatsiya hujjati asosida quriladi. Metod va mantiq darsda turadi. Muddat, toʻlov, kvota va stipendiya summasi alohida sahifada rasmiy havola va tekshiruv sanasi bilan beriladi va har chorakda yangilanadi.</p>
+      <p>Har Lab bitta yozma reja asosida quriladi. Metod va mantiq darsda turadi. Muddat, toʻlov, kvota va stipendiya summasi alohida sahifada rasmiy havola va tekshiruv sanasi bilan beriladi va har chorakda yangilanadi.</p>
       <p>Toʻqima statistika, tasdiqlanmagan sharh va natija vaʼdasi ishlatilmaydi. Talaba natijalari faqat uning yozma roziligi va tasdiqlovchi dalil bilan eʼlon qilinadi.</p>
       <div class="who2"><b>Dasturlarni kim tuzadi</b><ul><li>Asoschi geofizik, University of Leeds doktoranti</li><li>Janubiy Koreyada oʻqigan, Oʻzbekistonda universitetda dars bergan</li><li>Oʻzi oʻtmagan bosqichlar boʻyicha tajriba daʼvo qilinmaydi</li></ul></div>
     </div>

@@ -592,7 +592,7 @@ body.locked .gate{display:flex;}
       <div class="bdg" data-badge="quiz"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Sxemani taniydi<small>Test 3+/4</small></div>
       <div class="bdg" data-badge="tb"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy">Byudjetchi<small>Vaqt va pul</small></div>
       <div class="bdg" data-badge="form"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Huquq xaritasi<small>Shakl</small></div>
-      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Halol koʻzgu<small>Koʻrsatkich</small></div>
+      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Oʻz bahom<small>Koʻrsatkich</small></div>
       <div class="bdg" data-badge="dec"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Qaror qildi<small>18+ rozilik</small></div>
     </div>
   </section>
@@ -863,7 +863,7 @@ body.locked .gate{display:flex;}
     var miss = ans.filter(function (v) { return v == null; }).length;
     if (miss) { toast("Yana " + miss + " ta savolga javob bering", "chart"); return; }
     S.rs = { ans: ans.slice(), total: total(), gaps: gaps() }; save(); renderRs(); renderStmt();
-    if (!award("rs", 40, "Halol koʻzgu nishoni", "chart")) toast("Natija yangilandi", "chart");
+    if (!award("rs", 40, "Oʻz bahom nishoni", "chart")) toast("Natija yangilandi", "chart");
   });
   drawRadar();
 

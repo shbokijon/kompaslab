@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M0 Qaror darvozasi · Tadbirkor Talaba · Kompas Lab</title>
+<title>M0 Boshlashdan oldingi tekshiruv · Tadbirkor Talaba · Kompas Lab</title>
 <meta name="description" content="Tadbirkor Talaba bepul M0: talaba tadbirkorligi nima, vaqt va pul byudjeti, huquqiy shakllar (oʻzini oʻzi band qilish, YATT, MChJ) va Tayyorgarlik koʻrsatkichi.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -592,7 +592,7 @@ body.locked .gate{display:flex;}
       <div class="bdg" data-badge="quiz"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Sxemani taniydi<small>Test 3+/4</small></div>
       <div class="bdg" data-badge="tb"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy">Byudjetchi<small>Vaqt va pul</small></div>
       <div class="bdg" data-badge="form"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Huquq xaritasi<small>Shakl</small></div>
-      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Halol koʻzgu<small>Koʻrsatkich</small></div>
+      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Oʻz bahom<small>Koʻrsatkich</small></div>
       <div class="bdg" data-badge="dec"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Qaror qildi<small>18+ rozilik</small></div>
     </div>
   </section>
@@ -863,7 +863,7 @@ body.locked .gate{display:flex;}
     var miss = ans.filter(function (v) { return v == null; }).length;
     if (miss) { toast("Yana " + miss + " ta savolga javob bering", "chart"); return; }
     S.rs = { ans: ans.slice(), total: total(), gaps: gaps() }; save(); renderRs(); renderStmt();
-    if (!award("rs", 40, "Halol koʻzgu nishoni", "chart")) toast("Natija yangilandi", "chart");
+    if (!award("rs", 40, "Oʻz bahom nishoni", "chart")) toast("Natija yangilandi", "chart");
   });
   drawRadar();
 

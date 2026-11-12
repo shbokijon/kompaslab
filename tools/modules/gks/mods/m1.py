@@ -9,7 +9,7 @@ MOD = dict(
     lead="GKS arizasi bitta insho emas, o'nlab varaqdan iborat to'plam. Bu modulda yo'riqnomadagi har hujjatni bitta jadvalga tushirasiz, legallashtirish zanjirini rejalaysiz, tavsiya xatini tashkil qilasiz va til strategiyasini tanlaysiz. Uch trek uchun umumiy.",
     hero="scroll", weeks="2–3", next="M2 Universitet va dastur tanlash", next_href="gks-lab-m2.html",
     goals=[("scroll", "Hujjatlar nazorat jadvali", "har hujjat, manbasi, holati va muddati bilan"),
-           ("shield", "Legallashtirish yo'l xaritasi", "apostil, tarjima va nusxa qoidasi bo'yicha"),
+           ("shield", "Legallashtirish rejasi", "apostil, tarjima va nusxa qoidasi bo'yicha"),
            ("memo", "Tavsiya beruvchi uchun varaqa va til rejasi", "yutuqlar varaqasi (Brag Sheet), TOPIK yoki ingliz tili qarori")],
     warn=V1["warn"],
     lessons=[
@@ -35,7 +35,7 @@ MOD = dict(
                       "Tavsiya beruvchiga faqat faktlar berilgan, tayyor matn emas.", "Til sertifikati ariza kunida amal qiladi (bo'lsa).",
                       "Legallashtirish ariza oynasidan kamida 2 oy oldin boshlanadi.", "Har hujjat uchun mas'ul va sana yozilgan."]),
     art_title="Hujjatlar nazorat jadvali", art_short="Jadval",
-    art=[("Trek", ["trek"]), ("Hujjatlar ro'yxati", ["docs", "a1"]), ("Legallashtirish yo'l xaritasi", ["leg", "a2"]),
+    art=[("Trek", ["trek"]), ("Hujjatlar ro'yxati", ["docs", "a1"]), ("Legallashtirish rejasi", ["leg", "a2"]),
          ("Tavsiya beruvchi va yutuqlar varaqasi", ["rec", "a3"]), ("Til rejasi", ["lang", "a4"])],
     tip=V1["tip"],
     sources=STD,

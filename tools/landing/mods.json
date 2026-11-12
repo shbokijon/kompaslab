@@ -2,7 +2,7 @@
  "TT": [
   {
    "id": "M0",
-   "title": "Qaror darvozasi",
+   "title": "Boshlashdan oldingi tekshiruv",
    "meta": "bepul, 5 dars",
    "info": "",
    "lessons": [
@@ -42,7 +42,7 @@
    "id": "M1",
    "title": "Muammo topish",
    "meta": "6 dars",
-   "info": "Artefakt: 10 ta mijoz suhbati qaydi + muammo bayoni. ",
+   "info": "Natija: 10 ta mijoz suhbati qaydi + muammo bayoni. ",
    "lessons": [
     {
      "num": "1.1",
@@ -86,7 +86,7 @@
    "id": "M2",
    "title": "Yechim va MVP",
    "meta": "6 dars",
-   "info": "Artefakt: Ishlaydigan MVP + oʻlchov rejasi. ",
+   "info": "Natija: Ishlaydigan MVP + oʻlchov rejasi. ",
    "lessons": [
     {
      "num": "2.1",
@@ -130,7 +130,7 @@
    "id": "M3",
    "title": "Birinchi mijozlar va sotuv",
    "meta": "6 dars",
-   "info": "Artefakt: Birinchi 10 mijoz bilan aloqa jadvali + kamida 1 toʻlov (yoki oldindan buyurtma). ",
+   "info": "Natija: Birinchi 10 mijoz bilan aloqa jadvali + kamida 1 toʻlov (yoki oldindan buyurtma). ",
    "lessons": [
     {
      "num": "3.1",
@@ -141,7 +141,7 @@
     {
      "num": "3.2",
      "title": "Kanallar",
-     "content": "Telegram, Instagram, tavsiya — kichik byudjet bilan",
+     "content": "Telegram, Instagram, tavsiya: kichik byudjet bilan",
      "trek": ""
     },
     {
@@ -174,7 +174,7 @@
    "id": "M4",
    "title": "Pul hisobi",
    "meta": "6 dars",
-   "info": "Artefakt: Pul oqimi jadvali + birlik iqtisodiyoti hisobi. ",
+   "info": "Natija: Pul oqimi jadvali + birlik iqtisodiyoti hisobi. ",
    "lessons": [
     {
      "num": "4.1",
@@ -191,7 +191,7 @@
     {
      "num": "4.3",
      "title": "Birlik iqtisodiyoti",
-     "content": "Mijoz jalb qilish narxi (CAC) va mijozdan umrbod daromad (LTV) — oddiy shaklda",
+     "content": "Mijoz jalb qilish narxi (CAC) va mijozdan umrbod daromad (LTV): oddiy shaklda",
      "trek": ""
     },
     {
@@ -218,7 +218,7 @@
    "id": "M5",
    "title": "Huquqiy shakl va soliq",
    "meta": "6 dars, ekspert tekshiruvi shart",
-   "info": "Artefakt: Huquqiy shakl qarori + soliq rejasi. ",
+   "info": "Natija: Huquqiy shakl qarori + soliq rejasi. ",
    "lessons": [
     {
      "num": "5.1",
@@ -247,7 +247,7 @@
     {
      "num": "5.5",
      "title": "Soliq va hisobot",
-     "content": "Aylanmadan olinadigan soliq, ijtimoiy soliq, muddatlar (Qobiq)",
+     "content": "Aylanmadan olinadigan soliq, ijtimoiy soliq, muddatlar (sana va rasmiy havola bilan)",
      "trek": ""
     },
     {
@@ -262,7 +262,7 @@
    "id": "M6",
    "title": "Raqamli infratuzilma",
    "meta": "5 dars",
-   "info": "Artefakt: Toʻlov qabul qilish rejasi + maʼlumot himoyasi qoidalari. ",
+   "info": "Natija: Toʻlov qabul qilish rejasi + maʼlumot himoyasi qoidalari. ",
    "lessons": [
     {
      "num": "6.1",
@@ -311,7 +311,7 @@
     {
      "num": "7.2",
      "title": "Grantlar va tanlovlar",
-     "content": "Davlat va xususiy tanlovlar (Qobiq roʻyxati)",
+     "content": "Davlat va xususiy tanlovlar (joriy roʻyxat, sana bilan)",
      "trek": ""
     },
     {
@@ -323,7 +323,7 @@
     {
      "num": "7.4",
      "title": "Investor bilan suhbat asoslari",
-     "content": "Ulush, baholash — tushuncha darajasida",
+     "content": "Ulush, baholash: tushuncha darajasida",
      "trek": ""
     },
     {
@@ -376,7 +376,7 @@
    "id": "M9",
    "title": "Yakuniy loyiha",
    "meta": "4 dars",
-   "info": "Artefakt: 30 kunlik sinov hisoboti + bir sahifalik biznes modeli + 90 kunlik reja yoki toʻxtatish qarori. ",
+   "info": "Natija: 30 kunlik sinov hisoboti + bir sahifalik biznes modeli + 90 kunlik reja yoki toʻxtatish qarori. ",
    "lessons": [
     {
      "num": "9.1",
@@ -838,7 +838,7 @@
    "id": "M0",
    "title": "GKS tizimi va boshlashdan oldingi tekshiruv",
    "meta": "bepul, 5 dars",
-   "info": "Artefakt: Muvofiqlik jadvali + tanlangan trek + boshlash sanasi + rozilik qaydi. ",
+   "info": "Natija: Muvofiqlik jadvali + tanlangan trek + boshlash sanasi + rozilik qaydi. ",
    "lessons": [
     {
      "num": "0.1",
@@ -861,7 +861,7 @@
     {
      "num": "0.4",
      "title": "Trek tanlovi",
-     "content": "U, M yoki D; elchixona yoki universitet treki — 5 mezon boʻyicha",
+     "content": "U, M yoki D; elchixona yoki universitet treki: 5 mezon boʻyicha",
      "trek": ""
     },
     {
@@ -876,7 +876,7 @@
    "id": "M1",
    "title": "Hujjatlarni tayyorlash va tekshirish",
    "meta": "4 dars",
-   "info": "Artefakt: Hujjatlar nazorat jadvali + legallashtirish yoʻl xaritasi + til rejasi + tavsiya beruvchilar uchun varaqalar. ",
+   "info": "Natija: Hujjatlar nazorat jadvali + legallashtirish rejasi + til rejasi + tavsiya beruvchilar uchun varaqalar. ",
    "lessons": [
     {
      "num": "1.1",
@@ -908,7 +908,7 @@
    "id": "M2",
    "title": "Universitet va dastur tanlash",
    "meta": "4 dars",
-   "info": "Artefakt: 3 ta asoslangan universitet tanlovi + har biri uchun moslik dalilnomasi. ",
+   "info": "Natija: 3 ta asoslangan universitet tanlovi + har biri uchun moslik dalilnomasi. ",
    "lessons": [
     {
      "num": "2.1",
@@ -940,7 +940,7 @@
    "id": "M3-U",
    "title": "Nomzod profili",
    "meta": "4 dars",
-   "info": "Artefakt: Faoliyat vaqt chizigʻi + akademik profil izohi + zaif tomonlar javoblari. ",
+   "info": "Natija: Faoliyat vaqt chizigʻi + akademik profil izohi + zaif tomonlar javoblari. ",
    "lessons": [
     {
      "num": "3.1",
@@ -963,7 +963,7 @@
     {
      "num": "3.4",
      "title": "Zaif tomonlarni boshqarish",
-     "content": "Past baho, tanaffus yili, yoʻnalish oʻzgarishi — javobgarlik va tuzatish harakati",
+     "content": "Past baho, tanaffus yili, yoʻnalish oʻzgarishi: javobgarlik va tuzatish harakati",
      "trek": ""
     }
    ]
@@ -972,7 +972,7 @@
    "id": "M4-U",
    "title": "Shaxsiy bayonot",
    "meta": "5 dars, Core asosida",
-   "info": "Artefakt: Yakuniy shaxsiy bayonot (GKS formasi talablariga mos) + tahrir qaydi. ",
+   "info": "Natija: Yakuniy shaxsiy bayonot (GKS formasi talablariga mos) + tahrir qaydi. ",
    "lessons": [
     {
      "num": "4.1",
@@ -1010,7 +1010,7 @@
    "id": "M5-U",
    "title": "Oʻquv rejasi, topshirish va intervyu",
    "meta": "4 dars",
-   "info": "Artefakt: Oʻquv rejasi + yigʻilgan paket + intervyu javoblari yozuvi. ",
+   "info": "Natija: Oʻquv rejasi + yigʻilgan paket + intervyu javoblari yozuvi. ",
    "lessons": [
     {
      "num": "5.1",
@@ -1042,7 +1042,7 @@
    "id": "M3-M",
    "title": "Magistratura nomzodining maqsadi va tajribasi",
    "meta": "4 dars",
-   "info": "Artefakt: Vaziyat–vazifa–harakat–natija (STAR) usulidagi misollar roʻyxati + akademik CV v1.0 + yoʻnalish almashinuvini asoslash matni (kerak boʻlsa). ",
+   "info": "Natija: Vaziyat–vazifa–harakat–natija (STAR) usulidagi misollar roʻyxati + akademik CV v1.0 + yoʻnalish almashinuvini asoslash matni (kerak boʻlsa). ",
    "lessons": [
     {
      "num": "3.1",
@@ -1053,7 +1053,7 @@
     {
      "num": "3.2",
      "title": "Dalillar inventari",
-     "content": "Kurs ishi, bitiruv ishi, tezis, laboratoriya, dasturiy vositalar — STAR formatida",
+     "content": "Kurs ishi, bitiruv ishi, tezis, laboratoriya, dasturiy vositalar: STAR formatida",
      "trek": ""
     },
     {
@@ -1074,7 +1074,7 @@
    "id": "M4-M",
    "title": "Oʻquv rejasi",
    "meta": "5 dars",
-   "info": "Artefakt: Yakuniy oʻquv rejasi (GKS formasi boʻyicha) + semestrlar jadvali + 12 manbali annotatsiyalangan roʻyxat. ",
+   "info": "Natija: Yakuniy oʻquv rejasi (GKS formasi boʻyicha) + semestrlar jadvali + 12 manbali annotatsiyalangan roʻyxat. ",
    "lessons": [
     {
      "num": "4.1",
@@ -1112,7 +1112,7 @@
    "id": "M5-M",
    "title": "Professor, paket va intervyu",
    "meta": "5 dars",
-   "info": "Artefakt: Shaxsiy bayonot + 2 professorga xat + hujjatlar izchilligini tekshirish jadvali + 60 soniyalik taqdimot yozuvi. ",
+   "info": "Natija: Shaxsiy bayonot + 2 professorga xat + hujjatlar izchilligini tekshirish jadvali + 60 soniyalik taqdimot yozuvi. ",
    "lessons": [
     {
      "num": "5.1",
@@ -1150,7 +1150,7 @@
    "id": "M3-D",
    "title": "Doktorantura nomzodining ilmiy yoʻnalishi",
    "meta": "4 dars",
-   "info": "Artefakt: Portfel auditi + PhD darajasidagi CV + 3 ta potensial doktorlik savoli. ",
+   "info": "Natija: Portfel auditi + PhD darajasidagi CV + 3 ta potensial doktorlik savoli. ",
    "lessons": [
     {
      "num": "3.1",
@@ -1182,7 +1182,7 @@
    "id": "M4-D",
    "title": "Ilmiy reja",
    "meta": "6 dars, Core asosida",
-   "info": "Artefakt: GKS formasiga moslangan ilmiy reja (oʻquv rejasi boʻlimi) + 30 manbali baza + 3–4 yillik Gantt jadvali. ",
+   "info": "Natija: GKS formasiga moslangan ilmiy reja (oʻquv rejasi boʻlimi) + 30 manbali baza + 3–4 yillik Gantt jadvali. ",
    "lessons": [
     {
      "num": "4.1",
@@ -1226,7 +1226,7 @@
    "id": "M5-D",
    "title": "Professor bilan muloqot va yakunlash",
    "meta": "4 dars",
-   "info": "Artefakt: 3 professorga xat va 1 sahifalik reja konspekti + suhbat tayyorgarligi + yakuniy paket. ",
+   "info": "Natija: 3 professorga xat va 1 sahifalik reja konspekti + suhbat tayyorgarligi + yakuniy paket. ",
    "lessons": [
     {
      "num": "5.1",
@@ -1258,19 +1258,19 @@
  "Bachelor": [
   {
    "id": "M0",
-   "title": "Qaror darvozasi",
+   "title": "Boshlashdan oldingi tekshiruv",
    "meta": "bepul, 5 dars",
-   "info": "Artefakt: Tayyorgarlik koʻrsatkichi + shaxsiy boshlash sanasi + rozilik qaydi (18 yoshgacha — ota-ona tasdigʻi bilan). ",
+   "info": "Natija: Tayyorgarlik koʻrsatkichi + shaxsiy boshlash sanasi + rozilik qaydi (18 yoshgacha: ota-ona tasdigʻi bilan). ",
    "lessons": [
     {
      "num": "0.1",
      "title": "Bachelor Lab qanday ishlaydi",
-     "content": "Bosqichlar, artefaktlar, haftalik yuklama; nima beriladi, nima berilmaydi",
+     "content": "Bosqichlar, natijalar, haftalik yuklama; nima beriladi, nima berilmaydi",
      "trek": ""
     },
     {
      "num": "0.2",
-     "title": "Xalqaro bakalavr qabuli — umumiy manzara",
+     "title": "Xalqaro bakalavr qabuli: umumiy manzara",
      "content": "Mamlakatlar, qabul mantiqlari, raqobat; raqamlar faqat rasmiy manbadan",
      "trek": ""
     },
@@ -1298,7 +1298,7 @@
    "id": "M1",
    "title": "Qabul qanday qaror qabul qiladi",
    "meta": "5 dars",
-   "info": "Artefakt: 3 universitetning rasmiy talablari jadvali va qabul modeli belgisi. ",
+   "info": "Natija: 3 universitetning rasmiy talablari jadvali va qabul modeli belgisi. ",
    "lessons": [
     {
      "num": "1.1",
@@ -1336,7 +1336,7 @@
    "id": "M2",
    "title": "Universitet tanlash va roʻyxat tuzish",
    "meta": "5 dars",
-   "info": "Artefakt: Saralangan roʻyxat v1.0 — 8–12 universitet (daraja, talab, xarajat, stipendiya imkoniyati, qabul modeli). ",
+   "info": "Natija: Saralangan roʻyxat v1.0: 8–12 universitet (daraja, talab, xarajat, stipendiya imkoniyati, qabul modeli). ",
    "lessons": [
     {
      "num": "2.1",
@@ -1374,7 +1374,7 @@
    "id": "M3",
    "title": "Yoʻnalish, qiziqish va maqsad",
    "meta": "5 dars",
-   "info": "Artefakt: Qiziqish sohasi bayoni (1 sahifa) + bir jumlali profil. ",
+   "info": "Natija: Qiziqish sohasi bayoni (1 sahifa) + bir jumlali profil. ",
    "lessons": [
     {
      "num": "3.1",
@@ -1384,7 +1384,7 @@
     },
     {
      "num": "3.2",
-     "title": "Fizika, muhandislik, informatika — real farq",
+     "title": "Fizika, muhandislik, informatika: real farq",
      "content": "Oʻqish tarkibi, ish turi, keyingi yoʻllar; STEM ichida tanlash",
      "trek": ""
     },
@@ -1412,12 +1412,12 @@
    "id": "M4",
    "title": "Muddatlar arxitekturasi va ish tizimi",
    "meta": "5 dars, Core",
-   "info": "Artefakt: Asosiy nazorat jadvali + muddatdan orqaga tuzilgan ish jadvali (Gantt) + Tayyorgarlik rejasi v1.0. ",
+   "info": "Natija: Asosiy nazorat jadvali + muddatdan orqaga tuzilgan ish jadvali (Gantt) + Tayyorgarlik rejasi v1.0. ",
    "lessons": [
     {
      "num": "4.1",
      "title": "Ariza oynalari",
-     "content": "Erta qaror (ED), erta ariza (EA), oddiy muddat (RD), UCAS muddatlari, toʻgʻridan-toʻgʻri portallar; sanalar faqat Qobiq sahifasidan",
+     "content": "Erta qaror (ED), erta ariza (EA), oddiy muddat (RD), UCAS muddatlari, toʻgʻridan-toʻgʻri portallar; sanalar faqat rasmiy sahifadan",
      "trek": ""
     },
     {
@@ -1450,7 +1450,7 @@
    "id": "M5",
    "title": "Baholar va testlar",
    "meta": "5 dars",
-   "info": "Artefakt: Test kalendari + baholar jadvali (universitet talablari bilan solishtirilgan). ",
+   "info": "Natija: Test kalendari + baholar jadvali (universitet talablari bilan solishtirilgan). ",
    "lessons": [
     {
      "num": "5.1",
@@ -1488,7 +1488,7 @@
    "id": "M6",
    "title": "Yutuqlar, CV va hujjatlar",
    "meta": "5 dars, CV darsi Core",
-   "info": "Artefakt: Bakalavr CV v1.0 (1–2 sahifa) + hujjatlar nazorat roʻyxati. ",
+   "info": "Natija: Bakalavr CV v1.0 (1–2 sahifa) + hujjatlar nazorat roʻyxati. ",
    "lessons": [
     {
      "num": "6.1",
@@ -1526,7 +1526,7 @@
    "id": "M7",
    "title": "Darsdan tashqari faoliyat",
    "meta": "5 dars",
-   "info": "Artefakt: Faoliyatlar roʻyxati (10 yozuv, qisqa tavsif bilan) + izchil hikoya xaritasi. ",
+   "info": "Natija: Faoliyatlar roʻyxati (10 yozuv, qisqa tavsif bilan) + izchil hikoya xaritasi. ",
    "lessons": [
     {
      "num": "7.1",
@@ -1564,7 +1564,7 @@
    "id": "M8",
    "title": "Tavsiya xatlari",
    "meta": "5 dars, Core",
-   "info": "Artefakt: Yutuqlar varaqasi + 2–3 tavsiya soʻrovi + Aloqalar jadvali. ",
+   "info": "Natija: Yutuqlar varaqasi + 2–3 tavsiya soʻrovi + Aloqalar jadvali. ",
    "lessons": [
     {
      "num": "8.1",
@@ -1602,7 +1602,7 @@
    "id": "M9",
    "title": "Shaxsiy bayonot va insholar",
    "meta": "5 dars, Core",
-   "info": "Artefakt: Asosiy insho qoralamasi v1 (Common App) + UCAS shaxsiy bayonoti qoralamasi v1 (kerak boʻlsa) + qoʻshimcha insholar rejasi. ",
+   "info": "Natija: Asosiy insho qoralamasi v1 (Common App) + UCAS shaxsiy bayonoti qoralamasi v1 (kerak boʻlsa) + qoʻshimcha insholar rejasi. ",
    "lessons": [
     {
      "num": "9.1",
@@ -1631,7 +1631,7 @@
     {
      "num": "9.5",
      "title": "Qoʻshimcha insholar",
-     "content": "\"Nega aynan biz?\", \"Nega bu mutaxassislik?\" — universitet manbalari bilan aniq javob",
+     "content": "\"Nega aynan biz?\", \"Nega bu mutaxassislik?\": universitet manbalari bilan aniq javob",
      "trek": ""
     }
    ]
@@ -1640,7 +1640,7 @@
    "id": "M10",
    "title": "Inshoni tahrirlash va yakuniy matn",
    "meta": "5 dars, Core",
-   "info": "Artefakt: Yakuniy insholar + tahrir qaydi (v1 → yakuniy). ",
+   "info": "Natija: Yakuniy insholar + tahrir qaydi (v1 → yakuniy). ",
    "lessons": [
     {
      "num": "10.1",
@@ -1678,7 +1678,7 @@
    "id": "M11",
    "title": "Davlat stipendiyalari",
    "meta": "5 dars",
-   "info": "Artefakt: Stipendiya roʻyxati (5–8 dastur, muvofiqlik tekshiruvi va rasmiy havolalar bilan). ",
+   "info": "Natija: Stipendiya roʻyxati (5–8 dastur, muvofiqlik tekshiruvi va rasmiy havolalar bilan). ",
    "lessons": [
     {
      "num": "11.1",
@@ -1689,7 +1689,7 @@
     {
      "num": "11.2",
      "title": "Koreya va Yaponiya",
-     "content": "GKS va MEXT bakalavriat yoʻnalishlari — umumiy mantiq va GKS Lab, MEXT Lab'ga havola",
+     "content": "GKS va MEXT bakalavriat yoʻnalishlari: umumiy mantiq va GKS Lab, MEXT Lab'ga havola",
      "trek": ""
     },
     {
@@ -1701,7 +1701,7 @@
     {
      "num": "11.4",
      "title": "Vengriya va Italiya",
-     "content": "Stipendium Hungaricum; Italiyadagi mintaqaviy taʼlim huquqi stipendiyalari (DSU) — ehtiyojga asoslangan",
+     "content": "Stipendium Hungaricum; Italiyadagi mintaqaviy taʼlim huquqi stipendiyalari (DSU): ehtiyojga asoslangan",
      "trek": ""
     },
     {
@@ -1716,12 +1716,12 @@
    "id": "M12",
    "title": "Universitet grantlari va moliyaviy reja",
    "meta": "5 dars",
-   "info": "Artefakt: 4 yillik moliyaviy reja (xarajat, qoplanadigan qism, boʻshliq, zaxira manba). ",
+   "info": "Natija: 4 yillik moliyaviy reja (xarajat, qoplanadigan qism, boʻshliq, zaxira manba). ",
    "lessons": [
     {
      "num": "12.1",
      "title": "AQSh moliyaviy yordami",
-     "content": "Ehtiyojga asoslangan yordam, toʻlov qobiliyatiga qaramaydigan (need-blind) va qaraydigan (need-aware) siyosatlar, CSS Profile; xalqaro talabalarga qaysi universitet yordam beradi — rasmiy sahifadan",
+     "content": "Ehtiyojga asoslangan yordam, toʻlov qobiliyatiga qaramaydigan (need-blind) va qaraydigan (need-aware) siyosatlar, CSS Profile; xalqaro talabalarga qaysi universitet yordam beradi: rasmiy sahifadan",
      "trek": ""
     },
     {
@@ -1754,7 +1754,7 @@
    "id": "M13",
    "title": "Ariza platformalari",
    "meta": "5 dars",
-   "info": "Artefakt: Kamida bitta topshirilgan ariza + 40 bandli topshirish oldi nazorat roʻyxati. ",
+   "info": "Natija: Kamida bitta topshirilgan ariza + 40 bandli topshirish oldi nazorat roʻyxati. ",
    "lessons": [
     {
      "num": "13.1",
@@ -1792,7 +1792,7 @@
    "id": "M14",
    "title": "Mamlakatlar boʻyicha imkoniyatlar: Xitoy, Italiya, Singapur",
    "meta": "6 dars",
-   "info": "Artefakt: Tanlangan yoʻnalish boʻyicha ariza paketi. ",
+   "info": "Natija: Tanlangan yoʻnalish boʻyicha ariza paketi. ",
    "lessons": [
     {
      "num": "14.1",
@@ -1836,7 +1836,7 @@
    "id": "M15",
    "title": "Intervyu va qabul qarori",
    "meta": "5 dars, Core asoslari",
-   "info": "Artefakt: 3 ta yozib olingan javob + mezon bali. ",
+   "info": "Natija: 3 ta yozib olingan javob + mezon bali. ",
    "lessons": [
     {
      "num": "15.1",
@@ -1846,7 +1846,7 @@
     },
     {
      "num": "15.2",
-     "title": "\"Oʻzingiz haqingizda\" — 3 daqiqa",
+     "title": "\"Oʻzingiz haqingizda\": 3 daqiqa",
      "content": "Tuzilma va misol tahlili",
      "trek": ""
     },
@@ -1874,7 +1874,7 @@
    "id": "M16",
    "title": "Qabuldan keyin: viza va joʻnash",
    "meta": "5 dars",
-   "info": "Artefakt: Joʻnash oldi nazorat roʻyxati + birinchi yil rejasi. ",
+   "info": "Natija: Joʻnash oldi nazorat roʻyxati + birinchi yil rejasi. ",
    "lessons": [
     {
      "num": "16.1",
@@ -1885,7 +1885,7 @@
     {
      "num": "16.2",
      "title": "Talaba vizasi",
-     "content": "Mamlakat boʻyicha bosqichlar; voyaga yetmaganlar uchun qoʻshimcha talablar boʻlishi mumkin — rasmiy sahifadan",
+     "content": "Mamlakat boʻyicha bosqichlar; voyaga yetmaganlar uchun qoʻshimcha talablar boʻlishi mumkin: rasmiy sahifadan",
      "trek": ""
     },
     {
@@ -1931,7 +1931,7 @@
     {
      "num": "0.3",
      "title": "Mamlakatlar xaritasi",
-     "content": "Koreya, Buyuk Britaniya, Germaniya, Polsha — qisqa taqqoslash",
+     "content": "Koreya, Buyuk Britaniya, Germaniya, Polsha: qisqa taqqoslash",
      "trek": ""
     },
     {
@@ -2125,7 +2125,7 @@
     {
      "num": "4.5",
      "title": "Kelishuv holati",
-     "content": "Hukumatlararo kelishuv eʼlon qilinganmi (Qobiq)",
+     "content": "Hukumatlararo kelishuv eʼlon qilinganmi (rasmiy manbadan tekshiriladi)",
      "trek": ""
     }
    ]
@@ -2134,7 +2134,7 @@
    "id": "M5",
    "title": "Hujjatlar va xavfsizlik",
    "meta": "6 dars",
-   "info": "Artefakt: Xavfsizlik papkasi. ",
+   "info": "Natija: Xavfsizlik papkasi. ",
    "lessons": [
     {
      "num": "5.1",
@@ -2244,7 +2244,7 @@
    "id": "M0",
    "title": "AQSh yoʻllari va qaror",
    "meta": "bepul, 6 dars",
-   "info": "Artefakt: Yoʻllar xaritasi + yoʻl tanlovi + tayyorgarlik koʻrsatkichi + kalendar. ",
+   "info": "Natija: Yoʻllar xaritasi + yoʻl tanlovi + tayyorgarlik koʻrsatkichi + kalendar. ",
    "lessons": [
     {
      "num": "0.1",
@@ -2282,7 +2282,7 @@
    "id": "M1",
    "title": "AQSh oliy taʼlimi: tizim va universitetni tekshirish",
    "meta": "5 dars",
-   "info": "Artefakt: Universitet tekshiruv kartasi. ",
+   "info": "Natija: Universitet tekshiruv kartasi. ",
    "lessons": [
     {
      "num": "1.1",
@@ -2315,7 +2315,7 @@
    "id": "M2",
    "title": "Xarajat va pul oqimi",
    "meta": "5 dars",
-   "info": "Artefakt: AQSh pul xaritasi. ",
+   "info": "Natija: AQSh pul xaritasi. ",
    "lessons": [
     {
      "num": "2.1",
@@ -2348,7 +2348,7 @@
    "id": "M3",
    "title": "Yordam beradigan universitetlarni topish",
    "meta": "5 dars",
-   "info": "Artefakt: Yordam boʻyicha saralangan roʻyxat. ",
+   "info": "Natija: Yordam boʻyicha saralangan roʻyxat. ",
    "lessons": [
     {
      "num": "3.1",
@@ -2381,7 +2381,7 @@
    "id": "M4",
    "title": "Moliyaviy yordam arizasi",
    "meta": "5 dars",
-   "info": "Artefakt: Moliyaviy yordam arizasi paketi. ",
+   "info": "Natija: Moliyaviy yordam arizasi paketi. ",
    "lessons": [
     {
      "num": "4.1",
@@ -2414,7 +2414,7 @@
    "id": "M5",
    "title": "Global UGRAD va almashinuv dasturlari",
    "meta": "5 dars",
-   "info": "Artefakt: Almashinuv dasturi kartasi. ",
+   "info": "Natija: Almashinuv dasturi kartasi. ",
    "lessons": [
     {
      "num": "5.1",
@@ -2447,7 +2447,7 @@
    "id": "M6",
    "title": "Fulbright magistraturasi",
    "meta": "5 dars",
-   "info": "Artefakt: Fulbright muvofiqlik va reja kartasi. ",
+   "info": "Natija: Fulbright muvofiqlik va reja kartasi. ",
    "lessons": [
     {
      "num": "6.1",
@@ -2480,7 +2480,7 @@
    "id": "M7",
    "title": "Magistratura va PhD moliyasi",
    "meta": "5 dars",
-   "info": "Artefakt: Moliya paketi taqqoslagichi. ",
+   "info": "Natija: Moliya paketi taqqoslagichi. ",
    "lessons": [
     {
      "num": "7.1",
@@ -2513,7 +2513,7 @@
    "id": "M8",
    "title": "Viza, maqom va ishlash huquqi",
    "meta": "5 dars",
-   "info": "Artefakt: Viza va maqom nazorat roʻyxati. ",
+   "info": "Natija: Viza va maqom nazorat roʻyxati. ",
    "lessons": [
     {
      "num": "8.1",

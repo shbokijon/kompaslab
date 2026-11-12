@@ -6,7 +6,7 @@ MOD = dict(
     lead="GKS arizasi bitta insho emas, o'nlab varaqdan iborat to'plam. Bu modulda yo'riqnomadagi har hujjatni bitta jadvalga tushirasiz, legallashtirish zanjirini rejalaysiz, bahoingiz talabga mosligini tekshirasiz va til strategiyasini tanlaysiz.",
     hero="scroll", weeks="2–3", next="Universitet va dastur tanlash",
     goals=[("scroll", "Hujjatlar nazorat jadvali", "har hujjat, manbasi, holati va muddati bilan"),
-           ("shield", "Legallashtirish yo'l xaritasi", "apostil, tarjima va nusxa qoidasi bo'yicha"),
+           ("shield", "Legallashtirish rejasi", "apostil, tarjima va nusxa qoidasi bo'yicha"),
            ("chart", "Baho va til rejasi", "GPA talabiga moslik izohi va TOPIK/ingliz tili qarori")],
     warn="Hujjatlar ro'yxati, formalar raqami va muddatlar har yili yangi yo'riqnomada e'lon qilinadi. Bu moduldagi faktlar 2027 GKS-U (sentabr 2026) va 2026 GKS-G (fevral 2026) yo'riqnomalaridan, 31.10.2026 holatiga. Topshirishdan oldin o'z siklingiz yo'riqnomasini o'qing.",
     lessons=[
@@ -108,7 +108,7 @@ MOD = dict(
                       "Til sertifikati ariza kunida amal qiladi (bo'lsa).", "Formalar (ariza, bayonot, reja) apostilsiz ekanligi tushunilgan.",
                       "Legallashtirish ariza oynasidan kamida 2 oy oldin boshlanadi.", "Har hujjat uchun mas'ul va sana yozilgan."]),
     art_title="Hujjatlar nazorat jadvali", art_short="Jadval",
-    art=[("Trek", ["trek"]), ("Hujjatlar ro'yxati", ["docs", "a1"]), ("Legallashtirish yo'l xaritasi", ["leg", "a2"]),
+    art=[("Trek", ["trek"]), ("Hujjatlar ro'yxati", ["docs", "a1"]), ("Legallashtirish rejasi", ["leg", "a2"]),
          ("Baho va talabga moslik", ["gpa", "a3"]), ("Til rejasi", ["lang", "a4"])],
     tip="Hujjatni \"tayyor\" deb belgilashdan oldin uni yo'riqnomadagi qatorga qo'yib solishtiring: nom, til, asl yoki nusxa, apostil. Bitta farq ham qaytadan boshlashni anglatishi mumkin.",
     sources=STD,

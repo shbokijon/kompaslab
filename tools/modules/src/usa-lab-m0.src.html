@@ -116,7 +116,7 @@ body.locked .gate{display:flex;}
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA Lab</a> · Modul 0</div>
-        <span class="badge">🔓 Bepul · Qaror darvozasi</span>
+        <span class="badge">🔓 Bepul · Boshlashdan oldingi tekshiruv</span>
         <h1>AQSh: beshta yoʻl, bitta xarita.</h1>
         <p class="lead">Universitet yordami bilan bakalavr, Global UGRAD, Fulbright, magistratura va PhD: har birining oʻz puli, vizasi va sharti bor. Bu modulda miflarni ajratasiz, oila byudjetiga mos yoʻlni tanlaysiz va rasmiy manbani oʻqishni oʻrganasiz.</p>
         <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>250</b> XP</span></div>
@@ -383,7 +383,7 @@ body.locked .gate{display:flex;}
       <div class="bdg" data-badge="quiz"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Mif buzuvchi<small>Test 3+/4</small></div>
       <div class="bdg" data-badge="trk"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yoʻl tanlovchi<small>Yoʻl tanlagich</small></div>
       <div class="bdg" data-badge="read"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Manbachi<small>6 savol</small></div>
-      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Halol koʻzgu<small>Koʻrsatkich</small></div>
+      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Oʻz bahom<small>Koʻrsatkich</small></div>
       <div class="bdg" data-badge="dec"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Qaror qildi<small>Rozilik</small></div>
     </div>
   </section>
@@ -678,7 +678,7 @@ body.locked .gate{display:flex;}
     var miss = ans.filter(function (v) { return v == null; }).length;
     if (miss) { toast("Yana " + miss + " ta savolga javob bering", "chart"); return; }
     S.rs = { ans: ans.slice(), total: total(), gaps: gaps(), blocked: ans[1] === "x" }; save(); renderRs(); renderStmt();
-    if (!award("rs", 40, "Halol koʻzgu nishoni", "chart")) toast("Natija yangilandi", "chart");
+    if (!award("rs", 40, "Oʻz bahom nishoni", "chart")) toast("Natija yangilandi", "chart");
   });
   drawRadar();
 

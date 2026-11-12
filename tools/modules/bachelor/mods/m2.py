@@ -18,7 +18,7 @@ MOD = dict(
 <tr><td><b>Mo'ljal</b> ([[target]])</td><td>Baho va test natijangiz shu universitetga qabul qilinganlar o'rtasida</td><td>3–5 ta</td></tr>
 <tr><td><b>Ishonchli</b> ([[likely]])</td><td>Talablardan yuqorisiz, dastur va narx ham sizga to'g'ri keladi</td><td>2–3 ta</td></tr>
 </tbody></table></div>
-<p>Muhim shart: <b>ishonchli daraja ham siz haqiqatan borishga tayyor joy bo'lishi kerak</b>. Borishni xohlamagan va to'lay olmaydigan universitet ishonchli emas, u shunchaki ro'yxatni to'ldiradi.</p>
+<p>Muhim shart: <b>ishonchli daraja ham siz haqiqatan borishga tayyor joy bo'lishi kerak</b>. Borishni xohlamagan va to'lay olmaydigan universitet ishonchli emas, u ro'yxatda joy egallaydi, xolos.</p>
 <h4>Darajani qanday aniqlash</h4>
 <ul><li>AQShda: universitetning Common Data Set'idagi qabul foizi va test ballari oralig'i (C9, C11 bo'limlari).</li>
 <li>Ball asosidagi tizimlarda: o'tgan yilgi minimal ball yoki talab qilingan o'rtacha baho.</li>

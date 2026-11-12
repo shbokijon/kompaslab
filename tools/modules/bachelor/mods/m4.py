@@ -23,7 +23,7 @@ MOD = dict(
 <p>Oksford, Kembrij va ko'p tibbiyot dasturlari uchun erta muddat (oktabr o'rtasi). Qolgan dasturlar uchun yanvardagi \"teng ko'rib chiqish\" muddati ([[equal consideration date]]). Xalqaro abituriyentlar uchun keyinroq ham ariza qabul qilinishi mumkin, lekin joylar kamayadi.</p>
 <h4>To'g'ridan-to'g'ri portallar</h4>
 <p>Germaniya (uni-assist yoki universitet portali), Italiya (universitet arizasi + Universitaly), Xitoy (universitet portali va CSC), Koreya va boshqalar: har universitetning o'z muddati, ko'pincha mamlakat o'qish yilidan 6–10 oy oldin.</p>
-<div class="box warn"><b>Qobiq qoidasi.</b> Jadvalga sana yozganda manbani va tekshirilgan kunni qo'shing. Eski yildan qolgan sana eng ko'p uchraydigan xato.</div>
+<div class="box warn"><b>Sana qoidasi.</b> Jadvalga sana yozganda manbani va tekshirilgan kunni qo'shing. Eski yildan qolgan sana eng ko'p uchraydigan xato.</div>
 <div class="srcs">Manba: {CA}; {UCAS_DATES}; {UNIASSIST}; {UNIVERSITALY}; {CAMPUSCHINA}. {HOL}.</div>""",
              take="ED majburiy, EA va RD majburiy emas; UCAS'da erta va yanvar muddatlari bor; portallarda har universitetning o'z muddati. Har sanani manba bilan yozing.",
              quiz=[("Early Decision bilan qabul qilinsangiz, odatda boshqa arizalarni qaytarib olishingiz kerak.", "t", "To'g'ri: ED majburiy kelishuv."),

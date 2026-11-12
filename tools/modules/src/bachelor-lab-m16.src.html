@@ -88,7 +88,7 @@
   <section>
     <h2>Modul yakunida sizda</h2>
     <ul class="goal">
-      <li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Joʻnash oldi nazorat roʻyxati (Pre-departure checklist):</b> hujjatlar, sogʻliq, pul, aloqa, birinchi kun</span></li><li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span><b>Viza yoʻl xaritasi:</b> mamlakatingiz boʻyicha bosqichlar va sanalar</span></li><li><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span><b>Birinchi yil rejasi:</b> akademik, yordam xizmatlari, salomatlik</span></li>
+      <li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Joʻnash oldi nazorat roʻyxati (Pre-departure checklist):</b> hujjatlar, sogʻliq, pul, aloqa, birinchi kun</span></li><li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span><b>Viza bosqichlari rejasi:</b> mamlakatingiz boʻyicha bosqichlar va sanalar</span></li><li><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span><b>Birinchi yil rejasi:</b> akademik, yordam xizmatlari, salomatlik</span></li>
     </ul>
     <div class="box warn" style="margin-top:14px">Viza qoidalari, toʻlovlar va moliyaviy talablar tez-tez oʻzgaradi. Bu moduldagi maʼlumot 31.10.2026 holatiga; har qadamni konsullik va universitetning xalqaro boʻlimi bilan tekshiring. Kompas Lab vizani kafolatlamaydi va viza agentligi emas.</div>
   </section>
@@ -252,7 +252,7 @@
     <div class="tool">
       <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Joʻnash rejasi</h3><span>6 maydon · +30 XP</span></div></div>
       
-      <div class="fld"><label for="f_uni">Universitet, mamlakat, oʻqish boshlanishi</label><input id="f_uni" type="text" data-save="uni" placeholder="... · ... · sentabr 2027"></div><div class="fld"><label for="f_viza">Viza yoʻl xaritasi <small>bosqich · sana · hujjat</small></label><textarea id="f_viza" data-save="viza" placeholder="CAS ... ; toʻlov ... ; biometrika ..."></textarea></div><div class="fld"><label for="f_uy">Uy-joy va sugʻurta</label><textarea id="f_uy" data-save="uy" placeholder="Yotoqxona ... ; sugʻurta ..."></textarea></div><div class="fld"><label for="f_pul">Pul va bank</label><textarea id="f_pul" data-save="pul" placeholder="Karta ..., naqd ..., bank hisobi ..."></textarea></div><div class="fld"><label for="f_royxat">30 kunlik roʻyxat <small>4 hafta boʻyicha</small></label><textarea id="f_royxat" data-save="royxat" placeholder="4-hafta: ... 1-hafta: ..."></textarea></div><div class="fld"><label for="f_yil">Birinchi yil rejasi</label><textarea id="f_yil" data-save="yil" placeholder="Yordam xizmatlari ... ; maqsadlar ..."></textarea></div>
+      <div class="fld"><label for="f_uni">Universitet, mamlakat, oʻqish boshlanishi</label><input id="f_uni" type="text" data-save="uni" placeholder="... · ... · sentabr 2027"></div><div class="fld"><label for="f_viza">Viza bosqichlari rejasi <small>bosqich · sana · hujjat</small></label><textarea id="f_viza" data-save="viza" placeholder="CAS ... ; toʻlov ... ; biometrika ..."></textarea></div><div class="fld"><label for="f_uy">Uy-joy va sugʻurta</label><textarea id="f_uy" data-save="uy" placeholder="Yotoqxona ... ; sugʻurta ..."></textarea></div><div class="fld"><label for="f_pul">Pul va bank</label><textarea id="f_pul" data-save="pul" placeholder="Karta ..., naqd ..., bank hisobi ..."></textarea></div><div class="fld"><label for="f_royxat">30 kunlik roʻyxat <small>4 hafta boʻyicha</small></label><textarea id="f_royxat" data-save="royxat" placeholder="4-hafta: ... 1-hafta: ..."></textarea></div><div class="fld"><label for="f_yil">Birinchi yil rejasi</label><textarea id="f_yil" data-save="yil" placeholder="Yordam xizmatlari ... ; maqsadlar ..."></textarea></div>
       <div id="toolOut" class="out" hidden></div>
       <button class="btn btn-p" type="button" id="toolBtn" data-min="5" style="margin-top:14px">Rejani saqlash · +30 XP</button>
     </div>
@@ -325,7 +325,7 @@
 <script>
 (function () {
   var KEY = "kompas_bachelor_m16_v1", MOD = "16", LXP = 24, NL = 5, FINXP = 40;
-  var ART = [{"h": "Universitet va oʻqish boshlanishi", "k": ["uni"]}, {"h": "Qabul xati va birinchi 2 hafta", "k": ["a1"]}, {"h": "Viza yoʻl xaritasi", "k": ["viza", "a2"]}, {"h": "Uy-joy va sugʻurta", "k": ["uy", "a3"]}, {"h": "Pul va bank", "k": ["pul"]}, {"h": "30 kunlik roʻyxat", "k": ["royxat", "a4"]}, {"h": "Birinchi yil rejasi", "k": ["yil", "a5"]}];
+  var ART = [{"h": "Universitet va oʻqish boshlanishi", "k": ["uni"]}, {"h": "Qabul xati va birinchi 2 hafta", "k": ["a1"]}, {"h": "Viza bosqichlari rejasi", "k": ["viza", "a2"]}, {"h": "Uy-joy va sugʻurta", "k": ["uy", "a3"]}, {"h": "Pul va bank", "k": ["pul"]}, {"h": "30 kunlik roʻyxat", "k": ["royxat", "a4"]}, {"h": "Birinchi yil rejasi", "k": ["yil", "a5"]}];
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
   try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
