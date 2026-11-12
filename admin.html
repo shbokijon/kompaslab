@@ -97,6 +97,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .ch-r{display:flex;gap:8px;align-items:center;}
 
 /* TABLE CONTROLS */
+.m0-sec{padding:14px 18px;border-bottom:1px solid var(--border);}.m0-sec h3{font-size:13px;font-weight:800;margin-bottom:10px;}.m0-sub{font-size:12px;color:var(--muted);font-weight:400;}.m0-note{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.55;}.m0f-row{display:grid;grid-template-columns:190px 1fr 90px 220px;gap:10px;align-items:center;padding:4px 0;font-size:13px;}.m0f-bar{height:12px;background:var(--bg);border-radius:99px;overflow:hidden;}.m0f-bar span{display:block;height:100%;background:var(--accent);border-radius:99px;}.m0f-n b{font-size:16px;}.m0f-n small,.m0f-c{color:var(--muted);font-size:12px;}.m0f-worst .m0f-bar span{background:var(--accent2);}.m0f-worst .m0f-c{color:var(--accent2);font-weight:700;}.m0-lscell{white-space:nowrap;}.m0-ls{display:inline-flex;flex-direction:column;align-items:center;border:1px solid var(--border);border-radius:8px;padding:2px 7px;margin:0 4px 0 0;font-size:11px;color:var(--muted);}.m0-ls i{font-style:normal;color:var(--text);font-weight:700;font-size:12px;}.m0-lab{margin:2px 0 6px;font-size:13px;}.m0-pb{height:5px;background:var(--bg);border-radius:99px;overflow:hidden;margin-top:3px;max-width:220px;}.m0-pb span{display:block;height:100%;background:var(--accent);}@media(max-width:760px){.m0f-row{grid-template-columns:1fr 70px;}.m0f-bar{grid-column:1/-1;order:3;}.m0f-c{grid-column:1/-1;order:4;}}
 .chips{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px 0;}.chip{border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:12px;font-weight:600;border-radius:99px;padding:6px 12px;cursor:pointer;}.chip b{color:var(--muted);margin-left:3px;}.chip.on{background:var(--accent);border-color:var(--accent);color:#fff;}.chip.on b{color:#dfeee6;}.lnk-user{all:unset;cursor:pointer;display:block;}.lnk-user:hover .snm{text-decoration:underline;}.lnk-user .snm,.lnk-user .sem{display:block;}.lnk-user .sem{font-size:11px;color:var(--muted);}
 .sd-h{font-size:12px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;}.sd-empty{color:var(--muted);font-size:13px;padding:6px 0;}.sd-m0{display:flex;align-items:center;gap:10px;font-size:13px;padding:5px 0;}.sd-m0 b{min-width:38px;text-align:right;}.sd-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}.sd-stat{background:var(--accent-lit);border-radius:10px;padding:10px 12px;}.sd-stat b{display:block;font-size:16px;color:var(--accent);}.sd-stat span{font-size:11px;color:var(--muted);}.sd-note{font-size:12.5px;color:var(--muted);margin-top:10px;}
 .tctrl{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
@@ -557,14 +558,18 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <div class="sec" id="sec-analytics">
       <div class="card" style="margin-bottom:14px">
         <div class="ch"><h2>🧭 M0 voronkasi va talabalar</h2><button class="btn bs bsm" onclick="loadM0Overview()">🔄 Yangilash</button></div>
-        <div id="m0Funnel" style="padding:4px 2px 8px;font-size:14px;color:var(--muted)">Yuklanmoqda...</div>
-        <div id="m0Lessons" style="margin-bottom:10px"></div>
-        <div class="tbl-scroll">
-          <table class="tbl"><thead><tr>
-            <th>Talaba</th><th>Bosqich</th><th>Lab</th><th>Darslar</th><th>Qayerda</th><th>Vaqt</th><th>Oxirgi faollik</th>
-          </tr></thead><tbody id="tbM0"></tbody></table>
+        <div class="m0-sec"><h3>Voronka</h3><div id="m0Funnel"><div class="m0-note">Yuklanmoqda...</div></div></div>
+        <div class="m0-sec"><h3>Lablar boʻyicha</h3><div id="m0Labs"></div></div>
+        <div class="m0-sec" style="border-bottom:0"><h3>Talabalar <span id="m0Count" class="m0-sub"></span></h3>
+          <div class="chips" id="m0Chips" role="tablist" aria-label="Holat filtri" style="padding:0 0 10px"></div>
+          <div class="tctrl" style="padding:0 0 10px"><input class="srch" id="m0Q" placeholder="🔍 Ism, email yoki Lab..." autocomplete="off"></div>
+          <div class="tbl-scroll">
+            <table class="tbl"><thead><tr>
+              <th>Talaba</th><th>Holat</th><th>Lab va jarayon</th><th>Bosqich</th><th>Vaqt</th><th>Oxirgi faollik</th><th>Roʻyxatdan oʻtgan</th>
+            </tr></thead><tbody id="tbM0"></tbody></table>
+          </div>
+          <div class="m0-note">Hisob 2026-11-05 dan. Faqat voqealar yoziladi (dars, qism, yakun, faol vaqt); javob matni yozilmaydi. Holatlar: <b>Oʻqiyapti</b> — oxirgi 3 kunda faol; <b>Toʻxtagan</b> — 3 kundan beri faollik yoʻq va M0 tugamagan (yozish uchun birinchi navbat); <b>Yakunlagan</b> — kamida bitta Lab M0 sini tugatgan. Roʻyxat holat, keyin oxirgi faollik boʻyicha tartiblangan.</div>
         </div>
-        <div style="font-size:12.5px;color:var(--muted);margin-top:8px">Hisob 2026-11-05 dan. Faqat voqealar yoziladi (dars, qism, yakun, faol vaqt); javob matni yozilmaydi. "Toʻxtagan": 3 kundan beri faollik yoʻq va M0 tugamagan.</div>
       </div>
       <div class="card" style="margin-bottom:14px">
         <div class="ch"><h2>📣 Kanallar (UTM, oxirgi 30 kun)</h2><button class="btn bs bsm" onclick="loadChannels()">🔄 Yangilash</button></div>
@@ -2292,34 +2297,7 @@ function exportPaymentsCSV() {
 //  13. KURS STATISTIKASI
 // ════════════════════════════════════════════════════════
 const m0esc = v => escHtml(String(v == null ? '' : v))
-const M0_LESSONS = { 'master-lab': 5, 'bachelor-lab': 5, 'phd-lab': 6, 'gks-lab': 5, 'usa-lab': 6, 'tadbirkor-talaba': 5, 'musofir-lab': 6 }
-const STAGE_UZ = { school: 'Maktab', college: 'Litsey/kollej', bachelor: 'Bakalavr', bachelor_done: 'Bakalavr bitirgan', master: 'Magistrant', master_done: 'Magistr bitirgan', phd: 'Doktorant', work: 'Ishlaydi' }
-const SECT_UZ = ['Diqqat 🔥', 'Asosiy qism', 'Xulosa', 'Topshiriq']
-async function loadM0Overview() {
-  const box = document.getElementById('m0Funnel'), tb = document.getElementById('tbM0'), lb = document.getElementById('m0Lessons')
-  if (!box) return
-  const { data, error } = await supabase.rpc('kompas_admin_m0_overview')
-  if (error || !data) { box.textContent = 'Oʻqilmadi: ' + (error?.message || ''); return }
-  const f = data.funnel || {}
-  const step = (n, t) => '<b style="color:var(--text);font-size:18px">' + (n || 0) + '</b> ' + t
-  box.innerHTML = [step(f.registered, 'roʻyxatdan oʻtgan'), step(f.confirmed, 'emailni tasdiqlagan'), step(f.onboarded, 'savolga javob bergan'),
-    step(f.started, 'M0 ni ochgan'), step(f.lesson1, 'kamida 1 dars tugatgan'), step(f.finished, 'M0 ni yakunlagan')].join(' → ')
-  const byLab = {}
-  ;(data.lessons || []).forEach(l => { (byLab[l.lab] = byLab[l.lab] || []).push(l) })
-  lb.innerHTML = Object.keys(byLab).map(lab => '<div style="font-size:13px;margin:6px 0"><b>' + m0esc(lab) + ':</b> ' +
-    byLab[lab].sort((a, b) => a.lesson.localeCompare(b.lesson, 'en', { numeric: true })).map(l => m0esc(l.lesson.replace('l', '')) + '-dars ' + l.reached + ' ochgan / ' + l.done + ' tugatgan').join(' · ') + '</div>').join('')
-  const now = Date.now()
-  tb.innerHTML = (data.users || []).map(u => {
-    const total = M0_LESSONS[u.lab] || '?'
-    const stuck = u.lab && !u.finished && u.last_seen && now - Date.parse(u.last_seen) > 3 * 86400000
-    const where = !u.lab ? (u.confirmed ? 'M0 ochilmagan' : 'Email tasdiqlanmagan') : u.finished ? 'Yakunlagan ✓' :
-      (u.last_lesson ? u.last_lesson.replace('l', '') + '-dars' : 'Modul sahifasi') + (u.last_section != null ? ', ' + SECT_UZ[u.last_section] : '')
-    const stage = u.stage ? (STAGE_UZ[u.stage] || u.stage) + (u.detail ? ' · ' + u.detail : '') + (u.works ? ' · ishlaydi' : '') : '—'
-    return '<tr><td>' + m0esc(u.name || '—') + '<div style="font-size:12px;color:var(--muted)">' + m0esc(u.email || '') + '</div></td><td>' + m0esc(stage) + '</td><td>' + m0esc(u.lab || '—') +
-      '</td><td>' + (u.lab ? (u.done || 0) + ' / ' + total : '—') + '</td><td>' + m0esc(where) + (stuck ? ' <span class="tag" style="background:#fdecea;color:#b3261e">toʻxtagan</span>' : '') +
-      '</td><td>' + (u.minutes || 0) + ' daq</td><td>' + (u.last_seen ? new Date(u.last_seen).toLocaleDateString('ru-RU') : '—') + '</td></tr>'
-  }).join('') || '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:16px">Hozircha maʼlumot yoʻq</td></tr>'
-}
+// M0 voronkasi: js/admin-m0.js (2026-11-12)
 async function loadPwaStats() {
   const box = document.getElementById('pwaStats'); if (!box) return
   const { data, error } = await supabase.rpc('kompas_pwa_stats')
@@ -2438,6 +2416,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script src="js/admin-system.js"></script>
 <script src="js/admin-users.js"></script>
+<script src="js/admin-m0.js"></script>
 <script src="js/admin-extensions.js"></script>
 </body>
 </html>
