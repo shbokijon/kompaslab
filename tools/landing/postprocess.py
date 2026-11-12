@@ -59,6 +59,8 @@ def process(path: Path, root: Path) -> None:
                    lambda m: m.group(1) + f'<a class="btn btn-g" href="{m0}">M0 ni boshlash</a>', s, count=1, flags=re.S)
         s = s.replace('<a href="#dastur" class="btn btn-p">Bepul M0 ni koʻrish</a>', f'<a href="{m0}" class="btn btn-p">Bepul M0 ni boshlash</a>')
     if path.name == "master-lab.html":
+        # Birinchi ekran: asosiy tugma bepul M0 (2026-11-12, asoschi)
+        s = s.replace('<a href="#test" class="btn btn-p">Tayyorgarlikni tekshirish</a>', '<a href="master-lab-m0.html" class="btn btn-p">Bepul M0 ni boshlash</a>', 1)
         # Sahifa oxiridagi CTA
         s = s.replace('<button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>\n      <a href="https://t.me/kompaslab"',
                       '<a class="btn btn-p" href="master-lab-m0.html">Bepul M0 ni boshlash</a>\n      <a href="https://t.me/kompaslab"', 1)

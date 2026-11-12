@@ -196,7 +196,7 @@ def route(stem, mods, m0_page, here=None):
             cls, st = "is-locked", "Obuna"
         if here is not None and m["slug"] == here:
             cls += " is-here"
-        sub = f'{n} dars' + (f'. Natija: {esc(m["art"])}' if m["art"] else "")
+        sub = f'{n} dars' + (f' → {esc(m["art"])}' if m["art"] else "")
         lis.append(f'<li class="kl-st {cls}"><a href="{href}"><span class="kl-st-n{" sm" if len(m["id"]) > 3 else ""}">{esc(m["id"])}</span><span class="kl-st-b"><b>{esc(m["title"])}</b><small>{sub}</small></span><span class="kl-st-s">{st}</span></a></li>')
     return '<ol class="kl-route"' + (' data-needle' if here is not None else "") + ">" + "".join(lis) + "</ol>"
 
@@ -304,7 +304,7 @@ def split(root, f, src):
     test_btn = f'<a class="btn btn-g" href="{stem}-test.html">Moslik testini topshirish</a>' if have_test else f'<a class="btn btn-g" href="{stem}-narxlar.html">Narxlarni koʻrish</a>'
     path = f'''<section id="yol">
   <div class="wrap">
-    <div class="head"><h2>Dastur yoʻli: {len(mods)} modul, {nlessons} dars</h2><p class="sub">Har modulning oʻz sahifasi bor: darslar roʻyxati, natija va kirish holati. Darslar tartib bilan qurilgan, har biri bitta Topshiriq bilan tugaydi.</p></div>
+    <div class="head"><h2>Dastur yoʻli</h2><p class="sub">{len(mods)} modul, {nlessons} dars. Har modul sahifasida darslar roʻyxati, natija va kirish holati bor. Darslar tartib bilan qurilgan, har biri bitta Topshiriq bilan tugaydi.</p></div>
     <div class="kl-path">
       {route(stem, mods, m0_page)}
       <aside aria-label="Qisqacha">
