@@ -62,18 +62,18 @@ M0 darslari (`*-m0-N.html`) hub bilan bir xil DOM bilan keladi, shuning uchun fa
 
 | Sahifa | Oʻrin | Soʻz | Ball | X: Y | Ogohl. | Zanjir | Emas/balki | Uchlik | Yuzsiz | Uzun gap |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `index.html` | 26 | 901 | 51 | 14 | 4 | 15 | 0 | 16 | 1 | 0 |
+| `index.html` | 45 | 918 | 33 | 5 | 4 | 9 | 0 | 15 | 1 | 0 |
 | `master-lab.html` | 5 | 582 | 95 | 22 | 4 | 20 | 0 | 11 | 0 | 2 |
 | `master-lab-narxlar.html` | 14 | 327 | 61 | 10 | 6 | 4 | 0 | 3 | 0 | 0 |
 | `master-lab-m0.html` | 59 | 1908 | 60 | 34 | 40 | 28 | 1 | 30 | 2 | 0 |
 
 ## Jami (hamma sahifa)
 
-- kolon: 2476
+- kolon: 2467
 - ogoh: 822
-- zanjir: 2242
+- zanjir: 2236
 - emas: 1
-- uchlik: 733
+- uchlik: 732
 - yuzsiz: 9
 - uzun: 163
 
