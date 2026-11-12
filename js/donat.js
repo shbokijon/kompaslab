@@ -44,12 +44,17 @@
     var m = /[?&]d=(D\d{1,18})/.exec(location.search);
     var note = $("donatThanks");
     if (!m || !note) return;
-    var ref = m[1], tries = 0;
+    var ref = m[1], tries = 0, noTok = false;
     note.hidden = false;
     note.textContent = "Toʻlov holati tekshirilmoqda…";
     function ask() {
       tries++;
-      window.supabase.rpc("fn_donation_status", { p_ref: ref }).then(function (r) {
+      var tok = null;
+      if (!noTok) { try { tok = localStorage.getItem("kompas_donat_tok_" + ref); } catch (e) {} }
+      var args = tok ? { p_ref: ref, p_token: tok } : { p_ref: ref };
+      window.supabase.rpc("fn_donation_status", args).then(function (r) {
+        // Eski baza (p_token yoʻq) xato qaytarsa, tokensiz qayta soʻraymiz
+        if (r && r.error && tok) { noTok = true; tries--; ask(); return; }
         var row = r && r.data && r.data[0], st = row && row.status;
         if (st === "paid") {
           note.textContent = "Rahmat! " + fmt(row.amount) + " soʻm qabul qilindi.";
@@ -109,6 +114,7 @@
           say("Hozir buyurtma yaratib boʻlmadi. Birozdan keyin qayta urinib koʻring.");
           return;
         }
+        if (row.view_token) { try { localStorage.setItem("kompas_donat_tok_" + row.order_ref, row.view_token); } catch (e) {} }
         location.href = payUrl(row.order_ref, Number(row.amount));
       }, function () {
         go.disabled = false;
