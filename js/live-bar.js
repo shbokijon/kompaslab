@@ -152,6 +152,16 @@
     }
     withUtm(loadVisits); setInterval(loadVisits, 300000);
 
+    // Voronka (2026-11-12): narx sahifasi koʻrildi (narxlar.html yoki <lab>-narxlar.html).
+    // kompas_track_event odam + Lab + kun boʻyicha bir marta yozadi; xato boʻlsa jim.
+    var pm = location.pathname.match(/^\/(?:([a-z-]+?)-)?narxlar(?:\.html)?$/);
+    if (pm && typeof sb.rpc === "function") {
+      try {
+        sb.rpc("kompas_track_event", { p_event: "price_viewed", p_vid: visitorId(), p_slug: pm[1] || null, p_path: location.pathname })
+          .then(function () {}, function () {});
+      } catch (e) {}
+    }
+
     // Hozir saytda: Realtime Presence (bitta brauzer bir nechta tabda ham 1 marta sanaladi)
     if (typeof sb.channel !== "function") return;
     var ch = sb.channel("kompas-online", { config: { presence: { key: visitorId() } } });

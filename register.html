@@ -197,7 +197,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           <div class="step-num">3</div>
           <div class="step-content">
             <div class="step-title">Obunani tanlang</div>
-            <div class="step-desc">Oylik, 6 oylik yoki yillik. Onlayn toʻlov ochilganda xabar beramiz</div>
+            <div class="step-desc">Oylik yoki 6 oylik, Click orqali toʻlanadi</div>
           </div>
         </div>
       </div>
@@ -521,7 +521,32 @@ function kompasNextAfterAuth() {
   if (!to) { try { const r = JSON.parse(localStorage.getItem('kompas_return') || 'null'); if (r && Date.now() - r.at < 86400000) to = r.to } catch (e) {} }
   try { sessionStorage.removeItem('returnTo'); localStorage.removeItem('kompas_return') } catch (e) {}
   if (to && /-m0(?:-[1-9]\d*|-yakun)?(?:\.html)?(?:\?.*)?$/i.test(to)) return 'm0-access.html?next=' + encodeURIComponent(to.startsWith('/') ? to : '/' + to)
+  // Toʻlov sahifasidan kelgan boʻlsa, oʻsha yerga qaytadi (xarid niyati yoʻqolmasin)
+  if (to && /^\/?tolov(?:\.html)?\?lab=[a-z-]+(?:&plan=[a-z0-9]+)?(?:&track=[a-z])?$/i.test(to)) return to.replace(/^\//, '')
+  // 2026-11-12: M0 sahifasidan kelmagan boʻlsa ham kabinetga emas, toʻgʻridan-toʻgʻri M0 1-darsiga.
+  // Lab tartibi: ?lab= → kelgan Lab sahifasi (referrer) → "Maqsad" tanlovi. Topilmasa kabinet.
+  const lab = kompasStartLab()
+  if (lab) return 'm0-access.html?next=' + encodeURIComponent('/' + lab + '-m0-1.html')
   return 'dashboard.html'
+}
+const M0_LABS = ["bachelor-lab", "master-lab", "phd-lab", "gks-lab", "usa-lab", "musofir-lab", "tadbirkor-talaba"]
+const GOAL_LAB = { bachelor: "bachelor-lab", masters: "master-lab", phd: "phd-lab", grant: "gks-lab", work: "musofir-lab", business: "tadbirkor-talaba" }
+function kompasLabFromPath(p) {
+  const m = String(p || "").match(/^\/?([a-z-]+?)(?:-(?:m\d+|dastur|narxlar|savollar|test|o)\b[^/]*)?(?:\.html)?$/i)
+  const s = m && m[1].toLowerCase()
+  return M0_LABS.indexOf(s) >= 0 ? s : null
+}
+function kompasStartLab() {
+  try {
+    const q = new URLSearchParams(location.search).get("lab")
+    if (q && M0_LABS.indexOf(q) >= 0) return q
+  } catch (e) {}
+  try {
+    const r = document.referrer ? new URL(document.referrer) : null
+    if (r && r.host === location.host) { const s = kompasLabFromPath(r.pathname); if (s) return s }
+  } catch (e) {}
+  const g = (document.getElementById("goal") || {}).value
+  return GOAL_LAB[g] || null
 }
 document.addEventListener('DOMContentLoaded', () => {
   const ph = document.getElementById('phone')

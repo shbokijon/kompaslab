@@ -118,6 +118,22 @@
     }, function () { go.disabled = false; say("Internet aloqasini tekshirib, qayta urinib koʻring."); });
   }
 
+  // Voronka (2026-11-12): toʻlov sahifasi ochildi. kompas_track_event odam + Lab + kun boʻyicha bir marta yozadi.
+  function track() {
+    var vid = null;
+    try { vid = localStorage.getItem("kompas_vid"); } catch (e) {}
+    if (!vid || !/^[a-z0-9]{8,40}$/.test(vid)) {
+      vid = Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+      try { localStorage.setItem("kompas_vid", vid); } catch (e) {}
+    }
+    try {
+      window.supabase.rpc("kompas_track_event", {
+        p_event: "checkout_started", p_vid: vid, p_slug: slug, p_path: location.pathname,
+        p_props: { plan: plan || "" }
+      }).then(function () {}, function () {});
+    } catch (e) {}
+  }
+
   function init() {
     var S = window.KOMPAS_SALE;
     if (!LABS[slug] || !S || !window.supabase) { show("tvGate"); return; }
@@ -128,6 +144,7 @@
       $("tvOferta").innerHTML = "<a href=\"" + S.OFERTA_URL + "\" target=\"_blank\" rel=\"noopener\">Ommaviy oferta</a>";
     }
     S.isTestLab(slug).then(function (t) { if (t) $("tvTest").hidden = false; });
+    track();
 
     window.supabase.auth.getSession().then(function (r) {
       if (!r || !r.data || !r.data.session) {
