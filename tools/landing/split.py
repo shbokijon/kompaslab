@@ -16,6 +16,9 @@ import html as H
 import json
 import re
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from labs_data import ON_SALE
 
 UI_HEAD = '<link rel="stylesheet" href="css/kompas-ui.css">\n<script src="js/kompas-ui.js"></script>\n'
 SITE = "https://www.kompaslab.uz/"
@@ -102,8 +105,8 @@ def phase_tabs(sec):
         btn = (f'<button type="button" class="phase" data-ph="{i}" aria-pressed="{"true" if i == 0 else "false"}" aria-controls="kl-ph-mods">'
                f'<small>{p.group(1)}</small><b>{p.group(2)}</b><span>{p.group(3)}</span></button>')
         sec = sec.replace(p.group(0), btn, 1)
-    sec = re.sub(r'<div class="phases([^"]*)">', r'<div class="phases\1 kl-ph" role="group" aria-label="Fazalar">', sec, count=1)
-    hint = '<p class="kl-ph-hint">Fazani tanlang: uning modullari pastda chiqadi. Modulni bossangiz, darslar roʻyxati ochiladi; har dars izohi modul sahifasida.</p>'
+    sec = re.sub(r'<div class="phases([^"]*)">', r'<div class="phases\1 kl-ph" role="group" aria-label="Bosqichlar">', sec, count=1)
+    hint = '<p class="kl-ph-hint">Bosqichni tanlang: uning modullari pastda chiqadi. Modulni bossangiz, darslar roʻyxati ochiladi; har dars izohi modul sahifasida.</p>'
     sec = re.sub(r'(<div class="phases[^"]* kl-ph"[^>]*>.*?</div>)', lambda m: m.group(1) + "\n    " + hint, sec, count=1, flags=re.S)
     # Modullar konteyneriga id (aria-controls uchun): birinchi .mods yoki trk-h oldidan
     sec = re.sub(r'(<p class="kl-ph-hint">.*?</p>\s*)', r'\1<div id="kl-ph-mods" class="kl-ph-body">', sec, count=1, flags=re.S)
@@ -177,8 +180,8 @@ def strip_head(sec):
     return m.group(1), m.group(2) or "", sec[:m.start()] + sec[m.end():]
 
 
-LOCK_WAIT = "Onlayn toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz."
-LOCK_PAY = {k: "Obuna Click orqali ochiladi: narx sahifasida tarifni tanlang, toʻlov tasdiqlangan zahoti modul ochiladi." for k in ("bachelor-lab", "master-lab", "usa-lab", "gks-lab", "phd-lab")}
+LOCK_WAIT = "Bu Lab uchun toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga xabar beramiz."
+LOCK_PAY = {k: "Obuna Click orqali ochiladi: narx sahifasida tarifni tanlang, toʻlov tasdiqlangan zahoti modul ochiladi." for k in ON_SALE}
 
 def route(stem, mods, m0_page, here=None):
     lis, last = [], None
@@ -273,7 +276,7 @@ def split(root, f, src):
         n = B["nav"]
         tabs = tabs_html(stem, have_test, cur, extra)
         n = re.sub(r'<div class="nav-links">.*?</div>', tabs, n, count=1, flags=re.S)
-        n = n.replace('<button type="button" class="btn btn-p btn-sm" data-wl>', '<span class="kl-sfx" data-sfx-slot></span><button type="button" class="btn btn-p btn-sm" data-wl>', 1)
+        n = n.replace('<a href="register.html" class="btn btn-p btn-sm" data-kl-start>', '<span class="kl-sfx" data-sfx-slot></span><a href="register.html" class="btn btn-p btn-sm" data-kl-start>', 1)
         n += '\n<div class="kl-tabbar">' + tabs + "</div>"
         return n
 
@@ -314,9 +317,9 @@ def split(root, f, src):
     </div>
   </div>
 </section>'''
-    nxt = [(stem + "-dastur.html", "Dastur", "Fazalar, modullar va har darsning mavzusi")]
+    nxt = [(stem + "-dastur.html", "Dastur", "Bosqichlar, modullar va har darsning mavzusi")]
     if have_test:
-        nxt.append((stem + "-test.html", "Moslik testi", "6 savol: hozir boshlash kerakmi yoki avval boʻshliqlarni yopishmi"))
+        nxt.append((stem + "-test.html", "Moslik testi", "6 savol: tayyorgarlikni taxminiy baholash, qabul ehtimoli emas"))
     nxt += [(stem + "-narxlar.html", "Narxlar", "Oylik va 6 oylik obuna"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
     nxt_html = '<section class="alt"><div class="wrap"><div class="head"><h2>Keyingi qadam</h2></div><nav class="kl-next" aria-label="Lab sahifalari">' + "".join(
         f'<a href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in nxt) + "</nav></div></section>"

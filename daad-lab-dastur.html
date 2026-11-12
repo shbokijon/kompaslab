@@ -395,7 +395,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   <div class="wrap">
     <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab <span>DAAD</span></span></a>
     <div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="daad-lab.html">Umumiy</a><a href="daad-lab-dastur.html" aria-current="page">Dastur</a><a href="daad-lab-test.html">Moslik testi</a><a href="daad-lab-narxlar.html">Narxlar</a><a href="daad-lab-savollar.html">Savollar</a></div>
-    <span class="kl-sfx" data-sfx-slot></span><button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
+    <span class="kl-sfx" data-sfx-slot></span><a href="register.html" class="btn btn-p btn-sm" data-kl-start>Boshlash</a>
   </div>
 </nav>
 <div class="kl-tabbar"><div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="daad-lab.html">Umumiy</a><a href="daad-lab-dastur.html" aria-current="page">Dastur</a><a href="daad-lab-test.html">Moslik testi</a><a href="daad-lab-narxlar.html">Narxlar</a><a href="daad-lab-savollar.html">Savollar</a></div></div>
@@ -407,8 +407,8 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 </header>
 <section class="alt" id="dastur">
   <div class="wrap">
-    <div class="phases c5 kl-ph" role="group" aria-label="Fazalar"><button type="button" class="phase" data-ph="0" aria-pressed="true" aria-controls="kl-ph-mods"><small>Faza 0, bepul</small><b>Qaror</b><span>M0, 5 dars</span></button><button type="button" class="phase" data-ph="1" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza I</small><b>Tizim va ilmiy rahbar</b><span>M1–M2, 11 dars</span></button><button type="button" class="phase" data-ph="2" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza II</small><b>Hujjatlar</b><span>M3–M5, 17 dars</span></button><button type="button" class="phase" data-ph="3" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza III</small><b>Dastur va topshirish</b><span>M6–M7, 12 dars</span></button><button type="button" class="phase" data-ph="4" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza IV</small><b>Joʻnash</b><span>M8, 6 dars</span></button></div>
-    <p class="kl-ph-hint">Fazani tanlang: uning modullari pastda chiqadi. Modulni bossangiz, darslar roʻyxati ochiladi; har dars izohi modul sahifasida.</p>
+    <div class="phases c5 kl-ph" role="group" aria-label="Bosqichlar"><button type="button" class="phase" data-ph="0" aria-pressed="true" aria-controls="kl-ph-mods"><small>Faza 0, bepul</small><b>Qaror</b><span>M0, 5 dars</span></button><button type="button" class="phase" data-ph="1" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza I</small><b>Tizim va ilmiy rahbar</b><span>M1–M2, 11 dars</span></button><button type="button" class="phase" data-ph="2" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza II</small><b>Hujjatlar</b><span>M3–M5, 17 dars</span></button><button type="button" class="phase" data-ph="3" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza III</small><b>Dastur va topshirish</b><span>M6–M7, 12 dars</span></button><button type="button" class="phase" data-ph="4" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza IV</small><b>Joʻnash</b><span>M8, 6 dars</span></button></div>
+    <p class="kl-ph-hint">Bosqichni tanlang: uning modullari pastda chiqadi. Modulni bossangiz, darslar roʻyxati ochiladi; har dars izohi modul sahifasida.</p>
     <div id="kl-ph-mods" class="kl-ph-body"><div class="mods"><details class="mod free" data-ph="0">
   <summary><div class="mod-n">M0</div><div><div class="mod-t">Qaror moduli</div></div><div class="mod-c">5 dars<span class="tag tag-free">Bepul</span></div></summary>
   <ol><li><span class="num">0.1</span>DAAD nima: tarix, miqyos va Oʻzbekiston uchun ahamiyati</li><li><span class="num">0.2</span>DAAD dasturlari xaritasi: 5 asosiy oila va qaror daraxti</li><li><span class="num">0.3</span>DAAD moliyalashtirishi: nima toʻlanadi, nima toʻlanmaydi</li><li><span class="num">0.4</span>Rasmiy manbalar bilan ishlash: daad.de va stipendiya bazasi</li><li><span class="num">0.5</span>Muvofiqlik (eligibility) va "bu kurs sizga mos emas, agar..."</li></ol>
@@ -579,21 +579,12 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
   function applyStats(d) {
     var pr = d.prices || {};
-    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
     // 6 oylik: narx bazada boʻlsagina karta va taqqoslash qatori ochiladi
     function s6(sl) { var p = pr[sl]; return p && p.s6 > 0 ? p.s6 : 0; }
     document.querySelectorAll("[data-p6v]").forEach(function (el) { var v = s6(el.getAttribute("data-p6v")); if (v) el.textContent = nf(v); });
     document.querySelectorAll("[data-p6x2]").forEach(function (el) { var v = s6(el.getAttribute("data-p6x2")); if (v) el.textContent = nf(2 * v); });
     document.querySelectorAll("[data-p6box]").forEach(function (el) { el.hidden = !s6(el.getAttribute("data-p6box")); });
-    document.querySelectorAll("[data-ybreak]").forEach(function (el) {
-      var sl = el.getAttribute("data-ybreak"), p = pr[sl], v = s6(sl);
-      if (!p || !p.y || !p.m) return;
-      function best(n) { var b = p.m * n; if (v) for (var k = 1; k <= Math.floor(n / 6) + 1; k++) b = Math.min(b, k * v + Math.max(0, n - 6 * k) * p.m); return b; }
-      var n = 0; for (var i = 1; i <= 12; i++) if (p.y < best(i)) { n = i; break; }
-      el.innerHTML = n ? "<b>" + n + " oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja " + (v ? "6 oylik va oylikdan" : "oylikdan") + " arzon"
-                       : "<b>6 oylik arzonroq</b>12 oyda ham 2 ta 6 oylik yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun";
-    });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;

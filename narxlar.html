@@ -351,7 +351,7 @@
   // Bazadan oʻqish: sahifa ochilganda va ochiq turganda har 60 soniyada
   function loadStats() {
     if (document.hidden || !window.supabase || typeof window.supabase.rpc !== "function") return;
-    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) { applyStats(r.data); klSale(r.data.prices || {}); } });
+    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) { applyStats(r.data); window.klPrices = r.data.prices || {}; if (window.klSale) klSale(window.klPrices); } });
   }
   loadStats();
   setInterval(loadStats, 60000);
@@ -375,6 +375,7 @@ function klSale(p) {
     if (h && !h.querySelector("a")) { var a = document.createElement("a"); a.href = PG[s]; a.textContent = "Obuna"; a.style.marginLeft = "6px"; h.appendChild(document.createTextNode(" · ")); h.appendChild(a); }
   });
 }
+if (window.klPrices) klSale(window.klPrices);
 </script>
 </body>
 </html>

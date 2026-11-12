@@ -395,7 +395,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   <div class="wrap">
     <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab <span>Tadbirkor Talaba</span></span></a>
     <div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="tadbirkor-talaba.html">Umumiy</a><a href="tadbirkor-talaba-dastur.html" aria-current="page">Dastur</a><a href="tadbirkor-talaba-test.html">Moslik testi</a><a href="tadbirkor-talaba-narxlar.html">Narxlar</a><a href="tadbirkor-talaba-savollar.html">Savollar</a></div>
-    <span class="kl-sfx" data-sfx-slot></span><button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
+    <span class="kl-sfx" data-sfx-slot></span><a href="register.html" class="btn btn-p btn-sm" data-kl-start>Boshlash</a>
   </div>
 </nav>
 <div class="kl-tabbar"><div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="tadbirkor-talaba.html">Umumiy</a><a href="tadbirkor-talaba-dastur.html" aria-current="page">Dastur</a><a href="tadbirkor-talaba-test.html">Moslik testi</a><a href="tadbirkor-talaba-narxlar.html">Narxlar</a><a href="tadbirkor-talaba-savollar.html">Savollar</a></div></div>
@@ -407,8 +407,8 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 </header>
 <section class="alt" id="dastur">
   <div class="wrap">
-    <div class="phases c5 kl-ph" role="group" aria-label="Fazalar"><button type="button" class="phase" data-ph="0" aria-pressed="true" aria-controls="kl-ph-mods"><small>Faza 0, bepul</small><b>Qaror</b><span>M0, 5 dars</span></button><button type="button" class="phase" data-ph="1" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza I</small><b>Muammo va yechim</b><span>M1–M2, 12 dars</span></button><button type="button" class="phase" data-ph="2" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza II</small><b>Mijoz va pul</b><span>M3–M4, 12 dars</span></button><button type="button" class="phase" data-ph="3" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza III</small><b>Qonun va infratuzilma</b><span>M5–M6, 11 dars</span></button><button type="button" class="phase" data-ph="4" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza IV</small><b>Muvozanat va yakun</b><span>M7–M9, 14 dars</span></button></div>
-    <p class="kl-ph-hint">Fazani tanlang: uning modullari pastda chiqadi. Modulni bossangiz, darslar roʻyxati ochiladi; har dars izohi modul sahifasida.</p>
+    <div class="phases c5 kl-ph" role="group" aria-label="Bosqichlar"><button type="button" class="phase" data-ph="0" aria-pressed="true" aria-controls="kl-ph-mods"><small>Faza 0, bepul</small><b>Qaror</b><span>M0, 5 dars</span></button><button type="button" class="phase" data-ph="1" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza I</small><b>Muammo va yechim</b><span>M1–M2, 12 dars</span></button><button type="button" class="phase" data-ph="2" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza II</small><b>Mijoz va pul</b><span>M3–M4, 12 dars</span></button><button type="button" class="phase" data-ph="3" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza III</small><b>Qonun va infratuzilma</b><span>M5–M6, 11 dars</span></button><button type="button" class="phase" data-ph="4" aria-pressed="false" aria-controls="kl-ph-mods"><small>Faza IV</small><b>Muvozanat va yakun</b><span>M7–M9, 14 dars</span></button></div>
+    <p class="kl-ph-hint">Bosqichni tanlang: uning modullari pastda chiqadi. Modulni bossangiz, darslar roʻyxati ochiladi; har dars izohi modul sahifasida.</p>
     <div id="kl-ph-mods" class="kl-ph-body"><div class="mods"><details class="mod free" data-ph="0">
   <summary><div class="mod-n">M0</div><div><div class="mod-t">Qaror darvozasi</div></div><div class="mod-c">5 dars<span class="tag tag-free">Bepul</span></div></summary>
   <ol><li><span class="num">0.1</span>Talaba tadbirkorligi nima va nima emas<small>Kichik sinov, tez boyish emas; muvaffaqiyatsiz sinov ham natija</small></li><li><span class="num">0.2</span>Vaqt, oʻqish va pul<small>Haftalik vaqt byudjeti; yoʻqotishga tayyor summa</small></li><li><span class="num">0.3</span>Huquqiy shakllar xaritasi<small>Oʻzini oʻzi band qilish, YATT, MChJ (3.3)</small></li><li><span class="num">0.4</span>Tayyorgarlik koʻrsatkichi<small>6 yoʻnalish (2.4)</small></li><li><span class="num">0.5</span>Kimga mos emas va shartlar<small>2.2, obuna shartlari, 18+ tasdigʻi</small></li></ol>
@@ -573,21 +573,12 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
   function applyStats(d) {
     var pr = d.prices || {};
-    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
     // 6 oylik: narx bazada boʻlsagina karta va taqqoslash qatori ochiladi
     function s6(sl) { var p = pr[sl]; return p && p.s6 > 0 ? p.s6 : 0; }
     document.querySelectorAll("[data-p6v]").forEach(function (el) { var v = s6(el.getAttribute("data-p6v")); if (v) el.textContent = nf(v); });
     document.querySelectorAll("[data-p6x2]").forEach(function (el) { var v = s6(el.getAttribute("data-p6x2")); if (v) el.textContent = nf(2 * v); });
     document.querySelectorAll("[data-p6box]").forEach(function (el) { el.hidden = !s6(el.getAttribute("data-p6box")); });
-    document.querySelectorAll("[data-ybreak]").forEach(function (el) {
-      var sl = el.getAttribute("data-ybreak"), p = pr[sl], v = s6(sl);
-      if (!p || !p.y || !p.m) return;
-      function best(n) { var b = p.m * n; if (v) for (var k = 1; k <= Math.floor(n / 6) + 1; k++) b = Math.min(b, k * v + Math.max(0, n - 6 * k) * p.m); return b; }
-      var n = 0; for (var i = 1; i <= 12; i++) if (p.y < best(i)) { n = i; break; }
-      el.innerHTML = n ? "<b>" + n + " oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja " + (v ? "6 oylik va oylikdan" : "oylikdan") + " arzon"
-                       : "<b>6 oylik arzonroq</b>12 oyda ham 2 ta 6 oylik yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun";
-    });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;

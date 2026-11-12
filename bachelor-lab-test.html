@@ -395,7 +395,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   <div class="wrap">
     <a href="index.html" class="logo"><span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span><span class="logo-t">Kompas Lab <span>Bachelor</span></span></a>
     <div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="bachelor-lab.html">Umumiy</a><a href="bachelor-lab-dastur.html">Dastur</a><a href="bachelor-lab-test.html" aria-current="page">Moslik testi</a><a href="bachelor-lab-narxlar.html">Narxlar</a><a href="bachelor-lab-savollar.html">Savollar</a></div>
-    <span class="kl-sfx" data-sfx-slot></span><button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
+    <span class="kl-sfx" data-sfx-slot></span><a href="register.html" class="btn btn-p btn-sm" data-kl-start>Boshlash</a>
   </div>
 </nav>
 <div class="kl-tabbar"><div class="kl-tabs" role="navigation" aria-label="Lab sahifalari"><a href="bachelor-lab.html">Umumiy</a><a href="bachelor-lab-dastur.html">Dastur</a><a href="bachelor-lab-test.html" aria-current="page">Moslik testi</a><a href="bachelor-lab-narxlar.html">Narxlar</a><a href="bachelor-lab-savollar.html">Savollar</a></div></div>
@@ -532,21 +532,12 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
   function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
   function applyStats(d) {
     var pr = d.prices || {};
-    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
     // 6 oylik: narx bazada boʻlsagina karta va taqqoslash qatori ochiladi
     function s6(sl) { var p = pr[sl]; return p && p.s6 > 0 ? p.s6 : 0; }
     document.querySelectorAll("[data-p6v]").forEach(function (el) { var v = s6(el.getAttribute("data-p6v")); if (v) el.textContent = nf(v); });
     document.querySelectorAll("[data-p6x2]").forEach(function (el) { var v = s6(el.getAttribute("data-p6x2")); if (v) el.textContent = nf(2 * v); });
     document.querySelectorAll("[data-p6box]").forEach(function (el) { el.hidden = !s6(el.getAttribute("data-p6box")); });
-    document.querySelectorAll("[data-ybreak]").forEach(function (el) {
-      var sl = el.getAttribute("data-ybreak"), p = pr[sl], v = s6(sl);
-      if (!p || !p.y || !p.m) return;
-      function best(n) { var b = p.m * n; if (v) for (var k = 1; k <= Math.floor(n / 6) + 1; k++) b = Math.min(b, k * v + Math.max(0, n - 6 * k) * p.m); return b; }
-      var n = 0; for (var i = 1; i <= 12; i++) if (p.y < best(i)) { n = i; break; }
-      el.innerHTML = n ? "<b>" + n + " oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja " + (v ? "6 oylik va oylikdan" : "oylikdan") + " arzon"
-                       : "<b>6 oylik arzonroq</b>12 oyda ham 2 ta 6 oylik yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun";
-    });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;

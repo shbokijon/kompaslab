@@ -1,7 +1,7 @@
 # PhD Lab sahifasi alohida shablondan qurilgan (phd_source.html).
 # Bu skript unga umumiy dizayn qatlami, narx, qaytarish qoidasi va jonli maʼlumotni qoʻllaydi.
 import re
-from render import six_card, calc_html, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, PRO_PLANNED, HONEST_NOTE, icon, polish, uz_fix, fmt
+from render import six_card, calc_html, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, HONEST_NOTE, icon, polish, uz_fix, fmt
 
 Y, M = 1499000, 149000
 
@@ -19,6 +19,7 @@ def build():
     # "Ochiq gap": natija va kafolat boʻyicha umumiy izoh (render.HONEST_NOTE)
     s = R(s, "<li>\"PhD kafolati\" izlayotganlar — bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>",
           "<li>\"PhD kafolati\" izlayotganlar — bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>\n    <p class=\"honest\">" + HONEST_NOTE + "</p>")
+    s = s.replace('<button type="button" class="btn btn-p btn-sm" data-wl>🔔 Kutish roʻyxati</button>', '<a href="register.html" class="btn btn-p btn-sm" data-kl-start>Boshlash</a>')
     s = s.replace("🔔 Kutish roʻyxati", "Kutish roʻyxati").replace("Ochilganda xabar</button>", "Ochilganda xabar bering</button>")
     s = R(s, '<div class="badge">⚗️ PhD Lab · v3.1</div>', icon("phd", "hero-i float", "PhD Lab"))
     s = R(s, '<div class="facts">', '<div class="facts">', 1)
@@ -42,14 +43,18 @@ def build():
     a = s.index('      <div class="plan reveal">\n        <h3>Oylik</h3>')
     e = s.index('    </div>\n    <div class="calc', a)
     m_card = s[a:e]
-    m_card = m_card.replace("<li>Barcha modullar, obuna faol ekan</li>", "<li>Bir oylik kirish</li>").replace("</ul>", "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "</ul>", 1)
+    m_card = m_card.replace("<li>Barcha modullar, obuna faol ekan</li>", "<li>Bir oylik kirish</li>").replace("</ul>", "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "<li>Bosqichlar: I M1–M2, II M3–M4, III M5–M6, IV M7–M8</li></ul>", 1)
+    # Oylik tugma: sotuvda (phd_sale.py data-buy tugmasini Click havolasiga aylantiradi)
+    m_card = m_card.replace('<button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</button>', '<button type="button" class="btn btn-g" data-wl data-buy="phd-lab|monthly">Kutish roʻyxati</button>')
     s_card = "      " + six_card("phd-lab", "Kutish roʻyxati", "plan main reveal") + "\n"
     s = s[:a] + m_card + s_card + s[e:]
     calc = calc_html(Y, M, "phd-lab")
-    s = re.sub(r'<div class="calc reveal">.*?</div>\s*</div>', '<div class="calc">' + calc + "</div>\n    " + PRO_PLANNED + "\n    <div class=\"refund\">" + REFUND + "</div>", s, count=1, flags=re.S)
+    s = re.sub(r'<div class="calc reveal">.*?</div>\s*</div>', '<div class="calc">' + calc + "</div>\n    <div class=\"refund\">" + REFUND + "</div>", s, count=1, flags=re.S)
     s = R(s, "<div><b>Bekor qilish</b>Obuna istalgan vaqtda bekor qilinadi; toʻlangan davr oxirigacha kirish saqlanadi. Qaytarish shartlari toʻlovdan oldin toʻliq matnda koʻrsatiladi.</div>",
           "<div><b>Bekor qilish</b>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz. Toʻlamasangiz, toʻlangan davr tugashi bilan kirish yopiladi.</div>")
     s = s.replace("<h3>M0 — Qaror darvozasi</h3>", "<h3>M0, qaror moduli</h3>")
+    k = s.index("<!-- SAVOLLAR -->"); k = s.rindex("</section>", 0, k)
+    s = s[:k] + '  <script src="js/checkout.js" defer></script>\n' + s[k:]
     # savollar: «Nega Lab?»
     q, a2 = WHY_LAB_FAQ
     i = s.index('<div class="faq')

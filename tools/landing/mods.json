@@ -778,7 +778,7 @@
   },
   {
    "id": "M8",
-   "title": "Viza, suhbat va joʻnash",
+   "title": "Viza, intervyu va joʻnash",
    "meta": "8 dars",
    "info": "Maqsad: suhbatga, viza hujjatlariga va joʻnashga tayyorlanish. Natija: suhbat mashqlari, ilmiy taqdimot va joʻnash nazorat roʻyxati.",
    "lessons": [
@@ -836,7 +836,7 @@
  "GKS": [
   {
    "id": "M0",
-   "title": "GKS tizimi va qaror darvozasi",
+   "title": "GKS tizimi va boshlashdan oldingi tekshiruv",
    "meta": "bepul, 5 dars",
    "info": "Artefakt: Muvofiqlik jadvali + tanlangan trek + boshlash sanasi + rozilik qaydi. ",
    "lessons": [
@@ -874,13 +874,13 @@
   },
   {
    "id": "M1",
-   "title": "Hujjatlar infratuzilmasi",
+   "title": "Hujjatlarni tayyorlash va tekshirish",
    "meta": "4 dars",
    "info": "Artefakt: Hujjatlar nazorat jadvali + legallashtirish yoʻl xaritasi + til rejasi + tavsiya beruvchilar uchun varaqalar. ",
    "lessons": [
     {
      "num": "1.1",
-     "title": "Hujjatlarning toʻliq xaritasi",
+     "title": "Kerakli hujjatlarning toʻliq roʻyxati",
      "content": "Ariza formasi, shaxsiy bayonot, oʻquv rejasi, tavsiya xatlari, diplom va transkript, fuqarolik hujjatlari, sogʻliq formasi, til sertifikati; har birining formati va imzo talabi",
      "trek": ""
     },
@@ -892,7 +892,7 @@
     },
     {
      "num": "1.3",
-     "title": "Tavsiya xatlari (Core + GKS formasi)",
+     "title": "Tavsiya xatlari: umumiy talablar va GKS formasi",
      "content": "Tavsiya beruvchi tanlash, yutuqlar varaqasi; GKS tavsiya formasi talablari va topshirish usuli",
      "trek": ""
     },
@@ -930,7 +930,7 @@
     },
     {
      "num": "2.4",
-     "title": "Keng tarqalgan xatolar filtri",
+     "title": "Koʻp uchraydigan xatolar",
      "content": "Shablon matn, mubolagʻa, tekshirilmaydigan daʼvo, format xatosi, kech hujjat, mos kelmaydigan yoʻnalish",
      "trek": ""
     }
@@ -989,13 +989,13 @@
     {
      "num": "4.3",
      "title": "Birinchi qoralama",
-     "content": "Skeletdan matnga; umumiy iboralardan qochish",
+     "content": "Rejadan toʻliq matnga; umumiy iboralardan qochish",
      "trek": ""
     },
     {
      "num": "4.4",
      "title": "Tahrir",
-     "content": "Sifatni faktga almashtirish, mubolagʻani olib tashlash, tekshirib boʻlmaydigan daʼvoni oʻchirish",
+     "content": "Umumiy taʼriflarni aniq dalillar bilan almashtirish, mubolagʻani olib tashlash, tekshirib boʻlmaydigan daʼvoni oʻchirish",
      "trek": ""
     },
     {
@@ -1040,9 +1040,9 @@
   },
   {
    "id": "M3-M",
-   "title": "Magistratura nomzodining pozitsiyasi",
+   "title": "Magistratura nomzodining maqsadi va tajribasi",
    "meta": "4 dars",
-   "info": "Artefakt: STAR inventari + akademik CV v1.0 + yoʻnalish koʻprigi matni (kerak boʻlsa). ",
+   "info": "Artefakt: Vaziyat–vazifa–harakat–natija (STAR) usulidagi misollar roʻyxati + akademik CV v1.0 + yoʻnalish almashinuvini asoslash matni (kerak boʻlsa). ",
    "lessons": [
     {
      "num": "3.1",
@@ -1112,7 +1112,7 @@
    "id": "M5-M",
    "title": "Professor, paket va intervyu",
    "meta": "5 dars",
-   "info": "Artefakt: Shaxsiy bayonot + 2 professorga xat + izchillik auditi jadvali + 60 soniyalik taqdimot yozuvi. ",
+   "info": "Artefakt: Shaxsiy bayonot + 2 professorga xat + hujjatlar izchilligini tekshirish jadvali + 60 soniyalik taqdimot yozuvi. ",
    "lessons": [
     {
      "num": "5.1",
@@ -1134,7 +1134,7 @@
     },
     {
      "num": "5.4",
-     "title": "Izchillik auditi",
+     "title": "Hujjatlar izchilligini tekshirish",
      "content": "CV, bayonot, oʻquv rejasi va tavsiyalardagi faktlarning mosligi",
      "trek": ""
     },
@@ -1148,7 +1148,7 @@
   },
   {
    "id": "M3-D",
-   "title": "Doktorantura nomzodining ilmiy pozitsiyasi",
+   "title": "Doktorantura nomzodining ilmiy yoʻnalishi",
    "meta": "4 dars",
    "info": "Artefakt: Portfel auditi + PhD darajasidagi CV + 3 ta potensial doktorlik savoli. ",
    "lessons": [
@@ -1242,7 +1242,7 @@
     },
     {
      "num": "5.3",
-     "title": "Shaxsiy bayonot va izchillik auditi",
+     "title": "Shaxsiy bayonot va hujjatlar izchilligini tekshirish",
      "content": "GKS-G bayonoti; barcha hujjatlarda faktlar mosligi",
      "trek": ""
     },
@@ -1265,7 +1265,7 @@
     {
      "num": "0.1",
      "title": "Bachelor Lab qanday ishlaydi",
-     "content": "Fazalar, artefaktlar, haftalik yuklama; nima beriladi, nima berilmaydi",
+     "content": "Bosqichlar, artefaktlar, haftalik yuklama; nima beriladi, nima berilmaydi",
      "trek": ""
     },
     {
@@ -1320,7 +1320,7 @@
     },
     {
      "num": "1.4",
-     "title": "Reyting tuzogʻi",
+     "title": "Reytingga aldanmaslik",
      "content": "Umumiy va fan boʻyicha reyting; reyting nimani koʻrsatmaydi",
      "trek": ""
     },
@@ -1334,7 +1334,7 @@
   },
   {
    "id": "M2",
-   "title": "Universitet tanlash va ariza portfeli",
+   "title": "Universitet tanlash va roʻyxat tuzish",
    "meta": "5 dars",
    "info": "Artefakt: Saralangan roʻyxat v1.0 — 8–12 universitet (daraja, talab, xarajat, stipendiya imkoniyati, qabul modeli). ",
    "lessons": [
@@ -1364,7 +1364,7 @@
     },
     {
      "num": "2.5",
-     "title": "Ariza portfeli",
+     "title": "Universitetlar roʻyxati",
      "content": "8–12 universitetni xavf boʻyicha muvozanatlash; har ariza narxini hisobga olish",
      "trek": ""
     }
@@ -1372,7 +1372,7 @@
   },
   {
    "id": "M3",
-   "title": "Yoʻnalish va akademik kimlik",
+   "title": "Yoʻnalish, qiziqish va maqsad",
    "meta": "5 dars",
    "info": "Artefakt: Qiziqish sohasi bayoni (1 sahifa) + bir jumlali profil. ",
    "lessons": [
@@ -1412,7 +1412,7 @@
    "id": "M4",
    "title": "Muddatlar arxitekturasi va ish tizimi",
    "meta": "5 dars, Core",
-   "info": "Artefakt: Asosiy nazorat jadvali + teskari Gantt jadvali + Strategik hujjat v1.0. ",
+   "info": "Artefakt: Asosiy nazorat jadvali + muddatdan orqaga tuzilgan ish jadvali (Gantt) + Tayyorgarlik rejasi v1.0. ",
    "lessons": [
     {
      "num": "4.1",
@@ -1440,7 +1440,7 @@
     },
     {
      "num": "4.5",
-     "title": "I faza sintezi",
+     "title": "I bosqich sintezi",
      "content": "Kim, qayerga, qachon, qanday moliyalashtirish bilan",
      "trek": ""
     }
@@ -1638,7 +1638,7 @@
   },
   {
    "id": "M10",
-   "title": "Insho tahriri va yakuniy versiya",
+   "title": "Inshoni tahrirlash va yakuniy matn",
    "meta": "5 dars, Core",
    "info": "Artefakt: Yakuniy insholar + tahrir qaydi (v1 → yakuniy). ",
    "lessons": [
@@ -1790,7 +1790,7 @@
   },
   {
    "id": "M14",
-   "title": "Mintaqaviy yoʻnalishlar: Xitoy, Italiya, Singapur",
+   "title": "Mamlakatlar boʻyicha imkoniyatlar: Xitoy, Italiya, Singapur",
    "meta": "6 dars",
    "info": "Artefakt: Tanlangan yoʻnalish boʻyicha ariza paketi. ",
    "lessons": [

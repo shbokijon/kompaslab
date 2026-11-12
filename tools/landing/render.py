@@ -2,6 +2,7 @@
 # Ishga tushirish: python3 tools/landing/build.py  (repo ildizidan)
 import re, json, html as H
 from pathlib import Path
+from labs_data import ON_SALE
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
@@ -126,7 +127,7 @@ def nav(lab):
   <div class="wrap">
     <a href="index.html" class="logo"><div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div><span class="logo-t">Kompas Lab <span>{lab["short"]}</span></span></a>
     <div class="nav-links">{links}</div>
-    <button type="button" class="btn btn-p btn-sm" data-wl>Kutish roʻyxati</button>
+    <a href="register.html" class="btn btn-p btn-sm" data-kl-start>Boshlash</a>
   </div>
 </nav>'''
 
@@ -196,7 +197,7 @@ def fit(lab):
     return f'''<section>
   <div class="wrap">
     <div class="head">
-      <h2>Kimga mos va kimga mos emas</h2>
+      <h2>Kimga mos va qaysi holatlarda boshqa yoʻl kerak?</h2>
       <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
     </div>
     {ab_strip(lab)}
@@ -217,7 +218,7 @@ def module_html(m, free_ids=("M0",), show_trek=False, extra_tag=None):
         tags += f'<span class="tag tag-core">{extra_tag}</span>'
     info = m.get("info", "")
     art = ""
-    mm = re.search(r"Artefakt:\s*(.*?)(?:\s*Dasturlar tafsiloti.*)?$", info.strip())
+    mm = re.search(r"(?:Artefakt|Natija):\s*(.*?)(?:\s*Dasturlar tafsiloti.*)?$", info.strip())
     if mm:
         art = mm.group(1).strip().rstrip(".")
     if m.get("art"):
@@ -360,31 +361,36 @@ def calc_html(y, m, slug):
 PR6 = {"bachelor-lab": 499000, "master-lab": 499000, "usa-lab": 499000, "gks-lab": 499000, "daad-lab": 499000,
        "phd-lab": 849000, "tadbirkor-talaba": 149000, "miggo": 249000}
 
-REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi. Oylik obunada har toʻlov bitta fazani ochadi; obuna tugasa, ochilgan modullar ham yopiladi."
-
-# Kompas Pro: rejadagi funksiyalar (2026-10-17 qarori). Qurilmaguncha "Rejada" belgisi bilan, narxga kirmaydi
-PRO_PLANNED = """<div class="pro-plan"><span class="tag-plan">Rejada</span><b>Kompas Pro: hali ishlamaydi</b>
-      <p>6 oylik obunaga qoʻshish rejalashtirilgan funksiyalar. Hozirgi narxga kirmaydi, ishga tushish sanasi eʼlon qilinmagan.</p>
-      <ul><li>Shaxsiy muddat eslatmalari (Telegram yoki email)</li><li>Profilga mos stipendiyalar bazasi: rasmiy havola va tekshiruv sanasi bilan</li><li>Tayyorgarlik koʻrsatkichi tarixi: oyma-oy oʻzgarish</li><li>Javoblar va hujjatlarni telefon va kompyuter orasida sinxronlash</li></ul>
-    </div>"""
+REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi."
 
 # 6 oylik narx bazada (courses.price_6m), admin har Lab uchun kiritadi; boʻsh boʻlsa karta yashirin
 SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Kabinetda shaxsiy vaqt chizigʻi va hujjatlar javoni"]
 
 def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
-    return f'''<div class="{cls}" data-p6box="{slug}" hidden>
+    sale = slug in ON_SALE
+    v = PR6.get(slug)
+    hid = "" if v else " hidden"
+    act = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=6m" data-buy="{slug}|6m" data-snd="nav">6 oylik obunani toʻlash</a>' if sale
+           else f'<button type="button" class="btn btn-p" data-wl data-buy="{slug}|6m">{btn}</button>')
+    return f'''<div class="{cls}" data-p6box="{slug}"{hid}>
         <span class="tag-top">Asosiy reja</span>
         <h3>6 oylik</h3><p class="desc">Bitta ariza sikli uchun: 6 oy</p>
-        <div class="price" data-p6v="{slug}">—</div><div class="per">soʻm, 6 oy uchun</div>
+        <div class="price" data-p6v="{slug}">{fmt(v) if v else "—"}</div><div class="per">soʻm, 6 oy uchun</div>
         <ul>{"".join(f"<li>{x}</li>" for x in SIX_ITEMS)}</ul>
-        <button type="button" class="btn btn-p" data-wl data-buy="{slug}|6m">{btn}</button>
+        {act}
       </div>'''
-MONTHLY_EXTRA = ["Har oylik toʻlov bitta fazani ochadi; keyingi faza navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
+MONTHLY_EXTRA = ["Har oylik toʻlov bitta bosqichni ochadi; keyingisi navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
+
+PAY_OPEN = "<b>Toʻlov Click orqali.</b> Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi."
+PAY_WAIT = "<b>Bu Lab uchun toʻlov hali ochilmagan.</b> Kutish roʻyxatiga yozilsangiz, ochilganda xabar beramiz."
 
 def pricing(lab):
     p = lab["pricing"]
     slug = lab["slug"]
     y, mo = p["yearly"], p["monthly"]
+    sale = slug in ON_SALE
+    month_btn = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=monthly" data-buy="{slug}|monthly" data-snd="nav">Oylik obunani toʻlash</a>' if sale
+                 else f'<button type="button" class="btn btn-g" data-wl data-buy="{slug}|monthly">Kutish roʻyxatiga yozilish</button>')
     plans = f'''<div class="plans">
       <div class="plan">
         <h3>M0, qaror moduli</h3><p class="desc">{p["m0_desc"]}</p>
@@ -393,26 +399,26 @@ def pricing(lab):
         <button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>
       </div>
       <div class="plan">
-        <h3>Oylik</h3><p class="desc">Sinab koʻrish yoki qisqa muddat uchun</p>
+        <h3>Oylik</h3><p class="desc">Bitta bosqichga 1 oy kirish</p>
         <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, har oy</div>
         <ul>{"".join(f"<li>{x}</li>" for x in p["m_items"] + MONTHLY_EXTRA)}</ul>
-        <button type="button" class="btn btn-g" data-wl data-buy="{slug}|monthly">Kutish roʻyxatiga yozilish</button>
+        {month_btn}
       </div>
       {six_card(slug)}
     </div>
-    <div class="calc">{calc_html(y, mo, slug)}</div>
-    {PRO_PLANNED}'''
+    <div class="calc">{calc_html(y, mo, slug)}</div>'''
     if p.get("pre_html"):
         plans = p["pre_html"] + plans
     rules = "".join(f"<div><b>{a}</b>{b}</div>" for a, b in p["rules"])
-    status = p.get("status", "<b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.")
+    status = (PAY_OPEN if sale else p.get("status", PAY_WAIT))
+    ico = "💳" if sale else "⏳"
     return f'''<section id="narx">
   <div class="wrap">
     <div class="head">
       <h2>Obuna: oylik yoki 6 oylik. M0 bepul.</h2>
       <p class="sub">{p["sub"]}</p>
     </div>
-    <div class="pay-status"><span>⏳</span><span data-paystatus="{slug}">{status}</span></div>
+    <div class="pay-status"><span>{ico}</span><span data-paystatus="{slug}">{status}</span></div>
     {plans}
     <div class="refund">{REFUND}</div>
     <div class="rules">{rules}</div>
@@ -446,6 +452,8 @@ FOOTER = '''<footer>
 def _cta_buttons(lab):
     m0 = lab["file"].replace(".html", "-m0.html")
     if (ROOT / m0).exists():
+        if lab["slug"] in ON_SALE:
+            return f'<a href="{m0}" class="btn btn-p">Bepul M0 ni ochish</a><a href="{lab["file"].replace(".html", "-narxlar.html")}" class="btn btn-g" data-snd="nav">Narx va obuna</a>'
         return f'<a href="{m0}" class="btn btn-p">Bepul M0 ni ochish</a><button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</button>'
     return '<button type="button" class="btn btn-p" data-wl>Kutish roʻyxatiga yozilish</button>'
 
@@ -482,21 +490,12 @@ LIVE_JS = '''
   function nf(n) { return String(Math.round(n)).replace(/\\B(?=(\\d{3})+(?!\\d))/g, "\\u00a0"); }
   function applyStats(d) {
     var pr = d.prices || {};
-    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
     document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
     // 6 oylik: narx bazada boʻlsagina karta va taqqoslash qatori ochiladi
     function s6(sl) { var p = pr[sl]; return p && p.s6 > 0 ? p.s6 : 0; }
     document.querySelectorAll("[data-p6v]").forEach(function (el) { var v = s6(el.getAttribute("data-p6v")); if (v) el.textContent = nf(v); });
     document.querySelectorAll("[data-p6x2]").forEach(function (el) { var v = s6(el.getAttribute("data-p6x2")); if (v) el.textContent = nf(2 * v); });
     document.querySelectorAll("[data-p6box]").forEach(function (el) { el.hidden = !s6(el.getAttribute("data-p6box")); });
-    document.querySelectorAll("[data-ybreak]").forEach(function (el) {
-      var sl = el.getAttribute("data-ybreak"), p = pr[sl], v = s6(sl);
-      if (!p || !p.y || !p.m) return;
-      function best(n) { var b = p.m * n; if (v) for (var k = 1; k <= Math.floor(n / 6) + 1; k++) b = Math.min(b, k * v + Math.max(0, n - 6 * k) * p.m); return b; }
-      var n = 0; for (var i = 1; i <= 12; i++) if (p.y < best(i)) { n = i; break; }
-      el.innerHTML = n ? "<b>" + n + " oy va undan koʻp</b>obuna shuncha davom etsa, yillik reja " + (v ? "6 oylik va oylikdan" : "oylikdan") + " arzon"
-                       : "<b>6 oylik arzonroq</b>12 oyda ham 2 ta 6 oylik yillik rejadan arzon; yillik reja faqat bir marta toʻlash qulayligi uchun";
-    });
     var wl = d.waitlist_by_lab || {};
     document.querySelectorAll("[data-live-wl]").forEach(function (el) {
       var n = wl[el.getAttribute("data-live-wl")] || 0;
