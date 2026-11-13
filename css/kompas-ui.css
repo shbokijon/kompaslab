@@ -331,6 +331,7 @@ html[data-theme="dark"] .k4x-base{stroke:var(--ko-border)}
 html[data-theme="dark"] .k4x-s.on .k4x-dot{background:var(--ko-accent)}
 html[data-theme="dark"] .k4x-trav circle:first-child{stroke:#b9d4c9}
 html[data-theme="dark"] .dn-dot{background:var(--ko-accent2)}
+html[data-theme="dark"] .dn-amt.is-on{background:var(--ko-accent)}
 html[data-theme="dark"] .kg-card > a:hover{background:#1b201e}
 html[data-theme="dark"] .kg-fly:hover{background:#1b201e}
 html[data-theme="dark"] .kg-list button[aria-pressed="true"]{background:#231913}
@@ -410,6 +411,8 @@ html[data-theme="dark"] .st3.n{background:#1a1223;color:#ab8ad3}
 html[data-theme="dark"] .legal h2{color:var(--green,#b9d4c9)}
 html[data-theme="dark"] .fct a{color:#99b6d8}
 html[data-theme="dark"] .meter-t i{background:#131313}
+html[data-theme="dark"] .of .meta{background:#1d1c18}
+html[data-theme="dark"] .of dt{color:#b3beb9}
 html[data-theme="dark"] .pf-card{background:var(--surface,#131313);border:1px solid var(--border,#39403b)}
 html[data-theme="dark"] .pf-top small{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .pf-tag.paid{color:#c0dace}
@@ -422,11 +425,19 @@ html[data-theme="dark"] .pf-st.off{background:#291e17;color:#d9b09c}
 html[data-theme="dark"] .pf-empty{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .pf-form label{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .pf-form input,html[data-theme="dark"] .pf-form select{border:1px solid var(--border,#39403b);background:var(--surface,#131313);color:var(--text,#c1dcd1)}
+html[data-theme="dark"] .pf-phone{border:1px solid var(--border,#39403b);background:var(--surface,#131313)}
+html[data-theme="dark"] .pf-phone .cc{color:var(--text,#c1dcd1);border-right:1px solid var(--border,#39403b)}
 html[data-theme="dark"] .pf-msg.ok{color:#b9d4c9}
 html[data-theme="dark"] .pf-msg.err{color:#d8a997}
 html[data-theme="dark"] .pf-note{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .pf-load{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .yn button[aria-pressed="true"]{background:var(--ko-accent)}
+html[data-theme="dark"] .tv-card{background:#131313}
+html[data-theme="dark"] .tv-plan:has(input:checked){background:#1d1c18}
+html[data-theme="dark"] .tv-rule{background:#1d1c18}
+html[data-theme="dark"] .tv-sum span{color:#b3beb9}
+html[data-theme="dark"] .tv-test{background:#261c0e}
+html[data-theme="dark"] .tv small{color:#b3beb9}
 html[data-theme="dark"] .at-nav{background:#131313}
 html[data-theme="dark"] .atlas-hero{background:radial-gradient(circle at 82% 12%,#1d201c 0,transparent 40%),linear-gradient(#181915,#171917)}
 html[data-theme="dark"] .pill{border:1px solid #3a433d;background:#131313}
