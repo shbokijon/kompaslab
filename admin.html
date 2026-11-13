@@ -112,6 +112,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .tbl tr:last-child td{border-bottom:none;}
 .tbl tbody tr:hover td{background:#fafcfb;}
 .tbl-scroll{overflow-x:auto;}
+.ws-sw{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;}
+.ws-sw input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;}
 
 /* Student row */
 .sr{display:flex;align-items:center;gap:10px;}
@@ -293,6 +295,9 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <span class="sb-pill sp-red" id="pPending">—</span>
     </button>
     <div class="sb-grp">Boshqaruv</div>
+    <button class="sb-item" id="wsNav" onclick="nav('website',this)">
+      <span class="sb-icon">🖥️</span><span class="sb-label">Vebsayt</span>
+    </button>
     <button class="sb-item" onclick="nav('waitlist',this)">
       <span class="sb-icon">🔔</span><span class="sb-label">Kutish roʻyxati</span>
       <span class="sb-pill sp-gray" id="pWait">—</span>
@@ -648,6 +653,44 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           <table class="tbl"><thead><tr>
             <th>Lab</th><th>6 oylik (soʻm)</th><th>Oylik (soʻm)</th><th>Saytda</th><th>Sotuvda</th><th>Holat matni</th><th>Kutish roʻyxati</th><th>Amal</th>
           </tr></thead><tbody id="tbLabs"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- VEBSAYT (2026-11-13): sahifa boʻlimlarini yashirish va jonli tahrirlash · js/admin-site.js, site_edits -->
+    <div class="sec" id="sec-website">
+      <div class="card" style="margin-bottom:14px">
+        <div class="ch">
+          <h2>🖥️ Vebsayt</h2>
+          <div class="ch-r">
+            <select class="flt" id="wsPage" onchange="WS.pick(this.value)" style="font-weight:700;max-width:260px"><option value="index.html">index</option></select>
+            <a class="btn bs bsm" id="wsOpen" style="text-decoration:none" href="/" target="_blank" rel="noopener">Saytda ochish ↗</a>
+            <button class="btn bp bsm" onclick="WS.live()">✏️ Jonli tahrirlash ↗</button>
+          </div>
+        </div>
+        <div class="mb" style="font-size:12.5px;color:var(--muted);line-height:1.65">
+          <b>Koʻrinadi / Yashirin</b>: boʻlim yoki qism saytda koʻrinmaydi. Deploy kerak emas: tashrifchilarda bir necha daqiqada (keyingi ochilishda) yangilanadi.<br>
+          <b>Jonli tahrirlash</b>: haqiqiy sahifa yangi oynada ochiladi. “Tanlash” rejimida istalgan qismni bosing: matnini oʻsha joyning oʻzida yozasiz, yashirasiz yoki qayta koʻrsatasiz. “Saytni bosish” rejimida sayt boʻylab yurasiz, muharrir boshqa sahifalarda ham ochiq qoladi.<br>
+          Matn faqat oddiy koʻrinishda saqlanadi (qalin, kursiv, havola, qator). Tugma, narx, hisoblagich kabi kod boshqaradigan qismlar tahrirlanmaydi: ularni yashirish mumkin. Yangi alifboda yozilgan matn manbaga amaldagi alifboda yoziladi.<br>
+          Manba (HTML) oʻzgarib, qism topilmay qolsa, oʻzgarish saytda qoʻllanmaydi va muharrirda “topilmadi” deb chiqadi. Lab sahifalarini generator qayta yigʻsa ham oʻzgarishlar bazada qoladi.
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <div class="ch"><h2 id="wsTitle">Sahifa boʻlimlari</h2><span id="wsInfo" style="font-size:12px;color:var(--muted)"></span></div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr><th>Boʻlim / qism</th><th>Saytda</th><th>Amal</th></tr></thead><tbody id="wsBlocks"></tbody></table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch">
+          <h2>📝 Oʻzgarishlar</h2>
+          <div class="ch-r">
+            <select class="flt" id="wsScope" onchange="WS.loadEdits()"><option value="page">Shu sahifa</option><option value="all">Hamma sahifalar</option></select>
+            <select class="flt" id="wsStatus" onchange="WS.loadEdits()"><option value="active">Faol</option><option value="off">Bekor qilingan</option><option value="">Hammasi</option></select>
+          </div>
+        </div>
+        <div class="tbl-scroll">
+          <table class="tbl"><thead><tr><th>Sahifa</th><th>Tur</th><th>Qism</th><th>Yangi matn</th><th>Sana</th><th>Holat</th></tr></thead><tbody id="wsEdits"></tbody></table>
         </div>
       </div>
     </div>
@@ -1816,7 +1859,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Umumiy holat', students: 'Foydalanuvchilar',
     lessons: 'Darslar', payments: "Toʻlovlar", waitlist: 'Kutish roʻyxati',
-    announce: "Eʼlonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim'
+    announce: "Eʼlonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim', website: 'Vebsayt'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1832,6 +1875,7 @@ function nav(name, el) {
   if (name === 'waitlist') loadWaitlist()
   if (name === 'regs') loadRegs()
   if (name === 'labs') loadLabs()
+  if (name === 'website') WS.open()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
   if (name === 'system') { loadSystemStats(); window.klxLoadAudit && window.klxLoadAudit() }
@@ -2523,5 +2567,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="js/admin-users.js"></script>
 <script src="js/admin-m0.js"></script>
 <script src="js/admin-extensions.js"></script>
+<script src="js/admin-site.js"></script>
 </body>
 </html>
