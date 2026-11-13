@@ -84,7 +84,12 @@
     function mname(n, s) { var k = (Number(start.value) + n - 1) % 12; return s ? QS[k] : OY[k]; }
     function draw() {
       var h = "<div class=\"mh\" style=\"text-align:left\">OY</div>";
-      for (var m = 1; m <= 12; m++) h += "<div class=\"mh\">" + m + "<br>" + mname(m, true) + "</div>";
+      for (var m = 1; m <= 12; m++) {
+        var cs = [];
+        ROWS.forEach(function (r) { if (m >= r[1] && m <= r[2] && cs.indexOf(r[3]) < 0 && (!filt || filt === r[3])) cs.push(r[3]); });
+        var dots = cs.map(function (c) { return "<i class=\"c-" + c + "\"></i>"; }).join("");
+        h += "<div class=\"mh" + (cs.length ? " on" : "") + "\">" + m + "<br>" + mname(m, true) + "<span class=\"md\">" + dots + "</span></div>";
+      }
       ROWS.forEach(function (r) {
         h += "<div class=\"rl\">" + r[0] + "</div>";
         h += "<button type=\"button\" class=\"bar c-" + r[3] + (filt && filt !== r[3] ? " dim" : "") + "\" style=\"grid-column:" + (r[1] + 1) + " / " + (r[2] + 2) + "\" data-i=\"" + r[0] + "\" data-a=\"" + r[1] + "\" data-b=\"" + r[2] + "\" aria-label=\"" + r[0] + "\"></button>";
