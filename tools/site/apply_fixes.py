@@ -28,6 +28,7 @@ PLANNER = [ROOT / "tools" / "site" / "planner.py"]
 # Qoʻlda yuritiladigan sahifalar (generator yoʻq)
 HAND = ["index.html", "narxlar.html", "savollar.html", "qanday-ishlaydi.html", "maxfiylik.html", "qollab-quvvatlash.html",
         "dashboard.html", "profil.html", "login.html", "register.html", "reset-password.html", "uk-sponsors.html", "lesson.html"]
+GKS_KEYS = ["m1", "m2", "m3-u", "m4-u", "m5-u", "m3-m", "m4-m", "m5-m", "m3-d", "m4-d", "m5-d"]
 LAB_PREFIX = ("bachelor-lab", "master-lab", "phd-lab", "gks-lab", "usa-lab", "daad-lab", "musofir-lab", "tadbirkor-talaba")
 
 
@@ -43,7 +44,12 @@ def targets(page):
     """text_fixes.page -> (manba fayllar, qayta yigʻish kaliti)"""
     m = re.fullmatch(r"paid:([a-z-]+):(\d+)", page)
     if m:
-        name = f"{m.group(1)}-m{m.group(2)}"
+        idx = int(m.group(2))
+        # GKS: module_index 3..11 = treklar (admin.html FX_GKS, dashboard GKS_KEYS bilan bir xil tartib)
+        if m.group(1) == "gks-lab" and 1 <= idx <= len(GKS_KEYS):
+            name = f"gks-lab-{GKS_KEYS[idx - 1]}"
+        else:
+            name = f"{m.group(1)}-m{idx}"
         p, n = module_src(name)
         return ([p] if p else []), ("paid", n)
     m = re.fullmatch(r"(.+-m0)\*|(.+-m0)(?:-\d+|-yakun)?\.html", page)
