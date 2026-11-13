@@ -5,6 +5,12 @@
    tablar, "yoʻl" (modul va dars bekatlari), dars sahifasi xromi, yakun oynasi.
    Rang va shriftlar mavjud brend tokenlaridan olinadi (--accent, --accent2 ...).
    ═══════════════════════════════════════════════════════════════ */
+
+/* ==== YASHIRIN BOʻLIMLAR (2026-11-13, asoschi): Bepul reja va Atlas saytda koʻrinmaydi.
+   Sahifalar oʻchirilmagan, URL orqali ochiladi. Qaytarish: shu blokni olib tashlang. ==== */
+body:not([data-kpage="atlas"]):not([data-kpage="reja"]) :is(a[href^="atlas"],a[href^="/atlas"],a[href^="master-planner"],a[href^="/master-planner"],a[href^="uk-sponsors"],a[href^="nl-sponsors"],a[href^="ca-lmia"]){display:none!important}
+/* ==== YASHIRIN BOʻLIMLAR OXIRI ==== */
+
 :root{
   --kl-forest:#2d4a3e; --kl-forest-d:#1e3329; --kl-clay:#c4622d; --kl-gold:#c9a84c; --kl-cream:#f4f3ef;
   --kl-line:#d8cfb6; --kl-ease:cubic-bezier(.22,.8,.24,1);

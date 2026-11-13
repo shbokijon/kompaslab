@@ -5,11 +5,13 @@ import datetime, re
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 SKIP = {"admin", "dashboard", "lesson", "login", "register", "reset-password", "payment", "offline", "globe-demo"}
+# 2026-11-13: Bepul reja va Atlas saytda yashirin
+HIDDEN = ("atlas", "master-planner", "uk-sponsors", "nl-sponsors", "ca-lmia")
 today = datetime.date.today().isoformat()
 urls = []
 for p in sorted(ROOT.glob("*.html")):
     n = p.stem
-    if n in SKIP:
+    if n in SKIP or n.startswith(HIDDEN):
         continue
     s = p.read_text(encoding="utf-8")
     if 'name="robots" content="noindex' in s or '<body class="locked"' in s:

@@ -369,8 +369,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <div class="sb-section-title">Asosiy</div>
       <a href="dashboard.html" class="sb-link active"><span class="sb-link-icon">🏠</span> Kabinet</a>
       <a href="profil.html" class="sb-link"><span class="sb-link-icon">👤</span> Profil</a>
-      <a href="master-planner.html" class="sb-link"><span class="sb-link-icon">🗂</span> Shaxsiy reja</a>
-      <a href="atlas.html" class="sb-link"><span class="sb-link-icon">🌍</span> Kompas Atlas</a>
+      <a href="master-planner.html" class="sb-link" style="display:none"><span class="sb-link-icon">🗂</span> Shaxsiy reja</a>
+      <a href="atlas.html" class="sb-link" style="display:none"><span class="sb-link-icon">🌍</span> Kompas Atlas</a>
       <div id="sbCourses"></div>
 
       <div class="sb-section-title">Bepul M0 modullar</div>
@@ -1003,7 +1003,7 @@ function renderDeadlines() {
   const seen = new Set(), uniq = up.filter(x => { const k = x.d + '|' + x.n; if (seen.has(k)) return false; seen.add(k); return true }).slice(0, 6)
   const box = document.getElementById('dlList')
   if (!uniq.length) {
-    box.innerHTML = '<p class="side-muted">Muddat kiritilmagan. Dastur va muddatlarni <a href="master-planner.html">Shaxsiy reja</a>ga yoki Master M2 dagi jadvalga qoʻshing: shu yerda tartib bilan chiqadi.</p>'
+    box.innerHTML = '<p class="side-muted">Muddat kiritilmagan. Dastur va muddatlarni Master M2 dagi jadvalga qoʻshing: shu yerda tartib bilan chiqadi.</p>'
     return
   }
   box.innerHTML = uniq.map(x => {
