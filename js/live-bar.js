@@ -31,6 +31,15 @@
     "@media(max-width:560px){.klb{gap:5px;padding:0 6px}.klb-c{height:28px;gap:3px;padding:0 8px 0 2px;font-size:13px}.klb-c img{width:22px;height:22px}.klb-d{width:6px;height:6px}}" +
     "@media(max-width:420px){.klb{gap:4px;padding:0 4px}.klb-c{padding:0 6px 0 1px;gap:2px;font-size:12px}.klb-c img{width:20px;height:20px}.klb-s{height:18px}}" +
     ".klb-c:focus-visible{outline:2px solid #e9a27a;outline-offset:2px}" +
+    // Aloqa (2026-11-13): email, Telegram, Instagram — panelning oʻng tomoni
+    ".klb-st{display:flex;align-items:center;gap:inherit;margin:0 auto;flex:none}" +
+    ".klb-k{display:flex;align-items:center;gap:6px;flex:none;margin-left:auto;padding-left:6px}" +
+    ".klb-kl{color:rgba(255,255,255,.75);font-size:13px;font-weight:700;margin-right:2px}" +
+    ".klb-a{display:inline-flex;align-items:center;gap:6px;height:30px;min-width:30px;justify-content:center;padding:0 8px;border-radius:99px;color:#fff;text-decoration:none;font-size:13px;font-weight:700;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.2);transition:background .15s}" +
+    ".klb-a:hover{background:rgba(255,255,255,.22)}.klb-a:focus-visible{outline:2px solid #e9a27a;outline-offset:2px}" +
+    ".klb-a svg{width:16px;height:16px;flex:none;fill:currentColor}" +
+    "@media(max-width:760px){.klb-kl,.klb-em{display:none}.klb-a{padding:0;width:30px}}" +
+    "@media(max-width:420px){.klb-a{width:26px;height:26px;min-width:26px}.klb-a svg{width:14px;height:14px}.klb-k{gap:4px}}" +
     "@keyframes klbBump{0%{transform:scale(1)}40%{transform:scale(1.3)}100%{transform:scale(1)}}" +
     "@keyframes klbPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55)}70%{box-shadow:0 0 0 7px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}" +
     "@keyframes klbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}" +
@@ -49,15 +58,29 @@
       '<b class="klb-n">0</b></span>';
   }
 
+  var MAIL = "kompaslab.uz@gmail.com";
+  var ICO = {
+    mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3l-8 4.9zM5.2 7l6.8 4.2L18.8 7H5.2z"/></svg>',
+    tg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6 18.7 19.7c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.5 1.8 12c-1-.3-1-1 .2-1.5L20.6 3.4c.9-.3 1.6.2 1.3 1.2z"/></svg>',
+    ig: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 2c-3.1 0-3.5 0-4.7.1-2.3.1-3.4 1.2-3.5 3.5-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 2.3 1.2 3.4 3.5 3.5 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c2.3-.1 3.4-1.2 3.5-3.5.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-2.3-1.2-3.4-3.5-3.5-1.2-.1-1.6-.1-4.7-.1zm0 3.3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 7.4a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8zm4.7-8.6a1.1 1.1 0 1 1 0 2.1 1.1 1.1 0 0 1 0-2.1z"/></svg>'
+  };
+  function contacts() {
+    return '<div class="klb-k" translate="no" data-alifbo="off"><span class="klb-kl">Aloqa:</span>' +
+      '<a class="klb-a" href="mailto:' + MAIL + '" title="' + MAIL + '" aria-label="Email: ' + MAIL + '">' + ICO.mail + '<span class="klb-em">' + MAIL + '</span></a>' +
+      '<a class="klb-a" href="https://t.me/kompaslab" target="_blank" rel="noopener" title="Telegram: @kompaslab" aria-label="Telegram kanal">' + ICO.tg + '</a>' +
+      '<a class="klb-a" href="https://www.instagram.com/kompaslab" target="_blank" rel="noopener" title="Instagram: @kompaslab" aria-label="Instagram sahifa">' + ICO.ig + '</a></div>';
+  }
+
   function mount() {
     var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
     var bar = document.createElement("div");
     bar.className = "klb"; bar.hidden = true; bar.setAttribute("aria-live", "polite");
-    bar.innerHTML = chip("klbOn", "telescope", "Hozir saytda", true) + chip("klbReg", "bachelor", "Roʻyxatdan oʻtganlar", false) +
+    bar.innerHTML = '<div class="klb-st">' + chip("klbOn", "telescope", "Hozir saytda", true) + chip("klbReg", "bachelor", "Roʻyxatdan oʻtganlar", false) +
       '<i class="klb-s" id="klbSep" hidden></i>' +
       chip("klbD", "bell", "Bugungi tashriflar", false) + chip("klbW", "calendar", "Shu haftadagi tashriflar", false) +
-      chip("klbM", "chart", "Shu oydagi tashriflar", false) + chip("klbY", "seedling", "Shu yildagi tashriflar", false);
+      chip("klbM", "chart", "Shu oydagi tashriflar", false) + chip("klbY", "seedling", "Shu yildagi tashriflar", false) + '</div>' + contacts();
     document.body.insertBefore(bar, document.body.firstChild);
+    bar.hidden = false; document.body.classList.add("klb-on");
     // Bitta umumiy izoh: panel gorizontal aylansa ham kesilmaydi
     var tip = document.createElement("div"); tip.className = "klb-tip"; tip.setAttribute("aria-hidden", "true");
     document.body.appendChild(tip);
