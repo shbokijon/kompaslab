@@ -1,4 +1,4 @@
-# PhD Lab M1–M8: umumiy manba havolalari. Tekshirildi: 2026-11-07.
+# PhD dasturi M1–M8: umumiy manba havolalari. Tekshirildi: 2026-11-07.
 # Qoida (2026-10-31): manbalar faqat universitetlar va masʼul tashkilotlar sahifalari
 # (UKRI, Yevropa Komissiyasi, GOV.UK, UKRIO, DORA, universitetlar).
 # Blog, agentlik, reyting yigʻuvchi va yangilik saytlari manba sifatida ishlatilmaydi.

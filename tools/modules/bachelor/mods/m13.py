@@ -2,7 +2,7 @@ from common import CA, CA_FEE, UCAS, UCAS_INT, UNIASSIST, UNIVERSITALY, CAMPUSCH
 
 MOD = dict(
     title="Ariza platformalari",
-    desc="Bachelor Lab M13: Common App, UCAS, to'g'ridan-to'g'ri portallar (uni-assist, Universitaly, CSC, universitet portallari), amaliy topshirish va 40 bandli topshirish oldi nazorat ro'yxati. Natija: kamida bitta topshirilgan ariza.",
+    desc="Bachelor dasturi M13: Common App, UCAS, to'g'ridan-to'g'ri portallar (uni-assist, Universitaly, CSC, universitet portallari), amaliy topshirish va 40 bandli topshirish oldi nazorat ro'yxati. Natija: kamida bitta topshirilgan ariza.",
     lead="Oylar davomida tayyorlangan hujjatlar oxirgi bosqichda texnik xato tufayli to'liq yetib bormasligi mumkin. Bu modulda har platformaning tuzilmasini o'rganasiz va kamida bitta arizani tekshirib topshirasiz.",
     hero="scroll", weeks="2–3", next="M14 Mamlakatlar boʻyicha imkoniyatlar: Xitoy, Italiya, Singapur", next_href="bachelor-lab-m14.html",
     goals=[("scroll", "Kamida bitta topshirilgan ariza", "tasdiq xati saqlangan"),

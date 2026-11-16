@@ -10,17 +10,17 @@
 // ═══════════════════════════════════════════════════════════════
 (function () {
   var ORIGIN = { iso: "UZB", id: "UZB", n: "Oʻzbekiston", c: "Toshkent", lat: 41.31, lon: 69.28 };
-  // Lablar va mamlakatlar: index.html dagi Lab tavsiflari va Master Lab M7 asosida; c — ob-havo olinadigan poytaxt
+  // dasturlar va mamlakatlar: index.html dagi dastur tavsiflari va Master dasturi M7 asosida; c — ob-havo olinadigan poytaxt
   var DEST = [
-    { id: "GBR", n: "Buyuk Britaniya", c: "London", lat: 51.51, lon: -0.13, labs: [["master-lab", "Master Lab", "Chevening, magistratura"], ["phd-lab", "PhD Lab", "Doktorantura"], ["musofir-lab", "Musofir Lab", "Rasmiy mavsumiy ish"]] },
-    { id: "USA", n: "AQSh", c: "Vashington", lat: 38.9, lon: -77.04, labs: [["usa-lab", "USA Lab", "Bakalavr yordami, UGRAD, Fulbright, PhD"]] },
-    { id: "DEU", n: "Germaniya", c: "Berlin", lat: 52.52, lon: 13.4, labs: [["daad-lab", "DAAD Lab", "Magistratura va doktorantura"], ["musofir-lab", "Musofir Lab", "Rasmiy ish"]] },
-    { id: "KOR", n: "Koreya", c: "Seul", lat: 37.57, lon: 126.98, labs: [["gks-lab", "GKS Lab", "Global Korea Scholarship"], ["musofir-lab", "Musofir Lab", "EPS: rasmiy ish"]] },
-    { id: "POL", n: "Polsha", c: "Varshava", lat: 52.23, lon: 21.01, labs: [["musofir-lab", "Musofir Lab", "Rasmiy ish va firibgarlikdan himoya"]] },
-    { id: "HUN", n: "Vengriya", c: "Budapesht", lat: 47.5, lon: 19.04, labs: [["master-lab", "Master Lab", "Stipendium Hungaricum (M7)"]] },
-    { id: "TUR", n: "Turkiya", c: "Anqara", lat: 39.93, lon: 32.86, labs: [["master-lab", "Master Lab", "Türkiye Bursları (M7)"]] },
-    { id: "CHN", n: "Xitoy", c: "Pekin", lat: 39.9, lon: 116.4, labs: [["master-lab", "Master Lab", "Xitoy hukumati stipendiyasi, CSC (M7)"]] },
-    { id: "JPN", n: "Yaponiya", c: "Tokio", lat: 35.68, lon: 139.69, labs: [["master-lab", "Master Lab", "MEXT (M7)"]] }
+    { id: "GBR", n: "Buyuk Britaniya", c: "London", lat: 51.51, lon: -0.13, labs: [["master-lab", "Master dasturi", "Chevening, magistratura"], ["phd-lab", "PhD dasturi", "Doktorantura"], ["musofir-lab", "Musofir dasturi", "Rasmiy mavsumiy ish"]] },
+    { id: "USA", n: "AQSh", c: "Vashington", lat: 38.9, lon: -77.04, labs: [["usa-lab", "USA dasturi", "Bakalavr yordami, UGRAD, Fulbright, PhD"]] },
+    { id: "DEU", n: "Germaniya", c: "Berlin", lat: 52.52, lon: 13.4, labs: [["daad-lab", "DAAD dasturi", "Magistratura va doktorantura"], ["musofir-lab", "Musofir dasturi", "Rasmiy ish"]] },
+    { id: "KOR", n: "Koreya", c: "Seul", lat: 37.57, lon: 126.98, labs: [["gks-lab", "GKS dasturi", "Global Korea Scholarship"], ["musofir-lab", "Musofir dasturi", "EPS: rasmiy ish"]] },
+    { id: "POL", n: "Polsha", c: "Varshava", lat: 52.23, lon: 21.01, labs: [["musofir-lab", "Musofir dasturi", "Rasmiy ish va firibgarlikdan himoya"]] },
+    { id: "HUN", n: "Vengriya", c: "Budapesht", lat: 47.5, lon: 19.04, labs: [["master-lab", "Master dasturi", "Stipendium Hungaricum (M7)"]] },
+    { id: "TUR", n: "Turkiya", c: "Anqara", lat: 39.93, lon: 32.86, labs: [["master-lab", "Master dasturi", "Türkiye Bursları (M7)"]] },
+    { id: "CHN", n: "Xitoy", c: "Pekin", lat: 39.9, lon: 116.4, labs: [["master-lab", "Master dasturi", "Xitoy hukumati stipendiyasi, CSC (M7)"]] },
+    { id: "JPN", n: "Yaponiya", c: "Tokio", lat: 35.68, lon: 139.69, labs: [["master-lab", "Master dasturi", "MEXT (M7)"]] }
   ];
   var PTS = [ORIGIN].concat(DEST);          // ob-havo soʻrovidagi tartib
   var R = Math.PI / 180;
@@ -192,7 +192,7 @@
       if (!D) return;
       var selI = sel ? D.idx[sel] : -2, orI = D.idx[ORIGIN.iso];
       var cval = {}; PTS.forEach(function (p, i) { var v = val(i); if (v != null) cval[D.idx[p.id]] = { v: v, ok: match(i) }; });
-      // Quruqlik nuqtalari rang boʻyicha guruhlanadi: Lab mamlakatlari quyuqroq, tanlangani toʻq sariq,
+      // Quruqlik nuqtalari rang boʻyicha guruhlanadi: Dastur mamlakatlari quyuqroq, tanlangani toʻq sariq,
       // Ob-havo/Iqlim qatlamida — harorat rangida; tungi tomondagi oddiy quruqlik koʻkimtir
       var ds = Math.max(1.2, r / 170), bk = {}, cols = [];
       for (var i = 0; i < D.dots.length; i++) {
@@ -517,7 +517,7 @@
       var cities = D && D.city[id] ? D.city[id].map(function (c) { return c[0] + (c[3] ? " (poytaxt)" : ""); }).join(", ") : "";
       card.innerHTML = '<button type="button" class="kg-x" aria-label="Yopish">×</button><b>' + d.n + "</b>" + (cities ? '<small class="kg-c">' + cities + "</small>" : "") +
         '<button type="button" class="kg-fly" data-a="fly" data-snd="none">✈ Toshkentdan qayta uchish</button><div class="kg-wx" data-wx></div>' +
-        d.labs.map(function (l) { return '<a href="' + l[0] + '.html"><span>' + l[1] + "</span><small>" + l[2] + "</small></a>"; }).join("") + '<small class="kg-n">Har Lab bepul M0 bilan boshlanadi.</small>';
+        d.labs.map(function (l) { return '<a href="' + l[0] + '.html"><span>' + l[1] + "</span><small>" + l[2] + "</small></a>"; }).join("") + '<small class="kg-n">Har dastur bepul M0 bilan boshlanadi.</small>';
       card.hidden = false; cardWx();
       if (layer !== "map") { load("cur", refresh); load("cl", refresh); }
       takeoff(d);

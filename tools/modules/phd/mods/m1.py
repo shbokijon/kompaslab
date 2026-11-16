@@ -2,7 +2,7 @@ from common import KCL, UKRIO, DORA, HOL, STD
 
 MOD = dict(
     title="Ilmiy yo'nalish va tadqiqot savoli",
-    desc="PhD Lab M1: qiziqishdan aniq tadqiqot savoliga o'tish. Adabiyot qidirish, tadqiqot bo'shlig'ini manba bilan ko'rsatish, maqsad va vazifalar, ma'lumot va resurslarni tekshirish. Natija: ikki betlik yo'nalish bayoni.",
+    desc="PhD dasturi M1: qiziqishdan aniq tadqiqot savoliga o'tish. Adabiyot qidirish, tadqiqot bo'shlig'ini manba bilan ko'rsatish, maqsad va vazifalar, ma'lumot va resurslarni tekshirish. Natija: ikki betlik yo'nalish bayoni.",
     lead="“Geotermal energiya”, “sun'iy intellekt” yoki “ta'lim” deb yozsangiz, soha aniq bo'ladi, lekin savol hali yo'q. Bu modulda qiziqishingizdan <b>dalil bilan javob topsa bo'ladigan savol</b> chiqarasiz va uni ikki betlik bayonga yozasiz. Uni o'qigan odam bir daqiqada nima qilmoqchi ekaningizni tushunishi kerak.",
     hero="telescope", weeks="2–3", next="M2 Doktorantura tizimlari va universitet tanlash", next_href="phd-lab-o.html?m=2",
     goals=[("telescope", "Bitta asosiy tadqiqot savoli", "nima, qayerda, qaysi davrda va natija nimada ko'rinishi yozilgan"),

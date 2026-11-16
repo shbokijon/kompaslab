@@ -128,7 +128,7 @@
     var b = document.getElementById("shareBtn"), msg = document.getElementById("shareMsg");
     if (!b) return;
     var url = "https://www.kompaslab.uz/";
-    var text = "Xorijda oʻqish va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul.";
+    var text = "Xorijda oʻqish va stipendiyaga oʻzbek tilida tayyorgarlik. Har dasturda M0 bepul.";
     function say(t) { if (msg) { msg.textContent = t; } }
     b.addEventListener("click", function () {
       if (navigator.share) {

@@ -2,7 +2,7 @@ from common import LEEDS, ATAS, VISA, UKRIEXP, UKRIO, HOL, STD
 
 MOD = dict(
     title="Qabuldan keyingi tayyorgarlik va birinchi 90 kun",
-    desc="PhD Lab M8: taklif shartlarini bajarish, viza va ATAS, turar joy, xavfsizlik va dastlabki xarajat, tadqiqotni boshlash, 90 kunlik ish tartibi, karyera. Natija: jo'nash oldi nazorat ro'yxati va 90 kunlik reja.",
+    desc="PhD dasturi M8: taklif shartlarini bajarish, viza va ATAS, turar joy, xavfsizlik va dastlabki xarajat, tadqiqotni boshlash, 90 kunlik ish tartibi, karyera. Natija: jo'nash oldi nazorat ro'yxati va 90 kunlik reja.",
     lead="Taklifni qabul qilganingizdan keyin ham ish ko'p. Bu modulda taklif shartlarini bajarasiz, viza va turar joy masalasini hal qilasiz va birinchi 90 kunni <b>o'lchasa bo'ladigan natijalar</b> bilan rejalaysiz.",
     hero="seedling", weeks="1–3", next="", next_href="",
     goals=[("shield", "Jo'nash oldi nazorat ro'yxati (Pre-departure checklist)", "har shart: kim bajaradi va qachongacha"),

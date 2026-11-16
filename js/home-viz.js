@@ -5,7 +5,7 @@
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
   function snd(n) { try { if (window.KSfx && KSfx.play) KSfx.play(n); } catch (e) {} }
 
-  /* 1. Piramida: Lab nima */
+  /* 1. Piramida: Dastur nima */
   var pyr = $("[data-pyr]");
   if (pyr) {
     var out = $("[data-pyr-out]");

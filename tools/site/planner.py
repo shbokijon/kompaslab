@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Bepul reja (master-planner.html) ni yigʻadi: bitta sahifa, ?lab= bilan 6 ta Lab.
+"""Bepul reja (master-planner.html) ni yigʻadi: bitta sahifa, ?lab= bilan 6 ta dastur.
 
-Nazorat roʻyxati Lab modullaridan olinadi (qoʻlda yozilmaydi):
+Nazorat roʻyxati dastur modullaridan olinadi (qoʻlda yozilmaydi):
   Bachelor, Master, GKS, USA — tools/landing/mods.json
   DAAD — tools/landing/labs_data.py (DAAD_MODS)
   PhD  — phd-lab-mN.html sarlavhalari
-Ishga tushirish: python3 tools/site/planner.py  (Lab modullari oʻzgarsa ham qayta yigʻing)
+Ishga tushirish: python3 tools/site/planner.py  (Dastur modullari oʻzgarsa ham qayta yigʻing)
 Mantiq: js/master-planner.js. Master kaliti eski (kompas-master-planner-v1), kabinet uni oʻqiydi.
 """
 from __future__ import annotations
@@ -47,24 +47,24 @@ def build_labs() -> dict:
         phd.append((f"M{i}", t))
     gks_all = pick("GKS")
     return {
-        "master": {"name": "Master Lab", "slug": "master-lab", "key": "kompas-master-planner-v1",
+        "master": {"name": "Master dasturi", "slug": "master-lab", "key": "kompas-master-planner-v1",
                    "goal": "Nima uchun magistratura?", "prog": "Dastur",
                    "opts": [["taught", "O'quv magistraturasi (Taught MSc/MA)"], ["research", "Tadqiqot magistraturasi (Research MSc/MRes)"], ["other", "Boshqa yoki noma'lum"]],
                    "tasks": tasks("master-lab", pick("Master"))},
-        "bachelor": {"name": "Bachelor Lab", "slug": "bachelor-lab", "key": "kompas-planner-bachelor-v1",
+        "bachelor": {"name": "Bachelor dasturi", "slug": "bachelor-lab", "key": "kompas-planner-bachelor-v1",
                      "goal": "Nima uchun xorijda bakalavriat va qaysi yo'nalish?", "prog": "Yo'nalish (major)",
                      "opts": [], "tasks": tasks("bachelor-lab", pick("Bachelor"))},
-        "phd": {"name": "PhD Lab", "slug": "phd-lab", "key": "kompas-planner-phd-v1",
+        "phd": {"name": "PhD dasturi", "slug": "phd-lab", "key": "kompas-planner-phd-v1",
                 "goal": "Qaysi ilmiy savol ustida ishlamoqchisiz?", "prog": "Dastur yoki laboratoriya",
                 "opts": [], "tasks": tasks("phd-lab", phd)},
-        "gks": {"name": "GKS Lab", "slug": "gks-lab", "key": "kompas-planner-gks-v1",
+        "gks": {"name": "GKS dasturi", "slug": "gks-lab", "key": "kompas-planner-gks-v1",
                 "goal": "Nima uchun Koreya va GKS?", "prog": "Dastur",
                 "opts": [["U", "Bakalavriat"], ["M", "Magistratura"], ["D", "Doktorantura"]],
                 "tasks": tasks("gks-lab", gks_all)},
-        "usa": {"name": "USA Lab", "slug": "usa-lab", "key": "kompas-planner-usa-v1",
+        "usa": {"name": "USA dasturi", "slug": "usa-lab", "key": "kompas-planner-usa-v1",
                 "goal": "AQShda qaysi yo'l: bakalavr, UGRAD, Fulbright, magistratura yoki PhD? Oila yiliga qancha bera oladi?", "prog": "Dastur",
                 "opts": [], "tasks": tasks("usa-lab", pick("USA"))},
-        "daad": {"name": "DAAD Lab", "slug": "daad-lab", "key": "kompas-planner-daad-v1",
+        "daad": {"name": "DAAD dasturi", "slug": "daad-lab", "key": "kompas-planner-daad-v1",
                  "goal": "Nima uchun Germaniya va qaysi DAAD dasturi?", "prog": "Dastur",
                  "opts": [["master", "Magistratura"], ["phd", "Doktorantura"]],
                  "tasks": tasks("daad-lab", daad)},
@@ -79,15 +79,15 @@ def main() -> None:
                 raise SystemExit(f"{k}: modul sahifasi yo'q: {t['h']}")
         v["opts"] = [[a, fix(b)] for a, b in v["opts"]]
         v["goal"], v["prog"] = fix(v["goal"]), fix(v["prog"])
-        v["sale"] = v["slug"] in ON_SALE  # sotuvdagi Lab: narx sahifasiga havola
+        v["sale"] = v["slug"] in ON_SALE  # sotuvdagi dastur: narx sahifasiga havola
     cfg = json.dumps(labs, ensure_ascii=False, separators=(",", ":"))
     chips = "".join(f'<a href="master-planner.html?lab={k}" data-lab="{k}">{v["name"]}</a>' for k, v in labs.items())
     body = nav("reja", "reja") + pagehead(
         [("Kompas Lab", "index.html"), ("Bepul reja", None)],
         "Bepul reja",
-        "Labingizni tanlang: maqsad, saralangan ro'yxat (Shortlist) va tayyorgarlik bosqichlari bir joyda. Ma'lumot faqat shu qurilmada saqlanadi, ro'yxatdan o'tish shart emas.",
+        "Dasturingizni tanlang: maqsad, saralangan ro'yxat (Shortlist) va tayyorgarlik bosqichlari bir joyda. Ma'lumot faqat shu qurilmada saqlanadi, ro'yxatdan o'tish shart emas.",
         "calendar") + f"""<main><div class="wrap">
-<nav class="pl-labs" aria-label="Lab tanlash">{chips}</nav>
+<nav class="pl-labs" aria-label="Dastur tanlash">{chips}</nav>
 <div class="pl-grid">
 <section class="pl-card"><h2>1. Maqsad</h2>
 <label class="pl-label" for="goal" id="goalQ">Maqsadingiz</label><textarea id="goal" class="pl-ctl" rows="3" maxlength="800"></textarea>
@@ -97,7 +97,7 @@ def main() -> None:
 <div class="pl-btns"><button id="saveProfile" class="btn btn-p btn-sm" type="button">Saqlash</button></div><p id="profileStatus" class="pl-note" role="status"></p>
 </section>
 <section class="pl-card"><h2>2. Tayyorgarlik bosqichlari</h2>
-<p class="pl-note">Lab modullari bo'yicha. Belgi faqat siz bajargan ishni bildiradi, universitet yoki stipendiya tasdig'ini emas.</p>
+<p class="pl-note">Dastur modullari bo'yicha. Belgi faqat siz bajargan ishni bildiradi, universitet yoki stipendiya tasdig'ini emas.</p>
 <div class="pl-bar"><div id="bar"></div></div><p id="progressText" class="pl-note" aria-live="polite"></p>
 <ul id="taskList" class="pl-tasks"></ul>
 <p id="plSale" class="pl-note" hidden></p>

@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════════
 //  Kompas Lab — "Mening yoʻlim" paneli (dashboard.html)
 //  1) Kompas: strelka keyingi qadamga buriladi
-//  2) Shaxsiy vaqt chizigʻi: maqsad sanasigacha haftalar va Lab hajmi
+//  2) Shaxsiy vaqt chizigʻi: maqsad sanasigacha haftalar va dastur hajmi
 //  3) Hujjatlar javoni: modul yakunida tayyor boʻlgan hujjatlar
 //  4) Haftalik ritm: oxirgi 8 haftada kabinetga kirilgan haftalar
 //  Faqat shu qurilmadagi haqiqiy progressdan (localStorage) quriladi; soxta raqam yoʻq.
@@ -12,15 +12,15 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // Darslar soni: tools/landing/mods.json va CLAUDE.md dagi holat jadvali (17.10.2026)
   var LABS = [
-    { id: "master", n: "Master Lab", lessons: 59, m0: "master-lab-m0.html", key: "kompas_master_m0_v1" },
-    { id: "bachelor", n: "Bachelor Lab", lessons: 86, m0: "bachelor-lab-m0.html", key: "kompas_bachelor_m0_v1" },
-    { id: "gks", n: "GKS Lab", lessons: 54, m0: "gks-lab-m0.html", key: "kompas_gks_m0_v1" },
-    { id: "usa", n: "USA Lab", lessons: 46, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
-    { id: "daad", n: "DAAD Lab", lessons: 51, m0: "daad-lab.html", key: null },
+    { id: "master", n: "Master dasturi", lessons: 59, m0: "master-lab-m0.html", key: "kompas_master_m0_v1" },
+    { id: "bachelor", n: "Bachelor dasturi", lessons: 86, m0: "bachelor-lab-m0.html", key: "kompas_bachelor_m0_v1" },
+    { id: "gks", n: "GKS dasturi", lessons: 54, m0: "gks-lab-m0.html", key: "kompas_gks_m0_v1" },
+    { id: "usa", n: "USA dasturi", lessons: 46, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
+    { id: "daad", n: "DAAD dasturi", lessons: 51, m0: "daad-lab.html", key: null },
     { id: "tt", n: "Tadbirkor Talaba", lessons: 54, m0: "tadbirkor-talaba-m0.html", key: "kompas_tt_m0_v1" },
-    { id: "musofir", n: "Musofir Lab", lessons: 44, m0: "musofir-lab-m0.html", key: "kompas_musofir_m0_v1" }
+    { id: "musofir", n: "Musofir dasturi", lessons: 44, m0: "musofir-lab-m0.html", key: "kompas_musofir_m0_v1" }
   ];
-  var PHD = { n: "PhD Lab M0", m0: "phd-lab-m0.html", key: "kompas_phd_m0_v1" };
+  var PHD = { n: "PhD dasturi M0", m0: "phd-lab-m0.html", key: "kompas_phd_m0_v1" };
   // Hujjatlar: qaysi modul yakunida qaysi hujjat tayyor boʻladi
   var DOCS = [
     { k: "kompas_master_m0_v1", m0: true, n: "Qaror bayonoti", s: "Master M0", ic: "seedling" },
@@ -70,9 +70,9 @@
     var fin = all.filter(function (m) { return m.pct >= 100; })[0];
     if (fin) {
       var lab = S.lab ? LABS.filter(function (l) { return l.id === S.lab; })[0] : null;
-      return { t: fin.n + " yakunlangan", s: lab && !S.date ? "Pastda maqsad sanangizni kiriting: vaqt yetadimi, koʻrasiz." : "Keyingi qadam: Lab sahifasida dastur va tariflar.", href: fin.href.replace("-m0.html", ".html"), b: "Lab sahifasi →" };
+      return { t: fin.n + " yakunlangan", s: lab && !S.date ? "Pastda maqsad sanangizni kiriting: vaqt yetadimi, koʻrasiz." : "Keyingi qadam: dastur sahifasida modullar va tariflar.", href: fin.href.replace("-m0.html", ".html"), b: "Dastur sahifasi →" };
     }
-    return { t: "Bepul M0 dan boshlang", s: "Har Labning M0 qismi bepul: toʻlovdan oldin dastur sizga mosligini tekshirasiz.", href: "#modulesList", b: "M0 tanlash →" };
+    return { t: "Bepul M0 dan boshlang", s: "Har dasturning M0 qismi bepul: toʻlovdan oldin dastur sizga mosligini tekshirasiz.", href: "#modulesList", b: "M0 tanlash →" };
   }
 
   var CSS = '.jy{display:grid;gap:14px;margin:0 0 22px;}' +
@@ -146,7 +146,7 @@
       '<div><h3>' + esc(n.t) + "</h3><p>" + esc(n.s) + '</p><a class="jy-btn" href="' + esc(n.href) + '">' + esc(n.b) + "</a></div></div></div>" +
       // 2. Vaqt chizigʻi
       '<div class="jy-c"><div class="jy-h"><b>Mening vaqt chizigʻim</b><span>Maqsad sanasigacha</span></div>' +
-      '<div class="jy-row"><label>Lab<select data-j="lab"><option value="">— tanlang —</option>' + LABS.map(function (l) { return '<option value="' + l.id + '"' + (S.lab === l.id ? " selected" : "") + ">" + l.n + " (" + l.lessons + " dars)</option>"; }).join("") + "</select></label>" +
+      '<div class="jy-row"><label>Dastur<select data-j="lab"><option value="">— tanlang —</option>' + LABS.map(function (l) { return '<option value="' + l.id + '"' + (S.lab === l.id ? " selected" : "") + ">" + l.n + " (" + l.lessons + " dars)</option>"; }).join("") + "</select></label>" +
       '<label>Ariza muddati<input type="date" data-j="date" value="' + esc(S.date || "") + '"></label>' +
       '<label>Surʼat<select data-j="pace">' + PACE.map(function (p) { return '<option value="' + p[0] + '"' + (+S.pace === p[0] || (!S.pace && p[0] === 4) ? " selected" : "") + ">" + p[1] + "</option>"; }).join("") + "</select></label></div>" +
       '<div class="jy-tl"><div class="jy-track"><div class="jy-need"></div></div><div class="jy-flag jy-now">Bugun<i></i></div><div class="jy-flag jy-dl"><i></i></div></div><div class="jy-v"></div><div class="jy-cal"></div></div>' +
@@ -168,7 +168,7 @@
 
   function timeline(root, again) {
     var lab = LABS.filter(function (l) { return l.id === S.lab; })[0], dl = S.date ? new Date(S.date + "T00:00:00") : null, v = root.querySelector(".jy-v"), need = root.querySelector(".jy-need"), flag = root.querySelector(".jy-dl");
-    if (!lab || !dl) { need.style.width = "0"; flag.innerHTML = "Muddat<i></i>"; v.className = "jy-v"; v.innerHTML = "Lab va ariza muddatini tanlang: kompas sizga necha hafta kerakligini va vaqt yetishini koʻrsatadi."; return; }
+    if (!lab || !dl) { need.style.width = "0"; flag.innerHTML = "Muddat<i></i>"; v.className = "jy-v"; v.innerHTML = "Dastur va ariza muddatini tanlang: kompas sizga necha hafta kerakligini va vaqt yetishini koʻrsatadi."; return; }
     var pace = +(S.pace || 4), weeksNeed = Math.ceil(lab.lessons / pace), weeksLeft = Math.floor((dl - today()) / DAY / 7);
     flag.innerHTML = fmt(dl) + "<i></i>";
     if (weeksLeft <= 0) { need.style.width = "100%"; need.classList.add("over"); v.className = "jy-v over"; v.innerHTML = "<b>Bu sana oʻtgan yoki juda yaqin.</b> Keyingi ariza siklini tanlang."; return; }

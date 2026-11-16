@@ -5,7 +5,7 @@ ORCID = a("https://orcid.org", "ORCID")
 
 MOD = dict(
     title="Qabuldan keyin: viza va jo'nash",
-    desc="Bachelor Lab M16: qabul xatidan keyingi 2 hafta (shartli/shartsiz qabul, depozit, CAS yoki I-20), talaba vizasi, uy-joy, sug'urta va bank, 30 kunlik jo'nash oldi ro'yxat, birinchi yil. Natija: jo'nash oldi nazorat ro'yxati va birinchi yil rejasi.",
+    desc="Bachelor dasturi M16: qabul xatidan keyingi 2 hafta (shartli/shartsiz qabul, depozit, CAS yoki I-20), talaba vizasi, uy-joy, sug'urta va bank, 30 kunlik jo'nash oldi ro'yxat, birinchi yil. Natija: jo'nash oldi nazorat ro'yxati va birinchi yil rejasi.",
     lead="Qabul xati yo'lning oxiri emas. Viza, uy-joy, sug'urta va pul o'tkazish o'z muddatlari bilan keladi, va bitta kechikish o'qish boshlanishini surishi mumkin. Bu modul qabuldan birinchi semestrgacha bo'lgan yo'lni tartibga soladi.",
     hero="seedling", weeks="2", next="", next_href="",
     goals=[("shield", "Jo'nash oldi nazorat ro'yxati (Pre-departure checklist)", "hujjatlar, sog'liq, pul, aloqa, birinchi kun"),

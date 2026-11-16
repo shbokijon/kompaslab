@@ -26,13 +26,13 @@ CHECKED = "30.10.2026"
 ISO = "2026-10-30"
 
 LABS = {
-    "musofir": ('musofir-lab-m0.html', "Musofir Lab M0"),
-    "master": ("master-lab-m0.html", "Master Lab M0"),
-    "phd": ("phd-lab-m0.html", "PhD Lab M0"),
-    "bachelor": ("bachelor-lab-m0.html", "Bachelor Lab M0"),
-    "daad": ("daad-lab-m0.html", "DAAD Lab M0"),
-    "gks": ("gks-lab-m0.html", "GKS Lab M0"),
-    "usa": ("usa-lab-m0.html", "USA Lab M0"),
+    "musofir": ('musofir-lab-m0.html', "Musofir dasturi M0"),
+    "master": ("master-lab-m0.html", "Master dasturi M0"),
+    "phd": ("phd-lab-m0.html", "PhD dasturi M0"),
+    "bachelor": ("bachelor-lab-m0.html", "Bachelor dasturi M0"),
+    "daad": ("daad-lab-m0.html", "DAAD dasturi M0"),
+    "gks": ("gks-lab-m0.html", "GKS dasturi M0"),
+    "usa": ("usa-lab-m0.html", "USA dasturi M0"),
     "reja": ("master-planner.html", "Bepul reja"),
 }
 
@@ -41,11 +41,11 @@ def lab_links(*keys: str) -> str:
     return '<div class="at-labs">' + "".join(f'<a href="{LABS[k][0]}">{LABS[k][1]}</a>' for k in keys) + "</div>"
 
 
-# Sotuvdagi Lablar (tools/landing/labs_data.ON_SALE bilan bir xil): maqola oxirida narx sahifasiga havola.
+# Sotuvdagi dasturlar (tools/landing/labs_data.ON_SALE bilan bir xil): maqola oxirida narx sahifasiga havola.
 # Narx raqami yozilmaydi: yagona manba bazadagi courses jadvali.
-SALE = {"master": ("master-lab-narxlar.html", "Master Lab"), "phd": ("phd-lab-narxlar.html", "PhD Lab"),
-        "bachelor": ("bachelor-lab-narxlar.html", "Bachelor Lab"), "gks": ("gks-lab-narxlar.html", "GKS Lab"),
-        "usa": ("usa-lab-narxlar.html", "USA Lab")}
+SALE = {"master": ("master-lab-narxlar.html", "Master dasturi"), "phd": ("phd-lab-narxlar.html", "PhD dasturi"),
+        "bachelor": ("bachelor-lab-narxlar.html", "Bachelor dasturi"), "gks": ("gks-lab-narxlar.html", "GKS dasturi"),
+        "usa": ("usa-lab-narxlar.html", "USA dasturi")}
 
 
 def sale_links(*keys: str) -> str:
@@ -225,7 +225,7 @@ def atlas_index() -> str:
         "telescope") + f"""<main>
 <section class="at-sec" id="oqish"><div class="wrap">
 <h2>O'qish</h2>
-<p class="at-intro">Universitet, stipendiya, til testi va o'qish davridagi qoidalar haqida qisqa maqolalar. Har birida rasmiy manbalar va mos Labning bepul M0 moduli ko'rsatilgan.</p>
+<p class="at-intro">Universitet, stipendiya, til testi va o'qish davridagi qoidalar haqida qisqa maqolalar. Har birida rasmiy manbalar va mos dasturning bepul M0 moduli ko'rsatilgan.</p>
 <div class="at-grid">{arts}</div>
 {lab_links("reja", "master", "bachelor", "phd")}
 </div></section>
@@ -262,7 +262,7 @@ def article(a: dict) -> str:
 {a["body"]}
 <h2>Manbalar</h2>
 <ol class="at-sources">{src}</ol>
-<div class="at-cta"><h3>Keyingi qadam</h3><p>Bu mavzu Lablarda topshiriq va vositalar bilan o'tiladi. M0 bepul.</p>{lab_links(*a["labs"])}{sale_links(*a["labs"])}</div>
+<div class="at-cta"><h3>Keyingi qadam</h3><p>Bu mavzu dasturlarda topshiriq va vositalar bilan o'tiladi. M0 bepul.</p>{lab_links(*a["labs"])}{sale_links(*a["labs"])}</div>
 <p class="at-meta" style="margin-top:18px"><a href="atlas.html">← Atlasga qaytish</a></p>
 </article></div></main>
 """
@@ -321,7 +321,7 @@ def registry(r: dict) -> str:
 <div class="ar-bar"><h2>Natijalar</h2><span id="arCount"></span></div>
 <div id="arList" class="ar-list" data-alifbo="off" aria-live="polite"></div>
 <button id="arMore" class="btn btn-g ar-more" type="button" hidden>Yana ko'rsatish</button>
-<div class="at-cta"><h3>Topgach nima qilish kerak</h3><p>Kompaniyaning o'z sahifasidan vakansiyani toping va homiylik shartini to'g'ridan-to'g'ri tekshiring. Rasmiy ish yo'llari va firibgarlik belgilari Musofir Lab M0 da (bepul, ro'yxatdan o'tib ochiladi).</p>{lab_links("musofir")}</div>
+<div class="at-cta"><h3>Topgach nima qilish kerak</h3><p>Kompaniyaning o'z sahifasidan vakansiyani toping va homiylik shartini to'g'ridan-to'g'ri tekshiring. Rasmiy ish yo'llari va firibgarlik belgilari Musofir dasturi M0 da (bepul, ro'yxatdan o'tib ochiladi).</p>{lab_links("musofir")}</div>
 <p class="at-src">Manba: {ext(r["source"][0], r["source"][1], "en")}. Qoidalar: {ext(r["rules"][0], r["rules"][1], "en")}. {r["licence"]} Kompas Atlas mustaqil ta'limiy vosita, davlat idorasi bilan bog'liq emas. <a href="atlas.html#ish">← Atlas</a></p>
 </div></main>
 """

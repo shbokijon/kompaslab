@@ -64,7 +64,7 @@ L4 = dict(t="Yo'nalish o'zgarishini asoslash", short="Ko'prik", min=30, kind="âœ
 
 MOD = dict(
     title="Magistratura nomzodining pozitsiyasi",
-    desc="GKS Lab M3-M (magistratura): bakalavrdan magistraturaga pozitsiya, dalillar inventari (STAR), akademik CV va yo'nalish o'zgarishini asoslash. Natija: STAR inventari, akademik CV v1.0, yo'nalish ko'prigi matni.",
+    desc="GKS dasturi M3-M (magistratura): bakalavrdan magistraturaga pozitsiya, dalillar inventari (STAR), akademik CV va yo'nalish o'zgarishini asoslash. Natija: STAR inventari, akademik CV v1.0, yo'nalish ko'prigi matni.",
     lead="Magistratura nomzodi o'quv rejasi bilan baholanadi, o'quv rejasi esa siz kimligingiz va nima qila olishingizga tayanadi. Bu modulda pozitsiyangizni, dalillaringizni va akademik CV ni tayyorlaysiz.",
     hero="compass", weeks="2", next="M4-M O'quv rejasi", next_href="gks-lab-m4-m.html",
     goals=[("bulb", "STAR inventari", "kamida 3 yozuv: kurs ishi, bitiruv ishi, amaliyot yoki ish"),

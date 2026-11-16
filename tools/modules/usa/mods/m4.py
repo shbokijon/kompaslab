@@ -2,7 +2,7 @@ from common import CSS, CSS_INT, NORTHWESTERN, HARVARD, DARTMOUTH, HOL, STD
 
 MOD = dict(
     title="Moliyaviy yordam arizasi",
-    desc="USA Lab M4: CSS Profile va universitet formalari, O'zbekistondan oila daromadini hujjatlash, valyuta va tarjima, to'lovdan ozod qilish, yordam xatini o'qish va qayta ko'rib chiqishni so'rash. Natija: moliyaviy yordam arizasi paketi.",
+    desc="USA dasturi M4: CSS Profile va universitet formalari, O'zbekistondan oila daromadini hujjatlash, valyuta va tarjima, to'lovdan ozod qilish, yordam xatini o'qish va qayta ko'rib chiqishni so'rash. Natija: moliyaviy yordam arizasi paketi.",
     lead="Ehtiyojga asoslangan yordam oila haqidagi raqamlarga qarab hisoblanadi. Bu modulda qaysi universitet qaysi formani so'rashini aniqlaysiz, O'zbekistondagi daromadni AQSh universiteti tushunadigan hujjatlarga aylantirasiz va kelgan yordam xatini to'g'ri o'qiysiz.",
     hero="scroll", weeks="2", next="M5 Global UGRAD va almashinuv dasturlari", next_href="usa-lab-o.html?m=5",
     goals=[("scroll", "Yordam arizasi paketi", "har universitet: forma, hujjat, muddat"),
@@ -51,7 +51,7 @@ MOD = dict(
 <p>CSS Profile sahifasida aytilishicha, yillik daromadi 100 000 dollargacha bo'lgan oilalar uchun forma to'lovdan ozod qilish orqali bepul. Lekin xalqaro talabaga bu qoida qo'llanishi universitetga qarab farq qiladi: masalan, Northwestern xalqaro talabalar CSS Profile to'lovidan ozod bo'la olmasligini yozadi.</p>
 <h4>Nima qilish kerak</h4>
 <ol><li>Har universitet sahifasida [[fee waiver]] bandini qidiring.</li><li>Yozilmagan bo'lsa, moliyaviy yordam bo'limiga yozma so'rang.</li><li>To'lovlarni byudjet jadvaliga qo'shing (M2).</li></ol>
-<div class="box info">Qabul arizasi to'lovi (Common App yig'imi va undan ozod qilish) Bachelor Lab M13 da. Bu dars faqat moliyaviy yordam formasi to'lovi haqida.</div>
+<div class="box info">Qabul arizasi to'lovi (Common App yig'imi va undan ozod qilish) Bachelor dasturi M13 da. Bu dars faqat moliyaviy yordam formasi to'lovi haqida.</div>
 <div class="srcs">Manba: {CSS}; {NORTHWESTERN}. {HOL}.</div>""",
              take="CSS Profile to'lovidan ozod qilish xalqaro talabaga hamma joyda qo'llanmaydi. Har universitetdan aniqlang va to'lovlarni byudjetga qo'shing.",
              task="<ul><li>Yordam so'raladigan har universitet uchun: forma to'lovi bormi, ozod qilish mumkinmi, dalil.</li></ul>",

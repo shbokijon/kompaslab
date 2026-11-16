@@ -1,4 +1,4 @@
-# PhD Lab sahifasi alohida shablondan qurilgan (phd_source.html).
+# PhD dasturi sahifasi alohida shablondan qurilgan (phd_source.html).
 # Bu skript unga umumiy dizayn qatlami, narx, qaytarish qoidasi va jonli maʼlumotni qoʻllaydi.
 import re
 from render import six_card, calc_html, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, HONEST_NOTE, icon, polish, uz_fix, fmt
@@ -21,7 +21,7 @@ def build():
           "<li>\"PhD kafolati\" izlayotganlar: bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>\n    <p class=\"honest\">" + HONEST_NOTE + "</p>")
     s = s.replace('<button type="button" class="btn btn-p btn-sm" data-wl>🔔 Kutish roʻyxati</button>', '<a href="register.html" class="btn btn-p btn-sm" data-kl-start>Boshlash</a>')
     s = s.replace("🔔 Kutish roʻyxati", "Kutish roʻyxati").replace("Ochilganda xabar</button>", "Ochilganda xabar bering</button>")
-    s = R(s, '<div class="badge">⚗️ PhD Lab · v3.1</div>', icon("phd", "hero-i float", "PhD Lab"))
+    s = R(s, '<div class="badge">⚗️ PhD dasturi · v3.1</div>', icon("phd", "hero-i float", "PhD dasturi"))
     s = R(s, '<div class="facts">', '<div class="facts">', 1)
     # asoschi boʻlimi: ism va EYUF olib tashlanadi, jadval qoladi
     a = s.index('<section class="alt" id="asoschi">')
@@ -56,7 +56,7 @@ def build():
     s = s.replace("<li>Bitta ariza siklini qamraydi: 6 oy</li>", "<li>6 oy davomida hamma modullarga kirish</li>").replace('<p class="desc">Bitta ariza sikli uchun: 6 oy</p>', '<p class="desc">Hamma bosqich bitta toʻlovda</p>')
     k = s.index("<!-- SAVOLLAR -->"); k = s.rindex("</section>", 0, k)
     s = s[:k] + '  <script src="js/checkout.js" defer></script>\n' + s[k:]
-    # savollar: «Nega Lab?»
+    # savollar: «Nega dastur?»
     q, a2 = WHY_LAB_FAQ
     i = s.index('<div class="faq')
     j = s.index("</div>", s.rindex("</details>", i, s.index("</section>", i)))

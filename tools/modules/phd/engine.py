@@ -1,6 +1,6 @@
 # ═══════════════════════════════════════════════════════════════
-#  PhD Lab pullik modullari (M1–M8) manbasini yaratish (2026-11-07)
-#  Qobiq va JS: Amerika Lab engine nusxasi (GKS/Bachelor andozasi).
+#  PhD dasturi pullik modullari (M1–M8) manbasini yaratish (2026-11-07)
+#  Qobiq va JS: Amerika dastur engine nusxasi (GKS/Bachelor andozasi).
 #  Fazalar (oylik obunada 1 toʻlov = 1 faza = 2 modul): I M1–M2, II M3–M4, III M5–M6, IV M7–M8.
 #
 #  python3 tools/modules/phd/engine.py          # hammasi
@@ -9,7 +9,7 @@
 #  Kontent: tools/modules/phd/mods/m<N>.py (MOD lugʻati). Matnda oddiy apostrof (')
 #  yoziladi: o'/g' → U+02BB, qolgani → U+02BC (fix()). [[...]] → <span lang="en">.
 #  Manbalar faqat universitet va masʼul tashkilotlar sahifalari (phd/common.py).
-#  Asl kontent: "PhD Lab v0.9 content prototype" (2026-10-31), sayt andozasiga oʻtkazilgan.
+#  Asl kontent: "PhD dasturi v0.9 content prototype" (2026-10-31), sayt andozasiga oʻtkazilgan.
 # ═══════════════════════════════════════════════════════════════
 import importlib.util, re, sys
 from pathlib import Path
@@ -342,7 +342,7 @@ JS = r"""<script>
   function renderArt() {
     var p = $("artPaper"); if (!p) return;
     var secs = artText(), filled = 0;
-    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">PhD Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">PhD dasturi · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
     secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
     p.innerHTML = h;
     $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
@@ -414,7 +414,7 @@ def page(slug, M):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M{code} {fix(M["title"])} · PhD Lab · Kompas Lab</title>
+<title>M{code} {fix(M["title"])} · PhD dasturi · Kompas Lab</title>
 <meta name="description" content="{fix(M["desc"])}">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -430,7 +430,7 @@ def page(slug, M):
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="phd-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· PhD Lab M{code}</small></a>
+    <a class="logo" href="phd-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· PhD dasturi M{code}</small></a>
     <div class="xp" aria-live="polite">
       <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
       <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
@@ -445,7 +445,7 @@ def page(slug, M):
   <div class="hero">
     <div class="hero-g">
       <div>
-        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="phd-lab.html">PhD Lab</a> · Modul {code}</div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="phd-lab.html">PhD dasturi</a> · Modul {code}</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">{PHASE[n]}</span>
         <h1>{fix(M["title"])}</h1>
         <p class="lead">{fix(M["lead"])}</p>
@@ -531,7 +531,7 @@ def page(slug, M):
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="phd-lab.html">← PhD Lab</a>
+    <a class="btn btn-g" href="phd-lab.html">← PhD dasturi</a>
     {nxt}
   </div>
 </footer>

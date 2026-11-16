@@ -27,7 +27,7 @@ PITCH = """<h4>60 soniyalik taqdimot</h4>
 
 MOD = dict(
     title="Professor, paket va intervyu",
-    desc="GKS Lab M5-M (magistratura): professorni tanlash, professorga dastlabki xat, GKS-G shaxsiy bayonoti, izchillik auditi, intervyu va keyingi bosqich. Natija: shaxsiy bayonot, 2 professorga xat, izchillik auditi jadvali, 60 soniyalik taqdimot yozuvi.",
+    desc="GKS dasturi M5-M (magistratura): professorni tanlash, professorga dastlabki xat, GKS-G shaxsiy bayonoti, izchillik auditi, intervyu va keyingi bosqich. Natija: shaxsiy bayonot, 2 professorga xat, izchillik auditi jadvali, 60 soniyalik taqdimot yozuvi.",
     lead="Oxirgi modulda aloqa va hujjatlar bir-biriga ulanadi: professorga xat, o'quv rejasini takrorlamaydigan shaxsiy bayonot, barcha hujjatlarda bir xil faktlar va intervyuda 60 soniyalik taqdimot.",
     hero="bell", weeks="3", next="", next_href="",
     goals=[("bell", "2 professorga xat", "har biri uning aniq ishiga tayangan"),

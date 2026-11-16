@@ -1,4 +1,4 @@
-# USA Lab M1–M8: umumiy manba havolalari. Tekshirildi: 2026-10-31.
+# USA dasturi M1–M8: umumiy manba havolalari. Tekshirildi: 2026-10-31.
 # Qoida (2026-10-31): manbalar faqat universitetlar va masʼul tashkilotlar (AQSh Davlat departamenti,
 # elchixona, DHS/ICE, Taʼlim vazirligi, NSF, College Board, CGS, CHEA, Carnegie/ACE) sahifalari.
 # Blog, agentlik, reyting yigʻuvchi va yangilik saytlari manba sifatida ishlatilmaydi.

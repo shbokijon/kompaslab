@@ -3,7 +3,7 @@
 //  Har sahifada <head> ichida (defer emas) yuklanadi:
 //  · Sahifalar orasidagi oʻtish yoʻnalishi (View Transitions: next / prev)
 //  · Ichki havolalarga "nav" tovushi (sfx.js), ←/→ bilan oldingi/keyingi sahifa
-//  · Lab tablari (mobil panel) va "yoʻl"dagi kompas strelkasi
+//  · dastur tablari (mobil panel) va "yoʻl"dagi kompas strelkasi
 // ═══════════════════════════════════════════════════════════════
 // ── Tungi rejim (2026-10-30): tanlov localStorage "kompas_theme" (light|dark), boʻlmasa tizim sozlamasi.
 //    <head> da sinxron ishlaydi, shuning uchun sahifa yorugʻ holda "miltillamaydi". Ranglar: css/kompas-ui.css oxiridagi blok.
@@ -152,7 +152,7 @@
 //    Kesh: localStorage "kompas_me_v1" (uid, ism, rol, faol obunalar), 5 daqiqada yangilanadi.
 (function () {
   var TOK = "sb-usxpkmbjrdllnitlzdpq-auth-token", ME = "kompas_me_v1", TTL = 300000;
-  var LABS = { "bachelor-lab": "Bachelor Lab", "master-lab": "Master Lab", "phd-lab": "PhD Lab", "gks-lab": "GKS Lab", "usa-lab": "USA Lab", "daad-lab": "DAAD Lab", "tadbirkor-talaba": "Tadbirkor Talaba", "miggo": "Musofir Lab" };
+  var LABS = { "bachelor-lab": "Bachelor dasturi", "master-lab": "Master dasturi", "phd-lab": "PhD dasturi", "gks-lab": "GKS dasturi", "usa-lab": "USA dasturi", "daad-lab": "DAAD dasturi", "tadbirkor-talaba": "Tadbirkor Talaba", "miggo": "Musofir dasturi" };
   function rd(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
   function user() { var s = rd(TOK); return s && s.user && s.user.id ? s.user : null; }
   function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }

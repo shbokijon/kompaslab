@@ -2,7 +2,7 @@ from common import APO, MYGOV, CA, HOL, STD
 
 MOD = dict(
     title="Yutuqlar, CV va hujjatlar",
-    desc="Bachelor Lab M6: olimpiada va tanlovlar, onlayn kurslar, maktab yoshida ilmiy loyiha, bakalavr CV (STAR usuli), tarjima, notarius va apostil. Natija: Bakalavr CV v1.0 va hujjatlar nazorat ro'yxati.",
+    desc="Bachelor dasturi M6: olimpiada va tanlovlar, onlayn kurslar, maktab yoshida ilmiy loyiha, bakalavr CV (STAR usuli), tarjima, notarius va apostil. Natija: Bakalavr CV v1.0 va hujjatlar nazorat ro'yxati.",
     lead="Yutuqlaringiz faqat hujjatda to'g'ri yozilganda ko'rinadi. Bu modulda qaysi yutuq qabulda ahamiyatli ekanini ajratasiz, CV ni STAR usulida yozasiz va hujjatlarni legallashtirish zanjirini rejalaysiz.",
     hero="memo", weeks="2", next="M7 Darsdan tashqari faoliyat", next_href="bachelor-lab-m7.html",
     goals=[("memo", "Bakalavr CV v1.0", "1–2 sahifa, har band STAR usulida"),

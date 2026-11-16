@@ -2,13 +2,13 @@ from common import LEEDS, UKRI, MSCA, EURAXESS, DORA, HOL, STD
 
 MOD = dict(
     title="Doktorantura tizimlari va universitet tanlash",
-    desc="PhD Lab M2: doktorantura modellari, imkoniyat qidirish, universitet va laboratoriyani baholash, talablar va muddatlar. Natija: 8–12 imkoniyatli saralangan ro'yxat va 4 ta asosiy ariza.",
+    desc="PhD dasturi M2: doktorantura modellari, imkoniyat qidirish, universitet va laboratoriyani baholash, talablar va muddatlar. Natija: 8–12 imkoniyatli saralangan ro'yxat va 4 ta asosiy ariza.",
     lead="“PhD” degan bir xil nom ortida turlicha tizimlar bor. Bu modulda imkoniyatlarni <b>ilmiy moslik, moliya va rasmiy talablar</b> bo'yicha saralaysiz: 8–12 tasini topasiz va ulardan 4 tasini asosiy ariza qilib ajratasiz. Reyting bu yerda faqat qo'shimcha ma'lumot.",
     hero="phd", weeks="2", next="M3 Ilmiy rahbar va laboratoriya bilan aloqa", next_href="phd-lab-o.html?m=3",
     goals=[("chart", "Saralangan ro'yxat (Shortlist)", "8–12 imkoniyat, har birida rasmiy havola va tekshirilgan sana"),
            ("shield", "Talablar jadvali", "majburiy va afzal talablar alohida"),
            ("calendar", "Teskari kalendar", "tashqi va ichki muddatlar, 7 kun zaxira")],
-    warn="Universitet tanlashning umumiy usullari Master Lab M1 da. Bu yerda faqat doktoranturaga xos tizimlar. Har bir shartni o'sha dastur sahifasidan tekshiring: mamlakat haqidagi umumiy maqola bunga yetmaydi.",
+    warn="Universitet tanlashning umumiy usullari Master dasturi M1 da. Bu yerda faqat doktoranturaga xos tizimlar. Har bir shartni o'sha dastur sahifasidan tekshiring: mamlakat haqidagi umumiy maqola bunga yetmaydi.",
     lessons=[
         dict(t="To'rtta PhD modeli", short="Modellar", min=30, kind="🧭 Xarita", ic="compass",
              hook="Bitta mamlakat ichida ham PhD turlicha tashkil qilinadi. Modelni bilmasangiz, arizani <b>noto'g'ri joyga</b> yoki <b>noto'g'ri tartibda</b> yuborib qo'yishingiz mumkin.",

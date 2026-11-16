@@ -2,7 +2,7 @@ from common import U27, G26, JA, SIK, STD
 
 MOD = dict(
     title="Intervyu, natija va jo'nash",
-    desc="GKS Lab M8: GKS intervyusi mantiqi, javob tuzilmasi, bosqich natijalari va universitet tanlovi, jo'nash oldi tayyorgarlik, stipendiya majburiyatlari va rad javobidan keyingi reja. Natija: intervyu kartochkalari va jo'nash rejasi.",
+    desc="GKS dasturi M8: GKS intervyusi mantiqi, javob tuzilmasi, bosqich natijalari va universitet tanlovi, jo'nash oldi tayyorgarlik, stipendiya majburiyatlari va rad javobidan keyingi reja. Natija: intervyu kartochkalari va jo'nash rejasi.",
     lead="Hujjatlar o'tgach, sizni gapirib turgan holda ko'rishadi. Bu modulda intervyuga hujjatlaringiz asosida tayyorlanasiz, natijalarga to'g'ri javob berasiz va jo'nashni yoki keyingi siklni rejalaysiz.",
     hero="lock", weeks="2–3", next="",
     goals=[("bulb", "Intervyu kartochkalari", "5 asosiy savolga o'z dalillaringiz bilan javob"),

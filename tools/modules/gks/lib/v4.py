@@ -2,7 +2,7 @@ from common import U27, G26, STD
 
 MOD = dict(
     title="Tavsiya xati va professor bilan aloqa",
-    desc="GKS Lab M4: GKS tavsiya xati talablari, tavsiya beruvchi tanlash, yutuqlar varaqasi, professorga dastlabki xat va muloqot etikasi. Natija: aloqa paketi.",
+    desc="GKS dasturi M4: GKS tavsiya xati talablari, tavsiya beruvchi tanlash, yutuqlar varaqasi, professorga dastlabki xat va muloqot etikasi. Natija: aloqa paketi.",
     lead="GKS bitta tavsiya xati so'raydi, shuning uchun u kuchli bo'lishi shart. Magistratura va doktorantura nomzodlari uchun professor bilan oldindan aloqa tanlovni aniqlashtiradi. Bu modulda ikkala aloqani tartib bilan quring.",
     hero="bell", weeks="2", next="Shaxsiy bayonot",
     goals=[("bell", "Tavsiya beruvchi va reja", "kim, nega u, qachon so'raladi"),

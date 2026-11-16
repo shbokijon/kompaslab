@@ -2,7 +2,7 @@ from common import HOL, STD
 
 MOD = dict(
     title="Yoʻnalish, qiziqish va maqsad",
-    desc="Bachelor Lab M3: fanlar va qiziqishlardan profil, STEM ichida tanlov (fizika, muhandislik, informatika), bakalavrdan keyingi yo'llar, qiziqish sohasi bayoni, izchil hikoya. Natija: 1 sahifalik qiziqish sohasi bayoni va bir jumlali profil.",
+    desc="Bachelor dasturi M3: fanlar va qiziqishlardan profil, STEM ichida tanlov (fizika, muhandislik, informatika), bakalavrdan keyingi yo'llar, qiziqish sohasi bayoni, izchil hikoya. Natija: 1 sahifalik qiziqish sohasi bayoni va bir jumlali profil.",
     lead="Komissiya sizni hujjatlar orqali taniydi. Agar fanlaringiz, faoliyatingiz va inshoingiz turli tomonga qarasa, kuchli tomonlaringiz ham ko'rinmay qoladi. Bu modulda bitta aniq yo'nalish va uni ko'rsatadigan hikoyani tuzasiz.",
     hero="seedling", weeks="1–2", next="M4 Ariza muddatlari va ish rejasi", next_href="bachelor-lab-m4.html",
     goals=[("seedling", "Bir jumlali profil", "kim, nimaga qiziqasiz, buni nima ko'rsatadi"),
@@ -48,7 +48,7 @@ MOD = dict(
              hook="Bakalavr 4 yil davom etadi, lekin tanlovingiz undan keyingi 10 yilga ta'sir qiladi. Keyingi yo'llarni hozirdan bilish soha tanlovini aniqroq qiladi.",
              body="""<h4>Bakalavrdan keyin to'rt yo'l</h4>
 <ol><li><b>Sanoatda ishlash</b>: o'qigan mamlakatda (viza qoidalariga qarab) yoki O'zbekistonda.</li>
-<li><b>Magistratura</b>: o'sha yoki boshqa mamlakatda. Tafsilotlar Master Lab'da.</li>
+<li><b>Magistratura</b>: o'sha yoki boshqa mamlakatda. Tafsilotlar Master dasturida.</li>
 <li><b>Tadqiqot va doktorantura</b>: ba'zi mamlakatlarda bakalavrdan to'g'ridan-to'g'ri PhD'ga o'tish mumkin.</li>
 <li><b>Vatanga qaytish</b>: ba'zi davlat stipendiyalari qaytish shartini qo'yadi (M11).</li></ol>
 <h4>Soha bo'yicha savollar</h4>

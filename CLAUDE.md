@@ -22,6 +22,10 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com. Adminlar (2026-
 - `supabase-js` doim **2.45.4** ga mahkamlangan (jsdelivr UMD).
 - `tools/`, `supabase/`, `schema.sql` saytga chiqmaydi (`.vercelignore`).
 
+## Atama: "Lab" → "dastur" (2026-11-16, asoschi qarori)
+- Saytdagi koʻrinadigan matnda "Master Lab" → "Master dasturi", "Lab" → "dastur" (qoʻshimchalar bilan: dasturida, dasturiga, dasturlar). **"Kompas Lab" brend nomi va logotip oʻzgarmaydi.** Slug, URL, fayl nomi, JS kalitlari (`master-lab`, `LABS`) oʻzgarmaydi. Lab sahifasidagi "Dastur" tabi endi **"Modullar"**. Almashtirish skripti asosidagi qoidalar: yangi matnda "X Lab" yozilmaydi. Bazada `courses.title` va bot matnlari (`supabase/functions/tg-bot`) hali eski nomda; `oferta.html`, `maxfiylik.html`, admin panel ataylab oʻzgartirilmagan (yuridik matn va ichki atama).
+- Lab sahifasi Moslik testi natijasida "Keyingi qadam" tavsiyasi (`#sNx`, `render.QUIZ_JS`; Master'da yoʻq). M0 hub sahifasida "Butun dastur oxirida sizda" bloki (`build.program_outcome`, `labs_data` paketidan).
+
 ## Sayt tuzilmasi (2026-10-18): Bosh sahifa → Lab → Modul → Dars
 Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 - **Sayt:** `index.html` (kompas testi, jonli hisob, globus, Lablar katalogi), `qanday-ishlaydi.html`, `narxlar.html`, `savollar.html`. Bular 2026-10-18 da `tools/site/split_index.py` bilan bir marta ajratilgan, endi **qoʻlda** yuritiladi; umumiy CSS `css/home.css`.

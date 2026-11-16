@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M4 Moliyaviy yordam arizasi · USA Lab · Kompas Lab</title>
-<meta name="description" content="USA Lab M4: CSS Profile va universitet formalari, Oʻzbekistondan oila daromadini hujjatlash, valyuta va tarjima, toʻlovdan ozod qilish, yordam xatini oʻqish va qayta koʻrib chiqishni soʻrash. Natija: moliyaviy yordam arizasi paketi.">
+<title>M4 Moliyaviy yordam arizasi · USA dasturi · Kompas Lab</title>
+<meta name="description" content="USA dasturi M4: CSS Profile va universitet formalari, Oʻzbekistondan oila daromadini hujjatlash, valyuta va tarjima, toʻlovdan ozod qilish, yordam xatini oʻqish va qayta koʻrib chiqishni soʻrash. Natija: moliyaviy yordam arizasi paketi.">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="usa-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· USA Lab M4</small></a>
+    <a class="logo" href="usa-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· USA dasturi M4</small></a>
     <div class="xp" aria-live="polite">
       <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
       <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
@@ -68,7 +68,7 @@
   <div class="hero">
     <div class="hero-g">
       <div>
-        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA Lab</a> · Modul 4</div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA dasturi</a> · Modul 4</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza II · Bakalavr yordami</span>
         <h1>Moliyaviy yordam arizasi</h1>
         <p class="lead">Ehtiyojga asoslangan yordam oila haqidagi raqamlarga qarab hisoblanadi. Bu modulda qaysi universitet qaysi formani soʻrashini aniqlaysiz, Oʻzbekistondagi daromadni AQSh universiteti tushunadigan hujjatlarga aylantirasiz va kelgan yordam xatini toʻgʻri oʻqiysiz.</p>
@@ -173,7 +173,7 @@
 <p>CSS Profile sahifasida aytilishicha, yillik daromadi 100 000 dollargacha boʻlgan oilalar uchun forma toʻlovdan ozod qilish orqali bepul. Lekin xalqaro talabaga bu qoida qoʻllanishi universitetga qarab farq qiladi: masalan, Northwestern xalqaro talabalar CSS Profile toʻlovidan ozod boʻla olmasligini yozadi.</p>
 <h4>Nima qilish kerak</h4>
 <ol><li>Har universitet sahifasida <span lang="en">fee waiver</span> bandini qidiring.</li><li>Yozilmagan boʻlsa, moliyaviy yordam boʻlimiga yozma soʻrang.</li><li>Toʻlovlarni byudjet jadvaliga qoʻshing (M2).</li></ol>
-<div class="box info">Qabul arizasi toʻlovi (Common App yigʻimi va undan ozod qilish) Bachelor Lab M13 da. Bu dars faqat moliyaviy yordam formasi toʻlovi haqida.</div>
+<div class="box info">Qabul arizasi toʻlovi (Common App yigʻimi va undan ozod qilish) Bachelor dasturi M13 da. Bu dars faqat moliyaviy yordam formasi toʻlovi haqida.</div>
 <div class="srcs">Manba: <a href="https://cssprofile.collegeboard.org" target="_blank" rel="noopener">CSS Profile (College Board)</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>. 31.10.2026 holatiga.</div>
           </div>
           <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>CSS Profile toʻlovidan ozod qilish xalqaro talabaga hamma joyda qoʻllanmaydi. Har universitetdan aniqlang va toʻlovlarni byudjetga qoʻshing.</p></div></div>
@@ -313,7 +313,7 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="usa-lab.html">← USA Lab</a>
+    <a class="btn btn-g" href="usa-lab.html">← USA dasturi</a>
     <a class="btn btn-p" href="usa-lab-o.html?m=5">Keyingi: M5 Global UGRAD va almashinuv dasturlari →</a>
   </div>
 </footer>
@@ -472,7 +472,7 @@
   function renderArt() {
     var p = $("artPaper"); if (!p) return;
     var secs = artText(), filled = 0;
-    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">USA Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">USA dasturi · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
     secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
     p.innerHTML = h;
     $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";

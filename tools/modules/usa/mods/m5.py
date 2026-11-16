@@ -2,13 +2,13 @@ from common import EMB_UGRAD, UGRAD_WL, EMB_EXCH, HARVARD_212E, HOL, STD
 
 MOD = dict(
     title="Global UGRAD va almashinuv dasturlari",
-    desc="USA Lab M5: Global UGRAD nima va nima emas, O'zbekiston uchun muvofiqlik shartlari, sikl holatini kuzatish, ariza va tanlov, elchixona ro'yxatidagi boshqa almashinuv dasturlari va J-1 majburiyati. Natija: almashinuv dasturi kartasi.",
+    desc="USA dasturi M5: Global UGRAD nima va nima emas, O'zbekiston uchun muvofiqlik shartlari, sikl holatini kuzatish, ariza va tanlov, elchixona ro'yxatidagi boshqa almashinuv dasturlari va J-1 majburiyati. Natija: almashinuv dasturi kartasi.",
     lead="Global UGRAD O'zbekistonda o'qiyotgan bakalavr talabasini AQSh universitetiga bir semestrga olib boradi. Bu daraja emas, lekin AQSh ta'limini ichidan ko'rish imkoniyati. Bu modulda dasturni, muvofiqlikni va sikl e'lon qilinganini qanday kuzatishni o'rganasiz.",
     hero="usa", weeks="1–2", next="M6 Fulbright magistraturasi", next_href="usa-lab-o.html?m=6",
     goals=[("usa", "Almashinuv dasturi kartasi", "muvofiqlik, hujjatlar, sikl holati"),
            ("bell", "Sikl kuzatuv rejasi", "rasmiy kanal, oy, eslatma"),
            ("compass", "B reja", "UGRAD bo'lmasa yoki rad javobi kelsa")],
-    warn=f"{HOL}: AQSh elchixonasi sahifasidagi oxirgi Global UGRAD e'loni 2024–2025 sikli uchun (muddat 15.12.2024). Keyingi sikllar uchun O'zbekistonda e'lon topilmadi. Sikl rasman e'lon qilinmaguncha dasturga tayyorlanish xavfini hisobga oling. Insholarni yozish Bachelor Lab M9–M10 da o'rgatiladi; bu yerda takrorlanmaydi.",
+    warn=f"{HOL}: AQSh elchixonasi sahifasidagi oxirgi Global UGRAD e'loni 2024–2025 sikli uchun (muddat 15.12.2024). Keyingi sikllar uchun O'zbekistonda e'lon topilmadi. Sikl rasman e'lon qilinmaguncha dasturga tayyorlanish xavfini hisobga oling. Insholarni yozish Bachelor dasturi M9–M10 da o'rgatiladi; bu yerda takrorlanmaydi.",
     lessons=[
         dict(t="Global UGRAD nima", short="UGRAD", min=25, kind="🧭 Xarita", ic="usa",
              hook="\"AQShga grant bilan bakalavr\" degan e'lonlar ko'pincha Global UGRAD ni anglatadi. Lekin u daraja bermaydi va universitetni siz tanlamaysiz. Buni bilmasdan ariza bersangiz, kutganingiz boshqa bo'ladi.",
@@ -33,7 +33,7 @@ MOD = dict(
 <tr><td>O'zbekiston fuqarosi, hozir O'zbekistonda yashaydi va o'qiydi</td><td>Pasport, o'qish joyi</td></tr>
 <tr><td>Akkreditatsiyalangan O'zbekiston universitetida (davlat yoki xususiy) kunduzgi bakalavriatda, yaxshi akademik holatda</td><td>Ma'lumotnoma</td></tr>
 <tr><td>Dasturdan keyin kamida bir o'quv yili o'qish qoladi; UGRAD bakalavriatning oxirgi semestri bo'la olmaydi</td><td>Kurs va o'quv rejasi</td></tr>
-<tr><td>Yetakchilik salohiyati: o'qish, jamoat ishi, darsdan tashqari faoliyat</td><td>Dalillar (STAR usuli Bachelor Lab M7 da)</td></tr>
+<tr><td>Yetakchilik salohiyati: o'qish, jamoat ishi, darsdan tashqari faoliyat</td><td>Dalillar (STAR usuli Bachelor dasturi M7 da)</td></tr>
 <tr><td>Ingliz tilini bilish; finalistlar TOEFL iBT topshiradi (dastur to'laydi)</td><td>Til darajasi</td></tr>
 <tr><td>Dasturdan keyin to'g'ridan-to'g'ri O'zbekistonga qaytish</td><td>Majburiyat</td></tr>
 </tbody></table></div>
@@ -65,10 +65,10 @@ MOD = dict(
 <ul><li>Ariza World Learning portali orqali onlayn, faqat ingliz tilida.</li><li>Muddatdan keyin ariza tahrirlanmaydi; erta topshirish tavsiya qilinadi.</li><li>Finalistlar va zaxiradagilar TOEFL iBT topshiradi; xarajatni dastur qoplaydi.</li></ul>
 <h4>E'lon chiqquncha tayyorlanadigan dalillar</h4>
 <div class="tbl"><table><thead><tr><th>Dalil</th><th>Qayerda o'rganiladi</th></tr></thead><tbody>
-<tr><td>Yetakchilik va jamoat ishi holatlari (STAR)</td><td>Bachelor Lab M7</td></tr>
-<tr><td>Insho yozish va tahrir</td><td>Bachelor Lab M9–M10</td></tr>
-<tr><td>Tavsiya so'rash</td><td>Bachelor Lab M8</td></tr>
-<tr><td>Ingliz tili darajasi</td><td>Mustaqil; test strategiyasi Bachelor Lab M5</td></tr>
+<tr><td>Yetakchilik va jamoat ishi holatlari (STAR)</td><td>Bachelor dasturi M7</td></tr>
+<tr><td>Insho yozish va tahrir</td><td>Bachelor dasturi M9–M10</td></tr>
+<tr><td>Tavsiya so'rash</td><td>Bachelor dasturi M8</td></tr>
+<tr><td>Ingliz tili darajasi</td><td>Mustaqil; test strategiyasi Bachelor dasturi M5</td></tr>
 <tr><td>O'qish natijalari va ma'lumotnoma</td><td>O'z universitetingiz</td></tr>
 </tbody></table></div>
 <h4>UGRAD ga xos ikki savol</h4>

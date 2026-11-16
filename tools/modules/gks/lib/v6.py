@@ -2,7 +2,7 @@ from common import U27, G26, STD
 
 MOD = dict(
     title="O'quv rejasi",
-    desc="GKS Lab M6: GKS o'quv rejasi (Study Plan), Hozirgi holat → Bo'shliq → Strategiya → Vaqt, til yili va daraja yillari rejasi, tadqiqot savoli va bitiruvdan keyingi yo'l. Natija: yakuniy o'quv rejasi.",
+    desc="GKS dasturi M6: GKS o'quv rejasi (Study Plan), Hozirgi holat → Bo'shliq → Strategiya → Vaqt, til yili va daraja yillari rejasi, tadqiqot savoli va bitiruvdan keyingi yo'l. Natija: yakuniy o'quv rejasi.",
     lead="O'quv rejasi komissiyaga Koreyada vaqtingizni qanday ishlatishingizni ko'rsatadi: til yili, daraja yillari va undan keyin. Magistratura va doktoranturada u eng og'ir hujjat. Bu modulda uni vaqt jadvali bilan quring.",
     hero="calendar", weeks="3", next="Paketni yig'ish va topshirish",
     goals=[("calendar", "Yakuniy o'quv rejasi", "forma bandlari bo'yicha, vaqt jadvali bilan"),

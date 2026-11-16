@@ -176,7 +176,7 @@
     withUtm(loadVisits); setInterval(loadVisits, 300000);
 
     // Voronka (2026-11-12): narx sahifasi koʻrildi (narxlar.html yoki <lab>-narxlar.html).
-    // kompas_track_event odam + Lab + kun boʻyicha bir marta yozadi; xato boʻlsa jim.
+    // kompas_track_event odam + dastur + kun boʻyicha bir marta yozadi; xato boʻlsa jim.
     var pm = location.pathname.match(/^\/(?:([a-z-]+?)-)?narxlar(?:\.html)?$/);
     if (pm && typeof sb.rpc === "function") {
       try {

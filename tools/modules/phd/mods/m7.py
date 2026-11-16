@@ -4,7 +4,7 @@ INP = "min-height:46px;padding:10px 12px;border:2px solid var(--border);border-r
 
 MOD = dict(
     title="Ariza, intervyu va qaror",
-    desc="PhD Lab M7: arizani topshirishdan oldingi tekshiruv, tavsiya va portalni kuzatish, ilmiy intervyu, taqdimot va qiyin savollar, taklif, kutish ro'yxati va rad javobi, yakuniy qaror. Natija: topshirilgan arizalar ro'yxati, intervyu savollari to'plami va qaror jadvali.",
+    desc="PhD dasturi M7: arizani topshirishdan oldingi tekshiruv, tavsiya va portalni kuzatish, ilmiy intervyu, taqdimot va qiyin savollar, taklif, kutish ro'yxati va rad javobi, yakuniy qaror. Natija: topshirilgan arizalar ro'yxati, intervyu savollari to'plami va qaror jadvali.",
     lead="Puxta tayyorlangan hujjatlar ham <b>noto'g'ri fayl</b> yoki kelmay qolgan tavsiya sabab yo'qolishi mumkin. Bu modulda arizani tekshirib topshirasiz, ilmiy intervyuga tayyorlanasiz va takliflarni yozma shartlari bo'yicha solishtirasiz.",
     hero="calendar", weeks="2–4", next="M8 Qabuldan keyingi tayyorgarlik va birinchi 90 kun", next_href="phd-lab-o.html?m=8",
     goals=[("shield", "Arizalar ro'yxati", "portal tasdig'i, raqam va holat bilan"),

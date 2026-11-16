@@ -2,13 +2,13 @@ from common import EMB_FUL, EMB_FUL_EXP, FUL_IIE, HARVARD_212E, DOS_WAIVER, EMB_
 
 MOD = dict(
     title="Fulbright magistraturasi",
-    desc="USA Lab M6: O'zbekiston uchun Fulbright Foreign Student Program — shartlar, ustuvor sohalar, tanlov bosqichlari, ariza tarkibi va halollik qoidalari, sikl kalendari, J-1 va 2 yillik vatanda yashash talabi. Natija: Fulbright muvofiqlik va reja kartasi.",
+    desc="USA dasturi M6: O'zbekiston uchun Fulbright Foreign Student Program — shartlar, ustuvor sohalar, tanlov bosqichlari, ariza tarkibi va halollik qoidalari, sikl kalendari, J-1 va 2 yillik vatanda yashash talabi. Natija: Fulbright muvofiqlik va reja kartasi.",
     lead="Fulbright O'zbekistondan AQShda magistratura uchun asosiy davlat stipendiyasi. Bu modulda dastur O'zbekiston uchun aynan nimani talab qilishini, tanlov qanday o'tishini va J-1 majburiyati kelajak rejangizga qanday ta'sir qilishini o'rganasiz.",
     hero="master", weeks="2", next="M7 Magistratura va PhD moliyasi", next_href="usa-lab-o.html?m=7",
     goals=[("shield", "Fulbright muvofiqlik xulosasi", "har shart: mos / tekshirish kerak / mos emas"),
            ("calendar", "Sikl kalendari", "e'lon, muddat, intervyu, testlar, safar"),
            ("compass", "J-1 qarori", "2 yillik talab va kelajak rejasi mosligi")],
-    warn=f"Maqsad bayonnomasi, CV va tavsiya xatini yozish Master Lab M3–M5 da o'rgatiladi; bu modul ularni takrorlamaydi. Bu yerda faqat Fulbright ga xos talablar. Elchixona sahifasidagi ma'lumot {HOL}; yangi sikl e'lonida o'zgarishi mumkin.",
+    warn=f"Maqsad bayonnomasi, CV va tavsiya xatini yozish Master dasturi M3–M5 da o'rgatiladi; bu modul ularni takrorlamaydi. Bu yerda faqat Fulbright ga xos talablar. Elchixona sahifasidagi ma'lumot {HOL}; yangi sikl e'lonida o'zgarishi mumkin.",
     lessons=[
         dict(t="Dastur va O'zbekiston uchun shartlar", short="Shartlar", min=30, kind="✅ Tekshiruv", ic="shield",
              hook="Fulbright ko'pchilik o'ylagandek \"eng a'lochilar uchun PhD granti\" emas. O'zbekistonda bu ish tajribasi bor mutaxassislar uchun magistratura dasturi va uning shartlari aniq yozilgan.",
@@ -41,7 +41,7 @@ MOD = dict(
 <ol><li>Muddatdan keyin arizalarning texnik tekshiruvi.</li><li>Mustaqil o'quvchilar paneli arizalarni standart mezonlar bilan baholaydi.</li><li>Eng yuqori ball olganlar AQSh elchixonasida intervyuga chaqiriladi.</li><li>Intervyudan o'tganlar orasidan nomzodlar ko'rsatiladi.</li><li>Nomzodlar TOEFL va GRE yoki GMAT ga ro'yxatdan o'tadi; test xarajati elchixona vaucherlari bilan qoplanadi.</li><li>Yakuniy tanlov J. William Fulbright stipendiya kengashining tasdig'i, mablag' va muvaffaqiyatli akademik joylashtirishga bog'liq.</li></ol>
 <h4>Joylashtirish</h4>
 <p>Elchixona sahifasiga ko'ra, nomzodlar joylashtirish jarayonida qatnashmaydi va faqat yakuniy natija haqida xabar oladi. IIE ning umumiy tavsifida joylashtirishning ikki turi bor: IIE jamoasi nomzod uchun universitetlarga ariza beradigan tur va nomzod o'zi ariza beradigan tur. O'zbekiston uchun qaysi biri qo'llanishini elchixona e'lonidan oling.</p>
-<div class="box info">Intervyu tayyorgarligining umumiy usullari (STAR, o'zini tanishtirish, yozib olish) Master Lab M8 da. Bu yerda Fulbright ga xos savol: siz qaytgandan keyin O'zbekistonga nima olib kelasiz?</div>
+<div class="box info">Intervyu tayyorgarligining umumiy usullari (STAR, o'zini tanishtirish, yozib olish) Master dasturi M8 da. Bu yerda Fulbright ga xos savol: siz qaytgandan keyin O'zbekistonga nima olib kelasiz?</div>
 <div class="srcs">Manba: {EMB_FUL}; {FUL_IIE}. {HOL}.</div>""",
              take="Bosqichlar: texnik tekshiruv, o'quvchilar paneli, elchixonada intervyu, nomzodlik, testlar, kengash tasdig'i va joylashtirish. Joylashtirishda nomzod ishtirok etmaydi.",
              task="<ul><li>Olti bosqichning har biri uchun siz nima tayyorlashingiz kerakligini bir jumlada yozing.</li></ul>",
@@ -51,14 +51,14 @@ MOD = dict(
              body=f"""<h4>Ariza tarkibi (e'londan)</h4>
 <div class="tbl"><table><thead><tr><th>Qism</th><th>Izoh</th><th>Qayerda o'rganiladi</th></tr></thead><tbody>
 <tr><td>Onlayn ariza (IIE portali)</td><td>Muddatgacha; kech yoki to'liq bo'lmagan ariza ko'rilmaydi</td><td>Shu modul</td></tr>
-<tr><td>Insholar</td><td>Original bo'lishi kerak; elchixonaning plagiat va insho ko'rsatmalari hujjatini o'qing</td><td>Yozish: Master Lab M5</td></tr>
-<tr><td>Rezyume</td><td>Elchixona maslahatlari sahifasi bor</td><td>Master Lab M3</td></tr>
-<tr><td>Tavsiya xati</td><td>Elchixonaning bo'sh formasi bilan</td><td>Master Lab M4</td></tr>
+<tr><td>Insholar</td><td>Original bo'lishi kerak; elchixonaning plagiat va insho ko'rsatmalari hujjatini o'qing</td><td>Yozish: Master dasturi M5</td></tr>
+<tr><td>Rezyume</td><td>Elchixona maslahatlari sahifasi bor</td><td>Master dasturi M3</td></tr>
+<tr><td>Tavsiya xati</td><td>Elchixonaning bo'sh formasi bilan</td><td>Master dasturi M4</td></tr>
 <tr><td>TOEFL va GRE yoki GMAT</td><td>Nomzod sifatida ko'rsatilganlar topshiradi, vaucher bilan</td><td>Mustaqil tayyorgarlik; kursga kirmaydi</td></tr>
 </tbody></table></div>
 <h4>Fulbright ga xos tekshiruv</h4>
 <ul><li>Insho soni, hajmi va savollari: faqat joriy sikl ko'rsatmasidan.</li><li>Rezyume formati: elchixona maslahatlari bo'yicha.</li><li>Tavsiya xati: faqat elchixona formasi bilan.</li></ul>
-<div class="box warn">AI dan matn yozdirish va boshqa birovning inshosini moslash Fulbright da arizani yopadi. Kompas Lab ham tayyor matn bermaydi: insholarni o'zingiz yozasiz, freymvork Master Lab da.</div>
+<div class="box warn">AI dan matn yozdirish va boshqa birovning inshosini moslash Fulbright da arizani yopadi. Kompas Lab ham tayyor matn bermaydi: insholarni o'zingiz yozasiz, freymvork Master dasturi da.</div>
 <div class="srcs">Manba: {EMB_FUL}. {HOL}.</div>""",
              take="Ariza: onlayn shakl, original insholar, rezyume, elchixona formasidagi tavsiya, nomzodlar uchun testlar. Plagiat yoki AI matni arizani yopadi.",
              task="<ul><li>Joriy sikl sahifasidagi insho ko'rsatmalari hujjatini toping va savollar sonini yozing.</li><li>Har qism uchun tayyorlik holatingizni belgilang.</li></ul>",

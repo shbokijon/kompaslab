@@ -1,5 +1,5 @@
 /* Kompas Lab — obuna toʻlovi sahifasi (tolov.html), 2026-11-06.
- * Oqim: Lab + tarif → rozilik → fn_create_pending_payment (baza "T<raqam>", summa va fazani beradi)
+ * Oqim: Dastur + tarif → rozilik → fn_create_pending_payment (baza "T<raqam>", summa va fazani beradi)
  * → my.click.uz → Click Prepare/Complete → click-shop → payments → trigger enrollments ni ochadi
  * → dashboard.html?tolov=T<raqam> holatni serverdan tekshiradi.
  * Summa mijozdan olinmaydi: Click'ga faqat server qaytargan summa yuboriladi, Complete da yana solishtiriladi.
@@ -8,11 +8,11 @@
   "use strict";
 
   var LABS = {
-    "bachelor-lab": { name: "Bachelor Lab", page: "bachelor-lab-narxlar.html", phase: "4 modul" },
-    "master-lab": { name: "Master Lab", page: "master-lab-narxlar.html", phase: "2 modul" },
-    "usa-lab": { name: "USA Lab", page: "usa-lab-narxlar.html", phase: "2 modul" },
-    "gks-lab": { name: "GKS Lab", page: "gks-lab-narxlar.html", phase: "I fazada M1–M2, keyin bittadan" },
-    "phd-lab": { name: "PhD Lab", page: "phd-lab-narxlar.html", phase: "2 modul" }
+    "bachelor-lab": { name: "Bachelor dasturi", page: "bachelor-lab-narxlar.html", phase: "4 modul" },
+    "master-lab": { name: "Master dasturi", page: "master-lab-narxlar.html", phase: "2 modul" },
+    "usa-lab": { name: "USA dasturi", page: "usa-lab-narxlar.html", phase: "2 modul" },
+    "gks-lab": { name: "GKS dasturi", page: "gks-lab-narxlar.html", phase: "I fazada M1–M2, keyin bittadan" },
+    "phd-lab": { name: "PhD dasturi", page: "phd-lab-narxlar.html", phase: "2 modul" }
   };
   var TRACKS = { u: "U · Bakalavriat (GKS-U)", m: "M · Magistratura (GKS-G)", d: "D · Doktorantura (GKS-G)" };
   var PLANS = {
@@ -34,11 +34,11 @@
   var ERR = {
     AUTH_REQUIRED: "Avval hisobingizga kiring.",
     ACCOUNT_SUSPENDED: "Hisobingiz vaqtincha toʻxtatilgan. Bizga yozing: kompaslab.uz@gmail.com",
-    COURSE_NOT_FOR_SALE: "Bu Lab hozircha sotuvda emas.",
+    COURSE_NOT_FOR_SALE: "Bu dastur hozircha sotuvda emas.",
     PLAN_NOT_AVAILABLE: "Bu tarif hozircha mavjud emas. Boshqa tarifni tanlang.",
-    MONTHLY_NOT_AVAILABLE: "Bu Labda 1 bosqich tarifi yoʻq.",
+    MONTHLY_NOT_AVAILABLE: "Bu dasturda 1 bosqich tarifi yoʻq.",
     INSTALLMENT_ACTIVE: "Sizda boʻlib toʻlash davom etmoqda. Yangi obuna uchun bizga yozing.",
-    ALREADY_ENROLLED: "Bu Lab sizga muddatsiz ochiq. Toʻlash shart emas.",
+    ALREADY_ENROLLED: "Bu dastur sizga muddatsiz ochiq. Toʻlash shart emas.",
     HAS_FULL_PLAN: "Sizda Toʻliq dastur obunasi bor, unda hamma modullar ochiq. 1 bosqich uchun toʻlash shart emas.",
     ALL_PHASES_PAID: "Barcha bosqichlar toʻlangan. Muddatni uzaytirish uchun Toʻliq dastur tarifini tanlang.",
     TRACK_REQUIRED: "Keyingi faza trekka bogʻliq. Trekni tanlang."
@@ -106,7 +106,7 @@
       var mods = (row.phase_modules || []).map(function (n) { return "M" + n; }).join(", ");
       var lines = [
         ["Buyurtma", row.order_ref],
-        ["Lab", row.course_title],
+        ["Dastur", row.course_title],
         ["Tarif", PLANS[row.plan] ? PLANS[row.plan].name : row.plan],
         row.phase ? ["Ochiladi", row.phase + "-faza" + (mods ? ": " + mods : "") + (row.track ? " (trek " + row.track.toUpperCase() + ")" : "")] : ["Ochiladi", "hamma modullar"],
         ["Summa", fmt(row.amount) + " soʻm"]
@@ -118,7 +118,7 @@
     }, function () { go.disabled = false; say("Internet aloqasini tekshirib, qayta urinib koʻring."); });
   }
 
-  // Voronka (2026-11-12): toʻlov sahifasi ochildi. kompas_track_event odam + Lab + kun boʻyicha bir marta yozadi.
+  // Voronka (2026-11-12): toʻlov sahifasi ochildi. kompas_track_event odam + dastur + kun boʻyicha bir marta yozadi.
   function track() {
     var vid = null;
     try { vid = localStorage.getItem("kompas_vid"); } catch (e) {}

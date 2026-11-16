@@ -1,4 +1,4 @@
-# PhD Lab sotuvda (2026-11-11): sahifalardagi "Kutish roʻyxati" matnlarini sotuv holatiga keltiradi.
+# PhD dasturi sotuvda (2026-11-11): sahifalardagi "Kutish roʻyxati" matnlarini sotuv holatiga keltiradi.
 # split.py dan keyin ishlaydi (build.py chaqiradi); qayta ishga tushirish xavfsiz.
 #   python3 tools/landing/phd_sale.py
 import re

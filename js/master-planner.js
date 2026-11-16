@@ -1,6 +1,6 @@
 /* Kompas Lab — Bepul reja (?lab=master|bachelor|phd|gks|usa|daad).
    Hamma maʼlumot faqat shu brauzerda (localStorage). Serverga hech narsa yuborilmaydi.
-   Lab sozlamalari sahifadagi #pl-cfg da (tools/site/planner.py yigʻadi). */
+   Dastur sozlamalari sahifadagi #pl-cfg da (tools/site/planner.py yigʻadi). */
 (function () {
   "use strict";
   var LABS = JSON.parse(document.getElementById("pl-cfg").textContent);
@@ -88,7 +88,7 @@
       nx.appendChild(document.createTextNode(next.id + ", " + next.t + ". "));
       var a = el("a", next.id === "M0" ? "Bepul M0 ni ochish" : "Modul sahifasi"); a.href = next.h;
       nx.appendChild(a);
-      // Sotuvdagi Lab: M0 dan keyingi qadam obuna bilan ochiladi (2026-11-12)
+      // Sotuvdagi dastur: M0 dan keyingi qadam obuna bilan ochiladi (2026-11-12)
       if (LAB.sale && next.id !== "M0") {
         nx.appendChild(document.createTextNode(" · "));
         var pr = el("a", "Narx va obuna"); pr.href = LAB.slug + "-narxlar.html";
@@ -174,7 +174,7 @@
         var ok = j && j.data && typeof j.data === "object" && (j.format === FORMAT || j.format === "kompas-master-planner-v1");
         if (!ok) throw new Error("format");
         var from = j.format === FORMAT ? j.lab : "master";
-        if (from !== labKey) { say("dataStatus", "Bu fayl " + ((LABS[from] && LABS[from].name) || from) + " rejasi. Oʻsha Labni tanlab, qayta yuklang."); return; }
+        if (from !== labKey) { say("dataStatus", "Bu fayl " + ((LABS[from] && LABS[from].name) || from) + " rejasi. Oʻsha dasturni tanlab, qayta yuklang."); return; }
         if (!confirm("Shu qurilmadagi " + LAB.name + " rejasi fayldagi nusxa bilan almashtirilsinmi?")) return;
         state = clean(j.data); save(); fields(); tasks(); programmes();
         say("dataStatus", "Reja fayldan yuklandi.");

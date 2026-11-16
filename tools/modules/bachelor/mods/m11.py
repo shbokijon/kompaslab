@@ -2,7 +2,7 @@ from common import SIK, MEXT, CAMPUSCHINA, SIC, SH, SH_UZ, TB, DSU, FTC, HOL, ST
 
 MOD = dict(
     title="Davlat stipendiyalari",
-    desc="Bachelor Lab M11: stipendiyalar manzarasi, GKS va MEXT bakalavriat yo'nalishlari, Xitoy hukumati stipendiyasi (CSC), Stipendium Hungaricum va Italiya DSU, Türkiye Bursları va boshqa dasturlarni tekshirish. Natija: 5–8 dasturli stipendiya ro'yxati.",
+    desc="Bachelor dasturi M11: stipendiyalar manzarasi, GKS va MEXT bakalavriat yo'nalishlari, Xitoy hukumati stipendiyasi (CSC), Stipendium Hungaricum va Italiya DSU, Türkiye Bursları va boshqa dasturlarni tekshirish. Natija: 5–8 dasturli stipendiya ro'yxati.",
     lead="Davlat stipendiyalari xorijda bakalavr o'qishning eng to'liq moliyalashtirish yo'llaridan biri. Har birining o'z muvofiqlik shartlari, ariza kanali va majburiyatlari bor. Bu modulda ularni bitta mezon bilan baholaysiz va o'zingizga mos 5–8 dasturni tanlaysiz.",
     hero="money", weeks="2", next="M12 Universitet grantlari va moliyaviy reja", next_href="bachelor-lab-m12.html",
     goals=[("money", "Stipendiya ro'yxati", "5–8 dastur, rasmiy havola bilan"),
@@ -36,12 +36,12 @@ MOD = dict(
 <ul><li>Odatda qoplaydi: aviabilet, o'qish to'lovi, oylik nafaqa, joylashish puli, tibbiy sug'urta va bir yillik koreys tili kursi.</li>
 <li>Ikki asosiy trek: <b>elchixona treki</b> (Koreya elchixonasi orqali, mamlakat kvotasi bilan) va <b>universitet treki</b> (to'g'ridan-to'g'ri Koreya universitetiga). Bir siklda odatda bitta trek tanlanadi.</li>
 <li>Muvofiqlik: Koreya fuqarosi bo'lmaslik, yosh chegarasi, baho talabi (masalan 100 ballik shkalada 80 yoki sinfda yuqori 20 foiz). Aniq qiymatlar joriy yo'riqnomada.</li>
-<li>Batafsil tayyorgarlik: <a href="gks-lab.html">GKS Lab</a>.</li></ul>
+<li>Batafsil tayyorgarlik: <a href="gks-lab.html">GKS dasturi</a>.</li></ul>
 <h4>MEXT bakalavriat, Yaponiya</h4>
 <ul><li>Yaponiya Ta'lim vazirligi (MEXT) stipendiyasi: odatda o'qish to'lovi, oylik nafaqa, aviabilet va bir yillik tayyorlov (yapon tili va asosiy fanlar).</li>
 <li>Bakalavr uchun asosiy kanal: <b>elchixona tavsiyasi</b> (Yaponiya elchixonasi orqali yozma imtihon va intervyu). Ba'zi universitetlar o'z tavsiyasi bilan ham nomzod ko'rsatadi.</li>
 <li>Yozma imtihon (matematika, fan, til) jiddiy tayyorgarlik talab qiladi.</li>
-<li>MEXT Lab tayyorlanmoqda; hozircha rasmiy manbalar.</li></ul>
+<li>MEXT dasturi tayyorlanmoqda; hozircha rasmiy manbalar.</li></ul>
 <div class="box info">Trek tanlovi: elchixona trekida raqobat mamlakat ichida, universitet trekida universitetga qarab. O'z profilingizga qarab tanlang va yo'riqnomadagi qoidani o'qing.</div>
 <div class="srcs">Manba: {SIK}; {MEXT}. {HOL}.</div>""",
              take="GKS-U va MEXT to'liq stipendiya va til yilini beradi. GKS'da elchixona yoki universitet treki, MEXT'da asosan elchixona tavsiyasi va yozma imtihon.",

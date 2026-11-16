@@ -2,13 +2,13 @@ from common import DOS_VISA, SEVIS, SITS_SEARCH, EMB_VISA, EMB_DOCS, DS160, MIT_
 
 MOD = dict(
     title="Viza, maqom va ishlash huquqi",
-    desc="USA Lab M8: F-1 va J-1 farqi, I-20 va DS-2019, SEVIS to'lovi, Toshkentda viza arizasi bosqichlari, onlayn mavjudlik tekshiruvi, maqomni saqlash, F-1 da ishlash (kampus, CPT, OPT, STEM OPT) va siyosat o'zgarishini kuzatish. Natija: viza va maqom nazorat ro'yxati.",
+    desc="USA dasturi M8: F-1 va J-1 farqi, I-20 va DS-2019, SEVIS to'lovi, Toshkentda viza arizasi bosqichlari, onlayn mavjudlik tekshiruvi, maqomni saqlash, F-1 da ishlash (kampus, CPT, OPT, STEM OPT) va siyosat o'zgarishini kuzatish. Natija: viza va maqom nazorat ro'yxati.",
     lead="Qabul va moliya hal bo'lgach, oxirgi to'siq viza. Bu modulda AQSh vizasining Toshkentdagi tartibini, AQShga kelgandan keyin maqomni saqlash qoidalarini va o'qish davrida qayerda, qancha ishlash mumkinligini o'rganasiz.",
     hero="shield", weeks="1–2", next="", next_href="",
     goals=[("shield", "Viza va maqom nazorat ro'yxati", "hujjatlar, sanalar, majburiyatlar"),
            ("calendar", "Viza kalendari", "I-20 dan joʻnashgacha"),
            ("bell", "Siyosat kuzatuv jadvali", "rasmiy manbalar va oylik tekshiruv")],
-    warn=f"Kompas Lab viza bo'yicha yuridik maslahat bermaydi va viza natijasiga ta'sir qilmaydi: qarorni konsul qabul qiladi. Mamlakatlararo umumiy viza va jo'nash bosqichlari Bachelor Lab M16 va Master Lab M8 da; bu modul faqat AQSh tartibi. Qoidalar {HOL}; rasmiy sahifadan qayta tekshiring.",
+    warn=f"Kompas Lab viza bo'yicha yuridik maslahat bermaydi va viza natijasiga ta'sir qilmaydi: qarorni konsul qabul qiladi. Mamlakatlararo umumiy viza va jo'nash bosqichlari Bachelor dasturi M16 va Master dasturi M8 da; bu modul faqat AQSh tartibi. Qoidalar {HOL}; rasmiy sahifadan qayta tekshiring.",
     lessons=[
         dict(t="F-1 va J-1: qaysi viza, qaysi hujjat", short="F-1 / J-1", min=25, kind="🧭 Xarita", ic="usa",
              hook="Viza turi qabul qilingan dasturingizdan kelib chiqadi, siz tanlamaysiz. Lekin har birining qoidasi kelajak rejangizga boshqacha ta'sir qiladi.",
@@ -85,7 +85,7 @@ MOD = dict(
 <tr><td>Universitetingiz xalqaro bo'limi</td><td>O'zgarishning sizga ta'siri</td><td>Har yangilikda</td></tr>
 </tbody></table></div>
 <ol><li>Har o'zgarish uchun yozing: sana, manba, kimga tegishli, sizga ta'siri.</li><li>Ijtimoiy tarmoqdagi xabarni rasmiy sahifada topmaguningizcha qaror qilmang.</li></ol>
-<div class="box info">Kompas Lab USA Lab sahifasida siyosat holatini sana bilan yangilaydi. Siyosat talaba vizasini yopsa, faol obunachilarga boshqa Labga o'tish taklif qilinadi.</div>
+<div class="box info">Kompas Lab USA dasturi sahifasida siyosat holatini sana bilan yangilaydi. Siyosat talaba vizasini yopsa, faol obunachilarga boshqa dasturga o'tish taklif qilinadi.</div>
 <div class="srcs">Manba: {BROWN_TB}; {EMB_VISA}; {DOS_VISA}. {HOL}.</div>""",
              take="Siyosatni faqat rasmiy manba va sana bilan kuzating: elchixona, Davlat departamenti, universitet xalqaro bo'limi. 31.10.2026 holatiga O'zbekiston proklamatsiya ro'yxatlarida yo'q.",
              task="<ul><li>Kuzatuv jadvalingizga 3 manba va eslatma sanasini qo'shing.</li><li>Bugungi holatni sana bilan yozing.</li></ul>",

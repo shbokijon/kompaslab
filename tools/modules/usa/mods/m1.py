@@ -2,13 +2,13 @@ from common import CARNEGIE, CHEA, DAPIP, SITS_SEARCH, DOS_VISA, HERD, NAV, CDS,
 
 MOD = dict(
     title="AQSh oliy ta'limi: tizim va universitetni tekshirish",
-    desc="USA Lab M1: AQSh universitet turlari, akkreditatsiya va SEVP sertifikati, daraja tuzilmasi, soha bo'yicha kuchli joyni NSF HERD ma'lumoti bilan topish, universitetni rasmiy ma'lumot bilan tekshirish. Natija: universitet tekshiruv kartasi.",
+    desc="USA dasturi M1: AQSh universitet turlari, akkreditatsiya va SEVP sertifikati, daraja tuzilmasi, soha bo'yicha kuchli joyni NSF HERD ma'lumoti bilan topish, universitetni rasmiy ma'lumot bilan tekshirish. Natija: universitet tekshiruv kartasi.",
     lead="AQShdagi oliy ta'lim muassasalari bir xil emas. Bu modulda universitet turlarini ajratasiz, uning haqiqiy va viza beradigan muassasa ekanini tekshirasiz, sohangiz bo'yicha kuchli joylarni reyting emas, ma'lumot bilan topasiz.",
     hero="usa", weeks="1–2", next="M2 Xarajat va pul oqimi", next_href="usa-lab-o.html?m=2",
     goals=[("telescope", "Universitet tekshiruv kartasi", "tur, akkreditatsiya, SEVP, soha kuchi, asosiy raqamlar"),
            ("chart", "Soha bo'yicha 10 ta kuchli joy", "NSF HERD ma'lumotidan, reytingdan emas"),
            ("shield", "Soxta va viza bermaydigan muassasalarni ajratish", "3 bosqichli tekshiruv")],
-    warn=f"Bu modulda universitet tanlashning umumiy usullari (orzu, mo'ljal, ishonchli darajalar, reytinglar) qayta o'tilmaydi: ular Bachelor Lab M1–M2 va Master Lab M1 da. Bu yerda faqat AQShga xos tizim va tekshiruv. Raqamlar {HOL}; universitet sahifasidan qayta tekshiring.",
+    warn=f"Bu modulda universitet tanlashning umumiy usullari (orzu, mo'ljal, ishonchli darajalar, reytinglar) qayta o'tilmaydi: ular Bachelor dasturi M1–M2 va Master dasturi M1 da. Bu yerda faqat AQShga xos tizim va tekshiruv. Raqamlar {HOL}; universitet sahifasidan qayta tekshiring.",
     lessons=[
         dict(t="Universitet turlari", short="Turlar", min=25, kind="🎯 Mini-test", ic="usa",
              hook="\"AQSh universiteti\" degan so'z ikki yillik kollejni ham, yiliga yuzlab doktor tayyorlaydigan tadqiqot markazini ham anglatadi. Turini bilmasangiz, noto'g'ri joyga ariza berasiz yoki arzon yo'lni ko'rmay qolasiz.",

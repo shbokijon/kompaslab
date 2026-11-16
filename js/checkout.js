@@ -5,7 +5,7 @@
  *   "admin" — "Toʻlash" tugmasi faqat adminlarga koʻrinadi (sinov);
  *   "on"    — hamma uchun ochiq. OFERTA_URL boʻsh boʻlsa, "on" ishlamaydi va "admin" kabi qoladi:
  *             "toʻlov qaytarilmaydi" qoidasi qabul qilingan ommaviy ofertasiz amal qilmaydi.
- * Qaysi Lab sotuvda: bazadan (admin → Lablar va narxlar, courses.on_sale), kompas_public_stats().prices[slug]:
+ * Qaysi dastur sotuvda: bazadan (admin → dasturlar va narxlar, courses.on_sale), kompas_public_stats().prices[slug]:
  *   pp   — pullik modul yuklangan (aks holda hech kimga sotilmaydi);
  *   sale — hamma uchun sotuvda (on_sale va status=active). sale=false boʻlsa, faqat admin sinovi.
  * Narx, faza va trek faqat serverda (fn_create_pending_payment) hisoblanadi va shu shartlar serverda ham tekshiriladi;
@@ -46,7 +46,7 @@
     if (open()) return Promise.resolve(true);
     return CFG.isAdmin();
   };
-  // Shu Lab uchun: pullik modul bor va (admin yoki ochiq sotuv + bazada sotuvda)
+  // Shu dastur uchun: pullik modul bor va (admin yoki ochiq sotuv + bazada sotuvda)
   CFG.canBuyLab = function (slug) {
     if (CFG.MODE === "off") return Promise.resolve(false);
     return Promise.all([CFG.isAdmin(), CFG.stats()]).then(function (v) {
@@ -56,7 +56,7 @@
       return open() && p.sale === true;
     });
   };
-  // Sinov: ochiq sotuv yoʻq yoki shu Lab bazada sotuvda emas (tugmani faqat admin koʻradi)
+  // Sinov: ochiq sotuv yoʻq yoki shu dastur bazada sotuvda emas (tugmani faqat admin koʻradi)
   CFG.isTestLab = function (slug) {
     return CFG.stats().then(function (st) { return !open() || !(st[slug] && st[slug].sale === true); });
   };
@@ -91,7 +91,7 @@
         var ico = st.previousElementSibling;
         if (ico) ico.textContent = "💳";
         var sec = st.closest("section"), rf = sec && sec.querySelector(".refund");
-        if (rf) rf.innerHTML = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. " +
+        if (rf) rf.innerHTML = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. " +
           "Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi.";
       });
     });
