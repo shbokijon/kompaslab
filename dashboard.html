@@ -137,6 +137,11 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .content-grid{display:grid;grid-template-columns:1fr 340px;gap:20px;}
 
 /* ── CURRENT LESSON CARD ── */
+.os-promo{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#fff 0%,var(--accent2-light) 100%);border:1px solid var(--border);border-radius:16px;padding:14px 16px;margin-bottom:18px;text-decoration:none;color:var(--text);transition:transform .15s,box-shadow .15s}
+.os-promo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(196,98,45,.14)}
+.os-promo-ic{font-size:28px;flex:0 0 auto}
+.os-promo-tx{flex:1;min-width:0}.os-promo-tx b{display:block;font-size:17px;color:var(--accent)}.os-promo-tx small{display:block;color:var(--muted);font-size:14px}
+.os-promo-go{font-weight:700;color:var(--accent2);white-space:nowrap}
 .current-card{
   background:var(--accent);border-radius:16px;padding:24px;
   position:relative;overflow:hidden;margin-bottom:20px;
@@ -368,6 +373,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
   <nav class="sb-nav">
       <div class="sb-section-title">Asosiy</div>
       <a href="dashboard.html" class="sb-link active"><span class="sb-link-icon">🏠</span> Kabinet</a>
+      <a href="os.html" class="sb-link"><span class="sb-link-icon">🧭</span> Talaba OS</a>
       <a href="profil.html" class="sb-link"><span class="sb-link-icon">👤</span> Profil</a>
       <a href="master-planner.html" class="sb-link" style="display:none"><span class="sb-link-icon">🗂</span> Shaxsiy reja</a>
       <a href="atlas.html" class="sb-link" style="display:none"><span class="sb-link-icon">🌍</span> Kompas Atlas</a>
@@ -446,6 +452,12 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <div class="content-grid">
       <!-- CHAP USTUN -->
       <div class="left-col">
+        <!-- Talaba OS: arizalar, 4K yoʻli, hujjatlar -->
+        <a href="os.html" class="os-promo" id="osPromo">
+          <span class="os-promo-ic">🧭</span>
+          <span class="os-promo-tx"><b>Talaba OS</b><small id="osPromoSub">Arizalaringiz, muddatlar, ariza paketingiz va hujjatlaringiz bir joyda.</small></span>
+          <span class="os-promo-go">Ochish →</span>
+        </a>
         <!-- Davom etish kartasi: obunachi kursi yoki oxirgi boshlangan M0 -->
         <div class="current-card" id="currentCard" hidden>
           <div class="cc-badge">▶ Davom etish</div>
@@ -571,6 +583,7 @@ async function init() {
   document.getElementById('greetingDate').textContent = DAYS[d.getDay()] + ', ' + fmtDate(d)
   renderLocalStats()
   renderDeadlines()
+  renderOsPromo()
   initBackup()
   try {
     const auth = await requireAuth()
@@ -969,6 +982,15 @@ function initOnboarding() {
 //  6. STATISTIKA (shu qurilmadagi javoblardan)
 // ════════════════════════════════════════════════════════
 function isoWeek(d) { const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())), n = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - n); const y = t.getUTCFullYear(), w = Math.ceil(((t - Date.UTC(y, 0, 1)) / 86400000 + 1) / 7); return y * 100 + w }
+function renderOsPromo() {
+  const o = ls('kompas_os_v1'), el = document.getElementById('osPromoSub')
+  if (!o || !el || !Array.isArray(o.apps)) return
+  const today = new Date(); today.setHours(0, 0, 0, 0)
+  const up = o.apps.filter(a => a.deadline && !['rejected', 'dropped', 'accepted', 'sent'].includes(a.status))
+    .map(a => ({ a, d: Math.round((new Date(a.deadline + 'T00:00') - today) / 86400000) })).filter(x => x.d >= 0).sort((x, y) => x.d - y.d)[0]
+  if (up) el.textContent = `${up.a.name}: ${up.d} kun qoldi. Arizalaringiz soni: ${o.apps.length}.`
+  else if (o.apps.length) el.textContent = `Arizalaringiz soni: ${o.apps.length}. Holatini yangilab turing.`
+}
 function renderLocalStats() {
   let lessons = 0
   for (let i = 0; i < localStorage.length; i++) {
