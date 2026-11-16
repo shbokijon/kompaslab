@@ -354,8 +354,9 @@ def maker(lab):
 def calc_html(y, m, slug):
     """Narx taqqoslash (2026-11-06: yillik tarif yoʻq). 6 oylik narx bazada (courses.price_6m); JS `data-p6v` ni yangilaydi."""
     s6 = PR6.get(slug, m * 5)
-    return (f'<div><b>{fmt(m * 6)} soʻm</b>6 oy faqat oylik reja bilan ({fmt(m)} × 6)</div>'
-            f'<div><b><span data-p6v="{slug}">{fmt(s6)}</span> soʻm</b>6 oy 6 oylik reja bilan: barcha modullar birdaniga ochiq</div>')
+    return (f'<div><b>{fmt(m * 6)} soʻm</b>6 marta 1 bosqichdan toʻlansa ({fmt(m)} × 6)</div>'
+            f'<div><b><span data-p6v="{slug}">{fmt(s6)}</span> soʻm</b>Toʻliq dastur: barcha bosqichlar birdaniga, 6 oy</div>'
+            f'<div><b>Qaysi birini tanlash kerak?</b>Butun dastur kerak boʻlsa, Toʻliq dastur arzonroq va hamma bosqich birdan ochiladi. Faqat bitta bosqich kerak boʻlsa, 1 bosqichni oling.</div>')
 
 # Bazadagi 6 oylik narx (2026-11-06); sahifada zaxira, jonli qiymat kompas_public_stats dan
 PR6 = {"bachelor-lab": 499000, "master-lab": 499000, "usa-lab": 499000, "gks-lab": 499000, "daad-lab": 499000,
@@ -364,22 +365,22 @@ PR6 = {"bachelor-lab": 499000, "master-lab": 499000, "usa-lab": 499000, "gks-lab
 REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi."
 
 # 6 oylik narx bazada (courses.price_6m), admin har Lab uchun kiritadi; boʻsh boʻlsa karta yashirin
-SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Har oy qayta toʻlash kerak emas"]
+SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Har bosqich uchun alohida toʻlash kerak emas"]
 
 def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
     sale = slug in ON_SALE
     v = PR6.get(slug)
     hid = "" if v else " hidden"
-    act = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=6m" data-buy="{slug}|6m" data-snd="nav">6 oylik obunani toʻlash</a>' if sale
+    act = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=6m" data-buy="{slug}|6m" data-snd="nav">Toʻliq dasturni toʻlash</a>' if sale
            else f'<button type="button" class="btn btn-p" data-wl data-buy="{slug}|6m">{btn}</button>')
     return f'''<div class="{cls}" data-p6box="{slug}"{hid}>
         <span class="tag-top">Asosiy reja</span>
-        <h3>6 oylik</h3><p class="desc">Bitta ariza sikli uchun: 6 oy</p>
+        <h3>Toʻliq dastur</h3><p class="desc">Barcha bosqichlar birdaniga, 6 oy</p>
         <div class="price" data-p6v="{slug}">{fmt(v) if v else "—"}</div><div class="per">soʻm, 6 oy uchun</div>
         <ul>{"".join(f"<li>{x}</li>" for x in SIX_ITEMS)}</ul>
         {act}
       </div>'''
-MONTHLY_EXTRA = ["Har oylik toʻlov bitta bosqichni ochadi; keyingisi navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
+MONTHLY_EXTRA = ["Har toʻlov navbatdagi bitta bosqichni 30 kunga ochadi. Bosqichni ertaroq tugatsangiz, keyingisi yangi toʻlov bilan darhol ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
 
 PAY_OPEN = "<b>Toʻlov Click orqali.</b> Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi."
 PAY_WAIT = "<b>Bu Lab uchun toʻlov hali ochilmagan.</b> Kutish roʻyxatiga yozilsangiz, ochilganda xabar beramiz."
@@ -389,7 +390,7 @@ def pricing(lab):
     slug = lab["slug"]
     y, mo = p["yearly"], p["monthly"]
     sale = slug in ON_SALE
-    month_btn = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=monthly" data-buy="{slug}|monthly" data-snd="nav">Oylik obunani toʻlash</a>' if sale
+    month_btn = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=monthly" data-buy="{slug}|monthly" data-snd="nav">1 bosqichni toʻlash</a>' if sale
                  else f'<button type="button" class="btn btn-g" data-wl data-buy="{slug}|monthly">Kutish roʻyxatiga yozilish</button>')
     plans = f'''<div class="plans">
       <div class="plan">
@@ -399,8 +400,8 @@ def pricing(lab):
         <button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>
       </div>
       <div class="plan">
-        <h3>Oylik</h3><p class="desc">Bitta bosqichga 1 oy kirish</p>
-        <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, har oy</div>
+        <h3>1 bosqich</h3><p class="desc">Navbatdagi bitta bosqich, 30 kun</p>
+        <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, 1 bosqich (30 kun)</div>
         <ul>{"".join(f"<li>{x}</li>" for x in p["m_items"] + MONTHLY_EXTRA)}</ul>
         {month_btn}
       </div>
@@ -415,7 +416,7 @@ def pricing(lab):
     return f'''<section id="narx">
   <div class="wrap">
     <div class="head">
-      <h2>Obuna: oylik yoki 6 oylik. M0 bepul.</h2>
+      <h2>Obuna: 1 bosqich yoki Toʻliq dastur. M0 bepul.</h2>
       <p class="sub">{p["sub"]}</p>
     </div>
     <div class="pay-status"><span>{ico}</span><span data-paystatus="{slug}">{status}</span></div>

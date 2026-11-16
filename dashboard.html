@@ -642,7 +642,7 @@ async function renderSubscriptions() {
     const nx = a && a.installment && a.installment.next_due
     if (nx) lines += `<div class="sub-row"><span>Keyingi toʻlov</span><b>${Number(nx.amount).toLocaleString('ru-RU')} soʻm · ${esc(fmtDate(new Date(nx.due_date)))}</b></div>`
     return `<div class="sub-item"><div class="sub-name">${esc(c.title || c.slug)}</div>${lines}</div>`
-  }).join('') + '<p class="side-muted" style="margin:10px 0 0">Oylik obunada har toʻlov bitta fazani ochadi.</p>'
+  }).join('') + '<p class="side-muted" style="margin:10px 0 0">1 bosqich tarifida har toʻlov bitta bosqichni ochadi.</p>'
   const first = rows[0]
   document.getElementById('sidebarPlan').textContent = first.a && first.a.access ? 'Obuna faol' : 'Obuna faol emas'
 }

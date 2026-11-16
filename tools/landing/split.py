@@ -334,7 +334,7 @@ def split(root, f, src):
     nxt = [(stem + "-dastur.html", "Dastur", "Bosqichlar, modullar va har darsning mavzusi")]
     if have_test:
         nxt.append((stem + "-test.html", "Tayyormisiz?", "Bir necha savol: tayyorgarligingizni taxminiy baholaysiz, qabul ehtimoli emas"))
-    nxt += [(stem + "-narxlar.html", "Narxlar", "Oylik va 6 oylik obuna"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
+    nxt += [(stem + "-narxlar.html", "Narxlar", "1 bosqich yoki Toʻliq dastur"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
     nxt_html = '<section class="alt"><div class="wrap"><div class="head"><h2>Keyingi qadam</h2></div><nav class="kl-next" aria-label="Lab sahifalari">' + "".join(
         f'<a href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in nxt) + "</nav></div></section>"
     main = "\n".join(x for x in [hero, B.get("dark", ""), path, nxt_html, B.get("cta", "")] if x)
