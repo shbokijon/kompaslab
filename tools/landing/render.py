@@ -388,7 +388,17 @@ def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
         <ul>{"".join(f"<li>{x}</li>" for x in SIX_ITEMS)}</ul>
         {act}
       </div>'''
-MONTHLY_EXTRA = ["Har toʻlov navbatdagi bitta bosqichni 30 kunga ochadi. Bosqichni ertaroq tugatsangiz, keyingisi yangi toʻlov bilan darhol ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
+MONTHLY_EXTRA = ["Erta tugatsangiz, keyingi bosqichni yangi toʻlov bilan darhol ochasiz", "Obuna tugasa, modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
+
+def month_items(m_items):
+    """2026-11-17: "1 bosqich" kartasida 3 qator: bosqich tarkibi + 2 qoida (takrorlar olib tashlandi)."""
+    first = m_items[0] if m_items else ""
+    mm = re.search(r"\(([^)]*)\)", first)
+    unit = []
+    if mm:
+        t = mm.group(1)
+        unit = [t if t.startswith(("I ", "Bosqich")) else f"Bir bosqich: {t}"]
+    return unit + MONTHLY_EXTRA
 
 PAY_OPEN_T = "Toʻlov Click orqali"
 PAY_OPEN_B = "Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi."
@@ -412,7 +422,7 @@ def pricing(lab):
       <div class="plan">
         <h3>1 bosqich</h3><p class="desc">Navbatdagi bitta bosqich, 30 kun</p>
         <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, 1 bosqich (30 kun)</div>
-        <ul>{"".join(f"<li>{x}</li>" for x in p["m_items"] + MONTHLY_EXTRA)}</ul>
+        <ul>{"".join(f"<li>{x}</li>" for x in month_items(p["m_items"]))}</ul>
         {month_btn}
       </div>
       {six_card(slug)}

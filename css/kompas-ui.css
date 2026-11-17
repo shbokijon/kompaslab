@@ -308,6 +308,11 @@ header.top .xp .kl-me{margin-left:6px;}
 .kl-tabbar .kl-tabs a.kl-ico img{width:22px;height:22px;}
 @media(prefers-reduced-motion:reduce){.nav .kl-tabs a.kl-ico img,.nav .kl-tabs a.kl-ico span{transition:none;transform:none;}.nav .kl-tabs a.kl-ico:hover span,.nav .kl-tabs a.kl-ico:focus-visible span{transform:translate(-50%,0);}}
 
+/* Asosiy tugma hamma sahifada oʻrmon yashili (2026-11-17, asoschi); generator inline .btn-p dan kuchliroq */
+body .btn-p{background:var(--accent,#2d4a3e);color:#fff;box-shadow:0 4px 16px rgba(45,74,62,.18);}
+body .btn-p:hover{background:var(--accent-h,#1e3329);}
+body .dark .btn-p,body .kl-lock .btn-p,body .decide .btn-p{background:#f4f3ef;color:#1c2823;box-shadow:none;}
+body .dark .btn-p:hover,body .kl-lock .btn-p:hover,body .decide .btn-p:hover{background:#ffffff;}
 /* Narx sahifalari: qisqa sarlavha + bosganda tafsilot (2026-11-17, asoschi) */
 .kl-infos{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;align-items:start;}
 .kl-info{background:var(--surface,#fffefb);border:1px solid var(--border,#e2ded3);border-radius:12px;font-size:15px;}

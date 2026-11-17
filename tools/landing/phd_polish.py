@@ -46,6 +46,8 @@ def build():
     m_card = m_card.replace("<li>Barcha modullar, obuna faol ekan</li>", "<li>Navbatdagi bitta bosqich (2 modul), 30 kun</li>").replace("</ul>", "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "<li>Bosqichlar: I M1–M2, II M3–M4, III M5–M6, IV M7–M8</li></ul>", 1)
     # Oylik tugma: sotuvda (phd_sale.py data-buy tugmasini Click havolasiga aylantiradi)
     m_card = m_card.replace('<button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</button>', '<button type="button" class="btn btn-g" data-wl data-buy="phd-lab|monthly">Kutish roʻyxati</button>')
+    # 2026-11-17: kartada 3 qator (takrorlar olib tashlandi)
+    m_card = re.sub(r"<ul>.*?</ul>", "<ul><li>Bosqichlar: I M1–M2, II M3–M4, III M5–M6, IV M7–M8</li>" + "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "</ul>", m_card, count=1, flags=re.S)
     s_card = "      " + six_card("phd-lab", "Kutish roʻyxati", "plan main reveal") + "\n"
     s = s[:a] + m_card + s_card + s[e:]
     calc = calc_html(Y, M, "phd-lab")
