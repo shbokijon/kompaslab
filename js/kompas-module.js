@@ -92,6 +92,33 @@
     var hd = $(".l-head", art); if (hd) { hd.setAttribute("aria-expanded", "true"); hd.hidden = true; }
     // Birinchi qism ochilgan deb belgilanadi (modul kodi: tab bosilishi)
     var t0 = $(".tab", art); if (t0 && !((S2.seen || {})[curId] || []).length) t0.click();
+    // "Keyingi qism" tugmasi (2026-11-17): 4 qism oʻqilmaguncha asosiy tugma keyingi qismni ochadi,
+    // "Darsni yakunlash" faqat hammasi oʻqilganda koʻrinadi (CSS: .kl-all).
+    var tabs = [].slice.call(art.querySelectorAll(".tab")), lf = $(".l-foot", art), cbtn = $("[data-complete]", art);
+    if (tabs.length > 1 && lf && cbtn) {
+      var nb = el("button", "btn btn-p kl-nextpart"); nb.type = "button"; lf.insertBefore(nb, cbtn);
+      var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var curTab = function () { for (var k = 0; k < tabs.length; k++) if (tabs[k].getAttribute("aria-selected") === "true") return k; return 0; };
+      var updParts = function () {
+        var all = true, k, firstUnseen = -1;
+        for (k = 0; k < tabs.length; k++) if (!tabs[k].classList.contains("v")) { all = false; if (firstUnseen < 0) firstUnseen = k; }
+        art.classList.toggle("kl-all", all);
+        if (all) { nb.hidden = true; return; }
+        var c = curTab(), n = c + 1 < tabs.length ? c + 1 : firstUnseen;
+        nb.hidden = false; nb.setAttribute("data-to", n);
+        nb.textContent = "Keyingi: " + tabs[n].textContent.replace(/\s+/g, " ").trim() + " →";
+      };
+      nb.addEventListener("click", function () {
+        var n = +nb.getAttribute("data-to"); if (!tabs[n]) return;
+        tabs[n].click();
+        var tb = $(".tabs", art);
+        if (tb) { var y = tb.getBoundingClientRect().top + window.pageYOffset - 90; if (y < window.pageYOffset) window.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" }); }
+        tabs[n].focus({ preventScroll: true });
+        setTimeout(updParts, 40);
+      });
+      art.addEventListener("click", function () { setTimeout(updParts, 40); });
+      updParts();
+    }
     var tags = $(".l-m", art), ic = $(".l-ic img", art);
     var head = el("div", "kl-lhead");
     head.innerHTML = crumb("Dars " + l.num) + steps(S2, curId) + '<h1>' + esc(l.title) + '</h1><div class="kl-lmeta">' + (tags ? tags.innerHTML : "") + "</div>";

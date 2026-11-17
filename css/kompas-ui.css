@@ -168,6 +168,18 @@ body[data-kview="lesson"] .lesson.kl-cur .l-body{display:block;}
 body[data-kview="lesson"] .lesson.kl-cur .l-head{display:none;}
 body[data-kview="lesson"] .lesson.kl-cur .l-body{border-top:0;}
 body[data-kview="lesson"] .lesson.kl-cur .chev{display:none;}
+/* Dars: sokin ranglar va "Keyingi qism" oqimi (2026-11-17) */
+body[data-kview="lesson"] .lesson.kl-cur .tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;overflow:visible;padding:6px 8px 0;}
+body[data-kview="lesson"] .lesson.kl-cur .tab{white-space:normal;line-height:1.25;padding:10px 6px;text-align:center;display:flex;align-items:center;justify-content:center;gap:4px;}
+body[data-kview="lesson"] .lesson.kl-cur .tab .seen{margin-left:0;flex:none;}
+body[data-kview="lesson"] .lesson.kl-cur .tab[aria-selected="true"]{color:var(--accent,#2d4a3e);border-bottom-color:var(--accent,#2d4a3e);}
+body[data-kview="lesson"] .lesson.kl-cur .hook{background:var(--accent-lit,#e8f0ec);border-left-color:var(--accent,#2d4a3e);}
+body[data-kview="lesson"] .btn-p{background:var(--accent,#2d4a3e);color:#fff;box-shadow:0 4px 14px rgba(45,74,62,.18);}
+body[data-kview="lesson"] .btn-p:hover{background:var(--accent-h,#1e3329);}
+body[data-kview="lesson"] .lesson.kl-cur:not(.kl-all) [data-complete]{display:none;}
+body[data-kview="lesson"] .lesson.kl-cur.kl-all [data-hint]{display:none;}
+body[data-kview="lesson"] .kl-nextpart[hidden]{display:none!important;}
+@media (max-width:480px){body[data-kview="lesson"] .lesson.kl-cur .tab{font-size:13px;padding:10px 2px;}}
 body[data-kview="lesson"] #darslar{padding-top:6px;}
 body[data-kview="yakun"] main .hero,body[data-kview="yakun"] main .map,body[data-kview="yakun"] #darslar,
 body[data-kview="yakun"] main > .wrap > section:not(#vositalar):not(#nishonlar):not(#qaror){display:none!important;}
@@ -295,6 +307,10 @@ header.top .xp .kl-me{margin-left:6px;}
 .kl-tabbar .kl-tabs a.kl-ico{display:inline-flex;align-items:center;gap:6px;min-height:44px;}
 .kl-tabbar .kl-tabs a.kl-ico img{width:22px;height:22px;}
 @media(prefers-reduced-motion:reduce){.nav .kl-tabs a.kl-ico img,.nav .kl-tabs a.kl-ico span{transition:none;transform:none;}.nav .kl-tabs a.kl-ico:hover span,.nav .kl-tabs a.kl-ico:focus-visible span{transform:translate(-50%,0);}}
+
+/* Dars tugmasi tungi rejimda (2026-11-17; tungi blokdan oldin, kuchliroq selektor bilan) */
+html[data-theme="dark"] body[data-kview="lesson"] .btn-p{background:var(--accent,#9fd0b6);color:#10201a;box-shadow:none}
+html[data-theme="dark"] body[data-kview="lesson"] .btn-p:hover{background:var(--accent-h,#bfe3cf)}
 
 /* ==== TUNGI REJIM (generator: tools/site/dark_css.py) ==== */
 /* Qoʻlda tahrirlamang. Mavzu: html[data-theme] (js/kompas-ui.js qoʻyadi). */
