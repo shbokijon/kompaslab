@@ -662,3 +662,14 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .btn-p:hover{background:var(--accent-h);}
 .motto{background:var(--accent-lit);border-color:#cfe0d6;color:var(--accent);}
 .hero{background:radial-gradient(60% 55% at 88% 28%,rgba(143,191,166,.30),transparent 70%),radial-gradient(50% 45% at 0% 100%,rgba(201,168,76,.07),transparent 70%);}
+
+/* Kalkulyator natijasi: qisqa qator + i (2026-11-17) */
+.mcalc .res .mc-res{background:none;border:0;}
+.mcalc .res .mc-res summary{padding:0;min-height:44px;justify-content:flex-start;gap:10px;font-size:18px;color:var(--text);font-variant-numeric:tabular-nums;}
+.mcalc .res .mc-res summary b{display:inline;font-size:inherit;margin:0;color:var(--accent);}
+.mcalc .res .mc-res p{padding:8px 0 0;font-size:14px;}
+.mcalc input[type=range]{accent-color:var(--accent);}
+.mcalc .mv{color:var(--accent);}
+.mcalc .res .kl-i{display:grid;font-size:13px;color:var(--muted);}
+.mcalc .res .mc-res[open] .kl-i{color:#fff;}
+.mcalc .res #mcB{display:inline;font-size:inherit;color:inherit;}
