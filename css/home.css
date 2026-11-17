@@ -656,3 +656,9 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 
 /* Admin paneldan yashirilgan Lab (courses.status) */
 [data-lab-card][hidden]{display:none!important}
+
+/* Sokin palitra (2026-11-17, asoschi): asosiy tugma oʻrmon yashili, terrakota faqat kichik belgilarda */
+.btn-p{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(45,74,62,.18);}
+.btn-p:hover{background:var(--accent-h);}
+.motto{background:var(--accent-lit);border-color:#cfe0d6;color:var(--accent);}
+.hero{background:radial-gradient(60% 55% at 88% 28%,rgba(143,191,166,.30),transparent 70%),radial-gradient(50% 45% at 0% 100%,rgba(201,168,76,.07),transparent 70%);}
