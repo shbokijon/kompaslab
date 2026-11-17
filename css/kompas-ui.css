@@ -324,9 +324,16 @@ body .dark .btn-p:hover,body .kl-lock .btn-p:hover,body .decide .btn-p:hover{bac
 .kl-info[open] .kl-i{background:var(--accent,#2d4a3e);border-color:var(--accent,#2d4a3e);color:#fff;}
 .kl-info p{margin:0;padding:0 16px 14px;color:var(--muted,#5f7169);line-height:1.55;}
 .pay-status .kl-info{background:none;border:0;flex:1;}
-.pay-status .kl-info summary{min-height:0;padding:0;}
+.pay-status .kl-info summary{min-height:0;padding:0;justify-content:flex-start;}
 .pay-status .kl-info p{padding:8px 0 0;}
 html[data-theme="dark"] .kl-info[open] .kl-i{color:#10201a;}
+/* Sahifa sarlavhasi + i (2026-11-17): sarlavha summary ichida, izoh bosganda */
+.kl-info.kl-title{background:none;border:0;font-size:inherit;margin-top:6px;}
+.kl-info.kl-title summary{justify-content:flex-start;gap:12px;padding:0;min-height:0;}
+.kl-info.kl-title summary img{width:44px;height:44px;flex:none;}
+.kl-info.kl-title summary h1{margin:0;}
+.kl-info.kl-title .kl-i{width:26px;height:26px;font-size:15px;}
+.kl-info.kl-title p{padding:10px 0 0;max-width:640px;font-size:16px;}
 /* Dars tugmasi tungi rejimda (2026-11-17; tungi blokdan oldin, kuchliroq selektor bilan) */
 html[data-theme="dark"] body[data-kview="lesson"] .btn-p{background:var(--accent,#9fd0b6);color:#10201a;box-shadow:none}
 html[data-theme="dark"] body[data-kview="lesson"] .btn-p:hover{background:var(--accent-h,#bfe3cf)}
