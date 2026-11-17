@@ -252,6 +252,7 @@ html[data-theme="dark"] #globus canvas{filter:brightness(.8) contrast(1.05)}
 html[data-theme="dark"] .k4x-trav circle:first-child{fill:#f4f3ef}
 html[data-theme="dark"] .k4x-bg{background-image:radial-gradient(circle at 1px 1px,rgba(159,208,182,.14) 1px,transparent 1.6px),radial-gradient(ellipse 60% 50% at 15% 30%,rgba(159,208,182,.06),transparent 70%),radial-gradient(ellipse 50% 45% at 85% 70%,rgba(224,135,79,.07),transparent 70%)}
 html[data-theme="dark"] .k4x-s.on:not(.later) .k4x-dot{background:#2d4a3e;color:#fff}
+html[data-theme="dark"] .nav .kl-tabs a.kl-ico span{color:#10201a}
 .kl-theme{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border,#e0e8e2);background:var(--surface,#fff);color:var(--text,#1a2e26);cursor:pointer;font-size:16px;line-height:1;flex:none;padding:0}
 .kl-theme:hover{border-color:var(--accent,#2d4a3e)}
 .kl-theme svg{width:18px;height:18px}

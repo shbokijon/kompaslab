@@ -399,7 +399,7 @@ def mamlakatlar_page() -> str:
                  "qs": {i: list(v) for i, v in MD.QS_TOP.items()}},
            "home_ll": [41.31, 69.28]}
     pend = "".join(f"<li>{x}</li>" for x in MD.PENDING)
-    body = nav("", "mamlakatlar") + pagehead(
+    body = nav("mamlakatlar", "mamlakatlar") + pagehead(
         [("Kompas Lab", "index.html"), ("Mamlakatlar xaritasi", None)],
         "Qayerda o'qiysiz? Mamlakatlar xaritasi",
         "Ko'rsatkichni tanlang va mamlakatni bosing. Har raqamda rasmiy manba va sana bor.",

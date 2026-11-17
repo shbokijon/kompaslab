@@ -11,12 +11,13 @@ import re
 
 SITE = "https://www.kompaslab.uz"
 TABS = [
-    ("index.html#labs", "Lablar", "labs"),
-    ("master-planner.html", "Bepul reja", "reja"),
-    ("qanday-ishlaydi.html", "Qanday ishlaydi", "qanday"),
-    ("narxlar.html", "Narxlar", "narx"),
-    ("atlas.html", "Atlas", "atlas"),
-    ("savollar.html", "Savollar", "savol"),
+    ("index.html#labs", "Lablar", "labs", "compass"),
+    ("mamlakatlar.html", "Qayerga uchamiz?", "mamlakatlar", "plane"),
+    ("master-planner.html", "Bepul reja", "reja", "calendar"),
+    ("qanday-ishlaydi.html", "Qanday ishlaydi", "qanday", "telescope"),
+    ("narxlar.html", "Narxlar", "narx", "money"),
+    ("atlas.html", "Atlas", "atlas", "scroll"),
+    ("savollar.html", "Savollar", "savol", "bulb"),
 ]
 
 
@@ -28,9 +29,9 @@ def uz(text: str) -> str:
 
 def tabs(active: str) -> str:
     out = []
-    for href, label, key in TABS:
+    for href, label, key, icon in TABS:
         cur = ' aria-current="page"' if key == active else ""
-        out.append(f'<a href="{href}"{cur}>{label}</a>')
+        out.append(f'<a href="{href}" class="kl-ico"{cur}><img src="img/3d/{icon}.webp" alt="" width="28" height="28" decoding="async"><span>{label}</span></a>')
     return '<div class="kl-tabs" role="navigation" aria-label="Sayt bo\'limlari">' + "".join(out) + "</div>"
 
 
