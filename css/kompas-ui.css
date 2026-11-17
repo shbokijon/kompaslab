@@ -168,6 +168,18 @@ body[data-kview="lesson"] .lesson.kl-cur .l-body{display:block;}
 body[data-kview="lesson"] .lesson.kl-cur .l-head{display:none;}
 body[data-kview="lesson"] .lesson.kl-cur .l-body{border-top:0;}
 body[data-kview="lesson"] .lesson.kl-cur .chev{display:none;}
+/* Dars: sokin ranglar va "Keyingi qism" oqimi (2026-11-17) */
+body[data-kview="lesson"] .lesson.kl-cur .tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;overflow:visible;padding:6px 8px 0;}
+body[data-kview="lesson"] .lesson.kl-cur .tab{white-space:normal;line-height:1.25;padding:10px 6px;text-align:center;display:flex;align-items:center;justify-content:center;gap:4px;}
+body[data-kview="lesson"] .lesson.kl-cur .tab .seen{margin-left:0;flex:none;}
+body[data-kview="lesson"] .lesson.kl-cur .tab[aria-selected="true"]{color:var(--accent,#2d4a3e);border-bottom-color:var(--accent,#2d4a3e);}
+body[data-kview="lesson"] .lesson.kl-cur .hook{background:var(--accent-lit,#e8f0ec);border-left-color:var(--accent,#2d4a3e);}
+body[data-kview="lesson"] .btn-p{background:var(--accent,#2d4a3e);color:#fff;box-shadow:0 4px 14px rgba(45,74,62,.18);}
+body[data-kview="lesson"] .btn-p:hover{background:var(--accent-h,#1e3329);}
+body[data-kview="lesson"] .lesson.kl-cur:not(.kl-all) [data-complete]{display:none;}
+body[data-kview="lesson"] .lesson.kl-cur.kl-all [data-hint]{display:none;}
+body[data-kview="lesson"] .kl-nextpart[hidden]{display:none!important;}
+@media (max-width:480px){body[data-kview="lesson"] .lesson.kl-cur .tab{font-size:13px;padding:10px 2px;}}
 body[data-kview="lesson"] #darslar{padding-top:6px;}
 body[data-kview="yakun"] main .hero,body[data-kview="yakun"] main .map,body[data-kview="yakun"] #darslar,
 body[data-kview="yakun"] main > .wrap > section:not(#vositalar):not(#nishonlar):not(#qaror){display:none!important;}
@@ -187,8 +199,8 @@ body[data-kview="hub"] main .map{display:none!important;}
 .kl-steps i{position:relative;z-index:1;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:13.5px;background:var(--surface,#fffefb);border:2px solid var(--border,#e2ded3);transition:transform .2s;}
 .kl-steps a:hover i{transform:scale(1.1);}
 .kl-steps a.done i{background:var(--accent,#2d4a3e);border-color:var(--accent,#2d4a3e);color:#fff;}
-.kl-steps a.cur i{border-color:var(--accent2,#c4622d);color:var(--accent2,#c4622d);box-shadow:0 0 0 5px rgba(196,98,45,.13);}
-.kl-steps a.cur{color:var(--accent2,#c4622d);}
+.kl-steps a.cur i{border-color:var(--accent,#2d4a3e);color:var(--accent,#2d4a3e);box-shadow:0 0 0 5px rgba(45,74,62,.12);}
+.kl-steps a.cur{color:var(--accent,#2d4a3e);}
 .kl-steps span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
 @media(max-width:560px){.kl-steps span{display:none;}.kl-steps a.cur span{display:block;position:absolute;top:36px;}.kl-steps{margin-bottom:18px;}}
 .kl-read{position:fixed;left:0;right:0;top:calc(var(--kl-top,0px) + 60px);height:3px;z-index:99;pointer-events:none;}
@@ -296,6 +308,28 @@ header.top .xp .kl-me{margin-left:6px;}
 .kl-tabbar .kl-tabs a.kl-ico img{width:22px;height:22px;}
 @media(prefers-reduced-motion:reduce){.nav .kl-tabs a.kl-ico img,.nav .kl-tabs a.kl-ico span{transition:none;transform:none;}.nav .kl-tabs a.kl-ico:hover span,.nav .kl-tabs a.kl-ico:focus-visible span{transform:translate(-50%,0);}}
 
+/* Narx sahifalari: qisqa sarlavha + bosganda tafsilot (2026-11-17, asoschi) */
+.kl-infos{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;align-items:start;}
+.kl-info{background:var(--surface,#fffefb);border:1px solid var(--border,#e2ded3);border-radius:12px;font-size:15px;}
+.kl-info summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:10px 16px;cursor:pointer;border-radius:12px;}
+.kl-info summary::-webkit-details-marker{display:none;}
+.kl-info summary b{font-weight:700;color:var(--accent,#2d4a3e);}
+.kl-info summary:focus-visible{outline:2px solid var(--accent2,#c4622d);outline-offset:2px;}
+.kl-i{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--muted,#5f7169);color:var(--muted,#5f7169);display:grid;place-items:center;font:italic 700 13px/1 Georgia,"Cambria",serif;}
+.kl-info[open] .kl-i{background:var(--accent,#2d4a3e);border-color:var(--accent,#2d4a3e);color:#fff;}
+.kl-info p{margin:0;padding:0 16px 14px;color:var(--muted,#5f7169);line-height:1.55;}
+.pay-status .kl-info{background:none;border:0;flex:1;}
+.pay-status .kl-info summary{min-height:0;padding:0;}
+.pay-status .kl-info p{padding:8px 0 0;}
+html[data-theme="dark"] .kl-info[open] .kl-i{color:#10201a;}
+/* Dars tugmasi tungi rejimda (2026-11-17; tungi blokdan oldin, kuchliroq selektor bilan) */
+html[data-theme="dark"] body[data-kview="lesson"] .btn-p{background:var(--accent,#9fd0b6);color:#10201a;box-shadow:none}
+html[data-theme="dark"] body[data-kview="lesson"] .btn-p:hover{background:var(--accent-h,#bfe3cf)}
+
+/* Asosiy tugma tungi rejimda yashil (2026-11-17; generatsiya qilingan .btn-p dan kuchliroq selektor) */
+html[data-theme="dark"] body .btn-p{background:var(--accent,#9fd0b6);color:#10201a;box-shadow:none}
+html[data-theme="dark"] body .btn-p:hover{background:var(--accent-h,#bfe3cf)}
+
 /* ==== TUNGI REJIM (generator: tools/site/dark_css.py) ==== */
 /* Qoʻlda tahrirlamang. Mavzu: html[data-theme] (js/kompas-ui.js qoʻyadi). */
 html[data-theme="dark"]{color-scheme:dark;--ko-accent:#2d4a3e;--ko-accent-h:#1e3329;--ko-accent-lit:#e8f0ec;--ko-accent2:#c4622d;--ko-accent2-h:#a84f23;--ko-accent2-lit:#faeee7;--ko-bg:#f5f7f5;--ko-border:#e0e8e2;--ko-cream:#f4f3ef;--ko-gold:#b08a00;--ko-gold-lit:#fdf6dc;--ko-green:#1a7a4a;--ko-green-lit:#e6f4ec;--ko-kl-cream:#f4f3ef;--ko-kl-forest:#2d4a3e;--ko-kl-forest-d:#1e3329;--ko-kl-line:#d8cfb6;--ko-muted:#5f7169;--ko-muted2:#9aada6;--ko-red:#b42318;--ko-red-lit:#fdecea;--ko-surface:#ffffff;--ko-text:#1a2e26;--accent:#9fd0b6;--accent-h:#bfe3cf;--accent-lit:#1c2b24;--accent2:#e0874f;--accent2-h:#ec9a66;--accent2-lit:#2e2018;--bg:#0f1512;--border:#2a3731;--cream:#121a16;--gold:#d9b65a;--gold-lit:#2a2412;--green:#6fcf9a;--green-lit:#15291e;--kl-cream:#1d1c18;--kl-forest:#b9d4c9;--kl-forest-d:#c0dace;--kl-line:#39352b;--muted:#a2b4aa;--muted2:#71847a;--red:#f19a90;--red-lit:#2e1816;--surface:#17201b;--text:#e5ece7}
@@ -353,6 +387,9 @@ html[data-theme="dark"] .k4x-s.on .k4x-dot{background:var(--ko-accent)}
 html[data-theme="dark"] .k4x-trav circle:first-child{stroke:#b9d4c9}
 html[data-theme="dark"] .dn-dot{background:var(--ko-accent2)}
 html[data-theme="dark"] .dn-amt.is-on{background:var(--ko-accent)}
+html[data-theme="dark"] .btn-p{background:var(--ko-accent)}
+html[data-theme="dark"] .btn-p:hover{background:var(--ko-accent-h)}
+html[data-theme="dark"] .motto{border-color:#3c4640}
 html[data-theme="dark"] .kg-card > a:hover{background:#1b201e}
 html[data-theme="dark"] .kg-fly:hover{background:#1b201e}
 html[data-theme="dark"] .kg-list button[aria-pressed="true"]{background:#231913}
@@ -388,11 +425,15 @@ html[data-theme="dark"] .kl-lock{background:var(--ko-kl-forest)}
 html[data-theme="dark"] .kl-pager a{border:1px solid var(--border,#44423b);background:var(--surface,#1d190b)}
 html[data-theme="dark"] .kl-pager small{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .kl-pager .nx.primary{background:var(--ko-kl-forest)}
+html[data-theme="dark"] body[data-kview="lesson"] .lesson.kl-cur .tab[aria-selected="true"]{color:var(--accent,#b9d4c9)}
+html[data-theme="dark"] body[data-kview="lesson"] .lesson.kl-cur .hook{background:var(--accent-lit,#1b201e)}
 html[data-theme="dark"] .kl-lhead h1{color:var(--accent,#b9d4c9)}
 html[data-theme="dark"] .kl-lhead .kl-lmeta{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .kl-steps a{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .kl-steps a::before{background:var(--border,#2b2924)}
 html[data-theme="dark"] .kl-steps i{background:var(--surface,#1d190b);border:2px solid var(--border,#44423b)}
+html[data-theme="dark"] .kl-steps a.cur i{color:var(--accent,#b9d4c9)}
+html[data-theme="dark"] .kl-steps a.cur{color:var(--accent,#b9d4c9)}
 html[data-theme="dark"] .kl-keys{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .kl-keys kbd{border:1px solid var(--border,#44423b);background:var(--surface,#1d190b)}
 html[data-theme="dark"] .kl-done-c{background:var(--surface,#1d190b)}
@@ -413,6 +454,15 @@ html[data-theme="dark"] .kl-me-s ul{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .kl-me-tag{background:var(--ko-kl-forest)}
 html[data-theme="dark"] .kl-me.is-paid .kl-me-tag{color:#c0dace}
 html[data-theme="dark"] .kl-me-m .kl-me-out{border-top:1px solid var(--border,#39403b)}
+html[data-theme="dark"] .kl-info{background:var(--surface,#1d190b);border:1px solid var(--border,#44423b)}
+html[data-theme="dark"] .kl-info summary b{color:var(--accent,#b9d4c9)}
+html[data-theme="dark"] .kl-i{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"] .kl-info p{color:var(--muted,#b1bdb8)}
+html[data-theme="dark"][data-theme="dark"] .kl-info[open] .kl-i{color:#c4e2d7}
+html[data-theme="dark"][data-theme="dark"] body[data-kview="lesson"] .btn-p{color:#c4e2d7}
+html[data-theme="dark"][data-theme="dark"] body[data-kview="lesson"] .btn-p:hover{background:var(--accent-h,#25342c)}
+html[data-theme="dark"][data-theme="dark"] body .btn-p{color:#c4e2d7}
+html[data-theme="dark"][data-theme="dark"] body .btn-p:hover{background:var(--accent-h,#25342c)}
 html[data-theme="dark"] .top{background:rgba(29,28,24,0.94)}
 html[data-theme="dark"] .xp-pill{background:var(--ko-accent)}
 html[data-theme="dark"] .xp-bar i{background:linear-gradient(90deg,var(--ko-accent2),#d9a441)}

@@ -298,6 +298,9 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sb-item" id="wsNav" onclick="nav('website',this)">
       <span class="sb-icon">🖥️</span><span class="sb-label">Vebsayt</span>
     </button>
+    <button class="sb-item" id="lkNav" onclick="nav('look',this)">
+      <span class="sb-icon">🎨</span><span class="sb-label">Dizayn</span>
+    </button>
     <button class="sb-item" onclick="nav('waitlist',this)">
       <span class="sb-icon">🔔</span><span class="sb-label">Kutish roʻyxati</span>
       <span class="sb-pill sp-gray" id="pWait">—</span>
@@ -694,6 +697,9 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         </div>
       </div>
     </div>
+
+    <!-- DIZAYN (2026-11-17): mavzu, shrift, oʻlchamlar · js/admin-look.js, site_settings -->
+    <div class="sec" id="sec-look"></div>
 
     <!-- SUPABASE — TIZIM MONITORINGI (read-only) -->
     <div class="sec" id="sec-system">
@@ -1859,7 +1865,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Umumiy holat', students: 'Foydalanuvchilar',
     lessons: 'Darslar', payments: "Toʻlovlar", waitlist: 'Kutish roʻyxati',
-    announce: "Eʼlonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim', website: 'Vebsayt'
+    announce: "Eʼlonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim', website: 'Vebsayt', look: 'Dizayn'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1876,6 +1882,7 @@ function nav(name, el) {
   if (name === 'regs') loadRegs()
   if (name === 'labs') loadLabs()
   if (name === 'website') WS.open()
+  if (name === 'look') LK.open()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
   if (name === 'system') { loadSystemStats(); window.klxLoadAudit && window.klxLoadAudit() }
@@ -2568,5 +2575,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="js/admin-m0.js"></script>
 <script src="js/admin-extensions.js"></script>
 <script src="js/admin-site.js"></script>
+<script src="js/admin-look.js"></script>
 </body>
 </html>

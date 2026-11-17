@@ -86,13 +86,11 @@
         });
         var st = document.querySelector("[data-paystatus=\"" + slug + "\"]");
         if (!st) return;
-        st.innerHTML = "<b>Toʻlov Click orqali.</b> Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi." +
-          (r[1] ? " <b>Sinov rejimi: tugmani faqat adminlar koʻradi.</b>" : "");
+        st.innerHTML = '<details class="kl-info"><summary><b>Toʻlov Click orqali</b><span class="kl-i" aria-hidden="true">i</span></summary><p>' +
+          "Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi." +
+          (r[1] ? " <b>Sinov rejimi: tugmani faqat adminlar koʻradi.</b>" : "") + "</p></details>";
         var ico = st.previousElementSibling;
         if (ico) ico.textContent = "💳";
-        var sec = st.closest("section"), rf = sec && sec.querySelector(".refund");
-        if (rf) rf.innerHTML = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. " +
-          "Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi.";
       });
     });
   }

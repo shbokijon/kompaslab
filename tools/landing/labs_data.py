@@ -12,7 +12,7 @@ STD_NAV = [("dastur", "Dastur"), ("faktlar", "Faktlar"), ("narx", "Narx"), ("sav
 STD_RULES = [
     ("Bekor qilish", "Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz. Toʻlamasangiz, toʻlangan davr tugashi bilan kirish yopiladi."),
     ("M0 natijasi", "M0 da rasmiy talablardan biri bajarilmagani chiqsa, avval shuni hal qiling. Obunani keyinroq boshlasangiz ham boʻladi."),
-    ("To'lov xavfsizligi", "To'lov Click orqali. Karta raqami Kompas serverlarida saqlanmaydi."),
+    ("Toʻlov xavfsizligi", "Toʻlov Click orqali. Karta raqami Kompas serverlarida saqlanmaydi."),
     ("Kirmaydi", "Hujjatni o'rningizga yozish, shaxsiy mentorlik, qabul yoki stipendiya kafolati."),
 ]
 
@@ -97,7 +97,7 @@ LABS["Bachelor"] = dict(
         yearly=899000, monthly=99000, m0_desc="Dastur sizga mosligini bilish", m0_items=["5 dars", "Readiness Score", "Shaxsiy boshlash sanasi"],
         y_desc="To'liq ariza sikli uchun", y_items=["17 modul, 86 dars, barcha vositalar", "Nazorat jadvali"],
         m_items=["Navbatdagi bitta bosqich (4 modul), 30 kun", "Istalgan vaqtda toʻxtatiladi", "Keyinroq Toʻliq dasturga oʻtish mumkin"], calc=std_calc(899000, 99000),
-        rules=[("18 yoshgacha", "Obunani va to'lovni ota-ona yoki vasiy rasmiylashtiradi; shartnoma tomoni: ota-ona.")] + STD_RULES[:1] + STD_RULES[2:]),
+        rules=STD_RULES[:1] + STD_RULES[2:]),
     faq=[("Qaysi sinfda boshlash kerak?", "Birinchi ariza muddatidan 8–12 oy oldin: odatda 10-sinf oxiri yoki 11-sinf boshi. M0 da shaxsiy boshlash sanangizni hisoblaysiz."),
          ("IELTS yoki SAT'ga tayyorlaysizmi?", "Yo'q. M5 modulida test strategiyasi va kalendari tuziladi; tayyorlov darslari kursga kirmaydi."),
          ("11 yillik attestat bilan xorijga kirish mumkinmi?", "Mamlakatga qarab farq qiladi: Germaniyada Studienkolleg talab qilinishi mumkin, Buyuk Britaniyada ko'p universitetlar tayyorlov yilini so'raydi. M1 va M2 da har universitetning rasmiy talabi tekshiriladi."),

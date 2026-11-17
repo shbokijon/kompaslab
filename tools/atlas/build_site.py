@@ -440,6 +440,11 @@ def mamlakatlar_json() -> str:
     return uz(json.dumps(data, ensure_ascii=False, indent=1)) + "\n"
 
 
+GLOBE_CSS = (".mx-globe{padding:8px 0 28px}"
+             ".mx-h2{font-size:clamp(24px,3.4vw,32px);margin:8px 0 6px}"
+             ".mx-sub{color:var(--muted);margin:0 0 16px;max-width:760px}")
+
+
 def mamlakatlar_page() -> str:
     order = ["USA", "GBR", "DEU", "FRA", "ITA", "NLD", "KOR", "JPN", "CHN", "SGP", "AUS", "CAN"]
     chips = "".join(f'<button type="button" class="mx-chip" data-iso="{i}" data-snd="pick">{FLAGS[i]} {MD.COUNTRIES[i]["name"]}</button>' for i in order)
@@ -454,10 +459,15 @@ def mamlakatlar_page() -> str:
            "home_ll": [41.31, 69.28]}
     pend = "".join(f"<li>{x}</li>" for x in MD.PENDING)
     body = nav("mamlakatlar", "mamlakatlar") + pagehead(
-        [("Kompas Lab", "index.html"), ("Mamlakatlar xaritasi", None)],
-        "Qayerda o'qiysiz? Mamlakatlar xaritasi",
-        "Ko'rsatkichni tanlang va mamlakatni bosing. Har raqamda rasmiy manba va sana bor.",
-        "telescope") + f"""<main><div class="wrap mx-page">
+        [("Kompas Lab", "index.html"), ("Qayerga uchamiz?", None)],
+        "Qayerga uchamiz?",
+        "Orzuingizdagi mamlakatni bosing: samolyot Toshkentdan uchib boradi va u yerga qaysi <b>dastur</b> tayyorlashini ko'rasiz. <b>Ob-havo</b> va <b>Iqlim</b> qatlamida poytaxtdagi bugungi havoni va oxirgi 12 oy iqlimini bilib olasiz.",
+        "plane") + f"""<main><section id="globus" class="mx-globe" data-sfx><div class="wrap">
+<div class="kglobe" data-globe></div>
+</div></section>
+<div class="wrap mx-page">
+<h2 class="mx-h2">12 mamlakat rasmiy raqamlarda</h2>
+<p class="mx-sub">Ko'rsatkichni tanlang va mamlakatni bosing. Har raqamda rasmiy manba va sana bor.</p>
 <div class="mx-bar">
 <div class="mx-tools" role="group" aria-label="Xaritadagi ko'rsatkich">
 <button type="button" class="mx-layer" data-layer="talabalar" aria-pressed="true"><img src="img/3d/books.webp" alt="" width="28" height="28">Xalqaro talabalar</button>
@@ -491,7 +501,9 @@ def mamlakatlar_page() -> str:
                      "citation": sorted({r[6] for c in MD.COUNTRIES.values() for r in c["rows"]})}, ensure_ascii=False)
     h = head(title="Mamlakatlar xaritasi: xorijda o'qish bo'yicha rasmiy raqamlar · Kompas Lab",
              desc="AQSh, Buyuk Britaniya, Germaniya, Koreya, Yaponiya va boshqa 12 mamlakat: xalqaro talabalar, o'zbek talabalar, stipendiya kvotalari, viza uchun pul va QS reytingi. Faqat rasmiy manbalar.",
-             path="mamlakatlar", jsonld=ld)
+             path="mamlakatlar", jsonld=ld,
+             extra='<link rel="stylesheet" href="css/globe.css">\n<script src="js/globe.js" defer></script>\n',
+             css=GLOBE_CSS)
     scripts = f'<script type="application/json" id="mx-cfg">{json.dumps(cfg, ensure_ascii=False)}</script>\n<script src="js/mamlakatlar.js" defer></script>\n'
     return page(head_html=h, body=body, scripts=scripts)
 

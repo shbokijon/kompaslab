@@ -352,18 +352,25 @@ def maker(lab):
   </div>
 </section>'''
 
+def info(t, body):
+    """Qisqa sarlavha koʻrinadi, tafsilot bosganda ochiladi (2026-11-17, asoschi): <details>, JS siz ishlaydi."""
+    return (f'<details class="kl-info"><summary><b>{t}</b><span class="kl-i" aria-hidden="true">i</span></summary>'
+            f'<p>{body}</p></details>')
+
+CHOOSE = ("Har bosqichni 30 kun ichida tugatsangiz, 1 bosqichdan toʻlash umumiy hisobda arzonroq tushadi. "
+          "Toʻliq dastur hamma bosqichni birdaniga 6 oyga ochadi: oʻz tezligingizda oʻqiysiz va har bosqich uchun alohida toʻlamaysiz.")
+
 def calc_html(y, m, slug):
-    """Narx taqqoslash (2026-11-06: yillik tarif yoʻq). 6 oylik narx bazada (courses.price_6m); JS `data-p6v` ni yangilaydi."""
-    s6 = PR6.get(slug, m * 5)
-    return (f'<div><b>{fmt(m * 6)} soʻm</b>6 marta 1 bosqichdan toʻlansa ({fmt(m)} × 6)</div>'
-            f'<div><b><span data-p6v="{slug}">{fmt(s6)}</span> soʻm</b>Toʻliq dastur: barcha bosqichlar birdaniga, 6 oy</div>'
-            f'<div><b>Qaysi birini tanlash kerak?</b>Butun dastur kerak boʻlsa, Toʻliq dastur arzonroq va hamma bosqich birdan ochiladi. Faqat bitta bosqich kerak boʻlsa, 1 bosqichni oling.</div>')
+    """2026-11-17: "6 marta 1 bosqichdan" taqqoslashi va kartadagi narx takrori olib tashlandi; faqat tanlov izohi."""
+    return info("Qaysi birini tanlash kerak?", CHOOSE)
 
 # Bazadagi 6 oylik narx (2026-11-06); sahifada zaxira, jonli qiymat kompas_public_stats dan
 PR6 = {"bachelor-lab": 499000, "master-lab": 499000, "usa-lab": 499000, "gks-lab": 499000, "daad-lab": 499000,
        "phd-lab": 849000, "tadbirkor-talaba": 149000, "miggo": 249000}
 
-REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi."
+REFUND_T = "Toʻlov qaytarilmaydi"
+REFUND_B = "Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi."
+REFUND = info(REFUND_T, REFUND_B)
 
 # 6 oylik narx bazada (courses.price_6m), admin har dastur uchun kiritadi; boʻsh boʻlsa karta yashirin
 SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Har bosqich uchun alohida toʻlash kerak emas"]
@@ -383,7 +390,9 @@ def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
       </div>'''
 MONTHLY_EXTRA = ["Har toʻlov navbatdagi bitta bosqichni 30 kunga ochadi. Bosqichni ertaroq tugatsangiz, keyingisi yangi toʻlov bilan darhol ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
 
-PAY_OPEN = "<b>Toʻlov Click orqali.</b> Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi."
+PAY_OPEN_T = "Toʻlov Click orqali"
+PAY_OPEN_B = "Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi."
+PAY_OPEN = info(PAY_OPEN_T, PAY_OPEN_B)
 PAY_WAIT = "<b>Bu dastur uchun toʻlov hali ochilmagan.</b> Kutish roʻyxatiga yozilsangiz, ochilganda xabar beramiz."
 
 def pricing(lab):
@@ -408,10 +417,10 @@ def pricing(lab):
       </div>
       {six_card(slug)}
     </div>
-    <div class="calc">{calc_html(y, mo, slug)}</div>'''
+    <div class="kl-infos">{calc_html(y, mo, slug)}</div>'''
     if p.get("pre_html"):
         plans = p["pre_html"] + plans
-    rules = "".join(f"<div><b>{a}</b>{b}</div>" for a, b in p["rules"])
+    rules = "".join(info(a, b) for a, b in p["rules"])
     status = (PAY_OPEN if sale else p.get("status", PAY_WAIT))
     ico = "💳" if sale else "⏳"
     return f'''<section id="narx">
@@ -422,8 +431,7 @@ def pricing(lab):
     </div>
     <div class="pay-status"><span>{ico}</span><span data-paystatus="{slug}">{status}</span></div>
     {plans}
-    <div class="refund">{REFUND}</div>
-    <div class="rules">{rules}</div>
+    <div class="kl-infos">{REFUND}{rules}</div>
   </div>
   <script src="js/checkout.js" defer></script>
 </section>'''
@@ -703,3 +711,13 @@ def page(lab, mods):
     ])
     h = head(lab["title"], lab["meta"], lab["name"] + " | Kompas Lab", BASE_CSS + EXTRA_CSS + POLISH_CSS)
     return uz_fix(polish(h + body + "\n</body>\n</html>\n"))
+
+
+RULE_DIV = re.compile(r'<div><b>([^<]+)</b>(.*?)</div>', re.S)
+def infoize(html):
+    """PhD (manba HTML) uchun: .rules ichidagi <div><b>T</b>B</div> larni info() ga aylantiradi. Takror chaqirilsa ham xavfsiz."""
+    def blk(m):
+        return '<div class="kl-infos">' + RULE_DIV.sub(lambda r: info(r.group(1).strip().rstrip("."), r.group(2).strip()), m.group(1)) + '</div>'
+    html = re.sub(r'<div class="rules[^"]*">((?:\s*<div><b>[^<]+</b>.*?</div>)+)\s*</div>', blk, html, count=1, flags=re.S)
+    html = re.sub(r'<div class="calc">(.*?)</div>\s*<div class="refund">(.*?)</div>', lambda m: '<div class="kl-infos">' + m.group(1) + m.group(2) + '</div>', html, count=1, flags=re.S)
+    return html

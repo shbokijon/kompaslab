@@ -12,7 +12,8 @@ CTA_OLD = '<button type="button" class="btn btn-g" data-wl>🔔 Kutish roʻyxati
 CTA_NEW = '<a class="btn btn-g" href="phd-lab-narxlar.html" data-snd="nav">Narxlar va obuna</a>'
 CTA2_OLD = '<button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</button>'
 PAY_OLD = re.compile(r'(<span data-paystatus="phd-lab">).*?(</span></div>)', re.S)
-PAY_NEW = r'\1<b>Toʻlov Click orqali.</b> Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi.\2'
+from render import PAY_OPEN, infoize
+PAY_NEW = lambda m: m.group(1) + PAY_OPEN + m.group(2)
 LABEL = {"monthly": "1 bosqichni toʻlash", "6m": "Toʻliq dasturni toʻlash"}
 
 
@@ -29,6 +30,7 @@ def run():
         s0 = s = f.read_text(encoding="utf-8")
         s = s.replace(HEADER_OLD, HEADER_NEW).replace(CTA_OLD, CTA_NEW).replace(CTA2_OLD, CTA_NEW)
         s = PAY_OLD.sub(PAY_NEW, s).replace("<span>⏳</span><span data-paystatus", "<span>💳</span><span data-paystatus")
+        s = infoize(s)
         s = re.sub(r'<button type="button" class="(btn [^"]*)" data-wl data-buy="phd-lab\|(monthly|6m)">[^<]*</button>', buy, s)
         if s != s0:
             f.write_text(s, encoding="utf-8")

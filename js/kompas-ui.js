@@ -46,6 +46,339 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount); else mount();
 })();
 
+// ── Koʻrinish sozlamalari (2026-11-17): admin → Dizayn. Mavzu (fasl/bayram, avtomatik yoki qoʻlda),
+//    shrift juftligi, matn/sarlavha oʻlchami, bloklar orasidagi masofa, burchaklar, kontent kengligi,
+//    talaba uchun A− A A+ tugmasi. Sozlama: Supabase site_settings (key='ui'), kesh localStorage "kompas_ui_v1" (5 daqiqa).
+//    Ishlash usuli: sozlama standart boʻlmasa, sahifadagi CSS qoidalari bir marta oʻzgaruvchiga oʻtkaziladi
+//    (font-size → calc(…*var(--kt-fs)), "Cambria…" → var(--kt-head,…) va h.k.), keyin oʻzgarish faqat :root qiymati.
+//    Standart holatda hech narsa qayta yozilmaydi. Mavzu ranglari faqat yorugʻ rejimda (tungi rejim oʻzgarmaydi).
+//    Oʻchirish: ?look=0. Admin koʻrinishi (iframe): sessionStorage "kompas_ui_prev".
+(function () {
+  var root = document.documentElement;
+  var URL_ = "https://usxpkmbjrdllnitlzdpq.supabase.co/rest/v1/site_settings?select=value,updated_at&key=eq.ui";
+  var AK = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeHBrbWJqcmRsbG5pdGx6ZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MzUxNzcsImV4cCI6MjA4ODExMTE3N30.wecMraU0qbnT89IKaoyu0-gDBfo0kUBF1t6ajMJNvT8";
+  var CK = "kompas_ui_v1", FSK = "kompas_fs", PK = "kompas_ui_prev", TTL = 5 * 60 * 1000;
+  var OFF = /[?&]look=0/.test(location.search);
+  var FRAMED = false; try { FRAMED = window.top !== window; } catch (e) { FRAMED = true; }
+
+  // Shrift juftliklari. Har roʻyxatda ikkinchi oʻrinda zaxira (ʻ ʼ Ö Ğ Ş Ç uchun, CLAUDE.md shrift qoidasi).
+  var SERIF2 = '"Playfair Display",serif', SANS2 = '"IBM Plex Sans",sans-serif';
+  var FONTS = {
+    kompas:   { n: "Kompas (standart)", d: "Cambria / Caladea + Outfit", h: null, b: null, q: "" },
+    dmserif:  { n: "DM Serif + Outfit", d: "Yirik, nafis sarlavha", h: '"DM Serif Display",' + SERIF2, b: null, q: "family=DM+Serif+Display:ital@0;1" },
+    fraunces: { n: "Fraunces + Inter", d: "Zamonaviy kitob uslubi", h: '"Fraunces",' + SERIF2, b: '"Inter",' + SANS2, q: "family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800" },
+    lora:     { n: "Lora + Source Sans 3", d: "Yumshoq, oʻqishga qulay", h: '"Lora",' + SERIF2, b: '"Source Sans 3",' + SANS2, q: "family=Lora:wght@400;600;700&family=Source+Sans+3:wght@400;500;600;700;800" },
+    noto:     { n: "Noto Serif + Noto Sans", d: "Belgilar qamrovi eng keng", h: '"Noto Serif",' + SERIF2, b: '"Noto Sans",' + SANS2, q: "family=Noto+Serif:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700;800" },
+    literata: { n: "Literata + Nunito Sans", d: "Uzun matn uchun", h: '"Literata",' + SERIF2, b: '"Nunito Sans",' + SANS2, q: "family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Nunito+Sans:wght@400;600;700;800" },
+    pt:       { n: "PT Serif + PT Sans", d: "Klassik, sodda", h: '"PT Serif",' + SERIF2, b: '"PT Sans",' + SANS2, q: "family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700" },
+    manrope:  { n: "Manrope (faqat sans)", d: "Toza, interfeys uslubi", h: '"Manrope",' + SANS2, b: '"Manrope",' + SANS2, q: "family=Manrope:wght@400;500;600;700;800" }
+  };
+  // Mavzular: faqat urgʻu va fon tuslari. Asosiy yashil (--accent) va logotip oʻzgarmaydi.
+  // Kontrast: oq matn urgʻu rangida ≥ 4.5:1 (tools/site/test_look.cjs tekshiradi).
+  function P(a2, a2h, a2l, bg, sf, bd, g, gl, al) { return { a2: a2, a2h: a2h, a2l: a2l, bg: bg, sf: sf, bd: bd, g: g, gl: gl, al: al }; }
+  var THEMES = {
+    standart:    { n: "Standart", e: "🧭", k: "asosiy", c: null },
+    qish:        { n: "Qish", e: "❄️", k: "fasl", c: P("#3f6889", "#31536e", "#e6eef4", "#f1f4f6", "#ffffff", "#dbe3e9", "#7f6a2c", "#f1ecdc", "#e5eef0") },
+    bahor:       { n: "Bahor", e: "🌸", k: "fasl", c: P("#b24f6b", "#933f57", "#f8e9ee", "#f3f7f1", "#ffffff", "#dce8dc", "#7d6812", "#f5f0d6", "#e3f0e4") },
+    yoz:         { n: "Yoz", e: "☀️", k: "fasl", c: P("#a35f17", "#864e13", "#f9eedc", "#f7f5ed", "#fffefa", "#e7e1cd", "#8c690b", "#f8efd2", "#e6efe6") },
+    kuz:         { n: "Kuz", e: "🍂", k: "fasl", c: P("#ad5426", "#90451f", "#f8ebe2", "#f6f2ea", "#fffdf8", "#e6dccb", "#8a6310", "#f7edd5", "#e9efe8") },
+    navruz:      { n: "Navroʻz", e: "🌷", k: "bayram", c: P("#5c7b28", "#4a6420", "#edf3e0", "#f3f6ec", "#fffffb", "#dfe6cf", "#8f7111", "#f6efd0", "#e4efe2") },
+    ramazon:     { n: "Ramazon", e: "🌙", k: "bayram", c: P("#2f6b6b", "#255656", "#e2efee", "#f2f4f2", "#ffffff", "#dce3df", "#8a6e26", "#f3ecd8", "#e4eeeb") },
+    hayit:       { n: "Hayit", e: "✨", k: "bayram", c: P("#86611a", "#6d4f15", "#f6eed9", "#f6f4ee", "#fffefa", "#e5dfcd", "#86611a", "#f6eed9", "#e7efe9") },
+    mustaqillik: { n: "Mustaqillik kuni", e: "🇺🇿", k: "bayram", c: P("#1f6f9e", "#185a81", "#e3eff6", "#f2f6f7", "#ffffff", "#dae4e8", "#8a6a10", "#f5eed6", "#e4f0ec") },
+    yangiyil:    { n: "Yangi yil", e: "🎄", k: "bayram", c: P("#a8443a", "#8a372f", "#f7e6e3", "#f4f4f0", "#ffffff", "#e0e2da", "#8c6a0e", "#f7efd4", "#e4eee8") }
+  };
+  // Bayramlar: from/to "OO-KK" (har yil) yoki "YYYY-OO-KK" (bir martalik; Ramazon va Hayitlar sanasi har yil oʻzgaradi).
+  var HOLS = [
+    { id: "ramazon", t: "ramazon", n: "Ramazon oyi" },
+    { id: "ramazonhayit", t: "hayit", n: "Ramazon hayiti" },
+    { id: "qurbonhayit", t: "hayit", n: "Qurbon hayiti" },
+    { id: "navruz", t: "navruz", n: "Navroʻz" },
+    { id: "mustaqillik", t: "mustaqillik", n: "Mustaqillik kuni" },
+    { id: "yangiyil", t: "yangiyil", n: "Yangi yil" }
+  ];
+  var DEF = {
+    v: 1, mode: "manual", theme: "standart", seasons: true,
+    hol: {
+      ramazon: { on: true, from: "", to: "" }, ramazonhayit: { on: true, from: "", to: "" }, qurbonhayit: { on: true, from: "", to: "" },
+      navruz: { on: true, from: "03-15", to: "03-25" }, mustaqillik: { on: true, from: "08-28", to: "09-03" }, yangiyil: { on: true, from: "12-25", to: "01-03" }
+    },
+    font: "kompas", fs: 1, hs: 1, sp: 1, r: 1, w: 1, reader: true
+  };
+  var FS_STEPS = [0.9, 1, 1.12, 1.25];
+  var LIM = { fs: [0.85, 1.2], hs: [0.85, 1.25], sp: [0.75, 1.3], r: [0, 1.8], w: [0.85, 1.2] };
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function merge(s) {
+    var o = clone(DEF);
+    if (!s || typeof s !== "object") return o;
+    ["mode", "theme", "font"].forEach(function (k) { if (typeof s[k] === "string") o[k] = s[k]; });
+    ["seasons", "reader"].forEach(function (k) { if (typeof s[k] === "boolean") o[k] = s[k]; });
+    Object.keys(LIM).forEach(function (k) { var v = +s[k]; if (isFinite(v) && v > 0 || (k === "r" && v === 0)) o[k] = Math.min(LIM[k][1], Math.max(LIM[k][0], v)); });
+    if (s.hol && typeof s.hol === "object") HOLS.forEach(function (h) {
+      var x = s.hol[h.id]; if (!x) return;
+      o.hol[h.id] = { on: x.on !== false, from: String(x.from || ""), to: String(x.to || "") };
+    });
+    if (!THEMES[o.theme]) o.theme = "standart";
+    if (!FONTS[o.font]) o.font = "kompas";
+    if (typeof s._date === "string") o._date = s._date;
+    return o;
+  }
+  // Toshkent vaqti (UTC+5) boʻyicha bugun
+  function today(s) {
+    if (s && /^\d{4}-\d{2}-\d{2}$/.test(s._date || "")) return s._date;
+    return new Date(Date.now() + 5 * 3600e3).toISOString().slice(0, 10);
+  }
+  function inRange(d, from, to) {
+    var md = /^\d{2}-\d{2}$/, full = /^\d{4}-\d{2}-\d{2}$/;
+    if (md.test(from) && md.test(to)) { var x = d.slice(5); return from <= to ? (x >= from && x <= to) : (x >= from || x <= to); }
+    if (full.test(from) && full.test(to)) return d >= from && d <= to;
+    if (full.test(from) && !to) return d === from;
+    return false;
+  }
+  function season(d) { var m = +d.slice(5, 7); return m === 12 || m <= 2 ? "qish" : m <= 5 ? "bahor" : m <= 8 ? "yoz" : "kuz"; }
+  function resolve(s) {
+    s = merge(s);
+    if (s.mode !== "auto") return { id: s.theme, why: "qoʻlda" };
+    var d = today(s);
+    for (var i = 0; i < HOLS.length; i++) {
+      var h = HOLS[i], x = s.hol[h.id];
+      if (x && x.on && inRange(d, x.from, x.to)) return { id: h.t, why: h.n };
+    }
+    if (s.seasons) { var f = season(d); return { id: f, why: "fasl" }; }
+    return { id: "standart", why: "avtomatik" };
+  }
+
+  // ── CSS qoidalarini oʻzgaruvchiga oʻtkazish (bir marta) ──
+  var PX = /^-?\d*\.?\d+px$/;
+  var HSEL = /(^|[\s,>+~(])h[1-3](?![\w-])/i;
+  function tok(v, prop, max) {
+    if (!v || /var\(|calc\(|env\(/.test(v)) return null;
+    var ch = false;
+    var out = v.split(/\s+/).map(function (t) {
+      if (PX.test(t) && parseFloat(t) !== 0 && (!max || Math.abs(parseFloat(t)) <= max)) { ch = true; return "calc(" + t + " * var(" + prop + ",1))"; }
+      return t;
+    }).join(" ");
+    return ch ? out : null;
+  }
+  var SP = ["padding-top", "padding-right", "padding-bottom", "padding-left", "row-gap", "column-gap"];
+  var MG = ["margin-left", "margin-right"];
+  var RD = ["border-top-left-radius", "border-top-right-radius", "border-bottom-right-radius", "border-bottom-left-radius"];
+  function fixStyle(st, sel) {
+    var pr = function (p) { return st.getPropertyPriority(p); };
+    var ff = st.getPropertyValue("font-family"), head = HSEL.test(sel || "");
+    if (ff) {
+      if (ff.indexOf("--kt-head") >= 0) head = true;
+      else if (ff.indexOf("var(") < 0) {
+        if (/cambria|caladea/i.test(ff)) { st.setProperty("font-family", "var(--kt-head," + ff + ")", pr("font-family")); head = true; }
+        else if (/outfit/i.test(ff)) st.setProperty("font-family", "var(--kt-body," + ff + ")", pr("font-family"));
+      }
+    }
+    var fz = st.getPropertyValue("font-size");
+    if (fz && fz.indexOf("var(") < 0 && /px|rem|vw|vh|vmin|vmax|clamp|min\(|max\(/.test(fz) && !/(^|[^r])em\b|%/.test(fz)) {
+      st.setProperty("font-size", "calc(" + fz + " * var(--kt-fs,1)" + (head ? " * var(--kt-hs,1)" : "") + ")", pr("font-size"));
+      if (!head && sel) FZ.push({ st: st, sel: sel }); // keyin: sahifadagi h1–h3 ga tegishli boʻlsa sarlavha deb belgilanadi
+    }
+    SP.forEach(function (p) { var n = tok(st.getPropertyValue(p), "--kt-sp"); if (n) st.setProperty(p, n, pr(p)); });
+    // Manfiy chekka (margin) koʻpincha ota blok padding'ini "yeydi" (toʻliq enli lenta): u ham birga oʻzgaradi
+    MG.forEach(function (p) { var v = st.getPropertyValue(p); if (/^-\d*\.?\d+px$/.test(v || "")) st.setProperty(p, "calc(" + v + " * var(--kt-sp,1))", pr(p)); });
+    RD.forEach(function (p) { var n = tok(st.getPropertyValue(p), "--kt-r", 40); if (n) st.setProperty(p, n, pr(p)); });
+    var mw = st.getPropertyValue("max-width");
+    if (PX.test(mw || "") && parseFloat(mw) >= 900) st.setProperty("max-width", "calc(" + mw + " * var(--kt-w,1))", pr("max-width"));
+  }
+  var FZ = [];
+  function headPass() {
+    if (!document.body || !FZ.length) return;
+    var hs = document.querySelectorAll("h1,h2,h3"); if (!hs.length) return;
+    var rest = [];
+    FZ.forEach(function (x) {
+      var hit = false;
+      try { for (var i = 0; i < hs.length && !hit; i++) hit = hs[i].matches(x.sel); } catch (e) {}
+      if (hit) { var v = x.st.getPropertyValue("font-size"); if (v.indexOf("--kt-hs") < 0) x.st.setProperty("font-size", v.replace(/\)\s*$/, " * var(--kt-hs,1))"), x.st.getPropertyPriority("font-size")); }
+      else rest.push(x);
+    });
+    FZ = rest;
+  }
+  function walk(rules) {
+    for (var i = 0; i < rules.length; i++) {
+      var r = rules[i];
+      if (r.style && r.selectorText) { if (!/^\s*:root\s*$/.test(r.selectorText)) fixStyle(r.style, r.selectorText); }
+      else if (r.cssRules) walk(r.cssRules); // @media, @supports, @layer (@keyframes ichida selectorText yoʻq)
+    }
+  }
+  var REW = false, seen = typeof WeakSet === "function" ? new WeakSet() : null;
+  function rewriteAll() {
+    if (!seen) return;
+    var ss = document.styleSheets;
+    for (var i = 0; i < ss.length; i++) {
+      var sh = ss[i]; if (seen.has(sh)) continue;
+      var node = sh.ownerNode; if (node && node.id === "klook-css") { seen.add(sh); continue; }
+      var rules = null; try { rules = sh.cssRules; } catch (e) { seen.add(sh); continue; } // boshqa domen (Google Fonts)
+      if (!rules) continue;
+      seen.add(sh); walk(rules);
+    }
+    if (document.body) {
+      var els = document.querySelectorAll("[style]");
+      for (var j = 0; j < els.length; j++) if (!els[j].__kt) { els[j].__kt = 1; fixStyle(els[j].style, els[j].tagName); }
+      headPass();
+    }
+  }
+  var mo = null;
+  function startRewrite() {
+    if (REW) { rewriteAll(); return; }
+    REW = true; root.setAttribute("data-klook", "1");
+    rewriteAll();
+    var t = 0, again = function () { clearTimeout(t); t = setTimeout(rewriteAll, 30); };
+    document.addEventListener("DOMContentLoaded", rewriteAll);
+    window.addEventListener("load", rewriteAll);
+    document.addEventListener("load", function (e) { if (e.target && e.target.tagName === "LINK") again(); }, true);
+    if (window.MutationObserver) { mo = new MutationObserver(function (ms) {
+      for (var i = 0; i < ms.length; i++) for (var k = 0; k < ms[i].addedNodes.length; k++) {
+        var n = ms[i].addedNodes[k]; if (n.nodeName === "STYLE" || n.nodeName === "LINK") { again(); return; }
+      }
+    }); mo.observe(root, { childList: true, subtree: true }); }
+  }
+
+  // ── Qoʻllash ──
+  var cur = null, userFs = 1, fsBtns = [];
+  try { var u = parseFloat(localStorage.getItem(FSK)); if (FS_STEPS.indexOf(u) >= 0) userFs = u; } catch (e) {}
+  function styleEl(id) {
+    var el = document.getElementById(id);
+    if (!el) { el = document.createElement("style"); el.id = id; (document.head || root).appendChild(el); }
+    return el;
+  }
+  function paletteCss(id) {
+    var t = THEMES[id]; if (!t || !t.c) return "";
+    var c = t.c;
+    return "html:not([data-theme=\"dark\"]){--accent2:" + c.a2 + ";--accent2-h:" + c.a2h + ";--accent2-lit:" + c.a2l +
+      ";--bg:" + c.bg + ";--surface:" + c.sf + ";--border:" + c.bd + ";--gold:" + c.g + ";--gold-lit:" + c.gl + ";--accent-lit:" + c.al +
+      ";--cream:" + c.bg + ";--kl-clay:" + c.a2 + ";--kl-cream:" + c.bg + ";--kl-line:" + c.bd + "}";
+  }
+  function apply(s) {
+    s = merge(s); cur = s;
+    var th = resolve(s), f = FONTS[s.font];
+    root.setAttribute("data-ktheme", th.id);
+    styleEl("klook-vars").textContent = paletteCss(th.id);
+    var link = document.getElementById("klook-font");
+    if (f.q) {
+      var href = "https://fonts.googleapis.com/css2?" + f.q + "&display=swap";
+      if (!link) { link = document.createElement("link"); link.rel = "stylesheet"; link.id = "klook-font"; (document.head || root).appendChild(link); }
+      if (link.getAttribute("href") !== href) link.setAttribute("href", href);
+    } else if (link) link.parentNode.removeChild(link);
+    var fs = s.fs * (s.reader ? userFs : 1);
+    var st = root.style;
+    if (f.h) st.setProperty("--kt-head", f.h); else st.removeProperty("--kt-head");
+    if (f.b) st.setProperty("--kt-body", f.b); else st.removeProperty("--kt-body");
+    st.setProperty("--kt-fs", String(+fs.toFixed(3)));
+    st.setProperty("--kt-hs", String(s.hs)); st.setProperty("--kt-sp", String(s.sp));
+    st.setProperty("--kt-r", String(s.r)); st.setProperty("--kt-w", String(s.w));
+    if (f.q || fs !== 1 || s.hs !== 1 || s.sp !== 1 || s.r !== 1 || s.w !== 1) startRewrite();
+    syncFs();
+    return th;
+  }
+
+  var stored = null;
+  try { var c0 = JSON.parse(localStorage.getItem(CK) || "null"); if (c0 && c0.d) stored = c0; } catch (e) {}
+  var prev = null;
+  if (FRAMED) { try { prev = JSON.parse(sessionStorage.getItem(PK) || "null"); } catch (e) {} }
+  if (!OFF) apply(prev || (stored && stored.d) || null);
+
+  function fresh() {
+    if (OFF || prev || !window.fetch) return;
+    if (stored && Date.now() - stored.t < TTL) return;
+    fetch(URL_, { headers: { apikey: AK, Authorization: "Bearer " + AK } })
+      .then(function (r) { return r.ok ? r.json() : (r.status >= 400 && r.status < 500 ? [] : null); }) // 4xx (masalan, jadval yoʻq) = standart, keshlanadi
+      .then(function (d) {
+        if (!Array.isArray(d)) return;
+        var v = d[0] ? d[0].value : null;
+        try { localStorage.setItem(CK, JSON.stringify({ t: Date.now(), d: v })); } catch (e) {}
+        if (JSON.stringify(merge(v)) !== JSON.stringify(cur)) apply(v);
+      }).catch(function () {});
+  }
+  fresh();
+
+  // ── Talaba uchun "Aa" (A− A A+) tugmasi: faqat matn oʻlchami, tanlov qurilmada ──
+  function label() { return Math.round(userFs * 100) + "%"; }
+  function syncFs() {
+    fsBtns.forEach(function (w) {
+      w.style.display = cur && cur.reader ? "" : "none";
+      var v = w.querySelector(".kl-fs-v"); if (v) v.textContent = label();
+      var i = FS_STEPS.indexOf(userFs);
+      var m = w.querySelector("[data-fs=\"-1\"]"), p = w.querySelector("[data-fs=\"1\"]");
+      if (m) m.disabled = i <= 0; if (p) p.disabled = i >= FS_STEPS.length - 1;
+    });
+  }
+  function setFs(v) {
+    userFs = v;
+    try { if (v === 1) localStorage.removeItem(FSK); else localStorage.setItem(FSK, String(v)); } catch (e) {}
+    apply(cur);
+  }
+  var CSS = ".kl-fs{position:relative;display:inline-flex;flex:none}" +
+    ".kl-fs>button.kl-fs-b{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border,#e0e8e2);background:var(--surface,#fff);color:var(--text,#1a2e26);cursor:pointer;font:700 14px/1 \"Outfit\",\"IBM Plex Sans\",sans-serif;padding:0;letter-spacing:-.02em}" +
+    ".kl-fs>button.kl-fs-b:hover{border-color:var(--accent,#2d4a3e)}" +
+    ".kl-fs-p{position:absolute;right:0;top:calc(100% + 8px);z-index:400;display:none;align-items:center;gap:4px;padding:6px;border-radius:12px;background:var(--surface,#fff);border:1px solid var(--border,#e0e8e2);box-shadow:0 10px 28px rgba(26,46,38,.16);white-space:nowrap}" +
+    ".kl-fs.open .kl-fs-p{display:flex}" +
+    ".kl-fs-p button{min-width:38px;height:34px;border-radius:9px;border:1px solid var(--border,#e0e8e2);background:transparent;color:var(--text,#1a2e26);cursor:pointer;font:700 15px/1 \"Outfit\",\"IBM Plex Sans\",sans-serif}" +
+    ".kl-fs-p button:hover:not(:disabled){border-color:var(--accent,#2d4a3e);background:var(--accent-lit,#e8f0ec)}" +
+    ".kl-fs-p button:disabled{opacity:.35;cursor:default}" +
+    ".kl-fs-v{min-width:48px;text-align:center;font:600 13px/1 \"Outfit\",\"IBM Plex Sans\",sans-serif;color:var(--muted,#5f7169)}" +
+    ".kl-fs-float{position:fixed;left:58px;bottom:14px;z-index:300}" +
+    ".kl-fs-float.kl-fs-solo{left:14px}.kl-fs-float>button.kl-fs-b{box-shadow:0 4px 14px rgba(0,0,0,.18)}" +
+    ".kl-fs-float .kl-fs-p{top:auto;bottom:calc(100% + 8px);left:0;right:auto}" +
+    "header.top .kl-fs{margin-right:8px}" +
+    "html[data-theme=\"dark\"] .kl-fs-p{box-shadow:0 10px 28px rgba(0,0,0,.45)}" +
+    "html[data-klook] body{overflow-wrap:break-word}" + // kattalashgan matn tor kartochkadan chiqib ketmasin
+    "@media print{.kl-fs{display:none!important}}";
+  function makeFs() {
+    var w = document.createElement("div"); w.className = "kl-fs";
+    w.innerHTML = '<button type="button" class="kl-fs-b" aria-haspopup="true" aria-expanded="false" title="Matn oʻlchami" aria-label="Matn oʻlchami" data-snd="tab">Aa</button>' +
+      '<div class="kl-fs-p" role="group" aria-label="Matn oʻlchami"><button type="button" data-fs="-1" aria-label="Kichikroq">A−</button>' +
+      '<button type="button" data-fs="0" class="kl-fs-v" title="Asl oʻlcham" aria-label="Asl oʻlcham"></button>' +
+      '<button type="button" data-fs="1" aria-label="Kattaroq">A+</button></div>';
+    var b = w.firstChild;
+    b.addEventListener("click", function (e) { e.stopPropagation(); var o = !w.classList.contains("open"); w.classList.toggle("open", o); b.setAttribute("aria-expanded", o ? "true" : "false"); });
+    w.querySelector(".kl-fs-p").addEventListener("click", function (e) {
+      e.stopPropagation();
+      var t = e.target.closest ? e.target.closest("[data-fs]") : null; if (!t) return;
+      var d = +t.getAttribute("data-fs"), i = FS_STEPS.indexOf(userFs);
+      setFs(d === 0 ? 1 : FS_STEPS[Math.min(FS_STEPS.length - 1, Math.max(0, i + d))]);
+    });
+    document.addEventListener("click", function () { w.classList.remove("open"); b.setAttribute("aria-expanded", "false"); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") { w.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
+    fsBtns.push(w); return w;
+  }
+  function mountFs() {
+    styleEl("klook-css").textContent = CSS;
+    var th = document.querySelector(".kl-theme");
+    var w = makeFs();
+    if (th && th.parentNode) {
+      if (th.classList.contains("kl-theme-float")) { w.classList.add("kl-fs-float"); document.body.appendChild(w); }
+      else th.parentNode.insertBefore(w, th.nextSibling);
+    } else { w.classList.add("kl-fs-float"); document.body.appendChild(w); }
+    syncFs();
+    // Tor ekranda sarlavha qatori sigʻmasa (menyu yoki modul sarlavhasi), tugma pastki chap burchakka oʻtadi
+    function fit() {
+      if (w.classList.contains("kl-fs-float") || w.style.display === "none") return;
+      var row = w.parentNode, vw = window.innerWidth, over = root.scrollWidth > vw + 1;
+      if (!over && row) for (var i = 0; i < row.children.length; i++) { var rc = row.children[i].getBoundingClientRect(); if (rc.width && rc.right > vw + 1) { over = true; break; } }
+      if (over) {
+        w.classList.add("kl-fs-float");
+        if (!document.querySelector(".kl-theme-float")) w.classList.add("kl-fs-solo");
+        document.body.appendChild(w);
+      }
+    }
+    fit(); window.addEventListener("load", fit); setTimeout(fit, 300);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mountFs); else mountFs();
+
+  // Admin koʻrinishi va testlar uchun
+  window.KLook = {
+    THEMES: THEMES, FONTS: FONTS, HOLS: HOLS, DEF: DEF, LIM: LIM, FS_STEPS: FS_STEPS,
+    merge: merge, resolve: resolve, today: today, season: season, inRange: inRange,
+    apply: function (s) { return apply(s); }, current: function () { return cur; }
+  };
+})();
+
 (function () {
   var DIR = "kl_dir";
   // Yangi sahifa ochilganda: oldingi sahifada bosilgan havola yoʻnalishini oʻtishga qoʻshamiz
