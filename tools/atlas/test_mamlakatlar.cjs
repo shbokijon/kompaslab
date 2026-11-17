@@ -7,7 +7,7 @@ const SHOTS = process.argv[2] || "";
 (async () => {
   const b = await chromium.launch(); const errs = [];
   for (const [w, dark] of [[390, false], [1280, false], [1280, true]]) {
-    const ctx = await b.newContext({ viewport: { width: w, height: 900 }, colorScheme: dark ? "dark" : "light" });
+    const ctx = await b.newContext({ viewport: { width: w, height: w < 500 ? 844 : 900 }, colorScheme: dark ? "dark" : "light", hasTouch: w < 500, isMobile: w < 500 });
     await ctx.route(/fonts\.g|supabase|t\.me/, r => r.abort());
     const p = await ctx.newPage(); p.on("pageerror", e => errs.push(w + ": " + e.message));
     await p.goto("http://localhost:8814/mamlakatlar.html", { waitUntil: "load" });
@@ -22,15 +22,30 @@ const SHOTS = process.argv[2] || "";
     assert.equal(await p.locator("#mxCard .mx-kpi").count(), 3, "3 ta asosiy raqam");
     assert.ok((await p.textContent("#mxCard .mx-kpi b")).replace(/\s/g, "") === "3513", "sanab chiqish tugaydi");
     assert.ok((await p.getAttribute(".mx-arc", "d")).startsWith("M"), "Toshkentdan chiziq");
+    if (w < 500) {
+      assert.ok(await p.locator("#mxCard.is-sheet").count() === 1, "telefonda pastki panel");
+      const mh = (await p.locator("#mxMap svg").boundingBox()).height;
+      assert.ok(mh >= 190, "telefonda xarita balandligi " + mh);
+      await p.click("#mxCard [data-sheet=toggle]");
+      assert.ok(await p.locator("#mxCard.is-full").count() === 1, "panel kattalashadi");
+    }
     // tab va izoh
     await p.click('#mxCard .mx-tab[data-g="Stipendiya"]');
     assert.ok((await p.textContent("#mxCard .mx-items")).includes("GKS"));
     await p.click("#mxCard .mx-i");
     assert.ok(await p.locator("#mxCard .mx-more:not([hidden]) a").count() === 1, "manba ochiladi");
-    if (SHOTS && w === 1280) await p.screenshot({ path: `${SHOTS}/v2-${tag}-kor.png` });
+    if (SHOTS) await p.screenshot({ path: `${SHOTS}/v3-${tag}-kor.png` });
+    if (w < 500) { await p.click("#mxCard [data-sheet=close]"); assert.ok(await p.locator("#mxCard.is-sheet").count() === 0, "panel yopiladi"); }
     // xarita bosish (doira)
     await p.locator('#mxMap .mx-bub[data-iso="JPN"] circle').dispatchEvent("click"); await p.waitForTimeout(200);
     assert.ok((await p.textContent("#mxCard h2")).includes("Yaponiya"), "doira bosish");
+    if (w < 500) {
+      const before = (await p.getAttribute("#mxMap svg", "viewBox")).split(" ").map(Number)[0];
+      await p.click('.mx-chip[data-iso="USA"]'); await p.waitForTimeout(900);
+      const after = (await p.getAttribute("#mxMap svg", "viewBox")).split(" ").map(Number)[0];
+      assert.ok(after < before, "AQSh tanlanganda xarita suriladi");
+      await p.click("#mxCard [data-sheet=close]");
+    }
     // qatlamlar
     await p.click('.mx-layer[data-layer="flow"]'); await p.waitForTimeout(300);
     assert.equal(await p.locator("#mxMap .mx-bub").count(), 10, "flow: 10 doira");
@@ -41,7 +56,7 @@ const SHOTS = process.argv[2] || "";
     await p.click('[data-zoom="eu"]'); await p.waitForTimeout(900);
     const vb = (await p.getAttribute("#mxMap svg", "viewBox")).split(" ").map(Number);
     assert.ok(vb[2] < 200, "Yevropa yaqinlashdi " + vb);
-    if (SHOTS) await p.screenshot({ path: `${SHOTS}/v2-${tag}-eu.png`, fullPage: w === 390 });
+    if (SHOTS) await p.screenshot({ path: `${SHOTS}/v3-${tag}-eu.png`, fullPage: w === 390 });
     const sw = await p.evaluate(() => document.documentElement.scrollWidth);
     if (w === 390) assert.ok(sw <= 392, "siljish " + sw);
     await ctx.close();

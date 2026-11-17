@@ -16,8 +16,10 @@
   var NS = "http://www.w3.org/2000/svg";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var tip = document.getElementById("mxTip"), legend = document.getElementById("mxLegend");
-  var ZOOM = { world: [0, 0, W, H], eu: box(-13, 34, 33, 62), as: box(52, -12, 150, 56) };
-  var homeDot, layer = "talabalar", sel = null, tab = null, shapes = {}, svg, gMap, gBub, arc, plane, vb = ZOOM.world.slice(), anim = 0, planeRaf = 0;
+  var mobile = window.matchMedia && window.matchMedia("(max-width: 640px)").matches;
+  // Telefonda boshlangʻich kesim: Amerika sharqi → Yaponiya, Shimoliy qutb va Janubiy okeansiz (balandroq xarita)
+  var ZOOM = { world: [0, 0, W, H], eu: box(-13, 34, 33, 62), as: box(52, -12, 150, 56), start: mobile ? box(-62, -44, 150, 74) : [0, 0, W, H] };
+  var homeDot, layer = "talabalar", sel = null, tab = null, shapes = {}, svg, gMap, gBub, arc, plane, vb = ZOOM.start.slice(), anim = 0, planeRaf = 0;
 
   function px(lon, lat) { return [(lon + 180) / 360 * W, (LAT0 - Math.max(LAT1, Math.min(LAT0, lat))) / 360 * W]; }
   function box(lo0, la0, lo1, la1) { var a = px(lo0, la1), b = px(lo1, la0); return [a[0], a[1], b[0] - a[0], b[1] - a[1]]; }
@@ -66,11 +68,25 @@
     root.insertBefore(svg, tip);
     svg.addEventListener("mousemove", hover);
     svg.addEventListener("mouseleave", function () { tip.hidden = true; });
-    svg.addEventListener("click", function (e) { var iso = isoOf(e.target); if (iso && C.c[iso]) pick(iso); });
+    svg.addEventListener("click", function (e) { if (dragged) return; var iso = isoOf(e.target); if (iso && C.c[iso]) pick(iso); });
+    // Barmoq yoki sichqoncha bilan surish (gorizontal); vertikal aylantirish sahifaga qoladi (touch-action: pan-y)
+    var drag = null, dragged = false;
+    svg.addEventListener("pointerdown", function (e) { drag = { x: e.clientX, y: e.clientY, vb: vb.slice() }; dragged = false; });
+    window.addEventListener("pointermove", function (e) {
+      if (!drag) return;
+      var k = vb[2] / svg.getBoundingClientRect().width, dx = (e.clientX - drag.x) * k, dy = (e.clientY - drag.y) * k;
+      if (!dragged && Math.abs(e.clientX - drag.x) < 6 && Math.abs(e.clientY - drag.y) < 6) return;
+      dragged = true; tip.hidden = true;
+      vb[0] = clamp(drag.vb[0] - dx, 0, W - vb[2]); vb[1] = clamp(drag.vb[1] - dy, 0, H - vb[3]);
+      svg.setAttribute("viewBox", vb.join(" "));
+    });
+    window.addEventListener("pointerup", function () { if (drag && dragged) setTimeout(function () { dragged = false; }, 0); drag = null; });
+    window.addEventListener("pointercancel", function () { drag = null; dragged = false; });
     paint(true);
   }
 
   // 1 ekran pikseli = necha xarita birligi (doira va yozuv ekranda bir xil oʻlchamda qoladi)
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
   function scale() { var w = svg && svg.getBoundingClientRect().width; return w ? vb[2] / w : vb[2] / W; }
   function mval(iso) { var m = C.m[layer][iso]; return layer === "flow" ? m[1] : m[0]; }
 
@@ -131,8 +147,8 @@
     tip.style.left = x + "px"; tip.style.top = y + "px";
   }
 
-  function zoomTo(key) {
-    var from = vb.slice(), to = ZOOM[key], t0 = performance.now(), dur = reduce ? 0 : 650;
+  function zoomTo(key, target) {
+    var from = vb.slice(), to = target || ZOOM[key], t0 = performance.now(), dur = reduce ? 0 : 650;
     cancelAnimationFrame(anim);
     (function step(now) {
       var k = dur ? Math.min(1, (now - t0) / dur) : 1, e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
@@ -179,7 +195,7 @@
     if (!tab || groups.indexOf(tab) < 0) tab = groups[0];
     var kpi = c.kpi.map(function (i) {
       var r = rows[i];
-      return '<div class="mx-kpi"><img src="img/3d/' + C.icons[r[0]] + '.webp" alt="" width="40" height="40">' + vhtml(r[2], r[3]) + "<span>" + esc(r[1]) + "</span><em>" + esc(r[4]) + "</em></div>";
+      return '<div class="mx-kpi"><img src="img/3d/' + C.icons[r[0]] + '.webp" alt="" width="40" height="40">' + vhtml(r[2], r[3]) + '<span title="' + esc(r[1]) + '">' + esc(r[1]) + "</span><em>" + esc(r[4]) + "</em></div>";
     }).join("");
     var tabs = groups.map(function (g) {
       return '<button type="button" role="tab" class="mx-tab" data-g="' + esc(g) + '" aria-selected="' + (g === tab) + '"><img src="img/3d/' + C.icons[g] + '.webp" alt="" width="24" height="24">' + esc(g) + "</button>";
@@ -194,7 +210,8 @@
     }).join("");
     var head = sel === C.home ? "Siz shu yerdan boshlaysiz. Xaritadan mamlakat tanlang." : "Rasmiy koʻrsatkichlar: " + rows.length;
     var lab = c.lab ? '<a class="mx-lab" href="' + c.lab + '" data-snd="nav">' + esc(c.lab_n) + ": shu yoʻnalish boʻyicha tayyorlov →</a>" : "";
-    card.innerHTML = '<div class="mx-card-in"><header class="mx-ch"><span class="mx-f" aria-hidden="true">' + c.f + "</span><div><h2>" + esc(c.n) + "</h2><p>" + esc(head) + "</p></div></header>" +
+    var ctl = mobile && sel !== C.home ? '<div class="mx-sh-ctl"><button type="button" class="mx-sh-grip" data-sheet="toggle" aria-expanded="false" aria-label="Kartani kattalashtirish"></button><button type="button" class="mx-sh-x" data-sheet="close" aria-label="Yopish">×</button></div>' : "";
+    card.innerHTML = ctl + '<div class="mx-card-in"><header class="mx-ch"><span class="mx-f" aria-hidden="true">' + c.f + "</span><div><h2>" + esc(c.n) + "</h2><p>" + esc(head) + "</p></div></header>" +
       '<div class="mx-kpis">' + kpi + "</div>" +
       (groups.length > 1 ? '<div class="mx-tabs" role="tablist">' + tabs + "</div>" : "") +
       '<ul class="mx-items" role="tabpanel">' + items + "</ul>" + lab + "</div>";
@@ -222,8 +239,16 @@
     sel = iso; tab = null;
     document.querySelectorAll(".mx-chip").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-iso") === iso ? "true" : "false"); });
     render(true);
-    if (!quiet) { snd("pick"); if (window.innerWidth < 860) card.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" }); }
-    if (svg) { paint(false); drawArc(!quiet); }
+    if (!quiet) { snd("pick"); sheet(true); if (!mobile && window.innerWidth < 860) card.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" }); }
+    if (svg) {
+      paint(false); drawArc(!quiet);
+      // tanlangan mamlakat koʻrinishdan tashqarida boʻlsa, xarita unga suriladi
+      var an = C.anchors[iso], q = an && px(an[1], an[0]);
+      if (q && (q[0] < vb[0] + vb[2] * .08 || q[0] > vb[0] + vb[2] * .92 || q[1] < vb[1] || q[1] > vb[1] + vb[3])) {
+        var to = [clamp(q[0] - vb[2] / 2, 0, W - vb[2]), clamp(q[1] - vb[3] / 2, 0, H - vb[3]), vb[2], vb[3]];
+        zoomTo(null, to);
+      }
+    }
   }
 
   document.querySelectorAll(".mx-chip").forEach(function (b) { b.addEventListener("click", function () { pick(b.getAttribute("data-iso")); }); });
@@ -241,9 +266,29 @@
     });
   });
 
+  // ---------------------------------------------------------- telefon: pastki panel
+  var sheetOn = false, mapSeen = true;
+  function sheet(open) {
+    if (!mobile) return;
+    if (open !== undefined) sheetOn = open && sel !== C.home;
+    var on = sheetOn && mapSeen;
+    card.classList.toggle("is-sheet", on);
+    document.body.classList.toggle("mx-sheet-on", on);
+    if (!on) card.classList.remove("is-full");
+  }
+  if (mobile) {
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { mapSeen = es[0].isIntersecting; sheet(); }, { threshold: 0.25 }).observe(root);
+    card.addEventListener("click", function (e) {
+      var t = e.target.closest("[data-sheet]"); if (!t) return;
+      if (t.getAttribute("data-sheet") === "close") sheet(false);
+      else { card.classList.toggle("is-full"); t.setAttribute("aria-expanded", card.classList.contains("is-full") ? "true" : "false"); }
+    });
+  }
+
   var rz = 0;
   window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { if (svg) paint(false); }, 150); });
 
+  if (mobile) document.querySelectorAll("[data-zoom]").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
   pick(C.home, true);
   fetch(root.getAttribute("data-globe-src") || "data/globe.json").then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(build).catch(function () {
     var l = root.querySelector(".mx-load"); if (l) l.textContent = conv("Xarita yuklanmadi. Mamlakatni pastdagi tugmalardan tanlang.");
