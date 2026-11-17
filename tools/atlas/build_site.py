@@ -387,11 +387,8 @@ def mamlakatlar_json() -> str:
 
 
 GLOBE_CSS = (".mx-globe{padding:8px 0 28px}"
-             ".mx-gh{margin:0 0 18px;max-width:760px}"
-             ".mx-gh h2{display:flex;align-items:center;gap:12px;margin:0 0 8px}"
-             ".mx-plane{width:56px;height:56px;flex-shrink:0;filter:drop-shadow(0 8px 10px rgba(45,74,62,.22))}"
-             ".mx-gh p{color:var(--muted);margin:0}"
-             ".mx-h2{font-size:clamp(24px,3.4vw,32px);margin:8px 0 14px}")
+             ".mx-h2{font-size:clamp(24px,3.4vw,32px);margin:8px 0 6px}"
+             ".mx-sub{color:var(--muted);margin:0 0 16px;max-width:760px}")
 
 
 def mamlakatlar_page() -> str:
@@ -408,15 +405,15 @@ def mamlakatlar_page() -> str:
            "home_ll": [41.31, 69.28]}
     pend = "".join(f"<li>{x}</li>" for x in MD.PENDING)
     body = nav("mamlakatlar", "mamlakatlar") + pagehead(
-        [("Kompas Lab", "index.html"), ("Mamlakatlar xaritasi", None)],
-        "Qayerda o'qiysiz? Mamlakatlar xaritasi",
-        "Ko'rsatkichni tanlang va mamlakatni bosing. Har raqamda rasmiy manba va sana bor.",
-        "telescope") + f"""<main><section id="globus" class="mx-globe" data-sfx><div class="wrap">
-<div class="mx-gh"><h2><img class="mx-plane" src="img/3d/plane.webp" width="160" height="160" alt="" decoding="async"><span>Qayerga uchamiz?</span></h2><p>Orzuingizdagi mamlakatni bosing: samolyot Toshkentdan uchib boradi va u yerga qaysi <b>dastur</b> tayyorlashini ko'rasiz. <b>Ob-havo</b> va <b>Iqlim</b> qatlamida poytaxtdagi bugungi havoni va oxirgi 12 oy iqlimini bilib olasiz.</p></div>
+        [("Kompas Lab", "index.html"), ("Qayerga uchamiz?", None)],
+        "Qayerga uchamiz?",
+        "Orzuingizdagi mamlakatni bosing: samolyot Toshkentdan uchib boradi va u yerga qaysi <b>dastur</b> tayyorlashini ko'rasiz. <b>Ob-havo</b> va <b>Iqlim</b> qatlamida poytaxtdagi bugungi havoni va oxirgi 12 oy iqlimini bilib olasiz.",
+        "plane") + f"""<main><section id="globus" class="mx-globe" data-sfx><div class="wrap">
 <div class="kglobe" data-globe></div>
 </div></section>
 <div class="wrap mx-page">
 <h2 class="mx-h2">12 mamlakat rasmiy raqamlarda</h2>
+<p class="mx-sub">Ko'rsatkichni tanlang va mamlakatni bosing. Har raqamda rasmiy manba va sana bor.</p>
 <div class="mx-bar">
 <div class="mx-tools" role="group" aria-label="Xaritadagi ko'rsatkich">
 <button type="button" class="mx-layer" data-layer="talabalar" aria-pressed="true"><img src="img/3d/books.webp" alt="" width="28" height="28">Xalqaro talabalar</button>
