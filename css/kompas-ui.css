@@ -402,6 +402,7 @@ html[data-theme="dark"] .dn-amt.is-on{background:var(--ko-accent)}
 html[data-theme="dark"] .btn-p{background:var(--ko-accent)}
 html[data-theme="dark"] .btn-p:hover{background:var(--ko-accent-h)}
 html[data-theme="dark"] .motto{border-color:#3c4640}
+html[data-theme="dark"] .qi-i summary:hover,html[data-theme="dark"] .qi-i summary:focus-visible,html[data-theme="dark"] .qi-i[open] summary{background:var(--ko-accent)}
 html[data-theme="dark"] .kg-card > a:hover{background:#1b201e}
 html[data-theme="dark"] .kg-fly:hover{background:#1b201e}
 html[data-theme="dark"] .kg-list button[aria-pressed="true"]{background:#231913}
@@ -466,6 +467,8 @@ html[data-theme="dark"] .kl-me-s ul{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .kl-me-tag{background:var(--ko-kl-forest)}
 html[data-theme="dark"] .kl-me.is-paid .kl-me-tag{color:#c0dace}
 html[data-theme="dark"] .kl-me-m .kl-me-out{border-top:1px solid var(--border,#39403b)}
+html[data-theme="dark"] body .dark .btn-p,html[data-theme="dark"] body .kl-lock .btn-p,html[data-theme="dark"] body .decide .btn-p{background:#1d1c18;color:#c7d8d1}
+html[data-theme="dark"] body .dark .btn-p:hover,html[data-theme="dark"] body .kl-lock .btn-p:hover,html[data-theme="dark"] body .decide .btn-p:hover{background:#131313}
 html[data-theme="dark"] .kl-info{background:var(--surface,#1d190b);border:1px solid var(--border,#44423b)}
 html[data-theme="dark"] .kl-info summary b{color:var(--accent,#b9d4c9)}
 html[data-theme="dark"] .kl-i{color:var(--muted,#b1bdb8)}

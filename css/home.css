@@ -676,3 +676,28 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 
 /* K4 yoʻli: menyudan kelinganda sarlavha qotirilgan menyu ostida qolmasin (2026-11-17) */
 #yol-k4{scroll-margin-top:calc(var(--kl-top,0px) + var(--kl-nav,62px) + var(--kl-tabs,0px));}
+/* ── Qanday ishlaydi (2026-11-17): ixcham kartalar, tafsilot ⓘ ichida ── */
+.qi-sec{padding:44px 0;}
+.qi-sec h2{font-size:clamp(24px,2.6vw,32px);margin-bottom:18px;}
+.qi-grid{list-style:none;display:grid;gap:12px;align-items:start;}
+.qi-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.qi-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.qi-c{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 44px 14px 14px;}
+.alt .qi-c{background:var(--bg);}
+.qi-h{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.qi-h img{width:44px;height:44px;flex:none;}
+.qi-h b{font-size:15.5px;line-height:1.25;color:var(--accent);}
+.qi-c>p{font-size:14.5px;color:var(--muted);line-height:1.5;}
+.qi-c>p b{color:var(--text);font-weight:600;}
+.qi-warn{border-color:rgba(196,98,45,.35);}
+.qi-warn .qi-h b{color:var(--accent2-h);}
+.qi-i summary{position:absolute;top:12px;right:12px;list-style:none;cursor:pointer;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;font:700 13px/1 Georgia,"Times New Roman",serif;font-style:italic;background:var(--surface);transition:background .15s,color .15s,border-color .15s;}
+.qi-i summary::-webkit-details-marker{display:none;}
+.qi-i summary:hover,.qi-i summary:focus-visible,.qi-i[open] summary{background:var(--accent);border-color:var(--accent);color:#fff;outline:none;}
+.qi-i>div{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:14px;color:var(--text);line-height:1.55;}
+.qi-i>div a{color:var(--accent);font-weight:600;}
+.qi-more{margin-top:14px;font-size:15px;}
+.qi-more a{color:var(--accent);font-weight:600;text-decoration:none;}
+.qi-more a:hover{text-decoration:underline;}
+@media(max-width:960px){.qi-4{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:720px){.qi-4,.qi-3{grid-template-columns:minmax(0,1fr);}.qi-sec{padding:32px 0;}}
