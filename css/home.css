@@ -691,7 +691,7 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .qi-c>p b{color:var(--text);font-weight:600;}
 .qi-warn{border-color:rgba(196,98,45,.35);}
 .qi-warn .qi-h b{color:var(--accent2-h);}
-.qi-i summary{position:absolute;top:12px;right:12px;list-style:none;cursor:pointer;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;font:700 13px/1 Georgia,"Times New Roman",serif;font-style:italic;background:var(--surface);transition:background .15s,color .15s,border-color .15s;}
+.qi-i summary{position:absolute;top:12px;right:12px;list-style:none;cursor:pointer;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--muted);color:var(--muted);display:flex;align-items:center;justify-content:center;font:700 13px/1 Georgia,"Times New Roman",serif;font-style:italic;background:var(--surface);transition:background .15s,color .15s,border-color .15s;}
 .qi-i summary::-webkit-details-marker{display:none;}
 .qi-i summary:hover,.qi-i summary:focus-visible,.qi-i[open] summary{background:var(--accent);border-color:var(--accent);color:#fff;outline:none;}
 .qi-i>div{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:14px;color:var(--text);line-height:1.55;}
