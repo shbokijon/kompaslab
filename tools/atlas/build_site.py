@@ -27,9 +27,9 @@ ISO = "2026-10-30"
 
 LABS = {
     "musofir": ('musofir-lab-m0.html', "Musofir dasturi M0"),
-    "master": ("master-lab-m0.html", "Master dasturi M0"),
+    "master": ("master-lab-m0.html", "Magistratura dasturi M0"),
     "phd": ("phd-lab-m0.html", "PhD dasturi M0"),
-    "bachelor": ("bachelor-lab-m0.html", "Bachelor dasturi M0"),
+    "bachelor": ("bachelor-lab-m0.html", "Bakalavr dasturi M0"),
     "daad": ("daad-lab-m0.html", "DAAD dasturi M0"),
     "gks": ("gks-lab-m0.html", "GKS dasturi M0"),
     "usa": ("usa-lab-m0.html", "USA dasturi M0"),
@@ -43,8 +43,8 @@ def lab_links(*keys: str) -> str:
 
 # Sotuvdagi dasturlar (tools/landing/labs_data.ON_SALE bilan bir xil): maqola oxirida narx sahifasiga havola.
 # Narx raqami yozilmaydi: yagona manba bazadagi courses jadvali.
-SALE = {"master": ("master-lab-narxlar.html", "Master dasturi"), "phd": ("phd-lab-narxlar.html", "PhD dasturi"),
-        "bachelor": ("bachelor-lab-narxlar.html", "Bachelor dasturi"), "gks": ("gks-lab-narxlar.html", "GKS dasturi"),
+SALE = {"master": ("master-lab-narxlar.html", "Magistratura dasturi"), "phd": ("phd-lab-narxlar.html", "PhD dasturi"),
+        "bachelor": ("bachelor-lab-narxlar.html", "Bakalavr dasturi"), "gks": ("gks-lab-narxlar.html", "GKS dasturi"),
         "usa": ("usa-lab-narxlar.html", "USA dasturi")}
 
 
@@ -65,7 +65,7 @@ def ext(url: str, label: str, lang: str = "") -> str:
 ARTICLES = [
     dict(
         slug="atlas-professorga-xat",
-        kind="O'qish · PhD, Master, DAAD",
+        kind="O'qish · PhD, Magistratura, DAAD",
         title="Professorga dastlabki xat (Cold email): 5 ta keng tarqalgan xato",
         card="Bir xil xatni o'nlab professorga yuborish, \"Dear Sir/Madam\" va birinchi xatdayoq stipendiya so'rash. Nimadan qochish va xat qanday tuzilishi.",
         desc="Professorga dastlabki xatda (cold email) ko'p uchraydigan 5 ta xato va xat tuzilmasi. DAAD va universitet tavsiyalari asosida, o'zbek tilida.",
@@ -153,7 +153,7 @@ ARTICLES = [
     ),
     dict(
         slug="atlas-ingliz-tili-testi",
-        kind="O'qish · Bachelor, Master",
+        kind="O'qish · Bakalavr, Magistratura",
         title="IELTS nima va qachon kerak bo'ladi",
         card="IELTS Academic nimadan iborat, qachon universitet talab qiladi, qachon viza uchun kerak va qachon talab qilinmasligi mumkin.",
         desc="IELTS Academic nima, qachon kerak va qachon kerak emas: Buyuk Britaniya talaba vizasi talabi, universitet o'zi baholashi va muqobil testlar. Rasmiy manbalar bilan.",

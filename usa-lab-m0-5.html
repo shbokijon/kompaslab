@@ -494,8 +494,8 @@ body.locked .gate{display:flex;}
             <p>Oila yiliga AQSh dollarida qancha bera oladi? Bu raqam M2 da hisoblanadi va M3 dagi universitet roʻyxatini belgilaydi.</p>
             <h4>B rejangizni tanlang</h4>
             <div class="chips" id="planB">
-              <button type="button" class="chip" data-b="Boshqa mamlakatda bakalavr (Bachelor dasturi)" aria-pressed="false">Boshqa mamlakatda bakalavr</button>
-              <button type="button" class="chip" data-b="Boshqa mamlakatda magistratura (Master dasturi)" aria-pressed="false">Boshqa mamlakatda magistratura</button>
+              <button type="button" class="chip" data-b="Boshqa mamlakatda bakalavr (Bakalavr dasturi)" aria-pressed="false">Boshqa mamlakatda bakalavr</button>
+              <button type="button" class="chip" data-b="Boshqa mamlakatda magistratura (Magistratura dasturi)" aria-pressed="false">Boshqa mamlakatda magistratura</button>
               <button type="button" class="chip" data-b="AQSh PhD kafedra moliyasi bilan (M7)" aria-pressed="false">AQSh PhD</button>
               <button type="button" class="chip" data-b="Boshqa davlat stipendiyasi (DAAD, GKS va boshqalar)" aria-pressed="false">Boshqa stipendiya</button>
               <button type="button" class="chip" data-b="Keyingi siklda qayta topshirish" aria-pressed="false">Keyingi siklda qayta</button>
@@ -836,7 +836,7 @@ body.locked .gate{display:flex;}
     var recs = [], flags = [];
     if (t.st === "sch") {
       recs.push("BA");
-      if (t.fam === "n") flags.push("Oila byudjeti past: faqat toʻliq ehtiyojni qoplaydigan universitetlar (M3) va parallel boshqa mamlakat (Bachelor dasturi)");
+      if (t.fam === "n") flags.push("Oila byudjeti past: faqat toʻliq ehtiyojni qoplaydigan universitetlar (M3) va parallel boshqa mamlakat (Bakalavr dasturi)");
       if (t.fam === "u") flags.push("Avval oila byudjetini aniqlang (M2)");
     }
     if (t.st === "ug") {
@@ -858,7 +858,7 @@ body.locked .gate{display:flex;}
     var r = $("trkRes"), rec = trackRec();
     if (!rec) { r.className = "verdict"; renderStmt(); return; }
     r.className = "verdict show box " + (rec.recs.length ? "info" : "warn");
-    r.innerHTML = (rec.recs.length ? "<b>Sizga mos yoʻl:</b> " + rec.recs.map(function (x) { return NAMES[x]; }).join("; ") + "." : "<b>Hozir mos AQSh yoʻli topilmadi.</b> Muqobil: <a href=\"bachelor-lab.html\">Bachelor dasturi</a>, <a href=\"master-lab.html\">Master dasturi</a> yoki <a href=\"phd-lab.html\">PhD dasturi</a>.") +
+    r.innerHTML = (rec.recs.length ? "<b>Sizga mos yoʻl:</b> " + rec.recs.map(function (x) { return NAMES[x]; }).join("; ") + "." : "<b>Hozir mos AQSh yoʻli topilmadi.</b> Muqobil: <a href=\"bachelor-lab.html\">Bakalavr dasturi</a>, <a href=\"master-lab.html\">Magistratura dasturi</a> yoki <a href=\"phd-lab.html\">PhD dasturi</a>.") +
       (rec.flags.length ? '<ul style="margin:8px 0 0 20px">' + rec.flags.map(function (f) { return "<li>" + f + "</li>"; }).join("") + "</ul>" : "");
     award("trk", 20, "Yoʻl tanlovchi nishoni", "compass"); renderStmt();
   }

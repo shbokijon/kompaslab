@@ -10,17 +10,17 @@
 // ═══════════════════════════════════════════════════════════════
 (function () {
   var ORIGIN = { iso: "UZB", id: "UZB", n: "Oʻzbekiston", c: "Toshkent", lat: 41.31, lon: 69.28 };
-  // dasturlar va mamlakatlar: index.html dagi dastur tavsiflari va Master dasturi M7 asosida; c — ob-havo olinadigan poytaxt
+  // dasturlar va mamlakatlar: index.html dagi dastur tavsiflari va Magistratura dasturi M7 asosida; c — ob-havo olinadigan poytaxt
   var DEST = [
-    { id: "GBR", n: "Buyuk Britaniya", c: "London", lat: 51.51, lon: -0.13, labs: [["master-lab", "Master dasturi", "Chevening, magistratura"], ["phd-lab", "PhD dasturi", "Doktorantura"], ["musofir-lab", "Musofir dasturi", "Rasmiy mavsumiy ish"]] },
+    { id: "GBR", n: "Buyuk Britaniya", c: "London", lat: 51.51, lon: -0.13, labs: [["master-lab", "Magistratura dasturi", "Chevening, magistratura"], ["phd-lab", "PhD dasturi", "Doktorantura"], ["musofir-lab", "Musofir dasturi", "Rasmiy mavsumiy ish"]] },
     { id: "USA", n: "AQSh", c: "Vashington", lat: 38.9, lon: -77.04, labs: [["usa-lab", "USA dasturi", "Bakalavr yordami, UGRAD, Fulbright, PhD"]] },
     { id: "DEU", n: "Germaniya", c: "Berlin", lat: 52.52, lon: 13.4, labs: [["daad-lab", "DAAD dasturi", "Magistratura va doktorantura"], ["musofir-lab", "Musofir dasturi", "Rasmiy ish"]] },
     { id: "KOR", n: "Koreya", c: "Seul", lat: 37.57, lon: 126.98, labs: [["gks-lab", "GKS dasturi", "Global Korea Scholarship"], ["musofir-lab", "Musofir dasturi", "EPS: rasmiy ish"]] },
     { id: "POL", n: "Polsha", c: "Varshava", lat: 52.23, lon: 21.01, labs: [["musofir-lab", "Musofir dasturi", "Rasmiy ish va firibgarlikdan himoya"]] },
-    { id: "HUN", n: "Vengriya", c: "Budapesht", lat: 47.5, lon: 19.04, labs: [["master-lab", "Master dasturi", "Stipendium Hungaricum (M7)"]] },
-    { id: "TUR", n: "Turkiya", c: "Anqara", lat: 39.93, lon: 32.86, labs: [["master-lab", "Master dasturi", "Türkiye Bursları (M7)"]] },
-    { id: "CHN", n: "Xitoy", c: "Pekin", lat: 39.9, lon: 116.4, labs: [["master-lab", "Master dasturi", "Xitoy hukumati stipendiyasi, CSC (M7)"]] },
-    { id: "JPN", n: "Yaponiya", c: "Tokio", lat: 35.68, lon: 139.69, labs: [["master-lab", "Master dasturi", "MEXT (M7)"]] }
+    { id: "HUN", n: "Vengriya", c: "Budapesht", lat: 47.5, lon: 19.04, labs: [["master-lab", "Magistratura dasturi", "Stipendium Hungaricum (M7)"]] },
+    { id: "TUR", n: "Turkiya", c: "Anqara", lat: 39.93, lon: 32.86, labs: [["master-lab", "Magistratura dasturi", "Türkiye Bursları (M7)"]] },
+    { id: "CHN", n: "Xitoy", c: "Pekin", lat: 39.9, lon: 116.4, labs: [["master-lab", "Magistratura dasturi", "Xitoy hukumati stipendiyasi, CSC (M7)"]] },
+    { id: "JPN", n: "Yaponiya", c: "Tokio", lat: 35.68, lon: 139.69, labs: [["master-lab", "Magistratura dasturi", "MEXT (M7)"]] }
   ];
   var PTS = [ORIGIN].concat(DEST);          // ob-havo soʻrovidagi tartib
   var R = Math.PI / 180;

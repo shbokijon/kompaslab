@@ -2,7 +2,7 @@ from common import SAT, ACT, IELTS, TOEFL, DET, APO, MYGOV, CDS, HOL, STD
 
 MOD = dict(
     title="Baholar va testlar",
-    desc="Bachelor dasturi M5: attestat baholarini taqdim etish, transkript va tarjima, IELTS/TOEFL/Duolingo strategiyasi, SAT va ACT, test talabi siyosatlari. Natija: test kalendari va baholar jadvali.",
+    desc="Bakalavr dasturi M5: attestat baholarini taqdim etish, transkript va tarjima, IELTS/TOEFL/Duolingo strategiyasi, SAT va ACT, test talabi siyosatlari. Natija: test kalendari va baholar jadvali.",
     lead="Baholar va testlar arizaning raqamli qismi. Ularni to'g'ri taqdim etmasangiz, kuchli natija ham noaniq ko'rinadi. Bu modulda baholaringizni universitet talablari bilan solishtirasiz va testlar kalendarini tuzasiz.",
     hero="chart", weeks="2", next="M6 Yutuqlar, CV va hujjatlar", next_href="bachelor-lab-m6.html",
     goals=[("chart", "Baholar jadvali", "asl shkalada, universitet talablari bilan solishtirilgan"),

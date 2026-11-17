@@ -2,7 +2,7 @@ from common import CA_ESSAY, UCAS_PS, THE_PS, HOL, STD
 
 MOD = dict(
     title="Shaxsiy bayonot va insholar",
-    desc="Bachelor dasturi M9: insho, shaxsiy bayonot va motivatsion xat farqi, Common App asosiy inshosi, hikoya topish, UCAS shaxsiy bayonoti (2026 qabulidan uch savol), qo'shimcha insholar. Natija: asosiy insho v1, UCAS bayonoti v1 va qo'shimcha insholar rejasi.",
+    desc="Bakalavr dasturi M9: insho, shaxsiy bayonot va motivatsion xat farqi, Common App asosiy inshosi, hikoya topish, UCAS shaxsiy bayonoti (2026 qabulidan uch savol), qo'shimcha insholar. Natija: asosiy insho v1, UCAS bayonoti v1 va qo'shimcha insholar rejasi.",
     lead="Insho arizaning siz o'zingiz gapiradigan yagona qismi. Bu modulda platforma nimani so'rashini ajratasiz, kichik epizoddan hikoya topasiz va birinchi qoralamalarni yozasiz. Tahrir M10 da.",
     hero="memo", weeks="3", next="M10 Inshoni tahrirlash va yakuniy matn", next_href="bachelor-lab-m10.html",
     goals=[("memo", "Asosiy insho qoralamasi v1", "Common App, 250–650 so'z"),

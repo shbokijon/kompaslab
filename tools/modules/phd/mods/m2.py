@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("chart", "Saralangan ro'yxat (Shortlist)", "8–12 imkoniyat, har birida rasmiy havola va tekshirilgan sana"),
            ("shield", "Talablar jadvali", "majburiy va afzal talablar alohida"),
            ("calendar", "Teskari kalendar", "tashqi va ichki muddatlar, 7 kun zaxira")],
-    warn="Universitet tanlashning umumiy usullari Master dasturi M1 da. Bu yerda faqat doktoranturaga xos tizimlar. Har bir shartni o'sha dastur sahifasidan tekshiring: mamlakat haqidagi umumiy maqola bunga yetmaydi.",
+    warn="Universitet tanlashning umumiy usullari Magistratura dasturi M1 da. Bu yerda faqat doktoranturaga xos tizimlar. Har bir shartni o'sha dastur sahifasidan tekshiring: mamlakat haqidagi umumiy maqola bunga yetmaydi.",
     lessons=[
         dict(t="To'rtta PhD modeli", short="Modellar", min=30, kind="🧭 Xarita", ic="compass",
              hook="Bitta mamlakat ichida ham PhD turlicha tashkil qilinadi. Modelni bilmasangiz, arizani <b>noto'g'ri joyga</b> yoki <b>noto'g'ri tartibda</b> yuborib qo'yishingiz mumkin.",

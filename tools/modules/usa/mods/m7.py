@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("chart", "Moliya paketi taqqoslagichi", "2 taklif: oylik sof qoldiq"),
            ("memo", "Kafedra moliyasi jadvali", "har kafedra: yillar, summa, majburiyat, muddat"),
            ("shield", "Grant muvofiqlik filtri", "xalqaro talabaga yopiq grantlarni chiqarish")],
-    warn=f"Ilmiy rahbar tanlash, professorga xat, ilmiy loyiha taklifi va maqsad bayonnomasi PhD dasturi M2–M5 va Master dasturi M4–M6 da. Bu modul faqat AQSh moliyalashtirish mexanizmi. Summalar {HOL}; kafedra sahifasidan qayta tekshiring.",
+    warn=f"Ilmiy rahbar tanlash, professorga xat, ilmiy loyiha taklifi va maqsad bayonnomasi PhD dasturi M2–M5 va Magistratura dasturi M4–M6 da. Bu modul faqat AQSh moliyalashtirish mexanizmi. Summalar {HOL}; kafedra sahifasidan qayta tekshiring.",
     lessons=[
         dict(t="Magistratura va PhD: pul qayerdan", short="Farq", min=25, kind="⚖️ Farq", ic="phd",
              hook="Bir xil universitetning bir xil kafedrasida PhD talabasi oylik oladi, magistratura talabasi esa o'qish to'lovini o'zi to'laydi. Bu farqni bilmay magistraturaga ariza bersangiz, qabul xati bilan birga katta hisob ham keladi.",

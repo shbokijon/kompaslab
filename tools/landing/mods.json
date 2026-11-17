@@ -414,7 +414,7 @@
    "lessons": [
     {
      "num": "0.1",
-     "title": "Master dasturi qanday ishlaydi?",
+     "title": "Magistratura dasturi qanday ishlaydi?",
      "content": "Toʻrtta bosqich, haftalik reja va kursning imkoniyatlari",
      "trek": ""
     },
@@ -438,7 +438,7 @@
     },
     {
      "num": "0.5",
-     "title": "Master dasturi sizga mosmi? Obunadan oldingi tekshiruv",
+     "title": "Magistratura dasturi sizga mosmi? Obunadan oldingi tekshiruv",
      "content": "Tariflar, ketma-ket bosqichlar va toʻlovdan oldingi muhim shartlar",
      "trek": ""
     }
@@ -1264,7 +1264,7 @@
    "lessons": [
     {
      "num": "0.1",
-     "title": "Bachelor dasturi qanday ishlaydi",
+     "title": "Bakalavr dasturi qanday ishlaydi",
      "content": "Bosqichlar, natijalar, haftalik yuklama; nima beriladi, nima berilmaydi",
      "trek": ""
     },
@@ -1282,7 +1282,7 @@
     },
     {
      "num": "0.4",
-     "title": "Bachelor dasturi sizga mos emas, agar…",
+     "title": "Bakalavr dasturi sizga mos emas, agar…",
      "content": "Ochiq roʻyxat; muqobil yoʻllar",
      "trek": ""
     },
@@ -1391,7 +1391,7 @@
     {
      "num": "3.3",
      "title": "Mutaxassislik va keyingi yoʻl",
-     "content": "Bakalavrdan keyingi variantlar umumiy koʻrinishda (tafsilot Master dasturida)",
+     "content": "Bakalavrdan keyingi variantlar umumiy koʻrinishda (tafsilot Magistratura dasturida)",
      "trek": ""
     },
     {

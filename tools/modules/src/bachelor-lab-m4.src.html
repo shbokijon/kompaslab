@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M4 Ariza muddatlari va ish rejasi · Bachelor dasturi · Kompas Lab</title>
-<meta name="description" content="Bachelor dasturi M4: ariza oynalari (ED, EA, RD, UCAS, portallar), teskari reja, Asosiy nazorat jadvali (Master Tracker), maktab bilan muvozanat, Birinchi bosqichdagi ishlar xulosasi. Natija: nazorat jadvali, muddatdan orqaga tuzilgan ish jadvali (Gantt) va Tayyorgarlik rejasi v1.0.">
+<title>M4 Ariza muddatlari va ish rejasi · Bakalavr dasturi · Kompas Lab</title>
+<meta name="description" content="Bakalavr dasturi M4: ariza oynalari (ED, EA, RD, UCAS, portallar), teskari reja, Asosiy nazorat jadvali (Master Tracker), maktab bilan muvozanat, Birinchi bosqichdagi ishlar xulosasi. Natija: nazorat jadvali, muddatdan orqaga tuzilgan ish jadvali (Gantt) va Tayyorgarlik rejasi v1.0.">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="bachelor-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Bachelor dasturi M4</small></a>
+    <a class="logo" href="bachelor-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Bakalavr dasturi M4</small></a>
     <div class="xp" aria-live="polite">
       <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
       <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
@@ -68,7 +68,7 @@
   <div class="hero">
     <div class="hero-g">
       <div>
-        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bachelor dasturi</a> · Modul 4</div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bakalavr dasturi</a> · Modul 4</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich I · Strategiya</span>
         <h1>Ariza muddatlari va ish rejasi</h1>
         <p class="lead">Koʻp arizalar mazmun emas, vaqt tufayli buziladi: test natijasi kech keladi, tavsiya xati muddatdan keyin yuboriladi. Bu modulda barcha muddatlarni bitta tizimga yigʻasiz va I bosqichni yakunlovchi tayyorgarlik rejasini yozasiz.</p>
@@ -207,7 +207,7 @@
           <div class="panel"><div class="hook">Ariza jarayoni maktabning eng ogʻir yiliga toʻgʻri keladi. Baholar tushib ketsa, ariza ham zaiflashadi. Ritm ikkalasini ham saqlaydi.</div></div>
           <div class="panel">
 <h4>Haftasiga 3–5 soat</h4>
-<p>Bachelor dasturi haftasiga 3–5 soatga moʻljallangan. Bu ikki-uch blokka boʻlinadi:</p>
+<p>Bakalavr dasturi haftasiga 3–5 soatga moʻljallangan. Bu ikki-uch blokka boʻlinadi:</p>
 <ul><li><b>Blok 1 (1–2 soat)</b>: darslar va topshiriqlar.</li><li><b>Blok 2 (1–2 soat)</b>: hujjat ustida ish (insho, roʻyxat, jadval).</li><li><b>Blok 3 (30–60 daqiqa)</b>: nazorat jadvalini yangilash va keyingi hafta rejasi.</li></ul>
 <h4>Imtihon davrlari</h4>
 <p>Choraklik imtihonlar, olimpiadalar va bitiruv imtihonlari oldidan yuklamani kamaytiring. Teskari rejaga bu haftalarni oldindan "yengil hafta" deb belgilang.</p>
@@ -323,7 +323,7 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="bachelor-lab.html">← Bachelor dasturi</a>
+    <a class="btn btn-g" href="bachelor-lab.html">← Bakalavr dasturi</a>
     <a class="btn btn-p" href="bachelor-lab-m5.html">Keyingi: M5 Baholar va testlar →</a>
   </div>
 </footer>
@@ -482,7 +482,7 @@
   function renderArt() {
     var p = $("artPaper"); if (!p) return;
     var secs = artText(), filled = 0;
-    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">Bachelor dasturi · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">Bakalavr dasturi · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
     secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
     p.innerHTML = h;
     $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";

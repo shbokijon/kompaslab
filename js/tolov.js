@@ -8,8 +8,8 @@
   "use strict";
 
   var LABS = {
-    "bachelor-lab": { name: "Bachelor dasturi", page: "bachelor-lab-narxlar.html", phase: "4 modul" },
-    "master-lab": { name: "Master dasturi", page: "master-lab-narxlar.html", phase: "2 modul" },
+    "bachelor-lab": { name: "Bakalavr dasturi", page: "bachelor-lab-narxlar.html", phase: "4 modul" },
+    "master-lab": { name: "Magistratura dasturi", page: "master-lab-narxlar.html", phase: "2 modul" },
     "usa-lab": { name: "USA dasturi", page: "usa-lab-narxlar.html", phase: "2 modul" },
     "gks-lab": { name: "GKS dasturi", page: "gks-lab-narxlar.html", phase: "I fazada M1–M2, keyin bittadan" },
     "phd-lab": { name: "PhD dasturi", page: "phd-lab-narxlar.html", phase: "2 modul" }

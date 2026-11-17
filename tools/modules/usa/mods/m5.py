@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("usa", "Almashinuv dasturi kartasi", "muvofiqlik, hujjatlar, sikl holati"),
            ("bell", "Sikl kuzatuv rejasi", "rasmiy kanal, oy, eslatma"),
            ("compass", "B reja", "UGRAD bo'lmasa yoki rad javobi kelsa")],
-    warn=f"{HOL}: AQSh elchixonasi sahifasidagi oxirgi Global UGRAD e'loni 2024–2025 sikli uchun (muddat 15.12.2024). Keyingi sikllar uchun O'zbekistonda e'lon topilmadi. Sikl rasman e'lon qilinmaguncha dasturga tayyorlanish xavfini hisobga oling. Insholarni yozish Bachelor dasturi M9–M10 da o'rgatiladi; bu yerda takrorlanmaydi.",
+    warn=f"{HOL}: AQSh elchixonasi sahifasidagi oxirgi Global UGRAD e'loni 2024–2025 sikli uchun (muddat 15.12.2024). Keyingi sikllar uchun O'zbekistonda e'lon topilmadi. Sikl rasman e'lon qilinmaguncha dasturga tayyorlanish xavfini hisobga oling. Insholarni yozish Bakalavr dasturi M9–M10 da o'rgatiladi; bu yerda takrorlanmaydi.",
     lessons=[
         dict(t="Global UGRAD nima", short="UGRAD", min=25, kind="🧭 Xarita", ic="usa",
              hook="\"AQShga grant bilan bakalavr\" degan e'lonlar ko'pincha Global UGRAD ni anglatadi. Lekin u daraja bermaydi va universitetni siz tanlamaysiz. Buni bilmasdan ariza bersangiz, kutganingiz boshqa bo'ladi.",
@@ -33,7 +33,7 @@ MOD = dict(
 <tr><td>O'zbekiston fuqarosi, hozir O'zbekistonda yashaydi va o'qiydi</td><td>Pasport, o'qish joyi</td></tr>
 <tr><td>Akkreditatsiyalangan O'zbekiston universitetida (davlat yoki xususiy) kunduzgi bakalavriatda, yaxshi akademik holatda</td><td>Ma'lumotnoma</td></tr>
 <tr><td>Dasturdan keyin kamida bir o'quv yili o'qish qoladi; UGRAD bakalavriatning oxirgi semestri bo'la olmaydi</td><td>Kurs va o'quv rejasi</td></tr>
-<tr><td>Yetakchilik salohiyati: o'qish, jamoat ishi, darsdan tashqari faoliyat</td><td>Dalillar (STAR usuli Bachelor dasturi M7 da)</td></tr>
+<tr><td>Yetakchilik salohiyati: o'qish, jamoat ishi, darsdan tashqari faoliyat</td><td>Dalillar (STAR usuli Bakalavr dasturi M7 da)</td></tr>
 <tr><td>Ingliz tilini bilish; finalistlar TOEFL iBT topshiradi (dastur to'laydi)</td><td>Til darajasi</td></tr>
 <tr><td>Dasturdan keyin to'g'ridan-to'g'ri O'zbekistonga qaytish</td><td>Majburiyat</td></tr>
 </tbody></table></div>
@@ -65,10 +65,10 @@ MOD = dict(
 <ul><li>Ariza World Learning portali orqali onlayn, faqat ingliz tilida.</li><li>Muddatdan keyin ariza tahrirlanmaydi; erta topshirish tavsiya qilinadi.</li><li>Finalistlar va zaxiradagilar TOEFL iBT topshiradi; xarajatni dastur qoplaydi.</li></ul>
 <h4>E'lon chiqquncha tayyorlanadigan dalillar</h4>
 <div class="tbl"><table><thead><tr><th>Dalil</th><th>Qayerda o'rganiladi</th></tr></thead><tbody>
-<tr><td>Yetakchilik va jamoat ishi holatlari (STAR)</td><td>Bachelor dasturi M7</td></tr>
-<tr><td>Insho yozish va tahrir</td><td>Bachelor dasturi M9–M10</td></tr>
-<tr><td>Tavsiya so'rash</td><td>Bachelor dasturi M8</td></tr>
-<tr><td>Ingliz tili darajasi</td><td>Mustaqil; test strategiyasi Bachelor dasturi M5</td></tr>
+<tr><td>Yetakchilik va jamoat ishi holatlari (STAR)</td><td>Bakalavr dasturi M7</td></tr>
+<tr><td>Insho yozish va tahrir</td><td>Bakalavr dasturi M9–M10</td></tr>
+<tr><td>Tavsiya so'rash</td><td>Bakalavr dasturi M8</td></tr>
+<tr><td>Ingliz tili darajasi</td><td>Mustaqil; test strategiyasi Bakalavr dasturi M5</td></tr>
 <tr><td>O'qish natijalari va ma'lumotnoma</td><td>O'z universitetingiz</td></tr>
 </tbody></table></div>
 <h4>UGRAD ga xos ikki savol</h4>

@@ -2,7 +2,7 @@ from common import UCAS, TB, SIK, HOL, STD
 
 MOD = dict(
     title="Intervyu va qabul qarori",
-    desc="Bachelor dasturi M15: intervyu turlari, 3 daqiqalik \"o'zingiz haqingizda\", akademik intervyu, o'zini yozib olish va 8 bandli mezon, qabul, rad va kutish ro'yxati bilan ishlash. Natija: 3 ta yozib olingan javob va mezon bali.",
+    desc="Bakalavr dasturi M15: intervyu turlari, 3 daqiqalik \"o'zingiz haqingizda\", akademik intervyu, o'zini yozib olish va 8 bandli mezon, qabul, rad va kutish ro'yxati bilan ishlash. Natija: 3 ta yozib olingan javob va mezon bali.",
     lead="Intervyu tayyorlanadigan ko'nikma. Bu modulda intervyu turlarini ajratasiz, javoblaringizni telefonga yozib, aniq mezon bilan baholaysiz va natijalar kelganda qanday qaror qabul qilishni rejalaysiz.",
     hero="bell", weeks="2", next="M16 Qabuldan keyin: viza va jo'nash", next_href="bachelor-lab-m16.html",
     goals=[("bell", "3 ta yozib olingan javob", "o'zingiz haqingizda, akademik masala, motivatsiya"),

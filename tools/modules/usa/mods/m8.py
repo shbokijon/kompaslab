@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("shield", "Viza va maqom nazorat ro'yxati", "hujjatlar, sanalar, majburiyatlar"),
            ("calendar", "Viza kalendari", "I-20 dan joʻnashgacha"),
            ("bell", "Siyosat kuzatuv jadvali", "rasmiy manbalar va oylik tekshiruv")],
-    warn=f"Kompas Lab viza bo'yicha yuridik maslahat bermaydi va viza natijasiga ta'sir qilmaydi: qarorni konsul qabul qiladi. Mamlakatlararo umumiy viza va jo'nash bosqichlari Bachelor dasturi M16 va Master dasturi M8 da; bu modul faqat AQSh tartibi. Qoidalar {HOL}; rasmiy sahifadan qayta tekshiring.",
+    warn=f"Kompas Lab viza bo'yicha yuridik maslahat bermaydi va viza natijasiga ta'sir qilmaydi: qarorni konsul qabul qiladi. Mamlakatlararo umumiy viza va jo'nash bosqichlari Bakalavr dasturi M16 va Magistratura dasturi M8 da; bu modul faqat AQSh tartibi. Qoidalar {HOL}; rasmiy sahifadan qayta tekshiring.",
     lessons=[
         dict(t="F-1 va J-1: qaysi viza, qaysi hujjat", short="F-1 / J-1", min=25, kind="🧭 Xarita", ic="usa",
              hook="Viza turi qabul qilingan dasturingizdan kelib chiqadi, siz tanlamaysiz. Lekin har birining qoidasi kelajak rejangizga boshqacha ta'sir qiladi.",

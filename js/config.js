@@ -52,8 +52,8 @@ const APP_CONFIG = {
 
   // Kurslar (slug Supabase courses.slug bilan mos bo'lishi kerak)
   courses: {
-    bachelor: { slug: 'bachelor-lab', name: 'Bachelor Lab', emoji: '🎓', modules: 17, lessons: 86,  price: 899000, priceMonthly: 99000 },
-    master:   { slug: 'master-lab',   name: 'Master Lab',   emoji: '🔬', modules: 9,  lessons: 59,  price: 899000, priceMonthly: 99000 },
+    bachelor: { slug: 'bachelor-lab', name: 'Bakalavr dasturi', emoji: '🎓', modules: 17, lessons: 86,  price: 899000, priceMonthly: 99000 },
+    master:   { slug: 'master-lab',   name: 'Magistratura dasturi',   emoji: '🔬', modules: 9,  lessons: 59,  price: 899000, priceMonthly: 99000 },
     gks:      { slug: 'gks-lab',      name: 'GKS Lab',      emoji: '🇰🇷', modules: 12, lessons: 54,  price: 899000, priceMonthly: 99000 },
     usa:      { slug: 'usa-lab',      name: 'USA Lab',      emoji: '🇺🇸', modules: 9,  lessons: 46,  price: 899000, priceMonthly: 99000 },
     phd:      { slug: 'phd-lab',      name: 'PhD Lab',      emoji: '⚗️', modules: 9,  lessons: 56,  price: 1499000, priceMonthly: 149000 },

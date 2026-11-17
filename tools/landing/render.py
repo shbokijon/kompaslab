@@ -608,7 +608,7 @@ QUIZ_JS = '''
 '''
 
 
-# Faqat Master dasturi: tayyorgarlik balli qabul prognozi yoki toʻlovga ruxsat emas.
+# Faqat Magistratura dasturi: tayyorgarlik balli qabul prognozi yoki toʻlovga ruxsat emas.
 MASTER_QUIZ_JS = (QUIZ_JS
     .replace("Bu siklda topshira olmaysiz", "Majburiy talabni tekshiring")
     .replace("Hozir boshlash mumkin", "Tayyorgarlik: yuqoriroq")
@@ -657,7 +657,7 @@ def polish(html):
         src = parts[i]
         def txt(m, src=src):
             t = m.group(1)
-            # tugmadagi oxirgi strelka olinadi; keyin havola kelsa (masalan "… → Master dasturi"), strelka qoladi
+            # tugmadagi oxirgi strelka olinadi; keyin havola kelsa (masalan "… → Magistratura dasturi"), strelka qoladi
             t = re.sub(r"\s*→\s*$", " → " if src.startswith("<a", m.end() - 1) else "", t)
             t = t.replace(" · ", ", ")
             if len(t.strip()) <= 48 or "qoldiring — " in t or "yoziling — " in t:

@@ -73,7 +73,7 @@ PROTECT = '<script>window.KOMPAS_PROTECT_ALL=true;</script>\n<script src="js/pro
 def phase_tabs(sec):
     """Dastur sahifasi (2026-10-30): faza kartalari tugma boʻladi, bosilganda faqat shu faza modullari
     koʻrinadi; modullar yopiq, dars izohlari bu sahifada yashirin (toʻliq matn modul sahifasida).
-    Faza → modul: trek sarlavhalari boʻlsa (Bachelor, GKS) tartib boʻyicha, boʻlmasa "M1–M4" oraligʻidan.
+    Faza → modul: trek sarlavhalari boʻlsa (Bakalavr, GKS) tartib boʻyicha, boʻlmasa "M1–M4" oraligʻidan.
     JS yoʻq boʻlsa hamma modul (yopiq holda) koʻrinadi. Boshqaruv: js/kompas-ui.js (.kl-ph)."""
     phs = list(re.finditer(r'<div class="phase"><small>(.*?)</small><b>(.*?)</b><span>(.*?)</span></div>', sec))
     if len(phs) < 2:

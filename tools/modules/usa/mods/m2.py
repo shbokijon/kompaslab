@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("money", "AQSh pul xaritasi", "narx, oila chegarasi, kerakli yordam ulushi"),
            ("scroll", "I-20 moliyaviy dalil rejasi", "qaysi hujjat qabul qilinadi, qaysi biri yo'q"),
            ("compass", "Yo'l xulosasi", "to'liq yordam, qisman yordam yoki arzon yo'l")],
-    warn=f"Bu modul faqat AQSh pul mexanizmini o'rgatadi. Mamlakatlararo umumiy xarajat modeli va 4 yillik reja Bachelor dasturi M12 da. Summalar har yili o'zgaradi; {HOL} universitet sahifasidan oling. Kompas Lab moliyaviy maslahatchi emas; qarorni oila bilan qabul qiling.",
+    warn=f"Bu modul faqat AQSh pul mexanizmini o'rgatadi. Mamlakatlararo umumiy xarajat modeli va 4 yillik reja Bakalavr dasturi M12 da. Summalar har yili o'zgaradi; {HOL} universitet sahifasidan oling. Kompas Lab moliyaviy maslahatchi emas; qarorni oila bilan qabul qiling.",
     lessons=[
         dict(t="To'liq narx: Cost of Attendance", short="Narx", min=30, kind="🧮 Hisob", ic="money",
              hook="O'qish to'lovi ([[tuition]]) universitet so'raydigan pulning faqat bir qismi. AQSh universitetlari to'liq narxni [[Cost of Attendance]] deb e'lon qiladi va yordam ham, I-20 ham shu summaga qarab hisoblanadi.",

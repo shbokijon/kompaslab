@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
 <meta name="robots" content="noindex, nofollow">
-<title>Modul ochilmoqda · Master dasturi | Kompas Lab</title>
+<title>Modul ochilmoqda · Magistratura dasturi | Kompas Lab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
@@ -71,10 +71,10 @@ p{color:var(--muted);line-height:1.55;margin:0 0 18px}
 
   var hub = "master-lab-m" + m + ".html";
   if (!(m >= 1 && m <= 8)) {
-    show("Modul topilmadi", "Havolada modul raqami yoʻq yoki notoʻgʻri.", [{label: "Master dasturi", href: "master-lab-dastur.html", primary: true}]);
+    show("Modul topilmadi", "Havolada modul raqami yoʻq yoki notoʻgʻri.", [{label: "Magistratura dasturi", href: "master-lab-dastur.html", primary: true}]);
     return;
   }
-  document.title = "M" + m + ". " + NAMES[m] + " · Master dasturi | Kompas Lab";
+  document.title = "M" + m + ". " + NAMES[m] + " · Magistratura dasturi | Kompas Lab";
   var sb = window.supabase;
   if (!sb || !sb.auth) {
     show("Ulanib boʻlmadi", "Server bilan aloqa yoʻq. Internetni tekshirib, sahifani qayta yuklang.", [{label: "Qayta urinish", href: location.pathname + location.search, primary: true}, {label: "Modul sahifasi", href: hub}]);
@@ -112,7 +112,7 @@ p{color:var(--muted);line-height:1.55;margin:0 0 18px}
         show("Modul tayyorlanmoqda", "M" + m + " hali joylanmagan. Ochilganda kabinetingizda koʻrinadi.",
           [{label: "Mening kabinetim", href: "dashboard.html", primary: true}, {label: "Modul sahifasi", href: hub}]);
       } else {
-        show("Obuna kerak", "M" + m + ". " + NAMES[m] + " Master dasturi obunasi bilan ochiladi. Onlayn toʻlov ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz.",
+        show("Obuna kerak", "M" + m + ". " + NAMES[m] + " Magistratura dasturi obunasi bilan ochiladi. Onlayn toʻlov ochilganda kutish roʻyxatidagilarga birinchi xabar beramiz.",
           [{label: "Narxlar va obuna", href: "master-lab-narxlar.html", primary: true}, {label: "Bepul M0", href: "master-lab-m0.html"}]);
       }
     });

@@ -4,11 +4,11 @@ from render import BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, head, FOOTER, WL_JS, L
 # Bitta manba: katalog, kompas, narx jadvali va kutish roʻyxati shu roʻyxatdan quriladi.
 # Narxlar bu yerda zaxira; jonli qiymat Supabase courses jadvalidan keladi.
 LABS = [
-    dict(slug="bachelor-lab", name="Bachelor dasturi", icon="bachelor", page="bachelor-lab.html", group=0, ang=0,
+    dict(slug="bachelor-lab", name="Bakalavr dasturi", icon="bachelor", page="bachelor-lab.html", group=0, ang=0,
          who="10–11-sinf, litsey va kollej, 15–19 yosh", chips=["17 modul", "86 dars"], lessons=86,
          text="Universitet tanlash, testlar rejasi, insho, tavsiya xatlari va 4 yillik moliyaviy reja. 18 yoshgacha obunani ota-ona rasmiylashtiradi.",
          why="Xorijiy bakalavriatga: universitet tanlashdan topshirishgacha.", y=899000, m=99000, status="Kutish roʻyxati"),
-    dict(slug="master-lab", name="Master dasturi", icon="master", page="master-lab.html", group=0, ang=45,
+    dict(slug="master-lab", name="Magistratura dasturi", icon="master", page="master-lab.html", group=0, ang=45,
          who="Xorijiy magistraturaga topshiruvchilar", chips=["9 modul", "59 dars"], lessons=59,
          text="Akademik CV, tavsiya xatlari, maqsad bayonnomasi (SoP), ilmiy loyiha taklifi va stipendiya portfeli.",
          why="Magistratura: yoʻnalish, hujjatlar, stipendiya, viza va joʻnash.", y=899000, m=99000, status="Kutish roʻyxati"),
@@ -227,8 +227,8 @@ FAQ = [
     ("Toʻlov qaytariladimi?", "Yoʻq. Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mos yoki mos emasligini bilasiz."),
     ("Darslar video formatdami?", "Asosiy format: matn, interaktiv vositalar va ish jadvallari. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq."),
     ("Hujjatlarni oʻrnimga yozib berasizmi?", "Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati berilmaydi."),
-    ("18 yoshga toʻlmaganman. Qatnasha olamanmi?", "Ha: Bachelor dasturi va GKS dasturi bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi."),
-    ("Bir nechta dastur kerak boʻlsa-chi?", "Daraja dasturi (Bachelor, Master, PhD) va davlat dasturi (GKS, USA, DAAD) birga ishlatilishi mumkin; ikkinchi dastur uchun chegirma rejalashtirilgan."),
+    ("18 yoshga toʻlmaganman. Qatnasha olamanmi?", "Ha: Bakalavr dasturi va GKS dasturi bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi."),
+    ("Bir nechta dastur kerak boʻlsa-chi?", "Daraja dasturi (Bakalavr, Magistratura, PhD) va davlat dasturi (GKS, USA, DAAD) birga ishlatilishi mumkin; ikkinchi dastur uchun chegirma rejalashtirilgan."),
     ("Darslar qaysi tilda?", "Oʻzbek tilida. Xalqaro atamalar avval oʻzbekcha, keyin qavsda inglizcha beriladi, masalan: ilmiy loyiha taklifi (Research Proposal)."),
 ]
 
@@ -247,10 +247,10 @@ PAGE_JS = """
     var w = ans.who, g = ans.goal, note = "";
     if (!w || !g) return null;
     if (g === "ish") return { slug: "miggo" };
-    if (g === "biznes") { if (w === "maktab") return { slug: "bachelor-lab", note: "Tadbirkor Talaba dasturi 18 yoshdan. Hozir Bachelor dasturi mosroq." }; return { slug: "tadbirkor-talaba" }; }
+    if (g === "biznes") { if (w === "maktab") return { slug: "bachelor-lab", note: "Tadbirkor Talaba dasturi 18 yoshdan. Hozir Bakalavr dasturi mosroq." }; return { slug: "tadbirkor-talaba" }; }
     if (g === "korea") return { slug: "gks-lab" };
-    if (g === "usa") return w === "maktab" ? { slug: "bachelor-lab", note: "AQSh bakalavriatiga toʻliq qabul Bachelor dasturida. USA dasturi talabalar va bitiruvchilar uchun." } : { slug: "usa-lab" };
-    if (g === "germany") return w === "maktab" ? { slug: "bachelor-lab", note: "Germaniya bakalavriati (Studienkolleg bilan) Bachelor dasturida. DAAD dasturi magistratura va doktorantura uchun." } : { slug: "daad-lab" };
+    if (g === "usa") return w === "maktab" ? { slug: "bachelor-lab", note: "AQSh bakalavriatiga toʻliq qabul Bakalavr dasturida. USA dasturi talabalar va bitiruvchilar uchun." } : { slug: "usa-lab" };
+    if (g === "germany") return w === "maktab" ? { slug: "bachelor-lab", note: "Germaniya bakalavriati (Studienkolleg bilan) Bakalavr dasturida. DAAD dasturi magistratura va doktorantura uchun." } : { slug: "daad-lab" };
     return { slug: { maktab: "bachelor-lab", bakalavr: "master-lab", magistr: "phd-lab", ishchi: "master-lab" }[w] };
   }
   var dial = document.getElementById("dial"), needle = document.getElementById("needle"), res = document.getElementById("result");
@@ -359,7 +359,7 @@ def build():
     faq_html = "".join(f"<details><summary>{esc(q)}</summary><p>{a}</p></details>" for q, a in FAQ)
     css = BASE_CSS + EXTRA_CSS + POLISH_CSS + IDX_CSS
     h = head("Kompas Lab — xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik",
-             "Bachelor, Master, PhD, GKS, USA va DAAD dasturlari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har dasturda M0 bepul. Obuna: yillik yoki oylik.",
+             "Bakalavr, Magistratura, PhD, GKS, USA va DAAD dasturlari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har dasturda M0 bepul. Obuna: yillik yoki oylik.",
              "Kompas Lab", css)
     body = f'''<nav class="nav">
   <div class="wrap">

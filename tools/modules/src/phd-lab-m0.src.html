@@ -172,7 +172,7 @@ body.locked .gate{display:flex;}
               <button type="button" class="mv" data-m="ok" aria-pressed="false">Ilmiy savol meni qiziqtiradi va tadqiqot bilan shugʻullanmoqchiman<small>✓ Kuchli motiv. M1 da uni aniq tadqiq qilinadigan savolga aylantirasiz.</small></button>
               <button type="button" class="mv" data-m="ok" aria-pressed="false">Akademik yoki tadqiqot markazida ishlamoqchiman<small>✓ PhD bu yoʻlda odatda zarur. Sohangizdagi bandlik yoʻllarini oldindan oʻrganing.</small></button>
               <button type="button" class="mv" data-m="mid" aria-pressed="false">Sanoatda R&amp;D lavozimi uchun<small>◐ Baʼzi lavozimlar PhD talab qiladi, baʼzilari yoʻq. Maqsad lavozim eʼlonlarini tekshiring.</small></button>
-              <button type="button" class="mv" data-m="bad" aria-pressed="false">Asosan chet elga chiqish uchun<small>✗ Xavfli motiv. Magistratura yoki rasmiy ish yoʻli (Master dasturi, Musofir dasturi) maqsadga tezroq olib boradi.</small></button>
+              <button type="button" class="mv" data-m="bad" aria-pressed="false">Asosan chet elga chiqish uchun<small>✗ Xavfli motiv. Magistratura yoki rasmiy ish yoʻli (Magistratura dasturi, Musofir dasturi) maqsadga tezroq olib boradi.</small></button>
               <button type="button" class="mv" data-m="bad" aria-pressed="false">Unvon yoki “doktor” deb atalish uchun<small>✗ 3–4 yil faqat unvon uchun juda uzoq. Avval tadqiqotga qiziqishingizni sinab koʻring.</small></button>
               <button type="button" class="mv" data-m="bad" aria-pressed="false">Ish topa olmadim, yana oʻqiy qolay<small>✗ PhD ishsizlikdan qochish yoʻli emas. Bu holatda qisqa muddatli reja tuzish foydaliroq.</small></button>
             </div>
@@ -303,7 +303,7 @@ body.locked .gate{display:flex;}
             <div class="tbl"><table><thead><tr><th>Yoʻnalish</th><th>Ball</th></tr></thead><tbody>
               <tr><td>Akademik asos</td><td>15</td></tr><tr><td>Ilmiy yoʻnalish</td><td>20</td></tr><tr><td>Ilmiy natijalar</td><td>15</td></tr><tr><td>Til sertifikati</td><td>15</td></tr><tr><td>Tavsiya beruvchilar</td><td>10</td></tr><tr><td>Moliyalashtirish yoʻli</td><td>15</td></tr><tr><td>Boshlanishgacha vaqt</td><td>10</td></tr>
             </tbody></table></div>
-            <ul><li><b>70+:</b> hozir boshlash mumkin.</li><li><b>45–69:</b> avval 1–2 boʻshliqni yoping.</li><li><b>45 dan past:</b> bu siklga erta. Boshqa yoʻl: Master dasturi yoki keyingi sikl.</li><li>Maksimal ballning yarmidan past yoʻnalish boʻshliq hisoblanadi.</li></ul>
+            <ul><li><b>70+:</b> hozir boshlash mumkin.</li><li><b>45–69:</b> avval 1–2 boʻshliqni yoping.</li><li><b>45 dan past:</b> bu siklga erta. Boshqa yoʻl: Magistratura dasturi yoki keyingi sikl.</li><li>Maksimal ballning yarmidan past yoʻnalish boʻshliq hisoblanadi.</li></ul>
             <div class="box info"><b>Ilmiy natija faqat nashr emas.</b> Dissertatsiya, hisobot, konferensiya tezisi, preprint, kod va maʼlumotlar toʻplami ham hisoblanadi (M5).</div>
           </div>
           <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>7 yoʻnalish, 100 ball. Eng muhimi ilmiy yoʻnalish (20) va moliyalashtirish yoʻli (15).</p></div></div>
@@ -327,7 +327,7 @@ body.locked .gate{display:flex;}
           <div class="panel">
             <h4>PhD dasturi sizga mos emas, agar:</h4>
             <div class="checks" id="notFit">
-              <label class="ck"><input type="checkbox" data-alt="Master dasturi" data-href="master-lab.html">Magistraturaga topshiryapman</label>
+              <label class="ck"><input type="checkbox" data-alt="Magistratura dasturi" data-href="master-lab.html">Magistraturaga topshiryapman</label>
               <label class="ck"><input type="checkbox" data-alt="GKS dasturi yoki USA dasturi (D trek)" data-href="gks-lab.html">Faqat Koreya (GKS) yoki AQSh doktoranturasi</label>
               <label class="ck"><input type="checkbox" data-alt="DAAD dasturi" data-href="daad-lab.html">Faqat Germaniya (DAAD) yoki Yaponiya (MEXT)</label>
               <label class="ck"><input type="checkbox" data-alt="">Allaqachon PhDʼda oʻqiyapman (dissertatsiya va himoya oʻrgatilmaydi)</label>
@@ -636,7 +636,7 @@ body.locked .gate{display:flex;}
     $("radar").innerHTML = g; $("rsTot").textContent = total();
   }
   Q.forEach(function (_, i) { $("q" + i).addEventListener("change", function (e) { ans[i] = e.target.value === "" ? null : +e.target.value; drawRadar(); }); });
-  function verdict(t) { return t >= 70 ? ["Hozir boshlash mumkin", "green", "Asosiy yoʻnalishlar yetarli."] : t >= 45 ? ["Avval 1–2 boʻshliqni yoping", "gold", "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak."] : ["Bu siklga erta", "red", "Toʻlov tavsiya etilmaydi. Boshqa yoʻl: Master dasturi yoki keyingi sikl."]; }
+  function verdict(t) { return t >= 70 ? ["Hozir boshlash mumkin", "green", "Asosiy yoʻnalishlar yetarli."] : t >= 45 ? ["Avval 1–2 boʻshliqni yoping", "gold", "Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak."] : ["Bu siklga erta", "red", "Toʻlov tavsiya etilmaydi. Boshqa yoʻl: Magistratura dasturi yoki keyingi sikl."]; }
   function renderRs() {
     if (!S.rs) return;
     var v = verdict(S.rs.total), r = $("rsRes"); r.className = "res show";
@@ -688,7 +688,7 @@ body.locked .gate{display:flex;}
     if (S.tl && S.tl.verdict) p.push("Maqsad: " + fmt(new Date(S.tl.date + "T00:00:00")) + " da boshlash, vaqt boʻyicha: " + S.tl.verdict.toLowerCase() + ".");
     if (S.rs && S.tl) {
       var self = S.rs.ans[5] === 0, go = S.rs.total >= 45 && !/kech|oʻtgan/i.test(S.tl.verdict) && !S.fit.length && !self && mk !== "bad";
-      p.push(go ? "Men moliyalashtirilgan PhDʼga shu siklda tayyorlanaman." : S.rs.total < 45 ? "Hozir PhDʼga erta: avval Master dasturi yoki boʻshliqlarni yopish yoʻlini tanlayman." : "Avval belgilangan masalalarni hal qilib, keyin qaror qilaman.");
+      p.push(go ? "Men moliyalashtirilgan PhDʼga shu siklda tayyorlanaman." : S.rs.total < 45 ? "Hozir PhDʼga erta: avval Magistratura dasturi yoki boʻshliqlarni yopish yoʻlini tanlayman." : "Avval belgilangan masalalarni hal qilib, keyin qaror qilaman.");
     }
     return p.join(" ");
   }

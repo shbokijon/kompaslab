@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("memo", "Akademik CV", "har bandda dalil va o'zingiz qilgan ish"),
            ("books", "Tavsiya uchun faktlar varaqasi", "har tavsiya beruvchiga alohida"),
            ("scroll", "Hujjatlar ro'yxati", "4 ta ariza bo'yicha fayl, format va holat")],
-    warn="CV (STAR: Vaziyat, Vazifa, Harakat, Natija), tavsiya xati va motivatsion xatning umumiy usuli Master dasturi da. Bu modulda faqat PhD ga xos qism: tadqiqot dalillari va rahbarga moslashtirish. Tavsiya xatini faqat tavsiya beruvchi o'zi yozadi.",
+    warn="CV (STAR: Vaziyat, Vazifa, Harakat, Natija), tavsiya xati va motivatsion xatning umumiy usuli Magistratura dasturi da. Bu modulda faqat PhD ga xos qism: tadqiqot dalillari va rahbarga moslashtirish. Tavsiya xatini faqat tavsiya beruvchi o'zi yozadi.",
     lessons=[
         dict(t="Akademik CV", short="CV", min=35, kind="📄 Hujjat", ic="memo",
              hook="Komissiya PhD CV ni o'qiganda bitta savolga javob izlaydi: <i>bu odam nimani o'zi qila oladi?</i>",

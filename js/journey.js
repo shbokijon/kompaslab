@@ -12,8 +12,8 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // Darslar soni: tools/landing/mods.json va CLAUDE.md dagi holat jadvali (17.10.2026)
   var LABS = [
-    { id: "master", n: "Master dasturi", lessons: 59, m0: "master-lab-m0.html", key: "kompas_master_m0_v1" },
-    { id: "bachelor", n: "Bachelor dasturi", lessons: 86, m0: "bachelor-lab-m0.html", key: "kompas_bachelor_m0_v1" },
+    { id: "master", n: "Magistratura dasturi", lessons: 59, m0: "master-lab-m0.html", key: "kompas_master_m0_v1" },
+    { id: "bachelor", n: "Bakalavr dasturi", lessons: 86, m0: "bachelor-lab-m0.html", key: "kompas_bachelor_m0_v1" },
     { id: "gks", n: "GKS dasturi", lessons: 54, m0: "gks-lab-m0.html", key: "kompas_gks_m0_v1" },
     { id: "usa", n: "USA dasturi", lessons: 46, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
     { id: "daad", n: "DAAD dasturi", lessons: 51, m0: "daad-lab.html", key: null },

@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("telescope", "6 ta rahbar kartasi", "har birida 2 ta real ilmiy bog'liqlik"),
            ("memo", "Aloqalar daftari", "sana, holat, eslatma va javob"),
            ("bulb", "Suhbat rejasi", "90 soniyalik bayon va 6 ta savol")],
-    warn="Professorga dastlabki xat (Cold email) yozishning umumiy usuli Master dasturi da. Bu modulda faqat PhD ga xos qism: rahbar bilan moslik, uning bo'sh o'rni va ilmiy muhit. Namunalar Kompas tuzgan tuzilma; ularni tayyor xat sifatida ko'chirmang.",
+    warn="Professorga dastlabki xat (Cold email) yozishning umumiy usuli Magistratura dasturi da. Bu modulda faqat PhD ga xos qism: rahbar bilan moslik, uning bo'sh o'rni va ilmiy muhit. Namunalar Kompas tuzgan tuzilma; ularni tayyor xat sifatida ko'chirmang.",
     lessons=[
         dict(t="Ilmiy rahbarni qayerdan topish", short="Qidiruv", min=30, kind="🔎 Qidiruv", ic="telescope",
              hook="Birinchi bosqichda 100 ta xat yuborish shart emas. Avval <b>har biri bo'yicha dalil yig'ilgan</b> qisqa ro'yxat tuzing.",

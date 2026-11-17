@@ -2,7 +2,7 @@
 """Bepul reja (master-planner.html) ni yigʻadi: bitta sahifa, ?lab= bilan 6 ta dastur.
 
 Nazorat roʻyxati dastur modullaridan olinadi (qoʻlda yozilmaydi):
-  Bachelor, Master, GKS, USA — tools/landing/mods.json
+  Bakalavr, Magistratura, GKS, USA — tools/landing/mods.json
   DAAD — tools/landing/labs_data.py (DAAD_MODS)
   PhD  — phd-lab-mN.html sarlavhalari
 Ishga tushirish: python3 tools/site/planner.py  (Dastur modullari oʻzgarsa ham qayta yigʻing)
@@ -47,11 +47,11 @@ def build_labs() -> dict:
         phd.append((f"M{i}", t))
     gks_all = pick("GKS")
     return {
-        "master": {"name": "Master dasturi", "slug": "master-lab", "key": "kompas-master-planner-v1",
+        "master": {"name": "Magistratura dasturi", "slug": "master-lab", "key": "kompas-master-planner-v1",
                    "goal": "Nima uchun magistratura?", "prog": "Dastur",
                    "opts": [["taught", "O'quv magistraturasi (Taught MSc/MA)"], ["research", "Tadqiqot magistraturasi (Research MSc/MRes)"], ["other", "Boshqa yoki noma'lum"]],
                    "tasks": tasks("master-lab", pick("Master"))},
-        "bachelor": {"name": "Bachelor dasturi", "slug": "bachelor-lab", "key": "kompas-planner-bachelor-v1",
+        "bachelor": {"name": "Bakalavr dasturi", "slug": "bachelor-lab", "key": "kompas-planner-bachelor-v1",
                      "goal": "Nima uchun xorijda bakalavriat va qaysi yo'nalish?", "prog": "Yo'nalish (major)",
                      "opts": [], "tasks": tasks("bachelor-lab", pick("Bachelor"))},
         "phd": {"name": "PhD dasturi", "slug": "phd-lab", "key": "kompas-planner-phd-v1",
@@ -128,7 +128,7 @@ def main() -> None:
 </div></div></main>
 """
     h = head(title="Bepul reja: xorijda o'qishga tayyorgarlik rejasi · Kompas Lab",
-             desc="Bepul tayyorgarlik rejasi: Bachelor, Master, PhD, GKS, USA va DAAD uchun maqsad, saralangan ro'yxat va bosqichlar. Ro'yxatdan o'tmasdan, ma'lumot qurilmangizda.",
+             desc="Bepul tayyorgarlik rejasi: Bakalavr, Magistratura, PhD, GKS, USA va DAAD uchun maqsad, saralangan ro'yxat va bosqichlar. Ro'yxatdan o'tmasdan, ma'lumot qurilmangizda.",
              path="master-planner")
     scripts = (f'<script type="application/json" id="pl-cfg">{cfg}</script>\n'
                '<script src="js/master-planner.js" defer></script><script src="js/suggest.js" defer></script>\n')

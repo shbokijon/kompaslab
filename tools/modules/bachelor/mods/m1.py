@@ -2,7 +2,7 @@ from common import CA, CDS, UCAS, ANABIN, DAAD_ADM, QS, THE, USN, UNIPI, HOL, ST
 
 MOD = dict(
     title="Qabul qanday qaror qabul qiladi",
-    desc="Bachelor dasturi M1: qabul komissiyasi ishi, yaxlit va ball asosidagi qabul, 11 yillik attestat xorijda, reyting tuzog'i, QS/THE/US News metodologiyasi. Natija: 3 universitet talablari jadvali.",
+    desc="Bakalavr dasturi M1: qabul komissiyasi ishi, yaxlit va ball asosidagi qabul, 11 yillik attestat xorijda, reyting tuzog'i, QS/THE/US News metodologiyasi. Natija: 3 universitet talablari jadvali.",
     lead="Ariza yozishdan oldin uni kim o'qishini va qaysi mantiq bilan qaror chiqarishini bilish kerak. Bu modulda qabulning ikki usulini ajratasiz, attestatingiz xorijda qanday baholanishini tekshirasiz va reytinglarni to'g'ri o'qishni o'rganasiz.",
     hero="telescope", weeks="1–2", next="M2 Universitet tanlash va roʻyxat tuzish", next_href="bachelor-lab-m2.html",
     goals=[("telescope", "Qabul usulini aniqlash", "har universitet uchun: yaxlit yoki ball asosidagi"),

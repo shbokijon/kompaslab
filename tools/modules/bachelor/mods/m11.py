@@ -2,7 +2,7 @@ from common import SIK, MEXT, CAMPUSCHINA, SIC, SH, SH_UZ, TB, DSU, FTC, HOL, ST
 
 MOD = dict(
     title="Davlat stipendiyalari",
-    desc="Bachelor dasturi M11: stipendiyalar manzarasi, GKS va MEXT bakalavriat yo'nalishlari, Xitoy hukumati stipendiyasi (CSC), Stipendium Hungaricum va Italiya DSU, Türkiye Bursları va boshqa dasturlarni tekshirish. Natija: 5–8 dasturli stipendiya ro'yxati.",
+    desc="Bakalavr dasturi M11: stipendiyalar manzarasi, GKS va MEXT bakalavriat yo'nalishlari, Xitoy hukumati stipendiyasi (CSC), Stipendium Hungaricum va Italiya DSU, Türkiye Bursları va boshqa dasturlarni tekshirish. Natija: 5–8 dasturli stipendiya ro'yxati.",
     lead="Davlat stipendiyalari xorijda bakalavr o'qishning eng to'liq moliyalashtirish yo'llaridan biri. Har birining o'z muvofiqlik shartlari, ariza kanali va majburiyatlari bor. Bu modulda ularni bitta mezon bilan baholaysiz va o'zingizga mos 5–8 dasturni tanlaysiz.",
     hero="money", weeks="2", next="M12 Universitet grantlari va moliyaviy reja", next_href="bachelor-lab-m12.html",
     goals=[("money", "Stipendiya ro'yxati", "5–8 dastur, rasmiy havola bilan"),

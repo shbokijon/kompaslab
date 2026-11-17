@@ -152,7 +152,7 @@
 //    Kesh: localStorage "kompas_me_v1" (uid, ism, rol, faol obunalar), 5 daqiqada yangilanadi.
 (function () {
   var TOK = "sb-usxpkmbjrdllnitlzdpq-auth-token", ME = "kompas_me_v1", TTL = 300000;
-  var LABS = { "bachelor-lab": "Bachelor dasturi", "master-lab": "Master dasturi", "phd-lab": "PhD dasturi", "gks-lab": "GKS dasturi", "usa-lab": "USA dasturi", "daad-lab": "DAAD dasturi", "tadbirkor-talaba": "Tadbirkor Talaba", "miggo": "Musofir dasturi" };
+  var LABS = { "bachelor-lab": "Bakalavr dasturi", "master-lab": "Magistratura dasturi", "phd-lab": "PhD dasturi", "gks-lab": "GKS dasturi", "usa-lab": "USA dasturi", "daad-lab": "DAAD dasturi", "tadbirkor-talaba": "Tadbirkor Talaba", "miggo": "Musofir dasturi" };
   function rd(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
   function user() { var s = rd(TOK); return s && s.user && s.user.id ? s.user : null; }
   function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }

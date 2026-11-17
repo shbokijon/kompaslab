@@ -65,7 +65,7 @@ MODULES = {
     "gks-lab-m5-m":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m3-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m4-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
-    # Bachelor dasturi (2026-10-31): M1–M16, 4 faza. Manba tools/modules/bachelor/engine.py, oʻquvchi bachelor-lab-o.html?m=N
+    # Bakalavr dasturi (2026-10-31): M1–M16, 4 faza. Manba tools/modules/bachelor/engine.py, oʻquvchi bachelor-lab-o.html?m=N
     "bachelor-lab-m1":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m2":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m3":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),

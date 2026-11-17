@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("telescope", "Universitet tekshiruv kartasi", "tur, akkreditatsiya, SEVP, soha kuchi, asosiy raqamlar"),
            ("chart", "Soha bo'yicha 10 ta kuchli joy", "NSF HERD ma'lumotidan, reytingdan emas"),
            ("shield", "Soxta va viza bermaydigan muassasalarni ajratish", "3 bosqichli tekshiruv")],
-    warn=f"Bu modulda universitet tanlashning umumiy usullari (orzu, mo'ljal, ishonchli darajalar, reytinglar) qayta o'tilmaydi: ular Bachelor dasturi M1–M2 va Master dasturi M1 da. Bu yerda faqat AQShga xos tizim va tekshiruv. Raqamlar {HOL}; universitet sahifasidan qayta tekshiring.",
+    warn=f"Bu modulda universitet tanlashning umumiy usullari (orzu, mo'ljal, ishonchli darajalar, reytinglar) qayta o'tilmaydi: ular Bakalavr dasturi M1–M2 va Magistratura dasturi M1 da. Bu yerda faqat AQShga xos tizim va tekshiruv. Raqamlar {HOL}; universitet sahifasidan qayta tekshiring.",
     lessons=[
         dict(t="Universitet turlari", short="Turlar", min=25, kind="🎯 Mini-test", ic="usa",
              hook="\"AQSh universiteti\" degan so'z ikki yillik kollejni ham, yiliga yuzlab doktor tayyorlaydigan tadqiqot markazini ham anglatadi. Turini bilmasangiz, noto'g'ri joyga ariza berasiz yoki arzon yo'lni ko'rmay qolasiz.",
