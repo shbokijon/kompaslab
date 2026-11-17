@@ -1,9 +1,8 @@
 /* Bosh sahifa: interaktiv grafiklar (Lab nima, dars tuzilmasi, yoʻl tablari) — 2026-11-13 */
 .hx-h1{grid-column:1/-1;margin-bottom:6px;}
 .hx{row-gap:16px;}
-.hx-h1{max-width:920px;}
-.hx-h1 span{display:block;}
-.hx-h1 .l2{color:var(--accent2);}
+.hx-h1 span{display:block;white-space:nowrap;}
+.hx-h1 .l2{color:#5f8a74;}
 @media(min-width:721px){.hx-h1{font-size:clamp(30px,4.5vw,56px);}}
 @media(max-width:720px){.hx-h1{font-size:clamp(26px,7.4vw,34px);}.hx-h1 span{white-space:normal;}}
 
