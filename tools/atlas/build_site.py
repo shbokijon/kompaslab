@@ -364,6 +364,60 @@ def kpis(rows: list) -> list[int]:
     return out
 
 
+FLOW_FLAGS = {"RUS": "🇷🇺", "TJK": "🇹🇯", "KGZ": "🇰🇬", "TUR": "🇹🇷", "KAZ": "🇰🇿"}
+
+
+def short(v: int) -> str:
+    if v >= 1_000_000:
+        return f"{v / 1_000_000:.2f}".replace(".", ",") + " mln"
+    if v >= 10_000:
+        return f"{round(v / 1000)} ming"
+    return num(v)
+
+
+def bars(rows: list, cls: str, dot: bool = False) -> str:
+    """rows: (iso, nom, qiymat, yorliq, davr). Bir rang, qiymat kattaroq bo'lsa to'qroq."""
+    vals = [r[2] for r in rows]
+    hi, lo = max(vals), min(vals)
+    out = ""
+    for iso, name, v, lab, per in rows:
+        if dot:  # QS: o'rin, 1 eng yaxshi. Nuqta 1-100 shkalada
+            w = max(2, min(100, v))
+            t = 1 - (v - lo) / ((hi - lo) or 1)
+        else:
+            w = max(2, round(v / hi * 100, 1))
+            t = (v - lo) / ((hi - lo) or 1)
+        flag = FLAGS.get(iso) or FLOW_FLAGS.get(iso, "")
+        tag, attr = ("button", f' type="button" data-iso="{iso}" data-snd="pick"') if iso in MD.COUNTRIES and iso != "UZB" else ("div", "")
+        out += (f'<li><{tag} class="mx-row"{attr} style="--w:{w}%;--t:{t:.2f}" title="{name}: {lab}{", " + per if per else ""}">'
+                f'<span class="mx-rl">{flag} {name}</span><span class="mx-rt"><i></i></span>'
+                f'<span class="mx-rv">{lab}{f"<small>{per}</small>" if per else ""}</span></{tag}></li>')
+    return f'<ol class="mx-bars {cls}{" is-dot" if dot else ""}">{out}</ol>'
+
+
+def mx_charts() -> str:
+    nm = lambda i: MD.COUNTRIES[i]["name"]  # noqa: E731
+    st = sorted(((i, nm(i), v, short(v), per) for i, (v, per) in MD.STUDENTS.items()), key=lambda r: -r[2])
+    fl = sorted(((i, n, v, short(v), "") for i, (n, v) in MD.FLOWS.items()), key=lambda r: -r[2])
+    uzr = sorted(((i, c["name"], r[2], short(r[2]), r[4]) for i, c in MD.COUNTRIES.items() for r in c["rows"]
+                  if r[1] == "O'zbekistonlik talabalar" and isinstance(r[2], int)), key=lambda r: -r[2])
+    qs = sorted(((i, nm(i), v, f"{v}-o'rin", n) for i, (v, n) in MD.QS_TOP.items()), key=lambda r: r[2])
+    tabs = [("talabalar", "Xalqaro talabalar", "Mamlakatdagi jami xalqaro talabalar. Yillar har xil.", bars(st, "c-tal")),
+            ("flow", "2025: o'qishga ketganlar", "O'zbekistondan bir yilda o'qish uchun chiqqanlar, top-10.", bars(fl, "c-flow")),
+            ("uz", "O'zbek talabalar", "Mamlakatda hozir o'qiyotgan o'zbekistonliklar.", bars(uzr, "c-uz")),
+            ("qs", "QS o'rni", "Eng yaxshi universitetning QS 2027 o'rni. Chapga yaqini yuqori.", bars(qs, "c-qs", dot=True))]
+    btn = "".join(f'<button type="button" role="tab" data-chart="{k}" aria-selected="{"true" if n == 0 else "false"}">{t}</button>'
+                  for n, (k, t, _, _) in enumerate(tabs))
+    pan = "".join(f'<div class="mx-cpanel" role="tabpanel" data-chart="{k}"><h3>{t}</h3><p class="mx-ccap">{cap}</p>{b}</div>'
+                  for k, t, cap, b in tabs)
+    return f"""<section class="mx-charts" id="jadval" aria-label="Raqamlarda solishtirish">
+<h2>Raqamlarda solishtiring</h2>
+<div class="mx-ctabs" role="tablist">{btn}</div>
+{pan}
+<p class="mx-cnote">Mamlakatni bossangiz, xaritada ochiladi. <a href="#manbalar">Manbalar ↓</a></p>
+</section>"""
+
+
 def mx_table() -> str:
     order = ["UZB", "USA", "GBR", "DEU", "FRA", "ITA", "NLD", "KOR", "JPN", "CHN", "SGP", "AUS", "CAN"]
     trs = ""
@@ -372,7 +426,7 @@ def mx_table() -> str:
         for g, label, val, unit, period, src, url, note in c["rows"]:
             u = f" {unit}" if unit else ""
             trs += f'<tr><td>{c["name"]}</td><td>{label}</td><td>{num(val)}{u}</td><td>{period}</td><td>{ext(url, src)}</td></tr>'
-    return f"""<details class="mx-all" id="jadval"><summary>Barcha raqamlar bitta jadvalda</summary>
+    return f"""<details class="mx-all" id="manbalar"><summary>Hamma raqamlar va manbalar</summary>
 <div class="at-tablewrap"><table><thead><tr><th>Mamlakat</th><th>Ko'rsatkich</th><th>Qiymat</th><th>Davr</th><th>Manba</th></tr></thead><tbody>{trs}</tbody></table></div></details>"""
 
 
@@ -420,11 +474,12 @@ def mamlakatlar_page() -> str:
 <p class="mx-legend" id="mxLegend"></p>
 <div class="mx-chips" aria-label="Mamlakatni tanlang">{chips}</div>
 </div>
-<aside class="mx-card" id="mxCard" aria-live="polite"><noscript><p>Interaktiv karta uchun JavaScript kerak. Hamma raqamlar pastdagi jadvalda.</p></noscript></aside>
+<aside class="mx-card" id="mxCard" aria-live="polite"><noscript><p>Interaktiv karta uchun JavaScript kerak. Hamma raqamlar pastda.</p></noscript></aside>
 </div>
 <div class="at-note"><b>Raqamni to'g'ri o'qing.</b> "2025: siz kabi yoshlar" bu bir yil ichida o'qish uchun chiqqanlar (Milliy statistika qo'mitasi). "O'zbekistonlik talabalar" esa o'sha mamlakatda hozir o'qiyotganlar. "Xalqaro talabalar" raqamlari turli yil va turli manbadan, aniq davri kartada yozilgan.</div>
+{mx_charts()}
 {mx_table()}
-<details class="mx-pend"><summary>Hali qo'shilmagan ma'lumotlar</summary><p>Bu raqamlar hozircha faqat yangilik yoki jamlovchi saytlarda bor. Rasmiy manbada topilgach qo'shiladi:</p><ul>{pend}</ul></details>
+<details class="mx-pend"><summary>Hali qo'shilmagan ma'lumotlar</summary><p>Rasmiy manbada topilgach qo'shiladi:</p><ul>{pend}</ul></details>
 <p class="at-src">Manbalar {MD.CHECKED} holatiga tekshirilgan. Xarita chegaralari: Natural Earth (jamoat mulki). Reyting: QS World University Rankings 2027.</p>
 </div></main>
 """

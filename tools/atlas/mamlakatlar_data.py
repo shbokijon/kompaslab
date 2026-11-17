@@ -21,6 +21,9 @@ QS_NAME = "QS World University Rankings 2027"
 OECD = "https://www.oecd.org/en/publications/international-students-in-higher-education_005ff28d-en/full-report/overview_61547f95.html"
 OECD_NAME = "OECD (2026): International students in higher education"
 
+CAMPUS_UZ = "https://ressources.campusfrance.org/publications/mobilite_pays/fr/ouzbekistan_fr.pdf"
+KESS_UZ = "https://kess.kedi.re.kr/eng/post/6861900"
+
 GROUPS = ["Ta'lim", "Qabul", "Stipendiya", "Moliya", "Viza", "Sifat"]
 
 
@@ -33,6 +36,9 @@ COUNTRIES = {
     "UZB": dict(name="O'zbekiston", home=True, rows=[
         ("Ta'lim", "2025-yilda o'qish uchun chet elga chiqqanlar", 28954, "kishi", "2025", STAT_NAME, STAT_UZA,
          "2024-yilga nisbatan 19,3% kam. 35 ta davlatga. Bu safarlar soni."),
+        ("Ta'lim", "Chet elda o'qiyotgan o'zbekistonlik talabalar", 150488, "kishi", "2022",
+         "Campus France (UNESCO statistika instituti ma'lumoti)", CAMPUS_UZ,
+         "Ko'pi: Qirg'iziston 51 605, Rossiya 48 430, Qozog'iston 26 130. Varaq 2024-yil oktabrda chiqqan."),
         ("Stipendiya", "Erasmus Mundus: O'zbekistondan tanlanganlar", 13, "kishi", "2026",
          "Yevropa Ittifoqining O'zbekistondagi vakolatxonasi",
          "https://www.eeas.europa.eu/delegations/uzbekistan/preparing-your-erasmus-mundus-journey-%E2%80%93-uzbekistan-2026_en",
@@ -86,6 +92,8 @@ COUNTRIES = {
         ("Ta'lim", "Xalqaro talabalar", 443500, "kishi", "2024/25", "Campus France",
          "https://www.campusfrance.org/system/files/medias/documents/2025-09/20250905_CP%20Rentree_CampusFrance.pdf",
          "Bir yilda 3%, besh yilda 17% o'sgan."),
+        ("Ta'lim", "O'zbekistonlik talabalar", 165, "kishi", "2023/24", "Campus France: O'zbekiston varag'i", CAMPUS_UZ,
+         "Fransiya Oliy ta'lim vazirligi (SIES) hisobi."),
         ("Moliya", "Davlat universitetida o'qish to'lovi: bakalavr (licence)", "2 895 € / yil", "", "2025/26", "Service-Public.fr",
          "https://www.service-public.gouv.fr/particuliers/actualites/A18927",
          "Master: 3 941 € / yil. 2026/27 dan imtiyozlar qisqartirildi, yangi summalar hali e'lon qilinmagan."),
@@ -102,6 +110,8 @@ COUNTRIES = {
     "KOR": dict(name="Janubiy Koreya", lab="gks-lab.html", rows=[
         ("Ta'lim", "Mamlakatdagi xalqaro talabalar (viza bo'yicha)", 308838, "kishi", "2025-yil oxiri", "Koreya Adliya vazirligi, immigratsiya statistikasi",
          "https://www.immigration.go.kr/moj/2412/subview.do", "Ta'lim vazirligi hisobi boshqacha usulda va boshqa sanada olinadi."),
+        ("Ta'lim", "Daraja dasturidagi xorijiy talabalar: o'zbeklar ulushi", "8,0%", "", "2025", "KEDI (Koreya Ta'lim vazirligi statistikasi)", KESS_UZ,
+         "Xitoy va Vetnamdan keyin 3-o'rin."),
         flow(3513),
         ("Qabul", "Yangi qabul qilingan xalqaro talabalar (D-2)", 117333, "kishi", "2025", "Koreya Adliya vazirligi",
          "https://www.moj.go.kr/bbs/moj/182/499104/download.do", "2019-yilga nisbatan 75% ko'p."),
@@ -155,10 +165,9 @@ FLOWS = {"RUS": ("Rossiya", 6498), "TJK": ("Tojikiston", 6039), "KGZ": ("Qirg'iz
 
 # Rasmiy manba topilmagani uchun hozircha kiritilmagan (faqat yangilik yoki jamlovchi saytda bor)
 PENDING = [
-    "El-yurt umidi 2026/27 kvotalari (eyuf.uz da tekshirish kerak)",
-    "Koreyadagi o'zbek talabalar soni (Ta'lim vazirligi, KESS jadvali)",
-    "Buyuk Britaniyadagi o'zbek talabalar (HESA jadvali)",
-    "Italiya, Niderlandiya, Fransiya, Kanada, Avstraliyadagi o'zbek talabalar",
+    "El-yurt umidi 2026/27 kvotalari (eyuf.uz)",
+    "Buyuk Britaniyadagi o'zbek talabalar (HESA, 28-jadval)",
+    "Italiya, Niderlandiya, Kanada, Avstraliyadagi o'zbek talabalar",
     "Viza rad etilishi: O'zbekiston kesimi (UK Vis_D02, Avstraliya BP0015)",
 ]
 

@@ -178,3 +178,38 @@ body[data-kpage="mamlakatlar"] .kl-head-art{display:none}
 @media(pointer:coarse){.mx-layer,.mx-chip,.mx-tab,.mx-zoom button{min-height:44px}.mx-tab{padding-top:8px;padding-bottom:8px}}
 @media(prefers-reduced-motion:reduce){.mx-card.is-sheet{animation:none}.mx-bub.grow circle,.mx-card.in .mx-card-in,.mx-kpi img{animation:none}.mx-land,.mx-layer,.mx-chip{transition:none}}
 @media(min-width:861px){.mx-mapcol{display:flex;flex-direction:column}.mx-map{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center}.mx-map svg{flex:1 1 auto;height:100%;min-height:0}}
+/* Mamlakatlar: diagrammalar (2026-11-17). Bir ko'rsatkich = bir rang, qiymat kattaroq = to'qroq */
+.mx-charts{margin:28px 0 8px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:20px}
+.mx-charts h2{margin:0 0 12px;font-size:25px}
+.mx-ctabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.mx-ctabs button{font:inherit;font-size:14px;font-weight:700;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;transition:background .18s,color .18s,border-color .18s}
+.mx-ctabs button[aria-selected="true"]{background:var(--kl-forest);border-color:var(--kl-forest);color:#fff}
+html[data-theme="dark"] .mx-ctabs button[aria-selected="true"]{color:#10201a}
+.mx-cpanel h3{display:none;margin:18px 0 4px;font-size:16px}
+.mx-ccap{margin:0 0 12px;color:var(--muted);font-size:13px}
+.mx-bars{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;--c:var(--kl-forest)}
+.mx-bars.c-flow{--c:var(--kl-clay)}
+.mx-bars.c-uz{--c:#3b6ea5}
+.mx-bars.c-qs{--c:#6b5ca5}
+html[data-theme="dark"] .mx-bars.c-uz{--c:#8fb6e0}
+html[data-theme="dark"] .mx-bars.c-qs{--c:#b3a6e6}
+.mx-row{display:grid;grid-template-columns:minmax(0,10.5em) minmax(0,1fr) 7.5em;align-items:center;gap:12px;width:100%;min-height:36px;padding:4px 10px;border:0;border-radius:12px;background:none;color:var(--text);font:inherit;text-align:left}
+button.mx-row{cursor:pointer;transition:background .15s}
+button.mx-row:hover,button.mx-row:focus-visible{background:var(--bg)}
+.mx-rl{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mx-rt{position:relative;height:14px;border-radius:999px;background:var(--bg)}
+.mx-rt i{position:absolute;left:0;top:0;bottom:0;width:var(--w);border-radius:999px;background:var(--c);opacity:calc(.4 + var(--t) * .6);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.mx-bars.is-dot .mx-rt{height:6px;margin:4px 0}
+.mx-bars.is-dot .mx-rt i{left:0;right:0;width:auto;background:none;opacity:1}
+.mx-bars.is-dot .mx-rt i::after{content:"";position:absolute;top:50%;left:var(--w);width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--c);opacity:calc(.4 + var(--t) * .6);transition:left .9s cubic-bezier(.2,.8,.2,1)}
+.mx-rv{font-size:14px;font-weight:700;white-space:nowrap;text-align:right}
+.mx-rv small{display:block;font-size:12px;font-weight:500;color:var(--muted);white-space:normal;line-height:1.25}
+.mx-cnote{margin:12px 0 0;font-size:13px;color:var(--muted)}
+.mx-js .mx-cpanel[hidden]{display:none}
+.mx-anim .mx-rt i{width:0}
+.mx-anim .mx-bars.is-dot .mx-rt i{width:auto}
+.mx-anim .mx-bars.is-dot .mx-rt i::after{left:0}
+.mx-charts:not(.mx-js) .mx-ctabs{display:none}
+.mx-charts:not(.mx-js) .mx-cpanel h3{display:block}
+@media(max-width:640px){.mx-charts{margin:22px -20px 8px;padding:18px 16px;border-radius:0;border-left:0;border-right:0}.mx-ctabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding-right:16px}.mx-ctabs::-webkit-scrollbar{display:none}.mx-ctabs button{flex:0 0 auto;min-height:44px}.mx-row{grid-template-columns:minmax(0,7.6em) minmax(0,1fr) 5.4em;gap:8px;padding:4px 6px;min-height:44px}.mx-rl{font-size:13px}.mx-rv{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.mx-rt i,.mx-bars.is-dot .mx-rt i::after{transition:none}.mx-ctabs button{transition:none}}

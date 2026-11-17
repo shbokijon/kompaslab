@@ -16,6 +16,16 @@
      "note": "2024-yilga nisbatan 19,3% kam. 35 ta davlatga. Bu safarlar soni."
     },
     {
+     "group": "Taʼlim",
+     "label": "Chet elda oʻqiyotgan oʻzbekistonlik talabalar",
+     "value": 150488,
+     "unit": "kishi",
+     "period": "2022",
+     "source": "Campus France (UNESCO statistika instituti maʼlumoti)",
+     "url": "https://ressources.campusfrance.org/publications/mobilite_pays/fr/ouzbekistan_fr.pdf",
+     "note": "Koʻpi: Qirgʻiziston 51 605, Rossiya 48 430, Qozogʻiston 26 130. Varaq 2024-yil oktabrda chiqqan."
+    },
+    {
      "group": "Stipendiya",
      "label": "Erasmus Mundus: Oʻzbekistondan tanlanganlar",
      "value": 13,
@@ -236,6 +246,16 @@
      "note": "Bir yilda 3%, besh yilda 17% oʻsgan."
     },
     {
+     "group": "Taʼlim",
+     "label": "Oʻzbekistonlik talabalar",
+     "value": 165,
+     "unit": "kishi",
+     "period": "2023/24",
+     "source": "Campus France: Oʻzbekiston varagʻi",
+     "url": "https://ressources.campusfrance.org/publications/mobilite_pays/fr/ouzbekistan_fr.pdf",
+     "note": "Fransiya Oliy taʼlim vazirligi (SIES) hisobi."
+    },
+    {
      "group": "Moliya",
      "label": "Davlat universitetida oʻqish toʻlovi: bakalavr (licence)",
      "value": "2 895 € / yil",
@@ -309,6 +329,16 @@
      "source": "Koreya Adliya vazirligi, immigratsiya statistikasi",
      "url": "https://www.immigration.go.kr/moj/2412/subview.do",
      "note": "Taʼlim vazirligi hisobi boshqacha usulda va boshqa sanada olinadi."
+    },
+    {
+     "group": "Taʼlim",
+     "label": "Daraja dasturidagi xorijiy talabalar: oʻzbeklar ulushi",
+     "value": "8,0%",
+     "unit": "",
+     "period": "2025",
+     "source": "KEDI (Koreya Taʼlim vazirligi statistikasi)",
+     "url": "https://kess.kedi.re.kr/eng/post/6861900",
+     "note": "Xitoy va Vetnamdan keyin 3-oʻrin."
     },
     {
      "group": "Taʼlim",
@@ -565,10 +595,9 @@
   }
  },
  "pending": [
-  "El-yurt umidi 2026/27 kvotalari (eyuf.uz da tekshirish kerak)",
-  "Koreyadagi oʻzbek talabalar soni (Taʼlim vazirligi, KESS jadvali)",
-  "Buyuk Britaniyadagi oʻzbek talabalar (HESA jadvali)",
-  "Italiya, Niderlandiya, Fransiya, Kanada, Avstraliyadagi oʻzbek talabalar",
+  "El-yurt umidi 2026/27 kvotalari (eyuf.uz)",
+  "Buyuk Britaniyadagi oʻzbek talabalar (HESA, 28-jadval)",
+  "Italiya, Niderlandiya, Kanada, Avstraliyadagi oʻzbek talabalar",
   "Viza rad etilishi: Oʻzbekiston kesimi (UK Vis_D02, Avstraliya BP0015)"
  ]
 }

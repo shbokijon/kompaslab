@@ -285,6 +285,36 @@
     });
   }
 
+  // ---------------------------------------------------------- diagrammalar
+  var ch = document.querySelector(".mx-charts");
+  if (ch) {
+    var tabs = ch.querySelectorAll("[data-chart][role=tab]"), pans = ch.querySelectorAll(".mx-cpanel");
+    var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    ch.classList.add("mx-js");
+    function showChart(k) {
+      tabs.forEach(function (t) { t.setAttribute("aria-selected", t.getAttribute("data-chart") === k ? "true" : "false"); });
+      pans.forEach(function (p) {
+        var on = p.getAttribute("data-chart") === k;
+        p.hidden = !on;
+        if (on && !still) { p.classList.add("mx-anim"); void p.offsetWidth; requestAnimationFrame(function () { p.classList.remove("mx-anim"); }); }
+      });
+    }
+    tabs.forEach(function (t) { t.addEventListener("click", function () { showChart(t.getAttribute("data-chart")); snd("tab"); }); });
+    pans.forEach(function (p, i) { p.hidden = i > 0; if (!still) p.classList.add("mx-anim"); });
+    if (!still && "IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return; io.disconnect();
+        pans.forEach(function (p) { if (!p.hidden) p.classList.remove("mx-anim"); });
+      }, { threshold: 0.3 });
+      io.observe(ch);
+    } else pans.forEach(function (p) { p.classList.remove("mx-anim"); });
+    ch.addEventListener("click", function (e) {
+      var b = e.target.closest("button.mx-row"); if (!b) return;
+      pick(b.getAttribute("data-iso"));
+      document.querySelector(".mx-grid").scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" });
+    });
+  }
+
   var rz = 0;
   window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { if (svg) paint(false); }, 150); });
 
