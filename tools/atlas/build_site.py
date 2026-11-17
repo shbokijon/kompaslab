@@ -7,6 +7,8 @@ Natija (repo ildizida):
   atlas-talaba-ishi.html           — maqola (8 mamlakat)
   atlas-ingliz-tili-testi.html     — maqola
   nl-sponsors.html, ca-lmia.html   — rasmiy registr nusxasidan qidiruv (js/atlas-registry.js)
+  mamlakatlar.html                 — mamlakatlar xaritasi (js/mamlakatlar.js, maʼlumot mamlakatlar_data.py)
+  data/mamlakatlar.json            — xarita maʼlumoti (shu fayldan, qayta foydalanish uchun)
 
 Ishga tushirish: python3 tools/atlas/build_site.py
 Maʼlumot: data/nl-sponsors.json, data/ca-lmia.json (.github/workflows/atlas-data.yml yangilaydi).
@@ -20,6 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools" / "site"))
+sys.path.insert(0, str(ROOT / "tools" / "atlas"))
 from shell import FOOTER, head, nav, page, pagehead, uz  # noqa: E402
 
 CHECKED = "30.10.2026"
@@ -330,8 +333,100 @@ def registry(r: dict) -> str:
     return page(head_html=h, body=body, scripts=scripts)
 
 
+# ------------------------------------------------------- mamlakatlar xaritasi
+import mamlakatlar_data as MD  # noqa: E402
+
+FLAGS = {"UZB": "🇺🇿", "USA": "🇺🇸", "GBR": "🇬🇧", "DEU": "🇩🇪", "FRA": "🇫🇷", "ITA": "🇮🇹", "NLD": "🇳🇱",
+         "KOR": "🇰🇷", "JPN": "🇯🇵", "SGP": "🇸🇬", "AUS": "🇦🇺", "CAN": "🇨🇦", "CHN": "🇨🇳"}
+LAB_NAMES = {"usa-lab.html": "USA Lab", "gks-lab.html": "GKS Lab", "daad-lab.html": "DAAD Lab"}
+
+
+def num(v) -> str:
+    return f"{v:,}".replace(",", "\u00a0") if isinstance(v, int) else str(v)
+
+
+def mx_card(iso: str, c: dict) -> str:
+    rows = c["rows"]
+    parts = []
+    for g in MD.GROUPS:
+        rs = [r for r in rows if r[0] == g]
+        if not rs:
+            continue
+        items = ""
+        for _, label, val, unit, period, src, url, note in rs:
+            u = f' <span class="mx-u">{unit}</span>' if unit else ""
+            n = f'<p class="mx-n">{note}</p>' if note else ""
+            items += (f'<div class="mx-row"><div class="mx-k">{label}</div><div class="mx-v">{num(val)}{u}</div>'
+                      f'<div class="mx-m">{period} · {ext(url, src + " ↗")}</div>{n}</div>')
+        parts.append(f'<h4>{g}</h4>{items}')
+    lab = ""
+    if c.get("lab"):
+        lab = f'<a class="mx-lab" href="{c["lab"]}">{LAB_NAMES[c["lab"]]}: shu yo\'nalish bo\'yicha tayyorlov →</a>'
+    if c.get("home"):
+        head = "Siz shu yerdan boshlaysiz"
+    else:
+        head = f"{len(rows)} ta rasmiy ko'rsatkich"
+    open_ = " open" if c.get("home") else ""
+    return (f'<details class="mx-c" id="mx-{iso}" data-iso="{iso}"{open_}><summary><span class="mx-f" aria-hidden="true">{FLAGS[iso]}</span>'
+            f'<b>{c["name"]}</b><small>{head}</small></summary><div class="mx-body">{"".join(parts)}{lab}</div></details>')
+
+
+def mamlakatlar_json() -> str:
+    data = {"checked": MD.CHECKED, "source_rule": "faqat rasmiy manbalar",
+            "countries": {iso: {"name": c["name"], "rows": [dict(zip(("group", "label", "value", "unit", "period", "source", "url", "note"), r)) for r in c["rows"]]}
+                          for iso, c in MD.COUNTRIES.items()},
+            "flows_2025": {"source": MD.STAT_NAME, "url": MD.STAT_UZA,
+                           "rows": {iso: {"name": n, "value": v} for iso, (n, v) in MD.FLOWS.items()}},
+            "pending": MD.PENDING}
+    return uz(json.dumps(data, ensure_ascii=False, indent=1)) + "\n"
+
+
+def mamlakatlar_page() -> str:
+    order = ["UZB", "USA", "GBR", "DEU", "FRA", "ITA", "NLD", "KOR", "JPN", "CHN", "SGP", "AUS", "CAN"]
+    cards = "".join(mx_card(i, MD.COUNTRIES[i]) for i in order)
+    chips = "".join(f'<button type="button" class="mx-chip" data-iso="{i}" data-snd="pick">{FLAGS[i]} {MD.COUNTRIES[i]["name"]}</button>' for i in order[1:])
+    cfg = {"home": "UZB", "covered": order, "names": {i: MD.COUNTRIES[i]["name"] for i in order},
+           "points": {i: c["point"] for i, c in MD.COUNTRIES.items() if c.get("point")},
+           "flows": {i: [n, v] for i, (n, v) in MD.FLOWS.items()}, "home_ll": [41.31, 69.28]}
+    pend = "".join(f"<li>{x}</li>" for x in MD.PENDING)
+    body = nav("", "mamlakatlar") + pagehead(
+        [("Kompas Lab", "index.html"), ("Mamlakatlar xaritasi", None)],
+        "Qayerda o'qiysiz? Mamlakatlar xaritasi",
+        "Mamlakatni bosing: siz uchun kerakli raqamlar chiqadi. Xalqaro talabalar soni, stipendiya kvotasi, viza uchun pul va reyting. Har raqamda rasmiy manba va sana bor.",
+        "telescope") + f"""<main><div class="wrap mx-page">
+<div class="mx-tools" role="group" aria-label="Xarita qatlami">
+<button type="button" class="mx-layer" data-layer="atlas" aria-pressed="true">Ma'lumot bor mamlakatlar</button>
+<button type="button" class="mx-layer" data-layer="flow" aria-pressed="false">2025: siz kabi yoshlar qayerga ketdi</button>
+</div>
+<div class="mx-grid">
+<div class="mx-mapcol">
+<div class="mx-map" id="mxMap" data-globe-src="data/globe.json"><p class="mx-load">Xarita yuklanmoqda…</p><div class="mx-tip" id="mxTip" hidden></div></div>
+<div class="mx-legend" id="mxLegend"></div>
+<div class="mx-chips" aria-label="Mamlakatni tanlang">{chips}</div>
+</div>
+<div class="mx-list" id="mxList">{cards}</div>
+</div>
+<div class="at-note"><b>Raqamni to'g'ri o'qing.</b> "2025-yilda O'zbekistondan o'qishga ketganlar" bu bir yil ichidagi safarlar soni (Milliy statistika qo'mitasi). "O'zbekistonlik talabalar" esa o'sha mamlakatda hozir o'qiyotganlar (Open Doors, JASSO). Ikkalasini solishtirib bo'lmaydi.</div>
+<details class="mx-pend"><summary>Hali qo'shilmagan ma'lumotlar</summary><p>Bu raqamlar hozircha faqat yangilik yoki jamlovchi saytlarda bor. Rasmiy manbada topilgach qo'shiladi:</p><ul>{pend}</ul></details>
+<p class="at-src">Manbalar {MD.CHECKED} holatiga tekshirilgan. Xarita chegaralari: Natural Earth (jamoat mulki). Reyting: QS World University Rankings 2027.</p>
+</div></main>
+"""
+    ld = json.dumps({"@context": "https://schema.org", "@type": "Dataset", "name": "Kompas Lab: mamlakatlar xaritasi",
+                     "description": "O'zbekistonlik talabalar uchun 12 mamlakat bo'yicha rasmiy ta'lim, stipendiya, moliya, viza va reyting ko'rsatkichlari.",
+                     "url": "https://www.kompaslab.uz/mamlakatlar", "inLanguage": "uz", "dateModified": MD.ISO,
+                     "creator": {"@type": "Organization", "name": "Kompas Lab"},
+                     "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://www.kompaslab.uz/data/mamlakatlar.json"},
+                     "citation": sorted({r[6] for c in MD.COUNTRIES.values() for r in c["rows"]})}, ensure_ascii=False)
+    h = head(title="Mamlakatlar xaritasi: xorijda o'qish bo'yicha rasmiy raqamlar · Kompas Lab",
+             desc="AQSh, Buyuk Britaniya, Germaniya, Koreya, Yaponiya va boshqa 12 mamlakat: xalqaro talabalar, o'zbek talabalar, stipendiya kvotalari, viza uchun pul va QS reytingi. Faqat rasmiy manbalar.",
+             path="mamlakatlar", jsonld=ld)
+    scripts = f'<script type="application/json" id="mx-cfg">{json.dumps(cfg, ensure_ascii=False)}</script>\n<script src="js/mamlakatlar.js" defer></script>\n'
+    return page(head_html=h, body=body, scripts=scripts)
+
+
 def main() -> None:
-    out = {"atlas.html": atlas_index()}
+    (ROOT / "data" / "mamlakatlar.json").write_text(mamlakatlar_json(), encoding="utf-8")
+    out = {"atlas.html": atlas_index(), "mamlakatlar.html": mamlakatlar_page()}
     for a in ARTICLES:
         out[a["slug"] + ".html"] = article(a)
     for r in REGISTRIES:

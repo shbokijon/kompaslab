@@ -1,0 +1,574 @@
+{
+ "checked": "17.11.2026",
+ "source_rule": "faqat rasmiy manbalar",
+ "countries": {
+  "UZB": {
+   "name": "Oʻzbekiston",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "2025-yilda oʻqish uchun chet elga chiqqanlar",
+     "value": 28954,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "Milliy statistika qoʻmitasi (OʻzA orqali, 12.02.2026)",
+     "url": "https://uza.uz/ar/posts/ozbekistonliklar-eng-kop-qaysi-davlatlarga-oqish-maqsadida-safar-qilgan_818402",
+     "note": "2024-yilga nisbatan 19,3% kam. 35 ta davlatga. Bu safarlar soni."
+    },
+    {
+     "group": "Stipendiya",
+     "label": "Erasmus Mundus: Oʻzbekistondan tanlanganlar",
+     "value": 13,
+     "unit": "kishi",
+     "period": "2026",
+     "source": "Yevropa Ittifoqining Oʻzbekistondagi vakolatxonasi",
+     "url": "https://www.eeas.europa.eu/delegations/uzbekistan/preparing-your-erasmus-mundus-journey-%E2%80%93-uzbekistan-2026_en",
+     "note": "7 nafari toʻliq stipendiya bilan. 2015-yildan beri jami 154 kishi."
+    }
+   ]
+  },
+  "USA": {
+   "name": "AQSh",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar (OPT bilan)",
+     "value": 1177766,
+     "unit": "kishi",
+     "period": "2024/25",
+     "source": "Open Doors 2025 (IIE, AQSh Davlat departamenti)",
+     "url": "https://opendoorsdata.org/wp-content/uploads/2025/11/OD25_Press-Release_EMBARGO.pdf",
+     "note": "883 513 nafari oʻqiydi, 294 253 nafari OPT da ishlaydi."
+    },
+    {
+     "group": "Taʼlim",
+     "label": "Oʻzbekistonlik talabalar",
+     "value": 1310,
+     "unit": "kishi",
+     "period": "2024/25",
+     "source": "Open Doors: Uzbekistan fact sheet",
+     "url": "https://opendoorsdata.org/wp-content/uploads/2026/01/OD_Uzbekistan_Fact-Sheet-2025.pdf",
+     "note": "787 bakalavr, 312 magistr va PhD, 189 OPT, 22 darajasiz. 2023/24: 1 219."
+    },
+    {
+     "group": "Taʼlim",
+     "label": "2025-yilda Oʻzbekistondan oʻqishga ketganlar",
+     "value": 351,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "Milliy statistika qoʻmitasi (OʻzA orqali, 12.02.2026)",
+     "url": "https://uza.uz/ar/posts/ozbekistonliklar-eng-kop-qaysi-davlatlarga-oqish-maqsadida-safar-qilgan_818402",
+     "note": "Bir yillik safarlar soni. Shu mamlakatda hozir oʻqiyotgan oʻzbeklar soni emas."
+    },
+    {
+     "group": "Qabul",
+     "label": "Yangi xalqaro talabalar",
+     "value": 277118,
+     "unit": "kishi",
+     "period": "kuz 2024",
+     "source": "Open Doors 2025 (IIE)",
+     "url": "https://www.iie.org/news/open-doors-2025-press-release/",
+     "note": "Oldingi yilga nisbatan 7% kam."
+    },
+    {
+     "group": "Viza",
+     "label": "B-viza rad etilishi: Oʻzbekiston fuqarolari",
+     "value": "52,46%",
+     "unit": "",
+     "period": "FY2025",
+     "source": "AQSh Davlat departamenti",
+     "url": "https://travel.state.gov/content/dam/visas/Statistics/Non-Immigrant-Statistics/RefusalRates/FY25.pdf",
+     "note": "Bu mehmon (B1/B2) vizasi, talaba vizasi emas. F-1 boʻyicha mamlakat kesimi eʼlon qilinmaydi."
+    },
+    {
+     "group": "Sifat",
+     "label": "QS reytingidagi universitetlar",
+     "value": 184,
+     "unit": "universitet",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "Eng yuqori oʻrin: MIT (1)."
+    }
+   ]
+  },
+  "GBR": {
+   "name": "Buyuk Britaniya",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar (oliy taʼlim)",
+     "value": 748461,
+     "unit": "kishi",
+     "period": "2023",
+     "source": "OECD (2026): International students in higher education",
+     "url": "https://www.oecd.org/en/publications/international-students-in-higher-education_005ff28d-en/full-report/overview_61547f95.html",
+     "note": "Barcha talabalarning 23%."
+    },
+    {
+     "group": "Taʼlim",
+     "label": "2025-yilda Oʻzbekistondan oʻqishga ketganlar",
+     "value": 886,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "Milliy statistika qoʻmitasi (OʻzA orqali, 12.02.2026)",
+     "url": "https://uza.uz/ar/posts/ozbekistonliklar-eng-kop-qaysi-davlatlarga-oqish-maqsadida-safar-qilgan_818402",
+     "note": "Bir yillik safarlar soni. Shu mamlakatda hozir oʻqiyotgan oʻzbeklar soni emas."
+    },
+    {
+     "group": "Viza",
+     "label": "Berilgan talaba vizalari (sponsored study)",
+     "value": 383455,
+     "unit": "viza",
+     "period": "iyul 2025 – iyun 2026",
+     "source": "UK Home Office",
+     "url": "https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2026/why-do-people-come-to-the-uk-study",
+     "note": "Oldingi yilga nisbatan 11% kam."
+    },
+    {
+     "group": "Moliya",
+     "label": "Viza uchun yashash puli: London",
+     "value": "£1 529 / oy",
+     "unit": "",
+     "period": "2026",
+     "source": "GOV.UK",
+     "url": "https://www.gov.uk/student-visa/money",
+     "note": "Londondan tashqarida £1 171 / oy. 9 oygacha koʻrsatiladi."
+    },
+    {
+     "group": "Moliya",
+     "label": "Talaba vizasi toʻlovi",
+     "value": "£558",
+     "unit": "",
+     "period": "2026",
+     "source": "GOV.UK",
+     "url": "https://www.gov.uk/student-visa/money",
+     "note": "Tashqaridan ariza uchun. Sogʻliqni saqlash yigʻimi (IHS) alohida."
+    },
+    {
+     "group": "Sifat",
+     "label": "QS reytingidagi universitetlar",
+     "value": 93,
+     "unit": "universitet",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "Eng yuqori oʻrin: Imperial College London (2)."
+    }
+   ]
+  },
+  "DEU": {
+   "name": "Germaniya",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar va doktorantlar",
+     "value": "~402 000",
+     "unit": "kishi",
+     "period": "qishki semestr 2024/25",
+     "source": "DAAD va DZHW: Wissenschaft weltoffen 2025",
+     "url": "https://www.daad.de/de/pressemitteilungen/2025/erneut-hohe-zahl-internationaler-studierender-in-deutschland/",
+     "note": "Manbada yaxlitlangan."
+    },
+    {
+     "group": "Taʼlim",
+     "label": "2025-yilda Oʻzbekistondan oʻqishga ketganlar",
+     "value": 391,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "Milliy statistika qoʻmitasi (OʻzA orqali, 12.02.2026)",
+     "url": "https://uza.uz/ar/posts/ozbekistonliklar-eng-kop-qaysi-davlatlarga-oqish-maqsadida-safar-qilgan_818402",
+     "note": "Bir yillik safarlar soni. Shu mamlakatda hozir oʻqiyotgan oʻzbeklar soni emas."
+    },
+    {
+     "group": "Stipendiya",
+     "label": "DAAD qoʻllab-quvvatlagan Oʻzbekiston fuqarolari",
+     "value": 452,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "DAAD: Usbekistan mamlakat varagʻi",
+     "url": "https://www.daad.de/app/bsa/pdf/short/238/current/",
+     "note": "Barcha DAAD dasturlari, qisqa muddatlilari ham."
+    },
+    {
+     "group": "Moliya",
+     "label": "Viza uchun yashash puli",
+     "value": "992 € / oy",
+     "unit": "",
+     "period": "2026",
+     "source": "Make it in Germany (Germaniya hukumati portali)",
+     "url": "https://www.make-it-in-germany.com/en/study-training/study/study-and-work/",
+     "note": "Odatda bloklangan hisobda (Sperrkonto) koʻrsatiladi."
+    },
+    {
+     "group": "Moliya",
+     "label": "Oʻqish toʻlovi: Baden-Vyurtemberg",
+     "value": "1 500 € / semestr",
+     "unit": "",
+     "period": "2026",
+     "source": "Heidelberg universiteti",
+     "url": "https://www.uni-heidelberg.de/de/studium/studienorganisation/beitraege-gebuehren/studiengebuehren-fuer-internationale-studierende",
+     "note": "Yevropa Ittifoqidan tashqaridagi talabalar uchun. Boshqa yerlarda davlat universitetlari odatda oʻqish puli olmaydi."
+    },
+    {
+     "group": "Sifat",
+     "label": "QS: eng yuqori oʻrindagi universitet",
+     "value": "25-oʻrin",
+     "unit": "",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "Myunxen texnika universiteti (TUM)."
+    }
+   ]
+  },
+  "FRA": {
+   "name": "Fransiya",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar",
+     "value": 443500,
+     "unit": "kishi",
+     "period": "2024/25",
+     "source": "Campus France",
+     "url": "https://www.campusfrance.org/system/files/medias/documents/2025-09/20250905_CP%20Rentree_CampusFrance.pdf",
+     "note": "Bir yilda 3%, besh yilda 17% oʻsgan."
+    },
+    {
+     "group": "Moliya",
+     "label": "Davlat universitetida oʻqish toʻlovi: bakalavr (licence)",
+     "value": "2 895 € / yil",
+     "unit": "",
+     "period": "2025/26",
+     "source": "Service-Public.fr",
+     "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18927",
+     "note": "Master: 3 941 € / yil. 2026/27 dan imtiyozlar qisqartirildi, yangi summalar hali eʼlon qilinmagan."
+    },
+    {
+     "group": "Sifat",
+     "label": "QS: eng yuqori oʻrindagi universitet",
+     "value": "34-oʻrin",
+     "unit": "",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "Universite PSL."
+    }
+   ]
+  },
+  "ITA": {
+   "name": "Italiya",
+   "rows": [
+    {
+     "group": "Sifat",
+     "label": "QS: eng yuqori oʻrindagi universitet",
+     "value": "87-oʻrin",
+     "unit": "",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "Milan politexnika universiteti."
+    }
+   ]
+  },
+  "NLD": {
+   "name": "Niderlandiya",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar (daraja dasturlari)",
+     "value": 129764,
+     "unit": "kishi",
+     "period": "2025/26",
+     "source": "Nuffic",
+     "url": "https://www.nuffic.nl/en/node/2102",
+     "note": "20 yilda birinchi marta kamaydi. 72% Yevropa iqtisodiy hududidan."
+    },
+    {
+     "group": "Qabul",
+     "label": "Yangi xalqaro talabalar",
+     "value": 48139,
+     "unit": "kishi",
+     "period": "2025/26",
+     "source": "Nuffic",
+     "url": "https://www.nuffic.nl/en/node/1791",
+     "note": ""
+    }
+   ]
+  },
+  "KOR": {
+   "name": "Janubiy Koreya",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Mamlakatdagi xalqaro talabalar (viza boʻyicha)",
+     "value": 308838,
+     "unit": "kishi",
+     "period": "2025-yil oxiri",
+     "source": "Koreya Adliya vazirligi, immigratsiya statistikasi",
+     "url": "https://www.immigration.go.kr/moj/2412/subview.do",
+     "note": "Taʼlim vazirligi hisobi boshqacha usulda va boshqa sanada olinadi."
+    },
+    {
+     "group": "Taʼlim",
+     "label": "2025-yilda Oʻzbekistondan oʻqishga ketganlar",
+     "value": 3513,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "Milliy statistika qoʻmitasi (OʻzA orqali, 12.02.2026)",
+     "url": "https://uza.uz/ar/posts/ozbekistonliklar-eng-kop-qaysi-davlatlarga-oqish-maqsadida-safar-qilgan_818402",
+     "note": "Bir yillik safarlar soni. Shu mamlakatda hozir oʻqiyotgan oʻzbeklar soni emas."
+    },
+    {
+     "group": "Qabul",
+     "label": "Yangi qabul qilingan xalqaro talabalar (D-2)",
+     "value": 117333,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "Koreya Adliya vazirligi",
+     "url": "https://www.moj.go.kr/bbs/moj/182/499104/download.do",
+     "note": "2019-yilga nisbatan 75% koʻp."
+    },
+    {
+     "group": "Stipendiya",
+     "label": "GKS magistratura/PhD: Oʻzbekiston elchixona kvotasi",
+     "value": 13,
+     "unit": "oʻrin",
+     "period": "2026",
+     "source": "NIIED: 2026 GKS-G yoʻriqnomasi",
+     "url": "https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf",
+     "note": "Yana: xorijdagi koreyslar uchun 6, universitet yoʻli 12. Dunyo boʻyicha jami 2 000."
+    }
+   ]
+  },
+  "JPN": {
+   "name": "Yaponiya",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar (til maktablari bilan)",
+     "value": 408069,
+     "unit": "kishi",
+     "period": "1.05.2025",
+     "source": "JASSO",
+     "url": "https://www.studyinjapan.go.jp/ja/statistics/enrollment/data/2605291000.html",
+     "note": "Oliy taʼlimda 267 895, til maktablarida 140 174."
+    },
+    {
+     "group": "Taʼlim",
+     "label": "Oʻzbekistonlik talabalar",
+     "value": 2519,
+     "unit": "kishi",
+     "period": "1.05.2025",
+     "source": "JASSO",
+     "url": "https://www.studyinjapan.go.jp/ja/_mt/2026/05/data2025z.pdf",
+     "note": "2024-yilda 2 844 edi."
+    },
+    {
+     "group": "Stipendiya",
+     "label": "MEXT (hukumat) stipendiatlari, jami",
+     "value": 9221,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "JASSO",
+     "url": "https://www.studyinjapan.go.jp/ja/_mt/2026/05/data2025z.pdf",
+     "note": "Oʻzbekiston kvotasi alohida eʼlon qilinmaydi."
+    }
+   ]
+  },
+  "SGP": {
+   "name": "Singapur",
+   "rows": [
+    {
+     "group": "Sifat",
+     "label": "QS: eng yuqori oʻrindagi universitet",
+     "value": "10-oʻrin",
+     "unit": "",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "Singapur milliy universiteti (NUS)."
+    }
+   ]
+  },
+  "AUS": {
+   "name": "Avstraliya",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar (oliy taʼlim)",
+     "value": 467074,
+     "unit": "kishi",
+     "period": "2023",
+     "source": "OECD (2026): International students in higher education",
+     "url": "https://www.oecd.org/en/publications/international-students-in-higher-education_005ff28d-en/full-report/overview_61547f95.html",
+     "note": "Barcha talabalarning 27%."
+    },
+    {
+     "group": "Sifat",
+     "label": "QS: eng yuqori oʻrindagi universitet",
+     "value": "19-oʻrin",
+     "unit": "",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "Yangi Janubiy Uels universiteti (UNSW)."
+    }
+   ]
+  },
+  "CAN": {
+   "name": "Kanada",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar (oliy taʼlim)",
+     "value": 389181,
+     "unit": "kishi",
+     "period": "2023",
+     "source": "OECD (2026): International students in higher education",
+     "url": "https://www.oecd.org/en/publications/international-students-in-higher-education_005ff28d-en/full-report/overview_61547f95.html",
+     "note": ""
+    },
+    {
+     "group": "Viza",
+     "label": "Yangi berilgan talaba ruxsatnomalari (study permit)",
+     "value": 115470,
+     "unit": "ruxsatnoma",
+     "period": "2025",
+     "source": "OECD (2026): International students in higher education",
+     "url": "https://www.oecd.org/en/publications/international-students-in-higher-education_005ff28d-en/full-report/overview_61547f95.html",
+     "note": "2024-yilda 293 060 edi."
+    },
+    {
+     "group": "Viza",
+     "label": "Talaba ruxsatnomasi rad etilishi (barcha davlatlar)",
+     "value": "58%",
+     "unit": "",
+     "period": "yanvar–avgust 2025",
+     "source": "IRCC",
+     "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-oct-21-2025/international-students.html",
+     "note": "2024-yil shu davrda 48% edi. Oʻzbekiston kesimi berilmagan."
+    },
+    {
+     "group": "Moliya",
+     "label": "Viza uchun yashash puli (Kvebekdan tashqari)",
+     "value": "23 448 CAD / yil",
+     "unit": "",
+     "period": "1.09.2026 dan",
+     "source": "IRCC",
+     "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+     "note": "Oʻqish puli va yoʻl xarajati bunga kirmaydi."
+    },
+    {
+     "group": "Moliya",
+     "label": "Oʻrtacha oʻqish toʻlovi: xalqaro bakalavr",
+     "value": "41 746 CAD / yil",
+     "unit": "",
+     "period": "2025/26",
+     "source": "Statistics Canada",
+     "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/250910/dq250910d-eng.htm",
+     "note": "Magistratura: 24 028 CAD / yil."
+    },
+    {
+     "group": "Sifat",
+     "label": "QS: eng yuqori oʻrindagi universitet",
+     "value": "30-oʻrin",
+     "unit": "",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "McGill universiteti."
+    }
+   ]
+  },
+  "CHN": {
+   "name": "Xitoy",
+   "rows": [
+    {
+     "group": "Taʼlim",
+     "label": "Xalqaro talabalar",
+     "value": 492185,
+     "unit": "kishi",
+     "period": "2018",
+     "source": "Xitoy Taʼlim vazirligi",
+     "url": "http://www.moe.edu.cn/jyb_xwfb/gzdt_gzdt/s5987/201904/t20190412_377692.html",
+     "note": "2018-yildan keyin yangi umumiy son eʼlon qilinmagan."
+    },
+    {
+     "group": "Taʼlim",
+     "label": "2025-yilda Oʻzbekistondan oʻqishga ketganlar",
+     "value": 1259,
+     "unit": "kishi",
+     "period": "2025",
+     "source": "Milliy statistika qoʻmitasi (OʻzA orqali, 12.02.2026)",
+     "url": "https://uza.uz/ar/posts/ozbekistonliklar-eng-kop-qaysi-davlatlarga-oqish-maqsadida-safar-qilgan_818402",
+     "note": "Bir yillik safarlar soni. Shu mamlakatda hozir oʻqiyotgan oʻzbeklar soni emas."
+    },
+    {
+     "group": "Sifat",
+     "label": "QS reytingidagi universitetlar",
+     "value": 85,
+     "unit": "universitet",
+     "period": "QS 2027",
+     "source": "QS World University Rankings 2027",
+     "url": "https://www.topuniversities.com/world-university-rankings",
+     "note": "Eng yuqori oʻrin: Pekin universiteti (13)."
+    }
+   ]
+  }
+ },
+ "flows_2025": {
+  "source": "Milliy statistika qoʻmitasi (OʻzA orqali, 12.02.2026)",
+  "url": "https://uza.uz/ar/posts/ozbekistonliklar-eng-kop-qaysi-davlatlarga-oqish-maqsadida-safar-qilgan_818402",
+  "rows": {
+   "RUS": {
+    "name": "Rossiya",
+    "value": 6498
+   },
+   "TJK": {
+    "name": "Tojikiston",
+    "value": 6039
+   },
+   "KGZ": {
+    "name": "Qirgʻiziston",
+    "value": 4648
+   },
+   "KOR": {
+    "name": "Janubiy Koreya",
+    "value": 3513
+   },
+   "TUR": {
+    "name": "Turkiya",
+    "value": 2496
+   },
+   "CHN": {
+    "name": "Xitoy",
+    "value": 1259
+   },
+   "KAZ": {
+    "name": "Qozogʻiston",
+    "value": 1097
+   },
+   "GBR": {
+    "name": "Buyuk Britaniya",
+    "value": 886
+   },
+   "DEU": {
+    "name": "Germaniya",
+    "value": 391
+   },
+   "USA": {
+    "name": "AQSh",
+    "value": 351
+   }
+  }
+ },
+ "pending": [
+  "El-yurt umidi 2026/27 kvotalari (eyuf.uz da tekshirish kerak)",
+  "Koreyadagi oʻzbek talabalar soni (Taʼlim vazirligi, KESS jadvali)",
+  "Buyuk Britaniyadagi oʻzbek talabalar (HESA jadvali)",
+  "Italiya, Niderlandiya, Fransiya, Kanada, Avstraliyadagi oʻzbek talabalar",
+  "Viza rad etilishi: Oʻzbekiston kesimi (UK Vis_D02, Avstraliya BP0015)"
+ ]
+}
