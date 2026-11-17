@@ -1,4 +1,4 @@
-# PhD Lab sahifasi alohida shablondan qurilgan (phd_source.html).
+# PhD dasturi sahifasi alohida shablondan qurilgan (phd_source.html).
 # Bu skript unga umumiy dizayn qatlami, narx, qaytarish qoidasi va jonli maʼlumotni qoʻllaydi.
 import re
 from render import six_card, calc_html, MONTHLY_EXTRA, BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, HERE, WHO_CARD, REFUND, FOOTER, LIVE_JS, WHY_LAB_FAQ, HONEST_NOTE, icon, polish, uz_fix, fmt
@@ -21,7 +21,7 @@ def build():
           "<li>\"PhD kafolati\" izlayotganlar: bunday kafolat yoʻq</li>\n        </ul>\n      </div>\n    </div>\n    <p class=\"honest\">" + HONEST_NOTE + "</p>")
     s = s.replace('<button type="button" class="btn btn-p btn-sm" data-wl>🔔 Kutish roʻyxati</button>', '<a href="register.html" class="btn btn-p btn-sm" data-kl-start>Boshlash</a>')
     s = s.replace("🔔 Kutish roʻyxati", "Kutish roʻyxati").replace("Ochilganda xabar</button>", "Ochilganda xabar bering</button>")
-    s = R(s, '<div class="badge">⚗️ PhD Lab · v3.1</div>', icon("phd", "hero-i float", "PhD Lab"))
+    s = R(s, '<div class="badge">⚗️ PhD dasturi · v3.1</div>', icon("phd", "hero-i float", "PhD dasturi"))
     s = R(s, '<div class="facts">', '<div class="facts">', 1)
     # asoschi boʻlimi: ism va EYUF olib tashlanadi, jadval qoladi
     a = s.index('<section class="alt" id="asoschi">')
@@ -35,15 +35,15 @@ def build():
     s = s[:a] + sec + s[b:]
     s = R(s, "Darsda asoschining 2025-yil 2-tanlov tajribasi; yosh, til va kvota faqat rasmiy sahifadan.", "Yosh, til va kvota faqat rasmiy sahifadan.")
     # narx
-    s = R(s, "<h2>Obuna asosida. <em>M0 bepul.</em></h2>", "<h2>Obuna: oylik yoki 6 oylik. M0 bepul.</h2>")
-    s = R(s, '<div class="price">129 000</div><div class="per">soʻm · har oy uzaytiriladi</div>', f'<div class="price" data-pm="phd-lab">{fmt(M)}</div><div class="per">soʻm, har oy</div>')
+    s = R(s, "<h2>Obuna asosida. <em>M0 bepul.</em></h2>", "<h2>Obuna: 1 bosqich yoki Toʻliq dastur. M0 bepul.</h2>")
+    s = R(s, '<div class="price">129 000</div><div class="per">soʻm · har oy uzaytiriladi</div>', f'<div class="price" data-pm="phd-lab">{fmt(M)}</div><div class="per">soʻm, 1 bosqich (30 kun)</div>')
     s = R(s, '<div class="price">0</div><div class="per">soʻm · muddatsiz</div>', '<div class="price">0</div><div class="per">soʻm, muddatsiz</div>')
     s = s.replace("<li>Istalgan oy bekor qilinadi</li>", "<li>Istalgan oy toʻxtatiladi</li>")
-    # Tartib: M0, Oylik, 6 oylik (asosiy, narx bazada boʻlsa). Yillik tarif 2026-11-06 dan yoʻq.
-    a = s.index('      <div class="plan reveal">\n        <h3>Oylik</h3>')
+    # Tartib: M0, 1 bosqich, Toʻliq dastur (asosiy, narx bazada boʻlsa). Yillik tarif 2026-11-06 dan yoʻq.
+    a = s.index('      <div class="plan reveal">\n        <h3>1 bosqich</h3>')
     e = s.index('    </div>\n    <div class="calc', a)
     m_card = s[a:e]
-    m_card = m_card.replace("<li>Barcha modullar, obuna faol ekan</li>", "<li>Bir oylik kirish</li>").replace("</ul>", "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "<li>Bosqichlar: I M1–M2, II M3–M4, III M5–M6, IV M7–M8</li></ul>", 1)
+    m_card = m_card.replace("<li>Barcha modullar, obuna faol ekan</li>", "<li>Navbatdagi bitta bosqich (2 modul), 30 kun</li>").replace("</ul>", "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "<li>Bosqichlar: I M1–M2, II M3–M4, III M5–M6, IV M7–M8</li></ul>", 1)
     # Oylik tugma: sotuvda (phd_sale.py data-buy tugmasini Click havolasiga aylantiradi)
     m_card = m_card.replace('<button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</button>', '<button type="button" class="btn btn-g" data-wl data-buy="phd-lab|monthly">Kutish roʻyxati</button>')
     s_card = "      " + six_card("phd-lab", "Kutish roʻyxati", "plan main reveal") + "\n"
@@ -56,7 +56,7 @@ def build():
     s = s.replace("<li>Bitta ariza siklini qamraydi: 6 oy</li>", "<li>6 oy davomida hamma modullarga kirish</li>").replace('<p class="desc">Bitta ariza sikli uchun: 6 oy</p>', '<p class="desc">Hamma bosqich bitta toʻlovda</p>')
     k = s.index("<!-- SAVOLLAR -->"); k = s.rindex("</section>", 0, k)
     s = s[:k] + '  <script src="js/checkout.js" defer></script>\n' + s[k:]
-    # savollar: «Nega Lab?»
+    # savollar: «Nega dastur?»
     q, a2 = WHY_LAB_FAQ
     i = s.index('<div class="faq')
     j = s.index("</div>", s.rindex("</details>", i, s.index("</section>", i)))

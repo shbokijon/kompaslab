@@ -358,7 +358,7 @@ body.locked .gate{display:flex;}
         <h1>Biznes sinovi: kichik, qonuniy va halol.</h1>
         <p class="lead">Tadbirkor Talaba oʻqishni toʻxtatmasdan 30 kunlik kichik biznes sinovini oʻtkazishga tayyorlaydi. Bu modulda vaqt va pul byudjetingizni hisoblaysiz, huquqiy shakllar bilan tanishasiz va tayyorgarligingizni oʻlchaysiz.</p>
         <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>250</b> XP</span></div>
-        <div class="devnote"><img src="img/3d/hourglass.webp" width="160" height="160" alt=""><span><b>Lab ishlab chiqilmoqda.</b> M0 hozir ochiq, asosiy modullar Kompas Labʼning boshqa Lablari ishga tushgandan keyin quriladi. Toʻlov hali qabul qilinmaydi.</span></div>
+        <div class="devnote"><img src="img/3d/hourglass.webp" width="160" height="160" alt=""><span><b>Dastur ishlab chiqilmoqda.</b> M0 hozir ochiq, asosiy modullar Kompas Labʼning boshqa dasturlari ishga tushgandan keyin quriladi. Toʻlov hali qabul qilinmaydi.</span></div>
       </div>
       <img class="hero-art float" src="img/3d/tt.webp" width="160" height="160" alt="">
     </div>
@@ -377,6 +377,12 @@ body.locked .gate{display:flex;}
       <a class="node" href="#qaror" data-node="dec"><span class="dot">✓</span>Qaror</a>
     </div>
   </nav>
+
+  <section id="dastur-natija">
+    <h2>Butun dastur oxirida sizda</h2>
+    <p class="sub">Sizning 30 kunlik biznes sinovingiz: 7 ta hujjat va jadval. Hujjatlarni oʻzingiz yozasiz, dastur tuzilma va baholash mezonini beradi. Bu M0 shu yoʻlning bepul birinchi qadami; qolgan bosqichlar obuna bilan ochiladi (<a href="tadbirkor-talaba-narxlar.html">tariflar</a>).</p>
+    <ul class="goal"><li><span><b>10 ta mijoz suhbati qaydi</b></span></li><li><span><b>Ishlaydigan MVP</b></span></li><li><span><b>Birinchi 10 mijoz bilan aloqa jadvali</b></span></li><li><span><b>Pul oqimi jadvali</b></span></li><li><span><b>Huquqiy shakl qarori va soliq rejasi</b></span></li><li><span><b>Toʻlov qabul qilish rejasi</b></span></li><li><span><b>30 kunlik sinov hisoboti</b></span></li></ul>
+  </section>
 
   <section>
     <h2>Modul yakunida sizda</h2>
@@ -544,7 +550,7 @@ body.locked .gate{display:flex;}
           <div class="panel">
             <h4>Tadbirkor Talaba sizga mos emas, agar:</h4>
             <div class="checks" id="notFit">
-              <label class="ck"><input type="checkbox" data-alt="Maktab Lab (rejalashtirilgan)">18 yoshga toʻlmaganman</label>
+              <label class="ck"><input type="checkbox" data-alt="Maktab dastur (rejalashtirilgan)">18 yoshga toʻlmaganman</label>
               <label class="ck"><input type="checkbox" data-alt="">Tez boyish yoki kafolatlangan daromad izlayapman</label>
               <label class="ck"><input type="checkbox" data-alt="">Investitsiya jalb qilish yoki yirik biznes boʻyicha chuqur bilim kerak</label>
               <label class="ck"><input type="checkbox" data-alt="">Xorijda oʻqiyapman va u yerda biznes ochmoqchiman (avval viza qoidalari)</label>
@@ -553,7 +559,7 @@ body.locked .gate{display:flex;}
             <div class="verdict" id="fitRes"></div>
             <h4>Shartlar</h4>
             <div class="tbl"><table><thead><tr><th>Shart</th><th>Qiymat</th></tr></thead><tbody>
-              <tr><td>Holat</td><td>Lab ishlab chiqilmoqda; hozir faqat M0 va kutish roʻyxati ochiq</td></tr>
+              <tr><td>Holat</td><td>Dastur ishlab chiqilmoqda; hozir faqat M0 va kutish roʻyxati ochiq</td></tr>
               <tr><td>Obuna (rejalashtirilgan)</td><td><span data-pm>29 000</span> soʻm/oy yoki <span data-p6v>149 000</span> soʻm/6 oy</td></tr>
               <tr><td>Yosh</td><td>18 yoshdan</td></tr>
               <tr><td>Bekor qilish</td><td>Avtomatik yechish yoʻq: har davr uchun oʻzingiz toʻlaysiz; toʻlangan davr tugashi bilan kirish yopiladi</td></tr>
@@ -875,7 +881,7 @@ body.locked .gate{display:flex;}
     if (S.rs) p.push("Tayyorgarlik koʻrsatkichim " + S.rs.total + "/100" + (S.rs.total < 70 && S.rs.gaps.length ? ", boʻshliqlar: " + S.rs.gaps.join(", ").toLowerCase() : "") + ".");
     if (S.rs && S.done.tb) {
       var block = S.fit.length || S.rs.ans[4] === 0 || b.free < 15;
-      p.push(!block && S.rs.total >= 45 ? "Lab ochilganda 30 kunlik sinovni boshlayman." : "Avval belgilangan masalalarni hal qilaman, keyin sinovni boshlayman.");
+      p.push(!block && S.rs.total >= 45 ? "Dastur ochilganda 30 kunlik sinovni boshlayman." : "Avval belgilangan masalalarni hal qilaman, keyin sinovni boshlayman.");
     }
     return p.join(" ");
   }

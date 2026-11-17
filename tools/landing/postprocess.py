@@ -1,4 +1,4 @@
-# Generator chiqargan Lab sahifalariga keyinroq qoʻshilgan umumiy qismlarni qoʻshadi:
+# Generator chiqargan dastur sahifalariga keyinroq qoʻshilgan umumiy qismlarni qoʻshadi:
 # logotip, favicon/PWA, havola rasmi (og:image), jonli panel, "Ilovani oʻrnatish",
 # M0 tugmalari (modul fayli mavjud boʻlsa). Takror ishga tushirilsa ham natija oʻzgarmaydi.
 import re
@@ -21,7 +21,7 @@ HEAD = """<link rel="icon" href="favicon.ico" sizes="any">
 LOGO = '<span class="klogo"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span>'
 TG = '<a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a>'
 
-# Lab sahifasi -> M0 moduli
+# dastur sahifasi -> M0 moduli
 M0 = {
     "bachelor-lab.html": "bachelor-lab-m0.html", "master-lab.html": "master-lab-m0.html",
     "phd-lab.html": "phd-lab-m0.html", "gks-lab.html": "gks-lab-m0.html", "usa-lab.html": "usa-lab-m0.html",

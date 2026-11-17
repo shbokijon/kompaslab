@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════
-#  Bachelor Lab pullik modullari (M1–M16) manbasini yaratish (2026-10-31)
+#  Bakalavr dasturi pullik modullari (M1–M16) manbasini yaratish (2026-10-31)
 #  Qobiq va JS: GKS engine bilan bir xil andoza (B · Ish stoli emas, bitta sahifali modul).
 #  Bosqichlar (oylik obunada 1 toʻlov = 1 bosqich): I M1–M4, II M5–M8, III M9–M12, IV M13–M16.
 #
@@ -340,7 +340,7 @@ JS = r"""<script>
   function renderArt() {
     var p = $("artPaper"); if (!p) return;
     var secs = artText(), filled = 0;
-    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">Bachelor Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">Bakalavr dasturi · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
     secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
     p.innerHTML = h;
     $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";
@@ -412,7 +412,7 @@ def page(slug, M):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M{code} {fix(M["title"])} · Bachelor Lab · Kompas Lab</title>
+<title>M{code} {fix(M["title"])} · Bakalavr dasturi · Kompas Lab</title>
 <meta name="description" content="{fix(M["desc"])}">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -428,7 +428,7 @@ def page(slug, M):
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="bachelor-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Bachelor Lab M{code}</small></a>
+    <a class="logo" href="bachelor-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· Bakalavr dasturi M{code}</small></a>
     <div class="xp" aria-live="polite">
       <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
       <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
@@ -443,7 +443,7 @@ def page(slug, M):
   <div class="hero">
     <div class="hero-g">
       <div>
-        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bachelor Lab</a> · Modul {code}</div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bakalavr dasturi</a> · Modul {code}</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">{PHASE[n]}</span>
         <h1>{fix(M["title"])}</h1>
         <p class="lead">{fix(M["lead"])}</p>
@@ -529,7 +529,7 @@ def page(slug, M):
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="bachelor-lab.html">← Bachelor Lab</a>
+    <a class="btn btn-g" href="bachelor-lab.html">← Bakalavr dasturi</a>
     {nxt}
   </div>
 </footer>

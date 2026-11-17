@@ -174,7 +174,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
   <!-- LEFT PANEL -->
   <div class="left-panel">
     <div class="lp-content">
-      <div class="lp-badge">Har Labda M0 bepul</div>
+      <div class="lp-badge">Har dasturda M0 bepul</div>
       <h2 class="lp-title">Hisob oching va bepul M0 dan boshlang</h2>
       <p class="lp-sub">Hisob M0 darslarini ochadi. Obuna kerakmi yoki yoʻqmi, M0 dan keyin oʻzingiz hal qilasiz.</p>
 
@@ -190,7 +190,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           <div class="step-num">2</div>
           <div class="step-content">
             <div class="step-title">Bepul M0 ni oʻting</div>
-            <div class="step-desc">Lab sizga mosligini va tayyorgarlik darajangizni (Readiness Score) bilasiz</div>
+            <div class="step-desc">Dastur sizga mosligini va tayyorgarlik darajangizni (Readiness Score) bilasiz</div>
           </div>
         </div>
         <div class="step">
@@ -524,7 +524,7 @@ function kompasNextAfterAuth() {
   // Toʻlov sahifasidan kelgan boʻlsa, oʻsha yerga qaytadi (xarid niyati yoʻqolmasin)
   if (to && /^\/?tolov(?:\.html)?\?lab=[a-z-]+(?:&plan=[a-z0-9]+)?(?:&track=[a-z])?$/i.test(to)) return to.replace(/^\//, '')
   // 2026-11-12: M0 sahifasidan kelmagan boʻlsa ham kabinetga emas, toʻgʻridan-toʻgʻri M0 1-darsiga.
-  // Lab tartibi: ?lab= → kelgan Lab sahifasi (referrer) → "Maqsad" tanlovi. Topilmasa kabinet.
+  // dastur tartibi: ?lab= → kelgan dastur sahifasi (referrer) → "Maqsad" tanlovi. Topilmasa kabinet.
   const lab = kompasStartLab()
   if (lab) return 'm0-access.html?next=' + encodeURIComponent('/' + lab + '-m0-1.html')
   return 'dashboard.html'

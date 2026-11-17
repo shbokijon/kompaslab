@@ -2,13 +2,13 @@ from common import MIT, DARTMOUTH, HARVARD, PRINCETON, NORTHWESTERN, OSU, CDS, C
 
 MOD = dict(
     title="Yordam beradigan universitetlarni topish",
-    desc="USA Lab M3: xalqaro bakalavr abituriyentiga moliyaviy yordam siyosatlari, rasmiy sahifa so'zlarini o'qish, Common Data Set H6 bandi, Net Price Calculator va natijaga asoslangan grantlar. Natija: yordam siyosati bo'yicha saralangan ro'yxat.",
+    desc="USA dasturi M3: xalqaro bakalavr abituriyentiga moliyaviy yordam siyosatlari, rasmiy sahifa so'zlarini o'qish, Common Data Set H6 bandi, Net Price Calculator va natijaga asoslangan grantlar. Natija: yordam siyosati bo'yicha saralangan ro'yxat.",
     lead="AQSh bakalavriatida yordam olish uchun avval yordam beradigan universitetni topish kerak. Bu modulda universitetlarni moliyaviy siyosatiga qarab to'rt guruhga ajratasiz va har birini rasmiy hujjat bilan tekshirasiz.",
     hero="telescope", weeks="2", next="M4 Moliyaviy yordam arizasi", next_href="usa-lab-o.html?m=4",
     goals=[("telescope", "Yordam ro'yxati", "har universitet: siyosat, H6 raqamlari, manba"),
            ("books", "Siyosat lug'ati", "rasmiy sahifadagi iboralarni to'g'ri o'qish"),
            ("chart", "Net Price taxmini", "kamida 2 universitet uchun")],
-    warn=f"Bachelor Lab M2 universitetni moslik va daraja bo'yicha tanlaydi, M12.1 esa need-blind va need-aware atamalarini tanishtiradi. Bu modul AQSh universitetlarini moliyaviy yordam bo'yicha tekshirishning to'liq usuli. Siyosatlar har yili o'zgarishi mumkin; {HOL} rasmiy sahifadan qayta tekshiring.",
+    warn=f"Bakalavr dasturi M2 universitetni moslik va daraja bo'yicha tanlaydi, M12.1 esa need-blind va need-aware atamalarini tanishtiradi. Bu modul AQSh universitetlarini moliyaviy yordam bo'yicha tekshirishning to'liq usuli. Siyosatlar har yili o'zgarishi mumkin; {HOL} rasmiy sahifadan qayta tekshiring.",
     lessons=[
         dict(t="To'rt xil yordam siyosati", short="Siyosatlar", min=30, kind="🧭 Xarita", ic="compass",
              hook="Bir universitet yordam so'raganingizni qabul qaroriga umuman qo'shmaydi va kerakli summani to'liq beradi. Boshqasi xalqaro talabaga deyarli yordam bermaydi. Ikkalasining sayti bir xil chiroyli ko'rinadi.",
@@ -77,7 +77,7 @@ MOD = dict(
              task="<ul><li>2 universitetning kalkulyatorida taxminiy narxni hisoblang (xalqaro talabaga ishlasa).</li><li>Bitta universitetning xalqaro talabaga ochiq natijaga asoslangan grantini toping: summa, muddat, shart.</li></ul>",
              ph="... kalkulyatori: ... USD/yil (xalqaro uchun: ha). Grant: ... — ... USD, muddat ..., shart ..."),
         dict(t="Yordam bo'yicha saralangan ro'yxat", short="Ro'yxat", min=30, kind="🛠 Ro'yxat", ic="memo",
-             hook="Bachelor Lab'dagi orzu-mo'ljal-ishonchli ro'yxat qabul ehtimoliga qarab tuziladi. AQShda unga ikkinchi o'q qo'shiladi: qabul qilsa, oila to'lay oladimi?",
+             hook="Bakalavr dasturidagi orzu-mo'ljal-ishonchli ro'yxat qabul ehtimoliga qarab tuziladi. AQShda unga ikkinchi o'q qo'shiladi: qabul qilsa, oila to'lay oladimi?",
              body="""<h4>Ikki o'qli jadval</h4>
 <div class="tbl"><table><thead><tr><th></th><th>Oila to'lay oladi (narx ≤ chegara)</th><th>Faqat yordam bilan</th></tr></thead><tbody>
 <tr><td>Qabul ehtimoli yuqori</td><td>Ishonchli tanlov</td><td>Yordam real bo'lsa (A, B yoki kuchli H6) mos</td></tr>
@@ -85,7 +85,7 @@ MOD = dict(
 <tr><td>Qabul ehtimoli past</td><td>Orzu</td><td>Faqat A guruhi; bir nechtasidan ko'p emas</td></tr>
 </tbody></table></div>
 <h4>Kompas tavsiyasi (qoida emas)</h4>
-<ul><li>Kamida bitta universitet \"oila to'lay oladi + qabul ehtimoli yuqori\" katagida bo'lsin. Bunday universitet yo'q bo'lsa, AQSh bilan parallel boshqa mamlakat (Bachelor Lab) majburiy.</li><li>D guruhidagi universitetga faqat oila to'liq to'lay olsa ariza bering.</li><li>Har bir ariza narxi (ariza yig'imi, CSS Profile, testlar) byudjetga kiradi.</li></ul>
+<ul><li>Kamida bitta universitet \"oila to'lay oladi + qabul ehtimoli yuqori\" katagida bo'lsin. Bunday universitet yo'q bo'lsa, AQSh bilan parallel boshqa mamlakat (Bakalavr dasturi) majburiy.</li><li>D guruhidagi universitetga faqat oila to'liq to'lay olsa ariza bering.</li><li>Har bir ariza narxi (ariza yig'imi, CSS Profile, testlar) byudjetga kiradi.</li></ul>
 <div class="box warn">\"Qabul qilsa, keyin pul topamiz\" degan reja ishlamaydi: I-20 uchun pul dalili qabuldan keyin darhol so'raladi (M2).</div>""",
              take="Ro'yxat ikki o'q bilan tuziladi: qabul ehtimoli va to'lay olish. Kamida bitta \"oila to'lay oladi, qabul ehtimoli yuqori\" variant bo'lmasa, parallel mamlakat kerak.",
              task="<ul><li>8–12 universitetni ikki o'qli jadvalga joylang.</li><li>Bo'sh katakni qanday to'ldirishingizni yozing.</li></ul>",

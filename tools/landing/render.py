@@ -1,4 +1,4 @@
-# Kompas Lab — Lab sahifalari generatori (umumiy qism)
+# Kompas Lab — dastur sahifalari generatori (umumiy qism)
 # Ishga tushirish: python3 tools/landing/build.py  (repo ildizidan)
 import re, json, html as H
 from pathlib import Path
@@ -141,7 +141,7 @@ def hero(lab):
     return f'''<header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="crumb"><a href="index.html#labs">Lablar</a> / {lab["axis"]} / {lab["name"]}</div>
+      <div class="crumb"><a href="index.html#labs">Dasturlar</a> / {lab["axis"]} / {lab["name"]}</div>
       {icon(ICONS[lab["key"]], "hero-i float", lab["name"])}
       <h1>{lab["h1"]}</h1>
       <p class="lead">{lab["lead"]}</p>
@@ -178,17 +178,17 @@ def dark_block(lab):
 
 HONEST_NOTE = ("<b>Ochiq gap.</b> Kompas Lab yangi platforma: bitiruvchilar natijasi hali yoʻq, shuning uchun sahifada natija raqami ham, sharh ham yoʻq. "
                "Natijangiz faqat sizning yozma roziligingiz bilan eʼlon qilinadi; natijalar bilan birga maqsadga yetmagan holatlar ulushi ham koʻrsatiladi. "
-               "Hech bir Lab qabul, stipendiya yoki viza kafolatini bermaydi.")
+               "Hech bir dastur qabul, stipendiya yoki viza kafolatini bermaydi.")
 
 def ab_strip(lab):
     a = lab.get("point_a")
     if not a:
         return ""
-    b = f"{esc(lab['packet_title'])}: {len(lab['packet'])} ta hujjat va jadval, roʻyxati Umumiy sahifada. Hujjatlarni oʻzingiz yozasiz; Lab tuzilma va baholash mezonini beradi."
+    b = f"{esc(lab['packet_title'])}: {len(lab['packet'])} ta hujjat va jadval, roʻyxati Umumiy sahifada. Hujjatlarni oʻzingiz yozasiz; dastur tuzilma va baholash mezonini beradi."
     return f'''<div class="ab">
       <div class="ab-c"><small>Hozir</small><p>{a}</p></div>
       <div class="ab-arrow" aria-hidden="true"></div>
-      <div class="ab-c b"><small>Lab oxirida</small><p>{b}</p></div>
+      <div class="ab-c b"><small>Dastur oxirida</small><p>{b}</p></div>
     </div>'''
 
 def fit(lab):
@@ -198,7 +198,7 @@ def fit(lab):
   <div class="wrap">
     <div class="head">
       <h2>Kimga mos va qaysi holatlarda boshqa yoʻl kerak?</h2>
-      <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri Lab yoki keyingi qadamni koʻrsatamiz.</p>
+      <p class="sub">Toʻlashdan oldin ochiq yozamiz. Mos kelmasangiz, toʻgʻri dastur yoki keyingi qadamni koʻrsatamiz.</p>
     </div>
     {ab_strip(lab)}
     <div class="fit">
@@ -304,6 +304,7 @@ def quiz(lab):
         <div class="verdict" id="sV">Savollarga javob bering</div>
         <div class="verdict-t" id="sT">Natija javoblaringiz boʻyicha shu yerda hisoblanadi.</div>
         <ul class="gaps" id="sG"></ul>
+        <p class="verdict-t" id="sNx" style="margin-top:10px" hidden></p>
         {warns}
         <button type="button" class="btn btn-p" style="width:100%;margin-top:14px" data-wl>M0 ochilganda xabar bering</button>
       </div>
@@ -354,42 +355,43 @@ def maker(lab):
 def calc_html(y, m, slug):
     """Narx taqqoslash (2026-11-06: yillik tarif yoʻq). 6 oylik narx bazada (courses.price_6m); JS `data-p6v` ni yangilaydi."""
     s6 = PR6.get(slug, m * 5)
-    return (f'<div><b>{fmt(m * 6)} soʻm</b>6 oy faqat oylik reja bilan ({fmt(m)} × 6)</div>'
-            f'<div><b><span data-p6v="{slug}">{fmt(s6)}</span> soʻm</b>6 oy 6 oylik reja bilan: barcha modullar birdaniga ochiq</div>')
+    return (f'<div><b>{fmt(m * 6)} soʻm</b>6 marta 1 bosqichdan toʻlansa ({fmt(m)} × 6)</div>'
+            f'<div><b><span data-p6v="{slug}">{fmt(s6)}</span> soʻm</b>Toʻliq dastur: barcha bosqichlar birdaniga, 6 oy</div>'
+            f'<div><b>Qaysi birini tanlash kerak?</b>Butun dastur kerak boʻlsa, Toʻliq dastur arzonroq va hamma bosqich birdan ochiladi. Faqat bitta bosqich kerak boʻlsa, 1 bosqichni oling.</div>')
 
 # Bazadagi 6 oylik narx (2026-11-06); sahifada zaxira, jonli qiymat kompas_public_stats dan
 PR6 = {"bachelor-lab": 499000, "master-lab": 499000, "usa-lab": 499000, "gks-lab": 499000, "daad-lab": 499000,
        "phd-lab": 849000, "tadbirkor-talaba": 149000, "miggo": 249000}
 
-REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi."
+REFUND = "<b>Toʻlov qaytarilmaydi.</b> Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi."
 
-# 6 oylik narx bazada (courses.price_6m), admin har Lab uchun kiritadi; boʻsh boʻlsa karta yashirin
-SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Har oy qayta toʻlash kerak emas"]
+# 6 oylik narx bazada (courses.price_6m), admin har dastur uchun kiritadi; boʻsh boʻlsa karta yashirin
+SIX_ITEMS = ["Barcha modullar birdaniga ochiladi", "Bitta ariza siklini qamraydi: 6 oy", "Har bosqich uchun alohida toʻlash kerak emas"]
 
 def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
     sale = slug in ON_SALE
     v = PR6.get(slug)
     hid = "" if v else " hidden"
-    act = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=6m" data-buy="{slug}|6m" data-snd="nav">6 oylik obunani toʻlash</a>' if sale
+    act = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=6m" data-buy="{slug}|6m" data-snd="nav">Toʻliq dasturni toʻlash</a>' if sale
            else f'<button type="button" class="btn btn-p" data-wl data-buy="{slug}|6m">{btn}</button>')
     return f'''<div class="{cls}" data-p6box="{slug}"{hid}>
         <span class="tag-top">Asosiy reja</span>
-        <h3>6 oylik</h3><p class="desc">Bitta ariza sikli uchun: 6 oy</p>
+        <h3>Toʻliq dastur</h3><p class="desc">Barcha bosqichlar birdaniga, 6 oy</p>
         <div class="price" data-p6v="{slug}">{fmt(v) if v else "—"}</div><div class="per">soʻm, 6 oy uchun</div>
         <ul>{"".join(f"<li>{x}</li>" for x in SIX_ITEMS)}</ul>
         {act}
       </div>'''
-MONTHLY_EXTRA = ["Har oylik toʻlov bitta bosqichni ochadi; keyingisi navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
+MONTHLY_EXTRA = ["Har toʻlov navbatdagi bitta bosqichni 30 kunga ochadi. Bosqichni ertaroq tugatsangiz, keyingisi yangi toʻlov bilan darhol ochiladi", "Obuna tugasa, ochilgan modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
 
 PAY_OPEN = "<b>Toʻlov Click orqali.</b> Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi."
-PAY_WAIT = "<b>Bu Lab uchun toʻlov hali ochilmagan.</b> Kutish roʻyxatiga yozilsangiz, ochilganda xabar beramiz."
+PAY_WAIT = "<b>Bu dastur uchun toʻlov hali ochilmagan.</b> Kutish roʻyxatiga yozilsangiz, ochilganda xabar beramiz."
 
 def pricing(lab):
     p = lab["pricing"]
     slug = lab["slug"]
     y, mo = p["yearly"], p["monthly"]
     sale = slug in ON_SALE
-    month_btn = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=monthly" data-buy="{slug}|monthly" data-snd="nav">Oylik obunani toʻlash</a>' if sale
+    month_btn = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=monthly" data-buy="{slug}|monthly" data-snd="nav">1 bosqichni toʻlash</a>' if sale
                  else f'<button type="button" class="btn btn-g" data-wl data-buy="{slug}|monthly">Kutish roʻyxatiga yozilish</button>')
     plans = f'''<div class="plans">
       <div class="plan">
@@ -399,8 +401,8 @@ def pricing(lab):
         <button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>
       </div>
       <div class="plan">
-        <h3>Oylik</h3><p class="desc">Bitta bosqichga 1 oy kirish</p>
-        <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, har oy</div>
+        <h3>1 bosqich</h3><p class="desc">Navbatdagi bitta bosqich, 30 kun</p>
+        <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, 1 bosqich (30 kun)</div>
         <ul>{"".join(f"<li>{x}</li>" for x in p["m_items"] + MONTHLY_EXTRA)}</ul>
         {month_btn}
       </div>
@@ -415,7 +417,7 @@ def pricing(lab):
     return f'''<section id="narx">
   <div class="wrap">
     <div class="head">
-      <h2>Obuna: oylik yoki 6 oylik. M0 bepul.</h2>
+      <h2>Obuna: 1 bosqich yoki Toʻliq dastur. M0 bepul.</h2>
       <p class="sub">{p["sub"]}</p>
     </div>
     <div class="pay-status"><span>{ico}</span><span data-paystatus="{slug}">{status}</span></div>
@@ -426,7 +428,7 @@ def pricing(lab):
   <script src="js/checkout.js" defer></script>
 </section>'''
 
-WHY_LAB_FAQ = ("Nega “Lab” deyiladi?", "Lab soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi. Kompas Lablari ham shunday ishlaydi: har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi.")
+WHY_LAB_FAQ = ("Nega platforma nomida “Lab” bor?", "Lab soʻzi laboratoriyadan olingan: laboratoriyada savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi. Kompas Lab dasturlari ham shunday ishlaydi: har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi.")
 
 def faq(lab):
     items = "".join(f"<details><summary>{esc(q)}</summary><p>{a}</p></details>" for q, a in lab["faq"] + [WHY_LAB_FAQ])
@@ -444,7 +446,7 @@ def faq(lab):
 
 FOOTER = '''<footer>
   <div class="wrap">
-    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="login.html">Kirish</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a><a href="qollab-quvvatlash.html">Qoʻllab-quvvatlash</a></div>
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Dasturlar</a><a href="login.html">Kirish</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a><a href="qollab-quvvatlash.html">Qoʻllab-quvvatlash</a></div>
     <div>© 2026 Kompas Lab, Oʻzbekiston</div>
   </div>
 </footer>'''
@@ -526,7 +528,7 @@ WL_JS = '''
   btn.addEventListener("click", submit);
   function submit() {
     var slug = sel ? sel.value : SLUG, email = inp.value.trim();
-    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "Labni tanlang"; return; }
+    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "Dasturni tanlang"; return; }
     if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "Email manzilni tekshiring: masalan, ism@gmail.com"; return; }
     if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanib boʻlmadi. Telegram orqali yozing: t.me/kompaslab"; return; }
     btn.disabled = true; btn.textContent = "Saqlanmoqda...";
@@ -534,7 +536,7 @@ WL_JS = '''
       .upsert({ email: email, course_slug: slug, source: SOURCE }, { onConflict: "email,course_slug", ignoreDuplicates: true })
       .then(function (r) {
         if (r.error && r.error.code !== "23505") throw r.error;
-        msg.style.color = "var(--green)"; msg.textContent = "Yozildingiz. Lab ochilganda shu emailga xabar beramiz.";
+        msg.style.color = "var(--green)"; msg.textContent = "Yozildingiz. Dastur ochilganda shu emailga xabar beramiz.";
         btn.textContent = "Yozildingiz"; setTimeout(closeWl, 2400);
       })
       .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "Saqlanmadi. Internetni tekshirib, qayta urinib koʻring."; btn.disabled = false; btn.textContent = BTN; });
@@ -585,6 +587,17 @@ QUIZ_JS = '''
       if (answered === sels.length && (blocked || total < 70)) {
         gaps.forEach(function (g) { var li = document.createElement("li"); li.textContent = g; G.appendChild(li); });
       }
+      var NX = document.getElementById("sNx");
+      if (NX) {
+        var nx = "";
+        if (answered === sels.length) {
+          if (blocked) nx = "Keyingi qadam: majburiy talabni rasmiy eʼlondan tekshiring. Hozir toʻlamang.";
+          else if (total >= 70) nx = "Keyingi qadam: bepul M0 ni boshlang. M0 dan keyin butun dastur kerak boʻlsa, Toʻliq dastur arzonroq.";
+          else if (total >= 45) nx = "Keyingi qadam: bepul M0 ni boshlang va yuqoridagi boʻshliqlar uchun reja tuzing. Keyin 1 bosqichdan boshlash mumkin.";
+          else nx = "Keyingi qadam: hozir toʻlamang. Bepul M0 dan boshlang va boʻshliqlarni yoping.";
+        }
+        NX.textContent = nx; NX.hidden = !nx;
+      }
       (D.warn || []).forEach(function (w, k) {
         var el = document.getElementById("w" + k);
         if (el) el.style.display = (sels[w.q] && sels[w.q].value === w.v) ? "block" : "none";
@@ -595,7 +608,7 @@ QUIZ_JS = '''
 '''
 
 
-# Faqat Master Lab: tayyorgarlik balli qabul prognozi yoki toʻlovga ruxsat emas.
+# Faqat Magistratura dasturi: tayyorgarlik balli qabul prognozi yoki toʻlovga ruxsat emas.
 MASTER_QUIZ_JS = (QUIZ_JS
     .replace("Bu siklda topshira olmaysiz", "Majburiy talabni tekshiring")
     .replace("Hozir boshlash mumkin", "Tayyorgarlik: yuqoriroq")
@@ -605,6 +618,7 @@ MASTER_QUIZ_JS = (QUIZ_JS
     .replace("Boshlash mumkin, lekin quyidagi yoʻnalishlarga reja kerak:", "Quyidagi yoʻnalishlar uchun amaliy reja tuzing:")
     .replace("Hozir toʻlash tavsiya etilmaydi. Avval quyidagi boʻshliqlarni yoping:", "Ballga qarab toʻlov yoki qabul qarorini chiqarmang. Quyidagi yoʻnalishlarni tekshiring:")
     .replace("if (answered === sels.length && (blocked || total < 70))", "if (answered === sels.length && (blocked || total < 100))")
+    .replace('var NX = document.getElementById("sNx");', "var NX = null;")
 )
 
 def script(slug, source):
@@ -643,7 +657,7 @@ def polish(html):
         src = parts[i]
         def txt(m, src=src):
             t = m.group(1)
-            # tugmadagi oxirgi strelka olinadi; keyin havola kelsa (masalan "… → Master Lab"), strelka qoladi
+            # tugmadagi oxirgi strelka olinadi; keyin havola kelsa (masalan "… → Magistratura dasturi"), strelka qoladi
             t = re.sub(r"\s*→\s*$", " → " if src.startswith("<a", m.end() - 1) else "", t)
             t = t.replace(" · ", ", ")
             if len(t.strip()) <= 48 or "qoldiring — " in t or "yoziling — " in t:

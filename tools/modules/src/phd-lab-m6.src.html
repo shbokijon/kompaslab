@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M6 Moliya, doktorlik oʻrni va moliyaviy qaror · PhD Lab · Kompas Lab</title>
-<meta name="description" content="PhD Lab M6: moliyalashtirish turlari, Buyuk Britaniyadagi doktorlik oʻrinlari (studentship), Yevropadagi maoshli PhD va MSCA, dastlabki xarajatlar, taklif shartlari va moliyaviy qaror. Natija: moliya taqqoslash jadvali va 12 oylik pul oqimi.">
+<title>M6 Moliya, doktorlik oʻrni va moliyaviy qaror · PhD dasturi · Kompas Lab</title>
+<meta name="description" content="PhD dasturi M6: moliyalashtirish turlari, Buyuk Britaniyadagi doktorlik oʻrinlari (studentship), Yevropadagi maoshli PhD va MSCA, dastlabki xarajatlar, taklif shartlari va moliyaviy qaror. Natija: moliya taqqoslash jadvali va 12 oylik pul oqimi.">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="phd-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· PhD Lab M6</small></a>
+    <a class="logo" href="phd-lab.html"><img src="img/3d/compass.webp" width="160" height="160" alt="">Kompas Lab <small>· PhD dasturi M6</small></a>
     <div class="xp" aria-live="polite">
       <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
       <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
@@ -68,7 +68,7 @@
   <div class="hero">
     <div class="hero-g">
       <div>
-        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="phd-lab.html">PhD Lab</a> · Modul 6</div>
+        <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="phd-lab.html">PhD dasturi</a> · Modul 6</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza III · Hujjatlar va moliya</span>
         <h1>Moliya, doktorlik oʻrni va moliyaviy qaror</h1>
         <p class="lead"><i>“Toʻliq moliyalashtirilgan”</i> degan soʻz har eʼlonda boshqacha maʼnoda ishlatiladi. Bu modulda paket nimalarni qoplashini <b>qatorma-qator</b> ajratasiz, dastlabki xarajatni hisoblaysiz va moliyaviy boʻshliqni koʻrib, qaror qilasiz.</p>
@@ -314,7 +314,7 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="phd-lab.html">← PhD Lab</a>
+    <a class="btn btn-g" href="phd-lab.html">← PhD dasturi</a>
     <a class="btn btn-p" href="phd-lab-o.html?m=7">Keyingi: M7 Ariza, intervyu va qaror →</a>
   </div>
 </footer>
@@ -494,7 +494,7 @@ window.KGTool = { init: function () {
   function renderArt() {
     var p = $("artPaper"); if (!p) return;
     var secs = artText(), filled = 0;
-    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">PhD Lab · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
+    var h = "<h1>" + esc($("artTitle").textContent) + '</h1><div class="ct">PhD dasturi · M' + MOD + " · " + new Date().toLocaleDateString("uz-UZ") + "</div>";
     secs.forEach(function (s) { if (s.t) filled++; h += "<h4>" + esc(s.h) + "</h4>" + (s.t ? "<p>" + esc(s.t) + "</p>" : '<p class="ph">Hali yozilmagan</p>'); });
     p.innerHTML = h;
     $("artMeta").textContent = filled + " / " + secs.length + " boʻlim toʻldirilgan.";

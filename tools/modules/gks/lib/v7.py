@@ -2,7 +2,7 @@ from common import U27, G26, SIK, STD
 
 MOD = dict(
     title="Paketni yig'ish va topshirish",
-    desc="GKS Lab M7: onlayn ariza va muddatlar, fayl, format va nusxalar, ikkinchi shaxs tekshiruvi va xatolar filtri, teskari taqvim. Natija: topshirishga tayyor paket va taqvim.",
+    desc="GKS dasturi M7: onlayn ariza va muddatlar, fayl, format va nusxalar, ikkinchi shaxs tekshiruvi va xatolar filtri, teskari taqvim. Natija: topshirishga tayyor paket va taqvim.",
     lead="Kuchli hujjatlar kech yoki noto'g'ri tartibda topshirilsa, ularni hech kim o'qimaydi. Bu modulda paketni yo'riqnoma tartibida yig'asiz, ikkinchi odamga tekshirtirasiz va muddatdan orqaga qarab taqvim tuzasiz.",
     hero="hourglass", weeks="2", next="Intervyu, natija va jo'nash",
     goals=[("hourglass", "Teskari taqvim", "ariza muddatidan orqaga hisoblangan bosqichlar"),

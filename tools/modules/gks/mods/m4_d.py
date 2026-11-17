@@ -111,7 +111,7 @@ L6 = dict(t="Tahrir va o'zaro tahrir", short="Tahrir", min=40, kind="📊 Rubric
 
 MOD = dict(
     title="Ilmiy reja",
-    desc="GKS Lab M4-D (doktorantura): Muammo → Yechim → Yangilik → Ta'sir tuzilmasi, adabiyotdagi bo'shliq, metodologiya, yangilik va ta'sir, vaqt va resurs rejasi, o'zaro tahrir. Natija: GKS formasiga moslangan ilmiy reja, 30 manbali baza, 3–4 yillik Gantt jadvali.",
+    desc="GKS dasturi M4-D (doktorantura): Muammo → Yechim → Yangilik → Ta'sir tuzilmasi, adabiyotdagi bo'shliq, metodologiya, yangilik va ta'sir, vaqt va resurs rejasi, o'zaro tahrir. Natija: GKS formasiga moslangan ilmiy reja, 30 manbali baza, 3–4 yillik Gantt jadvali.",
     lead="Doktorantura trekida ilmiy reja asosiy hujjat. Bu modulda uni to'rt blokda qurasiz, bo'shliqni manbalar bilan isbotlaysiz, metodni laboratoriya resurslariga moslaysiz va til yilini hisobga olgan Gantt jadvalini tuzasiz.",
     hero="books", weeks="4–5", next="M5-D Professor bilan muloqot va yakunlash", next_href="gks-lab-m5-d.html",
     goals=[("books", "Ilmiy reja", "GKS o'quv rejasi formasiga moslangan, to'rt blokli"),

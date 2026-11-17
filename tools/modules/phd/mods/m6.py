@@ -4,7 +4,7 @@ INP = "min-height:46px;padding:10px 12px;border:2px solid var(--border);border-r
 
 MOD = dict(
     title="Moliya, doktorlik o'rni va moliyaviy qaror",
-    desc="PhD Lab M6: moliyalashtirish turlari, Buyuk Britaniyadagi doktorlik o'rinlari (studentship), Yevropadagi maoshli PhD va MSCA, dastlabki xarajatlar, taklif shartlari va moliyaviy qaror. Natija: moliya taqqoslash jadvali va 12 oylik pul oqimi.",
+    desc="PhD dasturi M6: moliyalashtirish turlari, Buyuk Britaniyadagi doktorlik o'rinlari (studentship), Yevropadagi maoshli PhD va MSCA, dastlabki xarajatlar, taklif shartlari va moliyaviy qaror. Natija: moliya taqqoslash jadvali va 12 oylik pul oqimi.",
     lead="<i>“To'liq moliyalashtirilgan”</i> degan so'z har e'londa boshqacha ma'noda ishlatiladi. Bu modulda paket nimalarni qoplashini <b>qatorma-qator</b> ajratasiz, dastlabki xarajatni hisoblaysiz va moliyaviy bo'shliqni ko'rib, qaror qilasiz.",
     hero="money", weeks="1–2", next="M7 Ariza, intervyu va qaror", next_href="phd-lab-o.html?m=7",
     goals=[("money", "Moliya taqqoslash jadvali", "o'qish to'lovi, stipendiya, maosh va yig'imlar alohida"),

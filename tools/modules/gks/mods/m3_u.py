@@ -12,7 +12,7 @@ GPA = body(1, 3) + f"""
 
 MOD = dict(
     title="Nomzod profili",
-    desc="GKS Lab M3-U (bakalavriat): potensialni dalil bilan ko'rsatish, qiziqishning kelib chiqishi, baholarni taqdim etish va zaif tomonlarni tushuntirish. Natija: faoliyat vaqt chizig'i, akademik profil izohi, zaif tomonlar javoblari.",
+    desc="GKS dasturi M3-U (bakalavriat): potensialni dalil bilan ko'rsatish, qiziqishning kelib chiqishi, baholarni taqdim etish va zaif tomonlarni tushuntirish. Natija: faoliyat vaqt chizig'i, akademik profil izohi, zaif tomonlar javoblari.",
     lead="Bakalavriat nomzodidan tadqiqot kutilmaydi, lekin o'sish va qiziqish dalili kutiladi. Bu modulda shaxsiy bayonot uchun xom ashyoni yig'asiz: nima qilgansiz, qiziqish qayerdan kelgan, baholaringiz nimani ko'rsatadi.",
     hero="bulb", weeks="2", next="M4-U Shaxsiy bayonot", next_href="gks-lab-m4-u.html",
     goals=[("calendar", "Faoliyat vaqt chizig'i", "9–11-sinf (litsey, kollej) yillari, har bosqich dalil bilan"),

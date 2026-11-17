@@ -48,7 +48,7 @@ REV = dict(t="Tahrir va o'zaro tahrir", short="Tahrir", min=35, kind="📊 Rubri
 
 MOD = dict(
     title="O'quv rejasi",
-    desc="GKS Lab M4-M (magistratura): o'quv rejasining roli, tadqiqot savoli, adabiyot bilan ishlash minimumi, to'liq o'quv rejasi va o'zaro tahrir. Natija: yakuniy o'quv rejasi, semestrlar jadvali va 12 manbali annotatsiyalangan ro'yxat.",
+    desc="GKS dasturi M4-M (magistratura): o'quv rejasining roli, tadqiqot savoli, adabiyot bilan ishlash minimumi, to'liq o'quv rejasi va o'zaro tahrir. Natija: yakuniy o'quv rejasi, semestrlar jadvali va 12 manbali annotatsiyalangan ro'yxat.",
     lead="Magistratura trekida o'quv rejasi og'irlik markazi. Bu modulda tadqiqot savolini toraytirasiz, adabiyotdan bo'shliqni topasiz va til yili bilan birga semestrlar bo'yicha reja yozasiz.",
     hero="calendar", weeks="3–4", next="M5-M Professor, paket va intervyu", next_href="gks-lab-m5-m.html",
     goals=[("calendar", "Yakuniy o'quv rejasi", "GKS formasi bo'yicha, semestrlar jadvali bilan"),

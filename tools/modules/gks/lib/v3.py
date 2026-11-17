@@ -2,7 +2,7 @@ from common import U27, G26, STD
 
 MOD = dict(
     title="Nomzod profili va dalillar",
-    desc="GKS Lab M3: dalillar inventari STAR usulida, faoliyat va yutuqlarni ariza formasiga tayyorlash, zaif tomonlarni tushuntirish va o'sish traektoriyasi. Natija: dalillar inventari va profil izohi.",
+    desc="GKS dasturi M3: dalillar inventari STAR usulida, faoliyat va yutuqlarni ariza formasiga tayyorlash, zaif tomonlarni tushuntirish va o'sish traektoriyasi. Natija: dalillar inventari va profil izohi.",
     lead="Shaxsiy bayonot va o'quv rejasi dalilsiz bo'sh gapga aylanadi. Bu modulda yozishdan oldin xom ashyoni yig'asiz: nima qilgansiz, qanday natija bilan, qaysi hujjat tasdiqlaydi.",
     hero="bulb", weeks="2", next="Tavsiya xati va professor bilan aloqa",
     goals=[("bulb", "Dalillar inventari", "kamida 3 ta STAR yozuvi, har biri tekshiriladigan natija bilan"),

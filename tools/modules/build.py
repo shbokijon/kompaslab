@@ -38,9 +38,9 @@ MODULES = {
     # Tayyor sahifa (avval master-lab-m0.html qoʻlda yuritilgan): faqat sayt versiyasi
     "master-lab-m0":       dict(lab="master-lab.html", site=True, raw=True),
     "usa-lab-m0":          dict(lab="usa-lab.html", site=True, protect=True),
-    # Musofir M0 ham roʻyxatdan oʻtganlarga bepul; server gate hamma Lablar uchun bir xil.
+    # Musofir M0 ham roʻyxatdan oʻtganlarga bepul; server gate hamma dasturlar uchun bir xil.
     "musofir-lab-m0":      dict(lab="musofir-lab.html", site=True, protect=True,
-                                og=("Musofir Lab M0: rasmiy yoʻl va firibgarlikdan himoya",
+                                og=("Musofir dasturi M0: rasmiy yoʻl va firibgarlikdan himoya",
                                     "Xorijga ishga ketishdan oldin: firibgarlik belgilari, 4 mamlakatning rasmiy yoʻllari, xarajat va qarz xavfi. Bepul.")),
     # Pullik modullar (paid=True): saytda ochiq HTML yoʻq. Toʻliq sahifa tools/modules/paid/ ga
     # yigʻiladi va Supabase paid_pages jadvaliga yuklanadi (tools/modules/paid_upload.py);
@@ -53,7 +53,7 @@ MODULES = {
     "master-lab-m6":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m7":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
     "master-lab-m8":       dict(lab="master-lab.html", site=False, paid=True, protect=True),
-    # GKS Lab (2026-10-31): umumiy oʻzak M1, M2 + U/M/D treklari M3–M5. Manba tools/modules/gks/engine.py,
+    # GKS dasturi (2026-10-31): umumiy oʻzak M1, M2 + U/M/D treklari M3–M5. Manba tools/modules/gks/engine.py,
     # oʻquvchi gks-lab-o.html?m=<slug> (masalan m3-u)
     "gks-lab-m1":           dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m2":           dict(lab="gks-lab.html", site=False, paid=True, protect=True),
@@ -65,7 +65,7 @@ MODULES = {
     "gks-lab-m5-m":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m3-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m4-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
-    # Bachelor Lab (2026-10-31): M1–M16, 4 faza. Manba tools/modules/bachelor/engine.py, oʻquvchi bachelor-lab-o.html?m=N
+    # Bakalavr dasturi (2026-10-31): M1–M16, 4 faza. Manba tools/modules/bachelor/engine.py, oʻquvchi bachelor-lab-o.html?m=N
     "bachelor-lab-m1":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m2":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m3":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
@@ -82,7 +82,7 @@ MODULES = {
     "bachelor-lab-m14":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m15":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m16":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    # USA Lab (2026-10-31): M1–M8, 4 faza (1 faza = 2 modul). Manba tools/modules/usa/engine.py, oʻquvchi usa-lab-o.html?m=N
+    # USA dasturi (2026-10-31): M1–M8, 4 faza (1 faza = 2 modul). Manba tools/modules/usa/engine.py, oʻquvchi usa-lab-o.html?m=N
     "usa-lab-m1":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
     "usa-lab-m2":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
     "usa-lab-m3":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
@@ -91,7 +91,7 @@ MODULES = {
     "usa-lab-m6":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
     "usa-lab-m7":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
     "usa-lab-m8":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
-    # PhD Lab (2026-11-07): M1–M8, 4 faza (1 faza = 2 modul). Manba tools/modules/phd/engine.py, oʻquvchi phd-lab-o.html?m=N
+    # PhD dasturi (2026-11-07): M1–M8, 4 faza (1 faza = 2 modul). Manba tools/modules/phd/engine.py, oʻquvchi phd-lab-o.html?m=N
     "phd-lab-m1":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
     "phd-lab-m2":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
     "phd-lab-m3":             dict(lab="phd-lab.html", site=False, paid=True, protect=True),
@@ -251,15 +251,49 @@ def views(name, s):
     return out
 
 
+def program_outcome(name, src):
+    """M0 hub: modul yakunidan oldin butun dastur oxirida nima boʻlishini qisqa koʻrsatadi (2026-11-16, mijoz fikri)."""
+    if not name.endswith("-m0"):
+        return src
+    marker = "<section>\n    <h2>Modul yakunida sizda</h2>"
+    if marker not in src or 'id="dastur-natija"' in src:
+        return src
+    import sys as _s
+    _s.path.insert(0, str(ROOT / "tools" / "landing"))
+    try:
+        import labs_data as _L
+    except Exception:
+        return src
+    lab_file = MODULES[name]["lab"]
+    pool = getattr(_L, "LABS", {})
+    pool = pool.values() if isinstance(pool, dict) else pool
+    lab = next((v for v in pool if isinstance(v, dict) and v.get("file") == lab_file and v.get("packet")), None)
+    if not lab:
+        return src
+    def _ap(t):
+        for x, y in (("o'", "o\u02bb"), ("g'", "g\u02bb"), ("O'", "O\u02bb"), ("G'", "G\u02bb"), ("'", "\u02bc")):
+            t = t.replace(x, y)
+        return t
+    items = "".join(f"<li><span><b>{_ap(a)}</b></span></li>" for a, _ in lab["packet"])
+    narx = lab_file.replace(".html", "-narxlar.html")
+    block = (f'<section id="dastur-natija">\n    <h2>Butun dastur oxirida sizda</h2>\n'
+             f'    <p class="sub">{lab["packet_title"]}: {len(lab["packet"])} ta hujjat va jadval. Hujjatlarni oʻzingiz yozasiz, dastur tuzilma va baholash mezonini beradi. '
+             f'Bu M0 shu yoʻlning bepul birinchi qadami; qolgan bosqichlar obuna bilan ochiladi (<a href="{narx}">tariflar</a>).</p>\n'
+             f'    <ul class="goal">{items}</ul>\n  </section>\n\n  ')
+    return src.replace(marker, block + marker, 1)
+
+
 def build(name):
     cfg = MODULES[name]
     if cfg.get("raw"):
         src = with_suggest(watermark((HERE / "src" / (name + ".page.html")).read_text(encoding="utf-8")))
+        src = program_outcome(name, src)
         for fn, html in views(name, src).items():
             (ROOT / fn).write_text(html, encoding="utf-8")
         print(name, "-> sayt (raw)")
         return
     src = watermark((HERE / "src" / (name + ".src.html")).read_text(encoding="utf-8").replace("{{CSS}}", (HERE / "m0.css").read_text(encoding="utf-8")))
+    src = program_outcome(name, src)
     out = []
     if cfg.get("site"):
         for fn, html in views(name, site(name, src, cfg)).items():

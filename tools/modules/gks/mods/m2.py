@@ -17,7 +17,7 @@ FILTER = f"""<p>Kuchli nomzodlar ham ko'pincha mazmun emas, takrorlanadigan oddi
 
 MOD = dict(
     title="Universitet va dastur tanlash",
-    desc="GKS Lab M2: GKS universitetlari tizimi (yo'llar, A/B turlari, kvota), saralangan ro'yxat, ilmiy moslik va keng tarqalgan xatolar filtri. Natija: 3 ta asoslangan universitet tanlovi.",
+    desc="GKS dasturi M2: GKS universitetlari tizimi (yo'llar, A/B turlari, kvota), saralangan ro'yxat, ilmiy moslik va keng tarqalgan xatolar filtri. Natija: 3 ta asoslangan universitet tanlovi.",
     lead="GKS da universitet tanlovi qoidalar bilan cheklangan: qaysi yo'l, nechta universitet, qaysi turdan. Bu modulda shu qoidalar ichida o'zingizga mos 3 ta tanlovni dalil bilan asoslaysiz. Uch trek uchun umumiy; M3 dan boshlab o'z trekingizga o'tasiz.",
     hero="telescope", weeks="2–3", next="trekingizning M3 moduli", next_href="gks-lab-dastur.html",
     goals=V2["goals"], warn=V2["warn"],

@@ -5,7 +5,7 @@ V1 = lib(1)
 
 MOD = dict(
     title="Hujjatlar infratuzilmasi",
-    desc="GKS Lab M1: GKS hujjatlari xaritasi, apostil va tarjima, tavsiya xati (GKS formasi) va yutuqlar varaqasi, TOPIK va ingliz tili strategiyasi. Natija: hujjatlar nazorat jadvali.",
+    desc="GKS dasturi M1: GKS hujjatlari xaritasi, apostil va tarjima, tavsiya xati (GKS formasi) va yutuqlar varaqasi, TOPIK va ingliz tili strategiyasi. Natija: hujjatlar nazorat jadvali.",
     lead="GKS arizasi bitta insho emas, o'nlab varaqdan iborat to'plam. Bu modulda yo'riqnomadagi har hujjatni bitta jadvalga tushirasiz, legallashtirish zanjirini rejalaysiz, tavsiya xatini tashkil qilasiz va til strategiyasini tanlaysiz. Uch trek uchun umumiy.",
     hero="scroll", weeks="2–3", next="M2 Universitet va dastur tanlash", next_href="gks-lab-m2.html",
     goals=[("scroll", "Hujjatlar nazorat jadvali", "har hujjat, manbasi, holati va muddati bilan"),

@@ -2,13 +2,13 @@ from common import LEEDS, UKRIEXP, DORA, HOL, STD
 
 MOD = dict(
     title="Ilmiy rahbar va laboratoriya bilan aloqa",
-    desc="PhD Lab M3: ilmiy rahbar topish, moslikni baholash, professorga birinchi xat, ilovalar, eslatma xat odobi, birinchi suhbat va yordam tizimi. Natija: 6 ta rahbar kartasi va aloqalar daftari.",
+    desc="PhD dasturi M3: ilmiy rahbar topish, moslikni baholash, professorga birinchi xat, ilovalar, eslatma xat odobi, birinchi suhbat va yordam tizimi. Natija: 6 ta rahbar kartasi va aloqalar daftari.",
     lead="Sizga kerakli ilmiy rahbar, avvalo, aynan sizning mavzuingizga rahbarlik qila oladigan odam; uning mashhurligi ikkinchi darajali. Bu modulda rahbarlarni <b>maqolalari va bo'sh o'rni</b> bo'yicha tanlaysiz, ularga qisqa va aniq xat yozasiz va birinchi suhbatga tayyorlanasiz.",
     hero="master", weeks="2–3", next="M4 Ilmiy loyiha taklifi va metodologiya", next_href="phd-lab-o.html?m=4",
     goals=[("telescope", "6 ta rahbar kartasi", "har birida 2 ta real ilmiy bog'liqlik"),
            ("memo", "Aloqalar daftari", "sana, holat, eslatma va javob"),
            ("bulb", "Suhbat rejasi", "90 soniyalik bayon va 6 ta savol")],
-    warn="Professorga dastlabki xat (Cold email) yozishning umumiy usuli Master Lab da. Bu modulda faqat PhD ga xos qism: rahbar bilan moslik, uning bo'sh o'rni va ilmiy muhit. Namunalar Kompas tuzgan tuzilma; ularni tayyor xat sifatida ko'chirmang.",
+    warn="Professorga dastlabki xat (Cold email) yozishning umumiy usuli Magistratura dasturi da. Bu modulda faqat PhD ga xos qism: rahbar bilan moslik, uning bo'sh o'rni va ilmiy muhit. Namunalar Kompas tuzgan tuzilma; ularni tayyor xat sifatida ko'chirmang.",
     lessons=[
         dict(t="Ilmiy rahbarni qayerdan topish", short="Qidiruv", min=30, kind="🔎 Qidiruv", ic="telescope",
              hook="Birinchi bosqichda 100 ta xat yuborish shart emas. Avval <b>har biri bo'yicha dalil yig'ilgan</b> qisqa ro'yxat tuzing.",

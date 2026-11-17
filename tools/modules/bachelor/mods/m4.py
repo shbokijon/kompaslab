@@ -2,7 +2,7 @@ from common import CA, UCAS_DATES, UNIASSIST, UNIVERSITALY, CAMPUSCHINA, HOL, ST
 
 MOD = dict(
     title="Ariza muddatlari va ish rejasi",
-    desc="Bachelor Lab M4: ariza oynalari (ED, EA, RD, UCAS, portallar), teskari reja, Asosiy nazorat jadvali (Master Tracker), maktab bilan muvozanat, Birinchi bosqichdagi ishlar xulosasi. Natija: nazorat jadvali, muddatdan orqaga tuzilgan ish jadvali (Gantt) va Tayyorgarlik rejasi v1.0.",
+    desc="Bakalavr dasturi M4: ariza oynalari (ED, EA, RD, UCAS, portallar), teskari reja, Asosiy nazorat jadvali (Master Tracker), maktab bilan muvozanat, Birinchi bosqichdagi ishlar xulosasi. Natija: nazorat jadvali, muddatdan orqaga tuzilgan ish jadvali (Gantt) va Tayyorgarlik rejasi v1.0.",
     lead="Ko'p arizalar mazmun emas, vaqt tufayli buziladi: test natijasi kech keladi, tavsiya xati muddatdan keyin yuboriladi. Bu modulda barcha muddatlarni bitta tizimga yig'asiz va I bosqichni yakunlovchi tayyorgarlik rejasini yozasiz.",
     hero="calendar", weeks="1–2", next="M5 Baholar va testlar", next_href="bachelor-lab-m5.html",
     goals=[("calendar", "Asosiy nazorat jadvali (Master Tracker)", "har universitet: holat, muddat, hujjatlar, to'lov, natija"),
@@ -71,7 +71,7 @@ MOD = dict(
         dict(t="Maktab bilan muvozanat", short="Ritm", min=20, kind="⏱ Haftalik ritm", ic="bell",
              hook="Ariza jarayoni maktabning eng og'ir yiliga to'g'ri keladi. Baholar tushib ketsa, ariza ham zaiflashadi. Ritm ikkalasini ham saqlaydi.",
              body="""<h4>Haftasiga 3–5 soat</h4>
-<p>Bachelor Lab haftasiga 3–5 soatga mo'ljallangan. Bu ikki-uch blokka bo'linadi:</p>
+<p>Bakalavr dasturi haftasiga 3–5 soatga mo'ljallangan. Bu ikki-uch blokka bo'linadi:</p>
 <ul><li><b>Blok 1 (1–2 soat)</b>: darslar va topshiriqlar.</li><li><b>Blok 2 (1–2 soat)</b>: hujjat ustida ish (insho, ro'yxat, jadval).</li><li><b>Blok 3 (30–60 daqiqa)</b>: nazorat jadvalini yangilash va keyingi hafta rejasi.</li></ul>
 <h4>Imtihon davrlari</h4>
 <p>Choraklik imtihonlar, olimpiadalar va bitiruv imtihonlari oldidan yuklamani kamaytiring. Teskari rejaga bu haftalarni oldindan \"yengil hafta\" deb belgilang.</p>

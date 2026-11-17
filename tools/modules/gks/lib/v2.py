@@ -2,7 +2,7 @@ from common import U27, G26, SIK, JA, STD
 
 MOD = dict(
     title="Universitet va dastur tanlash",
-    desc="GKS Lab M2: elchixona yoki universitet treki, A va B turdagi universitetlar, dasturni o'qish, saralangan ro'yxat va kvotani to'g'ri talqin qilish. Natija: 3 ta asoslangan universitet tanlovi.",
+    desc="GKS dasturi M2: elchixona yoki universitet treki, A va B turdagi universitetlar, dasturni o'qish, saralangan ro'yxat va kvotani to'g'ri talqin qilish. Natija: 3 ta asoslangan universitet tanlovi.",
     lead="GKS da universitet tanlovi qoidalar bilan cheklangan: qaysi yo'l, nechta universitet, qaysi turdan. Bu modulda shu qoidalar ichida o'zingizga mos 3 ta tanlovni dalil bilan asoslaysiz.",
     hero="telescope", weeks="2–3", next="Nomzod profili va dalillar",
     goals=[("compass", "Yo'l qarori", "elchixona yoki universitet treki, sababi bilan"),

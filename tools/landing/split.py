@@ -1,7 +1,7 @@
 # ═══════════════════════════════════════════════════════════════
-#  Lab sahifalarini alohida sahifalarga ajratish (2026-10-18)
+#  dastur sahifalarini alohida sahifalarga ajratish (2026-10-18)
 #
-#  Generator (render.py, phd_polish.py, postprocess.py) avval bitta uzun Lab
+#  Generator (render.py, phd_polish.py, postprocess.py) avval bitta uzun dastur
 #  sahifasini yozadi. Bu skript uni build.py oxirida quyidagilarga ajratadi:
 #    <lab>.html            Umumiy: hero, A→B, modullar yoʻli, keyingi sahifalar
 #    <lab>-dastur.html     Dastur: fazalar, modullar va darslar, metod, faktlar
@@ -23,8 +23,8 @@ from labs_data import ON_SALE
 UI_HEAD = '<link rel="stylesheet" href="css/kompas-ui.css">\n<script src="js/kompas-ui.js"></script>\n'
 SITE = "https://www.kompaslab.uz/"
 
-# Lab boʻyicha qoʻshimcha tab (sahifa mavjud boʻlsa)
-# Pullik modul oʻquvchisi bor Lablar: modul sahifasidagi qulf bloki obunachiga "Modulni ochish" tugmasini
+# dastur boʻyicha qoʻshimcha tab (sahifa mavjud boʻlsa)
+# Pullik modul oʻquvchisi bor dasturlar: modul sahifasidagi qulf bloki obunachiga "Modulni ochish" tugmasini
 # koʻrsatadi (js/paid-module.js, fn_my_access). Kontentning oʻzi bazada, fn_paid_page() orqali beriladi.
 PAID_READER = {"master-lab": "master-lab-o.html", "gks-lab": "gks-lab-o.html", "bachelor-lab": "bachelor-lab-o.html", "usa-lab": "usa-lab-o.html", "phd-lab": "phd-lab-o.html"}
 EXTRA_TABS = {"master-lab": [("master-lab-manbalar.html", "Manbalar"), ("master-planner.html", "Shaxsiy reja")]}
@@ -73,7 +73,7 @@ PROTECT = '<script>window.KOMPAS_PROTECT_ALL=true;</script>\n<script src="js/pro
 def phase_tabs(sec):
     """Dastur sahifasi (2026-10-30): faza kartalari tugma boʻladi, bosilganda faqat shu faza modullari
     koʻrinadi; modullar yopiq, dars izohlari bu sahifada yashirin (toʻliq matn modul sahifasida).
-    Faza → modul: trek sarlavhalari boʻlsa (Bachelor, GKS) tartib boʻyicha, boʻlmasa "M1–M4" oraligʻidan.
+    Faza → modul: trek sarlavhalari boʻlsa (Bakalavr, GKS) tartib boʻyicha, boʻlmasa "M1–M4" oraligʻidan.
     JS yoʻq boʻlsa hamma modul (yopiq holda) koʻrinadi. Boshqaruv: js/kompas-ui.js (.kl-ph)."""
     phs = list(re.finditer(r'<div class="phase"><small>(.*?)</small><b>(.*?)</b><span>(.*?)</span></div>', sec))
     if len(phs) < 2:
@@ -152,11 +152,11 @@ def modules(dastur):
 
 
 def tabs_html(stem, have_test, cur, extra):
-    items = [(stem + ".html", "Umumiy"), (stem + "-dastur.html", "Dastur")]
+    items = [(stem + ".html", "Umumiy"), (stem + "-dastur.html", "Modullar")]
     if have_test:
         items.append((stem + "-test.html", "Tayyormisiz?"))
     items += [(stem + "-narxlar.html", "Narxlar"), (stem + "-savollar.html", "Savollar")] + extra
-    return '<div class="kl-tabs" role="navigation" aria-label="Lab sahifalari">' + "".join(
+    return '<div class="kl-tabs" role="navigation" aria-label="Dastur sahifalari">' + "".join(
         f'<a href="{h}"{" aria-current=\"page\"" if h == cur else ""}>{t}</a>' for h, t in items) + "</div>"
 
 
@@ -180,9 +180,9 @@ def strip_head(sec):
     return m.group(1), m.group(2) or "", sec[:m.start()] + sec[m.end():]
 
 
-LOCK_WAIT = "Bu Lab uchun toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga xabar beramiz."
+LOCK_WAIT = "Bu dastur uchun toʻlov hali ochilmagan; ochilganda kutish roʻyxatidagilarga xabar beramiz."
 
-# Sotuvdagi Lab testida natijadan keyin narx yoʻli (2026-11-12). Tugma faqat natija
+# Sotuvdagi dastur testida natijadan keyin narx yoʻli (2026-11-12). Tugma faqat natija
 # yashil yoki sariq boʻlsa chiqadi; "Bu siklga erta" (qizil) holatida toʻlov tugmasi yoʻq.
 def add_buy(sec, stem):
     m = re.search(r'(<a class="btn btn-p" style="width:100%;margin-top:14px" href="[^"]+">Bepul M0 ni boshlash</a>)', sec)
@@ -313,7 +313,7 @@ def split(root, f, src):
     made = []
     # ── 1. Umumiy ──
     hero = B["hero"].replace('href="#dastur" class="btn btn-g">Dasturni koʻrish</a>', f'href="{stem}-dastur.html" class="btn btn-g">Dasturni koʻrish</a>')
-    hero = hero.replace('<a href="index.html#labs">Lablar</a>', '<a href="index.html#labs">Lablar</a>')
+    hero = hero.replace('<a href="index.html#labs">Dasturlar</a>', '<a href="index.html#labs">Dasturlar</a>')
     m0_btn = f'<a class="btn btn-p" href="{m0_page}">Bepul M0 ni boshlash</a>' if m0_page else (f'<a class="btn btn-p" href="{stem}-m0.html">M0 dasturini koʻrish</a>')
     test_btn = f'<a class="btn btn-g" href="{stem}-test.html">Tayyorligingizni tekshiring</a>' if have_test else f'<a class="btn btn-g" href="{stem}-narxlar.html">Narxlarni koʻrish</a>'
     path = f'''<section id="yol">
@@ -331,11 +331,11 @@ def split(root, f, src):
     </div>
   </div>
 </section>'''
-    nxt = [(stem + "-dastur.html", "Dastur", "Bosqichlar, modullar va har darsning mavzusi")]
+    nxt = [(stem + "-dastur.html", "Modullar", "Bosqichlar, modullar va har darsning mavzusi")]
     if have_test:
         nxt.append((stem + "-test.html", "Tayyormisiz?", "Bir necha savol: tayyorgarligingizni taxminiy baholaysiz, qabul ehtimoli emas"))
-    nxt += [(stem + "-narxlar.html", "Narxlar", "Oylik va 6 oylik obuna"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
-    nxt_html = '<section class="alt"><div class="wrap"><div class="head"><h2>Keyingi qadam</h2></div><nav class="kl-next" aria-label="Lab sahifalari">' + "".join(
+    nxt += [(stem + "-narxlar.html", "Narxlar", "1 bosqich yoki Toʻliq dastur"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
+    nxt_html = '<section class="alt"><div class="wrap"><div class="head"><h2>Keyingi qadam</h2></div><nav class="kl-next" aria-label="Dastur sahifalari">' + "".join(
         f'<a href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in nxt) + "</nav></div></section>"
     main = "\n".join(x for x in [hero, B.get("dark", ""), path, nxt_html, B.get("cta", "")] if x)
     made.append(emit(stem + ".html", "hub", title0, None, main, own=("yol",) + ((did.group(1),) if did else ())))
@@ -351,7 +351,7 @@ def split(root, f, src):
         return d.replace("</details>", f'<a class="kl-modlink" href="{href}">{esc(mid)} modul sahifasi</a></details>')
     sec = re.sub(r'<details class="mod[^"]*"[^>]*>.*?</details>', addlink, sec, flags=re.S)
     sec = phase_tabs(sec)
-    parts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Dastur")], h2, sub, icon), sec]
+    parts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Modullar")], h2, sub, icon), sec]
     for k in order:
         if k in ("faktlar", "atlas", "qanday", "extra") or k.startswith("extra"):
             parts.append(B[k])
@@ -407,7 +407,7 @@ def split(root, f, src):
                         + '<script src="js/paid-module.js" defer></script>')
         art = f'<div class="kl-mod-art"><img src="img/3d/memo.webp" alt="" width="28" height="28" style="width:28px;height:28px;flex:none"><span><b>Modul natijasi:</b> {esc(m["art"])}</span></div>' if m["art"] else ""
         lead = f'{len(m["lessons"])} dars' + (f'. {esc(m["group"])}' if m["group"] else "") + "."
-        main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (stem + "-dastur.html", "Dastur"), (None, esc(m["id"]))], f'{esc(m["id"])}. {esc(m["title"])}', lead, icon)
+        main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (stem + "-dastur.html", "Modullar"), (None, esc(m["id"]))], f'{esc(m["id"])}. {esc(m["title"])}', lead, icon)
         main += f'''
 <section style="padding-top:8px">
   <div class="wrap">

@@ -77,7 +77,7 @@ L4 = dict(t="Magistrlik ishidan doktorlik yo'nalishiga", short="Yo'nalish", min=
 
 MOD = dict(
     title="Doktorantura nomzodining ilmiy pozitsiyasi",
-    desc="GKS Lab M3-D (doktorantura): PhD nomzodi nimani taklif qiladi, ilmiy portfel auditi, PhD darajasidagi CV va magistrlik ishidan doktorlik yo'nalishiga. Natija: portfel auditi, PhD CV, 3 ta potensial doktorlik savoli.",
+    desc="GKS dasturi M3-D (doktorantura): PhD nomzodi nimani taklif qiladi, ilmiy portfel auditi, PhD darajasidagi CV va magistrlik ishidan doktorlik yo'nalishiga. Natija: portfel auditi, PhD CV, 3 ta potensial doktorlik savoli.",
     lead="Doktorantura trekida siz o'quvchi emas, kichik tadqiqotchi sifatida baholanasiz. Bu modulda ilmiy portfelingizni tekshirasiz, PhD darajasidagi CV yozasiz va magistrlik ishingizdan doktorlik savollarini chiqarasiz.",
     hero="telescope", weeks="2–3", next="M4-D Ilmiy reja", next_href="gks-lab-m4-d.html",
     goals=[("scroll", "Portfel auditi", "har element holati va hissangiz bilan"),

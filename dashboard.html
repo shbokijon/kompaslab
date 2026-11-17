@@ -374,13 +374,13 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <div id="sbCourses"></div>
 
       <div class="sb-section-title">Bepul M0 modullar</div>
-      <a href="master-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧭</span> Master Lab M0</a>
-      <a href="bachelor-lab-m0.html" class="sb-link"><span class="sb-link-icon">🎓</span> Bachelor Lab M0</a>
-      <a href="phd-lab-m0.html" class="sb-link"><span class="sb-link-icon">🔬</span> PhD Lab M0</a>
-      <a href="gks-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇰🇷</span> GKS Lab M0</a>
-      <a href="usa-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇺🇸</span> USA Lab M0</a>
+      <a href="master-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧭</span> Magistratura dasturi M0</a>
+      <a href="bachelor-lab-m0.html" class="sb-link"><span class="sb-link-icon">🎓</span> Bakalavr dasturi M0</a>
+      <a href="phd-lab-m0.html" class="sb-link"><span class="sb-link-icon">🔬</span> PhD dasturi M0</a>
+      <a href="gks-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇰🇷</span> GKS dasturi M0</a>
+      <a href="usa-lab-m0.html" class="sb-link"><span class="sb-link-icon">🇺🇸</span> USA dasturi M0</a>
       <a href="tadbirkor-talaba-m0.html" class="sb-link"><span class="sb-link-icon">💼</span> Tadbirkor Talaba M0</a>
-      <a href="musofir-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧳</span> Musofir Lab M0</a>
+      <a href="musofir-lab-m0.html" class="sb-link"><span class="sb-link-icon">🧳</span> Musofir dasturi M0</a>
 
       <div class="sb-section-title">Yordam</div>
       <a href="narxlar.html" class="sb-link"><span class="sb-link-icon">💳</span> Narxlar va obuna</a>
@@ -432,7 +432,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         <div class="stat-icon">📚</div>
         <div class="stat-val" id="statDocs">0</div>
         <div class="stat-lbl">Tayyor hujjatlar</div>
-        <div class="stat-change neutral">Master Lab, 9 tadan</div>
+        <div class="stat-change neutral">Magistratura dasturi, 9 tadan</div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">📅</div>
@@ -518,7 +518,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <div class="onb-box">
       <div class="onb-step" id="onbStep">1 / 3</div>
       <h2 id="onbTitle">Hozir qaysi bosqichdasiz?</h2>
-      <p class="onb-sub" id="onbSub">Javobingizga qarab qaysi Lab va qaysi M0 dan boshlash kerakligini aytamiz.</p>
+      <p class="onb-sub" id="onbSub">Javobingizga qarab qaysi dastur va qaysi M0 dan boshlash kerakligini aytamiz.</p>
       <div class="onb-opts" id="onbOpts"></div>
       <div class="onb-foot">
         <button type="button" class="onb-back" id="onbBack" hidden>← Orqaga</button>
@@ -550,7 +550,7 @@ function fmtDate(d) { return d.getDate() + '-' + MONTHS[d.getMonth()] + ' ' + d.
 function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) }
 function ls(k) { try { return JSON.parse(localStorage.getItem(k) || 'null') } catch (e) { return null } }
 
-// Kurslar: Lab sahifasi va (interaktiv sahifali kurslar uchun) modul havolasi
+// Kurslar: Dastur sahifasi va (interaktiv sahifali kurslar uchun) modul havolasi
 const LAB_PAGE = { 'miggo': 'musofir-lab' }
 function labPage(slug) { return (LAB_PAGE[slug] || slug) }
 const PAGE_COURSES = {
@@ -622,7 +622,7 @@ async function renderSubscriptions() {
   const body = document.getElementById('subBody')
   if (!_enrollments.length) {
     document.getElementById('sidebarPlan').textContent = 'Bepul: M0 modullar'
-    body.innerHTML = '<p class="side-muted">Faol obuna yoʻq. Har Labning M0 qismi bepul: avval dastur sizga mosligini tekshiring.</p><a class="side-btn" href="narxlar.html">Narxlar va obuna</a>'
+    body.innerHTML = '<p class="side-muted">Faol obuna yoʻq. Har dasturning M0 qismi bepul: avval dastur sizga mosligini tekshiring.</p><a class="side-btn" href="narxlar.html">Narxlar va obuna</a>'
     return
   }
   const rows = await Promise.all(_enrollments.map(async e => {
@@ -642,7 +642,7 @@ async function renderSubscriptions() {
     const nx = a && a.installment && a.installment.next_due
     if (nx) lines += `<div class="sub-row"><span>Keyingi toʻlov</span><b>${Number(nx.amount).toLocaleString('ru-RU')} soʻm · ${esc(fmtDate(new Date(nx.due_date)))}</b></div>`
     return `<div class="sub-item"><div class="sub-name">${esc(c.title || c.slug)}</div>${lines}</div>`
-  }).join('') + '<p class="side-muted" style="margin:10px 0 0">Oylik obunada har toʻlov bitta fazani ochadi.</p>'
+  }).join('') + '<p class="side-muted" style="margin:10px 0 0">1 bosqich tarifida har toʻlov bitta bosqichni ochadi.</p>'
   const first = rows[0]
   document.getElementById('sidebarPlan').textContent = first.a && first.a.access ? 'Obuna faol' : 'Obuna faol emas'
 }
@@ -726,19 +726,19 @@ function renderModules(modules, progressMap, courseSlug) {
 //  5. OBUNASIZ: bepul M0 modullar (birinchi oʻrinda)
 // ════════════════════════════════════════════════════════
 const M0_LIST = [
-  { lab: 'master-lab',       href: 'master-lab-m0.html',       key: 'kompas_master_m0_v1',   icon: 'master',   name: 'Master Lab M0',       sub: 'Magistratura: tayyorgarlik va muddatlar',
-    lessons: ["Master Lab qanday ishlaydi?", "Magistratura turlari va oʻqish imkoniyatlari", "Magistraturaga arizada qanday hujjatlar kerak?", "Tayyorgarligingizni qanday baholaysiz?", "Master Lab sizga mosmi? Obunadan oldingi tekshiruv"] },
-  { lab: 'bachelor-lab',     href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bachelor Lab M0',     sub: 'Bakalavr: xorijda oʻqish sizga mosmi',
-    lessons: ["Bachelor Lab qanday ishlaydi", "Xalqaro bakalavr qabuli: umumiy manzara", "Tayyorgarlikni baholash", "Bachelor Lab sizga mos emas, agar…", "Vaqt chizigʻi, toʻlov va rozilik"] },
-  { lab: 'phd-lab',          href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD Lab M0',          sub: 'Moliyalashtirilgan PhD: boshlashdan oldingi tekshiruv',
-    lessons: ["PhD nima va kimga kerak", "Uchta global model", "“Faqat moliyalashtirilgan” qoidasi", "PhD vaqt chizigʻi: qarordan taklifgacha 12–18 oy", "Tayyorgarlik diagnostikasi", "Qaror: boshlash, kechiktirish yoki boshqa Lab"] },
-  { lab: 'gks-lab',          href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS Lab M0',          sub: 'Koreya hukumati stipendiyasi',
+  { lab: 'master-lab',       href: 'master-lab-m0.html',       key: 'kompas_master_m0_v1',   icon: 'master',   name: 'Magistratura dasturi M0',       sub: 'Magistratura: tayyorgarlik va muddatlar',
+    lessons: ["Magistratura dasturi qanday ishlaydi?", "Magistratura turlari va oʻqish imkoniyatlari", "Magistraturaga arizada qanday hujjatlar kerak?", "Tayyorgarligingizni qanday baholaysiz?", "Magistratura dasturi sizga mosmi? Obunadan oldingi tekshiruv"] },
+  { lab: 'bachelor-lab',     href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bakalavr dasturi M0',     sub: 'Bakalavr: xorijda oʻqish sizga mosmi',
+    lessons: ["Bakalavr dasturi qanday ishlaydi", "Xalqaro bakalavr qabuli: umumiy manzara", "Tayyorgarlikni baholash", "Bakalavr dasturi sizga mos emas, agar…", "Vaqt chizigʻi, toʻlov va rozilik"] },
+  { lab: 'phd-lab',          href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD dasturi M0',          sub: 'Moliyalashtirilgan PhD: boshlashdan oldingi tekshiruv',
+    lessons: ["PhD nima va kimga kerak", "Uchta global model", "“Faqat moliyalashtirilgan” qoidasi", "PhD vaqt chizigʻi: qarordan taklifgacha 12–18 oy", "Tayyorgarlik diagnostikasi", "Qaror: boshlash, kechiktirish yoki boshqa dastur"] },
+  { lab: 'gks-lab',          href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS dasturi M0',          sub: 'Koreya hukumati stipendiyasi',
     lessons: ["GKS nima va kimga beriladi", "Ikki trek va tanlov bosqichlari", "Muvofiqlik tekshiruvi", "Trek tanlovi", "Vaqt chizigʻi, toʻlov va rozilik"] },
-  { lab: 'usa-lab',          href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA Lab M0',          sub: 'AQSh: beshta yoʻl, pul va viza',
+  { lab: 'usa-lab',          href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA dasturi M0',          sub: 'AQSh: beshta yoʻl, pul va viza',
     lessons: ["AQSh yoʻllari xaritasi", "Eng keng tarqalgan miflar", "Pul haqiqati va B reja", "Yoʻl tanlagich", "Rasmiy manbalarni oʻqish", "Tayyorgarlik, kalendar va shartlar"] },
   { lab: 'tadbirkor-talaba', href: 'tadbirkor-talaba-m0.html', key: 'kompas_tt_m0_v1',       icon: 'tt',       name: 'Tadbirkor Talaba M0', sub: 'Oʻqish va biznesni birga olib borish',
     lessons: ["Talaba tadbirkorligi nima va nima emas", "Vaqt, oʻqish va pul", "Huquqiy shakllar xaritasi", "Tayyorgarlik koʻrsatkichi", "Kimga mos emas va shartlar"] },
-  { lab: 'musofir-lab',      href: 'musofir-lab-m0.html',      key: 'kompas_musofir_m0_v1',  icon: 'musofir',  name: 'Musofir Lab M0',      sub: 'Xorijda ish: rasmiy yoʻl va himoya',
+  { lab: 'musofir-lab',      href: 'musofir-lab-m0.html',      key: 'kompas_musofir_m0_v1',  icon: 'musofir',  name: 'Musofir dasturi M0',      sub: 'Xorijda ish: rasmiy yoʻl va himoya',
     lessons: ["Rasmiy va norasmiy yoʻl", "Firibgarlik belgilari", "Mamlakatlar xaritasi", "Kim uchun qaysi yoʻl", "Xarajat va qarz xavfi", "Keyingi qadam va shartlar"] },
 ]
 function m0Progress(key) { const o = ls(key); return o && o.xp ? Math.min(100, Math.round(o.xp / 250 * 100)) : 0 }
@@ -796,7 +796,7 @@ function renderNoCourse() {
     .sort((a, b) => (b.st.started && !b.st.finished) - (a.st.started && !a.st.finished) || b.st.t - a.st.t ||
       (order.indexOf(a.lab) < 0 ? 99 : order.indexOf(a.lab)) - (order.indexOf(b.lab) < 0 ? 99 : order.indexOf(b.lab)))
   document.getElementById('modulesList').innerHTML = `
-    <p class="side-muted">Har Labning M0 qismi bepul: toʻlovdan oldin dastur sizga mosligini tekshirasiz.</p>
+    <p class="side-muted">Har dasturning M0 qismi bepul: toʻlovdan oldin dastur sizga mosligini tekshirasiz.</p>
     <div class="m0-grid">${list.map(m => {
       const btn = m.pct >= 100 ? 'Koʻrib chiqish' : m.st.started ? 'Davom etish →' : 'Boshlash →'
       const label = m.st.started ? `${m.st.doneN} / ${m.st.n} dars` : `${m.st.n} dars`
@@ -834,7 +834,7 @@ function onbAnswer(p) {
   if (p && p.stage) return { stage: p.stage, detail: p.stage_detail, works: p.works, goal: p.goal }
   return onbLocal()
 }
-// Tavsiya: bosqich va maqsaddan 1 ta asosiy va 1–2 ta qoʻshimcha Lab. Bu qoida, faktga daʼvo emas.
+// Tavsiya: bosqich va maqsaddan 1 ta asosiy va 1–2 ta qoʻshimcha dastur. Bu qoida, faktga daʼvo emas.
 function recommendLabs(p) {
   const a = onbAnswer(p); if (!a || !a.stage) return null
   const d = a.detail || '', g = a.goal || ''
@@ -872,7 +872,7 @@ function recommendLabs(p) {
       break
     case 'phd':
       labs = ['phd-lab']
-      why = 'Siz allaqachon doktorantsiz: PhD Lab M0 dagi vaqt chizigʻi va qaror qismi foydali boʻlishi mumkin.'
+      why = 'Siz allaqachon doktorantsiz: PhD dasturi M0 dagi vaqt chizigʻi va qaror qismi foydali boʻlishi mumkin.'
       break
     default: // work
       labs = d === 'edu_master' ? ['phd-lab', 'musofir-lab'] : d === 'edu_bachelor' ? ['master-lab', 'musofir-lab'] : ['musofir-lab', 'bachelor-lab']
@@ -891,7 +891,7 @@ function stageLabel(a) {
 function renderOnbCard() {
   const box = document.getElementById('onbCard'), rec = recommendLabs(_profile)
   if (!rec) {
-    box.innerHTML = '<h3>🧭 Qayerdan boshlash kerak?</h3><p class="onb-why">Uchta qisqa savolga javob bering: bosqichingizga qarab sizga mos Lab va M0 ni koʻrsatamiz.</p><button type="button" class="side-btn" id="onbOpen">Savollarga javob berish</button>'
+    box.innerHTML = '<h3>🧭 Qayerdan boshlash kerak?</h3><p class="onb-why">Uchta qisqa savolga javob bering: bosqichingizga qarab sizga mos dastur va M0 ni koʻrsatamiz.</p><button type="button" class="side-btn" id="onbOpen">Savollarga javob berish</button>'
     box.hidden = false
     document.getElementById('onbOpen').onclick = openOnb
     return
@@ -917,7 +917,7 @@ function onbShow(step) {
   const total = hasDetail ? (onbDraft.stage === 'work' ? 3 : 4) : 3
   let title, sub = '', items, on
   if (step === 1) {
-    title = 'Hozir qaysi bosqichdasiz?'; sub = 'Javobingizga qarab qaysi Lab va qaysi M0 dan boshlash kerakligini aytamiz.'
+    title = 'Hozir qaysi bosqichdasiz?'; sub = 'Javobingizga qarab qaysi dastur va qaysi M0 dan boshlash kerakligini aytamiz.'
     items = STAGES.map(x => [x.v, x.t]); on = v => { onbDraft = { stage: v }; onbShow(STAGES.find(x => x.v === v).q ? 2 : 3) }
   } else if (step === 2) {
     title = st.q; items = st.o; on = v => { onbDraft.detail = v; onbShow(onbDraft.stage === 'work' ? 4 : 3) }

@@ -5,7 +5,7 @@ V5 = lib(5)
 
 MOD = dict(
     title="Shaxsiy bayonot",
-    desc="GKS Lab M4-U (bakalavriat): GKS shaxsiy bayonoti formasi, Kimlik → Dalil → Maqsad → Moslik, birinchi qoralama, tahrir va o'zaro tahrir. Natija: yakuniy shaxsiy bayonot va tahrir qaydi.",
+    desc="GKS dasturi M4-U (bakalavriat): GKS shaxsiy bayonoti formasi, Kimlik → Dalil → Maqsad → Moslik, birinchi qoralama, tahrir va o'zaro tahrir. Natija: yakuniy shaxsiy bayonot va tahrir qaydi.",
     lead="Bakalavriat trekida shaxsiy bayonot og'irlik markazi: komissiya sizni asosan shu matn orqali taniydi. Bu modulda uni M3-U dagi dalillardan qurasiz va baholash mezoni bilan tahrir qilasiz.",
     hero="memo", weeks="3", next="M5-U O'quv rejasi, topshirish va intervyu", next_href="gks-lab-m5-u.html",
     goals=V5["goals"], warn=V5["warn"],

@@ -2,7 +2,7 @@ from common import U27, G26, STD
 
 MOD = dict(
     title="Shaxsiy bayonot",
-    desc="GKS Lab M5: GKS shaxsiy bayonot formasi, Kimlik → Dalil → Maqsad → Moslik tuzilmasi, birinchi qoralama, tahrir va o'zaro tahrir. Natija: yakuniy shaxsiy bayonot.",
+    desc="GKS dasturi M5: GKS shaxsiy bayonot formasi, Kimlik → Dalil → Maqsad → Moslik tuzilmasi, birinchi qoralama, tahrir va o'zaro tahrir. Natija: yakuniy shaxsiy bayonot.",
     lead="Shaxsiy bayonot GKS formasining savollariga javob beradi: siz kimsiz, nimani isbotlay olasiz, qayerga ketyapsiz va nega Koreya. Bu modulda uni M3 dagi dalillardan qurasiz va baholash mezoni bilan tahrir qilasiz.",
     hero="memo", weeks="3", next="O'quv rejasi",
     goals=[("memo", "Yakuniy shaxsiy bayonot", "forma talablariga mos, o'zingiz yozgan"),

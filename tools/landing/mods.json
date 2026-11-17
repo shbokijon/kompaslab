@@ -285,7 +285,7 @@
     {
      "num": "6.4",
      "title": "AI vositalari",
-     "content": "Biznesda AI'dan halol foydalanish (AI Tools Lab'ga havola)",
+     "content": "Biznesda AI'dan halol foydalanish (AI Tools dasturga havola)",
      "trek": ""
     },
     {
@@ -414,7 +414,7 @@
    "lessons": [
     {
      "num": "0.1",
-     "title": "Master Lab qanday ishlaydi?",
+     "title": "Magistratura dasturi qanday ishlaydi?",
      "content": "Toʻrtta bosqich, haftalik reja va kursning imkoniyatlari",
      "trek": ""
     },
@@ -438,7 +438,7 @@
     },
     {
      "num": "0.5",
-     "title": "Master Lab sizga mosmi? Obunadan oldingi tekshiruv",
+     "title": "Magistratura dasturi sizga mosmi? Obunadan oldingi tekshiruv",
      "content": "Tariflar, ketma-ket bosqichlar va toʻlovdan oldingi muhim shartlar",
      "trek": ""
     }
@@ -747,13 +747,13 @@
     {
      "num": "7.4",
      "title": "Yevropa Ittifoqi",
-     "content": "Erasmus Mundus qoʻshma magistraturalari, milliy dasturlar (masalan, Vengriya Stipendium Hungaricum); Germaniya: qisqa tavsif va DAAD Labʼga havola",
+     "content": "Erasmus Mundus qoʻshma magistraturalari, milliy dasturlar (masalan, Vengriya Stipendium Hungaricum); Germaniya: qisqa tavsif va DAAD dasturiga havola",
      "trek": ""
     },
     {
      "num": "7.5",
      "title": "Osiyo",
-     "content": "Koreya (GKS) va Yaponiya (MEXT): qisqa tavsif va tegishli Lablarga havola; Xitoy hukumati stipendiyasi (CSC)",
+     "content": "Koreya (GKS) va Yaponiya (MEXT): qisqa tavsif va tegishli dasturlarga havola; Xitoy hukumati stipendiyasi (CSC)",
      "trek": ""
     },
     {
@@ -1264,7 +1264,7 @@
    "lessons": [
     {
      "num": "0.1",
-     "title": "Bachelor Lab qanday ishlaydi",
+     "title": "Bakalavr dasturi qanday ishlaydi",
      "content": "Bosqichlar, natijalar, haftalik yuklama; nima beriladi, nima berilmaydi",
      "trek": ""
     },
@@ -1282,7 +1282,7 @@
     },
     {
      "num": "0.4",
-     "title": "Bachelor Lab sizga mos emas, agar…",
+     "title": "Bakalavr dasturi sizga mos emas, agar…",
      "content": "Ochiq roʻyxat; muqobil yoʻllar",
      "trek": ""
     },
@@ -1391,7 +1391,7 @@
     {
      "num": "3.3",
      "title": "Mutaxassislik va keyingi yoʻl",
-     "content": "Bakalavrdan keyingi variantlar umumiy koʻrinishda (tafsilot Master Lab'da)",
+     "content": "Bakalavrdan keyingi variantlar umumiy koʻrinishda (tafsilot Magistratura dasturida)",
      "trek": ""
     },
     {
@@ -1689,7 +1689,7 @@
     {
      "num": "11.2",
      "title": "Koreya va Yaponiya",
-     "content": "GKS va MEXT bakalavriat yoʻnalishlari: umumiy mantiq va GKS Lab, MEXT Lab'ga havola",
+     "content": "GKS va MEXT bakalavriat yoʻnalishlari: umumiy mantiq va GKS dasturi, MEXT dasturiga havola",
      "trek": ""
     },
     {

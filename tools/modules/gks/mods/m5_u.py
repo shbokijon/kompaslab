@@ -30,7 +30,7 @@ TIMELINE = f"""<h4>2027 GKS-U jadvali (31.10.2026 holatiga, Koreya vaqti)</h4>
 
 MOD = dict(
     title="O'quv rejasi, topshirish va intervyu",
-    desc="GKS Lab M5-U (bakalavriat): bakalavr o'quv rejasi, paketni yig'ish va ikkinchi shaxs tekshiruvi, elchixona intervyusi va natijadan keyingi qadamlar. Natija: o'quv rejasi, yig'ilgan paket va intervyu javoblari.",
+    desc="GKS dasturi M5-U (bakalavriat): bakalavr o'quv rejasi, paketni yig'ish va ikkinchi shaxs tekshiruvi, elchixona intervyusi va natijadan keyingi qadamlar. Natija: o'quv rejasi, yig'ilgan paket va intervyu javoblari.",
     lead="Oxirgi qadam: o'quv rejasini yozasiz, butun paketni yo'riqnoma tartibida yig'asiz, intervyuga hujjatlaringiz asosida tayyorlanasiz va natijadan keyingi yo'lni rejalaysiz.",
     hero="calendar", weeks="3", next="", next_href="",
     goals=[("calendar", "O'quv rejasi", "til yili va 4 kurs bo'yicha, bitiruvdan keyingi yo'l bilan"),

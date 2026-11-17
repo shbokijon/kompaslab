@@ -2,7 +2,7 @@ from common import CA, UCAS, UCAS_INT, HOL, STD
 
 MOD = dict(
     title="Tavsiya xatlari",
-    desc="Bachelor Lab M8: kuchli tavsiya xati, o'qituvchidan so'rash, yutuqlar varaqasi (Brag Sheet), Common App va UCAS'da tavsiya jarayoni, maktab maslahatchisi bo'lmaganda. Natija: yutuqlar varaqasi, 2–3 tavsiya so'rovi va aloqalar jadvali.",
+    desc="Bakalavr dasturi M8: kuchli tavsiya xati, o'qituvchidan so'rash, yutuqlar varaqasi (Brag Sheet), Common App va UCAS'da tavsiya jarayoni, maktab maslahatchisi bo'lmaganda. Natija: yutuqlar varaqasi, 2–3 tavsiya so'rovi va aloqalar jadvali.",
     lead="Tavsiya xati sizni boshqa odam ko'zi bilan ko'rsatadi. Uni o'zingiz yozmaysiz, lekin uning kuchli bo'lishiga ta'sir qila olasiz: to'g'ri odamni tanlash, vaqtida so'rash va faktlar bilan ta'minlash orqali.",
     hero="memo", weeks="2", next="M9 Shaxsiy bayonot va insholar", next_href="bachelor-lab-m9.html",
     goals=[("memo", "Yutuqlar varaqasi (Brag Sheet)", "tavsiya beruvchiga beriladigan faktlar va epizodlar"),

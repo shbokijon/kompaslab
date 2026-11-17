@@ -11,7 +11,7 @@ import re
 
 SITE = "https://www.kompaslab.uz"
 TABS = [
-    ("index.html#labs", "Lablar", "labs", "compass"),
+    ("index.html#labs", "Dasturlar", "labs", "compass"),
     ("mamlakatlar.html", "Qayerga uchamiz?", "mamlakatlar", "plane"),
     ("master-planner.html", "Bepul reja", "reja", "calendar"),
     ("qanday-ishlaydi.html", "Qanday ishlaydi", "qanday", "telescope"),
@@ -103,7 +103,7 @@ def pagehead(crumbs: list[tuple[str, str | None]], h1: str, lead: str, art: str 
 
 FOOTER = """<footer>
   <div class="wrap">
-    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Lablar</a><a href="atlas.html">Atlas</a><a href="sources.html">Rasmiy manbalar</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a></div>
+    <div><a href="index.html">Kompas Lab</a><a href="index.html#labs">Dasturlar</a><a href="atlas.html">Atlas</a><a href="sources.html">Rasmiy manbalar</a><a href="mailto:kompaslab.uz@gmail.com" translate="no">kompaslab.uz@gmail.com</a><a href="https://t.me/kompaslab" target="_blank" rel="noopener">Telegram</a><a href="maxfiylik.html">Maxfiylik siyosati</a></div>
     <div>&copy; 2026 Kompas Lab, O'zbekiston</div>
   </div>
 </footer>

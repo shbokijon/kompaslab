@@ -4,27 +4,27 @@ from render import BASE_CSS, EXTRA_CSS, POLISH_CSS, ROOT, head, FOOTER, WL_JS, L
 # Bitta manba: katalog, kompas, narx jadvali va kutish roʻyxati shu roʻyxatdan quriladi.
 # Narxlar bu yerda zaxira; jonli qiymat Supabase courses jadvalidan keladi.
 LABS = [
-    dict(slug="bachelor-lab", name="Bachelor Lab", icon="bachelor", page="bachelor-lab.html", group=0, ang=0,
+    dict(slug="bachelor-lab", name="Bakalavr dasturi", icon="bachelor", page="bachelor-lab.html", group=0, ang=0,
          who="10–11-sinf, litsey va kollej, 15–19 yosh", chips=["17 modul", "86 dars"], lessons=86,
          text="Universitet tanlash, testlar rejasi, insho, tavsiya xatlari va 4 yillik moliyaviy reja. 18 yoshgacha obunani ota-ona rasmiylashtiradi.",
          why="Xorijiy bakalavriatga: universitet tanlashdan topshirishgacha.", y=899000, m=99000, status="Kutish roʻyxati"),
-    dict(slug="master-lab", name="Master Lab", icon="master", page="master-lab.html", group=0, ang=45,
+    dict(slug="master-lab", name="Magistratura dasturi", icon="master", page="master-lab.html", group=0, ang=45,
          who="Xorijiy magistraturaga topshiruvchilar", chips=["9 modul", "59 dars"], lessons=59,
          text="Akademik CV, tavsiya xatlari, maqsad bayonnomasi (SoP), ilmiy loyiha taklifi va stipendiya portfeli.",
          why="Magistratura: yoʻnalish, hujjatlar, stipendiya, viza va joʻnash.", y=899000, m=99000, status="Kutish roʻyxati"),
-    dict(slug="phd-lab", name="PhD Lab", icon="phd", page="phd-lab.html", group=0, ang=90,
+    dict(slug="phd-lab", name="PhD dasturi", icon="phd", page="phd-lab.html", group=0, ang=90,
          who="Moliyalashtirilgan doktorantura", chips=["9 modul", "65 dars"], lessons=65,
          text="Ilmiy savol, ilmiy rahbarlar jadvali, professorlarga xat, ilmiy loyiha taklifi va moliyalashtirish atlasi.",
          why="Doktorantura: ilmiy savoldan ilmiy rahbar va loyiha taklifigacha.", y=1499000, m=149000, status="Kutish roʻyxati"),
-    dict(slug="gks-lab", name="GKS Lab", icon="gks", page="gks-lab.html", group=1, ang=135,
+    dict(slug="gks-lab", name="GKS dasturi", icon="gks", page="gks-lab.html", group=1, ang=135,
          who="Koreya: Global Korea Scholarship", chips=["3 trek", "54 dars"], lessons=54,
          text="Muvofiqlik M0 da toʻlovdan oldin tekshiriladi. Umumiy oʻzak va oʻz trekingiz: bakalavriat, magistratura yoki doktorantura.",
          why="Koreya hukumati stipendiyasi: muvofiqlik, hujjatlar va intervyu.", y=899000, m=99000, status="Kutish roʻyxati"),
-    dict(slug="usa-lab", name="USA Lab", icon="usa", page="usa-lab.html", group=1, ang=180,
+    dict(slug="usa-lab", name="USA dasturi", icon="usa", page="usa-lab.html", group=1, ang=180,
          who="AQSh: Global UGRAD, Fulbright, doktorantura", chips=["12 modul", "72 dars"], lessons=72,
          text="Uch moliyalashtirilgan yoʻl: muvofiqlik, insholar, intervyu va viza. B trek uchun toʻlov UGRAD sikli eʼlon qilingandan keyin.",
          why="AQShda moliyalashtirilgan oʻqishning uch yoʻli.", y=899000, m=99000, status="B trek: sikl kutilmoqda"),
-    dict(slug="daad-lab", name="DAAD Lab", icon="daad", page="daad-lab.html", group=1, ang=225,
+    dict(slug="daad-lab", name="DAAD dasturi", icon="daad", page="daad-lab.html", group=1, ang=225,
          who="Germaniya: magistratura va doktorantura", chips=["9 modul", "51 dars"], lessons=51,
          text="Germaniya akademik tizimi, ilmiy rahbarni oldindan topish, motivatsion xat va tadqiqot rejasi, DAAD portali va joʻnash.",
          why="Germaniya va DAAD: ilmiy rahbardan vizagacha.", y=899000, m=99000, status="Kutish roʻyxati"),
@@ -32,7 +32,7 @@ LABS = [
          who="Universitet talabalari, 18 yoshdan", chips=["10 modul", "54 dars"], lessons=54,
          text="Oʻqishni toʻxtatmasdan kichik, qonuniy biznes sinovi: muammo, birinchi mijoz, pul hisobi, huquqiy shakl va soliq.",
          why="Oʻqish bilan birga kichik, qonuniy biznes sinovi.", y=299000, m=29000, status="Ishlab chiqilmoqda"),
-    dict(slug="miggo", name="Musofir Lab", icon="musofir", page="musofir-lab.html", group=2, ang=315,
+    dict(slug="miggo", name="Musofir dasturi", icon="musofir", page="musofir-lab.html", group=2, ang=315,
          who="Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha", chips=["8 modul", "44 dars"], lessons=44,
          text="Rasmiy yoʻllar va firibgarlik belgilari. M0 bepul, roʻyxatdan oʻtib ochiladi. Kompas ish yoki viza topib bermaydi.",
          why="Xorijda faqat rasmiy yoʻl bilan ishlash va firibgarlikdan himoya.", y=499000, m=49000, status="M0 tayyorlanmoqda"),
@@ -222,13 +222,13 @@ def price_rows():
     return rows
 
 FAQ = [
-    ("Qachon boshlash mumkin?", "Hozir kutish roʻyxati ochiq. Lablar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beramiz. Har Labning M0 moduli bepul."),
-    ("Obuna qanday ishlaydi?", "Har Lab alohida obuna: yillik yoki oylik. Yillik reja bitta ariza siklini qamraydi. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi. Umrbod kirish rejasi yoʻq."),
-    ("Toʻlov qaytariladimi?", "Yoʻq. Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mos yoki mos emasligini bilasiz."),
+    ("Qachon boshlash mumkin?", "Hozir kutish roʻyxati ochiq. Dasturlar va onlayn toʻlov ishga tushganda roʻyxatdagilarga birinchi boʻlib xabar beramiz. Har dasturning M0 moduli bepul."),
+    ("Obuna qanday ishlaydi?", "Har dastur alohida obuna: yillik yoki oylik. Yillik reja bitta ariza siklini qamraydi. Oylik obunani istalgan oyda toʻxtatasiz, keyingi oy uchun pul yechilmaydi. Umrbod kirish rejasi yoʻq."),
+    ("Toʻlov qaytariladimi?", "Yoʻq. Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mos yoki mos emasligini bilasiz."),
     ("Darslar video formatdami?", "Asosiy format: matn, interaktiv vositalar va ish jadvallari. Har dars bir xil tuzilmada: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq."),
     ("Hujjatlarni oʻrnimga yozib berasizmi?", "Yoʻq. Kompas tuzilma, baholash mezoni va tahlil beradi; matnni oʻzingiz yozasiz. Qabul yoki stipendiya kafolati berilmaydi."),
-    ("18 yoshga toʻlmaganman. Qatnasha olamanmi?", "Ha: Bachelor Lab va GKS Lab bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi."),
-    ("Bir nechta Lab kerak boʻlsa-chi?", "Daraja Labi (Bachelor, Master, PhD) va davlat Labi (GKS, USA, DAAD) birga ishlatilishi mumkin; ikkinchi Lab uchun chegirma rejalashtirilgan."),
+    ("18 yoshga toʻlmaganman. Qatnasha olamanmi?", "Ha: Bakalavr dasturi va GKS dasturi bakalavriat treki maktab oʻquvchilari uchun. Obunani ota-ona yoki vasiy rasmiylashtiradi; pasport yoki attestat nusxalari yigʻilmaydi."),
+    ("Bir nechta dastur kerak boʻlsa-chi?", "Daraja dasturi (Bakalavr, Magistratura, PhD) va davlat dasturi (GKS, USA, DAAD) birga ishlatilishi mumkin; ikkinchi dastur uchun chegirma rejalashtirilgan."),
     ("Darslar qaysi tilda?", "Oʻzbek tilida. Xalqaro atamalar avval oʻzbekcha, keyin qavsda inglizcha beriladi, masalan: ilmiy loyiha taklifi (Research Proposal)."),
 ]
 
@@ -241,16 +241,16 @@ PAGE_JS = """
   function nf(n) { return String(Math.round(n)).replace(/\\B(?=(\\d{3})+(?!\\d))/g, "\\u00a0"); }
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // ── Kompas: ikki savol → Lab ──
+  // ── Kompas: ikki savol → dastur ──
   var ans = { who: "", goal: "" }, angle = 0;
   function pick() {
     var w = ans.who, g = ans.goal, note = "";
     if (!w || !g) return null;
     if (g === "ish") return { slug: "miggo" };
-    if (g === "biznes") { if (w === "maktab") return { slug: "bachelor-lab", note: "Tadbirkor Talaba Lab 18 yoshdan. Hozir Bachelor Lab mosroq." }; return { slug: "tadbirkor-talaba" }; }
+    if (g === "biznes") { if (w === "maktab") return { slug: "bachelor-lab", note: "Tadbirkor Talaba dasturi 18 yoshdan. Hozir Bakalavr dasturi mosroq." }; return { slug: "tadbirkor-talaba" }; }
     if (g === "korea") return { slug: "gks-lab" };
-    if (g === "usa") return w === "maktab" ? { slug: "bachelor-lab", note: "AQSh bakalavriatiga toʻliq qabul Bachelor Labda. USA Lab talabalar va bitiruvchilar uchun." } : { slug: "usa-lab" };
-    if (g === "germany") return w === "maktab" ? { slug: "bachelor-lab", note: "Germaniya bakalavriati (Studienkolleg bilan) Bachelor Labda. DAAD Lab magistratura va doktorantura uchun." } : { slug: "daad-lab" };
+    if (g === "usa") return w === "maktab" ? { slug: "bachelor-lab", note: "AQSh bakalavriatiga toʻliq qabul Bakalavr dasturida. USA dasturi talabalar va bitiruvchilar uchun." } : { slug: "usa-lab" };
+    if (g === "germany") return w === "maktab" ? { slug: "bachelor-lab", note: "Germaniya bakalavriati (Studienkolleg bilan) Bakalavr dasturida. DAAD dasturi magistratura va doktorantura uchun." } : { slug: "daad-lab" };
     return { slug: { maktab: "bachelor-lab", bakalavr: "master-lab", magistr: "phd-lab", ishchi: "master-lab" }[w] };
   }
   var dial = document.getElementById("dial"), needle = document.getElementById("needle"), res = document.getElementById("result");
@@ -359,12 +359,12 @@ def build():
     faq_html = "".join(f"<details><summary>{esc(q)}</summary><p>{a}</p></details>" for q, a in FAQ)
     css = BASE_CSS + EXTRA_CSS + POLISH_CSS + IDX_CSS
     h = head("Kompas Lab — xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik",
-             "Bachelor, Master, PhD, GKS, USA va DAAD Lablari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har Labda M0 bepul. Obuna: yillik yoki oylik.",
+             "Bakalavr, Magistratura, PhD, GKS, USA va DAAD dasturlari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har dasturda M0 bepul. Obuna: yillik yoki oylik.",
              "Kompas Lab", css)
     body = f'''<nav class="nav">
   <div class="wrap">
     <a href="index.html" class="logo"><div class="logo-m"><img src="img/3d/compass.webp" alt="" width="34" height="34"></div><span class="logo-t">Kompas Lab</span></a>
-    <div class="nav-links"><a href="#labs">Lablar</a><a href="#nega-lab">Qanday ishlaydi</a><a href="#solishtirish">Solishtirish</a><a href="#narx">Narxlar</a><a href="#savollar">Savollar</a></div>
+    <div class="nav-links"><a href="#labs">Dasturlar</a><a href="#nega-lab">Qanday ishlaydi</a><a href="#solishtirish">Solishtirish</a><a href="#narx">Narxlar</a><a href="#savollar">Savollar</a></div>
     <a href="login.html" class="btn btn-g btn-sm" style="margin-left:auto">Kirish</a>
     <button type="button" class="btn btn-p btn-sm" style="margin-left:0" data-wl="">Kutish roʻyxati</button>
   </div>
@@ -376,15 +376,15 @@ def build():
       <span class="motto">Kuzatuvdan kashfiyotga</span>
       <h1>Xorijiy universitet va stipendiyaga oʻzbek tilida tayyorlaning.</h1>
       <p class="lead">Kompas Lab STEM yoʻnalishidagi oʻquvchi va talabalar uchun onlayn dasturlar. Universitet va stipendiyani dalil bilan tanlaysiz, hujjatlarni <strong>oʻzingiz</strong> yozasiz. Har fakt rasmiy manba havolasi bilan beriladi.</p>
-      <div class="facts"><span class="fact">Har Labda <b>M0 bepul</b></span><span class="fact"><b>Oʻzbek</b> tilida</span><span class="fact">Rasmiy <b>manbalar</b></span><span class="fact">Obuna: <b>yillik</b> yoki <b>oylik</b></span></div>
-      <div class="finder" aria-label="Lab tanlash">
+      <div class="facts"><span class="fact">Har dasturda <b>M0 bepul</b></span><span class="fact"><b>Oʻzbek</b> tilida</span><span class="fact">Rasmiy <b>manbalar</b></span><span class="fact">Obuna: <b>yillik</b> yoki <b>oylik</b></span></div>
+      <div class="finder" aria-label="Dastur tanlash">
         <div class="fq"><b>1. Hozir kimsiz?</b><div class="chips">{chips("who", Q1)}</div></div>
         <div class="fq"><b>2. Maqsadingiz?</b><div class="chips">{chips("goal", Q2)}</div></div>
       </div>
     </div>
     <div>
       {dial_html()}
-      <div class="result" id="result" aria-live="polite"><p class="empty" id="rEmpty">Ikki savolga javob bering: kompas sizga mos Labni koʻrsatadi.</p><div class="note2" id="rNote" hidden></div>{result_blocks()}</div>
+      <div class="result" id="result" aria-live="polite"><p class="empty" id="rEmpty">Ikki savolga javob bering: kompas sizga mos dasturni koʻrsatadi.</p><div class="note2" id="rNote" hidden></div>{result_blocks()}</div>
     </div>
   </div>
 </header>
@@ -394,8 +394,8 @@ def build():
     <div class="stats">
       <div class="stat" id="stReg" hidden><b>0</b><span>kishi roʻyxatdan oʻtgan</span></div>
       <div class="stat" id="stWait" hidden><b>0</b><span>kishi kutish roʻyxatida</span></div>
-      <div class="stat"><b data-count="{len(LABS)}">{len(LABS)}</b><span>Lab: daraja, davlat va ish boʻyicha</span></div>
-      <div class="stat"><b data-count="{TOTAL_LESSONS}">{fmt(TOTAL_LESSONS)}</b><span>dars rejasi barcha Lablarda</span></div>
+      <div class="stat"><b data-count="{len(LABS)}">{len(LABS)}</b><span>Dastur: daraja, davlat va ish boʻyicha</span></div>
+      <div class="stat"><b data-count="{TOTAL_LESSONS}">{fmt(TOTAL_LESSONS)}</b><span>dars rejasi barcha dasturlarda</span></div>
     </div>
     <div class="stats-note" id="stNote" hidden><i></i><span id="stNoteT"></span></div>
   </div>
@@ -403,7 +403,7 @@ def build():
 
 <section class="alt" id="labs">
   <div class="wrap">
-    <div class="head"><h2>Lablar</h2><p class="sub">Daraja Labi umumiy akademik tayyorgarlikni beradi. Davlat Labi muayyan stipendiya tizimining talablarini qoʻshadi. Har Lab bepul M0 bilan boshlanadi.</p></div>
+    <div class="head"><h2>Dasturlar</h2><p class="sub">Daraja dasturi umumiy akademik tayyorgarlikni beradi. Davlat dasturi muayyan stipendiya tizimining talablarini qoʻshadi. Har dastur bepul M0 bilan boshlanadi.</p></div>
     {catalog()}
   </div>
 </section>
@@ -412,12 +412,12 @@ def build():
   <div class="wrap whylab">
     <div>
       {icon("bulb", "bulb", "")}
-      <h2>Nega «Lab»?</h2>
-      <p>Lab soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi.</p>
+      <h2>Nega «Dastur»?</h2>
+      <p>Dastur soʻzi laboratoriyadan olingan. Laboratoriyada bilim tajriba bilan olinadi: savol qoʻyiladi, sinab koʻriladi, natija oʻlchanadi.</p>
       <p>Kompas Lablari ham shu tartibda ishlaydi. Har dars Topshiriq bilan tugaydi, har modul bitta tayyor hujjat bilan yopiladi va hujjat baholash mezoni (rubrika) bilan tekshiriladi. Dastur oxirida qoʻlingizda ariza paketi boʻladi.</p>
     </div>
     <ol class="steps">
-      <li><b>Bepul M0</b><span>Lab nima beradi va nima bermaydi, kimga mos emasligi ochiq yozilgan.</span></li>
+      <li><b>Bepul M0</b><span>Dastur nima beradi va nima bermaydi, kimga mos emasligi ochiq yozilgan.</span></li>
       <li><b>Tayyorgarlik darajasi (Readiness Score)</b><span>100 ballik oʻzini oʻzi baholash. Natija “Bu siklga erta” boʻlsa, toʻlov oʻrniga boʻshliqlar roʻyxati va muqobil yoʻl beriladi.</span></li>
       <li><b>Modullar va topshiriqlar</b><span>6 oylik obunada barcha modullar birdaniga ochiq, oylikda har toʻlov bitta fazani ochadi, keyingisi navbatdagi toʻlov bilan. Har dars: Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq.</span></li>
       <li><b>Tayyor hujjatlar</b><span>CV, xatlar, insho yoki ilmiy loyiha taklifi. Matnni siz yozasiz, Kompas tuzilma va mezon beradi.</span></li>
@@ -433,7 +433,7 @@ def build():
         <label for="amt">Agentlik narxi</label>
         <div class="row"><input id="amt" type="text" inputmode="numeric" autocomplete="off" placeholder="masalan, 15 000 000"><div class="seg" role="group" aria-label="Valyuta"><button type="button" data-cur="uzs" aria-pressed="true">soʻm</button><button type="button" data-cur="usd" aria-pressed="false">$</button></div></div>
         <div class="quick"><span>Tez kiritish:</span><button type="button" data-amt="5000000">5 mln</button><button type="button" data-amt="15000000">15 mln</button><button type="button" data-amt="40000000">40 mln</button></div>
-        <label for="cmpLab">Qaysi Lab bilan</label>
+        <label for="cmpLab">Qaysi dastur bilan</label>
         <select id="cmpLab">{cmp_opts}</select>
       </div>
       <div class="out" aria-live="polite">
@@ -446,18 +446,18 @@ def build():
       <div><b>Farqi nimada</b>Koʻp agentliklar hujjatni siz bilan birga tayyorlaydi yoki topshirishga yordam beradi. Kompas hujjatni oʻrningizga yozmaydi va topshirmaydi.</div>
       <div><b>Sizda nima qoladi</b>Kompasda oʻrgangan usul oʻzingizda qoladi: keyingi ariza, stipendiya yoki ish uchun ham ishlatasiz.</div>
       <div><b>Agentlik tanlasangiz</b>Shartnoma, litsenziya va “kafolat” vaʼdasini tekshiring. <a href="https://raqobat.gov.uz/uz/xorijda-ishlash-va-oqish-uchun-oson-borishni-vada-qilayotgan-konsalting-firmalardan-ogoh-boling/" target="_blank" rel="noopener">Raqobat qoʻmitasi ogohlantirishi</a></div>
-      <div><b>Hisob qanday</b>Narx Lab 6 oylik obunasiga boʻlinadi. Dollar Markaziy bank kursida (2026-10-06): 1 $ = {fmt(round(USD))} soʻm.</div>
+      <div><b>Hisob qanday</b>Narx dastur 6 oylik obunasiga boʻlinadi. Dollar Markaziy bank kursida (2026-10-06): 1 $ = {fmt(round(USD))} soʻm.</div>
     </div>
   </div>
 </section>
 
 <section id="narx">
   <div class="wrap">
-    <div class="head"><h2>Narxlar</h2><p class="sub">Obuna: yillik yoki oylik. M0 hamma Labda bepul. 6 oylik obuna bitta ariza siklini qamraydi.</p></div>
+    <div class="head"><h2>Narxlar</h2><p class="sub">Obuna: yillik yoki oylik. M0 hamma dasturda bepul. 6 oylik obuna bitta ariza siklini qamraydi.</p></div>
     <div class="pay-status"><span>⏳</span><span><b>Onlayn toʻlov hali ochilmagan.</b> Kutish roʻyxatidagilarga ochilish haqida birinchi boʻlib xabar beramiz. Hozir hech qanday toʻlov qabul qilinmaydi.</span></div>
     <div class="ptop"><div class="seg" role="group" aria-label="Davr"><button type="button" data-period="y" aria-pressed="true">Yillik</button><button type="button" data-period="m" aria-pressed="false">Oylik</button></div></div>
-    <div class="tblwrap"><table class="cmp ptbl" id="ptbl" style="margin-top:0"><thead><tr><th>Lab</th><th>Narx</th><th>Holat</th></tr></thead><tbody>{price_rows()}</tbody></table></div>
-    <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har Labning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz.</div>
+    <div class="tblwrap"><table class="cmp ptbl" id="ptbl" style="margin-top:0"><thead><tr><th>Dastur</th><th>Narx</th><th>Holat</th></tr></thead><tbody>{price_rows()}</tbody></table></div>
+    <div class="refund"><b>Toʻlov qaytarilmaydi.</b> Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz.</div>
     <div class="rules">
       <div><b>Bekor qilish</b>Obunani istalgan vaqtda toʻxtatasiz: keyingi davr uchun pul yechilmaydi, toʻlangan davr oxirigacha kirish saqlanadi.</div>
       <div><b>18 yoshgacha</b>Obunani va toʻlovni ota-ona yoki vasiy rasmiylashtiradi. Ota-onaga jarayon haqida qisqa hisobot beriladi.</div>
@@ -471,12 +471,12 @@ def build():
   <div class="wrap rule-box">
     <div>
       <h2>Ishlash qoidalari</h2>
-      <p>Har Lab bitta yozma reja asosida quriladi. Metod va mantiq darsda turadi. Muddat, toʻlov, kvota va stipendiya summasi alohida sahifada rasmiy havola va tekshiruv sanasi bilan beriladi va har chorakda yangilanadi.</p>
+      <p>Har dastur bitta yozma reja asosida quriladi. Metod va mantiq darsda turadi. Muddat, toʻlov, kvota va stipendiya summasi alohida sahifada rasmiy havola va tekshiruv sanasi bilan beriladi va har chorakda yangilanadi.</p>
       <p>Toʻqima statistika, tasdiqlanmagan sharh va natija vaʼdasi ishlatilmaydi. Talaba natijalari faqat uning yozma roziligi va tasdiqlovchi dalil bilan eʼlon qilinadi.</p>
       <div class="who2"><b>Dasturlarni kim tuzadi</b><ul><li>Asoschi geofizik, University of Leeds doktoranti</li><li>Janubiy Koreyada oʻqigan, Oʻzbekistonda universitetda dars bergan</li><li>Oʻzi oʻtmagan bosqichlar boʻyicha tajriba daʼvo qilinmaydi</li></ul></div>
     </div>
     <div class="model-list">
-      <div class="model"><b>M0 bepul</b><span>Har Lab bepul qaror moduli bilan boshlanadi: sizga mos yoki mos emasligini toʻlovdan oldin bilasiz.</span></div>
+      <div class="model"><b>M0 bepul</b><span>Har dastur bepul qaror moduli bilan boshlanadi: sizga mos yoki mos emasligini toʻlovdan oldin bilasiz.</span></div>
       <div class="model"><b>Rasmiy manba</b><span>Muddat, toʻlov va talablar rasmiy havola va tekshiruv sanasi bilan.</span></div>
       <div class="model"><b>Siz yozasiz</b><span>Insho, xat va CV oʻrningizga yozilmaydi. Kompas tuzilma, mezon va tahlil beradi.</span></div>
       <div class="model bad"><b>Kafolat yoʻq</b><span>Qabul yoki stipendiya vaʼda qilinmaydi.</span></div>
@@ -494,7 +494,7 @@ def build():
 <section class="dark cta">
   <div class="wrap">
     <h2>Bepul M0 dan boshlang.</h2>
-    <p class="sub">Avval Lab sizga mosligini tekshiring, keyin qaror qiling.</p>
+    <p class="sub">Avval dastur sizga mosligini tekshiring, keyin qaror qiling.</p>
     <div class="cta-row" style="justify-content:center">
       <button type="button" class="btn btn-p" data-wl="">Kutish roʻyxatiga yozilish</button>
       <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">Telegramda savol berish</a>
@@ -508,8 +508,8 @@ def build():
     <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
     {icon("bell", "i3d", "")}
     <h3 id="wlT" style="margin-top:6px">Kutish roʻyxati</h3>
-    <p>Lab va email manzilingizni qoldiring: ochilishi bilan xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
-    <select id="wlL" aria-label="Lab"><option value="">Labni tanlang</option>{opt_html}</select>
+    <p>Dastur va email manzilingizni qoldiring: ochilishi bilan xabar beramiz. Email boshqa maqsadda ishlatilmaydi.</p>
+    <select id="wlL" aria-label="Dastur"><option value="">Dasturni tanlang</option>{opt_html}</select>
     <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
     <div id="wlMsg"></div>
     <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>

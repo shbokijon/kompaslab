@@ -2,7 +2,7 @@ from common import CA, UCAS_PS, HOL, STD
 
 MOD = dict(
     title="Darsdan tashqari faoliyat",
-    desc="Bachelor Lab M7: darsdan tashqari faoliyat turlari, STEM uchun kuchli faoliyatlar, ijtimoiy faoliyat va yetakchilik, yozgi dasturlar, faoliyatlar ro'yxatini yozish. Natija: 10 yozuvli faoliyatlar ro'yxati va izchil hikoya xaritasi.",
+    desc="Bakalavr dasturi M7: darsdan tashqari faoliyat turlari, STEM uchun kuchli faoliyatlar, ijtimoiy faoliyat va yetakchilik, yozgi dasturlar, faoliyatlar ro'yxatini yozish. Natija: 10 yozuvli faoliyatlar ro'yxati va izchil hikoya xaritasi.",
     lead="Darsdan tashqari faoliyat sizning vaqtingizni qanday ishlatishingizni ko'rsatadi. Ko'p faoliyat emas, chuqur va davomli faoliyat kuchli. Bu modulda faoliyatlaringizni saralaysiz va ularni Common App formatida yozasiz.",
     hero="seedling", weeks="1–2", next="M8 Tavsiya xatlari", next_href="bachelor-lab-m8.html",
     goals=[("seedling", "Faoliyatlar ro'yxati", "10 yozuv, har biri qisqa tavsif bilan"),

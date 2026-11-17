@@ -2,7 +2,7 @@ from common import U27, G26, SIK, APO, TOPIK, STD
 
 MOD = dict(
     title="Hujjatlar infratuzilmasi",
-    desc="GKS Lab M1: GKS hujjatlari xaritasi, apostil va tarjima, GPA talabi va konvertatsiya, TOPIK va ingliz tili strategiyasi. Natija: hujjatlar nazorat jadvali.",
+    desc="GKS dasturi M1: GKS hujjatlari xaritasi, apostil va tarjima, GPA talabi va konvertatsiya, TOPIK va ingliz tili strategiyasi. Natija: hujjatlar nazorat jadvali.",
     lead="GKS arizasi bitta insho emas, o'nlab varaqdan iborat to'plam. Bu modulda yo'riqnomadagi har hujjatni bitta jadvalga tushirasiz, legallashtirish zanjirini rejalaysiz, bahoingiz talabga mosligini tekshirasiz va til strategiyasini tanlaysiz.",
     hero="scroll", weeks="2–3", next="Universitet va dastur tanlash",
     goals=[("scroll", "Hujjatlar nazorat jadvali", "har hujjat, manbasi, holati va muddati bilan"),

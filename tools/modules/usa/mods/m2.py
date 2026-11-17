@@ -2,13 +2,13 @@ from common import EDUSA_UG, ED_AID, OSU, SJSU, KSU, SEVIS, GMU, HOL, STD
 
 MOD = dict(
     title="Xarajat va pul oqimi",
-    desc="USA Lab M2: AQSh universitetining to'liq narxi (Cost of Attendance), I-20 uchun moliyaviy dalil, xalqaro talabaga ochiq va yopiq pul manbalari, ehtiyojga va natijaga asoslangan yordam farqi, arzon yo'llar va oilaviy byudjet chegarasi. Natija: AQSh pul xaritasi.",
+    desc="USA dasturi M2: AQSh universitetining to'liq narxi (Cost of Attendance), I-20 uchun moliyaviy dalil, xalqaro talabaga ochiq va yopiq pul manbalari, ehtiyojga va natijaga asoslangan yordam farqi, arzon yo'llar va oilaviy byudjet chegarasi. Natija: AQSh pul xaritasi.",
     lead="AQShda qabul xati yetarli emas: I-20 olish uchun birinchi yil pulini hujjat bilan ko'rsatasiz. Bu modulda narx qayerdan kelishini, qaysi pul manbalari sizga yopiq ekanini va oilangiz yiliga qancha bera olishini raqam bilan aniqlaysiz.",
     hero="money", weeks="1–2", next="M3 Yordam beradigan universitetlarni topish", next_href="usa-lab-o.html?m=3",
     goals=[("money", "AQSh pul xaritasi", "narx, oila chegarasi, kerakli yordam ulushi"),
            ("scroll", "I-20 moliyaviy dalil rejasi", "qaysi hujjat qabul qilinadi, qaysi biri yo'q"),
            ("compass", "Yo'l xulosasi", "to'liq yordam, qisman yordam yoki arzon yo'l")],
-    warn=f"Bu modul faqat AQSh pul mexanizmini o'rgatadi. Mamlakatlararo umumiy xarajat modeli va 4 yillik reja Bachelor Lab M12 da. Summalar har yili o'zgaradi; {HOL} universitet sahifasidan oling. Kompas Lab moliyaviy maslahatchi emas; qarorni oila bilan qabul qiling.",
+    warn=f"Bu modul faqat AQSh pul mexanizmini o'rgatadi. Mamlakatlararo umumiy xarajat modeli va 4 yillik reja Bakalavr dasturi M12 da. Summalar har yili o'zgaradi; {HOL} universitet sahifasidan oling. Kompas Lab moliyaviy maslahatchi emas; qarorni oila bilan qabul qiling.",
     lessons=[
         dict(t="To'liq narx: Cost of Attendance", short="Narx", min=30, kind="🧮 Hisob", ic="money",
              hook="O'qish to'lovi ([[tuition]]) universitet so'raydigan pulning faqat bir qismi. AQSh universitetlari to'liq narxni [[Cost of Attendance]] deb e'lon qiladi va yordam ham, I-20 ham shu summaga qarab hisoblanadi.",
@@ -95,7 +95,7 @@ MOD = dict(
 <tr><td>50 foizdan ko'p</td><td>Faqat xalqaro talabaga to'liq ehtiyojni qoplaydigan universitetlar (M3) yoki davlat dasturlari; parallel boshqa mamlakat</td></tr>
 </tbody></table></div>
 <p>EducationUSA xarajatni kamaytirish uchun turli davlat va xususiy universitetlarni, arzonroq hududlarni (janub, O'rta G'arb, qishloq joylar) va ikki yillik kollejdan o'tish yo'lini ko'rib chiqishni maslahat beradi.</p>
-<div class="box warn">Kerakli yordam ulushi juda katta bo'lsa, AQSh yo'lini boshqa mamlakat bilan parallel olib boring. Kompas bunda boshqa Labni ko'rsatadi.</div>""",
+<div class="box warn">Kerakli yordam ulushi juda katta bo'lsa, AQSh yo'lini boshqa mamlakat bilan parallel olib boring. Kompas bunda boshqa dasturni ko'rsatadi.</div>""",
              take="Oila chegarasini dollarda, yillik raqam bilan aniqlang. Kerakli yordam ulushi yo'lni belgilaydi: arzon yo'l, natijaga asoslangan grant yoki to'liq ehtiyojni qoplaydigan universitet.",
              task="<ul><li>Oila bilan suhbatdan keyin yillik maksimal summani yozing.</li><li>Bitta universitet uchun kerakli yordam ulushini hisoblang va yo'l xulosasini yozing.</li></ul>",
              ph="Oila chegarasi: yiliga ... USD, ... yil. ... universiteti narxi ... → kerakli yordam ...%. Xulosa: ..."),

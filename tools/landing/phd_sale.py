@@ -1,4 +1,4 @@
-# PhD Lab sotuvda (2026-11-11): sahifalardagi "Kutish roʻyxati" matnlarini sotuv holatiga keltiradi.
+# PhD dasturi sotuvda (2026-11-11): sahifalardagi "Kutish roʻyxati" matnlarini sotuv holatiga keltiradi.
 # split.py dan keyin ishlaydi (build.py chaqiradi); qayta ishga tushirish xavfsiz.
 #   python3 tools/landing/phd_sale.py
 import re
@@ -13,7 +13,7 @@ CTA_NEW = '<a class="btn btn-g" href="phd-lab-narxlar.html" data-snd="nav">Narxl
 CTA2_OLD = '<button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</button>'
 PAY_OLD = re.compile(r'(<span data-paystatus="phd-lab">).*?(</span></div>)', re.S)
 PAY_NEW = r'\1<b>Toʻlov Click orqali.</b> Toʻlov sahifasida tarif, aniq summa va ochiladigan modullar koʻrsatiladi; kirish toʻlov tasdiqlangan zahoti ochiladi.\2'
-LABEL = {"monthly": "Oylik obunani toʻlash", "6m": "6 oylik obunani toʻlash"}
+LABEL = {"monthly": "1 bosqichni toʻlash", "6m": "Toʻliq dasturni toʻlash"}
 
 
 def buy(m):

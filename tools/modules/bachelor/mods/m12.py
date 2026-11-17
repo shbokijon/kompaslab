@@ -2,7 +2,7 @@ from common import CSS, CDS, FTC, UK_VISA, DE_VISA, US_SEVIS, HOL, STD
 
 MOD = dict(
     title="Universitet grantlari va moliyaviy reja",
-    desc="Bachelor Lab M12: AQSh moliyaviy yordami (need-blind, need-aware, CSS Profile), universitet stipendiyalari, to'liq xarajat modeli, 4 yillik moliyaviy reja, firibgarlikdan himoya. Natija: 4 yillik moliyaviy reja.",
+    desc="Bakalavr dasturi M12: AQSh moliyaviy yordami (need-blind, need-aware, CSS Profile), universitet stipendiyalari, to'liq xarajat modeli, 4 yillik moliyaviy reja, firibgarlikdan himoya. Natija: 4 yillik moliyaviy reja.",
     lead="Qabul xati faqat yarim natija: to'lay olmasangiz, o'qishga bora olmaysiz. Bu modulda universitetlar yordamini qanday so'rashni, haqiqiy 4 yillik xarajatni va oila bilan muhokama qilinadigan moliyaviy rejani tuzasiz.",
     hero="money", weeks="2", next="M13 Ariza platformalari", next_href="bachelor-lab-m13.html",
     goals=[("money", "4 yillik moliyaviy reja", "har yil: xarajat, qoplanadigan qism, bo'shliq, zaxira"),

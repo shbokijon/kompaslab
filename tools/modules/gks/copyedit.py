@@ -1,4 +1,4 @@
-"""GKS Lab matn tahriri: formatlar va kodni oʻzgartirmasdan koʻrinadigan matnni tozalash.
+"""GKS dasturi matn tahriri: formatlar va kodni oʻzgartirmasdan koʻrinadigan matnni tozalash.
 Yangi alifboga oʻtkazish js/alifbo.js vazifasi; manba eski lotin yozuvida qoladi.
 """
 import json

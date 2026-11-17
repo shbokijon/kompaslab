@@ -2,7 +2,7 @@ from common import KCL, LEEDS, UKRIO, HOL, STD
 
 MOD = dict(
     title="Ilmiy loyiha taklifi va metodologiya",
-    desc="PhD Lab M4: ilmiy loyiha taklifining (Research Proposal) vazifasi, fon va ahamiyat, savol va vazifalar, usul va tekshiruv, ish rejasi, etika va ma'lumot, tahrir. Natija: taklifning uch versiyasi (v1–v3).",
+    desc="PhD dasturi M4: ilmiy loyiha taklifining (Research Proposal) vazifasi, fon va ahamiyat, savol va vazifalar, usul va tekshiruv, ish rejasi, etika va ma'lumot, tahrir. Natija: taklifning uch versiyasi (v1–v3).",
     lead="Ilmiy loyiha taklifini o'qigan odam savolingizni, uni <b>qanday tekshirishingizni</b> va qaysi xavflarni ko'rganingizni tushunishi kerak. Bu modulda savol, dalil, usul, xavf va kutilgan hissani bitta izchil hujjatga yig'asiz va uni baholash mezoni bo'yicha uch marta tahrir qilasiz.",
     hero="scroll", weeks="3–4", next="M5 Akademik profil va ariza hujjatlari", next_href="phd-lab-o.html?m=5",
     goals=[("scroll", "Ilmiy loyiha taklifi (Research Proposal)", "v1 dan v3 gacha, dastur talab qilgan hajmda"),

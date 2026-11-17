@@ -41,7 +41,7 @@ L2 = dict(t="Onlayn ilmiy suhbat", short="Suhbat", min=40, kind="🎙 Mashq", ic
 
 MOD = dict(
     title="Professor bilan muloqot va yakunlash",
-    desc="GKS Lab M5-D (doktorantura): professor tahlili va ilmiy xat, onlayn ilmiy suhbat, shaxsiy bayonot va izchillik auditi, intervyu, natija va jo'nash. Natija: 3 professorga xat, reja konspekti, suhbat tayyorgarligi, yakuniy paket.",
+    desc="GKS dasturi M5-D (doktorantura): professor tahlili va ilmiy xat, onlayn ilmiy suhbat, shaxsiy bayonot va izchillik auditi, intervyu, natija va jo'nash. Natija: 3 professorga xat, reja konspekti, suhbat tayyorgarligi, yakuniy paket.",
     lead="Oxirgi modulda professor bilan aloqa, shaxsiy bayonot va yakuniy paket birlashadi. Hamma hujjatlardagi faktlar bir xil bo'lishi va intervyuda har jumlani himoya qila olishingiz kerak.",
     hero="bell", weeks="3", next="", next_href="",
     goals=[("telescope", "3 professorga xat va reja konspekti", "har biri uning ishiga texnik izoh bilan"),

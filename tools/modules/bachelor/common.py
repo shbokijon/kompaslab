@@ -1,4 +1,4 @@
-# Bachelor Lab M1–M16: umumiy manba havolalari. Tekshirildi: 2026-10-31.
+# Bakalavr dasturi M1–M16: umumiy manba havolalari. Tekshirildi: 2026-10-31.
 # Matnda oddiy apostrof (') yoziladi; engine.fix() uni U+02BB / U+02BC ga aylantiradi.
 def a(url, text):
     return f'<a href="{url}" target="_blank" rel="noopener">{text}</a>'

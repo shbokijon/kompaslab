@@ -2,13 +2,13 @@ from common import EDUSA_GR, PRINCETON_MS, BUFFALO, DUKE, BU, NSF_GRFP, CGS, HOL
 
 MOD = dict(
     title="Magistratura va PhD moliyasi",
-    desc="USA Lab M7: AQShda magistratura va PhD moliyalashtirishi farqi, PhD moliya paketi (stipendiya, o'qish to'lovidan ozod qilish, sug'urta, TA va RA), kafedra sahifasini o'qish, xalqaro talabaga yopiq tashqi grantlar, takliflarni solishtirish va 15-aprel qarori. Natija: moliya paketi taqqoslagichi.",
+    desc="USA dasturi M7: AQShda magistratura va PhD moliyalashtirishi farqi, PhD moliya paketi (stipendiya, o'qish to'lovidan ozod qilish, sug'urta, TA va RA), kafedra sahifasini o'qish, xalqaro talabaga yopiq tashqi grantlar, takliflarni solishtirish va 15-aprel qarori. Natija: moliya paketi taqqoslagichi.",
     lead="AQShda PhD ko'pincha ish kabi moliyalashtiriladi: kafedra o'qish to'lovini qoplaydi va oylik beradi. Magistratura esa ko'pincha o'z hisobidan. Bu modulda shu farqni hisobga olib dasturlarni tanlaysiz va takliflarni raqam bilan solishtirasiz.",
     hero="phd", weeks="2", next="M8 Viza, maqom va ishlash huquqi", next_href="usa-lab-o.html?m=8",
     goals=[("chart", "Moliya paketi taqqoslagichi", "2 taklif: oylik sof qoldiq"),
            ("memo", "Kafedra moliyasi jadvali", "har kafedra: yillar, summa, majburiyat, muddat"),
            ("shield", "Grant muvofiqlik filtri", "xalqaro talabaga yopiq grantlarni chiqarish")],
-    warn=f"Ilmiy rahbar tanlash, professorga xat, ilmiy loyiha taklifi va maqsad bayonnomasi PhD Lab M2–M5 va Master Lab M4–M6 da. Bu modul faqat AQSh moliyalashtirish mexanizmi. Summalar {HOL}; kafedra sahifasidan qayta tekshiring.",
+    warn=f"Ilmiy rahbar tanlash, professorga xat, ilmiy loyiha taklifi va maqsad bayonnomasi PhD dasturi M2–M5 va Magistratura dasturi M4–M6 da. Bu modul faqat AQSh moliyalashtirish mexanizmi. Summalar {HOL}; kafedra sahifasidan qayta tekshiring.",
     lessons=[
         dict(t="Magistratura va PhD: pul qayerdan", short="Farq", min=25, kind="⚖️ Farq", ic="phd",
              hook="Bir xil universitetning bir xil kafedrasida PhD talabasi oylik oladi, magistratura talabasi esa o'qish to'lovini o'zi to'laydi. Bu farqni bilmay magistraturaga ariza bersangiz, qabul xati bilan birga katta hisob ham keladi.",
@@ -49,7 +49,7 @@ MOD = dict(
              body=f"""<h4>10 savollik tekshiruv</h4>
 <ol><li>PhD qabul qilinganlarning hammasi moliyalashtiriladimi?</li><li>Necha yil kafolatlanadi?</li><li>Stipendiya summasi va davri (9 yoki 12 oy)?</li><li>Xalqaro talabaga bir xil paketmi?</li><li>GRE talab qilinadimi, ixtiyoriymi yoki qabul qilinmaydimi?</li><li>Ingliz tili testi va minimal ball?</li><li>Ariza to'lovi va undan ozod qilish tartibi?</li><li>Muddat (kafedra muddati universitet muddatidan oldin bo'lishi mumkin)?</li><li>Professor bilan oldindan bog'lanish tavsiya qilinadimi?</li><li>Ichki [[fellowship]] uchun alohida ariza kerakmi?</li></ol>
 <h4>Vaqt va professorlar</h4>
-<p>EducationUSA: stipendiya va grant muddatlari dastur boshlanishidan 18 oy oldin bo'lishi mumkin; professorlar ko'pincha grant va moliyalashtirish oluvchilarni tanlashda qatnashadi, shuning uchun kafedra professorlari bilan bog'lanish foydali. Professorga xat yozish usuli PhD Lab M3 da.</p>
+<p>EducationUSA: stipendiya va grant muddatlari dastur boshlanishidan 18 oy oldin bo'lishi mumkin; professorlar ko'pincha grant va moliyalashtirish oluvchilarni tanlashda qatnashadi, shuning uchun kafedra professorlari bilan bog'lanish foydali. Professorga xat yozish usuli PhD dasturi M3 da.</p>
 <div class="box warn">Bu 10 savoldan birortasiga sahifada javob bo'lmasa, kafedraning [[graduate coordinator]] manziliga qisqa, aniq savol yozing. Javobni saqlang.</div>
 <div class="srcs">Manba: {EDUSA_GR}. {HOL}.</div>""",
              take="Har kafedrada 10 savolga javob toping: moliya kafolati, yillar, summa, xalqaro talaba, GRE, til, to'lov, muddat, professor, fellowship.",

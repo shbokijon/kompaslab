@@ -54,7 +54,7 @@
     if (!d.parentNode) document.body.appendChild(d);
   }
   // Faqat tizimga kirganlarga (M0 va darslar shu holatda ochiladi)
-  // window.KOMPAS_PROTECT_ALL = true boʻlsa (Lab dastur va modul sahifalari), suv belgisi hammaga
+  // window.KOMPAS_PROTECT_ALL = true boʻlsa (dastur sahifalari va modullar), suv belgisi hammaga
   function start() {
     if (window.KOMPAS_PROTECT_ALL) { watermark("kompaslab.uz"); return; }
     var sb = window.supabase;
