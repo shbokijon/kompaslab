@@ -51,7 +51,7 @@
     nav: function () { sweep(3200, 1100, 0.16, 0.05); note(523.25, 0.02, 0.12, "sine", 0.045); },
     // Keyingi dars: yuqoriga koʻtariluvchi ikki nota
     turn: function () { sweep(1400, 3600, 0.18, 0.045); note(659.25, 0.03, 0.12, "triangle", 0.06); note(987.77, 0.1, 0.18, "sine", 0.05); },
-    // 4K yoʻli (bosh sahifa): har bekat yuqoriroq nota (pentatonika), yoʻl boʻylab shitirlash, oxirida akkord
+    // K4 yoʻli (bosh sahifa): har bekat yuqoriroq nota (pentatonika), yoʻl boʻylab shitirlash, oxirida akkord
     k1: function () { sweep(900, 1800, 0.22, 0.04); note(392, 0.04, 0.3, "triangle", 0.11); note(784, 0.06, 0.4, "sine", 0.05); },
     k2: function () { sweep(1000, 2100, 0.22, 0.04); note(440, 0.04, 0.3, "triangle", 0.11); note(880, 0.06, 0.4, "sine", 0.05); },
     k3: function () { sweep(1100, 2400, 0.22, 0.04); note(523.25, 0.04, 0.3, "triangle", 0.1); note(1046.5, 0.06, 0.4, "sine", 0.045); },

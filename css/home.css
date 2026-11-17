@@ -673,3 +673,6 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .mcalc .res .kl-i{display:grid;font-size:13px;color:var(--muted);}
 .mcalc .res .mc-res[open] .kl-i{color:#fff;}
 .mcalc .res #mcB{display:inline;font-size:inherit;color:inherit;}
+
+/* K4 yoʻli: menyudan kelinganda sarlavha qotirilgan menyu ostida qolmasin (2026-11-17) */
+#yol-k4{scroll-margin-top:calc(var(--kl-top,0px) + var(--kl-nav,62px) + var(--kl-tabs,0px));}

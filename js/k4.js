@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════
-//  KOMPAS LAB — k4.js (2026-10-30): bosh sahifadagi "4K yoʻli" animatsiyasi
+//  KOMPAS LAB — k4.js (2026-10-30): bosh sahifadagi "K4 yoʻli" animatsiyasi
 //  · Kompas strelkasi bekatlar boʻylab yuradi: Kirish → Ketish → Kampus → Karyera.
 //    Tutash chiziq tayyor qism (1–2), uzuq chiziq rejadagi qism (2–4).
 //  · Boʻlim ekranga kirganda bir marta oʻynaydi; bekat yoki kartani bosish strelkani oʻsha joyga olib boradi.
@@ -8,7 +8,7 @@
 //  · prefers-reduced-motion: harakatsiz, hamma bekat darhol ochiq.
 // ═══════════════════════════════════════════════════════════════
 (function () {
-  var sec = document.getElementById("yol-4k");
+  var sec = document.getElementById("yol-k4");
   if (!sec) return;
   var stage = sec.querySelector(".k4x-stage"), svg = sec.querySelector(".k4x-svg");
   var base = svg.querySelector(".k4x-base"), done = svg.querySelector(".k4x-done"), plan = svg.querySelector(".k4x-plan"), mask = svg.querySelector(".k4x-mask");

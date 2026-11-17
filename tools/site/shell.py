@@ -12,6 +12,7 @@ import re
 SITE = "https://www.kompaslab.uz"
 TABS = [
     ("index.html#labs", "Dasturlar", "labs", "compass"),
+    ("index.html#yol-k4", "K4 yo'li", "k4", "seedling"),
     ("mamlakatlar.html", "Qayerga uchamiz?", "mamlakatlar", "plane"),
     ("master-planner.html", "Bepul reja", "reja", "calendar"),
     ("qanday-ishlaydi.html", "Qanday ishlaydi", "qanday", "telescope"),
