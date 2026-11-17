@@ -1,143 +1,251 @@
 // ═══════════════════════════════════════════════════════════════
-//  KOMPAS LAB — mamlakatlar.js (2026-11-17)
-//  mamlakatlar.html dagi dunyo xaritasi (SVG, kutubxonasiz).
-//  Chegaralar: data/globe.json (tools/globe/build_globe.py, Natural Earth 1:110m).
-//  Raqamlar sahifaning oʻzida (details.mx-c), sozlama #mx-cfg (build_site.py yozadi).
-//  Qatlamlar: "atlas" — maʼlumot bor mamlakatlar; "flow" — 2025-yilda Oʻzbekistondan
-//  oʻqishga ketganlar (top-10). Tanlov localStorage da saqlanmaydi.
+//  KOMPAS LAB — mamlakatlar.js (2026-11-17, v2)
+//  mamlakatlar.html: SVG dunyo xaritasi (kutubxonasiz) + mamlakat kartasi.
+//  Chegaralar: data/globe.json (Natural Earth 1:110m). Raqamlar: #mx-cfg
+//  (tools/atlas/build_site.py, manba tools/atlas/mamlakatlar_data.py).
+//  Xarita qatlamlari (doira + raqam): talabalar | flow (2025 Oʻzbekistondan) | qs.
+//  Hudud: Dunyo / Yevropa / Osiyo (viewBox animatsiyasi).
+//  Karta: 3 ta asosiy raqam (sanab chiqadi) + boʻlim tablari, izoh ⓘ ostida.
+//  prefers-reduced-motion: animatsiyasiz. Tanlov saqlanmaydi.
 // ═══════════════════════════════════════════════════════════════
 (function () {
-  var root = document.getElementById("mxMap");
-  var cfgEl = document.getElementById("mx-cfg");
-  if (!root || !cfgEl) return;
-  var CFG = JSON.parse(cfgEl.textContent);
+  var root = document.getElementById("mxMap"), cfgEl = document.getElementById("mx-cfg"), card = document.getElementById("mxCard");
+  if (!root || !cfgEl || !card) return;
+  var C = JSON.parse(cfgEl.textContent);
   var W = 1000, LAT0 = 84, LAT1 = -58, H = Math.round((LAT0 - LAT1) / 360 * W);
   var NS = "http://www.w3.org/2000/svg";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var tip = document.getElementById("mxTip"), legend = document.getElementById("mxLegend");
-  var layer = "atlas", sel = null, shapes = {}, centers = {}, svg, arc, gMap;
+  var ZOOM = { world: [0, 0, W, H], eu: box(-13, 34, 33, 62), as: box(52, -12, 150, 56) };
+  var homeDot, layer = "talabalar", sel = null, tab = null, shapes = {}, svg, gMap, gBub, arc, plane, vb = ZOOM.world.slice(), anim = 0, planeRaf = 0;
 
   function px(lon, lat) { return [(lon + 180) / 360 * W, (LAT0 - Math.max(LAT1, Math.min(LAT0, lat))) / 360 * W]; }
+  function box(lo0, la0, lo1, la1) { var a = px(lo0, la1), b = px(lo1, la0); return [a[0], a[1], b[0] - a[0], b[1] - a[1]]; }
   function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
   function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function short(n) {
+    if (n >= 1e6) return (Math.round(n / 1e4) / 100).toString().replace(".", ",") + " mln";
+    if (n >= 1e4) return Math.round(n / 1000) + " ming";
+    return fmt(n);
+  }
   function conv(t) { return window.KAlifbo && window.KAlifbo.conv ? window.KAlifbo.conv(t) : t; }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function snd(n) { if (window.KSfx && KSfx.play) try { KSfx.play(n); } catch (e) {} }
+  function isoOf(t) {
+    for (var i = 0; i < 3 && t && t.getAttribute; i++, t = t.parentNode) { var v = t.getAttribute("data-iso"); if (v) return v; }
+    return null;
+  }
 
+  // ---------------------------------------------------------- xarita
   function build(j) {
-    var paths = {}, box = {};
+    var paths = {};
     j.r.forEach(function (f) {
-      var iso = j.c[f[0]], x = 0, y = 0, d = "", prev = null, bb = [1e9, 1e9, -1e9, -1e9], n = 0;
+      var iso = j.c[f[0]], x = 0, y = 0, d = "", prev = null;
       for (var k = 1; k < f.length; k += 2) {
         x += f[k]; y += f[k + 1];
-        var lon = x / 10, lat = y / 10, p = px(lon, lat);
+        var lon = x / 10, p = px(lon, y / 10);
         d += (prev === null || Math.abs(lon - prev) > 180 ? "M" : "L") + p[0].toFixed(1) + " " + p[1].toFixed(1);
-        prev = lon; n++;
-        bb[0] = Math.min(bb[0], p[0]); bb[1] = Math.min(bb[1], p[1]); bb[2] = Math.max(bb[2], p[0]); bb[3] = Math.max(bb[3], p[1]);
+        prev = lon;
       }
       paths[iso] = (paths[iso] || "") + d + "Z";
-      var area = (bb[2] - bb[0]) * (bb[3] - bb[1]);
-      if (bb[2] - bb[0] < 500 && (!box[iso] || area > box[iso].a)) box[iso] = { a: area, c: [(bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2] };
     });
-    svg = el("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": conv("Dunyo xaritasi: maʼlumot bor mamlakatlar") });
+    svg = el("svg", { viewBox: vb.join(" "), role: "img", "aria-label": conv("Dunyo xaritasi") });
     gMap = el("g", {});
-    Object.keys(paths).forEach(function (iso) {
-      var p = el("path", { d: paths[iso], "data-iso": iso, class: "mx-land" });
+    Object.keys(paths).forEach(function (iso) { var p = el("path", { d: paths[iso], "data-iso": iso }); gMap.appendChild(p); shapes[iso] = p; });
+    Object.keys(C.points || {}).forEach(function (iso) {
+      var ll = C.points[iso], c = px(ll[1], ll[0]), p = el("circle", { cx: c[0], cy: c[1], r: 3, "data-iso": iso });
       gMap.appendChild(p); shapes[iso] = p;
-      if (box[iso]) centers[iso] = box[iso].c;
-    });
-    Object.keys(CFG.points || {}).forEach(function (iso) {
-      var ll = CFG.points[iso], c = px(ll[1], ll[0]);
-      var p = el("circle", { cx: c[0].toFixed(1), cy: c[1].toFixed(1), r: 6, "data-iso": iso, class: "mx-land mx-pt" });
-      gMap.appendChild(p); shapes[iso] = p; centers[iso] = c;
     });
     svg.appendChild(gMap);
-    arc = el("path", { class: "mx-arc", d: "" });
-    svg.appendChild(arc);
-    var h = px(CFG.home_ll[1], CFG.home_ll[0]);
-    svg.appendChild(el("circle", { cx: h[0].toFixed(1), cy: h[1].toFixed(1), r: 4.5, class: "mx-home" }));
-    root.querySelector(".mx-load") && root.querySelector(".mx-load").remove();
+    arc = el("path", { class: "mx-arc", d: "" }); svg.appendChild(arc);
+    gBub = el("g", { class: "mx-bubs" }); svg.appendChild(gBub);
+    var h = px(C.home_ll[1], C.home_ll[0]);
+    homeDot = el("circle", { cx: h[0], cy: h[1], r: 4, class: "mx-home" }); svg.appendChild(homeDot);
+    plane = el("image", { href: "img/3d/plane.webp", width: 22, height: 22, class: "mx-plane", visibility: "hidden" }); svg.appendChild(plane);
+    var l = root.querySelector(".mx-load"); if (l) l.remove();
     root.insertBefore(svg, tip);
     svg.addEventListener("mousemove", hover);
     svg.addEventListener("mouseleave", function () { tip.hidden = true; });
-    svg.addEventListener("click", function (e) {
-      var iso = e.target.getAttribute && e.target.getAttribute("data-iso");
-      if (iso && CFG.covered.indexOf(iso) >= 0) pick(iso, true);
+    svg.addEventListener("click", function (e) { var iso = isoOf(e.target); if (iso && C.c[iso]) pick(iso); });
+    paint(true);
+  }
+
+  // 1 ekran pikseli = necha xarita birligi (doira va yozuv ekranda bir xil oʻlchamda qoladi)
+  function scale() { var w = svg && svg.getBoundingClientRect().width; return w ? vb[2] / w : vb[2] / W; }
+  function mval(iso) { var m = C.m[layer][iso]; return layer === "flow" ? m[1] : m[0]; }
+
+  function paint(grow) {
+    var m = C.m[layer], s = scale();
+    Object.keys(shapes).forEach(function (iso) {
+      var cls = "mx-land";
+      if (iso === C.home) cls += " is-home";
+      else if (layer === "flow" ? m[iso] : C.c[iso]) cls += " is-on";
+      if (iso === sel) cls += " is-sel";
+      shapes[iso].setAttribute("class", cls);
     });
-    paint();
+    homeDot.setAttribute("r", (5 * s).toFixed(2)); homeDot.style.strokeWidth = (2 * s).toFixed(2);
+    gMap.style.strokeWidth = (0.6 * s).toFixed(3);
+    while (gBub.firstChild) gBub.removeChild(gBub.firstChild);
+    var max = Math.max.apply(null, Object.keys(m).map(mval)), boxes = [];
+    Object.keys(m).sort(function (a, b) { return mval(b) - mval(a); }).forEach(function (iso, i) {
+      var a = C.anchors[iso]; if (!a) return;
+      var p = px(a[1], a[0]), v = mval(iso), r, txt;
+      if (layer === "qs") { r = (6 + 12 * Math.sqrt((100 - v) / 99)) * s; txt = "#" + v; }
+      else { r = (5 + 19 * Math.sqrt(v / max)) * s; txt = short(v); }
+      // yozuvlar ustma-ust tushsa, kichigining yozuvi yashiriladi (doira qoladi, raqam kartada va tooltipda)
+      var fs = 12 * s, tw = txt.length * fs * 0.58, ty = p[1] + r + fs, bx = [p[0] - tw / 2, ty - fs, p[0] + tw / 2, ty + fs * 0.3];
+      var clash = boxes.some(function (o) { return bx[0] < o[2] && bx[2] > o[0] && bx[1] < o[3] && bx[3] > o[1]; });
+      var g = el("g", { class: "mx-bub" + (iso === sel ? " is-sel" : ""), "data-iso": iso, transform: "translate(" + p[0].toFixed(1) + " " + p[1].toFixed(1) + ")" });
+      var c = el("circle", { r: r.toFixed(2) });
+      g.appendChild(c);
+      if (!clash) {
+        var t = el("text", { y: (r + fs).toFixed(2), "font-size": fs.toFixed(2), "stroke-width": (3 * s).toFixed(2) });
+        t.textContent = txt; g.appendChild(t); boxes.push(bx);
+      }
+      if (grow && !reduce) { c.style.animationDelay = (i * 45) + "ms"; g.classList.add("grow"); }
+      gBub.appendChild(g);
+    });
+    legend.textContent = conv({
+      talabalar: "Doira qancha katta, xalqaro talaba shuncha koʻp. Yillar har xil: aniq davr kartada.",
+      flow: "2025-yilda Oʻzbekistondan oʻqish uchun ketganlar, top-10 (Milliy statistika qoʻmitasi).",
+      qs: "Mamlakatdagi eng yuqori oʻrindagi universitet, QS 2027. Doira qancha katta, oʻrin shuncha yuqori."
+    }[layer]);
+    drawArc(false);
   }
 
   function info(iso) {
-    var nm = (CFG.names[iso]) || (CFG.flows[iso] && CFG.flows[iso][0]);
-    if (!nm) return null;
-    if (layer === "flow") return CFG.flows[iso] ? nm + ": " + fmt(CFG.flows[iso][1]) + " kishi (2025)" : nm + ": top-10 da yoʻq";
-    return CFG.covered.indexOf(iso) >= 0 ? nm : null;
+    var m = C.m[layer][iso], n = (C.c[iso] && C.c[iso].n) || (C.m.flow[iso] && C.m.flow[iso][0]);
+    if (!n) return null;
+    if (!m) return C.c[iso] ? n : null;
+    if (layer === "flow") return n + ": " + fmt(m[1]) + " kishi (2025)";
+    if (layer === "qs") return n + ": " + m[1] + ", " + m[0] + "-oʻrin";
+    return n + ": " + fmt(m[0]) + " (" + m[1] + ")";
   }
   function hover(e) {
-    var iso = e.target.getAttribute && e.target.getAttribute("data-iso"), t = iso && info(iso);
-    if (!t) { tip.hidden = true; return; }
+    var iso = isoOf(e.target), s = iso && info(iso);
+    if (!s) { tip.hidden = true; return; }
     var r = root.getBoundingClientRect();
-    tip.textContent = conv(t); tip.hidden = false;
+    tip.textContent = conv(s); tip.hidden = false;
     var x = e.clientX - r.left + 12, y = e.clientY - r.top + 12;
     if (x + tip.offsetWidth > r.width) x = e.clientX - r.left - tip.offsetWidth - 12;
     tip.style.left = x + "px"; tip.style.top = y + "px";
   }
 
-  function paint() {
-    var max = 0; Object.keys(CFG.flows).forEach(function (k) { max = Math.max(max, CFG.flows[k][1]); });
-    Object.keys(shapes).forEach(function (iso) {
-      var s = shapes[iso], cls = "mx-land" + (s.tagName === "circle" ? " mx-pt" : "");
-      s.style.fillOpacity = "";
-      if (iso === CFG.home) cls += " is-home";
-      else if (layer === "atlas" && CFG.covered.indexOf(iso) >= 0) cls += " is-on";
-      else if (layer === "flow" && CFG.flows[iso]) { cls += " is-flow"; s.style.fillOpacity = (0.25 + 0.75 * Math.sqrt(CFG.flows[iso][1] / max)).toFixed(2); }
-      if (iso === sel) cls += " is-sel";
-      s.setAttribute("class", cls);
-    });
-    svg.setAttribute("class", "lay-" + layer);
-    legend.innerHTML = layer === "atlas"
-      ? '<span><i class="lg-on"></i>' + conv("Maʼlumot bor") + '</span><span><i class="lg-home"></i>' + conv("Oʻzbekiston: siz shu yerdan boshlaysiz") + "</span>"
-      : '<span><i class="lg-flow"></i>' + conv("Rang qancha toʻq, shuncha koʻp ketgan") + '</span><span><i class="lg-you"></i>' + conv("Oʻzbekiston") + "</span><span>" + conv("Manba: Milliy statistika qoʻmitasi, 2025") + "</span>";
-    drawArc();
+  function zoomTo(key) {
+    var from = vb.slice(), to = ZOOM[key], t0 = performance.now(), dur = reduce ? 0 : 650;
+    cancelAnimationFrame(anim);
+    (function step(now) {
+      var k = dur ? Math.min(1, (now - t0) / dur) : 1, e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      for (var i = 0; i < 4; i++) vb[i] = from[i] + (to[i] - from[i]) * e;
+      svg.setAttribute("viewBox", vb.join(" "));
+      if (k < 1) anim = requestAnimationFrame(step); else paint(false);
+    })(t0);
   }
 
-  function drawArc() {
+  function drawArc(fly) {
     if (!arc) return;
-    var a = px(CFG.home_ll[1], CFG.home_ll[0]), b = sel && sel !== CFG.home && centers[sel];
-    if (!b) { arc.setAttribute("d", ""); return; }
+    var a = px(C.home_ll[1], C.home_ll[0]), an = sel && sel !== C.home && C.anchors[sel], b = an && px(an[1], an[0]);
+    cancelAnimationFrame(planeRaf);
+    if (!b) { arc.setAttribute("d", ""); plane.setAttribute("visibility", "hidden"); return; }
     var mx = (a[0] + b[0]) / 2, my = Math.min(a[1], b[1]) - Math.abs(a[0] - b[0]) * 0.22 - 10;
     arc.setAttribute("d", "M" + a[0].toFixed(1) + " " + a[1].toFixed(1) + "Q" + mx.toFixed(1) + " " + my.toFixed(1) + " " + b[0].toFixed(1) + " " + b[1].toFixed(1));
-    if (!reduce) { arc.classList.remove("go"); void arc.getBoundingClientRect(); arc.classList.add("go"); }
-  }
-
-  function pick(iso, scroll) {
-    sel = iso;
-    document.querySelectorAll(".mx-c").forEach(function (d) { d.open = d.getAttribute("data-iso") === iso; });
-    document.querySelectorAll(".mx-chip").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-iso") === iso ? "true" : "false"); });
-    var card = document.getElementById("mx-" + iso);
-    if (scroll && card) {
-      var list = document.getElementById("mxList");
-      if (getComputedStyle(list).overflowY === "auto") list.scrollTo({ top: card.offsetTop - list.offsetTop, behavior: reduce ? "auto" : "smooth" });
-      else card.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+    arc.style.strokeWidth = (2 * scale()).toFixed(2);
+    var sz = 22 * scale();
+    plane.setAttribute("width", sz); plane.setAttribute("height", sz);
+    function at(t) {
+      var u = 1 - t, x = u * u * a[0] + 2 * u * t * mx + t * t * b[0], y = u * u * a[1] + 2 * u * t * my + t * t * b[1];
+      var dx = 2 * u * (mx - a[0]) + 2 * t * (b[0] - mx), dy = 2 * u * (my - a[1]) + 2 * t * (b[1] - my);
+      var back = dx < 0, ang = Math.atan2(dy, dx) * 180 / Math.PI + (back ? 180 : 0);
+      plane.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") rotate(" + ang.toFixed(1) + ")" + (back ? " scale(-1 1)" : "") + " translate(" + (-sz / 2) + " " + (-sz / 2) + ")");
     }
-    if (window.KSfx && KSfx.play) try { KSfx.play("pick"); } catch (e) {}
-    paint();
+    plane.setAttribute("visibility", "visible");
+    if (!fly || reduce) { at(1); return; }
+    var t0 = performance.now();
+    (function step(now) { var k = Math.min(1, (now - t0) / 1300); at(1 - Math.pow(1 - k, 3)); if (k < 1) planeRaf = requestAnimationFrame(step); })(t0);
   }
 
-  document.querySelectorAll(".mx-chip").forEach(function (b) {
-    b.addEventListener("click", function () { pick(b.getAttribute("data-iso"), true); });
+  // ---------------------------------------------------------- karta
+  function countUp(node) {
+    var to = +node.getAttribute("data-to"), t0 = performance.now(), dur = 900;
+    if (reduce || !to) { node.textContent = fmt(to); return; }
+    (function step(now) { var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3); node.textContent = fmt(Math.round(to * e)); if (k < 1) requestAnimationFrame(step); })(t0);
+  }
+  function vhtml(v, unit) {
+    var u = unit ? " <small>" + esc(unit) + "</small>" : "";
+    return typeof v === "number" ? '<b class="mx-num" data-to="' + v + '">' + fmt(v) + "</b>" + u : "<b>" + esc(v) + "</b>" + u;
+  }
+  function render(fresh) {
+    var c = C.c[sel], rows = c.rows, groups = C.groups.filter(function (g) { return rows.some(function (r) { return r[0] === g; }); });
+    if (!tab || groups.indexOf(tab) < 0) tab = groups[0];
+    var kpi = c.kpi.map(function (i) {
+      var r = rows[i];
+      return '<div class="mx-kpi"><img src="img/3d/' + C.icons[r[0]] + '.webp" alt="" width="40" height="40">' + vhtml(r[2], r[3]) + "<span>" + esc(r[1]) + "</span><em>" + esc(r[4]) + "</em></div>";
+    }).join("");
+    var tabs = groups.map(function (g) {
+      return '<button type="button" role="tab" class="mx-tab" data-g="' + esc(g) + '" aria-selected="' + (g === tab) + '"><img src="img/3d/' + C.icons[g] + '.webp" alt="" width="24" height="24">' + esc(g) + "</button>";
+    }).join("");
+    var items = rows.map(function (r, i) {
+      if (r[0] !== tab) return "";
+      var id = "mxn" + i;
+      return '<li class="mx-item"><div class="mx-it-h"><span>' + esc(r[1]) + '</span><button type="button" class="mx-i" aria-expanded="false" aria-controls="' + id + '" aria-label="Izoh va manba">i</button></div>' +
+        '<div class="mx-it-v">' + vhtml(r[2], r[3]) + "<em>" + esc(r[4]) + "</em></div>" +
+        '<div class="mx-more" id="' + id + '" hidden>' + (r[7] ? "<p>" + esc(r[7]) + "</p>" : "") +
+        '<a href="' + esc(r[6]) + '" target="_blank" rel="noopener">' + esc(r[5]) + " ↗</a></div></li>";
+    }).join("");
+    var head = sel === C.home ? "Siz shu yerdan boshlaysiz. Xaritadan mamlakat tanlang." : "Rasmiy koʻrsatkichlar: " + rows.length;
+    var lab = c.lab ? '<a class="mx-lab" href="' + c.lab + '" data-snd="nav">' + esc(c.lab_n) + ": shu yoʻnalish boʻyicha tayyorlov →</a>" : "";
+    card.innerHTML = '<div class="mx-card-in"><header class="mx-ch"><span class="mx-f" aria-hidden="true">' + c.f + "</span><div><h2>" + esc(c.n) + "</h2><p>" + esc(head) + "</p></div></header>" +
+      '<div class="mx-kpis">' + kpi + "</div>" +
+      (groups.length > 1 ? '<div class="mx-tabs" role="tablist">' + tabs + "</div>" : "") +
+      '<ul class="mx-items" role="tabpanel">' + items + "</ul>" + lab + "</div>";
+    if (fresh) card.querySelectorAll(".mx-kpi .mx-num").forEach(countUp);
+    if (fresh && !reduce) { card.classList.remove("in"); void card.offsetWidth; card.classList.add("in"); }
+  }
+  card.addEventListener("click", function (e) {
+    var t = e.target.closest("button"); if (!t) return;
+    if (t.classList.contains("mx-tab")) {
+      tab = t.getAttribute("data-g"); snd("pick"); render();
+      var f = card.querySelector('.mx-tab[aria-selected="true"]'); if (f) f.focus();
+    } else if (t.classList.contains("mx-i")) {
+      var m = document.getElementById(t.getAttribute("aria-controls")), open = m.hidden;
+      m.hidden = !open; t.setAttribute("aria-expanded", open ? "true" : "false");
+    }
   });
-  document.querySelectorAll(".mx-c").forEach(function (d) {
-    d.addEventListener("toggle", function () { if (d.open && sel !== d.getAttribute("data-iso")) pick(d.getAttribute("data-iso"), false); });
+  card.addEventListener("keydown", function (e) {
+    if (!e.target.classList.contains("mx-tab") || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
+    var ts = [].slice.call(card.querySelectorAll(".mx-tab")), i = ts.indexOf(e.target) + (e.key === "ArrowRight" ? 1 : -1);
+    ts[(i + ts.length) % ts.length].click();
   });
+
+  function pick(iso, quiet) {
+    if (!C.c[iso]) return;
+    sel = iso; tab = null;
+    document.querySelectorAll(".mx-chip").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-iso") === iso ? "true" : "false"); });
+    render(true);
+    if (!quiet) { snd("pick"); if (window.innerWidth < 860) card.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" }); }
+    if (svg) { paint(false); drawArc(!quiet); }
+  }
+
+  document.querySelectorAll(".mx-chip").forEach(function (b) { b.addEventListener("click", function () { pick(b.getAttribute("data-iso")); }); });
   document.querySelectorAll(".mx-layer").forEach(function (b) {
     b.addEventListener("click", function () {
       layer = b.getAttribute("data-layer");
       document.querySelectorAll(".mx-layer").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-      paint();
+      snd("pick"); if (svg) paint(true);
+    });
+  });
+  document.querySelectorAll("[data-zoom]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("[data-zoom]").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      if (svg) zoomTo(b.getAttribute("data-zoom"));
     });
   });
 
-  var src = root.getAttribute("data-globe-src") || "data/globe.json";
-  fetch(src).then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(build).catch(function () {
-    var l = root.querySelector(".mx-load"); if (l) l.textContent = conv("Xarita yuklanmadi. Mamlakatlar roʻyxati pastda.");
+  var rz = 0;
+  window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { if (svg) paint(false); }, 150); });
+
+  pick(C.home, true);
+  fetch(root.getAttribute("data-globe-src") || "data/globe.json").then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(build).catch(function () {
+    var l = root.querySelector(".mx-load"); if (l) l.textContent = conv("Xarita yuklanmadi. Mamlakatni pastdagi tugmalardan tanlang.");
   });
 })();

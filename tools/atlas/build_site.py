@@ -345,30 +345,35 @@ def num(v) -> str:
     return f"{v:,}".replace(",", "\u00a0") if isinstance(v, int) else str(v)
 
 
-def mx_card(iso: str, c: dict) -> str:
-    rows = c["rows"]
-    parts = []
-    for g in MD.GROUPS:
-        rs = [r for r in rows if r[0] == g]
-        if not rs:
-            continue
-        items = ""
-        for _, label, val, unit, period, src, url, note in rs:
-            u = f' <span class="mx-u">{unit}</span>' if unit else ""
-            n = f'<p class="mx-n">{note}</p>' if note else ""
-            items += (f'<div class="mx-row"><div class="mx-k">{label}</div><div class="mx-v">{num(val)}{u}</div>'
-                      f'<div class="mx-m">{period} · {ext(url, src + " ↗")}</div>{n}</div>')
-        parts.append(f'<h4>{g}</h4>{items}')
-    lab = ""
-    if c.get("lab"):
-        lab = f'<a class="mx-lab" href="{c["lab"]}">{LAB_NAMES[c["lab"]]}: shu yo\'nalish bo\'yicha tayyorlov →</a>'
-    if c.get("home"):
-        head = "Siz shu yerdan boshlaysiz"
-    else:
-        head = f"{len(rows)} ta rasmiy ko'rsatkich"
-    open_ = " open" if c.get("home") else ""
-    return (f'<details class="mx-c" id="mx-{iso}" data-iso="{iso}"{open_}><summary><span class="mx-f" aria-hidden="true">{FLAGS[iso]}</span>'
-            f'<b>{c["name"]}</b><small>{head}</small></summary><div class="mx-body">{"".join(parts)}{lab}</div></details>')
+KPI_PREF = ["O'zbekistonlik talabalar", "2025-yilda O'zbekistondan o'qishga ketganlar", "2025-yilda o'qish uchun chet elga chiqqanlar",
+            "Xalqaro talabalar", "Mamlakatdagi xalqaro talabalar", "GKS", "Erasmus", "DAAD", "MEXT", "Viza uchun yashash puli",
+            "O'qish to'lovi", "Davlat universitetida", "O'rtacha o'qish", "Yangi", "QS"]
+
+
+def kpis(rows: list) -> list[int]:
+    """Kartaning tepasidagi 3 ta asosiy raqam: KPI_PREF tartibida, har guruhdan bittadan."""
+    out, groups = [], set()
+    for pref in KPI_PREF:
+        for i, r in enumerate(rows):
+            if i in out or r[0] in groups and r[0] != "Ta'lim":
+                continue
+            if r[1].startswith(pref):
+                out.append(i); groups.add(r[0]); break
+        if len(out) == 3:
+            break
+    return out
+
+
+def mx_table() -> str:
+    order = ["UZB", "USA", "GBR", "DEU", "FRA", "ITA", "NLD", "KOR", "JPN", "CHN", "SGP", "AUS", "CAN"]
+    trs = ""
+    for iso in order:
+        c = MD.COUNTRIES[iso]
+        for g, label, val, unit, period, src, url, note in c["rows"]:
+            u = f" {unit}" if unit else ""
+            trs += f'<tr><td>{c["name"]}</td><td>{label}</td><td>{num(val)}{u}</td><td>{period}</td><td>{ext(url, src)}</td></tr>'
+    return f"""<details class="mx-all" id="jadval"><summary>Barcha raqamlar bitta jadvalda</summary>
+<div class="at-tablewrap"><table><thead><tr><th>Mamlakat</th><th>Ko'rsatkich</th><th>Qiymat</th><th>Davr</th><th>Manba</th></tr></thead><tbody>{trs}</tbody></table></div></details>"""
 
 
 def mamlakatlar_json() -> str:
@@ -382,31 +387,43 @@ def mamlakatlar_json() -> str:
 
 
 def mamlakatlar_page() -> str:
-    order = ["UZB", "USA", "GBR", "DEU", "FRA", "ITA", "NLD", "KOR", "JPN", "CHN", "SGP", "AUS", "CAN"]
-    cards = "".join(mx_card(i, MD.COUNTRIES[i]) for i in order)
-    chips = "".join(f'<button type="button" class="mx-chip" data-iso="{i}" data-snd="pick">{FLAGS[i]} {MD.COUNTRIES[i]["name"]}</button>' for i in order[1:])
-    cfg = {"home": "UZB", "covered": order, "names": {i: MD.COUNTRIES[i]["name"] for i in order},
+    order = ["USA", "GBR", "DEU", "FRA", "ITA", "NLD", "KOR", "JPN", "CHN", "SGP", "AUS", "CAN"]
+    chips = "".join(f'<button type="button" class="mx-chip" data-iso="{i}" data-snd="pick">{FLAGS[i]} {MD.COUNTRIES[i]["name"]}</button>' for i in order)
+    cfg = {"home": "UZB", "covered": ["UZB"] + order,
+           "c": {i: {"n": c["name"], "f": FLAGS[i], "lab": c.get("lab"), "lab_n": LAB_NAMES.get(c.get("lab", ""), ""),
+                     "rows": [list(r) for r in c["rows"]], "kpi": kpis(c["rows"])} for i, c in MD.COUNTRIES.items()},
+           "groups": MD.GROUPS, "icons": MD.ICONS, "anchors": MD.ANCHORS,
            "points": {i: c["point"] for i, c in MD.COUNTRIES.items() if c.get("point")},
-           "flows": {i: [n, v] for i, (n, v) in MD.FLOWS.items()}, "home_ll": [41.31, 69.28]}
+           "m": {"talabalar": {i: list(v) for i, v in MD.STUDENTS.items()},
+                 "flow": {i: [n, v] for i, (n, v) in MD.FLOWS.items()},
+                 "qs": {i: list(v) for i, v in MD.QS_TOP.items()}},
+           "home_ll": [41.31, 69.28]}
     pend = "".join(f"<li>{x}</li>" for x in MD.PENDING)
     body = nav("", "mamlakatlar") + pagehead(
         [("Kompas Lab", "index.html"), ("Mamlakatlar xaritasi", None)],
         "Qayerda o'qiysiz? Mamlakatlar xaritasi",
-        "Mamlakatni bosing: siz uchun kerakli raqamlar chiqadi. Xalqaro talabalar soni, stipendiya kvotasi, viza uchun pul va reyting. Har raqamda rasmiy manba va sana bor.",
+        "Ko'rsatkichni tanlang va mamlakatni bosing. Har raqamda rasmiy manba va sana bor.",
         "telescope") + f"""<main><div class="wrap mx-page">
-<div class="mx-tools" role="group" aria-label="Xarita qatlami">
-<button type="button" class="mx-layer" data-layer="atlas" aria-pressed="true">Ma'lumot bor mamlakatlar</button>
-<button type="button" class="mx-layer" data-layer="flow" aria-pressed="false">2025: siz kabi yoshlar qayerga ketdi</button>
+<div class="mx-bar">
+<div class="mx-tools" role="group" aria-label="Xaritadagi ko'rsatkich">
+<button type="button" class="mx-layer" data-layer="talabalar" aria-pressed="true"><img src="img/3d/books.webp" alt="" width="28" height="28">Xalqaro talabalar</button>
+<button type="button" class="mx-layer" data-layer="flow" aria-pressed="false"><img src="img/3d/plane.webp" alt="" width="28" height="28">2025: siz kabi yoshlar</button>
+<button type="button" class="mx-layer" data-layer="qs" aria-pressed="false"><img src="img/3d/chart.webp" alt="" width="28" height="28">QS: eng yaxshi o'rin</button>
+</div>
+<div class="mx-zoom" role="group" aria-label="Hudud">
+<button type="button" data-zoom="world" aria-pressed="true">Dunyo</button><button type="button" data-zoom="eu" aria-pressed="false">Yevropa</button><button type="button" data-zoom="as" aria-pressed="false">Osiyo</button>
+</div>
 </div>
 <div class="mx-grid">
 <div class="mx-mapcol">
 <div class="mx-map" id="mxMap" data-globe-src="data/globe.json"><p class="mx-load">Xarita yuklanmoqda…</p><div class="mx-tip" id="mxTip" hidden></div></div>
-<div class="mx-legend" id="mxLegend"></div>
+<p class="mx-legend" id="mxLegend"></p>
 <div class="mx-chips" aria-label="Mamlakatni tanlang">{chips}</div>
 </div>
-<div class="mx-list" id="mxList">{cards}</div>
+<aside class="mx-card" id="mxCard" aria-live="polite"><noscript><p>Interaktiv karta uchun JavaScript kerak. Hamma raqamlar pastdagi jadvalda.</p></noscript></aside>
 </div>
-<div class="at-note"><b>Raqamni to'g'ri o'qing.</b> "2025-yilda O'zbekistondan o'qishga ketganlar" bu bir yil ichidagi safarlar soni (Milliy statistika qo'mitasi). "O'zbekistonlik talabalar" esa o'sha mamlakatda hozir o'qiyotganlar (Open Doors, JASSO). Ikkalasini solishtirib bo'lmaydi.</div>
+<div class="at-note"><b>Raqamni to'g'ri o'qing.</b> "2025: siz kabi yoshlar" bu bir yil ichida o'qish uchun chiqqanlar (Milliy statistika qo'mitasi). "O'zbekistonlik talabalar" esa o'sha mamlakatda hozir o'qiyotganlar. "Xalqaro talabalar" raqamlari turli yil va turli manbadan, aniq davri kartada yozilgan.</div>
+{mx_table()}
 <details class="mx-pend"><summary>Hali qo'shilmagan ma'lumotlar</summary><p>Bu raqamlar hozircha faqat yangilik yoki jamlovchi saytlarda bor. Rasmiy manbada topilgach qo'shiladi:</p><ul>{pend}</ul></details>
 <p class="at-src">Manbalar {MD.CHECKED} holatiga tekshirilgan. Xarita chegaralari: Natural Earth (jamoat mulki). Reyting: QS World University Rankings 2027.</p>
 </div></main>

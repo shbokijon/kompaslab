@@ -161,3 +161,23 @@ PENDING = [
     "Italiya, Niderlandiya, Fransiya, Kanada, Avstraliyadagi o'zbek talabalar",
     "Viza rad etilishi: O'zbekiston kesimi (UK Vis_D02, Avstraliya BP0015)",
 ]
+
+# ---------------------------------------------------------------- xarita qatlamlari
+# Xarita ustidagi doira va yorliq joyi (taxminiy markaz, kenglik, uzunlik)
+ANCHORS = {"UZB": (41.3, 64.5), "USA": (39.5, -98.5), "GBR": (53.5, -2.0), "DEU": (51.0, 10.3), "FRA": (46.6, 2.4),
+           "ITA": (42.8, 12.6), "NLD": (52.2, 5.6), "KOR": (36.4, 127.9), "JPN": (36.6, 138.6), "SGP": (1.35, 103.82),
+           "AUS": (-25.5, 134.0), "CAN": (57.0, -103.0), "CHN": (34.5, 103.5), "RUS": (61.0, 96.0), "TJK": (38.8, 71.2),
+           "KGZ": (41.5, 74.7), "TUR": (39.0, 35.2), "KAZ": (48.2, 67.0)}
+
+# "Xalqaro talabalar" qatlami: COUNTRIES dagi qator bilan bir xil raqam (yil va taʼrif har xil, kartada aniq yoziladi)
+STUDENTS = {"USA": (1177766, "2024/25"), "GBR": (748461, "2023"), "CHN": (492185, "2018"), "AUS": (467074, "2023"),
+            "FRA": (443500, "2024/25"), "JPN": (408069, "2025"), "DEU": (402000, "2024/25"), "CAN": (389181, "2023"),
+            "KOR": (308838, "2025"), "NLD": (129764, "2025/26")}
+
+# "QS eng yaxshi o'rin" qatlami (QS 2027, COUNTRIES dagi Sifat qatori bilan bir xil)
+QS_TOP = {"USA": (1, "MIT"), "GBR": (2, "Imperial College London"), "SGP": (10, "NUS"), "CHN": (13, "Pekin universiteti"),
+          "AUS": (19, "UNSW"), "DEU": (25, "TUM"), "CAN": (30, "McGill"), "FRA": (34, "Universite PSL"),
+          "ITA": (87, "Milan politexnika universiteti")}
+
+# Bo'lim ikonkalari: img/3d/<nom>.webp (saytdagi to'plam)
+ICONS = {"Ta'lim": "books", "Qabul": "memo", "Stipendiya": "scroll", "Moliya": "money", "Viza": "shield", "Sifat": "chart"}
