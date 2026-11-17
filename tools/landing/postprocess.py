@@ -53,7 +53,7 @@ def process(path: Path, root: Path) -> None:
     if m0 and (root / m0).exists():
         s = re.sub(r'<button type="button" class="btn btn-p" style="width:100%;margin-top:14px" data-wl>[^<]*M0 ochilganda xabar bering</button>',
                    f'<a class="btn btn-p" style="width:100%;margin-top:14px" href="{m0}">Bepul M0 ni boshlash</a>', s)
-        s = re.sub(r'(<h3>M0, qaror moduli</h3>.*?)<button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>',
+        s = re.sub(r'(<h3>M0, (?:qaror moduli|bepul modul)</h3>.*?)<button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>',
                    lambda m: m.group(1) + f'<a class="btn btn-g" href="{m0}">M0 ni boshlash</a>', s, count=1, flags=re.S)
         s = s.replace('<a href="#dastur" class="btn btn-p">Bepul M0 ni koʻrish</a>', f'<a href="{m0}" class="btn btn-p">Bepul M0 ni boshlash</a>')
     if path.name == "master-lab.html":

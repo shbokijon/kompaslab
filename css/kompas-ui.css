@@ -308,6 +308,20 @@ header.top .xp .kl-me{margin-left:6px;}
 .kl-tabbar .kl-tabs a.kl-ico img{width:22px;height:22px;}
 @media(prefers-reduced-motion:reduce){.nav .kl-tabs a.kl-ico img,.nav .kl-tabs a.kl-ico span{transition:none;transform:none;}.nav .kl-tabs a.kl-ico:hover span,.nav .kl-tabs a.kl-ico:focus-visible span{transform:translate(-50%,0);}}
 
+/* Narx sahifalari: qisqa sarlavha + bosganda tafsilot (2026-11-17, asoschi) */
+.kl-infos{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;align-items:start;}
+.kl-info{background:var(--surface,#fffefb);border:1px solid var(--border,#e2ded3);border-radius:12px;font-size:15px;}
+.kl-info summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:10px 16px;cursor:pointer;border-radius:12px;}
+.kl-info summary::-webkit-details-marker{display:none;}
+.kl-info summary b{font-weight:700;color:var(--accent,#2d4a3e);}
+.kl-info summary:focus-visible{outline:2px solid var(--accent2,#c4622d);outline-offset:2px;}
+.kl-i{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--muted,#5f7169);color:var(--muted,#5f7169);display:grid;place-items:center;font:italic 700 13px/1 Georgia,"Cambria",serif;}
+.kl-info[open] .kl-i{background:var(--accent,#2d4a3e);border-color:var(--accent,#2d4a3e);color:#fff;}
+.kl-info p{margin:0;padding:0 16px 14px;color:var(--muted,#5f7169);line-height:1.55;}
+.pay-status .kl-info{background:none;border:0;flex:1;}
+.pay-status .kl-info summary{min-height:0;padding:0;}
+.pay-status .kl-info p{padding:8px 0 0;}
+html[data-theme="dark"] .kl-info[open] .kl-i{color:#10201a;}
 /* Dars tugmasi tungi rejimda (2026-11-17; tungi blokdan oldin, kuchliroq selektor bilan) */
 html[data-theme="dark"] body[data-kview="lesson"] .btn-p{background:var(--accent,#9fd0b6);color:#10201a;box-shadow:none}
 html[data-theme="dark"] body[data-kview="lesson"] .btn-p:hover{background:var(--accent-h,#bfe3cf)}
