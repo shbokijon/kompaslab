@@ -23,7 +23,7 @@ Shior: **"Kuzatuvdan kashfiyotga"**. Egasi: shbokijon@gmail.com. Adminlar (2026-
 - `tools/`, `supabase/`, `schema.sql` saytga chiqmaydi (`.vercelignore`).
 
 ## Atama: "Lab" → "dastur" (2026-11-16, asoschi qarori)
-- Saytdagi koʻrinadigan matnda "Master Lab" → "Master dasturi", "Lab" → "dastur" (qoʻshimchalar bilan: dasturida, dasturiga, dasturlar). **"Kompas Lab" brend nomi va logotip oʻzgarmaydi.** Slug, URL, fayl nomi, JS kalitlari (`master-lab`, `LABS`) oʻzgarmaydi. Lab sahifasidagi "Dastur" tabi endi **"Modullar"**. Almashtirish skripti asosidagi qoidalar: yangi matnda "X Lab" yozilmaydi. Bazada `courses.title` va bot matnlari (`supabase/functions/tg-bot`) hali eski nomda; `oferta.html`, `maxfiylik.html`, admin panel ataylab oʻzgartirilmagan (yuridik matn va ichki atama).
+- Saytdagi koʻrinadigan matnda "Master Lab" → "Master dasturi", "Lab" → "dastur" (qoʻshimchalar bilan: dasturida, dasturiga, dasturlar). **"Kompas Lab" brend nomi va logotip oʻzgarmaydi.** Slug, URL, fayl nomi, JS kalitlari (`master-lab`, `LABS`) oʻzgarmaydi. Lab sahifasidagi "Dastur" tabi endi **"Modullar"**. Almashtirish skripti asosidagi qoidalar: yangi matnda "X Lab" yozilmaydi. Bazada `courses.title` 2026-11-17 da yangilandi ("Master dasturi"); `paid_pages` (pullik modullar) va bot matnlari (`supabase/functions/tg-bot`) admin yuklaguncha eski nomda; `oferta.html`, `maxfiylik.html`, admin panel ataylab oʻzgartirilmagan (yuridik matn va ichki atama).
 - Lab sahifasi Moslik testi natijasida "Keyingi qadam" tavsiyasi (`#sNx`, `render.QUIZ_JS`; Master'da yoʻq). M0 hub sahifasida "Butun dastur oxirida sizda" bloki (`build.program_outcome`, `labs_data` paketidan).
 
 ## Sayt tuzilmasi (2026-10-18): Bosh sahifa → Lab → Modul → Dars
