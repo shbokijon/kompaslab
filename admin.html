@@ -928,17 +928,17 @@ const isArchived = l => (l.order_index || 0) >= 100 || /^\[arxiv\]/i.test(l.titl
 
 const COURSE_META = {
 
-  'bachelor-lab': { emoji: '🎓', label: 'Bachelor Lab' },
-  'master-lab':   { emoji: '🔬', label: 'Master Lab' },
-  'phd-lab':      { emoji: '⚗️', label: 'PhD Lab' },
-  'gks-lab':      { emoji: '🇰🇷', label: 'GKS Lab' },
-  'daad-lab':     { emoji: '🇩🇪', label: 'DAAD Lab' },
-  'usa-lab':      { emoji: '🇺🇸', label: 'USA Lab' },
+  'bachelor-lab': { emoji: '🎓', label: 'Bakalavr dasturi' },
+  'master-lab':   { emoji: '🔬', label: 'Magistratura dasturi' },
+  'phd-lab':      { emoji: '⚗️', label: 'PhD dasturi' },
+  'gks-lab':      { emoji: '🇰🇷', label: 'GKS dasturi' },
+  'daad-lab':     { emoji: '🇩🇪', label: 'DAAD dasturi' },
+  'usa-lab':      { emoji: '🇺🇸', label: 'USA dasturi' },
   'tadbirkor-talaba': { emoji: '💼', label: 'Tadbirkor Talaba' },
-  'miggo':        { emoji: '🧳', label: 'Musofir Lab' },
-  'maktab-lab':   { emoji: "🏫", label: "Maktab Lab" },
-  'research-lab': { emoji: "🔭", label: "Research Lab" },
-  'ai-tools':     { emoji: "🤖", label: "AI Amaliyot Lab" },
+  'miggo':        { emoji: '🧳', label: 'Musofir dasturi' },
+  'maktab-lab':   { emoji: "🏫", label: "Maktab dasturi" },
+  'research-lab': { emoji: "🔭", label: "Tadqiqot dasturi" },
+  'ai-tools':     { emoji: "🤖", label: "AI Amaliyot dasturi" },
 }
 
 // ════════════════════════════════════════════════════════
@@ -2004,8 +2004,8 @@ function downloadCSV(filename, headers, rows) {
 // ── Kutish ro'yxati ─────────────────────────────────
 let _waitlist = []
 const WAIT_LABS = {
-  'bachelor-lab': 'Bachelor Lab', 'master-lab': 'Master Lab', 'phd-lab': 'PhD Lab', 'gks-lab': 'GKS Lab',
-  'usa-lab': 'USA Lab', 'daad-lab': 'DAAD Lab', 'tadbirkor-talaba': 'Tadbirkor Talaba', 'miggo': 'Musofir Lab', 'ikki-miya': '2-Miya'
+  'bachelor-lab': 'Bakalavr dasturi', 'master-lab': 'Magistratura dasturi', 'phd-lab': 'PhD dasturi', 'gks-lab': 'GKS dasturi',
+  'usa-lab': 'USA dasturi', 'daad-lab': 'DAAD dasturi', 'tadbirkor-talaba': 'Tadbirkor Talaba', 'miggo': 'Musofir dasturi', 'ikki-miya': '2-Miya'
 }
 async function loadWaitlist() {
   const tb = document.getElementById('tbW')
@@ -2118,10 +2118,10 @@ async function copyRegs(field) {
 //  LABLAR VA NARXLAR (courses)
 // ════════════════════════════════════════════════════════
 const LAB_LIST = [
-  ['bachelor-lab', 'Bachelor Lab', 'bachelor-lab.html'], ['master-lab', 'Master Lab', 'master-lab.html'], ['phd-lab', 'PhD Lab', 'phd-lab.html'],
-  ['gks-lab', 'GKS Lab', 'gks-lab.html'], ['usa-lab', 'USA Lab', 'usa-lab.html'], ['daad-lab', 'DAAD Lab', 'daad-lab.html'],
-  ['tadbirkor-talaba', 'Tadbirkor Talaba', 'tadbirkor-talaba.html'], ['miggo', 'Musofir Lab', 'musofir-lab.html'],
-  ['maktab-lab', 'Maktab Lab', ''], ['research-lab', 'Research Lab', ''], ['ai-tools', 'AI Amaliyot Lab', '']
+  ['bachelor-lab', 'Bakalavr dasturi', 'bachelor-lab.html'], ['master-lab', 'Magistratura dasturi', 'master-lab.html'], ['phd-lab', 'PhD dasturi', 'phd-lab.html'],
+  ['gks-lab', 'GKS dasturi', 'gks-lab.html'], ['usa-lab', 'USA dasturi', 'usa-lab.html'], ['daad-lab', 'DAAD dasturi', 'daad-lab.html'],
+  ['tadbirkor-talaba', 'Tadbirkor Talaba', 'tadbirkor-talaba.html'], ['miggo', 'Musofir dasturi', 'musofir-lab.html'],
+  ['maktab-lab', 'Maktab dasturi', ''], ['research-lab', 'Tadqiqot dasturi', ''], ['ai-tools', 'AI Amaliyot dasturi', '']
 ]
 // Yangi Lab bazaga qoʻshilganda boshlangʻich narx (6 oylik, oylik); yillik tarif 2026-11-06 dan yoʻq
 const LAB_DEFAULT_PRICE = [499000, 99000]
