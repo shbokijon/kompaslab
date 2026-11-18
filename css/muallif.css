@@ -45,3 +45,5 @@
 @media(max-width:480px){.mlf-time li{grid-template-columns:minmax(0,1fr);gap:0;}.mlf-pair{grid-template-columns:minmax(0,1fr);}.mlf-pair img{height:auto;}}
 .mlf-link{margin:10px 0 0;text-align:center;font-size:15px;}
 .mlf-par.mlf-p{max-width:62ch;margin:0 auto 18px;}
+.kl-pagehead h1{margin-bottom:6px;}
+.mlf-txt b,.mlf-p b,.mlf-time span>b{color:var(--kl-forest,#2d4a3e);}
