@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════
-//  KOMPAS LAB — k4.js (2026-10-30): bosh sahifadagi "K4 yoʻli" animatsiyasi
+//  KOMPAS LAB — k4.js (2026-10-30): "K4 yoʻli" sahifasidagi animatsiya (k4-yoli.html; 2026-11-18 gacha bosh sahifada)
 //  · Kompas strelkasi bekatlar boʻylab yuradi: Kirish → Ketish → Kampus → Karyera.
 //    Tutash chiziq tayyor qism (1–2), uzuq chiziq rejadagi qism (2–4).
 //  · Boʻlim ekranga kirganda bir marta oʻynaydi; bekat yoki kartani bosish strelkani oʻsha joyga olib boradi.

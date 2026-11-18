@@ -674,8 +674,6 @@ footer .wrap > div:last-child{color:rgba(255,255,255,.55);}
 .mcalc .res .mc-res[open] .kl-i{color:#fff;}
 .mcalc .res #mcB{display:inline;font-size:inherit;color:inherit;}
 
-/* K4 yoʻli: menyudan kelinganda sarlavha qotirilgan menyu ostida qolmasin (2026-11-17) */
-#yol-k4{scroll-margin-top:calc(var(--kl-top,0px) + var(--kl-nav,62px) + var(--kl-tabs,0px));}
 /* ── Qanday ishlaydi (2026-11-17): ixcham kartalar, tafsilot ⓘ ichida ── */
 .qi-sec{padding:44px 0;}
 .qi-sec h2{font-size:clamp(24px,2.6vw,32px);margin-bottom:18px;}
