@@ -407,6 +407,9 @@ body.kl-has-tabs .km-hero{padding-top:calc(var(--kl-top,0px) + var(--kl-nav,62px
 .km-rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:880px;margin:0 auto;}
 .km-note{text-align:center;max-width:620px;margin:22px auto 0;color:var(--muted,#5f7169);font-size:14.5px;line-height:1.55;}
 .km-note a{color:var(--accent,#2d4a3e);}
+.km-eyebrow.km-big{font-size:16px;}
+.km-note.km-big{font-size:18px;line-height:1.6;}
+.km-note.km-big>span{display:block;}
 @media(max-width:860px){.km-probs.n3,.km-rules{grid-template-columns:minmax(0,1fr);}}
 @media(max-width:640px){.km-probs{grid-template-columns:minmax(0,1fr);}.km-hero{padding-bottom:24px;}.km-sec{padding:40px 0;}.km-sit .go{display:none;}.km-hero .lead{font-size:16.5px;}}
 /* ==== MUAMMO → YECHIM OXIRI ==== */
