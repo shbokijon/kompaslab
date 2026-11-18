@@ -69,7 +69,7 @@
       // unlocked_modules M0 ni ham sanaydi (M0 = 1-oʻrin), shuning uchun Mn uchun n+1 kerak
       if ((a.unlocked_modules || 0) >= accessIndex + 1) { open(); return; }
       setText("[data-paid-t]", "Bu modul keyinroq ochiladi.");
-      setText("[data-paid-d]", "Tarifingiz boʻyicha hozir " + (a.unlocked_modules || 0) + " ta modul ochiq (M0 bilan). 1 bosqich tarifida keyingi bosqich navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.");
+      setText("[data-paid-d]", "Tarifingiz boʻyicha hozir " + (a.unlocked_modules || 0) + " ta modul ochiq (M0 bilan). 1 ta bosqich tarifida keyingi bosqich navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.");
       buttons([{label: "Mening kabinetim", href: "dashboard.html", primary: true}]);
     });
   }).catch(function () {});

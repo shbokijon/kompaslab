@@ -35,12 +35,12 @@ def build():
     s = s[:a] + sec + s[b:]
     s = R(s, "Darsda asoschining 2025-yil 2-tanlov tajribasi; yosh, til va kvota faqat rasmiy sahifadan.", "Yosh, til va kvota faqat rasmiy sahifadan.")
     # narx
-    s = R(s, "<h2>Obuna asosida. <em>M0 bepul.</em></h2>", "<h2>Obuna: 1 bosqich yoki Toʻliq dastur. M0 bepul.</h2>")
-    s = R(s, '<div class="price">129 000</div><div class="per">soʻm · har oy uzaytiriladi</div>', f'<div class="price" data-pm="phd-lab">{fmt(M)}</div><div class="per">soʻm, 1 bosqich (30 kun)</div>')
+    s = R(s, "<h2>Obuna asosida. <em>M0 bepul.</em></h2>", "<h2>Obuna: 1 ta bosqich yoki Toʻliq dastur. M0 bepul.</h2>")
+    s = R(s, '<div class="price">129 000</div><div class="per">soʻm · har oy uzaytiriladi</div>', f'<div class="price" data-pm="phd-lab">{fmt(M)}</div><div class="per">soʻm, 1 ta bosqich (30 kun)</div>')
     s = R(s, '<div class="price">0</div><div class="per">soʻm · muddatsiz</div>', '<div class="price">0</div><div class="per">soʻm, muddatsiz</div>')
     s = s.replace("<li>Istalgan oy bekor qilinadi</li>", "<li>Istalgan oy toʻxtatiladi</li>")
-    # Tartib: M0, 1 bosqich, Toʻliq dastur (asosiy, narx bazada boʻlsa). Yillik tarif 2026-11-06 dan yoʻq.
-    a = s.index('      <div class="plan reveal">\n        <h3>1 bosqich</h3>')
+    # Tartib: M0, 1 ta bosqich, Toʻliq dastur (asosiy, narx bazada boʻlsa). Yillik tarif 2026-11-06 dan yoʻq.
+    a = s.index('      <div class="plan reveal">\n        <h3>1 ta bosqich</h3>')
     e = s.index('    </div>\n    <div class="calc', a)
     m_card = s[a:e]
     m_card = m_card.replace("<li>Barcha modullar, obuna faol ekan</li>", "<li>Navbatdagi bitta bosqich (2 modul), 30 kun</li>").replace("</ul>", "".join(f"<li>{x}</li>" for x in MONTHLY_EXTRA) + "<li>Bosqichlar: I M1–M2, II M3–M4, III M5–M6, IV M7–M8</li></ul>", 1)

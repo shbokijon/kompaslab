@@ -357,11 +357,11 @@ def info(t, body):
     return (f'<details class="kl-info"><summary><b>{t}</b><span class="kl-i" aria-hidden="true">i</span></summary>'
             f'<p>{body}</p></details>')
 
-CHOOSE = ("Har bosqichni 30 kun ichida tugatsangiz, 1 bosqichdan toʻlash umumiy hisobda arzonroq tushadi. "
+CHOOSE = ("Har bosqichni 30 kun ichida tugatsangiz, 1 ta bosqichdan toʻlash umumiy hisobda arzonroq tushadi. "
           "Toʻliq dastur hamma bosqichni birdaniga 6 oyga ochadi: oʻz tezligingizda oʻqiysiz va har bosqich uchun alohida toʻlamaysiz.")
 
 def calc_html(y, m, slug):
-    """2026-11-17: "6 marta 1 bosqichdan" taqqoslashi va kartadagi narx takrori olib tashlandi; faqat tanlov izohi."""
+    """2026-11-17: "6 marta 1 ta bosqichdan" taqqoslashi va kartadagi narx takrori olib tashlandi; faqat tanlov izohi."""
     return info("Qaysi birini tanlash kerak?", CHOOSE)
 
 # Bazadagi 6 oylik narx (2026-11-06); sahifada zaxira, jonli qiymat kompas_public_stats dan
@@ -391,7 +391,7 @@ def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
 MONTHLY_EXTRA = ["Erta tugatsangiz, keyingi bosqichni yangi toʻlov bilan darhol ochasiz", "Obuna tugasa, modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
 
 def month_items(m_items):
-    """2026-11-17: "1 bosqich" kartasida 3 qator: bosqich tarkibi + 2 qoida (takrorlar olib tashlandi)."""
+    """2026-11-17: "1 ta bosqich" kartasida 3 qator: bosqich tarkibi + 2 qoida (takrorlar olib tashlandi)."""
     first = m_items[0] if m_items else ""
     mm = re.search(r"\(([^)]*)\)", first)
     unit = []
@@ -410,7 +410,7 @@ def pricing(lab):
     slug = lab["slug"]
     y, mo = p["yearly"], p["monthly"]
     sale = slug in ON_SALE
-    month_btn = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=monthly" data-buy="{slug}|monthly" data-snd="nav">1 bosqichni toʻlash</a>' if sale
+    month_btn = (f'<a class="btn btn-p" href="tolov.html?lab={slug}&amp;plan=monthly" data-buy="{slug}|monthly" data-snd="nav">1 ta bosqichni toʻlash</a>' if sale
                  else f'<button type="button" class="btn btn-g" data-wl data-buy="{slug}|monthly">Kutish roʻyxatiga yozilish</button>')
     plans = f'''<div class="plans">
       <div class="plan">
@@ -420,8 +420,8 @@ def pricing(lab):
         <button type="button" class="btn btn-g" data-wl>Ochilganda xabar bering</button>
       </div>
       <div class="plan">
-        <h3>1 bosqich</h3><p class="desc">Navbatdagi bitta bosqich, 30 kun</p>
-        <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, 1 bosqich (30 kun)</div>
+        <h3>1 ta bosqich</h3><p class="desc">Navbatdagi bitta bosqich, 30 kun</p>
+        <div class="price" data-pm="{slug}">{fmt(mo)}</div><div class="per">soʻm, 1 ta bosqich (30 kun)</div>
         <ul>{"".join(f"<li>{x}</li>" for x in month_items(p["m_items"]))}</ul>
         {month_btn}
       </div>
@@ -436,7 +436,7 @@ def pricing(lab):
     return f'''<section id="narx">
   <div class="wrap">
     <div class="head">
-      <h2>Obuna: 1 bosqich yoki Toʻliq dastur. M0 bepul.</h2>
+      <h2>Obuna: 1 ta bosqich yoki Toʻliq dastur. M0 bepul.</h2>
       <p class="sub">{p["sub"]}</p>
     </div>
     <div class="pay-status"><span>{ico}</span><span data-paystatus="{slug}">{status}</span></div>
@@ -611,7 +611,7 @@ QUIZ_JS = '''
         if (answered === sels.length) {
           if (blocked) nx = "Keyingi qadam: majburiy talabni rasmiy eʼlondan tekshiring. Hozir toʻlamang.";
           else if (total >= 70) nx = "Keyingi qadam: bepul M0 ni boshlang. M0 dan keyin butun dastur kerak boʻlsa, Toʻliq dastur arzonroq.";
-          else if (total >= 45) nx = "Keyingi qadam: bepul M0 ni boshlang va yuqoridagi boʻshliqlar uchun reja tuzing. Keyin 1 bosqichdan boshlash mumkin.";
+          else if (total >= 45) nx = "Keyingi qadam: bepul M0 ni boshlang va yuqoridagi boʻshliqlar uchun reja tuzing. Keyin 1 ta bosqichdan boshlash mumkin.";
           else nx = "Keyingi qadam: hozir toʻlamang. Bepul M0 dan boshlang va boʻshliqlarni yoping.";
         }
         NX.textContent = nx; NX.hidden = !nx;

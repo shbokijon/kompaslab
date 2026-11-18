@@ -17,7 +17,7 @@
   var TRACKS = { u: "U · Bakalavriat (GKS-U)", m: "M · Magistratura (GKS-G)", d: "D · Doktorantura (GKS-G)" };
   var PLANS = {
     monthly: {
-      name: "1 bosqich (30 kun)",
+      name: "1 ta bosqich (30 kun)",
       rule: function (lab) {
         return "Har toʻlov bitta fazani ochadi (" + lab.phase + "). Muddat toʻlov kunidan 30 kun. " +
           "Oldingi oyning ishlatilmagan kunlari keyingisiga qoʻshilmaydi. Keyingi faza yangi toʻlov bilan ochiladi, " +
@@ -36,10 +36,10 @@
     ACCOUNT_SUSPENDED: "Hisobingiz vaqtincha toʻxtatilgan. Bizga yozing: kompaslab.uz@gmail.com",
     COURSE_NOT_FOR_SALE: "Bu dastur hozircha sotuvda emas.",
     PLAN_NOT_AVAILABLE: "Bu tarif hozircha mavjud emas. Boshqa tarifni tanlang.",
-    MONTHLY_NOT_AVAILABLE: "Bu dasturda 1 bosqich tarifi yoʻq.",
+    MONTHLY_NOT_AVAILABLE: "Bu dasturda 1 ta bosqich tarifi yoʻq.",
     INSTALLMENT_ACTIVE: "Sizda boʻlib toʻlash davom etmoqda. Yangi obuna uchun bizga yozing.",
     ALREADY_ENROLLED: "Bu dastur sizga muddatsiz ochiq. Toʻlash shart emas.",
-    HAS_FULL_PLAN: "Sizda Toʻliq dastur obunasi bor, unda hamma modullar ochiq. 1 bosqich uchun toʻlash shart emas.",
+    HAS_FULL_PLAN: "Sizda Toʻliq dastur obunasi bor, unda hamma modullar ochiq. 1 ta bosqich uchun toʻlash shart emas.",
     ALL_PHASES_PAID: "Barcha bosqichlar toʻlangan. Muddatni uzaytirish uchun Toʻliq dastur tarifini tanlang.",
     TRACK_REQUIRED: "Keyingi faza trekka bogʻliq. Trekni tanlang."
   };

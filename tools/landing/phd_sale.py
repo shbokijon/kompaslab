@@ -14,7 +14,7 @@ CTA2_OLD = '<button type="button" class="btn btn-g" data-wl>Kutish roʻyxati</bu
 PAY_OLD = re.compile(r'(<span data-paystatus="phd-lab">).*?(</span></div>)', re.S)
 from render import PAY_OPEN, infoize
 PAY_NEW = lambda m: m.group(1) + PAY_OPEN + m.group(2)
-LABEL = {"monthly": "1 bosqichni toʻlash", "6m": "Toʻliq dasturni toʻlash"}
+LABEL = {"monthly": "1 ta bosqichni toʻlash", "6m": "Toʻliq dasturni toʻlash"}
 
 
 def buy(m):
