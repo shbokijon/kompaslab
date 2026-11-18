@@ -81,15 +81,6 @@
     </div>
   </div>
 </header>
-<section style="padding-top:8px">
-  <div class="wrap">
-    <div class="stats">
-      <div class="stat live-s" id="stReg" hidden><span class="lv"><i></i>jonli</span><img class="st-i" src="img/3d/seedling.webp" width="160" height="160" alt="" decoding="async"><b>0</b><span>kishi Kompas Labda roʻyxatdan oʻtgan</span></div>
-      <div class="stat live-s" id="stWait" hidden><span class="lv"><i></i>jonli</span><img class="st-i" src="img/3d/hourglass.webp" width="160" height="160" alt="" decoding="async"><b>0</b><span>kishi kutish roʻyxatida</span></div>
-      <div class="stat"><img class="st-i" src="img/3d/compass.webp" width="160" height="160" alt="" decoding="async"><b data-count="8">8</b><span>ta dasturdan darajangiz, davlat yoki ish yoʻliga mosini tanlang</span></div>
-      <div class="stat"><img class="st-i" src="img/3d/books.webp" width="160" height="160" alt="" decoding="async"><b data-count="450">450</b><span>dars, shundan 38 tasi bepul (M0)</span></div>
-    </div>
-</section>
 <section id="lab-nima">
   <div class="wrap">
     <div class="head"><span class="kv-eyebrow">Dastur nima?</span><h2><b>Dastur</b>: bitta maqsadga olib boradigan tayyor yoʻl</h2><p class="sub">Masalan, Magistratura <b>dasturi</b> sizni magistraturaga ariza topshirishga tayyorlaydi, GKS <b>dasturi</b> esa Koreya hukumati stipendiyasiga. <b>Dastur</b> ichida modullar, modul ichida darslar. Oxirida qoʻlingizda tayyor hujjat boʻladi.</p></div>
@@ -428,7 +419,7 @@
     var rvIo = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rvIo.unobserve(e.target); } });
     }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
-    document.querySelectorAll("section .head, .grp-h, .labs-g, .steps li, .whylab > div:first-child, .cmpc, .honest > div, .tblwrap, .mcalc, .refund, .rules > div, .model, .faq details, .stats")
+    document.querySelectorAll("section .head, .grp-h, .labs-g, .steps li, .whylab > div:first-child, .cmpc, .honest > div, .tblwrap, .mcalc, .refund, .rules > div, .model, .faq details")
       .forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 70 + "ms"; rvIo.observe(el); });
   } else { document.documentElement.classList.remove("js"); }
 
