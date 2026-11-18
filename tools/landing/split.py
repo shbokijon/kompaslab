@@ -152,6 +152,22 @@ def modules(dastur):
     return res
 
 
+# Har sahifa turida bitta yengil hazil (2026-11-18, asoschi: "hazil ohangi, lekin meʼyorida")
+HUMOR = {
+    "hub": "Birinchi qism bepul. Yoqmasa, yopib ketaverasiz, xafa boʻlmaymiz :)",
+    "dastur": "Qulfli modullarni koʻrib xafa boʻlmang: kaliti narxlar sahifasida :)",
+    "narxlar": "Hamyoningizni hozircha yopib qoʻying: birinchi qism bepul :)",
+    "savollar": "Savolingiz shu yerda yoʻqmi? Telegramga yozing. Admin bir kun jim qolsa, tirikmikan deb yana bir yozing 🌚",
+}
+
+KL_I = '<span class="kl-i" aria-hidden="true">i</span>'
+
+def km_card(ic, t, d, ys, yd):
+    """Muammo kartasi: sarlavha + i (muammo izohi), Yechim qisqa + i (batafsil)."""
+    return (f'<article class="km-p"><details class="km-x"><summary><img src="img/3d/{ic}.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><h3>{t}</h3><span class="kl-i" aria-hidden="true">i</span></summary><p>{d}</p></details>'
+            f'<details class="km-x km-y"><summary><b>Yechim</b><span>{ys}</span><span class="kl-i" aria-hidden="true">i</span></summary><p>{yd}</p></details></article>')
+
+
 def tabs_html(stem, have_test, cur, extra):
     items = [(stem + ".html", "Umumiy"), (stem + "-dastur.html", "Modullar")]
     if have_test:
@@ -271,7 +287,8 @@ def split(root, f, src):
         B[k] = h; order.append(k)
     scripts = "\n".join(h for k, h in bl if k == "script")
     pre = "\n".join(h for k, h in bl if k == "pre")
-    have_test = "test" in B
+    # 2026-11-18 (asoschi): ochiq "Tayyormisiz?" testi dastur sahifalaridan olib tashlandi; test faqat M0 oxirida
+    have_test = False
     mods = modules(B["dastur"])
     lab_name = text(re.search(r'<span class="logo-t">(.*?)</span>\s*</a>', B["nav"], flags=re.S).group(1)) if False else None
     crumb = re.search(r'<div class="crumb">(.*?)</div>', B["hero"], flags=re.S)
@@ -332,31 +349,28 @@ def split(root, f, src):
     </div>
   </div>
 </section>'''
-    nxt = [(stem + "-dastur.html", "Modullar", "Yoʻl qaysi qadamlardan iborat")]
+    nxt = [(stem + "-dastur.html", "Modullar", "Bosqichlar va darslar")]
     if have_test:
         nxt.append((stem + "-test.html", "Tayyormisiz?", "Bir necha savol: tayyorgarligingizni taxminiy baholaysiz, qabul ehtimoli emas"))
-    nxt += [(stem + "-narxlar.html", "Narxlar", "1 ta bosqich yoki Toʻliq dastur"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
+    nxt += [(stem + "-narxlar.html", "Narxlar", "1 ta bosqich yoki Toʻliq dastur"), (stem + "-savollar.html", "Savollar", "Kimga mos va kimga mos emas")]
     nxt_html = '<section class="alt km-sec"><div class="wrap"><div class="km-head"><h2>Batafsil</h2></div><nav class="kl-next" aria-label="Dastur sahifalari">' + "".join(
         f'<a href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in nxt) + "</nav></div></section>"
     P = PROBLEMS.get(stem)
     if P:
         # 2026-11-18 (asoschi): Umumiy sahifa mahsulot (modul, dars) haqida emas, muammo va yechim haqida; minimal
         crumb_html = crumb.group(0) if crumb else ""
-        cards = "".join(
-            f'<article class="km-p"><h3><img src="img/3d/{i}.webp" width="36" height="36" alt="" loading="lazy" decoding="async">{t}</h3><p>{d}</p><div class="km-s"><b>Yechim</b>{y}</div></article>'
-            for i, t, d, y in P["probs"])
+        cards = "".join(km_card(*x) for x in P["probs"])
         hero = f'''<header class="km-hero">
   <div class="wrap">
     {crumb_html}
     <img class="km-ico" src="img/3d/{icon}.webp" width="160" height="160" alt="" decoding="async">
-    <h1><span>{P["h1"]}</span></h1>
-    <p class="lead">{P["lead"]}</p>
-    <div class="km-cta">{m0_btn}{test_btn}<small>Birinchi qism bepul: yoʻl sizga mosligini toʻlashdan oldin bilasiz.</small></div>
+    <details class="kl-info kl-title km-hi"><summary><h1>{P["h1"][:P["h1"].rfind("</span>")] + KL_I + "</span>"}</h1></summary><p>{P["lead"]}</p></details>
+    <div class="km-cta">{m0_btn}{test_btn}<small>{HUMOR["hub"]}</small></div>
   </div>
 </header>'''
         probs = f'''<section class="km-sec" id="yol">
   <div class="wrap">
-    <div class="km-head"><span class="km-eyebrow">Tanish holat</span><h2>Qiyin joylar va yechimi</h2></div>
+    <div class="km-head"><span class="km-eyebrow">Tanish holatmi?</span><h2>Muammolar va yechimlar</h2></div>
     <div class="km-probs">{cards}</div>
   </div>
 </section>'''
@@ -376,7 +390,7 @@ def split(root, f, src):
         return d.replace("</details>", f'<a class="kl-modlink" href="{href}">{esc(mid)} modul sahifasi</a></details>')
     sec = re.sub(r'<details class="mod[^"]*"[^>]*>.*?</details>', addlink, sec, flags=re.S)
     sec = phase_tabs(sec)
-    parts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Modullar")], h2, sub, icon), sec]
+    parts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Modullar")], h2, sub, icon), f'<p class="km-note km-fun">{HUMOR["dastur"]}</p>', sec]
     for k in order:
         if k in ("faktlar", "atlas", "qanday", "extra") or k.startswith("extra"):
             parts.append(B[k])
@@ -392,12 +406,12 @@ def split(root, f, src):
 
     # ── 4. Narxlar ──
     h2, sub, sec = strip_head(B["narx"])
-    main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Narxlar")], h2 or "Narxlar", sub, "money") + "\n" + sec
+    main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Narxlar")], h2 or "Narxlar", sub, "money") + f'\n<p class="km-note km-fun">{HUMOR["narxlar"]}</p>\n' + sec
     made.append(emit(stem + "-narxlar.html", "narxlar", f"Narxlar · {lab_name} | Kompas Lab", f"{lab_name} narxlari: oylik va 6 oylik obuna. M0 bepul.", main, own=("narx",)))
 
     # ── 5. Savollar ──
     h2, sub, sec = strip_head(B["savollar"])
-    main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Savollar")], h2 or "Savollar", sub, "bulb") + "\n" + B.get("fit", "") + "\n" + sec
+    main = page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Savollar")], h2 or "Savollar", sub, "bulb") + f'\n<p class="km-note km-fun">{HUMOR["savollar"]}</p>\n' + B.get("fit", "") + "\n" + sec
     made.append(emit(stem + "-savollar.html", "savollar", f"Savollar · {lab_name} | Kompas Lab", f"{lab_name}: kimga mos va kimga mos emas, koʻp soʻraladigan savollar.", main, own=("savollar",)))
 
     # ── 6. Modul sahifalari ──

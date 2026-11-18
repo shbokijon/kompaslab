@@ -174,5 +174,20 @@
     f3.innerHTML = '<div class="kl-pager"><a class="pv" rel="prev" data-kkey data-dir="prev" href="' + page(N - 1) + '"><small>Oldingi dars</small><b>Dars ' + esc(L[N - 1].num) + ": " + esc(L[N - 1].title) + '</b></a><a class="nx primary" rel="next" data-kkey data-dir="next" href="' + HUB + '"><small>Modul sahifasi</small><b>' + esc(M.mod) + ": umumiy koʻrinish</b></a></div>";
     var q = $("#qaror"); (q || wrap).insertAdjacentElement("afterend", f3);
     document.title = "Yakun: vositalar va qaror · " + M.labName + " " + M.mod + " | Kompas Lab";
+
+    // Tayyorgarlik koʻrsatkichi (2026-11-18, asoschi): ochiq dastur sahifasidan olib tashlandi, faqat M0 oxirida.
+    // Vositalar roʻyxatida oxirgi boʻladi; natija saqlangach ostida obunaga yoʻl chiqadi (narx sahifasi sotuv holatini oʻzi hal qiladi).
+    var rs = $("#tool-rs"), vs = $("#vositalar");
+    if (rs && vs && rs.parentNode) {
+      var last = vs.querySelectorAll(".tool"); last = last[last.length - 1];
+      if (last && last !== rs) last.insertAdjacentElement("afterend", rs);
+      var price = M.lab.replace(/\.html$/, "") + "-narxlar.html";
+      var cta = el("div", "kl-rs-cta", '<p><b>Natijangiz tayyor.</b> Keyingi qadamlar obuna bilan ochiladi: 1 ta bosqich yoki toʻliq dastur.</p><div class="row"><a class="btn btn-p" href="' + price + '" data-snd="nav">Davom etish: narx va obuna</a></div>');
+      var btn = $("#rsBtn"), res = $("#rsRes");
+      (res || btn || rs).insertAdjacentElement("afterend", cta);
+      function rsDone() { var t = state().rs; return t && (t.total != null || t.avg != null || t.ans); }
+      cta.hidden = !rsDone();
+      if (btn) btn.addEventListener("click", function () { setTimeout(function () { if (rsDone()) cta.hidden = false; }, 60); });
+    }
   }
 })();

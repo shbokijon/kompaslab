@@ -105,7 +105,7 @@ LABS["Bachelor"] = dict(
          ("Ota-ona nimani ko'radi?", "Har oy qisqa hisobot: qaysi faza, qaysi hujjatlar tayyor, yaqin muddatlar. Faqat farzandingiz roziligi bilan; insho matni koʻrsatilmaydi."),
          ("Faqat Koreya yoki Yaponiyaga topshirmoqchiman.", "GKS va MEXT bo'yicha chuqur yo'riqnoma <a href=\"gks-lab.html\">GKS dasturi</a> (U trek) va MEXT dasturida (tayyorlanmoqda).")],
     sources=[("Common App", "https://www.commonapp.org/apply/essay-prompts"), ("UCAS (QUB)", "https://www.qub.ac.uk/student-blog/applying/WelcometotheNewUCASPersonalStatementAFriendlyIntroductionfromQueensUniversityBelfast.html"), ("uni-assist", "https://www.uni-assist.de/en/tools/glossary-of-terms/description/details/university-entrance-qualification-hochschulzugangsberechtigung/"), ("USN", "https://www.usn.no/english/usn-faq/semester-start/what-is-the-tuition-fee-and-do-you-offer-scholarships"), ("Türkiye Bursları", "https://www.turkiyeburslari.gov.tr/scholarshipsprograms"), ("Stipendium Hungaricum", "https://stipendiumhungaricum.hu/partners/?partner=uzbekistan")],
-    cta_title="Bepul M0 dan boshlang.", cta_sub="Avval dastur farzandingizga mosligini tekshiring, keyin qaror qiling.",
+    cta_title="Bepul M0 dan boshlang.", cta_sub="Farzandingiz bilan birga oʻqib chiqing, qarorni keyin qilasiz.",
     wl_text="Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz.",
 )
 # dark block anchor for Bachelor nav
@@ -177,7 +177,7 @@ LABS["Master"] = dict(
          ("Jonli mashq intervyusi bormi?", "Asosiy obunaga kirmaydi. M8 da javobingizni yozib olib, 5 mezon boʻyicha oʻzingiz baholaysiz."),
          ("Germaniya yoki Koreyaga topshirmoqchiman.", "DAAD va GKS boʻyicha batafsil yoʻriqnoma alohida dasturlarda; Magistratura dasturida qisqa tavsif va havola.")],
     sources=[("Chevening", "https://chevening.org/apply/references"), ("GOV.UK Graduate visa", "https://www.gov.uk/graduate-visa"), ("USN", "https://www.usn.no/english/usn-faq/semester-start/what-is-the-tuition-fee-and-do-you-offer-scholarships"), ("Fulbright", "https://foreign.fulbrightonline.org/applicants"), ("EACEA", "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"), ("Stipendium Hungaricum", "https://stipendiumhungaricum.hu/partners/?partner=uzbekistan"), ("Türkiye Bursları", "https://www.turkiyeburslari.gov.tr/scholarshipsprograms"), ("El-yurt umidi", "https://el-yurt.uz/candidates"), ("Study in NL", "https://studyinnl.org/finances/scholarships")],
-    cta_title="Bepul M0 dan boshlang.", cta_sub="Besh bepul darsni oʻqing, talab va muddatlarni tekshiring, keyin qaror qiling.",
+    cta_title="Bepul M0 dan boshlang.", cta_sub="Besh dars bepul. Qolganini keyin hal qilasiz.",
     wl_text="Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz.",
 )
 
@@ -252,7 +252,7 @@ LABS["GKS"] = dict(
          ("Muvofiq emasligim chiqsa-chi?", "M0 dagi tekshiruvda \"mos emas\" chiqsa, to'lov tugmasi ko'rsatilmaydi va muqobil dastur tavsiya qilinadi."),
          ("Stipendiya kafolati bormi?", "Yo'q. GKS dasturi natijani va'da qilmaydi.")],
     sources=[("2026 GKS-G yo'riqnomasi", "https://www.esteri.it/wp-content/uploads/2026/02/2026-GKS-G-Application-Guidelines-English.pdf"), ("Koreya bosh konsulligi, Boston", "https://boston.mofa.go.kr/us-boston-en/brd/m_4558/view.do?seq=761392"), ("Koreya elchixonasi, Kambodja", "https://www.mofa.go.kr/kh-en/brd/m_25856/view.do?seq=66"), ("Pusan milliy universiteti", "https://his.pusan.ac.kr/bbs/international/2622/1741122/artclView.do")],
-    cta_title="Bepul M0 dan boshlang.", cta_sub="Avval muvofiqligingizni va trekingizni aniqlang, keyin qaror qiling.",
+    cta_title="Bepul M0 dan boshlang.", cta_sub="Trekingizni bepul qismda aniqlaysiz.",
     wl_text="Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz.",
 )
 
@@ -330,7 +330,7 @@ LABS["USA"] = dict(
              ("MIT Student Financial Services", "https://sfs.mit.edu/financial-aid-mit"), ("Duke Graduate School", "https://gradschool.duke.edu/financial-support/phd-financial-support/"),
              ("Brown universiteti ISSS", "https://isss.brown.edu/traveling/current-travel-and-visa-restrictions-presidential-proclamation"), ("George Mason universiteti OIPS", "https://oips.gmu.edu/f-1-employment/"),
              ("AQSh Davlat departamenti: talaba vizasi", "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html")],
-    cta_title="Bepul M0 dan boshlang.", cta_sub="Avval sizga mos yo'lni va oila byudjetini aniqlang, keyin qaror qiling.",
+    cta_title="Bepul M0 dan boshlang.", cta_sub="Oila byudjetiga mos yo'lni bepul qismda ko'rasiz.",
     wl_text="Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz.",
 )
 
@@ -540,6 +540,6 @@ LABS["DAAD"] = dict(
          ("Magistratura dasturidan farqi nima?", "Magistratura dasturi umumiy ko'nikmalarni beradi: CV, tavsiya xati, maqsad bayonnomasi. DAAD dasturi Germaniya tizimi, DAAD formatlari, portal va jo'nashni qo'shadi."),
          ("Stipendiya kafolati bormi?", "Yo'q. DAAD dasturi natijani va'da qilmaydi.")],
     sources=[("DAAD stipendiya bazasi", DAAD_DB), ("DAAD: EPOS FAQ", "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/epos_faq_en.pdf"), ("DAAD: Research Grants", "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=57742121"), ("Make it in Germany: Sperrkonto", "https://www.make-it-in-germany.com/de/visum-anerkennung/visaarten/studieren")],
-    cta_title="Bepul M0 dan boshlang.", cta_sub="Avval DAAD dasturlaridan qaysi biri sizga mosligini aniqlang, keyin qaror qiling.",
+    cta_title="Bepul M0 dan boshlang.", cta_sub="Sizga mos DAAD dasturini bepul qismda aniqlaysiz.",
     wl_text="Email manzilingizni qoldiring: M0 va obuna ochilganda xabar beramiz.",
 )

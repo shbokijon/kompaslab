@@ -163,6 +163,76 @@
       "source": "/usa-lab-m11.html",
       "destination": "/usa-lab-dastur",
       "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-test",
+      "destination": "/bachelor-lab",
+      "permanent": false
+    },
+    {
+      "source": "/bachelor-lab-test.html",
+      "destination": "/bachelor-lab",
+      "permanent": false
+    },
+    {
+      "source": "/daad-lab-test",
+      "destination": "/daad-lab",
+      "permanent": false
+    },
+    {
+      "source": "/daad-lab-test.html",
+      "destination": "/daad-lab",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-test",
+      "destination": "/gks-lab",
+      "permanent": false
+    },
+    {
+      "source": "/gks-lab-test.html",
+      "destination": "/gks-lab",
+      "permanent": false
+    },
+    {
+      "source": "/master-lab-test",
+      "destination": "/master-lab",
+      "permanent": false
+    },
+    {
+      "source": "/master-lab-test.html",
+      "destination": "/master-lab",
+      "permanent": false
+    },
+    {
+      "source": "/phd-lab-test",
+      "destination": "/phd-lab",
+      "permanent": false
+    },
+    {
+      "source": "/phd-lab-test.html",
+      "destination": "/phd-lab",
+      "permanent": false
+    },
+    {
+      "source": "/tadbirkor-talaba-test",
+      "destination": "/tadbirkor-talaba",
+      "permanent": false
+    },
+    {
+      "source": "/tadbirkor-talaba-test.html",
+      "destination": "/tadbirkor-talaba",
+      "permanent": false
+    },
+    {
+      "source": "/usa-lab-test",
+      "destination": "/usa-lab",
+      "permanent": false
+    },
+    {
+      "source": "/usa-lab-test.html",
+      "destination": "/usa-lab",
+      "permanent": false
     }
   ]
 }
