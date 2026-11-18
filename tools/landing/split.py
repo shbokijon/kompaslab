@@ -154,18 +154,25 @@ def modules(dastur):
 
 # Har sahifa turida bitta yengil hazil (2026-11-18, asoschi: "hazil ohangi, lekin meʼyorida")
 HUMOR = {
-    "hub": "Birinchi qism bepul. Yoqmasa, yopib ketaverasiz, xafa boʻlmaymiz :)",
-    "dastur": "Qulfli modullarni koʻrib xafa boʻlmang: kaliti narxlar sahifasida :)",
-    "narxlar": "Hamyoningizni hozircha yopib qoʻying: birinchi qism bepul :)",
+    "hub": "Birinchi qism bepul. Yoqmasa, yopib ketaverasiz, xafa boʻlmaymiz 🙂",
+    "dastur": "Qulfli modullarni koʻrib xafa boʻlmang: kaliti narxlar sahifasida 🔑",
+    "narxlar": "Hamyoningizni hozircha yopib qoʻying: birinchi qism bepul 👛",
     "savollar": "Savolingiz shu yerda yoʻqmi? Telegramga yozing. Admin bir kun jim qolsa, tirikmikan deb yana bir yozing 🌚",
 }
 
 KL_I = '<span class="kl-i" aria-hidden="true">i</span>'
 
+# 3D ikonka nomi -> holatga mos emoji (2026-11-18, asoschi: vertikal qatorlar, emoji, yechimga strelka)
+EMOJI = {"books": "📚", "compass": "🧭", "hourglass": "⏳", "memo": "✍️", "money": "💸", "shield": "🚩",
+         "telescope": "🔍", "calendar": "📅", "bulb": "💡", "bell": "📨", "scroll": "📄", "chart": "📊", "seedling": "🌱"}
+
 def km_card(ic, t, d, ys, yd):
-    """Muammo kartasi: sarlavha + i (muammo izohi), Yechim qisqa + i (batafsil)."""
-    return (f'<article class="km-p"><details class="km-x"><summary><img src="img/3d/{ic}.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><h3>{t}</h3><span class="kl-i" aria-hidden="true">i</span></summary><p>{d}</p></details>'
-            f'<details class="km-x km-y"><summary><b>Yechim</b><span>{ys}</span><span class="kl-i" aria-hidden="true">i</span></summary><p>{yd}</p></details></article>')
+    """Muammo qatori: emoji, sarlavha + i (izoh), strelka, Yechim qisqa + i (batafsil)."""
+    em = EMOJI.get(ic, ic)
+    return (f'<article class="km-p km-row"><span class="km-em" aria-hidden="true">{em}</span>'
+            f'<details class="km-x"><summary><h3>{t}</h3>{KL_I}</summary><p>{d}</p></details>'
+            f'<span class="km-ar" aria-hidden="true"></span>'
+            f'<details class="km-x km-y"><summary><b>Yechim</b><span>{ys}</span>{KL_I}</summary><p>{yd}</p></details></article>')
 
 
 def tabs_html(stem, have_test, cur, extra):
@@ -371,7 +378,7 @@ def split(root, f, src):
         probs = f'''<section class="km-sec" id="yol">
   <div class="wrap">
     <div class="km-head"><span class="km-eyebrow">Tanish holatmi?</span><h2>Muammolar va yechimlar</h2></div>
-    <div class="km-probs">{cards}</div>
+    <div class="km-probs km-list">{cards}</div>
   </div>
 </section>'''
         main = "\n".join(x for x in [hero, probs, nxt_html, B.get("cta", "")] if x)

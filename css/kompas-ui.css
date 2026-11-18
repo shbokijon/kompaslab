@@ -376,6 +376,14 @@ body.kl-has-tabs .km-hero{padding-top:calc(var(--kl-top,0px) + var(--kl-nav,62px
 .km-y{margin-top:auto;padding-top:12px;border-top:1px dashed var(--border,#e2ded3);}
 .km-y summary b{flex:none;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent,#2d4a3e);}
 .km-y summary span:not(.kl-i){flex:1;font-size:15px;font-weight:600;color:var(--text,#1a2e26);}
+.km-probs.km-list{grid-template-columns:minmax(0,1fr);max-width:880px;margin:0 auto;gap:10px;}
+.km-row{display:grid;grid-template-columns:44px minmax(0,1fr) 40px minmax(0,1fr);align-items:center;gap:0 10px;padding:14px 18px;}
+.km-row .km-em{font-size:28px;line-height:1;text-align:center;padding-top:2px;}
+.km-row .km-ar{justify-self:center;width:28px;height:28px;border-radius:50%;background:var(--accent-lit,#e8f0ec);color:var(--accent,#2d4a3e);display:grid;place-items:center;font:700 15px/1 "Outfit","IBM Plex Sans",sans-serif;}
+.km-row .km-ar::before{content:"→";}
+.km-row .km-y{margin-top:0;padding-top:0;border-top:0;}
+.km-row .km-x h3{font-size:16.5px;}
+@media(max-width:700px){.km-row{grid-template-columns:36px minmax(0,1fr);gap:10px 10px;padding:14px 16px;}.km-row .km-em{font-size:24px;}.km-row .km-ar{width:24px;height:24px;font-size:13px;}}
 .km-hi{display:block;}
 .km-hi summary{display:block;}
 .km-hi h1 .kl-i{display:inline-grid;vertical-align:middle;margin-left:12px;width:26px;height:26px;font-size:15px;font-style:italic;position:relative;top:-.12em;}
@@ -548,6 +556,7 @@ html[data-theme="dark"] .km-x>p a{color:var(--accent,#b9d4c9)}
 html[data-theme="dark"] .km-y{border-top:1px dashed var(--border,#44423b)}
 html[data-theme="dark"] .km-y summary b{color:var(--accent,#b9d4c9)}
 html[data-theme="dark"] .km-y summary span:not(.kl-i){color:var(--text,#c1dcd1)}
+html[data-theme="dark"] .km-row .km-ar{background:var(--accent-lit,#1b201e);color:var(--accent,#b9d4c9)}
 html[data-theme="dark"] .km-hi>p{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .km-hero h1 .lk{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .kl-rs-cta{background:var(--accent-lit,#1b201e)}

@@ -37,10 +37,10 @@ PROBLEMS = {
   h1=h("GKS yoʻriqnomasi uzun.", "Bitta xato hujjat arizani toʻxtatishi mumkin."),
   lead="Avval toʻlovsiz muvofiqligingizni tekshirasiz. Keyin trek tanlab, hujjatlarni oʻzingiz tayyorlaysiz.",
   probs=[
-    ("shield", "Mos kelasizmi, nomaʼlum", "Yosh va baho shartlari har trekda boshqacha.", "Bepul tekshiruv", "Muvofiqlikni birinchi qismda, toʻlovdan oldin rasmiy yoʻriqnoma boʻyicha tekshirasiz."),
+    ("✅", "Mos kelasizmi, nomaʼlum", "Yosh va baho shartlari har trekda boshqacha.", "Bepul tekshiruv", "Muvofiqlikni birinchi qismda, toʻlovdan oldin rasmiy yoʻriqnoma boʻyicha tekshirasiz."),
     ("compass", "Qaysi trek sizniki", "Har trekning oʻz talabi bor.", "Bitta trek", "Holatingizga mos trekni tanlab, faqat oʻsha talablar bilan ishlaysiz."),
     ("scroll", "Hujjat va tasdiq xatosi", "Apostil yoki tarjimadagi kichik xato arizani qaytarishi mumkin.", "Bitta jadval", "Hamma hujjat holati va muddati bilan bitta jadvalda turadi."),
-    ("bulb", "Intervyudan qoʻrqasiz", "Komissiya nima soʻrashini bilmaysiz.", "Mashq", "Oʻz bayonotingiz va oʻquv rejangiz asosida intervyu mashq qilasiz."),
+    ("🎤", "Intervyudan qoʻrqasiz", "Komissiya nima soʻrashini bilmaysiz.", "Mashq", "Oʻz bayonotingiz va oʻquv rejangiz asosida intervyu mashq qilasiz."),
   ]),
 "usa-lab": dict(
   h1=h("AQShda oʻqish qimmat koʻrinadi.", "Lekin oilangizga mos yoʻl boʻlishi mumkin."),
@@ -49,7 +49,7 @@ PROBLEMS = {
     ("money", "Jami xarajat nomaʼlum", "Oʻqish va yashash birga qancha turishini bilmaysiz.", "Rasmiy hisob", "Universitetning rasmiy xarajat hujjatidan umumiy summani hisoblaysiz."),
     ("compass", "Qaysi yoʻl real", "Grant va universitet yordami shartlari bir-biriga oʻxshamaydi.", "Byudjetga qarab tanlash", "Yoʻlni oila toʻlay oladigan summa va muvofiqlik shartlariga qarab tanlaysiz."),
     ("telescope", "Yordam beradigan universitet qaysi", "Xalqaro talabaga toʻliq yordam beradigan universitetlar kam va tanlovli.", "Rasmiy sahifa", "Har universitetni moliyaviy yordam sahifasi bilan tekshirasiz."),
-    ("scroll", "Viza chalkash", "F-1, J-1 va I-20 aralashib ketadi.", "Oldindan bilish", "Viza turi va talablarini rasmiy manbadan oldindan bilasiz."),
+    ("🛂", "Viza chalkash", "F-1, J-1 va I-20 aralashib ketadi.", "Oldindan bilish", "Viza turi va talablarini rasmiy manbadan oldindan bilasiz."),
   ]),
 "daad-lab": dict(
   h1=h("Germaniyada ariza tartibi boshqacha.", "Koʻp dasturda avval ilmiy rahbar topiladi."),
@@ -58,7 +58,7 @@ PROBLEMS = {
     ("bell", "Ilmiy rahbar yoʻq", "Doktorantura va tadqiqot grantlarida rahbar roziligi odatda arizaning bir qismi.", "Rahbarni topish", "Sohangizdagi rahbarni topib, unga oʻzingiz xat yozasiz."),
     ("telescope", "Qaysi DAAD dasturi mos", "Bazada dastur koʻp, har birining oʻz sharti bor.", "Rasmiy baza", "Har dastur shartini DAAD bazasidagi oʻz sahifasidan tekshirasiz."),
     ("memo", "Motivatsion xat", "Germaniyada xat nimani koʻrsatishi kerakligi noaniq.", "Tuzilma va mezon", "Xat va tadqiqot rejasini oʻzingiz yozasiz, mezon bilan tekshirasiz."),
-    ("books", "Til talabi aniq emas", "Nemis yoki ingliz tili kerakligi dasturga bogʻliq.", "Oldindan tekshirish", "Til talabini har dastur boʻyicha oldindan bilasiz. Til darsi kursga kirmaydi."),
+    ("🗣️", "Til talabi aniq emas", "Nemis yoki ingliz tili kerakligi dasturga bogʻliq.", "Oldindan tekshirish", "Til talabini har dastur boʻyicha oldindan bilasiz. Til darsi kursga kirmaydi."),
   ]),
 "tadbirkor-talaba": dict(
   h1=h("Biznes gʻoyangiz bor.", "Lekin oʻqishni tashlab boʻlmaydi."),
@@ -66,7 +66,7 @@ PROBLEMS = {
   probs=[
     ("bulb", "Gʻoyaga talab bormi", "Doʻstlar maqtovi pul toʻlaydigan mijoz borligini koʻrsatmaydi.", "Mijoz bilan suhbat", "Muammoni haqiqiy mijozlar bilan gaplashib tekshirasiz."),
     ("seedling", "Boshlashga pul yoʻq", "Katta mablagʻsiz qanday sinash mumkinligi noaniq.", "Oddiy yechim (MVP)", "Kichik yechim bilan birinchi toʻlovni olasiz."),
-    ("scroll", "Huquqiy shakl va soliq", "Qaysi shakl mos va soliq qancha, noaniq.", "Rasmiy manba", "Shakl va soliqni rasmiy manba va sana bilan tanlaysiz."),
+    ("⚖️", "Huquqiy shakl va soliq", "Qaysi shakl mos va soliq qancha, noaniq.", "Rasmiy manba", "Shakl va soliqni rasmiy manba va sana bilan tanlaysiz."),
     ("chart", "Foyda bormi, bilinmaydi", "Pul kirib-chiqadi, hisob yuritilmaydi.", "Oddiy jadval", "Pul oqimini oddiy jadvalda hisoblaysiz."),
   ]),
 "musofir-lab": dict(
@@ -76,6 +76,6 @@ PROBLEMS = {
     ("shield", "Vositachiga ishonib boʻlmaydi", "Kafolat vaʼda qiladi va oldindan pul soʻraydi.", "Belgilarni tanish", "Firibgarlik belgilarini taniysiz va vositachini rasmiy roʻyxatdan tekshirasiz."),
     ("compass", "Qaysi rasmiy yoʻl mos", "Har mamlakatning oʻz tizimi bor.", "Solishtirish", "Yoʻllarni talab va xarajati bilan rasmiy manbadan solishtirasiz."),
     ("scroll", "Shartnoma tushunarsiz", "Ish haqi va soat noaniq yozilgan boʻlishi mumkin.", "Nazorat roʻyxati", "Shartnomani band-band tekshirasiz."),
-    ("bell", "U yerda muammo chiqsa-chi", "Huquqlaringiz va kimga murojaat qilishni bilmaysiz.", "Yordam manzillari", "Borgan mamlakatdagi huquqlar va yordam manzillarini oldindan bilasiz."),
+    ("🆘", "U yerda muammo chiqsa-chi", "Huquqlaringiz va kimga murojaat qilishni bilmaysiz.", "Yordam manzillari", "Borgan mamlakatdagi huquqlar va yordam manzillarini oldindan bilasiz."),
   ]),
 }
