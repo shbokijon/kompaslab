@@ -384,6 +384,7 @@ body.kl-has-tabs .km-hero{padding-top:calc(var(--kl-top,0px) + var(--kl-nav,62px
 .km-row .km-y{margin-top:0;padding-top:0;border-top:0;}
 .km-row .km-x h3{font-size:16.5px;}
 @media(max-width:700px){.km-row{grid-template-columns:36px minmax(0,1fr);gap:10px 10px;padding:14px 16px;}.km-row .km-em{font-size:24px;}.km-row .km-ar{width:24px;height:24px;font-size:13px;}}
+.em{font-style:normal;}
 .km-hi{display:block;}
 .km-hi summary{display:block;}
 .km-hi h1 .kl-i{display:inline-grid;vertical-align:middle;margin-left:12px;width:26px;height:26px;font-size:15px;font-style:italic;position:relative;top:-.12em;}
