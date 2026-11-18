@@ -19,6 +19,7 @@ from pathlib import Path
 import sys as _sys
 _sys.path.insert(0, str(Path(__file__).resolve().parent))
 from labs_data import ON_SALE
+from problems import PROBLEMS
 
 UI_HEAD = '<link rel="stylesheet" href="css/kompas-ui.css">\n<script src="js/kompas-ui.js"></script>\n'
 SITE = "https://www.kompaslab.uz/"
@@ -331,13 +332,37 @@ def split(root, f, src):
     </div>
   </div>
 </section>'''
-    nxt = [(stem + "-dastur.html", "Modullar", "Bosqichlar, modullar va har darsning mavzusi")]
+    nxt = [(stem + "-dastur.html", "Modullar", "Yoʻl qaysi qadamlardan iborat")]
     if have_test:
         nxt.append((stem + "-test.html", "Tayyormisiz?", "Bir necha savol: tayyorgarligingizni taxminiy baholaysiz, qabul ehtimoli emas"))
     nxt += [(stem + "-narxlar.html", "Narxlar", "1 ta bosqich yoki Toʻliq dastur"), (stem + "-savollar.html", "Savollar", "Kimga mos, kimga mos emas va koʻp soʻraladigan savollar")]
-    nxt_html = '<section class="alt"><div class="wrap"><div class="head"><h2>Keyingi qadam</h2></div><nav class="kl-next" aria-label="Dastur sahifalari">' + "".join(
+    nxt_html = '<section class="alt km-sec"><div class="wrap"><div class="km-head"><h2>Batafsil</h2></div><nav class="kl-next" aria-label="Dastur sahifalari">' + "".join(
         f'<a href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in nxt) + "</nav></div></section>"
-    main = "\n".join(x for x in [hero, B.get("dark", ""), path, nxt_html, B.get("cta", "")] if x)
+    P = PROBLEMS.get(stem)
+    if P:
+        # 2026-11-18 (asoschi): Umumiy sahifa mahsulot (modul, dars) haqida emas, muammo va yechim haqida; minimal
+        crumb_html = crumb.group(0) if crumb else ""
+        cards = "".join(
+            f'<article class="km-p"><h3><img src="img/3d/{i}.webp" width="36" height="36" alt="" loading="lazy" decoding="async">{t}</h3><p>{d}</p><div class="km-s"><b>Yechim</b>{y}</div></article>'
+            for i, t, d, y in P["probs"])
+        hero = f'''<header class="km-hero">
+  <div class="wrap">
+    {crumb_html}
+    <img class="km-ico" src="img/3d/{icon}.webp" width="160" height="160" alt="" decoding="async">
+    <h1><span>{P["h1"]}</span></h1>
+    <p class="lead">{P["lead"]}</p>
+    <div class="km-cta">{m0_btn}{test_btn}<small>Birinchi qism bepul: yoʻl sizga mosligini toʻlashdan oldin bilasiz.</small></div>
+  </div>
+</header>'''
+        probs = f'''<section class="km-sec" id="yol">
+  <div class="wrap">
+    <div class="km-head"><span class="km-eyebrow">Tanish holat</span><h2>Qiyin joylar va yechimi</h2></div>
+    <div class="km-probs">{cards}</div>
+  </div>
+</section>'''
+        main = "\n".join(x for x in [hero, probs, nxt_html, B.get("cta", "")] if x)
+    else:
+        main = "\n".join(x for x in [hero, B.get("dark", ""), path, nxt_html, B.get("cta", "")] if x)
     made.append(emit(stem + ".html", "hub", title0, None, main, own=("yol",) + ((did.group(1),) if did else ())))
 
     # ── 2. Dastur ──

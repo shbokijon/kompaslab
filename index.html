@@ -6,16 +6,15 @@
 <meta name="theme-color" content="#2d4a3e">
 <script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
 <script>/* K4 yoʻli 2026-11-18 dan alohida sahifada: eski havolalar */ if (/^#yol-(k4|4k)$/.test(location.hash)) location.replace("k4-yoli.html");</script>
-<title>Kompas Lab: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik</title>
-<meta name="description" content="Bakalavr, Magistratura, PhD, GKS, USA va DAAD dasturlari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har dasturda M0 bepul. Obuna: 1 ta bosqich yoki toʻliq dastur.">
+<title>Kompas Lab: xorijda oʻqishga tayyorlanishdagi qiyinchiliklarga yechim</title>
+<meta name="description" content="Xorijda oʻqish, stipendiya va rasmiy ishga oʻzbek tilida tayyorgarlik: tarqoq maʼlumot, muddat, hujjat yozish va firibgarlik xavfiga aniq yechim. Birinchi qadam bepul.">
 <meta property="og:title" content="Kompas Lab">
-<meta property="og:description" content="Bakalavr, Magistratura, PhD, GKS, USA va DAAD dasturlari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har dasturda M0 bepul. Obuna: 1 ta bosqich yoki toʻliq dastur.">
+<meta property="og:description" content="Xorijda oʻqish, stipendiya va rasmiy ishga oʻzbek tilida tayyorgarlik: tarqoq maʼlumot, muddat, hujjat yozish va firibgarlik xavfiga aniq yechim. Birinchi qadam bepul.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/home-viz.css">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
@@ -25,7 +24,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script src="js/pwa.js" defer></script>
 <script src="js/sfx.js" defer></script>
-<script src="js/home-viz.js" defer></script>
 <link rel="stylesheet" href="css/brand.css">
 <meta property="og:image" content="https://www.kompaslab.uz/img/brand/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -46,199 +44,54 @@
   </div>
 </nav>
 <div class="kl-tabbar" data-sfx><div class="kl-tabs" role="navigation" aria-label="Sayt boʻlimlari"><a href="index.html#labs" class="kl-ico"><img src="img/3d/compass.webp" alt="" width="28" height="28" decoding="async"><span>Dasturlar</span></a><a href="k4-yoli.html" class="kl-ico"><img src="img/3d/road.webp" alt="" width="28" height="28" decoding="async"><span>K4 yoʻli</span></a><a href="mamlakatlar.html" class="kl-ico"><img src="img/3d/plane.webp" alt="" width="28" height="28" decoding="async"><span>Qayerga uchamiz?</span></a><a href="master-planner.html" class="kl-ico"><img src="img/3d/calendar.webp" alt="" width="28" height="28" decoding="async"><span>Bepul reja</span></a><a href="qanday-ishlaydi.html" class="kl-ico"><img src="img/3d/telescope.webp" alt="" width="28" height="28" decoding="async"><span>Qanday ishlaydi</span></a><a href="narxlar.html" class="kl-ico"><img src="img/3d/money.webp" alt="" width="28" height="28" decoding="async"><span>Narxlar</span></a><a href="atlas.html" class="kl-ico"><img src="img/3d/scroll.webp" alt="" width="28" height="28" decoding="async"><span>Atlas</span></a><a href="savollar.html" class="kl-ico"><img src="img/3d/bulb.webp" alt="" width="28" height="28" decoding="async"><span>Savollar</span></a></div></div>
-<header class="hero" data-sfx>
-  <div class="wrap hx">
-    <div style="grid-column:1/-1">
-      <span class="motto"><img src="img/3d/compass.webp" width="160" height="160" alt="" decoding="async">Kuzatuvdan kashfiyotga</span>
-      <h1 class="hx-h1"><span>Xorijda oʻqishga mustaqil tayyorlaning.</span><span class="l2">Agentlikka ketadigan millionlarni tejang.</span></h1>
-    </div>
-    <div>
-      <p class="lead lead-l hx-lead">Universitet tanlashdan vizagacha har qadam oʻzbek tilida, bosqichma-bosqich. Birinchi modul bepul.</p>
-      <div style="margin-top:18px"><a class="btn btn-p" href="#labs" data-snd="nav">Bepul M0 ni boshlash</a></div>
-      <div class="finder" aria-label="Dastur tanlash">
-        <div class="fnd-top"><span class="fnd-t"><img src="img/3d/telescope.webp" width="160" height="160" alt="" decoding="async">Sizga qaysi dastur mos?</span><span class="fnd-steps" aria-hidden="true"><i data-s="who"></i><i data-s="goal"></i></span><span data-sfx-slot></span></div>
-        <div class="fq"><b><span class="n">1</span>Hozir kimsiz?</b><div class="chips"><button type="button" class="chip" data-q="who" data-v="maktab" aria-pressed="false" data-snd="pick"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Maktab yoki litsey oʻquvchisi</span></button><button type="button" class="chip" data-q="who" data-v="bakalavr" aria-pressed="false" data-snd="pick"><img src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Bakalavr talabasi yoki bitiruvchi</span></button><button type="button" class="chip" data-q="who" data-v="magistr" aria-pressed="false" data-snd="pick"><img src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Magistr yoki tadqiqotchi</span></button><button type="button" class="chip" data-q="who" data-v="ishchi" aria-pressed="false" data-snd="pick"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Ishlayotgan mutaxassis</span></button></div></div>
-        <div class="fq"><b><span class="n">2</span>Maqsadingiz?</b><div class="chips"><button type="button" class="chip" data-q="goal" data-v="oqish" aria-pressed="false" data-snd="pick"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Xorijda oʻqish, davlat tanlanmagan</span></button><button type="button" class="chip" data-q="goal" data-v="korea" aria-pressed="false" data-snd="pick"><img src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Koreya</span></button><button type="button" class="chip" data-q="goal" data-v="usa" aria-pressed="false" data-snd="pick"><img src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>AQSh</span></button><button type="button" class="chip" data-q="goal" data-v="germany" aria-pressed="false" data-snd="pick"><img src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Germaniya</span></button><button type="button" class="chip" data-q="goal" data-v="biznes" aria-pressed="false" data-snd="pick"><img src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Oʻqish bilan birga biznes</span></button><button type="button" class="chip" data-q="goal" data-v="ish" aria-pressed="false" data-snd="pick"><img src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><span>Xorijda rasmiy ish</span></button></div></div>
-        <div class="fq"><b><span class="n">3</span>Qaysi sohada oʻqimoqchisiz? <small>ixtiyoriy</small></b><select id="fSoha" class="fsel" aria-label="Soha"><option value="">Sohani tanlang</option><option value="muhandislik">Muhandislik (mexanika, qurilish, elektr)</option><option value="it">Kompyuter fanlari va IT</option><option value="ai-data">Sunʼiy intellekt va maʼlumotlar fani</option><option value="matematika">Matematika va statistika</option><option value="fizika">Fizika</option><option value="kimyo">Kimyo</option><option value="biologiya">Biologiya va biotexnologiya</option><option value="tibbiyot">Tibbiyot va sogʻliqni saqlash</option><option value="geo-ekologiya">Geologiya, yer va atrof-muhit fanlari</option><option value="arxitektura">Arxitektura va dizayn</option><option value="iqtisodiyot">Iqtisodiyot va moliya</option><option value="biznes">Biznes va menejment</option><option value="turizm">Mehmonxona va turizm</option><option value="ijtimoiy-huquq">Ijtimoiy fanlar va huquq</option><option value="talim">Taʼlim va pedagogika</option><option value="boshqa">Boshqa yoki hali bilmayman</option></select><p class="fhint">Soha boʻyicha universitetlar xaritasini tayyorlayapmiz. Javobingiz qaysi sohadan boshlashimizni belgilaydi.</p></div>
-      </div>
-    </div>
-    <div>
-      <div class="dial idle" id="dial" aria-hidden="true">
-  <svg viewBox="0 0 340 340" role="presentation">
-    <circle cx="170" cy="170" r="166" fill="#fffefb" stroke="#e2ded3" stroke-width="2"/>
-    <circle cx="170" cy="170" r="104" fill="none" stroke="#e2ded3" stroke-width="1.5"/>
-    <line x1="170.0" y1="82.0" x2="170.0" y2="70.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="2"/><line x1="178.1" y1="77.4" x2="178.7" y2="70.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="186.1" y1="78.4" x2="187.4" y2="71.5" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="194.1" y1="80.2" x2="195.9" y2="73.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="201.8" y1="82.6" x2="204.2" y2="76.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="209.3" y1="85.7" x2="212.3" y2="79.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="216.5" y1="89.5" x2="220.0" y2="83.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="223.3" y1="93.8" x2="227.4" y2="88.1" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="229.8" y1="98.8" x2="234.3" y2="93.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="232.2" y1="107.8" x2="240.7" y2="99.3" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="2"/><line x1="241.2" y1="110.2" x2="246.6" y2="105.7" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="246.2" y1="116.7" x2="251.9" y2="112.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="250.5" y1="123.5" x2="256.6" y2="120.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="254.3" y1="130.7" x2="260.6" y2="127.7" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="257.4" y1="138.2" x2="264.0" y2="135.8" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="259.8" y1="145.9" x2="266.6" y2="144.1" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="261.6" y1="153.9" x2="268.5" y2="152.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="262.6" y1="161.9" x2="269.6" y2="161.3" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="258.0" y1="170.0" x2="270.0" y2="170.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="2"/><line x1="262.6" y1="178.1" x2="269.6" y2="178.7" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="261.6" y1="186.1" x2="268.5" y2="187.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="259.8" y1="194.1" x2="266.6" y2="195.9" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="257.4" y1="201.8" x2="264.0" y2="204.2" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="254.3" y1="209.3" x2="260.6" y2="212.3" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="250.5" y1="216.5" x2="256.6" y2="220.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="246.2" y1="223.3" x2="251.9" y2="227.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="241.2" y1="229.8" x2="246.6" y2="234.3" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="232.2" y1="232.2" x2="240.7" y2="240.7" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="2"/><line x1="229.8" y1="241.2" x2="234.3" y2="246.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="223.3" y1="246.2" x2="227.4" y2="251.9" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="216.5" y1="250.5" x2="220.0" y2="256.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="209.3" y1="254.3" x2="212.3" y2="260.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="201.8" y1="257.4" x2="204.2" y2="264.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="194.1" y1="259.8" x2="195.9" y2="266.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="186.1" y1="261.6" x2="187.4" y2="268.5" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="178.1" y1="262.6" x2="178.7" y2="269.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="170.0" y1="258.0" x2="170.0" y2="270.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="2"/><line x1="161.9" y1="262.6" x2="161.3" y2="269.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="153.9" y1="261.6" x2="152.6" y2="268.5" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="145.9" y1="259.8" x2="144.1" y2="266.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="138.2" y1="257.4" x2="135.8" y2="264.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="130.7" y1="254.3" x2="127.7" y2="260.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="123.5" y1="250.5" x2="120.0" y2="256.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="116.7" y1="246.2" x2="112.6" y2="251.9" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="110.2" y1="241.2" x2="105.7" y2="246.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="107.8" y1="232.2" x2="99.3" y2="240.7" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="2"/><line x1="98.8" y1="229.8" x2="93.4" y2="234.3" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="93.8" y1="223.3" x2="88.1" y2="227.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="89.5" y1="216.5" x2="83.4" y2="220.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="85.7" y1="209.3" x2="79.4" y2="212.3" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="82.6" y1="201.8" x2="76.0" y2="204.2" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="80.2" y1="194.1" x2="73.4" y2="195.9" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="78.4" y1="186.1" x2="71.5" y2="187.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="77.4" y1="178.1" x2="70.4" y2="178.7" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="82.0" y1="170.0" x2="70.0" y2="170.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="2"/><line x1="77.4" y1="161.9" x2="70.4" y2="161.3" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="78.4" y1="153.9" x2="71.5" y2="152.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="80.2" y1="145.9" x2="73.4" y2="144.1" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="82.6" y1="138.2" x2="76.0" y2="135.8" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="85.7" y1="130.7" x2="79.4" y2="127.7" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="89.5" y1="123.5" x2="83.4" y2="120.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="93.8" y1="116.7" x2="88.1" y2="112.6" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="98.8" y1="110.2" x2="93.4" y2="105.7" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="107.8" y1="107.8" x2="99.3" y2="99.3" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="2"/><line x1="110.2" y1="98.8" x2="105.7" y2="93.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="116.7" y1="93.8" x2="112.6" y2="88.1" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="123.5" y1="89.5" x2="120.0" y2="83.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="130.7" y1="85.7" x2="127.7" y2="79.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="138.2" y1="82.6" x2="135.8" y2="76.0" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="145.9" y1="80.2" x2="144.1" y2="73.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="153.9" y1="78.4" x2="152.6" y2="71.5" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/><line x1="161.9" y1="77.4" x2="161.3" y2="70.4" stroke="#2d4a3e" stroke-opacity=".35" stroke-width="1"/>
-    <text x="170" y="94" text-anchor="middle" font-family="Outfit" font-size="12" font-weight="800" fill="#c4622d">N</text>
-    <g id="needle"><g class="sway">
-      <polygon points="170,92 180,170 160,170" fill="#c4622d"/>
-      <polygon points="170,248 180,170 160,170" fill="#2d4a3e"/>
-    </g></g>
-    <circle cx="170" cy="170" r="9" fill="#fffefb" stroke="#2d4a3e" stroke-width="3"/>
-  </svg>
-  <span class="pt" data-slug="bachelor-lab" style="left:50.00%;top:11.50%"><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="Bakalavr dasturi" loading="lazy" decoding="async"></span><span class="pt" data-slug="master-lab" style="left:77.22%;top:22.78%"><img class="" src="img/3d/master.webp" width="160" height="160" alt="Magistratura dasturi" loading="lazy" decoding="async"></span><span class="pt" data-slug="phd-lab" style="left:88.50%;top:50.00%"><img class="" src="img/3d/phd.webp" width="160" height="160" alt="PhD dasturi" loading="lazy" decoding="async"></span><span class="pt" data-slug="gks-lab" style="left:77.22%;top:77.22%"><img class="" src="img/3d/gks.webp" width="160" height="160" alt="GKS dasturi" loading="lazy" decoding="async"></span><span class="pt" data-slug="usa-lab" style="left:50.00%;top:88.50%"><img class="" src="img/3d/usa.webp" width="160" height="160" alt="USA dasturi" loading="lazy" decoding="async"></span><span class="pt" data-slug="daad-lab" style="left:22.78%;top:77.22%"><img class="" src="img/3d/daad.webp" width="160" height="160" alt="DAAD dasturi" loading="lazy" decoding="async"></span><span class="pt" data-slug="tadbirkor-talaba" style="left:11.50%;top:50.00%"><img class="" src="img/3d/tt.webp" width="160" height="160" alt="Tadbirkor Talaba" loading="lazy" decoding="async"></span><span class="pt" data-slug="miggo" style="left:22.78%;top:22.78%"><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="Musofir dasturi" loading="lazy" decoding="async"></span>
-</div>
-      <div class="result" id="result" aria-live="polite"><p class="empty" id="rEmpty"><img src="img/3d/bulb.webp" width="160" height="160" alt="" decoding="async"><span>Ikki savolga javob bersangiz, kompas sizga mos dasturni koʻrsatadi.</span></p><div class="note2" id="rNote" hidden></div><div class="r-b" data-r="bachelor-lab" hidden><div class="r-h"><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Bakalavr dasturi</div><div class="r-w">10–11-sinf, litsey va kollej, 15–19 yosh</div></div></div><p>Universitet tanlash, testlar rejasi, insho va tavsiya xatlari.</p><div class="r-p"><span data-pm="bachelor-lab">99 000</span> soʻm / 1 ta bosqich yoki <span data-p6v="bachelor-lab">499 000</span> soʻm / toʻliq dastur. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="bachelor-lab.html">Bakalavr dasturi sahifasi</a><a class="btn btn-g" href="bachelor-lab-narxlar.html" data-snd="nav">Narx va obuna</a></div></div><div class="r-b" data-r="master-lab" hidden><div class="r-h"><img class="" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Magistratura dasturi</div><div class="r-w">Xorijiy magistraturaga topshiruvchilar</div></div></div><p>Yoʻnalish tanlash, hujjatlar, stipendiya, viza va joʻnashga tayyorgarlik.</p><div class="r-p"><span data-pm="master-lab">99 000</span> soʻm / 1 ta bosqich yoki <span data-p6v="master-lab">499 000</span> soʻm / toʻliq dastur. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="master-lab.html">Magistratura dasturi sahifasi</a><a class="btn btn-g" href="master-lab-narxlar.html" data-snd="nav">Narx va obuna</a></div></div><div class="r-b" data-r="phd-lab" hidden><div class="r-h"><img class="" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">PhD dasturi</div><div class="r-w">Moliyalashtirilgan doktorantura</div></div></div><p>Ilmiy savol, ilmiy rahbar topish va ilmiy loyiha taklifi.</p><div class="r-p"><span data-pm="phd-lab">149 000</span> soʻm / 1 ta bosqich yoki <span data-p6v="phd-lab">849 000</span> soʻm / toʻliq dastur. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="phd-lab.html">PhD dasturi sahifasi</a><a class="btn btn-g" href="phd-lab-narxlar.html" data-snd="nav">Narx va obuna</a></div></div><div class="r-b" data-r="gks-lab" hidden><div class="r-h"><img class="" src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">GKS dasturi</div><div class="r-w">Koreya: Global Korea Scholarship</div></div></div><p>GKS ga muvofiqlik, hujjatlar va intervyuga tayyorgarlik.</p><div class="r-p"><span data-pm="gks-lab">99 000</span> soʻm / 1 ta bosqich yoki <span data-p6v="gks-lab">499 000</span> soʻm / toʻliq dastur. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="gks-lab.html">GKS dasturi sahifasi</a><a class="btn btn-g" href="gks-lab-narxlar.html" data-snd="nav">Narx va obuna</a></div></div><div class="r-b" data-r="usa-lab" hidden><div class="r-h"><img class="" src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">USA dasturi</div><div class="r-w">AQSh: bakalavr yordami, UGRAD, Fulbright, PhD</div></div></div><p>Universitet yordami, moliyaviy yordam arizasi, UGRAD, Fulbright, PhD moliyasi va viza.</p><div class="r-p"><span data-pm="usa-lab">99 000</span> soʻm / 1 ta bosqich yoki <span data-p6v="usa-lab">499 000</span> soʻm / toʻliq dastur. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="usa-lab.html">USA dasturi sahifasi</a><a class="btn btn-g" href="usa-lab-narxlar.html" data-snd="nav">Narx va obuna</a></div></div><div class="r-b" data-r="daad-lab" hidden><div class="r-h"><img class="" src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">DAAD dasturi</div><div class="r-w">Germaniya: magistratura va doktorantura</div></div></div><p>Professor topish, motivatsion xat, DAAD portali va viza.</p><div class="r-p"><span data-pm="daad-lab">99 000</span> soʻm / 1 ta bosqich yoki <span data-p6v="daad-lab">499 000</span> soʻm / toʻliq dastur. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="daad-lab.html">DAAD dasturi sahifasi</a><button type="button" class="btn btn-g" data-wl="daad-lab">Kutish roʻyxati</button></div></div><div class="r-b" data-r="tadbirkor-talaba" hidden><div class="r-h"><img class="" src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Tadbirkor Talaba</div><div class="r-w">Universitet talabalari, 18 yoshdan</div></div></div><p>Oʻqish bilan birga kichik, qonuniy biznes sinovi.</p><div class="r-p"><span data-pm="tadbirkor-talaba">29 000</span> soʻm / 1 ta bosqich yoki <span data-p6v="tadbirkor-talaba">149 000</span> soʻm / toʻliq dastur. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="tadbirkor-talaba.html">Tadbirkor Talaba sahifasi</a><button type="button" class="btn btn-g" data-wl="tadbirkor-talaba">Kutish roʻyxati</button></div></div><div class="r-b" data-r="miggo" hidden><div class="r-h"><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="r-n">Musofir dasturi</div><div class="r-w">Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha</div></div></div><p>Xorijda faqat rasmiy yoʻl bilan ishlash va firibgarlikdan himoya.</p><div class="r-p"><span data-pm="miggo">49 000</span> soʻm / 1 ta bosqich yoki <span data-p6v="miggo">249 000</span> soʻm / toʻliq dastur. M0 bepul.</div><div class="r-a"><a class="btn btn-p" href="musofir-lab.html">Musofir dasturi sahifasi</a><button type="button" class="btn btn-g" data-wl="miggo">Kutish roʻyxati</button></div></div></div>
-    </div>
+<header class="km-hero" data-sfx>
+  <div class="wrap">
+    <span class="motto"><img src="img/3d/compass.webp" width="160" height="160" alt="" decoding="async">Kuzatuvdan kashfiyotga</span>
+    <h1 class="hx-h1"><span>Xorijda oʻqishga tayyorlanish qiyin.</span><span class="l2">Har qiyin joy uchun aniq qadam bor.</span></h1>
+    <p class="lead">Oʻzbek tilida, rasmiy manbalar bilan. Hujjatni oʻzingiz yozasiz va qaysi qadam qachon kerakligini koʻrib turasiz.</p>
+    <div class="km-cta"><a class="btn btn-p" href="#labs" data-snd="nav">Holatimni tanlash</a><a class="btn btn-g" href="#muammolar" data-snd="nav">Qiyinchiliklarni koʻrish</a></div>
   </div>
 </header>
-<section id="lab-nima">
+<section class="km-sec" id="muammolar">
   <div class="wrap">
-    <div class="head"><span class="kv-eyebrow">Dastur nima?</span><h2><b>Dastur</b>: bitta maqsadga olib boradigan tayyor yoʻl</h2><p class="sub">Masalan, Magistratura <b>dasturi</b> magistraturaga, GKS <b>dasturi</b> esa Koreya hukumati stipendiyasiga hujjat topshirishga tayyorlaydi. <b>Dasturlar</b> modullardan, modullar esa darslardan iborat. Oxirida qoʻlingizda tayyor hujjat boʻladi.</p></div>
-    <div class="kv-grid2">
-      <div class="kv-card">
-        <h3 class="kv-h3">Katta maqsaddan bitta hujjatgacha</h3>
-        <p class="kv-note" style="margin-top:0">Qatlamni bosing.</p>
-        <div class="pyr" data-pyr>
-          <button type="button" aria-pressed="false" data-t="Kompas Lab" data-d="Platforma. Bu yerda daraja, davlat va ish yoʻli boʻyicha dasturlar bor.">Kompas Lab <small>platforma</small></button>
-          <button type="button" aria-pressed="true" data-t="Dastur" data-d="Sizning maqsadingiz: magistratura, PhD, GKS yoki boshqa yoʻl. Har dasturning birinchi moduli (M0) bepul.">Dastur <small>maqsadingiz</small></button>
-          <button type="button" aria-pressed="false" data-t="Modul" data-d="Bitta katta qadam, masalan saralangan roʻyxat yoki maqsad bayonnomasi. Har modulda 250 XP toʻplaysiz.">Modul <small>250 XP</small></button>
-          <button type="button" aria-pressed="false" data-t="Dars" data-d="Bitta aniq mavzu va bitta topshiriq. Oʻngdagi namunada darsni ochib koʻring.">Dars</button>
-          <button type="button" aria-pressed="false" data-t="4 qism" data-d="Diqqat 🔥, Asosiy qism, Xulosa, Topshiriq. Toʻrttasini ochmaguningizcha dars yakunlanmaydi.">4 qism</button>
-          <button type="button" aria-pressed="false" data-t="Hujjatingiz" data-d="Natija: CV, maqsad bayonnomasi (SoP), saralangan roʻyxat (Shortlist). Hujjatni oʻzingiz yozasiz, Kompas yoʻnaltiradi.">Hujjatingiz</button>
-        </div>
-        <div class="pyr-out" data-pyr-out aria-live="polite"><b>Dastur</b>Sizning maqsadingiz: magistratura, PhD, GKS yoki boshqa yoʻl. Har dasturning birinchi moduli (M0) bepul.</div>
-      </div>
-      <div class="kv-card">
-        <h3 class="kv-h3">Bitta dars ichida nima bor</h3>
-        <p class="kv-note" style="margin-top:0">Toʻrt qismni birma-bir oching, xuddi haqiqiy darsdagidek.</p>
-        <div class="dars" data-dars>
-          <button type="button" aria-pressed="false"><i>1</i><span><b>Diqqat 🔥</b><span>Bu mavzu nega sizga kerak: 2–3 jumla.</span></span><em class="ck" aria-hidden="true">✓</em></button>
-          <button type="button" aria-pressed="false"><i>2</i><span><b>Asosiy qism</b><span>Mavzuning oʻzi, inglizcha atamalari bilan.</span></span><em class="ck" aria-hidden="true">✓</em></button>
-          <button type="button" aria-pressed="false"><i>3</i><span><b>Xulosa</b><span>Eng muhim fikr: 1–2 jumla.</span></span><em class="ck" aria-hidden="true">✓</em></button>
-          <button type="button" aria-pressed="false"><i>4</i><span><b>Topshiriq</b><span>Siz yaratadigan aniq natija: hujjatingizning bir boʻlagi.</span></span><em class="ck" aria-hidden="true">✓</em></button>
-        </div>
-        <div class="dars-bar" aria-hidden="true"><i data-dars-bar></i></div>
-        <div class="dars-msg" data-dars-msg aria-live="polite">0 / 4 qism ochildi</div>
-      </div>
-    </div>
-    <div class="kv-cta"><a class="btn btn-p" href="register.html" data-kl-start data-snd="nav">Bepul M0 ni boshlash</a><small>Roʻyxatdan oʻtish bepul, karta soʻralmaydi.</small></div>
-  </div>
-</section>
-<section class="alt" id="labs">
-  <div class="wrap">
-    <div class="head"><details class="kl-info kl-title kl-h2"><summary><h2>Sizga mos <b>dasturni</b> tanlang</h2><span class="kl-i" aria-hidden="true">i</span></summary><p>Daraja <b>dasturlarida</b> (Bakalavr, Magistratura, PhD) istalgan universitet soʻraydigan hujjatlarni yozasiz. Davlat <b>dasturlarida</b> esa oʻzingiz tanlagan stipendiya talablarini oʻrganasiz. Birinchi modul bepul, keyin obunani Click orqali oʻzingiz ochasiz (<a href="narxlar.html">narxlar</a>).</p></details></div>
-    <h3 class="grp-h">Daraja boʻyicha</h3><div class="labs-g"><div class="lc" data-lab-card="bachelor-lab"><details class="lc-x"><summary class="lc-h"><img class="" src="img/3d/bachelor.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Bakalavr dasturi</div><div class="lc-w">10–11-sinf, litsey va kollej, 15–19 yosh</div></div><span class="kl-i" aria-hidden="true">i</span></summary><p>Universitet tanlash va testlar rejasidan boshlaysiz. Insho, tavsiya xatlari va 4 yillik moliyaviy reja shu dasturda tayyorlanadi. 18 yoshgacha obunani ota-ona rasmiylashtiradi.</p></details>
-<div class="lc-m"><span class="lc-t">17 modul</span><span class="lc-t">86 dars</span><span class="lc-t free">M0 bepul</span></div>
-<div class="live" data-live-wl="bachelor-lab"><i></i><span></span></div>
-<div class="lc-f"><div class="lc-p"><span data-pm="bachelor-lab">99 000</span> soʻm / 1 ta bosqich<small>yoki <span data-p6v="bachelor-lab">499 000</span> soʻm / toʻliq dastur</small></div><a class="lc-b" href="bachelor-lab.html">Batafsil</a></div></div><div class="lc" data-lab-card="master-lab"><details class="lc-x"><summary class="lc-h"><img class="" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Magistratura dasturi</div><div class="lc-w">Xorijiy magistraturaga topshiruvchilar</div></div><span class="kl-i" aria-hidden="true">i</span></summary><p>Akademik CV, maqsad bayonnomasi (SoP) va ilmiy loyiha taklifini oʻzingiz yozasiz. Tavsiya xatlari va stipendiyalarni oldindan rejalaysiz.</p></details>
-<div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">59 dars</span><span class="lc-t free">M0 bepul</span></div>
-<div class="live" data-live-wl="master-lab"><i></i><span></span></div>
-<div class="lc-f"><div class="lc-p"><span data-pm="master-lab">99 000</span> soʻm / 1 ta bosqich<small>yoki <span data-p6v="master-lab">499 000</span> soʻm / toʻliq dastur</small></div><a class="lc-b" href="master-lab.html">Batafsil</a></div></div><div class="lc" data-lab-card="phd-lab"><details class="lc-x"><summary class="lc-h"><img class="" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">PhD dasturi</div><div class="lc-w">Moliyalashtirilgan doktorantura</div></div><span class="kl-i" aria-hidden="true">i</span></summary><p>Avval ilmiy savolingizni aniqlaysiz. Keyin ilmiy rahbar izlab, professorlarga xat yozasiz. Ilmiy loyiha taklifi va moliyalashtirish yoʻllarini tayyorlaysiz.</p></details>
-<div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">56 dars</span><span class="lc-t free">M0 bepul</span></div>
-<div class="live" data-live-wl="phd-lab"><i></i><span></span></div>
-<div class="lc-f"><div class="lc-p"><span data-pm="phd-lab">149 000</span> soʻm / 1 ta bosqich<small>yoki <span data-p6v="phd-lab">849 000</span> soʻm / toʻliq dastur</small></div><a class="lc-b" href="phd-lab.html">Batafsil</a></div></div></div><h3 class="grp-h">Davlat va stipendiya boʻyicha</h3><div class="labs-g"><div class="lc" data-lab-card="gks-lab"><details class="lc-x"><summary class="lc-h"><img class="" src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">GKS dasturi</div><div class="lc-w">Koreya: Global Korea Scholarship</div></div><span class="kl-i" aria-hidden="true">i</span></summary><p>Talabga mos kelishingizni M0 da, toʻlovdan oldin tekshirasiz. Umumiy qismdan keyin bakalavriat, magistratura yoki doktorantura trekini tanlaysiz.</p></details>
-<div class="lc-m"><span class="lc-t">3 trek</span><span class="lc-t">54 dars</span><span class="lc-t free">M0 bepul</span></div>
-<div class="live" data-live-wl="gks-lab"><i></i><span></span></div>
-<div class="lc-f"><div class="lc-p"><span data-pm="gks-lab">99 000</span> soʻm / 1 ta bosqich<small>yoki <span data-p6v="gks-lab">499 000</span> soʻm / toʻliq dastur</small></div><a class="lc-b" href="gks-lab.html">Batafsil</a></div></div><div class="lc" data-lab-card="usa-lab"><details class="lc-x"><summary class="lc-h"><img class="" src="img/3d/usa.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">USA dasturi</div><div class="lc-w">AQSh: bakalavr yordami, UGRAD, Fulbright, PhD</div></div><span class="kl-i" aria-hidden="true">i</span></summary><p>AQShda oʻqishning beshta yoʻlini oʻrganasiz: universitet yordami bilan bakalavr, Global UGRAD, Fulbright, magistratura va PhD. Xarajat, I-20, yordam arizasi va vizani rasmiy manbadan tekshirasiz.</p></details>
-<div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">46 dars</span><span class="lc-t free">M0 bepul</span></div>
-<div class="live" data-live-wl="usa-lab"><i></i><span></span></div>
-<div class="lc-f"><div class="lc-p"><span data-pm="usa-lab">99 000</span> soʻm / 1 ta bosqich<small>yoki <span data-p6v="usa-lab">499 000</span> soʻm / toʻliq dastur</small></div><a class="lc-b" href="usa-lab.html">Batafsil</a></div></div><div class="lc" data-lab-card="daad-lab"><details class="lc-x"><summary class="lc-h"><img class="" src="img/3d/daad.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">DAAD dasturi</div><div class="lc-w">Germaniya: magistratura va doktorantura</div></div><span class="kl-i" aria-hidden="true">i</span></summary><p>Germaniya akademik tizimini va ilmiy rahbarni oldindan topishni oʻrganasiz. Motivatsion xat, tadqiqot rejasi va DAAD portalidagi arizani tayyorlaysiz.</p></details>
-<div class="lc-m"><span class="lc-t">9 modul</span><span class="lc-t">51 dars</span><span class="lc-t free">M0 bepul</span></div>
-<div class="live" data-live-wl="daad-lab"><i></i><span></span></div>
-<div class="lc-f"><div class="lc-p"><span data-pm="daad-lab">99 000</span> soʻm / 1 ta bosqich<small>yoki <span data-p6v="daad-lab">499 000</span> soʻm / toʻliq dastur</small></div><a class="lc-b" href="daad-lab.html">Batafsil</a></div></div></div><h3 class="grp-h">Talaba hayoti va ish</h3><div class="labs-g"><div class="lc" data-lab-card="tadbirkor-talaba"><details class="lc-x"><summary class="lc-h"><img class="" src="img/3d/tt.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Tadbirkor Talaba</div><div class="lc-w">Universitet talabalari, 18 yoshdan</div></div><span class="kl-i" aria-hidden="true">i</span></summary><p>Oʻqishni toʻxtatmasdan kichik, qonuniy biznesni sinab koʻrasiz. Muammo, birinchi mijoz, pul hisobi, huquqiy shakl va soliqni oʻrganasiz.</p></details>
-<div class="lc-m"><span class="lc-t">10 modul</span><span class="lc-t">54 dars</span><span class="lc-t free">M0 bepul</span><span class="lc-t soon">Ishlab chiqilmoqda</span></div>
-<div class="live" data-live-wl="tadbirkor-talaba"><i></i><span></span></div>
-<div class="lc-f"><div class="lc-p"><span data-pm="tadbirkor-talaba">29 000</span> soʻm / 1 ta bosqich<small>yoki <span data-p6v="tadbirkor-talaba">149 000</span> soʻm / toʻliq dastur</small></div><a class="lc-b" href="tadbirkor-talaba.html">Batafsil</a></div></div><div class="lc" data-lab-card="miggo"><details class="lc-x"><summary class="lc-h"><img class="" src="img/3d/musofir.webp" width="160" height="160" alt="" loading="lazy" decoding="async"><div><div class="lc-n">Musofir dasturi</div><div class="lc-w">Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha</div></div><span class="kl-i" aria-hidden="true">i</span></summary><p>Xorijda faqat rasmiy yoʻl bilan ishlashni va firibgarni taniy olishni oʻrganasiz. Kompas ish yoki viza topib bermaydi.</p></details>
-<div class="lc-m"><span class="lc-t">8 modul</span><span class="lc-t">44 dars</span><span class="lc-t free">M0 bepul</span></div>
-<div class="live" data-live-wl="miggo"><i></i><span></span></div>
-<div class="lc-f"><div class="lc-p"><span data-pm="miggo">49 000</span> soʻm / 1 ta bosqich<small>yoki <span data-p6v="miggo">249 000</span> soʻm / toʻliq dastur</small></div><a class="lc-b" href="musofir-lab.html">Batafsil</a></div></div></div>
-  </div>
-</section>
-<section class="alt" id="yolingiz">
-  <div class="wrap">
-    <div class="head"><span class="kv-eyebrow">Sizning yoʻlingiz</span><h2>Bugundan joʻnash kunigacha</h2><p class="sub">Toʻrt bosqichni bosib koʻring. Raqamlarni oʻzgartirsangiz, grafik ham oʻzgaradi.</p></div>
-    <div class="yt-tabs" role="tablist" aria-label="Yoʻl bosqichlari" data-yt>
-      <button type="button" role="tab" id="yt1" aria-controls="yp1" aria-selected="true" tabindex="0">1. Universitet tanlash</button>
-      <button type="button" role="tab" id="yt2" aria-controls="yp2" aria-selected="false" tabindex="-1">2. 12 oylik reja</button>
-      <button type="button" role="tab" id="yt3" aria-controls="yp3" aria-selected="false" tabindex="-1">3. Qanchalik tayyorsiz?</button>
-      <button type="button" role="tab" id="yt4" aria-controls="yp4" aria-selected="false" tabindex="-1">4. Qabul xati keldi</button>
-    </div>
-
-    <div class="yt-panel kv-card" role="tabpanel" id="yp1" aria-labelledby="yt1">
-      <h3 class="kv-h3">Avval soha, keyin mamlakat</h3>
-      <p>Bitta mamlakat ichida ham universitetlar soha boʻyicha keskin farq qiladi. Roʻyxatingizni sohangizdagi kafedra va professordan boshlang.</p>
-      <div class="soha" data-soha>
-        <button type="button" aria-pressed="false" data-tip="Masalan, “muhandislik” emas, “suv resurslari muhandisligi”. Yoʻnalish qancha aniq boʻlsa, qidiruv shuncha qisqa."><em>01</em><span><b>Soha</b><span>Nimani oʻqimoqchisiz, aniq yoʻnalishgacha</span></span></button>
-        <button type="button" aria-pressed="false" data-tip="Shu soha boʻyicha qaysi universitetlarda faol kafedra va ilmiy guruh borligini koʻrasiz."><em>02</em><span><b>Kuchli kafedralar</b><span>Shu soha boʻyicha qayerda ilmiy ish boʻlyapti</span></span></button>
-        <button type="button" aria-pressed="false" data-tip="Professorlarning soʻnggi maqolalarini oʻqib, mavzuyingizga yaqinlarini ajratasiz."><em>03</em><span><b>Ilmiy moslik</b><span>Mavzuyingizga yaqin professorlar</span></span></button>
-        <button type="button" aria-pressed="false" data-tip="Qoʻlingizda sizga mos dasturlarning qisqa roʻyxati boʻladi. Mamlakat, grant va vizani shundan keyin hal qilasiz."><em>04</em><span><b>Saralangan roʻyxat (Shortlist)</b><span>Shundan keyin mamlakat, grant, viza</span></span></button>
-      </div>
-      <div class="soha-tip" data-soha-tip aria-live="polite">Qadamni bosing.</div>
-      <div class="kv-cta"><a class="btn btn-p" href="master-planner.html" data-snd="nav">Bepul reja tuzish</a></div>
-    </div>
-
-    <div class="yt-panel kv-card" role="tabpanel" id="yp2" aria-labelledby="yt2" hidden>
-      <h3 class="kv-h3">12 oy: hozirdan joʻnashgacha</h3>
-      <div class="gn-top"><label for="gnStart">Qaysi oydan boshlaysiz?</label><select id="gnStart" data-gn-start></select></div>
-      <div class="gn" data-gantt><div class="gn-in"></div></div>
-      <div class="gn-leg"><button type="button" data-gn-f="t"><i class="c-t"></i>Tayyorgarlik</button><button type="button" data-gn-f="h"><i class="c-h"></i>Hujjatlar</button><button type="button" data-gn-f="s"><i class="c-s"></i>Topshirish</button><button type="button" data-gn-f="q"><i class="c-q"></i>Qabuldan keyin</button></div>
-      <div class="gn-out" data-gn-out aria-live="polite"></div>
-      <p class="kv-note">Namuna reja. Aniq sanalar siz tanlagan dasturga qarab oʻzgaradi.</p>
-      <div class="kv-cta"><a class="btn btn-p" href="master-planner.html" data-snd="nav">Oʻz rejamni tuzish</a></div>
-    </div>
-
-    <div class="yt-panel kv-card" role="tabpanel" id="yp3" aria-labelledby="yt3" hidden>
-      <h3 class="kv-h3">Arizaga qanchalik tayyorsiz?</h3>
-      <p>Tayyorgarlik koʻrsatkichi (Readiness Score): bitta raqam va uning tarkibi. Belgilarni suring.</p>
-      <div class="rd" data-rd style="margin-top:16px">
-        <div class="rd-ring"><svg viewBox="0 0 200 200" aria-hidden="true"><circle class="bg" cx="100" cy="100" r="84"/><circle class="fg" cx="100" cy="100" r="84"/></svg><div><b data-rd-n>72%</b><span>tayyor</span></div></div>
-        <div class="rd-list">
-          <label><div><span>Saralangan roʻyxat</span><output>100%</output></div><input type="range" min="0" max="100" step="5" value="100" data-next="Saralangan roʻyxatingizni (Shortlist) tuzing."></label>
-          <label><div><span>Til sertifikati</span><output>80%</output></div><input type="range" min="0" max="100" step="5" value="80" data-next="Til testi sanasini belgilang va tayyorgarlik rejasini tuzing."></label>
-          <label><div><span>Akademik CV</span><output>75%</output></div><input type="range" min="0" max="100" step="5" value="75" data-next="Akademik CV ni tugating."></label>
-          <label><div><span>Maqsad bayonnomasi (SoP)</span><output>50%</output></div><input type="range" min="0" max="100" step="5" value="50" data-next="Maqsad bayonnomasining (SoP) keyingi qoralamasini yozing."></label>
-          <label><div><span>Tavsiya xatlari</span><output>55%</output></div><input type="range" min="0" max="100" step="5" value="55" data-next="Tavsiyachilaringizga bugun xat yozing."></label>
-        </div>
-      </div>
-      <div class="rd-next" data-rd-next aria-live="polite"></div>
-      <p class="kv-note">Raqamlar namuna. Haqiqiy koʻrsatkichingiz dastur testi va topshiriqlaringizdan hisoblanadi.</p>
-      <div class="kv-cta"><a class="btn btn-p" href="#labs" data-snd="nav">Haqiqiy koʻrsatkichimni bilish</a></div>
-    </div>
-
-    <div class="yt-panel kv-card" role="tabpanel" id="yp4" aria-labelledby="yt4" hidden>
-      <h3 class="kv-h3">Qabul xati keldi. Endi-chi?</h3>
-      <p>Qabuldan keyingi bosqichlar ham Bakalavr va Magistratura <b>dasturlarining</b> oxirgi modulida bor. Bajarilganini belgilang.</p>
-      <ul class="qk" data-qk>
-        <li><button type="button" aria-pressed="false"><i>1</i><span>Viza hujjatlari</span></button></li>
-        <li><button type="button" aria-pressed="false"><i>2</i><span>Tibbiy sugʻurta</span></button></li>
-        <li><button type="button" aria-pressed="false"><i>3</i><span>Birinchi yil xarajat rejasi</span></button></li>
-        <li><button type="button" aria-pressed="false"><i>4</i><span>Turar joy</span></button></li>
-        <li><button type="button" aria-pressed="false"><i>✓</i><span>Joʻnash oldi nazorat roʻyxati<small lang="en">Pre-departure checklist</small></span></button></li>
-      </ul>
-      <div class="qk-msg" data-qk-msg aria-live="polite">0 / 5 bajarildi</div>
-      <div class="kv-cta"><a class="btn btn-p" href="register.html" data-kl-start data-snd="nav">Bepul M0 ni boshlash</a></div>
+    <div class="km-head"><span class="km-eyebrow">Tanish holat</span><h2>Koʻp uchraydigan toʻsiqlar</h2><p>Har birining yechimi pastida.</p></div>
+    <div class="km-probs n3">
+      <article class="km-p"><h3><img src="img/3d/books.webp" width="36" height="36" alt="" loading="lazy" decoding="async">Maʼlumot tarqoq va eskirgan</h3><p>Telegramdagi postlar bir-biriga zid, muddatlar esa oʻtgan yilniki boʻlib chiqadi.</p><div class="km-s"><b>Yechim</b>Har muddat va talab rasmiy sahifa havolasi va tekshirilgan sana bilan beriladi.</div></article>
+      <article class="km-p"><h3><img src="img/3d/compass.webp" width="36" height="36" alt="" loading="lazy" decoding="async">Qayerdan boshlashni bilmaysiz</h3><p>Bir vaqtning oʻzida oʻnlab ish kerakdek tuyuladi.</p><div class="km-s"><b>Yechim</b>Yoʻl kichik qadamlarga boʻlingan: har safar bitta vazifa va bitta natija.</div></article>
+      <article class="km-p"><h3><img src="img/3d/hourglass.webp" width="36" height="36" alt="" loading="lazy" decoding="async">Muddat kutilmaganda oʻtib ketadi</h3><p>Tavsiya xati yoki til sertifikati oylab vaqt oladi.</p><div class="km-s"><b>Yechim</b>Reja rasmiy muddatdan orqaga hisoblanadi: nimani qachon boshlashni koʻrasiz.</div></article>
+      <article class="km-p"><h3><img src="img/3d/memo.webp" width="36" height="36" alt="" loading="lazy" decoding="async">Hujjat yozishni hech kim oʻrgatmagan</h3><p>CV yoki maqsad bayonnomasida nima yozish, qanday tuzish noaniq.</p><div class="km-s"><b>Yechim</b>Tuzilma va baholash mezoni beriladi. Matnni oʻzingiz yozib, mezon bilan tekshirasiz.</div></article>
+      <article class="km-p"><h3><img src="img/3d/money.webp" width="36" height="36" alt="" loading="lazy" decoding="async">Yordam qimmat</h3><p>Agentlik yoki konsultant xizmati koʻp oila uchun ogʻir xarajat.</p><div class="km-s"><b>Yechim</b>Ishni oʻzingiz qilishni oʻrganasiz. Birinchi qadam bepul, keyin <a href="narxlar.html">obuna</a> bosqichma-bosqich.</div></article>
+      <article class="km-p"><h3><img src="img/3d/shield.webp" width="36" height="36" alt="" loading="lazy" decoding="async">Aldanib qolish xavfi</h3><p>“Kiritib qoʻyaman”, “viza kafolati” degan vaʼdalar va oldindan katta toʻlov.</p><div class="km-s"><b>Yechim</b>Faqat rasmiy yoʻllar oʻrgatiladi. Kafolat va vositachilik yoʻq: qarorni universitet qabul qiladi.</div></article>
     </div>
   </div>
 </section>
-<section class="alt" id="asoschi">
-  <div class="wrap founder">
-    <details class="kl-info kl-title kl-h2"><summary><img src="img/3d/compass.webp" width="44" height="44" alt="" loading="lazy" decoding="async"><h2>Dasturlarni kim tuzadi</h2><span class="kl-i" aria-hidden="true">i</span></summary>
-      <ul>
-        <li>Asoschi geofizik, Leeds universiteti (University of Leeds) doktoranti. Leeds QS World University Rankings da 77-oʻrinda (<a href="https://www.leeds.ac.uk/news/article/5980/leeds-strengthens-global-top-100-position" target="_blank" rel="noopener">universitet xabari, 18.06.2026</a>).</li>
-        <li>Janubiy Koreyada oʻqigan, Oʻzbekistonda universitetda dars bergan.</li>
-        <li>Koreya va Buyuk Britaniya vizasi hamda tibbiy sugʻurtaga mustaqil hujjat topshirib, birinchi urinishdayoq olgan.</li>
-        <li>Asoschi oʻzi oʻtmagan bosqichda tajribam bor deb daʼvo qilmaydi. Masalan, DAAD darslari faqat DAAD va Germaniya rasmiy sahifalariga tayanadi.</li>
-      </ul>
-    </details>
+<section class="km-sec alt" id="labs">
+  <div class="wrap">
+    <div class="km-head"><span class="km-eyebrow">Sizning holatingiz</span><h2>Qayerdan boshlaysiz?</h2><p>Oʻzingizga yaqin holatni tanlang. Har yoʻlning birinchi qismi bepul: sizga mosligini toʻlashdan oldin bilasiz.</p></div>
+    <ul class="km-sit">
+      <li data-lab-card="bachelor-lab"><a href="bachelor-lab.html" data-snd="nav"><img src="img/3d/bachelor.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><span class="t">Maktabni bitiryapman, chet elda bakalavr oʻqimoqchiman<small>Universitet tanlash, testlar, insho, xarajat</small></span><span class="go">Bakalavr dasturi</span></a></li>
+      <li data-lab-card="master-lab"><a href="master-lab.html" data-snd="nav"><img src="img/3d/master.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><span class="t">Bakalavrni tugatyapman, magistraturaga topshirmoqchiman<small>Dastur tanlash, CV, maqsad bayonnomasi, stipendiya</small></span><span class="go">Magistratura dasturi</span></a></li>
+      <li data-lab-card="phd-lab"><a href="phd-lab.html" data-snd="nav"><img src="img/3d/phd.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><span class="t">Moliyalashtirilgan PhD va ilmiy rahbar izlayapman<small>Ilmiy savol, professorga xat, loyiha taklifi</small></span><span class="go">PhD dasturi</span></a></li>
+      <li data-lab-card="gks-lab"><a href="gks-lab.html" data-snd="nav"><img src="img/3d/gks.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><span class="t">Koreya hukumati stipendiyasiga (GKS) topshirmoqchiman<small>Muvofiqlik, trek, hujjatlar, intervyu</small></span><span class="go">GKS dasturi</span></a></li>
+      <li data-lab-card="usa-lab"><a href="usa-lab.html" data-snd="nav"><img src="img/3d/usa.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><span class="t">AQShda oʻqimoqchiman, lekin xarajatni koʻtara olamanmi, bilmayman<small>Universitet yordami, UGRAD, Fulbright, viza</small></span><span class="go">USA dasturi</span></a></li>
+      <li data-lab-card="daad-lab"><a href="daad-lab.html" data-snd="nav"><img src="img/3d/daad.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><span class="t">Germaniyada DAAD stipendiyasi bilan oʻqimoqchiman<small>Ilmiy rahbar, motivatsion xat, DAAD portali</small></span><span class="go">DAAD dasturi</span></a></li>
+      <li data-lab-card="tadbirkor-talaba"><a href="tadbirkor-talaba.html" data-snd="nav"><img src="img/3d/tt.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><span class="t">Oʻqib turib kichik biznesni sinab koʻrmoqchiman<small>Mijoz, birinchi toʻlov, huquqiy shakl, soliq</small></span><span class="go">Tadbirkor Talaba</span></a></li>
+      <li data-lab-card="miggo"><a href="musofir-lab.html" data-snd="nav"><img src="img/3d/musofir.webp" width="36" height="36" alt="" loading="lazy" decoding="async"><span class="t">Xorijda rasmiy ishlamoqchiman va aldanib qolishdan qoʻrqaman<small>Rasmiy yoʻllar, shartnoma, firibgarlik belgilari</small></span><span class="go">Musofir dasturi</span></a></li>
+    </ul>
   </div>
 </section>
-<section id="keyingi">
+<section class="km-sec" id="asoschi">
   <div class="wrap">
-    <div class="head"><h2>Batafsil</h2></div>
-    <nav class="kl-next" aria-label="Sayt sahifalari">
-      <a href="qanday-ishlaydi.html"><b>Qanday ishlaydi</b><span>Bepul M0, tayyorgarlik testi, modullar, toʻlov va ishlash qoidalari</span></a>
-      <a href="narxlar.html"><b>Narxlar</b><span>Barcha dasturlar narxi, eng arzon tarif kalkulyatori</span></a>
-      <a href="savollar.html"><b>Savollar</b><span>Qachon boshlash, toʻlov, kafolat va boshqa savollar</span></a>
-      <a href="master-planner.html"><b>Bepul reja</b><span>Maqsad, qabul yili, saralangan roʻyxat va vazifalar</span></a>
-    </nav>
+    <div class="km-head" style="margin-bottom:0"><details class="kl-info kl-title kl-h2" style="display:inline-block;text-align:left"><summary><h2>Yoʻlni kim tuzgan</h2><span class="kl-i" aria-hidden="true">i</span></summary><p>Asoschi geofizik, Leeds universiteti (University of Leeds) doktoranti. Janubiy Koreyada oʻqigan, Oʻzbekistonda universitetda dars bergan. Koreya va Buyuk Britaniya vizasiga mustaqil hujjat topshirgan. Oʻzi oʻtmagan bosqichda tajriba daʼvo qilinmaydi: masalan, DAAD darslari faqat DAAD va Germaniya rasmiy sahifalariga tayanadi.</p></details>
+    <p class="km-note" style="margin-top:10px">Kafolat va toʻqilgan raqam yoʻq. <a href="qanday-ishlaydi.html">Qanday ishlaydi</a> · <a href="savollar.html">Savollar</a></p></div>
   </div>
 </section>
 <section class="dark cta">
   <div class="wrap">
-    <h2>Birinchi modulni bepul boshlang.</h2>
-    <p class="sub">Dastur sizga mosmi, toʻlashdan oldin bilib olasiz.</p>
+    <h2>Birinchi qadam bepul.</h2>
+    <p class="sub">Yoʻl sizga mosmi, toʻlashdan oldin bilasiz.</p>
     <div class="cta-row" style="justify-content:center">
-      <a href="index.html#labs" class="btn btn-p">Bepul M0 ni boshlash</a>
+      <a href="register.html" class="btn btn-p" data-kl-start>Bepul boshlash</a>
       <a href="https://t.me/kompaslab" class="btn btn-g" target="_blank" rel="noopener">Telegramda savol berish</a>
     </div>
   </div>
@@ -250,265 +103,28 @@
   </div>
 </footer>
 
-<div class="ovl" id="wl" role="dialog" aria-modal="true" aria-labelledby="wlT">
-  <div class="mdl">
-    <button type="button" class="x" id="wlX" aria-label="Yopish">×</button>
-    <img class="i3d" src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy" decoding="async">
-    <h3 id="wlT" style="margin-top:6px">Kutish roʻyxati</h3>
-    <p>Dastur va email manzilingizni qoldiring: dastur ochilganda xabar beramiz. Email boshqa maqsadda ishlatilmaydi (<a href="maxfiylik.html">maxfiylik siyosati</a>).</p>
-    <select id="wlL" aria-label="Dastur"><option value="">Dasturni tanlang</option><option value="bachelor-lab">Bakalavr dasturi</option><option value="master-lab">Magistratura dasturi</option><option value="phd-lab">PhD dasturi</option><option value="gks-lab">GKS dasturi</option><option value="usa-lab">USA dasturi</option><option value="daad-lab">DAAD dasturi</option><option value="tadbirkor-talaba">Tadbirkor Talaba</option><option value="miggo">Musofir dasturi</option></select>
-    <select id="wlS" aria-label="Soha (ixtiyoriy)"><option value="">Soha (ixtiyoriy)</option><option value="muhandislik">Muhandislik (mexanika, qurilish, elektr)</option><option value="it">Kompyuter fanlari va IT</option><option value="ai-data">Sunʼiy intellekt va maʼlumotlar fani</option><option value="matematika">Matematika va statistika</option><option value="fizika">Fizika</option><option value="kimyo">Kimyo</option><option value="biologiya">Biologiya va biotexnologiya</option><option value="tibbiyot">Tibbiyot va sogʻliqni saqlash</option><option value="geo-ekologiya">Geologiya, yer va atrof-muhit fanlari</option><option value="arxitektura">Arxitektura va dizayn</option><option value="iqtisodiyot">Iqtisodiyot va moliya</option><option value="biznes">Biznes va menejment</option><option value="turizm">Mehmonxona va turizm</option><option value="ijtimoiy-huquq">Ijtimoiy fanlar va huquq</option><option value="talim">Taʼlim va pedagogika</option><option value="boshqa">Boshqa yoki hali bilmayman</option></select>
-    <input type="email" id="wlE" placeholder="email@gmail.com" aria-label="Email" autocomplete="email" inputmode="email">
-    <div id="wlMsg"></div>
-    <button type="button" class="btn btn-p" id="wlB">Roʻyxatga yozilish</button>
-  </div>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/live-bar.js"></script>
 <script>
+/* Bosh sahifa (2026-11-18): faqat "active" boʻlmagan dastur holatini yashirish. Maʼlumot: kompas_public_stats().prices[slug].st */
 (function () {
-
-  var ovl = document.getElementById("wl"), sel = document.getElementById("wlL"), inp = document.getElementById("wlE"), msg = document.getElementById("wlMsg"), btn = document.getElementById("wlB");
-  var BTN = "Roʻyxatga yozilish";
-  function openWl(slug) {
-    if (sel) sel.value = slug || "";
-    var fs = document.getElementById("fSoha"), ws = document.getElementById("wlS");
-    if (ws) ws.value = (fs && fs.value) || ws.value || "";
-    inp.value = ""; msg.textContent = ""; btn.disabled = false; btn.textContent = BTN;
-    ovl.classList.add("open"); document.body.style.overflow = "hidden";
-    setTimeout(function () { (sel && !sel.value ? sel : inp).focus(); }, 120);
-  }
-  function closeWl() { ovl.classList.remove("open"); document.body.style.overflow = ""; }
-  document.querySelectorAll("[data-wl]").forEach(function (b) { b.addEventListener("click", function () { openWl(b.getAttribute("data-wl")); }); });
-  document.getElementById("wlX").addEventListener("click", closeWl);
-  ovl.addEventListener("click", function (e) { if (e.target === ovl) closeWl(); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeWl(); });
-  inp.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
-  btn.addEventListener("click", submit);
-  function submit() {
-    var slug = sel ? sel.value : SLUG, email = inp.value.trim();
-    if (!slug) { msg.style.color = "var(--red)"; msg.textContent = "Dasturni tanlang"; return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.style.color = "var(--red)"; msg.textContent = "Email manzilni tekshiring: masalan, ism@gmail.com"; return; }
-    if (!window.supabase || typeof window.supabase.from !== "function") { msg.style.color = "var(--red)"; msg.textContent = "Ulanib boʻlmadi. Telegram orqali yozing: t.me/kompaslab"; return; }
-    btn.disabled = true; btn.textContent = "Saqlanmoqda...";
-    window.supabase.from("waitlist")
-      .upsert({ email: email, course_slug: slug, source: SOURCE + (document.getElementById("wlS") && document.getElementById("wlS").value ? ";soha=" + document.getElementById("wlS").value : "") }, { onConflict: "email,course_slug", ignoreDuplicates: true })
-      .then(function (r) {
-        if (r.error && r.error.code !== "23505") throw r.error;
-        msg.style.color = "var(--green)"; msg.textContent = "Yozildingiz. Dastur ochilganda shu emailga xabar beramiz.";
-        btn.textContent = "Yozildingiz"; setTimeout(closeWl, 2400);
-      })
-      .catch(function () { msg.style.color = "var(--red)"; msg.textContent = "Saqlanmadi. Internetni tekshirib, qayta urinib koʻring."; btn.disabled = false; btn.textContent = BTN; });
-  }
-
-
-  var SLUG = "", SOURCE = "index_v5";
-  var LABS = [{"slug": "bachelor-lab", "name": "Bakalavr dasturi", "icon": "bachelor", "page": "bachelor-lab.html", "who": "10–11-sinf, litsey va kollej, 15–19 yosh", "why": "Universitet tanlash, testlar rejasi, insho va tavsiya xatlari.", "y": 899000, "m": 99000, "ang": 0}, {"slug": "master-lab", "name": "Magistratura dasturi", "icon": "master", "page": "master-lab.html", "who": "Xorijiy magistraturaga topshiruvchilar", "why": "Yoʻnalish tanlash, hujjatlar, stipendiya, viza va joʻnashga tayyorgarlik.", "y": 899000, "m": 99000, "ang": 45}, {"slug": "phd-lab", "name": "PhD dasturi", "icon": "phd", "page": "phd-lab.html", "who": "Moliyalashtirilgan doktorantura", "why": "Ilmiy savol, ilmiy rahbar topish va ilmiy loyiha taklifi.", "y": 1499000, "m": 149000, "ang": 90}, {"slug": "gks-lab", "name": "GKS dasturi", "icon": "gks", "page": "gks-lab.html", "who": "Koreya: Global Korea Scholarship", "why": "GKS ga muvofiqlik, hujjatlar va intervyuga tayyorgarlik.", "y": 899000, "m": 99000, "ang": 135}, {"slug": "usa-lab", "name": "USA dasturi", "icon": "usa", "page": "usa-lab.html", "who": "AQSh: bakalavr yordami, UGRAD, Fulbright, PhD", "why": "Universitet yordami, moliyaviy yordam arizasi, UGRAD, Fulbright, PhD moliyasi va viza.", "y": 899000, "m": 99000, "ang": 180}, {"slug": "daad-lab", "name": "DAAD dasturi", "icon": "daad", "page": "daad-lab.html", "who": "Germaniya: magistratura va doktorantura", "why": "Professor topish, motivatsion xat, DAAD portali va viza.", "y": 899000, "m": 99000, "ang": 225}, {"slug": "tadbirkor-talaba", "name": "Tadbirkor Talaba", "icon": "tt", "page": "tadbirkor-talaba.html", "who": "Universitet talabalari, 18 yoshdan", "why": "Oʻqish bilan birga kichik, qonuniy biznes sinovi.", "y": 299000, "m": 29000, "ang": 270}, {"slug": "miggo", "name": "Musofir dasturi", "icon": "musofir", "page": "musofir-lab.html", "who": "Xorijda rasmiy ish: Koreya, Buyuk Britaniya, Germaniya, Polsha", "why": "Xorijda faqat rasmiy yoʻl bilan ishlash va firibgarlikdan himoya.", "y": 499000, "m": 49000, "ang": 315}];
-  var bySlug = {}; LABS.forEach(function (l) { bySlug[l.slug] = l; });
-  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // ── Kompas: ikki savol → dastur ──
-  var ans = { who: "", goal: "" }, angle = 0;
-  function pick() {
-    var w = ans.who, g = ans.goal, note = "";
-    if (!w || !g) return null;
-    if (g === "ish") return { slug: "miggo" };
-    if (g === "biznes") { if (w === "maktab") return { slug: "bachelor-lab", note: "Tadbirkor Talaba dasturi 18 yoshdan. Hozir Bakalavr dasturi mosroq." }; return { slug: "tadbirkor-talaba" }; }
-    if (g === "korea") return { slug: "gks-lab" };
-    if (g === "usa") return w === "maktab" ? { slug: "usa-lab", note: "USA dasturi AQSh pul tomonini oʻrgatadi: xarajat, universitet yordami, I-20. Universitet tanlash va insho Bakalavr dasturida." } : { slug: "usa-lab" };
-    if (g === "germany") return w === "maktab" ? { slug: "bachelor-lab", note: "Germaniya bakalavriati (Studienkolleg bilan) Bakalavr dasturida. DAAD dasturi magistratura va doktorantura uchun." } : { slug: "daad-lab" };
-    return { slug: { maktab: "bachelor-lab", bakalavr: "master-lab", magistr: "phd-lab", ishchi: "master-lab" }[w] };
-  }
-  var dial = document.getElementById("dial"), needle = document.getElementById("needle"), res = document.getElementById("result");
-  function point(slug) {
-    var target = bySlug[slug].ang, cur = ((angle % 360) + 360) % 360, d = target - cur;
-    if (d > 180) d -= 360; if (d < -180) d += 360;
-    angle += d === 0 ? 360 : d;
-    dial.classList.remove("idle");
-    needle.style.transform = "rotate(" + angle + "deg)";
-    document.querySelectorAll(".pt").forEach(function (p) { p.classList.toggle("on", p.getAttribute("data-slug") === slug); });
-  }
-  function show(r) {
-    document.getElementById("rEmpty").hidden = true;
-    var note = document.getElementById("rNote");
-    note.hidden = !r.note; note.textContent = r.note || "";
-    document.querySelectorAll(".r-b").forEach(function (b) { b.hidden = b.getAttribute("data-r") !== r.slug; });
-    var rect = res.getBoundingClientRect();
-    if (rect.bottom > window.innerHeight && window.innerWidth < 1000) res.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "end" });
-  }
-  document.querySelectorAll(".chip").forEach(function (c) {
-    c.addEventListener("click", function () {
-      var q = c.getAttribute("data-q");
-      document.querySelectorAll(".chip[data-q=" + q + "]").forEach(function (o) { o.setAttribute("aria-pressed", o === c ? "true" : "false"); });
-      ans[q] = c.getAttribute("data-v");
-      var st = document.querySelector('.fnd-steps i[data-s="' + q + '"]'); if (st) st.classList.add("on");
-      var r = pick();
-      if (r) { point(r.slug); show(r); res.classList.add("has"); if (window.KSfx) window.KSfx.play("needle"); }
-    });
-  });
-
-  // ── Agentlik narxi bilan solishtirish ──
-  var USD = 11778.45, cur = "uzs";
-  var amt = document.getElementById("amt") || document.createElement("input"), labSel = document.getElementById("cmpLab") || document.createElement("select");
-  var big = document.getElementById("cmpBig") || document.createElement("b"), cmpT = document.getElementById("cmpT") || document.createElement("p"), cmpS = document.getElementById("cmpS") || document.createElement("p");
-  function parseAmt() { return parseFloat((amt.value || "").replace(/[^0-9.,]/g, "").replace(/,/g, ".").replace(/\.(?=.*\.)/g, "")) || 0; }
-  function recalc() {
-    var v = parseAmt(), uzs = cur === "usd" ? v * USD : v, l = bySlug[labSel.value];
-    if (!uzs || !l) { big.innerHTML = "–"; cmpT.textContent = "Agentlik aytgan narxni kiriting."; cmpS.textContent = ""; return; }
-    var base = l.s6 > 0 ? l.s6 : l.m * 6, r = uzs / base;
-    if (r < 1) { big.innerHTML = "–"; cmpT.textContent = "Bu narx " + l.name + " 6 oylik obunasidan (" + nf(base) + " soʻm) past."; cmpS.textContent = ""; return; }
-    big.innerHTML = (r >= 10 ? nf(r) : r.toFixed(1).replace(".", ",")) + "<small>barobar</small>";
-    cmpT.textContent = l.name + " 6 oylik obunasi (" + nf(base) + " soʻm) bu narxdan shuncha marta arzon.";
-    cmpS.textContent = "Farq: " + nf(uzs - base) + " soʻm" + (cur === "usd" ? " (1 $ = " + nf(USD) + " soʻm, Markaziy bank, 2026-10-06)" : "");
-  }
-  amt.addEventListener("input", function () {
-    var raw = amt.value.replace(/[^0-9]/g, "");
-    if (cur === "uzs") amt.value = raw ? nf(parseInt(raw, 10)) : "";
-    recalc();
-  });
-  labSel.addEventListener("change", recalc);
-  document.querySelectorAll("[data-cur]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      cur = b.getAttribute("data-cur");
-      document.querySelectorAll("[data-cur]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
-      amt.value = ""; amt.placeholder = cur === "usd" ? "masalan, 1 500" : "masalan, 15 000 000"; recalc(); amt.focus();
-    });
-  });
-  document.querySelectorAll("[data-amt]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      if (cur !== "uzs") document.querySelector("[data-cur=uzs]").click();
-      amt.value = nf(parseInt(b.getAttribute("data-amt"), 10)); recalc();
-    });
-  });
-
-  // ── Narx jadvali: oylik / 6 oylik ──
-  document.querySelectorAll("[data-period]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      document.querySelectorAll("[data-period]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
-      var t = document.getElementById("ptbl"), v = b.getAttribute("data-period");
-      t.classList.toggle("monthly", v === "m"); t.classList.toggle("season", v === "s");
-    });
-  });
-
-  // ── Oylik yoki 6 oylik (narx bazada, admin kiritadi): eng arzon yoʻl ──
-  var mcLab = document.getElementById("mcLab"), mcM = document.getElementById("mcM");
-  function mcalc() {
-    if (!mcLab || !mcM) return;
-    var l = bySlug[mcLab.value], n = parseInt(mcM.value, 10), s = l.s6;
-    document.getElementById("mcMv").textContent = n;
-    var opts = [["Oylik", l.m * n, n + " oy × " + nf(l.m) + " soʻm", n]];
-    if (s > 0) {
-      var k = Math.floor(n / 6), r = n % 6, extra = r && r * l.m > s;
-      opts.push(["6 oylik", k * s + (r ? (extra ? s : r * l.m) : 0), (k ? k + " × 6 oylik (" + nf(s) + ")" : "") + (r ? (k ? " + " : "") + (extra ? "yana 1 × 6 oylik" : r + " oy oylik") : ""), 6 * k + (r ? (extra ? 6 : r) : 0)]);
-    }
-    opts.sort(function (a, b) { return a[1] - b[1] || b[3] - a[3]; });   // teng boʻlsa uzoqroq davr
-    var best = opts[0], mon = l.m * n;
-    var B = document.getElementById("mcB"), S = document.getElementById("mcS");
-    B.textContent = best[0] + " arzon: " + nf(best[1]) + " soʻm";
-    S.textContent = best[2] + "." + (best[0] === "6 oylik" && best[3] > n ? " Shu narxga " + best[3] + " oy kiradi." : "") + (best[0] !== "Oylik" && mon > best[1] ? " Oylikka nisbatan tejash: " + nf(mon - best[1]) + " soʻm." : "") + " Magistratura dasturi odatda 4–6 oy davom etadi (haftasiga ~4 dars).";
-  }
-  if (mcLab && mcM) { mcLab.addEventListener("change", mcalc); mcM.addEventListener("input", mcalc); mcalc(); }
-
-  // ── Skrollda paydo boʻlish ──
-  if ("IntersectionObserver" in window && !reduce) {
-    var rvIo = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rvIo.unobserve(e.target); } });
-    }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
-    document.querySelectorAll("section .head, .grp-h, .labs-g, .steps li, .whylab > div:first-child, .cmpc, .honest > div, .tblwrap, .mcalc, .refund, .rules > div, .model, .faq details")
-      .forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 70 + "ms"; rvIo.observe(el); });
-  } else { document.documentElement.classList.remove("js"); }
-
-  // ── Jonli hisob ──
-  function countUp(el, to) {
-    if (reduce || !("IntersectionObserver" in window)) { el.textContent = nf(to); return; }
-    var io = new IntersectionObserver(function (es) {
-      if (!es[0].isIntersecting) return; io.disconnect();
-      var t0 = null; function step(ts) { if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 1100); el.textContent = nf(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); }
-      requestAnimationFrame(step);
-    }, { threshold: .4 });
-    io.observe(el);
-  }
-  document.querySelectorAll("[data-count]").forEach(function (el) { countUp(el, parseInt(el.getAttribute("data-count"), 10)); });
-  window.onKompasStats = function (d) {
-    var pr = d.prices || {};
-    LABS.forEach(function (l) { var p = pr[l.slug]; if (p) { if (p.y) l.y = p.y; if (p.m) l.m = p.m; l.s6 = p.s6 > 0 ? p.s6 : null; } });
-    recalc(); mcalc();
-    var any = false;
-    [["stReg", d.registered], ["stWait", d.waitlist]].forEach(function (x) {
-      var box = document.getElementById(x[0]);
-      if (!box || !(x[1] >= LIVE_MIN)) return;
-      any = true;
-      var b = box.querySelector("b"), prev = parseInt(box.getAttribute("data-n") || "0", 10);
-      box.setAttribute("data-n", x[1]);
-      if (box.hidden) { box.hidden = false; countUp(b, x[1]); }
-      else if (x[1] !== prev) { b.textContent = nf(x[1]); b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
-    });
-    if (any) {
-      var t = "Bazadan jonli olinadi";
-      if (d.last_signup) { var h = Math.floor((Date.now() - new Date(d.last_signup).getTime()) / 3600000); t += ". Oxirgi roʻyxatdan oʻtish: " + (h < 1 ? "bir soatdan kam vaqt oldin" : h < 24 ? h + " soat oldin" : Math.floor(h / 24) + " kun oldin"); }
-      var sn = document.getElementById("stNote"); if (sn) { document.getElementById("stNoteT").textContent = t + "."; sn.hidden = false; }
-    }
-  };
-
-
-  var LIVE_MIN = 10;
-  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
-  function applyStats(d) {
-    var pr = d.prices || {};
-    // Saytda koʻrinish: admin paneldan (courses.status). "active" boʻlmagan dastur kartasi, jadval qatori va tanlov varianti yashiriladi
+  function apply(d) {
+    var pr = (d && d.prices) || {};
     Object.keys(pr).forEach(function (sl) {
       var off = pr[sl] && pr[sl].st && pr[sl].st !== "active";
       document.querySelectorAll("[data-lab-card=\"" + sl + "\"]").forEach(function (el) { el.hidden = !!off; });
-      if (off) document.querySelectorAll("select option[value=\"" + sl + "\"]").forEach(function (o) {
-        var s = o.parentNode, was = o.selected; o.remove(); if (s && was) s.dispatchEvent(new Event("change"));
-      });
     });
-    document.querySelectorAll("[data-py]").forEach(function (el) { var p = pr[el.getAttribute("data-py")]; if (p && p.y) el.textContent = nf(p.y); });
-    document.querySelectorAll("[data-pm]").forEach(function (el) { var p = pr[el.getAttribute("data-pm")]; if (p && p.m) el.textContent = nf(p.m); });
-    document.querySelectorAll("[data-p6v]").forEach(function (el) { var p = pr[el.getAttribute("data-p6v")]; if (p && p.s6 > 0) el.textContent = nf(p.s6); });
-    // 6 oylik narx bazada (courses.price_6m, admin kiritadi); yoʻq boʻlsa tarif koʻrsatilmaydi
-    var any6 = false;
-    document.querySelectorAll("[data-p6]").forEach(function (el) { var p = pr[el.getAttribute("data-p6")]; if (p && p.s6 > 0) { any6 = true; el.innerHTML = nf(p.s6) + " soʻm<small>6 oy uchun</small>"; } });
-    document.querySelectorAll("[data-p6seg]").forEach(function (el) { el.hidden = !any6; });
-    var wl = d.waitlist_by_lab || {};
-    document.querySelectorAll("[data-live-wl]").forEach(function (el) {
-      var n = wl[el.getAttribute("data-live-wl")] || 0;
-      if (n >= LIVE_MIN) { el.querySelector("span").textContent = "Kutish roʻyxatida " + nf(n) + " kishi"; el.classList.add("on"); }
-    });
-    if (window.onKompasStats) window.onKompasStats(d);
   }
-  // Bazadan oʻqish: sahifa ochilganda va ochiq turganda har 60 soniyada
-  function loadStats() {
+  function load() {
     if (document.hidden || !window.supabase || typeof window.supabase.rpc !== "function") return;
-    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) { applyStats(r.data); window.klPrices = r.data.prices || {}; if (window.klSale) klSale(window.klPrices); } });
+    window.supabase.rpc("kompas_public_stats").then(function (r) { if (!r.error && r.data) apply(r.data); });
   }
-  loadStats();
-  setInterval(loadStats, 60000);
-  document.addEventListener("visibilitychange", loadStats);
-
+  load();
+  document.addEventListener("visibilitychange", load);
 })();
-</script>
-<script>
-/* Sotuvdagi dastur: kutish roʻyxati tugmasi oʻrniga narx sahifasiga havola (2026-11-12). Sotuv holati bazadan: prices[slug].sale && .pp.
-   Statik HTML da labs_data.ON_SALE dagi dasturlar allaqachon havola; bu qism yangi sotuvga chiqqan dasturlar uchun. */
-function klSale(p) {
-  var PG = { "bachelor-lab": "bachelor-lab-narxlar.html", "master-lab": "master-lab-narxlar.html", "phd-lab": "phd-lab-narxlar.html", "gks-lab": "gks-lab-narxlar.html", "usa-lab": "usa-lab-narxlar.html", "daad-lab": "daad-lab-narxlar.html", "tadbirkor-talaba": "tadbirkor-talaba-narxlar.html", "miggo": "musofir-lab-narxlar.html" };
-  Object.keys(PG).forEach(function (s) {
-    if (!(p[s] && p[s].sale === true && p[s].pp)) return;
-    document.querySelectorAll('[data-wl="' + s + '"]').forEach(function (b) {
-      var a = document.createElement("a");
-      a.className = b.className.replace("btn-g", "btn-p");
-      a.href = PG[s]; a.textContent = "Narx va obuna"; a.setAttribute("data-snd", "nav");
-      b.parentNode.replaceChild(a, b);
-    });
-    var h = document.querySelector('[data-holat="' + s + '"]');
-    if (h && !h.querySelector("a")) { var a = document.createElement("a"); a.href = PG[s]; a.textContent = "Obuna"; a.style.marginLeft = "6px"; h.appendChild(document.createTextNode(" · ")); h.appendChild(a); }
-  });
-}
-if (window.klPrices) klSale(window.klPrices);
 </script>
 </body>
 </html>

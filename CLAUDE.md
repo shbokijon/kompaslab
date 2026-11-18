@@ -38,6 +38,11 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 - `sitemap.xml`: `python3 tools/site/sitemap.py` (darvozali M0 sahifalari kirmaydi).
 - Tekshiruv (server 8814 da): `node tools/modules/test/site_crawl.js` (hamma sahifa: JS xatosi, 390px siljish, buzilgan havola) va `node tools/modules/test/lesson_flow.js gks-lab-m0 …` (dars → tabrik → keyingi dars → hub → yakun). `smoke.js` endi faqat `dist/` (bitta sahifali yuklab olinadigan) versiyaga mos.
 
+## Muammo → yechim, minimal (2026-11-18, asoschi)
+- Ochiq sahifalar mahsulot (dastur, modul, dars) haqida emas, foydalanuvchi muammosi va uning yechimi haqida. Bosh sahifa: hero → "Koʻp uchraydigan toʻsiqlar" (6 karta: muammo + Yechim) → "Qayerdan boshlaysiz?" (`#labs`, holat → dastur roʻyxati, `data-lab-card` bilan yashirish) → asoschi (i) → CTA. Kompas finder, globus-kompas, piramida, dars namunasi, 12 oylik reja va kutish oynasi bosh sahifadan olib tashlandi (`js/home-viz.js` endi yuklanmaydi; soha savoli ham yoʻq).
+- Dastur Umumiy sahifasi (`<lab>.html`): `tools/landing/problems.py` (`PROBLEMS[stem]`: h1, lead, 4 muammo) → `split.py` markazlashgan hero + "Qiyin joylar va yechimi" + "Batafsil". Modullar yoʻli faqat "Modullar" tabida. Matnni oʻzgartirish: `problems.py` → `python3 tools/landing/build.py`.
+- CSS: `css/kompas-ui.css` dagi `.km-*` bloki (MUAMMO → YECHIM).
+
 ## Fayl xaritasi
 | Fayl | Nima | Qanday tahrirlanadi |
 |---|---|---|
