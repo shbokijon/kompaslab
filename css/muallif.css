@@ -28,3 +28,10 @@
 .mlf-time li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--kl-forest,#2d4a3e);}
 .mlf-time b{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:14px;color:var(--kl-forest,#2d4a3e);padding-top:2px;}
 @media(max-width:560px){.mlf-time li{grid-template-columns:minmax(0,1fr);gap:2px;}}
+.mlf-pair{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:16px;align-items:start;margin-top:8px;}
+.mlf-pair figure{margin:0;}
+.mlf-pair img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--border,#e3e0d6);}
+.mlf-pair figcaption{margin-top:8px;font-size:14px;color:var(--muted,#5f7169);text-align:center;}
+#kompas-klubi .mlf-p{max-width:62ch;margin:0 auto 18px;text-align:justify;hyphens:auto;line-height:1.7;text-align-last:center;}
+.mlf-gal figure > a{display:block;}
+@media(max-width:560px){.mlf-pair{grid-template-columns:minmax(0,1fr);}#kompas-klubi .mlf-p{text-align:left;text-align-last:auto;}}
