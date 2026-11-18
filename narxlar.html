@@ -8,7 +8,7 @@
 <title>Narxlar · Kompas Lab</title>
 <meta name="description" content="Kompas Lab narxlari: har dastur uchun 1 bosqich va Toʻliq dastur obunasi. M0 bepul.">
 <meta property="og:title" content="Kompas Lab">
-<meta property="og:description" content="Bakalavr, Magistratura, PhD, GKS, USA va DAAD dasturlari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har dasturda M0 bepul. Obuna: 1 bosqich yoki toʻliq dastur.">
+<meta property="og:description" content="Bakalavr, Magistratura, PhD, GKS, USA va DAAD dasturlari: xorijiy universitet va stipendiyaga oʻzbek tilida tayyorgarlik. Har dasturda M0 bepul. Obuna: 1 ta bosqich yoki toʻliq dastur.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -234,7 +234,7 @@
     var opts = [["1 bosqichdan toʻlash", l.m * n, n + " oy × " + nf(l.m) + " soʻm", n]];
     if (s > 0) {
       var k = Math.floor(n / 6), r = n % 6, extra = r && r * l.m > s;
-      opts.push(["Toʻliq dastur", k * s + (r ? (extra ? s : r * l.m) : 0), (k ? k + " × Toʻliq dastur (" + nf(s) + ")" : "") + (r ? (k ? " + " : "") + (extra ? "yana 1 × Toʻliq dastur" : r + " × 1 bosqich") : ""), 6 * k + (r ? (extra ? 6 : r) : 0)]);
+      opts.push(["Toʻliq dastur", k * s + (r ? (extra ? s : r * l.m) : 0), (k ? k + " × Toʻliq dastur (" + nf(s) + ")" : "") + (r ? (k ? " + " : "") + (extra ? "yana 1 × Toʻliq dastur" : r + " × 1 ta bosqich") : ""), 6 * k + (r ? (extra ? 6 : r) : 0)]);
     }
     opts.sort(function (a, b) { return a[1] - b[1] || b[3] - a[3]; });   // teng boʻlsa uzoqroq davr
     var best = opts[0], mon = l.m * n;

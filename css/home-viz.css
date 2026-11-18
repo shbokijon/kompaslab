@@ -132,3 +132,36 @@ h2 b{font-weight:700;}
 .gn-in .mh .md i{display:block;flex:1;height:7px;border-radius:99px;}
 .gn-in .mh.on{background:var(--cream);border-radius:10px;padding:4px 0;}
 @media(max-width:600px){.gn-in{min-width:540px;grid-template-columns:118px repeat(12,minmax(0,1fr));font-size:13px;}}
+
+/* 2026-11-18 ixcham bosh sahifa: ⓘ ortidagi matn, kichik ikonkalar, kam boʻsh joy */
+body[data-kpage="home"] section:not(.hero){padding:56px 0;}
+body[data-kpage="home"] .head{margin-bottom:24px;}
+.kl-info.kl-h2{margin-top:0;}
+.kl-info.kl-h2 summary h2{margin:0;}
+.kl-info.kl-h2 summary img{width:44px;height:44px;}
+.kl-info.kl-h2 p{padding:10px 0 0;max-width:720px;font-size:15.5px;}
+.founder{display:block;}
+.founder .kl-info ul{margin:10px 0 0;max-width:820px;}
+.lc-x summary{list-style:none;cursor:pointer;border-radius:12px;}
+.lc-x summary::-webkit-details-marker{display:none;}
+.lc-x summary:focus-visible{outline:2px solid var(--accent2);outline-offset:3px;}
+.lc-x summary > div{flex:1;min-width:0;}
+.lc-x .kl-i{align-self:flex-start;margin-top:4px;}
+.lc-x[open] .kl-i{background:var(--accent);border-color:var(--accent);color:#fff;}
+.lc-x p{margin-top:10px;color:var(--muted);}
+.lc-h img{width:44px;height:44px;}
+.lc{gap:12px;}
+.lc .lc-f{margin-top:auto;}
+.result:not(.has){min-height:0;padding:12px 16px;}
+.result .empty img{width:36px;height:36px;}
+.pyr-out{min-height:0;}
+@media(max-width:720px){
+  body[data-kpage="home"] section:not(.hero){padding:40px 0;}
+  .kl-info.kl-h2 summary h2{font-size:26px;}
+}
+@media(max-width:560px){
+  .pyr button{font-size:16px;height:46px;}
+  .pyr button:nth-child(2){width:90%;}.pyr button:nth-child(3){width:80%;}.pyr button:nth-child(4){width:70%;}
+  .pyr button:nth-child(5){width:60%;}.pyr button:nth-child(6){width:52%;}
+}
+.kv-grid2{align-items:start;}
