@@ -1,39 +1,47 @@
-/* Muallif sahifasi va bosh sahifadagi "asoschi" bloki (2026-11-18). Markazlangan, tekis chekka, sokin ranglar. */
-.mlf-sec{padding:40px 0;}
-.mlf-two{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:36px;align-items:center;}
-.mlf-two-c{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);}
-.mlf-fig,.mlf-gal figure,.mlf-trio figure{margin:0;}
-.mlf-fig img,.mlf-gal img,.mlf-trio img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--border,#e3e0d6);background:#fff;}
-.mlf-fig figcaption,.mlf-gal figcaption,.mlf-trio figcaption{margin-top:8px;font-size:14px;color:var(--muted,#5f7169);text-align:center;}
-.mlf-txt p,.mlf-list li{text-align:justify;hyphens:auto;line-height:1.7;margin:0 0 14px;}
+/* Muallif sahifasi (2026-11-18). Minimal, markazlashgan, sokin ranglar. */
+.mlf-sec{padding:28px 0;}
+.kl-pagehead + .mlf-sec{padding-top:8px;}
+.mlf-h{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;margin:0 0 18px;font-size:clamp(24px,3vw,32px);}
+.mlf-h img{width:36px;height:36px;}
+.mlf-two{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:32px;align-items:center;max-width:960px;margin:0 auto;}
+.mlf-fig,.mlf-pair figure,.mlf-gal figure{margin:0;}
+.mlf-fig img,.mlf-pair img,.mlf-gal img,.mlf-card img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border,#e3e0d6);background:#fff;}
+.mlf-sq img{aspect-ratio:1/1;object-fit:cover;}
+.mlf-tall img{aspect-ratio:4/5;object-fit:cover;}
+.mlf-fig figcaption,.mlf-gal figcaption{margin-top:6px;font-size:13.5px;color:var(--muted,#5f7169);text-align:center;}
+.mlf-txt p,.mlf-txt .mlf-par,.mlf-list li{line-height:1.65;margin:0 0 12px;}
+.mlf-txt>:last-child{margin-bottom:0;}
 .mlf-list{margin:0;padding-left:1.1rem;}
-.mlf-list li{margin:0 0 12px;}
-.mlf-list a{color:var(--accent2);}
-.mlf-h{display:flex;align-items:center;justify-content:center;gap:12px;text-align:center;margin:0 0 22px;}
-.mlf-h img{width:40px;height:40px;}
-.mlf-gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.mlf-list a,.mlf-txt a,.mlf-p a,.mlf-i a{color:var(--accent2);}
+.mlf-p{max-width:62ch;margin:0 auto 18px;text-align:center;line-height:1.65;}
+/* i tugmasi */
+.mlf-i{display:inline;}
+.mlf-i summary{display:inline-flex;vertical-align:middle;list-style:none;cursor:pointer;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--muted,#5f7169);color:var(--muted,#5f7169);align-items:center;justify-content:center;font:700 12px/1 Georgia,"Times New Roman",serif;font-style:italic;margin-left:4px;background:var(--surface,#fffefb);}
+.mlf-i summary::-webkit-details-marker{display:none;}
+.mlf-i summary:hover,.mlf-i summary:focus-visible,.mlf-i[open] summary{background:var(--accent,#2d4a3e);border-color:var(--accent,#2d4a3e);color:#fff;outline:none;}
+.mlf-i>div{display:block;margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--surface,#fffefb);border:1px solid var(--border,#e3e0d6);font-size:14.5px;line-height:1.55;text-align:left;}
+/* yo'l */
+.mlf-time{list-style:none;margin:0 auto;padding:0;max-width:640px;border-left:2px solid var(--border,#e3e0d6);}
+.mlf-time li{position:relative;display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:0 0 12px 20px;line-height:1.55;}
+.mlf-time li:last-child{padding-bottom:0;}
+.mlf-time li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--kl-forest,#2d4a3e);}
+.mlf-time b{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:14px;color:var(--kl-forest,#2d4a3e);padding-top:1px;}
+/* klub: ikki rasm bir xil balandlikda (1:1 va 16:9) */
+.mlf-pair{display:grid;grid-template-columns:1fr 1.7778fr;gap:12px;max-width:860px;margin:0 auto;}
+.mlf-pair img{height:100%;object-fit:cover;}
+/* chiqishlar */
+.mlf-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:960px;margin:0 auto;}
+.mlf-card{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--text);}
+.mlf-card img,.mlf-ph{aspect-ratio:16/9;object-fit:cover;}
+.mlf-ph{display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--border,#e3e0d6);background:var(--surface,#fffefb);}
+.mlf-ph img{width:72px;height:72px;aspect-ratio:1;border:0;background:none;}
+.mlf-card>span:last-child{font-size:14.5px;line-height:1.4;text-align:center;}
+.mlf-card:hover>span:last-child{color:var(--accent2);}
+/* galereya */
+.mlf-gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:960px;margin:0 auto;}
 .mlf-gal img{aspect-ratio:4/5;object-fit:cover;}
-.mlf-cta{text-align:center;margin-top:28px;}
-/* bosh sahifa */
-.mlf-home{text-align:center;}
-.mlf-home .mlf-h{margin-bottom:18px;}
-.mlf-trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:760px;margin:0 auto 22px;}
-.mlf-trio img{aspect-ratio:4/5;object-fit:cover;}
-.mlf-home .mlf-p{max-width:62ch;margin:0 auto 18px;text-align:justify;hyphens:auto;line-height:1.7;text-align-last:center;}
-@media(max-width:820px){.mlf-two,.mlf-two-c{grid-template-columns:minmax(0,1fr);gap:22px;}.mlf-gal{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:560px){.mlf-txt p,.mlf-list li,.mlf-home .mlf-p{text-align:left;text-align-last:auto;}}
-@media(max-width:480px){.mlf-trio{gap:8px;}.mlf-gal{grid-template-columns:minmax(0,1fr);}.mlf-fig figcaption,.mlf-trio figcaption{font-size:13px;}}
-.mlf-time{list-style:none;margin:0 auto;padding:0;max-width:760px;border-left:2px solid var(--border,#e3e0d6);}
-.mlf-time li{position:relative;display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;padding:0 0 16px 22px;line-height:1.6;}
-.mlf-time li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--kl-forest,#2d4a3e);}
-.mlf-time b{font-family:"JetBrains Mono","IBM Plex Sans",monospace;font-size:14px;color:var(--kl-forest,#2d4a3e);padding-top:2px;}
-@media(max-width:560px){.mlf-time li{grid-template-columns:minmax(0,1fr);gap:2px;}}
-.mlf-pair{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:16px;align-items:start;margin-top:8px;}
-.mlf-pair figure{margin:0;}
-.mlf-pair img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--border,#e3e0d6);}
-.mlf-pair figcaption{margin-top:8px;font-size:14px;color:var(--muted,#5f7169);text-align:center;}
-#kompas-klubi .mlf-p{max-width:62ch;margin:0 auto 18px;text-align:justify;hyphens:auto;line-height:1.7;text-align-last:center;}
-.mlf-gal figure > a{display:block;}
-@media(max-width:560px){.mlf-pair{grid-template-columns:minmax(0,1fr);}#kompas-klubi .mlf-p{text-align:left;text-align-last:auto;}}
+.mlf-cta{text-align:center;margin:22px 0 0;}
+@media(max-width:820px){.mlf-two{grid-template-columns:minmax(0,1fr);gap:16px;max-width:520px;}.mlf-cards{grid-template-columns:minmax(0,1fr);max-width:520px;}.mlf-gal{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:480px){.mlf-time li{grid-template-columns:minmax(0,1fr);gap:0;}.mlf-pair{grid-template-columns:minmax(0,1fr);}.mlf-pair img{height:auto;}}
 .mlf-link{margin:10px 0 0;text-align:center;font-size:15px;}
-.mlf-link a{color:var(--accent2);}
+.mlf-par.mlf-p{max-width:62ch;margin:0 auto 18px;}
