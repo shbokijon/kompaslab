@@ -129,6 +129,8 @@
     li.querySelector(".k4x-card").addEventListener("click", go);
   });
   sec.querySelector(".k4x-replay").addEventListener("click", playAll);
+  // Tavsif (i) ochilsa karta balandligi oʻzgaradi: yoʻl chizigʻi qayta oʻlchanadi
+  sec.addEventListener("toggle", function () { window.dispatchEvent(new Event("resize")); }, true);
 
   var rt = 0;
   window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { measure(); if (at >= 0) draw(lens[at]); }, 120); });
