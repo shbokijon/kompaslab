@@ -29,6 +29,8 @@ SITE = "https://www.kompaslab.uz/"
 # koʻrsatadi (js/paid-module.js, fn_my_access). Kontentning oʻzi bazada, fn_paid_page() orqali beriladi.
 PAID_READER = {"master-lab": "master-lab-o.html", "gks-lab": "gks-lab-o.html", "bachelor-lab": "bachelor-lab-o.html", "usa-lab": "usa-lab-o.html", "phd-lab": "phd-lab-o.html"}
 EXTRA_TABS = {"master-lab": [("master-lab-manbalar.html", "Manbalar"), ("master-planner.html", "Shaxsiy reja")]}
+# Faktlar bloki dastur sahifasida emas, shu sahifada (Master: master-lab-manbalar.html bilan bir xil boʻlgani uchun)
+FACTS_ON_SOURCES = {"master-lab": "master-lab-manbalar.html"}
 
 
 def text(s):
@@ -234,7 +236,7 @@ def route(stem, mods, m0_page, here=None):
             cls, st = "is-locked", "Obuna"
         if here is not None and m["slug"] == here:
             cls += " is-here"
-        sub = f'{n} dars' + (f' → {esc(m["art"])}' if m["art"] else "")
+        sub = f'{n} {"qadam" if "qadam" in m.get("meta", "") else "dars"}' + (f' → {esc(m["art"])}' if m["art"] else "")
         lis.append(f'<li class="kl-st {cls}"><a href="{href}"><span class="kl-st-n{" sm" if len(m["id"]) > 3 else ""}">{esc(m["id"])}</span><span class="kl-st-b"><b>{esc(m["title"])}</b><small>{sub}</small></span><span class="kl-st-s">{st}</span></a></li>')
     return '<ol class="kl-route"' + (' data-needle' if here is not None else "") + ">" + "".join(lis) + "</ol>"
 
@@ -243,6 +245,8 @@ def hash_map(stem, have_test):
     pages = {"dastur": stem + "-dastur.html", "qanday": stem + "-dastur.html#qanday", "faktlar": stem + "-dastur.html#faktlar",
              "atlas": stem + "-dastur.html#atlas", "narx": stem + "-narxlar.html", "savollar": stem + "-savollar.html",
              "kimga": stem + "-savollar.html"}
+    if stem in FACTS_ON_SOURCES:
+        pages["faktlar"] = FACTS_ON_SOURCES[stem]
     if have_test:
         pages["test"] = stem + "-test.html"
     else:
@@ -400,8 +404,20 @@ def split(root, f, src):
     parts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Modullar")], h2, sub, icon), f'<p class="km-note km-fun">{HUMOR["dastur"]}</p>', sec]
     for k in order:
         if k in ("faktlar", "atlas", "qanday", "extra") or k.startswith("extra"):
+            if k == "faktlar" and stem in FACTS_ON_SOURCES:
+                continue  # 2026-11-19: Masterda stipendiya faktlari faqat Manbalar sahifasida (takror yoʻq)
             parts.append(B[k])
     made.append(emit(stem + "-dastur.html", "dastur", f"Dastur: {len(mods)} modul, {nlessons} dars · {lab_name} | Kompas Lab", f"{lab_name} dasturi: fazalar, {len(mods)} modul va {nlessons} dars mavzulari. M0 bepul.", "\n".join(parts), own=("dastur", "qanday", "faktlar", "atlas")))
+
+    # ── 2b. Manbalar (2026-11-19): faktlar bloki dastur sahifasidan shu yerga koʻchgan (FACTS_ON_SOURCES) ──
+    if stem in FACTS_ON_SOURCES and "faktlar" in B:
+        fh2, fsub, fsec = strip_head(B["faktlar"])
+        note = ("Sana Kompas jamoasi rasmiy sahifani oxirgi marta tekshirgan kun. Qabul, grant, toʻlov va viza shartlari "
+                "oʻzgarishi mumkin: arizadan oldin rasmiy saytdan qayta tekshiring. Umumiy katalog: <a href=\"sources.html\">Rasmiy manbalar</a>.")
+        mparts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Manbalar")], "Rasmiy manbalar", fsub, "shield"),
+                  f'<div class="wrap"><p class="km-note" style="max-width:62ch;margin:0 auto">{note}</p></div>', fsec]
+        made.append(emit(FACTS_ON_SOURCES[stem], "manbalar", f"Rasmiy manbalar · {lab_name} | Kompas Lab",
+                         f"{lab_name}: stipendiya va viza shartlari, rasmiy havola va tekshiruv sanasi bilan.", "\n".join(mparts), own=("faktlar",)))
 
     # ── 3. Test ──
     if have_test:

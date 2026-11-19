@@ -20,7 +20,7 @@ def bar(p, label):
 
 
 M_TITLES = {
-    1: ["Sizda nima bor?", "Qiziqişingizni bitta jumlaga sığdiring", "Reyting nimani körsatadi", "Dastur Sizga mosmi",
+    1: ["Sizda nima bor?", "Qiziqişingizni bitta jumlaga siğdiring", "Reyting nimani körsatadi", "Dastur Sizga mosmi",
         "Röyxatni uç guruhga bölamiz", "Pul qayerdan keladi", "Sizning hikoyangiz"],
     2: ["Bitta arizada bir neçta sana", "Sanadan orqaga hisoblaymiz", "Hamma ariza bitta jadvalda", "Bir neçta arizani birga yuritiş",
         "I bosqiç yakuni: bir sahifalik reja"],
@@ -494,7 +494,7 @@ MODULES[6] = dict(
             take="Dasturingiz taklif sörmasa, bu modulni şu yerda tugatib M7 ga ötasiz. Sörasa, keyingi darslar Sizga."),
         "l2": dict(t=M_TITLES[6][1], min=10, take="Voronka: global muammo → kontekst → böşliq → aniq savol."),
         "l3": dict(t=M_TITLES[6][2], min=15, take="Şarh maqolalarni birma-bir aytib bermaydi: ularni mavzu böyiça guruhlab, böşliqqa olib keladi."),
-        "l4": dict(t=M_TITLES[6][3], min=12, take="Dizayn, maʼlumot, usul va çeklov: har biri magistratura muddatiga sığadi."),
+        "l4": dict(t=M_TITLES[6][3], min=12, take="Dizayn, maʼlumot, usul va çeklov: har biri magistratura muddatiga siğadi."),
         "l5": dict(t=M_TITLES[6][4], min=10, take="4–6 bosqiç, har biri aniq natija bilan, umumiy vaqtning 10–15% zaxira."),
         "l6": dict(t=M_TITLES[6][5], min=8, take="Natijani ehtiyotkor til bilan yozasiz: «tekşiradi», «kutiladi»."),
         "l7": dict(t=M_TITLES[6][6], min=10, take="Bitta iqtibos uslubi oxirigaça, har manba DOI yoki naşriyot sahifasi bilan tekşirilgan."),

@@ -232,7 +232,7 @@ def module_html(m, free_ids=("M0",), show_trek=False, extra_tag=None):
         small = f'<small>{esc(l["content"])}</small>' if l.get("content") else ""
         lis.append(f'<li><span class="num">{esc(l["num"])}</span>{esc(l["title"])}{tk}{small}</li>')
     return f'''<details class="mod{" free" if free else ""}"{" open" if m["id"] == "M0" else ""}>
-  <summary><div class="mod-n">{esc(m["id"])}</div><div><div class="mod-t">{esc(m["title"])}</div>{sub}</div><div class="mod-c">{len(m["lessons"])} dars{tags}</div></summary>
+  <summary><div class="mod-n">{esc(m["id"])}</div><div><div class="mod-t">{esc(m["title"])}</div>{sub}</div><div class="mod-c">{len(m["lessons"])} {"qadam" if "qadam" in m.get("meta", "") else "dars"}{tags}</div></summary>
   <ol>{"".join(lis)}</ol>
 </details>'''
 
@@ -369,7 +369,7 @@ PR6 = {"bachelor-lab": 499000, "master-lab": 499000, "usa-lab": 499000, "gks-lab
        "phd-lab": 849000, "tadbirkor-talaba": 149000, "miggo": 249000}
 
 REFUND_T = "Toʻlov qaytarilmaydi"
-REFUND_B = "Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri. Avtomatik yechish yoʻq: keyingi oy uchun toʻlamasangiz, obuna oʻzi toʻxtaydi."
+REFUND_B = "Shuning uchun har dasturning M0 qismi bepul: toʻlashdan oldin dastur sizga mosligini tekshirasiz. Istisno faqat texnik xato: pul ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri."
 REFUND = info(REFUND_T, REFUND_B)
 
 # 6 oylik narx bazada (courses.price_6m), admin har dastur uchun kiritadi; boʻsh boʻlsa karta yashirin
