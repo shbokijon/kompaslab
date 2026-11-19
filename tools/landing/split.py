@@ -412,10 +412,16 @@ def split(root, f, src):
     # ── 2b. Manbalar (2026-11-19): faktlar bloki dastur sahifasidan shu yerga koʻchgan (FACTS_ON_SOURCES) ──
     if stem in FACTS_ON_SOURCES and "faktlar" in B:
         fh2, fsub, fsec = strip_head(B["faktlar"])
-        note = ("Sana Kompas jamoasi rasmiy sahifani oxirgi marta tekshirgan kun. Qabul, grant, toʻlov va viza shartlari "
-                "oʻzgarishi mumkin: arizadan oldin rasmiy saytdan qayta tekshiring. Umumiy katalog: <a href=\"sources.html\">Rasmiy manbalar</a>.")
-        mparts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Manbalar")], "Rasmiy manbalar", fsub, "shield"),
-                  f'<div class="wrap"><p class="km-note" style="max-width:62ch;margin:0 auto">{note}</p></div>', fsec]
+        # 2026-11-19 (asoschi): minimalizm. Kartada nom, sana va havola; shart matni ⓘ ostida.
+        def info(t, body):
+            return f'<details class="kl-info"><summary><b>{t}</b><span class="kl-i" aria-hidden="true">i</span></summary><p>{body}</p></details>'
+        fsec = re.sub(r'(<div class="src-h">.*?</div>)<p>(.*?)</p>', lambda m: m.group(1) + info("Shartlar", m.group(2)), fsec, flags=re.S)
+        fsec = re.sub(r'<div class="excl">(.*?)</div>', lambda m: '<div class="kl-infos">' + info("Bu dasturda koʻrilmaydi", re.sub(r"^<b>[^<]*</b>\s*", "", m.group(1))) + "</div>", fsec, flags=re.S)
+        note = (fsub + " Sana: Kompas jamoasi rasmiy sahifani oxirgi marta tekshirgan kun; arizadan oldin rasmiy saytdan qayta tekshiring. "
+                "Umumiy katalog: <a href=\"sources.html\">Rasmiy manbalar</a>.")
+        mparts = [page_head([("index.html", "Kompas Lab"), (stem + ".html", esc(lab_name)), (None, "Manbalar")], "Rasmiy manbalar", "Stipendiya va viza shartlari, rasmiy havola bilan.", "shield"),
+                  '<style>.src .kl-info{border:0;background:none;margin:2px 0 6px}.src .kl-info summary{min-height:0;padding:4px 0;justify-content:flex-start}.src .kl-info summary b{font-weight:600;color:var(--muted,#5f7169);font-size:14px}.src .kl-info[open] p{padding:0 0 6px}</style>',
+                  f'<div class="wrap"><div class="kl-infos" style="max-width:62ch;margin:0 auto">{info("Sana va manba haqida", note)}</div></div>', fsec]
         made.append(emit(FACTS_ON_SOURCES[stem], "manbalar", f"Rasmiy manbalar · {lab_name} | Kompas Lab",
                          f"{lab_name}: stipendiya va viza shartlari, rasmiy havola va tekshiruv sanasi bilan.", "\n".join(mparts), own=("faktlar",)))
 
