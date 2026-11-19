@@ -1252,38 +1252,32 @@
  "Bachelor": [
   {
    "id": "M0",
-   "title": "Boshlashdan oldingi tekshiruv",
-   "meta": "bepul, 5 dars",
-   "info": "Natija: Tayyorgarlik koʻrsatkichi + shaxsiy boshlash sanasi + rozilik qaydi (18 yoshgacha: ota-ona tasdigʻi bilan). ",
+   "title": "Bakalavrga tayyorgarlik",
+   "meta": "bepul, 4 qadam",
+   "info": "Maqsad: ariza muddatigacha qancha vaqt borligini va qayerdan boshlashni bilish. Natija: Sizning bahongiz va 4 bosqichli rejangiz.",
    "lessons": [
     {
      "num": "0.1",
-     "title": "Bakalavr dasturi qanday ishlaydi",
-     "content": "Bosqichlar, natijalar, haftalik yuklama; nima beriladi, nima berilmaydi",
+     "title": "Muddat",
+     "content": "Qachon oʻqishni boshlaysiz: ariza muddatigacha nechta hafta borligini hisoblaymiz",
      "trek": ""
     },
     {
      "num": "0.2",
-     "title": "Xalqaro bakalavr qabuli: umumiy manzara",
-     "content": "Mamlakatlar, qabul mantiqlari, raqobat; raqamlar faqat rasmiy manbadan",
+     "title": "Yoʻnalish",
+     "content": "Daraja, soha va mamlakat",
      "trek": ""
     },
     {
      "num": "0.3",
-     "title": "Tayyorgarlik diagnostikasi",
-     "content": "6 yoʻnalish boʻyicha baholash (2.5)",
+     "title": "Tayyorgarlik",
+     "content": "Baholar, ingliz tili, yutuqlar, tavsiya va insho: birinchi yopiladigan joy",
      "trek": ""
     },
     {
      "num": "0.4",
-     "title": "Bakalavr dasturi sizga mos emas, agar…",
-     "content": "Ochiq roʻyxat; muqobil yoʻllar",
-     "trek": ""
-    },
-    {
-     "num": "0.5",
-     "title": "Vaqt chizigʻi, toʻlov va rozilik",
-     "content": "Birinchi muddatdan orqaga hisoblangan boshlash sanasi; obuna shartlari toʻliq matnda; ota-ona tasdigʻi",
+     "title": "Pul",
+     "content": "Oʻqish puli qayerdan keladi; yakunda baho va 4 bosqichli reja",
      "trek": ""
     }
    ]

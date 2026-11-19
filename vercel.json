@@ -103,6 +103,16 @@
   ],
   "redirects": [
     {
+      "source": "/bachelor-lab-m0-5",
+      "destination": "/bachelor-lab-m0-yakun",
+      "permanent": false
+    },
+    {
+      "source": "/bachelor-lab-m0-5.html",
+      "destination": "/bachelor-lab-m0-yakun",
+      "permanent": false
+    },
+    {
       "source": "/master-lab-m0-5",
       "destination": "/master-lab-m0-yakun",
       "permanent": false

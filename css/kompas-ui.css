@@ -580,12 +580,28 @@ html[data-theme="dark"] th{background:var(--ko-accent)}
 html[data-theme="dark"] .decide{background:var(--ko-accent)}
 html[data-theme="dark"] .mentor .av{background:var(--ko-accent2)}
 html[data-theme="dark"] .toast{background:var(--ko-text)}
+html[data-theme="dark"] .kp-plan{border-top:1px dashed var(--border,#44423b)}
+html[data-theme="dark"] .kp-span{color:var(--muted,#b3beb9)}
+html[data-theme="dark"] .kp-ph{border:1px solid var(--border,#44423b);background:var(--surface,#131313)}
+html[data-theme="dark"] .kp-n{background:#1d1c18;color:#b9d4c9}
+html[data-theme="dark"] .kp-b small{color:var(--muted,#b3beb9)}
+html[data-theme="dark"] .kp-ph:not(.kp-open) .kp-o{color:var(--muted,#b3beb9)}
+html[data-theme="dark"] .kp-m{color:var(--muted,#b3beb9)}
+html[data-theme="dark"] .kp-ph{color:#c5d8d0}
+html[data-theme="dark"] .prog i b{background:var(--ko-accent)}
+html[data-theme="dark"] .bar i b{background:var(--ko-accent)}
+html[data-theme="dark"] .ph li.on .n{background:var(--ko-accent)}
+html[data-theme="dark"] .tprog i b{background:var(--ko-accent)}
+html[data-theme="dark"] .tl li.free .k{background:var(--ko-accent)}
+html[data-theme="dark"][data-theme="dark"] .cta .btn-p{color:#c4e2d7}
+html[data-theme="dark"][data-theme="dark"] .cta .btn-p:hover{background:#25342c}
 html[data-theme="dark"] .fld input:focus,html[data-theme="dark"] .fld select:focus{background:#131313}
-html[data-theme="dark"] .card3 .b{background:var(--ko-accent)}
-html[data-theme="dark"] .decide .chip[aria-pressed="true"]{background:#131313;border-color:#333333}
 html[data-theme="dark"] .srcs a{color:#99b6d8}
 html[data-theme="dark"] .st3.n{background:#1a1223;color:#ab8ad3}
+html[data-theme="dark"] .decide .chip[aria-pressed="true"]{background:#131313;border-color:#333333}
+html[data-theme="dark"] .src .kl-info summary b{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .legal h2{color:var(--green,#b9d4c9)}
+html[data-theme="dark"] .card3 .b{background:var(--ko-accent)}
 html[data-theme="dark"] .fct a{color:#99b6d8}
 html[data-theme="dark"] .meter-t i{background:#131313}
 html[data-theme="dark"] .of .meta{background:#1d1c18}

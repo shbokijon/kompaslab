@@ -31,7 +31,8 @@ PAID = HERE / "paid"   # pullik sahifalar: git va saytga chiqmaydi, faqat bazaga
 
 # site: saytga chiqadimi; protect: nusxa olishdan himoya va suv belgisi; og: havola rasmi matni
 MODULES = {
-    "bachelor-lab-m0":     dict(lab="bachelor-lab.html", site=True, protect=True),
+    # Bakalavr M0 v2 (2026-11-19): tayyor sahifa src/bachelor-lab-m0.page.html (Magistratura M0 v2 andozasi)
+    "bachelor-lab-m0":     dict(lab="bachelor-lab.html", site=True, raw=True),
     "gks-lab-m0":          dict(lab="gks-lab.html", site=True, protect=True),
     "phd-lab-m0":          dict(lab="phd-lab.html", site=True, protect=True),
     "tadbirkor-talaba-m0": dict(lab="tadbirkor-talaba.html", site=True, protect=True),

@@ -34,5 +34,28 @@
       "title": "Bahoni qanday oʻqish",
       "sec": 60
     }
+  },
+  "_bachelor": "Bakalavr M0 (2026-11-19): Magistratura bilan bir xil tuzilma. l0 kirish, l1–l3 qadamlar, res natija; yt boʻsh boʻlsa hech narsa chiqmaydi.",
+  "bachelor-lab-m0": {
+    "l0": {
+      "yt": "",
+      "title": "12 daqiqada nima boʻladi",
+      "sec": 45
+    },
+    "l1": {
+      "yt": "",
+      "title": "Qaysi sanadan hisoblaymiz",
+      "sec": 35
+    },
+    "l3": {
+      "yt": "",
+      "title": "Kuchli va zaif jumla",
+      "sec": 35
+    },
+    "res": {
+      "yt": "",
+      "title": "Bahoni qanday oʻqish",
+      "sec": 55
+    }
   }
 }
