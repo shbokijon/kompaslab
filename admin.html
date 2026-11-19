@@ -314,9 +314,6 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sb-item" id="sysNav" onclick="nav('system',this)">
       <span class="sb-icon">🩺</span><span class="sb-label">Tizim</span>
     </button>
-    <button class="sb-item" onclick="nav('settings',this)">
-      <span class="sb-icon">⚙️</span><span class="sb-label">Sozlamalar</span>
-    </button>
     <div class="sb-grp">Havolalar</div>
     <a class="sb-item" href="index.html">
       <span class="sb-icon">🌐</span><span class="sb-label">Sayt</span>
@@ -720,26 +717,6 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         <div class="mb" style="font-size:13px;line-height:1.8">
           <p>Yuqoridagi sonlar Supabase PostgreSQL holati. Vercel billing maʼlumotlari yoki hosting limitlari emas.</p>
           <p><a href="https://supabase.com/dashboard/project/usxpkmbjrdllnitlzdpq" target="_blank" rel="noopener noreferrer">Supabase Dashboard ↗</a></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SOZLAMALAR -->
-    <div class="sec" id="sec-settings">
-      <div class="card">
-        <div class="ch"><h2>⚙️ Sozlamalar</h2></div>
-        <div class="mb" style="max-width:480px">
-          <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text)">🤖 Telegram bildirishnomalar</div>
-          <div class="fld"><label>Bot Token</label><input id="cfgTgToken" placeholder="1234567890:AAF..." style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px"></div>
-          <div class="fld"><label>Chat ID (sizning Telegram ID ingiz)</label><input id="cfgTgChat" placeholder="-100123456789 yoki 123456789" style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px"></div>
-          <div style="background:var(--accent-lit);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--accent);margin-bottom:12px">
-            ℹ️ Bot yaratish: @BotFather → /newbot → tokenni yuqoriga kiriting<br>
-            Chat ID olish: @userinfobot ga /start yuboring
-          </div>
-          <div style="display:flex;gap:8px">
-            <button class="btn bp" onclick="saveTgConfig()">💾 Saqlash</button>
-            <button class="btn bs" onclick="testTgNotify()">🧪 Test yuborish</button>
-          </div>
         </div>
       </div>
     </div>
@@ -1274,7 +1251,6 @@ async function confirmPayment(paymentId, name) {
     const pay = _allPayments.find(p => p.id === paymentId)
     const amount = pay?.amount ? formatMoney(pay.amount) + " soʻm" : ''
     const course = pay?.course?.title || ''
-    sendTelegram(`💰 <b>Yangi toʻlov tasdiqlandi!</b>\n👤 ${name}\n📚 ${course}\n💵 ${amount}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
 
     await loadPayments()
     await loadStudents()
@@ -1319,7 +1295,6 @@ async function rejectPayment(paymentId, name) {
     if (error) throw error
 
     toast(`⛔ Rad etildi: ${name}`)
-    sendTelegram(`⛔ <b>Toʻlov rad etildi</b>\n👤 ${name}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
     await loadPayments()
     renderKPIs()
 
@@ -1337,7 +1312,6 @@ async function enrollDirect(enrollId, name) {
       .update({ payment_status: 'paid', enrolled_at: new Date().toISOString() })
       .eq('id', enrollId)
     toast(`✅ Faollashtirildi: ${name}`)
-    sendTelegram(`✅ <b>Toʻlov tasdiqlandi</b>\n👤 ${name}\n⏰ ${new Date().toLocaleString('uz-UZ')}`)
     await loadStudents()
     renderKPIs()
   } catch(err) {
@@ -1866,7 +1840,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Umumiy holat', students: 'Foydalanuvchilar',
     lessons: 'Darslar', payments: "Toʻlovlar", waitlist: 'Kutish roʻyxati',
-    announce: "Eʼlonlar", analytics: 'Analitika', settings: 'Sozlamalar', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim', website: 'Vebsayt', look: 'Dizayn'
+    announce: "Eʼlonlar", analytics: 'Analitika', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim', website: 'Vebsayt', look: 'Dizayn'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1887,13 +1861,6 @@ function nav(name, el) {
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
   if (name === 'system') { loadSystemStats(); window.klxLoadAudit && window.klxLoadAudit() }
-  // Sozlamalar — saqlangan qiymatlarni yuklash
-  if (name === 'settings') {
-    const token = localStorage.getItem('tg_token') || ''
-    const chat  = localStorage.getItem('tg_chat')  || ''
-    document.getElementById('cfgTgToken').value = token
-    document.getElementById('cfgTgChat').value  = chat
-  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -2522,37 +2489,9 @@ async function loadCourseStats() {
   }
 }
 
-// ════════════════════════════════════════════════════════
-//  14. TELEGRAM SOZLAMALAR
-// ════════════════════════════════════════════════════════
-function saveTgConfig() {
-  const token = document.getElementById('cfgTgToken').value.trim()
-  const chat  = document.getElementById('cfgTgChat').value.trim()
-  if (!token || !chat) { toast('⚠️ Token va Chat ID kiriting'); return }
-  localStorage.setItem('tg_token', token)
-  localStorage.setItem('tg_chat',  chat)
-  toast('✅ Sozlamalar saqlandi')
-}
-
-async function testTgNotify() {
-  const token = localStorage.getItem('tg_token')
-  const chat  = localStorage.getItem('tg_chat')
-  if (!token || !chat) { toast('⚠️ Avval token va chat ID saqlang'); return }
-  await sendTelegram('🧪 Test: Kompas Lab admin panel ulandi!')
-}
-
-async function sendTelegram(text) {
-  const token = localStorage.getItem('tg_token')
-  const chat  = localStorage.getItem('tg_chat')
-  if (!token || !chat) return
-  try {
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: chat, text, parse_mode: 'HTML' })
-    })
-  } catch(e) { console.warn('Telegram xato:', e.message) }
-}
+// Telegram: 2026-11-19 dan Sozlamalar boʻlimi yoʻq. Toʻlov xabarlari serverdan ketadi
+// (trigger trg_tg_payment → fn_tg_on_payment). Brauzerda qolgan eski token oʻchiriladi.
+try { localStorage.removeItem('tg_token'); localStorage.removeItem('tg_chat') } catch (e) {}
 
 let _tt
 function toast(msg) {
