@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>Dars 0.2: Qayerda va qanday oʻqiysiz? · Magistratura dasturi M0 | Kompas Lab</title>
-<meta name="description" content="Magistratura dasturi bepul M0 moduli: magistratura tizimlari, ariza hujjatlari, Tayyorgarlik koʻrsatkichi va topshirish muddatlari taqvimi. Toʻlovdan oldin halol qaror.">
+<title>Qadam 2: Nimani va qayerda oʻqiysiz? · Magistratura dasturi M0 | Kompas Lab</title>
+<meta name="description" content="Magistratura dasturi bepul M0: 4 ta savolga javob bering va 12 daqiqada shaxsiy bahongiz, topshirish rejangiz va birinchi vazifangizni oling.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
@@ -285,6 +285,92 @@ body.locked .gate{display:flex;}
 .assign .tool b,.assign .res b{display:inline;margin:0}
 html[data-theme="dark"] .kp-ph{color:inherit}
 </style>
+<style>
+/* ── Master M0 v2 (2026-11-19): bir ekran, bir savol, darhol javob ── */
+.q{margin:0 0 22px}
+.q:last-of-type{margin-bottom:6px}
+.q h3{font-size:17px;line-height:1.35;color:var(--accent);margin:0 0 4px}
+.q .qs{font-size:13.5px;color:var(--muted);margin:0}
+.chips.col{display:grid;grid-template-columns:1fr;gap:8px}
+.chips.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.chips .chip{text-align:left;border-radius:14px;line-height:1.3}
+.chips .chip small{display:block;font-weight:500;font-size:12.5px;opacity:.8;margin-top:2px}
+.fb{margin-top:12px;border-radius:14px;padding:12px 14px;font-size:15px;background:var(--accent-lit);display:none}
+.fb.show{display:block;animation:fadeUp .3s ease both}
+.fb.warn{background:var(--gold-lit)}
+.fb b{color:var(--accent)}
+.in-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.in-row input{flex:1 1 200px;min-height:44px;border:2px solid var(--border);border-radius:12px;padding:8px 12px;font:inherit;background:var(--surface);color:var(--text)}
+.in-row input:focus{outline:none;border-color:var(--accent)}
+.more{margin-top:10px;font-size:14px}
+.more summary{cursor:pointer;color:var(--accent);font-weight:700;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::before{content:"\24D8\00a0"}
+.more p{margin:8px 0 0;color:var(--muted)}
+.doc{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:10px 0;border-top:1px solid var(--border)}
+.doc:first-of-type{border-top:0}
+.doc b{font-size:15px}.doc b small{font-weight:500;color:var(--muted);font-size:13px}
+.doc .chips{margin-top:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.doc .chip{text-align:center;padding:8px 6px;min-height:40px;font-size:13.5px}
+.game{background:var(--bg);border-radius:14px;padding:14px;margin-top:8px}
+.game p{margin:0 0 8px;font-style:italic}
+.game .chips{margin-top:6px}
+.kv{margin:18px 0 0}
+.l-foot .hint{flex:1 1 200px}
+.prog{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin:0 0 16px}
+.prog i{flex:1;height:6px;border-radius:9px;background:var(--border);overflow:hidden;display:block}
+.prog i b{display:block;height:100%;background:var(--accent);border-radius:9px;transition:width .4s}
+/* Natija */
+.rcard{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;text-align:center}
+.rcard .st{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.rcard .lv{font-family:"Cambria","Caladea","Playfair Display",serif;font-size:clamp(30px,6vw,42px);color:var(--accent);line-height:1.1;margin:6px 0}
+.rcard .sc{font-size:15px;color:var(--muted)}
+.rcard .sc b{color:var(--text);font-size:20px}
+.bars{display:grid;gap:8px;margin:18px 0 0;text-align:left}
+.bar{display:grid;grid-template-columns:96px 1fr 34px;gap:10px;align-items:center;font-size:13.5px}
+.bar i{height:8px;border-radius:9px;background:var(--border);overflow:hidden;display:block}
+.bar i b{display:block;height:100%;background:var(--accent);border-radius:9px}
+.bar.low i b{background:#c4622d}.bar.low span{color:#c4622d;font-weight:700}
+.bar em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.rtxt{margin:16px 0 0;text-align:left;font-size:15px}
+.rtxt p{margin:0 0 8px}
+.rmiss{margin-top:14px}
+.ph{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.ph li{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;padding:12px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+.ph li.on{border-color:var(--accent);box-shadow:0 6px 18px rgba(45,74,62,.10)}
+.ph .n{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:var(--bg);color:var(--accent)}
+.ph li.on .n{background:var(--accent);color:#fff}
+.ph b{display:block}.ph small{display:block;color:var(--muted);font-size:13px}
+.tasks{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px}
+.tasks h3{margin:0 0 4px;color:var(--accent);font-size:19px}
+.tprog{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);margin:6px 0 14px}
+.tprog i{flex:1;height:8px;border-radius:9px;background:var(--border);overflow:hidden;display:block}
+.tprog i b{display:block;height:100%;width:20%;background:var(--accent);border-radius:9px}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tl li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;padding:10px 12px;border-radius:12px;background:var(--bg);font-size:14.5px}
+.tl li.free{background:var(--accent-lit)}
+.tl li.free label{display:flex;gap:8px;align-items:center;margin-top:8px;font-weight:700;cursor:pointer}
+.tl li.free input{width:20px;height:20px;accent-color:var(--accent)}
+.tl .k{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:800;background:var(--surface);color:var(--accent)}
+.tl li.free .k{background:var(--accent);color:#fff}
+.tl li.lk{color:var(--muted)}
+.tl li.lk span{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.tl li.lk img{width:18px;height:18px;opacity:.7;flex:none}
+.cta{text-align:center;margin-top:18px}
+.cta .btn{width:100%;max-width:420px}
+.cta .hint{margin-top:8px}
+.quote{display:flex;gap:12px;align-items:flex-start;margin-top:20px;padding:14px;border-radius:14px;background:var(--bg);font-size:14px}
+.quote img{width:30px;height:30px;flex:none}
+.quote q{display:block;font-style:italic}
+.quote small{display:block;color:var(--muted);margin-top:4px}
+.rnote{font-size:13px;color:var(--muted);margin-top:14px}
+body[data-kview="yakun"] #natija > h2{display:none}
+body[data-kview="hub"] #darslar > h2{font-size:20px}
+@media (max-width:480px){.chips.two{grid-template-columns:1fr}.bar{grid-template-columns:84px 1fr 30px}}
+html[data-theme="dark"] .ph li,html[data-theme="dark"] .rcard,html[data-theme="dark"] .tasks{color:inherit}
+html[data-theme="dark"] .cta .btn-p{background:#9fd0b6;color:#10201a;box-shadow:none}
+html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
+</style>
 <link rel="stylesheet" href="css/kompas-ui.css">
 <script src="js/kompas-ui.js"></script>
 <link rel="canonical" href="https://www.kompaslab.uz/master-lab-m0-2">
@@ -293,11 +379,11 @@ html[data-theme="dark"] .kp-ph{color:inherit}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="master-lab.html"><span class="klogo klogo-sm"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span>Kompas Lab <small>· Magistratura dasturi M0</small></a>
+    <a class="logo" href="master-lab.html"><span class="klogo klogo-sm"><img class="klogo-b" src="img/brand/logo-base.webp" alt="" width="128" height="128"><img class="klogo-a" src="img/brand/logo-arrow.webp" alt="" width="128" height="128"></span>Kompas Lab <small>· Magistratura rejasi</small></a>
     <div class="xp" aria-live="polite">
       <span class="who" id="who"></span>
-      <span class="lvl" id="lvl">1-daraja: Kuzatuvchi</span>
-      <span class="xp-pill" id="xpPill"><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
+      <span class="lvl" id="lvl"></span>
+      <span class="xp-pill" id="xpPill" hidden><img src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="xpN">0</span>&nbsp;XP</span>
     </div>
   </div>
   <div class="xp-bar"><i id="xpBar"></i></div>
@@ -306,290 +392,238 @@ html[data-theme="dark"] .kp-ph{color:inherit}
 <div class="gate" id="gate">
   <div class="gate-c">
     <img class="float" src="img/3d/lock.webp" width="160" height="160" alt="">
-    <h1 id="gateT">Hisob tekshirilmoqda…</h1>
-    <p id="gateP">Kirish huquqi aniqlanmoqda.</p>
+    <h1 id="gateT">Bir soniya…</h1>
+    <p id="gateP">Hisobingiz tekshirilmoqda.</p>
     <div id="gateA" hidden>
       <a class="btn btn-p" href="register.html" data-ret>Bepul roʻyxatdan oʻtish</a>
       <a class="btn btn-g" href="login.html" data-ret>Kirish</a>
-      <small>M0 bepul. Roʻyxatdan oʻtganingizdan keyin shu sahifaga qaytasiz.</small>
+      <small>Reja tuzish bepul. Roʻyxatdan oʻtgach, shu sahifaga qaytasiz.</small>
     </div>
   </div>
 </div>
 
-<main>
+<main data-kword="Qadam" data-kyakun="Natija: baho va reja" data-yakun-meta="Sizning bahongiz, rejangiz va I bosqich vazifalari">
 <div class="wrap">
 
-  <!-- HERO -->
+  <!-- KIRISH -->
   <div class="hero">
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Magistratura dasturi</a> · Modul 0</div>
-        <span class="badge">🔓 Bepul · 12 daqiqa</span>
-        <h1>Magistraturaga qayerdan boshlashni 12 daqiqada bilib olasiz</h1>
-        <p class="lead">5 ta qisqa qadam. Har birida bitta savolga javob berasiz. Oxirida sizning bahongiz va rejangiz chiqadi. Choy sovumasidan tugatsa boʻladi.</p>
-        <div class="facts"><span class="fact"><b>5</b> qadam</span><span class="fact">~<b>12</b> daqiqa</span><span class="fact"><b>250</b> XP</span></div>
+        <span class="badge">Bepul · 12 daqiqa</span>
+        <h1>Magistraturaga topshirish rejangizni 12 daqiqada tuzamiz</h1>
+        <p class="lead">4 ta savol. Javoblaringizdan Sizning bahongiz va bosqichma-bosqich rejangiz chiqadi. Bitta serial qismidan ham qisqa.</p>
+        <div class="facts"><span class="fact"><b>4</b> savol</span><span class="fact">~<b>12</b> daqiqa</span><span class="fact">Natija: <b>baho va reja</b></span></div>
+        <p class="hint">Javoblaringiz faqat Sizning qurilmangizda saqlanadi.</p>
       </div>
       <img class="hero-art float" src="img/3d/master.webp" width="160" height="160" alt="">
     </div>
+    <div class="kv" data-kvideo="l0"></div>
   </div>
 
-  <!-- QUEST MAP -->
-  <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Qadamlar</b><span id="mapN">0 / 8 bosqich</span></div>
-    <div class="path">
-      <a class="node" href="#l1" data-node="l1"><span class="dot">0.1</span>Muddat</a>
-      <a class="node" href="#l2" data-node="l2"><span class="dot">0.2</span>Yoʻnalish</a>
-      <a class="node" href="#l3" data-node="l3"><span class="dot">0.3</span>Hujjat</a>
-      <a class="node" href="#l4" data-node="l4"><span class="dot">0.4</span>Pul</a>
-      <a class="node" href="#l5" data-node="l5"><span class="dot">0.5</span>Tekshiruv</a>
-      <a class="node" href="#tool-dl" data-node="dl"><span class="dot">📅</span>Sana</a>
-      <a class="node" href="#tool-rs" data-node="rs"><span class="dot">%</span>Baho</a>
-      <a class="node" href="#qaror" data-node="dec"><span class="dot">✓</span>Reja</a>
-    </div>
-  </nav>
+  <nav class="map" aria-hidden="true" hidden><a class="node" href="#l1" data-node="l1"><span class="dot">1</span>Muddat</a><a class="node" href="#l2" data-node="l2"><span class="dot">2</span>Yoʻnalish</a><a class="node" href="#l3" data-node="l3"><span class="dot">3</span>Hujjatlar</a><a class="node" href="#l4" data-node="l4"><span class="dot">4</span>Pul</a></nav>
 
-  <!-- GOAL -->
-  <section>
-    <h2>12 daqiqadan keyin sizda</h2>
-    <ul class="goal">
-      <li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy">Topshirishgacha necha hafta qolgani.</li>
-      <li><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Sizga yoqqan 1–3 ta mamlakat.</li>
-      <li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Qaysi hujjat bor, qaysi biri yoʻqligi.</li>
-      <li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Sizning bahongiz va 4 bosqichli rejangiz.</li>
-    </ul>
-  </section>
-
-  <!-- LESSONS -->
   <section id="darslar">
-    <h2>Qadamlar</h2>
-    <p class="sub">Har qadam 1–3 daqiqa. Javoblaringiz shu qurilmada saqlanadi.</p>
+    <h2>Sizni nima kutadi</h2>
+    <p class="sub">Har qadam 2–3 daqiqa.</p>
     <div class="lessons">
 
-      <!-- 0.1 -->
+      <!-- QADAM 1 -->
       <article class="lesson" id="l1" data-lesson="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">Qachon topshirasiz?</span>
-            <span class="l-m"><span class="tag">⏱ 2 daqiqa</span><span class="tag">📅 Sizning sanangiz</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">Qachon oʻqishni boshlamoqchisiz?</span>
+            <span class="l-m"><span class="tag">2 daqiqa</span><span class="tag">Natija: necha hafta bor</span><span class="tag xp">+50 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Hujjat qancha yaxshi boʻlsa ham, muddatdan keyin topshirilsa, uni hech kim oʻqimaydi. Shuning uchun birinchi savol oddiy: <strong>qachon topshirasiz?</strong><br><small>Ertaga boshlayman degan reja ham bir kunda qariydi.</small></div></div>
-          <div class="panel"><p>Reja oxiridan boshlab tuziladi:</p>
-<ol><li>Universitet saytidan <strong>topshirish sanasini</strong> (<em lang="en">deadline</em>) topasiz.</li>
-<li>Undan <strong>4 hafta oldin</strong> hammasi tayyor boʻlsin. Bu zaxira vaqt: kech kelgan tavsiya xati yoki uzilib qolgan internet uchun.</li>
-<li>Qolgan haftalar tayyorlanish uchun.</li></ol>
-<p>Nega erta boshlash kerak? Tavsiya xatini boshqa odam yozadi. Til imtihoniga oldindan yozilasiz. Bular faqat sizga bogʻliq emas, shuning uchun vaqt kerak.</p>
-<div class="box info">Aniq sanani bilmasangiz, taxminiy sana qoʻying. Keyin universitet sahifasidan aniqlaysiz.</div></div>
-          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Avval sana, keyin hamma narsa.</p></div></div>
-          <div class="panel"><div class="assign"><b>Sanangizni kiriting</b>
-            <div class="tool" id="tool-dl" style="margin-top:10px">
-              <div class="tool-h"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Topshirish muddatlari taqvimi</h3><span>Sanadan orqaga hisoblash · +30 XP</span></div></div>
-              <div class="dl-in">
-                <div><label for="dlDate">Topshirish sanasi</label><input type="date" id="dlDate"></div>
-                <div><label for="dlW">Tayyorlanishga necha hafta? (bilmasangiz, 18 qoldiring)</label><input type="number" id="dlW" value="18" min="4" max="60" inputmode="numeric"></div>
+          <div class="panel">
+            <div class="prog"><span>1 / 4</span><i><b style="width:25%"></b></i><span>~10 daqiqa qoldi</span></div>
+            <div class="q">
+              <h3>Qachon oʻqishni boshlamoqchisiz?</h3>
+              <div class="chips two" data-one="start">
+                <button type="button" class="chip" data-v="2027k" aria-pressed="false">2027 kuzi</button>
+                <button type="button" class="chip" data-v="2028b" aria-pressed="false">2028 boshi</button>
+                <button type="button" class="chip" data-v="2028k" aria-pressed="false">2028 kuzi</button>
+                <button type="button" class="chip" data-v="x" aria-pressed="false">Hali bilmayman</button>
               </div>
-              <button class="btn btn-p" type="button" id="dlBtn" style="margin-top:12px">Hisoblash</button>
-              <div class="res" id="dlRes"></div>
-            </div></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+            </div>
+            <div class="q">
+              <h3>Topshirish sanasini bilasizmi?</h3>
+              <p class="qs">Bilmasangiz, boʻsh qoldiring: taxminiy sanani oʻzimiz qoʻyamiz.</p>
+              <div class="in-row"><input type="date" id="dlDate" aria-label="Topshirish sanasi"></div>
+            </div>
+            <div class="fb" id="fb1" role="status"></div>
+            <details class="more"><summary>Nega sanadan orqaga hisoblaymiz?</summary><p>Reja topshirish sanasidan orqaga hisoblanadi va 4 hafta zaxira qoladi: tavsiya xati kech kelsa yoki internet uzilsa. Tavsiya xatini boshqa odam yozadi, til imtihoniga oldindan yozilish kerak. Shuning uchun erta boshlash kerak.</p></details>
+            <div class="kv" data-kvideo="l1"></div>
+          </div>
+          <div class="l-foot"><span class="hint" data-hint>Bitta variantni tanlang.</span><button class="btn btn-p" type="button" data-complete="l1" data-xp="50">Keyingi qadam →</button></div>
         </div>
       </article>
 
-      <!-- 0.2 -->
+      <!-- QADAM 2 -->
       <article class="lesson" id="l2" data-lesson="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Qayerda va qanday oʻqiysiz?</span>
-            <span class="l-m"><span class="tag">⏱ 3 daqiqa</span><span class="tag">🌍 1–3 mamlakat</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Nimani va qayerda oʻqiysiz?</span>
+            <span class="l-m"><span class="tag">3 daqiqa</span><span class="tag">Natija: Sizning yoʻnalishingiz</span><span class="tag xp">+50 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Dunyoda magistratura dasturlari juda koʻp, nomlari ham bir-biriga oʻxshaydi. Hammasini koʻrib chiqishga umr yetmaydi. Shuning uchun avval tanlovni toraytiramiz.<br><small>Xavotir olmang, bu mavzu tishlamaydi.</small></div></div>
-          <div class="panel"><h4>Ikki xil magistratura</h4>
-<ul><li><strong>Oʻquv magistraturasi</strong> (<em lang="en">taught masterʼs</em>): darslar, imtihonlar, loyihalar.</li>
-<li><strong>Tadqiqot magistraturasi</strong> (<em lang="en">research masterʼs</em>): asosan oʻzingiz ilmiy ish qilasiz, rahbar yoʻl koʻrsatadi.</li></ul>
-<h4>Mamlakatlar qisqacha</h4>
-<ul><li><strong>🇬🇧 Buyuk Britaniya:</strong> koʻp oʻquv magistraturasi 1 yil davom etadi.</li>
-<li><strong>🇺🇸 AQSh:</strong> muddat, talab va pul har universitetda boshqacha.</li>
-<li><strong>🇪🇺 Yevropa:</strong> Erasmus Mundus dasturlarida tanlanganlarga toʻliq stipendiya beriladi, lekin hammaga emas.</li>
-<li><strong>🌏 Osiyo:</strong> GKS (Koreya) va MEXT (Yaponiya) kabi davlat stipendiyalari bor.</li>
-<li><strong>🇦🇺 Avstraliya:</strong> Australia Awards stipendiyasining 2027-yil roʻyxatida Oʻzbekiston yoʻq.</li></ul>
-<div class="box info"><strong>Manbalar (31.10.2026 da tekshirildi):</strong> <a href="https://study-uk.britishcouncil.org/en/plan-studies/ways-learning/postgraduate" target="_blank" rel="noopener noreferrer" data-alifbo="off">British Council</a> · <a href="https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters" target="_blank" rel="noopener noreferrer" data-alifbo="off">Erasmus+: Joint Masters</a> · <a href="https://www.dfat.gov.au/people-to-people/australia-awards/participating-countries" target="_blank" rel="noopener noreferrer" data-alifbo="off">DFAT: Australia Awards</a> · <a href="https://educationusa.state.gov/your-5-steps-us-study" target="_blank" rel="noopener noreferrer" data-alifbo="off">EducationUSA</a>. <small>Talablar har yili oʻzgarishi mumkin, universitet sahifasidan qayta tekshiring.</small></div></div>
-          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Avval turini tanlang, keyin mamlakatni. Reytingga emas, dasturning oʻziga qarang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Sizga yoqqanini bosing (1–3 ta)</b>
-            <div class="chips" id="sysChips"><button type="button" class="chip" data-sys="AQSh" aria-pressed="false">🇺🇸 AQSh</button><button type="button" class="chip" data-sys="Buyuk Britaniya" aria-pressed="false">🇬🇧 Buyuk Britaniya</button><button type="button" class="chip" data-sys="Yevropa" aria-pressed="false">🇪🇺 Yevropa</button><button type="button" class="chip" data-sys="Osiyo" aria-pressed="false">🌏 Osiyo</button><button type="button" class="chip" data-sys="Avstraliya" aria-pressed="false">🇦🇺 Avstraliya</button></div>
-            <div class="hint" id="sysHint">0 ta tanlandi</div>
-            <p style="margin:12px 0 0">Qaysi magistratura sizga yaqin: oʻquvmi yoki tadqiqotmi? Bir jumla yozing.</p>
-            <textarea data-save="a2" placeholder="Masalan: oʻquv magistraturasi, chunki..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+          <div class="panel">
+            <div class="prog"><span>2 / 4</span><i><b style="width:50%"></b></i><span>~8 daqiqa qoldi</span></div>
+            <div class="q">
+              <h3>Qaysi darajaga topshirasiz?</h3>
+              <div class="chips two" data-one="deg">
+                <button type="button" class="chip" data-v="mag" aria-pressed="false">Magistratura</button>
+                <button type="button" class="chip" data-v="bak" aria-pressed="false">Bakalavr</button>
+                <button type="button" class="chip" data-v="phd" aria-pressed="false">PhD</button>
+                <button type="button" class="chip" data-v="x" aria-pressed="false">Hali aniq emas</button>
+              </div>
+              <div class="fb warn" id="fbDeg" role="status"></div>
+            </div>
+            <div class="q">
+              <h3>Qaysi sohada oʻqimoqchisiz?</h3>
+              <div class="in-row"><input type="text" id="field" data-suggest="field" placeholder="Masalan: Iqtisodiyot, Informatika, Geologiya" aria-label="Soha" autocomplete="off"></div>
+              <div class="chips"><button type="button" class="chip" id="fieldX" aria-pressed="false">Hali bilmayman</button></div>
+            </div>
+            <div class="q">
+              <h3>Qanday oʻqish Sizga yoqadi?</h3>
+              <div class="chips col" data-one="ftype">
+                <button type="button" class="chip" data-v="taught" aria-pressed="false">Darslar, imtihon, loyiha<small>Oʻquv magistraturasi (taught)</small></button>
+                <button type="button" class="chip" data-v="research" aria-pressed="false">Asosan oʻz tadqiqotim, rahbar bilan<small>Tadqiqot magistraturasi (research)</small></button>
+                <button type="button" class="chip" data-v="x" aria-pressed="false">Bilmayman</button>
+              </div>
+            </div>
+            <div class="q">
+              <h3>Qayerda oʻqishni xohlaysiz?</h3>
+              <p class="qs">1–3 tasini tanlang.</p>
+              <div class="chips" data-many="where" data-max="3">
+                <button type="button" class="chip" data-v="Buyuk Britaniya" aria-pressed="false">Buyuk Britaniya</button>
+                <button type="button" class="chip" data-v="Yevropa" aria-pressed="false">Yevropa</button>
+                <button type="button" class="chip" data-v="AQSh" aria-pressed="false">AQSh</button>
+                <button type="button" class="chip" data-v="Osiyo" aria-pressed="false">Osiyo</button>
+                <button type="button" class="chip" data-v="Farqi yoʻq" aria-pressed="false">Farqi yoʻq</button>
+              </div>
+            </div>
+            <div class="fb" id="fb2" role="status"></div>
+            <div class="kv" data-kvideo="l2"></div>
+          </div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrtta savolga javob bering.</span><button class="btn btn-p" type="button" data-complete="l2" data-xp="50">Keyingi qadam →</button></div>
         </div>
       </article>
 
-      <!-- 0.3 -->
+      <!-- QADAM 3 -->
       <article class="lesson" id="l3" data-lesson="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 0.3</span><span class="l-t" style="display:block">Hujjatlaringiz qay holatda?</span>
-            <span class="l-m"><span class="tag">⏱ 3 daqiqa</span><span class="tag">🎯 Oʻyin: kuchli yoki zaif</span><span class="tag xp">+20 XP</span></span></span>
+            <span class="l-m"><span class="tag">3 daqiqa</span><span class="tag">Natija: birinchi yetishmaydigan hujjat</span><span class="tag xp">+50 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Qabul komissiyasi sizni koʻrmaydi. U faqat hujjatlaringizni oʻqiydi. Demak, hujjatlar siz uchun gapiradi.</div></div>
-          <div class="panel"><p>Koʻp dasturlar shularni soʻraydi:</p>
-<ul><li><strong>CV</strong> (tarjimayi hol): nima oʻqidingiz va nima qildingiz, 1–2 betda.</li>
-<li><strong>Maqsad bayonnomasi</strong> (<em lang="en">Statement of Purpose</em>): nega aynan shu dastur kerakligi haqida xat.</li>
-<li><strong>Tavsiya xati</strong> (<em lang="en">reference</em>): ustozingiz yoki rahbaringiz siz haqingizda yozadi.</li>
-<li><strong>Baholar qaydnomasi</strong> (<em lang="en">transcript</em>): diplomdagi fanlar va baholar.</li>
-<li><strong>Til sertifikati:</strong> masalan, IELTS, agar dastur soʻrasa.</li>
-<li><strong>Ilmiy loyiha taklifi</strong> (<em lang="en">research proposal</em>): faqat soʻralsa.</li></ul>
-<p>Asosiy qoida: <strong>maqtov emas, dalil yozing</strong>. "Men mehnatsevarman" deyish oson. "4 oyda soʻrovnoma qilib, natijani konferensiyada aytib berdim" desangiz, ishonishadi. Komissiya ham odam, u ham qiziq hikoyani yaxshi koʻradi.</p>
-<div class="box warn">Har dasturning roʻyxati boshqa. Roʻyxatni taxmin qilmang, dastur sahifasidan oʻqing.</div>
-<div class="box info"><strong>Manbalar (31.10.2026 da tekshirildi):</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/supporting-documents/supporting-documents-requirements" target="_blank" rel="noopener noreferrer" data-alifbo="off">University of Oxford: hujjatlar</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/supporting-documents/statement" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: maqsad bayonnomasi</a>. <small>Talablar har yili oʻzgarishi mumkin, universitet sahifasidan qayta tekshiring.</small></div></div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Har bir gapingizga bitta dalil.</p></div></div>
-          <div class="panel"><div class="assign"><b>Qaysi jumla kuchli? Bosib koʻring</b>
-            <div class="quiz" id="quiz"><div class="qz" data-a="k"><p>“Sizning laboratoriyangiz yer osti suvlarini modellashtiradi. Men shu mavzuda 6 oylik bitiruv loyihasini qilganman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Kuchli: aniq mavzu va oʻzining ishi bor.</div></div><div class="qz" data-a="z"><p>“Men mehnatsevar, tez oʻrganadigan va juda motivatsiyali talabaman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Zaif: faqat maqtov, birorta dalil yoʻq.</div></div><div class="qz" data-a="z"><p>“Universitetingiz reytingda yuqori boʻlgani uchun topshiryapman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Zaif: faqat reyting. Nega aynan shu dastur kerakligi aytilmagan.</div></div><div class="qz" data-a="k"><p>“Soʻrovnoma tahlilini 4 oyda tugatdim va natijani talabalar konferensiyasida aytib berdim.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Kuchli: ish, muddat va natija bor.</div></div></div>
-            <div class="verdict" id="quizRes"></div>
-            <p style="margin:14px 0 0">Endi oʻzingiz: qaysi hujjatlaringiz bor, qaysilari yoʻq?</p>
-            <textarea data-save="a3" placeholder="Bor: diplom, ...&#10;Yoʻq: tavsiya xati, ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
+          <div class="panel">
+            <div class="prog"><span>3 / 4</span><i><b style="width:75%"></b></i><span>~5 daqiqa qoldi</span></div>
+            <div class="q">
+              <h3>Komissiya Sizni faqat hujjatlaringiz orqali taniydi. Qaysilari bor?</h3>
+              <div class="doc"><b>CV <small>1–2 betlik tarjimai hol</small></b><div class="chips" data-doc="cv"><button type="button" class="chip" data-v="2" aria-pressed="false">Bor</button><button type="button" class="chip" data-v="1" aria-pressed="false">Yozyapman</button><button type="button" class="chip" data-v="0" aria-pressed="false">Yoʻq</button></div></div>
+              <div class="doc"><b>Maqsad bayonnomasi <small>nega aynan shu dastur</small></b><div class="chips" data-doc="sop"><button type="button" class="chip" data-v="2" aria-pressed="false">Bor</button><button type="button" class="chip" data-v="1" aria-pressed="false">Yozyapman</button><button type="button" class="chip" data-v="0" aria-pressed="false">Yoʻq</button></div></div>
+              <div class="doc"><b>Tavsiya xati <small>ustozingiz yozadi</small></b><div class="chips" data-doc="ref"><button type="button" class="chip" data-v="2" aria-pressed="false">Bor</button><button type="button" class="chip" data-v="1" aria-pressed="false">Kelishilgan</button><button type="button" class="chip" data-v="0" aria-pressed="false">Yoʻq</button></div></div>
+              <div class="doc"><b>Baholar qaydnomasi <small>diplom ilovasi, inglizcha</small></b><div class="chips" data-doc="tr"><button type="button" class="chip" data-v="2" aria-pressed="false">Bor</button><button type="button" class="chip" data-v="1" aria-pressed="false">Tarjimada</button><button type="button" class="chip" data-v="0" aria-pressed="false">Yoʻq</button></div></div>
+              <div class="doc"><b>Til sertifikati <small>masalan, IELTS</small></b><div class="chips" data-doc="lang"><button type="button" class="chip" data-v="2" aria-pressed="false">Bor</button><button type="button" class="chip" data-v="1" aria-pressed="false">Tayyorlanyapman</button><button type="button" class="chip" data-v="0" aria-pressed="false">Yoʻq</button></div></div>
+            </div>
+            <div class="q">
+              <h3>Baholaringiz qanday?</h3>
+              <div class="chips two" data-one="grades">
+                <button type="button" class="chip" data-v="a" aria-pressed="false">Aʼlo</button>
+                <button type="button" class="chip" data-v="y" aria-pressed="false">Yaxshi</button>
+                <button type="button" class="chip" data-v="o" aria-pressed="false">Oʻrta</button>
+                <button type="button" class="chip" data-v="x" aria-pressed="false">Aytishim qiyin</button>
+              </div>
+            </div>
+            <div class="q">
+              <h3>30 soniyalik oʻyin: qaysi jumla kuchli?</h3>
+              <div class="game" data-game="0" data-a="z"><p>"Men mehnatsevar va tez oʻrganadigan talabaman."</p><div class="chips two"><button type="button" class="chip" data-v="k" aria-pressed="false">Kuchli</button><button type="button" class="chip" data-v="z" aria-pressed="false">Zaif</button></div><div class="fb" role="status"><b>Zaif.</b> "Mehnatsevarman" deb hamma yozadi, komissiya buni oʻqib esnab qoʻyadi. Dalil yoʻq.</div></div>
+              <div class="game" data-game="1" data-a="k"><p>"4 oyda soʻrovnoma oʻtkazib, natijani talabalar konferensiyasida aytib berdim."</p><div class="chips two"><button type="button" class="chip" data-v="k" aria-pressed="false">Kuchli</button><button type="button" class="chip" data-v="z" aria-pressed="false">Zaif</button></div><div class="fb" role="status"><b>Kuchli.</b> Ish, muddat va natija bor. Hujjatlaringizdagi har bir gap shunday boʻlishi kerak.</div></div>
+            </div>
+            <div class="fb" id="fb3" role="status"></div>
+            <div class="kv" data-kvideo="l3"></div>
+          </div>
+          <div class="l-foot"><span class="hint" data-hint>Har hujjatga va baholarga javob bering.</span><button class="btn btn-p" type="button" data-complete="l3" data-xp="50">Keyingi qadam →</button></div>
         </div>
       </article>
 
-      <!-- 0.4 -->
+      <!-- QADAM 4 -->
       <article class="lesson" id="l4" data-lesson="l4">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Pul qayerdan keladi?</span>
-            <span class="l-m"><span class="tag">⏱ 2 daqiqa</span><span class="tag">👛 Sizning pul yoʻlingiz</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Oʻqish puli qayerdan keladi?</span>
+            <span class="l-m"><span class="tag">2 daqiqa</span><span class="tag">Natija: pul holatingiz</span><span class="tag xp">+50 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Pul masalasini oxirga qoldirmang. U rejaga boshidan kiradi.<br><small>Choʻntak boʻsh boʻlsa ham, reja toʻla boʻlishi mumkin.</small></div></div>
-          <div class="panel"><p>Odatda pul uch yoʻldan keladi:</p>
-<ol><li><strong>Oila yoki oʻz pulingiz.</strong></li>
-<li><strong>Universitet stipendiyasi yoki chegirmasi.</strong> Universitet saytida <em lang="en">scholarships</em> yoki <em lang="en">funding</em> boʻlimini qidiring.</li>
-<li><strong>Davlat yoki xalqaro stipendiya.</strong> Masalan, Erasmus Mundus, GKS, MEXT.</li></ol>
-<p>Koʻpincha bir nechta yoʻl birga ishlatiladi. Baʼzi stipendiyalar universitetdan oldinroq yopiladi, shuning uchun ularning sanasini ham rejangizga qoʻshing.</p></div>
-          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>Pul yoʻlini bilsangiz, qaysi sanaga qarab ishlashni ham bilasiz.</p></div></div>
-          <div class="panel"><div class="assign"><b>Sizning pul yoʻlingiz qaysi? (bir nechtasini tanlash mumkin)</b>
-            <div class="chips" id="fundChips"><button type="button" class="chip" data-fund="Oila yoki oʻz pulim" aria-pressed="false">👪 Oila yoki oʻz pulim</button><button type="button" class="chip" data-fund="Universitet stipendiyasi" aria-pressed="false">🎓 Universitet stipendiyasi</button><button type="button" class="chip" data-fund="Davlat yoki xalqaro stipendiya" aria-pressed="false">🌍 Davlat yoki xalqaro stipendiya</button><button type="button" class="chip" data-fund="Hali bilmayman" aria-pressed="false">🤔 Hali bilmayman</button></div>
-            <div class="hint" id="fundHint">Hali tanlanmadi</div></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
-        </div>
-      </article>
-
-      <!-- 0.5 -->
-      <article class="lesson" id="l5" data-lesson="l5">
-        <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.5</span><span class="l-t" style="display:block">Siz toʻgʻri joydamisiz?</span>
-            <span class="l-m"><span class="tag">⏱ 1 daqiqa</span><span class="tag">✅ Tekshiruv</span><span class="tag xp">+20 XP</span></span></span>
-          <span class="chev">▾</span>
-        </button>
-        <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bir daqiqalik tekshiruv. Agar boshqa yoʻl sizga mosroq boʻlsa, buni hozir bilganingiz yaxshi.</div></div>
-          <div class="panel"><p>Sizga tegishli bandlarni belgilang. Bu sizni rad etmaydi, faqat yoʻlni aniqlaydi.</p>
-<div class="checks" id="notFit">
-<label class="ck"><input type="checkbox" data-alt="Bakalavr dasturi" data-href="bachelor-lab.html">Men bakalavriatga topshirmoqchiman</label>
-<label class="ck"><input type="checkbox" data-alt="GKS dasturi" data-href="gks-lab.html">Men asosan GKS stipendiyasiga tayyorlanyapman</label>
-<label class="ck"><input type="checkbox" data-alt="DAAD dasturi" data-href="daad-lab.html">Men asosan DAAD dasturiga topshirmoqchiman</label>
-<label class="ck"><input type="checkbox" data-alt="PhD dasturi" data-href="phd-lab.html">Mening maqsadim doktorantura (PhD)</label>
-<label class="ck"><input type="checkbox" data-alt="">Magistratura nega kerakligini hali bilmayman</label>
-<label class="ck"><input type="checkbox" data-alt="">Qabul yoki stipendiya kafolatini kutyapman</label>
-</div>
-<div class="verdict" id="fitRes"></div></div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Hammasi joyida boʻlsa, bitta qadam qoldi: sizning bahongiz va rejangiz.</p></div></div>
-          <div class="panel"><div class="assign"><b>Oxirgi qadam</b>
-            <p style="margin:6px 0 0">Yakun sahifasida oʻzingizga 6 ta savol boʻyicha baho berasiz. Keyin rejangiz ochiladi.</p>
-            <p style="margin:10px 0 0"><a class="btn btn-p" href="#tool-rs">Bahoga oʻtish</a></p></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- TOOLS -->
-  <section id="vositalar" data-yakun-title="Sizning bahongiz va rejangiz">
-    <h2>Sizning bahongiz</h2>
-    <p class="sub">6 ta savol. Har birini 0 dan 100 gacha suring: 0 hali boshlamadim, 100 tayyorman. Halol baho bering, natija shu qurilmada qoladi.</p>
-
-    <div class="tool" id="tool-rs">
-      <div class="tool-h"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Tayyorgarlik koʻrsatkichi</h3><span>6 ta savol · +40 XP</span></div></div>
-      <div class="rs">
-        <div id="sliders"></div>
-        <div>
-          <svg class="radar" id="radar" viewBox="0 0 260 260" role="img" aria-label="Tayyorgarlik diagrammasi"></svg>
-          <div class="score"><b id="rsAvg">50</b><span>/ 100 oʻrtacha</span></div>
-        </div>
-      </div>
-      <button class="btn btn-p" type="button" id="rsBtn" style="margin-top:8px">Bahoni koʻrish</button>
-      <div class="res" id="rsRes"></div>
-    </div>
-  </section>
-
-  <!-- BADGES -->
-  <section id="nishonlar">
-    <h2>Nishonlar</h2>
-    <p class="sub">Har qadam uchun nishon. 250 XP yigʻsangiz, M0 tugadi.</p>
-    <div class="badges">
-      <div class="bdg" data-badge="l1"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Kuzatuvchi<small>0.1 yakunlandi</small></div>
-      <div class="bdg" data-badge="sys"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Xaritachi<small>Mamlakat tanlandi</small></div>
-      <div class="bdg" data-badge="quiz"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Tahlilchi<small>Test 3+/4</small></div>
-      <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Oʻz bahom<small>Koʻrsatkich</small></div>
-      <div class="bdg" data-badge="dl"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy">Reja tuzuvchi<small>Taqvim</small></div>
-      <div class="bdg" data-badge="dec"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Qaror qabul qildi<small>Bayonot</small></div>
-    </div>
-  </section>
-
-  <!-- DECISION -->
-  <section id="qaror">
-    <div class="decide">
-      <h2>Sizning rejangiz</h2>
-      <p class="sub">Javoblaringizdan yigʻildi. Ikkita bandni belgilab tasdiqlang, rejangiz ochiladi.</p>
-      <div class="stmt" id="stmt"></div>
-      <label class="ck"><input type="checkbox" id="cons1"><span>M0 bepul. Keyingi bosqichlar pullik, shartlari <a href="oferta.html" style="color:inherit;text-decoration:underline">ommaviy ofertada</a>.</span></label>
-      <label class="ck" style="margin-top:8px"><input type="checkbox" id="cons2">Hujjatlarni oʻzim yozaman. Kompas qabul yoki stipendiyani kafolatlamaydi.</label>
-      <div class="missing" id="missing"></div>
-      <div class="row">
-        <button class="btn btn-p" type="button" id="decBtn">Tasdiqlash va rejani ochish · +50 XP</button>
-        <button class="btn btn-g" type="button" id="copyBtn">📋 Nusxalash</button>
-      </div>
-
-      <div class="kp-plan" id="klPlan" hidden>
-        <h3>Sizning 4 bosqichingiz</h3>
-        <p class="kp-span" id="kpSpan"></p>
-        <ol class="kp-list"><li class="kp-ph kp-open" data-ph="0"><span class="kp-n">I</span><span class="kp-b"><b>Dasturlar va sanalar</b><small data-phd="0"></small><span class="kp-o">Sizga mos 6–10 ta dastur roʻyxati va haftalik reja</span></span><span class="kp-m">M1–M2</span></li><li class="kp-ph" data-ph="1"><span class="kp-n">II</span><span class="kp-b"><b>CV va tavsiya xatlari</b><small data-phd="1"></small><span class="kp-o">🔒 Akademik CV va tavsiya beruvchilar bilan ish</span></span><span class="kp-m">M3–M4</span></li><li class="kp-ph" data-ph="2"><span class="kp-n">III</span><span class="kp-b"><b>Maqsad bayonnomasi</b><small data-phd="2"></small><span class="kp-o">🔒 Maqsad bayonnomasi va kerak boʻlsa ilmiy loyiha taklifi</span></span><span class="kp-m">M5–M6</span></li><li class="kp-ph" data-ph="3"><span class="kp-n">IV</span><span class="kp-b"><b>Stipendiya va joʻnash</b><small data-phd="3"></small><span class="kp-o">🔒 Uchta stipendiya, intervyu mashqi va joʻnash roʻyxati</span></span><span class="kp-m">M7–M8</span></li></ol>
-        <p class="kp-why" id="kpWhy"></p>
-        <div class="row kp-cta">
-          <a class="btn btn-p" href="tolov.html?lab=master-lab&amp;plan=monthly" data-snd="nav">I bosqichni boshlash</a>
-          <a class="btn btn-g" href="tolov.html?lab=master-lab&amp;plan=6m" data-snd="nav">Toʻliq dastur</a>
-        </div>
-        <p class="hint"><span data-pm>99 000</span> soʻm / 1 ta bosqich yoki <span data-p6v>499 000</span> soʻm / toʻliq dastur. <a href="master-lab-narxlar.html">Narxlar va shartlar</a></p>
-        <div class="mentor" style="margin-top:16px">
-          <div class="av"><img src="img/3d/compass.webp" alt="" width="30" height="30"></div>
-          <div>
-            <q>Men stipendiyani birinchi urinishda emas, ikkinchisida yutganman. Birinchi safar shoshildim: hujjatlar bor edi, lekin ular bitta hikoyaga ulanmagan edi. Shu reja oʻsha xatoni qaytarmaslik uchun.</q>
-            <small>Asoschi · geofizik, University of Leeds doktoranti</small>
+          <div class="panel">
+            <div class="prog"><span>4 / 4</span><i><b style="width:100%"></b></i><span>~2 daqiqa qoldi</span></div>
+            <div class="q">
+              <h3>Oʻqish puli qayerdan keladi?</h3>
+              <p class="qs">Bir nechtasini tanlash mumkin.</p>
+              <div class="chips col" data-many="fund">
+                <button type="button" class="chip" data-v="oila" aria-pressed="false">Oila yoki oʻz pulim</button>
+                <button type="button" class="chip" data-v="uni" aria-pressed="false">Universitet stipendiyasi</button>
+                <button type="button" class="chip" data-v="davlat" aria-pressed="false">Davlat yoki xalqaro stipendiya</button>
+                <button type="button" class="chip" data-v="x" aria-pressed="false">Hali bilmayman</button>
+              </div>
+            </div>
+            <div class="fb" id="fb4" role="status"></div>
+            <details class="more"><summary>Stipendiya sanalari haqida</summary><p>Baʼzi stipendiyalar universitet qabulidan oldin yopiladi. Ularning sanasi ham rejangizga qoʻshiladi.</p></details>
           </div>
+          <div class="l-foot"><span class="hint" data-hint>Kamida bittasini tanlang.</span><button class="btn btn-p" type="button" data-complete="l4" data-xp="50">Natijamni koʻrsat →</button></div>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
-  <!-- PASSPORT -->
-  <section>
-    <h2>Modul haqida</h2>
-    <div class="pass">
-      <div><b>Qadamlar</b>5 ta, bepul</div>
-      <div><b>Vaqt</b>~12 daqiqa</div>
-      <div><b>Natija</b>Baho va 4 bosqichli reja</div>
+  <!-- NATIJA -->
+  <section id="vositalar" data-yakun-title="Sizning natijangiz">
+    <div id="natija">
+      <h2>Sizning natijangiz</h2>
+      <div class="rcard">
+        <div class="st">Sizning holatingiz</div>
+        <div class="lv" id="rLv">…</div>
+        <div class="sc"><b id="rSc">0</b> / 100 · <span id="rWk"></span></div>
+        <div class="bars" id="rBars"></div>
+        <details class="more" style="text-align:left"><summary>Bu ball qanday hisoblandi?</summary><p>Ball faqat Sizning javoblaringizdan olinadi: vaqt, yoʻnalish, baholar, til, hujjatlar va pul. U qabul imkoniyatini bildirmaydi, faqat qayerdan boshlashni koʻrsatadi. "Yoʻnalish" 70 dan oshmaydi: aniq dastur roʻyxati I bosqichda tuziladi.</p></details>
+        <div class="kv" data-kvideo="res"></div>
+      </div>
+      <div class="rtxt" id="rTxt"></div>
+      <div class="fb warn rmiss" id="rMiss"></div>
+
+      <h2 style="margin-top:28px">Sizning rejangiz</h2>
+      <p class="sub" id="rSpan"></p>
+      <ol class="ph" id="rPh"></ol>
+      <div class="row" style="margin-top:12px"><button class="btn btn-g" type="button" id="copyBtn">Rejani nusxalash</button></div>
     </div>
+  </section>
+
+  <section id="qaror">
+    <div class="tasks">
+      <h3>Sizning I bosqich vazifalaringiz</h3>
+      <div class="tprog"><i><b></b></i><span>Rejangiz 20% tayyor</span></div>
+      <ol class="tl" id="rTasks"></ol>
+      <p class="rnote">Qulf belgisi bor vazifalar Magistratura dasturining M1 modulida. Har biriga alohida dars va vosita bor.</p>
+    </div>
+    <div class="cta">
+      <a class="btn btn-p" href="tolov.html?lab=master-lab&amp;plan=monthly" data-snd="nav" id="ctaBtn">I bosqichni boshlash</a>
+      <p class="hint"><span data-pm>99 000</span> soʻm · 1 ta bosqich (30 kun). <a href="master-lab-narxlar.html">Toʻliq dastur bilan solishtirish</a></p>
+    </div>
+    <div class="quote">
+      <img src="img/3d/compass.webp" alt="" width="30" height="30">
+      <div>
+        <q>Men stipendiyani ikkinchi urinishda yutganman. Birinchi safar hujjatlar bor edi, lekin ular bitta hikoyaga ulanmagan edi. Bu reja shu xatoni qaytarmaslik uchun.</q>
+        <small>Asoschi · University of Leeds doktoranti</small>
+      </div>
+    </div>
+    <details class="more"><summary>Kompas Lab nima qiladi va nima qilmaydi</summary><p>Kompas Lab hujjatni Sizning oʻrningizga yozmaydi va qabul yoki stipendiyani kafolatlamaydi. Siz darslar va vositalar yordamida oʻzingiz tayyorlanasiz. Shartlar <a href="oferta.html">ommaviy ofertada</a>.</p></details>
   </section>
 </div>
 </main>
@@ -597,7 +631,6 @@ html[data-theme="dark"] .kp-ph{color:inherit}
 <footer>
   <div class="wrap">
     <a class="btn btn-g" href="master-lab.html">← Magistratura dasturi sahifasi</a>
-    <a class="btn btn-g" href="master-planner.html?lab=master">Bepul reja tuzish</a>
   </div>
 </footer>
 
@@ -634,26 +667,42 @@ html[data-theme="dark"] .kp-ph{color:inherit}
 })();
 </script>
 <script>
+// ── Magistratura M0 v2 (2026-11-19): 4 qadam, javoblardan baho va reja ──
+// Javoblar faqat shu qurilmada (S.ans). Serverga kompas-sync.js faqat xp, done, seen, open, lv ni yozadi.
 (function () {
   var KEY = "kompas_master_m0_v1";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var S = { xp: 0, done: {}, seen: {}, notes: {}, sys: [], fund: [], quiz: {}, rs: null, dl: null, dec: false, open: "l1" };
+  var S = { xp: 0, done: {}, seen: {}, open: "l1", ans: {} };
   try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
+  if (!S.ans || typeof S.ans !== "object") S.ans = {};
+  if (!S.done) S.done = {};
+  if (!S.seen) S.seen = {};
+  var A = S.ans;
+  if (!A.docs) A.docs = {};
+  if (!A.where) A.where = [];
+  if (!A.fund) A.fund = [];
+  if (!A.game) A.game = {};
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
-  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
   function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]; }); }
+  var view = document.body.getAttribute("data-kview") || "";
+  var DAY = 86400000;
 
-  // ── XP va daraja ──
-  var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
+  // ── XP ──
+  var MAX = 250, LEVELS = [[1, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Rejangiz tayyor"]];
   function renderXp(bump) {
+    var pill = $("xpPill");
+    pill.style.display = S.xp ? "" : "none";
     $("xpN").textContent = S.xp;
     $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; });
+    var l = ""; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; });
     $("lvl").textContent = l;
-    if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
+    if (bump) { pill.classList.remove("pop"); void pill.offsetWidth; pill.classList.add("pop"); }
   }
   var tt;
-  function toast(msg, img) { if (window.KSfx && img === "lock") KSfx.play("warn");
+  function toast(msg, img) {
+    if (window.KSfx && img === "lock") KSfx.play("warn");
     $("toastT").textContent = msg; $("toastImg").src = "img/3d/" + (img || "bulb") + ".webp";
     var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2600);
   }
@@ -668,268 +717,266 @@ html[data-theme="dark"] .kp-ph{color:inherit}
       document.body.appendChild(c); setTimeout(function (el) { el.remove(); }.bind(null, c), 3600);
     }
   }
-  // Har mukofot bir marta beriladi
   function award(id, xp, msg, img) {
     if (S.done[id]) return false;
-    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp); save(); renderXp(true); renderAll();
-    toast((xp ? "+" + xp + " XP · " : "") + msg, img);
-    if (S.xp >= MAX) setTimeout(function () { confetti(); toast("Tabriklaymiz! M0 toʻliq yakunlandi", "seedling"); }, 900);
+    S.done[id] = true; var x0 = S.xp; S.xp = Math.min(MAX, S.xp + xp); if (window.KSfx) KSfx.gain(x0, S.xp); save(); renderXp(true);
+    if (msg) toast((xp ? "+" + xp + " XP · " : "") + msg, img);
     return true;
   }
 
-  // ── Darslar: akkordeon va tablar ──
+  // ── Darslar (qadamlar): bitta panel, tab yoʻq ──
   var lessons = document.querySelectorAll(".lesson");
-  function openLesson(id, scroll) {
-    lessons.forEach(function (l) {
-      var on = l.id === id && !l.classList.contains("open");
-      l.classList.toggle("open", on); l.querySelector(".l-head").setAttribute("aria-expanded", on ? "true" : "false");
-    });
-    S.open = id; save();
-    var el = $(id); if (scroll && el && el.classList.contains("open")) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-  }
   lessons.forEach(function (l) {
-    var id = l.id, tabs = l.querySelectorAll(".tab"), panels = l.querySelectorAll(".panel");
-    S.seen[id] = S.seen[id] || [];
-    function show(i) {
-      tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === i ? "true" : "false"); });
-      panels.forEach(function (p, j) { p.classList.toggle("on", j === i); });
-      if (S.seen[id].indexOf(i) < 0) { S.seen[id].push(i); save(); }
-      renderLesson(l);
-    }
-    tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i); }); });
-    l.querySelector(".l-head").addEventListener("click", function () { openLesson(id, true); });
-    show(0);
+    var p = l.querySelector(".panel"); if (p) p.classList.add("on");
+    if (view === "lesson" && document.body.getAttribute("data-klesson") === l.id) S.seen[l.id] = [0];
+    l.querySelector(".l-head").addEventListener("click", function () {
+      var on = !l.classList.contains("open");
+      lessons.forEach(function (x) { x.classList.remove("open"); });
+      l.classList.toggle("open", on);
+    });
   });
-  function renderLesson(l) {
-    var id = l.id, seen = S.seen[id] || [];
-    l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
-    l.classList.toggle("done", !!S.done[id]);
-    var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
-    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Tayyor. Keyingi qadamga oʻting."; }
-    else { h.textContent = seen.length < 4 ? "Ochilgan qismlar: " + seen.length + " / 4" : "Hammasi ochildi. Darsni yakunlang!"; }
+
+  // ── Bitta tanlov (data-one) va bir nechta tanlov (data-many) ──
+  function pressed(box, fn) { box.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", fn(c.getAttribute("data-v")) ? "true" : "false"); }); }
+  document.querySelectorAll("[data-one]").forEach(function (box) {
+    var k = box.getAttribute("data-one");
+    box.querySelectorAll(".chip").forEach(function (c) {
+      c.addEventListener("click", function () { A[k] = c.getAttribute("data-v"); if (window.KSfx) KSfx.play("tab"); save(); renderAll(); });
+    });
+  });
+  document.querySelectorAll("[data-many]").forEach(function (box) {
+    var k = box.getAttribute("data-many"), max = +box.getAttribute("data-max") || 9;
+    box.querySelectorAll(".chip").forEach(function (c) {
+      c.addEventListener("click", function () {
+        var v = c.getAttribute("data-v"), arr = A[k], i = arr.indexOf(v);
+        var solo = v === "x" || v === "Farqi yoʻq";
+        if (i >= 0) arr.splice(i, 1);
+        else if (solo) { arr.length = 0; arr.push(v); }
+        else {
+          ["x", "Farqi yoʻq"].forEach(function (s) { var j = arr.indexOf(s); if (j >= 0) arr.splice(j, 1); });
+          if (arr.length >= max) { toast("Koʻpi bilan " + max + " ta", "telescope"); return; }
+          arr.push(v);
+        }
+        if (window.KSfx) KSfx.play("tab"); save(); renderAll();
+      });
+    });
+  });
+  document.querySelectorAll("[data-doc]").forEach(function (box) {
+    var k = box.getAttribute("data-doc");
+    box.querySelectorAll(".chip").forEach(function (c) {
+      c.addEventListener("click", function () { A.docs[k] = +c.getAttribute("data-v"); if (window.KSfx) KSfx.play("tab"); save(); renderAll(); });
+    });
+  });
+  document.querySelectorAll("[data-game]").forEach(function (g) {
+    var k = g.getAttribute("data-game");
+    g.querySelectorAll(".chip").forEach(function (c) {
+      c.addEventListener("click", function () { A.game[k] = c.getAttribute("data-v"); save(); renderAll(); });
+    });
+  });
+  var fld = $("field"), fx = $("fieldX");
+  if (fld) {
+    fld.value = A.field || "";
+    var ft; fld.addEventListener("input", function () { clearTimeout(ft); ft = setTimeout(function () { A.field = fld.value.trim(); if (A.field) A.fieldX = false; save(); renderAll(); }, 350); });
+    fld.addEventListener("change", function () { A.field = fld.value.trim(); if (A.field) A.fieldX = false; save(); renderAll(); });
   }
+  if (fx) fx.addEventListener("click", function () { A.fieldX = !A.fieldX; if (A.fieldX) { A.field = ""; if (fld) fld.value = ""; } save(); renderAll(); });
+  var dd = $("dlDate");
+  if (dd) {
+    dd.value = A.date || "";
+    dd.addEventListener("change", function () { A.date = dd.value; save(); renderAll(); });
+  }
+
+  // ── Hisob-kitob ──
+  function today() { var t = new Date(); t.setHours(0, 0, 0, 0); return t; }
+  function iso(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  // Taxminiy topshirish sanasi (foydalanuvchi aniq sana kiritmasa)
+  function deadline() {
+    if (A.date) return new Date(A.date + "T00:00:00");
+    if (!A.start) return null;
+    var m = { "2027k": "2027-01-15", "2028b": "2027-10-01", "2028k": "2028-01-15" }[A.start];
+    if (m) return new Date(m + "T00:00:00");
+    return new Date(today().getTime() + 40 * 7 * DAY);
+  }
+  function weeks() { var d = deadline(); return d ? Math.max(0, Math.round((d - today()) / DAY / 7)) : null; }
+  function prepWeeks() { var w = weeks(); return w == null ? null : Math.max(0, w - 4); }
+  function fmt(d) { var m = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"]; return d.getDate() + "-" + m[d.getMonth()] + ", " + d.getFullYear(); }
+  function short(d) { return ("0" + d.getDate()).slice(-2) + "." + ("0" + (d.getMonth() + 1)).slice(-2) + "." + d.getFullYear(); }
+
+  var DOCS = { cv: "CV", sop: "maqsad bayonnomasi", ref: "tavsiya xati", tr: "baholar qaydnomasi", lang: "til sertifikati" };
+  var DOC_ORDER = ["ref", "lang", "cv", "sop", "tr"]; // koʻp vaqt oladiganlari birinchi
+  var DIM = ["Vaqt", "Yoʻnalish", "Baholar", "Til", "Hujjatlar", "Pul"];
+  function answered(id) {
+    if (id === "l1") return !!(A.start || A.date);
+    if (id === "l2") return !!A.deg && !!(A.field || A.fieldX) && !!A.ftype && A.where.length > 0;
+    if (id === "l3") return ["cv", "sop", "ref", "tr", "lang"].every(function (k) { return A.docs[k] != null; }) && !!A.grades;
+    if (id === "l4") return A.fund.length > 0;
+    return false;
+  }
+  function scores() {
+    var pw = prepWeeks(), v = [];
+    v[0] = pw == null ? 20 : pw >= 24 ? 90 : pw >= 16 ? 70 : pw >= 10 ? 45 : 20;
+    var fk = !!A.field, tk = A.ftype && A.ftype !== "x";
+    v[1] = fk && tk ? 70 : fk || tk ? 45 : 20;
+    v[2] = { a: 85, y: 65, o: 40, x: 35 }[A.grades] || 35;
+    v[3] = A.docs.lang === 2 ? 85 : A.docs.lang === 1 ? 45 : 15;
+    var s = 0; ["cv", "sop", "ref", "tr"].forEach(function (k) { s += +A.docs[k] || 0; }); v[4] = Math.round(s / 8 * 100);
+    v[5] = A.fund.indexOf("oila") >= 0 ? 75 : (A.fund.indexOf("uni") >= 0 || A.fund.indexOf("davlat") >= 0) ? 45 : 20;
+    return v;
+  }
+  function avg(v) { return Math.round(v.reduce(function (a, b) { return a + b; }, 0) / v.length); }
+  function level(a) { return a >= 70 ? "Topshirishga yaqin" : a >= 45 ? "Yarim yoʻlda" : "Yoʻl boshida"; }
+  function order(v) { return v.map(function (x, i) { return { v: x, i: i }; }).sort(function (a, b) { return a.v - b.v || a.i - b.i; }); }
+  function firstMissingDoc() { for (var i = 0; i < DOC_ORDER.length; i++) { var k = DOC_ORDER[i]; if (!(+A.docs[k] === 2)) return k; } return null; }
+
+  // ── Darhol javoblar ──
+  function fb(id, html, warn) { var e = $(id); if (!e) return; e.innerHTML = html || ""; e.classList.toggle("show", !!html); if (warn != null) e.classList.toggle("warn", !!warn); }
+  function render1() {
+    var w = weeks(), pw = prepWeeks();
+    if (w == null) { fb("fb1", ""); return; }
+    var est = A.date ? "" : " Sana taxminiy: aniq sanani dastur sahifasidan topib, yuqoriga kiriting.";
+    var msg = pw >= 24 ? "Bu bemalol yetadi." : pw >= 16 ? "Yetadi, agar hozir boshlasangiz." : pw >= 10 ? "Tigʻiz, lekin ulgurasiz." : "Juda tigʻiz. Rejada keyingi mavsum ham koʻrsatiladi.";
+    fb("fb1", "Topshirishgacha <b>" + w + " hafta</b> bor: " + pw + " hafta tayyorgarlik va 4 hafta zaxira. " + msg + "<br><small>Taxminiy topshirish sanasi: " + fmt(deadline()) + "." + est + "</small>", pw < 10);
+  }
+  function render2() {
+    var d = A.deg;
+    var m = d === "bak" ? "Sizga <a href=\"bachelor-lab.html\">Bakalavr dasturi</a> mosroq. U yerda reja xuddi shunday tuziladi. Magistraturani ham davom ettirishingiz mumkin." :
+      d === "phd" ? "Sizga <a href=\"phd-lab.html\">PhD dasturi</a> mosroq. U yerda reja xuddi shunday tuziladi. Magistraturani ham davom ettirishingiz mumkin." : "";
+    fb("fbDeg", m, true);
+    if (fx) fx.setAttribute("aria-pressed", A.fieldX ? "true" : "false");
+    if (!answered("l2")) { fb("fb2", ""); return; }
+    var parts = [A.field || "soha hali aniq emas", A.ftype === "taught" ? "oʻquv magistraturasi" : A.ftype === "research" ? "tadqiqot magistraturasi" : "turi hali aniq emas", A.where.join(", ")];
+    fb("fb2", "Sizning yoʻnalishingiz: <b>" + esc(parts.join(" · ")) + "</b>.");
+  }
+  function render3() {
+    document.querySelectorAll("[data-game]").forEach(function (g) {
+      var k = g.getAttribute("data-game"), a = A.game[k];
+      pressed(g, function (v) { return v === a; });
+      var f = g.querySelector(".fb"); if (f) f.classList.toggle("show", a != null);
+    });
+    if (!answered("l3")) { fb("fb3", ""); return; }
+    var have = 0; ["cv", "sop", "ref", "tr", "lang"].forEach(function (k) { if (A.docs[k] === 2) have++; });
+    var miss = firstMissingDoc();
+    var t = "5 tadan <b>" + have + " tasi</b> tayyor.";
+    if (miss === "ref") t += " Birinchi yetishmaydigani: <b>tavsiya xati</b>. Uni boshqa odam yozadi, shuning uchun rejada birinchi turadi.";
+    else if (miss === "lang") t += " Birinchi yetishmaydigani: <b>til sertifikati</b>. Imtihonga oldindan yozilish kerak, shuning uchun rejada oldinda turadi.";
+    else if (miss) t += " Birinchi yetishmaydigani: <b>" + DOCS[miss] + "</b>.";
+    else t += " Hammasi bor. Endi ularni har dasturga moslash qoladi.";
+    fb("fb3", t);
+  }
+  function render4() {
+    if (!answered("l4")) { fb("fb4", ""); return; }
+    var st = A.fund.indexOf("uni") >= 0 || A.fund.indexOf("davlat") >= 0;
+    fb("fb4", A.fund.indexOf("x") >= 0 ? "Normal hol. Rejada pul masalasi alohida bosqichda turadi." :
+      st ? "Stipendiya sanalari rejangizga qoʻshiladi. Ular koʻpincha universitet qabulidan oldinroq yopiladi." : "Yaxshi. Reja universitet sanalariga qarab tuziladi.");
+  }
+  var HINT = { l1: "Bitta variantni tanlang.", l2: "Toʻrtta savolga javob bering.", l3: "Har hujjatga va baholarga javob bering.", l4: "Kamida bittasini tanlang." };
+  function renderSteps() {
+    lessons.forEach(function (l) {
+      var id = l.id, ok = answered(id), h = l.querySelector("[data-hint]");
+      l.classList.toggle("done", !!S.done[id]);
+      if (h) h.textContent = ok ? (S.done[id] ? "Javob saqlangan." : "Tayyor.") : HINT[id];
+    });
+  }
+
+  // ── Qadamni yakunlash ──
+  function nextHref(id) { var n = +id.slice(1); return n < lessons.length ? "master-lab-m0-" + (n + 1) + ".html" : "master-lab-m0-yakun.html"; }
   document.querySelectorAll("[data-complete]").forEach(function (b) {
     b.addEventListener("click", function () {
       var id = b.getAttribute("data-complete");
-      if ((S.seen[id] || []).length < 4) { toast("Avval toʻrt qismni ham oching", "lock"); return; }
-      var n = id.slice(1);
-      award(id, 20, "Dars 0." + n + " yakunlandi", "seedling");
-      var next = $("l" + (+n + 1));
-      setTimeout(function () { if (next) openLesson(next.id, true); else if ($("tool-rs")) $("tool-rs").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
-    });
-  });
-  if (S.open && $(S.open)) openLesson(S.open, false);
-
-  // ── Yozma javoblar ──
-  document.querySelectorAll("[data-save]").forEach(function (t) {
-    var k = t.getAttribute("data-save"); t.value = S.notes[k] || "";
-    var tm; t.addEventListener("input", function () { clearTimeout(tm); tm = setTimeout(function () { S.notes[k] = t.value; save(); }, 400); });
-  });
-
-  // ── 0.2: tizim tanlash ──
-  var chips = document.querySelectorAll("#sysChips .chip");
-  function renderSys() {
-    chips.forEach(function (c) { c.setAttribute("aria-pressed", S.sys.indexOf(c.getAttribute("data-sys")) >= 0 ? "true" : "false"); });
-    $("sysHint").textContent = S.sys.length ? S.sys.length + " ta tanlandi" : "Hali tanlanmadi";
-  }
-  chips.forEach(function (c) {
-    c.addEventListener("click", function () {
-      var v = c.getAttribute("data-sys"), i = S.sys.indexOf(v);
-      if (i >= 0) S.sys.splice(i, 1); else if (S.sys.length < 3) S.sys.push(v); else { toast("Koʻpi bilan 3 ta tizim", "telescope"); return; }
-      save(); renderSys(); renderStmt();
-      if (S.sys.length >= 1) award("sys", 0, "Xaritachi nishoni", "telescope");
+      if (!answered(id)) { toast(HINT[id], "lock"); return; }
+      if (S.done[id]) { location.href = nextHref(id); return; }
+      award(id, +b.getAttribute("data-xp") || 50, "", "seedling");
+      renderAll();
     });
   });
 
-  // ── 0.4: pul yoʻli ──
-  if (!S.fund) S.fund = [];
-  var fchips = document.querySelectorAll("#fundChips .chip");
-  function renderFund() {
-    fchips.forEach(function (c) { c.setAttribute("aria-pressed", S.fund.indexOf(c.getAttribute("data-fund")) >= 0 ? "true" : "false"); });
-    var h = $("fundHint"); if (h) h.textContent = S.fund.length ? "Tanlandi: " + S.fund.join(", ") : "Hali tanlanmadi";
-  }
-  fchips.forEach(function (c) {
-    c.addEventListener("click", function () {
-      var v = c.getAttribute("data-fund"), i = S.fund.indexOf(v);
-      if (i >= 0) S.fund.splice(i, 1); else S.fund.push(v);
-      save(); renderFund(); renderStmt();
-    });
-  });
+  // ── Natija ──
+  var TODAY_TASK = [
+    "3 ta universitet sahifasidan topshirish sanasini toping. Eng yaqin sanani 1-qadamga kiriting: reja qayta hisoblanadi.",
+    "Bakalavrda eng yoqqan 3 ta faningizni yozing va har birining yoniga bitta sabab qoʻshing. Soha tanlash shu roʻyxatdan boshlanadi.",
+    "Diplom ilovangizni oling va kelajakdagi sohangizga eng yaqin 5 ta fanni belgilang. Shu fanlardagi baholar komissiya uchun eng muhimi.",
+    "Kerakli til imtihoni va eng yaqin imtihon sanasini imtihon tashkilotining rasmiy saytidan toping. Shu oyning oʻzida yoziling.",
+    "",
+    "Ikkita stipendiyaning rasmiy sahifasini ochib, ariza topshirish sanasini yozib qoʻying."
+  ];
+  var DOC_TASK = {
+    ref: "Tavsiya xati yozishi mumkin boʻlgan 3 ta ustozingiz ismini yozing. Bu hafta ulardan biri bilan gaplashing.",
+    cv: "CV ning birinchi qoralamasini yozing: taʼlim, ish, loyihalar. Bir bet yetadi.",
+    sop: "\"Nega aynan shu soha?\" degan savolga 5 ta jumla yozing. Bu maqsad bayonnomasining xomaki nusxasi.",
+    tr: "Diplom ilovasining inglizcha tarjimasi bormi, bilib oling. Yoʻq boʻlsa, universitetingizda qaysi boʻlim berishini soʻrang.",
+    lang: TODAY_TASK[3]
+  };
+  var M1 = ["Akademik profilingizni tahlil qilish", "Qiziqish sohasini toraytirish", "Reytinglarni toʻgʻri oʻqish", "Dasturga moslikni tekshirish", "Uch toifali dastur roʻyxati", "Pul yoʻllari: Sizning holatingizga mos", "Ilmiy qiziqish bayoningizni yozish"];
+  var PH = [["I", "Dasturlar va sanalar", "Sizning 6–10 dasturingiz roʻyxati, ilmiy qiziqish bayoningiz"], ["II", "CV va tavsiya xatlari", "Akademik CV, tavsiya beruvchilar bilan kelishuv"], ["III", "Maqsad bayonnomasi", "Har dastur uchun bayonnoma"], ["IV", "Stipendiya va topshirish", "Stipendiya arizalari, intervyu mashqi"]];
+  var PH_OF = [0, 0, 0, 0, 1, 3]; // qaysi bosqichda yopiladi
+  function renderResult() {
+    if (!$("rLv")) return;
+    var miss = ["l1", "l2", "l3", "l4"].filter(function (id) { return !answered(id); });
+    var mEl = $("rMiss");
+    if (miss.length) {
+      mEl.innerHTML = "Natija toʻliq emas. Javob berilmagan: " + miss.map(function (id) { return "<a href=\"master-lab-m0-" + id.slice(1) + ".html\">" + id.slice(1) + "-qadam</a>"; }).join(", ") + ".";
+      mEl.classList.add("show");
+    } else { mEl.innerHTML = ""; mEl.classList.remove("show"); }
+    var v = scores(), a = avg(v), o = order(v), low = [o[0].i, o[1].i];
+    $("rLv").textContent = level(a);
+    $("rSc").textContent = a;
+    var w = weeks();
+    $("rWk").textContent = w == null ? "sana hali yoʻq" : "topshirishgacha " + w + " hafta";
+    $("rBars").innerHTML = v.map(function (x, i) {
+      return "<div class=\"bar" + (low.indexOf(i) >= 0 ? " low" : "") + "\"><span>" + DIM[i] + "</span><i><b style=\"width:" + x + "%\"></b></i><em>" + x + "</em></div>";
+    }).join("");
+    var strong = o.slice().reverse().filter(function (x) { return x.v >= 65; }).slice(0, 2).map(function (x) { return DIM[x.i].toLowerCase(); });
+    var md = firstMissingDoc();
+    var lowName = low.map(function (i) { return i === 4 && md ? DOCS[md] : DIM[i].toLowerCase(); });
+    var t = "";
+    t += strong.length ? "<p>Sizning kuchli tomoningiz: <b>" + strong.join(" va ") + "</b>.</p>" : "<p>Hozircha hamma yoʻnalishda ish bor. Bu normal: koʻpchilik shu holatdan boshlaydi.</p>";
+    t += "<p>Birinchi yopiladigan joylar: <b>" + lowName.join(" va ") + "</b>.</p>";
+    var why = PH_OF[low[0]] === 0 ? "dastur roʻyxati va sanalar keyingi hamma ishni belgilaydi, eng zaif joyingiz ham shu bosqichda ishlanadi" :
+      PH_OF[low[0]] === 1 ? "avval qaysi dasturga topshirishni aniqlaysiz, keyin hujjatlarni aynan shu dasturga yozasiz" :
+      "stipendiya sanalari dastur tanlovidan keyin aniq boʻladi";
+    t += "<p>Sizga <b>I bosqich</b> mos, chunki " + why + ".</p>";
+    $("rTxt").innerHTML = t;
 
-  // ── 0.3: mini-test ──
-  var qz = document.querySelectorAll("#quiz .qz");
-  function renderQuiz() {
-    var answered = 0, right = 0;
-    qz.forEach(function (q, i) {
-      var a = S.quiz[i]; if (a == null) return;
-      answered++; if (a === q.getAttribute("data-a")) right++;
-      q.classList.add("ans");
-      q.querySelectorAll("button").forEach(function (b) {
-        var v = b.getAttribute("data-v");
-        b.classList.toggle("right", v === q.getAttribute("data-a"));
-        b.classList.toggle("wrong", v === a && v !== q.getAttribute("data-a"));
-      });
-    });
-    var r = $("quizRes");
-    if (answered === qz.length) { r.className = "verdict show " + (right >= 3 ? "box info" : "box warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Zoʻr, kuchli jumlani darrov taniysiz." : "Yomon emas. Asosiy qismga yana bir qarab oling."); }
-    return { answered: answered, right: right };
-  }
-  qz.forEach(function (q, i) {
-    q.querySelectorAll("button").forEach(function (b) {
-      b.addEventListener("click", function () {
-        if (S.quiz[i] != null) return;
-        S.quiz[i] = b.getAttribute("data-v"); save();
-        var r = renderQuiz();
-        if (r.answered === qz.length) { var xp = r.right * 7 + (r.right === 4 ? 2 : 0); if (r.right >= 3) award("quiz", xp, "Tahlilchi nishoni: " + r.right + "/4", "scroll"); else award("quizTry", xp, "Test: " + r.right + "/4", "scroll"); }
-      });
-    });
-  });
+    // Reja: bugundan "hammasi tayyor" sanasigacha 4 bosqich
+    var dl = deadline(), t0 = today(), end = dl ? new Date(dl.getTime() - 28 * DAY) : null;
+    var minEnd = new Date(t0.getTime() + 8 * 7 * DAY), tight = false;
+    if (!end || end < minEnd) { tight = !!end; end = end && end > t0 ? end : minEnd; }
+    var step = (end - t0) / 4;
+    $("rSpan").textContent = (dl ? "Topshirish: " + fmt(dl) + ". Hammasi tayyor boʻlishi kerak sana: " + fmt(end) + "." : "Sana hali kiritilmagan, reja taxminiy.") + (tight ? " Vaqt juda tigʻiz: keyingi mavsumni ham koʻrib chiqing." : "");
+    $("rPh").innerHTML = PH.map(function (p, k) {
+      var a1 = new Date(t0.getTime() + step * k), a2 = new Date(t0.getTime() + step * (k + 1));
+      return "<li" + (k === 0 ? " class=\"on\"" : "") + "><span class=\"n\">" + p[0] + "</span><span><b>" + p[1] + "</b><small>" + p[2] + "</small><small>" + short(a1) + " – " + short(a2) + "</small></span></li>";
+    }).join("");
 
-  // ── 0.5: mos emas ──
-  var fit = document.querySelectorAll("#notFit input");
-  function renderFit() {
-    var alts = [], other = 0;
-    fit.forEach(function (x) {
-      x.closest(".ck").classList.toggle("on", x.checked);
-      if (x.checked) { var a = x.getAttribute("data-alt"); if (a) alts.push('<a href="' + x.getAttribute("data-href") + '">' + a + "</a>"); else other++; }
-    });
-    var r = $("fitRes");
-    if (!alts.length && !other) { r.className = "verdict show box info"; r.innerHTML = "Hech narsa belgilanmadi. Demak, siz toʻgʻri joydasiz."; }
-    else { r.className = "verdict show box warn"; r.innerHTML = (alts.length ? "Sizga mosroq yoʻl: " + alts.join(", ") + ". " : "") + (other ? "Bu bandlar toʻsiq emas. Lekin topshirishdan oldin ularni aniqlab oling: kafolat hech kim bera olmaydi, maqsad esa M1 da aniqlanadi." : ""); }
-    renderStmt();
-  }
-  fit.forEach(function (x) { x.addEventListener("change", renderFit); });
+    // I bosqich vazifalari: bittasi bepul (eng zaif joyga qarab), qolgani M1 da
+    var wi = low[0], task = wi === 4 ? DOC_TASK[md || "cv"] : TODAY_TASK[wi];
+    var list = M1.slice(); if (A.field) list[4] = "Uch toifali dastur roʻyxati: " + A.field + " boʻyicha";
+    var h = "<li class=\"free\"><span class=\"k\">1</span><span><b>Bugun qiling (bepul):</b> " + esc(task) + "<label><input type=\"checkbox\" id=\"taskDone\"" + (A.task ? " checked" : "") + "> Bajardim</label></span></li>";
+    list.forEach(function (x, k) { h += "<li class=\"lk\"><span class=\"k\">" + (k + 2) + "</span><span>" + esc(x) + "<img src=\"img/3d/lock.webp\" alt=\"qulf\" width=\"18\" height=\"18\"></span></li>"; });
+    $("rTasks").innerHTML = h;
+    var td = $("taskDone");
+    if (td) td.addEventListener("change", function () { A.task = td.checked; save(); if (td.checked) toast("Zoʻr. Birinchi vazifa bajarildi", "seedling"); });
 
-  // ── Tayyorgarlik koʻrsatkichi ──
-  var DIMS = [["Yoʻnalish", "Nimani oʻqishni bilasizmi?"], ["Diplom va baholar", "Dastur talabiga mosmi?"], ["Til", "Kerakli ballga yaqinmisiz?"], ["Vaqt", "Sanagacha ulgurasizmi?"], ["Pul", "Pul yoʻlini bilasizmi?"], ["Hujjatlar", "Qanchasi tayyor?"]];
-  // Boshlangʻich qiymat oldingi javoblardan (vaqt va pul), qolgani 50
-  function guess() {
-    var v = [50, 50, 50, 50, 50, 50];
-    if (S.dl && S.dl.verdict) v[3] = S.dl.verdict === "yetarli" ? 70 : S.dl.verdict === "tigʻiz" ? 45 : 20;
-    if (S.fund && S.fund.length) v[4] = S.fund.indexOf("Hali bilmayman") >= 0 ? 25 : S.fund.indexOf("Oila yoki oʻz pulim") >= 0 ? 60 : 45;
-    return v;
+    S.res = { avg: a, low: low, at: iso(t0) };
+    if (!miss.length && award("dec", 50, "Rejangiz tayyor", "seedling")) setTimeout(confetti, 400);
+    save();
   }
-  var vals = (S.rs && S.rs.vals) || guess();
-  $("sliders").innerHTML = DIMS.map(function (d, i) {
-    return '<div class="sl"><label for="r' + i + '"><span>' + d[0] + "<small>" + d[1] + '</small></span><output id="o' + i + '">' + vals[i] + '</output></label><input type="range" id="r' + i + '" min="0" max="100" step="5" value="' + vals[i] + '"></div>';
-  }).join("");
-  var SHORT = ["Yoʻnalish", "Akademik", "Til", "Vaqt", "Moliya", "Hujjatlar"];
-  var C = 130, R = 92;
-  function pt(i, r) { var a = -Math.PI / 2 + i * Math.PI / 3; return [C + r * Math.cos(a), C + r * Math.sin(a)]; }
-  function drawRadar() {
-    var g = "";
-    [.25, .5, .75, 1].forEach(function (k) { g += '<polygon points="' + DIMS.map(function (_, i) { return pt(i, R * k).join(","); }).join(" ") + '" fill="none" stroke="#e2ded3" stroke-width="1"/>'; });
-    DIMS.forEach(function (d, i) { var p = pt(i, R); g += '<line x1="' + C + '" y1="' + C + '" x2="' + p[0] + '" y2="' + p[1] + '" stroke="#e2ded3"/>'; var q = pt(i, R + 18); g += '<text x="' + q[0] + '" y="' + (q[1] + 3) + '" text-anchor="middle">' + SHORT[i] + "</text>"; });
-    var low = sorted().slice(0, 2).map(function (x) { return x.i; });
-    g += '<polygon points="' + vals.map(function (v, i) { return pt(i, R * v / 100).join(","); }).join(" ") + '" fill="rgba(196,98,45,.22)" stroke="#c4622d" stroke-width="2.5" stroke-linejoin="round"/>';
-    vals.forEach(function (v, i) { var p = pt(i, R * v / 100); g += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (low.indexOf(i) >= 0 ? 5.5 : 4) + '" fill="' + (low.indexOf(i) >= 0 ? "#b42318" : "#2d4a3e") + '"/>'; });
-    $("radar").innerHTML = g;
-    $("rsAvg").textContent = avg();
-  }
-  function avg() { return Math.round(vals.reduce(function (a, b) { return a + b; }, 0) / vals.length); }
-  function sorted() { return vals.map(function (v, i) { return { v: v, i: i }; }).sort(function (a, b) { return a.v - b.v; }); }
-  DIMS.forEach(function (_, i) {
-    $("r" + i).addEventListener("input", function (e) { vals[i] = +e.target.value; $("o" + i).textContent = vals[i]; drawRadar(); });
-  });
-  function rsLevel(a) { return a >= 70 ? "Topshirishga yaqin" : a >= 45 ? "Yarim yoʻlda" : "Yoʻl boshida"; }
-  function rsVerdict(a) {
-    return "Bu sizning oʻz bahongiz, qabul ehtimoli emas. Universitet talablari alohida tekshiriladi.";
-  }
-  function renderRs() {
-    if (!S.rs) return;
-    var s = sorted(), r = $("rsRes");
-    r.className = "res show";
-    r.innerHTML = "<b>Sizning bahongiz: " + S.rs.avg + " / 100. Holat: " + rsLevel(S.rs.avg) + ".</b><br>Eng koʻp ish talab qiladigan joylar: <b>" + DIMS[S.rs.low[0]][0] + "</b> va <b>" + DIMS[S.rs.low[1]][0] + "</b>.<br><small>" + rsVerdict(S.rs.avg) + "</small><br><a class=\"btn btn-p\" href=\"#qaror\" style=\"margin-top:10px\">Rejamni koʻrish</a>";
-  }
-  $("rsBtn").addEventListener("click", function () {
-    var s = sorted(); S.rs = { vals: vals.slice(), avg: avg(), low: [s[0].i, s[1].i] }; save(); renderRs(); renderStmt();
-    award("rs", 40, "Bahongiz tayyor", "chart");
-  });
-  drawRadar();
-
-  // ── Topshirish muddatlari taqvimi ──
-  var DAY = 86400000;
-  function fmt(d) { var m = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"]; return d.getDate() + "-" + m[d.getMonth()] + ", " + d.getFullYear(); }
-  function renderDl() {
-    if (!S.dl) return;
-    var dead = new Date(S.dl.date + "T00:00:00"), target = new Date(dead.getTime() - 28 * DAY), start = new Date(target.getTime() - S.dl.weeks * 7 * DAY);
-    var today = new Date(); today.setHours(0, 0, 0, 0);
-    var left = Math.round((start - today) / DAY);
-    var v = left > 14 ? ["Vaqtingiz bor. Shoshmasdan, lekin toʻxtamasdan.", "green"] : left >= 0 ? ["Vaqt tigʻiz: shu hafta boshlang.", "gold"] : ["Vaqt yetmayapti. Haftalarni kamaytiring yoki keyingi yilgi qabulni koʻrib chiqing.", "red"];
-    var t0 = Math.min(today.getTime(), start.getTime()), span = dead.getTime() - t0 || 1;
-    function x(d) { return Math.max(0, Math.min(100, (d - t0) / span * 100)); }
-    var r = $("dlRes"); r.className = "res show";
-    r.innerHTML = '<div class="tline"><div class="bar"><span class="seg" style="left:' + x(start) + "%;width:" + (x(target) - x(start)) + '%;background:#2d4a3e"></span><span class="seg" style="left:' + x(target) + "%;width:" + (100 - x(target)) + '%;background:#d9a441"></span></div>' +
-      '<span class="mk" style="left:' + x(today) + '%"><i style="background:#c4622d"></i><span>Bugun</span></span>' +
-      '<span class="mk" style="left:' + x(dead) + '%;transform:translateX(-100%)"><i style="background:#b42318;margin-left:auto;margin-right:0"></i><span>Topshirish</span></span></div>' +
-      '<div class="legend"><span><i style="background:#2d4a3e"></i>Tayyorgarlik (' + S.dl.weeks + ' hafta)</span><span><i style="background:#d9a441"></i>Zaxira (4 hafta)</span></div>' +
-      '<p style="margin-top:10px">Topshirishgacha: <b>' + Math.max(0, Math.round((dead - today) / DAY / 7)) + " hafta</b>. Boshlash: <b>" + fmt(start) + "</b>. Hammasi tayyor boʻlsin: <b>" + fmt(target) + "</b>. Topshirish: <b>" + fmt(dead) + '</b>.</p><p style="margin-top:6px;font-weight:800;color:var(--' + v[1] + ')">' + v[0] + "</p>";
-    S.dl.verdict = left > 14 ? "yetarli" : left >= 0 ? "tigʻiz" : "yetarli emas";
-  }
-  if (S.dl) { $("dlDate").value = S.dl.date; $("dlW").value = S.dl.weeks; }
-  $("dlBtn").addEventListener("click", function () {
-    var d = $("dlDate").value, w = Math.max(4, Math.min(60, parseInt($("dlW").value, 10) || 18));
-    if (!d) { toast("Topshirish sanasini kiriting", "calendar"); $("dlDate").focus(); return; }
-    S.dl = { date: d, weeks: w }; renderDl(); save(); renderStmt();
-    award("dl", 30, "Reja tuzuvchi nishoni", "hourglass");
-  });
-
-  // ── Shaxsiy reja (2026-11-19): tasdiqlangach 4 bosqich sanalari bilan ochiladi ──
-  var PHASE_OF = [0, 0, 0, 0, 3, 1]; // eng zaif joy qaysi bosqichda ishlanadi
-  var PH_NAME = ["I bosqich (dasturlar va sanalar)", "II bosqich (CV va tavsiya xatlari)", "III bosqich (maqsad bayonnomasi)", "IV bosqich (stipendiya)"];
-  function renderStmt() {
-    var parts = [], miss = [];
-    if (S.dl && S.dl.date) { var wk = Math.max(0, Math.round((new Date(S.dl.date + "T00:00:00") - new Date()) / DAY / 7)); parts.push("Topshirishgacha <b>" + wk + " hafta</b> bor."); }
-    else miss.push('<a href="' + "master-lab-m0-1.html" + '">0.1 da sana</a>');
-    if (S.sys.length) parts.push("Mamlakat: <b>" + S.sys.join(", ") + "</b>.");
-    else miss.push('<a href="master-lab-m0-2.html">0.2 da mamlakat</a>');
-    if (S.fund && S.fund.length) parts.push("Pul yoʻli: <b>" + S.fund.join(", ").toLowerCase() + "</b>.");
-    if (S.rs) parts.push("Bahongiz: <b>" + S.rs.avg + "/100 (" + rsLevel(S.rs.avg).toLowerCase() + ")</b>. Eng koʻp ish talab qiladigan joylar: <b>" + DIMS[S.rs.low[0]][0].toLowerCase() + "</b> va <b>" + DIMS[S.rs.low[1]][0].toLowerCase() + "</b>.");
-    else miss.push('<a href="#tool-rs">baho</a>');
-    $("stmt").innerHTML = parts.length ? parts.join(" ") : "Bu yerda sizning javoblaringiz chiqadi.";
-    $("missing").innerHTML = miss.length ? "Yetishmayapti: " + miss.join(", ") + "." : "";
-    $("decBtn").disabled = !!S.done.dec;
-    if (S.done.dec) $("decBtn").textContent = "✓ Tasdiqlangan";
-    renderPlan();
-  }
-  function renderPlan() {
-    var box = $("klPlan"); if (!box) return;
-    box.hidden = !S.done.dec; if (!S.done.dec) return;
-    var today = new Date(); today.setHours(0, 0, 0, 0);
-    var end = S.dl && S.dl.date ? new Date(new Date(S.dl.date + "T00:00:00").getTime() - 28 * DAY) : null;
-    if (end && end > today) {
-      var step = (end - today) / 4;
-      for (var k = 0; k < 4; k++) { var el = document.querySelector('[data-phd="' + k + '"]'); if (el) el.textContent = fmt(new Date(today.getTime() + step * k)) + " – " + fmt(new Date(today.getTime() + step * (k + 1))); }
-      $("kpSpan").textContent = "Hammasi tayyor boʻlishi kerak sana: " + fmt(end) + ". Har bosqichga taxminan " + Math.max(1, Math.round(step / DAY / 7)) + " hafta.";
-    } else {
-      $("kpSpan").textContent = "Sanalar sizning surʼatingizga qarab qoʻyiladi.";
-    }
-    var why = "Sizga I bosqich mos, chunki hamma ish shu yerdan boshlanadi: avval qaysi dasturga va qachon topshirishni aniqlaysiz.";
-    if (S.rs) { var w = S.rs.low[0], p = PHASE_OF[w]; why += p === 0 ? " Eng zaif joyingiz (" + DIMS[w][0].toLowerCase() + ") ham shu bosqichda ishlanadi." : " Eng zaif joyingiz (" + DIMS[w][0].toLowerCase() + ") keyinroq ishlanadi: " + PH_NAME[p] + "."; }
-    $("kpWhy").textContent = why;
-  }
-  $("decBtn").addEventListener("click", function () {
-    if (!S.rs) { toast("Avval bahoni saqlang", "lock"); return; }
-    if (!$("cons1").checked || !$("cons2").checked) { toast("Ikkala bandni ham belgilang", "shield"); return; }
-    award("dec", 50, "Rejangiz tayyor", "seedling"); confetti(); renderStmt();
-    setTimeout(function () { var b = $("klPlan"); if (b) b.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }, 400);
-  });
-  $("copyBtn").addEventListener("click", function () {
-    var txt = $("stmt").innerText + (S.done.dec ? "\n" + $("kpSpan").innerText + "\n" + $("kpWhy").innerText : "");
+  var cb = $("copyBtn");
+  if (cb) cb.addEventListener("click", function () {
+    var txt = "Magistratura rejam (Kompas Lab)\n" + $("rLv").textContent + ", " + $("rSc").textContent + "/100, " + $("rWk").textContent + "\n" + $("rTxt").innerText + "\n" + $("rSpan").textContent + "\n" +
+      [].map.call(document.querySelectorAll("#rPh li"), function (li) { return li.innerText.replace(/\n+/g, " · "); }).join("\n");
     if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); });
     else prompt("Nusxalang:", txt);
   });
 
-  // ── Xarita va nishonlar ──
   function renderAll() {
-    var keys = ["l1", "l2", "l3", "l4", "l5", "rs", "dl", "dec"], n = 0;
-    document.querySelectorAll("[data-node]").forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + keys.length + " bosqich";
-    document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
-    lessons.forEach(renderLesson);
+    document.querySelectorAll("[data-one]").forEach(function (box) { var k = box.getAttribute("data-one"); pressed(box, function (v) { return A[k] === v; }); });
+    document.querySelectorAll("[data-many]").forEach(function (box) { var k = box.getAttribute("data-many"); pressed(box, function (v) { return A[k].indexOf(v) >= 0; }); });
+    document.querySelectorAll("[data-doc]").forEach(function (box) { var k = box.getAttribute("data-doc"); pressed(box, function (v) { return A.docs[k] === +v; }); });
+    render1(); render2(); render3(); render4(); renderSteps();
   }
 
-  // ── Narxlar bazadan (admin panelda oʻzgartirilsa shu yerda ham yangilanadi) ──
+  // ── Narxlar bazadan ──
   try {
     fetch("https://usxpkmbjrdllnitlzdpq.supabase.co/rest/v1/rpc/kompas_public_stats", {
       method: "POST",
@@ -937,19 +984,18 @@ html[data-theme="dark"] .kp-ph{color:inherit}
       body: "{}"
     }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       var p = d && d.prices && d.prices["master-lab"]; if (!p) return;
-      if (p.y) document.querySelectorAll("[data-py]").forEach(function (el) { el.textContent = nf(p.y); });
       if (p.m) document.querySelectorAll("[data-pm]").forEach(function (el) { el.textContent = nf(p.m); });
-      if (p.s6 > 0) { document.querySelectorAll("[data-p6v]").forEach(function (el) { el.textContent = nf(p.s6); }); document.querySelectorAll("[data-p6box]").forEach(function (el) { el.hidden = false; }); }
     }).catch(function () {});
   } catch (e) {}
 
-  renderSys(); renderFund(); renderQuiz(); renderFit(); renderRs(); renderDl(); renderStmt(); renderAll(); renderXp(false);
+  renderAll(); renderXp(false); save();
+  if (view === "yakun") renderResult();
 })();
 </script>
 <style>.kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}@media print{.kp-wm{display:none!important}}</style>
 <script>(function(){function m(){if(document.querySelector(".kp-wm"))return;var c=document.createElement("canvas"),w=280,h=170,g=c.getContext&&c.getContext("2d");if(!g)return;c.width=w;c.height=h;g.translate(w/2,h/2);g.rotate(-0.4);g.fillStyle="#000";g.font="500 13px Outfit,system-ui,sans-serif";g.textAlign="center";g.fillText("kompaslab.uz",0,0);var d=document.createElement("div");d.className="kp-wm";d.setAttribute("aria-hidden","true");d.style.backgroundImage="url("+c.toDataURL()+")";document.body.appendChild(d);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",m);else m();})();</script>
 <script src="js/suggest.js" defer></script>
-<script>window.KMOD={"base": "master-lab-m0", "key": "kompas_master_m0_v1", "lab": "master-lab.html", "labName": "Magistratura dasturi", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "Qachon topshirasiz?", "short": "Muddat", "meta": "⏱ 2 daqiqa, 📅 Sizning sanangiz"}, {"id": "l2", "num": "0.2", "title": "Qayerda va qanday oʻqiysiz?", "short": "Yoʻnalish", "meta": "⏱ 3 daqiqa, 🌍 1–3 mamlakat"}, {"id": "l3", "num": "0.3", "title": "Hujjatlaringiz qay holatda?", "short": "Hujjat", "meta": "⏱ 3 daqiqa, 🎯 Oʻyin: kuchli yoki zaif"}, {"id": "l4", "num": "0.4", "title": "Pul qayerdan keladi?", "short": "Pul", "meta": "⏱ 2 daqiqa, 👛 Sizning pul yoʻlingiz"}, {"id": "l5", "num": "0.5", "title": "Siz toʻgʻri joydamisiz?", "short": "Tekshiruv", "meta": "⏱ 1 daqiqa, ✅ Tekshiruv"}], "yakunMeta": "Topshirish muddatlari taqvimi, Tayyorgarlik koʻrsatkichi, nishonlar, qaror va rozilik"};</script>
+<script>window.KMOD={"base": "master-lab-m0", "key": "kompas_master_m0_v1", "lab": "master-lab.html", "labName": "Magistratura dasturi", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "Qachon oʻqishni boshlamoqchisiz?", "short": "Muddat", "meta": "2 daqiqa, Natija: necha hafta bor"}, {"id": "l2", "num": "0.2", "title": "Nimani va qayerda oʻqiysiz?", "short": "Yoʻnalish", "meta": "3 daqiqa, Natija: Sizning yoʻnalishingiz"}, {"id": "l3", "num": "0.3", "title": "Hujjatlaringiz qay holatda?", "short": "Hujjatlar", "meta": "3 daqiqa, Natija: birinchi yetishmaydigan hujjat"}, {"id": "l4", "num": "0.4", "title": "Oʻqish puli qayerdan keladi?", "short": "Pul", "meta": "2 daqiqa, Natija: pul holatingiz"}], "yakunMeta": "Sizning bahongiz, rejangiz va I bosqich vazifalari", "word": "Qadam", "yakunName": "Natija: baho va reja"};</script>
 <script src="js/kompas-module.js"></script>
 </body>
 </html>

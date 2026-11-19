@@ -17,6 +17,10 @@
   // M0 is free for authenticated users only. Never override each page's auth gate.
   // Vercel middleware also enforces access before HTML is served.
   var body = document.body, view = body.getAttribute("data-kview"), curId = body.getAttribute("data-klesson");
+  // Video joyi boʻlgan hub/yakun sahifalarida ham pleyer (2026-11-19)
+  if (view !== "lesson" && document.querySelector("[data-kvideo]") && !document.querySelector('script[src$="m0-video.js"]')) {
+    var kv0 = document.createElement("script"); kv0.src = "js/m0-video.js"; kv0.defer = true; document.head.appendChild(kv0);
+  }
   var L = M.lessons, N = L.length;
   function $(s, r) { return (r || document).querySelector(s); }
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
@@ -24,6 +28,10 @@
   function state() { try { return JSON.parse(localStorage.getItem(M.key) || "{}") || {}; } catch (e) { return {}; } }
   function page(i) { return M.base + "-" + (i + 1) + ".html"; }
   var YAKUN = M.base + "-yakun.html", HUB = M.base + ".html";
+  // Soʻz va yakun nomi (2026-11-19, Master M0 v2): KMOD.word "Qadam" boʻlsa "Dars 0.1" oʻrniga "Qadam 1"
+  var W = M.word || "", YN = M.yakunName || "Yakun: vositalar va qaror", YS = W ? "Natija" : "Yakun";
+  function lname(i) { return W ? W + " " + (i + 1) : "Dars " + L[i].num; }
+  var UNIT = W ? W.toLowerCase() : "dars";
   function idx(id) { for (var i = 0; i < N; i++) if (L[i].id === id) return i; return -1; }
 
   // ── Sahifa ichidagi havolalarni alohida sahifalarga yoʻnaltirish ──
@@ -42,10 +50,10 @@
     var done = S.done || {}, h = "";
     L.forEach(function (l, i) {
       var c = l.id === cur ? "cur" : done[l.id] ? "done" : "";
-      h += '<a class="' + c + '" href="' + page(i) + '"' + (c === "cur" ? ' aria-current="page"' : "") + ' title="' + esc("Dars " + l.num + ": " + l.title) + '"><i>' + (done[l.id] && c !== "cur" ? "✓" : esc(l.num.split(".").pop())) + "</i><span>" + esc(l.short || l.num) + "</span></a>";
+      h += '<a class="' + c + '" href="' + page(i) + '"' + (c === "cur" ? ' aria-current="page"' : "") + ' title="' + esc(lname(i) + ": " + l.title) + '"><i>' + (done[l.id] && c !== "cur" ? "✓" : esc(l.num.split(".").pop())) + "</i><span>" + esc(l.short || l.num) + "</span></a>";
     });
     var yc = cur === "yakun" ? "cur" : done.dec ? "done" : "";
-    h += '<a class="' + yc + '" href="' + YAKUN + '"' + (yc === "cur" ? ' aria-current="page"' : "") + ' title="Yakun: vositalar va qaror"><i>' + (done.dec && yc !== "cur" ? "✓" : "★") + "</i><span>Yakun</span></a>";
+    h += '<a class="' + yc + '" href="' + YAKUN + '"' + (yc === "cur" ? ' aria-current="page"' : "") + ' title="' + esc(YN) + '"><i>' + (done.dec && yc !== "cur" ? "✓" : "★") + "</i><span>" + YS + "</span></a>";
     return '<div class="kl-steps" aria-label="Modul darslari">' + h + "</div>";
   }
   function firstOpen(S) { var d = S.done || {}; for (var i = 0; i < N; i++) if (!d[L[i].id]) return i; return -1; }
@@ -59,7 +67,8 @@
     var facts = $(".hero .facts");
     if (facts) {
       var go = fo < 0 ? (d.dec ? HUB + "#nishonlar" : YAKUN) : page(fo);
-      var label = fo < 0 ? (d.dec ? "Modul yakunlangan" : "Yakuniy bosqichga oʻtish") : nd ? "Davom etish: Dars " + L[fo].num : "Birinchi darsni boshlash";
+      var label = fo < 0 ? (d.dec ? (W ? "Natijamni koʻrish" : "Modul yakunlangan") : (W ? "Natijamni koʻrish" : "Yakuniy bosqichga oʻtish")) : nd ? "Davom etish: " + lname(fo) : (W ? "Boshladik" : "Birinchi darsni boshlash");
+      if (W && fo < 0) go = YAKUN;
       var act = el("div", "kl-hub-actions");
       act.innerHTML = '<a class="btn btn-p" href="' + go + '" data-dir="next">' + esc(label) + '</a><a class="btn btn-g" href="' + M.lab + '">' + esc(M.labName) + " sahifasi</a>";
       facts.parentNode.insertBefore(act, facts.nextSibling);
@@ -68,16 +77,16 @@
     var sec = $("#darslar");
     if (sec) {
       var sub = $(".sub", sec);
-      if (sub) sub.textContent = "Progress shu qurilmada saqlanadi: " + nd + " / " + N + " dars yakunlangan.";
+      if (sub) sub.textContent = "Progress shu qurilmada saqlanadi: " + nd + " / " + N + " " + UNIT + " yakunlangan.";
       var ol = el("ol", "kl-route kl-hub-route"); ol.setAttribute("data-needle", "");
       L.forEach(function (l, i) {
         var done = !!d[l.id], cur = i === fo;
         var li = el("li", "kl-st" + (done ? " is-done" : cur ? " is-current" : ""));
-        li.innerHTML = '<a href="' + page(i) + '"><span class="kl-st-n">' + (done ? "✓" : esc(l.num)) + '</span><span class="kl-st-b"><b>' + esc(l.title) + "</b><small>" + esc(l.meta || "") + '</small></span><span class="kl-st-s">' + (done ? "Yakunlangan" : cur ? (nd ? "Davom etish" : "Boshlash") : "Dars " + esc(l.num)) + "</span></a>";
+        li.innerHTML = '<a href="' + page(i) + '"><span class="kl-st-n">' + (done ? "✓" : esc(W ? String(i + 1) : l.num)) + '</span><span class="kl-st-b"><b>' + esc(l.title) + "</b><small>" + esc(l.meta || "") + '</small></span><span class="kl-st-s">' + (done ? "Yakunlangan" : cur ? (nd ? "Davom etish" : "Boshlash") : esc(lname(i))) + "</span></a>";
         ol.appendChild(li);
       });
       var yk = el("li", "kl-st" + (d.dec ? " is-done" : fo < 0 ? " is-current" : ""));
-      yk.innerHTML = '<a href="' + YAKUN + '"><span class="kl-st-n">' + (d.dec ? "✓" : "★") + '</span><span class="kl-st-b"><b>Yakun: vositalar va qaror</b><small>' + esc(M.yakunMeta) + '</small></span><span class="kl-st-s">' + (d.dec ? "Tasdiqlangan" : "Yakun") + "</span></a>";
+      yk.innerHTML = '<a href="' + YAKUN + '"><span class="kl-st-n">' + (d.dec ? "✓" : "★") + '</span><span class="kl-st-b"><b>' + esc(YN) + '</b><small>' + esc(M.yakunMeta) + '</small></span><span class="kl-st-s">' + (d.dec ? (W ? "Tayyor" : "Tasdiqlangan") : YS) + "</span></a>";
       ol.appendChild(yk);
       (sub || $("h2", sec)).insertAdjacentElement("afterend", ol);
     }
@@ -97,6 +106,8 @@
     // "Keyingi qism" tugmasi (2026-11-17): 4 qism oʻqilmaguncha asosiy tugma keyingi qismni ochadi,
     // "Darsni yakunlash" faqat hammasi oʻqilganda koʻrinadi (CSS: .kl-all).
     var tabs = [].slice.call(art.querySelectorAll(".tab")), lf = $(".l-foot", art), cbtn = $("[data-complete]", art);
+    // Tabsiz dars (Master M0 v2): yakunlash tugmasi darhol koʻrinadi
+    if (tabs.length <= 1) art.classList.add("kl-all");
     if (tabs.length > 1 && lf && cbtn) {
       var nb = el("button", "btn btn-p kl-nextpart"); nb.type = "button"; lf.insertBefore(nb, cbtn);
       var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -123,14 +134,14 @@
     }
     var tags = $(".l-m", art), ic = $(".l-ic img", art);
     var head = el("div", "kl-lhead");
-    head.innerHTML = crumb("Dars " + l.num) + steps(S2, curId) + '<h1>' + esc(l.title) + '</h1><div class="kl-lmeta">' + (tags ? tags.innerHTML : "") + "</div>";
+    head.innerHTML = crumb(lname(i)) + steps(S2, curId) + '<h1>' + esc(l.title) + '</h1><div class="kl-lmeta">' + (tags ? tags.innerHTML : "") + "</div>";
     wrap.insertBefore(head, wrap.firstChild);
-    var prev = i > 0 ? [page(i - 1), "Oldingi dars", "Dars " + L[i - 1].num + ": " + L[i - 1].title] : [HUB, "Modul sahifasi", M.mod + ": barcha darslar"];
-    var next = i < N - 1 ? [page(i + 1), "Keyingi dars", "Dars " + L[i + 1].num + ": " + L[i + 1].title] : [YAKUN, "Yakuniy bosqich", "Vositalar, nishonlar va qaror"];
+    var prev = i > 0 ? [page(i - 1), W ? "Oldingi " + UNIT : "Oldingi dars", lname(i - 1) + ": " + L[i - 1].title] : [HUB, "Modul sahifasi", M.mod + ": " + (W ? "boshiga qaytish" : "barcha darslar")];
+    var next = i < N - 1 ? [page(i + 1), W ? "Keyingi " + UNIT : "Keyingi dars", lname(i + 1) + ": " + L[i + 1].title] : [YAKUN, W ? "Natija" : "Yakuniy bosqich", W ? YN : "Vositalar, nishonlar va qaror"];
     var foot = el("div", "kl-lfoot");
     foot.innerHTML = '<div class="kl-pager"><a class="pv" rel="prev" data-kkey data-dir="prev" href="' + prev[0] + '"><small>' + prev[1] + "</small><b>" + esc(prev[2]) + '</b></a><a class="nx" rel="next" data-kkey data-dir="next" href="' + next[0] + '"><small>' + next[1] + "</small><b>" + esc(next[2]) + '</b></a></div><p class="kl-keys"><kbd>←</kbd> <kbd>→</kbd> oldingi va keyingi sahifa</p>';
     $("#darslar").appendChild(foot);
-    document.title = "Dars " + l.num + ": " + l.title + " · " + M.labName + " " + M.mod + " | Kompas Lab";
+    document.title = lname(i) + ": " + l.title + " · " + M.labName + " " + M.mod + " | Kompas Lab";
 
     // Oʻqish progressi
     var rb = el("div", "kl-read", "<i></i>"); rb.setAttribute("aria-hidden", "true"); body.appendChild(rb);
@@ -145,9 +156,10 @@
 
     // Dars yakunlanganda: tabrik oynasi va keyingi qadam
     var was = !!(S2.done || {})[curId];
+    var DXP = (($("[data-complete]", art) || { getAttribute: function () { return null; } }).getAttribute("data-xp")) || 20;
     var dlg = el("div", "kl-done");
     dlg.setAttribute("role", "dialog"); dlg.setAttribute("aria-modal", "true"); dlg.setAttribute("aria-labelledby", "klDoneT");
-    dlg.innerHTML = '<div class="kl-done-c"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="38"/><path d="M26 43 L37 54 L59 31"/></svg><span class="kl-xp">+20 XP</span><h2 id="klDoneT">Dars ' + esc(l.num) + ' yakunlandi</h2><p>' + (i < N - 1 ? "Keyingisi: Dars " + esc(L[i + 1].num) + ". " + esc(L[i + 1].title) : "Hamma darslar oʻqildi. Endi vositalar va qaror.") + '</p><a class="btn btn-p" rel="next" data-dir="next" href="' + next[0] + '">' + (i < N - 1 ? "Keyingi darsga oʻtish" : "Yakuniy bosqichga oʻtish") + '</a><button type="button" class="btn btn-g" data-close>Shu darsda qolish</button></div>';
+    dlg.innerHTML = '<div class="kl-done-c"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="38"/><path d="M26 43 L37 54 L59 31"/></svg><span class="kl-xp">+' + DXP + ' XP</span><h2 id="klDoneT">' + esc(lname(i)) + ' yakunlandi</h2><p>' + (i < N - 1 ? "Keyingisi: " + esc(lname(i + 1)) + ". " + esc(L[i + 1].title) : (W ? "Hamma javoblar tayyor. Natijangiz hisoblandi." : "Hamma darslar oʻqildi. Endi vositalar va qaror.")) + '</p><a class="btn btn-p" rel="next" data-dir="next" href="' + next[0] + '">' + (i < N - 1 ? (W ? "Keyingi " + UNIT + "ga oʻtish" : "Keyingi darsga oʻtish") : (W ? "Natijamni koʻrish" : "Yakuniy bosqichga oʻtish")) + '</a><button type="button" class="btn btn-g" data-close>' + (W ? "Shu yerda qolish" : "Shu darsda qolish") + '</button></div>';
     body.appendChild(dlg);
     function close() { dlg.classList.remove("on"); }
     dlg.addEventListener("click", function (e) { if (e.target === dlg || e.target.hasAttribute("data-close")) close(); });
@@ -170,12 +182,12 @@
   if (view === "yakun") {
     var S3 = state();
     var hd3 = el("div", "kl-lhead");
-    hd3.innerHTML = crumb("Yakun") + steps(S3, "yakun") + "<h1>" + esc((($("[data-yakun-title]") || {}).getAttribute ? $("[data-yakun-title]").getAttribute("data-yakun-title") : "") || "Yakun: vositalar, nishonlar va qaror") + "</h1><div class=\"kl-lmeta\"><span>" + esc(M.yakunMeta) + "</span></div>";
+    hd3.innerHTML = crumb(YS) + steps(S3, "yakun") + "<h1>" + esc((($("[data-yakun-title]") || {}).getAttribute ? $("[data-yakun-title]").getAttribute("data-yakun-title") : "") || "Yakun: vositalar, nishonlar va qaror") + "</h1><div class=\"kl-lmeta\"><span>" + esc(M.yakunMeta) + "</span></div>";
     wrap.insertBefore(hd3, wrap.firstChild);
     var f3 = el("div", "kl-lfoot");
-    f3.innerHTML = '<div class="kl-pager"><a class="pv" rel="prev" data-kkey data-dir="prev" href="' + page(N - 1) + '"><small>Oldingi dars</small><b>Dars ' + esc(L[N - 1].num) + ": " + esc(L[N - 1].title) + '</b></a><a class="nx primary" rel="next" data-kkey data-dir="next" href="' + HUB + '"><small>Modul sahifasi</small><b>' + esc(M.mod) + ": umumiy koʻrinish</b></a></div>";
+    f3.innerHTML = '<div class="kl-pager"><a class="pv" rel="prev" data-kkey data-dir="prev" href="' + page(N - 1) + '"><small>Oldingi ' + UNIT + '</small><b>' + esc(lname(N - 1)) + ": " + esc(L[N - 1].title) + '</b></a><a class="nx' + (W ? "" : " primary") + '" rel="next" data-kkey data-dir="next" href="' + HUB + '"><small>Modul sahifasi</small><b>' + esc(M.mod) + ": umumiy koʻrinish</b></a></div>";
     var q = $("#qaror"); (q || wrap).insertAdjacentElement("afterend", f3);
-    document.title = "Yakun: vositalar va qaror · " + M.labName + " " + M.mod + " | Kompas Lab";
+    document.title = YN + " · " + M.labName + " " + M.mod + " | Kompas Lab";
 
     // Tayyorgarlik koʻrsatkichi (2026-11-18, asoschi): ochiq dastur sahifasidan olib tashlandi, faqat M0 oxirida.
     // Vositalar roʻyxatida oxirgi boʻladi; natija saqlangach ostida obunaga yoʻl chiqadi (narx sahifasi sotuv holatini oʻzi hal qiladi).

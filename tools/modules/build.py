@@ -223,8 +223,14 @@ def meta(name, s):
         lessons.append(dict(id=lid, num=num, title=title, short=short.get(lid, "").strip(), meta=", ".join(tags)))
     assert lessons, name + ": darslar topilmadi"
     tools = [re.sub(r"<[^>]+>", "", t) for t in re.findall(r'<div class="tool"[^>]*>\s*<div class="tool-h">.*?<h3>(.*?)</h3>', s, flags=re.S)]
-    return dict(base=name, key=key, lab=m.group(1), labName=m.group(2), mod="M" + m.group(3), lessons=lessons,
+    info = dict(base=name, key=key, lab=m.group(1), labName=m.group(2), mod="M" + m.group(3), lessons=lessons,
                 yakunMeta=", ".join(tools + ["nishonlar", "qaror va rozilik"]))
+    # Ixtiyoriy (2026-11-19, Master M0 v2): <main data-kword="Qadam" data-kyakun="…" data-yakun-meta="…">
+    for attr, k in (("data-kword", "word"), ("data-kyakun", "yakunName"), ("data-yakun-meta", "yakunMeta")):
+        a = re.search(attr + r'="([^"]+)"', s)
+        if a:
+            info[k] = a.group(1)
+    return info
 
 
 def views(name, s):
@@ -235,8 +241,8 @@ def views(name, s):
     s = s[:i] + "<script>window.KMOD=" + json.dumps(info, ensure_ascii=False) + ';</script>\n<script src="js/kompas-module.js"></script>\n' + s[i:]
     tmatch = re.search(r"<title>(.*?)</title>", s)
     pages = [(name + ".html", "hub", "", None)]
-    pages += [(name + "-" + str(k + 1) + ".html", "lesson", l["id"], "Dars " + l["num"] + ": " + l["title"] + " · " + info["labName"] + " " + info["mod"] + " | Kompas Lab") for k, l in enumerate(info["lessons"])]
-    pages.append((name + "-yakun.html", "yakun", "", "Yakun: vositalar va qaror · " + info["labName"] + " " + info["mod"] + " | Kompas Lab"))
+    pages += [(name + "-" + str(k + 1) + ".html", "lesson", l["id"], (info["word"] + " " + str(k + 1) if info.get("word") else "Dars " + l["num"]) + ": " + l["title"] + " · " + info["labName"] + " " + info["mod"] + " | Kompas Lab") for k, l in enumerate(info["lessons"])]
+    pages.append((name + "-yakun.html", "yakun", "", info.get("yakunName", "Yakun: vositalar va qaror") + " · " + info["labName"] + " " + info["mod"] + " | Kompas Lab"))
     out = {}
     for fn, view, lid, title in pages:
         t = s

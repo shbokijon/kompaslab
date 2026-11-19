@@ -1,4 +1,38 @@
 {
   "_izoh": "M0 dars videolari (YouTube, Unlisted). Kalit: modul (masalan gks-lab-m0), ichida dars id (l1, l2 ...). yt: video ID yoki havola; title: sarlavha; min: daqiqa. Pleyer: js/m0-video.js",
-  "_namuna": { "l1": { "yt": "https://youtu.be/XXXXXXXXXXX", "title": "Dars nomi", "min": 8 } }
+  "_namuna": {
+    "l1": {
+      "yt": "https://youtu.be/XXXXXXXXXXX",
+      "title": "Dars nomi",
+      "min": 8
+    }
+  },
+  "_master": "Master M0 (2026-11-19): yt ga YouTube havolasini qoʻying, boʻsh boʻlsa sahifada hech narsa chiqmaydi. sec: soniya. l0 kirish, l1–l3 qadamlar, res natija.",
+  "master-lab-m0": {
+    "l0": {
+      "yt": "",
+      "title": "12 daqiqada nima boʻladi",
+      "sec": 45
+    },
+    "l1": {
+      "yt": "",
+      "title": "Nega sanadan orqaga hisoblaymiz",
+      "sec": 35
+    },
+    "l2": {
+      "yt": "",
+      "title": "Oʻquv va tadqiqot magistraturasi",
+      "sec": 30
+    },
+    "l3": {
+      "yt": "",
+      "title": "Kuchli va zaif jumla",
+      "sec": 35
+    },
+    "res": {
+      "yt": "",
+      "title": "Bahoni qanday oʻqish",
+      "sec": 60
+    }
+  }
 }

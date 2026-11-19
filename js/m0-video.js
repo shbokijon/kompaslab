@@ -10,8 +10,10 @@
 // ═══════════════════════════════════════════════════════════════
 (function () {
   var M = window.KMOD, body = document.body;
-  if (!M || !body || body.getAttribute("data-kview") !== "lesson") return;
-  var lid = body.getAttribute("data-klesson");
+  if (!M || !body) return;
+  // 2026-11-19: dars sahifasidan tashqari hub (kalit "l0") va yakun ("res") ham; joy: [data-kvideo] (boʻlmasa "Asosiy qism")
+  var view = body.getAttribute("data-kview");
+  var lid = view === "lesson" ? body.getAttribute("data-klesson") : view === "hub" ? "l0" : view === "yakun" ? "res" : null;
   if (!lid) return;
 
   function ytId(v) {
@@ -41,12 +43,16 @@
 
   function mount(v) {
     var id = ytId(v && v.yt); if (!id) return;
-    var art = document.getElementById(lid); if (!art) return;
-    var panels = art.querySelectorAll(".l-body > .panel");
-    var host = panels[1] || panels[0]; if (!host || host.querySelector(".kvid")) return;
+    var slot = document.querySelector('[data-kvideo="' + lid + '"]'), host, art;
+    if (!slot) {
+      art = document.getElementById(lid); if (!art) return;
+      var panels = art.querySelectorAll(".l-body > .panel");
+      host = panels[1] || panels[0];
+    } else host = slot;
+    if (!host || host.querySelector(".kvid")) return;
     css();
     var title = v.title ? String(v.title) : "Dars videosi";
-    var cap = "Video" + (v.min ? ": " + (+v.min) + " daqiqa" : "") + " · YouTube orqali";
+    var cap = "Video" + (v.sec ? ": " + (+v.sec) + " soniya" : v.min ? ": " + (+v.min) + " daqiqa" : "") + " · YouTube orqali";
     var w = document.createElement("figure"); w.className = "kvid";
     w.innerHTML =
       '<div class="kvid-box">' +
