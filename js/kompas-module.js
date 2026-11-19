@@ -87,6 +87,8 @@
   if (view === "lesson") {
     var i = idx(curId), art = document.getElementById(curId);
     if (i < 0 || !art) return;
+    // Dars videosi (YouTube, 2026-11-19): roʻyxat data/m0-video.json, pleyer js/m0-video.js
+    if (!document.querySelector('script[src$="m0-video.js"]')) { var kv = document.createElement("script"); kv.src = "js/m0-video.js"; kv.defer = true; document.head.appendChild(kv); }
     var S2 = state(), l = L[i];
     art.classList.add("kl-cur", "open");
     var hd = $(".l-head", art); if (hd) { hd.setAttribute("aria-expanded", "true"); hd.hidden = true; }
