@@ -317,6 +317,9 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sb-item" id="lkNav" onclick="nav('look',this)">
       <span class="sb-icon">🎨</span><span class="sb-label">Dizayn</span>
     </button>
+    <button class="sb-item" id="vdNav" onclick="nav('videos',this)">
+      <span class="sb-icon">🎬</span><span class="sb-label">Videolar</span>
+    </button>
     <button class="sb-item" onclick="nav('waitlist',this)">
       <span class="sb-icon">🔔</span><span class="sb-label">Kutish roʻyxati</span>
       <span class="sb-pill sp-gray" id="pWait">—</span>
@@ -713,6 +716,9 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 
     <!-- DIZAYN (2026-11-17): mavzu, shrift, oʻlchamlar · js/admin-look.js, site_settings -->
     <div class="sec" id="sec-look"></div>
+
+    <!-- VIDEOLAR (2026-11-19): modul va dars videolari (YouTube/Vimeo) · js/admin-videos.js, module_videos -->
+    <div class="sec" id="sec-videos"></div>
 
     <!-- SUPABASE — TIZIM MONITORINGI (read-only) -->
     <div class="sec" id="sec-system">
@@ -1855,7 +1861,7 @@ function nav(name, el) {
   const titles = {
     overview: 'Umumiy holat', students: 'Foydalanuvchilar',
     lessons: 'Darslar', payments: "Toʻlovlar", waitlist: 'Kutish roʻyxati',
-    announce: "Eʼlonlar", analytics: 'Analitika', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim', website: 'Vebsayt', look: 'Dizayn'
+    announce: "Eʼlonlar", analytics: 'Analitika', regs: 'Foydalanuvchilar', labs: 'Lablar va narxlar', system: 'Tizim', website: 'Vebsayt', look: 'Dizayn', videos: 'Videolar'
   }
   document.getElementById('pgTitle').textContent = titles[name] || name
 
@@ -1873,6 +1879,7 @@ function nav(name, el) {
   if (name === 'labs') loadLabs()
   if (name === 'website') WS.open()
   if (name === 'look') LK.open()
+  if (name === 'videos') VD.open()
   // Kurs statistikasi
   if (name === 'analytics') loadCourseStats()
   if (name === 'system') { loadSystemStats(); window.klxLoadAudit && window.klxLoadAudit() }
@@ -2531,5 +2538,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="js/admin-extensions.js"></script>
 <script src="js/admin-site.js"></script>
 <script src="js/admin-look.js"></script>
+<script src="js/admin-videos.js"></script>
 </body>
 </html>
