@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>Dars 0.5: Magistratura dasturi sizga mosmi? Obunadan oldingi tekshiruv · Magistratura dasturi M0 | Kompas Lab</title>
+<title>Dars 0.5: Siz toʻgʻri joydamisiz? · Magistratura dasturi M0 | Kompas Lab</title>
 <meta name="description" content="Magistratura dasturi bepul M0 moduli: magistratura tizimlari, ariza hujjatlari, Tayyorgarlik koʻrsatkichi va topshirish muddatlari taqvimi. Toʻlovdan oldin halol qaror.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -269,6 +269,22 @@ body.locked .gate{display:flex;}
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script src="js/pwa.js" defer></script>
 <link rel="stylesheet" href="css/brand.css">
+<style>.kp-plan{margin-top:20px;padding-top:18px;border-top:1px dashed var(--border,#e2ded3)}
+.kp-plan h3{margin:0 0 4px}.kp-span{margin:0 0 12px;color:var(--muted,#5b6b63)}
+.kp-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.kp-ph{display:grid;grid-template-columns:40px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid var(--border,#e2ded3);border-radius:12px;background:var(--surface,#fff)}
+.kp-ph.kp-open{border-color:#2d4a3e;box-shadow:0 6px 18px rgba(45,74,62,.10)}
+.kp-n{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:#f4f3ef;color:#2d4a3e}
+.kp-open .kp-n{background:#2d4a3e;color:#fff}
+.kp-b{display:flex;flex-direction:column;gap:2px;min-width:0}.kp-b small{color:var(--muted,#5b6b63)}
+.kp-o{font-size:.92em}.kp-ph:not(.kp-open) .kp-o{color:var(--muted,#5b6b63)}
+.kp-m{font-size:.85em;color:var(--muted,#5b6b63);white-space:nowrap}
+.kp-why{margin:14px 0 0}.kp-cta{margin-top:12px}
+.kp-ph{color:#1d2b25}.kp-plan .hint{color:rgba(255,255,255,.8);margin-top:10px}.kp-plan .hint a{color:#fff}
+.decide .kp-why{color:#fff}.decide .kp-span{color:rgba(255,255,255,.8)}
+.assign .tool b,.assign .res b{display:inline;margin:0}
+html[data-theme="dark"] .kp-ph{color:inherit}
+</style>
 <link rel="stylesheet" href="css/kompas-ui.css">
 <script src="js/kompas-ui.js"></script>
 <link rel="canonical" href="https://www.kompaslab.uz/master-lab-m0-5">
@@ -308,10 +324,10 @@ body.locked .gate{display:flex;}
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Magistratura dasturi</a> · Modul 0</div>
-        <span class="badge">🔓 Bepul · Magistraturaga tayyorgarlik</span>
-        <h1>Magistratura sizga mosmi? Avval tekshiring.</h1>
-        <p class="lead">Beshta bepul darsda magistratura turini, rasmiy qabul talablarini va tayyorgarligingizni tekshirasiz. Yakunda Magistratura dasturi sizga mosligini hamda keyingi qadamlaringizni aniqlaysiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2,5</b> soat</span><span class="fact"><b>2</b> interaktiv vosita</span><span class="fact"><b>250</b> XP</span></div>
+        <span class="badge">🔓 Bepul · 12 daqiqa</span>
+        <h1>Magistraturaga qayerdan boshlashni 12 daqiqada bilib olasiz</h1>
+        <p class="lead">5 ta qisqa qadam. Har birida bitta savolga javob berasiz. Oxirida sizning bahongiz va rejangiz chiqadi. Choy sovumasidan tugatsa boʻladi.</p>
+        <div class="facts"><span class="fact"><b>5</b> qadam</span><span class="fact">~<b>12</b> daqiqa</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/master.webp" width="160" height="160" alt="">
     </div>
@@ -319,72 +335,65 @@ body.locked .gate{display:flex;}
 
   <!-- QUEST MAP -->
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Tayyorgarlik bosqichlari</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Qadamlar</b><span id="mapN">0 / 8 bosqich</span></div>
     <div class="path">
-      <a class="node" href="#l1" data-node="l1"><span class="dot">0.1</span>Tizim</a>
-      <a class="node" href="#l2" data-node="l2"><span class="dot">0.2</span>Davlatlar</a>
-      <a class="node" href="#l3" data-node="l3"><span class="dot">0.3</span>Ariza</a>
-      <a class="node" href="#l4" data-node="l4"><span class="dot">0.4</span>Baholash</a>
-      <a class="node" href="#l5" data-node="l5"><span class="dot">0.5</span>Mos emas</a>
-      <a class="node" href="#tool-rs" data-node="rs"><span class="dot">%</span>Koʻrsatkich</a>
-      <a class="node" href="#tool-dl" data-node="dl"><span class="dot">📅</span>Taqvim</a>
-      <a class="node" href="#qaror" data-node="dec"><span class="dot">✓</span>Qaror</a>
+      <a class="node" href="#l1" data-node="l1"><span class="dot">0.1</span>Muddat</a>
+      <a class="node" href="#l2" data-node="l2"><span class="dot">0.2</span>Yoʻnalish</a>
+      <a class="node" href="#l3" data-node="l3"><span class="dot">0.3</span>Hujjat</a>
+      <a class="node" href="#l4" data-node="l4"><span class="dot">0.4</span>Pul</a>
+      <a class="node" href="#l5" data-node="l5"><span class="dot">0.5</span>Tekshiruv</a>
+      <a class="node" href="#tool-dl" data-node="dl"><span class="dot">📅</span>Sana</a>
+      <a class="node" href="#tool-rs" data-node="rs"><span class="dot">%</span>Baho</a>
+      <a class="node" href="#qaror" data-node="dec"><span class="dot">✓</span>Reja</a>
     </div>
   </nav>
 
   <!-- GOAL -->
-  <section id="dastur-natija">
-    <h2>Butun dastur oxirida sizda</h2>
-    <p class="sub">Sizning ariza paketingiz: 8 ta hujjat va jadval. Hujjatlarni oʻzingiz yozasiz, dastur tuzilma va baholash mezonini beradi. Bu M0 shu yoʻlning bepul birinchi qadami; qolgan bosqichlar obuna bilan ochiladi (<a href="master-lab-narxlar.html">tariflar</a>).</p>
-    <ul class="goal"><li><span><b>Saralangan roʻyxat (Shortlist)</b></span></li><li><span><b>Asosiy nazorat jadvali (Master Tracker) va Gantt jadvali</b></span></li><li><span><b>Akademik CV</b></span></li><li><span><b>Yutuqlar varaqasi va tavsiya soʻrovlari</b></span></li><li><span><b>Maqsad bayonnomasi (SoP)</b></span></li><li><span><b>Ilmiy loyiha taklifi</b></span></li><li><span><b>Stipendiya portfeli</b></span></li><li><span><b>Intervyu mashqlari va joʻnash oldi nazorat roʻyxati</b></span></li></ul>
-  </section>
-
   <section>
-    <h2>Modul yakunida sizda</h2>
+    <h2>12 daqiqadan keyin sizda</h2>
     <ul class="goal">
-      <li><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Magistratura turi va oʻzingiz uchun 1–3 ta ehtimoliy taʼlim tizimi.</li>
-      <li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Tayyorgarlikning 6 yoʻnalish boʻyicha taxminiy bahosi va tekshiriladigan majburiy talablar.</li>
-      <li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy">Topshirish muddatiga qarab tuzilgan dastlabki reja va tekshirilishi kerak boʻlgan sanalar.</li>
-      <li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Shaxsiy qaror: tekshiriladigan talablar va keyingi vazifalar.</li>
+      <li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy">Topshirishgacha necha hafta qolgani.</li>
+      <li><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Sizga yoqqan 1–3 ta mamlakat.</li>
+      <li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Qaysi hujjat bor, qaysi biri yoʻqligi.</li>
+      <li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Sizning bahongiz va 4 bosqichli rejangiz.</li>
     </ul>
   </section>
 
   <!-- LESSONS -->
   <section id="darslar">
-    <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Yozma javoblar shu qurilmadagi brauzer xotirasida saqlanadi. Boshqa qurilmada avtomatik koʻrinmaydi.</p>
+    <h2>Qadamlar</h2>
+    <p class="sub">Har qadam 1–3 daqiqa. Javoblaringiz shu qurilmada saqlanadi.</p>
     <div class="lessons">
 
       <!-- 0.1 -->
       <article class="lesson" id="l1" data-lesson="l1">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">Magistratura dasturi qanday ishlaydi?</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📄 “Nega magistratura” bayonoti</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.1</span><span class="l-t" style="display:block">Qachon topshirasiz?</span>
+            <span class="l-m"><span class="tag">⏱ 2 daqiqa</span><span class="tag">📅 Sizning sanangiz</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Magistraturaga hujjat tayyorlashdan oldin uch savolga javob bering: <strong>nima uchun oʻqimoqchisiz, qaysi dastur maqsadingizga mos va qachon topshirishingiz kerak?</strong> Tayyorgarlik rejangiz shu javoblardan tuziladi.</div></div>
-          <div class="panel"><p>Magistraturaga topshirishda diplom, tarjimayi hol (CV) va tavsiya xatlari bilan birga aniq maqsad ham kerak. Avvalo <strong>maqsadingizni, dastur talablarini va topshirish muddatini</strong> aniqlaysiz. Keyin hujjatlarni oʻz tajribangizga asoslanib tayyorlaysiz.</p>
-<p>Magistratura dasturi sizning oʻrningizga ariza yozadigan xizmat emas. Unda universitet tanlash, muddatlarni rejalash va hujjatlarni mustaqil tayyorlashni oʻrganasiz. Ayrim maslahat xizmatlari ham yordam berishi mumkin, ammo <strong>arizangizdagi maʼlumotlar uchun oʻzingiz javobgarsiz</strong>.</p>
-<h4>Toʻrtta bosqichning vazifasi</h4>
-<div class="tbl"><table><thead><tr><th>Bosqich</th><th>Modullar</th><th>Natija</th></tr></thead><tbody>
-<tr><td>I. Strategiya va reja</td><td>M1–M2</td><td>Yoʻnalish, dasturlar roʻyxati va topshirish muddatlari.</td></tr>
-<tr><td>II. Hujjatlar va muloqot</td><td>M3–M4</td><td>CV, tavsiya beruvchilar va zarur hollarda professorlar bilan aloqa.</td></tr>
-<tr><td>III. Maqsad va tadqiqot</td><td>M5–M6</td><td>Maqsad bayonnomasi va talab qilinsa, ilmiy loyiha taklifi.</td></tr>
-<tr><td>IV. Stipendiya va joʻnash</td><td>M7–M8</td><td>Grantlar, suhbat va joʻnashga tayyorgarlik.</td></tr></tbody></table></div>
-<h4>Nega muddatdan orqaga qarab reja tuziladi?</h4>
-<p>Universitet va stipendiya uchun ariza muddatlari farq qilishi mumkin. Tavsiya xati, til imtihoni va hujjatlarni tekshirishga vaqt kerak. <strong>Avval rasmiy muddatlarni toping</strong>, keyin vazifalarni kalendarga joylashtiring.</p>
-<div class="box info"><strong>Har modul oxirida sizda:</strong> tekshirilgan reja, tayyor hujjat yoki bajarilgan topshiriq. M0 bepul, M1–M8 esa tanlangan tarifga koʻra ochiladi.</div>
-<div class="box warn"><strong>Chegara:</strong> kurs qabul, stipendiya yoki viza kafolatlamaydi. Universitetning rasmiy talabi har doim ustuvor.</div>
-<div class="box info"><strong>Rasmiy manbalar (31.10.2026 da tekshirildi):</strong> <a href="https://educationusa.state.gov/your-5-steps-us-study" target="_blank" rel="noopener noreferrer" data-alifbo="off">EducationUSA: ariza bosqichlari</a>. <small>Ariza sikli va universitetga qarab amaldagi shartlarni qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Magistratura dasturi magistratura arizasini mustaqil tayyorlashga yordam beradi. Maqsad, rasmiy talab va muddatlarni aniqlab, vazifalarni bosqichma-bosqich bajaring.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: sizning maqsad bayonotingiz va haftalik rejangiz</b>
-            <ul><li>Nima uchun magistraturaga borasiz? Javobingizni 2–3 aniq sabab bilan asoslang.</li><li>Haftasiga necha soatni tayyorgarlikka ajrata olasiz?</li><li>Oʻzingiz bajaradigan uchta asosiy ishni yozing.</li></ul>
-            <textarea data-save="a1" placeholder="Javobingizni shu yerga yozing..."></textarea><div class="hint">Yozma javobingiz brauzerning mahalliy xotirasida saqlanadi; boshqa qurilmaga avtomatik oʻtmaydi.</div></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oʻqib chiqing, soʻng darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
+          <div class="panel"><div class="hook">Hujjat qancha yaxshi boʻlsa ham, muddatdan keyin topshirilsa, uni hech kim oʻqimaydi. Shuning uchun birinchi savol oddiy: <strong>qachon topshirasiz?</strong><br><small>Ertaga boshlayman degan reja ham bir kunda qariydi.</small></div></div>
+          <div class="panel"><p>Reja oxiridan boshlab tuziladi:</p>
+<ol><li>Universitet saytidan <strong>topshirish sanasini</strong> (<em lang="en">deadline</em>) topasiz.</li>
+<li>Undan <strong>4 hafta oldin</strong> hammasi tayyor boʻlsin. Bu zaxira vaqt: kech kelgan tavsiya xati yoki uzilib qolgan internet uchun.</li>
+<li>Qolgan haftalar tayyorlanish uchun.</li></ol>
+<p>Nega erta boshlash kerak? Tavsiya xatini boshqa odam yozadi. Til imtihoniga oldindan yozilasiz. Bular faqat sizga bogʻliq emas, shuning uchun vaqt kerak.</p>
+<div class="box info">Aniq sanani bilmasangiz, taxminiy sana qoʻying. Keyin universitet sahifasidan aniqlaysiz.</div></div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Avval sana, keyin hamma narsa.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sanangizni kiriting</b>
+            <div class="tool" id="tool-dl" style="margin-top:10px">
+              <div class="tool-h"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Topshirish muddatlari taqvimi</h3><span>Sanadan orqaga hisoblash · +30 XP</span></div></div>
+              <div class="dl-in">
+                <div><label for="dlDate">Topshirish sanasi</label><input type="date" id="dlDate"></div>
+                <div><label for="dlW">Tayyorlanishga necha hafta? (bilmasangiz, 18 qoldiring)</label><input type="number" id="dlW" value="18" min="4" max="60" inputmode="numeric"></div>
+              </div>
+              <button class="btn btn-p" type="button" id="dlBtn" style="margin-top:12px">Hisoblash</button>
+              <div class="res" id="dlRes"></div>
+            </div></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
 
@@ -392,33 +401,30 @@ body.locked .gate{display:flex;}
       <article class="lesson" id="l2" data-lesson="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Magistratura turlari va oʻqish imkoniyatlari</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">📄 2–3 maqsadli tizim</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 0.2</span><span class="l-t" style="display:block">Qayerda va qanday oʻqiysiz?</span>
+            <span class="l-m"><span class="tag">⏱ 3 daqiqa</span><span class="tag">🌍 1–3 mamlakat</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Magistratura dasturini tanlashda avval <strong>oʻqish maqsadingizni</strong> aniqlang. Soʻng oʻquv va tadqiqot magistraturasini, dastur talablarini, moliyalashtirishni va oʻqish davomiyligini solishtiring.</div></div>
-          <div class="panel"><h4>Magistratura turini aniqlang</h4>
-<p><strong>Oʻquv magistraturasi</strong> (<em lang="en">taught master's</em>) odatda kurslar va baholashlarga tayangan boʻladi. <strong>Tadqiqot magistraturasi</strong> (<em lang="en">research master's</em>) esa mustaqil ilmiy izlanishga koʻproq eʼtibor beradi. Muayyan dastur tarkibini uning rasmiy sahifasidan oʻqing.</p>
-<h4>Mamlakat va moliyalashtirish</h4>
-<ul><li><strong>🇺🇸 AQSh:</strong> magistratura davomiyligi, GRE va til talabi hamda moliyalashtirish universitetga bogʻliq. Ayrim magistrantlar oʻqituvchi yoki tadqiqot assistentligi (<em lang="en">TA/RA</em>) olishi mumkin; bu universal kafolat emas.</li>
-<li><strong>🇬🇧 Buyuk Britaniya:</strong> koʻplab kunduzgi oʻquv magistraturalari bir yil davom etadi. Tadqiqot dasturlari va moliyalashtirish shartlari boshqacha boʻlishi mumkin.</li>
-<li><strong>🇪🇺 Yevropa:</strong> Erasmus Mundus qoʻshma magistraturalari 60, 90 yoki 120 <em lang="en">ECTS</em> boʻlishi mumkin. Tanlangan nomzodlar uchun toʻliq stipendiyalar mavjud, lekin hamma arizachi olmaydi.</li>
-<li><strong>🌏 Osiyo:</strong> GKS va MEXT kabi davlat stipendiyalarida fuqarolik, ariza yoʻli hamda professor bilan aloqa talablari dasturga qarab farq qiladi.</li>
-<li><strong>🇦🇺 Avstraliya:</strong> universitet stipendiyalari va boshqa moliyalashtirish imkoniyatlarini tekshiring. <strong>Australia Awards</strong> barcha davlatlarga ochiq emas: 2027-yilgi rasmiy ishtirokchilar roʻyxatida Oʻzbekiston koʻrsatilmagan.</li></ul>
-<h4>Qaror uchun besh mezon</h4><p><strong>Dastur turi, kirish talablari, xarajat, moliyalashtirish va ariza muddati</strong>ni birgalikda solishtiring. Reytingning oʻzi yetarli emas.</p>
-<div class="box warn"><strong>Ogohlantirish:</strong> bu umumiy yoʻnalish. Yakuniy talablar tanlangan universitet yoki stipendiya dasturining joriy rasmiy eʼlonidan olinadi.</div>
-<div class="box info"><strong>Rasmiy manbalar (31.10.2026 da tekshirildi):</strong> <a href="https://study-uk.britishcouncil.org/en/plan-studies/ways-learning/postgraduate" target="_blank" rel="noopener noreferrer" data-alifbo="off">British Council: magistratura turlari</a> · <a href="https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters" target="_blank" rel="noopener noreferrer" data-alifbo="off">Erasmus+: Joint Masters</a> · <a href="https://www.dfat.gov.au/people-to-people/australia-awards/participating-countries" target="_blank" rel="noopener noreferrer" data-alifbo="off">DFAT: Australia Awards mamlakatlari</a> · <a href="https://educationusa.state.gov/your-5-steps-us-study" target="_blank" rel="noopener noreferrer" data-alifbo="off">EducationUSA</a>. <small>Ariza sikli va universitetga qarab amaldagi shartlarni qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Avval oʻquv yoki tadqiqot magistraturasini aniqlang; keyin mamlakat emas, aniq dasturlarning talablari va moliyalashtirish shartlarini solishtiring.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: sizga mos magistratura turi va 1–3 taʼlim tizimi</b>
-            <p style="margin:6px 0 0">Oʻzingizga mos 1–3 tizimni tanlang. Tanlov yakuniy qarorga avtomatik qoʻshiladi.</p>
+          <div class="panel"><div class="hook">Dunyoda magistratura dasturlari juda koʻp, nomlari ham bir-biriga oʻxshaydi. Hammasini koʻrib chiqishga umr yetmaydi. Shuning uchun avval tanlovni toraytiramiz.<br><small>Xavotir olmang, bu mavzu tishlamaydi.</small></div></div>
+          <div class="panel"><h4>Ikki xil magistratura</h4>
+<ul><li><strong>Oʻquv magistraturasi</strong> (<em lang="en">taught masterʼs</em>): darslar, imtihonlar, loyihalar.</li>
+<li><strong>Tadqiqot magistraturasi</strong> (<em lang="en">research masterʼs</em>): asosan oʻzingiz ilmiy ish qilasiz, rahbar yoʻl koʻrsatadi.</li></ul>
+<h4>Mamlakatlar qisqacha</h4>
+<ul><li><strong>🇬🇧 Buyuk Britaniya:</strong> koʻp oʻquv magistraturasi 1 yil davom etadi.</li>
+<li><strong>🇺🇸 AQSh:</strong> muddat, talab va pul har universitetda boshqacha.</li>
+<li><strong>🇪🇺 Yevropa:</strong> Erasmus Mundus dasturlarida tanlanganlarga toʻliq stipendiya beriladi, lekin hammaga emas.</li>
+<li><strong>🌏 Osiyo:</strong> GKS (Koreya) va MEXT (Yaponiya) kabi davlat stipendiyalari bor.</li>
+<li><strong>🇦🇺 Avstraliya:</strong> Australia Awards stipendiyasining 2027-yil roʻyxatida Oʻzbekiston yoʻq.</li></ul>
+<div class="box info"><strong>Manbalar (31.10.2026 da tekshirildi):</strong> <a href="https://study-uk.britishcouncil.org/en/plan-studies/ways-learning/postgraduate" target="_blank" rel="noopener noreferrer" data-alifbo="off">British Council</a> · <a href="https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters" target="_blank" rel="noopener noreferrer" data-alifbo="off">Erasmus+: Joint Masters</a> · <a href="https://www.dfat.gov.au/people-to-people/australia-awards/participating-countries" target="_blank" rel="noopener noreferrer" data-alifbo="off">DFAT: Australia Awards</a> · <a href="https://educationusa.state.gov/your-5-steps-us-study" target="_blank" rel="noopener noreferrer" data-alifbo="off">EducationUSA</a>. <small>Talablar har yili oʻzgarishi mumkin, universitet sahifasidan qayta tekshiring.</small></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Avval turini tanlang, keyin mamlakatni. Reytingga emas, dasturning oʻziga qarang.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizga yoqqanini bosing (1–3 ta)</b>
             <div class="chips" id="sysChips"><button type="button" class="chip" data-sys="AQSh" aria-pressed="false">🇺🇸 AQSh</button><button type="button" class="chip" data-sys="Buyuk Britaniya" aria-pressed="false">🇬🇧 Buyuk Britaniya</button><button type="button" class="chip" data-sys="Yevropa" aria-pressed="false">🇪🇺 Yevropa</button><button type="button" class="chip" data-sys="Osiyo" aria-pressed="false">🌏 Osiyo</button><button type="button" class="chip" data-sys="Avstraliya" aria-pressed="false">🇦🇺 Avstraliya</button></div>
             <div class="hint" id="sysHint">0 ta tanlandi</div>
-            <ul style="margin-top:12px"><li>Oʻquv yoki tadqiqot magistraturasidan qaysi biri mosligini yozing. Har bir tizim uchun kamida bitta rasmiy dastur havolasini toping.</li><li>Qabul talablari, xarajat va grant imkoniyatlari sizning holatingizga qanchalik mos?</li></ul>
-            <textarea data-save="a2" placeholder="Havolalar va izohingiz..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oʻqib chiqing, soʻng darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
+            <p style="margin:12px 0 0">Qaysi magistratura sizga yaqin: oʻquvmi yoki tadqiqotmi? Bir jumla yozing.</p>
+            <textarea data-save="a2" placeholder="Masalan: oʻquv magistraturasi, chunki..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
 
@@ -426,74 +432,54 @@ body.locked .gate{display:flex;}
       <article class="lesson" id="l3" data-lesson="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.3</span><span class="l-t" style="display:block">Magistraturaga arizada qanday hujjatlar kerak?</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🎯 Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 0.3</span><span class="l-t" style="display:block">Hujjatlaringiz qay holatda?</span>
+            <span class="l-m"><span class="tag">⏱ 3 daqiqa</span><span class="tag">🎯 Oʻyin: kuchli yoki zaif</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Talab qilinadigan hujjatlar dasturga qarab farqlanadi. <strong>Avval rasmiy roʻyxatni toping.</strong> Keyin har bir hujjatning vazifasi, formati, til talabi va topshirish muddatini tekshiring.</div></div>
-          <div class="panel"><p>Baholar akademik qabulda muhim mezon boʻlishi mumkin. Dasturga qarab tajriba, maqsad, tavsiya xatlari yoki yozma ish ham tekshiriladi. <strong>Hujjatlar roʻyxatini taxmin qilmang</strong>: dastur sahifasida aniq tekshiring.</p>
-<h4>Ariza hujjatlari nimaga xizmat qiladi?</h4>
-<div class="tbl"><table><thead><tr><th>Hujjat</th><th>Vazifasi</th></tr></thead><tbody>
-<tr><td>Akademik tarjimayi hol (CV) / <em lang="en">résumé</em></td><td>Taʼlim, tajriba, koʻnikma va natijalarni koʻrsatadi.</td></tr>
-<tr><td>Maqsad bayonnomasi (<em lang="en">Statement of Purpose</em>)</td><td>Maqsad, tajriba va dasturga moslikni tushuntiradi.</td></tr>
-<tr><td>Tavsiya xati (<em lang="en">reference</em>)</td><td>Oʻqituvchi yoki rahbarning mustaqil bahosi.</td></tr>
-<tr><td>Baholar qaydnomasi (<em lang="en">transcript</em>)</td><td>Fanlar va baholarni rasmiy tasdiqlaydi.</td></tr>
-<tr><td>Til natijasi</td><td>Dastur talab qilsa, til darajasini tasdiqlaydi.</td></tr>
-<tr><td>Ilmiy loyiha taklifi (<em lang="en">research proposal</em>)</td><td>Talab etilsa, tadqiqot savoli va rejasini koʻrsatadi.</td></tr></tbody></table></div>
-<h4>Daʼvoni qanday asoslash kerak?</h4>
-<p><strong>Dalil:</strong> «mehnatsevarman» deyish oʻrniga, bajargan ish va natijangizni koʻrsating. <strong>Moslik:</strong> oʻquv magistraturasida kurs mazmuni va kasbiy maqsad; tadqiqot magistraturasida esa ilmiy savol va tadqiqot muhiti muhim boʻlishi mumkin.</p>
-<div class="box info"><strong>Misol:</strong> «Soʻrovnoma maʼlumotlarini Pythonʼda tahlil qildim va natijalarni bitiruv ishida taqdim etdim». Dalilda raqam boʻlishi shart emas.</div>
-<div class="box warn"><strong>Keng tarqalgan xato:</strong> universitet nominigina almashtirish, talab etilmagan hujjatni yuklash yoki hujjatlarda bir-biriga zid maʼlumot berish.</div>
-<div class="box info"><strong>Rasmiy manbalar (31.10.2026 da tekshirildi):</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/supporting-documents/supporting-documents-requirements" target="_blank" rel="noopener noreferrer" data-alifbo="off">University of Oxford: hujjatlar</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/supporting-documents/statement" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: maqsad bayonnomasi</a>. <small>Talablar dastur va qabul yiliga qarab oʻzgarishi mumkin.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Ariza uchun zarur hujjatlar dasturga qarab farq qiladi. Ularni rasmiy talabga mos, rostgoʻy va oʻzaro izchil tayyorlang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Qisqa test: qaysi jumla aniqroq dalil keltiradi?</b>
-            <div class="quiz" id="quiz">
-              <div class="qz" data-a="k"><p>“Sizning laboratoriyangiz yer osti suvlarini modellashtirish ustida ishlaydi. Men shu mavzuda 6 oylik bitiruv loyihasini bajarganman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Kuchli: aniq laboratoriya, aniq mavzu va oʻzining dalili bor.</div></div>
-              <div class="qz" data-a="z"><p>“Men mehnatsevar, tez oʻrganuvchi va juda motivatsiyali talabaman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Zaif: faqat sifatlar, birorta dalil yoʻq.</div></div>
-              <div class="qz" data-a="z"><p>“Universitetingiz dunyo reytingida yuqori oʻrinda turgani uchun topshiryapman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Zaif: faqat reyting aytilgan; dastur tarkibi va shaxsiy maqsad bilan moslik koʻrsatilmagan.</div></div>
-              <div class="qz" data-a="k"><p>“Soʻrovnoma tahlilini 4 oyda yakunladim va natijani talabalar ilmiy konferensiyasida taqdim qildim.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Kuchli: harakat, muddat va natija bor.</div></div>
-            </div>
+          <div class="panel"><div class="hook">Qabul komissiyasi sizni koʻrmaydi. U faqat hujjatlaringizni oʻqiydi. Demak, hujjatlar siz uchun gapiradi.</div></div>
+          <div class="panel"><p>Koʻp dasturlar shularni soʻraydi:</p>
+<ul><li><strong>CV</strong> (tarjimayi hol): nima oʻqidingiz va nima qildingiz, 1–2 betda.</li>
+<li><strong>Maqsad bayonnomasi</strong> (<em lang="en">Statement of Purpose</em>): nega aynan shu dastur kerakligi haqida xat.</li>
+<li><strong>Tavsiya xati</strong> (<em lang="en">reference</em>): ustozingiz yoki rahbaringiz siz haqingizda yozadi.</li>
+<li><strong>Baholar qaydnomasi</strong> (<em lang="en">transcript</em>): diplomdagi fanlar va baholar.</li>
+<li><strong>Til sertifikati:</strong> masalan, IELTS, agar dastur soʻrasa.</li>
+<li><strong>Ilmiy loyiha taklifi</strong> (<em lang="en">research proposal</em>): faqat soʻralsa.</li></ul>
+<p>Asosiy qoida: <strong>maqtov emas, dalil yozing</strong>. "Men mehnatsevarman" deyish oson. "4 oyda soʻrovnoma qilib, natijani konferensiyada aytib berdim" desangiz, ishonishadi. Komissiya ham odam, u ham qiziq hikoyani yaxshi koʻradi.</p>
+<div class="box warn">Har dasturning roʻyxati boshqa. Roʻyxatni taxmin qilmang, dastur sahifasidan oʻqing.</div>
+<div class="box info"><strong>Manbalar (31.10.2026 da tekshirildi):</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/supporting-documents/supporting-documents-requirements" target="_blank" rel="noopener noreferrer" data-alifbo="off">University of Oxford: hujjatlar</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/supporting-documents/statement" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: maqsad bayonnomasi</a>. <small>Talablar har yili oʻzgarishi mumkin, universitet sahifasidan qayta tekshiring.</small></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Har bir gapingizga bitta dalil.</p></div></div>
+          <div class="panel"><div class="assign"><b>Qaysi jumla kuchli? Bosib koʻring</b>
+            <div class="quiz" id="quiz"><div class="qz" data-a="k"><p>“Sizning laboratoriyangiz yer osti suvlarini modellashtiradi. Men shu mavzuda 6 oylik bitiruv loyihasini qilganman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Kuchli: aniq mavzu va oʻzining ishi bor.</div></div><div class="qz" data-a="z"><p>“Men mehnatsevar, tez oʻrganadigan va juda motivatsiyali talabaman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Zaif: faqat maqtov, birorta dalil yoʻq.</div></div><div class="qz" data-a="z"><p>“Universitetingiz reytingda yuqori boʻlgani uchun topshiryapman.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Zaif: faqat reyting. Nega aynan shu dastur kerakligi aytilmagan.</div></div><div class="qz" data-a="k"><p>“Soʻrovnoma tahlilini 4 oyda tugatdim va natijani talabalar konferensiyasida aytib berdim.”</p><div class="row"><button type="button" data-v="k">💪 Kuchli</button><button type="button" data-v="z">⚠️ Zaif</button></div><div class="why">Kuchli: ish, muddat va natija bor.</div></div></div>
             <div class="verdict" id="quizRes"></div>
-            <ul style="margin-top:14px"><li>Sizda hozir kuchli arizaning qaysi elementlari bor, qaysilari yoʻq?</li><li>Oʻzingizda bor va hali tayyorlanmagan hujjatlarni ikkita roʻyxatga ajrating. Dastur talabi bilan solishtiring.</li></ul>
-            <textarea data-save="a3" placeholder="Tahlilingiz..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oʻqib chiqing, soʻng darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
+            <p style="margin:14px 0 0">Endi oʻzingiz: qaysi hujjatlaringiz bor, qaysilari yoʻq?</p>
+            <textarea data-save="a3" placeholder="Bor: diplom, ...&#10;Yoʻq: tavsiya xati, ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
 
       <!-- 0.4 -->
       <article class="lesson" id="l4" data-lesson="l4">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Tayyorgarligingizni qanday baholaysiz?</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📄 Koʻrsatkich varagʻi</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Pul qayerdan keladi?</span>
+            <span class="l-m"><span class="tag">⏱ 2 daqiqa</span><span class="tag">👛 Sizning pul yoʻlingiz</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Tayyorgarlik koʻrsatkichi hozirgi holatingizni baholash va keyingi ishlarni rejalash uchun moʻljallangan <strong>shaxsiy vosita</strong>. U universitetga qabul qilinish ehtimolini hisoblamaydi.</div></div>
-          <div class="panel"><p>Quyidagi oltita yoʻnalishni 0–100 oraligʻida <strong>oʻzingiz taxminan</strong> baholaysiz. Bu Kompas Labning rejalashtirish vositasi: rasmiy qabul testi ham, ilmiy jihatdan tasdiqlangan prognoz ham emas.</p>
-<div class="tbl"><table><thead><tr><th>Koʻrsatkich</th><th>Tekshiruv savoli</th></tr></thead><tbody>
-<tr><td>Oʻqish yoki tadqiqot yoʻnalishi</td><td>Nega aynan shu soha va dastur sizga kerak?</td></tr>
-<tr><td>Akademik tayyorgarlik</td><td>Diplom va baholaringiz rasmiy talablarga mosmi?</td></tr>
-<tr><td>Til</td><td>Til talabiga erishganmisiz va kerak boʻlsa imtihon sanasi bormi?</td></tr>
-<tr><td>Vaqt</td><td>Hujjat va imtihonlarga ulgurish uchun qancha vaqt qoldi?</td></tr>
-<tr><td>Moliyalashtirish</td><td>Oʻqish va yashash xarajatlarini qoplash rejangiz bormi?</td></tr>
-<tr><td>Hujjatlarning izchilligi</td><td>CV, bayonot va boshqa maʼlumotlar bir-biriga mosmi?</td></tr></tbody></table></div>
-<h4>Majburiy talab va tayyorgarlik balli farqi</h4>
-<p><strong>Muvofiqlik</strong> (<em lang="en">eligibility</em>): rasmiy majburiy talab bajarilganmi? U «mos», «mos emas» yoki «aniqlashtiriladi» tarzida tekshiriladi. <strong>Tayyorgarlik</strong> (<em lang="en">readiness</em>): ishlarni rejalash uchun shaxsiy baho.</p>
-<p>Masalan, IELTS natijangiz 6.0, tanlangan dastur talabi 6.5 boʻlsa, «Til — 60 ball» deb yozish yetarli emas. Natijani oshirish va imtihonni topshirish vaqtini rejalang.</p>
-<div class="box info"><strong>Natijani qanday tushunish kerak?</strong> Oʻrtacha ball va eng past ikkita koʻrsatkich keyingi ishlarni aniqlashga yordam beradi. 45 yoki 70 ballning oʻzi qabul va stipendiya natijasini bildirmaydi.</div>
-<div class="box warn"><strong>Majburiy tekshiruv:</strong> rasmiy qabul shartini bajarmaslikni yuqori oʻrtacha ball bilan qoplab boʻlmaydi. Talablar kursga qarab farq qiladi.</div>
-<div class="box info"><strong>Rasmiy manbalar (31.10.2026 da tekshirildi):</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/supporting-documents/supporting-documents-requirements" target="_blank" rel="noopener noreferrer" data-alifbo="off">University of Oxford: rasmiy hujjatlar talabi</a>. <small>Talablar dastur va qabul yiliga qarab oʻzgarishi mumkin.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Tayyorgarlik koʻrsatkichi shaxsiy rejalashtirishga xizmat qiladi. Qabul ehtimoli hisoblanmaydi, majburiy talablar esa alohida tekshiriladi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: sizning tayyorgarlik koʻrsatkichingiz</b>
-            <ul><li>Pastdagi <a href="#tool-rs">Tayyorgarlik koʻrsatkichi</a> vositasida 6 ta yoʻnalishni halol baholang.</li><li>Ikkita eng past koʻrsatkichni va ularni yaxshilash uchun bittadan aniq ishni yozing.</li><li>Xulosa: “Taxminiy tayyorgarlik ballim [X]. Keyingi vazifalarim: [1], [2]”.</li></ul>
-            <textarea data-save="a4" placeholder="Xulosangiz..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oʻqib chiqing, soʻng darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
+          <div class="panel"><div class="hook">Pul masalasini oxirga qoldirmang. U rejaga boshidan kiradi.<br><small>Choʻntak boʻsh boʻlsa ham, reja toʻla boʻlishi mumkin.</small></div></div>
+          <div class="panel"><p>Odatda pul uch yoʻldan keladi:</p>
+<ol><li><strong>Oila yoki oʻz pulingiz.</strong></li>
+<li><strong>Universitet stipendiyasi yoki chegirmasi.</strong> Universitet saytida <em lang="en">scholarships</em> yoki <em lang="en">funding</em> boʻlimini qidiring.</li>
+<li><strong>Davlat yoki xalqaro stipendiya.</strong> Masalan, Erasmus Mundus, GKS, MEXT.</li></ol>
+<p>Koʻpincha bir nechta yoʻl birga ishlatiladi. Baʼzi stipendiyalar universitetdan oldinroq yopiladi, shuning uchun ularning sanasini ham rejangizga qoʻshing.</p></div>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>Pul yoʻlini bilsangiz, qaysi sanaga qarab ishlashni ham bilasiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizning pul yoʻlingiz qaysi? (bir nechtasini tanlash mumkin)</b>
+            <div class="chips" id="fundChips"><button type="button" class="chip" data-fund="Oila yoki oʻz pulim" aria-pressed="false">👪 Oila yoki oʻz pulim</button><button type="button" class="chip" data-fund="Universitet stipendiyasi" aria-pressed="false">🎓 Universitet stipendiyasi</button><button type="button" class="chip" data-fund="Davlat yoki xalqaro stipendiya" aria-pressed="false">🌍 Davlat yoki xalqaro stipendiya</button><button type="button" class="chip" data-fund="Hali bilmayman" aria-pressed="false">🤔 Hali bilmayman</button></div>
+            <div class="hint" id="fundHint">Hali tanlanmadi</div></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
 
@@ -501,50 +487,40 @@ body.locked .gate{display:flex;}
       <article class="lesson" id="l5" data-lesson="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.5</span><span class="l-t" style="display:block">Magistratura dasturi sizga mosmi? Obunadan oldingi tekshiruv</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📄 Shaxsiy qaror va keyingi qadamlar</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 0.5</span><span class="l-t" style="display:block">Siz toʻgʻri joydamisiz?</span>
+            <span class="l-m"><span class="tag">⏱ 1 daqiqa</span><span class="tag">✅ Tekshiruv</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Obunadan oldin <strong>maqsadingizni, rasmiy qabul talablarini va mavjud vaqtingizni</strong> tekshiring. Keyin har bir tarif qancha muddatga va qaysi modullarga kirish berishini solishtiring.</div></div>
-          <div class="panel"><h4>Qaysi holatlarda avval aniqlashtirish kerak?</h4>
-<p>Oʻzingizga tegishli bandlarni belgilang. Bu roʻyxat sizni rad etmaydi: belgilagan bandlaringizni toʻlovdan oldin tekshirib oling. <strong>Aniq tadqiqot mavzusi boʻlmasligi oʻquv magistraturasiga tayyorlana olmaysiz degani emas.</strong></p>
+          <div class="panel"><div class="hook">Bir daqiqalik tekshiruv. Agar boshqa yoʻl sizga mosroq boʻlsa, buni hozir bilganingiz yaxshi.</div></div>
+          <div class="panel"><p>Sizga tegishli bandlarni belgilang. Bu sizni rad etmaydi, faqat yoʻlni aniqlaydi.</p>
 <div class="checks" id="notFit">
-<label class="ck"><input type="checkbox" data-alt="Bakalavr dasturi" data-href="bachelor-lab.html">Bakalavriatga topshirmoqchisiz</label>
-<label class="ck"><input type="checkbox" data-alt="GKS dasturi" data-href="gks-lab.html">Asosan GKS stipendiyasi uchun tayyorlanyapsiz</label>
-<label class="ck"><input type="checkbox" data-alt="DAAD dasturi" data-href="daad-lab.html">Asosan DAAD dasturiga topshirmoqchisiz</label>
-<label class="ck"><input type="checkbox" data-alt="PhD dasturi" data-href="phd-lab.html">Asosiy maqsadingiz doktoranturaga (PhD) topshirish</label>
-<label class="ck"><input type="checkbox" data-alt="">Magistratura sizga nima uchun kerakligini hali aniqlamagansiz</label>
-<label class="ck"><input type="checkbox" data-alt="">Dastur talablari yoki topshirish muddatini hali tekshirmagansiz</label>
-<label class="ck"><input type="checkbox" data-alt="">Qabul yoki stipendiya kafolati kutyapsiz</label>
+<label class="ck"><input type="checkbox" data-alt="Bakalavr dasturi" data-href="bachelor-lab.html">Men bakalavriatga topshirmoqchiman</label>
+<label class="ck"><input type="checkbox" data-alt="GKS dasturi" data-href="gks-lab.html">Men asosan GKS stipendiyasiga tayyorlanyapman</label>
+<label class="ck"><input type="checkbox" data-alt="DAAD dasturi" data-href="daad-lab.html">Men asosan DAAD dasturiga topshirmoqchiman</label>
+<label class="ck"><input type="checkbox" data-alt="PhD dasturi" data-href="phd-lab.html">Mening maqsadim doktorantura (PhD)</label>
+<label class="ck"><input type="checkbox" data-alt="">Magistratura nega kerakligini hali bilmayman</label>
+<label class="ck"><input type="checkbox" data-alt="">Qabul yoki stipendiya kafolatini kutyapman</label>
 </div>
-<div class="verdict" id="fitRes"></div>
-<h4>Magistratura dasturi obuna rejalari</h4>
-<div class="tbl"><table><thead><tr><th>Tarif</th><th>Narx va kirish huquqi</th></tr></thead><tbody>
-<tr><td>Oylik</td><td><strong><span data-pm>99 000</span> soʻm</strong>: har toʻlov navbatdagi <strong>bitta bosqichni</strong> (2 modul) bir oyga ochadi.</td></tr>
-<tr><td>6 oylik</td><td><strong><span data-p6v>499 000</span> soʻm</strong>: barcha 4 bosqich (M1–M8) darhol ochiladi, 6 oy foydalaniladi.</td></tr>
-<tr><td>M0</td><td><strong>Bepul</strong>: beshta kirish darsi va vositalar.</td></tr></tbody></table></div>
-<div class="box info"><strong>Oylik tarif misoli:</strong> I bosqich (M1–M2) uchun 99 000 soʻm toʻlaysiz. Uni 14 kunda tugatsangiz, II bosqich (M3–M4)ni darhol ochish uchun <strong>yana 99 000 soʻm</strong> toʻlaysiz. Birinchi toʻlov boshqa bosqichlarni qamramaydi.</div>
-<p><strong>Toʻlov Click orqali.</strong> Avtomatik yechish yoʻq. Pul faqat texnik xato boʻlsa qaytariladi (ikki marta yechilgan, 72 soatda kirish ochilmagan yoki summa notoʻgʻri); batafsil <a href="oferta.html">ommaviy ofertada</a>. <a href="master-lab-narxlar.html">Magistratura dasturi narxlari va tariflar taqqoslanishi</a>.</p>
-<div class="box warn"><strong>Natija kafolatlanmaydi:</strong> kurs hujjatlarni oʻrningizga yozmaydi, qabul, stipendiya yoki viza natijasiga kafolat bermaydi.</div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Magistratura dasturi sizga mosligini maqsadingiz, rasmiy talablar, tayyorgarlik va tarifdagi kirish shartlarini solishtirib aniqlang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: sizning qaror bayoningiz</b>
-            <ul><li>Sizga tegishli holatlarni belgilang va aniqlashtirishingiz kerak boʻlgan talablarni yozib oling.</li><li><a href="#tool-dl">Topshirish muddatlari taqvimi</a> vositasida tayyorgarlik uchun kerakli vaqtni taxminan hisoblang.</li><li>Sahifa oxiridagi <a href="#qaror">Shaxsiy qaror</a> boʻlimida keyingi qadamingizni yozing.</li></ul></div></div>
-          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oʻqib chiqing, soʻng darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+<div class="verdict" id="fitRes"></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Hammasi joyida boʻlsa, bitta qadam qoldi: sizning bahongiz va rejangiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Oxirgi qadam</b>
+            <p style="margin:6px 0 0">Yakun sahifasida oʻzingizga 6 ta savol boʻyicha baho berasiz. Keyin rejangiz ochiladi.</p>
+            <p style="margin:10px 0 0"><a class="btn btn-p" href="#tool-rs">Bahoga oʻtish</a></p></div></div>
+          <div class="l-foot"><span class="hint" data-hint>Toʻrtta qismni oching, keyin darsni yakunlang.</span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
     </div>
   </section>
 
   <!-- TOOLS -->
-  <section id="vositalar">
-    <h2>Interaktiv vositalar</h2>
-    <p class="sub">Ikki vosita modul natijasini beradi: tayyorgarlik koʻrsatkichi va shaxsiy kalendar.</p>
+  <section id="vositalar" data-yakun-title="Sizning bahongiz va rejangiz">
+    <h2>Sizning bahongiz</h2>
+    <p class="sub">6 ta savol. Har birini 0 dan 100 gacha suring: 0 hali boshlamadim, 100 tayyorman. Halol baho bering, natija shu qurilmada qoladi.</p>
 
     <div class="tool" id="tool-rs">
-      <div class="tool-h"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Tayyorgarlik koʻrsatkichi</h3><span>6 ta yoʻnalish · +40 XP</span></div></div>
+      <div class="tool-h"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Tayyorgarlik koʻrsatkichi</h3><span>6 ta savol · +40 XP</span></div></div>
       <div class="rs">
         <div id="sliders"></div>
         <div>
@@ -552,29 +528,18 @@ body.locked .gate{display:flex;}
           <div class="score"><b id="rsAvg">50</b><span>/ 100 oʻrtacha</span></div>
         </div>
       </div>
-      <button class="btn btn-p" type="button" id="rsBtn" style="margin-top:8px">Natijani saqlash</button>
+      <button class="btn btn-p" type="button" id="rsBtn" style="margin-top:8px">Bahoni koʻrish</button>
       <div class="res" id="rsRes"></div>
-    </div>
-
-    <div class="tool" id="tool-dl">
-      <div class="tool-h"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Topshirish muddatlari taqvimi</h3><span>Topshirish muddatidan orqaga hisoblash · +30 XP</span></div></div>
-      <div class="dl-in">
-        <div><label for="dlDate">Rasmiy topshirish sanasi</label><input type="date" id="dlDate"></div>
-        <div><label for="dlW">Tayyorgarlik uchun hafta</label><input type="number" id="dlW" value="18" min="4" max="60" inputmode="numeric"></div>
-      </div>
-      <div class="hint">Taqvim shaxsiy va taxminiy rejadir. Universitet, stipendiya va imtihon muddatlarini tegishli rasmiy sahifalardan tekshiring.</div>
-      <button class="btn btn-p" type="button" id="dlBtn" style="margin-top:12px">Orqaga sanash</button>
-      <div class="res" id="dlRes"></div>
     </div>
   </section>
 
   <!-- BADGES -->
   <section id="nishonlar">
     <h2>Nishonlar</h2>
-    <p class="sub">Bosqichlarni bajarib nishonlar olasiz. 250 XP: bepul modul yakunlandi.</p>
+    <p class="sub">Har qadam uchun nishon. 250 XP yigʻsangiz, M0 tugadi.</p>
     <div class="badges">
       <div class="bdg" data-badge="l1"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Kuzatuvchi<small>0.1 yakunlandi</small></div>
-      <div class="bdg" data-badge="sys"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Xaritachi<small>2–3 tizim tanlandi</small></div>
+      <div class="bdg" data-badge="sys"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Xaritachi<small>Mamlakat tanlandi</small></div>
       <div class="bdg" data-badge="quiz"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Tahlilchi<small>Test 3+/4</small></div>
       <div class="bdg" data-badge="rs"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">Oʻz bahom<small>Koʻrsatkich</small></div>
       <div class="bdg" data-badge="dl"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy">Reja tuzuvchi<small>Taqvim</small></div>
@@ -585,27 +550,34 @@ body.locked .gate{display:flex;}
   <!-- DECISION -->
   <section id="qaror">
     <div class="decide">
-      <h2>Sizning qaroringiz va keyingi qadamlaringiz</h2>
-      <p class="sub">Tayyorgarlik va taqvim maʼlumotlari asosida tuziladi. Bu universitetning rasmiy bahosi emas. Natijani oʻzingiz uchun saqlang.</p>
+      <h2>Sizning rejangiz</h2>
+      <p class="sub">Javoblaringizdan yigʻildi. Ikkita bandni belgilab tasdiqlang, rejangiz ochiladi.</p>
       <div class="stmt" id="stmt"></div>
-      <label class="ck"><input type="checkbox" id="cons1">M0 bepul. Pullik modullar obuna bilan ochiladi; shartlar narxlar sahifasi va ommaviy ofertada.</label>
-      <label class="ck" style="margin-top:8px"><input type="checkbox" id="cons2">Kompas hujjatni oʻrnimga yozmasligini va qabul yoki stipendiya kafolatlanmasligini tushunaman.</label>
+      <label class="ck"><input type="checkbox" id="cons1"><span>M0 bepul. Keyingi bosqichlar pullik, shartlari <a href="oferta.html" style="color:inherit;text-decoration:underline">ommaviy ofertada</a>.</span></label>
+      <label class="ck" style="margin-top:8px"><input type="checkbox" id="cons2">Hujjatlarni oʻzim yozaman. Kompas qabul yoki stipendiyani kafolatlamaydi.</label>
       <div class="missing" id="missing"></div>
       <div class="row">
-        <button class="btn btn-p" type="button" id="decBtn">Qarorni tasdiqlash · +50 XP</button>
+        <button class="btn btn-p" type="button" id="decBtn">Tasdiqlash va rejani ochish · +50 XP</button>
         <button class="btn btn-g" type="button" id="copyBtn">📋 Nusxalash</button>
-        <a class="btn btn-g" href="master-planner.html?lab=master">Bepul reja tuzish</a>
       </div>
-    </div>
-  </section>
 
-  <!-- MENTOR -->
-  <section>
-    <div class="mentor">
-      <div class="av"><img src="img/3d/compass.webp" alt="" width="30" height="30"></div>
-      <div>
-        <q>Men stipendiya tanlovidan birinchi urinishda emas, ikkinchisida oʻtdim. Birinchi safar shoshildim: hujjatlarni yigʻdim, lekin izchil hikoyam yoʻq edi. Magistratura dasturi shu xatoni takrorlamasligingiz uchun: avval imkoniyatlaringizni baholang, keyin qaror qiling.</q>
-        <small>Asoschi · geofizik, University of Leeds doktoranti</small>
+      <div class="kp-plan" id="klPlan" hidden>
+        <h3>Sizning 4 bosqichingiz</h3>
+        <p class="kp-span" id="kpSpan"></p>
+        <ol class="kp-list"><li class="kp-ph kp-open" data-ph="0"><span class="kp-n">I</span><span class="kp-b"><b>Dasturlar va sanalar</b><small data-phd="0"></small><span class="kp-o">Sizga mos 6–10 ta dastur roʻyxati va haftalik reja</span></span><span class="kp-m">M1–M2</span></li><li class="kp-ph" data-ph="1"><span class="kp-n">II</span><span class="kp-b"><b>CV va tavsiya xatlari</b><small data-phd="1"></small><span class="kp-o">🔒 Akademik CV va tavsiya beruvchilar bilan ish</span></span><span class="kp-m">M3–M4</span></li><li class="kp-ph" data-ph="2"><span class="kp-n">III</span><span class="kp-b"><b>Maqsad bayonnomasi</b><small data-phd="2"></small><span class="kp-o">🔒 Maqsad bayonnomasi va kerak boʻlsa ilmiy loyiha taklifi</span></span><span class="kp-m">M5–M6</span></li><li class="kp-ph" data-ph="3"><span class="kp-n">IV</span><span class="kp-b"><b>Stipendiya va joʻnash</b><small data-phd="3"></small><span class="kp-o">🔒 Uchta stipendiya, intervyu mashqi va joʻnash roʻyxati</span></span><span class="kp-m">M7–M8</span></li></ol>
+        <p class="kp-why" id="kpWhy"></p>
+        <div class="row kp-cta">
+          <a class="btn btn-p" href="tolov.html?lab=master-lab&amp;plan=monthly" data-snd="nav">I bosqichni boshlash</a>
+          <a class="btn btn-g" href="tolov.html?lab=master-lab&amp;plan=6m" data-snd="nav">Toʻliq dastur</a>
+        </div>
+        <p class="hint"><span data-pm>99 000</span> soʻm / 1 ta bosqich yoki <span data-p6v>499 000</span> soʻm / toʻliq dastur. <a href="master-lab-narxlar.html">Narxlar va shartlar</a></p>
+        <div class="mentor" style="margin-top:16px">
+          <div class="av"><img src="img/3d/compass.webp" alt="" width="30" height="30"></div>
+          <div>
+            <q>Men stipendiyani birinchi urinishda emas, ikkinchisida yutganman. Birinchi safar shoshildim: hujjatlar bor edi, lekin ular bitta hikoyaga ulanmagan edi. Shu reja oʻsha xatoni qaytarmaslik uchun.</q>
+            <small>Asoschi · geofizik, University of Leeds doktoranti</small>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -614,9 +586,9 @@ body.locked .gate{display:flex;}
   <section>
     <h2>Modul haqida</h2>
     <div class="pass">
-      <div><b>Darslar</b>5 ta, bepul</div>
-      <div><b>Vaqt</b>~2,5 soat</div>
-      <div><b>Natija</b>Koʻrsatkich + kalendar + shaxsiy qaror bayoni</div>
+      <div><b>Qadamlar</b>5 ta, bepul</div>
+      <div><b>Vaqt</b>~12 daqiqa</div>
+      <div><b>Natija</b>Baho va 4 bosqichli reja</div>
     </div>
   </section>
 </div>
@@ -665,7 +637,7 @@ body.locked .gate{display:flex;}
 (function () {
   var KEY = "kompas_master_m0_v1";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var S = { xp: 0, done: {}, seen: {}, notes: {}, sys: [], quiz: {}, rs: null, dl: null, dec: false, open: "l1" };
+  var S = { xp: 0, done: {}, seen: {}, notes: {}, sys: [], fund: [], quiz: {}, rs: null, dl: null, dec: false, open: "l1" };
   try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
   function nf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
@@ -733,8 +705,8 @@ body.locked .gate{display:flex;}
     l.querySelectorAll(".tab").forEach(function (t, i) { t.classList.toggle("v", seen.indexOf(i) >= 0); });
     l.classList.toggle("done", !!S.done[id]);
     var b = l.querySelector("[data-complete]"), h = l.querySelector("[data-hint]");
-    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Dars yakunlandi. Keyingi darsga oʻting."; }
-    else { h.textContent = seen.length < 4 ? "Oʻqilgan qismlar: " + seen.length + " / 4" : "Hammasi oʻqildi. Darsni yakunlang!"; }
+    if (S.done[id]) { b.disabled = true; b.textContent = "✓ Yakunlangan"; h.textContent = "Tayyor. Keyingi qadamga oʻting."; }
+    else { h.textContent = seen.length < 4 ? "Ochilgan qismlar: " + seen.length + " / 4" : "Hammasi ochildi. Darsni yakunlang!"; }
   }
   document.querySelectorAll("[data-complete]").forEach(function (b) {
     b.addEventListener("click", function () {
@@ -743,7 +715,7 @@ body.locked .gate{display:flex;}
       var n = id.slice(1);
       award(id, 20, "Dars 0." + n + " yakunlandi", "seedling");
       var next = $("l" + (+n + 1));
-      setTimeout(function () { if (next) openLesson(next.id, true); else $("tool-rs").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
+      setTimeout(function () { if (next) openLesson(next.id, true); else if ($("tool-rs")) $("tool-rs").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }, 700);
     });
   });
   if (S.open && $(S.open)) openLesson(S.open, false);
@@ -758,7 +730,7 @@ body.locked .gate{display:flex;}
   var chips = document.querySelectorAll("#sysChips .chip");
   function renderSys() {
     chips.forEach(function (c) { c.setAttribute("aria-pressed", S.sys.indexOf(c.getAttribute("data-sys")) >= 0 ? "true" : "false"); });
-    $("sysHint").textContent = S.sys.length + " ta tanlandi" + (S.sys.length > 3 ? ": koʻpi bilan 3 ta tavsiya etiladi" : "");
+    $("sysHint").textContent = S.sys.length ? S.sys.length + " ta tanlandi" : "Hali tanlanmadi";
   }
   chips.forEach(function (c) {
     c.addEventListener("click", function () {
@@ -766,6 +738,21 @@ body.locked .gate{display:flex;}
       if (i >= 0) S.sys.splice(i, 1); else if (S.sys.length < 3) S.sys.push(v); else { toast("Koʻpi bilan 3 ta tizim", "telescope"); return; }
       save(); renderSys(); renderStmt();
       if (S.sys.length >= 1) award("sys", 0, "Xaritachi nishoni", "telescope");
+    });
+  });
+
+  // ── 0.4: pul yoʻli ──
+  if (!S.fund) S.fund = [];
+  var fchips = document.querySelectorAll("#fundChips .chip");
+  function renderFund() {
+    fchips.forEach(function (c) { c.setAttribute("aria-pressed", S.fund.indexOf(c.getAttribute("data-fund")) >= 0 ? "true" : "false"); });
+    var h = $("fundHint"); if (h) h.textContent = S.fund.length ? "Tanlandi: " + S.fund.join(", ") : "Hali tanlanmadi";
+  }
+  fchips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var v = c.getAttribute("data-fund"), i = S.fund.indexOf(v);
+      if (i >= 0) S.fund.splice(i, 1); else S.fund.push(v);
+      save(); renderFund(); renderStmt();
     });
   });
 
@@ -784,7 +771,7 @@ body.locked .gate{display:flex;}
       });
     });
     var r = $("quizRes");
-    if (answered === qz.length) { r.className = "verdict show " + (right >= 3 ? "box info" : "box warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Kuchli va zaif arizani ajrata olasiz." : "Asosiy qismni yana bir koʻrib chiqing."); }
+    if (answered === qz.length) { r.className = "verdict show " + (right >= 3 ? "box info" : "box warn"); r.textContent = "Natija: " + right + " / " + qz.length + ". " + (right >= 3 ? "Zoʻr, kuchli jumlani darrov taniysiz." : "Yomon emas. Asosiy qismga yana bir qarab oling."); }
     return { answered: answered, right: right };
   }
   qz.forEach(function (q, i) {
@@ -807,15 +794,22 @@ body.locked .gate{display:flex;}
       if (x.checked) { var a = x.getAttribute("data-alt"); if (a) alts.push('<a href="' + x.getAttribute("data-href") + '">' + a + "</a>"); else other++; }
     });
     var r = $("fitRes");
-    if (!alts.length && !other) { r.className = "verdict show box info"; r.innerHTML = "Belgilangan toʻsiq yoʻq. Magistratura dasturi sizga mosligini rasmiy talablar va tayyorgarlik rejangiz bilan tekshiring."; }
-    else { r.className = "verdict show box warn"; r.innerHTML = (alts.length ? "Sizga mosroq: " + alts.join(", ") + ". " : "") + (other ? "Belgilangan bandlarga qarab boshqa dastur, rasmiy talab yoki tayyorgarlik rejasini aniqlashtiring." : ""); }
+    if (!alts.length && !other) { r.className = "verdict show box info"; r.innerHTML = "Hech narsa belgilanmadi. Demak, siz toʻgʻri joydasiz."; }
+    else { r.className = "verdict show box warn"; r.innerHTML = (alts.length ? "Sizga mosroq yoʻl: " + alts.join(", ") + ". " : "") + (other ? "Bu bandlar toʻsiq emas. Lekin topshirishdan oldin ularni aniqlab oling: kafolat hech kim bera olmaydi, maqsad esa M1 da aniqlanadi." : ""); }
     renderStmt();
   }
   fit.forEach(function (x) { x.addEventListener("change", renderFit); });
 
   // ── Tayyorgarlik koʻrsatkichi ──
-  var DIMS = [["Oʻqish yoʻnalishi", "Qaysi magistratura yoʻnalishiga qiziqasiz?"], ["Akademik tayyorgarlik", "Diplom va tajriba talabga mosligi"], ["Til", "Darajangiz talabga yaqinligi"], ["Vaqt", "Deadlineʼgacha vaqt yetarliligi"], ["Moliyalashtirish", "Moliyaviy modelni tushunish"], ["Hujjatlar", "Hujjatlar maʼlumotlarining oʻzaro mosligi"]];
-  var vals = (S.rs && S.rs.vals) || [50, 50, 50, 50, 50, 50];
+  var DIMS = [["Yoʻnalish", "Nimani oʻqishni bilasizmi?"], ["Diplom va baholar", "Dastur talabiga mosmi?"], ["Til", "Kerakli ballga yaqinmisiz?"], ["Vaqt", "Sanagacha ulgurasizmi?"], ["Pul", "Pul yoʻlini bilasizmi?"], ["Hujjatlar", "Qanchasi tayyor?"]];
+  // Boshlangʻich qiymat oldingi javoblardan (vaqt va pul), qolgani 50
+  function guess() {
+    var v = [50, 50, 50, 50, 50, 50];
+    if (S.dl && S.dl.verdict) v[3] = S.dl.verdict === "yetarli" ? 70 : S.dl.verdict === "tigʻiz" ? 45 : 20;
+    if (S.fund && S.fund.length) v[4] = S.fund.indexOf("Hali bilmayman") >= 0 ? 25 : S.fund.indexOf("Oila yoki oʻz pulim") >= 0 ? 60 : 45;
+    return v;
+  }
+  var vals = (S.rs && S.rs.vals) || guess();
   $("sliders").innerHTML = DIMS.map(function (d, i) {
     return '<div class="sl"><label for="r' + i + '"><span>' + d[0] + "<small>" + d[1] + '</small></span><output id="o' + i + '">' + vals[i] + '</output></label><input type="range" id="r' + i + '" min="0" max="100" step="5" value="' + vals[i] + '"></div>';
   }).join("");
@@ -837,18 +831,19 @@ body.locked .gate{display:flex;}
   DIMS.forEach(function (_, i) {
     $("r" + i).addEventListener("input", function (e) { vals[i] = +e.target.value; $("o" + i).textContent = vals[i]; drawRadar(); });
   });
+  function rsLevel(a) { return a >= 70 ? "Topshirishga yaqin" : a >= 45 ? "Yarim yoʻlda" : "Yoʻl boshida"; }
   function rsVerdict(a) {
-    return "Bu shaxsiy baholash, qabul ehtimoli emas. Eng past ikki yoʻnalishni yaxshilash rejasini tuzing va majburiy talablarni universitet sahifasidan tekshiring.";
+    return "Bu sizning oʻz bahongiz, qabul ehtimoli emas. Universitet talablari alohida tekshiriladi.";
   }
   function renderRs() {
     if (!S.rs) return;
     var s = sorted(), r = $("rsRes");
     r.className = "res show";
-    r.innerHTML = "<b>Taxminiy koʻrsatkich: " + S.rs.avg + " / 100.</b> Yaxshilash kerak boʻlgan ikki yoʻnalish: <b>" + DIMS[S.rs.low[0]][0] + "</b> va <b>" + DIMS[S.rs.low[1]][0] + "</b>.<br>" + rsVerdict(S.rs.avg);
+    r.innerHTML = "<b>Sizning bahongiz: " + S.rs.avg + " / 100. Holat: " + rsLevel(S.rs.avg) + ".</b><br>Eng koʻp ish talab qiladigan joylar: <b>" + DIMS[S.rs.low[0]][0] + "</b> va <b>" + DIMS[S.rs.low[1]][0] + "</b>.<br><small>" + rsVerdict(S.rs.avg) + "</small><br><a class=\"btn btn-p\" href=\"#qaror\" style=\"margin-top:10px\">Rejamni koʻrish</a>";
   }
   $("rsBtn").addEventListener("click", function () {
     var s = sorted(); S.rs = { vals: vals.slice(), avg: avg(), low: [s[0].i, s[1].i] }; save(); renderRs(); renderStmt();
-    award("rs", 40, "Oʻz bahom nishoni", "chart");
+    award("rs", 40, "Bahongiz tayyor", "chart");
   });
   drawRadar();
 
@@ -860,49 +855,68 @@ body.locked .gate{display:flex;}
     var dead = new Date(S.dl.date + "T00:00:00"), target = new Date(dead.getTime() - 28 * DAY), start = new Date(target.getTime() - S.dl.weeks * 7 * DAY);
     var today = new Date(); today.setHours(0, 0, 0, 0);
     var left = Math.round((start - today) / DAY);
-    var v = left > 14 ? ["Vaqtingiz yetarli.", "green"] : left >= 0 ? ["Vaqtingiz tigʻiz: darhol boshlang.", "gold"] : ["Siz tanlagan tayyorgarlik haftalari yetmayapti. Vazifalar va rasmiy muddatni qayta tekshiring.", "red"];
+    var v = left > 14 ? ["Vaqtingiz bor. Shoshmasdan, lekin toʻxtamasdan.", "green"] : left >= 0 ? ["Vaqt tigʻiz: shu hafta boshlang.", "gold"] : ["Vaqt yetmayapti. Haftalarni kamaytiring yoki keyingi yilgi qabulni koʻrib chiqing.", "red"];
     var t0 = Math.min(today.getTime(), start.getTime()), span = dead.getTime() - t0 || 1;
     function x(d) { return Math.max(0, Math.min(100, (d - t0) / span * 100)); }
     var r = $("dlRes"); r.className = "res show";
     r.innerHTML = '<div class="tline"><div class="bar"><span class="seg" style="left:' + x(start) + "%;width:" + (x(target) - x(start)) + '%;background:#2d4a3e"></span><span class="seg" style="left:' + x(target) + "%;width:" + (100 - x(target)) + '%;background:#d9a441"></span></div>' +
       '<span class="mk" style="left:' + x(today) + '%"><i style="background:#c4622d"></i><span>Bugun</span></span>' +
-      '<span class="mk" style="left:' + x(dead) + '%;transform:translateX(-100%)"><i style="background:#b42318;margin-left:auto;margin-right:0"></i><span>Deadline</span></span></div>' +
+      '<span class="mk" style="left:' + x(dead) + '%;transform:translateX(-100%)"><i style="background:#b42318;margin-left:auto;margin-right:0"></i><span>Topshirish</span></span></div>' +
       '<div class="legend"><span><i style="background:#2d4a3e"></i>Tayyorgarlik (' + S.dl.weeks + ' hafta)</span><span><i style="background:#d9a441"></i>Zaxira (4 hafta)</span></div>' +
-      '<p style="margin-top:10px">Boshlash kerak boʻlgan sana: <b>' + fmt(start) + "</b>. Hujjatlar tayyor boʻlishi kerak: <b>" + fmt(target) + "</b>. Rasmiy deadline: <b>" + fmt(dead) + '</b>.</p><p style="margin-top:6px;font-weight:800;color:var(--' + v[1] + ')">' + v[0] + "</p>";
+      '<p style="margin-top:10px">Topshirishgacha: <b>' + Math.max(0, Math.round((dead - today) / DAY / 7)) + " hafta</b>. Boshlash: <b>" + fmt(start) + "</b>. Hammasi tayyor boʻlsin: <b>" + fmt(target) + "</b>. Topshirish: <b>" + fmt(dead) + '</b>.</p><p style="margin-top:6px;font-weight:800;color:var(--' + v[1] + ')">' + v[0] + "</p>";
     S.dl.verdict = left > 14 ? "yetarli" : left >= 0 ? "tigʻiz" : "yetarli emas";
   }
   if (S.dl) { $("dlDate").value = S.dl.date; $("dlW").value = S.dl.weeks; }
   $("dlBtn").addEventListener("click", function () {
     var d = $("dlDate").value, w = Math.max(4, Math.min(60, parseInt($("dlW").value, 10) || 18));
-    if (!d) { toast("Deadline sanasini kiriting", "calendar"); $("dlDate").focus(); return; }
+    if (!d) { toast("Topshirish sanasini kiriting", "calendar"); $("dlDate").focus(); return; }
     S.dl = { date: d, weeks: w }; renderDl(); save(); renderStmt();
     award("dl", 30, "Reja tuzuvchi nishoni", "hourglass");
   });
 
-  // ── Shaxsiy qaror va keyingi qadamlar ──
+  // ── Shaxsiy reja (2026-11-19): tasdiqlangach 4 bosqich sanalari bilan ochiladi ──
+  var PHASE_OF = [0, 0, 0, 0, 3, 1]; // eng zaif joy qaysi bosqichda ishlanadi
+  var PH_NAME = ["I bosqich (dasturlar va sanalar)", "II bosqich (CV va tavsiya xatlari)", "III bosqich (maqsad bayonnomasi)", "IV bosqich (stipendiya)"];
   function renderStmt() {
     var parts = [], miss = [];
-    if (S.rs) parts.push("Tayyorgarlik koʻrsatkichim <b>" + S.rs.avg + "/100</b>, eng zaif tomonlarim: <b>" + DIMS[S.rs.low[0]][0].toLowerCase() + "</b> va <b>" + DIMS[S.rs.low[1]][0].toLowerCase() + "</b>.");
-    else miss.push("Tayyorgarlik koʻrsatkichi");
-    if (S.dl && S.dl.verdict) parts.push("Soʻnggi muddat (Deadline) gacha vaqtim <b>" + (S.dl.verdict === "siqiq" ? "tigʻiz" : S.dl.verdict) + "</b>.");
-    else miss.push("Topshirish muddatlari taqvimi");
-    if (S.sys.length) parts.push("Maqsadli tizimlarim: <b>" + S.sys.join(", ") + "</b>.");
-    else miss.push("0.2 da tizim tanlash");
-    var notFit = Array.prototype.some.call(fit, function (x) { return x.checked; });
-    if (S.rs && S.dl) parts.push("Keyingi qadamim: <b>tanlangan dasturlar talabini tekshirish, muddatlarni aniqlashtirish va tayyorgarlik rejamni yangilash</b>. Bu vosita qabul ehtimolini aniqlamaydi.");
-    $("stmt").innerHTML = parts.length ? parts.join(" ") : "Bayonot shu yerda paydo boʻladi. Darslar va vositalarni toʻldiring.";
-    $("missing").textContent = miss.length ? "Yetishmayapti: " + miss.join(", ") + "." : "";
+    if (S.dl && S.dl.date) { var wk = Math.max(0, Math.round((new Date(S.dl.date + "T00:00:00") - new Date()) / DAY / 7)); parts.push("Topshirishgacha <b>" + wk + " hafta</b> bor."); }
+    else miss.push('<a href="' + "master-lab-m0-1.html" + '">0.1 da sana</a>');
+    if (S.sys.length) parts.push("Mamlakat: <b>" + S.sys.join(", ") + "</b>.");
+    else miss.push('<a href="master-lab-m0-2.html">0.2 da mamlakat</a>');
+    if (S.fund && S.fund.length) parts.push("Pul yoʻli: <b>" + S.fund.join(", ").toLowerCase() + "</b>.");
+    if (S.rs) parts.push("Bahongiz: <b>" + S.rs.avg + "/100 (" + rsLevel(S.rs.avg).toLowerCase() + ")</b>. Eng koʻp ish talab qiladigan joylar: <b>" + DIMS[S.rs.low[0]][0].toLowerCase() + "</b> va <b>" + DIMS[S.rs.low[1]][0].toLowerCase() + "</b>.");
+    else miss.push('<a href="#tool-rs">baho</a>');
+    $("stmt").innerHTML = parts.length ? parts.join(" ") : "Bu yerda sizning javoblaringiz chiqadi.";
+    $("missing").innerHTML = miss.length ? "Yetishmayapti: " + miss.join(", ") + "." : "";
     $("decBtn").disabled = !!S.done.dec;
-    if (S.done.dec) $("decBtn").textContent = "✓ Qaror tasdiqlangan";
+    if (S.done.dec) $("decBtn").textContent = "✓ Tasdiqlangan";
+    renderPlan();
+  }
+  function renderPlan() {
+    var box = $("klPlan"); if (!box) return;
+    box.hidden = !S.done.dec; if (!S.done.dec) return;
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var end = S.dl && S.dl.date ? new Date(new Date(S.dl.date + "T00:00:00").getTime() - 28 * DAY) : null;
+    if (end && end > today) {
+      var step = (end - today) / 4;
+      for (var k = 0; k < 4; k++) { var el = document.querySelector('[data-phd="' + k + '"]'); if (el) el.textContent = fmt(new Date(today.getTime() + step * k)) + " – " + fmt(new Date(today.getTime() + step * (k + 1))); }
+      $("kpSpan").textContent = "Hammasi tayyor boʻlishi kerak sana: " + fmt(end) + ". Har bosqichga taxminan " + Math.max(1, Math.round(step / DAY / 7)) + " hafta.";
+    } else {
+      $("kpSpan").textContent = "Sanalar sizning surʼatingizga qarab qoʻyiladi.";
+    }
+    var why = "Sizga I bosqich mos, chunki hamma ish shu yerdan boshlanadi: avval qaysi dasturga va qachon topshirishni aniqlaysiz.";
+    if (S.rs) { var w = S.rs.low[0], p = PHASE_OF[w]; why += p === 0 ? " Eng zaif joyingiz (" + DIMS[w][0].toLowerCase() + ") ham shu bosqichda ishlanadi." : " Eng zaif joyingiz (" + DIMS[w][0].toLowerCase() + ") keyinroq ishlanadi: " + PH_NAME[p] + "."; }
+    $("kpWhy").textContent = why;
   }
   $("decBtn").addEventListener("click", function () {
-    if (!S.rs || !S.dl) { toast("Avval koʻrsatkich va kalendarni toʻldiring", "lock"); return; }
+    if (!S.rs) { toast("Avval bahoni saqlang", "lock"); return; }
     if (!$("cons1").checked || !$("cons2").checked) { toast("Ikkala bandni ham belgilang", "shield"); return; }
-    award("dec", 50, "Qaror qabul qildi nishoni", "seedling"); confetti(); renderStmt();
+    award("dec", 50, "Rejangiz tayyor", "seedling"); confetti(); renderStmt();
+    setTimeout(function () { var b = $("klPlan"); if (b) b.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }, 400);
   });
   $("copyBtn").addEventListener("click", function () {
-    var txt = $("stmt").innerText;
-    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Bayonot nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); });
+    var txt = $("stmt").innerText + (S.done.dec ? "\n" + $("kpSpan").innerText + "\n" + $("kpWhy").innerText : "");
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); });
     else prompt("Nusxalang:", txt);
   });
 
@@ -929,13 +943,13 @@ body.locked .gate{display:flex;}
     }).catch(function () {});
   } catch (e) {}
 
-  renderSys(); renderQuiz(); renderFit(); renderRs(); renderDl(); renderStmt(); renderAll(); renderXp(false);
+  renderSys(); renderFund(); renderQuiz(); renderFit(); renderRs(); renderDl(); renderStmt(); renderAll(); renderXp(false);
 })();
 </script>
 <style>.kp-wm{position:fixed;inset:0;z-index:350;pointer-events:none;background-repeat:repeat;opacity:.06}@media print{.kp-wm{display:none!important}}</style>
 <script>(function(){function m(){if(document.querySelector(".kp-wm"))return;var c=document.createElement("canvas"),w=280,h=170,g=c.getContext&&c.getContext("2d");if(!g)return;c.width=w;c.height=h;g.translate(w/2,h/2);g.rotate(-0.4);g.fillStyle="#000";g.font="500 13px Outfit,system-ui,sans-serif";g.textAlign="center";g.fillText("kompaslab.uz",0,0);var d=document.createElement("div");d.className="kp-wm";d.setAttribute("aria-hidden","true");d.style.backgroundImage="url("+c.toDataURL()+")";document.body.appendChild(d);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",m);else m();})();</script>
 <script src="js/suggest.js" defer></script>
-<script>window.KMOD={"base": "master-lab-m0", "key": "kompas_master_m0_v1", "lab": "master-lab.html", "labName": "Magistratura dasturi", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "Magistratura dasturi qanday ishlaydi?", "short": "Tizim", "meta": "⏱ 25 daqiqa, 📄 “Nega magistratura” bayonoti"}, {"id": "l2", "num": "0.2", "title": "Magistratura turlari va oʻqish imkoniyatlari", "short": "Davlatlar", "meta": "⏱ 35 daqiqa, 📄 2–3 maqsadli tizim"}, {"id": "l3", "num": "0.3", "title": "Magistraturaga arizada qanday hujjatlar kerak?", "short": "Ariza", "meta": "⏱ 30 daqiqa, 🎯 Qisqa test"}, {"id": "l4", "num": "0.4", "title": "Tayyorgarligingizni qanday baholaysiz?", "short": "Baholash", "meta": "⏱ 30 daqiqa, 📄 Koʻrsatkich varagʻi"}, {"id": "l5", "num": "0.5", "title": "Magistratura dasturi sizga mosmi? Obunadan oldingi tekshiruv", "short": "Mos emas", "meta": "⏱ 30 daqiqa, 📄 Shaxsiy qaror va keyingi qadamlar"}], "yakunMeta": "Tayyorgarlik koʻrsatkichi, Topshirish muddatlari taqvimi, nishonlar, qaror va rozilik"};</script>
+<script>window.KMOD={"base": "master-lab-m0", "key": "kompas_master_m0_v1", "lab": "master-lab.html", "labName": "Magistratura dasturi", "mod": "M0", "lessons": [{"id": "l1", "num": "0.1", "title": "Qachon topshirasiz?", "short": "Muddat", "meta": "⏱ 2 daqiqa, 📅 Sizning sanangiz"}, {"id": "l2", "num": "0.2", "title": "Qayerda va qanday oʻqiysiz?", "short": "Yoʻnalish", "meta": "⏱ 3 daqiqa, 🌍 1–3 mamlakat"}, {"id": "l3", "num": "0.3", "title": "Hujjatlaringiz qay holatda?", "short": "Hujjat", "meta": "⏱ 3 daqiqa, 🎯 Oʻyin: kuchli yoki zaif"}, {"id": "l4", "num": "0.4", "title": "Pul qayerdan keladi?", "short": "Pul", "meta": "⏱ 2 daqiqa, 👛 Sizning pul yoʻlingiz"}, {"id": "l5", "num": "0.5", "title": "Siz toʻgʻri joydamisiz?", "short": "Tekshiruv", "meta": "⏱ 1 daqiqa, ✅ Tekshiruv"}], "yakunMeta": "Topshirish muddatlari taqvimi, Tayyorgarlik koʻrsatkichi, nishonlar, qaror va rozilik"};</script>
 <script src="js/kompas-module.js"></script>
 </body>
 </html>

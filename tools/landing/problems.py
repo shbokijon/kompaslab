@@ -16,13 +16,13 @@ PROBLEMS = {
     ("money", "Xarajat nomaʼlum", "Toʻrt yil qancha turishini oila hali hisoblamagan.", "Toʻrt yillik hisob", "Oʻqish va yashash xarajatini, universitet yordami imkonini oldindan hisoblaysiz."),
   ]),
 "master-lab": dict(
-  h1=h("Magistraturaga topshirmoqchisiz.", "Qaysi dastur va qanday hujjat kerakligi noaniq."),
-  lead="Universitet va stipendiyani dalil bilan tanlaysiz, hujjatlarni oʻzingiz yozasiz.",
+  h1=h("Magistraturaga topshirmoqchisiz.", "Lekin qaysi dastur va qaysi hujjat kerakligi hali noaniq."),
+  lead="Bepul M0 da 12 daqiqada qancha vaqtingiz qolganini va qayerdan boshlashni bilib olasiz. Hujjatlarni oʻzingiz yozasiz, biz yoʻl koʻrsatamiz.",
   probs=[
-    ("telescope", "Qaysi dastur sizga mos", "Dasturlar koʻp, nomlari bir-biriga oʻxshaydi.", "Tekshirilgan roʻyxat", "Ilmiy yoʻnalishingizni aniqlab, 6–10 dasturni rasmiy talablari bilan saralaysiz."),
-    ("calendar", "Tavsiya xati kech qoladi", "Tavsiya beruvchiga vaqt kerak, muddat esa har dasturda boshqa.", "Shaxsiy reja", "Reja rasmiy muddatdan orqaga hisoblanadi, tavsiyani qachon soʻrash oldindan koʻrinadi."),
-    ("memo", "CV va maqsad bayonnomasi", "Internetdagi namunalar sizning holatingizga toʻgʻri kelmaydi.", "Tuzilma va mezon", "Matnni oʻzingiz yozasiz va baholash mezoni bilan tekshirasiz. Tayyor matn berilmaydi."),
-    ("money", "Stipendiyasiz oʻqib boʻlmaydi", "Qaysi stipendiyaga mos kelishingiz va qachon topshirish nomaʼlum.", "Uchta stipendiya", "Muvofiqligi va muddati tekshirilgan uchta stipendiyani tanlab, portfel tuzasiz."),
+    ("telescope", "Qaysi dastur sizga mos?", "Dasturlar juda koʻp, nomlari bir-biriga oʻxshaydi.", "Qisqa roʻyxat", "Sizga mos 6–10 ta dasturni rasmiy talablari bilan tanlaysiz."),
+    ("calendar", "Tavsiya xati kech qoladi", "Ustozingizga vaqt kerak, muddat esa yaqinlashib kelyapti.", "Orqaga reja", "Reja topshirish sanasidan orqaga tuziladi. Kimga qachon yozishni oldindan bilasiz."),
+    ("memo", "Hujjatni nimadan boshlashni bilmaysiz", "Internetdagi namunalar sizning hayotingizga toʻgʻri kelmaydi.", "Tuzilma va mezon", "Matnni oʻzingiz yozasiz va mezon bilan tekshirasiz. Tayyor matn bermaymiz."),
+    ("money", "Stipendiyasiz oʻqib boʻlmaydi", "Qaysi stipendiyaga mos kelishingiz va qachon topshirish nomaʼlum.", "Uchta stipendiya", "Sizga mos, muddati tekshirilgan uchta stipendiyani tanlaysiz."),
   ]),
 "phd-lab": dict(
   h1=h("Professorlar xatingizga javob bermayapti.", "Moliyalashtirilgan PhD toʻgʻri rahbardan boshlanadi."),

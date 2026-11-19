@@ -68,7 +68,7 @@
     var sec = $("#darslar");
     if (sec) {
       var sub = $(".sub", sec);
-      if (sub) sub.textContent = "Har dars alohida sahifada va toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Progress shu qurilmada saqlanadi: " + nd + " / " + N + " dars yakunlangan.";
+      if (sub) sub.textContent = "Progress shu qurilmada saqlanadi: " + nd + " / " + N + " dars yakunlangan.";
       var ol = el("ol", "kl-route kl-hub-route"); ol.setAttribute("data-needle", "");
       L.forEach(function (l, i) {
         var done = !!d[l.id], cur = i === fo;
@@ -170,7 +170,7 @@
   if (view === "yakun") {
     var S3 = state();
     var hd3 = el("div", "kl-lhead");
-    hd3.innerHTML = crumb("Yakun") + steps(S3, "yakun") + "<h1>Yakun: vositalar, nishonlar va qaror</h1><div class=\"kl-lmeta\"><span>" + esc(M.yakunMeta) + "</span></div>";
+    hd3.innerHTML = crumb("Yakun") + steps(S3, "yakun") + "<h1>" + esc((($("[data-yakun-title]") || {}).getAttribute ? $("[data-yakun-title]").getAttribute("data-yakun-title") : "") || "Yakun: vositalar, nishonlar va qaror") + "</h1><div class=\"kl-lmeta\"><span>" + esc(M.yakunMeta) + "</span></div>";
     wrap.insertBefore(hd3, wrap.firstChild);
     var f3 = el("div", "kl-lfoot");
     f3.innerHTML = '<div class="kl-pager"><a class="pv" rel="prev" data-kkey data-dir="prev" href="' + page(N - 1) + '"><small>Oldingi dars</small><b>Dars ' + esc(L[N - 1].num) + ": " + esc(L[N - 1].title) + '</b></a><a class="nx primary" rel="next" data-kkey data-dir="next" href="' + HUB + '"><small>Modul sahifasi</small><b>' + esc(M.mod) + ": umumiy koʻrinish</b></a></div>";
@@ -180,7 +180,8 @@
     // Tayyorgarlik koʻrsatkichi (2026-11-18, asoschi): ochiq dastur sahifasidan olib tashlandi, faqat M0 oxirida.
     // Vositalar roʻyxatida oxirgi boʻladi; natija saqlangach ostida obunaga yoʻl chiqadi (narx sahifasi sotuv holatini oʻzi hal qiladi).
     var rs = $("#tool-rs"), vs = $("#vositalar");
-    if (rs && vs && rs.parentNode) {
+    // Modulning oʻz reja bloki boʻlsa (#klPlan, Master M0 2026-11-19), umumiy obuna tugmasi qoʻshilmaydi
+    if (rs && vs && rs.parentNode && !document.getElementById("klPlan")) {
       var last = vs.querySelectorAll(".tool"); last = last[last.length - 1];
       if (last && last !== rs) last.insertAdjacentElement("afterend", rs);
       var price = M.lab.replace(/\.html$/, "") + "-narxlar.html";
