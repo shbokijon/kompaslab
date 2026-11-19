@@ -627,11 +627,12 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
             <option value="7">Oxirgi 7 kun</option>
             <option value="30">Oxirgi 30 kun</option>
           </select>
+          <select class="flt" id="regSort" onchange="regSetSort(this.value)" aria-label="Saralash" title="Saralash"></select>
           <span id="regSummary" style="font-size:12px;color:var(--muted)"></span>
         </div>
         <div class="tbl-scroll">
           <table class="tbl"><thead><tr>
-            <th><input type="checkbox" id="selAllR" title="Hammasini tanlash" onchange="delToggleAll('tbRegs', this.checked)"></th><th>#</th><th>Foydalanuvchi</th><th>Telefon</th><th>Kurs</th><th>Jarayon</th><th>Holat</th><th>Oxirgi faoliyat</th><th>Roʻyxatdan oʻtgan</th>
+            <th><input type="checkbox" id="selAllR" title="Hammasini tanlash" onchange="delToggleAll('tbRegs', this.checked)"></th><th>#</th><th data-sort="name">Foydalanuvchi</th><th data-sort="phone">Telefon</th><th data-sort="course">Kurs</th><th data-sort="pct">Jarayon</th><th data-sort="status">Holat</th><th data-sort="last">Oxirgi faoliyat</th><th data-sort="created">Roʻyxatdan oʻtgan</th>
           </tr></thead><tbody id="tbRegs"></tbody></table>
         </div>
       </div>

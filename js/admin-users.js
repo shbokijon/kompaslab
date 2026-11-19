@@ -4,6 +4,7 @@
  *   enrollments (obuna), kompas_user_state (M0 XP), kompas_m0_events (oxirgi faoliyat),
  *   kompas_access_grants (qoʻlda ruxsat), kompas_account_state (cheklash).
  * Bazaga yozmaydi. Chegaralar (issiq lid: M0 ≥ 60%, "faol emas": 3 kun) taxminiy, tuzatish mumkin: CFG.
+ * Saralash (2026-11-19): SORTS, sortRows; regsFiltered tartiblangan roʻyxat qaytaradi (CSV va "Sozlash" ustuni ham shu tartibda).
  * admin.html dagi eski loadRegs/renderRegs/regsFiltered/exportRegsCSV shu yerda almashtiriladi;
  * js/admin-extensions.js renderRegs ni oʻrab "Sozlash" ustunini qoʻshadi (jadval id: tbRegs).
  */
@@ -18,6 +19,75 @@
   ];
   var DAY = 86400000;
   var _flt = 'all';
+  // Saralash (2026-11-19): ustun sarlavhasini bosish yoki "Saralash" roʻyxati; tanlov shu brauzerda saqlanadi.
+  // Boʻsh qiymat (telefon yoʻq, faoliyat yoʻq) yoʻnalishdan qatʼi nazar oxirida turadi.
+  var SORTS = [
+    ['created:desc', 'Yangi roʻyxatdan oʻtganlar'], ['created:asc', 'Eski roʻyxatdan oʻtganlar'],
+    ['last:desc', 'Oxirgi faoliyat: yaqinda'], ['last:asc', 'Oxirgi faoliyat: uzoq'],
+    ['pct:desc', 'M0 jarayoni: koʻp'], ['pct:asc', 'M0 jarayoni: kam'],
+    ['name:asc', 'Ism: A → Z'], ['name:desc', 'Ism: Z → A'],
+    ['status:asc', 'Holat: obunachilar avval'], ['exp:asc', 'Obuna tugashi: yaqin'],
+    ['course:asc', 'Kurs: A → Z']
+  ];
+  var RANK = { 'Obunachi': 1, 'Toʻlov kutilmoqda': 2, 'Qoʻlda ruxsat': 3, 'Muzlatilgan': 4, 'Muddati tugagan': 5, 'Roʻyxatdan oʻtgan': 6, 'Cheklangan': 7 };
+  var SKEY = 'kompas_admin_regsort';
+  var _sort = (function () { try { var v = localStorage.getItem(SKEY); if (v && /^[a-z]+:(asc|desc)$/.test(v)) return v; } catch (e) {} return 'created:desc'; })();
+  function fullName(r) { return ((r.first_name || '') + ' ' + (r.last_name || '')).trim() || r.email || ''; }
+  function sortVal(r, k) {
+    var x = r._x || {};
+    if (k === 'created') return Date.parse(r.created_at) || null;
+    if (k === 'last') return x.last || null;
+    if (k === 'pct') return x.pct || 0;
+    if (k === 'name') return fullName(r).toLowerCase() || null;
+    if (k === 'phone') return (r.phone || '').replace(/\D/g, '') || null;
+    if (k === 'status') return RANK[(x.status || '').split(' · ')[0]] || 9;
+    if (k === 'exp') return x.nextExp || null;
+    if (k === 'course') { var c = (x.live[0] && x.live[0].course && (x.live[0].course.title || x.live[0].course.slug)) || x.m0lab || ''; return c.toLowerCase() || null; }
+    return null;
+  }
+  function sortRows(rows) {
+    var sp = _sort.split(':'), k = sp[0], dir = sp[1] === 'asc' ? 1 : -1;
+    return rows.map(function (r, i) { return { r: r, v: sortVal(r, k), i: i }; }).sort(function (a, b) {
+      if (a.v == null && b.v == null) return a.i - b.i;
+      if (a.v == null) return 1;
+      if (b.v == null) return -1;
+      var c = typeof a.v === 'string' ? a.v.localeCompare(b.v, 'uz') : a.v - b.v;
+      return c ? c * dir : (Date.parse(b.r.created_at) || 0) - (Date.parse(a.r.created_at) || 0);
+    }).map(function (o) { return o.r; });
+  }
+  window.regSetSort = function (v) {
+    if (!v) return;
+    _sort = v; try { localStorage.setItem(SKEY, v); } catch (e) {}
+    window.renderRegs();
+  };
+  // Sarlavha bosilganda: shu ustun boʻlsa yoʻnalish almashadi, boʻlmasa standart yoʻnalish
+  var HDEF = { name: 'asc', phone: 'asc', course: 'asc', pct: 'desc', status: 'asc', last: 'desc', created: 'desc' };
+  function headers() {
+    var tb = $('tbRegs'), head = tb && tb.closest('table').querySelector('thead tr'); if (!head) return;
+    var sp = _sort.split(':');
+    head.querySelectorAll('th[data-sort]').forEach(function (th) {
+      var k = th.getAttribute('data-sort'), on = k === sp[0];
+      if (!th._kl) {
+        th._kl = 1; th.tabIndex = 0; th.style.cursor = 'pointer'; th.title = 'Saralash';
+        var go = function () { var cur = _sort.split(':'); window.regSetSort(k + ':' + (cur[0] === k ? (cur[1] === 'asc' ? 'desc' : 'asc') : HDEF[k])); };
+        th.addEventListener('click', go);
+        th.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+      }
+      var a = th.querySelector('.srt'); if (!a) { a = document.createElement('span'); a.className = 'srt'; a.setAttribute('aria-hidden', 'true'); th.appendChild(a); }
+      a.textContent = on ? (sp[1] === 'asc' ? ' ▲' : ' ▼') : '';
+      th.setAttribute('aria-sort', on ? (sp[1] === 'asc' ? 'ascending' : 'descending') : 'none');
+      th.style.color = on ? 'var(--accent)' : '';
+    });
+    var sel = $('regSort');
+    if (sel) {
+      if (!sel.options.length) sel.innerHTML = SORTS.map(function (o) { return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('');
+      var known = SORTS.some(function (o) { return o[0] === _sort; });
+      var tmp = sel.querySelector('option[data-tmp]');
+      if (!known) { if (!tmp) { tmp = document.createElement('option'); tmp.setAttribute('data-tmp', '1'); sel.appendChild(tmp); } tmp.value = _sort; tmp.textContent = 'Ustun boʻyicha'; }
+      else if (tmp) tmp.remove();
+      sel.value = _sort;
+    }
+  }
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return typeof escHtml === 'function' ? escHtml(s == null ? '' : String(s)) : String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   function ddmm(iso) { var d = new Date(iso); return isNaN(d) ? '' : ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear(); }
@@ -101,12 +171,12 @@
   window.regsFiltered = function () {
     var q = (($('regQ') || {}).value || '').trim().toLowerCase();
     var days = parseInt((($('regPeriod') || {}).value) || '0', 10), since = days ? Date.now() - days * DAY : 0;
-    return (window._regs || []).filter(function (r) {
+    return sortRows((window._regs || []).filter(function (r) {
       if (since && new Date(r.created_at).getTime() < since) return false;
       if (!match(r, _flt)) return false;
       if (!q) return true;
       return [r.first_name, r.last_name, r.email, r.phone].join(' ').toLowerCase().indexOf(q) >= 0;
-    });
+    }));
   };
 
   window.regCourses = function (r) {
@@ -134,7 +204,7 @@
   }
 
   window.renderRegs = function () {
-    chips();
+    chips(); headers();
     var rows = window.regsFiltered(), tb = $('tbRegs'), all = window._regs || [];
     $('regSummary').textContent = rows.length + ' / ' + all.length + ' kishi';
     if (!rows.length) { tb.innerHTML = '<tr><td colspan="10" style="text-align:center;color:var(--muted);padding:20px">Hech kim topilmadi</td></tr>'; if (typeof delRefresh === 'function') delRefresh('tbRegs'); return; }
