@@ -764,7 +764,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
         <select id="lModule"><option value="">— Kursni tanlang —</option></select>
       </div>
     </div>
-    <div id="lWarn" style="font-size:12px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px;margin-bottom:10px;line-height:1.5">Bu oyna faqat katalog yozuvini yaratadi (talaba kabinetidagi nom va progress uchun). Dars matni bu yerda yozilmaydi: u modul sahifasida. Sahifada mos dars boʻlmasa, talabaning progressi 100% ga yetmaydi. Yangi dars yashirin holatda qoʻshiladi.</div>
+    <div id="lWarn" style="font-size:12px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px;margin-bottom:10px;line-height:1.5">Bu oyna faqat katalog yozuvini yaratadi (talaba kabinetidagi nom va jarayon uchun). Dars matni bu yerda yozilmaydi: u modul sahifasida. Sahifada mos dars boʻlmasa, talabaning jarayoni 100% ga yetmaydi. Yangi dars yashirin holatda qoʻshiladi.</div>
     <div class="fld"><label>Dars nomi *</label><input id="lT" placeholder="Research Identity Framework"></div>
     <div class="fr">
       <div class="fld"><label>Video havolasi (ixtiyoriy)</label><input id="lV" placeholder="Hozircha video yoʻq: boʻsh qoldiring" style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px"></div>
@@ -845,6 +845,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
     <button class="sd-tab" onclick="sdTab('password',this)">🔑 Parol</button>
     <button class="sd-tab" onclick="sdTab('courses',this)">📚 Kurslar</button>
     <button class="sd-tab" onclick="sdTab('activity',this)">📊 Faoliyat</button>
+    <button class="sd-tab" onclick="sdTab('answers',this)">📝 Javoblar</button>
   </div>
 
   <!-- PROFIL -->
@@ -876,6 +877,14 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
   <div class="sd-pane" id="sdp-courses" style="display:none">
     <div class="mb">
       <div id="sdCoursesList" style="display:flex;flex-direction:column;gap:8px;min-height:60px"></div>
+    </div>
+    <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button></div>
+  </div>
+
+  <!-- JAVOBLAR (2026-11-19): profil maydonlari va modullardagi barcha javoblar (kompas_user_state) -->
+  <div class="sd-pane" id="sdp-answers" style="display:none">
+    <div class="mb">
+      <div id="sdAnswersList" style="display:flex;flex-direction:column;gap:6px;max-height:60vh;overflow-y:auto;min-height:60px"></div>
     </div>
     <div class="mf"><button class="btn bs" onclick="closeMdl('student-detail')">Yopish</button></div>
   </div>
@@ -1393,8 +1402,8 @@ async function loadLessonsSection(courseSlug) {
       }
       lessons.forEach(l => {
         const statusDot = l.status === 'published'
-          ? `<span style="color:var(--green);font-size:10px" title="Talaba kabinetida koʻrinadi va progressga kiradi">● Talabaga koʻrinadi</span>`
-          : `<span style="color:var(--gold);font-size:10px" title="Talaba kabinetida koʻrinmaydi, progressga kirmaydi">● Yashirin</span>`
+          ? `<span style="color:var(--green);font-size:10px" title="Talaba kabinetida koʻrinadi va jarayonga kiradi">● Talabaga koʻrinadi</span>`
+          : `<span style="color:var(--gold);font-size:10px" title="Talaba kabinetida koʻrinmaydi, jarayonga kirmaydi">● Yashirin</span>`
         const meta = [l.duration ? '⏱ ' + escHtml(l.duration) : '', l.vimeo_url ? '🎥 video' : '', statusDot].filter(Boolean).join(' · ')
         const ar = isArchived(l)
         html += `<div class="lr"${ar ? ' style="opacity:.55"' : ''}>
@@ -1417,7 +1426,7 @@ async function loadLessonsSection(courseSlug) {
     const header = document.querySelector('#sec-lessons .ch h2')
     if (header) header.innerHTML = `🎬 ${COURSE_META[courseSlug]?.emoji || ''} ${escHtml(COURSE_META[courseSlug]?.label || courseSlug)} · <span style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:13px;color:var(--muted);font-weight:400">${totalLessons} dars, ${pubLessons} talabaga koʻrinadi</span>`
 
-    const note = `<div style="padding:9px 14px;font-size:11.5px;color:var(--muted);border-bottom:1px solid var(--border);line-height:1.5">Bu roʻyxat katalog: talaba kabinetidagi dars nomlari, progress foizi va “Davom etish” tugmasi shundan olinadi. Dars matni modul sahifalarida (pullikda <code>paid_pages</code>), uni bu yerdan oʻzgartirib boʻlmaydi: xatoni pastdagi “Matn tuzatishlari” bilan tuzating. ✏️ nom va tavsifni oʻzgartiradi; 🙈 darsni kabinetdan yashiradi (sahifadagi matn qoladi).${archived ? ` <label style="margin-left:6px;cursor:pointer;white-space:nowrap"><input type="checkbox" ${_showArchive ? 'checked' : ''} onchange="_showArchive=this.checked;loadLessonsSection('${escHtml(courseSlug)}')" style="width:auto;margin:0 4px 0 0;vertical-align:middle">Arxivni koʻrsatish (${archived})</label>` : ''}</div>`
+    const note = `<div style="padding:9px 14px;font-size:11.5px;color:var(--muted);border-bottom:1px solid var(--border);line-height:1.5">Bu roʻyxat katalog: talaba kabinetidagi dars nomlari, jarayon foizi va “Davom etish” tugmasi shundan olinadi. Dars matni modul sahifalarida (pullikda <code>paid_pages</code>), uni bu yerdan oʻzgartirib boʻlmaydi: xatoni pastdagi “Matn tuzatishlari” bilan tuzating. ✏️ nom va tavsifni oʻzgartiradi; 🙈 darsni kabinetdan yashiradi (sahifadagi matn qoladi).${archived ? ` <label style="margin-left:6px;cursor:pointer;white-space:nowrap"><input type="checkbox" ${_showArchive ? 'checked' : ''} onchange="_showArchive=this.checked;loadLessonsSection('${escHtml(courseSlug)}')" style="width:auto;margin:0 4px 0 0;vertical-align:middle">Arxivni koʻrsatish (${archived})</label>` : ''}</div>`
     container.innerHTML = note + html
 
   } catch(err) {
@@ -1681,6 +1690,7 @@ function sdTab(name, el) {
   document.getElementById('sdp-' + name).style.display = ''
   if (el) el.classList.add('active')
   if (name === 'activity') loadSdActivity(_sdUserId)
+  if (name === 'answers' && window.KAnswers) KAnswers.render(_sdUserId, _sdStudentData, document.getElementById('sdAnswersList'))
 }
 
 async function saveStudentProfile() {
@@ -2086,7 +2096,7 @@ async function deleteUsers(ids) {
   if (!ids.length) { toast("⚠️ Hech kim tanlanmagan"); return }
   const list = ids.slice(0, 10).map(delLabel).join("\n") + (ids.length > 10 ? "\n… va yana " + (ids.length - 10) + " ta" : "")
   const ok = confirm(ids.length + " ta hisob butunlay oʻchiriladi:\n\n" + list +
-    "\n\nKirish, progress, obuna va oʻquv yozuvlari ketadi. Qaytarib boʻlmaydi.\nAdminlar va toʻlovi bor hisoblar oʻchmaydi.\n\nDavom etasizmi?")
+    "\n\nKirish, jarayon, obuna va oʻquv yozuvlari ketadi. Qaytarib boʻlmaydi.\nAdminlar va toʻlovi bor hisoblar oʻchmaydi.\n\nDavom etasizmi?")
   if (!ok) return
   const { data, error } = await supabase.rpc("fn_admin_delete_users", { p_ids: ids })
   if (error) { toast("❌ " + error.message); return }
@@ -2533,6 +2543,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 </script>
 <script src="js/admin-system.js"></script>
+<script src="js/admin-answers.js" defer></script>
 <script src="js/admin-users.js"></script>
 <script src="js/admin-m0.js"></script>
 <script src="js/admin-extensions.js"></script>

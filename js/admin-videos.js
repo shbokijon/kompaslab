@@ -11,7 +11,7 @@ const VD = (() => {
   const NAMES = {
     'master-lab': {
       0: ['Muddat', 'Yoʻnalish', 'Hujjatlar', 'Pul'],
-      1: ['Sizda nima bor?', 'Qiziqishingizni bitta jumlaga sigʻdiring', 'Reyting nimani koʻrsatadi', 'Dastur Sizga mosmi', 'Roʻyxatni uch guruhga boʻlamiz', 'Pul qayerdan keladi', 'Sizning hikoyangiz'],
+      1: ['Sizda nima bor?', 'Qiziqishingizni bitta jumlaga sigʻdiring', 'Reyting nimani koʻrsatadi', 'Dastur sizga mosmi', 'Roʻyxatni uch guruhga boʻlamiz', 'Pul qayerdan keladi', 'Sizning hikoyangiz'],
       2: ['Bitta arizada bir nechta sana', 'Sanadan orqaga hisoblaymiz', 'Hamma ariza bitta jadvalda', 'Bir nechta arizani birga yuritish', 'I bosqich yakuni: bir sahifalik reja'],
       3: ['CV kerakmi va qanday?', 'Taʼlim boʻlimi va baholar', 'Tajribani STAR bilan yozish', 'Nashr, chiqish va loyihalar', 'Koʻnikma, til va sertifikat', 'Yuborishdan oldingi tekshiruv'],
       4: ['Kuchli tavsiya xati nimadan iborat', 'Kimdan va qachon soʻrash', 'Ustozga Yutuqlar varaqasi', 'Professorga xat: qachon va qanday', 'Javob kelsa ham, kelmasa ham', 'Xatlar daftari'],

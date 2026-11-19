@@ -77,7 +77,7 @@
     var sec = $("#darslar");
     if (sec) {
       var sub = $(".sub", sec);
-      if (sub) sub.textContent = "Progress shu qurilmada saqlanadi: " + nd + " / " + N + " " + UNIT + " yakunlangan.";
+      if (sub) sub.textContent = "Jarayon hisobingizda saqlanadi: " + nd + " / " + N + " " + UNIT + " yakunlangan.";
       var ol = el("ol", "kl-route kl-hub-route"); ol.setAttribute("data-needle", "");
       L.forEach(function (l, i) {
         var done = !!d[l.id], cur = i === fo;

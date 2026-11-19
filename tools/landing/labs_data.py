@@ -170,7 +170,7 @@ LABS["Master"] = dict(
         yearly=899000, monthly=99000, m0_desc="Magistratura dasturi sizga mosligini tekshirish", m0_items=["4 savol, ~12 daqiqa", "Javoblaringizdan baho va 4 bosqichli reja", "I bosqichning birinchi vazifasi bepul"],
         y_desc="To'liq ariza sikli uchun", y_items=["Barcha 4 bosqich (M1–M8) darhol ochiladi", "12 oy foydalanish, barcha mavjud vositalar"],
         m_items=["Navbatdagi bitta bosqich (2 modul), 30 kun", "Barcha bosqichlar birdaniga ochilmaydi"], calc=std_calc(899000, 99000), rules=STD_RULES),
-    faq=[("O'quv va tadqiqot magistraturasining farqi nima?", "O'quv (taught) magistratura asosan kurslar va imtihonlardan, tadqiqot (research) magistraturasi asosan ilmiy loyihadan iborat. M0 ning 2-qadamida qaysi biri Sizga yoqishini belgilaysiz, M1 da shunga qarab dastur tanlaysiz."),
+    faq=[("O'quv va tadqiqot magistraturasining farqi nima?", "O'quv (taught) magistratura asosan kurslar va imtihonlardan, tadqiqot (research) magistraturasi asosan ilmiy loyihadan iborat. M0 ning 2-qadamida qaysi biri sizga yoqishini belgilaysiz, M1 da shunga qarab dastur tanlaysiz."),
          ("Ilmiy loyiha taklifi har doim kerakmi?", "Yo'q. U tadqiqot magistraturasi, ba'zi stipendiyalar va professorga xatda kerak; o'quv magistraturasida ko'pincha talab qilinmaydi (M6.1)."),
          ("Ish tajribam bor. Bu foydali bo'ladimi?", "Ha, ayrim dasturlar ish tajribasini talab qiladi (masalan, Chevening). M3 da tajribani STAR usulida CV'ga yozasiz."),
          ("Maqsad bayonnomasini yozib berasizmi?", "Yo'q. M5 da 7 dars: tuzilma, dalil bilan yozish, tahrir va izohli o'quv namunalari. Matn sizniki bo'ladi."),

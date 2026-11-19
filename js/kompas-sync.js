@@ -1,8 +1,9 @@
 // ═══════════════════════════════════════════════════════════════
 //  KOMPAS LAB — kompas-sync.js (2026-11-05)
-//  1) Modul progressini hisobga bogʻlaydi: kompas_user_state jadvali.
-//     Faqat xp, done, seen, open, lv yoziladi. Javob matni (notes, jadvallar)
-//     talaba brauzerida qoladi.
+//  1) Modul holatini hisobga bogʻlaydi: kompas_user_state jadvali.
+//     2026-11-19 dan (asoschi qarori) butun holat yoziladi: jarayon (xp, done,
+//     seen, open, lv) va javoblar (tanlovlar, matnlar). Admin talaba oynasida
+//     "Javoblar" tabida koʻradi. Sahifalarda bu ochiq aytiladi, maxfiylik.html 2-band.
 //  2) M0 sahifalarida oʻqish voqealarini yozadi: kompas_m0_events
 //     (dars ochildi, qism ochildi, dars yakunlandi, faol vaqt, modul yakuni).
 //  Kirmagan foydalanuvchi uchun hech narsa yubormaydi. Jadval boʻlmasa yoki
@@ -15,7 +16,7 @@
   var KS = window.KompasSync = { ready: Promise.resolve(false), meta: meta };
   if (!sb || !sb.auth || typeof sb.from !== "function" || !window.localStorage) return;
 
-  var KEY_RE = /^kompas_[a-z]+_m[0-9a-z]{1,6}_v1$/;
+  var KEY_RE = /^kompas_(?!sync_)[a-z]+_m[0-9a-z]{1,6}_v1$/; // kompas_sync_meta_v1 ham shu qolipga tushadi
   var KEEP = ["xp", "done", "seen", "open", "lv"];
   var META = "kompas_sync_meta_v1";
   var LS = window.localStorage, rawSet = Storage.prototype.setItem;
@@ -24,6 +25,8 @@
   function parse(s) { try { var o = JSON.parse(s); return o && typeof o === "object" ? o : null; } catch (e) { return null; } }
   function meta() { return parse(LS.getItem(META)) || {}; }
   function touch(k, t) { var m = meta(); m[k] = t || Date.now(); rawSet.call(LS, META, JSON.stringify(m)); }
+  var MAXLEN = 120000; // jadval cheklovi 131072 bayt (pg_column_size)
+  function full(o) { var s = JSON.stringify(o || {}); return s.length < MAXLEN ? o : slim(o); }
   function slim(o) { var r = {}; KEEP.forEach(function (k) { if (o && o[k] !== undefined) r[k] = o[k]; }); return r; }
   function union(a, b) { var s = (a || []).slice(); (b || []).forEach(function (x) { if (s.indexOf(x) < 0) s.push(x); }); return s; }
 
@@ -37,6 +40,11 @@
     out.seen = out.seen || {};
     Object.keys(remote.seen || {}).forEach(function (k) { out.seen[k] = union(out.seen[k], remote.seen[k]); });
     ["open", "lv"].forEach(function (k) { if (remote[k] !== undefined && (!localNewer || out[k] === undefined)) out[k] = remote[k]; });
+    // Javoblar va boshqa maydonlar: yangiroq tomon ustun, yoʻq maydon toʻldiriladi
+    Object.keys(remote).forEach(function (k) {
+      if (KEEP.indexOf(k) >= 0) return;
+      if (!localNewer || out[k] === undefined) out[k] = remote[k];
+    });
     return out;
   }
 
@@ -44,7 +52,7 @@
   function flushState() {
     if (!user || stateOff) return;
     var rows = Object.keys(pending).map(function (k) {
-      var o = parse(LS.getItem(k)); return o ? { key: k, value: slim(merge(o, remote[k], true)), updated_at: new Date(meta()[k] || Date.now()).toISOString() } : null;
+      var o = parse(LS.getItem(k)); return o ? { key: k, value: full(merge(o, remote[k], true)), updated_at: new Date(meta()[k] || Date.now()).toISOString() } : null;
     }).filter(Boolean);
     pending = {};
     if (!rows.length) return;
@@ -145,10 +153,10 @@
         seenKeys[row.key] = 1; remote[row.key] = row.value;
         var loc = parse(LS.getItem(row.key)), rt = Date.parse(row.updated_at) || 0;
         var merged = merge(loc, row.value, (m[row.key] || 0) > rt);
-        if (JSON.stringify(slim(merged)) !== JSON.stringify(slim(loc || {}))) {
+        if (JSON.stringify(merged) !== JSON.stringify(loc || {})) {
           rawSet.call(LS, row.key, JSON.stringify(merged)); touch(row.key, Math.max(rt, m[row.key] || 0)); changed = true; if (M && row.key === M.key) changedM = true;
         }
-        if (JSON.stringify(slim(merged)) !== JSON.stringify(row.value)) push(row.key);
+        if (JSON.stringify(full(merged)) !== JSON.stringify(row.value)) push(row.key);
       });
       for (var i = 0; i < LS.length; i++) { var k = LS.key(i); if (KEY_RE.test(k) && !seenKeys[k]) push(k); }
       if (M && changed) {

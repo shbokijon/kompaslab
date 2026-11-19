@@ -410,7 +410,7 @@
    "id": "M0",
    "title": "Magistraturaga tayyorgarlik",
    "meta": "bepul, 4 qadam",
-   "info": "Maqsad: topshirishgacha qancha vaqt borligini va qayerdan boshlashni bilish. Natija: Sizning bahongiz va 4 bosqichli rejangiz.",
+   "info": "Maqsad: topshirishgacha qancha vaqt borligini va qayerdan boshlashni bilish. Natija: sizning bahongiz va 4 bosqichli rejangiz.",
    "lessons": [
     {
      "num": "0.1",
@@ -442,7 +442,7 @@
    "id": "M1",
    "title": "Ilmiy yoʻnalish va universitet tanlash",
    "meta": "7 dars",
-   "info": "Maqsad: 12–15 dasturdan sizga mos 6–10 tasini talab, moslik va xarajat boʻyicha saralash. Natija: Sizning saralangan dasturlar roʻyxatingiz va ilmiy qiziqish bayoningiz.",
+   "info": "Maqsad: 12–15 dasturdan sizga mos 6–10 tasini talab, moslik va xarajat boʻyicha saralash. Natija: sizning saralangan dasturlar roʻyxatingiz va ilmiy qiziqish bayoningiz.",
    "lessons": [
     {
      "num": "1.1",
@@ -464,7 +464,7 @@
     },
     {
      "num": "1.4",
-     "title": "Dastur Sizga mosmi",
+     "title": "Dastur sizga mosmi",
      "content": "Kurslar, rahbar, laboratoriya: har dastur uchun bitta dalil",
      "trek": ""
     },
@@ -492,7 +492,7 @@
    "id": "M2",
    "title": "Muddatlar va shaxsiy tayyorgarlik rejasi",
    "meta": "5 dars",
-   "info": "Maqsad: qabul va stipendiya sanalarini bir joyga yigʻish. Natija: Sizning arizalar jadvalingiz (Master Tracker), vaqt jadvali va bir sahifalik rejangiz.",
+   "info": "Maqsad: qabul va stipendiya sanalarini bir joyga yigʻish. Natija: sizning arizalar jadvalingiz (Master Tracker), vaqt jadvali va bir sahifalik rejangiz.",
    "lessons": [
     {
      "num": "2.1",
@@ -530,7 +530,7 @@
    "id": "M3",
    "title": "Akademik tarjimai hol (CV)",
    "meta": "6 dars",
-   "info": "Maqsad: dastur talabiga mos 1–2 sahifalik CV. Natija: Sizning tekshirilgan CVʼingiz, PDF yoki Word fayli.",
+   "info": "Maqsad: dastur talabiga mos 1–2 sahifalik CV. Natija: sizning tekshirilgan CVʼingiz, PDF yoki Word fayli.",
    "lessons": [
     {
      "num": "3.1",
@@ -574,7 +574,7 @@
    "id": "M4",
    "title": "Tavsiya xatlari va professor bilan aloqa",
    "meta": "6 dars",
-   "info": "Maqsad: tavsiya beruvchilarni tanlash va kerak boʻlsa professorga yozish. Natija: Sizning Yutuqlar varaqangiz, soʻrash xatlaringiz va Xatlar daftaringiz.",
+   "info": "Maqsad: tavsiya beruvchilarni tanlash va kerak boʻlsa professorga yozish. Natija: sizning Yutuqlar varaqangiz, soʻrash xatlaringiz va Xatlar daftaringiz.",
    "lessons": [
     {
      "num": "4.1",
@@ -618,7 +618,7 @@
    "id": "M5",
    "title": "Maqsad bayonnomasi",
    "meta": "7 dars",
-   "info": "Maqsad: tanlangan dastur savollariga mos, dalillarga asoslangan bayonot yozish. Natija: Sizning maqsad bayonnomangiz (SoP) va uning ikki moslashtirilgan varianti.",
+   "info": "Maqsad: tanlangan dastur savollariga mos, dalillarga asoslangan bayonot yozish. Natija: sizning maqsad bayonnomangiz (SoP) va uning ikki moslashtirilgan varianti.",
    "lessons": [
     {
      "num": "5.1",
@@ -668,7 +668,7 @@
    "id": "M6",
    "title": "Tadqiqot loyihasi taklifi",
    "meta": "7 dars",
-   "info": "Maqsad: dastur soʻrasa, taklif yozish; soʻrmasa, M7 ga oʻtish. Natija: Sizning tadqiqot savolingiz, adabiyotlar matritsasi, usul va reja.",
+   "info": "Maqsad: dastur soʻrasa, taklif yozish; soʻrmasa, M7 ga oʻtish. Natija: sizning tadqiqot savolingiz, adabiyotlar matritsasi, usul va reja.",
    "lessons": [
     {
      "num": "6.1",
@@ -718,7 +718,7 @@
    "id": "M7",
    "title": "Stipendiyalar va moliyalashtirish",
    "meta": "8 dars",
-   "info": "Maqsad: stipendiya shartlarini rasmiy manbadan tekshirish. Natija: Sizning 3 ta stipendiyangiz, sanasi va moslik bahosi bilan.",
+   "info": "Maqsad: stipendiya shartlarini rasmiy manbadan tekshirish. Natija: sizning 3 ta stipendiyangiz, sanasi va moslik bahosi bilan.",
    "lessons": [
     {
      "num": "7.1",
@@ -774,7 +774,7 @@
    "id": "M8",
    "title": "Viza, suhbat va joʻnash",
    "meta": "8 dars",
-   "info": "Maqsad: suhbatga, vizaga va joʻnashga tayyorlanish. Natija: Sizning 3 ta baholangan javobingiz, 5 daqiqalik taqdimotingiz va joʻnash roʻyxatingiz.",
+   "info": "Maqsad: suhbatga, vizaga va joʻnashga tayyorlanish. Natija: sizning 3 ta baholangan javobingiz, 5 daqiqalik taqdimotingiz va joʻnash roʻyxatingiz.",
    "lessons": [
     {
      "num": "8.1",
@@ -1254,7 +1254,7 @@
    "id": "M0",
    "title": "Bakalavrga tayyorgarlik",
    "meta": "bepul, 4 qadam",
-   "info": "Maqsad: ariza muddatigacha qancha vaqt borligini va qayerdan boshlashni bilish. Natija: Sizning bahongiz va 4 bosqichli rejangiz.",
+   "info": "Maqsad: ariza muddatigacha qancha vaqt borligini va qayerdan boshlashni bilish. Natija: sizning bahongiz va 4 bosqichli rejangiz.",
    "lessons": [
     {
      "num": "0.1",

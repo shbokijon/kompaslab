@@ -40,7 +40,7 @@
     var img = box.querySelector("img");
     if (img) img.src = "img/3d/compass.webp";
     setText("[data-paid-t]", "Modul siz uchun ochiq.");
-    setText("[data-paid-d]", "Javoblaringiz shu qurilmada saqlanadi. Darslarni tartib bilan oʻting: har darsda 4 qism ochilgach, dars yakunlanadi.");
+    setText("[data-paid-d]", "Javoblaringiz hisobingizda saqlanadi. Darslarni tartib bilan oʻting: har darsda 4 qism ochilgach, dars yakunlanadi.");
     buttons([{label: "Modulni ochish", href: reader, primary: true}, {label: "Mening kabinetim", href: "dashboard.html"}]);
     document.querySelectorAll(".kl-lessons .kl-st.is-locked").forEach(function (li) {
       li.classList.remove("is-locked");

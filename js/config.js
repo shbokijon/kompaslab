@@ -8,7 +8,7 @@
 //  TO'LDIRISH TARTIBI:
 //    1. SUPABASE_URL      → Supabase → Settings → API → Project URL
 //    2. SUPABASE_ANON_KEY → Supabase → Settings → API → anon (public) key
-//    3. adminEmails       → Sizning email manzilingiz
+//    3. adminEmails       → sizning email manzilingiz
 //    4. baseUrl           → kompaslab.uz (deploy bo'lgandan keyin)
 // ═══════════════════════════════════════════════════════════════
 

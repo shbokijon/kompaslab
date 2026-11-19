@@ -473,7 +473,7 @@ def page(slug, M):
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.{"" if trk else ' <span class="trk">U</span> bakalavriat, <span class="trk">M</span> magistratura, <span class="trk">D</span> doktorantura uchun alohida qismlar belgilangan.'} Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq.{"" if trk else ' <span class="trk">U</span> bakalavriat, <span class="trk">M</span> magistratura, <span class="trk">D</span> doktorantura uchun alohida qismlar belgilangan.'} Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
     <div class="lessons">
 
 {chr(10).join(lesson_html(n, k, L, lxp) for k, L in enumerate(les, 1))}

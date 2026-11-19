@@ -388,7 +388,7 @@ def six_card(slug, btn="Kutish roʻyxatiga yozilish", cls="plan main"):
         <ul>{"".join(f"<li>{x}</li>" for x in SIX_ITEMS)}</ul>
         {act}
       </div>'''
-MONTHLY_EXTRA = ["Erta tugatsangiz, keyingi bosqichni yangi toʻlov bilan darhol ochasiz", "Obuna tugasa, modullar yopiladi; javoblaringiz qurilmangizda qoladi"]
+MONTHLY_EXTRA = ["Erta tugatsangiz, keyingi bosqichni yangi toʻlov bilan darhol ochasiz", "Obuna tugasa, modullar yopiladi; javoblaringiz hisobingizda qoladi"]
 
 def month_items(m_items):
     """2026-11-17: "1 ta bosqich" kartasida 3 qator: bosqich tarkibi + 2 qoida (takrorlar olib tashlandi)."""

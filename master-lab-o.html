@@ -98,7 +98,10 @@ p{color:var(--muted);line-height:1.55;margin:0 0 18px}
       var d = res.data || {};
       if (d.ok && d.html) {
         document.open();
-        document.write(d.html);
+        // Javoblar hisobga yoziladi (js/kompas-sync.js, 2026-11-19): modul HTML ga sinxron skript qoʻshiladi
+        var html = String(d.html), tag = '<script src="js/kompas-sync.js" defer></' + 'script>';
+        html = /<\/body>/i.test(html) ? html.replace(/<\/body>/i, tag + "</body>") : html + tag;
+        document.write(html);
         document.close();
         return;
       }

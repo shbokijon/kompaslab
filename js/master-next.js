@@ -25,7 +25,7 @@
 
   if (n === 1) {
     var p = load(1).progs || [];
-    if (p.length) set("m1", "<b>Roʻyxatingizdagi " + p.length + " ta dastur har xil kunda yopiladi.</b> Qaysi biri birinchi? M2 da roʻyxatingiz Arizalar jadvaliga bitta tugma bilan koʻchadi, Siz faqat sanalarni qoʻyasiz.");
+    if (p.length) set("m1", "<b>Roʻyxatingizdagi " + p.length + " ta dastur har xil kunda yopiladi.</b> Qaysi biri birinchi? M2 da roʻyxatingiz Arizalar jadvaliga bitta tugma bilan koʻchadi, siz faqat sanalarni qoʻyasiz.");
   }
 
   if (n === 2) {
@@ -57,7 +57,7 @@
 
   if (n === 7) {
     var pf = (load(7).port || []).filter(function (x) { return x && x.id; });
-    if (pf.length) set("m7", "<b>Tanlagan " + pf.length + " ta stipendiyangiz boʻyicha suhbat savollari</b> M8 da. Komissiya savollarining koʻpi Siz yozgan jumlalardan tugʻiladi: javobni ovoz chiqarib mashq qilasiz.");
+    if (pf.length) set("m7", "<b>Tanlagan " + pf.length + " ta stipendiyangiz boʻyicha suhbat savollari</b> M8 da. Komissiya savollarining koʻpi siz yozgan jumlalardan tugʻiladi: javobni ovoz chiqarib mashq qilasiz.");
   }
 
   if (n === 8) {
