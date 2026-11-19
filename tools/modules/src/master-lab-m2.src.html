@@ -12,6 +12,29 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <style>
 {{CSS}}
+/* Master v2 (2026-11-19): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .facts2{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-note{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:14px 16px;font-size:14.5px;margin:0 0 6px}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 /* Magistratura dasturi M1–M4: match the public module hub title typography. */
 .hero-g h1{font-family:"Cambria","Caladea","Playfair Display",serif;font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.06;letter-spacing:-.5px;max-width:20ch;}
 
@@ -104,7 +127,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="master-lab" data-kv-mod="2">
 <div class="wrap">
 
   <div class="hero">
@@ -113,15 +136,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Magistratura dasturi</a> · Modul 2</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">I bosqich · Strategiya</span>
         <h1>Muddatlar va shaxsiy tayyorgarlik rejasi</h1>
-        <p class="lead">Magistratura arizasi uchun <strong>rasmiy muddatlar, zarur hujjatlar va haqiqiy ish yuklamasi</strong> asosida reja tuzasiz. M2 yakunida <strong>Arizalar jadvali</strong>, taxminiy <strong>Gantt jadvali</strong> va <strong>Magistraturaga tayyorgarlik rejasi</strong> hosil boʻladi.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1–2</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
+        <p class="lead">Bu modulda sanalarni yigʻamiz va ulardan orqaga reja tuzamiz. Oxirida Sizda <strong>Arizalar jadvali</strong>, <strong>vaqt jadvali</strong> va <strong>bir sahifalik tayyorgarlik rejasi</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/calendar.webp" width="160" height="160" alt="">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Oʻquv bosqichlari</b><span id="mapN">0 / 8 qadam</span></div>
+    <div class="map-h"><b>Modul yoʻli</b><span id="mapN">0 / 8 qadam</span></div>
     <div class="path">
       <a class="node" href="#l1" data-node="l1"><span class="dot">2.1</span>Sikl</a>
       <a class="node" href="#l2" data-node="l2"><span class="dot">2.2</span>Teskari</a>
@@ -145,38 +168,23 @@
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Yozma javoblar brauzerning mahalliy xotirasida saqlanadi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Javoblaringiz faqat shu brauzerda saqlanadi, boshqa qurilmaga oʻzi oʻtmaydi. Vositalar universitet sanasi va talablarini Siz uchun tekshirmaydi, xat yubormaydi va qabulni kafolatlamaydi. Ball va belgilar Sizning ichki tekshiruvingiz, qabul ehtimoli emas. Har faktni dastur sahifasidan oʻzingiz tasdiqlaysiz; sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 2.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.1</span><span class="l-t" style="display:block">Ariza va stipendiya muddatlari</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🎯 Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 2.1</span><span class="l-t" style="display:block">Bitta arizada bir nechta sana</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Dastur arizasi hali ochiq boʻlishi mumkin, ammo <strong>stipendiya uchun zarur muddat</strong> oʻtib ketgan boʻlishi mumkin. Shuning uchun har bir tanlangan dasturda oʻqishga qabul va moliyalashtirish shartlarini <strong>alohida tekshiring</strong>.</div></div>
-          <div class="panel"><p>Magistratura arizasida bitta emas, bir nechta muhim sana boʻlishi mumkin: <strong>universitetning ariza muddati</strong>, <strong>stipendiya yoki moliyalashtirish muddati</strong>, hujjatlar, tavsiya xatlari va til natijalarining oxirgi sanasi. Baʼzi universitetlarda stipendiya uchun oʻsha universitet arizasini ertaroq topshirish kifoya qiladi; boshqa dasturlarda esa alohida grant arizasi kerak.</p>
-<h4>Muddat turlari</h4>
-<div class="tbl"><table><thead><tr><th>Atama</th><th>Amaliy maʼnosi</th></tr></thead><tbody>
-<tr><td><strong>Yakuniy muddat</strong> (<em lang="en">deadline</em>)</td><td>Ariza aynan qachongacha va qaysi vaqt mintaqasida qabul qilinishini koʻrsatadi; kech arizani qabul qilish-qilmaslik tashkilot qoidasiga bogʻliq.</td></tr>
-<tr><td><strong>Ustuvor muddat</strong> (<em lang="en">priority deadline</em>)</td><td>Grant yoki dastlabki koʻrib chiqish uchun muhim boʻlishi mumkin. <strong>Undan keyin ham ariza qabul qilinadi</strong> deb umumlashtirib boʻlmaydi.</td></tr>
-<tr><td><strong>Navbatma-navbat koʻrib chiqish</strong> (<em lang="en">rolling admissions</em>)</td><td>Arizalar davriy ravishda koʻrib chiqilishi mumkin. Joy qolganligi va oxirgi sana dastur shartiga bogʻliq.</td></tr>
-<tr><td><strong>Bir necha qabul bosqichi</strong> (<em lang="en">application rounds</em>)</td><td>Har bosqichning alohida ariza, qaror va baʼzan grant muddati boʻladi.</td></tr>
-</tbody></table></div>
-<h4>Rasmiy sanani qanday qayd etasiz?</h4>
-<ul><li><strong>Qabul yili va dastur:</strong> muayyan qabul davri (intake) va mutaxassislikka tegishli ekanini tekshiring.</li>
-<li><strong>Vaqt mintaqasi:</strong> «23:59» qaysi mamlakat yoki shahar vaqti? Oxford misolida ayrim graduate muddatlari UK vaqti bilan <strong>12:00 (tushlik)</strong> da tugaydi.</li>
-<li><strong>Hujjatlar:</strong> tavsiya xatlari va qoʻshimcha hujjatlar portalning qaysi muddatigacha yetib kelishi kerak?</li>
-<li><strong>Manba va holat:</strong> URL, oxirgi tekshiruv sanasi va holatni yozing. Yangi yil sanasi eʼlon qilinmagan boʻlsa, eski sanani <strong>tasdiqlangan</strong> deb kiritmang.</li></ul>
-<div class="box warn"><strong>Muhim:</strong> barcha dasturlarda grant va qabul sanasi alohida emas. Oxford va Cambridge misollari butun dunyoga tatbiq qilinadigan qoida emas.</div>
-<div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/starting-your-application/when-to-apply" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — graduate deadlines</a> · <a href="https://www.postgraduate.study.cam.ac.uk/apply/application-deadlines" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge — course and funding deadlines</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/registering-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — references</a>. <small>31.10.2026 holatida tekshirildi. Har bir yangi qabul davrida talablarni qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Har dastur uchun <strong>qabul, funding va hujjat sanalarini</strong> rasmiy manbadan tekshiring. Eng erta tegishli muddatga qarab rejalang; vaqt mintaqasi va ariza yilini unutmang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Qisqa test: toʻgʻri yoki notoʻgʻri?</b>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Dastur arizasi hali ochiq boʻlishi mumkin, stipendiya uchun kerakli sana esa oʻtib ketgan boʻlishi mumkin. Bu darsda har dasturda qaysi sanalar borligini ajratamiz.</div></div>
+          <div class="panel"><div data-kvideo="l1"></div><p>Bitta arizada odatda bir nechta sana bor: universitet arizasi, stipendiya yoki grant, tavsiya xatlari, til natijasi.</p><div class="tbl"><table><thead><tr><th>Atama</th><th>Maʼnosi</th></tr></thead><tbody><tr><td>Yakuniy muddat (<em lang="en">deadline</em>)</td><td>Ariza qaysi kun, qaysi soatgacha va qaysi vaqt mintaqasida qabul qilinadi</td></tr><tr><td>Ustuvor muddat (<em lang="en">priority</em>)</td><td>Grant yoki birinchi koʻrib chiqish uchun. Undan keyin ariza qabul qilinishi kafolatlanmaydi</td></tr><tr><td>Navbatma-navbat (<em lang="en">rolling</em>)</td><td>Arizalar kelishi bilan koʻrib chiqiladi, erta topshirish foydali</td></tr><tr><td>Bosqichlar (<em lang="en">rounds</em>)</td><td>Har bosqichning oʻz sanasi va baʼzan oʻz granti bor</td></tr></tbody></table></div><p><b>Soatga qarang.</b> Oxford da baʼzi magistratura sanalari Britaniya vaqti bilan tushlik, 12:00 da yopiladi.</p><details class="mv-i"><summary>Batafsil</summary><div><p>Yangi yil sanasi eʼlon qilinmagan boʻlsa, eski sanani tasdiqlangan deb yozmang: «nomaʼlum» deb qoldiring. Telegram kanaldagi sana eskirgan boʻlishi mumkin, faqat rasmiy sahifa.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/starting-your-application/when-to-apply" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: graduate deadlines</a> · <a href="https://www.postgraduate.study.cam.ac.uk/apply/application-deadlines" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge: course and funding deadlines</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/registering-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: references</a>. <small>31.10.2026 holatida tekshirildi. Har bir yangi qabul davrida talablarni qayta tekshiring.</small></div></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Har dasturda universitet, stipendiya va hujjat sanalarini alohida yozasiz va eng erta sanaga qarab reja tuzasiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Tez test: toʻgʻri yoki notoʻgʻri?</b>
             <div class="quiz" id="quiz">
               <div class="qz" data-a="n"><p>“Stipendiya muddati har doim universitet muddati bilan bir xil.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: muddatlar bir xil ham, turlicha ham boʻlishi mumkin.</div></div>
               <div class="qz" data-a="t"><p>“Navbatma-navbat qabulda erta topshirish afzal.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Odatda toʻgʻri, lekin aniq ochiq joylar va qoidalarni dastur sahifasidan tekshiring.</div></div>
@@ -194,27 +202,16 @@
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.2</span><span class="l-t" style="display:block">Teskari rejalashtirish</span>
-            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🛠 Teskari rejalashtirgich</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
+          <span><span class="l-n">Dars 2.2</span><span class="l-t" style="display:block">Sanadan orqaga hisoblaymiz</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Teskari rejalashtirgich</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Muddatga ikki hafta qolganida tavsiya xati soʻrashingiz mumkin, lekin tavsiya beruvchining vaqti boʻlmasligi ehtimoli bor. <strong>Orqaga qarab rejalash</strong> aynan shunday tashqi bogʻliqliklarni erta koʻrishga yordam beradi.</div></div>
-          <div class="panel"><p><strong>Teskari rejalashtirish</strong> (<em lang="en">backward planning</em>) — rasmiy topshirish sanasidan boshlab, har bir vazifa uchun tayyor boʻlish muddatini va boshlanish vaqtini orqaga hisoblash. Bu vosita sizga vaqtni taqsimlaydi; hujjat tayyorligini yoki ariza topshirilganini tasdiqlamaydi.</p>
-<h4>Avval boshqalarga bogʻliq vazifalar</h4>
-<ul><li><strong>Tavsiya xati:</strong> tavsiya beruvchini oldindan ogohlantiring, unga dastur roʻyxati va sanalarni taqdim eting. <strong>8 hafta</strong> — Magistratura dasturining ehtiyotkor rejalashtirish taxmini, majburiy universitet talabi emas.</li>
-<li><strong>Til imtihoni:</strong> test oʻrni, natijaning chiqishi, qayta topshirish va natijani universitetga yetkazish muddatini tekshiring.</li>
-<li><strong>Tarjima va tasdiq:</strong> transkript, diplom yoki boshqa hujjat uchun sertifikatlangan tarjima, apostil yoxud tasdiq kerakligini dastur talabidan aniqlang.</li></ul>
-<h4>Keyin oʻzingiz boshqaradigan vazifalar</h4>
-<p>CV (M3), maqsad bayonnomasi (M5) va talab etilsa ilmiy loyiha taklifi (M6) uchun <strong>qoralama → tahrir → tekshiruv → yakuniy fayl</strong> ketma-ketligini rejalang. Hujjatlar tayyorlanishi bir-biri bilan parallel kechishi mumkin.</p>
-<h4>Zaxira vaqtini hisoblang</h4>
-<p>Magistratura dasturining dastlabki taklifi — kamida bir hafta zaxira. Bu qatʼiy qoida emas: portal nosozligi, toʻlov, tarjima, tavsiya xatlari va imtihon sanalariga qarab koʻproq vaqt kerak boʻlishi mumkin. Masalan, Oxford oʻz arizalarini imkon qadar kamida <strong>ikki hafta oldin</strong> yuborishni tavsiya qiladi.</p>
-<div class="box info"><strong>Vosita chegarasi:</strong> rejalashtirgichdagi hafta sonlari oʻzgartiriladigan ishchi taxminlar. Rasmiy sana, universitet soat mintaqasi va hujjat yetib borishini u avtomatik tekshirmaydi.</div>
-<div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/declaration-and-payment/submitting-your-application" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — application submission advice</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/information-for-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — guidance for referees</a>. <small>31.10.2026 holatida tekshirildi. Har bir yangi qabul davrida talablarni qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><p>Rasmiy muddatni asos qilib oling, avval tashqi bogʻliqliklarni rejalang. Hafta sonlari tavsiya, natijalar va sanalar esa dastur boʻyicha tekshirilishi kerak.</p></div></div>
-          <div class="panel"><div class="assign"><b>Teskari rejalashtirgich (taxminiy reja)</b>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Muddatga ikki hafta qolganda ustozingizdan tavsiya soʻradingiz. U shu hafta konferensiyada ekan. Boshqa odamga bogʻliq ish eng ertadan boshlanadi. Bu darsda sanadan orqaga hisoblaymiz.</div></div>
+          <div class="panel"><div data-kvideo="l2"></div><p><b>Avval boshqalarga bogʻliq ish:</b></p><ul><li>Tavsiya xati: 8 hafta oldin soʻraymiz. Bu bizning ehtiyot tavsiyamiz, universitet talabi emas.</li><li>Til imtihoni: imtihon kuni, natija chiqishi va universitetga yetib borish muddati.</li><li>Tarjima va tasdiq: diplom yoki qaydnoma uchun kerakmi, dastur sahifasidan bilasiz.</li></ul><p><b>Keyin oʻzingiz qiladigan ish:</b> CV (M3), maqsad bayonnomasi (M5), kerak boʻlsa tadqiqot loyihasi taklifi (M6). Har biri: qoralama → tahrir → tekshiruv → yakuniy fayl.</p><p><b>Zaxira:</b> topshirish kunidan kamida bir hafta oldin tayyor boʻling. Oxford arizani imkon qadar kamida ikki hafta oldin yuborishni tavsiya qiladi.</p><details class="mv-i"><summary>Manbalar</summary><div><div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/declaration-and-payment/submitting-your-application" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: application submission advice</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/information-for-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: guidance for referees</a>. <small>31.10.2026 holatida tekshirildi. Har bir yangi qabul davrida talablarni qayta tekshiring.</small></div></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Reja topshirish sanasidan orqaga hisoblanadi: avval boshqa odamga bogʻliq ish, oxirida zaxira hafta.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sanadan orqaga reja</b>
             <div class="grid3" style="margin-top:8px">
               <div class="fld"><label for="rpName">Dastur yoki stipendiya</label><input id="rpName" placeholder="masalan, Chevening" autocomplete="off"></div>
               <div class="fld"><label for="rpType">Turi</label><select id="rpType"><option value="u">Universitet dasturi</option><option value="s">Stipendiya</option></select></div>
@@ -232,31 +229,17 @@
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.3</span><span class="l-t" style="display:block">Arizalarni kuzatish jadvali (Master Tracker)</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">📋 Tracker</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 2.3</span><span class="l-t" style="display:block">Hamma ariza bitta jadvalda</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Tracker</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bir nechta dastur va stipendiyaga topshirayotganda asosiy xavf — fayllar va sanalarning turli joylarda saqlanishi. <strong>Arizalar jadvali</strong> ularni tartiblaydi, lekin maʼlumotni oʻzi tasdiqlamaydi.</div></div>
-          <div class="panel"><p><strong>Arizalar jadvali</strong> — arizalarning ishchi nazorat jadvali. Har qatorda universitet dasturi yoki stipendiya; har ustunda siz tekshiradigan savol boʻladi. Jadval ish jarayonini boshqarishga yordam beradi, <strong>universitet portali oʻrnini bosmaydi</strong>.</p>
-<div class="tbl"><table><thead><tr><th>Maʼlumot</th><th>Qanday tekshiriladi?</th></tr></thead><tbody>
-<tr><td><strong>Dastur va turi</strong></td><td>Rasmiy nom, qabul yili, universitet yoki stipendiya.</td></tr>
-<tr><td><strong>Muddat</strong></td><td>Rasmiy sana, soat va vaqt mintaqasi; portalda qayta tasdiqlang.</td></tr>
-<tr><td><strong>Holat</strong></td><td>Rejada → Tayyorlanmoqda → Yuborildi → Natija kutilmoqda → Yakuniy qaror. Bu siz kiritadigan ichki holat.</td></tr>
-<tr><td><strong>Hujjatlar</strong></td><td>Talab qilingan CV, SoP, transcript, til dalili va tavsiya xatlari; har biri alohida tekshiriladi.</td></tr>
-<tr><td><strong>Toʻlov va moliya</strong></td><td>Ariza toʻlovi, grant va uning shartlari.</td></tr>
-<tr><td><strong>Rasmiy havola</strong></td><td>Talablarning asl manbasi va ariza portali.</td></tr></tbody></table></div>
-<h4>Haftalik nazorat</h4>
-<ul><li>Haftada bir marta har bir qatorning sana va holatini tekshiring.</li>
-<li>Yaqin ikki hafta ichidagi majburiy ishlar va boshqalarga bogʻliq hujjatlarni belgilang.</li>
-<li>Kelasi haftaning <strong>uchta ustuvor vazifasini</strong> yozing.</li>
-<li>Muddat oʻzgargan boʻlsa, manba va tekshiruv sanasini qayd eting.</li></ul>
-<div class="box warn"><strong>Funksiya chegarasi:</strong> Tracker maʼlumotlari brauzeringizning mahalliy xotirasida saqlanadi. <strong>Rasmiy sanalarni avtomatik yangilamaydi, hujjatni universitetga yubormaydi</strong>; boshqa qurilmada maʼlumot avtomatik ochilmaydi.</div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Jadvalni yagona ishchi roʻyxat sifatida yuriting. Har hafta sanalarni, holatlarni va keyingi uchta ishni yangilang; rasmiy ariza portali doim asosiy manba boʻlib qoladi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: sizning arizalar jadvalingiz</b>
-            <ul><li>Pastdagi <a href="#tracker">Arizalar jadvali</a> vositasiga M1 roʻyxatingizni import qiling yoki dasturlarni qoʻlda qoʻshing.</li><li>Har qatorga rasmiy muddatni (maʼlum boʻlsa), havolani va haqiqatan tayyor hujjatlarni kiriting.</li><li>Haftalik yangilash kuni va soatini tanlang. Ushbu vosita avtomatik eslatma yubormaydi.</li></ul>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bitta dasturning sanasi telefonda, ikkinchisiniki daftarda, uchinchisi emailda. Bir kuni uchinchisi esdan chiqadi. Bu darsda hamma arizani bitta jadvalga yigʻamiz.</div></div>
+          <div class="panel"><div data-kvideo="l3"></div><p>Jadvalda har qator bitta dastur yoki stipendiya. Ustunlar:</p><ul><li><b>Nom va tur:</b> universitet dasturi yoki stipendiya, qabul yili.</li><li><b>Sana:</b> kun, soat, vaqt mintaqasi.</li><li><b>Holat:</b> Rejada → Tayyorlanmoqda → Yuborildi → Natija kutilmoqda → Yakuniy qaror.</li><li><b>Hujjatlar:</b> CV, maqsad bayonnomasi, qaydnoma, til, tavsiya.</li><li><b>Pul va havola:</b> ariza toʻlovi, grant, rasmiy sahifa.</li></ul><p><b>Haftasiga bir marta</b> har qatorni koʻrib chiqing va keyingi haftaning 3 ta ishini yozing.</p></div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Jadval Sizning yagona ishchi roʻyxatingiz. Rasmiy sana doim universitet portalida.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizning arizalar jadvalingiz</b>
+            <ul><li>Pastdagi <a href="#tracker">Arizalar jadvali</a>ga M1 roʻyxatingizni import qiling yoki dasturlarni qoʻlda qoʻshing.</li><li>Har qatorga maʼlum boʻlgan sana va havolani yozing.</li><li>Jadvalni yangilaydigan kun va soatni tanlang.</li></ul>
             <textarea data-save="a3" placeholder="Haftalik yangilash: yakshanba, 20:00. Kelasi haftaning 3 ishi: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
         </div>
@@ -266,28 +249,17 @@
       <article class="lesson" id="l4">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.4</span><span class="l-t" style="display:block">Bir nechta arizani birga rejalash</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">📊 Gantt jadvali</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 2.4</span><span class="l-t" style="display:block">Bir nechta arizani birga yuritish</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Gantt jadvali</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bitta stipendiya natijasini kutib, keyingi arizaga faqat shundan keyin kirishish muddatni boy berishga olib kelishi mumkin. Lekin <strong>koʻproq ariza har doim yaxshiroq natija</strong> degani emas. Muhimi — vaqt, xarajat va talablarni hisobga olgan izchil portfel.</div></div>
-          <div class="panel"><p><strong>Bir nechta arizani birga rejalash</strong> — bir nechta universitet va stipendiya arizasini mustaqil muddatlar asosida boshqarish. Magistratura dasturi boshlangʻich misol sifatida <strong>6–10 dastur va 3 tagacha stipendiya</strong>ni koʻrsatadi. Bu universal meʼyor emas; imkoniyatingiz va moliyalashtirish variantlariga moslang.</p>
-<h4>Qayta ishlatiladigan va moslashtiriladigan qismlar</h4>
-<ul><li><strong>Akademik CV:</strong> asosiy maʼlumotlar izchil qoladi; dasturga mos yutuqlar tanlanishi mumkin.</li>
-<li><strong>Maqsad bayonnomasi:</strong> yagona qoralama foydali, ammo har dastur uchun maqsad, kurslar va dalillarni mazmunan moslashtiring. Faqat universitet nomini almashtirish yetarli emas.</li>
-<li><strong>Tavsiya xatlari:</strong> tavsiya beruvchiga dasturlar va muddatlar jadvalini bering; xatlar uning mustaqil hujjati boʻlib qoladi.</li></ul>
-<h4>Muddat toʻqnashuvi nimani bildiradi?</h4>
-<p>Vosita <strong>14 kun ichida joylashgan muddatlar</strong>ni «toʻqnashuv» deb belgilaydi. Bu ishlarni navbatga qoʻyish uchun taxminiy mezon. Ikki arizaning ayni sanada tugashi har doim muammo emas, bir oy farq qilsa ham hujjatlar va imtihonlar bir-biriga xalaqit qilishi mumkin.</p>
-<p>Muddatning oʻzini oʻzgartira olmaysiz. Zarurat boʻlsa <strong>ichki tayyor boʻlish sanasini</strong> erta belgilang, vazifalarni qayta taqsimlang yoki ariza sonini kamaytiring.</p>
-<h4>Gantt vositasi haqida</h4>
-<p>Quyidagi jadval Tracker'dagi sanalar va siz kiritgan <strong>umumiy tayyorgarlik haftalari</strong> asosida vaqt chiziqlarini chizadi. Har bir haqiqiy hujjatning boshlanish va tugash sanasini alohida hisoblamaydi; shu sababli uni batafsil <em lang="en">project schedule</em> emas, <strong>dastlabki vaqt xaritasi</strong> sifatida oʻqing.</p>
-<div class="box warn"><strong>Cheklov:</strong> bir nechta dasturga topshirishdan oldin har birining rasmiy talablarini (eligibility), grant shartlarini tekshiring. Ariza soni koʻpaygani bilan qabul kafolatlanmaydi.</div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Parallel arizalarni yagona jadvalda rejalang. 14 kunlik toʻqnashuv — yordamchi signal, rasmiy qaror emas; ichki tayyor boʻlish sanalarini erta belgilab, hujjatlarni mazmunan moslashtiring.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: sizning Gantt jadvalingiz</b>
-            <ul><li>Trackerdagi har qatorga muddat kiritilgach, pastdagi <a href="#gantt">Gantt jadvali</a> avtomatik chiziladi.</li><li>14 kunlik yaqin muddatlarni koʻrib chiqing. Har biri uchun haqiqiy hujjat yuklamasi va ichki tayyor boʻlish sanasini yozing.</li></ul>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bitta stipendiya natijasini kutib, keyingisiga keyin kirishgan odam ikkinchi sanani boy beradi. Lekin ariza qancha koʻp boʻlsa, shuncha yaxshi degan qoida ham yoʻq. Bu darsda bir nechta arizani birga yuritamiz.</div></div>
+          <div class="panel"><div data-kvideo="l4"></div><p>Boshlangʻich misol: 6–10 dastur va 3 tagacha stipendiya. Vaqtingiz va pulingizga moslang.</p><p><b>Qayta ishlatiladigan qismlar:</b></p><ul><li>CV: asosi bir xil, dasturga mos yutuqlar tanlanadi.</li><li>Maqsad bayonnomasi: bitta qoralama, lekin har dasturga kurslar va maqsad moslanadi. Faqat universitet nomini almashtirish yetmaydi.</li><li>Tavsiya xatlari: ustozga dasturlar va sanalar jadvalini berasiz.</li></ul><p><b>Toʻqnashuv:</b> vosita 14 kun ichidagi sanalarni belgilaydi. Bunday juftlikda birinchi arizani ertaroq tayyorlang yoki ariza sonini kamaytiring.</p></div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Hamma ariza bitta vaqt jadvalida koʻrinsa, qaysi haftada qiyin boʻlishini oldindan bilasiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizning vaqt jadvalingiz</b>
+            <ul><li>Jadvalga sana kiritilgach, pastdagi <a href="#gantt">vaqt jadvali</a> oʻzi chiziladi.</li><li>14 kunlik toʻqnashuvlarni koʻrib chiqing va har biri uchun ichki tayyor boʻlish sanasini yozing.</li></ul>
             <textarea data-save="a4" placeholder="Toʻqnashuv: ... va ... (... kun farq). Qaror: ... ni 3 hafta oldin tayyorlayman."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
         </div>
@@ -297,26 +269,16 @@
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.5</span><span class="l-t" style="display:block">I bosqich yakuni: shaxsiy tayyorgarlik rejasi</span>
-            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">📄 Magistraturaga tayyorgarlik rejasi</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 2.5</span><span class="l-t" style="display:block">I bosqich yakuni: bir sahifalik reja</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Magistraturaga tayyorgarlik rejasi</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">M1 da dasturlarni tanladingiz, M2 da muddat va vazifalarni tartibladingiz. Endi ularni <strong>bir sahifali shaxsiy strategik reja</strong>ga yigʻing. Bu yakuniy qabul qarori emas, yangilanib turadigan ishchi reja.</div></div>
-          <div class="panel"><p><strong>Magistraturaga tayyorgarlik rejasi</strong> tanlangan oʻqish yoʻli, ariza muddatlari, moliyalashtirish va tayyorgarlikdagi eng muhim xavflarni qisqacha jamlaydi. U <strong>I bosqich (M1–M2) yakuni</strong> boʻladi; II bosqich (M3–M4) shu rejaga tayanadi.</p>
-<div class="tbl"><table><thead><tr><th>Savol</th><th>Maʼlumot manbasi</th></tr></thead><tbody>
-<tr><td><strong>Kim?</strong></td><td>M1.1 va M1.7 dagi dalillarga asoslangan akademik profil hamda qiziqish bayoni.</td></tr>
-<tr><td><strong>Qayerga?</strong></td><td>M1.5 dagi saralangan dasturlar va M2.3 Tracker qatorlari; har birining rasmiy havolasi.</td></tr>
-<tr><td><strong>Qachon?</strong></td><td>Eng erta rasmiy muddat, ichki tayyor boʻlish sanalari, imtihon va tavsiyalar uchun vaqt.</td></tr>
-<tr><td><strong>Qanday moliyalashtirish bilan?</strong></td><td>M1.6 da tekshirilgan stipendiya yoki boshqa manba, ochiq qolgan xarajatlar.</td></tr></tbody></table></div>
-<h4>Hujjatga yana ikkita maʼlumot qoʻshing</h4>
-<ul><li><strong>Haftalik vaqt:</strong> real ajrata oladigan soatlaringizni kiriting, ideal taxminni emas.</li><li><strong>Eng katta xavf:</strong> til natijasi, tavsiya xati, grant talabi yoki mablagʻ yetishmasligidan qaysi biri muhim?</li></ul>
-<div class="box info"><strong>Avtomatik yigʻish chegarasi:</strong> vosita shu brauzerda saqlangan M1 va M2 maʼlumotlaridan foydalanadi. Agar M1 boshqa qurilmada bajarilgan yoki mahalliy xotira tozalangan boʻlsa, ayrim maʼlumotlar chiqmasligi mumkin. Rasmiy muddatlar avtomatik tekshirilmaydi.</div>
-<p>Rejani yangilaganda <strong>tekshirilgan sana va kiritilgan oʻzgarishlarni</strong> qayd eting. Bu muntazam yangilanadigan ishchi reja, oʻzgarmas hujjat emas.</p>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>I bosqich natijasi — akademik profil, tekshirilgan dasturlar, muddatlar, moliyalashtirish va xavflarni birlashtiradigan magistraturaga tayyorgarlik rejasi. Uni davriy yangilang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: sizning magistraturaga tayyorgarlik rejangiz</b>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">M1 da dasturlarni tanladingiz, M2 da sanalarni qoʻydingiz. Endi hammasini bir sahifaga yigʻamiz: kim, qayerga, qachon va qanday pul bilan.</div></div>
+          <div class="panel"><div data-kvideo="l5"></div><div class="tbl"><table><thead><tr><th>Savol</th><th>Qayerdan</th></tr></thead><tbody><tr><td>Kim?</td><td>M1.1 profil va M1.7 hikoya</td></tr><tr><td>Qayerga?</td><td>M1 saralangan roʻyxat va Arizalar jadvali</td></tr><tr><td>Qachon?</td><td>Eng erta sana, ichki tayyor boʻlish sanalari</td></tr><tr><td>Qanday pul bilan?</td><td>M1.6 pul rejasi</td></tr></tbody></table></div><p>Yana ikkita narsa qoʻshasiz: haftasiga haqiqatan ajrata oladigan soatingiz va eng katta xavf (til, tavsiya, grant yoki pul).</p><details class="mv-i"><summary>Batafsil</summary><div><p>Vosita M1 va M2 javoblarini shu brauzerdan oladi. M1 boshqa qurilmada qilingan boʻlsa, ayrim qatorlar boʻsh chiqadi: ularni qoʻlda yozing.</p></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Bu reja har oy yangilanadi. II bosqichdagi CV va tavsiya xatlari shunga tayanadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizning tayyorgarlik rejangiz</b>
             <div class="grid2" style="margin-top:8px">
               <div class="fld"><label for="sHours">Haftalik vaqt <small>soat</small></label><input id="sHours" data-save="sHours" type="number" min="1" max="40" placeholder="5" inputmode="numeric"></div>
               <div class="fld"><label for="sRisk">Eng katta xavf</label><input id="sRisk" data-save="sRisk" placeholder="masalan, til sertifikati hali yoʻq"></div>
@@ -380,6 +342,7 @@
 
   <!-- ARTIFACT -->
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2>Sizning tayyorgarlik rejangiz</h2>
     <p class="sub">Brauzerda mavjud javoblaringizdan hujjat yigʻiladi. Sanalar va boshqa maʼlumotlar rasmiy manbalardan avtomatik tekshirilmaydi. PDF uchun “Chop etish”ni bosing.</p>
     <div class="artifact">
@@ -401,17 +364,19 @@
     <div class="mentor">
       <div class="av"><img src="img/3d/compass.webp" alt="" width="30" height="30"></div>
       <div>
-        <q>Eng koʻp yoʻqotilgan imkoniyat zaif ariza emas, oʻtkazib yuborilgan muddat. Har yakshanba 20 daqiqa trackerga qarang: bu butun jarayondagi eng arzon sugʻurta.</q>
+        <q>Koʻp yaxshi ariza sanadan kech qolgani uchun oʻqilmay qoladi. Har yakshanba 20 daqiqa jadvalga qarang.</q>
         <small>Asoschi · geofizik, University of Leeds doktoranti</small>
       </div>
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="2"><h2>I bosqich tugadi</h2><div class="mv-bar"><i style="width:40%"></i></div><p class="mv-small">I bosqich: 2 / 2 modul · Rejangiz 40% tayyor</p><div class="mv-k" data-mn="m2rec"><b>Tavsiya xatini soʻrash kuningiz</b> eng erta muddatingizdan 8 hafta oldin. Jadvalga sana kiritsangiz, aniq kun shu yerda chiqadi.</div><div class="mv-k" data-mn="m2cv"><b>CV ning Taʼlim boʻlimi</b> uchun M1 dagi fanlaringiz va ishlaringiz tayyor turibdi.</div><p><b>II bosqichda (M3–M4) Sizni kutayotgan 12 dars:</b></p><ul class="mv-lock"><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M3.1 CV kerakmi va qanday?</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M3.2 Taʼlim boʻlimi va baholar</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M3.3 Tajribani STAR bilan yozish</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M3.4 Nashr, chiqish va loyihalar</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M3.5 Koʻnikma, til va sertifikat</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M3.6 Yuborishdan oldingi tekshiruv</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M4.1 Kuchli tavsiya xati nimadan iborat</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M4.2 Kimdan va qachon soʻrash</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M4.3 Ustozga Yutuqlar varaqasi</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M4.4 Professorga xat: qachon va qanday</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M4.5 Javob kelsa ham, kelmasa ham</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M4.6 Xatlar daftari</li></ul><div class="mv-row"><a class="btn btn-p" href="master-lab-o.html?m=3">II bosqichni boshlash</a><a class="btn btn-g" href="master-lab-narxlar.html">Tariflarni solishtirish</a></div><p class="mv-small">«1 ta bosqich» tarifida II bosqich navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.</p></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~1–2 hafta (haftasiga 4–6 soat)</div>
+      <div><b>Vaqt</b>~1 hafta (dars ~1 soat + vositalar)</div>
       <div><b>Natija</b>Arizalar jadvali + Gantt jadvali + Magistraturaga tayyorgarlik rejasi</div>
     </div>
   </section>
@@ -420,13 +385,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="master-lab-m1.html">← M1 Ilmiy yoʻnalish</a>
-    <span class="btn btn-g" style="cursor:default;opacity:.7">Keyingi: M3 Akademik CV</span>
+    <a class="btn btn-g" href="master-lab-m1.html">← M1</a>
+    <a class="btn btn-p" href="master-lab-o.html?m=3">Keyingi: M3 Akademik CV →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/master-next.js" defer></script>
 
 <script>
 (function () {
@@ -451,7 +418,7 @@
   var MAX = 300, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [100, "2-daraja: Izlanuvchi"], [200, "3-daraja: Kashfiyotchi"], [300, "I bosqich yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -702,3 +669,4 @@
 </script>
 </body>
 </html>
+<!-- mv2 -->

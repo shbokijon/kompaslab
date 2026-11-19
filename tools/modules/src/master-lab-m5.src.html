@@ -12,6 +12,29 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <style>
 {{CSS}}
+/* Master v2 (2026-11-19): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .facts2{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-note{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:14px 16px;font-size:14.5px;margin:0 0 6px}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 /* M5 qoʻshimchalari */
 .path.pn{grid-template-columns:repeat(11,minmax(0,1fr));}
 @media(max-width:760px){.path.pn{grid-template-columns:repeat(6,minmax(0,1fr));}.path.pn .node:nth-child(4)::after{display:block;}.path.pn .node:nth-child(6)::after{display:none;}}
@@ -93,7 +116,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="master-lab" data-kv-mod="5">
 <div class="wrap">
 
   <div class="hero">
@@ -102,15 +125,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Magistratura dasturi</a> · Modul 5</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">III bosqich · Maqsad va tadqiqot</span>
         <h1>Maqsad bayonnomasi</h1>
-        <p class="lead">Maqsad bayonnomasida <strong>tajribangiz, oʻqish maqsadingiz va tanlangan dasturga mosligingizni</strong> dalillar bilan tushuntirasiz. Hujjatning turi, savollari va soʻz chegarasini har bir dasturning rasmiy talabidan tekshirib, matnni ikki dasturga moslashtirasiz. Natija: <strong>Maqsad bayonnomasi (Statement of Purpose, SoP)</strong> 700–1 000 soʻz, <b>2 variant</b> va <b>tahrir qaydi</b>.</p>
-        <div class="facts"><span class="fact"><b>7</b> dars</span><span class="fact">~<b>3–4</b> hafta</span><span class="fact"><b>3</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
+        <p class="lead">Bu modulda <strong>700–1 000 soʻzlik maqsad bayonnomasi</strong>ni yozamiz va uni ikki dasturga moslaymiz. Asosi M1 dagi hikoyangiz va M3 dagi tajriba qatorlari.</p>
+        <div class="facts"><span class="fact"><b>7</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact"><b>3</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/memo.webp" width="160" height="160" alt="">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Oʻquv bosqichlari</b><span id="mapN">0 / 11 bosqich</span></div>
+    <div class="map-h"><b>Modul yoʻli</b><span id="mapN">0 / 11 qadam</span></div>
     <div class="path pn">
       <a class="node" href="#l1" data-node="l1"><span class="dot">5.1</span>Nima</a>
       <a class="node" href="#l2" data-node="l2"><span class="dot">5.2</span>Tuzilma</a>
@@ -137,7 +160,7 @@
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Javoblaringiz faqat shu brauzerda saqlanadi, boshqa qurilmaga oʻzi oʻtmaydi. Vositalar universitet sanasi va talablarini Siz uchun tekshirmaydi, xat yubormaydi va qabulni kafolatlamaydi. Ball va belgilar Sizning ichki tekshiruvingiz, qabul ehtimoli emas. Har faktni dastur sahifasidan oʻzingiz tasdiqlaysiz; sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 5.1 -->
@@ -145,13 +168,13 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 5.1</span><span class="l-t" style="display:block">Maqsad bayonnomasi nima</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🎯 Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">Uch dastur uch xil narsa soʻraydi: biri “Statement of Purpose”, biri “Personal Statement”, uchinchisi uchta savolga 300 soʻzdan javob. Bitta matnni uchalasiga yuborsangiz, kamida ikkitasida savolga javob bermagan boʻlasiz.</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l1"></div>
             <p>Maqsad bayonnomasi komissiyaga ikki savolga javob beradi: <b>nega aynan siz</b> va <b>nega aynan shu dastur</b>. Nomi va urgʻusi dasturga qarab oʻzgaradi:</p>
             <div class="tbl"><table><thead><tr><th>Hujjat</th><th>Urgʻu</th><th>Qayerda koʻp uchraydi</th></tr></thead><tbody>
               <tr><td><b>Maqsad bayonnomasi (Statement of Purpose, SoP)</b></td><td>Ilmiy qiziqish, tayyorgarlik, maqsad, dastur bilan moslik</td><td>AQSh va koʻp xalqaro magistraturalar</td></tr>
@@ -163,7 +186,7 @@
             <ul><li><b>Soʻz chegarasi</b> va <b>belgi (character) chegarasi</b> farq qiladi: belgilarga boʻshliqlar ham kirishi mumkin. Portal qaysi birini hisoblashini tekshiring.</li><li>Chegaradan oshirmang. Chegara yoʻq boʻlsa, magistratura uchun odatiy hajm 700–1 000 soʻz.</li><li>Savolli format berilsa, har savolga <b>aynan oʻsha savol</b> boʻyicha javob bering; umumiy matnni boʻlaklab joylash ishlamaydi.</li></ul>
             <div class="box info">Bu modulda siz 700–1 000 soʻzlik asosiy matn yozasiz. Undan keyin uni qisqartirish, savollarga boʻlish va dasturga moslash osonroq.</div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>SoP, shaxsiy bayonot va motivatsion xat bir xil ikki savolga javob beradi, lekin urgʻusi va shakli farq qiladi. Har doim dastur soʻragan formatni va chegarani bajaring.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Har dastur soʻragan hujjat nomi, savoli va chegarasi alohida yoziladi.</p></div></div>
           <div class="panel"><div class="assign"><b>Qisqa test: toʻgʻri yoki notoʻgʻri?</b>
             <div class="quiz" id="quiz">
               <div class="qz" data-a="n"><p>“Dastur 1 000 soʻz chegarasi qoʻysa, mazmun kuchli boʻlsa 1 100 soʻz yozish mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: chegarani buzish koʻrsatmaga eʼtiborsizlik belgisi.</div></div>
@@ -181,14 +204,14 @@
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 5.2</span><span class="l-t" style="display:block">Tuzilma: toʻrt savolga javob</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 SoP quruvchi</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 5.2</span><span class="l-t" style="display:block">Tuzilma: toʻrtta savolga javob</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">SoP quruvchi</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">Matningizda hammasi bor: tajriba, orzu, universitet maqtovi. Lekin komissiya aʼzosi oʻqib boʻlgach bitta jumlada aytib berolmaydi: bu odam nima qilmoqchi? Tuzilma yoʻq boʻlsa, dalillar ham ishlamaydi.</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l2"></div>
             <p>Toʻrt qismli tuzilma matnni bitta chiziqqa keltiradi. Bu chiziq M1.7 dagi profil hikoyangiz: oʻtmish → hozir → maqsad.</p>
             <div class="tbl"><table><thead><tr><th>Qism</th><th>Vazifasi</th><th>Hajm</th></tr></thead><tbody>
               <tr><td><b>1. Siz kimsiz?</b></td><td>Sizni harakatga keltirgan ilmiy savol yoki muammo; tadqiqotchi sifatida kimligingiz</td><td>~15%</td></tr>
@@ -196,9 +219,9 @@
               <tr><td><b>3. Nimaga erishmoqchisiz?</b></td><td>Dasturda nimani oʻrganmoqchisiz; qisqa va uzoq muddatli kasbiy maqsad</td><td>~20%</td></tr>
               <tr><td><b>4. Nega aynan shu dastur?</b></td><td>Kurslar, professorlar, laboratoriya; siz dasturga nima qoʻshasiz</td><td>~25%</td></tr>
             </tbody></table></div>
-            <ul><li>Har paragraf bitta fikrga xizmat qiladi va oldingisidan mantiqan kelib chiqadi.</li><li>“Siz kimsiz?” qismi bolalikdan emas, <b>hozirgi savolingizdan</b> boshlanadi.</li><li>Maqsad aniq boʻlsin: “dunyoni oʻzgartirish” emas, “suv resurslari agentligida monitoring tizimini loyihalash”.</li><li>Oʻzbekiston bilan bogʻlash faqat haqiqiy va aniq boʻlsa: qaysi muammo, qaysi tashkilot.</li></ul>
+            <ul><li>Har paragraf bitta fikrga xizmat qiladi va oldingisidan mantiqan kelib chiqadi.</li><li>“Siz kimsiz?” qismi <b>hozirgi savolingizdan</b> boshlanadi, bolalikdan boshlanmaydi.</li><li>Maqsad aniq boʻlsin: “suv resurslari agentligida monitoring tizimini loyihalash” kabi.</li><li>Oʻzbekiston bilan bogʻlash faqat haqiqiy va aniq boʻlsa: qaysi muammo, qaysi tashkilot.</li></ul>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Siz kimsiz? (savolingiz) → Buni nima isbotlaydi? (2–3 tajriba) → Nimaga erishmoqchisiz? (aniq maqsad) → Nega aynan shu dastur? (kurs, professor, laboratoriya). Hajm taxminan 15/40/20/25 foiz. Har paragraf bitta fikr.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">4 savol bitta chiziqda: kimsiz, nima isbotlaydi, nimaga erishmoqchisiz, nega aynan shu dastur.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>Pastdagi <a href="#sop">SoP quruvchi</a>da har qism uchun 1–2 jumlalik reja yozing (inglizcha yoki oʻzbekcha). Toʻliq matn 5.5 da yoziladi.</li><li>Butun matningizni bitta jumlada ifodalang.</li></ul>
             <textarea data-save="a2" placeholder="Men ... savoliga ... orqali javob izlayman va ... dasturida ... ni oʻrganmoqchiman."></textarea></div></div>
@@ -210,13 +233,13 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 5.3</span><span class="l-t" style="display:block">«Nega aynan shu dastur?»</span>
-            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🛠 Moslik matritsasi</span><span class="tag xp">+20 XP · vosita +30 XP</span></span></span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Moslik matritsasi</span><span class="tag xp">+20 XP · vosita +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">“Your prestigious university is one of the best in the world.” Bu jumlani istalgan universitet nomi bilan almashtirsa boʻladi, demak u hech narsani isbotlamaydi. Komissiya aynan shuni tekshiradi: siz dasturni oʻrganganmisiz?</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l3"></div>
             <h4>Qayerdan material topiladi</h4>
             <ul><li><b>Dastur sahifasi:</b> majburiy va tanlov kurslari (modules), amaliyot, tezis talabi.</li><li><b>Kafedra sahifasi:</b> professorlar, ularning soʻnggi 2–3 yillik maqolalari va loyihalari.</li><li><b>Laboratoriya va markazlar:</b> uskunalar, maʼlumot bazalari, hamkor tashkilotlar.</li><li><b>Bitiruvchilar:</b> qayerda ishlaydi (dastur sahifasi, LinkedIn).</li></ul>
             <h4>Formula</h4>
@@ -228,7 +251,7 @@
             <h4>Qochish kerak</h4>
             <ul><li>Reyting va “prestigious”, “world-renowned” kabi maqtovlar.</li><li>Professorni faqat ismi bilan sanash: uning qaysi ishi va nima uchun.</li><li>Sizga aloqasi yoʻq elementlar: shahar goʻzalligi, sport inshootlari.</li></ul>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Moslik = aniq kurs, professor yoki laboratoriya + nega bu maqsadingizga kerak + u bilan nima qilasiz. Maqtov va reyting dalil emas.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Moslik paragrafida aniq kurs, professor yoki laboratoriya va u bilan nima qilishingiz turadi.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>Pastdagi <a href="#fit">Moslik matritsasi</a>ni 2 dastur uchun toʻldiring va har biri uchun moslik paragrafini yozing.</li></ul></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
@@ -239,14 +262,14 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 5.4</span><span class="l-t" style="display:block">Dalil bilan yozish</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">✍️ Mashq</span><span class="tag xp">+20 XP</span></span></span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Mashq</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">“I am a curious, hardworking and highly motivated person.” Bu uchta sifatni isbotlash uchun jumlada bitta ham fakt yoʻq. Komissiya sifatlarni emas, ular koʻringan hodisalarni qidiradi.</div></div>
-          <div class="panel">
-            <p>Asosiy qoida: <b>sifat emas, hodisa</b> (show, don’t tell). Sifat haqidagi xulosani komissiya oʻzi chiqarsin.</p>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“I am a curious, hardworking and highly motivated person.” Bu uchta sifatni isbotlash uchun jumlada bitta ham fakt yoʻq. Komissiya har sifatning orqasidagi voqeani qidiradi.</div></div>
+          <div class="panel"><div data-kvideo="l4"></div>
+            <p>Asosiy qoida: <b>sifat oʻrniga voqea</b> yozing (<em lang="en">show, don’t tell</em>). Sifat haqidagi xulosani komissiya oʻzi chiqarsin.</p>
             <div class="tbl"><table><thead><tr><th>Sifat (kuchsiz)</th><th>Hodisa (kuchli)</th></tr></thead><tbody>
               <tr><td>I am very curious.</td><td>When our salinity maps contradicted the official data, I spent two months re-checking 1,200 records and traced the gap to a unit error in the 2015 reports.</td></tr>
               <tr><td>I have strong analytical skills.</td><td>I built a Python workflow that cut our monthly reporting time from three days to four hours.</td></tr>
@@ -254,9 +277,9 @@
             </tbody></table></div>
             <p>Namunalar Kompas tomonidan tuzilgan oʻquv misollari.</p>
             <h4>Dalil paragrafining tuzilmasi</h4>
-            <ol style="margin-left:20px"><li><b>Vaziyat</b> — 1 jumla.</li><li><b>Siz nima qildingiz</b> — usul, vosita, qaror.</li><li><b>Natija</b> — raqam bilan, iloji boʻlsa.</li><li><b>Fikr (reflection)</b> — nima oʻrgandingiz, savolingiz qanday oʻzgardi. Bu qism SoP ni CV dan ajratadi.</li></ol>
+            <ol style="margin-left:20px"><li><b>Vaziyat</b>: 1 jumla.</li><li><b>Siz nima qildingiz</b>: usul, vosita, qaror.</li><li><b>Natija</b>: raqam bilan, iloji boʻlsa.</li><li><b>Fikr (reflection)</b>: nima oʻrgandingiz, savolingiz qanday oʻzgardi. Bu qism SoP ni CV dan ajratadi.</li></ol>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p>Har daʼvo hodisa bilan isbotlanadi: vaziyat, harakat, natija va undan chiqqan fikr. Raqamlar va aniq nomlar matnni ishonchli qiladi.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Har sifat bitta voqea bilan isbotlanadi: vaziyat, harakat, natija va undan chiqqan fikr.</p></div></div>
           <div class="panel"><div class="assign"><b>Mashq: 3 sifatni hodisaga aylantiring</b>
             <ul><li>Oʻzingizni taʼriflaydigan 3 sifatni yozing va har birini bitta aniq hodisa bilan almashtiring (ingliz tilida).</li></ul>
             <textarea data-save="a4" style="min-height:140px" placeholder="1) Curious → When ... 2) ... 3) ..."></textarea></div></div>
@@ -268,17 +291,17 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 5.5</span><span class="l-t" style="display:block">Birinchi qoralama</span>
-            <span class="l-m"><span class="tag">⏱ 90 daqiqa</span><span class="tag">🛠 SoP quruvchi</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">SoP quruvchi</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">Kirish jumlasini ikki kun yozdingiz va hali ham yoqmaydi. Qolgan 900 soʻz esa boshlanmagan. Birinchi jumla eng qiyini, shuning uchun uni oxirida yozish kerak.</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l5"></div>
             <h4>Yozish tartibi</h4>
-            <ol style="margin-left:20px"><li><b>Buni nima isbotlaydi?</b> (oʻrta qism) — sizda eng koʻp material bor joy.</li><li><b>Nega aynan shu dastur?</b> — 5.3 dagi matritsadan.</li><li><b>Nimaga erishmoqchisiz?</b> — tajribangiz va dastur orasidagi koʻprik.</li><li><b>Siz kimsiz?</b> (kirish) — oxirida, butun matn tayyor boʻlgach.</li></ol>
+            <ol style="margin-left:20px"><li><b>Buni nima isbotlaydi?</b> (oʻrta qism): sizda eng koʻp material bor joy.</li><li><b>Nega aynan shu dastur?</b>: 5.3 dagi matritsadan.</li><li><b>Nimaga erishmoqchisiz?</b>: tajribangiz va dastur orasidagi koʻprik.</li><li><b>Siz kimsiz?</b> (kirish): oxirida, butun matn tayyor boʻlgach.</li></ol>
             <h4>90 daqiqalik bloklar</h4>
-            <ul><li>Bitta blok — bitta qism. Telefon boshqa xonada.</li><li>Yozish paytida tahrirlamang: imlo va soʻz tanlash keyinroq.</li><li>Maqsad hajmdan 10–20% koʻproq yozish; keyin qisqartirish yangidan yozishdan oson.</li><li>Bloklar orasida kamida bir kun tanaffus: matnga “yangi koʻz” bilan qaytasiz.</li></ul>
+            <ul><li>Bitta blok: bitta qism. Telefon boshqa xonada.</li><li>Yozish paytida tahrirlamang: imlo va soʻz tanlash keyinroq.</li><li>Maqsad hajmdan 10–20% koʻproq yozish; keyin qisqartirish yangidan yozishdan oson.</li><li>Bloklar orasida kamida bir kun tanaffus: matnga “yangi koʻz” bilan qaytasiz.</li></ul>
             <div class="tbl"><table><thead><tr><th>Blok</th><th>Qism</th><th>Natija</th></tr></thead><tbody>
               <tr><td>1</td><td>Buni nima isbotlaydi?</td><td>2–3 paragraf, ~350 soʻz</td></tr>
               <tr><td>2</td><td>Nega aynan shu dastur?</td><td>1–2 paragraf, ~200 soʻz</td></tr>
@@ -286,7 +309,7 @@
               <tr><td>4</td><td>Siz kimsiz?</td><td>1 paragraf, ~130 soʻz</td></tr>
             </tbody></table></div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><p>Oʻrtadan boshlang, kirishni oxirida yozing. 90 daqiqalik bloklar, yozish va tahrirlash alohida, hajmdan biroz koʻproq.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Oʻrtadan boshlaysiz, kirishni oxirida yozasiz. Yozish va tahrir alohida kunlarda.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li><a href="#sop">SoP quruvchi</a>da 4 qismni toʻliq yozing: jami 700–1 000 soʻz.</li><li>Bloklar sanasini rejalashtiring.</li></ul>
             <textarea data-save="a5" placeholder="1-blok: ... 2-blok: ... 3-blok: ... 4-blok: ..."></textarea></div></div>
@@ -298,13 +321,13 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 5.6</span><span class="l-t" style="display:block">Tahrir</span>
-            <span class="l-m"><span class="tag">⏱ 45 daqiqa</span><span class="tag">🛠 Qolip iboralar detektori</span><span class="tag xp">+20 XP · vosita +30 XP</span></span></span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Qolip iboralar detektori</span><span class="tag xp">+20 XP · vosita +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Matnni uchinchi marta oʻqiyapsiz va xato koʻrmayapsiz. Bu matn yaxshiligidan emas: miyangiz nima yozganingizni biladi va koʻrgan narsani emas, eslagan narsani oʻqiydi.</div></div>
-          <div class="panel">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Matnni uchinchi marta oʻqiyapsiz va xato koʻrmayapsiz. Sabab oddiy: miyangiz matnni yod biladi va sahifadagini emas, esidagini oʻqiydi.</div></div>
+          <div class="panel"><div data-kvideo="l6"></div>
             <h4>Keng tarqalgan xatolar</h4>
             <ul><li><b>Bolalikdan boshlash:</b> “<span lang="en">Since childhood I have dreamed...</span>”. Komissiyani hozirgi tayyorgarligingiz qiziqtiradi.</li><li><b>CV ni qayta aytish:</b> roʻyxat oʻrniga 2–3 tajriba chuqurroq, fikr bilan.</li><li><b>Qolip iboralar:</b> passionate, prestigious, make a difference, unique opportunity.</li><li><b>Mavhum maqsad:</b> “contribute to society” oʻrniga aniq rol va tashkilot.</li><li><b>Notoʻgʻri universitet nomi:</b> boshqa arizadan nusxa olinganda qolgan nom. Bu eng qimmat xato.</li></ul>
             <h4>3 bosqichli tahrir</h4>
@@ -316,7 +339,7 @@
             <ul><li>Ikki kishidan fikr soʻrang: biri sohadan, biri sohadan tashqaridan. Ikkinchisi tushunmagan joy noaniq.</li><li>Har tahrirdan keyin <b>tahrir qaydi</b>ga yozing: versiya, sana, nima oʻzgardi.</li></ul>
             <div class="box warn"><b>Sunʼiy intellekt (AI) vositalari.</b> Koʻp universitetlar bayonnoma sizning oʻz ishingiz boʻlishini talab qiladi va AI yozgan matnni qoidabuzarlik deb hisoblashi mumkin. Har dasturning siyosatini tekshiring. Xavfsiz yoʻl: matnni oʻzingiz yozing; vositani, ruxsat etilgan boʻlsa, faqat imlo tekshiruvi uchun ishlating.</div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Tahrir uch bosqichda: tuzilma, dalil, til. Qolip iboralar, bolalik hikoyasi, CV takrori va notoʻgʻri universitet nomini olib tashlang. Har versiyani qayd eting.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Tahrir uch bosqichda: tuzilma, dalil, til. Universitet nomini har versiyada qayta tekshirasiz.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>Pastdagi <a href="#cliche">Qolip iboralar detektori</a>ni ishga tushiring: 0 ta qolip ibora, kamida 3 ta raqam.</li><li>Tahrir qaydiga kamida 2 ta yozuv qoʻshing.</li></ul></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
@@ -326,14 +349,14 @@
       <article class="lesson" id="l7">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 5.7</span><span class="l-t" style="display:block">Yozma namunalarni taqqoslash</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🔍 Tahlil</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 5.7</span><span class="l-t" style="display:block">Namunalarni solishtirish</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Tahlil</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Tayyor “muvaffaqiyatli SoP” namunalarini internetdan koʻchirib oʻqish xavfli: uslub sezilmasdan sizga oʻtadi, baʼzan iboralar ham. Namunadan nusxa emas, mexanizm olinadi.</div></div>
-          <div class="panel">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Tayyor “muvaffaqiyatli SoP” namunalarini internetdan koʻchirib oʻqish xavfli: uslub sezilmasdan sizga oʻtadi, baʼzan iboralar ham. Namunadan jumla olmang, qanday tuzilganini koʻring.</div></div>
+          <div class="panel"><div data-kvideo="l7"></div>
             <p>Quyidagi matnlar <b>Kompas tomonidan tuzilgan oʻquv namunalari</b>; ular haqiqiy talabalar matni emas. Vazifa: nima uchun biri kuchliroq ekanini mexanizm darajasida tushunish.</p>
             <h4>Kirish paragrafi</h4>
             <div class="tbl"><table><thead><tr><th>A</th><th>B</th></tr></thead><tbody>
@@ -346,7 +369,7 @@
             <h4>Tahlil savollari</h4>
             <ul><li>Qaysi matnda aniq yil, joy va raqam bor?</li><li>Qaysi matnni boshqa universitet nomi bilan oʻzgarishsiz yuborsa boʻladi?</li><li>Qaysi matnda muallifning <b>savoli</b> bor?</li><li>B matnida “nima qoʻshaman” qismi qayerda?</li></ul>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Kuchli matn: aniq hodisa va raqam, shaxsiy ilmiy savol, faqat shu dasturga tegishli elementlar va siz qoʻshadigan hissa. Namunadan mexanizm olinadi, matn emas.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Namunadan jumla olmaysiz, qanday tuzilganini olasiz.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>A va B orasidagi 3 ta mexanizm farqini yozing.</li><li>Oʻz kirish paragrafingizni shu 3 farq boʻyicha tekshiring: nimani oʻzgartirasiz?</li></ul>
             <textarea data-save="a7" style="min-height:120px" placeholder="1) ... 2) ... 3) ... Oʻzgartiraman: ..."></textarea></div></div>
@@ -437,6 +460,7 @@
 
   <!-- ARTIFACT -->
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2>Sizning maqsad bayonnomangiz</h2>
     <p class="sub">Asosiy matn, ikki dasturga moslashtirilgan variant va tahrir qaydi. PDF uchun “Chop etish”.</p>
     <div class="artifact">
@@ -465,11 +489,13 @@
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="5"><h2>Keyingi qadam: taklif kerakmi?</h2><div class="mv-bar"><i style="width:70%"></i></div><p class="mv-small">III bosqich: 1 / 2 modul · Rejangiz 70% tayyor</p><div class="mv-k" data-mn="m5"><b>Dasturlaringiz tadqiqot loyihasi taklifini soʻraydimi?</b> M6.1 da 2 daqiqada bilib olasiz. Soʻramasa, M6 ni oʻtkazib, M7 ga oʻting: vaqtingiz stipendiyalarga qoladi.</div><div class="mv-row"><a class="btn btn-p" href="master-lab-o.html?m=6">M6: taklif kerakmi?</a><a class="btn btn-g" href="master-lab-o.html?m=7">Kerak emas, M7 ga</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>7 ta</div>
-      <div><b>Vaqt</b>~3–4 hafta (haftasiga 5–7 soat)</div>
+      <div><b>Vaqt</b>~2 hafta (dars ~1,5 soat + 4 ta yozish seansi)</div>
       <div><b>Natija</b>SoP 700–1 000 soʻz + 2 variant + tahrir qaydi</div>
     </div>
   </section>
@@ -478,13 +504,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="master-lab.html">← Magistratura dasturi</a>
-    <span class="btn btn-g" style="cursor:default;opacity:.7">Keyingi: M6 Ilmiy loyiha taklifi</span>
+    <a class="btn btn-g" href="master-lab-m4.html">← M4</a>
+    <a class="btn btn-p" href="master-lab-o.html?m=6">Keyingi: M6 Ilmiy loyiha taklifi →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/master-next.js" defer></script>
 
 <script>
 (function () {
@@ -517,7 +545,7 @@
   var MAX = 300, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [100, "2-daraja: Izlanuvchi"], [200, "3-daraja: Kashfiyotchi"], [300, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -717,7 +745,7 @@
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
     lessons.forEach(renderLesson);
   }
@@ -727,3 +755,4 @@
 </script>
 </body>
 </html>
+<!-- mv2 -->

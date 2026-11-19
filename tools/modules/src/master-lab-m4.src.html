@@ -12,6 +12,29 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <style>
 {{CSS}}
+/* Master v2 (2026-11-19): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .facts2{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-note{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:14px 16px;font-size:14.5px;margin:0 0 6px}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 /* Magistratura dasturi M1–M4: match the public module hub title typography. */
 .hero-g h1{font-family:"Cambria","Caladea","Playfair Display",serif;font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.06;letter-spacing:-.5px;max-width:20ch;}
 
@@ -96,7 +119,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="master-lab" data-kv-mod="4">
 <div class="wrap">
 
   <div class="hero">
@@ -105,15 +128,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Magistratura dasturi</a> · Modul 4</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">II bosqich · Hujjatlar va muloqot</span>
         <h1>Tavsiya xatlari va professor bilan aloqa</h1>
-        <p class="lead">Tavsiya beruvchilarni rasmiy talablar asosida tanlaysiz, ularga <strong>yutuqlaringiz va ishlaringiz haqidagi faktlarni</strong> yetkazasiz; zarur boʻlsa, professorlarga <strong>maqsadli dastlabki xat</strong> yozasiz. Natija: <strong>Tajriba va yutuqlar varaqasi (Brag Sheet)</strong>, tavsiya soʻrovlari va <strong>Murojaatlar qaydnomasi (Outreach Log)</strong>.</p>
-        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>2–3</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
+        <p class="lead">Bu modulda tavsiya beruvchilarni tanlaymiz, ularga ishingiz haqidagi faktlarni beramiz va kerak boʻlsa professorga birinchi xatni yozamiz. Oxirida Sizda <strong>Yutuqlar varaqasi</strong>, <strong>soʻrash xatlari</strong> va <strong>Xatlar daftari</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact"><b>4</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/bell.webp" width="160" height="160" alt="">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Oʻquv bosqichlari</b><span id="mapN">0 / 11 qadam</span></div>
+    <div class="map-h"><b>Modul yoʻli</b><span id="mapN">0 / 11 qadam</span></div>
     <div class="path pn">
       <a class="node" href="#l1" data-node="l1"><span class="dot">4.1</span>Anatomiya</a>
       <a class="node" href="#l2" data-node="l2"><span class="dot">4.2</span>Soʻrash</a>
@@ -141,35 +164,23 @@
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Yozma javoblar brauzerning mahalliy xotirasida saqlanadi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Javoblaringiz faqat shu brauzerda saqlanadi, boshqa qurilmaga oʻzi oʻtmaydi. Vositalar universitet sanasi va talablarini Siz uchun tekshirmaydi, xat yubormaydi va qabulni kafolatlamaydi. Ball va belgilar Sizning ichki tekshiruvingiz, qabul ehtimoli emas. Har faktni dastur sahifasidan oʻzingiz tasdiqlaysiz; sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 4.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.1</span><span class="l-t" style="display:block">Tavsiya xati: mustaqil baho va dalillar</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🎯 Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 4.1</span><span class="l-t" style="display:block">Kuchli tavsiya xati nimadan iborat</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Xatning kuchi faqat muhr yoki tavsiya beruvchining unvoniga bogʻliq emas. <strong>Sizning haqiqiy ishingizni kuzatgan shaxsning mustaqil va aniq dalillarga asoslangan bahosi</strong> muhim.</div></div>
-          <div class="panel"><p><strong>Tavsiya xati</strong> (<em lang="en">academic/professional reference</em>) sizning oʻzingizni tanishtirish matningiz emas. Uni ishingizni kuzatgan shaxs oʻz nomidan yozadi. Yaxshi xat tanlangan dasturga tegishli koʻnikma, natija va shaxsiy hissani izohlaydi.</p>
-<h4>Xatdagi asosiy tarkib</h4><div class="tbl"><table><thead><tr><th>Boʻlim</th><th>Nimani ochib beradi?</th></tr></thead><tbody>
-<tr><td><strong>Munosabat</strong></td><td>Siz bilan qachon, qaysi kurs yoki loyihada ishlagani; qanchalik yaxshi tanishi.</td></tr>
-<tr><td><strong>Kuzatilgan dalillar</strong></td><td>Sizning mustaqil ish yuritishingiz, tahlili, tashabbusi yoki aniq ish natijasi.</td></tr>
-<tr><td><strong>Dasturga mos koʻnikmalar</strong></td><td>Akademik, kasbiy yoki tadqiqot koʻnikmalarining tanlangan kursga aloqadorligi.</td></tr>
-<tr><td><strong>Solishtirma baho</strong></td><td>Faqat tavsiya beruvchi buni asoslay olsa; «eng yaxshi 5%» kabi raqamni oʻzingiz taklif qilmang.</td></tr></tbody></table></div>
-<h4>Rasmiy talablar qanday farqlanadi?</h4>
-<ul><li><strong>Oxford:</strong> arizada uch tavsiya beruvchini roʻyxatdan oʻtkazadi; odatda dastlabki koʻrib chiqish uchun kamida ikki xat muddatida kelishi kerak. Xatlarni tavsiya beruvchi toʻgʻridan-toʻgʻri tizimga yuklaydi.</li>
-<li><strong>Cambridge:</strong> odatda ikki tavsiya beruvchi, <em lang="en">Gates Cambridge</em> uchun uchinchi tavsiya talab qilinadi. Xatlar maxfiy portal orqali yuboriladi.</li>
-<li><strong>Chevening:</strong> arizada ikki tavsiya beruvchi maʼlumoti beriladi; keyingi bosqichga oʻtsangiz, xatlarni belgilangan muddatda oʻzingiz yuklaysiz. Bu Oxford va Cambridge tartibidan farq qiladi.</li></ul>
-<p><strong>Mustaqillik va halollik:</strong> tavsiya beruvchiga CV, baholar, kurs talablari va eslatma berishingiz mumkin; uning oʻrniga tayyor xat yozib, uni mustaqil baho sifatida taqdim etmang. Portalda <em lang="en">FERPA waiver</em> kabi huquqiy tanlov boʻlsa, uni tushunib, oʻzingiz qaror qiling: bu avtomatik ravishda xat «kuchliroq» boʻlishini kafolatlamaydi.</p>
-<div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/registering-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — references</a> · <a href="https://www.postgraduate.study.cam.ac.uk/apply/how/references" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge — references</a> · <a href="https://www.chevening.org/resource-hub/guidance/references/" target="_blank" rel="noopener noreferrer" data-alifbo="off">Chevening — references</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/information-for-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — referee guidance</a>. <small>31.10.2026 da tekshirildi. Keyingi qabul davrida joriy shartlarni qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Kuchli tavsiya — tavsiya beruvchining mustaqil, kuzatilgan dalillarga asoslangan fikri. Xatlar soni, kim yuklashi va maxfiylik shartlari universitet yoki stipendiyaga bogʻliq.</p></div></div>
-          <div class="panel"><div class="assign"><b>Qisqa test: toʻgʻri yoki notoʻgʻri?</b>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Dekan Sizni bir marta koʻrgan, kurs rahbaringiz esa bir yil bilan ishlagan. Komissiya uchun ikkinchisining xati foydaliroq: unda aniq voqealar boʻladi. Bu darsda kuchli tavsiya xati nimadan iboratligini koʻramiz.</div></div>
+          <div class="panel"><div data-kvideo="l1"></div><p>Tavsiya xatini ishingizni koʻrgan odam oʻz nomidan yozadi. Yaxshi xatda:</p><ul><li><b>Tanish:</b> qachondan, qaysi kurs yoki loyihada.</li><li><b>Koʻrilgan dalil:</b> mustaqil ish, tahlil, tashabbus, natija.</li><li><b>Dasturga mos koʻnikma.</b></li><li><b>Solishtirma baho</b> faqat tavsiya beruvchi asoslay olsa. «Eng yaxshi 5%» raqamini Siz taklif qilmaysiz.</li></ul><p><b>Kim yuklaydi:</b> Oxford va Cambridge da tavsiya beruvchi oʻzi portalga yuklaydi. Chevening da keyingi bosqichga oʻtsangiz, xatni oʻzingiz yuklaysiz.</p><details class="mv-i"><summary>Batafsil</summary><div><p>Ustozga CV, baholar va eslatma berishingiz mumkin. Uning oʻrniga tayyor xat yozib berib, uni mustaqil baho deb koʻrsatmang. Portalda <em lang="en">FERPA waiver</em> kabi tanlov boʻlsa, maʼnosini tushunib, oʻzingiz qaror qiling.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/registering-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: references</a> · <a href="https://www.postgraduate.study.cam.ac.uk/apply/how/references" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge: references</a> · <a href="https://www.chevening.org/resource-hub/guidance/references/" target="_blank" rel="noopener noreferrer" data-alifbo="off">Chevening: references</a> · <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/information-for-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: referee guidance</a>. <small>31.10.2026 da tekshirildi. Keyingi qabul davrida joriy shartlarni qayta tekshiring.</small></div></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Tavsiya xatini ishingizni koʻrgan odam yozsin. Unvon ikkinchi oʻrinda.</p></div></div>
+          <div class="panel"><div class="assign"><b>Tez test: toʻgʻri yoki notoʻgʻri?</b>
             <div class="quiz" id="quiz">
               <div class="qz" data-a="n"><p>“Eng kuchli xat eng yuqori unvonli odamdan keladi, u sizni yaxshi bilmasa ham.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: kuzatilgan dalil boʻlmasa, unvon xatni kuchaytirmaydi.</div></div>
               <div class="qz" data-a="t"><p>“Aniq kuzatilgan epizodlar foydali; solishtirma foiz esa faqat asoslangan boʻlsa yoziladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: dalillar asosiy; solishtirma foiz majburiy emas.</div></div>
@@ -186,31 +197,17 @@
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.2</span><span class="l-t" style="display:block">Tavsiya beruvchini tanlash va soʻrash</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 Tavsiya beruvchi tanlovi</span><span class="tag xp">+20 XP · vosita +30 XP</span></span></span>
+          <span><span class="l-n">Dars 4.2</span><span class="l-t" style="display:block">Kimdan va qachon soʻrash</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Tavsiya beruvchi tanlovi</span><span class="tag xp">+20 XP · vosita +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Tavsiya xati soʻrashni topshirish muddati yaqinlashguncha qoldirmang. Ammo <strong>«albatta 8 hafta»</strong> degan barcha universitetlarga tegishli qoida yoʻq: bu Magistratura dasturining ishni erta boshlash uchun taklif qilgan zaxira muddati.</div></div>
-          <div class="panel"><p>Avval universitet yoki stipendiya uchun <strong>nechta tavsiya, akademik yoki professional turi va topshirish yoʻli</strong> kerakligini rasmiy manbadan aniqlang. Oxford va Cambridge tavsiya beruvchining portal orqali yuborishini talab qiladi; Chevening tartibi boshqacha.</p>
-<h4>Kimni tanlash kerak?</h4>
-<ul><li><strong>Akademik tavsiya beruvchi:</strong> kurs oʻqituvchisi, ilmiy yoki bitiruv ishi rahbari — sizning bajargan ishingizni biladigan inson.</li>
-<li><strong>Professional tavsiya beruvchi:</strong> bevosita ish rahbari yoki loyiha boshqaruvchisi, agar dastur bunday tavsiyani qabul qilsa.</li>
-<li><strong>Zaxira nomzod:</strong> asosiy shaxs rad etsa yoki muddati yetmasa, boshqa tegishli tavsiya beruvchi boʻlsin.</li></ul>
-<h4>Amaliy vaqt jadvali (taxminiy)</h4>
-<div class="tbl"><table><thead><tr><th>Taxminiy vaqt</th><th>Harakat</th></tr></thead><tbody>
-<tr><td>6–8 hafta oldin</td><td>Ruxsat soʻrang, dastur va oxirgi muddatni aniq ayting; imkon boʻlsa undan ham ertaroq.</td></tr>
-<tr><td>Rozilikdan keyin</td><td>CV, dastur havolasi, erishgan natijalar va kerak boʻlsa Brag Sheet yuboring.</td></tr>
-<tr><td>Muddatga yaqin</td><td>Portal holatini tekshiring va muloyim eslatma bering. Eslatma chastotasini vaziyatga moslang.</td></tr>
-<tr><td>Yakunida</td><td>Xat qabul qilinganini portalda tekshiring, rahmat ayting va ariza natijasini ulashing.</td></tr></tbody></table></div>
-<p><strong>«Menga kuchli, dalillarga asoslangan tavsiya bera olasizmi?»</strong> deb ochiq soʻrashingiz mumkin. Tavsiya beruvchining vaqtini hurmat qiling; rasmiy soʻrovni yuborishdan avval roziligini oling.</p>
-<div class="box info"><strong>Interaktiv reyting chegarasi:</strong> quyidagi vosita nomzodlarni Siz kiritgan toʻrt mezon asosida tartiblaydi. Uning balli tavsiya sifati yoki qabul ehtimolining ilmiy tasdiqlangan bahosi emas. Dastur rasmiy qoidasi ustuvor.</div>
-<div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/registering-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — registering referees</a> · <a href="https://www.postgraduate.study.cam.ac.uk/apply/how/references" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge — choosing referees</a> · <a href="https://www.chevening.org/resource-hub/guidance/references/" target="_blank" rel="noopener noreferrer" data-alifbo="off">Chevening — references</a>. <small>31.10.2026 da tekshirildi. Keyingi qabul davrida joriy shartlarni qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Tavsiya beruvchilarni real tanishlik va tegishli dalillar asosida tanlang. 6–8 haftalik tayyorgarlik — ishchi tavsiya; rasmiy son, tur va muddat har bir arizada alohida tekshiriladi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b>
-            <ul><li>Pastdagi <a href="#rec">Tavsiya beruvchi tanlovi</a>ga dasturingiz talabiga mos nomzodlarni kiriting; kamida 2 ta variantdan boshlang va soʻrov sanasini taxminan hisoblang.</li><li>Birinchi nomzodga yuboriladigan soʻrovning 3–4 jumlali qoralamasini yozing.</li></ul>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Ustozingiz rozi, lekin xatni ertaga yuborishi kerakligini bugun bildi. Shoshilib yozilgan xat qisqa va umumiy chiqadi. Bu darsda kimdan va qachon soʻrashni rejalaymiz.</div></div>
+          <div class="panel"><div data-kvideo="l2"></div><p>Avval dastur nechta tavsiya, qaysi turda (akademik yoki kasbiy) va qaysi yoʻl bilan soʻrashini aniqlang.</p><ul><li><b>Akademik:</b> kurs oʻqituvchisi, bitiruv ishi rahbari.</li><li><b>Kasbiy:</b> bevosita ish rahbari, agar dastur qabul qilsa.</li><li><b>Zaxira:</b> birinchisi rad etsa, ikkinchi nomzod tayyor tursin.</li></ul><div class="tbl"><table><thead><tr><th>Qachon</th><th>Nima qilasiz</th></tr></thead><tbody><tr><td>6–8 hafta oldin</td><td>Roziligini soʻraysiz, dastur va sanani aytasiz</td></tr><tr><td>Rozilikdan keyin</td><td>CV, dastur havolasi va Yutuqlar varaqasini yuborasiz</td></tr><tr><td>Sanaga yaqin</td><td>Portalni tekshirasiz, kerak boʻlsa muloyim eslatasiz</td></tr><tr><td>Oxirida</td><td>Rahmat aytasiz va natijani ulashasiz</td></tr></tbody></table></div><details class="mv-i"><summary>Batafsil</summary><div><p>6–8 hafta bizning ehtiyot tavsiyamiz, universitet talabi emas. Vosita nomzodlarni Siz kiritgan 4 mezon boʻyicha tartiblaydi; bu ball xat sifatini bildirmaydi.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/registering-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: registering referees</a> · <a href="https://www.postgraduate.study.cam.ac.uk/apply/how/references" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge: choosing referees</a> · <a href="https://www.chevening.org/resource-hub/guidance/references/" target="_blank" rel="noopener noreferrer" data-alifbo="off">Chevening: references</a>. <small>31.10.2026 da tekshirildi. Keyingi qabul davrida joriy shartlarni qayta tekshiring.</small></div></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Ruxsatni erta soʻraysiz, materialni bitta paketda berasiz va zaxira nomzodni tayyor tutasiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Tavsiya beruvchilaringiz</b>
+            <ul><li>Pastdagi Tavsiya beruvchi tanloviga kamida 2 ta nomzod kiriting va soʻrash sanasini hisoblang.</li><li>Birinchi nomzodga soʻrash xatining 3–4 jumlali qoralamasini yozing.</li></ul>
             <textarea data-save="a2" placeholder="Hurmatli ..., men ... dasturiga topshirmoqchiman. Menga kuchli tavsiya xati yoza olasizmi? ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
         </div>
@@ -219,29 +216,17 @@
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.3</span><span class="l-t" style="display:block">Tajriba va yutuqlar varaqasi (Brag Sheet)</span>
-            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🛠 Brag Sheet quruvchi</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
+          <span><span class="l-n">Dars 4.3</span><span class="l-t" style="display:block">Ustozga Yutuqlar varaqasi</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Yutuqlar varaqasi quruvchi</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Tavsiya beruvchingiz bir necha yil avvalgi loyihangiz tafsilotlarini unutgan boʻlishi mumkin. <strong>Yutuqlar varaqasi</strong> unga faktlarni eslatadi, lekin uning oʻrniga tavsiya xatini yozmaydi.</div></div>
-          <div class="panel"><p><strong>Brag Sheet</strong> — tavsiya beruvchi uchun ixtiyoriy faktlar va eslatmalar varaqasi. Bu rasmiy universitet hujjati ham, har bir dastur majburiy talabi ham emas. Asosiy maqsad — tavsiya beruvchi Sizning faoliyatingizni <strong>mustaqil</strong> baholashi uchun kerakli kontekstni taqdim etish.</p>
-<h4>Olti amaliy boʻlim</h4>
-<div class="tbl"><table><thead><tr><th>Boʻlim</th><th>Qanday maʼlumot?</th></tr></thead><tbody>
-<tr><td>1. Dastur va muddat</td><td>Tanlangan universitet, qabul yili, rasmiy URL, tavsiyaning yuborish yoʻli.</td></tr>
-<tr><td>2. Sizni qanday taniydi?</td><td>Birga oʻqigan fan, loyiha yoki ish vaqti.</td></tr>
-<tr><td>3. Akademik maqsad</td><td>Magistraturaga nima uchun topshirasiz, dasturga qanday moslik bor?</td></tr>
-<tr><td>4. Tekshiriladigan dalillar</td><td>Fan natijalari, sertifikat, mukofot yoki amaliy ishingiz — faqat rost maʼlumot.</td></tr>
-<tr><td>5. Aniq epizodlar</td><td>Tavsiya beruvchi shaxsan kuzatgan 1–3 vaziyat: vazifa, harakat, natija.</td></tr>
-<tr><td>6. Eʼtibor qaratish mumkin boʻlgan koʻnikmalar</td><td>Masalan, mustaqil tahlil yoki jamoada ishlash; qaysi sifatni yozishni tanlash tavsiya beruvchining oʻziga qoladi.</td></tr></tbody></table></div>
-<p>Materialni <strong>har bir tavsiya beruvchiga moslang</strong>. CV va bayonot qoralamasini ulashish mumkin, ammo boshqa shaxsning maxfiy xatini talab qilmang va bahosini Siz belgilamang.</p>
-<div class="box warn"><strong>Maxfiylik:</strong> tavsiya beruvchining shaxsiy emaili yoki telefonini faqat zarur rasmiy portallarga kiriting. Bu vositaga uchinchi shaxsning ortiqcha shaxsiy maʼlumotini kiritmang. Mahalliy saqlangan yozuvlaringizni oʻzingiz boshqarasiz.</div>
-<div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/information-for-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — information for referees</a> · <a href="https://www.postgraduate.study.cam.ac.uk/apply/how/references" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge — references</a>. <small>31.10.2026 da tekshirildi. Keyingi qabul davrida joriy shartlarni qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>Yutuqlar varaqasi — tavsiya beruvchi uchun fakt va eslatmalar; xat uning shaxsiy va mustaqil bahosi boʻlib qoladi. Raqam va epizodlarni toʻqimang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b>
-            <ul><li>Pastdagi <a href="#brag">Brag Sheet quruvchi</a>da 6 boʻlimni birinchi tavsiya beruvchingiz uchun toʻldiring.</li><li>Ikkinchi tavsiya beruvchiga qaysi boshqa loyihani eslatishingiz mumkin? Yakuniy baho va urgʻuni tavsiya beruvchining oʻzi tanlaydi.</li></ul>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Ustozingiz Sizni yaxshi eslaydi, lekin uch yil oldingi loyihangiz tafsilotini unutgan. Bitta sahifalik eslatma xatni aniq qiladi. Bu darsda shu sahifani tayyorlaymiz.</div></div>
+          <div class="panel"><div data-kvideo="l3"></div><p>Yutuqlar varaqasi ustozga faktlarni eslatadi. Xatni u baribir oʻz fikri bilan yozadi.</p><div class="tbl"><table><thead><tr><th>Boʻlim</th><th>Nima yoziladi</th></tr></thead><tbody><tr><td>1. Dastur va sana</td><td>Universitet, qabul yili, havola, xat yuborish yoʻli</td></tr><tr><td>2. Qanday tanishasiz</td><td>Fan, loyiha yoki ish davri</td></tr><tr><td>3. Maqsad</td><td>Nega shu dasturga topshiryapsiz</td></tr><tr><td>4. Dalillar</td><td>Baho, sertifikat, mukofot, ish natijasi</td></tr><tr><td>5. Voqealar</td><td>U oʻzi koʻrgan 1–3 vaziyat</td></tr><tr><td>6. Koʻnikmalar</td><td>Urgʻu berishi mumkin boʻlgan sifatlar; tanlovi unda</td></tr></tbody></table></div><details class="mv-i"><summary>Batafsil</summary><div><p>Ustozning shaxsiy telefon va emailini faqat rasmiy portalga kiriting. Bu vositaga boshqa odamning ortiqcha shaxsiy maʼlumotini yozmang.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/references/information-for-referees" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: information for referees</a> · <a href="https://www.postgraduate.study.cam.ac.uk/apply/how/references" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge: references</a>. <small>31.10.2026 da tekshirildi. Keyingi qabul davrida joriy shartlarni qayta tekshiring.</small></div></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Varaqada faqat rost fakt va voqea turadi. Bahoni ustozingiz oʻzi beradi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Birinchi ustoz uchun Yutuqlar varaqasi</b>
+            <ul><li>Pastdagi Yutuqlar varaqasi quruvchisida 6 boʻlimni toʻldiring.</li><li>Ikkinchi ustozga qaysi boshqa loyihani eslatasiz? Yozing.</li></ul>
             <textarea data-save="a3" placeholder="1-tavsiya beruvchi: ... 2-tavsiya beruvchi: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
         </div>
@@ -251,31 +236,16 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 4.4</span><span class="l-t" style="display:block">Professorga xat: qachon va qanday</span>
-            <span class="l-m"><span class="tag">⏱ 45 daqiqa</span><span class="tag">🛠 Xat quruvchi</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Xat quruvchi</span><span class="tag xp">+20 XP · vosita +40 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Professor bilan oldindan aloqa <strong>har bir magistratura uchun majburiy emas</strong>. Avval dastur sahifasidagi «Do I need to contact anyone before I apply?» yoki unga teng koʻrsatmani tekshiring.</div></div>
-          <div class="panel"><p><strong>Cold email</strong> — oldindan tanish boʻlmagan professorga mazmunli, qisqa va shaxsiylashtirilgan xat. Uni faqat haqiqiy sabab boʻlsa yozing: masalan, <em lang="en">tadqiqot magistraturasi (research master's)</em> dasturida supervisor oldindan topilishi kerak boʻlsa yoki kafedra bunga ruxsat bersa. Koʻpgina <em lang="en">oʻquv magistraturasi (taught master's)</em> dasturlarida professor bilan oldindan kelishish shart emas.</p>
-<h4>Yuborishdan oldin tekshiruv</h4>
-<ul><li><strong>Rasmiy talab:</strong> professor bilan bogʻlanish kerakmi, ruxsat etilganmi, yoki ariza qabul boʻlimiga yuboriladimi?</li>
-<li><strong>Mavzu mosligi:</strong> professorning hozirgi ishini rasmiy sahifasidan oʻqing; maqola nomi va xulosasini toʻqimang.</li>
-<li><strong>Soʻrov maqsadi:</strong> aniq savol bering — rahbarlik imkoniyati, dasturdagi tadqiqot muhiti yoki rasmiy murojaat tartibi.</li></ul>
-<h4>Xat tuzilmasi</h4>
-<div class="tbl"><table><thead><tr><th>Qism</th><th>Mazmun</th></tr></thead><tbody>
-<tr><td><strong>Mavzu</strong></td><td>Dastur, qabul yili va tadqiqot yoʻnalishi.</td></tr>
-<tr><td><strong>Tanishtirish</strong></td><td>Kimligingiz, taʼlimingiz va ariza maqsadi.</td></tr>
-<tr><td><strong>Moslik dalili</strong></td><td>Professorning aniq ishi va unga tegishli oʻz tajribangiz.</td></tr>
-<tr><td><strong>Savol</strong></td><td>Bitta aniq, javob berishga qulay savol.</td></tr>
-<tr><td><strong>Yakun</strong></td><td>Qisqa minnatdorchilik, ism, zarur boʻlsa CV havolasi yoki ixcham ilova.</td></tr></tbody></table></div>
-<p><strong>150–200 soʻz</strong> — xat quruvchidagi tavsiya etilgan hajm, universitetning rasmiy sharti emas. Dastur yoki professordan boshqa koʻrsatma kelgan boʻlsa, oʻshani bajaring. Katta ilova yoki bir xil ommaviy nusxalarni yubormang.</p>
-<div class="box warn"><strong>Yuborishdan oldin:</strong> professorning roli va ochiq eʼlon qilgan tadqiqot yoʻnalishini tekshiring. Xat quruvchi emailni avtomatik yubormaydi, tayyorlagan matnni oʻzingiz koʻrib chiqib yuborasiz.</div>
-<div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/starting-your-application/research-project-and-supervisor" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — supervisor contact policy</a>. <small>31.10.2026 da tekshirildi. Qoidalarni tanlangan dastur sahifasidan qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p>Professorga xat dastur shartiga muvofiq yuboriladi. Maqola, oʻz dalilingiz va aniq savolni birlashtiring; 150–200 soʻz faqat ishchi tavsiya.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b>
-            <ul><li>Pastdagi <a href="#email">Xat quruvchi</a>da bitta professor uchun xat yarating: qisqa va aniq. 150–200 soʻz — tavsiya, qatʼiy talab emas.</li><li>Xatni yuborishdan oldin professorning mavzuingizga tegishli amaldagi ishini yoki rasmiy loyiha tavsifini oʻqing.</li></ul></div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Oʻquv magistraturasiga topshirayotgan odam professorga xat yozib, javob kutib ikki hafta yoʻqotdi. Dastur bunday xatni talab qilmagan ekan. Bu darsda xat qachon kerakligini va qanday yozilishini koʻramiz.</div></div>
+          <div class="panel"><div data-kvideo="l4"></div><p><b>Avval tekshiring:</b> dastur sahifasida «<em lang="en">Do I need to contact anyone before I apply?</em>» kabi boʻlim bormi? Professor bilan oldindan gaplashish koʻpincha tadqiqot magistraturasida kerak, oʻquv magistraturasida odatda shart emas.</p><div class="tbl"><table><thead><tr><th>Qism</th><th>Mazmun</th></tr></thead><tbody><tr><td>Mavzu qatori</td><td>Dastur, qabul yili, yoʻnalish</td></tr><tr><td>Tanishtirish</td><td>Kimsiz, nima oʻqigansiz, nega yozyapsiz</td></tr><tr><td>Moslik</td><td>Uning aniq ishi va Sizning tegishli tajribangiz</td></tr><tr><td>Savol</td><td>Bitta, javob berish oson savol</td></tr><tr><td>Yakun</td><td>Rahmat, ism, CV havolasi</td></tr></tbody></table></div><p>Hajm 150–200 soʻz atrofida. Bu bizning tavsiyamiz.</p><details class="mv-i"><summary>Manbalar</summary><div><div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/starting-your-application/research-project-and-supervisor" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: supervisor contact policy</a>. <small>31.10.2026 da tekshirildi. Qoidalarni tanlangan dastur sahifasidan qayta tekshiring.</small></div></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Xatni faqat dastur ruxsat bersa va haqiqiy sabab boʻlsa yozasiz. Uning ishini oʻqimay yozilgan xatga odatda javob kelmaydi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Professorga xat</b>
+            <ul><li>Pastdagi Xat quruvchida bitta professor uchun qisqa xat yarating.</li><li>Yuborishdan oldin uning amaldagi ishini rasmiy sahifadan oʻqing.</li></ul></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
@@ -283,31 +253,16 @@
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.5</span><span class="l-t" style="display:block">Javob, eslatma va suhbat</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📋 Suhbat rejasi</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 4.5</span><span class="l-t" style="display:block">Javob kelsa ham, kelmasa ham</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Suhbat rejasi</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Professorga yuborilgan birinchi xatga javob kelmasligi — arizangiz rad etildi degani emas. <strong>Qayta yozishning ohangi, muddati va soni</strong> vaziyatga bogʻliq.</div></div>
-          <div class="panel"><p><strong>Qayta murojaat</strong> — avvalgi xatingizga muloyim eslatma. Masalan, <strong>7–10 ish kunidan keyin</strong> bitta qisqa eslatma yuborish mumkin. Bu umumiy muloqot odobi, universitetning majburiy muddati emas. Kafedraning aloqa boʻyicha aniq qoidasi boʻlsa, unga rioya qiling.</p>
-<h4>Javobga qarab keyingi qadam</h4>
-<div class="tbl"><table><thead><tr><th>Holat</th><th>Amaliy harakat</th></tr></thead><tbody>
-<tr><td><strong>Suhbatga taklif</strong></td><td>Qulay vaqtni kelishing, tadqiqot yoʻnalishi va dastur shartlarini oldindan oʻqing.</td></tr>
-<tr><td><strong>Ariza topshiring</strong></td><td>Rahmat ayting va rasmiy portal orqali topshiring. Bu qabul kafolati emas.</td></tr>
-<tr><td><strong>Joy yoʻq yoki mos emas</strong></td><td>Hurmat bilan rahmat ayting; mos boʻlsa boshqa tadqiqot guruhlarini tekshiring.</td></tr>
-<tr><td><strong>Javob yoʻq</strong></td><td>Bir marta eslatma yuboring, soʻng boshqa mos variantlarni davom ettiring.</td></tr></tbody></table></div>
-<h4>Onlayn suhbatga tayyorgarlik</h4>
-<ul><li><strong>60 soniyalik tanishtirish:</strong> hozirgi taʼlim, tegishli tajriba va maqsad.</li>
-<li><strong>Professor ishi:</strong> bir yoki ikki tegishli maqola, loyiha yoki laboratoriya yoʻnalishini tushuning.</li>
-<li><strong>Savollar:</strong> loyihaning hajmi, tadqiqot usuli, ilmiy rahbar mavjudligi va zarur boʻlsa moliyalashtirish.</li>
-<li><strong>Texnika:</strong> vaqt mintaqasi, aloqaning ishlashi va suhbatga oldindan kirish.</li></ul>
-<p><strong>Funding haqida savol</strong> berishning oʻzi notoʻgʻri emas; savolni hurmat bilan, mos vaqtda bering. Professordan rasmiy grant yoki qabul kafolatini kutmang.</p>
-<div class="box info">Suhbatdan keyin qisqa minnatdorchilik yuboring va kelishilgan ishlarni Aloqalar jadvaliga kiriting. Professor talabalarni qabul qilayotganini uning javobi yoki rasmiy eʼlonidan tekshiring.</div>
-<div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/starting-your-application/research-project-and-supervisor" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford — research project and supervisor</a>. <small>31.10.2026 da tekshirildi. Qoidalarni tanlangan dastur sahifasidan qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><p>Bitta qisqa eslatma yuboring, undan keyin boshqa imkoniyatlarni ham koʻrib chiqing. Suhbat va professorning ijobiy javobi rasmiy qabulni kafolatlamaydi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Natija: suhbat rejasi</b>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Xat yubordingiz, bir hafta jimlik. Bu arizangiz rad etildi degani emas: professor safarda yoki xatlari koʻp boʻlishi mumkin. Bu darsda har javobga tayyor turamiz.</div></div>
+          <div class="panel"><div data-kvideo="l5"></div><p><b>Eslatma:</b> 7–10 ish kunidan keyin bitta qisqa xat. Kafedraning oʻz qoidasi boʻlsa, shunga amal qiling.</p><div class="tbl"><table><thead><tr><th>Javob</th><th>Keyingi qadam</th></tr></thead><tbody><tr><td>Suhbatga taklif</td><td>Vaqtni kelishasiz, uning ishini va dastur shartini oʻqiysiz</td></tr><tr><td>«Ariza topshiring»</td><td>Rahmat aytasiz va portal orqali topshirasiz</td></tr><tr><td>Joy yoʻq</td><td>Rahmat aytasiz, boshqa guruhlarni qidirasiz</td></tr><tr><td>Javob yoʻq</td><td>Bitta eslatma, keyin boshqa variantlar</td></tr></tbody></table></div><p><b>Suhbatga:</b> 60 soniyalik tanishtiruv, uning 1–2 ishi, 3 ta savol (loyiha hajmi, usul, kerak boʻlsa pul), vaqt mintaqasi.</p><details class="mv-i"><summary>Manbalar</summary><div><div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.ox.ac.uk/admissions/graduate/application-guide/starting-your-application/research-project-and-supervisor" target="_blank" rel="noopener noreferrer" data-alifbo="off">Oxford: research project and supervisor</a>. <small>31.10.2026 da tekshirildi. Qoidalarni tanlangan dastur sahifasidan qayta tekshiring.</small></div></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/hourglass.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Bitta eslatma yuborasiz va kutib qolmasdan boshqa variantlar bilan davom etasiz. Professorning ijobiy javobi rasmiy qabul emas.</p></div></div>
+          <div class="panel"><div class="assign"><b>Suhbat rejasi</b>
             <div class="fld" style="margin-top:8px"><label for="iIntro">60 soniyalik tanishtiruv <small>ingliz tilida</small></label><textarea id="iIntro" data-save="iIntro" style="min-height:80px" placeholder="I am ... I have worked on ... I would like to ..."></textarea></div>
             <div class="fld"><label for="iQs">Professorga 3 savol</label><textarea id="iQs" data-save="iQs" style="min-height:80px" placeholder="1) ... 2) ... 3) ..."></textarea></div></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
@@ -317,30 +272,17 @@
       <article class="lesson" id="l6">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.6</span><span class="l-t" style="display:block">Murojaatlar qaydnomasi (Outreach Log)</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🛠 Outreach Log</span><span class="tag xp">+20 XP · jadval +20 XP</span></span></span>
+          <span><span class="l-n">Dars 4.6</span><span class="l-t" style="display:block">Xatlar daftari</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Xatlar daftari</span><span class="tag xp">+20 XP · jadval +20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Tavsiya beruvchilar va professorlar bilan yozishmalarni tartibli saqlash muhim. Ammo <strong>Outreach Log oʻz-oʻzidan xat yubormaydi yoki haqiqiy javob kelganini tekshirmaydi</strong>.</div></div>
-          <div class="panel"><p><strong>Outreach Log</strong> — tavsiya beruvchilar va professorlar bilan aloqalarning ishchi roʻyxati. M2ʼdagi arizalar jadvali <strong>arizalarni</strong> kuzatadi; bu jadval esa <strong>odamlar bilan muloqotni</strong> boshqaradi.</p>
-<div class="tbl"><table><thead><tr><th>Ustun</th><th>Izoh</th></tr></thead><tbody>
-<tr><td><strong>Ism va rol</strong></td><td>Tavsiya beruvchi yoki professor; zarur minimal maʼlumot.</td></tr>
-<tr><td><strong>Dastur</strong></td><td>Qaysi ariza yoki grant bilan bogʻliqligi.</td></tr>
-<tr><td><strong>Yuborilgan sana</strong></td><td>Xat haqiqatan yuborilganmi yoki hali rejadami, aniqlang.</td></tr>
-<tr><td><strong>Holat</strong></td><td>Yuborildi, javob kutilmoqda, rozi, rad yoki yakunlandi — siz kiritgan holat.</td></tr>
-<tr><td><strong>Keyingi qadam</strong></td><td>Yuborilgan sanadan 10 <strong>kalendar kuni</strong> keyin hisoblangan ishchi eslatma.</td></tr>
-<tr><td><strong>Izoh</strong></td><td>Qaysi hujjat ulashildi, nima kelishildi; maxfiy maʼlumotni ortiqcha yozmang.</td></tr></tbody></table></div>
-<h4>Muhim farq: kalendar kuni va ish kuni</h4>
-<p>Jadval hozir yuborilgan sanaga <strong>10 kalendar kuni</strong> qoʻshadi — dam olish kunlarini ham sanaydi. M4.5 dagi 7–10 ish kunlik muloyim qayta murojaat qilish tavsiyasi bilan bu aynan bir xil emas. <strong>Jadval sanasini oʻzingiz tekshirib moslashtiring</strong>.</p>
-<p>Bu vosita universitet portali bilan bogʻlanmagan. Eslatmalar avtomatik email yoki push-xabar sifatida yuborilmaydi; qabul qilingan tavsiya xatini rasmiy portaldan tekshirish kerak.</p>
-<div class="box warn"><strong>Maʼlumot xavfsizligi:</strong> jadvalning mahalliy xotirasidagi ism, yozishma va izohlar qurilmangizda saqlanadi. CSV eksportni boshqa odamga yuborishdan oldin undagi shaxsiy maʼlumotni tekshiring.</div>
-<div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.postgraduate.study.cam.ac.uk/apply/how/references" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge — referee portal and tracking</a>. <small>31.10.2026 da tekshirildi. Qoidalarni tanlangan dastur sahifasidan qayta tekshiring.</small></div>
-          </div>
-          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Outreach Log aloqalarning ichki roʻyxati; 10 kalendar kunlik keyingi sana avtomatik hisoblanadi, ammo hech kimga xabar yuborilmaydi. Muddat va holatni oʻzingiz tekshiring.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b>
-            <ul><li>Pastdagi <a href="#log">Outreach Log</a>ga kamida 4 reja yoki haqiqiy aloqani kiriting. Taught dasturda professor bilan yozishish talab etilmasa, professorlarni sunʼiy qoʻshmang.</li><li>Jadvalni CSV qilib saqlang.</li></ul></div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Uch ustoz, ikki professor, beshta xat. Kimga qachon yozganingiz va kim javob bergani bir oydan keyin esdan chiqadi. Bu darsda hammasini bitta daftarga yozamiz.</div></div>
+          <div class="panel"><div data-kvideo="l6"></div><div class="tbl"><table><thead><tr><th>Ustun</th><th>Nima yoziladi</th></tr></thead><tbody><tr><td>Ism va rol</td><td>Ustoz yoki professor</td></tr><tr><td>Dastur</td><td>Qaysi ariza bilan bogʻliq</td></tr><tr><td>Sana</td><td>Xat yuborilganmi yoki rejadami</td></tr><tr><td>Holat</td><td>Yuborildi, javob kutilmoqda, rozi, rad, yakunlandi</td></tr><tr><td>Keyingi qadam</td><td>Yuborilgan kundan 10 kun keyin</td></tr></tbody></table></div><p>Daftar 10 kalendar kunini sanaydi (dam olish kunlari bilan). M4.5 dagi 7–10 ish kuni bilan farqini hisobga oling.</p><details class="mv-i"><summary>Batafsil</summary><div><p>CSV faylni boshqa odamga yuborishdan oldin ichidagi shaxsiy maʼlumotni tekshiring. Tavsiya xati kelgan-kelmaganini rasmiy portaldan bilasiz.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><div class="box info"><strong>Rasmiy manbalar:</strong> <a href="https://www.postgraduate.study.cam.ac.uk/apply/how/references" target="_blank" rel="noopener noreferrer" data-alifbo="off">Cambridge: referee portal and tracking</a>. <small>31.10.2026 da tekshirildi. Qoidalarni tanlangan dastur sahifasidan qayta tekshiring.</small></div></div></details></div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Hamma xat bitta daftarda boʻlsa, eslatma vaqtini oʻtkazib yubormaysiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizning Xatlar daftaringiz</b>
+            <ul><li>Pastdagi Xatlar daftariga kamida 4 ta reja yoki haqiqiy aloqa kiriting. Oʻquv magistraturasida professorni sunʼiy qoʻshmang.</li><li>Daftarni CSV qilib saqlang.</li></ul></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
@@ -375,7 +317,7 @@
 
   <!-- BRAG SHEET -->
   <section id="brag">
-    <h2>Brag Sheet quruvchi</h2>
+    <h2>Yutuqlar varaqasi quruvchi</h2>
     <p class="sub">Bitta tavsiya beruvchi uchun. Matn ingliz yoki oʻzbek tilida boʻlishi mumkin: tavsiya beruvchiga qulay tilni tanlang.</p>
     <div class="tool">
       <div class="tool-h"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div><h3>6 boʻlim</h3><span>Har boʻlim toʻldirilsa · +40 XP</span></div></div>
@@ -385,7 +327,7 @@
       <div class="fld"><label for="b4">4. Faktlar <small>baho, oʻrin, natija raqam bilan</small></label><textarea id="b4" data-save="b4" style="min-height:70px"></textarea></div>
       <div class="fld"><label for="b5">5. 2–3 STAR epizod <small>u oʻzi koʻrgan vaziyatlar</small></label><textarea id="b5" data-save="b5" style="min-height:110px"></textarea></div>
       <div class="fld"><label for="b6">6. Taʼkidlash soʻralgan sifatlar <small>2–3 ta</small></label><textarea id="b6" data-save="b6" style="min-height:60px"></textarea></div>
-      <div class="btnrow"><button class="btn btn-p" type="button" id="bBtn">Brag Sheet tayyor · +40 XP</button><button class="btn btn-g" type="button" id="bCopy">📋 Nusxalash</button></div>
+      <div class="btnrow"><button class="btn btn-p" type="button" id="bBtn">Yutuqlar varaqasi tayyor · +40 XP</button><button class="btn btn-g" type="button" id="bCopy">📋 Nusxalash</button></div>
     </div>
   </section>
 
@@ -417,7 +359,7 @@
 
   <!-- OUTREACH LOG -->
   <section id="log">
-    <h2>Outreach Log</h2>
+    <h2>Xatlar daftari</h2>
     <p class="sub">Tavsiya beruvchilar va professorlar bilan yozishmalar roʻyxati. Keyingi qadam sanasi yuborilgan kundan 10 kalendar kuni keyin hisoblanadi; email yoki eslatma avtomatik joʻnatilmaydi.</p>
     <div class="tool">
       <div class="tool-h"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Aloqa qoʻshish</h3><span>4+ qator, kamida 2 tavsiya beruvchi · +20 XP</span></div></div>
@@ -442,7 +384,7 @@
     <div class="badges b6">
       <div class="bdg" data-badge="quiz"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">Xat bilimdoni<small>Test 3+/4</small></div>
       <div class="bdg" data-badge="rec"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Saralovchi<small>2+ nomzod</small></div>
-      <div class="bdg" data-badge="brag"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Brag Sheet<small>6 boʻlim</small></div>
+      <div class="bdg" data-badge="brag"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Yutuqlar varaqasi<small>6 boʻlim</small></div>
       <div class="bdg" data-badge="email"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy">Xat ustasi<small>150–200 soʻz</small></div>
       <div class="bdg" data-badge="log"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Aloqa xaritasi<small>4+ qator</small></div>
       <div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">II bosqich yakuni<small>Aloqa paketi</small></div>
@@ -451,13 +393,14 @@
 
   <!-- ARTIFACT -->
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2>Sizning aloqa paketingiz</h2>
-    <p class="sub">Brag Sheet, tavsiya soʻrovlari, professorga xat va Outreach Log bitta hujjatda. PDF uchun “Chop etish”.</p>
+    <p class="sub">Yutuqlar varaqasi, tavsiya soʻrovlari, professorga xat va Xatlar daftari bitta hujjatda. PDF uchun “Chop etish”.</p>
     <div class="artifact">
       <h3>Tavsiya beruvchilar</h3><div id="aRec">—</div>
-      <h3>Tajriba va yutuqlar varaqasi (Brag Sheet)</h3><div class="out" id="aBrag">—</div>
+      <h3>Tajriba va yutuqlar varaqasi (Yutuqlar varaqasi)</h3><div class="out" id="aBrag">—</div>
       <h3>Professorga xat</h3><div class="out" id="aMail">—</div>
-      <h3>Outreach Log</h3><div class="tbl"><table><thead><tr><th>Ism</th><th>Rol</th><th>Dastur</th><th>Yuborildi</th><th>Holat</th><th>Keyingi qadam</th></tr></thead><tbody id="aLog"></tbody></table></div>
+      <h3>Xatlar daftari</h3><div class="tbl"><table><thead><tr><th>Ism</th><th>Rol</th><th>Dastur</th><th>Yuborildi</th><th>Holat</th><th>Keyingi qadam</th></tr></thead><tbody id="aLog"></tbody></table></div>
       <div id="aMiss" class="noprint" style="font-size:13.5px;color:var(--muted);margin-top:10px"></div>
       <div class="row">
         <button class="btn btn-p" type="button" id="finBtn">II bosqichni yakunlash · +20 XP</button>
@@ -471,18 +414,20 @@
     <div class="mentor">
       <div class="av">KL</div>
       <div>
-        <q>Tavsiya beruvchining vaqtini hurmat qiling: unga hamma narsani bitta paketda, erta va aniq muddatlar bilan bering. Xat sifatiga siz shu yoʻl bilan taʼsir qila olasiz.</q>
+        <q>Ustozingizga hamma narsani bitta paketda, erta va aniq sana bilan bering. Xat sifatiga Siz shu yoʻl bilan taʼsir qila olasiz.</q>
         <small>Kompas Lab maslahati</small>
       </div>
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="4"><h2>II bosqich tugadi</h2><div class="mv-bar"><i style="width:60%"></i></div><p class="mv-small">II bosqich: 2 / 2 modul · Rejangiz 60% tayyor</p><div class="mv-k" data-mn="m4"><b>Maqsad bayonnomangizning tayanch qismi allaqachon bor.</b> M1 dagi hikoyangiz (oʻtmish, hozir, maqsad) M5 ga oʻzi koʻchadi va 4 savolli tuzilmaga joylanadi.</div><p><b>III bosqichda (M5–M6) Sizni kutayotgan darslar:</b></p><ul class="mv-lock"><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M5.1 Maqsad bayonnomasi nima</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M5.2 Tuzilma: toʻrtta savolga javob</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M5.3 «Nega aynan shu dastur?»</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M5.4 Dalil bilan yozish</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M5.5 Birinchi qoralama</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M5.6 Tahrir</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M5.7 Namunalarni solishtirish</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M6.1 Taklif qachon soʻraladi</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M6.2 Muammo bayoni</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M6.3 Adabiyotlar sharhi</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M6.4 Metodologiya</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M6.5 Ish rejasi va vaqt jadvali</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M6.6 Kutilayotgan natija</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M6.7 Format va iqtibos</li></ul><p class="mv-small">M5 va M6 ga taxminan 4 hafta ajrating. Dasturingiz tadqiqot loyihasi taklifini soʻrmasa, M6 dan faqat birinchi darsni koʻrasiz.</p><div class="mv-row"><a class="btn btn-p" href="master-lab-o.html?m=5">III bosqichni boshlash</a><a class="btn btn-g" href="master-lab-narxlar.html">Tariflarni solishtirish</a></div><p class="mv-small">«1 ta bosqich» tarifida III bosqich navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.</p></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>6 ta</div>
-      <div><b>Vaqt</b>~2–3 hafta (haftasiga 4–6 soat)</div>
-      <div><b>Natija</b>Brag Sheet + tavsiya soʻrovlari + professorga xat + Outreach Log</div>
+      <div><b>Vaqt</b>~2 hafta (dars ~1 soat + xatlar)</div>
+      <div><b>Natija</b>Yutuqlar varaqasi + tavsiya soʻrovlari + professorga xat + Xatlar daftari</div>
     </div>
   </section>
 </div>
@@ -490,13 +435,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="master-lab.html">← Magistratura dasturi</a>
-    <span class="btn btn-g" style="cursor:default;opacity:.7">Keyingi: M5 Maqsad bayonnomasi</span>
+    <a class="btn btn-g" href="master-lab-m3.html">← M3</a>
+    <a class="btn btn-p" href="master-lab-o.html?m=5">Keyingi: M5 Maqsad bayonnomasi →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/master-next.js" defer></script>
 
 <script>
 (function () {
@@ -529,7 +476,7 @@
   var MAX = 300, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [100, "2-daraja: Izlanuvchi"], [200, "3-daraja: Kashfiyotchi"], [300, "II bosqich yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -774,3 +721,4 @@
 </script>
 </body>
 </html>
+<!-- mv2 -->

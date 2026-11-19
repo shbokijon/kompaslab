@@ -12,6 +12,29 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <style>
 {{CSS}}
+/* Master v2 (2026-11-19): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .facts2{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-note{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:14px 16px;font-size:14.5px;margin:0 0 6px}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 /* M6 qoʻshimchalari */
 .path.pn{grid-template-columns:repeat(11,minmax(0,1fr));}
 @media(max-width:760px){.path.pn{grid-template-columns:repeat(6,minmax(0,1fr));}.path.pn .node:nth-child(4)::after{display:block;}.path.pn .node:nth-child(6)::after{display:none;}}
@@ -110,7 +133,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="master-lab" data-kv-mod="6">
 <div class="wrap">
 
   <div class="hero">
@@ -119,15 +142,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="master-lab.html">Magistratura dasturi</a> · Modul 6</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">III bosqich · Maqsad va tadqiqot</span>
         <h1>Ilmiy loyiha taklifi</h1>
-        <p class="lead"><strong>Ilmiy loyiha taklifi barcha magistratura dasturlarida majburiy emas.</strong> Agar tanlangan dastur talab qilsa, aniq tadqiqot savolini, mavjud ilmiy dalillarni, metodologiyani va bajarish mumkin boʻlgan ish rejasini tuzasiz. Natija: <strong>Ilmiy loyiha taklifi (<em lang="en">research proposal</em>)</strong>, 1 500–3 000 soʻz.</p>
-        <div class="facts"><span class="fact"><b>7</b> dars</span><span class="fact">~<b>4</b> hafta</span><span class="fact"><b>5</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
+        <p class="lead">Tadqiqot loyihasi taklifi hamma magistraturada soʻralmaydi. Birinchi dars 10 daqiqada buni aniqlaydi. Kerak boʻlsa, <strong>1 500–3 000 soʻzlik taklif</strong>ni savol, adabiyot, usul va reja bilan yozamiz.</p>
+        <div class="facts"><span class="fact"><b>7</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact"><b>5</b> interaktiv vosita</span><span class="fact"><b>300</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/telescope.webp" width="160" height="160" alt="">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Oʻquv bosqichlari</b><span id="mapN">0 / 11 bosqich</span></div>
+    <div class="map-h"><b>Modul yoʻli</b><span id="mapN">0 / 11 qadam</span></div>
     <div class="path pn">
       <a class="node" href="#l1" data-node="l1"><span class="dot">6.1</span>Kimga</a>
       <a class="node" href="#l2" data-node="l2"><span class="dot">6.2</span>Muammo</a>
@@ -155,21 +178,21 @@
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz faqat shu qurilmada saqlanadi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Javoblaringiz faqat shu brauzerda saqlanadi, boshqa qurilmaga oʻzi oʻtmaydi. Vositalar universitet sanasi va talablarini Siz uchun tekshirmaydi, xat yubormaydi va qabulni kafolatlamaydi. Ball va belgilar Sizning ichki tekshiruvingiz, qabul ehtimoli emas. Har faktni dastur sahifasidan oʻzingiz tasdiqlaysiz; sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 6.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.1</span><span class="l-t" style="display:block">Ilmiy loyiha taklifi qachon talab qilinadi?</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🎯 Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 6.1</span><span class="l-t" style="display:block">Taklif qachon soʻraladi</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Qisqa test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">Oʻquv magistraturasiga 3 000 soʻzlik loyiha taklifini ikki oy yozdingiz, portal esa uni soʻramadi. Boshqa tomondan, tadqiqot magistraturasiga taklifsiz topshirgan doʻstingiz arizasi koʻrib chiqilmadi. Taklif kerakmi yoki yoʻqmi, dastur belgilaydi.</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l1"></div>
             <div class="tbl"><table><thead><tr><th>Holat</th><th>Taklif</th></tr></thead><tbody>
               <tr><td><b>Tadqiqot magistraturasi</b> (MRes, MPhil, MSc by Research, tezisli dasturlar)</td><td>Koʻpincha talab qilinadi; ilmiy rahbar tanlashda asosiy hujjat</td></tr>
               <tr><td><b>Baʼzi stipendiyalar</b> (masalan, Xitoy hukumati CSC, Yaponiya MEXT tadqiqot talabasi yoʻnalishi)</td><td>Oʻqish yoki tadqiqot rejasi soʻraladi; hajm va shakl stipendiya qoidasida</td></tr>
@@ -178,10 +201,10 @@
             </tbody></table></div>
             <h4>Taklif nimani isbotlaydi</h4>
             <ul><li>Siz <b>aniq tadqiqot savoli</b> qoʻya olasiz.</li><li>Sohadagi mavjud ishlarni bilasiz va <b>boʻshliqni</b> koʻrasiz.</li><li>Savolga javob topishning <b>bajarsa boʻladigan</b> yoʻlini koʻrsata olasiz.</li></ul>
-            <div class="box info"><b>Taklif — reja, vaʼda emas.</b> Qabul qilingandan keyin mavzu ilmiy rahbar bilan birga oʻzgarishi odatiy. Komissiya sizning fikrlash usulingizni baholaydi.</div>
+            <div class="box info"><b>Taklif reja hisoblanadi, vaʼda hisoblanmaydi.</b> Qabul qilingandan keyin mavzu ilmiy rahbar bilan birga oʻzgarishi odatiy. Komissiya sizning fikrlash usulingizni baholaydi.</div>
             <p>Hajm dasturga qarab koʻpincha 1 500–3 000 soʻz. Dastur sahifasidagi talab (soʻz, sahifa, boʻlimlar) har doim ustun.</p>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Taklif tadqiqot magistraturasi va baʼzi stipendiyalar uchun kerak; oʻquv magistraturasida odatda emas. U savol, boʻshliq va amalga oshirish mumkin boʻlgan usulni koʻrsatadi.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Dasturingiz taklif soʻrmasa, bu modulni shu yerda tugatib M7 ga oʻtasiz. Soʻrasa, keyingi darslar Sizga.</p></div></div>
           <div class="panel"><div class="assign"><b>Qisqa test: toʻgʻri yoki notoʻgʻri?</b>
             <div class="quiz" id="quiz">
               <div class="qz" data-a="t"><p>“Oʻquv magistraturasi arizalarining koʻpchiligida ilmiy loyiha taklifi talab qilinmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: u yerda SoP asosiy matn.</div></div>
@@ -200,13 +223,13 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 6.2</span><span class="l-t" style="display:block">Muammo bayoni</span>
-            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🛠 Muammo voronkasi</span><span class="tag xp">+20 XP · vosita +25 XP</span></span></span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Muammo voronkasi</span><span class="tag xp">+20 XP · vosita +25 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">“Mening mavzum: Oʻzbekistonda suv muammolari.” Bu mavzu emas, butun soha. Undan magistratura muddatida bajariladigan savol chiqmaguncha komissiya nima tadqiq qilmoqchi ekaningizni tushunmaydi.</div></div>
-          <div class="panel">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">“Mening mavzum: Oʻzbekistonda suv muammolari.” Bu butun soha, mavzu hali yoʻq. Undan magistratura muddatida bajariladigan savol chiqmaguncha komissiya nima tadqiq qilmoqchi ekaningizni tushunmaydi.</div></div>
+          <div class="panel"><div data-kvideo="l2"></div>
             <h4>Voronka: kengdan torga</h4>
             <ol style="margin-left:20px"><li><b>Global muammo:</b> soha nima uchun muhim (1–2 jumla, manba bilan).</li><li><b>Mintaqaviy yoki aniq kontekst:</b> muammo qayerda va qanday koʻrinishda.</li><li><b>Boʻshliq (gap):</b> mavjud ishlar nimani hali javobsiz qoldirgan.</li><li><b>Tadqiqot savoli:</b> aniq, javob beriladigan, muddatga mos.</li></ol>
             <h4>Boʻshliq turlari</h4>
@@ -220,7 +243,7 @@
             <ul><li><b>Qanday muammo?</b> boʻshliq: mavjud ishlar nimani javobsiz qoldirgan.</li><li><b>Siz nima qilasiz?</b> usul darajasida.</li><li><b>Nimasi yangi?</b> bu ishni oldingilardan nima ajratadi.</li><li><b>Kimga foyda?</b> natija kimga va qanday foyda beradi.</li></ul>
             <div class="box warn">Global muammo haqidagi har bir raqam manba bilan keltiriladi. Manbasiz statistika taklifning ishonchliligini birinchi sahifadayoq pasaytiradi.</div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Voronka: global → kontekst → boʻshliq → savol. Boʻshliq bilim, usul, kontekst yoki ziddiyat turida boʻladi. Toʻrt savol (qanday muammo, siz nima qilasiz, nimasi yangi, kimga foyda) bitta chiziqda.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Voronka: global muammo → kontekst → boʻshliq → aniq savol.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>Pastdagi <a href="#funnel">Muammo voronkasi</a>ni toʻldiring: 4 qavat va toʻrt savol.</li></ul></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
@@ -230,23 +253,23 @@
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.3</span><span class="l-t" style="display:block">Ilmiy adabiyotlar sharhi (literature review)</span>
-            <span class="l-m"><span class="tag">⏱ 60 daqiqa</span><span class="tag">🛠 Adabiyotlar matritsasi</span><span class="tag xp">+20 XP · vosita +35 XP</span></span></span>
+          <span><span class="l-n">Dars 6.3</span><span class="l-t" style="display:block">Adabiyotlar sharhi</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">Adabiyotlar matritsasi</span><span class="tag xp">+20 XP · vosita +35 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">40 ta maqolani PDF qilib yukladingiz, 5 tasini oxirigacha oʻqidingiz, qaysi fikr qaysi maqoladan ekanini eslay olmaysiz. Sharh yozishga oʻtirganda hammasini qaytadan ochasiz.</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l3"></div>
             <h4>Manba topish</h4>
-            <ul><li><a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a> — keng qamrovli, bepul; “Cited by” orqali yangi ishlarni toping.</li><li><a href="https://www.scopus.com/" target="_blank" rel="noopener">Scopus</a> va Web of Science — odatda universitet obunasi orqali.</li><li>Ochiq manbalar: <a href="https://core.ac.uk/" target="_blank" rel="noopener">CORE</a>, <a href="https://doaj.org/" target="_blank" rel="noopener">DOAJ</a>.</li><li>Universitet kutubxonasi va professor maqolalaridagi adabiyotlar roʻyxati.</li></ul>
+            <ul><li><a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>: keng qamrovli, bepul; “Cited by” orqali yangi ishlarni toping.</li><li><a href="https://www.scopus.com/" target="_blank" rel="noopener">Scopus</a> va Web of Science: odatda universitet obunasi orqali.</li><li>Ochiq manbalar: <a href="https://core.ac.uk/" target="_blank" rel="noopener">CORE</a>, <a href="https://doaj.org/" target="_blank" rel="noopener">DOAJ</a>.</li><li>Universitet kutubxonasi va professor maqolalaridagi adabiyotlar roʻyxati.</li></ul>
             <h4>Oʻqish tartibi</h4>
-            <ol style="margin-left:20px"><li><b>Sharh maqolalari (review)</b> — sohaning xaritasi.</li><li><b>Eng koʻp iqtibos olingan</b> asosiy ishlar.</li><li><b>Soʻnggi 3 yil</b> — hozirgi bahs va boʻshliqlar.</li></ol>
+            <ol style="margin-left:20px"><li><b>Sharh maqolalari (review)</b>: sohaning xaritasi.</li><li><b>Eng koʻp iqtibos olingan</b> asosiy ishlar.</li><li><b>Soʻnggi 3 yil</b>: hozirgi bahs va boʻshliqlar.</li></ol>
             <p>Har maqolani 3 bosqichda oʻqing: (1) sarlavha, annotatsiya, rasmlar; (2) kirish va xulosa; (3) faqat kerak boʻlsa, usul va natijalar toʻliq.</p>
-            <h4>Sharh = sintez, xulosa emas</h4>
+            <h4>Sharh: guruhlash va solishtirish</h4>
             <ul><li>Maqolalarni birma-bir qayta aytmang. Ularni <b>mavzular</b> boʻyicha guruhlang: kim nimada rozi, nimada farq qiladi.</li><li>Har guruh oxirida: “bu yerda hali nima javobsiz?” Sharh boʻshliqqa olib kelishi kerak.</li><li>Iqtiboslarni boshqarish uchun <a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a> (bepul) ishlating: maqola qoʻshilganda maʼlumot avtomatik saqlanadi.</li></ul>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Sharh maqolalaridan boshlang, 3 bosqichda oʻqing, mavzular boʻyicha sintez qiling va boʻshliqqa olib keling. Har manba matritsada: usul, natija, boʻshliq.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Sharh maqolalarni birma-bir aytib bermaydi: ularni mavzu boʻyicha guruhlab, boʻshliqqa olib keladi.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>Pastdagi <a href="#lit">Adabiyotlar matritsasi</a>ga kamida 8 manba kiriting: usul, asosiy natija va boʻshliq bilan.</li><li>Manbalarni 2–3 mavzuga guruhlang.</li></ul>
             <textarea data-save="a3" placeholder="1-mavzu: ... (manbalar) 2-mavzu: ... 3-mavzu: ..."></textarea></div></div>
@@ -258,13 +281,13 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 6.4</span><span class="l-t" style="display:block">Metodologiya</span>
-            <span class="l-m"><span class="tag">⏱ 45 daqiqa</span><span class="tag">✅ Bajarilish tekshiruvi</span><span class="tag xp">+20 XP</span></span></span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Bajarilish tekshiruvi</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Taklifingizda 5 mamlakat, 3 ta model va dala tajribasi bor. Magistratura tadqiqoti uchun esa bir necha oy bor. Komissiya buni koʻrib, rejani emas, reja tuzish tajribasi yoʻqligini koʻradi.</div></div>
-          <div class="panel">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Taklifingizda 5 mamlakat, 3 ta model va dala tajribasi bor. Magistratura tadqiqoti uchun esa bir necha oy bor. Bunday rejani koʻrgan komissiya muallif hali tadqiqot qilmaganini tushunadi.</div></div>
+          <div class="panel"><div data-kvideo="l4"></div>
             <h4>Metodologiya boʻlimining 4 qismi</h4>
             <div class="tbl"><table><thead><tr><th>Qism</th><th>Savol</th></tr></thead><tbody>
               <tr><td><b>Tadqiqot dizayni</b></td><td>Miqdoriy, sifatiy yoki aralash? Tajriba, kuzatuv, modellashtirish, keys-stadi?</td></tr>
@@ -275,7 +298,7 @@
             <h4>Magistratura miqyosi</h4>
             <ul><li>Bir yillik magistraturada mustaqil tadqiqotga odatda bir necha oy ajratiladi; ikki yillik dasturda koʻproq.</li><li>Bitta asosiy savol, 1–2 yordamchi savol yetarli.</li><li>Maʼlumotga kirish imkoni oldindan tasdiqlangan boʻlsin: “maʼlumot olaman deb umid qilaman” xavf belgisi.</li><li>Odamlar ishtirok etsa (soʻrovnoma, suhbat (interview)), etika ruxsati kerak boʻladi; bu vaqt oladi.</li></ul>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Dizayn, maʼlumot, usul va cheklovlar har biri asoslanadi. Miqyos dastur muddatiga mos; maʼlumotga kirish va etika ruxsati oldindan oʻylangan.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Dizayn, maʼlumot, usul va cheklov: har biri magistratura muddatiga sıgʻadi.</p></div></div>
           <div class="panel"><div class="assign"><b>Natija: metodologiya eskizi</b>
             <div class="fld" style="margin-top:8px"><label for="mDes">Dizayn</label><input id="mDes" data-save="mDes" placeholder="Quantitative, observational; geostatistical modelling"></div>
             <div class="fld"><label for="mDat">Maʼlumot</label><input id="mDat" data-save="mDat" placeholder="Monitoring records 2010–2025, 120 wells, access confirmed by ..."></div>
@@ -296,14 +319,14 @@
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.5</span><span class="l-t" style="display:block">Ish rejasi va Gantt jadvali</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 Gantt diagrammasi va ish rejasi</span><span class="tag xp">+20 XP · vosita +25 XP</span></span></span>
+          <span><span class="l-n">Dars 6.5</span><span class="l-t" style="display:block">Ish rejasi va vaqt jadvali</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Gantt diagrammasi va ish rejasi</span><span class="tag xp">+20 XP · vosita +25 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">Rejada “Tahlil: 1 oy, Yozish: 1 oy” deb yozilgan. Haqiqatda maʼlumot 6 hafta kechikib keldi va yozishga 2 hafta qoldi. Rejada zaxira vaqt yoʻq edi.</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l5"></div>
             <h4>Odatiy bosqichlar</h4>
             <div class="tbl"><table><thead><tr><th>Bosqich</th><th>Mazmuni</th></tr></thead><tbody>
               <tr><td>1. Adabiyot va savolni aniqlash</td><td>Ilmiy rahbar bilan savolni yakunlash</td></tr>
@@ -314,7 +337,7 @@
             </tbody></table></div>
             <ul><li>Bosqichlar qisman ustma-ust tushishi mumkin: yozish tahlil tugashini kutmaydi.</li><li>Har bosqich oxirida aniq natija: “maʼlumot toʻplami tozalandi”, “3-bob qoralamasi”.</li><li>Real hajm: Gantt jadvali komissiyaga rejalashtira olishingizni koʻrsatadi.</li></ul>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Ish rejasi 4–6 bosqich, har biri aniq natija bilan, 10–15% zaxira vaqt bilan. Gantt jadvali real hajmni koʻrsatadi.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">4–6 bosqich, har biri aniq natija bilan, umumiy vaqtning 10–15% zaxira.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>Pastdagi <a href="#plan">Gantt diagrammasi va ish rejasi</a>ga kamida 5 bosqich kiriting; ulardan biri zaxira boʻlsin.</li></ul></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
@@ -324,14 +347,14 @@
       <article class="lesson" id="l6">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.6</span><span class="l-t" style="display:block">Kutilayotgan natija va ahamiyati</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">✍️ Natija bayoni</span><span class="tag xp">+20 XP</span></span></span>
+          <span><span class="l-n">Dars 6.6</span><span class="l-t" style="display:block">Kutilayotgan natija</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Natija bayoni</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">“Ushbu tadqiqot Oʻzbekistonning suv muammosini hal qiladi.” Komissiya bunday jumlani koʻrganda magistratura tadqiqoti nimaga qodirligini muallif tushunmaganini koʻradi.</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l6"></div>
             <h4>Ikki turdagi hissa</h4>
             <ul><li><b>Ilmiy hissa:</b> yangi maʼlumot, usulni yangi kontekstda sinash, gipotezani tekshirish, solishtirma tahlil.</li><li><b>Amaliy hissa:</b> qaysi tashkilot yoki jarayon uchun qanday foydali boʻlishi mumkin.</li></ul>
             <h4>Oʻzbekiston uchun ahamiyat</h4>
@@ -343,7 +366,7 @@
               <tr><td>For the first time in the world...</td><td>To our knowledge, no study has applied ... in ...</td></tr>
             </tbody></table></div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><p>Natija ilmiy va amaliy hissaga ajratiladi; Oʻzbekiston uchun ahamiyat faqat dalil bilan; til ehtiyotkor: “kutiladi”, “tekshiradi”.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Natijani ehtiyotkor til bilan yozasiz: «tekshiradi», «kutiladi».</p></div></div>
           <div class="panel"><div class="assign"><b>Natija bayoni</b>
             <div class="fld" style="margin-top:8px"><label for="oSci">Ilmiy hissa</label><textarea id="oSci" data-save="oSci" style="min-height:70px"></textarea></div>
             <div class="fld"><label for="oPra">Amaliy hissa</label><textarea id="oPra" data-save="oPra" style="min-height:70px"></textarea></div>
@@ -355,14 +378,14 @@
       <article class="lesson" id="l7">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.7</span><span class="l-t" style="display:block">Tahrir, format, iqtibos uslubi</span>
-            <span class="l-m"><span class="tag">⏱ 40 daqiqa</span><span class="tag">🛠 Iqtibos formatlovchi</span><span class="tag xp">+20 XP · vosita +15 XP</span></span></span>
+          <span><span class="l-n">Dars 6.7</span><span class="l-t" style="display:block">Format va iqtibos</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Iqtibos formatlovchi</span><span class="tag xp">+20 XP · vosita +15 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
           <div class="panel"><div class="hook">Adabiyotlar roʻyxatida uch xil uslub, ikkita manba matnda uchramaydi, bittasi esa umuman mavjud emas: uni AI chatbot “topib bergan”. Komissiya aʼzosi aynan shu manbani qidirdi.</div></div>
-          <div class="panel">
+          <div class="panel"><div data-kvideo="l7"></div>
             <h4>Uchta keng tarqalgan uslub</h4>
             <div class="tbl"><table><thead><tr><th>Uslub</th><th>Matnda</th><th>Qayerda</th></tr></thead><tbody>
               <tr><td><b>APA 7</b></td><td>(Karimov &amp; Smith, 2025)</td><td>Ijtimoiy fanlar, taʼlim, psixologiya, koʻp tabiiy fanlar</td></tr>
@@ -376,7 +399,7 @@
             <ul><li>Boshqa muallif fikri: oʻz soʻzlaringiz bilan qayta ifoda + iqtibos. Aynan nusxa: qoʻshtirnoq + iqtibos.</li><li>Koʻp universitetlar matnni oʻxshashlik tekshiruvidan oʻtkazadi.</li><li>AI vositalari mavjud boʻlmagan manbalarni “toʻqib” chiqarishi mumkin. Har manbani DOI yoki nashriyot sahifasi orqali tekshiring.</li><li>AI dan foydalanish qoidasi dasturga qarab farq qiladi; siyosatni tekshiring va matnni oʻzingiz yozing.</li></ul>
             <div class="srcs">Manbalar: <a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples/journal-article-references" target="_blank" rel="noopener">APA Style: jurnal maqolasi</a> · <a href="https://journals.ieeeauthorcenter.ieee.org/your-role-in-article-production/ieee-editorial-style-manual/" target="_blank" rel="noopener">IEEE Editorial Style Manual</a>. Harvard uchun universitetingiz kutubxona qoʻllanmasiga qarang.</div>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Bitta uslub, oxirigacha izchil; har matndagi iqtibos roʻyxatda va aksincha; har manba mavjudligi tekshirilgan. AI faqat dastur ruxsat bergan doirada.</p></div></div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Bitta iqtibos uslubi oxirigacha, har manba DOI yoki nashriyot sahifasi bilan tekshirilgan.</p></div></div>
           <div class="panel"><div class="assign"><b>Topshiriq</b>
             <ul><li>Pastdagi <a href="#cite">Iqtibos formatlovchi</a>da bitta manbani uch uslubda formatlang.</li><li>Matritsangizdagi har manbaning DOI yoki havolasini tekshiring.</li></ul></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l7">Darsni yakunlash · +20 XP</button></div>
@@ -485,6 +508,7 @@
 
   <!-- ARTIFACT -->
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2>Sizning ilmiy loyiha taklifingiz</h2>
     <p class="sub">“Skeletni qoʻyish” vositalardagi yozuvlarni boʻsh boʻlimlarga joylaydi. Keyin har boʻlimni toʻliq matnga aylantiring. Adabiyotlar roʻyxati matritsadan APA 7 da yigʻiladi.</p>
     <div class="artifact">
@@ -522,11 +546,13 @@
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="6"><h2>III bosqich tugadi</h2><div class="mv-bar"><i style="width:80%"></i></div><p class="mv-small">III bosqich: 2 / 2 modul · Rejangiz 80% tayyor</p><div class="mv-k" data-mn="m6"><b>Endi pul masalasi.</b> Arizalar jadvalingizdagi stipendiyalar va ularning sanalari shu yerda koʻrinadi.</div><p><b>IV bosqichda (M7–M8) Sizni kutayotgan darslar:</b></p><ul class="mv-lock"><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M7.1 Stipendiya turlari va majburiy shartlar</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M7.2 Buyuk Britaniya</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M7.3 AQSh</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M7.4 Yevropa Ittifoqi</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M7.5 Osiyo</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M7.6 Turkiya va boshqa yoʻnalishlar</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M7.7 Oʻzbekiston dasturlari va universitet grantlari</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M7.8 Stipendiyalar roʻyxati</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M8.1 Suhbat turlari</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M8.2 Suhbatdagi 10 ta savol</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M8.3 Stipendiya suhbatlari</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M8.4 5 daqiqalik ilmiy taqdimot</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M8.5 Javobni yozib olish va baholash</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M8.6 Qabul xati kelgach: birinchi ikki hafta</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M8.7 Viza, sugʻurta, uy-joy, bank</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">M8.8 Birinchi 90 kun va oʻqishdan keyin</li></ul><div class="mv-row"><a class="btn btn-p" href="master-lab-o.html?m=7">IV bosqichni boshlash</a><a class="btn btn-g" href="master-lab-narxlar.html">Tariflarni solishtirish</a></div><p class="mv-small">«1 ta bosqich» tarifida IV bosqich navbatdagi toʻlov bilan, toʻlov qilingan zahoti ochiladi.</p></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>7 ta</div>
-      <div><b>Vaqt</b>~4 hafta (haftasiga 5–8 soat)</div>
+      <div><b>Vaqt</b>~2 hafta, agar taklif kerak boʻlsa (dars ~1,5 soat + yozish)</div>
       <div><b>Natija</b>research proposal 1 500–3 000 soʻz + adabiyotlar matritsasi + Gantt</div>
     </div>
   </section>
@@ -535,13 +561,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="master-lab.html">← Magistratura dasturi</a>
-    <span class="btn btn-g" style="cursor:default;opacity:.7">Keyingi: M7 Stipendiyalar va moliyalashtirish</span>
+    <a class="btn btn-g" href="master-lab-m5.html">← M5</a>
+    <a class="btn btn-p" href="master-lab-o.html?m=7">Keyingi: M7 Stipendiyalar va moliyalashtirish →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/master-next.js" defer></script>
 
 <script>
 (function () {
@@ -574,7 +602,7 @@
   var MAX = 300, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [100, "2-daraja: Izlanuvchi"], [200, "3-daraja: Kashfiyotchi"], [300, "III bosqich yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -789,7 +817,7 @@
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
     lessons.forEach(renderLesson);
   }
@@ -799,3 +827,4 @@
 </script>
 </body>
 </html>
+<!-- mv2 -->
