@@ -118,7 +118,7 @@ const WS = (() => {
     await loadPages()
     const box = document.getElementById('wsBlocks')
     box.innerHTML = '<tr><td colspan="3" style="color:var(--muted)">Yuklanmoqda…</td></tr>'
-    document.getElementById('wsTitle').textContent = 'Sahifa boʻlimlari: ' + file
+    document.getElementById('wsTitle').textContent = 'Boʻlimlar'
     document.getElementById('wsOpen').href = urlOf(file)
     try {
       const r = await fetch('/' + file, { cache: 'no-store', credentials: 'same-origin' })
@@ -207,10 +207,10 @@ const WS = (() => {
       hideRows = a.data || []
     }
     tb.innerHTML = edits.length ? edits.map(r => {
-      const val = r.kind === 'html' ? short((r.value || '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, ''), 90) : '—'
+      const val = r.kind === 'html' ? short((r.value || '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, ''), 90) : r.kind === 'style' ? styleTxt(r.value) : '—'
       const on = r.status === 'active'
       return '<tr><td><a href="' + escHtml(urlOf(r.page)) + '" target="_blank" rel="noopener">' + escHtml(r.page.replace(/\.html$/, '')) + '</a></td>' +
-        '<td>' + (r.kind === 'hide' ? '🙈 Yashirish' : '✏️ Matn') + '</td>' +
+        '<td>' + ({ hide: '🙈 Yashirish', html: '✏️ Matn', style: '📐 Oʻlcham' }[r.kind] || r.kind) + '</td>' +
         '<td style="max-width:280px;font-size:12px">' + escHtml(short(r.label || r.sel, 90)) + '</td>' +
         '<td style="max-width:320px;font-size:12px">' + escHtml(val) + '</td>' +
         '<td style="font-size:12px;white-space:nowrap">' + escHtml(String(r.updated_at || '').slice(0, 16).replace('T', ' ')) + '</td>' +
@@ -220,6 +220,13 @@ const WS = (() => {
           : '<span style="color:var(--muted);font-size:12px">Bekor qilingan</span> <button class="btn bs bsm" onclick="WS.setStatus(' + r.id + ',\'active\')">Qayta yoqish</button>') +
         '</td></tr>'
     }).join('') : '<tr><td colspan="6" style="color:var(--muted)">Oʻzgarish yoʻq</td></tr>'
+  }
+  function styleTxt(v) {
+    let o = {}; try { o = JSON.parse(v || '{}') } catch (e) {}
+    const p = []
+    if (o.fs) p.push('shrift ' + Math.round(o.fs * 100) + '%')
+    if (o.w) p.push('kenglik ' + o.w + ' px' + (o.sym ? ', qoʻshnilar bilan' : ''))
+    return p.join(' · ') || '—'
   }
   async function setStatus(id, status) {
     if (status === 'off' && !confirm('Bu oʻzgarish bekor qilinsinmi? Sayt manbadagi asl holatiga qaytadi.')) return
