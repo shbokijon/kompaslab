@@ -114,6 +114,22 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 .tbl-scroll{overflow-x:auto;}
 .ws-sw{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;}
 .ws-sw input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;}
+.ws-top{padding:16px 18px;margin-bottom:14px;}
+.ws-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.ws-head select{font-weight:700;min-width:220px;max-width:320px;}
+.ws-how{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px;font-size:12.5px;color:var(--muted);}
+.ws-how>span{background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:4px 10px;}
+.ws-i{position:relative;}
+.ws-i summary{list-style:none;cursor:pointer;width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:grid;place-items:center;font-size:13px;color:var(--accent);}
+.ws-i summary::-webkit-details-marker{display:none;}
+.ws-i[open]>div{position:absolute;z-index:20;top:30px;left:0;width:min(520px,80vw);background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:12px 14px;line-height:1.6;color:var(--text);}
+.ws-box{margin-bottom:14px;}
+.ws-box>summary{display:flex;align-items:center;gap:10px;padding:13px 18px;cursor:pointer;list-style:none;font-size:14px;}
+.ws-box>summary::-webkit-details-marker{display:none;}
+.ws-box>summary::before{content:"▸";color:var(--muted);}
+.ws-box[open]>summary::before{content:"▾";}
+.ws-box>summary #wsInfo{font-size:12px;color:var(--muted);font-weight:400;}
+.ws-flt{margin-left:auto;display:flex;gap:6px;}
 
 /* Student row */
 .sr{display:flex;align-items:center;gap:10px;}
@@ -662,40 +678,39 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 
     <!-- VEBSAYT (2026-11-13): sahifa boʻlimlarini yashirish va jonli tahrirlash · js/admin-site.js, site_edits -->
     <div class="sec" id="sec-website">
-      <div class="card" style="margin-bottom:14px">
-        <div class="ch">
-          <h2>🖥️ Vebsayt</h2>
-          <div class="ch-r">
-            <select class="flt" id="wsPage" onchange="WS.pick(this.value)" style="font-weight:700;max-width:260px"><option value="index.html">index</option></select>
-            <a class="btn bs bsm" id="wsOpen" style="text-decoration:none" href="/" target="_blank" rel="noopener">Saytda ochish ↗</a>
-            <button class="btn bp bsm" onclick="WS.live()">✏️ Jonli tahrirlash ↗</button>
-          </div>
+      <div class="card ws-top">
+        <div class="ws-head">
+          <select class="flt" id="wsPage" onchange="WS.pick(this.value)" aria-label="Sahifa"><option value="index.html">index</option></select>
+          <button class="btn bp" onclick="WS.live()">✏️ Jonli tahrirlash ↗</button>
+          <a class="btn bs bsm" id="wsOpen" style="text-decoration:none" href="/" target="_blank" rel="noopener">Saytda ochish ↗</a>
         </div>
-        <div class="mb" style="font-size:12.5px;color:var(--muted);line-height:1.65">
-          <b>Koʻrinadi / Yashirin</b>: boʻlim yoki qism saytda koʻrinmaydi. Deploy kerak emas: tashrifchilarda bir necha daqiqada (keyingi ochilishda) yangilanadi.<br>
-          <b>Jonli tahrirlash</b>: haqiqiy sahifa yangi oynada ochiladi. “Tanlash” rejimida istalgan qismni bosing: matnini oʻsha joyning oʻzida yozasiz, yashirasiz yoki qayta koʻrsatasiz. “Saytni bosish” rejimida sayt boʻylab yurasiz, muharrir boshqa sahifalarda ham ochiq qoladi.<br>
-          Matn faqat oddiy koʻrinishda saqlanadi (qalin, kursiv, havola, qator). Tugma, narx, hisoblagich kabi kod boshqaradigan qismlar tahrirlanmaydi: ularni yashirish mumkin. Yangi alifboda yozilgan matn manbaga amaldagi alifboda yoziladi.<br>
-          Manba (HTML) oʻzgarib, qism topilmay qolsa, oʻzgarish saytda qoʻllanmaydi va muharrirda “topilmadi” deb chiqadi. Lab sahifalarini generator qayta yigʻsa ham oʻzgarishlar bazada qoladi.
+        <div class="ws-how">
+          <span>🎯 Qismni bosing</span><span>✏️ Matnni joyida yozing</span><span>📐 Shrift va kenglik</span><span>🙈 Yashiring</span>
+          <details class="ws-i"><summary title="Batafsil">ⓘ</summary><div>
+            Oʻzgarish darhol bazaga yoziladi, deploy kerak emas: tashrifchilarda 5 daqiqagacha (keyingi ochilishda) koʻrinadi.<br>
+            <b>Kenglik</b>: tanlangan blok chetidagi tutqichni sudrang. Blok markazda qoladi, 25/33/50/66/75/100% va qoʻshni blok kengligiga yopishadi. Bir qatordagi bir xil bloklar birga oʻlchanadi (simmetriya), buni muharrirda oʻchirish mumkin. Telefonda blok ekrandan kengaymaydi.<br>
+            <b>Shrift</b>: A− / A+ faqat tanlangan blok va ichidagi matnni oʻzgartiradi. Butun sayt oʻlchami: Dizayn boʻlimi.<br>
+            Tugma, narx, hisoblagich kabi kod boshqaradigan qismlarning matni tahrirlanmaydi, lekin ularni yashirish va oʻlchash mumkin. Manba oʻzgarib qism topilmasa, oʻzgarish qoʻllanmaydi va muharrirda “topilmadi” deb chiqadi.
+          </div></details>
         </div>
       </div>
-      <div class="card" style="margin-bottom:14px">
-        <div class="ch"><h2 id="wsTitle">Sahifa boʻlimlari</h2><span id="wsInfo" style="font-size:12px;color:var(--muted)"></span></div>
+      <details class="card ws-box" open>
+        <summary><b id="wsTitle">Boʻlimlar</b><span id="wsInfo"></span></summary>
         <div class="tbl-scroll">
-          <table class="tbl"><thead><tr><th>Boʻlim / qism</th><th>Saytda</th><th>Amal</th></tr></thead><tbody id="wsBlocks"></tbody></table>
+          <table class="tbl"><thead><tr><th>Boʻlim / qism</th><th>Saytda</th><th></th></tr></thead><tbody id="wsBlocks"></tbody></table>
         </div>
-      </div>
-      <div class="card">
-        <div class="ch">
-          <h2>📝 Oʻzgarishlar</h2>
-          <div class="ch-r">
+      </details>
+      <details class="card ws-box">
+        <summary><b>Oʻzgarishlar tarixi</b>
+          <span class="ws-flt" onclick="event.stopPropagation()">
             <select class="flt" id="wsScope" onchange="WS.loadEdits()"><option value="page">Shu sahifa</option><option value="all">Hamma sahifalar</option></select>
             <select class="flt" id="wsStatus" onchange="WS.loadEdits()"><option value="active">Faol</option><option value="off">Bekor qilingan</option><option value="">Hammasi</option></select>
-          </div>
-        </div>
+          </span>
+        </summary>
         <div class="tbl-scroll">
-          <table class="tbl"><thead><tr><th>Sahifa</th><th>Tur</th><th>Qism</th><th>Yangi matn</th><th>Sana</th><th>Holat</th></tr></thead><tbody id="wsEdits"></tbody></table>
+          <table class="tbl"><thead><tr><th>Sahifa</th><th>Tur</th><th>Qism</th><th>Qiymat</th><th>Sana</th><th>Holat</th></tr></thead><tbody id="wsEdits"></tbody></table>
         </div>
-      </div>
+      </details>
     </div>
 
     <!-- DIZAYN (2026-11-17): mavzu, shrift, oʻlchamlar · js/admin-look.js, site_settings -->

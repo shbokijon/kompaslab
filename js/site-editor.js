@@ -112,9 +112,18 @@
     'label.chk{display:flex;gap:6px;align-items:center;font-size:12px;color:#1a2e26;cursor:pointer}' +
     '.lost{font-size:11.5px;background:#fdecea;color:#c0392b;border-radius:8px;padding:7px 9px;line-height:1.5}' +
     '.lost button{margin-left:4px}' +
+    '.hdl{position:fixed;z-index:2147483647;width:12px;height:34px;margin:-17px 0 0 -6px;border-radius:6px;background:#fff;border:2px solid #2d4a3e;box-shadow:0 1px 4px rgba(0,0,0,.25);cursor:ew-resize;display:none;touch-action:none}' +
+    '.hdl:hover,.hdl.on{background:#2d4a3e}' +
+    '.gd{position:fixed;z-index:2147483645;pointer-events:none;border-left:1px dashed #c4622d;display:none}' +
+    '.sz{display:grid;gap:6px;border-top:1px solid #dce8e2;padding-top:8px}' +
+    '.szh{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#6b7f76}' +
+    '.szr{display:grid;grid-template-columns:62px 34px 1fr 34px auto;gap:6px;align-items:center;font-size:12px}' +
+    '.szr .b{padding:5px 0;text-align:center}.szr .v{text-align:center;font:700 12px "JetBrains Mono",monospace}' +
+    '.szr .b.s{padding:5px 8px}' +
     '@media(max-width:560px){.pn{right:8px;left:8px;bottom:8px;width:auto}}' +
     '</style>' +
     '<div class="box hov"></div><div class="box sel"></div><div class="tip"></div>' +
+    '<div class="gd" data-g="l"></div><div class="gd" data-g="r"></div>' +
     '<div class="pn" role="dialog" aria-label="Sayt muharriri">' +
     '<div class="hd"><b>✏️ Sayt muharriri</b><span class="pg"></span>' +
     '<button data-a="min" title="Yigʻish">–</button><button data-a="exit" title="Muharrirdan chiqish">✕</button></div>' +
@@ -123,9 +132,11 @@
     '<label class="chk"><input type="checkbox" data-a="client"> Mijoz koʻrinishi (yashirinlar koʻrinmaydi)</label>' +
     '<div class="cur"></div><div class="lostbox"></div><div class="msg"></div>' +
     '<div class="ft"><span class="cnt"></span><a href="admin.html#vebsayt" target="_blank" rel="noopener">Admin → Vebsayt ↗</a></div>' +
-    '</div></div>';
+    '</div></div>' +
+    '<div class="hdl" data-h="l" title="Kenglik: sudrang"></div><div class="hdl" data-h="r" title="Kenglik: sudrang"></div>';
   var $ = function (s) { return root.querySelector(s); };
   var hov = $(".hov"), selb = $(".sel"), tip = $(".tip"), pn = $(".pn");
+  var hl = $('[data-h="l"]'), hr = $('[data-h="r"]'), gl = $('[data-g="l"]'), gr = $('[data-g="r"]');
   $(".pg").textContent = FILE;
 
   var pageCss = document.createElement("style");
@@ -159,11 +170,19 @@
   function track() {
     place(hov, mode === "pick" && !editing && hovEl !== cur ? hovEl : null);
     place(selb, cur);
+    var showH = cur && cur.isConnected && mode === "pick" && !editing && sizable(cur);
+    [hl, hr].forEach(function (h) { h.style.display = showH ? "block" : "none"; });
+    if (showH) {
+      var rc = cur.getBoundingClientRect(), y = rc.top + Math.min(rc.height, window.innerHeight) / 2;
+      if (rc.top < 0 && rc.bottom > 0) y = Math.max(40, Math.min(window.innerHeight - 40, (Math.max(0, rc.top) + Math.min(window.innerHeight, rc.bottom)) / 2));
+      hl.style.left = rc.left + "px"; hl.style.top = y + "px";
+      hr.style.left = rc.right + "px"; hr.style.top = y + "px";
+    }
     if (mode === "pick" && hovEl && !editing && hovEl !== cur) {
       var r = hovEl.getBoundingClientRect();
       tip.style.display = "block"; tip.textContent = labelOf(hovEl);
       tip.style.left = Math.max(4, r.left) + "px"; tip.style.top = Math.max(4, r.top - 22) + "px";
-    } else tip.style.display = "none";
+    } else if (!drag) tip.style.display = "none";
   }
   var raf = 0;
   function sched() { if (!raf) raf = requestAnimationFrame(function () { raf = 0; track(); }); }
@@ -212,7 +231,7 @@
         (hidden ? '<button class="b" data-a="show">👁 Koʻrsatish</button>' : '<button class="b w" data-a="hide">🙈 Yashirish</button>') +
         (rs.html ? '<button class="b" data-a="revert">↩ Asl matn</button>' : "") +
         '<button class="b" data-a="desel">✕</button></div>' +
-        (w ? '<div class="note">' + esc(w) + '</div>' : "");
+        (w ? '<div class="note">' + esc(w) + '</div>' : "") + sizePanel();
     }
     box.innerHTML = h; cv(box); cv($(".cnt"));
   }
@@ -335,6 +354,115 @@
     renderLost(); render(); msg("✅ Bekor qilindi", "ok");
   }
 
+  // ── Oʻlcham: shrift va kenglik (kind 'style') ─────────────────────
+  var FS_STEP = 0.05, SNAP = 10, stTimer = 0;
+  function sizable(el) { return el && el !== document.body && el !== document.documentElement && !inHost(el) && el.nodeType === 1 && !/^(SCRIPT|STYLE|BR|HR)$/.test(el.nodeName); }
+  function curSt(el) { var r = rowsOf(el).style; return K.parseStyle(el.__kseDraft || (r ? r.value : {})); }
+  function maxW(el) {
+    var p = el.parentElement; if (!p) return window.innerWidth;
+    var cs = getComputedStyle(p);
+    return Math.max(K.W_MIN, p.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0));
+  }
+  function sizePanel() {
+    if (!cur || !sizable(cur)) return "";
+    if (cur.__kstyle && cur.__kstyle.by) return '<div class="sz"><div class="szh">Oʻlcham</div><div class="note">Bu blok qoʻshnisi bilan simmetrik oʻlchanadi.</div><div class="row"><button class="b" data-a="main">Asosiy blokni tanlash</button></div></div>';
+    var o = curSt(cur), np = K.peers(cur).length, mw = Math.round(maxW(cur));
+    var wTxt = o.w ? o.w + " px" : "Avto", fTxt = Math.round((o.fs || 1) * 100) + "%";
+    var has = !!rowsOf(cur).style;
+    return '<div class="sz"><div class="szh">Oʻlcham</div>' +
+      '<div class="szr"><span>Shrift</span><button class="b" data-a="fs-" title="Kichikroq">A−</button><span class="v">' + fTxt + '</span><button class="b" data-a="fs+" title="Kattaroq">A+</button><button class="b s" data-a="fs0" title="Asl oʻlcham">100%</button></div>' +
+      '<div class="szr"><span>Kenglik</span><button class="b" data-a="w-">−</button><span class="v">' + wTxt + '</span><button class="b" data-a="w+">+</button><button class="b s" data-a="wauto" title="Asl kenglik">Avto</button></div>' +
+      (np ? '<label class="chk"><input type="checkbox" data-a="sym"' + (o.sym !== false ? " checked" : "") + '> Qoʻshni ' + np + ' ta blok ham shu kenglikda (simmetriya)</label>' : "") +
+      '<div class="note">Kenglikni blok chetidagi tutqichni sudrab ham berasiz. Blok markazda turadi; 25, 33, 50, 66, 75, 100% va qoʻshni bloklar kengligiga yopishadi. Eng koʻpi ' + mw + ' px.</div>' +
+      (has ? '<div class="row"><button class="b" data-a="stoff">↩ Asl oʻlcham</button></div>' : "") + '</div>';
+  }
+  function draftOf(el) { var o = curSt(el); if (o.sym == null && K.peers(el).length) o.sym = true; return o; }
+  function setSt(ch, now) {
+    var el = cur; if (!el) return;
+    var o = draftOf(el);
+    for (var k in ch) o[k] = ch[k];
+    if (!o.w) delete o.w; if (!o.fs || Math.abs(o.fs - 1) < 0.001) delete o.fs;
+    el.__kseDraft = o;
+    K.style(el, o);
+    var row = rowsOf(el).style; if (row) row.value = JSON.stringify(K.parseStyle(o));
+    render(); sched();
+    clearTimeout(stTimer);
+    stTimer = setTimeout(function () { saveSt(el, o); }, now ? 0 : 700);
+  }
+  async function saveSt(el, o) {
+    var v = K.parseStyle(o), row = rowsOf(el).style;
+    try {
+      if (!v.fs && !v.w) {
+        if (row) {
+          var u = await sb.from("site_edits").update({ status: "off" }).eq("id", row.id);
+          if (u.error) throw u.error;
+          dropCache(); forget(row); delete el.__kse.style;
+        }
+        msg("✅ Asl oʻlcham", "ok");
+      } else {
+        if (el.__kseGuard == null) el.__kseGuard = K.guard(el);
+        var r = await write("style", el, { value: JSON.stringify(v), status: "active" });
+        setRow(el, r);
+        if (!rows.some(function (x) { return x.id === r.id; })) rows.push(r); else rows = rows.map(function (x) { return x.id === r.id ? r : x; });
+        msg("✅ Oʻlcham saqlandi. Saytda bir necha daqiqada (yangi tashrifda) koʻrinadi.", "ok");
+      }
+    } catch (e) { fail(e); }
+    el.__kseDraft = null;
+    render(); sched();
+  }
+  function stepFs(d) {
+    var f = (draftOf(cur).fs || 1) + d * FS_STEP;
+    f = Math.min(K.FS_LIM[1], Math.max(K.FS_LIM[0], Math.round(f * 100) / 100));
+    setSt({ fs: f });
+  }
+  function stepW(d) {
+    var mw = maxW(cur), w = draftOf(cur).w || Math.round(cur.getBoundingClientRect().width);
+    var steps = [0.25, 1 / 3, 0.5, 2 / 3, 0.75, 1].map(function (x) { return Math.round(mw * x); });
+    var nx = d > 0 ? steps.filter(function (x) { return x > w + 2; })[0] : steps.filter(function (x) { return x < w - 2; }).pop();
+    if (nx == null) return;
+    setSt({ w: nx >= mw ? 0 : nx });
+  }
+  function styleOff() { if (cur && confirm("Bu blok asl oʻlchamiga qaytarilsinmi?")) setSt({ fs: 1, w: 0 }, true); }
+
+  // Tutqichni sudrash: kenglik = 2 × |sichqoncha − markaz| (blok markazda qoladi)
+  var drag = null;
+  function snapW(w, mw) {
+    var c = [0.25, 1 / 3, 0.5, 2 / 3, 0.75, 1].map(function (x) { return { w: mw * x, t: Math.round(x * 100) + "%" }; });
+    var p = cur && cur.parentElement;
+    if (p) [].forEach.call(p.children, function (x) { if (x !== cur && !(cur.__kstyle && cur.__kstyle.peers.indexOf(x) >= 0)) { var r = x.getBoundingClientRect(); if (r.width > 40) c.push({ w: r.width, t: "qoʻshni" }); } });
+    var best = null;
+    c.forEach(function (x) { var dd = Math.abs(x.w - w); if (dd <= SNAP && (!best || dd < best.d)) best = { d: dd, w: x.w, t: x.t }; });
+    return best ? { w: Math.round(best.w), t: best.t } : { w: Math.round(w), t: Math.round(w / mw * 100) + "%" };
+  }
+  function down(e) {
+    if (!cur) return;
+    e.preventDefault(); e.stopPropagation();
+    var h = e.currentTarget; h.classList.add("on");
+    try { h.setPointerCapture(e.pointerId); } catch (er) {}
+    var rc = cur.getBoundingClientRect();
+    drag = { h: h, cx: rc.left + rc.width / 2, mw: maxW(cur), o: draftOf(cur) };
+  }
+  function move(e) {
+    if (!drag) return;
+    var w = Math.min(drag.mw, Math.max(K.W_MIN, 2 * Math.abs(e.clientX - drag.cx)));
+    var sn = snapW(w, drag.mw);
+    var o = drag.o; o.w = sn.w >= drag.mw - 1 ? 0 : sn.w;
+    K.style(cur, o); drag.w = o.w;
+    var rc = cur.getBoundingClientRect();
+    gl.style.display = gr.style.display = "block";
+    [gl, gr].forEach(function (g, i) { g.style.left = (i ? rc.right : rc.left) + "px"; g.style.top = "0px"; g.style.height = window.innerHeight + "px"; });
+    tip.style.display = "block"; tip.textContent = (o.w ? sn.w + " px · " + sn.t : "Avto (toʻliq)");
+    tip.style.left = Math.max(4, drag.cx - 50) + "px"; tip.style.top = Math.max(4, rc.top - 24) + "px";
+    sched();
+  }
+  function up() {
+    if (!drag) return;
+    var d = drag; drag = null; d.h.classList.remove("on");
+    gl.style.display = gr.style.display = "none"; tip.style.display = "none";
+    if (d.w != null) setSt({ w: d.w, sym: d.o.sym }, true);
+  }
+  [hl, hr].forEach(function (h) { h.addEventListener("pointerdown", down); h.addEventListener("pointermove", move); h.addEventListener("pointerup", up); h.addEventListener("pointercancel", up); });
+
   // ── hodisalar ───────────────────────────────────────────────
   function setMode(m) {
     mode = m;
@@ -362,6 +490,13 @@
     else if (a === "revert") revert();
     else if (a === "desel") { cur = null; render(); sched(); }
     else if (a === "off") off(+b.getAttribute("data-id"));
+    else if (a === "fs-" || a === "fs+") stepFs(a === "fs+" ? 1 : -1);
+    else if (a === "fs0") setSt({ fs: 1 });
+    else if (a === "w-" || a === "w+") stepW(a === "w+" ? 1 : -1);
+    else if (a === "wauto") setSt({ w: 0 });
+    else if (a === "sym") setSt({ sym: b.checked });
+    else if (a === "main") { var m = cur && cur.__kstyle && cur.__kstyle.by; if (m) select(m); }
+    else if (a === "stoff") styleOff();
   });
   function guardEv(e) {
     if (inHost(e.target)) return;
@@ -400,6 +535,7 @@
       if (!el) { lost.push(r); return; }
       setRow(el, r);
       if (r.kind === "hide") el.setAttribute("data-kse-hidden", "");
+      else if (r.kind === "style") K.style(el, r.value);
       else if (r.kind === "html" && el.getAttribute("data-kse-id") !== String(r.id)) {
         el.__kseGuard = r.guard;
         el.innerHTML = K.clean(r.value);
