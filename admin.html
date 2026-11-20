@@ -260,7 +260,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 }
 
 /* STUDENT DETAIL TABS */
-.sd-tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;font-family:'Outfit','IBM Plex Sans',sans-serif;transition:all .15s;}
+.sd-tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 12px;white-space:nowrap;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;font-family:'Outfit','IBM Plex Sans',sans-serif;transition:all .15s;}
 .sd-tab:hover{color:var(--text);}
 .sd-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
 .sd-course-row{display:flex;align-items:center;justify-content:space-between;background:#f8faf9;border:1px solid var(--border);border-radius:10px;padding:10px 14px;}
@@ -827,7 +827,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
 <div class="toast" id="toastEl"></div>
 
 <!-- TALABA DETAIL MODALI -->
-<div class="ovl" id="m-student-detail"><div class="mdl" style="max-width:560px">
+<div class="ovl" id="m-student-detail"><div class="mdl" style="max-width:720px">
   <div class="mh">
     <div style="display:flex;align-items:center;gap:10px">
       <div class="sav" id="sdAvatar" style="width:38px;height:38px;font-size:16px;border-radius:50%;background:linear-gradient(135deg,#2d4a3e,#c4622d);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0"></div>
@@ -840,7 +840,7 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
   </div>
 
   <!-- TAB NAVIGATSIYA -->
-  <div style="display:flex;border-bottom:1px solid var(--border);padding:0 20px;background:#f8faf9">
+  <div class="sd-tabs" style="display:flex;flex-wrap:wrap;border-bottom:1px solid var(--border);padding:0 12px;background:#f8faf9">
     <button class="sd-tab active" onclick="sdTab('profile',this)">👤 Profil</button>
     <button class="sd-tab" onclick="sdTab('password',this)">🔑 Parol</button>
     <button class="sd-tab" onclick="sdTab('courses',this)">📚 Kurslar</button>
