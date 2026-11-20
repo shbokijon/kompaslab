@@ -28,6 +28,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 DIST = HERE / "dist"
 PAID = HERE / "paid"   # pullik sahifalar: git va saytga chiqmaydi, faqat bazaga yuklanadi
+sys.path.insert(0, str(HERE))
+import ui2  # noqa: E402  (2026-11-20, telefon UI)
 
 # site: saytga chiqadimi; protect: nusxa olishdan himoya va suv belgisi; og: havola rasmi matni
 MODULES = {
@@ -302,6 +304,7 @@ def build(name):
         return
     src = watermark((HERE / "src" / (name + ".src.html")).read_text(encoding="utf-8").replace("{{CSS}}", (HERE / "m0.css").read_text(encoding="utf-8")))
     src = program_outcome(name, src)
+    src = ui2.apply(name, src)  # 2026-11-20: telefon UI (ui2.UI2_LABS)
     out = []
     if cfg.get("site"):
         for fn, html in views(name, site(name, src, cfg)).items():
