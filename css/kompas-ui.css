@@ -685,3 +685,7 @@ html[data-theme="dark"] .nav .kl-tabs a.kl-ico span{color:#10201a}
 header.top .kl-theme{margin-left:auto;margin-right:8px}
 
 /* ==== TUNGI REJIM OXIRI ==== */
+
+/* Qator boʻlinishi (2026-11-20, asoschi): yolgʻiz soʻz qolmasin, sarlavha qatorlari muvozanatli */
+p,li,dd,td,.lead,.sub,.km-note{text-wrap:pretty}
+h1,h2,h3,h4,.mod-t,summary b{text-wrap:balance}

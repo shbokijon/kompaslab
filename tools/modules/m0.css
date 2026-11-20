@@ -236,3 +236,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   .pass{grid-template-columns:minmax(0,1fr);}
   .tool,.decide{padding:18px 16px;}
 }
+
+/* Qator boʻlinishi (2026-11-20, asoschi): yolgʻiz soʻz qolmasin, sarlavha qatorlari muvozanatli */
+p,li,dd,td,.lead,.hook,.sub,.take p{text-wrap:pretty}
+h1,h2,h3,h4,.l-t,.mod-t,summary b{text-wrap:balance}
