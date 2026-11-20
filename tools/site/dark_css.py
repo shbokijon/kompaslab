@@ -236,8 +236,12 @@ def main():
     lines.append(EXTRA)
     lines.append(END)
     s = KUI.read_text(encoding="utf-8")
-    if BEGIN in s: s = s.split(BEGIN)[0].rstrip() + "\n"
-    s = s.rstrip() + "\n\n" + "\n".join(lines) + "\n"
+    tail = ""
+    if BEGIN in s:
+        head, rest = s.split(BEGIN, 1)
+        if END in rest: tail = rest.split(END, 1)[1].strip()
+        s = head.rstrip() + "\n"
+    s = s.rstrip() + "\n\n" + "\n".join(lines) + "\n" + ("\n" + tail + "\n" if tail else "")
     KUI.write_text(s, encoding="utf-8")
     print("tungi rejim:", len(uniq), "qoida,", len(varsout), "oʻzgaruvchi ->", KUI.relative_to(ROOT))
 
