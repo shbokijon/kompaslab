@@ -1,4 +1,4 @@
-from common import EMB_UGRAD, UGRAD_WL, EMB_EXCH, HARVARD_212E, HOL, STD
+from common import EMB_UGRAD, UGRAD_WL, EMB_EXCH, HARVARD_212E, HOL, HOL2, STD
 
 MOD = dict(
     title="Global UGRAD va almashinuv dasturlari",
@@ -8,7 +8,7 @@ MOD = dict(
     goals=[("usa", "Almashinuv dasturi kartasi", "muvofiqlik, hujjatlar, sikl holati"),
            ("bell", "Sikl kuzatuv rejasi", "rasmiy kanal, oy, eslatma"),
            ("compass", "B reja", "UGRAD bo'lmasa yoki rad javobi kelsa")],
-    warn=f"{HOL}: AQSh elchixonasi sahifasidagi oxirgi Global UGRAD e'loni 2024–2025 sikli uchun (muddat 15.12.2024). Keyingi sikllar uchun O'zbekistonda e'lon topilmadi. Sikl rasman e'lon qilinmaguncha dasturga tayyorlanish xavfini hisobga oling. Insholarni yozish Bakalavr dasturi M9–M10 da o'rgatiladi; bu yerda takrorlanmaydi.",
+    warn=f"AQSh elchixonasi sahifasidagi oxirgi Global UGRAD e'loni 2024–2025 sikli uchun (muddat 15.12.2024). {HOL2} qidiruvda yangi sikl e'loni topilmadi. Sikl rasman e'lon qilinmaguncha dasturga tayyorlanish xavfini hisobga oling. Insholarni yozish Bakalavr dasturi M9–M10 da o'rgatiladi; bu yerda takrorlanmaydi.",
     lessons=[
         dict(t="Global UGRAD nima", short="UGRAD", min=25, kind="🧭 Xarita", ic="usa",
              hook="\"AQShga grant bilan bakalavr\" degan e'lonlar ko'pincha Global UGRAD ni anglatadi. Lekin u daraja bermaydi va universitetni siz tanlamaysiz. Buni bilmasdan ariza bersangiz, kutganingiz boshqa bo'ladi.",

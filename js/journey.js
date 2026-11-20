@@ -15,7 +15,7 @@
     { id: "master", n: "Magistratura dasturi", lessons: 58, m0: "master-lab-m0.html", key: "kompas_master_m0_v1" },
     { id: "bachelor", n: "Bakalavr dasturi", lessons: 85, m0: "bachelor-lab-m0.html", key: "kompas_bachelor_m0_v1" },
     { id: "gks", n: "GKS dasturi", lessons: 54, m0: "gks-lab-m0.html", key: "kompas_gks_m0_v1" },
-    { id: "usa", n: "USA dasturi", lessons: 46, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
+    { id: "usa", n: "USA dasturi", lessons: 44, m0: "usa-lab-m0.html", key: "kompas_usa_m0_v1" },
     { id: "daad", n: "DAAD dasturi", lessons: 51, m0: "daad-lab.html", key: null },
     { id: "tt", n: "Tadbirkor Talaba", lessons: 54, m0: "tadbirkor-talaba-m0.html", key: "kompas_tt_m0_v1" },
     { id: "musofir", n: "Musofir dasturi", lessons: 44, m0: "musofir-lab-m0.html", key: "kompas_musofir_m0_v1" }

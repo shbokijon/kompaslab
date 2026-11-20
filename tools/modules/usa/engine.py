@@ -15,6 +15,72 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SRC = HERE.parent / "src"
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))
+# v2 (2026-11-20): qisqa dars standarti (Magistratura v2 andozasi). Kontent YANGI alifboda: content_v2.py
+import content_v2 as C2
+
+OLDMAP = {"ö": "oʻ", "Ö": "Oʻ", "ğ": "gʻ", "Ğ": "Gʻ", "ş": "sh", "Ş": "Sh", "ç": "ch", "Ç": "Ch"}
+
+
+def old(t):
+    """Yangi alifbodagi matnni manba alifbosiga (oʻ, gʻ U+02BB, sh, ch, ʼ U+02BC) oʻtkazadi; [[x]] → inglizcha span."""
+    t = re.sub(r"\[\[(.+?)\]\]", lambda m: '<span lang="en">' + m.group(1) + "</span>", t)
+    t = t.replace("'", "ʼ")
+    return "".join(OLDMAP.get(c, c) for c in t)
+
+
+def strip_emoji(t):
+    return re.sub(r"[\U0001F300-\U0001FAFF\u2600-\u27BF\uFE0F]\s?", "", t).strip()
+
+
+V2_CSS = """
+/* USA v2 (2026-11-20): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+"""
+
+
+def info(summary, inner):
+    return '<details class="mv-i"><summary>%s</summary><div>%s</div></details>' % (summary, inner)
+
+
+def merge_v2(n, M):
+    """content_v2 dagi dars va modul maydonlarini eski MOD ustiga qoʻyadi (quiz, ic, kind, vositalar saqlanadi)."""
+    V = C2.MODULES.get(n)
+    if not V:
+        return M
+    M = dict(M)
+    les = []
+    for L, X in zip(M["lessons"], V["lessons"]):
+        L = dict(L); L.update(X); L["v2"] = True
+        les.append(L)
+    M["lessons"] = les
+    for k in ("lead", "weeks", "pass_time", "next_block"):
+        if k in V:
+            M[k] = V[k]
+    if "next" in V:
+        M["next_block"] = V["next"]
+    M["v2"] = True
+    return M
 
 SLUGS = [str(i) for i in range(1, 9)]
 PHASE = {}
@@ -69,7 +135,7 @@ def img(n, cls=""):
     return f'<img{c} src="img/3d/{n}.webp" width="160" height="160" alt="" loading="lazy">'
 
 
-TABS = '<div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>'
+TABS = '<div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>'
 
 
 def quiz_html(q):
@@ -79,7 +145,48 @@ def quiz_html(q):
     return f'<b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz">{items}</div><div class="verdict" id="quizRes"></div>'
 
 
+def lesson_v2(n, k, L, lxp):
+    lid = f"l{k}"
+    num = f"{n}.{k}"
+    tags = f'<span class="tag">~{L["min"]} daqiqa</span><span class="tag">{strip_emoji(fix(L["kind"]))}</span><span class="tag xp">+{lxp} XP{" · test +30 XP" if L.get("quiz") else ""}</span>'
+    hook = old(L["hook"]) + (f'<small class="mv-fun">{old(L["fun"])}</small>' if L.get("fun") else "")
+    extra = ""
+    if L.get("info"):
+        extra += info(old(L.get("info_t", "Batafsil")), old(L["info"]))
+    if L.get("src"):
+        extra += info("Manbalar", f'<p class="srcs">{old(L["src"])}</p>')
+    ul = "<ul>" + "".join(f"<li>{old(x)}</li>" for x in L["task"]) + "</ul>"
+    task = f"<b>{old(L.get('task_b', 'Topshiriq'))}</b>{ul}"
+    if L.get("quiz"):
+        task = quiz_html(L["quiz"]) + '<div style="margin-top:14px">' + task + "</div>"
+    ta = f'<textarea data-save="a{k}" placeholder="{fix(L["ph"])}"></textarea>' if L.get("ph") else ""
+    return f'''      <!-- {num} -->
+      <article class="lesson" id="{lid}">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic">{img(L["ic"])}<span class="ok">✓</span></span>
+          <span><span class="l-n">Dars {num}</span><span class="l-t" style="display:block">{old(L["t"])}</span>
+            <span class="l-m">{tags}</span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          {TABS}
+          <div class="panel"><div class="hook">{hook}</div></div>
+          <div class="panel">
+<div data-kvideo="{lid}"></div>
+{old(L["main"])}
+{extra}
+          </div>
+          <div class="panel"><div class="take">{img(L["ic"])}<p class="mv-take">{old(L["take"])}</p></div></div>
+          <div class="panel"><div class="assign">{task}
+            {ta}</div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="{lid}">Darsni yakunlash · +{lxp} XP</button></div>
+        </div>
+      </article>'''
+
+
 def lesson_html(n, k, L, lxp):
+    if L.get("v2"):
+        return lesson_v2(n, k, L, lxp)
     lid = f"l{k}"
     num = f"{n}.{k}"
     tags = f'<span class="tag">⏱ {L["min"]} daqiqa</span><span class="tag">{fix(L["kind"])}</span><span class="tag xp">+{lxp} XP{" · test +30 XP" if L.get("quiz") else ""}</span>'
@@ -109,6 +216,13 @@ def lesson_html(n, k, L, lxp):
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="{lid}">Darsni yakunlash · +{lxp} XP</button></div>
         </div>
       </article>'''
+
+
+def darslar_sub(M):
+    if not M.get("v2"):
+        return '<p class="sub">Har dars toʻrt qismdan iborat: Diqqat, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>'
+    body = "<p>" + fix(M["warn"]) + "</p><p>" + old(C2.DISCLAIMER) + "</p>"
+    return '<p class="sub">' + old(C2.SUB) + " Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>" + info("Bu modul nima qilmaydi", body)
 
 
 def field_html(f):
@@ -210,7 +324,7 @@ JS = r"""<script>
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -367,7 +481,7 @@ JS = r"""<script>
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();
@@ -379,6 +493,7 @@ JS = r"""<script>
 def page(slug, M):
     code = code_of(slug)
     n = int(code.split("-")[0])
+    M = merge_v2(n, M)
     trk = code.split("-")[1] if "-" in code else ""
     les = M["lessons"]
     if trk:
@@ -388,7 +503,7 @@ def page(slug, M):
     finxp = 250 - nl * lxp - 90
     assert finxp > 0
     key = "kompas_usa_m" + slug + "_v1"
-    nodes = "".join(f'<a class="node" href="#l{k}" data-node="l{k}"><span class="dot">{n}.{k}</span>{fix(L["short"])}</a>' for k, L in enumerate(les, 1))
+    nodes = "".join(f'<a class="node" href="#l{k}" data-node="l{k}"><span class="dot">{n}.{k}</span>{old(L["short"]) if L.get("v2") else fix(L["short"])}</a>' for k, L in enumerate(les, 1))
     T, C = M["tool"], M["check"]
     nodes += f'<a class="node" href="#{T["id"]}" data-node="tool"><span class="dot">🛠</span>{fix(T["short"])}</a>'
     nodes += '<a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a>'
@@ -407,6 +522,7 @@ def page(slug, M):
     nxt = (f'<a class="btn btn-p" href="{M["next_href"]}">Keyingi: {fix(M["next"])} →</a>' if M.get("next_href")
            else '<a class="btn btn-p" href="dashboard.html">Mening kabinetim →</a>')
     weeks = M["weeks"]
+    prev = ('<a class="btn btn-g" href="usa-lab-o.html?m=%d">← M%d</a>' % (n - 1, n - 1)) if n > 1 else '<a class="btn btn-g" href="usa-lab-m0.html">← M0</a>' 
     html = f'''<!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -423,6 +539,7 @@ def page(slug, M):
 {{{{CSS}}}}
 {EXTRA_CSS}
 .path.pn{{--pn:{pn};}}
+{V2_CSS if M.get("v2") else ""}
 </style>
 </head>
 <body>
@@ -438,7 +555,7 @@ def page(slug, M):
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="usa-lab" data-kv-mod="{n}">
 <div class="wrap">
 
   <div class="hero">
@@ -447,7 +564,7 @@ def page(slug, M):
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA dasturi</a> · Modul {code}</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">{PHASE[n]}</span>
         <h1>{fix(M["title"])}</h1>
-        <p class="lead">{fix(M["lead"])}</p>
+        <p class="lead">{old(M["lead"]) if M.get("v2") else fix(M["lead"])}</p>
         <div class="facts"><span class="fact"><b>{nl}</b> dars</span><span class="fact">~<b>{weeks}</b> hafta</span><span class="fact">{PHASE[n].split(" · ")[0]}</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       {img(M["hero"], "hero-art float")}
@@ -455,7 +572,7 @@ def page(slug, M):
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / {pn} bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / {pn} qadam</span></div>
     <div class="path pn">
       {nodes}
     </div>
@@ -466,12 +583,12 @@ def page(slug, M):
     <ul class="goal">
       {goals}
     </ul>
-    <div class="box warn" style="margin-top:14px">{fix(M["warn"])}</div>
+    {"" if M.get("v2") else f'<div class="box warn" style="margin-top:14px">{fix(M["warn"])}</div>'}
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    {darslar_sub(M)}
     <div class="lessons">
 
 {chr(10).join(lesson_html(n, k, L, lxp) for k, L in enumerate(les, 1))}
@@ -491,6 +608,7 @@ def page(slug, M):
   </section>
 
   <section id="artefakt">
+    {'<div data-kvideo="res"></div>' if M.get("v2") else ""}
     <h2 id="artTitle">{fix(M["art_title"])}</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
@@ -516,11 +634,13 @@ def page(slug, M):
     </div>
   </section>
 
+  {('<section id="keyingi"><div class="mv-next" data-mnext="' + str(n) + '">' + old(M["next_block"]) + '</div></section>') if M.get("next_block") else ""}
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>{nl} ta</div>
-      <div><b>Vaqt</b>~{weeks} hafta (haftasiga 3–5 soat)</div>
+      <div><b>Vaqt</b>{old(M["pass_time"]) if M.get("pass_time") else "~" + weeks + " hafta (haftasiga 3–5 soat)"}</div>
       <div><b>Natija</b>{fix(M["art_title"])}</div>
     </div>
     <p class="srcs">Faktlar: {fix(M["sources"])}</p>
@@ -530,13 +650,15 @@ def page(slug, M):
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="usa-lab.html">← USA dasturi</a>
+    {prev}
     {nxt}
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/usa-next.js" defer></script>
 {extra_js}{js}
 </body>
 </html>

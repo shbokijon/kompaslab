@@ -47,6 +47,29 @@
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
 .path.pn{--pn:8;}
+
+/* USA v2 (2026-11-20): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 </style>
 </head>
 <body>
@@ -62,7 +85,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="usa-lab" data-kv-mod="3">
 <div class="wrap">
 
   <div class="hero">
@@ -71,15 +94,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA dasturi</a> · Modul 3</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza II · Bakalavr yordami</span>
         <h1>Yordam beradigan universitetlarni topish</h1>
-        <p class="lead">AQSh bakalavriatida yordam olish uchun avval yordam beradigan universitetni topish kerak. Bu modulda universitetlarni moliyaviy siyosatiga qarab toʻrt guruhga ajratasiz va har birini rasmiy hujjat bilan tekshirasiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Faza II</span><span class="fact"><b>250</b> XP</span></div>
+        <p class="lead">AQSh bakalavriatida yordam olish uchun avval yordam beradigan universitetni topish kerak. Bu modulda universitetlarni yordam siyosatiga qarab toʻrt guruhga ajratasiz va har birini rasmiy hujjat bilan tekshirasiz. Oxirida sizda <strong>yordam boʻyicha saralangan roʻyxat</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact">Faza II</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 qadam</span></div>
     <div class="path pn">
       <a class="node" href="#l1" data-node="l1"><span class="dot">3.1</span>Siyosatlar</a><a class="node" href="#l2" data-node="l2"><span class="dot">3.2</span>Lugʻat</a><a class="node" href="#l3" data-node="l3"><span class="dot">3.3</span>H6</a><a class="node" href="#l4" data-node="l4"><span class="dot">3.4</span>Kalkulyator</a><a class="node" href="#l5" data-node="l5"><span class="dot">3.5</span>Roʻyxat</a><a class="node" href="#royxat" data-node="tool"><span class="dot">🛠</span>Roʻyxat</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Roʻyxat</a>
     </div>
@@ -90,12 +113,12 @@
     <ul class="goal">
       <li><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span><b>Yordam roʻyxati:</b> har universitet: siyosat, H6 raqamlari, manba</span></li><li><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span><b>Siyosat lugʻati:</b> rasmiy sahifadagi iboralarni toʻgʻri oʻqish</span></li><li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span><b>Net Price taxmini:</b> kamida 2 universitet uchun</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Bakalavr dasturi M2 universitetni moslik va daraja boʻyicha tanlaydi, M12.1 esa need-blind va need-aware atamalarini tanishtiradi. Bu modul AQSh universitetlarini moliyaviy yordam boʻyicha tekshirishning toʻliq usuli. Siyosatlar har yili oʻzgarishi mumkin; 31.10.2026 holatiga rasmiy sahifadan qayta tekshiring.</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Bakalavr dasturi M2 universitetni moslik va daraja boʻyicha tanlaydi, M12.1 esa need-blind va need-aware atamalarini tanishtiradi. Bu modul AQSh universitetlarini moliyaviy yordam boʻyicha tekshirishning toʻliq usuli. Siyosatlar har yili oʻzgarishi mumkin; 31.10.2026 holatiga rasmiy sahifadan qayta tekshiring.</p><p>Kompas Lab universitet, elchixona yoki konsul oʻrnida qaror qabul qilmaydi va qabul, yordam yoki vizani kafolatlamaydi. Vositalar sana va talablarni siz uchun tekshirmaydi: har faktni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Viza va soliq boʻyicha yuridik maslahat berilmaydi. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 3.1 -->
@@ -103,25 +126,24 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 3.1</span><span class="l-t" style="display:block">Toʻrt xil yordam siyosati</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🧭 Xarita</span><span class="tag xp">+24 XP</span></span></span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Xarita</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bir universitet yordam soʻraganingizni qabul qaroriga umuman qoʻshmaydi va kerakli summani toʻliq beradi. Boshqasi xalqaro talabaga deyarli yordam bermaydi. Ikkalasining sayti bir xil chiroyli koʻrinadi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bir universitet yordam soʻraganingizni qabul qaroriga qoʻshmaydi va kerakli summani toʻliq beradi. Boshqasi xalqaro talabaga deyarli yordam bermaydi. Ikkalasining sayti bir xil chiroyli. Bu darsda ularni guruhlarga ajratamiz.</div></div>
           <div class="panel">
-<div class="tbl"><table><thead><tr><th>Guruh</th><th>Maʼnosi</th><th>Rasmiy misol (31.10.2026 holatiga)</th></tr></thead><tbody>
-<tr><td>A. Xalqaro talabaga ham need-blind va toʻliq ehtiyoj</td><td>Yordam soʻrash qabulga taʼsir qilmaydi; qabul qilinsangiz, hisoblangan ehtiyoj toʻliq qoplanadi</td><td>MIT: barcha bakalavrlar, "domestic and international", uchun need-blind va full need. Dartmouth: 2026-yil bitiruvchilari kursidan boshlab need-blind siyosati barcha xalqaro fuqarolarga kengaytirilgan va xalqaro talabalarning ehtiyoji ham qoplanadi</td></tr>
-<tr><td>B. Yordam qabulga taʼsir qilmaydi, lekin xalqaro talabaga alohida yozilmagan</td><td>Rasmiy soʻzlarni diqqat bilan oʻqish kerak</td><td>Harvard: yordam arizasi qabul imkoniyatiga taʼsir qilmaydi; xalqaro talabalar AQSh talabalari bilan bir xil yordamga haqli. Princeton: xalqaro talabalarga ham bir xil yordam siyosati; ehtiyojning 100 foizi grant bilan</td></tr>
-<tr><td>C. Need-aware</td><td>Yordam soʻrash qabul imkoniyatini kamaytirishi mumkin</td><td>Northwestern: yordam soʻraganlarning qabul imkoniyati "less favorable"</td></tr>
-<tr><td>D. Xalqaro talabaga yordam juda cheklangan</td><td>Asosan oila toʻlaydi</td><td>Ohio State: xalqaro talabalar odatda federal, shtat va koʻp universitet yordamini ololmaydi</td></tr>
+<div data-kvideo="l1"></div>
+<div class="tbl"><table><thead><tr><th>Guruh</th><th>Maʼnosi</th><th>Rasmiy misol</th></tr></thead><tbody>
+<tr><td>A</td><td>Xalqaro talabaga ham <span lang="en">need-blind</span> va toʻliq ehtiyoj</td><td>MIT; Dartmouth (2026-yil bitiruvchilari kursidan)</td></tr>
+<tr><td>B</td><td>Yordam qabulga taʼsir qilmaydi, xalqaro talaba alohida yozilmagan</td><td>Harvard, Princeton</td></tr>
+<tr><td>C</td><td><span lang="en">need-aware</span>: yordam soʻrash qabulga taʼsir qilishi mumkin</td><td>Northwestern</td></tr>
+<tr><td>D</td><td>Xalqaro talabaga yordam juda cheklangan</td><td>Ohio State</td></tr>
 </tbody></table></div>
-<div class="box info">Bu jadval toʻliq roʻyxat emas, misollar. Siyosat oʻzgaradi: har universitetni oʻzingiz tekshirib, A–D guruhiga qoʻying.</div>
-<div class="box warn">A guruhi universitetlari eng tanlovli universitetlar qatorida. Roʻyxatni faqat A guruhidan tuzish xavfli: oila chegarasi past boʻlsa ham, C va D guruhidagi arzon variantlar va boshqa mamlakatlar parallel boʻlishi kerak.</div>
-<div class="srcs">Manba: <a href="https://sfs.mit.edu/financial-aid-mit" target="_blank" rel="noopener">MIT Student Financial Services</a>; <a href="https://financialaid.dartmouth.edu/apply-aid/international-students" target="_blank" rel="noopener">Dartmouth: xalqaro talabalar uchun yordam</a>; <a href="https://college.harvard.edu/financial-aid/how-aid-works" target="_blank" rel="noopener">Harvard College: yordam qanday ishlaydi</a>; <a href="https://admission.princeton.edu/cost-aid" target="_blank" rel="noopener">Princeton: xarajat va yordam</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>; <a href="https://sfa.osu.edu/international-student/about-aid" target="_blank" rel="noopener">Ohio State: xalqaro talabalar va moliyaviy yordam</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Dartmouth 20.11.2026 holatiga barcha qabul qilingan bakalavrlarning hisoblangan ehtiyojini fuqarolikdan qatʼi nazar 100 foiz qoplaydi. Jadval toʻliq roʻyxat emas, misollar. A guruhi eng tanlovli universitetlar qatorida: roʻyxatni faqat A guruhidan tuzish xavfli. Oila chegarasi past boʻlsa ham, C va D guruhidagi arzon variantlar va boshqa mamlakat parallel boʻlsin.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://sfs.mit.edu/financial-aid-mit" target="_blank" rel="noopener">MIT Student Financial Services</a>; <a href="https://financialaid.dartmouth.edu/apply-aid/international-students" target="_blank" rel="noopener">Dartmouth: xalqaro talabalar uchun yordam</a>; <a href="https://financialaid.dartmouth.edu/how-aid-works/introduction-financial-aid" target="_blank" rel="noopener">Dartmouth: moliyaviy yordamga kirish</a>; <a href="https://college.harvard.edu/financial-aid/how-aid-works" target="_blank" rel="noopener">Harvard College: yordam qanday ishlaydi</a>; <a href="https://admission.princeton.edu/cost-aid" target="_blank" rel="noopener">Princeton: xarajat va yordam</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>; <a href="https://sfa.osu.edu/international-student/about-aid" target="_blank" rel="noopener">Ohio State: xalqaro talabalar va moliyaviy yordam</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>A: xalqaro talabaga ham need-blind va toʻliq ehtiyoj; B: rasmiy soʻzlar aniqlashtirishni talab qiladi; C: need-aware; D: yordam juda cheklangan. Har universitetni oʻzi tekshiring.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Roʻyxatingizdagi 5 universitetni A–D guruhlariga qoʻying.</li><li>Har biri uchun rasmiy sahifadan bir jumlalik dalil va havola.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Har universitetni A–D guruhiga rasmiy jumla bilan qoʻying. Siyosat oʻzgaradi, shuning uchun har yili qayta tekshiring.</p></div></div>
+          <div class="panel"><div class="assign"><b>Beshta universitet guruhi</b><ul><li>Roʻyxatingizdagi 5 universitetni A–D guruhlariga qoʻying.</li><li>Har biri uchun rasmiy sahifadan bir jumla va havola.</li></ul>
             <textarea data-save="a1" placeholder="... — A, dalil: "...", havola ...; ... — C, dalil: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -130,28 +152,29 @@
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.2</span><span class="l-t" style="display:block">Rasmiy sahifa soʻzlarini oʻqish</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 3.2</span><span class="l-t" style="display:block">Rasmiy sahifa iboralari</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">"Generous aid" degan ibora hech narsa vaʼda qilmaydi. "Meets 100% of demonstrated need for all admitted students, regardless of citizenship" esa aniq majburiyat. Farqni koʻrish uchun 8 ta iborani bilish yetarli.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">«Generous aid» degan ibora hech narsa vaʼda qilmaydi. «Meets 100% of demonstrated need for all admitted students, regardless of citizenship» esa aniq majburiyat. Bu darsda 8 ta iborani oʻqishni oʻrganamiz.</div></div>
           <div class="panel">
+<div data-kvideo="l2"></div>
 <div class="tbl"><table><thead><tr><th>Ibora</th><th>Maʼnosi</th><th>Signal</th></tr></thead><tbody>
-<tr><td><span lang="en">need-blind for all applicants</span></td><td>Yordam soʻrash qabulga taʼsir qilmaydi; "all" ichida xalqaro talaba ham bormi, tekshiring</td><td>Kuchli, agar xalqaro talaba aniq aytilgan boʻlsa</td></tr>
+<tr><td><span lang="en">need-blind for all applicants</span></td><td>Yordam soʻrash qabulga taʼsir qilmaydi; xalqaro talaba kiradimi, tekshiring</td><td>Kuchli</td></tr>
 <tr><td><span lang="en">regardless of citizenship</span></td><td>Fuqarolikdan qatʼi nazar</td><td>Kuchli</td></tr>
 <tr><td><span lang="en">meets 100% of demonstrated need</span></td><td>Hisoblangan ehtiyoj toʻliq qoplanadi</td><td>Kuchli</td></tr>
-<tr><td><span lang="en">need-aware for international students</span></td><td>Xalqaro talaba uchun yordam soʻrash qabulga taʼsir qiladi</td><td>Ehtiyot</td></tr>
+<tr><td><span lang="en">no-loan</span>, <span lang="en">grant aid</span></td><td>Qaytarilmaydigan grant</td><td>Kuchli</td></tr>
+<tr><td><span lang="en">merit scholarships</span></td><td>Natija granti; ariza kerakmi, tekshiring</td><td>Qisman</td></tr>
+<tr><td><span lang="en">need-aware for international students</span></td><td>Xalqaro talabada yordam soʻrash qabulga taʼsir qiladi</td><td>Ehtiyot</td></tr>
 <tr><td><span lang="en">limited aid for international students</span></td><td>Yordam juda kam</td><td>Kuchsiz</td></tr>
-<tr><td><span lang="en">merit scholarships</span> / <span lang="en">automatic consideration</span></td><td>Natijaga asoslangan grant; alohida ariza kerakmi, tekshiring</td><td>Qisman</td></tr>
-<tr><td><span lang="en">no-loan</span> / <span lang="en">grant aid</span></td><td>Yordam qaytarilmaydigan grant shaklida</td><td>Kuchli</td></tr>
-<tr><td><span lang="en">expected family contribution</span> / <span lang="en">parent contribution</span></td><td>Oila toʻlaydigan deb hisoblangan qism</td><td>Hisobni M4 da koʻrasiz</td></tr>
+<tr><td><span lang="en">expected family contribution</span></td><td>Oila toʻlaydigan deb hisoblangan qism</td><td>M4</td></tr>
 </tbody></table></div>
-<div class="box info">"Xalqaro talabalarga ham ochiq" degan daʼvoni koʻrmaguningizcha uni bor deb hisoblamang. Savol boʻlsa, xalqaro qabul yoki moliyaviy yordam boʻlimiga yozma soʻrang va javobni saqlang.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>«Xalqaro talabalarga ham ochiq» degan jumlani sahifada koʻrmaguningizcha uni bor deb hisoblamang. Savol boʻlsa, xalqaro qabul yoki moliyaviy yordam boʻlimiga yozma soʻring va javobni saqlang.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://sfs.mit.edu/financial-aid-mit" target="_blank" rel="noopener">MIT Student Financial Services</a>; <a href="https://college.harvard.edu/financial-aid/how-aid-works" target="_blank" rel="noopener">Harvard College: yordam qanday ishlaydi</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Kuchli iboralar: need-blind for all applicants (xalqaro talaba aniq koʻrsatilgan), regardless of citizenship, meets 100% of demonstrated need, no-loan. Noaniq ibora majburiyat emas.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“"Generous financial aid" iborasi toʻliq ehtiyoj qoplanishini kafolatlaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: bu majburiyat emas, tavsif.</div></div><div class="qz" data-a="t"><p>“"Need-aware for international students" yordam soʻrash qabulga taʼsir qilishi mumkinligini bildiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div><div class="qz" data-a="t"><p>“"Regardless of citizenship" iborasi xalqaro talabani ham qamrab oladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div><div class="qz" data-a="n"><p>“"No-loan" siyosatida yordam qaytariladigan kredit shaklida beriladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: grant shaklida, qaytarilmaydi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>2 universitetning xalqaro moliyaviy yordam sahifasidan aynan iborani koʻchirib, maʼnosini oʻzbekcha yozing.</li></ul></div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Kuchli ibora majburiyat beradi: need-blind, regardless of citizenship, 100% of demonstrated need, no-loan. Qolgani tavsif.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“"Generous financial aid" iborasi toʻliq ehtiyoj qoplanishini kafolatlaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: bu majburiyat emas, tavsif.</div></div><div class="qz" data-a="t"><p>“"Need-aware for international students" yordam soʻrash qabulga taʼsir qilishi mumkinligini bildiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div><div class="qz" data-a="t"><p>“"Regardless of citizenship" iborasi xalqaro talabani ham qamrab oladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div><div class="qz" data-a="n"><p>“"No-loan" siyosatida yordam qaytariladigan kredit shaklida beriladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: grant shaklida, qaytarilmaydi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>Ikki universitet iborasi</b><ul><li>2 universitetning xalqaro yordam sahifasidan aynan iborani koʻchiring va maʼnosini oʻzbekcha yozing.</li></ul></div>
             <textarea data-save="a2" placeholder="... universiteti: "..." — maʼnosi: ...; signal: kuchli / ehtiyot / kuchsiz"></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -160,26 +183,22 @@
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.3</span><span class="l-t" style="display:block">Common Data Set: H6 bandi</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📊 Maʼlumot</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 3.3</span><span class="l-t" style="display:block">CDS H6: kim qancha oldi</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Maʼlumot</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Universitet "xalqaro talabalarga yordam beramiz" deyishi mumkin. CDS ning H6 bandi esa oʻtgan yili nechta xalqaro talaba qancha olganini koʻrsatadi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Universitet «xalqaro talabaga yordam beramiz» deyishi mumkin. CDS ning H6 bandi esa oʻtgan yili nechta xalqaro talaba qancha olganini koʻrsatadi. Bu darsda H6 ni oʻqiymiz.</div></div>
           <div class="panel">
-<h4>H6 nima soʻraydi</h4>
-<p>CDS ning H6 bandi bakalavriatdagi daraja oluvchi xalqaro talabalar (<span lang="en">nonresidents</span>) uchun universitet grantlari haqida:</p>
-<ul><li>Siyosat: universitetning ehtiyojga asoslangan granti beriladimi; ehtiyojga asoslanmagan granti beriladimi.</li><li>Yordam olgan xalqaro talabalar soni.</li><li>Oʻrtacha summa.</li><li>Jami summa.</li></ul>
-<h4>Namuna: Nebraska universiteti, CDS 2025–2026</h4>
-<p>H6 bandida 120 nafar xalqaro bakalavr yordam olgan, oʻrtacha summa 10 391 dollar, jami 1 246 965 dollar deb koʻrsatilgan.</p>
-<h4>Qanday oʻqiladi</h4>
-<ol><li>Oʻrtacha summani shu universitetning toʻliq narxi (M2) bilan solishtiring: qancha qismi qoplanadi?</li><li>Yordam olganlar sonini xalqaro bakalavrlar soni (CDS B boʻlimi) bilan solishtiring: taxminan qanchasi oladi?</li><li>Ikki-uch yillik CDS ni koʻring: raqam barqarormi?</li></ol>
-<div class="box warn">Oʻrtacha summa sizga beriladigan summa emas. U faqat universitetning xalqaro talabaga yordam berish hajmini koʻrsatadi.</div>
-<div class="srcs">Manba: <a href="https://iea.unl.edu/common-data-set-2025-2026/h-financial-aid/aid-undergraduate-degree-seeking-nonresidents" target="_blank" rel="noopener">Nebraska universiteti: CDS 2025–2026, H6 bandi (namuna)</a>; <a href="https://commondataset.org" target="_blank" rel="noopener">Common Data Set loyihasi</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l3"></div>
+<p>H6 bandi bakalavriatdagi xalqaro talabalar (<span lang="en">nonresidents</span>) uchun universitet grantlari haqida: ehtiyoj granti beriladimi, natija granti beriladimi, olganlar soni, oʻrtacha va jami summa.</p>
+<p><b>Namuna:</b> Nebraska universiteti, CDS 2025–2026: 120 nafar xalqaro bakalavr yordam olgan, oʻrtacha 10 391 dollar, jami 1 246 965 dollar.</p>
+<ol><li>Oʻrtacha summani toʻliq narx (M2) bilan solishtiring.</li><li>Olganlar sonini xalqaro bakalavrlar soni (CDS B) bilan solishtiring.</li><li>2–3 yillik CDS ni koʻring: raqam barqarormi?</li></ol>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Oʻrtacha summa sizga beriladigan summa emas: u universitetning xalqaro talabaga yordam hajmini koʻrsatadi.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://iea.unl.edu/common-data-set-2025-2026/h-financial-aid/aid-undergraduate-degree-seeking-nonresidents" target="_blank" rel="noopener">Nebraska universiteti: CDS 2025–2026, H6 bandi (namuna)</a>; <a href="https://commondataset.org" target="_blank" rel="noopener">Common Data Set loyihasi</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>H6: xalqaro bakalavrlarga grant siyosati, olganlar soni, oʻrtacha va jami summa. Oʻrtacha summani toʻliq narx bilan solishtiring; bu sizning summangiz emas.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>2 universitetning soʻnggi CDS ida H6 ni toping.</li><li>Yozing: siyosat, olganlar soni, oʻrtacha summa, toʻliq narxning necha foizi.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">H6 ni toʻliq narx va xalqaro talabalar soni bilan solishtiring. Shunda yordam qancha keng ekanini koʻrasiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Ikki universitetning H6</b><ul><li>2 universitetning songgi CDS ida H6 ni toping.</li><li>Yozing: siyosat, olganlar soni, oʻrtacha summa, toʻliq narxning necha foizi.</li></ul>
             <textarea data-save="a3" placeholder="... universiteti, CDS 2025–2026: ehtiyojga asoslangan: ha; ... talaba; oʻrtacha ... USD = narxning ...%"></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -188,30 +207,22 @@
       <article class="lesson" id="l4">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.4</span><span class="l-t" style="display:block">Net Price Calculator va natijaga asoslangan grantlar</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🧮 Hisob</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 3.4</span><span class="l-t" style="display:block">Net Price Calculator va grantlar</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Hisob</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Universitet saytidagi narx "roʻyxat narxi". Siz toʻlaydigan narx yordamdan keyin qoladigan summa. Uni ariza berishdan oldin taxminan bilish mumkin.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Saytdagi narx roʻyxat narxi. Siz toʻlaydigan narx yordamdan keyin qolgan summa. Uni arizadan oldin taxminan bilish mumkin. Bu darsda kalkulyator va natija grantlari bilan ishlaymiz.</div></div>
           <div class="panel">
-<h4>Net Price Calculator</h4>
-<p>AQSh Taʼlim vazirligining <span lang="en">Net Price Calculator Center</span> sahifasi tushuntiradi: kalkulyatorlar universitetlar saytida joylashgan va yordamdan keyingi taxminiy narxni hisoblaydi.</p>
-<ul><li>Oila daromadi, jamgʻarma va oila tarkibini dollarda kiriting (M4 dagi hisob bilan bir xil boʻlsin).</li><li>Kalkulyator xalqaro talaba uchun ishlaydimi yoki faqat AQSh talabasigami, sahifada yozilganini tekshiring.</li><li>Natija taxmin; rasmiy yordam xati emas.</li></ul>
-<h4>Natijaga asoslangan grantlar</h4>
-<p>H6 dagi ikkinchi siyosat bandi (<span lang="en">non-need-based</span> grant) universitet natijaga asoslangan grant berishini koʻrsatadi. Keyingi qadam: universitetning <span lang="en">scholarships</span> sahifasida xalqaro talabaga ochiq grantlar roʻyxati, shartlari va muddatlari.</p>
-<div class="tbl"><table><thead><tr><th>Savol</th><th>Nega muhim</th></tr></thead><tbody>
-<tr><td>Avtomatikmi yoki alohida arizami?</td><td>Alohida ariza muddati koʻpincha qabul muddatidan oldin</td></tr>
-<tr><td>Bir yilmi yoki 4 yil?</td><td>4 yillik reja (Bachelor M12)</td></tr>
-<tr><td>Qaysi baho saqlanishi kerak?</td><td>Grantni yoʻqotish xavfi</td></tr>
-<tr><td>Ehtiyojga asoslangan yordam bilan birga beriladimi?</td><td>Umumiy summa</td></tr>
-</tbody></table></div>
-<p>EducationUSA eslatadi: koʻp stipendiyalar narxning faqat bir qismini qoplaydi.</p>
-<div class="srcs">Manba: <a href="https://collegecost.ed.gov/net-price" target="_blank" rel="noopener">AQSh Taʼlim vazirligi: Net Price Calculator markazi</a>; <a href="https://iea.unl.edu/common-data-set-2025-2026/h-financial-aid/aid-undergraduate-degree-seeking-nonresidents" target="_blank" rel="noopener">Nebraska universiteti: CDS 2025–2026, H6 bandi (namuna)</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l4"></div>
+<p><span lang="en">Net Price Calculator</span> universitet saytida turadi va yordamdan keyingi taxminiy narxni hisoblaydi (Taʼlim vazirligi tushuntiradi).</p>
+<ul><li>Oila daromadi, jamgʻarma va oila tarkibini dollarda kiriting, M4 dagi hisob bilan bir xil.</li><li>Kalkulyator xalqaro talaba uchun ishlashini sahifadan tekshiring.</li><li>Natija taxmin, rasmiy yordam xati emas.</li></ul>
+<p>Natija granti uchun universitetning <span lang="en">scholarships</span> sahifasini oching: avtomatikmi yoki alohida ariza, bir yilmi yoki 4 yil, qaysi baho saqlanigʻi kerak.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><p>H6 dagi ikkinchi siyosat bandi (<span lang="en">non-need-based</span> grant) universitet natija granti berishini koʻrsatadi. Alohida ariza muddati koʻpincha qabul muddatidan oldin boʻladi. EducationUSA eslatishicha, koʻp stipendiya narxning faqat bir qismini qoplaydi.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://collegecost.ed.gov/net-price" target="_blank" rel="noopener">AQSh Taʼlim vazirligi: Net Price Calculator markazi</a>; <a href="https://iea.unl.edu/common-data-set-2025-2026/h-financial-aid/aid-undergraduate-degree-seeking-nonresidents" target="_blank" rel="noopener">Nebraska universiteti: CDS 2025–2026, H6 bandi (namuna)</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>Net Price Calculator yordamdan keyingi taxminiy narxni beradi; xalqaro talabaga ishlashini tekshiring. Natijaga asoslangan grantning turi, muddati va shartini oʻqing.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>2 universitetning kalkulyatorida taxminiy narxni hisoblang (xalqaro talabaga ishlasa).</li><li>Bitta universitetning xalqaro talabaga ochiq natijaga asoslangan grantini toping: summa, muddat, shart.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Kalkulyator taxminiy narxni beradi, grant sahifasi esa shartni. Ikkalasini ham sana bilan yozib qoʻying.</p></div></div>
+          <div class="panel"><div class="assign"><b>Ikki kalkulyator, bitta grant</b><ul><li>2 universitet kalkulyatorida taxminiy narxni hisoblang (xalqaro talabaga ishlasa).</li><li>Bitta universitetning xalqaro talabaga ochiq natija grantini toping: summa, muddat, shart.</li></ul>
             <textarea data-save="a4" placeholder="... kalkulyatori: ... USD/yil (xalqaro uchun: ha). Grant: ... — ... USD, muddat ..., shart ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -220,26 +231,25 @@
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.5</span><span class="l-t" style="display:block">Yordam boʻyicha saralangan roʻyxat</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🛠 Roʻyxat</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 3.5</span><span class="l-t" style="display:block">Ikki oʻqli roʻyxat</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Roʻyxat</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bakalavr dasturidagi orzu-moʻljal-ishonchli roʻyxat qabul ehtimoliga qarab tuziladi. AQShda unga ikkinchi oʻq qoʻshiladi: qabul qilsa, oila toʻlay oladimi?</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Orzu, moʻljal va ishonchli roʻyxat qabul ehtimoliga qarab tuziladi. AQShda unga ikkinchi oʻq qoʻshiladi: qabul qilsa, oila toʻlay oladimi? Bu darsda ikkala oʻqni bitta jadvalga qoʻyamiz.</div></div>
           <div class="panel">
-<h4>Ikki oʻqli jadval</h4>
-<div class="tbl"><table><thead><tr><th></th><th>Oila toʻlay oladi (narx ≤ chegara)</th><th>Faqat yordam bilan</th></tr></thead><tbody>
-<tr><td>Qabul ehtimoli yuqori</td><td>Ishonchli tanlov</td><td>Yordam real boʻlsa (A, B yoki kuchli H6) mos</td></tr>
-<tr><td>Qabul ehtimoli oʻrtacha</td><td>Moʻljal</td><td>Faqat A guruhi yoki kuchli natijaga asoslangan grant</td></tr>
-<tr><td>Qabul ehtimoli past</td><td>Orzu</td><td>Faqat A guruhi; bir nechtasidan koʻp emas</td></tr>
+<div data-kvideo="l5"></div>
+<div class="tbl"><table><thead><tr><th></th><th>Oila toʻlay oladi</th><th>Faqat yordam bilan</th></tr></thead><tbody>
+<tr><td>Qabul ehtimoli yuqori</td><td>Ishonchli tanlov</td><td>Yordam real boʻlsa (A, B, kuchli H6)</td></tr>
+<tr><td>Oʻrtacha</td><td>Moʻljal</td><td>Faqat A guruhi yoki kuchli natija granti</td></tr>
+<tr><td>Past</td><td>Orzu</td><td>Faqat A guruhi, bir nechtasidan koʻp emas</td></tr>
 </tbody></table></div>
-<h4>Kompas tavsiyasi (qoida emas)</h4>
-<ul><li>Kamida bitta universitet "oila toʻlay oladi + qabul ehtimoli yuqori" katagida boʻlsin. Bunday universitet yoʻq boʻlsa, AQSh bilan parallel boshqa mamlakat (Bakalavr dasturi) majburiy.</li><li>D guruhidagi universitetga faqat oila toʻliq toʻlay olsa ariza bering.</li><li>Har bir ariza narxi (ariza yigʻimi, CSS Profile, testlar) byudjetga kiradi.</li></ul>
-<div class="box warn">"Qabul qilsa, keyin pul topamiz" degan reja ishlamaydi: I-20 uchun pul dalili qabuldan keyin darhol soʻraladi (M2).</div>
+<p>Kamida bitta universitet «oila toʻlay oladi + ehtimol yuqori» katagida boʻlsin. Bunday universitet yoʻq boʻlsa, parallel boshqa mamlakat kerak.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><p>D guruhidagi universitetga faqat oila toʻliq toʻlay olsa ariza bering. Har ariza narxi (ariza yigʻimi, CSS Profile, testlar) byudjetga kiradi. «Qabul qilsa, keyin pul topamiz» rejasi ishlamaydi: I-20 uchun pul dalili qabuldan keyin darhol soʻraladi (M2).</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>Roʻyxat ikki oʻq bilan tuziladi: qabul ehtimoli va toʻlay olish. Kamida bitta "oila toʻlay oladi, qabul ehtimoli yuqori" variant boʻlmasa, parallel mamlakat kerak.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>8–12 universitetni ikki oʻqli jadvalga joylang.</li><li>Boʻsh katakni qanday toʻldirishingizni yozing.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Roʻyxat ikki oʻq bilan tuziladi: qabul ehtimoli va toʻlay olish. Boʻsh katak boʻlsa, uni qanday toʻldirishingizni oldindan yozing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizning ikki oʻqli roʻyxatingiz</b><ul><li>8–12 universitetni ikki oʻqli jadvalga joylang.</li><li>Boʻsh katakni qanday toʻldirishingizni yozing.</li></ul>
             <textarea data-save="a5" placeholder="Ishonchli + oila toʻlaydi: ...; Moʻljal + yordam: ...; Orzu + A guruhi: ...; Boʻsh katak: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -278,6 +288,7 @@
   </section>
 
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2 id="artTitle">Yordam boʻyicha saralangan roʻyxat</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
@@ -303,11 +314,13 @@
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="3"><h2>Keyingi qadam: yordam arizasi</h2><div class="mv-bar"><i style="width:38%"></i></div><p class="mv-small">II bosqich: 1 / 2 modul · Rejangiz 38% tayyor</p><div class="mv-k" data-mn="m3"><b>Roʻyxatingizdagi har universitet yordamni boshqa formada soʻraydi.</b> M4 da ularni bitta jadvalga yigʻasiz va oila daromadini universitet tushunadigan hujjatga aylantirasiz.</div><p>M4.2 dan: <i>Hamma formada bir xil raqam, bir xil kurs va bir xil sana boʻligʻi shart.</i></p><div class="mv-row"><a class="btn btn-p" href="usa-lab-o.html?m=4">M4: formalar jadvali</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Vaqt</b>~1 hafta (darslar ~1 soat + roʻyxat)</div>
       <div><b>Natija</b>Yordam boʻyicha saralangan roʻyxat</div>
     </div>
     <p class="srcs">Faktlar: <a href="https://sfs.mit.edu/financial-aid-mit" target="_blank" rel="noopener">MIT Student Financial Services</a>; <a href="https://financialaid.dartmouth.edu/apply-aid/international-students" target="_blank" rel="noopener">Dartmouth: xalqaro talabalar uchun yordam</a>; <a href="https://college.harvard.edu/financial-aid/how-aid-works" target="_blank" rel="noopener">Harvard College: yordam qanday ishlaydi</a>; <a href="https://admission.princeton.edu/cost-aid" target="_blank" rel="noopener">Princeton: xarajat va yordam</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>; <a href="https://sfa.osu.edu/international-student/about-aid" target="_blank" rel="noopener">Ohio State: xalqaro talabalar va moliyaviy yordam</a>; <a href="https://iea.unl.edu/common-data-set-2025-2026/h-financial-aid/aid-undergraduate-degree-seeking-nonresidents" target="_blank" rel="noopener">Nebraska universiteti: CDS 2025–2026, H6 bandi (namuna)</a>; <a href="https://commondataset.org" target="_blank" rel="noopener">Common Data Set loyihasi</a>; <a href="https://collegecost.ed.gov/net-price" target="_blank" rel="noopener">AQSh Taʼlim vazirligi: Net Price Calculator markazi</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov, summa va siyosatlar har yili oʻzgaradi.</p>
@@ -317,13 +330,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="usa-lab.html">← USA dasturi</a>
+    <a class="btn btn-g" href="usa-lab-o.html?m=2">← M2</a>
     <a class="btn btn-p" href="usa-lab-o.html?m=4">Keyingi: M4 Moliyaviy yordam arizasi →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/usa-next.js" defer></script>
 <script>
 (function () {
   var KEY = "kompas_usa_m3_v1", MOD = "3", LXP = 24, NL = 5, FINXP = 40;
@@ -345,7 +360,7 @@
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -502,7 +517,7 @@
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

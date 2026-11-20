@@ -113,6 +113,26 @@
       "permanent": false
     },
     {
+      "source": "/usa-lab-m0-5",
+      "destination": "/usa-lab-m0-yakun",
+      "permanent": false
+    },
+    {
+      "source": "/usa-lab-m0-5.html",
+      "destination": "/usa-lab-m0-yakun",
+      "permanent": false
+    },
+    {
+      "source": "/usa-lab-m0-6",
+      "destination": "/usa-lab-m0-yakun",
+      "permanent": false
+    },
+    {
+      "source": "/usa-lab-m0-6.html",
+      "destination": "/usa-lab-m0-yakun",
+      "permanent": false
+    },
+    {
       "source": "/master-lab-m0-5",
       "destination": "/master-lab-m0-yakun",
       "permanent": false

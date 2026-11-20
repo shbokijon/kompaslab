@@ -47,6 +47,29 @@
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
 .path.pn{--pn:8;}
+
+/* USA v2 (2026-11-20): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 </style>
 </head>
 <body>
@@ -62,7 +85,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="usa-lab" data-kv-mod="2">
 <div class="wrap">
 
   <div class="hero">
@@ -71,15 +94,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA dasturi</a> · Modul 2</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza I · Tizim va pul</span>
         <h1>Xarajat va pul oqimi</h1>
-        <p class="lead">AQShda qabul xati yetarli emas: I-20 olish uchun birinchi yil pulini hujjat bilan koʻrsatasiz. Bu modulda narx qayerdan kelishini, qaysi pul manbalari sizga yopiq ekanini va oilangiz yiliga qancha bera olishini raqam bilan aniqlaysiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1–2</b> hafta</span><span class="fact">Faza I</span><span class="fact"><b>250</b> XP</span></div>
+        <p class="lead">AQShda qabul xati yetarli emas: I-20 uchun birinchi yil pulini hujjat bilan koʻrsatasiz. Bu modulda toʻliq narxni, sizga yopiq pul manbalarini va oilangiz yiliga qancha bera olishini raqam bilan aniqlaysiz. Oxirida sizda <strong>AQSh pul xaritasi</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact">Faza I</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 qadam</span></div>
     <div class="path pn">
       <a class="node" href="#l1" data-node="l1"><span class="dot">2.1</span>Narx</a><a class="node" href="#l2" data-node="l2"><span class="dot">2.2</span>I-20</a><a class="node" href="#l3" data-node="l3"><span class="dot">2.3</span>Manbalar</a><a class="node" href="#l4" data-node="l4"><span class="dot">2.4</span>Yordam turi</a><a class="node" href="#l5" data-node="l5"><span class="dot">2.5</span>Chegara</a><a class="node" href="#pul" data-node="tool"><span class="dot">🛠</span>Pul xaritasi</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Pul xaritasi</a>
     </div>
@@ -90,42 +113,39 @@
     <ul class="goal">
       <li><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span><b>AQSh pul xaritasi:</b> narx, oila chegarasi, kerakli yordam ulushi</span></li><li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span><b>I-20 moliyaviy dalil rejasi:</b> qaysi hujjat qabul qilinadi, qaysi biri yoʻq</span></li><li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Yoʻl xulosasi:</b> toʻliq yordam, qisman yordam yoki arzon yoʻl</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Bu modul faqat AQSh pul mexanizmini oʻrgatadi. Mamlakatlararo umumiy xarajat modeli va 4 yillik reja Bakalavr dasturi M12 da. Summalar har yili oʻzgaradi; 31.10.2026 holatiga universitet sahifasidan oling. Kompas Lab moliyaviy maslahatchi emas; qarorni oila bilan qabul qiling.</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Bu modul faqat AQSh pul mexanizmini oʻrgatadi. Mamlakatlararo umumiy xarajat modeli va 4 yillik reja Bakalavr dasturi M12 da. Summalar har yili oʻzgaradi; 31.10.2026 holatiga universitet sahifasidan oling. Kompas Lab moliyaviy maslahatchi emas; qarorni oila bilan qabul qiling.</p><p>Kompas Lab universitet, elchixona yoki konsul oʻrnida qaror qabul qilmaydi va qabul, yordam yoki vizani kafolatlamaydi. Vositalar sana va talablarni siz uchun tekshirmaydi: har faktni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Viza va soliq boʻyicha yuridik maslahat berilmaydi. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 2.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.1</span><span class="l-t" style="display:block">Toʻliq narx: Cost of Attendance</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🧮 Hisob</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 2.1</span><span class="l-t" style="display:block">Toʻliq narx qancha</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Hisob</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Oʻqish toʻlovi (<span lang="en">tuition</span>) universitet soʻraydigan pulning faqat bir qismi. AQSh universitetlari toʻliq narxni <span lang="en">Cost of Attendance</span> deb eʼlon qiladi va yordam ham, I-20 ham shu summaga qarab hisoblanadi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Oʻqish toʻlovi (<span lang="en">tuition</span>) universitet soʻraydigan pulning faqat bir qismi. Toʻliq narx <span lang="en">Cost of Attendance</span> deb eʼlon qilinadi, yordam ham, I-20 ham shunga qarab hisoblanadi. Bu darsda narxni qatorlarga ajratamiz.</div></div>
           <div class="panel">
-<h4>Narx tarkibi</h4>
-<p>Kennesaw State universiteti bir yillik taxminiy xarajatni uch qatorga ajratadi: oʻqish toʻlovi va yigʻimlar (<span lang="en">tuition and fees</span>), yashash xarajatlari va boshqa xarajatlar (majburiy tibbiy sugʻurta, transport, kitob va shaxsiy xarajatlar). Boshqa universitetlarda ham tarkib shunga yaqin, lekin qatorlar nomi farq qiladi.</p>
+<div data-kvideo="l1"></div>
 <div class="tbl"><table><thead><tr><th>Qator</th><th>Qayerdan olinadi</th></tr></thead><tbody>
-<tr><td>Oʻqish toʻlovi va yigʻimlar</td><td>Universitetning <span lang="en">tuition and fees</span> sahifasi, xalqaro yoki shtatdan tashqari (<span lang="en">nonresident</span>) narx</td></tr>
+<tr><td>Oʻqish toʻlovi va yigʻimlar</td><td><span lang="en">tuition and fees</span> sahifasi, xalqaro yoki shtatdan tashqari (<span lang="en">nonresident</span>) narx</td></tr>
 <tr><td>Yashash (yotoqxona, ovqat)</td><td><span lang="en">Cost of Attendance</span> yoki <span lang="en">housing</span> sahifasi</td></tr>
-<tr><td>Tibbiy sugʻurta</td><td>Xalqaro talabalar boʻlimi sahifasi</td></tr>
+<tr><td>Tibbiy sugʻurta</td><td>Xalqaro talabalar boʻlimi</td></tr>
 <tr><td>Kitob, transport, shaxsiy</td><td><span lang="en">Cost of Attendance</span> sahifasi</td></tr>
-<tr><td>Bir martalik: viza yigʻimi, SEVIS I-901, aviabilet</td><td>Elchixona va ICE sahifalari (M8)</td></tr>
+<tr><td>Bir martalik: viza yigʻimi, SEVIS, aviabilet</td><td>Elchixona va ICE (M8)</td></tr>
 </tbody></table></div>
-<h4>Narx oʻsadi</h4>
-<p>EducationUSA rejalashtirishda oʻqish toʻlovining har yili taxminan 6–10 foiz oshishini hisobga olishni maslahat beradi. 4 yillik bakalavriat uchun birinchi yil narxi bilan hisoblash xato.</p>
-<div class="box info">Universitet sahifasidagi summa qaysi oʻquv yili uchun ekanini yozib qoʻying. Kelasi yil narxi hali eʼlon qilinmagan boʻlishi mumkin.</div>
-<div class="srcs">Manba: <a href="https://campus.kennesaw.edu/current-students/academics/global-education/international-student-scholar-services/f-1/cost-to-attend.php" target="_blank" rel="noopener">Kennesaw State universiteti: bir yillik taxminiy xarajat (I-20)</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>; <a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">ICE: SEVIS I-901 toʻlovi</a>. 31.10.2026 holatiga.</div>
+<p>EducationUSA oʻqish toʻlovining har yili taxminan 6–10 foiz oshishini hisobga olishni maslahat beradi.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Kennesaw State universiteti bir yillik xarajatni uch qatorga ajratadi: oʻqish va yigʻimlar, yashash, boshqa xarajatlar (majburiy sugʻurta, transport, kitob). Boshqa universitetlarda qator nomlari farq qiladi. Summa qaysi oʻquv yili uchun ekanini yozib qoʻying: kelasi yil narxi hali eʼlon qilinmagan boʻlishi mumkin.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://campus.kennesaw.edu/current-students/academics/global-education/international-student-scholar-services/f-1/cost-to-attend.php" target="_blank" rel="noopener">Kennesaw State universiteti: bir yillik taxminiy xarajat (I-20)</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>; <a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">ICE: SEVIS I-901 toʻlovi</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>Toʻliq narx: oʻqish va yigʻimlar, yashash, sugʻurta, kitob va shaxsiy xarajatlar, bir martalik toʻlovlar. Har yili 6–10 foiz oʻsishni qoʻshing.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Bitta universitetning xalqaro talaba uchun <span lang="en">Cost of Attendance</span> summasini qatorlari bilan yozing.</li><li>Oʻquv yili, havola va tekshirilgan sanani qoʻshing.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Toʻliq narx = oʻqish + yashash + sugʻurta + kitob va shaxsiy xarajat + bir martalik toʻlovlar. Keyingi yillarga 6–10 foiz qoʻshing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Bitta universitet narxi</b><ul><li>Bitta universitetning xalqaro talaba uchun Cost of Attendance summasini qatorlari bilan yozing.</li><li>Oʻquv yili, havola va tekshirilgan sanani qoʻshing.</li></ul>
             <textarea data-save="a1" placeholder="... universiteti, 2026–2027: oʻqish ..., yashash ..., sugʻurta ..., boshqa ... = jami ... USD; havola ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -135,28 +155,26 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 2.2</span><span class="l-t" style="display:block">I-20 uchun pul dalili</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📑 Hujjat</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Hujjat</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Koʻp oila uy yoki mashina bor, demak pul bor deb oʻylaydi. AQSh universiteti I-20 berishda esa mulkni emas, ishlatsa boʻladigan pulni koʻradi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Koʻp oila: uy bor, mashina bor, demak pul bor, deb oʻylaydi. I-20 berishda universitet mulkni koʻrmaydi, hozir ishlatsa boʻladigan pulni koʻradi. Bu darsda qaysi hujjat qabul qilinishini ajratamiz.</div></div>
           <div class="panel">
-<h4>Qancha koʻrsatiladi</h4>
-<p>Kennesaw State: talaba birinchi oʻquv yili uchun yetarli mablagʻni koʻrsatishi kerak va hujjatlar dastur uchun taxminiy yillik summadan kam boʻlmasligi lozim. San José State ham kamida bir oʻquv yilining taxminiy xarajatini soʻraydi.</p>
-<h4>Qaysi hujjat qabul qilinadi (San José State namunasi)</h4>
+<div data-kvideo="l2"></div>
+<p>Kamida birinchi oʻquv yilining taxminiy xarajati koʻrsatiladi (Kennesaw State, San José State).</p>
 <div class="tbl"><table><thead><tr><th>Qabul qilinadi</th><th>Qabul qilinmaydi</th></tr></thead><tbody>
-<tr><td>Bank xati yoki koʻchirmasi (jamgʻarma yoki joriy hisob)</td><td>Ish joyidan maosh haqida xat</td></tr>
-<tr><td>Muddatli omonat: bank xatida pulni istalgan vaqt jarimasiz olish mumkinligi yozilgan boʻlsa</td><td>Uy, oltin, zargarlik baholash hujjatlari</td></tr>
-<tr><td>Tasdiqlangan kredit xati</td><td>Aksiya va investitsiya fondi koʻchirmalari</td></tr>
-<tr><td>Stipendiya xati (davlat, xususiy yoki universitet)</td><td>Kredit liniyasi xati</td></tr>
+<tr><td>Bank xati yoki koʻchirmasi</td><td>Ish joyidan maosh haqida xat</td></tr>
+<tr><td>Muddatli omonat, jarimasiz olish mumkinligi yozilgan boʻlsa</td><td>Uy, oltin, zargarlik baholash hujjati</td></tr>
+<tr><td>Tasdiqlangan kredit xati</td><td>Aksiya va fond koʻchirmasi</td></tr>
+<tr><td>Stipendiya xati</td><td>Kredit liniyasi xati</td></tr>
 </tbody></table></div>
-<p>Shu universitetda hujjat AQSh dollarida, ingliz tilida, bank blankida, muhr yoki imzo bilan va ariza topshirilishidan oldingi 6 oy ichida berilgan boʻlishi kerak.</p>
-<div class="box warn">Qoidalar universitetga qarab farq qiladi. Oʻz universitetingizning <span lang="en">financial documents</span> yoki <span lang="en">I-20 request</span> sahifasini oʻqing. Pulni vaqtincha hisobga qoʻyib turish (begona pul) halollik va viza suhbati uchun xavfli: konsul pul manbasini soʻrashi mumkin.</div>
-<div class="srcs">Manba: <a href="https://campus.kennesaw.edu/current-students/academics/global-education/international-student-scholar-services/f-1/cost-to-attend.php" target="_blank" rel="noopener">Kennesaw State universiteti: bir yillik taxminiy xarajat (I-20)</a>; <a href="https://sjsu.edu/admissions/internationalfinancialdocs.php" target="_blank" rel="noopener">San José State universiteti: I-20 uchun moliyaviy hujjatlar</a>. 31.10.2026 holatiga.</div>
+<p class="mv-small">Namuna: San José State. Oʻz universitetingiz sahifasini oʻqing.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><p>San José State da hujjat AQSh dollarida, ingliz tilida, bank blankida, muhr yoki imzo bilan va arizadan oldingi 6 oy ichida berilgan boʻlishi kerak. Qoidalar universitetga qarab farq qiladi: <span lang="en">financial documents</span> yoki <span lang="en">I-20 request</span> sahifasini oching.</p><p>Begona pulni vaqtincha hisobga qoʻyib turish halollik va viza suhbati uchun xavfli: konsul pul manbasini soʻrashi mumkin.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://campus.kennesaw.edu/current-students/academics/global-education/international-student-scholar-services/f-1/cost-to-attend.php" target="_blank" rel="noopener">Kennesaw State universiteti: bir yillik taxminiy xarajat (I-20)</a>; <a href="https://sjsu.edu/admissions/internationalfinancialdocs.php" target="_blank" rel="noopener">San José State universiteti: I-20 uchun moliyaviy hujjatlar</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>I-20 uchun kamida birinchi yil taxminiy xarajati ishlatsa boʻladigan pul bilan koʻrsatiladi. Mulk, maosh xati va aksiyalar koʻpincha qabul qilinmaydi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“I-20 uchun oilaning uyi baholash hujjati koʻpincha yetarli dalil boʻladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: San José State mulk va oltin baholash hujjatini qabul qilmaydi.</div></div><div class="qz" data-a="t"><p>“Muddatli omonat qabul qilinishi uchun pulni jarimasiz olish mumkinligi yozilishi kerak.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: San José State shuni talab qiladi.</div></div><div class="qz" data-a="t"><p>“Stipendiya xati moliyaviy dalil boʻlishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: davlat, xususiy yoki universitet stipendiyasi xati.</div></div><div class="qz" data-a="n"><p>“Hamma universitetda hujjat talablari bir xil.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: har universitet sahifasini oʻqing.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Oilangiz qaysi hujjatlarni bera olishini yozing: bank koʻchirmasi, omonat, stipendiya, kredit.</li><li>Ularning birinchi yil narxini qoplashi yoki qoplamasligini hisoblang.</li></ul></div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">I-20 uchun birinchi yil narxini ishlatsa boʻladigan pul bilan koʻrsatasiz. Mulk va maosh xati koʻpincha hisobga olinmaydi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“I-20 uchun oilaning uyi baholash hujjati koʻpincha yetarli dalil boʻladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: San José State mulk va oltin baholash hujjatini qabul qilmaydi.</div></div><div class="qz" data-a="t"><p>“Muddatli omonat qabul qilinishi uchun pulni jarimasiz olish mumkinligi yozilishi kerak.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: San José State shuni talab qiladi.</div></div><div class="qz" data-a="t"><p>“Stipendiya xati moliyaviy dalil boʻlishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: davlat, xususiy yoki universitet stipendiyasi xati.</div></div><div class="qz" data-a="n"><p>“Hamma universitetda hujjat talablari bir xil.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: har universitet sahifasini oʻqing.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>Oilangiz hujjatlari</b><ul><li>Oilangiz qaysi hujjatni bera olishini yozing: bank koʻchirmasi, omonat, stipendiya, kredit.</li><li>Ular birinchi yil narxini qoplashini yoki qoplamasligini hisoblang.</li></ul></div>
             <textarea data-save="a2" placeholder="Bank koʻchirmasi: ... USD; omonat: ... (jarimasiz olish: ha/yoʻq); jami ... / birinchi yil narxi ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -165,31 +183,28 @@
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.3</span><span class="l-t" style="display:block">Sizga ochiq va yopiq pul manbalari</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧭 Xarita</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 2.3</span><span class="l-t" style="display:block">Qaysi pul sizga ochiq</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Xarita</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">AQSh talabalarining koʻpi federal grant va kreditdan foydalanadi. Bu pul xalqaro talabaga yopiq, shuning uchun AQSh talabalari uchun yozilgan maslahatlarning yarmi sizga ishlamaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">AQSh talabalarining koʻpi federal grant va kreditdan foydalanadi. Bu pul xalqaro talabaga yopiq, shuning uchun AQSh talabalariga yozilgan maslahatlarning yarmi sizga toʻgʻri kelmaydi. Bu darsda sizga ochiq manbalarni ajratamiz.</div></div>
           <div class="panel">
-<h4>Yopiq manbalar</h4>
-<p>AQSh Taʼlim vazirligi: talaba AQSh fuqarosi ham, belgilangan toifadagi fuqaro boʻlmagan shaxs (<span lang="en">eligible noncitizen</span>) ham boʻlmasa, federal talaba yordamini ololmaydi. Ohio State: xalqaro talabalar odatda federal, shtat va universitetning koʻp yordam turlarini ololmaydi.</p>
-<h4>Ochiq boʻlishi mumkin boʻlgan manbalar</h4>
-<div class="tbl"><table><thead><tr><th>Manba</th><th>Izoh</th></tr></thead><tbody>
-<tr><td>Universitet yordami (ehtiyojga asoslangan)</td><td>Faqat baʼzi universitetlarda xalqaro talabaga ochiq (M3)</td></tr>
-<tr><td>Universitet stipendiyasi (natijaga asoslangan)</td><td>Koʻpincha qisman; shartini oʻqing (2.4)</td></tr>
-<tr><td>Sport stipendiyasi</td><td>EducationUSA sport bilan shugʻullanadigan talabalarga buni koʻrib chiqishni tavsiya qiladi</td></tr>
+<div data-kvideo="l3"></div>
+<div class="tbl"><table><thead><tr><th>Manba</th><th>Xalqaro talabaga</th></tr></thead><tbody>
+<tr><td>Federal grant va kredit</td><td>Yopiq (Taʼlim vazirligi)</td></tr>
+<tr><td>Universitetning ehtiyoj granti</td><td>Ayrim universitetlarda (M3)</td></tr>
+<tr><td>Universitetning natija granti</td><td>Koʻpincha qisman (2.4)</td></tr>
+<tr><td>Sport stipendiyasi</td><td>Sport bilan shugʻullanuvchilarga (EducationUSA)</td></tr>
 <tr><td>Davlat dasturlari</td><td>Global UGRAD, Fulbright (M5–M6)</td></tr>
-<tr><td>Kafedra moliyalashtirishi</td><td>Asosan PhD (M7)</td></tr>
-<tr><td>Kampusda ishlash</td><td>F-1 talabaga oʻqish davrida haftasiga 20 soatgacha (M8); asosiy manba emas</td></tr>
-<tr><td>Oila</td><td>2.5 da chegarasini aniqlaysiz</td></tr>
+<tr><td>Kafedra moliyasi</td><td>Asosan PhD (M7)</td></tr>
+<tr><td>Kampusda ishlash</td><td>Haftasiga 20 soatgacha, qoʻshimcha daromad (M8)</td></tr>
 </tbody></table></div>
-<div class="box warn">"AQShda ishlab oʻqish toʻlovini qoplayman" rejasi ishlamaydi: kampusdan tashqarida ishlash yozma ruxsatsiz mumkin emas, kampusda esa soat cheklangan.</div>
-<div class="srcs">Manba: <a href="https://awsfinancialaidtoolkit.ed.gov/tk/outreach/target/noncitizens.jsp" target="_blank" rel="noopener">AQSh Taʼlim vazirligi: fuqaro boʻlmaganlar va federal yordam</a>; <a href="https://sfa.osu.edu/international-student/about-aid" target="_blank" rel="noopener">Ohio State: xalqaro talabalar va moliyaviy yordam</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>; <a href="https://oips.gmu.edu/f-1-employment/" target="_blank" rel="noopener">George Mason universiteti (OIPS): F-1 ishlash qoidalari</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>AQSh Taʼlim vazirligi boʻyicha, talaba AQSh fuqarosi yoki belgilangan toifadagi fuqaro boʻlmagan shaxs (<span lang="en">eligible noncitizen</span>) boʻlmasa, federal yordam olmaydi. Ohio State yozishicha, xalqaro talabalar odatda federal, shtat va koʻp universitet yordamini ololmaydi.</p><p>«AQShda ishlab oʻqish toʻlovini qoplayman» rejasi qonun boʻyicha mumkin boʻlmaydi: kampusdan tashqari ish yozma ruxsat bilan, kampusda esa soat cheklangan.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://awsfinancialaidtoolkit.ed.gov/tk/outreach/target/noncitizens.jsp" target="_blank" rel="noopener">AQSh Taʼlim vazirligi: fuqaro boʻlmaganlar va federal yordam</a>; <a href="https://sfa.osu.edu/international-student/about-aid" target="_blank" rel="noopener">Ohio State: xalqaro talabalar va moliyaviy yordam</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>; <a href="https://oips.gmu.edu/f-1-employment/" target="_blank" rel="noopener">George Mason universiteti (OIPS): F-1 ishlash qoidalari</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Federal yordam xalqaro talabaga yopiq. Ochiq manbalar: universitet yordami, stipendiyalar, davlat dasturlari, kafedra moliyalashtirishi va oila. Ish daromadi asosiy manba emas.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Yuqoridagi 7 manbadan sizga real boʻlganlarini belgilang.</li><li>Har biri uchun bir jumla: nega real yoki nega emas.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Federal pul yopiq. Sizga universitet yordami, stipendiya, davlat dasturi, kafedra moliyasi va oila qoladi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizga real manbalar</b><ul><li>Jadvaldagi manbalardan sizga real boʻlganlarini belgilang.</li><li>Har biri uchun bir jumla: nega real yoki nega yoʻq.</li></ul>
             <textarea data-save="a3" placeholder="Universitet yordami: real, chunki ...; sport: yoʻq; Fulbright: ... ; oila: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -198,27 +213,25 @@
       <article class="lesson" id="l4">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.4</span><span class="l-t" style="display:block">Ehtiyojga va natijaga asoslangan yordam</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">⚖️ Farq</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 2.4</span><span class="l-t" style="display:block">Ehtiyoj granti va natija granti</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Farq</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">"Grant oldim" degan gap ikki xil narsa boʻlishi mumkin: oilangiz toʻlay olmaydigan qism qoplandi yoki yaxshi natijangiz uchun narxdan chegirma berildi. Ularni farqlamasangiz, universitet roʻyxatini notoʻgʻri tuzasiz.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">«Grant oldim» degan gap ikki xil narsa boʻlishi mumkin: oila toʻlay olmaydigan qism qoplandi yoki yaxshi natija uchun chegirma berildi. Bu darsda ikkalasini farqlaymiz.</div></div>
           <div class="panel">
-<div class="tbl"><table><thead><tr><th></th><th>Ehtiyojga asoslangan (<span lang="en">need-based</span>)</th><th>Natijaga asoslangan (<span lang="en">merit-based</span>)</th></tr></thead><tbody>
-<tr><td>Nimaga qarab</td><td>Narx va oilangiz toʻlay oladigan summa orasidagi farqqa</td><td>Baho, test, yutuqlar, isteʼdodga</td></tr>
-<tr><td>Qanday soʻraladi</td><td>Moliyaviy yordam arizasi (CSS Profile yoki universitet formasi, M4)</td><td>Koʻpincha qabul arizasi bilan avtomatik yoki alohida ariza</td></tr>
-<tr><td>Kimga koʻproq mos</td><td>Oilaviy daromadi past talabaga</td><td>Natijasi kuchli, oilasi qisman toʻlay oladigan talabaga</td></tr>
-<tr><td>Xavf</td><td>Xalqaro talabaga ochiq universitetlar kam</td><td>Koʻpincha narxning bir qismi; qolganini oila toʻlaydi</td></tr>
+<div data-kvideo="l4"></div>
+<div class="tbl"><table><thead><tr><th></th><th>Ehtiyoj granti (<span lang="en">need-based</span>)</th><th>Natija granti (<span lang="en">merit-based</span>)</th></tr></thead><tbody>
+<tr><td>Nimaga qarab</td><td>Narx bilan oila toʻlay oladigan summa farqiga</td><td>Baho, test, yutuqqa</td></tr>
+<tr><td>Qanday soʻraladi</td><td>Yordam arizasi: CSS Profile yoki universitet formasi (M4)</td><td>Qabul arizasi bilan yoki alohida ariza</td></tr>
+<tr><td>Kimga mos</td><td>Daromadi past oilaga</td><td>Natijasi kuchli, oilasi qisman toʻlay oladiganga</td></tr>
+<tr><td>Xavf</td><td>Xalqaro talabaga ochiq universitet kam</td><td>Koʻpincha narxning bir qismi</td></tr>
 </tbody></table></div>
-<p>EducationUSA ogohlantiradi: koʻp stipendiyalar oʻqish va yashash narxining faqat bir qismini qoplaydi va birinchi kurs xalqaro talabasiga berilmasligi mumkin.</p>
-<h4>Shartlarni oʻqing</h4>
-<ul><li>Bir yilgami yoki butun oʻqish davrigami?</li><li>Keyingi yillarda baho sharti bormi?</li><li>Summa qatʼiymi, foizmi?</li><li>Boshqa yordam bilan birga beriladimi?</li></ul>
-<div class="srcs">Manba: <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>EducationUSA maʼlumotiga koʻra, koʻp stipendiya oʻqish va yashashning faqat bir qismini qoplaydi va birinchi kurs xalqaro talabasiga berilmasligi mumkin. Shartini oʻqing: bir yilgami yoki butun oʻqishgami, keyingi yillarda baho sharti bormi, summa qatʼiymi yoki foizmi, boshqa yordam bilan birga beriladimi.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p>Ehtiyojga asoslangan yordam oila toʻlay olmaydigan farqni qoplaydi; natijaga asoslangan yordam yutuq uchun beriladi va koʻpincha qisman. Shartlarini oʻqing.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Sizga qaysi tur koʻproq mos: ehtiyojga yoki natijaga asoslangan? Ikki dalil bilan yozing.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Ehtiyoj granti oila toʻlay olmaydigan farqni qoplaydi. Natija granti yutuq uchun beriladi va koʻpincha qisman.</p></div></div>
+          <div class="panel"><div class="assign"><b>Sizga qaysi tur mos</b><ul><li>Sizga qaysi tur koʻproq mos? Ikki dalil bilan yozing.</li></ul>
             <textarea data-save="a4" placeholder="Menga ... mos, chunki 1) oila yiliga ... USD bera oladi; 2) natijalarim ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -227,28 +240,25 @@
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 2.5</span><span class="l-t" style="display:block">Oilaviy byudjet chegarasi va yoʻl xulosasi</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🗣 Suhbat</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 2.5</span><span class="l-t" style="display:block">Oilangiz chegarasi</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Suhbat</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Oila bilan "qancha toʻlay olamiz?" degan aniq raqamni gaplashmasdan ariza boshlash xato. Bu raqam qaysi universitetlar sizga real ekanini belgilaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Oila bilan «qancha toʻlay olamiz?» degan aniq raqamni gaplashmasdan ariza boshlash xato. Bu raqam qaysi universitet sizga real ekanini belgilaydi. Bu darsda raqamni topamiz va yoʻlni tanlaymiz.</div></div>
           <div class="panel">
-<h4>Chegara qanday aniqlanadi</h4>
-<ol><li>Oilaning yillik daromadi va har oylik majburiy xarajatlari.</li><li>Jamgʻarma: shundan qancha qismi oʻqishga ajratiladi va qolgani nima uchun kerak.</li><li>Yiliga AQSh dollarida maksimal summa: "toʻlay olamiz", "qiyin boʻladi" emas, raqam.</li><li>Bu summa 4 yil (bakalavr) yoki 2 yil (magistratura) davomida takrorlanadimi?</li></ol>
-<h4>Kerakli yordam ulushi</h4>
-<p>Kerakli yordam = toʻliq narx − oila chegarasi. Uni toʻliq narxga boʻlsangiz, ulushni olasiz.</p>
-<div class="tbl"><table><thead><tr><th>Kerakli yordam ulushi</th><th>Kompas tavsiyasi (qoida emas)</th></tr></thead><tbody>
-<tr><td>0 (oila toʻliq toʻlaydi)</td><td>Yordamni soʻramasangiz ham boʻladi; natijaga asoslangan grantni qidiring</td></tr>
-<tr><td>Taxminan 50 foizgacha</td><td>Natijaga asoslangan stipendiyalar va arzon yoʻllar (ikki yillik kollej, arzon hududlar)</td></tr>
-<tr><td>50 foizdan koʻp</td><td>Faqat xalqaro talabaga toʻliq ehtiyojni qoplaydigan universitetlar (M3) yoki davlat dasturlari; parallel boshqa mamlakat</td></tr>
+<div data-kvideo="l5"></div>
+<p><b>Kerakli yordam ulushi</b> = (toʻliq narx − oila chegarasi) ÷ toʻliq narx.</p>
+<div class="tbl"><table><thead><tr><th>Ulush</th><th>Kompas tavsiyasi (qoida emas)</th></tr></thead><tbody>
+<tr><td>0</td><td>Oila toʻliq toʻlaydi; natija grantini qidiring</td></tr>
+<tr><td>50 foizgacha</td><td>Natija grantlari va arzon yoʻllar: ikki yillik kollej, arzon hududlar</td></tr>
+<tr><td>50 foizdan koʻp</td><td>Faqat toʻliq ehtiyojni qoplaydigan universitetlar (M3) yoki davlat dasturlari; parallel boshqa mamlakat</td></tr>
 </tbody></table></div>
-<p>EducationUSA xarajatni kamaytirish uchun turli davlat va xususiy universitetlarni, arzonroq hududlarni (janub, Oʻrta Gʻarb, qishloq joylar) va ikki yillik kollejdan oʻtish yoʻlini koʻrib chiqishni maslahat beradi.</p>
-<div class="box warn">Kerakli yordam ulushi juda katta boʻlsa, AQSh yoʻlini boshqa mamlakat bilan parallel olib boring. Kompas bunda boshqa dasturni koʻrsatadi.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Chegara qanday aniqlanadi: yillik daromad va har oylik majburiy xarajat; jamgʻarmaning oʻqishga ajratiladigan qismi; yiliga dollarda maksimal summa (raqam bilan); bu summa 4 yil (bakalavr) yoki 2 yil (magistratura) takrorlanadimi. EducationUSA arzonroq hududlar (janub, Oʻrta Gʻarb, qishloq joylar) va ikki yillik kollejdan oʻtish yoʻlini ham koʻrib chiqishni maslahat beradi.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>Oila chegarasini dollarda, yillik raqam bilan aniqlang. Kerakli yordam ulushi yoʻlni belgilaydi: arzon yoʻl, natijaga asoslangan grant yoki toʻliq ehtiyojni qoplaydigan universitet.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Oila bilan suhbatdan keyin yillik maksimal summani yozing.</li><li>Bitta universitet uchun kerakli yordam ulushini hisoblang va yoʻl xulosasini yozing.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Oila chegarasini dollarda, yillik raqam bilan aniqlang. Kerakli yordam ulushi qaysi yoʻldan borishingizni koʻrsatadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Oilangiz raqami</b><ul><li>Oila bilan gaplashib, yillik maksimal summani yozing.</li><li>Bitta universitet uchun kerakli yordam ulushini hisoblang va yoʻlni yozing.</li></ul>
             <textarea data-save="a5" placeholder="Oila chegarasi: yiliga ... USD, ... yil. ... universiteti narxi ... → kerakli yordam ...%. Xulosa: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -287,6 +297,7 @@
   </section>
 
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2 id="artTitle">AQSh pul xaritasi</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
@@ -312,11 +323,13 @@
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="2"><h2>I bosqich yakunlandi: keyingi qadam yordam</h2><div class="mv-bar"><i style="width:25%"></i></div><p class="mv-small">I bosqich: 2 / 2 modul · Rejangiz 25% tayyor</p><div class="mv-k" data-mn="m2"><b>Pul xaritangiz tayyor.</b> Endi kerakli yordam ulushini qoplaydigan universitetlarni topish qoladi. II bosqichda (M3–M4) ularni rasmiy sahifa va CDS H6 bilan saralaysiz, keyin yordam arizasini tayyorlaysiz.</div><p>II bosqich darslari:</p><ul class="mv-lock"><li><img src="img/3d/lock.webp" alt="" width="22" height="22">3.1 Toʻrt xil yordam siyosati</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">3.2 Rasmiy sahifa iboralari</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">3.3 CDS H6: kim qancha oldi</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">3.4 Net Price Calculator va grantlar</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">3.5 Ikki oʻqli roʻyxat</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">4.1 Qaysi universitet qaysi forma</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">4.2 Oila daromadini hujjatlash</li></ul><p class="mv-small">Keyingi bosqich 1 ta bosqich tarifida navbatdagi toʻlov bilan ochiladi. Toʻliq dastur tarifida hamma modul allaqachon ochiq.</p><div class="mv-row"><a class="btn btn-p" href="usa-lab-o.html?m=3">II bosqich: M3 ni ochish</a><a class="btn btn-g" href="usa-lab-narxlar.html">Tariflar</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~1–2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Vaqt</b>~1 hafta (darslar ~1 soat + hisoblagich)</div>
       <div><b>Natija</b>AQSh pul xaritasi</div>
     </div>
     <p class="srcs">Faktlar: <a href="https://campus.kennesaw.edu/current-students/academics/global-education/international-student-scholar-services/f-1/cost-to-attend.php" target="_blank" rel="noopener">Kennesaw State universiteti: bir yillik taxminiy xarajat (I-20)</a>; <a href="https://sjsu.edu/admissions/internationalfinancialdocs.php" target="_blank" rel="noopener">San José State universiteti: I-20 uchun moliyaviy hujjatlar</a>; <a href="https://awsfinancialaidtoolkit.ed.gov/tk/outreach/target/noncitizens.jsp" target="_blank" rel="noopener">AQSh Taʼlim vazirligi: fuqaro boʻlmaganlar va federal yordam</a>; <a href="https://sfa.osu.edu/international-student/about-aid" target="_blank" rel="noopener">Ohio State: xalqaro talabalar va moliyaviy yordam</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/undergraduate" target="_blank" rel="noopener">EducationUSA: bakalavriatni moliyalashtirish</a>; <a href="https://oips.gmu.edu/f-1-employment/" target="_blank" rel="noopener">George Mason universiteti (OIPS): F-1 ishlash qoidalari</a>; <a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">ICE: SEVIS I-901 toʻlovi</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov, summa va siyosatlar har yili oʻzgaradi.</p>
@@ -326,13 +339,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="usa-lab.html">← USA dasturi</a>
+    <a class="btn btn-g" href="usa-lab-o.html?m=1">← M1</a>
     <a class="btn btn-p" href="usa-lab-o.html?m=3">Keyingi: M3 Yordam beradigan universitetlarni topish →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/usa-next.js" defer></script>
 <script>
 window.KGTool = { init: function () {
   var ids = ["pC", "pF", "pY", "pG"], o = document.getElementById("pOut");
@@ -377,7 +392,7 @@ window.KGTool = { init: function () {
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -534,7 +549,7 @@ window.KGTool = { init: function () {
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

@@ -47,6 +47,29 @@
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
 .path.pn{--pn:8;}
+
+/* USA v2 (2026-11-20): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 </style>
 </head>
 <body>
@@ -62,7 +85,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="usa-lab" data-kv-mod="7">
 <div class="wrap">
 
   <div class="hero">
@@ -71,15 +94,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA dasturi</a> · Modul 7</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza IV · Magistratura, PhD va viza</span>
         <h1>Magistratura va PhD moliyasi</h1>
-        <p class="lead">AQShda PhD koʻpincha ish kabi moliyalashtiriladi: kafedra oʻqish toʻlovini qoplaydi va oylik beradi. Magistratura esa koʻpincha oʻz hisobidan. Bu modulda shu farqni hisobga olib dasturlarni tanlaysiz va takliflarni raqam bilan solishtirasiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Faza IV</span><span class="fact"><b>250</b> XP</span></div>
+        <p class="lead">AQShda PhD koʻpincha ish kabi moliyalashtiriladi: kafedra oʻqish toʻlovini qoplaydi va oylik beradi. Magistratura esa koʻpincha oʻz hisobidan. Bu modulda dasturlarni shu farqqa qarab tanlaysiz va takliflarni raqam bilan solishtirasiz. Oxirida sizda <strong>moliya paketi taqqoslagichi</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact">Faza IV</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 qadam</span></div>
     <div class="path pn">
       <a class="node" href="#l1" data-node="l1"><span class="dot">7.1</span>Farq</a><a class="node" href="#l2" data-node="l2"><span class="dot">7.2</span>Paket</a><a class="node" href="#l3" data-node="l3"><span class="dot">7.3</span>Kafedra</a><a class="node" href="#l4" data-node="l4"><span class="dot">7.4</span>Grantlar</a><a class="node" href="#l5" data-node="l5"><span class="dot">7.5</span>Taklif</a><a class="node" href="#taqqos" data-node="tool"><span class="dot">🛠</span>Taqqos</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Taqqos</a>
     </div>
@@ -90,37 +113,36 @@
     <ul class="goal">
       <li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span><b>Moliya paketi taqqoslagichi:</b> 2 taklif: oylik sof qoldiq</span></li><li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Kafedra moliyasi jadvali:</b> har kafedra: yillar, summa, majburiyat, muddat</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Grant muvofiqlik filtri:</b> xalqaro talabaga yopiq grantlarni chiqarish</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Ilmiy rahbar tanlash, professorga xat, ilmiy loyiha taklifi va maqsad bayonnomasi PhD dasturi M2–M5 va Magistratura dasturi M4–M6 da. Bu modul faqat AQSh moliyalashtirish mexanizmi. Summalar 31.10.2026 holatiga; kafedra sahifasidan qayta tekshiring.</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Ilmiy rahbar tanlash, professorga xat, ilmiy loyiha taklifi va maqsad bayonnomasi PhD dasturi M2–M5 va Magistratura dasturi M4–M6 da. Bu modul faqat AQSh moliyalashtirish mexanizmi. Summalar 31.10.2026 holatiga; kafedra sahifasidan qayta tekshiring.</p><p>Kompas Lab universitet, elchixona yoki konsul oʻrnida qaror qabul qilmaydi va qabul, yordam yoki vizani kafolatlamaydi. Vositalar sana va talablarni siz uchun tekshirmaydi: har faktni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Viza va soliq boʻyicha yuridik maslahat berilmaydi. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 7.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 7.1</span><span class="l-t" style="display:block">Magistratura va PhD: pul qayerdan</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">⚖️ Farq</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 7.1</span><span class="l-t" style="display:block">Pul qayerdan: magistratura va PhD</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Farq</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bir xil universitetning bir xil kafedrasida PhD talabasi oylik oladi, magistratura talabasi esa oʻqish toʻlovini oʻzi toʻlaydi. Bu farqni bilmay magistraturaga ariza bersangiz, qabul xati bilan birga katta hisob ham keladi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bir kafedrada PhD talabasi oylik oladi, magistratura talabasi oʻqish toʻlovini oʻzi toʻlaydi. Bu farqni bilmasangiz, qabul xati bilan katta hisob ham keladi. Bu darsda yoʻlni pulga qarab tanlaymiz.</div></div>
           <div class="panel">
+<div data-kvideo="l1"></div>
 <div class="tbl"><table><thead><tr><th></th><th>Magistratura</th><th>PhD</th></tr></thead><tbody>
 <tr><td>Odatiy moliya</td><td>Koʻpincha oʻz hisobidan</td><td>Koʻpincha kafedra paketi</td></tr>
-<tr><td>Rasmiy misol</td><td>Buffalo universiteti: magistratura dasturlari asosan oʻz hisobidan, assistentlik cheklangan. Princeton Graduate School magistratura talabalarini markazdan moliyalashtirmaydi, lekin baʼzi kafedralar qisman yoki toʻliq moliyalashtiradi</td><td>EducationUSA: oʻqituvchi yoki tadqiqot assistentligi, oʻqish toʻlovidan ozod qilish va stipendiya bilan, PhD darajasida juda keng tarqalgan</td></tr>
-<tr><td>Kimga mos</td><td>Oila toʻlay oladigan yoki tashqi stipendiyasi bor (masalan, Fulbright, M6) talaba</td><td>Ilmiy tajribasi bor, 5 yillik tadqiqotga tayyor talaba</td></tr>
+<tr><td>Rasmiy misol</td><td>Buffalo: asosan oʻz hisobidan. Princeton markazdan moliyalashtirmaydi, ayrim kafedralar qisman yoki toʻliq</td><td>EducationUSA: assistentlik, oʻqish toʻlovidan ozod qilish va stipendiya keng tarqalgan</td></tr>
+<tr><td>Kimga mos</td><td>Oila toʻlay oladigan yoki tashqi stipendiyasi bor (Fulbright, M6)</td><td>Ilmiy tajribasi bor, 5 yillik tadqiqotga tayyor</td></tr>
 </tbody></table></div>
-<h4>Xulosa: yoʻlni pulga qarab tanlash</h4>
-<ul><li>Moliyasiz magistratura + oila toʻlay olmaydi = real emas. Muqobil: Fulbright (M6), moliyalashtiradigan magistratura kafedralari yoki toʻgʻridan-toʻgʻri PhD.</li><li>AQSh PhD ga koʻpincha bakalavrdan keyin ham kirish mumkin (M1); kafedra qoidasini tekshiring.</li></ul>
-<div class="srcs">Manba: <a href="https://www.buffalo.edu/grad/explore/funding/masters-level-funding.html" target="_blank" rel="noopener">Buffalo universiteti: magistratura darajasida moliyalashtirish</a>; <a href="https://gradschool.princeton.edu/financial-support/financial-support-model/master%E2%80%99s-degree-funding" target="_blank" rel="noopener">Princeton Graduate School: magistratura moliyalashtirishi</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate" target="_blank" rel="noopener">EducationUSA: magistratura va doktoranturani moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Moliyasiz magistratura va oila toʻlay olmaydi: bu yoʻl real boʻlmaydi. Muqobil: Fulbright, moliyalashtiradigan magistratura kafedralari yoki toʻgʻridan-toʻgʻri PhD. AQSh PhD ga koʻpincha bakalavrdan keyin ham kirish mumkin (M1); kafedra qoidasini tekshiring.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://www.buffalo.edu/grad/explore/funding/masters-level-funding.html" target="_blank" rel="noopener">Buffalo universiteti: magistratura darajasida moliyalashtirish</a>; <a href="https://gradschool.princeton.edu/financial-support/financial-support-model/master%E2%80%99s-degree-funding" target="_blank" rel="noopener">Princeton Graduate School: magistratura moliyalashtirishi</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate" target="_blank" rel="noopener">EducationUSA: magistratura va doktoranturani moliyalashtirish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy"><p>Magistratura koʻpincha oʻz hisobidan, PhD koʻpincha kafedra paketi bilan. Pulga qarab yoʻl tanlang: tashqi stipendiya, moliyalashtiradigan kafedra yoki toʻgʻridan-toʻgʻri PhD.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“AQShda magistratura har doim kafedra tomonidan moliyalashtiriladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: koʻp dasturlar asosan oʻz hisobidan.</div></div><div class="qz" data-a="t"><p>“Assistentlik PhD darajasida keng tarqalgan.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: EducationUSA.</div></div><div class="qz" data-a="t"><p>“Baʼzi kafedralar magistratura talabalarini ham moliyalashtiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Princeton misoli.</div></div><div class="qz" data-a="n"><p>“Magistraturaga moliyasiz qabul qilinsa, oila toʻlay olmasa ham bu real yoʻl.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: I-20 uchun pul dalili kerak (M2).</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Sizning maqsadingiz: magistratura yoki PhD? Moliya boʻyicha ikki dalil bilan yozing.</li></ul></div>
+          <div class="panel"><div class="take"><img src="img/3d/phd.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Magistratura koʻpincha oʻz hisobidan, PhD koʻpincha kafedra paketi bilan. Yoʻlni pul manbasiga qarab tanlang.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“AQShda magistratura har doim kafedra tomonidan moliyalashtiriladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: koʻp dasturlar asosan oʻz hisobidan.</div></div><div class="qz" data-a="t"><p>“Assistentlik PhD darajasida keng tarqalgan.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: EducationUSA.</div></div><div class="qz" data-a="t"><p>“Baʼzi kafedralar magistratura talabalarini ham moliyalashtiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Princeton misoli.</div></div><div class="qz" data-a="n"><p>“Magistraturaga moliyasiz qabul qilinsa, oila toʻlay olmasa ham bu real yoʻl.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: I-20 uchun pul dalili kerak (M2).</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>Sizning maqsadingiz</b><ul><li>Maqsadingiz magistraturami yoki PhD? Moliya boʻyicha ikki dalil bilan yozing.</li></ul></div>
             <textarea data-save="a1" placeholder="Maqsad: ... Chunki 1) oila ... 2) ilmiy tajribam ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -130,28 +152,25 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 7.2</span><span class="l-t" style="display:block">PhD moliya paketi</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🧮 Paket</span><span class="tag xp">+24 XP</span></span></span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Paket</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">"Toʻliq moliyalashtirilgan" degan soʻz kafedradan kafedraga turlicha maʼno beradi: necha yil, yozda pul bormi, sugʻurta kimdan, qancha soat dars berasiz.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">«Toʻliq moliyalashtirilgan» degan soʻz kafedradan kafedraga har xil maʼno beradi: necha yil, yozda pul bormi, sugʻurta kimdan, necha soat dars berasiz. Bu darsda paketni besh qismga ajratamiz.<small class="mv-fun">Stipendiya 9 oylik boʻlsa, yoz ham ovqatsiz qolmasin 🙂</small></div></div>
           <div class="panel">
-<h4>Paket qismlari</h4>
+<div data-kvideo="l2"></div>
 <div class="tbl"><table><thead><tr><th>Qism</th><th>Savol</th></tr></thead><tbody>
-<tr><td>Stipendiya (<span lang="en">stipend</span>)</td><td>Oyiga yoki yiliga qancha; 9 oylikmi yoki 12 oylik?</td></tr>
-<tr><td>Oʻqish toʻlovidan ozod qilish (<span lang="en">tuition remission</span>)</td><td>Toʻliqmi; yigʻimlar (<span lang="en">fees</span>) ham kiradimi?</td></tr>
+<tr><td>Stipendiya (<span lang="en">stipend</span>)</td><td>Qancha; 9 oylikmi yoki 12 oylik?</td></tr>
+<tr><td>Oʻqish toʻlovidan ozod qilish (<span lang="en">tuition remission</span>)</td><td>Toʻliqmi; yigʻimlar (<span lang="en">fees</span>) kiradimi?</td></tr>
 <tr><td>Tibbiy sugʻurta</td><td>Kim toʻlaydi; oila aʼzolari uchun?</td></tr>
-<tr><td>Kafolatlangan yillar</td><td>Necha yil; undan keyin nima?</td></tr>
-<tr><td>Majburiyat</td><td>Oʻqituvchi assistent (TA) yoki tadqiqot assistenti (RA); haftasiga necha soat?</td></tr>
+<tr><td>Kafolatlangan yillar</td><td>Necha yil; keyin nima?</td></tr>
+<tr><td>Majburiyat</td><td>TA yoki RA; haftasiga necha soat?</td></tr>
 </tbody></table></div>
-<h4>Ikki rasmiy misol</h4>
-<ul><li><b>Duke Graduate School:</b> birinchi 5 yil stipendiya, oʻqish toʻlovi va majburiy yigʻimlar kafolatlangan; stipendiya 12 oylik; birinchi 6 yil sogʻliq va stomatologiya sugʻurtasi badali qoplanadi; oila aʼzolaringiz sugʻurtasi oʻz hisobingizdan. Sahifada bu "umuman olganda" ekani va kafedralar farq qilishi yozilgan.</li><li><b>Boston universiteti, Earth &amp; Environment:</b> yaxshi akademik holatdagi talabaga 5 yilgacha stipendiya va sugʻurta; aralash: dars berish (TA), loyihada ishlash (RA) va birinchi yilda majburiyatsiz <span lang="en">fellowship</span>; toʻliq oʻqish toʻlovi va yigʻimlar qoplanadi.</li></ul>
-<div class="box info">Har ikki sahifada stipendiya summasi alohida jadvalda. Summani har doim manba yili bilan yozing.</div>
-<div class="srcs">Manba: <a href="https://gradschool.duke.edu/financial-support/phd-financial-support/" target="_blank" rel="noopener">Duke Graduate School: PhD kafolatlangan moliyalashtirish</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Ikki rasmiy misol</summary><div><p><b>Duke Graduate School:</b> birinchi 5 yil stipendiya, oʻqish toʻlovi va majburiy yigʻimlar kafolatlangan; stipendiya 12 oylik; birinchi 6 yil sugʻurta badali qoplanadi; oila aʼzolari sugʻurtasi oʻz hisobingizdan. Sahifada kafedralar farq qilishi yozilgan.</p><p><b>Boston universiteti, Earth &amp; Environment:</b> yaxshi holatdagi talabaga 5 yilgacha stipendiya va sugʻurta; TA, RA va birinchi yilda majburiyatsiz <span lang="en">fellowship</span>; oʻqish va yigʻimlar toʻliq qoplanadi. Summani har doim manba yili bilan yozing.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://gradschool.duke.edu/financial-support/phd-financial-support/" target="_blank" rel="noopener">Duke Graduate School: PhD kafolatlangan moliyalashtirish</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>PhD paketi: stipendiya, oʻqish va yigʻimlardan ozod qilish, sugʻurta, kafolatlangan yillar, TA yoki RA majburiyati. Har qismni kafedra sahifasidan alohida tekshiring.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Bitta PhD dasturining paketini 5 qism boʻyicha yozing (manba va yil bilan).</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Paketni besh qismda tekshiring: stipendiya, oʻqish toʻlovi, sugʻurta, yillar, majburiyat. Har qism kafedra sahifasidan alohida.</p></div></div>
+          <div class="panel"><div class="assign"><b>Bitta PhD paketi</b><ul><li>Bitta PhD dasturining paketini 5 qism boʻyicha yozing, manba va yil bilan.</li></ul>
             <textarea data-save="a2" placeholder="... universiteti, ... kafedrasi: stipendiya ... USD (12 oy, 2026–27), oʻqish: toʻliq, sugʻurta: ..., yillar: 5, majburiyat: TA ... soat"></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -160,23 +179,20 @@
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 7.3</span><span class="l-t" style="display:block">Kafedra sahifasini oʻqish</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🔎 Tekshiruv</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 7.3</span><span class="l-t" style="display:block">Kafedra sahifasi: 10 savol</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Tekshiruv</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Kafedra sahifasida qabul uchun eng muhim maʼlumotlar koʻpincha <span lang="en">FAQ</span> yoki <span lang="en">handbook</span> ichida yashiringan. 15 daqiqalik tekshiruv ariza toʻlovini behuda toʻlashdan saqlaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Kafedra sahifasida eng muhim maʼlumot koʻpincha <span lang="en">FAQ</span> yoki <span lang="en">handbook</span> ichida turadi. 15 daqiqalik tekshiruv ariza toʻlovini behuda toʻlashdan saqlaydi. Bu darsda 10 savolga javob qidiramiz.</div></div>
           <div class="panel">
-<h4>10 savollik tekshiruv</h4>
-<ol><li>PhD qabul qilinganlarning hammasi moliyalashtiriladimi?</li><li>Necha yil kafolatlanadi?</li><li>Stipendiya summasi va davri (9 yoki 12 oy)?</li><li>Xalqaro talabaga bir xil paketmi?</li><li>GRE talab qilinadimi, ixtiyoriymi yoki qabul qilinmaydimi?</li><li>Ingliz tili testi va minimal ball?</li><li>Ariza toʻlovi va undan ozod qilish tartibi?</li><li>Muddat (kafedra muddati universitet muddatidan oldin boʻlishi mumkin)?</li><li>Professor bilan oldindan bogʻlanish tavsiya qilinadimi?</li><li>Ichki <span lang="en">fellowship</span> uchun alohida ariza kerakmi?</li></ol>
-<h4>Vaqt va professorlar</h4>
-<p>EducationUSA: stipendiya va grant muddatlari dastur boshlanishidan 18 oy oldin boʻlishi mumkin; professorlar koʻpincha grant va moliyalashtirish oluvchilarni tanlashda qatnashadi, shuning uchun kafedra professorlari bilan bogʻlanish foydali. Professorga xat yozish usuli PhD dasturi M3 da.</p>
-<div class="box warn">Bu 10 savoldan birortasiga sahifada javob boʻlmasa, kafedraning <span lang="en">graduate coordinator</span> manziliga qisqa, aniq savol yozing. Javobni saqlang.</div>
-<div class="srcs">Manba: <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate" target="_blank" rel="noopener">EducationUSA: magistratura va doktoranturani moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l3"></div>
+<ol><li>PhD ga qabul qilinganlarning hammasi moliyalashtiriladimi?</li><li>Necha yil kafolatlanadi?</li><li>Stipendiya summasi va davri?</li><li>Xalqaro talabaga ham shu paketmi?</li><li>GRE talab qilinadimi?</li><li>Ingliz tili testi va minimal ball?</li><li>Ariza toʻlovi va ozod qilish?</li><li>Kafedra muddati?</li><li>Professor bilan oldindan bogʻlanish tavsiya qilinadimi?</li><li>Ichki <span lang="en">fellowship</span> uchun alohida ariza kerakmi?</li></ol>
+<details class="mv-i"><summary>Batafsil</summary><div><p>EducationUSA maʼlumotiga koʻra, stipendiya va grant muddatlari dastur boshlanishidan 18 oy oldin boʻlishi mumkin; professorlar koʻpincha grant oluvchilarni tanlashda qatnashadi, shuning uchun kafedra professorlari bilan bogʻlanish foydali. Professorga xat yozish usuli PhD dasturi M3 da. Javob topilmasa, kafedraning <span lang="en">graduate coordinator</span> manziliga qisqa savol yozing va javobni saqlang.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate" target="_blank" rel="noopener">EducationUSA: magistratura va doktoranturani moliyalashtirish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Har kafedrada 10 savolga javob toping: moliya kafolati, yillar, summa, xalqaro talaba, GRE, til, toʻlov, muddat, professor, fellowship.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>2 kafedra sahifasini 10 savol boʻyicha tekshiring va javobsiz qolgan savollarni yozing.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Har kafedrada 10 savolga javob toping. Javobsiz qolgan savolni koordinatorga yozma yuboring.</p></div></div>
+          <div class="panel"><div class="assign"><b>Ikki kafedra tekshiruvi</b><ul><li>2 kafedra sahifasini 10 savol boʻyicha tekshiring.</li><li>Javobsiz qolgan savollarni yozing.</li></ul>
             <textarea data-save="a3" placeholder="... kafedrasi: 1) ha 2) 5 yil 3) ... 4) ... 5) GRE ixtiyoriy ... Javobsiz: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -185,27 +201,26 @@
       <article class="lesson" id="l4">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 7.4</span><span class="l-t" style="display:block">Tashqi grantlar: kimga ochiq</span>
-            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">✅ Filtr</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 7.4</span><span class="l-t" style="display:block">Tashqi grantlar kimga ochiq</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Filtr</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Internetdagi "AQShdagi eng yaxshi PhD grantlari" roʻyxatining katta qismi faqat AQSh fuqarolari uchun. Ularga vaqt sarflashdan oldin bitta qatorni tekshiring.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Internetdagi «AQShdagi eng yaxshi PhD grantlari» roʻyxatining katta qismi faqat AQSh fuqarolari uchun. Ularga vaqt sarflashdan oldin bitta qatorni tekshiring. Bu darsda oʻsha qatorni topamiz.</div></div>
           <div class="panel">
-<h4>Muvofiqlik qatori</h4>
-<p>Har grant sahifasida <span lang="en">eligibility</span> boʻlimini oching va fuqarolik talabini toping. Misol: NSF ning <span lang="en">Graduate Research Fellowship Program</span> (GRFP) talabi "AQSh fuqarosi, fuqaroligi yoki doimiy rezidenti". Demak Oʻzbekiston fuqarosi uchun yopiq.</p>
+<div data-kvideo="l4"></div>
+<p>Har grant sahifasida <span lang="en">eligibility</span> boʻlimini oching va fuqarolik talabini toping. Misol: NSF ning GRFP talabi AQSh fuqarosi yoki doimiy rezidenti. Demak Oʻzbekiston fuqarosiga yopiq.</p>
 <div class="tbl"><table><thead><tr><th>Grant manbasi</th><th>Xalqaro talabaga</th></tr></thead><tbody>
-<tr><td>AQSh federal agentliklari (NSF GRFP kabi)</td><td>Koʻpincha yopiq; har birining sahifasini tekshiring</td></tr>
+<tr><td>AQSh federal agentliklari</td><td>Koʻpincha yopiq</td></tr>
 <tr><td>Kafedra va universitet <span lang="en">fellowship</span>lari</td><td>Koʻpincha qabul paketi ichida (7.2)</td></tr>
-<tr><td>Oʻz mamlakati moliyalashtirishi</td><td>Boston universiteti xalqaro talabalar oʻz mamlakatidan moliya olishi mumkinligini yozadi</td></tr>
-<tr><td>Fulbright</td><td>Oʻzbekiston uchun magistratura (M6)</td></tr>
+<tr><td>Oʻz mamlakati moliyasi</td><td>Mumkin (Boston universiteti)</td></tr>
+<tr><td>Fulbright</td><td>Magistratura (M6)</td></tr>
 </tbody></table></div>
-<div class="box info">Grant sahifasida "<span lang="en">U.S. citizen</span>", "<span lang="en">permanent resident</span>" yoki "<span lang="en">eligible noncitizen</span>" soʻzlari boʻlsa, u sizga yopiq boʻlishi ehtimoli yuqori. Bunday grantni roʻyxatdan chiqaring.</div>
-<div class="srcs">Manba: <a href="https://undergraduates.utexas.edu/odps/explore/nsf-grfp" target="_blank" rel="noopener">Texas universiteti (Ostin): NSF GRFP muvofiqligi</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Grant sahifasida «<span lang="en">U.S. citizen</span>», «<span lang="en">permanent resident</span>» yoki «<span lang="en">eligible noncitizen</span>» soʻzlari boʻlsa, u sizga yopiq boʻlishi ehtimoli yuqori. Bunday grantni roʻyxatdan chiqaring.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://undergraduates.utexas.edu/odps/explore/nsf-grfp" target="_blank" rel="noopener">Texas universiteti (Ostin): NSF GRFP muvofiqligi</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Har grantni fuqarolik qatori bilan filtrlang. NSF GRFP kabi federal grantlar koʻpincha faqat AQSh fuqarolari va rezidentlari uchun.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Topgan 3 grantingizni fuqarolik qatori boʻyicha tekshiring: ochiq / yopiq, dalil bilan.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Har grantni fuqarolik qatori bilan filtrlang. Federal grantlar koʻpincha faqat AQSh fuqarolari va rezidentlari uchun.</p></div></div>
+          <div class="panel"><div class="assign"><b>Uch grant filtri</b><ul><li>Topgan 3 grantingizni fuqarolik qatori boʻyicha tekshiring: ochiq yoki yopiq, dalil bilan.</li></ul>
             <textarea data-save="a4" placeholder="... — yopiq: "U.S. citizen..."; ... — ochiq: ...; ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -214,24 +229,22 @@
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 7.5</span><span class="l-t" style="display:block">Takliflarni solishtirish va 15-aprel</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📊 Taqqos</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 7.5</span><span class="l-t" style="display:block">Takliflarni solishtirish</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Taqqos</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Ikki moliyalashtirilgan PhD taklifi bir xil koʻrinadi, lekin biri qimmat shaharda, boshqasi yozda pul bermaydi. Raqam bilan solishtirmasangiz, oylik kamomadni birinchi qishda bilasiz.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Ikki moliyalashtirilgan PhD taklifi bir xil koʻrinadi: biri qimmat shaharda, boshqasi yozda pul bermaydi. Raqam bilan solishtirmasangiz, kamomadni birinchi qishda bilasiz. Bu darsda takliflarni oylik qoldiq bilan solishtiramiz.</div></div>
           <div class="panel">
-<h4>Solishtirish formulasi</h4>
-<p>Oylik sof qoldiq = (yillik stipendiya − qoplanmagan yigʻimlar va sugʻurta) ÷ 12 − oylik ijara va yashash xarajati.</p>
-<ul><li>Stipendiya 9 oylik boʻlsa, yozgi oylar uchun manba bormi?</li><li>Kafolatlangan yillar soni bir xilmi?</li><li>TA soatlari tadqiqot vaqtini qanchalik kamaytiradi?</li></ul>
-<h4>15-aprel qarori (CGS)</h4>
-<p>Council of Graduate Schools ning <span lang="en">April 15 Resolution</span> hujjatiga koʻra, kuzgi semestrga qabul qilingan talaba moliyaviy yordam takliflarini (toʻliq oʻqish toʻlovi, <span lang="en">fellowship</span>, <span lang="en">traineeship</span>, assistentlik) 15-aprelgacha qabul qilish yoki rad etishga majbur emas; undan oldingi muddat qarorga zid. Qaror qabul taklifiga emas, faqat moliya takliflariga tegishli va uni imzolagan universitetlar uchun amal qiladi. 2027-yil kuzidan boshlanadigan dasturlar uchun universitetlar qarorni qayta imzolashi kerak.</p>
-<div class="box warn">Universitet qarorni imzolaganmi, tekshiring. 15-aprelgacha taklifni qabul qilib, keyin boshqasini tanlasangiz, voz kechishni yozma bildiring.</div>
-<div class="srcs">Manba: <a href="https://cgsnet.org/resources/for-current-prospective-graduate-students/april-15-resolution/" target="_blank" rel="noopener">CGS (Council of Graduate Schools): 15-aprel qarori</a>; <a href="https://gradschool.duke.edu/financial-support/phd-financial-support/" target="_blank" rel="noopener">Duke Graduate School: PhD kafolatlangan moliyalashtirish</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l5"></div>
+<p><b>Oylik sof qoldiq</b> = (yillik stipendiya − qoplanmagan yigʻim va sugʻurta) ÷ 12 − oylik ijara va yashash.</p>
+<ul><li>Stipendiya 9 oylik boʻlsa, yozgi oylarga manba bormi?</li><li>Kafolatlangan yillar soni bir xilmi?</li><li>TA soatlari tadqiqot vaqtini qanchalik kamaytiradi?</li></ul>
+<p><b>15-aprel qarori (CGS):</b> kuzgi semestrga qabul qilingan talaba moliya takliflarini 15-aprelgacha qabul qilish yoki rad etishga majbur emas. Qaror faqat moliya takliflariga va uni imzolagan universitetlarga tegishli.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><p>CGS hujjatiga koʻra, 2027-yil kuzidan boshlanadigan dasturlar uchun universitetlar qarorni qayta imzolashi kerak. Universitet imzolaganini tekshiring. 15-aprelgacha taklifni qabul qilib, keyin boshqasini tanlasangiz, voz kechishni yozma bildiring.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://cgsnet.org/resources/for-current-prospective-graduate-students/april-15-resolution/" target="_blank" rel="noopener">CGS (Council of Graduate Schools): 15-aprel qarori</a>; <a href="https://gradschool.duke.edu/financial-support/phd-financial-support/" target="_blank" rel="noopener">Duke Graduate School: PhD kafolatlangan moliyalashtirish</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Takliflarni oylik sof qoldiq, yozgi moliya, kafolat yillari va majburiyat boʻyicha solishtiring. CGS 15-aprel qarorini imzolagan universitetlarda moliya taklifiga 15-aprelgacha javob berish majburiy emas.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>2 taklif (yoki 2 kafedra sahifasi) uchun oylik sof qoldiqni hisoblang.</li><li>Universitetlar CGS qarorini imzolaganini tekshiring.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Takliflarni oylik qoldiq, yozgi pul, kafolat yillari va majburiyat boʻyicha solishtiring. 15-aprel qarori imzolagan universitetlarda amal qiladi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Ikki taklif hisobi</b><ul><li>2 taklif (yoki 2 kafedra sahifasi) uchun oylik sof qoldiqni hisoblang.</li><li>Universitetlar CGS qarorini imzolaganini tekshiring.</li></ul>
             <textarea data-save="a5" placeholder="A: stipendiya ... − ... = ...; ijara ... → oylik qoldiq ...; B: ...; CGS: A imzolagan / ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -278,6 +291,7 @@
   </section>
 
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2 id="artTitle">Moliya paketi taqqoslagichi</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
@@ -303,11 +317,13 @@
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="7"><h2>Keyingi qadam: viza</h2><div class="mv-bar"><i style="width:88%"></i></div><p class="mv-small">IV bosqich: 1 / 2 modul · Rejangiz 88% tayyor</p><div class="mv-k" data-mn="m7"><b>Moliya taqqoslashi tayyor.</b> Taklifni qabul qilgach, universitet I-20 yoki DS-2019 beradi. M8 da Toshkentdagi viza tartibini, maqomni saqlashni va ishlash qoidalarini oʻrganasiz.</div><div class="mv-row"><a class="btn btn-p" href="usa-lab-o.html?m=8">M8: viza va maqom</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Vaqt</b>~1 hafta (darslar ~1 soat + taqqoslagich)</div>
       <div><b>Natija</b>Moliya paketi taqqoslagichi</div>
     </div>
     <p class="srcs">Faktlar: <a href="https://www.buffalo.edu/grad/explore/funding/masters-level-funding.html" target="_blank" rel="noopener">Buffalo universiteti: magistratura darajasida moliyalashtirish</a>; <a href="https://gradschool.princeton.edu/financial-support/financial-support-model/master%E2%80%99s-degree-funding" target="_blank" rel="noopener">Princeton Graduate School: magistratura moliyalashtirishi</a>; <a href="https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate" target="_blank" rel="noopener">EducationUSA: magistratura va doktoranturani moliyalashtirish</a>; <a href="https://gradschool.duke.edu/financial-support/phd-financial-support/" target="_blank" rel="noopener">Duke Graduate School: PhD kafolatlangan moliyalashtirish</a>; <a href="https://www.bu.edu/earth/phd-funding" target="_blank" rel="noopener">Boston universiteti, Earth & Environment: PhD moliyalashtirish</a>; <a href="https://undergraduates.utexas.edu/odps/explore/nsf-grfp" target="_blank" rel="noopener">Texas universiteti (Ostin): NSF GRFP muvofiqligi</a>; <a href="https://cgsnet.org/resources/for-current-prospective-graduate-students/april-15-resolution/" target="_blank" rel="noopener">CGS (Council of Graduate Schools): 15-aprel qarori</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov, summa va siyosatlar har yili oʻzgaradi.</p>
@@ -317,13 +333,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="usa-lab.html">← USA dasturi</a>
+    <a class="btn btn-g" href="usa-lab-o.html?m=6">← M6</a>
     <a class="btn btn-p" href="usa-lab-o.html?m=8">Keyingi: M8 Viza, maqom va ishlash huquqi →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/usa-next.js" defer></script>
 <script>
 window.KGTool = { init: function () {
   var ids = ["aS", "aF", "aR", "bS", "bF", "bR"], o = document.getElementById("tOut");
@@ -364,7 +382,7 @@ window.KGTool = { init: function () {
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -521,7 +539,7 @@ window.KGTool = { init: function () {
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

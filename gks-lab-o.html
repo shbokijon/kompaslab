@@ -104,7 +104,8 @@ p{color:var(--muted);line-height:1.55;margin:0 0 18px}
         document.open();
         // Javoblar hisobga yoziladi (js/kompas-sync.js, 2026-11-19): modul HTML ga sinxron skript qoʻshiladi
         var html = String(d.html), tag = '<script src="js/kompas-sync.js" defer></' + 'script>';
-        html = /<\/body>/i.test(html) ? html.replace(/<\/body>/i, tag + "</body>") : html + tag;
+        var cut = html.toLowerCase().lastIndexOf("</body>"); // oxirgi </body>: JS satrlaridagi "</body>" ga tegmaslik uchun (2026-11-20)
+        html = cut >= 0 ? html.slice(0, cut) + tag + html.slice(cut) : html + tag;
         document.write(html);
         document.close();
         return;

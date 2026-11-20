@@ -47,6 +47,29 @@
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
 .path.pn{--pn:8;}
+
+/* USA v2 (2026-11-20): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 </style>
 </head>
 <body>
@@ -62,7 +85,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="usa-lab" data-kv-mod="4">
 <div class="wrap">
 
   <div class="hero">
@@ -71,15 +94,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA dasturi</a> · Modul 4</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza II · Bakalavr yordami</span>
         <h1>Moliyaviy yordam arizasi</h1>
-        <p class="lead">Ehtiyojga asoslangan yordam oila haqidagi raqamlarga qarab hisoblanadi. Bu modulda qaysi universitet qaysi formani soʻrashini aniqlaysiz, Oʻzbekistondagi daromadni AQSh universiteti tushunadigan hujjatlarga aylantirasiz va kelgan yordam xatini toʻgʻri oʻqiysiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Faza II</span><span class="fact"><b>250</b> XP</span></div>
+        <p class="lead">Ehtiyoj granti oila haqidagi raqamlarga qarab hisoblanadi. Bu modulda qaysi universitet qaysi formani soʻrashini aniqlaysiz, Oʻzbekistondagi daromadni universitet tushunadigan hujjatga aylantirasiz va yordam xatini oʻqiysiz. Oxirida sizda <strong>moliyaviy yordam arizasi paketi</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact">Faza II</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 qadam</span></div>
     <div class="path pn">
       <a class="node" href="#l1" data-node="l1"><span class="dot">4.1</span>Formalar</a><a class="node" href="#l2" data-node="l2"><span class="dot">4.2</span>Daromad</a><a class="node" href="#l3" data-node="l3"><span class="dot">4.3</span>Toʻlov</a><a class="node" href="#l4" data-node="l4"><span class="dot">4.4</span>Xat</a><a class="node" href="#l5" data-node="l5"><span class="dot">4.5</span>Qayta</a><a class="node" href="#paket" data-node="tool"><span class="dot">🛠</span>Paket</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Paket</a>
     </div>
@@ -90,38 +113,36 @@
     <ul class="goal">
       <li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span><b>Yordam arizasi paketi:</b> har universitet: forma, hujjat, muddat</span></li><li><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span><b>Oila moliyaviy varaqasi:</b> daromad, jamgʻarma, mulk; dollarda, kurs bilan</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Yordam xatini oʻqish usuli:</b> grant, kredit, ish va qolgan summa</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Kompas Lab oila hujjatlarini toʻldirib bermaydi va yuridik yoki soliq maslahati bermaydi. Har qanday raqam oila hujjatiga mos boʻlishi shart: notoʻgʻri maʼlumot yordamni bekor qilishiga olib kelishi mumkin. Forma va toʻlovlar 31.10.2026 holatiga; universitet sahifasidan qayta tekshiring.</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Kompas Lab oila hujjatlarini toʻldirib bermaydi va yuridik yoki soliq maslahati bermaydi. Har qanday raqam oila hujjatiga mos boʻlishi shart: notoʻgʻri maʼlumot yordamni bekor qilishiga olib kelishi mumkin. Forma va toʻlovlar 31.10.2026 holatiga; universitet sahifasidan qayta tekshiring.</p><p>Kompas Lab universitet, elchixona yoki konsul oʻrnida qaror qabul qilmaydi va qabul, yordam yoki vizani kafolatlamaydi. Vositalar sana va talablarni siz uchun tekshirmaydi: har faktni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Viza va soliq boʻyicha yuridik maslahat berilmaydi. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 4.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.1</span><span class="l-t" style="display:block">Formalar xaritasi</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🗺 Xarita</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 4.1</span><span class="l-t" style="display:block">Qaysi universitet qaysi forma</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Xarita</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Har universitet oʻz hujjatlar roʻyxatini soʻraydi. Bir universitetga yuborgan hujjatingiz boshqasiga yetarli boʻlmasligi mumkin, muddat esa koʻpincha qabul arizasi bilan bir vaqtda.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Har universitet oʻz hujjatlar roʻyxatini soʻraydi va muddat koʻpincha qabul arizasi bilan bir kunda. Birida yetgan hujjat boshqasiga yetmasligi mumkin. Bu darsda hammasini bitta jadvalga yigʻamiz.</div></div>
           <div class="panel">
-<h4>CSS Profile</h4>
-<p>College Board ning <span lang="en">CSS Profile</span> tizimi: kollejlar va stipendiya dasturlari uni federal boʻlmagan, universitetning oʻz yordamini taqsimlash uchun ishlatadi. Uning sahifasida xalqaro abituriyentlar uchun alohida boʻlim bor: valyuta, ikki valyutadagi daromad, ota-ona soliq holati va AQSh soliq deklaratsiyasini topshirmaydigan oilalar uchun IDOC ga nima yuborish haqida savollar.</p>
-<h4>Universitet formasi va qoʻshimcha hujjatlar (Northwestern namunasi)</h4>
-<ul><li>CSS Profile; uni oʻz mamlakatingizdan topshira olmasangiz yoki jiddiy moliyaviy qiyinchilik boʻlsa, universitetning oʻz formasi (ISAFA).</li><li>Ota-onaning soʻnggi yil soliq hujjati yoki, mamlakatda yillik soliq deklaratsiyasi boʻlmasa, ish beruvchidan rasmiy imzo yoki muhr bilan daromad haqida xat.</li><li>Har hujjatda sizning ismingiz va tugʻilgan sanangiz, toʻldirilgan muqova varaq.</li><li>Barcha soliq va daromad hujjatlari rasmiy tarjima bilan va AQSh dollariga oʻgirilgan holda, kurs koʻrsatilib.</li></ul>
+<div data-kvideo="l1"></div>
+<p><span lang="en">CSS Profile</span> (College Board) universitetlar oʻz yordamini taqsimlash uchun ishlatadigan forma. Xalqaro abituriyentlar uchun alohida savollar boʻlimi bor.</p>
+<p><b>Northwestern namunasi:</b> CSS Profile; uni topshirib boʻlmasa, universitetning oʻz formasi (ISAFA); ota-onaning soliq hujjati yoki ish beruvchidan muhr va imzoli daromad xati; har hujjatda ismingiz va tugʻilgan sanangiz; rasmiy tarjima va kurs bilan dollarga oʻgirilgan summa.</p>
 <div class="tbl"><table><thead><tr><th>Universitet</th><th>Forma</th><th>Qoʻshimcha hujjat</th><th>Muddat</th></tr></thead><tbody>
-<tr><td>...</td><td>CSS Profile / oʻz formasi</td><td>Soliq yoki daromad xati, tarjima</td><td>Rasmiy sahifadan</td></tr>
+<tr><td>...</td><td>CSS Profile yoki oʻz formasi</td><td>Daromad xati, tarjima</td><td>Rasmiy sahifadan</td></tr>
 </tbody></table></div>
-<div class="box info">Har universitetning <span lang="en">international applicants</span> yoki <span lang="en">how to apply for aid</span> sahifasini oching. Bu jadval siz uchun Asosiy nazorat jadvalining (Master Tracker) moliya qismi.</div>
-<div class="srcs">Manba: <a href="https://cssprofile.collegeboard.org" target="_blank" rel="noopener">CSS Profile (College Board)</a>; <a href="https://cssprofile.collegeboard.org/frequently-asked-questions/international" target="_blank" rel="noopener">CSS Profile: xalqaro abituriyentlar uchun savollar</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>CSS Profile sahifasida xalqaro oilalar uchun savollar bor: valyuta, ikki valyutadagi daromad, AQSh soliq deklaratsiyasini topshirmaydigan oilalar IDOC ga nima yuborishi. Har universitetning <span lang="en">international applicants</span> yoki <span lang="en">how to apply for aid</span> sahifasini oching.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://cssprofile.collegeboard.org" target="_blank" rel="noopener">CSS Profile (College Board)</a>; <a href="https://cssprofile.collegeboard.org/frequently-asked-questions/international" target="_blank" rel="noopener">CSS Profile: xalqaro abituriyentlar uchun savollar</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>CSS Profile koʻp universitetlarda asosiy forma; baʼzilari oʻz formasini va daromad hujjatlarini rasmiy tarjima va dollar kursi bilan soʻraydi. Har universitet uchun alohida qator.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Roʻyxatingizdagi yordam soʻraladigan har universitet uchun jadval qatorini toʻldiring: forma, qoʻshimcha hujjat, muddat, havola.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Har universitet uchun alohida qator: forma, hujjat, muddat, havola. Bitta universitetga yetgan hujjat boshqasiga yetmasligi mumkin.</p></div></div>
+          <div class="panel"><div class="assign"><b>Formalar jadvalingiz</b><ul><li>Yordam soʻraladigan har universitet uchun qatorni toʻldiring: forma, qoʻshimcha hujjat, muddat, havola.</li></ul>
             <textarea data-save="a1" placeholder="... — CSS Profile + daromad xati (tarjima, USD), muddat ...; havola ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -130,29 +151,27 @@
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.2</span><span class="l-t" style="display:block">Oʻzbekistondan oila daromadini hujjatlash</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">📑 Hujjat</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 4.2</span><span class="l-t" style="display:block">Oila daromadini hujjatlash</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">Hujjat</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">AQSh universiteti Oʻzbekistondagi daromad qanday shakllanishini bilmaydi. U faqat sizning hujjat va izohingizni koʻradi. Aniq, izchil va tekshiriladigan hujjat yordam olishning asosi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">AQSh universiteti Oʻzbekistonda daromad qanday shakllanishini bilmaydi. U faqat hujjatingiz va izohingizni koʻradi. Bu darsda oila moliyaviy varaqasini tuzamiz.</div></div>
           <div class="panel">
-<h4>Oila moliyaviy varaqasi</h4>
-<div class="tbl"><table><thead><tr><th>Qator</th><th>Nima yoziladi</th><th>Qanday hujjat</th></tr></thead><tbody>
-<tr><td>Rasmiy daromad</td><td>Har ishlaydigan ota-ona, yillik</td><td>Ish beruvchi xati (imzo, muhr) yoki soliq maʼlumotnomasi</td></tr>
-<tr><td>Tadbirkorlik daromadi</td><td>YATT yoki korxona, yillik foyda</td><td>Soliq hisoboti</td></tr>
-<tr><td>Jamgʻarma</td><td>Bank hisoblari, omonatlar</td><td>Bank koʻchirmasi</td></tr>
-<tr><td>Mulk</td><td>Uy, yer, mashina, chorva: formaga qanday yozilishini koʻrsatmadan oʻqing</td><td>Koʻrsatmaga qarab</td></tr>
-<tr><td>Majburiy xarajatlar</td><td>Boshqa farzandlarning oʻqishi, kasallik, qarz toʻlovi</td><td>Izohli varaq</td></tr>
+<div data-kvideo="l2"></div>
+<div class="tbl"><table><thead><tr><th>Qator</th><th>Hujjat</th></tr></thead><tbody>
+<tr><td>Rasmiy daromad (har ota-ona, yillik)</td><td>Ish beruvchi xati yoki soliq maʼlumotnomasi</td></tr>
+<tr><td>Tadbirkorlik (YATT, korxona)</td><td>Soliq hisoboti</td></tr>
+<tr><td>Jamgʻarma</td><td>Bank koʻchirmasi</td></tr>
+<tr><td>Mulk</td><td>Formadagi koʻrsatmaga qarab</td></tr>
+<tr><td>Majburiy xarajat</td><td>Izohli varaq</td></tr>
 </tbody></table></div>
-<h4>Uch qoida</h4>
-<ol><li><b>Bir kurs, bir sana.</b> Barcha soʻmdagi summalarni bitta sanadagi rasmiy kurs bilan dollarga oʻgiring va kurs va sanani yozing.</li><li><b>Izchillik.</b> CSS Profile, universitet formasi va hujjatlardagi raqamlar bir xil boʻlishi kerak.</li><li><b>Halollik.</b> Norasmiy yoki mavsumiy daromad boʻlsa, uni yashirmang va oʻylab topmang; formaning qoʻshimcha izoh qismida qisqa tushuntiring.</li></ol>
-<div class="box warn">Daromadni kamaytirib koʻrsatish yoki mulkni yashirish firibgarlik hisoblanishi mumkin. Universitet qoʻshimcha hujjat soʻrab tekshiradi; nomuvofiqlik yordamni va qabulni xavf ostiga qoʻyadi.</div>
-<div class="box info">Oʻzbekistonda olinadigan rasmiy maʼlumotnomalar roʻyxatini davlat xizmatlari portalidan (my.gov.uz) tekshiring. Kompas qaysi maʼlumotnoma qabul qilinishini universitet oʻrniga hal qilmaydi: universitetdan yozma soʻrang.</div>
+<ol><li>Hamma summa bitta sanadagi rasmiy kurs bilan dollarga oʻgiriladi; kurs va sana yoziladi.</li><li>CSS Profile, universitet formasi va hujjatlarda raqam bir xil.</li><li>Norasmiy daromad yashirilmaydi va toʻqilmaydi: qoʻshimcha izohda qisqa yoziladi.</li></ol>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Daromadni kamaytirib koʻrsatish yoki mulkni yashirish firibgarlik hisoblanishi mumkin. Universitet qoʻshimcha hujjat soʻraydi; nomuvofiqlik yordamni ham, qabulni ham xavf ostiga qoʻyadi. Rasmiy maʼlumotnomalar roʻyxatini my.gov.uz dan tekshiring, qaysi biri qabul qilinishini universitetdan yozma soʻring.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Har daromad turi uchun rasmiy hujjat, bitta sana va kurs, barcha formalarda bir xil raqam. Norasmiy daromad halol izoh bilan.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="t"><p>“Soʻmdagi summalarni dollarga oʻgirganda kurs va sanani yozish kerak.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Northwestern kursni koʻrsatishni talab qiladi.</div></div><div class="qz" data-a="n"><p>“Turli formalarda turli raqam yozish muammo emas.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: nomuvofiqlik yordamni xavf ostiga qoʻyadi.</div></div><div class="qz" data-a="n"><p>“Norasmiy daromadni umuman yozmaslik eng xavfsiz yoʻl.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: halol izoh bilan koʻrsatiladi.</div></div><div class="qz" data-a="t"><p>“Qaysi maʼlumotnoma qabul qilinishini universitetdan yozma soʻrash mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Oila moliyaviy varaqasini 5 qator boʻyicha toʻldiring (raqamlarni oila bilan birga).</li><li>Kurs va sanani yozing.</li></ul></div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Har daromad turiga rasmiy hujjat, bitta kurs va sana, hamma formada bir xil raqam.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="t"><p>“Soʻmdagi summalarni dollarga oʻgirganda kurs va sanani yozish kerak.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Northwestern kursni koʻrsatishni talab qiladi.</div></div><div class="qz" data-a="n"><p>“Turli formalarda turli raqam yozish muammo emas.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: nomuvofiqlik yordamni xavf ostiga qoʻyadi.</div></div><div class="qz" data-a="n"><p>“Norasmiy daromadni umuman yozmaslik eng xavfsiz yoʻl.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: halol izoh bilan koʻrsatiladi.</div></div><div class="qz" data-a="t"><p>“Qaysi maʼlumotnoma qabul qilinishini universitetdan yozma soʻrash mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>Oila moliyaviy varaqasi</b><ul><li>Varaqni 5 qator boʻyicha oila bilan birga toʻldiring.</li><li>Kurs va sanani yozing.</li></ul></div>
             <textarea data-save="a2" placeholder="Rasmiy daromad: ... soʻm = ... USD; tadbirkorlik: ...; jamgʻarma: ...; mulk: ...; xarajatlar: ...; kurs: ... (sana ...)"></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -161,23 +180,21 @@
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.3</span><span class="l-t" style="display:block">Yordam formasi toʻlovi va ozod qilish</span>
-            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">💳 Toʻlov</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 4.3</span><span class="l-t" style="display:block">Forma toʻlovi</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Toʻlov</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Yordam soʻrashning ham narxi bor. Bir nechta universitet uchun forma toʻlovi kichik oila byudjetida sezilarli boʻlishi mumkin.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Yordam soʻrashning ham narxi bor. Bir necha universitetga forma toʻlovi kichik oila byudjetida sezilarli boʻladi. Bu darsda toʻlov va undan ozod qilish qoidasini aniqlaymiz.</div></div>
           <div class="panel">
-<h4>CSS Profile toʻlovi</h4>
-<p>CSS Profile sahifasida aytilishicha, yillik daromadi 100 000 dollargacha boʻlgan oilalar uchun forma toʻlovdan ozod qilish orqali bepul. Lekin xalqaro talabaga bu qoida qoʻllanishi universitetga qarab farq qiladi: masalan, Northwestern xalqaro talabalar CSS Profile toʻlovidan ozod boʻla olmasligini yozadi.</p>
-<h4>Nima qilish kerak</h4>
-<ol><li>Har universitet sahifasida <span lang="en">fee waiver</span> bandini qidiring.</li><li>Yozilmagan boʻlsa, moliyaviy yordam boʻlimiga yozma soʻrang.</li><li>Toʻlovlarni byudjet jadvaliga qoʻshing (M2).</li></ol>
-<div class="box info">Qabul arizasi toʻlovi (Common App yigʻimi va undan ozod qilish) Bakalavr dasturi M13 da. Bu dars faqat moliyaviy yordam formasi toʻlovi haqida.</div>
-<div class="srcs">Manba: <a href="https://cssprofile.collegeboard.org" target="_blank" rel="noopener">CSS Profile (College Board)</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l3"></div>
+<p>CSS Profile sahifasida: yillik daromadi 100 000 dollargacha boʻlgan oilalar uchun forma ozod qilish orqali bepul. Xalqaro talabaga bu qoida universitetga qarab farq qiladi: Northwestern xalqaro talaba CSS Profile toʻlovidan ozod boʻlmasligini yozadi.</p>
+<ol><li>Har universitet sahifasida <span lang="en">fee waiver</span> bandini qidiring.</li><li>Yozilmagan boʻlsa, yordam boʻlimidan yozma soʻring.</li><li>Toʻlovlarni byudjet jadvaliga qoʻshing (M2).</li></ol>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Qabul arizasi toʻlovi va undan ozod qilish Bakalavr dasturi M13 da. Bu dars faqat yordam formasi toʻlovi haqida.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://cssprofile.collegeboard.org" target="_blank" rel="noopener">CSS Profile (College Board)</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p>CSS Profile toʻlovidan ozod qilish xalqaro talabaga hamma joyda qoʻllanmaydi. Har universitetdan aniqlang va toʻlovlarni byudjetga qoʻshing.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Yordam soʻraladigan har universitet uchun: forma toʻlovi bormi, ozod qilish mumkinmi, dalil.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Ozod qilish xalqaro talabaga hamma joyda ishlamaydi. Har universitetdan aniqlang va toʻlovni byudjetga yozing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Forma toʻlovlari</b><ul><li>Har universitet uchun yozing: forma toʻlovi bormi, ozod qilish mumkinmi, dalil.</li></ul>
             <textarea data-save="a3" placeholder="... — CSS toʻlovi: bor, ozod qilish: xalqaro talabaga yoʻq (havola ...)"></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -187,29 +204,25 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 4.4</span><span class="l-t" style="display:block">Yordam xatini oʻqish</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🔍 Tahlil</span><span class="tag xp">+24 XP</span></span></span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Tahlil</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">"Sizga 40 000 dollar yordam" degan xat quvonarli. Lekin uning qancha qismi grant, qancha qismi qaytariladigan kredit yoki ish va sizga qancha toʻlash qolishini hisoblamaguningizcha qaror qilmang.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">«Sizga 40 000 dollar yordam» degan xat quvonarli. Uning qancha qismi grant, qancha qismi qaytariladigan kredit yoki ish ekanini hisoblamaguningizcha qaror qilmang. Bu darsda xatni qismlarga ajratamiz.</div></div>
           <div class="panel">
-<h4>Xatning qismlari</h4>
-<div class="tbl"><table><thead><tr><th>Qism</th><th>Qaytariladimi</th><th>Izoh</th></tr></thead><tbody>
-<tr><td>Grant yoki stipendiya</td><td>Yoʻq</td><td>Asosiy qism</td></tr>
-<tr><td>Kredit</td><td>Ha</td><td>Taklif qilinsa, kafil talabi, foizi va qaytarish shartini oʻqing</td></tr>
-<tr><td>Ish (<span lang="en">student employment</span>)</td><td>Yoʻq, lekin ishlab topiladi</td><td>Kampusda, soat cheklangan (M8)</td></tr>
-<tr><td>Oila hissasi</td><td>—</td><td>Universitet hisoblagan oila toʻlovi</td></tr>
+<div data-kvideo="l4"></div>
+<div class="tbl"><table><thead><tr><th>Qism</th><th>Qaytariladimi</th></tr></thead><tbody>
+<tr><td>Grant yoki stipendiya</td><td>Yoʻq</td></tr>
+<tr><td>Kredit</td><td>Ha: kafil, foiz va qaytarish shartini oʻqing</td></tr>
+<tr><td>Ish (<span lang="en">student employment</span>)</td><td>Yoʻq, lekin ishlab topiladi (M8)</td></tr>
+<tr><td>Oila hissasi</td><td>Universitet hisoblagan oila toʻlovi</td></tr>
 </tbody></table></div>
-<h4>Hisob</h4>
-<p>Qolgan summa = toʻliq narx − grant − kredit − ish. Siz va oila uchun haqiqiy summa: qolgan summa + kredit (keyin qaytariladi).</p>
-<p>Harvard ham talabalardan oʻz ish haqi va jamgʻarmasidan hissa kutishini yozadi: "ota-ona hissasi nol" siz hech narsa toʻlamaysiz degani emas.</p>
-<h4>Har yil uchun</h4>
-<ul><li>Yordam keyingi yillarda qayta hisoblanadimi, har yili ariza kerakmi: xatda yoki sahifada.</li><li>Natijaga asoslangan grant boʻlsa, baho sharti.</li></ul>
-<div class="srcs">Manba: <a href="https://college.harvard.edu/financial-aid/how-aid-works" target="_blank" rel="noopener">Harvard College: yordam qanday ishlaydi</a>. 31.10.2026 holatiga.</div>
+<p><b>Qolgan summa</b> = toʻliq narx − grant − kredit − ish. Siz uchun haqiqiy narx: qolgan summa + kredit.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Harvard talabadan ham oʻz ish haqi va jamgʻarmasidan hissa kutishini yozadi: «ota-ona hissasi nol» Siz hech narsa toʻlamaysiz degani emas. Yordam keyingi yillarda qayta hisoblanadimi va har yili ariza kerakmi, xatda yoki sahifada yoziladi.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://college.harvard.edu/financial-aid/how-aid-works" target="_blank" rel="noopener">Harvard College: yordam qanday ishlaydi</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p>Yordam xatini grant, kredit, ish va oila hissasiga ajrating. Qolgan summa va kredit birga sizning haqiqiy narxingiz.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Namuna yordam xati uchun (yoki universitet saytidagi namuna) qolgan summani hisoblang.</li><li>Keyingi yillar sharti nima ekanini yozing.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Xatni grant, kredit, ish va oila hissasiga ajrating. Qolgan summa va kredit birga sizning haqiqiy narxingiz.</p></div></div>
+          <div class="panel"><div class="assign"><b>Namuna xat hisobi</b><ul><li>Namuna yordam xati uchun qolgan summani hisoblang.</li><li>Keyingi yillar shartini yozing.</li></ul>
             <textarea data-save="a4" placeholder="Narx ... − grant ... − kredit ... − ish ... = qolgan ...; haqiqiy narx ...; keyingi yillar: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -218,24 +231,21 @@
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 4.5</span><span class="l-t" style="display:block">Qayta koʻrib chiqish va oʻzgargan holat</span>
-            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">✉️ Xat</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 4.5</span><span class="l-t" style="display:block">Qayta koʻrib chiqishni soʻrash</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Xat</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Yordam xati baʼzan oilaning hozirgi holatini toʻliq aks ettirmaydi. Holat haqiqatan oʻzgargan boʻlsa, xushmuomala va hujjatli soʻrov qilish mumkin.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Yordam xati baʼzan oilaning hozirgi holatini toʻliq koʻrsatmaydi. Holat haqiqatan oʻzgargan boʻlsa, hujjatli va xushmuomala soʻrov qilish mumkin. Bu darsda qachon va qanday soʻrashni koʻrib chiqamiz.</div></div>
           <div class="panel">
-<h4>Qachon soʻrash oʻrinli</h4>
-<ul><li>Arizadan keyin oila daromadi kamaygan (ish yoʻqotish, kasallik, nafaqa).</li><li>Formada koʻrinmagan majburiy xarajat bor.</li><li>Hisobda xato bor (masalan, kurs notoʻgʻri olingan).</li></ul>
-<h4>Qanday</h4>
-<ol><li>Universitet sahifasida <span lang="en">appeal</span>, <span lang="en">review</span> yoki <span lang="en">special circumstances</span> bandini toping.</li><li>Qisqa xat: nima oʻzgargan, qachon, raqam bilan, hujjat ilova.</li><li>Boshqa universitet takliflarini koʻrsatish mumkinmi, sahifadan tekshiring; hamma universitet buni qabul qilmaydi.</li></ol>
-<div class="box warn">Qayta koʻrib chiqish soʻrovi savdolashish emas. Hujjatsiz yoki oʻylab topilgan holat yordamni yoʻqotishga olib kelishi mumkin.</div>
-<div class="box info">Dartmouth kabi universitetlarda xalqaro talabalar uchun alohida yordam yoʻli sahifasi bor: savolni oʻsha sahifadagi manzilga yuboring.</div>
-<div class="srcs">Manba: <a href="https://financialaid.dartmouth.edu/apply-aid/international-students" target="_blank" rel="noopener">Dartmouth: xalqaro talabalar uchun yordam</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l5"></div>
+<p>Qachon oʻrinli: arizadan keyin daromad kamaygan (ish yoʻqotish, kasallik), formada koʻrinmagan majburiy xarajat bor, hisobda xato bor (masalan, kurs notoʻgʻri).</p>
+<ol><li>Universitet sahifasida <span lang="en">appeal</span>, <span lang="en">review</span> yoki <span lang="en">special circumstances</span> bandini toping.</li><li>Qisqa xat: nima oʻzgardi, qachon, raqam bilan, hujjat ilova.</li><li>Boshqa universitet taklifini koʻrsatish mumkinmi, sahifadan tekshiring.</li></ol>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Qayta koʻrib chiqish soʻrovi savdolashish emas. Hujjatsiz yoki toʻqilgan holat yordamni yoʻqotishga olib kelishi mumkin. Dartmouth kabi universitetlarda xalqaro talaba uchun alohida sahifa bor: savolni oʻsha sahifadagi manzilga yuboring.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://financialaid.dartmouth.edu/apply-aid/international-students" target="_blank" rel="noopener">Dartmouth: xalqaro talabalar uchun yordam</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p>Haqiqiy oʻzgarish yoki xato boʻlsa, universitet tartibi boʻyicha hujjatli va qisqa soʻrov qiling. Savdolashish emas.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Bitta universitetning qayta koʻrib chiqish tartibini toping va havola bilan yozing.</li><li>Holatingizga mos 3 jumlalik soʻrov rejasini yozing (oʻzingiz).</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Haqiqiy oʻzgarish yoki xato boʻlsa, universitet tartibi boʻyicha qisqa va hujjatli soʻrov yozing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Qayta koʻrib chiqish tartibi</b><ul><li>Bitta universitetning tartibini havola bilan yozing.</li><li>Holatingizga mos 3 jumlalik soʻrov rejasini oʻzingiz yozing.</li></ul>
             <textarea data-save="a5" placeholder="... universiteti tartibi: ... (havola). Reja: 1) nima oʻzgardi ... 2) raqam ... 3) hujjat ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -274,6 +284,7 @@
   </section>
 
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2 id="artTitle">Moliyaviy yordam arizasi paketi</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
@@ -299,11 +310,13 @@
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="4"><h2>II bosqich yakunlandi: keyingi qadam davlat dasturlari</h2><div class="mv-bar"><i style="width:50%"></i></div><p class="mv-small">II bosqich: 2 / 2 modul · Rejangiz 50% tayyor</p><div class="mv-k" data-mn="m4"><b>Yordam arizasi paketingiz tayyor.</b> Muddatlarini kalendarga qoʻying. III bosqichda (M5–M6) davlat dasturlari: Oʻzbekistonda bakalavriatda oʻqiyotganlar uchun Global UGRAD, 2+ yillik tajribalilar uchun Fulbright magistraturasi.</div><p>III bosqich darslari:</p><ul class="mv-lock"><li><img src="img/3d/lock.webp" alt="" width="22" height="22">5.1 Global UGRAD nima</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">5.2 Sizga mosmi</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">5.3 Sikl eʼlonini kuzatish</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">5.4 Ariza va tanlov</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">5.5 Boshqa almashinuvlar va J-1</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">6.1 Fulbright kimga</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">6.2 Tanlov qanday oʻtadi</li></ul><p class="mv-small">Keyingi bosqich 1 ta bosqich tarifida navbatdagi toʻlov bilan ochiladi. Toʻliq dastur tarifida hamma modul allaqachon ochiq.</p><div class="mv-row"><a class="btn btn-p" href="usa-lab-o.html?m=5">III bosqich: M5 ni ochish</a><a class="btn btn-g" href="usa-lab-narxlar.html">Tariflar</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Vaqt</b>~1 hafta (darslar ~1 soat + paket)</div>
       <div><b>Natija</b>Moliyaviy yordam arizasi paketi</div>
     </div>
     <p class="srcs">Faktlar: <a href="https://cssprofile.collegeboard.org" target="_blank" rel="noopener">CSS Profile (College Board)</a>; <a href="https://cssprofile.collegeboard.org/frequently-asked-questions/international" target="_blank" rel="noopener">CSS Profile: xalqaro abituriyentlar uchun savollar</a>; <a href="https://undergradaid.northwestern.edu/apply-for-aid/prospective-students/international-students-application-instructions.html" target="_blank" rel="noopener">Northwestern: xalqaro abituriyentlar uchun yordam arizasi</a>; <a href="https://college.harvard.edu/financial-aid/how-aid-works" target="_blank" rel="noopener">Harvard College: yordam qanday ishlaydi</a>; <a href="https://financialaid.dartmouth.edu/apply-aid/international-students" target="_blank" rel="noopener">Dartmouth: xalqaro talabalar uchun yordam</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov, summa va siyosatlar har yili oʻzgaradi.</p>
@@ -313,13 +326,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="usa-lab.html">← USA dasturi</a>
+    <a class="btn btn-g" href="usa-lab-o.html?m=3">← M3</a>
     <a class="btn btn-p" href="usa-lab-o.html?m=5">Keyingi: M5 Global UGRAD va almashinuv dasturlari →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/usa-next.js" defer></script>
 <script>
 (function () {
   var KEY = "kompas_usa_m4_v1", MOD = "4", LXP = 24, NL = 5, FINXP = 40;
@@ -341,7 +356,7 @@
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -498,7 +513,7 @@
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

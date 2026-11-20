@@ -6,24 +6,25 @@
   "use strict";
   var LAB = { master: "Magistratura", bachelor: "Bakalavr", phd: "PhD", gks: "GKS", usa: "USA", daad: "DAAD", tt: "Tadbirkor Talaba", musofir: "Musofir", maktab: "Maktab", research: "Tadqiqot" };
   var SKIP = { xp: 1, done: 1, seen: 1, open: 1, lv: 1, v: 1 };
-  // M0 v2 (Magistratura, Bakalavr) savollari
+  // M0 v2 (Magistratura, Bakalavr, USA) savollari
   var LABELS = {
     ans: "Javoblar", start: "Boshlash vaqti", stage: "Hozir qayerda", early: "Erta muddat rejada", date: "Ariza muddati (oʻzi kiritgan)",
     deg: "Daraja", field: "Soha", fieldX: "Soha: hali bilmayman", ftype: "Magistratura turi", where: "Mamlakat", grades: "Baholar",
     docs: "Hujjatlar", cv: "CV", sop: "Maqsad bayonnomasi", ref: "Tavsiya xati", tr: "Baholar qaydnomasi", lang: "Ingliz tili sertifikati",
-    ach: "Yutuqlar", ess: "Insho", fund: "Pul", game: "Kuchli/zaif jumla oʻyini", task: "Bepul vazifa bajarildi", res: "Natija",
+    ach: "Yutuqlar", ess: "Insho", route: "Yoʻl (USA)", test: "SAT yoki GRE", fund: "Pul", game: "Kuchli/zaif jumla oʻyini", task: "Bepul vazifa bajarildi", res: "Natija",
     avg: "Ball", low: "Eng zaif yoʻnalishlar (tartib raqami)", at: "Hisoblangan sana", notes: "Yozuvlar"
   };
   var VALS = {
     start: { "2027k": "2027 kuzi", "2028b": "2028 boshi", "2028k": "2028 kuzi", "2029k": "2029 kuzi", x: "Hali bilmayman" },
-    stage: { s9: "9-sinf", s10: "10-sinf", s11: "11-sinf", lic: "Litsey yoki kollej", grad: "Maktabni bitirgan", uni: "Universitetda" },
+    stage: { sch: "Maktab, litsey yoki kollej", u12: "Universitet, 1–2 kurs", u34: "Universitet, 3–4 kurs", g0: "Bitirgan, tajriba 2 yildan kam", g2: "Bitirgan, 2+ yil tajriba", s9: "9-sinf", s10: "10-sinf", s11: "11-sinf", lic: "Litsey yoki kollej", grad: "Maktabni bitirgan", uni: "Universitetda" },
     early: { y: "Ha", n: "Yoʻq", b: "Bilmayman" },
+    route: { bak: "Bakalavr", ugrad: "Global UGRAD", mag: "Magistratura", phd: "PhD", x: "Hali aniq emas" },
     deg: { bak: "Bakalavr", mag: "Magistratura", phd: "PhD", x: "Hali aniq emas" },
     ftype: { taught: "Oʻquv", research: "Tadqiqot", x: "Bilmayman" },
     grades: { a: "Aʼlo", y: "Yaxshi", o: "Oʻrta", x: "Aytishi qiyin" },
-    fund: { full: "Oila toʻliq toʻlaydi", part: "Oila qisman + stipendiya", sch: "Faqat toʻliq stipendiya", x: "Ota-onasi bilan gaplashmagan", oila: "Oila yoki oʻz puli", uni: "Universitet stipendiyasi", davlat: "Davlat yoki xalqaro stipendiya" },
+    fund: { full: "Oila toʻliq toʻlaydi", part: "Oila qisman + stipendiya", sch: "Faqat toʻliq stipendiya", x: "Ota-onasi bilan gaplashmagan", oila: "Oila yoki oʻz puli", uni: "Universitet stipendiyasi", davlat: "Davlat yoki xalqaro stipendiya", a40: "Yiliga 40 000 $ dan koʻp", a15: "Yiliga 15–40 ming $", a5: "Yiliga 5–15 ming $", a0: "Yiliga 5 000 $ dan kam" },
     doc: { 2: "Bor", 1: "Jarayonda", 0: "Yoʻq" },
-    game: { k: "Kuchli", z: "Zaif" }
+    game: { k: "Kuchli", z: "Zaif", i: "Ishonchli", x: "Xavfli" }
   };
   var PROFILE = [["first_name", "Ism"], ["last_name", "Familiya"], ["email", "Email"], ["phone", "Telefon"], ["education", "Taʼlim"], ["goal", "Maqsad"],
     ["stage", "Bosqich (kabinet savoli)"], ["stage_detail", "Bosqich tafsiloti"], ["works", "Ishlaydimi"], ["onboarded_at", "Kabinet savoliga javob bergan"], ["created_at", "Roʻyxatdan oʻtgan"]];

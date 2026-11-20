@@ -47,6 +47,29 @@
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
 .path.pn{--pn:8;}
+
+/* USA v2 (2026-11-20): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+
 </style>
 </head>
 <body>
@@ -62,7 +85,7 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="usa-lab" data-kv-mod="6">
 <div class="wrap">
 
   <div class="hero">
@@ -71,15 +94,15 @@
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA dasturi</a> · Modul 6</div>
         <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Faza III · Davlat dasturlari</span>
         <h1>Fulbright magistraturasi</h1>
-        <p class="lead">Fulbright Oʻzbekistondan AQShda magistratura uchun asosiy davlat stipendiyasi. Bu modulda dastur Oʻzbekiston uchun aynan nimani talab qilishini, tanlov qanday oʻtishini va J-1 majburiyati kelajak rejangizga qanday taʼsir qilishini oʻrganasiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Faza III</span><span class="fact"><b>250</b> XP</span></div>
+        <p class="lead">Fulbright Oʻzbekistondan AQShda magistratura uchun asosiy davlat stipendiyasi. Bu modulda dastur Oʻzbekiston uchun nimani talab qilishini, tanlov qanday oʻtishini va J-1 majburiyati rejangizga qanday taʼsir qilishini oʻrganasiz. Oxirida sizda <strong>Fulbright muvofiqlik va reja kartasi</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1</b> hafta</span><span class="fact">Faza III</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/master.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 qadam</span></div>
     <div class="path pn">
       <a class="node" href="#l1" data-node="l1"><span class="dot">6.1</span>Shartlar</a><a class="node" href="#l2" data-node="l2"><span class="dot">6.2</span>Tanlov</a><a class="node" href="#l3" data-node="l3"><span class="dot">6.3</span>Ariza</a><a class="node" href="#l4" data-node="l4"><span class="dot">6.4</span>Kalendar</a><a class="node" href="#l5" data-node="l5"><span class="dot">6.5</span>J-1</a><a class="node" href="#fulbright" data-node="tool"><span class="dot">🛠</span>Karta</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Karta</a>
     </div>
@@ -90,45 +113,38 @@
     <ul class="goal">
       <li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Fulbright muvofiqlik xulosasi:</b> har shart: mos / tekshirish kerak / mos emas</span></li><li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span><b>Sikl kalendari:</b> eʼlon, muddat, intervyu, testlar, safar</span></li><li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>J-1 qarori:</b> 2 yillik talab va kelajak rejasi mosligi</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Maqsad bayonnomasi, CV va tavsiya xatini yozish Magistratura dasturi M3–M5 da oʻrgatiladi; bu modul ularni takrorlamaydi. Bu yerda faqat Fulbright ga xos talablar. Elchixona sahifasidagi maʼlumot 31.10.2026 holatiga; yangi sikl eʼlonida oʻzgarishi mumkin.</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Maqsad bayonnomasi, CV va tavsiya xatini yozish Magistratura dasturi M3–M5 da oʻrgatiladi; bu modul ularni takrorlamaydi. Bu yerda faqat Fulbright ga xos talablar. Elchixona sahifasidagi maʼlumot 31.10.2026 holatiga; yangi sikl eʼlonida oʻzgarishi mumkin.</p><p>Kompas Lab universitet, elchixona yoki konsul oʻrnida qaror qabul qilmaydi va qabul, yordam yoki vizani kafolatlamaydi. Vositalar sana va talablarni siz uchun tekshirmaydi: har faktni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Viza va soliq boʻyicha yuridik maslahat berilmaydi. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 6.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.1</span><span class="l-t" style="display:block">Dastur va Oʻzbekiston uchun shartlar</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">✅ Tekshiruv</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span><span class="l-n">Dars 6.1</span><span class="l-t" style="display:block">Fulbright kimga</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Tekshiruv</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Fulbright koʻpchilik oʻylagandek "eng aʼlochilar uchun PhD granti" emas. Oʻzbekistonda bu ish tajribasi bor mutaxassislar uchun magistratura dasturi va uning shartlari aniq yozilgan.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Koʻpchilik Fulbright ni «eng aʼlochilar uchun PhD granti» deb oʻylaydi. Oʻzbekistonda u ish tajribasi bor mutaxassislar uchun magistratura dasturi. Bu darsda shartlarni oʻzingizga qoʻyib koʻramiz.</div></div>
           <div class="panel">
-<h4>Nima (2027–2028 sikli eʼloni)</h4>
-<p>Aspirant va yosh mutaxassislarga AQShda 2 yilgacha magistratura darajasini olish imkoniyati. Tanlov ochiq va natijaga asoslangan.</p>
-<h4>Shartlar</h4>
-<div class="tbl"><table><thead><tr><th>Shart</th><th>Izoh</th></tr></thead><tbody>
-<tr><td>Oʻzbekiston fuqarosi, ariza va tanlov davomida Oʻzbekistonda yashaydi</td><td>Hozir xorijda yashayotganlar mos emas</td></tr>
-<tr><td>Bakalavriatni tugatgan, bakalavr diplomi bor</td><td>Diplom qoʻlda boʻlishi kerak</td></tr>
+<div data-kvideo="l1"></div>
+<div class="tbl"><table><thead><tr><th>Shart (2027–2028 eʼloni)</th><th>Izoh</th></tr></thead><tbody>
+<tr><td>Oʻzbekiston fuqarosi, ariza va tanlov davomida Oʻzbekistonda yashaydi</td><td>Hozir xorijdagilar mos emas</td></tr>
+<tr><td>Bakalavr diplomi bor</td><td>Diplom qoʻlda boʻlishi kerak</td></tr>
 <tr><td>Kamida 2 yillik kasbiy tajriba</td><td>Eng koʻp uchraydigan toʻsiq</td></tr>
-<tr><td>Tibbiyot bitiruvchilari bemor bilan bevosita ishlaydigan dasturga kira olmaydi</td><td>Jamoat salomatligi kabi yondosh sohalar mumkin</td></tr>
-<tr><td>AQShda yaqinda uzoq tajribasi yoʻq nomzodlarga kuchli ustunlik</td><td>—</td></tr>
+<tr><td>Bemor bilan bevosita ishlaydigan tibbiy dasturlar yopiq</td><td>Jamoat salomatligi kabi sohalar mumkin</td></tr>
 </tbody></table></div>
-<h4>Ustuvor sohalar (2027–2028)</h4>
-<ul><li>Sunʼiy intellekt, maʼlumotlar fani va raqamli koʻnikmalar (kompyuter fanlari, kiberxavfsizlik, masʼuliyatli AI).</li><li>AI va muhim minerallar iqtisodiyotiga xizmat qiladigan STEM: yarimoʻtkazgichlar, geologiya, kon muhandisligi, materialshunoslik, energetika tizimlari.</li><li>Yadro muhandisligi va fuqarolik yadro siyosati.</li><li>Kosmos, masofadan zondlash va aerokosmik muhandislik.</li><li>Muhandislik (qurilish, ekologiya, energetika), qayta tiklanadigan energiya, resurslarni boshqarish, qishloq xoʻjaligi va agrotexnologiya.</li></ul>
-<p>Dastur boshqa sohalarga ham ochiq. 2026-yil 5-iyunda elchixona Fulbright ni muhim minerallar, energetika va ilgʻor texnologiya sohalarida kengaytirish va El-yurt umidi jamgʻarmasining sherik moliyalashtirishini eʼlon qilgan.</p>
-<h4>Nima qoplanadi</h4>
-<p>J-1 viza koʻmagi, oʻqish va yigʻimlar, tibbiy sugʻurta, oylik stipendiya, kitob va jihozlar, AQShga borish-kelish aviabileti.</p>
-<div class="srcs">Manba: <a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://uz.usembassy.gov/us-and-uz-expand-fulbright-program-to-build-workforce-for-critical-minerals-energy-and-advanced-technology-sectors/" target="_blank" rel="noopener">AQSh elchixonasi: Fulbright dasturini kengaytirish eʼloni (05.06.2026)</a>. 31.10.2026 holatiga.</div>
+<p><b>Nima beradi:</b> 2 yilgacha magistratura; J-1 viza koʻmagi, oʻqish va yigʻimlar, sugʻurta, oylik stipendiya, kitob, aviabilet.</p>
+<details class="mv-i"><summary>Ustuvor sohalar (2027–2028)</summary><div><p>Sunʼiy intellekt va maʼlumotlar fani; yarimoʻtkazgichlar, geologiya, kon muhandisligi, materialshunoslik, energetika tizimlari; yadro muhandisligi; kosmos va masofadan zondlash; qurilish, ekologiya va energetika muhandisligi, qayta tiklanadigan energiya, qishloq xoʻjaligi. Dastur boshqa sohalarga ham ochiq. 2026-yil 5-iyunda elchixona Fulbright ni muhim minerallar, energetika va ilgʻor texnologiya sohalarida kengaytirish va El-yurt umidi jamgʻarmasining sherik moliyalashtirishini eʼlon qilgan. AQShda yaqinda uzoq tajribasi yoʻq nomzodlarga ustunlik beriladi.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://uz.usembassy.gov/us-and-uz-expand-fulbright-program-to-build-workforce-for-critical-minerals-energy-and-advanced-technology-sectors/" target="_blank" rel="noopener">AQSh elchixonasi: Fulbright dasturini kengaytirish eʼloni (05.06.2026)</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Fulbright Oʻzbekiston uchun: magistratura, 2 yilgacha; bakalavr diplomi, 2 yillik tajriba, Oʻzbekistonda yashash. Ustuvor sohalar STEM va texnologiya, lekin boshqalar ham ochiq.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="t"><p>“Oʻzbekistondan Fulbright Foreign Student Program magistratura uchun.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: elchixona eʼloni.</div></div><div class="qz" data-a="n"><p>“Ish tajribasi talab qilinmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: kamida 2 yillik kasbiy tajriba.</div></div><div class="qz" data-a="n"><p>“Hozir xorijda yashayotgan Oʻzbekiston fuqarosi ariza bera oladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: ariza va tanlov davomida Oʻzbekistonda yashash kerak.</div></div><div class="qz" data-a="t"><p>“Geologiya va energetika tizimlari 2027–2028 siklida ustuvor sohalar qatorida.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Har shart boʻyicha oʻzingizni belgilang: mos / tekshirish kerak / mos emas.</li><li>Sohangiz ustuvor roʻyxatdami? Qaysi band?</li></ul></div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Oʻzbekiston uchun Fulbright: magistratura, 2 yilgacha; diplom, 2 yillik tajriba, Oʻzbekistonda yashash. Ustuvor sohalar STEM, lekin boshqalar ham ochiq.</p></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="t"><p>“Oʻzbekistondan Fulbright Foreign Student Program magistratura uchun.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: elchixona eʼloni.</div></div><div class="qz" data-a="n"><p>“Ish tajribasi talab qilinmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: kamida 2 yillik kasbiy tajriba.</div></div><div class="qz" data-a="n"><p>“Hozir xorijda yashayotgan Oʻzbekiston fuqarosi ariza bera oladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: ariza va tanlov davomida Oʻzbekistonda yashash kerak.</div></div><div class="qz" data-a="t"><p>“Geologiya va energetika tizimlari 2027–2028 siklida ustuvor sohalar qatorida.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>Sizning muvofiqligingiz</b><ul><li>Har shart boʻyicha belgilang: mos, tekshirish kerak, mos emas.</li><li>Sohangiz ustuvor roʻyxatdami? Qaysi band?</li></ul></div>
             <textarea data-save="a1" placeholder="Fuqarolik va yashash: mos; diplom: ...; 2 yil tajriba: ... (... dan beri); soha: ... — ustuvor: ha/yoʻq"></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -137,23 +153,20 @@
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.2</span><span class="l-t" style="display:block">Tanlov bosqichlari va joylashtirish</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧭 Jarayon</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 6.2</span><span class="l-t" style="display:block">Tanlov qanday oʻtadi</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Jarayon</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Fulbright da universitetga oʻzingiz ariza bermaysiz. Tanlov va joylashtirish boshqa tartibda ishlaydi va buni bilish kutish davridagi koʻp xavotirni olib tashlaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Fulbright da universitetga oʻzingiz ariza bermaysiz. Tanlov va joylashtirish boshqa tartibda ishlaydi, buni bilish kutish davridagi xavotirni kamaytiradi. Bu darsda olti bosqichni koʻrib chiqamiz.</div></div>
           <div class="panel">
-<h4>Olti bosqich (elchixona sahifasi)</h4>
-<ol><li>Muddatdan keyin arizalarning texnik tekshiruvi.</li><li>Mustaqil oʻquvchilar paneli arizalarni standart mezonlar bilan baholaydi.</li><li>Eng yuqori ball olganlar AQSh elchixonasida intervyuga chaqiriladi.</li><li>Intervyudan oʻtganlar orasidan nomzodlar koʻrsatiladi.</li><li>Nomzodlar TOEFL va GRE yoki GMAT ga roʻyxatdan oʻtadi; test xarajati elchixona vaucherlari bilan qoplanadi.</li><li>Yakuniy tanlov J. William Fulbright stipendiya kengashining tasdigʻi, mablagʻ va muvaffaqiyatli akademik joylashtirishga bogʻliq.</li></ol>
-<h4>Joylashtirish</h4>
-<p>Elchixona sahifasiga koʻra, nomzodlar joylashtirish jarayonida qatnashmaydi va faqat yakuniy natija haqida xabar oladi. IIE ning umumiy tavsifida joylashtirishning ikki turi bor: IIE jamoasi nomzod uchun universitetlarga ariza beradigan tur va nomzod oʻzi ariza beradigan tur. Oʻzbekiston uchun qaysi biri qoʻllanishini elchixona eʼlonidan oling.</p>
-<div class="box info">Intervyu tayyorgarligining umumiy usullari (STAR, oʻzini tanishtirish, yozib olish) Magistratura dasturi M8 da. Bu yerda Fulbright ga xos savol: siz qaytgandan keyin Oʻzbekistonga nima olib kelasiz?</div>
-<div class="srcs">Manba: <a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://foreign.fulbrightonline.org/about/foreign-student-program" target="_blank" rel="noopener">Fulbright Foreign Student Program (IIE)</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l2"></div>
+<ol><li>Muddatdan keyin texnik tekshiruv.</li><li>Mustaqil oʻquvchilar paneli standart mezon bilan baholaydi.</li><li>Eng yuqori ball olganlar elchixonada intervyuga chaqiriladi.</li><li>Intervyudan oʻtganlardan nomzodlar koʻrsatiladi.</li><li>Nomzodlar TOEFL va GRE yoki GMAT topshiradi, xarajat vaucher bilan.</li><li>Yakuniy tanlov: Fulbright kengashi tasdigʻi, mablagʻ va joylashtirish.</li></ol>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Elchixona sahifasiga koʻra, nomzodlar joylashtirishda qatnashmaydi va yakuniy natija haqida xabar oladi. IIE umumiy tavsifida ikki tur bor: IIE nomzod uchun ariza beradigan va nomzod oʻzi ariza beradigan. Oʻzbekiston uchun qaysi biri, elchixona eʼlonidan oling. Intervyu usullari (STAR, oʻzini tanitish) Magistratura dasturi M8 da; bu yerda Fulbright ga xos savol: qaytgandan keyin Oʻzbekistonga nima olib kelasiz?</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://foreign.fulbrightonline.org/about/foreign-student-program" target="_blank" rel="noopener">Fulbright Foreign Student Program (IIE)</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Bosqichlar: texnik tekshiruv, oʻquvchilar paneli, elchixonada intervyu, nomzodlik, testlar, kengash tasdigʻi va joylashtirish. Joylashtirishda nomzod ishtirok etmaydi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Olti bosqichning har biri uchun siz nima tayyorlashingiz kerakligini bir jumlada yozing.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Olti bosqich: texnik tekshiruv, panel, intervyu, nomzodlik, testlar, kengash tasdigʻi. Joylashtirishda nomzod qatnashmaydi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Har bosqichga tayyorgarlik</b><ul><li>Olti bosqichning har biri uchun nima tayyorlashingizni bir jumlada yozing.</li></ul>
             <textarea data-save="a2" placeholder="1) texnik: toʻliq ariza ... 2) panel: ... 3) intervyu: ... 4) ... 5) testlar: ... 6) ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -162,29 +175,26 @@
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.3</span><span class="l-t" style="display:block">Ariza tarkibi va halollik</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📝 Reja</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 6.3</span><span class="l-t" style="display:block">Ariza va halollik</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Reja</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Fulbright arizasidagi har bir insho original boʻlishi shart. Elchixona plagiat yoki AI yozgan matn arizani muvofiq emas deb topishga olib kelishini aniq yozgan.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Fulbright arizasidagi har insho original boʻlishi shart. Elchixona plagiat yoki AI yozgan matn arizani muvofiq emas deb topishga olib kelishini aniq yozgan. Bu darsda ariza tarkibini tekshiramiz.</div></div>
           <div class="panel">
-<h4>Ariza tarkibi (eʼlondan)</h4>
+<div data-kvideo="l3"></div>
 <div class="tbl"><table><thead><tr><th>Qism</th><th>Izoh</th><th>Qayerda oʻrganiladi</th></tr></thead><tbody>
-<tr><td>Onlayn ariza (IIE portali)</td><td>Muddatgacha; kech yoki toʻliq boʻlmagan ariza koʻrilmaydi</td><td>Shu modul</td></tr>
-<tr><td>Insholar</td><td>Original boʻlishi kerak; elchixonaning plagiat va insho koʻrsatmalari hujjatini oʻqing</td><td>Yozish: Magistratura dasturi M5</td></tr>
-<tr><td>Rezyume</td><td>Elchixona maslahatlari sahifasi bor</td><td>Magistratura dasturi M3</td></tr>
-<tr><td>Tavsiya xati</td><td>Elchixonaning boʻsh formasi bilan</td><td>Magistratura dasturi M4</td></tr>
-<tr><td>TOEFL va GRE yoki GMAT</td><td>Nomzod sifatida koʻrsatilganlar topshiradi, vaucher bilan</td><td>Mustaqil tayyorgarlik; kursga kirmaydi</td></tr>
+<tr><td>Onlayn ariza (IIE portali)</td><td>Kech yoki toʻliq boʻlmagan ariza koʻrilmaydi</td><td>Shu modul</td></tr>
+<tr><td>Insholar</td><td>Original; elchixona koʻrsatmasini oʻqing</td><td>Magistratura M5</td></tr>
+<tr><td>Rezyume</td><td>Elchixona maslahatlari boʻyicha</td><td>Magistratura M3</td></tr>
+<tr><td>Tavsiya xati</td><td>Elchixonaning formasi bilan</td><td>Magistratura M4</td></tr>
+<tr><td>TOEFL va GRE yoki GMAT</td><td>Nomzodlar topshiradi, vaucher bilan</td><td>Kursga kirmaydi</td></tr>
 </tbody></table></div>
-<h4>Fulbright ga xos tekshiruv</h4>
-<ul><li>Insho soni, hajmi va savollari: faqat joriy sikl koʻrsatmasidan.</li><li>Rezyume formati: elchixona maslahatlari boʻyicha.</li><li>Tavsiya xati: faqat elchixona formasi bilan.</li></ul>
-<div class="box warn">AI dan matn yozdirish va boshqa birovning inshosini moslash Fulbright da arizani yopadi. Kompas Lab ham tayyor matn bermaydi: insholarni oʻzingiz yozasiz, freymvork Magistratura dasturi da.</div>
-<div class="srcs">Manba: <a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Insho soni, hajmi va savollari faqat joriy sikl koʻrsatmasidan olinadi. AI dan matn yozdirish va boshqa birovning inshosini moslash arizani yopadi. Kompas Lab ham tayyor matn bermaydi: inshoni oʻzingiz yozasiz, tuzilma va mezon Magistratura dasturida.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>Ariza: onlayn shakl, original insholar, rezyume, elchixona formasidagi tavsiya, nomzodlar uchun testlar. Plagiat yoki AI matni arizani yopadi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Joriy sikl sahifasidagi insho koʻrsatmalari hujjatini toping va savollar sonini yozing.</li><li>Har qism uchun tayyorlik holatingizni belgilang.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Ariza: onlayn shakl, original insho, rezyume, elchixona formasidagi tavsiya, nomzodlarga testlar. Plagiat yoki AI matni arizani yopadi.</p></div></div>
+          <div class="panel"><div class="assign"><b>Tayyorlik holati</b><ul><li>Joriy sikl insho koʻrsatmasini toping va savollar sonini yozing.</li><li>Har qism uchun tayyorlik holatini belgilang.</li></ul>
             <textarea data-save="a3" placeholder="Insho koʻrsatmasi: ... ta savol, ... (havola). Rezyume: ...; tavsiya: ...; ingliz tili: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -194,27 +204,24 @@
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
           <span><span class="l-n">Dars 6.4</span><span class="l-t" style="display:block">Sikl kalendari</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📅 Kalendar</span><span class="tag xp">+24 XP</span></span></span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Kalendar</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Fulbright muddati bilan safar orasida taxminan bir yil bor. Ariza muddatidan orqaga hisoblamasangiz, tavsiya va tajriba hujjatlarini oxirgi haftada yigʻasiz.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Fulbright muddati bilan safar orasida taxminan bir yil bor. Muddatdan orqaga hisoblamasangiz, tavsiya va tajriba hujjatini oxirgi haftada yigʻasiz. Bu darsda teskari rejani tuzamiz.</div></div>
           <div class="panel">
-<h4>2027–2028 sikli</h4>
-<div class="tbl"><table><thead><tr><th>Bosqich</th><th>Sana</th></tr></thead><tbody>
+<div data-kvideo="l4"></div>
+<div class="tbl"><table><thead><tr><th>Bosqich (2027–2028 sikli)</th><th>Sana</th></tr></thead><tbody>
 <tr><td>Ariza muddati</td><td>30.06.2026 (yopilgan)</td></tr>
-<tr><td>Intervyu, nomzodlik, testlar</td><td>Muddatdan keyin; aniq sanalar sahifada koʻrsatilmagan</td></tr>
+<tr><td>Intervyu, nomzodlik, testlar</td><td>Muddatdan keyin; aniq sana koʻrsatilmagan</td></tr>
 <tr><td>Safar</td><td>2027-yil bahor–kuz</td></tr>
 </tbody></table></div>
-<p>Keyingi sikl (2028–2029) uchun eʼlon 31.10.2026 holatiga topilmadi. 2027–2028 siklida muddat iyun oxiri boʻlgan; bu keyingi sikl uchun kafolat emas.</p>
-<h4>Orqaga hisoblash (taxminiy, eʼlon chiqqach aniqlanadi)</h4>
-<ol><li>Muddatdan 6 oy oldin: muvofiqlik va tajriba hujjatlari.</li><li>4 oy oldin: tavsiya beruvchilar bilan kelishish.</li><li>3 oy oldin: insho qoralamalari.</li><li>1 oy oldin: tahrir va toʻliq ariza.</li><li>Muddatdan 1 hafta oldin topshirish.</li></ol>
-<div class="box info">Elchixonaning almashinuv dasturlari sahifasini oyiga bir marta tekshiring va Fulbright sahifasidagi yangilanish sanasini yozib boring.</div>
-<div class="srcs">Manba: <a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://uz.usembassy.gov/exchange-programs/" target="_blank" rel="noopener">AQSh elchixonasi: almashinuv dasturlari roʻyxati</a>. 31.10.2026 holatiga.</div>
+<p>20.11.2026 holatiga: keyingi sikl (2028–2029) eʼloni topilmadi. Oʻtgan siklda muddat iyun oxiri boʻlgan; bu keyingi sikl uchun kafolat boʻlmaydi.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Teskari reja (taxminiy, eʼlondan keyin aniqlanadi): muddatdan 6 oy oldin muvofiqlik va tajriba hujjatlari; 4 oy oldin tavsiya beruvchilar bilan kelishish; 3 oy oldin insho qoralamalari; 1 oy oldin tahrir va toʻliq ariza; 1 hafta oldin topshirish. Elchixona sahifasini oyiga bir marta tekshiring va yangilanish sanasini yozib boring.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://uz.usembassy.gov/exchange-programs/" target="_blank" rel="noopener">AQSh elchixonasi: almashinuv dasturlari roʻyxati</a>. 20.11.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p>2027–2028 muddati 30.06.2026 da yopilgan; keyingi sikl eʼlon qilinmagan. Eʼlon chiqqach muddatdan orqaga 6 oylik reja tuzing.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Keyingi sikl muddati iyun oxiri boʻlsa deb faraz qilib, 6 oylik teskari rejangizni yozing va uni "faraz" deb belgilang.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Oʻtgan sikl yopilgan, keyingisi eʼlon qilinmagan. Eʼlon chiqqach muddatdan orqaga 6 oylik reja tuzing.</p></div></div>
+          <div class="panel"><div class="assign"><b>Faraz bilan reja</b><ul><li>Keyingi muddat iyun oxiri deb faraz qilib, 6 oylik teskari reja yozing va uni «faraz» deb belgilang.</li></ul>
             <textarea data-save="a4" placeholder="Faraz: muddat 30.06.2027. Yanvar: ...; mart: ...; aprel: ...; may: ...; iyun: ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -223,25 +230,25 @@
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.5</span><span class="l-t" style="display:block">J-1 va 2 yillik vatanda yashash talabi</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">⚖️ Qaror</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 6.5</span><span class="l-t" style="display:block">J-1 va 2 yillik talab</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Qaror</span><span class="tag xp">+24 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Fulbright tugagach AQShda ishlab qolishni rejalashtirgan nomzod qonuniy toʻsiqqa uriladi. Bu toʻsiqni ariza berishdan oldin bilish kerak.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Fulbright tugagach AQShda ishlab qolishni rejalashtirgan nomzod qonuniy toʻsiqqa duch keladi. Bu toʻsiqni arizadan oldin bilish kerak. Bu darsda 212(e) talabini koʻrib chiqamiz.</div></div>
           <div class="panel">
-<h4>Elchixona eʼloni</h4>
-<p>Grant J-1 vizasi bilan; grant tugagach, J-1 talablariga koʻra kamida 2 yil oʻz mamlakatiga qaytishi kerak.</p>
-<h4>212(e) qanday ishlaydi (Harvard xalqaro ofisi)</h4>
-<ul><li>Qoʻllanadi: J-1 egasi AQSh hukumati, oʻz hukumati yoki xalqaro tashkilot mablagʻi bilan moliyalashtirilgan boʻlsa; malakasi <span lang="en">Exchange Visitor Skills List</span> da boʻlsa; yoki AQShda klinik tibbiy taʼlim olayotgan boʻlsa.</li><li>Cheklaydi: immigratsion viza, H yoki L vizasi va AQSh ichida boshqa maqomga oʻtish, vatanda 2 yil boʻlmaguncha.</li><li>Qanday bilinadi: DS-2019 formasi va J-1 vizadagi belgi; noaniq boʻlsa, Davlat departamentidan <span lang="en">Advisory Opinion</span> soʻraladi.</li></ul>
-<h4>Ozod qilish</h4>
-<p>Davlat departamenti sahifasida asoslardan biri sifatida favqulodda qiyinchilik yoki taʼqib koʻrsatilgan; bunda DS-3035 arizasi bilan birga USCIS ga Form I-612 topshiriladi. Ozod qilish oddiy yoʻl emas va unga tayanib reja tuzilmaydi.</p>
-<div class="box warn">Kompas Lab viza boʻyicha yuridik maslahat bermaydi. Shaxsiy holat boʻyicha universitet xalqaro ofisi yoki immigratsiya advokati bilan maslahatlashing.</div>
-<div class="srcs">Manba: <a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://www.hio.harvard.edu/node/127" target="_blank" rel="noopener">Harvard International Office: 212(e) 2 yillik talab</a>; <a href="https://travel.state.gov/content/travel/en/us-visas/study/exchange/waiver-of-the-exchange-visitor.html" target="_blank" rel="noopener">AQSh Davlat departamenti: J-1 2 yillik talabidan ozod qilish</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l5"></div>
+<p>Elchixona eʼloniga koʻra, grant J-1 vizasi bilan; tugagach kamida 2 yil Oʻzbekistonga qaytish kerak.</p>
+<div class="tbl"><table><thead><tr><th>Savol</th><th>Javob (Harvard xalqaro ofisi)</th></tr></thead><tbody>
+<tr><td>Qachon qoʻllanadi</td><td>Hukumat yoki xalqaro tashkilot puli; <span lang="en">Exchange Visitor Skills List</span>; AQShda klinik tibbiy taʼlim</td></tr>
+<tr><td>Nimani cheklaydi</td><td>Immigratsion viza, H yoki L vizasi, AQSh ichida maqom oʻzgartirish</td></tr>
+<tr><td>Qanday bilinadi</td><td>DS-2019 va vizadagi belgi; noaniq boʻlsa, <span lang="en">Advisory Opinion</span></td></tr>
+</tbody></table></div>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Davlat departamenti sahifasida ozod qilish asoslaridan biri favqulodda qiyinchilik yoki taʼqib; bunda DS-3035 bilan birga USCIS ga Form I-612 topshiriladi. Ozod qilish oddiy yoʻl hisoblanmaydi, rejani unga qurmang. Shaxsiy holat boʻyicha universitet xalqaro ofisi yoki immigratsiya advokati bilan maslahatlashing.</p></div></details><details class="mv-i"><summary>Manbalar</summary><div><p class="srcs"><a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://www.hio.harvard.edu/node/127" target="_blank" rel="noopener">Harvard International Office: 212(e) 2 yillik talab</a>; <a href="https://travel.state.gov/content/travel/en/us-visas/study/exchange/waiver-of-the-exchange-visitor.html" target="_blank" rel="noopener">AQSh Davlat departamenti: J-1 2 yillik talabidan ozod qilish</a>. 31.10.2026 holatiga.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p>Fulbright J-1 bilan: grantdan keyin kamida 2 yil vatanda yashash talabi. Bu immigratsion viza, H, L va maqom oʻzgartirishni cheklaydi. AQShda qolish rejasi boʻlsa, Fulbright mos emas.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>5 yillik rejangizni yozing: magistraturadan keyin qayerda ishlaysiz?</li><li>Bu reja 2 yillik talab bilan mosmi? Ha yoki yoʻq va nega.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p class="mv-take">Fulbright J-1 bilan: grantdan keyin 2 yil vatanda yashash talabi. AQShda qolish rejasi boʻlsa, Fulbright mos kelmaydi.</p></div></div>
+          <div class="panel"><div class="assign"><b>5 yillik rejangiz</b><ul><li>Magistraturadan keyingi 5 yillik rejangizni yozing.</li><li>Bu reja 2 yillik talab bilan mosmi? Ha yoki yoʻq va nega.</li></ul>
             <textarea data-save="a5" placeholder="Reja: 2028–2030 magistratura, keyin ... 2 yillik talab bilan mos: ha, chunki ..."></textarea></div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
         </div>
@@ -286,6 +293,7 @@
   </section>
 
   <section id="artefakt">
+    <div data-kvideo="res"></div>
     <h2 id="artTitle">Fulbright muvofiqlik va reja kartasi</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
@@ -311,11 +319,13 @@
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="6"><h2>III bosqich yakunlandi: keyingi qadam magistratura va PhD moliyasi</h2><div class="mv-bar"><i style="width:75%"></i></div><p class="mv-small">III bosqich: 2 / 2 modul · Rejangiz 75% tayyor</p><div class="mv-k" data-mn="m6"><b>Fulbright boʻyicha qaroringiz tayyor.</b> Fulbright boʻlmasa ham AQSh magistraturasi va PhD ga yoʻl bor: kafedra moliyasi. IV bosqichda (M7–M8) moliya paketini solishtirasiz va viza tartibini oʻrganasiz.</div><p>IV bosqich darslari:</p><ul class="mv-lock"><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.1 Pul qayerdan: magistratura va PhD</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.2 PhD moliya paketi</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.3 Kafedra sahifasi: 10 savol</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.4 Tashqi grantlar kimga ochiq</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.5 Takliflarni solishtirish</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">8.1 F-1 yoki J-1</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">8.2 Toshkentda viza</li></ul><p class="mv-small">Keyingi bosqich 1 ta bosqich tarifida navbatdagi toʻlov bilan ochiladi. Toʻliq dastur tarifida hamma modul allaqachon ochiq.</p><div class="mv-row"><a class="btn btn-p" href="usa-lab-o.html?m=7">IV bosqich: M7 ni ochish</a><a class="btn btn-g" href="usa-lab-narxlar.html">Tariflar</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
       <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
+      <div><b>Vaqt</b>~1 hafta (darslar ~1 soat + karta)</div>
       <div><b>Natija</b>Fulbright muvofiqlik va reja kartasi</div>
     </div>
     <p class="srcs">Faktlar: <a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQSh elchixonasi (Toshkent): Fulbright Foreign Student Program</a>; <a href="https://uz.usembassy.gov/us-and-uz-expand-fulbright-program-to-build-workforce-for-critical-minerals-energy-and-advanced-technology-sectors/" target="_blank" rel="noopener">AQSh elchixonasi: Fulbright dasturini kengaytirish eʼloni (05.06.2026)</a>; <a href="https://foreign.fulbrightonline.org/about/foreign-student-program" target="_blank" rel="noopener">Fulbright Foreign Student Program (IIE)</a>; <a href="https://www.hio.harvard.edu/node/127" target="_blank" rel="noopener">Harvard International Office: 212(e) 2 yillik talab</a>; <a href="https://travel.state.gov/content/travel/en/us-visas/study/exchange/waiver-of-the-exchange-visitor.html" target="_blank" rel="noopener">AQSh Davlat departamenti: J-1 2 yillik talabidan ozod qilish</a>; <a href="https://uz.usembassy.gov/exchange-programs/" target="_blank" rel="noopener">AQSh elchixonasi: almashinuv dasturlari roʻyxati</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov, summa va siyosatlar har yili oʻzgaradi.</p>
@@ -325,13 +335,15 @@
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="usa-lab.html">← USA dasturi</a>
+    <a class="btn btn-g" href="usa-lab-o.html?m=5">← M5</a>
     <a class="btn btn-p" href="usa-lab-o.html?m=7">Keyingi: M7 Magistratura va PhD moliyasi →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/usa-next.js" defer></script>
 <script>
 window.KGTool = { init: function () {
   var box = document.getElementById("fbQ"), o = document.getElementById("fbOut");
@@ -370,7 +382,7 @@ window.KGTool = { init: function () {
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -527,7 +539,7 @@ window.KGTool = { init: function () {
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

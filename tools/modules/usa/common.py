@@ -1,4 +1,4 @@
-# USA dasturi M1–M8: umumiy manba havolalari. Tekshirildi: 2026-10-31.
+# USA dasturi M1–M8: umumiy manba havolalari. Tekshirildi: 2026-10-31; viza, maqom, Fulbright, UGRAD va Dartmouth 2026-11-20 da qayta tekshirildi (DATE2).
 # Qoida (2026-10-31): manbalar faqat universitetlar va masʼul tashkilotlar (AQSh Davlat departamenti,
 # elchixona, DHS/ICE, Taʼlim vazirligi, NSF, College Board, CGS, CHEA, Carnegie/ACE) sahifalari.
 # Blog, agentlik, reyting yigʻuvchi va yangilik saytlari manba sifatida ishlatilmaydi.
@@ -9,6 +9,8 @@ def a(url, text):
 
 DATE = "31.10.2026"
 HOL = f"{DATE} holatiga"
+DATE2 = "20.11.2026"
+HOL2 = f"{DATE2} holatiga"
 STD = f"Faktlar {HOL}; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov, summa va siyosatlar har yili oʻzgaradi."
 
 # AQSh Davlat departamenti va elchixona
@@ -65,3 +67,11 @@ BROWN_TB = a("https://isss.brown.edu/traveling/current-travel-and-visa-restricti
 MIT_VET = a("https://iso.mit.edu/news/student-and-scholar-f-j-m-visa-interviews-to-resume-with-new-vetting-procedures", "MIT ISO: F, J, M vizalari uchun kengaytirilgan tekshiruv (2025-iyun)")
 SJSU = a("https://sjsu.edu/admissions/internationalfinancialdocs.php", "San José State universiteti: I-20 uchun moliyaviy hujjatlar")
 KSU = a("https://campus.kennesaw.edu/current-students/academics/global-education/international-student-scholar-services/f-1/cost-to-attend.php", "Kennesaw State universiteti: bir yillik taxminiy xarajat (I-20)")
+
+# 2026-11-20 da qoʻshilgan (v2)
+BERKELEY_DS = a("https://internationaloffice.berkeley.edu/immigration/end-of-ds-students", "UC Berkeley International Office: D/S qoidasi bekor qilingani (16.11.2026)")
+FR_DS = a("https://www.federalregister.gov/documents/2026/07/17/2026-14439/establishing-a-fixed-time-period-of-admission-and-an-extension-of-stay-procedure-for-nonimmigrant", "Federal Register: D/S oʻrniga belgilangan muddat qoidasi (17.07.2026)")
+YALE_OPT = a("https://oiss.yale.edu/news/dhs-proposes-new-fees-for-optional-practical-training-opt", "Yale OISS: OPT uchun yangi toʻlov taklifi (08.10.2026)")
+UWYO_OPT = a("https://www.uwyo.edu/iss/immigration-topics/optional-practical-training.html", "Wyoming universiteti ISS: OPT toʻlovi taklifi, 91 FR 64566")
+BU_VIF = a("https://www.bu.edu/isso/2026/05/19/visa-integrity-fee/", "Boston universiteti ISSO: Visa Integrity Fee (19.05.2026)")
+DARTMOUTH_FA = a("https://financialaid.dartmouth.edu/how-aid-works/introduction-financial-aid", "Dartmouth: moliyaviy yordamga kirish")

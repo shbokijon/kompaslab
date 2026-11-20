@@ -42,11 +42,12 @@ def check(n):  # n = slug, masalan "m3-u"
         if r.returncode: out.append(f"JS #{i}: {r.stderr.strip()[:200]}")
     # 3) dars tuzilmasi
     nl = len(re.findall(r'<article class="lesson"', src))
-    for tab in ("Diqqat 🔥", "Asosiy qism", "Xulosa", "Topshiriq"):
+    for tab in ("Diqqat", "Asosiy qism", "Xulosa", "Topshiriq"):  # v2 (2026-11-20): tablarda emoji yoʻq
         c = src.count(f'role="tab">{tab}<')
         if c != nl: out.append(f"tab '{tab}': {c} ≠ {nl} dars")
     # 4) qobiq
-    if "<main>" not in src: out.append("<main> yoʻq")
+    if not re.search(r"<main[ >]", src): out.append("<main> yoʻq")
+    if src.count("data-kvideo=") < nl + 1: out.append("video joylari yetishmaydi")
     # 5) imlo (koʻrinadigan matn: script/style tashqarisi)
     p = P(); p.feed(src); txt = "".join(p.text)
     if "'" in txt: out.append("ASCII apostrof matnda: " + repr(txt[max(0, txt.index("'") - 30):txt.index("'") + 30]))

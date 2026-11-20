@@ -38,7 +38,8 @@ MODULES = {
     "tadbirkor-talaba-m0": dict(lab="tadbirkor-talaba.html", site=True, protect=True),
     # Tayyor sahifa (avval master-lab-m0.html qoʻlda yuritilgan): faqat sayt versiyasi
     "master-lab-m0":       dict(lab="master-lab.html", site=True, raw=True),
-    "usa-lab-m0":          dict(lab="usa-lab.html", site=True, protect=True),
+    # USA M0 v2 (2026-11-20): tayyor sahifa src/usa-lab-m0.page.html (Bakalavr M0 v2 andozasi; usa/m0_v2.py bir marta yasagan)
+    "usa-lab-m0":          dict(lab="usa-lab.html", site=True, raw=True),
     # Musofir M0 ham roʻyxatdan oʻtganlarga bepul; server gate hamma dasturlar uchun bir xil.
     "musofir-lab-m0":      dict(lab="musofir-lab.html", site=True, protect=True,
                                 og=("Musofir dasturi M0: rasmiy yoʻl va firibgarlikdan himoya",

@@ -43,13 +43,13 @@ PROBLEMS = {
     ("🎤", "Intervyudan qoʻrqasiz", "Komissiya nima soʻrashini bilmaysiz.", "Mashq", "Oʻz bayonotingiz va oʻquv rejangiz asosida intervyu mashq qilasiz."),
   ]),
 "usa-lab": dict(
-  h1=h("AQShda oʻqish qimmat koʻrinadi.", "Lekin oilangizga mos yoʻl boʻlishi mumkin."),
-  lead="Universitet yordami, Global UGRAD, Fulbright, magistratura va PhD yoʻllarini oila byudjeti va shartlarga qarab solishtirasiz.",
+  h1=h("AQShda oʻqish qimmat koʻrinadi.", "Lekin oilangiz summasiga mos yoʻl boʻlishi mumkin."),
+  lead="Bepul M0 da 12 daqiqada qaysi yoʻl sizga ochiqligini va qayerdan boshlashni bilasiz. Universitet, pul va vizani rasmiy manba bilan tekshirasiz.",
   probs=[
-    ("money", "Jami xarajat nomaʼlum", "Oʻqish va yashash birga qancha turishini bilmaysiz.", "Rasmiy hisob", "Universitetning rasmiy xarajat hujjatidan umumiy summani hisoblaysiz."),
-    ("compass", "Qaysi yoʻl real", "Grant va universitet yordami shartlari bir-biriga oʻxshamaydi.", "Byudjetga qarab tanlash", "Yoʻlni oila toʻlay oladigan summa va muvofiqlik shartlariga qarab tanlaysiz."),
-    ("telescope", "Yordam beradigan universitet qaysi", "Xalqaro talabaga toʻliq yordam beradigan universitetlar kam va tanlovli.", "Rasmiy sahifa", "Har universitetni moliyaviy yordam sahifasi bilan tekshirasiz."),
-    ("🛂", "Viza chalkash", "F-1, J-1 va I-20 aralashib ketadi.", "Oldindan bilish", "Viza turi va talablarini rasmiy manbadan oldindan bilasiz."),
+    ("💸", "Bir yili qancha turishi nomaʼlum", "Saytdagi oʻqish toʻlovi toʻliq narxning bir qismi.", "Toʻliq narx hisobi", "Oʻqish, yashash, sugʻurta va bir martalik toʻlovlarni universitetning rasmiy narx sahifasidan hisoblaysiz."),
+    ("🧭", "Qaysi yoʻl sizga ochiq", "Bakalavr, UGRAD, Fulbright va PhD shartlari bir-biriga oʻxshamaydi.", "Yoʻl tanlagich", "Holatingiz va oila summasiga qarab sizga ochiq yoʻlni bepul M0 da aniqlaysiz."),
+    ("🚩", "Universitet haqiqiymi", "«Kafolatli qabul» va «I-20 3 kunda» deydigan saytlar bor.", "Ikki baza", "Akkreditatsiya va SEVP sertifikatini rasmiy bazada 15 daqiqada tekshirasiz."),
+    ("🛂", "Viza va I-20 chalkash", "F-1, J-1, SEVIS va yangi toʻlovlar aralashib ketadi.", "Sanali roʻyxat", "Viza bosqichlari va toʻlovlarini rasmiy manba va sana bilan oldindan bilasiz."),
   ]),
 "daad-lab": dict(
   h1=h("Germaniyada ariza tartibi boshqacha.", "Koʻp dasturda avval ilmiy rahbar topiladi."),
