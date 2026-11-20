@@ -11,6 +11,7 @@
 //   TG_FLUSH_SECRET     — Vault dagi tg_flush_secret bilan bir xil
 // Matnlar manbada amaldagi alifboda (oʻ, gʻ U+02BB; tutuq U+02BC). Yuborishda toNew() yangi alifboga oʻgiradi.
 // Botda sotuv, pullik kontent va AI yoʻq. Murojaat matnlari andoza; har biri admin tasdigʻi bilan ketadi.
+// 2026-11-20: bir necha admin (tg_admins); karta, yordam soʻrovi va javoblar har adminga.
 // 2026-11-12: hisob ulanganda shaxsiy salomlashuv (welcome.ts); saytda ulash: js/tg-link.js
 // (register.html 4-qadam va dashboard.html kartasi).
 import { createClient } from "jsr:@supabase/supabase-js@2";
@@ -20,7 +21,7 @@ const USER_TOKEN = Deno.env.get("TG_USER_BOT_TOKEN") ?? "";
 const ADMIN_TOKEN = Deno.env.get("TG_ADMIN_BOT_TOKEN") ?? "";
 const WEBHOOK_SECRET = Deno.env.get("TG_WEBHOOK_SECRET") ?? "";
 const FLUSH_SECRET = Deno.env.get("TG_FLUSH_SECRET") ?? "";
-const ADMIN_CHAT = 255077744;
+const OWNER_CHAT = 255077744; // asoschi; tg_admins boʻsh yoki oʻqilmasa ham doim admin
 const SITE = "https://kompaslab.uz/";
 const PRIVACY_URL = Deno.env.get("TG_PRIVACY_URL") ?? "https://kompaslab.uz/maxfiylik.html";
 const SUPPORT_LIMIT_PER_HOUR = 5;
@@ -31,6 +32,23 @@ const sb = createClient(
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
   { auth: { persistSession: false } },
 );
+
+// ---------- Adminlar (2026-11-20: tg_admins jadvali, bir necha admin) ----------
+let adminCache: { at: number; ids: number[] } | null = null;
+async function admins(): Promise<number[]> {
+  if (adminCache && Date.now() - adminCache.at < 60_000) return adminCache.ids;
+  const { data } = await sb.from("tg_admins").select("chat_id").eq("active", true);
+  const ids = (data ?? []).map((r: { chat_id: number }) => Number(r.chat_id)).filter((x: number) => Number.isFinite(x) && x > 0);
+  if (!ids.includes(OWNER_CHAT)) ids.unshift(OWNER_CHAT);
+  adminCache = { at: Date.now(), ids };
+  return ids;
+}
+async function isAdmin(id: number | undefined): Promise<boolean> {
+  return typeof id === "number" && (await admins()).includes(id);
+}
+async function toAdmins(textSrc: string): Promise<void> {
+  for (const id of await admins()) await send(id, textSrc, "user");
+}
 
 // ---------- Yangi alifbo (js/alifbo.js bilan bir xil boʻlishi kerak) ----------
 // EX: sh/ch li xorijiy soʻzlar oʻgirilmaydi. Saytdagi EX roʻyxati kengaysa, bu yerga ham qoʻshiladi.
@@ -128,7 +146,7 @@ async function sendLinkedWelcome(chatId: number, userId: string, username: strin
       ...(w.button ? { reply_markup: { inline_keyboard: [[{ text: toNew(w.button.text), url: w.button.url }]] } } : {}),
     });
     if (!r.ok) await send(chatId, T.linked);
-    await send(ADMIN_CHAT, w.adminLine, "user");
+    await toAdmins(w.adminLine);
   } catch (e) {
     console.error("welcome", e instanceof Error ? e.message : e);
     await send(chatId, T.linked);
@@ -224,13 +242,17 @@ async function outreachCards(): Promise<{ carded: number; failed: number }> {
       : [[btn("A matni", `o:${o.id}:0`), btn("B matni", `o:${o.id}:1`)],
          [btn("Qoʻlda yubordim", `o:${o.id}:m`), btn("Oʻtkazib yuborish", `o:${o.id}:s`)]];
 
-    // Karta talabalar botidan yuboriladi: tugma bosilishi shu botning webhookiga tushadi.
-    const r = await tg(USER_TOKEN, "sendMessage", {
-      chat_id: ADMIN_CHAT,
-      text: toNew(head.concat(body).join("\n")).slice(0, 4000),
-      disable_web_page_preview: true,
-      reply_markup: { inline_keyboard: kb },
-    });
+    // Karta talabalar botidan har adminga yuboriladi: tugma bosilishi shu botning webhookiga tushadi.
+    let r: TgResult = { ok: false, status: 0 };
+    for (const aid of await admins()) {
+      const x = await tg(USER_TOKEN, "sendMessage", {
+        chat_id: aid,
+        text: toNew(head.concat(body).join("\n")).slice(0, 4000),
+        disable_web_page_preview: true,
+        reply_markup: { inline_keyboard: kb },
+      });
+      if (!r.ok) r = x; // birinchi muvaffaqiyatli javob saqlanadi
+    }
     if (r.ok && r.result) {
       await sb.from("outreach_queue").update({
         status: "carded", carded_at: new Date().toISOString(), admin_message_id: r.result.message_id,
@@ -254,7 +276,8 @@ async function onCallback(cq: any): Promise<void> {
   // Admin qarori: o:<id>:<0|1|s|m>
   let m = /^o:(\d+):([01sm])$/.exec(data);
   if (m) {
-    if (cq.from?.id !== ADMIN_CHAT) { await ack(); return; }
+    if (!(await isAdmin(cq.from?.id))) { await ack(); return; }
+    const adminChat: number = cq.message?.chat?.id ?? cq.from.id;
     const id = Number(m[1]), act = m[2];
     const { data: o } = await sb.from("outreach_queue").select("id, user_id, status, variants").eq("id", id).maybeSingle();
     if (!o) { await ack("Topilmadi"); return; }
@@ -263,7 +286,7 @@ async function onCallback(cq: any): Promise<void> {
     const mark = async (label: string) => {
       if (msgId) {
         await tg(USER_TOKEN, "editMessageReplyMarkup", {
-          chat_id: ADMIN_CHAT, message_id: msgId, reply_markup: { inline_keyboard: [[btn(label, "x")]] },
+          chat_id: adminChat, message_id: msgId, reply_markup: { inline_keyboard: [[btn(label, "x")]] },
         });
       }
     };
@@ -284,7 +307,7 @@ async function onCallback(cq: any): Promise<void> {
 
     if (!l || l.blocked_at) {
       // Ulanmagan: nusxa olish uchun matnni adminga yuboramiz, holat oʻzgarmaydi.
-      await send(ADMIN_CHAT, v.t, "user");
+      await send(adminChat, v.t, "user");
       await ack("Matn yuborildi, nusxa oling");
       return;
     }
@@ -332,7 +355,7 @@ async function onCallback(cq: any): Promise<void> {
     }
     await send(chatId, key === "no" ? T.replyNo : T.replyThanks);
     const { data: p } = await sb.from("profiles").select("full_name").eq("id", o.user_id).maybeSingle();
-    await send(ADMIN_CHAT, `💬 Javob: ${p?.full_name ?? "Talaba"} · ${SEG[o.segment] ?? o.segment}\n→ ${label}`, "user");
+    await toAdmins(`💬 Javob: ${p?.full_name ?? "Talaba"} · ${SEG[o.segment] ?? o.segment}\n→ ${label}`);
     await ack();
     return;
   }
@@ -350,12 +373,12 @@ async function onUpdate(u: any): Promise<void> {
   const text: string = m.text.trim();
 
   // Admin javobi: admin uzatilgan xabarga "Reply" qiladi.
-  if (chatId === ADMIN_CHAT && m.reply_to_message) {
+  if (m.reply_to_message && (await isAdmin(chatId))) {
     const { data } = await sb.from("tg_support").select("user_chat_id")
-      .eq("admin_message_id", m.reply_to_message.message_id).maybeSingle();
+      .eq("admin_chat_id", chatId).eq("admin_message_id", m.reply_to_message.message_id).maybeSingle();
     if (data) {
       const r = await send(data.user_chat_id, "Kompas Lab javobi:\n\n" + text);
-      await send(ADMIN_CHAT, r.ok ? "Yuborildi." : "Yuborilmadi: " + (r.description ?? r.status));
+      await send(chatId, r.ok ? "Yuborildi." : "Yuborilmadi: " + (r.description ?? r.status));
       return;
     }
   }
@@ -406,7 +429,9 @@ async function onUpdate(u: any): Promise<void> {
   const since = new Date(Date.now() - 3600_000).toISOString();
   const { count } = await sb.from("tg_support").select("admin_message_id", { count: "exact", head: true })
     .eq("user_chat_id", chatId).gte("created_at", since);
-  if ((count ?? 0) >= SUPPORT_LIMIT_PER_HOUR) { await send(chatId, T.limit); return; }
+  // Har soʻrov har admin uchun alohida qator: soni adminlar soniga boʻlinadi.
+  const nAdm = (await admins()).length || 1;
+  if (Math.ceil((count ?? 0) / nAdm) >= SUPPORT_LIMIT_PER_HOUR) { await send(chatId, T.limit); return; }
 
   let who = "Ulanmagan foydalanuvchi";
   if (link) {
@@ -416,9 +441,16 @@ async function onUpdate(u: any): Promise<void> {
   const head = "Yordam soʻrovi\n" + who + (m.from?.username ? " · @" + m.from.username : "") +
     "\n(Javob berish uchun shu xabarga Reply qiling)\n\n";
   // Admin xabari foydalanuvchi botidan keladi: Reply ham shu botning webhookiga tushadi.
-  const r = await tg(USER_TOKEN, "sendMessage", { chat_id: ADMIN_CHAT, text: toNew(head) + text });
-  if (r.ok && r.result) {
-    await sb.from("tg_support").insert({ admin_message_id: r.result.message_id, user_chat_id: chatId });
+  let delivered = 0;
+  let r: TgResult = { ok: false, status: 0 };
+  for (const aid of await admins()) {
+    r = await tg(USER_TOKEN, "sendMessage", { chat_id: aid, text: toNew(head) + text });
+    if (r.ok && r.result) {
+      await sb.from("tg_support").insert({ admin_chat_id: aid, admin_message_id: r.result.message_id, user_chat_id: chatId });
+      delivered++;
+    }
+  }
+  if (delivered > 0) {
     await send(chatId, T.received);
   } else {
     console.error("support forward failed", r.status, r.description);
