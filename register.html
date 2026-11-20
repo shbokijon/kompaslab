@@ -343,6 +343,13 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
           </label>
         </div>
 
+        <div class="terms-wrap">
+          <label class="terms-check">
+            <input type="checkbox" id="mktCheck">
+            <span>Ixtiyoriy: yangi dasturlar, muddat eslatmalari va tavsiyalarni emailimga olishga roziman. Xatdagi havola orqali istalgan vaqtda toʻxtata olaman.</span>
+          </label>
+        </div>
+
         <div class="btn-row">
           <button class="btn-back" onclick="goStep1()">← Orqaga</button>
           <button class="btn-next" onclick="handleRegister()" id="registerBtn">
@@ -426,6 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ─── STEP NAVIGATION ────────────────────────────────
 let currentStep = 1
 let regEmail = ''
+let regMkt = false
 
 function goStep(n) {
   document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'))
@@ -579,6 +587,8 @@ async function verifyCode() {
     return
   }
   btn.innerHTML = 'Tasdiqlandi ✓'
+  // Marketing roziligi serverga faqat tasdiqlangan hisobdan yoziladi (email_prefs).
+  if (regMkt) { try { await supabase.rpc('fn_set_marketing_consent', { p_on: true, p_source: 'register' }) } catch (e) {} }
   showTgStep()
 }
 
@@ -612,6 +622,7 @@ async function handleRegister() {
   const password  = document.getElementById('password').value
   const confirm   = document.getElementById('confirmPassword').value
   const terms     = document.getElementById('termsCheck').checked
+  const mkt       = document.getElementById('mktCheck').checked
   const firstName = document.getElementById('firstName').value.trim()
   const lastName  = document.getElementById('lastName').value.trim()
   const phone     = KompasPhone.value(document.getElementById('phone').value)
@@ -646,7 +657,9 @@ async function handleRegister() {
           phone,
           education: education || null,
           goal:      goal || null,
-          utm:       (window.KompasUTM && window.KompasUTM.get()) || null,
+          marketing_consent:    mkt,
+          marketing_consent_at: mkt ? new Date().toISOString() : null,
+          utm:      (window.KompasUTM && window.KompasUTM.get()) || null,
         },
         emailRedirectTo: `${APP_CONFIG.baseUrl}/${APP_CONFIG.routes.dashboard}`
       }
@@ -670,6 +683,7 @@ async function handleRegister() {
     // Profil auth.users trigger (fn_create_profile) orqali yaratiladi; taʼlim va maqsad
     // user_metadata da saqlanadi (mijoz profiles ni yangilash huquqiga ega emas)
     regEmail = email
+    regMkt = mkt
     document.getElementById('otpEmail').textContent = email
     goStep(3)
     setTimeout(() => document.getElementById('otpCode').focus(), 50)
