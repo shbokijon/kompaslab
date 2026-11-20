@@ -47,13 +47,15 @@ _SYM = {
     "✓": "check", "✔": "check", "✗": "x", "✘": "x", "✅": "ccheck", "📋": "list", "📊": "chart",
     "📄": "file", "✉": "mail", "👥": "users", "📒": "book", "📚": "book", "📝": "pen", "✍": "pen",
     "🎯": "target", "🔍": "search", "🔻": "filter", "💼": "brief", "🧳": "brief", "🎙": "mic",
-    "🎤": "mic", "★": "star", "☆": "star", "⚠": "alert", "🖨": "print", "📤": "upload",
+    "🎤": "mic", "★": "starf", "☆": "star", "⚠": "alert", "🖨": "print", "📤": "upload",
 }
 
 
 def icon(name, cls="ki"):
-    return ('<svg class="%s" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" '
-            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%s</svg>') % (cls, _P[name])
+    # "starf" = toʻla yulduz (★), "star" = boʻsh (☆): "★★★★☆" kabi baho maʼnosi saqlanadi
+    fill = "currentColor" if name == "starf" else "none"
+    return ('<svg class="%s" viewBox="0 0 24 24" width="1em" height="1em" fill="%s" stroke="currentColor" '
+            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%s</svg>') % (cls, fill, _P["star" if name == "starf" else name])
 
 
 _SYM_RE = re.compile("(" + "|".join(re.escape(k) for k in sorted(_SYM, key=len, reverse=True)) + ")️?")
