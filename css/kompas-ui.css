@@ -383,6 +383,11 @@ body.kl-has-tabs .km-hero{padding-top:calc(var(--kl-top,0px) + var(--kl-nav,62px
 .km-row .km-ar::before{content:"→";}
 .km-row .km-y{margin-top:0;padding-top:0;border-top:0;}
 .km-row .km-x h3{font-size:16.5px;}
+.km-num{counter-reset:kmprob;}
+.km-num .km-row{counter-increment:kmprob;}
+.km-num .km-row .km-x h3{display:flex;align-items:flex-start;}
+.km-num .km-row .km-x h3::before{content:counter(kmprob);display:grid;flex:none;place-items:center;width:26px;height:26px;margin:-1px 10px 0 0;border-radius:50%;background:var(--accent-lit,#e8f0ec);color:var(--accent,#2d4a3e);font:700 13.5px/1 "Outfit","IBM Plex Sans",sans-serif;}
+.km-num .km-y summary span:not(.kl-i){font-weight:700;}
 @media(max-width:700px){.km-row{grid-template-columns:36px minmax(0,1fr);gap:10px 10px;padding:14px 16px;}.km-row .km-em{font-size:24px;}.km-row .km-ar{width:24px;height:24px;font-size:13px;}}
 .em{font-style:normal;}
 .km-hi{display:block;}
@@ -564,6 +569,7 @@ html[data-theme="dark"] .km-y{border-top:1px dashed var(--border,#44423b)}
 html[data-theme="dark"] .km-y summary b{color:var(--accent,#b9d4c9)}
 html[data-theme="dark"] .km-y summary span:not(.kl-i){color:var(--text,#c1dcd1)}
 html[data-theme="dark"] .km-row .km-ar{background:var(--accent-lit,#1b201e);color:var(--accent,#b9d4c9)}
+html[data-theme="dark"] .km-num .km-row .km-x h3::before{background:var(--accent-lit,#1b201e);color:var(--accent,#b9d4c9)}
 html[data-theme="dark"] .km-hi>p{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .km-hero h1 .lk{color:var(--muted,#b1bdb8)}
 html[data-theme="dark"] .kl-rs-cta{background:var(--accent-lit,#1b201e)}
