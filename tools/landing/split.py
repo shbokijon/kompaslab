@@ -169,10 +169,10 @@ EMOJI = {"books": "📚", "compass": "🧭", "hourglass": "⏳", "memo": "✍️
          "telescope": "🔍", "calendar": "📅", "bulb": "💡", "bell": "📨", "scroll": "📄", "chart": "📊", "seedling": "🌱"}
 
 def km_card(ic, t, d, ys, yd):
-    """Muammo qatori: emoji, sarlavha + i (izoh), strelka, Yechim qisqa + i (batafsil)."""
+    """Muammo qatori (2026-11-20): raqam (CSS), sarlavha + gap oxirida emoji + i, belgi (CSS), Yechim qisqa + i."""
     em = EMOJI.get(ic, ic)
-    return (f'<article class="km-p km-row"><span class="km-em" aria-hidden="true">{em}</span>'
-            f'<details class="km-x"><summary><h3>{t}</h3>{KL_I}</summary><p>{d}</p></details>'
+    return (f'<article class="km-p km-row">'
+            f'<details class="km-x"><summary><h3><span>{t} <span class="km-em" aria-hidden="true">{em}</span></span></h3>{KL_I}</summary><p>{d}</p></details>'
             f'<span class="km-ar" aria-hidden="true"></span>'
             f'<details class="km-x km-y"><summary><b>Yechim</b><span>{ys}</span>{KL_I}</summary><p>{yd}</p></details></article>')
 
@@ -382,7 +382,7 @@ def split(root, f, src):
         probs = f'''<section class="km-sec" id="yol">
   <div class="wrap">
     <div class="km-head"><span class="km-eyebrow">Tanish holatmi?</span><h2>Muammolar va yechimlar</h2></div>
-    <div class="km-probs km-list">{cards}</div>
+    <div class="km-probs km-list km-num">{cards}</div>
   </div>
 </section>'''
         main = "\n".join(x for x in [hero, probs, nxt_html, B.get("cta", "")] if x)
