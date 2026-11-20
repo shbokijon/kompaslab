@@ -25,9 +25,49 @@ OLDMAP = {"ö": "oʻ", "Ö": "Oʻ", "ğ": "gʻ", "Ğ": "Gʻ", "ş": "sh", "Ş": 
 
 def old(t):
     """Yangi alifbodagi matnni manba alifbosiga (oʻ, gʻ U+02BB, sh, ch, ʼ U+02BC) oʻtkazadi; [[x]] → inglizcha span."""
-    t = re.sub(r"\[\[(.+?)\]\]", lambda m: '<span lang="en">' + m.group(1) + "</span>", t)
+    t = re.sub(r"\[\[(.+?)\]\]", lambda m: '<i lang="en">' + m.group(1) + "</i>", t)
+    t = listify(t)
     t = t.replace("'", "ʼ")
     return "".join(OLDMAP.get(c, c) for c in t)
+
+
+def listify(html):
+    """2026-11-20 (asoschi): uzun sanoq gaplar roʻyxatga. <p>Yorliq: a; b; c.</p> → <p>Yorliq:</p><ul><li>a;</li>…</ul>"""
+    def one(m):
+        body = m.group(1)
+        body = body.replace(":</b> ", "</b>: ")
+        if body.count(";") < 2 or ": " not in body.split(";")[0]:
+            return m.group(0)
+        head, rest = body.split(": ", 1)
+        if "<" in head and not head.endswith(">") and head.count("<") != head.count(">"):
+            return m.group(0)
+        tail = ""
+        mm = re.search(r"\.\s+([A-ZÖĞŞÇ«][^.;]*\.)$", rest)
+        if mm and ";" not in mm.group(1):
+            tail, rest = mm.group(1), rest[:mm.start() + 1]
+        items = [x.strip() for x in rest.rstrip(".").split(";") if x.strip()]
+        lis = "".join("<li>%s%s</li>" % (x, ";" if i < len(items) - 1 else ".") for i, x in enumerate(items))
+        return "<p>%s:</p><ul>%s</ul>%s" % (head, lis, ("<p>" + tail + "</p>") if tail else "")
+    return re.sub(r"<p>((?:(?!</?p>).)*?)</p>", one, html, flags=re.S)
+
+
+KEY = ["akkreditatsiya", "SEVP", "I-20", "DS-2019", "töliq narx", "Töliq narx", "ehtiyoj granti", "natija granti", "H6", "Net Price Calculator",
+       "CSS Profile", "kredit", "212(e)", "2 yillik talab", "kafedra paketi", "OPT", "maqom", "rasmiy manba", "rasmiy jumla", "budjetingiz",
+       "oylik qoldiq", "eʼlon", "HERD", "katalog", "R1", "UGRAD", "Fulbright", "Visa Integrity Fee", "DS-160", "mablağ"]
+
+
+def bold_terms(html):
+    """Xulosada muhim atamalar qalin (2026-11-20, asoschi). Har atama bir marta, <b> ichida boʻlmasa."""
+    for k in KEY:
+        m = re.search(r"(?<![\wʻʼ])" + re.escape(k) + r"(?![\wʻʼ])", html)
+        if not m:
+            continue
+        i = m.start()
+        before = html[:i]
+        if before.count("<b>") > before.count("</b>") or before.count("<") > before.count(">"):
+            continue
+        html = before + "<b>" + k + "</b>" + html[i + len(k):]
+    return html
 
 
 def strip_emoji(t):
@@ -45,6 +85,7 @@ V2_CSS = """
 .mv-i .box,.mv-i .tbl{margin:8px 0}
 .mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
 .mv-take{font-size:16.5px;line-height:1.5}
+.mv-take ul,.mv-i ul{margin:6px 0 0;padding-left:20px}
 .mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
 .mv-next h2{margin-top:0}
 .mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
@@ -85,7 +126,7 @@ def merge_v2(n, M):
 SLUGS = [str(i) for i in range(1, 9)]
 PHASE = {}
 for _n in range(1, 9):
-    PHASE[_n] = ["Faza I · Tizim va pul", "Faza II · Bakalavr yordami", "Faza III · Davlat dasturlari", "Faza IV · Magistratura, PhD va viza"][(_n - 1) // 2]
+    PHASE[_n] = ["Faza I · Tizim va budjet", "Faza II · Bakalavr yordami", "Faza III · Davlat dasturlari", "Faza IV · Magistratura, PhD va viza"][(_n - 1) // 2]
 
 
 def code_of(slug):
@@ -125,7 +166,7 @@ def strip_tracks(html, keep):
 
 def fix(s):
     """Oʻzbek apostrofi: o'/g' → ʻ, qolgan ' → ʼ; [[x]] → inglizcha span."""
-    s = re.sub(r"\[\[(.+?)\]\]", r'<span lang="en">\1</span>', s)
+    s = re.sub(r"\[\[(.+?)\]\]", r'<i lang="en">\1</i>', s)
     s = re.sub(r"([oOgG])'", lambda m: m.group(1) + "ʻ", s)
     return s.replace("'", "ʼ")
 
@@ -176,7 +217,7 @@ def lesson_v2(n, k, L, lxp):
 {old(L["main"])}
 {extra}
           </div>
-          <div class="panel"><div class="take">{img(L["ic"])}<p class="mv-take">{old(L["take"])}</p></div></div>
+          <div class="panel"><div class="take">{img(L["ic"])}<div class="mv-take">{old(bold_terms(L["take"]))}</div></div></div>
           <div class="panel"><div class="assign">{task}
             {ta}</div></div>
           <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="{lid}">Darsni yakunlash · +{lxp} XP</button></div>

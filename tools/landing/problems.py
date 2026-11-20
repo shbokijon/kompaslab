@@ -43,11 +43,11 @@ PROBLEMS = {
     ("🎤", "Intervyudan qoʻrqasiz", "Komissiya nima soʻrashini bilmaysiz.", "Mashq", "Oʻz bayonotingiz va oʻquv rejangiz asosida intervyu mashq qilasiz."),
   ]),
 "usa-lab": dict(
-  h1=h("AQShda oʻqish qimmat koʻrinadi.", "Lekin oilangiz summasiga mos yoʻl boʻlishi mumkin."),
-  lead="Bepul M0 da 12 daqiqada qaysi yoʻl sizga ochiqligini va qayerdan boshlashni bilasiz. Universitet, pul va vizani rasmiy manba bilan tekshirasiz.",
+  h1=h("AQShda oʻqish qimmat koʻrinadi.", "Lekin budjetingizga mos yoʻl bor: uni 12 daqiqada topamiz."),
+  lead="Bepul M0 da qaysi yoʻl sizga ochiq ekanini va qayerdan boshlashni bilasiz. Universitet, xarajat va vizani rasmiy manba bilan tekshirasiz.",
   probs=[
     ("💸", "Bir yili qancha turishi nomaʼlum", "Saytdagi oʻqish toʻlovi toʻliq narxning bir qismi.", "Toʻliq narx hisobi", "Oʻqish, yashash, sugʻurta va bir martalik toʻlovlarni universitetning rasmiy narx sahifasidan hisoblaysiz."),
-    ("🧭", "Qaysi yoʻl sizga ochiq", "Bakalavr, UGRAD, Fulbright va PhD shartlari bir-biriga oʻxshamaydi.", "Yoʻl tanlagich", "Holatingiz va oila summasiga qarab sizga ochiq yoʻlni bepul M0 da aniqlaysiz."),
+    ("🧭", "Qaysi yoʻl sizga ochiq", "Bakalavr, UGRAD, Fulbright va PhD shartlari bir-biriga oʻxshamaydi.", "Yoʻl tanlagich", "Holatingiz va budjetingizga qarab sizga ochiq yoʻlni bepul M0 da aniqlaysiz."),
     ("🚩", "Universitet haqiqiymi", "«Kafolatli qabul» va «I-20 3 kunda» deydigan saytlar bor.", "Ikki baza", "Akkreditatsiya va SEVP sertifikatini rasmiy bazada 15 daqiqada tekshirasiz."),
     ("🛂", "Viza va I-20 chalkash", "F-1, J-1, SEVIS va yangi toʻlovlar aralashib ketadi.", "Sanali roʻyxat", "Viza bosqichlari va toʻlovlarini rasmiy manba va sana bilan oldindan bilasiz."),
   ]),

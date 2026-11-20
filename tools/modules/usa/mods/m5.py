@@ -121,7 +121,7 @@ MOD = dict(
     art_title="Almashinuv dasturi kartasi", art_short="Karta",
     art=[("Dastur haqida", ["a1"]), ("Muvofiqlik", ["ugcalc", "a2"]), ("Sikl holati va kuzatuv", ["holat", "kanal", "a3"]), ("Dalillar", ["dalil", "a4"]),
          ("Kredit o'tkazish", ["kredit"]), ("B reja", ["breja", "a5"]), ("Qaror", ["qaror"])],
-    tip="Davlat dasturida eng katta xavf e'lon qilinmagan sikl uchun vaqt va pul sarflash. Kuting, kuzating va shu vaqtda boshqa arizalarda ham ishlaydigan dalillarni yig'ing.",
+    tip="Davlat dasturida eng katta xavf e'lon qilinmagan sikl uchun vaqt va mablag' sarflash. Kuting, kuzating va shu vaqtda boshqa arizalarda ham ishlaydigan dalillarni yig'ing.",
     sources=f"{EMB_UGRAD}; {UGRAD_WL}; {EMB_EXCH}; {HARVARD_212E}. {STD}",
     js="""window.KGTool = { init: function () {
   var box = document.getElementById("ugQ"), o = document.getElementById("ugOut");

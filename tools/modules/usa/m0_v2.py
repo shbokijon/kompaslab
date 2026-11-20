@@ -19,6 +19,14 @@ head = head.replace("<title>M0: sizning bakalavr rejangiz · Bakalavr dasturi ·
                     conv("<title>M0: AQŞga öqiş rejangiz · USA dasturi · Kompas Lab</title>"))
 head = head.replace('<meta name="description" content="Bakalavr dasturi bepul M0: 4 ta savolga javob bering va 12 daqiqada shaxsiy bahongiz, ariza rejangiz va birinchi vazifangizni oling.">',
                     conv('<meta name="description" content="USA dasturi bepul M0: 4 ta savolga javob bering va 12 daqiqada AQŞga borish yölingiz, bahongiz, rejangiz va birinçi vazifangizni oling.">'))
+head = head.replace("</style>\n</head>", """.dl-box{display:none;margin-top:10px;max-width:340px;border:1.5px solid var(--accent);border-radius:12px;padding:8px 12px;background:var(--surface);font-size:13.5px}
+.dl-box.show{display:grid;gap:2px}
+.dl-box span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.dl-box b{font-size:18px;color:var(--accent)}
+.dl-box small{color:var(--muted);font-size:12.5px;line-height:1.4}
+.more ul{margin:6px 0 0;padding-left:20px}
+</style>
+</head>""", 1)
 gate_start = B.index("<div class=\"toast\" id=\"toast\"")
 js_start = B.index("<script>\n// ── Bakalavr M0 v2")
 tail_scripts = B[gate_start:js_start]
@@ -60,16 +68,16 @@ BODY = r'''<header class="top">
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="usa-lab.html">USA dasturi</a> · Modul 0</div>
         <span class="badge">Bepul · 12 daqiqa</span>
         <h1><span class="nb">AQŞga öqişga borish</span> <span class="nb">rejangizni</span> <span class="nb">12 daqiqada tuzamiz</span></h1>
-        <p class="lead"><span class="ln"><b>4 ta savol</b>, ~12 daqiqa.</span><span class="ln"><span class="nb">Natijada: <b>Sizga oçiq yöl</b>,</span> <span class="nb"><b>bahongiz</b> va <b>bosqiçma-bosqiç rejangiz</b>.</span></span><span class="ln"><i>Parvoz uzoq, reja qisqa.</i></span></p>
+        <p class="lead"><span class="ln"><b>4 ta savol</b>, ~12 daqiqa.</span><span class="ln"><span class="nb">Natijada: <b>sizga oçiq yöl</b>,</span> <span class="nb"><b>bahongiz</b> va <b>bosqiçma-bosqiç rejangiz</b>.</span></span><span class="ln"><i>Parvoz uzoq, reja qisqa.</i></span></p>
         <div class="facts"><span class="fact"><b>4</b> savol</span><span class="fact">~<b>12</b> daqiqa</span><span class="fact">Natija: <b>yöl va reja</b></span></div>
-        <p class="hint"><span class="ln">Javoblaringiz hisobingizda saqlanadi, <span class="nb">Kompas Lab jamoasi ularni köra oladi.</span></span><span class="ln">Tayyor rejani <b>oilangizga</b> yuboriş mumkin.</span></p>
+        <p class="hint"><span class="ln">Javoblaringiz hisobingizda saqlanadi, <span class="nb">Kompas Lab jamoasi ularni köra oladi.</span></span><span class="ln">Tayyor reja <b>sizda qoladi</b>: nusxalab saqlaysiz.</span></p>
       </div>
       <img class="hero-art float" src="img/3d/usa.webp" width="160" height="160" alt="">
     </div>
     <div class="kv" data-kvideo="l0"></div>
   </div>
 
-  <nav class="map" aria-hidden="true" hidden><a class="node" href="#l1" data-node="l1"><span class="dot">1</span>Muddat</a><a class="node" href="#l2" data-node="l2"><span class="dot">2</span>Yöl</a><a class="node" href="#l3" data-node="l3"><span class="dot">3</span>Tayyorgarlik</a><a class="node" href="#l4" data-node="l4"><span class="dot">4</span>Pul</a></nav>
+  <nav class="map" aria-hidden="true" hidden><a class="node" href="#l1" data-node="l1"><span class="dot">1</span>Muddat</a><a class="node" href="#l2" data-node="l2"><span class="dot">2</span>Yöl</a><a class="node" href="#l3" data-node="l3"><span class="dot">3</span>Tayyorgarlik</a><a class="node" href="#l4" data-node="l4"><span class="dot">4</span>Budjet</a></nav>
 
   <section id="darslar">
     <h2>Sizni nima kutadi</h2>
@@ -96,15 +104,17 @@ BODY = r'''<header class="top">
               <div class="chips two" data-one="stage"><button type="button" class="chip" data-v="sch" aria-pressed="false">Maktab, litsey yoki kollej</button><button type="button" class="chip" data-v="u12" aria-pressed="false">Universitet, 1–2 kurs</button><button type="button" class="chip" data-v="u34" aria-pressed="false">Universitet, 3–4 kurs</button><button type="button" class="chip" data-v="g0" aria-pressed="false">Bitirganman, iş tajribasi 2 yildan kam</button><button type="button" class="chip" data-v="g2" aria-pressed="false">Bitirganman, 2+ yil iş tajribasi</button></div>
             </div>
             <div class="q">
-              <h3>Aniq ariza muddatini bilasizmi?</h3>
-              <p class="qs">Bilmasangiz, böş qoldiring: taxminiy sanani özimiz qöyamiz.</p>
-              <div class="in-row"><input type="date" id="dlDate" aria-label="Ariza muddati"></div>
+              <h3>Ariza muddatingiz qaçon?</h3>
+              <p class="qs">Universitet yoki dastur sahifasidagi <b>eng erta</b> sanani kiriting. Bilmasangiz, pastdagi tugmani bosing.</p>
+              <div class="in-row"><input type="date" id="dlDate" aria-label="Ariza muddati" required></div>
+              <div class="chips"><button type="button" class="chip" id="dateX" aria-pressed="false">Aniq sanani bilmayman: taxminiy sana qöyilsin</button></div>
+              <div class="dl-box" id="dlBox" role="status"></div>
             </div>
             <div class="fb" id="fb1" role="status"></div>
-            <details class="more"><summary>Qaysi sanadan hisoblaymiz?</summary><p>Reja eng erta ariza muddatidan orqaga hisoblanadi va 4 hafta zaxira qoladi. AQŞda yagona muddat yöq: har universitet va dastur öz sanasini qöyadi. Siz aniq sana kiritmasangiz, taxminiy sana qöyiladi: bakalavr uçun öqiş yilining 1-yanvari, magistratura va PhD uçun oldingi yilning 1-dekabri. Fulbright uçun ötgan siklning muddati 30.06.2026 bölgan (<a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQŞ elçixonasi</a>), Global UGRAD uçun oxirgi eʼlon qilingan muddat 15.12.2024 (<a href="https://uz.usembassy.gov/global-undergraduate-exchange-program/" target="_blank" rel="noopener">AQŞ elçixonasi</a>). 20.11.2026 holatiga ikkalasining yangi sikli eʼlon qilinmagan. Aniq sanani universitet yoki dastur sahifasidan oling.</p></details>
+            <details class="more"><summary>Taxminiy sana qanday qöyiladi?</summary><p>Reja <b>eng erta ariza muddatidan</b> orqaga hisoblanadi, 4 hafta zaxira qoladi. AQŞda yagona muddat yöq: har universitet öz sanasini qöyadi. Taxminiy sanalar:</p><ul><li><b>Bakalavr:</b> öqiş yilining 1-yanvari;</li><li><b>Magistratura va PhD:</b> oldingi yilning 1-dekabri;</li><li><b>Fulbright:</b> 30-iyun, ötgan siklga köra (<a href="https://uz.usembassy.gov/fulbright-foreign-student-program/" target="_blank" rel="noopener">AQŞ elçixonasi</a>);</li><li><b>Global UGRAD:</b> 15-dekabr, oxirgi eʼlonga köra (<a href="https://uz.usembassy.gov/global-undergraduate-exchange-program/" target="_blank" rel="noopener">AQŞ elçixonasi</a>).</li></ul><p>20.11.2026 holatiga Fulbright va UGRAD ning yangi sikli eʼlon qilinmagan.</p></details>
             <div class="kv" data-kvideo="l1"></div>
           </div>
-          <div class="l-foot"><span class="hint" data-hint>Ikkita savolga javob bering.</span><button class="btn btn-p" type="button" data-complete="l1" data-xp="50">Keyingi qadam →</button></div>
+          <div class="l-foot"><span class="hint" data-hint>Hamma savolga javob bering.</span><button class="btn btn-p" type="button" data-complete="l1" data-xp="50">Keyingi qadam →</button></div>
         </div>
       </article>
 
@@ -130,7 +140,7 @@ BODY = r'''<header class="top">
               <div class="chips"><button type="button" class="chip" id="fieldX" aria-pressed="false">Hali bilmayman</button></div>
             </div>
             <div class="fb" id="fb2" role="status"></div>
-            <details class="more"><summary>Bu yöllar qanday farq qiladi</summary><p>Bakalavr va magistratura F-1 talaba vizasi bilan, UGRAD va Fulbright J-1 almaşinuv vizasi bilan. Hukumat pulidagi J-1 dasturidan keyin 2 yil vatanda yaşaş talabi bor. UGRAD diplom bermaydi: bu Özbekistonda öqiyotgan bakalavr talabasi uçun bir semestr. Fulbright Özbekiston uçun magistratura va kamida 2 yillik iş tajribasini söraydi. Batafsil M5 va M6 da.</p></details>
+            <details class="more"><summary>Bu yöllar qanday farq qiladi?</summary><ul><li><b>Bakalavr va magistratura:</b> F-1 talaba vizasi;</li><li><b>UGRAD va Fulbright:</b> J-1 almaşinuv vizasi, keyin 2 yil vatanda yaşaş talabi;</li><li><b>UGRAD:</b> diplom bermaydi, Özbekistonda öqiyotgan bakalavr talabasi uçun bir semestr;</li><li><b>Fulbright:</b> magistratura, kamida 2 yillik iş tajribasi kerak.</li></ul><p>Batafsil M5 va M6 da.</p></details>
             <div class="kv" data-kvideo="l2"></div>
           </div>
           <div class="l-foot"><span class="hint" data-hint>Ikkita savolga javob bering.</span><button class="btn btn-p" type="button" data-complete="l2" data-xp="50">Keyingi qadam →</button></div>
@@ -162,7 +172,7 @@ BODY = r'''<header class="top">
             </div>
             <div class="q">
               <h3>30 soniyalik sinov: qaysi universitet işonçli?</h3>
-              <div class="game" data-game="0" data-a="x"><p>"Sayt .com da, «Kafolatli qabul, I-20 3 kunda» deb yozilgan."</p><div class="chips two"><button type="button" class="chip" data-v="i" aria-pressed="false">Işonçli</button><button type="button" class="chip" data-v="x" aria-pressed="false">Xavfli</button></div><div class="fb" role="status"><b>Xavfli.</b> Kafolat va şoşiltiriş birinçi qizil bayroq. Pul tölaşdan oldin akkreditatsiya va SEVP ni tekşirasiz (M1.2).</div></div>
+              <div class="game" data-game="0" data-a="x"><p>"Sayt .com da, «Kafolatli qabul, I-20 3 kunda» deb yozilgan."</p><div class="chips two"><button type="button" class="chip" data-v="i" aria-pressed="false">Işonçli</button><button type="button" class="chip" data-v="x" aria-pressed="false">Xavfli</button></div><div class="fb" role="status"><b>Xavfli.</b> Kafolat va şoşiltiriş birinçi qizil bayroq. Tölovdan oldin akkreditatsiya va SEVP ni tekşirasiz (M1.2).</div></div>
               <div class="game" data-game="1" data-a="i"><p>"Muassasa CHEA bazasida bor va DHS ning SEVP qidiruvida çiqadi."</p><div class="chips two"><button type="button" class="chip" data-v="i" aria-pressed="false">Işonçli</button><button type="button" class="chip" data-v="x" aria-pressed="false">Xavfli</button></div><div class="fb" role="status"><b>Işonçli.</b> Akkreditatsiya diplomni, SEVP esa I-20 va talaba vizasini körsatadi. Narx va yordamni keyin alohida tekşirasiz.</div></div>
             </div>
             <div class="fb" id="fb3" role="status"></div>
@@ -176,20 +186,20 @@ BODY = r'''<header class="top">
       <article class="lesson" id="l4" data-lesson="l4">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Oilangiz yiliga qança bera oladi?</span>
-            <span class="l-m"><span class="tag">2 daqiqa</span><span class="tag">Natija: pul holatingiz</span><span class="tag xp">+50 XP</span></span></span>
+          <span><span class="l-n">Dars 0.4</span><span class="l-t" style="display:block">Yiliga qança tölay olasiz?</span>
+            <span class="l-m"><span class="tag">2 daqiqa</span><span class="tag">Natija: budjetingiz</span><span class="tag xp">+50 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
           <div class="panel">
             <div class="prog"><span>4 / 4</span><i><b style="width:100%"></b></i><span>~2 daqiqa qoldi</span></div>
             <div class="q">
-              <h3>Oilangiz öqiş va yaşaşga yiliga qança ajrata oladi?</h3>
-              <p class="qs">AQŞ dollarida, taxminan. I-20 uçun universitet birinçi yil pulini hujjat bilan söraydi.</p>
-              <div class="chips col" data-one="fund"><button type="button" class="chip" data-v="a40" aria-pressed="false">40 000 dollardan köp</button><button type="button" class="chip" data-v="a15" aria-pressed="false">15 000 – 40 000 dollar</button><button type="button" class="chip" data-v="a5" aria-pressed="false">5 000 – 15 000 dollar</button><button type="button" class="chip" data-v="a0" aria-pressed="false">5 000 dollardan kam</button><button type="button" class="chip" data-v="x" aria-pressed="false">Oilam bilan hali gaplaşmaganman</button></div>
+              <h3>Öqiş va yaşaşga yiliga qança tölay olasiz?</h3>
+              <p class="qs">AQŞ dollarida (<i lang="en">USD</i>). Oila yordami bölsa, u ham şunga kiradi. I-20 uçun universitet birinçi yil xarajatini <b>mablağ hujjati</b> bilan söraydi.</p>
+              <div class="chips col" data-one="fund"><button type="button" class="chip" data-v="a40" aria-pressed="false">40 000 dollardan köp</button><button type="button" class="chip" data-v="a15" aria-pressed="false">15 000 – 40 000 dollar</button><button type="button" class="chip" data-v="a5" aria-pressed="false">5 000 – 15 000 dollar</button><button type="button" class="chip" data-v="a0" aria-pressed="false">5 000 dollardan kam</button><button type="button" class="chip" data-v="x" aria-pressed="false">Hali hisoblamaganman</button></div>
             </div>
             <div class="fb" id="fb4" role="status"></div>
-            <details class="more"><summary>Nega aynan yillik summa?</summary><p>Xalqaro talabaga federal yordam yopiq (AQŞ Taʼlim vazirligi). Universitet yordam berişdan oldin oilangiz qança tölay olişini hisoblaydi, I-20 esa birinçi yil narxini hujjat bilan söraydi. Şuning uçun yöl oila summasidan boşlab tanlanadi (M2).</p></details>
+            <details class="more"><summary>Nega aynan yillik summa?</summary><ul><li>Xalqaro talabaga <b>federal yordam</b> yopiq (AQŞ Taʼlim vazirligi);</li><li>universitet yordam berişdan oldin qança tölay olişingizni hisoblaydi;</li><li><b>I-20</b> birinçi yil narxini hujjat bilan söraydi.</li></ul><p>Şuning uçun yöl <b>budjetingizdan</b> boşlab tanlanadi (M2).</p></details>
           </div>
           <div class="l-foot"><span class="hint" data-hint>Bitta variantni tanlang.</span><button class="btn btn-p" type="button" data-complete="l4" data-xp="50">Natijamni körsat →</button></div>
         </div>
@@ -206,7 +216,7 @@ BODY = r'''<header class="top">
         <div class="lv" id="rLv">…</div>
         <div class="sc"><b id="rSc">0</b> / 100 · <span id="rWk"></span></div>
         <div class="bars" id="rBars"></div>
-        <details class="more" style="text-align:left"><summary>Bu ball qanday hisoblandi?</summary><p>Ball faqat sizning javoblaringizdan olinadi: vaqt, yöl, baholar, ingliz tili, hujjatlar, pul. U qabul yoki viza ehtimolini bildirmaydi, faqat qayerdan boşlaşni körsatadi. "Yöl" 70 dan oşmaydi: universitet röyxati I bosqiçda tuziladi.</p></details>
+        <details class="more" style="text-align:left"><summary>Bu ball qanday hisoblandi?</summary><p>Ball faqat sizning javoblaringizdan olinadi: vaqt, yöl, baholar, ingliz tili, hujjatlar, budjet. U qabul yoki viza ehtimolini bildirmaydi, faqat qayerdan boşlaşni körsatadi. "Yöl" 70 dan oşmaydi: universitet röyxati I bosqiçda tuziladi.</p></details>
         <div class="kv" data-kvideo="res"></div>
       </div>
       <div class="rtxt" id="rTxt"></div>
@@ -216,7 +226,7 @@ BODY = r'''<header class="top">
       <p class="sub" id="rSpan"></p>
       <ol class="ph" id="rPh"></ol>
       <div class="row" style="margin-top:12px"><button class="btn btn-g" type="button" id="copyBtn">Rejani nusxalaş</button></div>
-      <p class="hint">Nusxani oilangizga yuboring: yöl, sanalar va pul savoli bir joyda.</p>
+      <p class="hint">Nusxani özingizda saqlang: yöl, sanalar va budjet bir joyda.</p>
     </div>
   </section>
 
@@ -345,11 +355,12 @@ JS = r'''<script>
     fld.addEventListener("change", function () { A.field = fld.value.trim(); if (A.field) A.fieldX = false; save(); renderAll(); });
   }
   if (fx) fx.addEventListener("click", function () { A.fieldX = !A.fieldX; if (A.fieldX) { A.field = ""; if (fld) fld.value = ""; } save(); renderAll(); });
-  var dd = $("dlDate");
+  var dd = $("dlDate"), dx = $("dateX");
   if (dd) {
     dd.value = A.date || "";
-    dd.addEventListener("change", function () { A.date = dd.value; save(); renderAll(); });
+    dd.addEventListener("change", function () { A.date = dd.value; if (A.date) A.dateX = false; save(); renderAll(); });
   }
+  if (dx) dx.addEventListener("click", function () { A.dateX = !A.dateX; if (A.dateX) { A.date = ""; if (dd) dd.value = ""; } save(); renderAll(); });
 
   // ── Sana hisobi (taxminiy; aniq sana universitet yoki dastur sahifasidan) ──
   function today() { var t = new Date(); t.setHours(0, 0, 0, 0); return t; }
@@ -360,7 +371,7 @@ JS = r'''<script>
   function deadline() {
     passed = false;
     if (A.date) return D(A.date);
-    if (!A.start) return null;
+    if (!A.start || !A.dateX) return null;
     var y = Y[A.start];
     if (!y) return new Date(today().getTime() + 52 * 7 * DAY);
     var r = A.route, d;
@@ -380,7 +391,7 @@ JS = r'''<script>
   var DOCS = { lang: "ingliz tili sertifikati", test: "SAT yoki GRE", ref: "tavsiya xati", ess: "inşo yoki maqsad bayonnomasi" };
   var DOC_KEYS = ["lang", "test", "ref", "ess"];
   var DOC_ORDER = ["lang", "ref", "test", "ess"];
-  var DIM = ["Vaqt", "Yöl", "Baholar", "Ingliz tili", "Hujjatlar", "Pul"];
+  var DIM = ["Vaqt", "Yöl", "Baholar", "Ingliz tili", "Hujjatlar", "Budjet"];
   function eligible() {
     var r = A.route, s = A.stage;
     if (r === "ugrad") return s === "u12" ? 1 : s === "u34" ? 0.5 : 0;   // oxirgi kurs mos emas; kamida 1 yil qoliği kerak
@@ -389,9 +400,9 @@ JS = r'''<script>
     return 0.5;
   }
   function answered(id) {
-    if (id === "l1") return !!(A.start || A.date) && !!A.stage;
+    if (id === "l1") return !!A.start && !!A.stage && (!!A.date || !!A.dateX);
     if (id === "l2") return !!A.route && !!(A.field || A.fieldX);
-    if (id === "l3") return DOC_KEYS.every(function (k) { return A.docs[k] != null; }) && !!A.grades;
+    if (id === "l3") return DOC_KEYS.every(function (k) { return A.docs[k] != null; }) && !!A.grades && A.game[0] != null && A.game[1] != null;
     if (id === "l4") return !!A.fund;
     return false;
   }
@@ -419,21 +430,31 @@ JS = r'''<script>
   function firstMissing(keys) { for (var i = 0; i < keys.length; i++) if (!(+A.docs[keys[i]] === 2)) return keys[i]; return null; }
 
   function fb(id, html, warn) { var e = $(id); if (!e) return; e.innerHTML = html || ""; e.classList.toggle("show", !!html); if (warn != null) e.classList.toggle("warn", !!warn); }
+  function renderDate() {
+    if (dx) dx.setAttribute("aria-pressed", A.dateX ? "true" : "false");
+    var box = $("dlBox"), d = deadline();
+    A.dateEst = A.dateX && d ? iso(d) : "";
+    if (!box) return;
+    if (!d) { box.innerHTML = ""; box.classList.remove("show"); return; }
+    box.innerHTML = "<span>Ariza muddatingiz</span><b>" + short(d) + "</b><small>" + (A.date ? "Siz kiritgan sana." : "Taxminiy sana: " + (A.route ? "tanlagan yölingizga" : "bakalavr yöliga") + " qarab qöyildi. Aniq sanani universitet yoki dastur sahifasidan topib, kiriting.") + "</small>";
+    box.classList.add("show");
+  }
   function render1() {
+    renderDate();
     var w = weeks(), pw = prepWeeks();
     if (w == null) { fb("fb1", ""); return; }
     if (passed) { fb("fb1", "Bu yil uçun taxminiy muddat (" + fmt(deadline()) + ") ötib ketgan. Bir yil keyingi startni tanlang yoki dastur sahifasidan aniq sanani kiriting.", true); return; }
-    var est = A.date ? "" : " Sana taxminiy: aniq sanani universitet yoki dastur sahifasidan topib, yuqoriga kiriting.";
+    var est = "";
     var msg = pw >= 32 ? "Bu bemalol yetadi." : pw >= 24 ? "Yetadi, agar hozir boşlasangiz." : pw >= 14 ? "Tiğiz: testni qayta topşirişga vaqt kam qoladi." : "Juda tiğiz. Rejada keyingi mavsum ham körsatiladi.";
-    fb("fb1", "Ariza muddatigaça <b>" + w + " hafta</b> bor: " + pw + " hafta tayyorgarlik va 4 hafta zaxira. " + msg + "<br><small>Taxminiy ariza muddati: " + fmt(deadline()) + "." + est + "</small>", pw < 14);
+    fb("fb1", "Ariza muddatigaça <b>" + w + " hafta</b> bor: " + pw + " hafta tayyorgarlik va 4 hafta zaxira. " + msg + "", pw < 14);
   }
   function render2() {
     var r = A.route, s = A.stage, m = "";
     if (r === "ugrad" && s === "u34") m = "UGRAD dan keyin öz universitetingizda kamida bir öquv yili qoliği kerak. 3-kursda bölsangiz, sikl vaqtini tekşiring; oxirgi kurs talabasi ariza bera olmaydi.";
-    else if (r === "ugrad" && s && s !== "u12") m = "Global UGRAD faqat Özbekistonda kunduzgi bakalavriatda öqiyotgan talabalar uçun. Sizga bakalavr yoki magistratura yöli mosroq.";
+    else if (r === "ugrad" && s && s !== "u12") m = "Global UGRAD faqat Özbekistonda kunduzgi bakalavriatda öqiyotgan talabalar uçun. Sizga bakalavr yoki magistratura yöli mos keladi.";
     else if ((r === "mag" || r === "phd") && s === "sch") m = "Magistratura va PhD uçun bakalavr diplomi kerak. Hozir sizga bakalavr yöli mos: uni tanlang yoki <a href=\"bachelor-lab.html\">Bakalavr dasturi</a>ni köring.";
     else if (r === "mag" && s === "g0") m = "Fulbright uçun kamida 2 yillik iş tajribasi kerak. Universitet yordami yoki kafedra moliyasi bilan magistratura ham mumkin (M7).";
-    else if (r === "bak" && (s === "g0" || s === "g2")) m = "Bakalavr diplomingiz bölsa, magistratura yoki PhD yöli sizga köproq mos kelişi mumkin.";
+    else if (r === "bak" && (s === "g0" || s === "g2")) m = "Bakalavr diplomingiz bölsa, magistratura yoki PhD yöli sizga köproq mos keladi.";
     fb("fbRoute", m, true);
     if (fx) fx.setAttribute("aria-pressed", A.fieldX ? "true" : "false");
     if (!answered("l2")) { fb("fb2", ""); return; }
@@ -459,15 +480,15 @@ JS = r'''<script>
   function render4() {
     if (!answered("l4")) { fb("fb4", ""); return; }
     var r = A.route, f = A.fund, t;
-    if (f === "x") t = "Bu normal hol. Natijadagi rejani oilangizga körsating va şu hafta gaplaşing: AQŞ yöli aynan şu raqamdan boşlanadi.";
-    else if (r === "ugrad") t = "UGRAD da aviabilet, öqiş, yaşaş va suğurtani dastur qoplaydi. Pul savoli sizga keyin, bakalavr yoki magistratura uçun kerak böladi.";
+    if (f === "x") t = "Raqam bölmasa, reja taxminiy böladi. Şu hafta yillik summani hisoblang: AQŞ yöli aynan şu raqamdan boşlanadi.";
+    else if (r === "ugrad") t = "UGRAD da aviabilet, öqiş, yaşaş va suğurtani dastur qoplaydi. Budjet savoli sizga keyin, bakalavr yoki magistratura uçun kerak böladi.";
     else if (r === "phd") t = "AQŞda PhD köpinça kafedra paketi bilan: stipendiya va öqiş tölovidan ozod qiliş. Paketni soliştiriş M7 da.";
     else if (f === "a40") t = "Yaxşi. Universitetni yordam siyosatiga qaramay tanlaş mumkin; natija grantini baribir qidiring.";
     else if (r === "mag") t = f === "a0" ? "Bu summada sizga Fulbright yoki moliyalaştiradigan kafedra kerak. Rejadagi muddat Fulbright ning ötgan sikliga qarab qöyildi." : "Magistratura köpinça öz hisobidan. Sizga Fulbright, moliyalaştiradigan kafedra yoki natija granti kerak böladi (M6–M7).";
     else t = f === "a15" ? "Sizga natija grantlari va arzonroq yöllar (ikki yillik kollej, arzon hududlar) mos. Hisob M2 da." : "Sizga xalqaro talabaga ham töliq ehtiyojni qoplaydigan universitetlar kerak. Ular kam va tanlovli, şuning uçun parallel boşqa mamlakatni ham körib çiqing (M3).";
     fb("fb4", t);
   }
-  var HINT = { l1: "Ikkita savolga javob bering.", l2: "Ikkita savolga javob bering.", l3: "Baholar va har qatorga javob bering.", l4: "Bitta variantni tanlang." };
+  var HINT = { l1: "Hamma savolga javob bering: boşlaş yili, holat va ariza sanasi.", l2: "Yöl va sohani tanlang.", l3: "Baholar, har qator va ikkala sinovga javob bering.", l4: "Bitta variantni tanlang." };
   function renderSteps() {
     lessons.forEach(function (l) {
       var id = l.id, ok = answered(id), h = l.querySelector("[data-hint]");
@@ -493,7 +514,7 @@ JS = r'''<script>
     "Oxirgi 2 yildagi baholaringizni bitta jadvalga yozing. AQŞ universiteti ularni transkript orqali köradi.",
     "TOEFL, IELTS yoki boşqa testni tanlang va eng yaqin imtihon sanasini test taşkilotining rasmiy saytidan toping.",
     "",
-    "Oila bilan 15 daqiqa gaplaşing: yiliga öqiş va yaşaşga neça dollar ajrata olasiz? Raqamni yozing. I-20 aynan şu savoldan boşlanadi."
+    "15 daqiqa ajrating: yiliga öqiş va yaşaşga neça dollar tölay olasiz? Oila yordami bölsa, uni ham qöşing. Raqamni yozing: I-20 aynan şu savoldan boşlanadi."
   ];
   var DOC_TASK = {
     test: "Közlagan 3 universitetingiz SAT yoki GRE ni talab qilişini qabul sahifasidan tekşiring: talab, ixtiyoriy yoki qabul qilinmaydi.",
@@ -501,8 +522,8 @@ JS = r'''<script>
     ess: "Sizga eng köp taʼsir qilgan bitta kiçik voqeani 5 jumlada yozing. Bu inşoning xomaşyosi."
   };
   // I bosqiçdagi haqiqiy darslar (M1, M2)
-  var P1 = ["M1.1 Universitet turlari", "M1.2 Universitet haqiqiymi?", "M1.3 AQŞ darajasi qanday tuzilgan", "M1.4 Sohangiz qayerda kuçli", "M2.1 Töliq narx qança", "M2.2 I-20 uçun pul dalili", "M2.3 Qaysi pul sizga oçiq"];
-  var PH = [["I", "Tizim va pul", "Universitet tekşiruv kartasi va AQŞ pul xaritasi (M1–M2)"], ["II", "Bakalavr yordami", "Yordam beradigan universitetlar röyxati va yordam arizasi (M3–M4)"], ["III", "Davlat dasturlari", "Global UGRAD va Fulbright kartasi (M5–M6)"], ["IV", "Magistratura, PhD va viza", "Moliya paketi taqqoslaşi, viza va maqom röyxati (M7–M8)"]];
+  var P1 = ["M1.1 Universitet turlari", "M1.2 Universitet haqiqiymi?", "M1.3 AQŞ darajasi qanday tuzilgan?", "M1.4 Sohangiz qayerda kuçli?", "M2.1 Töliq narx qança?", "M2.2 I-20 uçun mablağ hujjatlari", "M2.3 Qaysi mablağ manbalari sizga oçiq?"];
+  var PH = [["I", "Tizim va budjet", "Universitet tekşiruv kartasi, xarajat va budjet rejasi (M1–M2)"], ["II", "Bakalavr yordami", "Yordam beradigan universitetlar röyxati va yordam arizasi (M3–M4)"], ["III", "Davlat dasturlari", "Global UGRAD va Fulbright kartasi (M5–M6)"], ["IV", "Magistratura, PhD va viza", "Moliya paketi taqqoslaşi, viza va maqom röyxati (M7–M8)"]];
   var REL = { bak: [1, 1, 0, 1], ugrad: [1, 0, 1, 1], mag: [1, 0, 1, 1], phd: [1, 0, 0, 1], x: [1, 1, 1, 1] };
   function renderResult() {
     if (!$("rLv")) return;
@@ -526,7 +547,7 @@ JS = r'''<script>
     var lowName = low.map(function (i) { return i === 4 && md ? DOCS[md] : DIM[i].toLowerCase(); });
     var t = strong.length ? "<p>Sizning kuçli tomoningiz: <b>" + strong.join(" va ") + "</b>.</p>" : "<p>Hozirça hamma yönalişda iş bor. Bu normal: köpçilik şu holatdan boşlaydi.</p>";
     t += "<p>Birinçi yopiladigan joylar: <b>" + lowName.join(" va ") + "</b>.</p>";
-    t += "<p>Sizga <b>I bosqiç</b> mos, çunki universitetni tekşiriş va oila summasini hisoblaş hamma yöl uçun birinçi qadam: qaysi universitet real ekanini aynan şu ikkisi körsatadi.</p>";
+    t += "<p>Sizga <b>I bosqiç</b> mos, çunki universitetni tekşiriş va budjetingizni hisoblaş hamma yöl uçun birinçi qadam: qaysi universitet real ekanini aynan şu ikkisi körsatadi.</p>";
     $("rTxt").innerHTML = t;
 
     var dl = deadline(), t0 = today(), end = dl && !passed ? new Date(dl.getTime() - 28 * DAY) : null;

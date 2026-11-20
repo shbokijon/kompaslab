@@ -24,7 +24,7 @@ MOD = dict(
              quiz=[("AQShda magistratura har doim kafedra tomonidan moliyalashtiriladi.", "n", "Noto'g'ri: ko'p dasturlar asosan o'z hisobidan."),
                    ("Assistentlik PhD darajasida keng tarqalgan.", "t", "To'g'ri: EducationUSA."),
                    ("Ba'zi kafedralar magistratura talabalarini ham moliyalashtiradi.", "t", "To'g'ri: Princeton misoli."),
-                   ("Magistraturaga moliyasiz qabul qilinsa, oila to'lay olmasa ham bu real yo'l.", "n", "Noto'g'ri: I-20 uchun pul dalili kerak (M2).")],
+                   ("Magistraturaga moliyasiz qabul qilinsa, oila to'lay olmasa ham bu real yo'l.", "n", "Noto'g'ri: I-20 uchun mablag' hujjati kerak (M2).")],
              task="<ul><li>Sizning maqsadingiz: magistratura yoki PhD? Moliya bo'yicha ikki dalil bilan yozing.</li></ul>",
              ph="Maqsad: ... Chunki 1) oila ... 2) ilmiy tajribam ..."),
         dict(t="PhD moliya paketi", short="Paket", min=30, kind="🧮 Paket", ic="money",

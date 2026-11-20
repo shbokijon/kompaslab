@@ -2237,7 +2237,7 @@
     {
      "num": "0.1",
      "title": "Muddat",
-     "content": "Qachon boshlaysiz va hozir qayerdasiz: topshirishgacha nechta hafta bor",
+     "content": "Boshlash yili, holatingiz va ariza sanasi: topshirishgacha nechta hafta bor",
      "trek": ""
     },
     {
@@ -2254,8 +2254,8 @@
     },
     {
      "num": "0.4",
-     "title": "Pul",
-     "content": "Oilangiz yiliga qancha bera oladi; yakunda baho va 4 bosqichli reja",
+     "title": "Budjet",
+     "content": "Yiliga qancha toʻlay olasiz; yakunda baho va 4 bosqichli reja",
      "trek": ""
     }
    ]
@@ -2275,18 +2275,18 @@
     {
      "num": "1.2",
      "title": "Universitet haqiqiymi?",
-     "content": "Pul toʻlashdan oldin uchta narsa: akkreditatsiya, SEVP va rasmiy sayt",
+     "content": "Toʻlovdan oldin uchta tekshiruv: akkreditatsiya ; SEVP ; rasmiy sayt ",
      "trek": ""
     },
     {
      "num": "1.3",
-     "title": "AQSh darajasi qanday tuzilgan",
+     "title": "AQSh darajasi qanday tuzilgan?",
      "content": "Har qoidani dastur katalogi yoki kafedra qoʻllanmasidan oling",
      "trek": ""
     },
     {
      "num": "1.4",
-     "title": "Sohangiz qayerda kuchli",
+     "title": "Sohangiz qayerda kuchli?",
      "content": "Soha boʻyicha kuchni HERD jadvali va kafedra sahifasi bilan tekshiring",
      "trek": ""
     },
@@ -2300,38 +2300,38 @@
   },
   {
    "id": "M2",
-   "title": "Xarajat va pul oqimi",
+   "title": "Xarajat va budjet",
    "meta": "5 dars",
-   "info": "Maqsad: Bir yil qanchaga tushishini va oilangiz qancha bera olishini bilish. Natija: AQSh pul xaritangiz.",
+   "info": "Maqsad: bir yil qanchaga tushishini va qancha toʻlay olishingizni bilish. Natija: xarajat va budjet rejangiz.",
    "lessons": [
     {
      "num": "2.1",
-     "title": "Toʻliq narx qancha",
+     "title": "Toʻliq narx qancha?",
      "content": "Toʻliq narx = oʻqish + yashash + sugʻurta + kitob va shaxsiy xarajat + bir martalik toʻlovlar",
      "trek": ""
     },
     {
      "num": "2.2",
-     "title": "I-20 uchun pul dalili",
-     "content": "I-20 uchun birinchi yil narxini ishlatsa boʻladigan pul bilan koʻrsatasiz",
+     "title": "I-20 uchun mablagʻ hujjatlari",
+     "content": "I-20 uchun birinchi yil narxini ishlatsa boʻladigan mablagʻ bilan koʻrsatasiz",
      "trek": ""
     },
     {
      "num": "2.3",
-     "title": "Qaysi pul Sizga ochiq",
-     "content": "Federal pul yopiq",
+     "title": "Qaysi mablagʻ manbalari sizga ochiq?",
+     "content": "Federal yordam yopiq",
      "trek": ""
     },
     {
      "num": "2.4",
      "title": "Ehtiyoj granti va natija granti",
-     "content": "Ehtiyoj granti oila toʻlay olmaydigan farqni qoplaydi",
+     "content": "Ehtiyoj granti siz toʻlay olmaydigan farqni qoplaydi",
      "trek": ""
     },
     {
      "num": "2.5",
-     "title": "Oilangiz chegarasi",
-     "content": "Oila chegarasini dollarda, yillik raqam bilan aniqlang",
+     "title": "Budjetingiz chegarasi",
+     "content": "Budjetingizni dollarda, yillik raqam bilan aniqlang",
      "trek": ""
     }
    ]
@@ -2356,7 +2356,7 @@
     },
     {
      "num": "3.3",
-     "title": "CDS H6: kim qancha oldi",
+     "title": "CDS H6: kim qancha oldi?",
      "content": "H6 ni toʻliq narx va xalqaro talabalar soni bilan solishtiring",
      "trek": ""
     },
@@ -2388,7 +2388,7 @@
     },
     {
      "num": "4.2",
-     "title": "Oila daromadini hujjatlash",
+     "title": "Ota-ona daromadini hujjatlash",
      "content": "Har daromad turiga rasmiy hujjat, bitta kurs va sana, hamma formada bir xil raqam",
      "trek": ""
     },
@@ -2401,7 +2401,7 @@
     {
      "num": "4.4",
      "title": "Yordam xatini oʻqish",
-     "content": "Xatni grant, kredit, ish va oila hissasiga ajrating",
+     "content": "Xatni 4 qismga ajrating: grant ; kredit ; ish ; oila hissasi ",
      "trek": ""
     },
     {
@@ -2420,13 +2420,13 @@
    "lessons": [
     {
      "num": "5.1",
-     "title": "Global UGRAD nima",
+     "title": "Global UGRAD nima?",
      "content": "UGRAD: bir semestr, diplomsiz, universitetni dastur tanlaydi",
      "trek": ""
     },
     {
      "num": "5.2",
-     "title": "Sizga mosmi",
+     "title": "Sizga mos keladimi?",
      "content": "Asosiy shartlar: 18+, Oʻzbekistonda yashash va kunduzgi oʻqish, kamida bir yil oʻqish qoligʻi, ingliz tili, qaytish",
      "trek": ""
     },
@@ -2458,13 +2458,13 @@
    "lessons": [
     {
      "num": "6.1",
-     "title": "Fulbright kimga",
+     "title": "Fulbright kimga mos keladi?",
      "content": "Oʻzbekiston uchun Fulbright: magistratura, 2 yilgacha; diplom, 2 yillik tajriba, Oʻzbekistonda yashash",
      "trek": ""
     },
     {
      "num": "6.2",
-     "title": "Tanlov qanday oʻtadi",
+     "title": "Tanlov qanday oʻtadi?",
      "content": "Olti bosqich: texnik tekshiruv, panel, intervyu, nomzodlik, testlar, kengash tasdigʻi",
      "trek": ""
     },
@@ -2496,7 +2496,7 @@
    "lessons": [
     {
      "num": "7.1",
-     "title": "Pul qayerdan: magistratura va PhD",
+     "title": "Mablagʻ qayerdan keladi: magistratura va PhD",
      "content": "Magistratura koʻpincha oʻz hisobidan, PhD koʻpincha kafedra paketi bilan",
      "trek": ""
     },
@@ -2514,14 +2514,14 @@
     },
     {
      "num": "7.4",
-     "title": "Tashqi grantlar kimga ochiq",
+     "title": "Tashqi grantlar kimga ochiq?",
      "content": "Har grantni fuqarolik qatori bilan filtrlang",
      "trek": ""
     },
     {
      "num": "7.5",
      "title": "Takliflarni solishtirish",
-     "content": "Takliflarni oylik qoldiq, yozgi pul, kafolat yillari va majburiyat boʻyicha solishtiring",
+     "content": "Takliflarni oylik qoldiq, yozgi stipendiya, kafolat yillari va majburiyat boʻyicha solishtiring",
      "trek": ""
     }
    ]
@@ -2534,20 +2534,20 @@
    "lessons": [
     {
      "num": "8.1",
-     "title": "F-1 yoki J-1",
+     "title": "F-1 yoki J-1?",
      "content": "F-1: daraja, I-20",
      "trek": ""
     },
     {
      "num": "8.2",
      "title": "Toshkentda viza",
-     "content": "Toshkentda: DS-160, yigʻim, navbat, hujjatlar, suhbat",
+     "content": "Toshkentdagi tartib: DS-160; yigʻim; navbat; hujjatlar; suhbat",
      "trek": ""
     },
     {
      "num": "8.3",
      "title": "Maqomni saqlash",
-     "content": "Maqom: toʻliq yuklama, toʻgʻri hujjat, ruxsatsiz ish yoʻq, oʻzgarishlar haqida xabar",
+     "content": "Maqom qoidalari: toʻliq yuklama; toʻgʻri hujjat; ruxsatsiz ish yoʻq; oʻzgarishlar haqida xabar",
      "trek": ""
     },
     {

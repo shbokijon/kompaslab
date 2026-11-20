@@ -8,7 +8,7 @@
   var SKIP = { xp: 1, done: 1, seen: 1, open: 1, lv: 1, v: 1 };
   // M0 v2 (Magistratura, Bakalavr, USA) savollari
   var LABELS = {
-    ans: "Javoblar", start: "Boshlash vaqti", stage: "Hozir qayerda", early: "Erta muddat rejada", date: "Ariza muddati (oʻzi kiritgan)",
+    ans: "Javoblar", start: "Boshlash vaqti", stage: "Hozir qayerda", early: "Erta muddat rejada", date: "Ariza muddati (oʻzi kiritgan)", dateX: "Sanani bilmaydi (taxminiy qoʻyildi)", dateEst: "Taxminiy ariza sanasi",
     deg: "Daraja", field: "Soha", fieldX: "Soha: hali bilmayman", ftype: "Magistratura turi", where: "Mamlakat", grades: "Baholar",
     docs: "Hujjatlar", cv: "CV", sop: "Maqsad bayonnomasi", ref: "Tavsiya xati", tr: "Baholar qaydnomasi", lang: "Ingliz tili sertifikati",
     ach: "Yutuqlar", ess: "Insho", route: "Yoʻl (USA)", test: "SAT yoki GRE", fund: "Pul", game: "Kuchli/zaif jumla oʻyini", task: "Bepul vazifa bajarildi", res: "Natija",

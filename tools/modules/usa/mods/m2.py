@@ -1,14 +1,14 @@
 from common import EDUSA_UG, ED_AID, OSU, SJSU, KSU, SEVIS, GMU, HOL, STD
 
 MOD = dict(
-    title="Xarajat va pul oqimi",
-    desc="USA dasturi M2: AQSh universitetining to'liq narxi (Cost of Attendance), I-20 uchun moliyaviy dalil, xalqaro talabaga ochiq va yopiq pul manbalari, ehtiyojga va natijaga asoslangan yordam farqi, arzon yo'llar va oilaviy byudjet chegarasi. Natija: AQSh pul xaritasi.",
+    title="Xarajat va budjet",
+    desc="USA dasturi M2: AQSh universitetining to'liq narxi (Cost of Attendance), I-20 uchun mablag' hujjatlari, xalqaro talabaga ochiq va yopiq mablag' manbalari, ehtiyojga va natijaga asoslangan yordam farqi, arzon yo'llar va budjetingiz chegarasi. Natija: xarajat va budjet rejasi.",
     lead="AQShda qabul xati yetarli emas: I-20 olish uchun birinchi yil pulini hujjat bilan ko'rsatasiz. Bu modulda narx qayerdan kelishini, qaysi pul manbalari sizga yopiq ekanini va oilangiz yiliga qancha bera olishini raqam bilan aniqlaysiz.",
     hero="money", weeks="1–2", next="M3 Yordam beradigan universitetlarni topish", next_href="usa-lab-o.html?m=3",
-    goals=[("money", "AQSh pul xaritasi", "narx, oila chegarasi, kerakli yordam ulushi"),
-           ("scroll", "I-20 moliyaviy dalil rejasi", "qaysi hujjat qabul qilinadi, qaysi biri yo'q"),
+    goals=[("money", "Xarajat va budjet rejasi", "narx, budjetingiz, kerakli yordam ulushi"),
+           ("scroll", "I-20 uchun mablag' hujjatlari ro'yxati", "qaysi hujjat qabul qilinadi, qaysi biri yo'q"),
            ("compass", "Yo'l xulosasi", "to'liq yordam, qisman yordam yoki arzon yo'l")],
-    warn=f"Bu modul faqat AQSh pul mexanizmini o'rgatadi. Mamlakatlararo umumiy xarajat modeli va 4 yillik reja Bakalavr dasturi M12 da. Summalar har yili o'zgaradi; {HOL} universitet sahifasidan oling. Kompas Lab moliyaviy maslahatchi emas; qarorni oila bilan qabul qiling.",
+    warn=f"Bu modul faqat AQShdagi xarajat va yordam tartibini o'rgatadi. Mamlakatlararo umumiy xarajat modeli va 4 yillik reja Bakalavr dasturi M12 da. Summalar har yili o'zgaradi; {HOL} universitet sahifasidan oling. Kompas Lab moliyaviy maslahatchi emas; qarorni o'zingiz qabul qilasiz.",
     lessons=[
         dict(t="To'liq narx: Cost of Attendance", short="Narx", min=30, kind="🧮 Hisob", ic="money",
              hook="O'qish to'lovi ([[tuition]]) universitet so'raydigan pulning faqat bir qismi. AQSh universitetlari to'liq narxni [[Cost of Attendance]] deb e'lon qiladi va yordam ham, I-20 ham shu summaga qarab hisoblanadi.",
@@ -44,7 +44,7 @@ MOD = dict(
 <div class="srcs">Manba: {KSU}; {SJSU}. {HOL}.</div>""",
              take="I-20 uchun kamida birinchi yil taxminiy xarajati ishlatsa bo'ladigan pul bilan ko'rsatiladi. Mulk, maosh xati va aksiyalar ko'pincha qabul qilinmaydi.",
              quiz=[("I-20 uchun oilaning uyi baholash hujjati ko'pincha yetarli dalil bo'ladi.", "n", "Noto'g'ri: San José State mulk va oltin baholash hujjatini qabul qilmaydi."),
-                   ("Muddatli omonat qabul qilinishi uchun pulni jarimasiz olish mumkinligi yozilishi kerak.", "t", "To'g'ri: San José State shuni talab qiladi."),
+                   ("Muddatli omonat qabul qilinishi uchun mablag'ni jarimasiz olish mumkinligi yozilishi kerak.", "t", "To'g'ri: San José State shuni talab qiladi."),
                    ("Stipendiya xati moliyaviy dalil bo'lishi mumkin.", "t", "To'g'ri: davlat, xususiy yoki universitet stipendiyasi xati."),
                    ("Hamma universitetda hujjat talablari bir xil.", "n", "Noto'g'ri: har universitet sahifasini o'qing.")],
              task="<ul><li>Oilangiz qaysi hujjatlarni bera olishini yozing: bank ko'chirmasi, omonat, stipendiya, kredit.</li><li>Ularning birinchi yil narxini qoplashi yoki qoplamasligini hisoblang.</li></ul>",
@@ -67,7 +67,7 @@ MOD = dict(
 <div class="srcs">Manba: {ED_AID}; {OSU}; {EDUSA_UG}; {GMU}. {HOL}.</div>""",
              take="Federal yordam xalqaro talabaga yopiq. Ochiq manbalar: universitet yordami, stipendiyalar, davlat dasturlari, kafedra moliyalashtirishi va oila. Ish daromadi asosiy manba emas.",
              task="<ul><li>Yuqoridagi 7 manbadan sizga real bo'lganlarini belgilang.</li><li>Har biri uchun bir jumla: nega real yoki nega emas.</li></ul>",
-             ph="Universitet yordami: real, chunki ...; sport: yo'q; Fulbright: ... ; oila: ..."),
+             ph="Universitet yordami: real, chunki ...; sport: yo'q; Fulbright: ... ; o'z budjetingiz: ..."),
         dict(t="Ehtiyojga va natijaga asoslangan yordam", short="Yordam turi", min=25, kind="⚖️ Farq", ic="bulb",
              hook="\"Grant oldim\" degan gap ikki xil narsa bo'lishi mumkin: oilangiz to'lay olmaydigan qism qoplandi yoki yaxshi natijangiz uchun narxdan chegirma berildi. Ularni farqlamasangiz, universitet ro'yxatini noto'g'ri tuzasiz.",
              body=f"""<div class="tbl"><table><thead><tr><th></th><th>Ehtiyojga asoslangan ([[need-based]])</th><th>Natijaga asoslangan ([[merit-based]])</th></tr></thead><tbody>
@@ -98,24 +98,24 @@ MOD = dict(
 <div class="box warn">Kerakli yordam ulushi juda katta bo'lsa, AQSh yo'lini boshqa mamlakat bilan parallel olib boring. Kompas bunda boshqa dasturni ko'rsatadi.</div>""",
              take="Oila chegarasini dollarda, yillik raqam bilan aniqlang. Kerakli yordam ulushi yo'lni belgilaydi: arzon yo'l, natijaga asoslangan grant yoki to'liq ehtiyojni qoplaydigan universitet.",
              task="<ul><li>Oila bilan suhbatdan keyin yillik maksimal summani yozing.</li><li>Bitta universitet uchun kerakli yordam ulushini hisoblang va yo'l xulosasini yozing.</li></ul>",
-             ph="Oila chegarasi: yiliga ... USD, ... yil. ... universiteti narxi ... → kerakli yordam ...%. Xulosa: ..."),
+             ph="Budjetingiz: yiliga ... USD, ... yil. ... universiteti narxi ... → kerakli yordam ...%. Xulosa: ..."),
     ],
-    tool=dict(id="pul", short="Pul xaritasi", h2="AQSh pul xaritasi", sub="Hisoblagich: narx, o'sish va oila chegarasini kiriting; kerakli yordam ulushi va yo'l xulosasi chiqadi.",
-              h3="Pul xaritasi", tag="5 maydon", ic="money", btn="Xaritani saqlash", badge="Pul xaritachi", min=4,
-              pre="""<div class="fld"><label>Hisoblagich <small>AQSh dollarida, yillik</small></label><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px"><input id="pC" type="number" min="0" placeholder="To'liq narx (COA)" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="pF" type="number" min="0" placeholder="Oila chegarasi" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="pY" type="number" min="1" max="6" placeholder="Yillar (masalan 4)" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="pG" type="number" min="0" step="1" placeholder="Yillik o'sish, % (6–10)" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"></div><div id="pOut" class="out" style="white-space:normal">Raqamlarni kiriting.</div></div>""",
+    tool=dict(id="pul", short="Budjet", h2="Xarajat va budjet rejasi", sub="Hisoblagich: narx, o'sish va budjetingizni kiriting; kerakli yordam ulushi va yo'l xulosasi chiqadi.",
+              h3="Budjet rejasi", tag="5 maydon", ic="money", btn="Rejani saqlash", badge="Budjetchi", min=4,
+              pre="""<div class="fld"><label>Hisoblagich <small>AQSh dollarida, yillik</small></label><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px"><input id="pC" type="number" min="0" placeholder="To'liq narx (COA)" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="pF" type="number" min="0" placeholder="Budjetingiz (yiliga)" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="pY" type="number" min="1" max="6" placeholder="Yillar (masalan 4)" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="pG" type="number" min="0" step="1" placeholder="Yillik o'sish, % (6–10)" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"></div><div id="pOut" class="out" style="white-space:normal">Raqamlarni kiriting.</div></div>""",
               fields=[dict(k="uni", label="Universitet va o'quv yili", ph="... universiteti, 2026–2027"),
                       dict(k="narx", label="To'liq narx qatorlari", type="area", ph="O'qish ..., yashash ..., sug'urta ..., boshqa ..., bir martalik ..."),
-                      dict(k="dalil", label="I-20 uchun pul dalili rejasi", type="area", ph="Bank ko'chirmasi ..., omonat ..., stipendiya ..."),
-                      dict(k="manba", label="Sizga ochiq manbalar", type="area", ph="Universitet yordami ..., stipendiya ..., davlat dasturi ..., oila ..."),
-                      dict(k="yol", label="Yo'l xulosasi", type="select", opts=["Oila to'liq to'laydi", "Natijaga asoslangan grant + arzon yo'l", "Faqat to'liq ehtiyojni qoplaydigan universitetlar", "AQSh + boshqa mamlakat parallel"])]),
-    check=dict(h2="M2 nazorati", sub="Pul xaritasini yakunlashdan oldin tekshiring.", h3="8 bandlik nazorat",
+                      dict(k="dalil", label="I-20 uchun mablag' hujjatlari", type="area", ph="Bank ko'chirmasi ..., omonat ..., stipendiya ..."),
+                      dict(k="manba", label="Sizga ochiq manbalar", type="area", ph="Universitet yordami ..., stipendiya ..., davlat dasturi ..., o'z budjetingiz ..."),
+                      dict(k="yol", label="Yo'l xulosasi", type="select", opts=["To'liq o'zim to'layman", "Natijaga asoslangan grant + arzon yo'l", "Faqat to'liq ehtiyojni qoplaydigan universitetlar", "AQSh + boshqa mamlakat parallel"])]),
+    check=dict(h2="M2 nazorati", sub="Budjet rejasini yakunlashdan oldin tekshiring.", h3="8 bandlik nazorat",
                items=["Narx xalqaro talaba uchun va o'quv yili ko'rsatilgan.", "Narx qatorlari manbasi bilan yozilgan.", "Yillik o'sish hisobga olingan.",
                       "I-20 uchun qaysi hujjat qabul qilinishi universitet sahifasidan o'qilgan.", "Federal yordam yopiq ekani hisobga olingan.",
-                      "Kampusda ishlash asosiy manba qilinmagan.", "Oila chegarasi dollarda, yillik raqam bilan.", "Yo'l xulosasi oila bilan muhokama qilingan."]),
-    art_title="AQSh pul xaritasi", art_short="Pul xaritasi",
-    art=[("Universitet va o'quv yili", ["uni"]), ("To'liq narx", ["narx", "a1"]), ("I-20 pul dalili", ["dalil", "a2"]), ("Ochiq manbalar", ["manba", "a3"]),
-         ("Yordam turi", ["a4"]), ("Hisob", ["pcalc"]), ("Oila chegarasi va yo'l", ["a5", "yol"])],
-    tip="AQSh universitetlari sizdan avval oilangiz qancha to'lay olishini so'raydi. Bu raqamni ular emas, siz birinchi bo'lib aniq bilishingiz kerak.",
+                      "Kampusda ishlash asosiy manba qilinmagan.", "Budjetingiz dollarda, yillik raqam bilan.", "Yo'l xulosasi budjetingiz bilan solishtirilgan."]),
+    art_title="Xarajat va budjet rejasi", art_short="Budjet rejasi",
+    art=[("Universitet va o'quv yili", ["uni"]), ("To'liq narx", ["narx", "a1"]), ("I-20 uchun mablag' hujjatlari", ["dalil", "a2"]), ("Ochiq manbalar", ["manba", "a3"]),
+         ("Yordam turi", ["a4"]), ("Hisob", ["pcalc"]), ("Budjetingiz va yo'l", ["a5", "yol"])],
+    tip="AQSh universitetlari avval qancha to'lay olishingizni so'raydi. Bu raqamni siz birinchi bo'lib aniq bilishingiz kerak.",
     sources=f"{KSU}; {SJSU}; {ED_AID}; {OSU}; {EDUSA_UG}; {GMU}; {SEVIS}. {STD}",
     js="""window.KGTool = { init: function () {
   var ids = ["pC", "pF", "pY", "pG"], o = document.getElementById("pOut");
@@ -127,10 +127,10 @@ MOD = dict(
     var tot = 0, need = 0;
     for (var y = 0; y < Y; y++) { var c = C * Math.pow(1 + G, y); tot += c; need += Math.max(0, c - F); }
     var share = tot ? need / tot * 100 : 0, tag, cls;
-    if (share <= 0) { tag = "Oila toʻliq toʻlaydi"; cls = "ok"; }
+    if (share <= 0) { tag = "Toʻliq oʻzingiz toʻlaysiz"; cls = "ok"; }
     else if (share <= 50) { tag = "Natijaga asoslangan grant + arzon yoʻl"; cls = "chk"; }
     else { tag = "Faqat toʻliq ehtiyojni qoplaydigan universitetlar yoki parallel mamlakat"; cls = "no"; }
-    var txt = Y + " yillik narx: " + fmt(tot) + " USD; oila: " + fmt(F * Y) + " USD; kerakli yordam: " + fmt(need) + " USD (" + Math.round(share) + "%). Yoʻl: " + tag + ".";
+    var txt = Y + " yillik narx: " + fmt(tot) + " USD; budjetingiz: " + fmt(F * Y) + " USD; kerakli yordam: " + fmt(need) + " USD (" + Math.round(share) + "%). Yoʻl: " + tag + ".";
     o.innerHTML = "<span class=\\"pill " + cls + "\\">" + Math.round(share) + "% yordam</span> " + KG.esc(txt);
     KG.S.notes.pcalc = txt; KG.S.notes.p_in = [C, F, Y, v("pG")].join("|"); KG.save();
   }

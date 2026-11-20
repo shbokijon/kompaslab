@@ -21,7 +21,7 @@
 
   if (n === 1) {
     var u = notes(1).uni;
-    if (u) set("m1", "<b>Kartangizdagi universitet: " + esc(short(u, 80)) + ".</b> Endi savol boshqa: bir yili qanchaga tushadi va oilangiz buni koʻtara oladimi? M2 da shuni raqam bilan hisoblaymiz.");
+    if (u) set("m1", "<b>Kartangizdagi universitet: " + esc(short(u, 80)) + ".</b> Endi savol boshqa: bir yili qanchaga tushadi va <b>budjetingiz</b> bunga yetadimi? M2 da shuni raqam bilan hisoblaymiz.");
   }
 
   if (n === 2) {
@@ -31,8 +31,8 @@
       var tot = 0, need = 0;
       for (var y = 0; y < Y; y++) { var c = C * Math.pow(1 + G, y); tot += c; need += Math.max(0, c - (F || 0)); }
       var sh = tot ? Math.round(need / tot * 100) : 0;
-      var way = sh <= 0 ? "natija granti boʻlsa yaxshi, boʻlmasa ham oila toʻlaydi" : sh <= 50 ? "natija grantlari va arzon yoʻllar (ikki yillik kollej, arzon hududlar)" : "faqat toʻliq ehtiyojni qoplaydigan universitetlar (A va B guruhi) yoki parallel boshqa mamlakat";
-      set("m2", "<b>Sizning hisobingiz: " + Y + " yilda " + nf(tot) + " USD, kerakli yordam " + nf(need) + " USD (" + sh + "%).</b> Sizga mos yoʻl: " + way + ". M3 da aynan shu ulushni qoplaydigan universitetlarni rasmiy sahifa va CDS H6 bilan topamiz.");
+      var way = sh <= 0 ? "natija granti boʻlsa yaxshi, boʻlmasa ham oʻzingiz toʻlay olasiz" : sh <= 50 ? "natija grantlari va arzon yoʻllar (ikki yillik kollej, arzon hududlar)" : "faqat toʻliq ehtiyojni qoplaydigan universitetlar (A va B guruhi) yoki parallel boshqa mamlakat";
+      set("m2", "<b>Sizning hisobingiz:</b><ul><li>" + Y + " yillik narx: <b>" + nf(tot) + " USD</b>;</li><li>kerakli yordam: <b>" + nf(need) + " USD (" + sh + "%)</b>;</li><li>sizga mos yoʻl: " + way + ".</li></ul> M3 da aynan shu ulushni qoplaydigan universitetlarni rasmiy sahifa va CDS H6 bilan topamiz.");
     }
   }
 

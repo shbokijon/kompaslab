@@ -4,7 +4,7 @@ MOD = dict(
     title="AQSh oliy ta'limi: tizim va universitetni tekshirish",
     desc="USA dasturi M1: AQSh universitet turlari, akkreditatsiya va SEVP sertifikati, daraja tuzilmasi, soha bo'yicha kuchli joyni NSF HERD ma'lumoti bilan topish, universitetni rasmiy ma'lumot bilan tekshirish. Natija: universitet tekshiruv kartasi.",
     lead="AQShdagi oliy ta'lim muassasalari bir xil emas. Bu modulda universitet turlarini ajratasiz, uning haqiqiy va viza beradigan muassasa ekanini tekshirasiz, sohangiz bo'yicha kuchli joylarni reyting emas, ma'lumot bilan topasiz.",
-    hero="usa", weeks="1–2", next="M2 Xarajat va pul oqimi", next_href="usa-lab-o.html?m=2",
+    hero="usa", weeks="1–2", next="M2 Xarajat va budjet", next_href="usa-lab-o.html?m=2",
     goals=[("telescope", "Universitet tekshiruv kartasi", "tur, akkreditatsiya, SEVP, soha kuchi, asosiy raqamlar"),
            ("chart", "Soha bo'yicha 10 ta kuchli joy", "NSF HERD ma'lumotidan, reytingdan emas"),
            ("shield", "Soxta va viza bermaydigan muassasalarni ajratish", "3 bosqichli tekshiruv")],
@@ -115,6 +115,6 @@ MOD = dict(
     art_title="Universitet tekshiruv kartasi", art_short="Karta",
     art=[("Universitet va dastur", ["uni"]), ("Turi", ["tur", "a1"]), ("Akkreditatsiya va SEVP", ["akkr", "a2"]), ("Daraja tuzilmasi", ["a3"]),
          ("Soha bo'yicha kuch", ["soha", "a4"]), ("Asosiy raqamlar", ["raqam", "a5"]), ("Xulosa", ["xulosa"])],
-    tip="Universitetni reklama emas, uchta rasmiy baza tekshiradi: akkreditatsiya, SEVP va statistika. Pul to'lashdan oldin uchalasini ham ko'ring.",
+    tip="Universitetni reklama emas, uchta rasmiy baza tekshiradi: akkreditatsiya, SEVP va statistika. To'lov qilishdan oldin uchalasini ham ko'ring.",
     sources=f"{CARNEGIE}; {CHEA}; {DAPIP}; {SITS_SEARCH}; {DOS_VISA}; {HERD}; {NAV}; {CDS}; {EDUSA_UG}. {STD}",
 )
