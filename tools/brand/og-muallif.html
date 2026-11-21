@@ -1,17 +1,22 @@
-<!-- "Men haqimda" havola rasmi: Playwright bilan 1200x630 da skrinshot qilib img/brand/og-muallif.jpg ga saqlang (shrift: Inter). Rasm içidagi yozuv yangi alifboda (asoschi, 2026-11-21). -->
+<!-- Havola rasmi: Playwright bilan 1200x630 da skrinshot qilib img/brand/og-muallif.jpg ga saqlang. Shrift: sarlavha Caladea (Cambria nusxasi), qolgani Outfit (tools/brand/fonts). Yozuv yangi alifboda (asoschi, 2026-11-21). -->
 <!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Caladea;font-weight:700;src:url(fonts/Caladea-Bold.ttf)}
+@font-face{font-family:Caladea;font-style:italic;font-weight:400;src:url(fonts/Caladea-Italic.ttf)}
+@font-face{font-family:Outfit;font-weight:500;src:url(fonts/outfit-latin-500-normal.woff2)}
+@font-face{font-family:Outfit;font-weight:500;src:url(fonts/outfit-latin-ext-500-normal.woff2);unicode-range:U+0100-024F}
+@font-face{font-family:Outfit;font-weight:700;src:url(fonts/outfit-latin-700-normal.woff2)}
+@font-face{font-family:Outfit;font-weight:700;src:url(fonts/outfit-latin-ext-700-normal.woff2);unicode-range:U+0100-024F}
 *{margin:0;box-sizing:border-box}
-body{width:1200px;height:630px;background:#f4f3ef;font-family:Inter,sans-serif;position:relative;overflow:hidden}
+body{width:1200px;height:630px;background:#f4f3ef;font-family:Outfit,sans-serif;position:relative;overflow:hidden}
 .g1{position:absolute;width:760px;height:760px;border-radius:50%;left:-170px;top:-65px;background:radial-gradient(circle,#ffffff 0%,#ffffff 52%,rgba(255,255,255,0) 70%)}
 .ring{position:absolute;width:520px;height:520px;left:-10px;top:55px;border-radius:50%;border:2px dashed rgba(45,74,62,.18)}
-.dots{position:absolute;left:228px;top:40px;width:6px;height:120px;background:repeating-linear-gradient(#6ab3ea 0 6px,transparent 6px 16px);border-radius:3px;opacity:.55}
 img{position:absolute;left:55px;top:95px;width:440px;height:440px}
-.t{position:absolute;left:560px;top:140px;right:60px}
-.k{font-size:30px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c4622d}
-h1{font-size:76px;line-height:1.02;white-space:nowrap;font-weight:900;color:#1e3329;letter-spacing:-.03em;margin:14px 0 18px}
-p{font-size:34px;white-space:nowrap;font-weight:600;color:#2d4a3e}
-.u{position:absolute;left:560px;bottom:70px;font-size:26px;font-weight:700;color:#5f7169;display:flex;gap:14px;align-items:center}
-.u b{background:#1e3329;color:#fff;padding:8px 16px;border-radius:99px;font-weight:800}
+.t{position:absolute;left:560px;right:50px;top:0;bottom:130px;display:flex;flex-direction:column;justify-content:center}
+.k{font-size:26px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c4622d}
+h1{font-family:Caladea,serif;font-size:84px;line-height:1;font-weight:700;color:#1e3329;letter-spacing:-.01em;margin:16px 0 18px}
+p{color:#2d4a3e;font-family:Outfit;font-weight:500;font-size:32px;white-space:nowrap}
+.u{position:absolute;left:560px;bottom:66px;font-size:24px;font-weight:500;color:#5f7169;display:flex;gap:14px;align-items:center}
+.u b{background:#1e3329;color:#fff;padding:8px 18px;border-radius:99px;font-weight:700}
 .bar{position:absolute;left:0;right:0;bottom:0;height:14px;background:linear-gradient(90deg,#5fb0ea 0 33%,#fb3532 33% 66%,#3d3d3d 66%)}
 </style></head><body><div class="g1"></div><div class="ring"></div><img src="../../img/brand/logo-512.png">
 <div class="t"><div class="k">Asosçi kim?</div><h1>Shokhrukh<br>Bokijonov</h1><p>Geofizik · Leeds PhD tadqiqotçisi</p></div>

@@ -76,7 +76,7 @@ Hamma narsa bitta uzun sahifada emas, har daraja alohida sahifada:
 | `js/protect.js` | Nusxa olishni cheklash + "kompaslab.uz" suv belgisi (faqat kirganlarga) | — |
 | `js/pwa.js`, `sw.js`, `manifest.webmanifest`, `offline.html` | Telefonga oʻrnatish (PWA), oflayn | Rasm/CSS keshini hammaga yangilash: `sw.js` dagi `V = "kl-v1"` ni oshir |
 | `css/brand.css` | Logotip komponenti `.klogo` va animatsiyasi | — |
-| `img/brand/` | Logotip, favicon, ikonkalar, `og.jpg`; `og-muallif.jpg` (2026-11-21, faqat `muallif.html`; manba `tools/brand/og-muallif.html`, skrinshot 1200x630). Havola koʻrinishi (og:title, og:description, rasm ichidagi yozuv) **yangi alifboda** yoziladi: u yerda `js/alifbo.js` ishlamaydi (asoschi, 2026-11-21) | `python3 tools/brand/make_logo.py` |
+| `img/brand/` | Logotip, favicon, ikonkalar, `og.jpg`; `og-muallif.jpg` (2026-11-21, faqat `muallif.html`; manba `tools/brand/og-muallif.html`, skrinshot 1200x630). Ikkala rasm manbasi `tools/brand/og.html`, `og-muallif.html`: sarlavha Caladea, qolgani Outfit (`tools/brand/fonts/`); rasm oʻzgarsa, `og:image` dagi `?v=N` ni oshir (Telegram keshi). Havola koʻrinishi (og:title, og:description, rasm ichidagi yozuv) **yangi alifboda** yoziladi: u yerda `js/alifbo.js` ishlamaydi (asoschi, 2026-11-21) | `python3 tools/brand/make_logo.py` |
 | `img/3d/*.webp` | 3D ikonkalar (bachelor, bell, books, bulb, calendar, chart, compass, daad, gks, hourglass, lock, master, memo, miya, money, musofir, phd, road, scroll, seedling, shield, telescope, tt, usa) | — |
 
 ## Modullar (`tools/modules/`)
