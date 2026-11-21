@@ -345,6 +345,7 @@ html[data-theme="dark"] .kp-ph{color:inherit}
 .ph .n{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:var(--bg);color:var(--accent)}
 .ph li.on .n{background:var(--accent);color:#fff}
 .ph b{display:block}.ph small{display:block;color:var(--muted);font-size:13px}
+.cal{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}.cal li{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);font-size:14px}.cal li b{color:var(--accent)}.cal li:last-child{border-color:var(--accent)}
 .tasks{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px}
 .tasks h3{margin:0 0 4px;color:var(--accent);font-size:19px}
 .tprog{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);margin:6px 0 14px}
@@ -575,6 +576,11 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
       <h2 style="margin-top:28px">Sizning rejangiz</h2>
       <p class="sub" id="rSpan"></p>
       <ol class="ph" id="rPh"></ol>
+      <div id="rCalWrap" style="display:none">
+        <h2 style="margin-top:28px">Sizning ariza kalendaringiz</h2>
+        <p class="sub">Muddatdan orqaga hisoblangan taxminiy sanalar. Rasmiy talab emas: aniq shartlarni universitet sahifasidan tekshiring.</p>
+        <ol class="cal" id="rCal"></ol>
+      </div>
       <div class="row" style="margin-top:12px"><button class="btn btn-g" type="button" id="copyBtn">Rejani nusxalash</button></div>
       <p class="hint">Nusxani oʻzingizda saqlang: yoʻl, sanalar va budjet bir joyda.</p>
     </div>
@@ -940,6 +946,21 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
       return "<li" + (k === 0 ? " class=\"on\"" : "") + "><span class=\"n\">" + p[0] + "</span><span><b>" + p[1] + "</b><small>" + p[2] + "</small><small>" + short(a1) + " – " + short(a2) + (rel[k] ? "" : " · Sizning yoʻlingiz uchun qoʻshimcha") + "</small></span></li>";
     }).join("");
 
+    // Ariza kalendari: muddatdan orqaga, faqat tayyor boʻlmagan hujjatlar uchun
+    var calEl = $("rCal"), calW = $("rCalWrap");
+    if (calEl && calW) {
+      var CAL = [["lang", 10, "Til imtihoni natijasi qoʻlingizda"], ["test", 12, "SAT yoki GRE natijasi qoʻlingizda"], ["ref", 12, "Tavsiya beruvchilarga murojaat"], ["ess", 8, "Insho yoki maqsad bayonnomasining birinchi varianti"]];
+      var items = [];
+      if (dl && !passed) {
+        CAL.forEach(function (c) { if (+A.docs[c[0]] !== 2) items.push({ d: new Date(dl.getTime() - c[1] * 7 * DAY), t: c[2] }); });
+        items.push({ d: end, t: "Hamma hujjat tayyor" });
+        items.push({ d: dl, t: "Ariza muddati", last: true });
+        items.sort(function (a, b) { return a.d - b.d; });
+      }
+      calEl.innerHTML = items.map(function (x) { return "<li><b>" + (x.d <= t0 && !x.last ? "Hozir" : short(x.d)) + "</b><span>" + x.t + "</span></li>"; }).join("");
+      calW.style.display = items.length ? "" : "none";
+    }
+
     var wi = low[0], task = wi === 4 ? DOC_TASK[md || "ref"] : TODAY_TASK[wi];
     var h = "<li class=\"free\"><span class=\"k\">1</span><span><b>Bugun qiling (bepul):</b> " + esc(task) + "<label><input type=\"checkbox\" id=\"taskDone\"" + (A.task ? " checked" : "") + "> Bajardim</label></span></li>";
     P1.forEach(function (x, k) { h += "<li class=\"lk\"><span class=\"k\">" + (k + 2) + "</span><span>" + esc(x) + "<img src=\"img/3d/lock.webp\" alt=\"qulf\" width=\"18\" height=\"18\"></span></li>"; });
@@ -954,7 +975,8 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
   var cb = $("copyBtn");
   if (cb) cb.addEventListener("click", function () {
     var txt = "AQShda oʻqish: mening rejam (Kompas Lab)\n" + $("rRoute").textContent + "\n" + $("rLv").textContent + ", " + $("rSc").textContent + "/100, " + $("rWk").textContent + "\n" + $("rTxt").innerText + "\n" + $("rSpan").textContent + "\n" +
-      [].map.call(document.querySelectorAll("#rPh li"), function (li) { return li.innerText.replace(/\n+/g, " · "); }).join("\n");
+      [].map.call(document.querySelectorAll("#rPh li"), function (li) { return li.innerText.replace(/\n+/g, " · "); }).join("\n") + "\nKalendar:\n" +
+      [].map.call(document.querySelectorAll("#rCal li"), function (li) { return li.innerText.replace(/\n+/g, " · "); }).join("\n");
     if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { toast("Nusxalandi", "memo"); }, function () { prompt("Nusxalang:", txt); });
     else prompt("Nusxalang:", txt);
   });
