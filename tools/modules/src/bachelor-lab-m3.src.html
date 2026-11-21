@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M3 Yoʻnalish, qiziqish va maqsad · Bakalavr dasturi · Kompas Lab</title>
-<meta name="description" content="Bakalavr dasturi M3: fanlar va qiziqishlardan profil, STEM ichida tanlov (fizika, muhandislik, informatika), bakalavrdan keyingi yoʻllar, qiziqish sohasi bayoni, izchil hikoya. Natija: 1 sahifalik qiziqish sohasi bayoni va bir jumlali profil.">
+<title>M3 Yutuqlar, faoliyat va CV · Bakalavr dasturi · Kompas Lab</title>
+<meta name="description" content="Bakalavr dasturi M3: bir jumlali profil, darsdan tashqari faoliyat, olimpiada, kurs va loyiha, yetakchilik, Common App faoliyatlar roʻyxati, STAR usulidagi CV va izchil hikoya xaritasi.">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <style>
 {{CSS}}
-/* Bachelor M1–M16 qoʻshimchalari */
+/* Bakalavr M1–M8 qoʻshimchalari */
 .path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
 @media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
 .fld{margin-bottom:12px;}
@@ -46,7 +46,32 @@
   .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
-.path.pn{--pn:8;}
+.path.pn{--pn:10;}
+
+/* Bakalavr v2 (2026-11-21): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-take ul,.mv-i ul{margin:6px 0 0;padding-left:20px}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+.lesson .panel ol,.lesson .panel ul{padding-left:24px}
+
 </style>
 </head>
 <body>
@@ -62,55 +87,62 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="bachelor-lab" data-kv-mod="3">
 <div class="wrap">
 
   <div class="hero">
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bakalavr dasturi</a> · Modul 3</div>
-        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich I · Strategiya</span>
-        <h1>Yoʻnalish, qiziqish va maqsad</h1>
-        <p class="lead">Komissiya sizni hujjatlar orqali taniydi. Agar fanlaringiz, faoliyatingiz va inshoingiz turli tomonga qarasa, kuchli tomonlaringiz ham koʻrinmay qoladi. Bu modulda bitta aniq yoʻnalish va uni koʻrsatadigan hikoyani tuzasiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>1–2</b> hafta</span><span class="fact">Bosqich I</span><span class="fact"><b>250</b> XP</span></div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich II · Profil va hujjatlar</span>
+        <h1>Yutuqlar, faoliyat va CV</h1>
+        <p class="lead">Bu modulda bitta jumlali profilingizni yozasiz, darsdan tashqari faoliyatlaringizni yigʻasiz va CV tuzasiz. Oxirida sizda <strong>10 ta faoliyat yozuvi, CV va izchil hikoya xaritasi</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>7</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Bosqich II</span><span class="fact"><b>250</b> XP</span></div>
       </div>
       <img class="hero-art float" src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 10 qadam</span></div>
     <div class="path pn">
-      <a class="node" href="#l1" data-node="l1"><span class="dot">3.1</span>Profil</a><a class="node" href="#l2" data-node="l2"><span class="dot">3.2</span>STEM tanlovi</a><a class="node" href="#l3" data-node="l3"><span class="dot">3.3</span>Keyingi yoʻl</a><a class="node" href="#l4" data-node="l4"><span class="dot">3.4</span>Bayon</a><a class="node" href="#l5" data-node="l5"><span class="dot">3.5</span>Hikoya</a><a class="node" href="#bayon" data-node="tool"><span class="dot">🛠</span>Bayon</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Bayon</a>
+      <a class="node" href="#l1" data-node="l1"><span class="dot">3.1</span>Profil</a><a class="node" href="#l2" data-node="l2"><span class="dot">3.2</span>Faoliyat</a><a class="node" href="#l3" data-node="l3"><span class="dot">3.3</span>Yutuqlar</a><a class="node" href="#l4" data-node="l4"><span class="dot">3.4</span>Yetakchilik</a><a class="node" href="#l5" data-node="l5"><span class="dot">3.5</span>10 yozuv</a><a class="node" href="#l6" data-node="l6"><span class="dot">3.6</span>CV</a><a class="node" href="#l7" data-node="l7"><span class="dot">3.7</span>Hikoya</a><a class="node" href="#royxat" data-node="tool"><span class="dot">🛠</span>Roʻyxat</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Profil</a>
     </div>
   </nav>
 
   <section>
     <h2>Modul yakunida sizda</h2>
     <ul class="goal">
-      <li><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span><b>Bir jumlali profil:</b> kim, nimaga qiziqasiz, buni nima koʻrsatadi</span></li><li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Qiziqish sohasi bayoni (1 sahifa):</b> keng qiziqishdan aniq savolga, dalil bilan</span></li><li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Izchil hikoya xaritasi:</b> fanlar, faoliyat va insho bitta yoʻnalishda</span></li>
+      <li><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span><b>10 ta faoliyat yozuvi:</b> har biri 150 belgigacha, natija bilan</span></li><li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Bakalavr CV:</b> 1–2 sahifa, har band STAR usulida</span></li><li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Izchil hikoya xaritasi:</b> fanlar, faoliyat, insho va tavsiya bitta yoʻnalishda</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Bu modulda hech qanday tayyor matn berilmaydi. Namunalar "Kompas tuzgan namuna" deb belgilangan va faqat tuzilmani koʻrsatish uchun; ularni oʻz hujjatingizga koʻchirmang.</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Platformalar formati (belgi chegarasi, faoliyatlar soni) 31.10.2026 holatiga; ariza yili Common App va universitet sahifasidan tekshiring. Har yutuq va raqam hujjat yoki guvoh bilan tasdiqlanadigan boʻlsin.</p><p>Kompas Lab universitet, stipendiya dasturi yoki konsullik oʻrnida qaror qabul qilmaydi va qabul, stipendiya yoki vizani kafolatlamaydi. Insho, xat va hujjatni siz uchun yozmaydi: vositalar faqat sizning matningizni tartibga soladi. Sana va talablarni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 3.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.1</span><span class="l-t" style="display:block">Men kim sifatida ariza beryapman</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧭 Profil</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 3.1</span><span class="l-t" style="display:block">Men kim sifatida ariza beryapman?</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Profil</span><span class="tag xp">+17 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">"Men hamma fanni yaxshi koʻraman" degan abituriyent komissiyaga hech narsa demaydi. Aniq profil arizangizning har qismini bir-biriga bogʻlaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">«Men hamma fanni yaxshi koʻraman» degan abituriyent komissiyaga hech narsa demaydi. Bu darsda arizangizning hamma qismini bir-biriga bogʻlaydigan bitta jumlali profilni yozamiz.</div></div>
           <div class="panel">
-<p>Akademik qiziqish va maqsad (<span lang="en">academic identity</span>) bu siz haqingizdagi bitta aniq fikr: qaysi sohaga qiziqasiz va buni nima koʻrsatadi.</p>
+<div data-kvideo="l1"></div>
+<p>Profil formulasi:</p>
+<p><i>Men [soha]ga qiziqaman, chunki [savol yoki muammo]; buni [dalil 1] va [dalil 2] koʻrsatadi.</i></p>
+<p>Dalilni uch joydan qidiring:</p>
+<ul><li><b>Fanlar:</b> qaysi fanda baholaringiz yuqori va qaysi biriga koʻp vaqt sarflaysiz?</li>
+<li><b>Loyihalar:</b> olimpiada, dastur, tajriba, toʻgʻarak.</li>
+<li><b>Qiziqishlar:</b> darsdan tashqari ham oʻylantiradigan savol.</li></ul>
+<details class="mv-i"><summary>Batafsil</summary><div><p>Akademik qiziqish va maqsad (<i lang="en">academic identity</i>) bu siz haqingizdagi bitta aniq fikr: qaysi sohaga qiziqasiz va buni nima koʻrsatadi.</p>
 <h4>Uch manba</h4>
 <ul><li><b>Fanlar</b>: qaysi fanlarda baholaringiz eng yuqori va qaysi fanga koʻproq vaqt sarflaysiz?</li>
 <li><b>Loyihalar</b>: oʻzingiz boshlagan yoki qatnashgan ishlar: olimpiada, dasturlash loyihasi, maktab tajribasi, toʻgarak.</li>
@@ -118,157 +150,282 @@
 <h4>Bir jumlali profil</h4>
 <p>Formula: <b>Men [soha]ga qiziqaman, chunki [savol yoki muammo]; buni [dalil 1] va [dalil 2] koʻrsatadi.</b></p>
 <div class="box info"><b>Kompas tuzgan namuna (faqat tuzilma uchun):</b> "Men energiya tizimlariga qiziqaman, chunki qishloqlarda elektr uzilishi nimadan kelib chiqishini tushunmoqchiman; buni fizika olimpiadasidagi ishtirokim va uyda yigʻgan quyosh paneli tajribam koʻrsatadi."</div>
-<p>Dalil boʻlmasa, profil faqat orzu boʻlib qoladi. Hozir dalilingiz kam boʻlsa, M6–M7 da uni yaratish rejasini tuzasiz.</p>
+<p>Dalil boʻlmasa, profil faqat orzu boʻlib qoladi. Hozir dalilingiz kam boʻlsa, shu modulda uni yaratish rejasini tuzasiz.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><p>Bir jumlali profil: soha, sabab va ikkita dalil. Dalilsiz profil komissiya uchun hech narsa anglatmaydi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Uch manbadan (fanlar, loyihalar, qiziqishlar) har biri boʻyicha 3 tadan faktni yozing.</li><li>Formula boʻyicha oʻz bir jumlali profilingizni tuzing.</li></ul>
+          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Profil soha, sabab va ikkita dalildan iborat. Dalil kam boʻlsa, uni shu modulda yigʻasiz.</div></div></div>
+          <div class="panel"><div class="assign"><b>Sizning profilingiz</b><ul><li>Fanlar, loyihalar va qiziqishlar boʻyicha 3 tadan fakt yozing.</li><li>Formula boʻyicha bitta jumlali profilingizni tuzing.</li></ul>
             <textarea data-save="a1" placeholder="Fanlar: ... Loyihalar: ... Qiziqishlar: ... Profil: Men ...ga qiziqaman, chunki ...; buni ... va ... koʻrsatadi."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
       <!-- 3.2 -->
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.2</span><span class="l-t" style="display:block">Fizika, muhandislik, informatika: real farq</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.2</span><span class="l-t" style="display:block">Nima faoliyat hisoblanadi?</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Mini-test</span><span class="tag xp">+17 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Fizikani yaxshi koʻrgan oʻquvchi muhandislikka, matematikani yaxshi koʻrgan informatikaga borishi shart emas. Har soha boshqa ish turini va boshqa kelajakni beradi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Koʻp oʻquvchi «menda faoliyat yoʻq» deydi, chunki faqat toʻgʻarak va tanlovni hisoblaydi. Ukangizga har kuni qarash ham faoliyat. Bu darsda faoliyat turlarini va komissiya nimaga qarashini ajratamiz.<small class="mv-fun">Uyda ukaga matematika tushuntirgan boʻlsangiz, bu ham faoliyat. Ukaning roziligini olmasak ham boʻladi.</small></div></div>
           <div class="panel">
-<div class="tbl"><table><thead><tr><th></th><th>Fizika</th><th>Muhandislik</th><th>Informatika</th></tr></thead><tbody>
-<tr><td>Asosiy savol</td><td>Tabiat qanday ishlaydi?</td><td>Buni qanday qurish va ishlatish mumkin?</td><td>Buni qanday hisoblash va avtomatlashtirish mumkin?</td></tr>
-<tr><td>Oʻqish tarkibi</td><td>Matematika va nazariya koʻp, laboratoriya</td><td>Matematika, loyiha ishi, chizma, amaliyot</td><td>Dasturlash, algoritmlar, diskret matematika</td></tr>
-<tr><td>Kundalik ish</td><td>Model, tajriba, tahlil</td><td>Loyiha, hisob-kitob, sinov, jamoa</td><td>Kod yozish, tizim loyihalash, maʼlumot bilan ishlash</td></tr>
-<tr><td>Keyingi yoʻl</td><td>Koʻpincha magistratura va tadqiqot</td><td>Sanoat yoki magistratura; baʼzi mamlakatlarda muhandislik litsenziyasi</td><td>Sanoat yoki tadqiqot</td></tr>
-</tbody></table></div>
-<h4>Tekshiruv usuli</h4>
-<ul><li>Uch universitetning birinchi kurs oʻquv rejasini oching va qaysi fanlar sizni qiziqtirishini belgilang.</li>
-<li>Sohada ishlaydigan odam bilan 15 daqiqa gaplashing: kuni qanday oʻtadi?</li>
-<li>Bepul onlayn kursning birinchi haftasini oʻtib koʻring.</li></ul>
-<div class="box warn">AQShda mutaxassislik (<span lang="en">major</span>) koʻpincha 2-kurs oxirida tanlanadi, UK va Yevropada esa ariza vaqtidayoq. Yevropada notoʻgʻri soha tanlash qimmatga tushadi.</div>
+<div data-kvideo="l2"></div>
+<ul><li>Toʻgʻarak va klub</li><li>Sport va sanʼat</li><li>Ish, oilaviy biznesda yordam</li>
+<li>Oilaviy majburiyat: Common App buni alohida tur sifatida qabul qiladi</li>
+<li>Mustaqil loyiha: dastur, sayt, kanal, tadqiqot</li><li>Koʻngillilik</li></ul>
+<p>Komissiya uch narsaga qaraydi: vaqt (haftasiga soat, yillar soni), rol va natija.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Faoliyat turlari</h4>
+<ul><li><b>Toʻgarak va klub</b>: maktab yoki tashqi.</li><li><b>Sport va sanʼat</b>: muntazam mashgʻulot, jamoa, musobaqa.</li>
+<li><b>Ish</b>: haq toʻlanadigan ish, oilaviy biznesda yordam.</li><li><b>Oilaviy majburiyat</b>: ukalarga qarash, uy ishlarida katta masʼuliyat. Common App bu turni alohida qabul qiladi.</li>
+<li><b>Mustaqil loyiha</b>: dastur, sayt, tadqiqot, kanal.</li><li><b>Koʻngillilik</b>: mahalla, xayriya, maktab tadbirlari.</li></ul>
+<h4>Komissiya nimaga qaraydi</h4>
+<p>Vaqt (haftasiga necha soat, necha yil), rol va masʼuliyat, natija. Haftasiga 10 soat oila biznesida ishlagan oʻquvchi bir martalik tadbirga borgan oʻquvchidan koʻra kuchliroq dalil beradi.</p>
+<div class="box info">Oilaviy majburiyat tufayli toʻgaraklarga vaqtingiz boʻlmagan boʻlsa, buni faoliyat sifatida yozing. Bu kontekst, uzr emas.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p>Fizika tushunishga, muhandislik qurishga, informatika hisoblashga qaratilgan. Tanlovdan oldin oʻquv rejasini oching va sohadagi odam bilan gaplashing.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“Fizikani yaxshi koʻrgan har kim muhandislikka mos keladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: muhandislik loyiha va amaliy ishga, fizika nazariya va tajribaga koʻproq qaratilgan.</div></div><div class="qz" data-a="t"><p>“UK da soha odatda ariza vaqtidayoq tanlanadi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: UCAS arizasi aniq kursga beriladi.</div></div><div class="qz" data-a="n"><p>“AQShda mutaxassislik koʻpincha birinchi kunning oʻzida tanlanishi shart.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: koʻp kollejlarda keyinroq eʼlon qilinadi; ayrim muhandislik maktablari bundan mustasno.</div></div><div class="qz" data-a="t"><p>“Oʻquv rejasini oʻqish soha tanlovini tekshirishning ishonchli usuli.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: unda 4 yil davomida nima oʻqishingiz koʻrinadi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Ikkita soha oʻrtasida tanlayotgan boʻlsangiz, ikkalasining birinchi kurs fanlarini yozing.</li><li>Qaysi biri sizga yaqinroq va nima uchun, 3 jumlada.</li></ul></div>
-            <textarea data-save="a2" placeholder="Fizika 1-kurs: ... Muhandislik 1-kurs: ... Tanlov: ..., chunki ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Faoliyat ichiga ish va oilaviy majburiyat ham kiradi. Har birida vaqt, rol va natijani yozing.</div></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="t"><p>“Ukalaringizga muntazam qarash darsdan tashqari faoliyat sifatida yozilishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Common App oilaviy majburiyatni faoliyat turi sifatida qabul qiladi.</div></div><div class="qz" data-a="n"><p>“Faoliyatlar soni qancha koʻp boʻlsa, ariza shuncha kuchli.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: chuqurlik va davomiylik muhimroq.</div></div><div class="qz" data-a="n"><p>“Haq toʻlanadigan ish faoliyat hisoblanmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: ish ham faoliyat va masʼuliyatni koʻrsatadi.</div></div><div class="qz" data-a="t"><p>“Komissiya faoliyatga sarflangan vaqtni ham koʻradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: haftasiga soat va yillar soni soʻraladi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>Hamma faoliyatlaringiz</b><ul><li>Oxirgi 3–4 yildagi faoliyatlaringizni turlari boʻyicha yozing, kamida 8 ta.</li><li>Har biriga haftasiga soat va yillar sonini qoʻshing.</li></ul></div>
+            <textarea data-save="a2" placeholder="1) Matematika toʻgaragi: 3 soat/hafta, 2 yil 2) Oilaviy doʻkon: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
       <!-- 3.3 -->
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.3</span><span class="l-t" style="display:block">Mutaxassislik va keyingi yoʻl</span>
-            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">🗺 Yoʻl xaritasi</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.3</span><span class="l-t" style="display:block">Olimpiada, kurs va loyiha</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">Saralash</span><span class="tag xp">+17 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bakalavr 4 yil davom etadi, lekin tanlovingiz undan keyingi 10 yilga taʼsir qiladi. Keyingi yoʻllarni hozirdan bilish soha tanlovini aniqroq qiladi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Viloyat olimpiadasidagi gʻalaba ham, pullik «xalqaro» tanlov sertifikati ham CV ga yoziladi. Komissiya ularni bir xil baholamaydi. Bu darsda olimpiada, kurs va loyihani signal kuchi boʻyicha saralaymiz.</div></div>
           <div class="panel">
-<h4>Bakalavrdan keyin toʻrt yoʻl</h4>
-<ol><li><b>Sanoatda ishlash</b>: oʻqigan mamlakatda (viza qoidalariga qarab) yoki Oʻzbekistonda.</li>
-<li><b>Magistratura</b>: oʻsha yoki boshqa mamlakatda. Tafsilotlar Magistratura dasturida.</li>
-<li><b>Tadqiqot va doktorantura</b>: baʼzi mamlakatlarda bakalavrdan toʻgʻridan-toʻgʻri PhDʼga oʻtish mumkin.</li>
-<li><b>Vatanga qaytish</b>: baʼzi davlat stipendiyalari qaytish shartini qoʻyadi (M11).</li></ol>
-<h4>Soha boʻyicha savollar</h4>
-<ul><li>Bu soha boʻyicha ish Oʻzbekistonda bormi va qanday darajadagi taʼlim talab qiladi?</li>
-<li>Soha litsenziya yoki sertifikat talab qiladimi (masalan, muhandislik va tibbiyot ayrim mamlakatlarda)?</li>
-<li>Tadqiqotga qiziqsangiz, bakalavrda tadqiqot imkoniyati bormi?</li></ul>
-<div class="box info">Keyingi yoʻlni hozir yakuniy tanlash shart emas. Lekin tanlagan sohangiz kamida ikkita yoʻlni ochiq qoldirishi kerak.</div>
+<div data-kvideo="l3"></div>
+<div class="tbl"><table><thead><tr><th>Yutuq</th><th>Signal</th></tr></thead><tbody>
+<tr><td>Xalqaro fan olimpiadasi (IMO, IPhO, IOI)</td><td>Juda kuchli</td></tr>
+<tr><td>Respublika olimpiadasi gʻolibi yoki sovrindori</td><td>Kuchli</td></tr>
+<tr><td>2–3 yil davom etgan oʻz loyihangiz, natijasi bilan</td><td>Kuchli</td></tr>
+<tr><td>Viloyat bosqichi gʻolibi</td><td>Oʻrta, kontekst bilan yozing</td></tr>
+<tr><td>Natija bilan bitirilgan onlayn kurs</td><td>Oʻrta</td></tr>
+<tr><td>Hammaga beriladigan sertifikat, faqat video koʻrilgan kurs</td><td>Juda kam</td></tr>
+</tbody></table></div>
+<p>Format: nomi, daraja, natija, yil, kontekst. Tekshirib boʻlmaydigan raqamni yozmang.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Olimpiadalar va tanlovlar</h4><h4>Qaysi darajadagi yutuqlar muhim</h4>
+<div class="tbl"><table><thead><tr><th>Daraja</th><th>Signal</th><th>Izoh</th></tr></thead><tbody>
+<tr><td>Xalqaro fan olimpiadasi (IMO, IPhO, IOI va boshqalar) ishtiroki yoki medali</td><td>Juda kuchli</td><td>Juda kam oʻquvchi erishadi</td></tr>
+<tr><td>Respublika olimpiadasi gʻolibi yoki sovrindori</td><td>Kuchli</td><td>Oʻzbekistonda tanlovning eng yuqori ichki darajasi</td></tr>
+<tr><td>Viloyat bosqichi gʻolibi</td><td>Oʻrta</td><td>Kontekst bilan yozing: nechta ishtirokchi</td></tr>
+<tr><td>Tuman yoki maktab bosqichi</td><td>Past</td><td>Faqat boshqa yutuq yoʻq boʻlsa</td></tr>
+<tr><td>Pullik "xalqaro" tanlov, hamma qatnashuvchiga sertifikat</td><td>Deyarli yoʻq</td><td>Tanlov tanlovli boʻlmasa, signal bermaydi</td></tr>
+</tbody></table></div>
+<h4>Toʻgʻri yozish</h4>
+<p>Format: <b>nomi, daraja, natija, yil, kontekst</b>. Masalan (Kompas tuzgan namuna): "Fizika boʻyicha respublika olimpiadasi, 2-oʻrin (2026), viloyatdan tanlangan 3 oʻquvchidan biri".</p>
+<div class="box warn">Ishtirokchilar sonini yoki oʻrinni bilmasangiz, yozmang. Tekshirib boʻlmaydigan raqam ishonchni pasaytiradi.</div><h4>Onlayn kurslar va sertifikatlar</h4><h4>Qachon foydali</h4>
+<ul><li>Maktabda oʻtilmaydigan fanni oʻrganganingizni koʻrsatsa (masalan, dasturlash, chiziqli algebra).</li>
+<li>Kurs natijasida biror narsa qilgan boʻlsangiz: loyiha, dastur, tadqiqot.</li>
+<li>Kurs universitet darajasida va baholangan topshiriqlari boʻlsa.</li></ul>
+<h4>Qachon ahamiyati kam maʼlumot</h4>
+<ul><li>Faqat videolarni koʻrib olingan "tugatish sertifikati".</li><li>Sohangizga aloqasi yoʻq koʻp qisqa kurslar.</li><li>Pullik sertifikat, lekin hech qanday natija yoʻq.</li></ul>
+<h4>Yozish usuli</h4>
+<p>CV da kursni alohida qator qilib emas, u bilan qilgan ishingiz bilan birga yozing: "Onlayn kurs asosida maktab uchun dars jadvali dasturini yozdim (Python)".</p>
+<div class="box info">2–3 ta kurs yetarli. Ularni shu moduldagi qiziqish sohasi bayoni bilan bogʻlang.</div><h4>Maktab yoshida ilmiy loyiha</h4><h4>Mavzu topish</h4>
+<ul><li>shu moduldagi aniq savolingizdan boshlang.</li><li>Mavzu kichik va tekshiriladigan boʻlsin: "suv tozaligi" emas, "mahallamizdagi uchta quduq suvining pH va qattiqligi".</li><li>Maʼlumot yigʻish mumkinligini tekshiring: asbob, ruxsat, vaqt.</li></ul>
+<h4>Ustoz topish</h4>
+<p>Maktab oʻqituvchisi, mahalliy universitet oʻqituvchisi yoki laboratoriya xodimi. Xat qisqa boʻlsin: kim siz, qanday savol, nima qilib boʻldingiz, ulardan nima soʻrayapsiz (masalan, oyiga bir marta 30 daqiqa maslahat).</p>
+<h4>Natijani hujjatlash</h4>
+<ul><li>Ish daftari: sana, nima qildingiz, natija.</li><li>Yakuniy 3–5 sahifali hisobot yoki poster.</li><li>Maktab konferensiyasi, tanlov yoki onlayn ochiq joyda taqdimot.</li></ul>
+<div class="box warn"><b>Halollik.</b> Loyihani boshqa odam qilib bergan boʻlsa yoki natija toʻqilgan boʻlsa, tavsiya xati va intervyuda bu ochilib qoladi. Kichik, lekin oʻzingizniki boʻlgan loyiha kuchliroq.</div><h4>STEM uchun kuchli faoliyatlar</h4><h4>Chuqurlik va davomiylik</h4>
+<div class="tbl"><table><thead><tr><th>Kuchsiz</th><th>Kuchli</th></tr></thead><tbody>
+<tr><td>Bir martalik hackathon ishtiroki</td><td>Hackathonʼdan keyin loyihani 6 oy davom ettirib, foydalanuvchilarga chiqarish</td></tr>
+<tr><td>Robototexnika toʻgaragiga aʼzolik</td><td>Toʻgarakda kichik guruhni boshqarish va tanlovga tayyorlash</td></tr>
+<tr><td>Koʻp onlayn kurs</td><td>Bitta kurs asosida maktab muammosini hal qiluvchi dastur</td></tr>
+</tbody></table></div>
+<h4>STEM faoliyat gʻoyalari</h4>
+<ul><li>Maktab yoki mahalla uchun dastur, sayt yoki bot.</li><li>Fan olimpiadasiga tayyorlanish va kichik oʻquvchilarni oʻqitish.</li><li>Kichik tajriba yoki oʻlchov loyihasi (M3).</li><li>Oʻzbek tilida fan boʻyicha ochiq materiallar yaratish.</li></ul>
+<p>Mezon: siz nimani yaratdingiz yoki oʻzgartirdingiz, va buni kim koʻra oladi?</p>
+<div class="box warn">Faoliyatni faqat ariza uchun boshlash 2–3 oy oldin koʻrinib qoladi. Qiziqishingiz bilan bogʻliq bitta ishni hozirdan boshlang va davom ettiring.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Bakalavrdan keyin sanoat, magistratura, tadqiqot yoki vatanga qaytish yoʻli bor. Tanlagan soha kamida ikkitasini ochiq qoldirsin.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Sohangiz uchun bakalavrdan keyingi ikki real yoʻlni yozing.</li><li>Har biri uchun bitta rasmiy yoki ishonchli manba toping.</li></ul>
-            <textarea data-save="a3" placeholder="1-yoʻl: ... (manba: ...). 2-yoʻl: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Bitta chuqur va davomli ish oʻn ta qisqa ishdan kuchliroq. Uni hozirdan boshlang va davom ettiring.</div></div></div>
+          <div class="panel"><div class="assign"><b>Eng kuchli 3 yutuq</b><ul><li>Yutuqlaringizni jadvaldagi darajaga qoʻying.</li><li>Eng kuchli 3 tasini nomi, daraja, natija, yil va kontekst bilan yozing.</li></ul>
+            <textarea data-save="a3" placeholder="1) ... olimpiadasi, ..., ..., 2026, ... 2) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
       <!-- 3.4 -->
       <article class="lesson" id="l4">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.4</span><span class="l-t" style="display:block">Qiziqish sohasi bayoni</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 1 sahifa</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.4</span><span class="l-t" style="display:block">Yetakchilik va yozgi dasturlar</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Natija</span><span class="tag xp">+17 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Keng qiziqish ("men texnologiyani yaxshi koʻraman") hech kimni ajratib koʻrsatmaydi. Aniq savol esa sizni boshqalardan farqlaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">«Sinf sardori edim» degan gap lavozimni aytadi. Komissiya esa siz tufayli nima oʻzgarganini bilmoqchi. Bu darsda yetakchilik va yozgi dasturlarni natija boʻyicha baholaymiz.</div></div>
           <div class="panel">
-<h4>Kenglikdan aniqlikka</h4>
-<p>Qiziqish sohasi bayoni 1 sahifali ichki hujjat. U ariza emas, lekin barcha insholar va intervyu uchun asos boʻladi.</p>
-<div class="tbl"><table><thead><tr><th>Daraja</th><th>Misol (Kompas tuzgan namuna)</th></tr></thead><tbody>
-<tr><td>Keng soha</td><td>Informatika</td></tr>
-<tr><td>Yoʻnalish</td><td>Sunʼiy intellekt</td></tr>
-<tr><td>Aniq savol</td><td>Kam maʼlumotli tillarda (masalan oʻzbek tilida) nutqni tanish qanday ishlaydi?</td></tr>
+<div data-kvideo="l4"></div>
+<div class="tbl"><table><thead><tr><th>Zaif tavsif</th><th>Kuchli tavsif</th></tr></thead><tbody>
+<tr><td>Maktab kengashi aʼzosi</td><td>Kengashda kutubxona soatini 2 soatga uzaytirish taklifini kiritib, maʼmuriyat bilan kelishdim; haftasiga ~40 oʻquvchi foydalanadi</td></tr>
 </tbody></table></div>
-<h4>Bayon tuzilmasi (4 qism)</h4>
-<ol><li><b>Savol</b>: sizni qiziqtiradigan aniq savol.</li>
-<li><b>Kelib chiqishi</b>: bu savol qachon va qanday paydo boʻldi (aniq epizod).</li>
-<li><b>Dalil</b>: shu savol ustida nima qildingiz (kitob, loyiha, kurs, tajriba).</li>
-<li><b>Keyingi qadam</b>: universitetda bu savol bilan nima qilmoqchisiz.</li></ol>
-<div class="box warn">Bayon yuqori ilmiy ish emas. 16–17 yoshli abituriyentdan ilmiy kashfiyot kutilmaydi; aniq savol va oʻz qoʻlingiz bilan qilingan harakat kutiladi.</div>
+<p><b>Yozgi dasturlar:</b> tanlovli dastur (ariza, tanlov, koʻpincha bepul) kuchli dalil. Pullik dasturning oʻzi faqat toʻlov qobiliyatini koʻrsatadi. Muqobil: amaliyot, mustaqil loyiha, ish.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Ijtimoiy faoliyat va yetakchilik</h4><h4>Lavozim va natija</h4>
+<p>Komissiya lavozim nomiga emas, natijaga qaraydi. Bir xil lavozimning ikki tavsifi (Kompas tuzgan namuna):</p>
+<div class="tbl"><table><thead><tr><th>Kuchsiz</th><th>Kuchli</th></tr></thead><tbody>
+<tr><td>Maktab kengashi aʼzosi.</td><td>Maktab kengashida kutubxona ochiq soatlarini 2 soatga uzaytirishni taklif qilib, maʼmuriyat bilan kelishdim; haftasiga ~40 oʻquvchi foydalanadi.</td></tr>
+</tbody></table></div>
+<h4>Yetakchilik turlari</h4>
+<ul><li><b>Tashkiliy</b>: tadbir, toʻgarak, guruhni tashkil qilish.</li><li><b>Taʼlimiy</b>: boshqalarni oʻqitish, materiallar yaratish.</li><li><b>Tashabbus</b>: muammoni koʻrib, hal qilishni boshlash.</li></ul>
+<h4>Ijtimoiy faoliyat</h4>
+<p>Koʻngillilik soatlarining koʻpligi emas, muntazamligi va natijasi muhim. Bir martalik aksiyadan koʻra bir yil davom etgan yordam kuchliroq.</p>
+<div class="box info">Raqam yozsangiz, uni qanday bilganingizni ayta olishingiz kerak (masalan, roʻyxatga olish daftari).</div><h4>Yozgi dasturlar</h4><h4>Ikki tur</h4>
+<div class="tbl"><table><thead><tr><th></th><th>Tanlovli dastur</th><th>Pullik dastur</th></tr></thead><tbody>
+<tr><td>Kirish</td><td>Ariza, tanlov, koʻpincha past qabul foizi</td><td>Toʻlov qilgan hamma qatnashadi</td></tr>
+<tr><td>Narx</td><td>Koʻpincha bepul yoki stipendiyali</td><td>Qimmat</td></tr>
+<tr><td>Signal</td><td>Kuchli: siz tanlovdan oʻtgansiz</td><td>Kuchsiz: faqat toʻlov qobiliyatini koʻrsatadi</td></tr>
+</tbody></table></div>
+<h4>Muqobillar</h4>
+<ul><li>Oʻzbekistondagi universitet yoki laboratoriyada yozgi amaliyot.</li><li>Mustaqil loyiha (M3, M3).</li><li>Ish yoki oilaviy biznesda masʼuliyat.</li><li>Bepul onlayn yozgi maktablar (tanlovli boʻlsa).</li></ul>
+<div class="box warn">"Bu dastur qabulni kafolatlaydi" yoki "universitet tavsiya xati beradi" degan vaʼdalarga ishonmang. Universitet nomi ostida oʻtadigan pullik dastur koʻpincha qabul boʻlimi bilan bogʻliq emas.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>Qiziqish sohasi bayoni: savol, kelib chiqishi, dalil va keyingi qadam. U barcha insholar va intervyu uchun asos.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Keng soha → yoʻnalish → aniq savol zanjirini yozing.</li><li>Pastdagi vositada 4 qismli bayonni toʻldiring.</li></ul>
-            <textarea data-save="a4" placeholder="Soha: ... → yoʻnalish: ... → savol: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Yetakchilikni natija bilan yozing: siz tufayli nima oʻzgardi va buni qanday tasdiqlaysiz?</div></div></div>
+          <div class="panel"><div class="assign"><b>Bitta faoliyat, ikki tavsif</b><ul><li>Bitta yetakchilik yoki ijtimoiy faoliyatingizni zaif va kuchli koʻrinishda yozing.</li><li>Keyingi yoz uchun 2 ta tanlovli yoki bepul imkoniyatni muddati bilan toping.</li></ul>
+            <textarea data-save="a4" placeholder="Kuchsiz: ... Kuchli: ... Tasdiq: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
       <!-- 3.5 -->
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 3.5</span><span class="l-t" style="display:block">Izchil hikoya</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧩 Xarita</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.5</span><span class="l-t" style="display:block">Faoliyatlar roʻyxati: 10 yozuv</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">10 yozuv</span><span class="tag xp">+17 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Komissiya arizangizni bir necha qism boʻyicha koʻradi: fanlar, faoliyat, insho, tavsiya. Ular bir-birini tasdiqlasa, ishonch oshadi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Common App da har faoliyat uchun 150 belgi bor. Shu joyda nima qilganingizni va natijasini aytish alohida koʻnikma. Bu darsda 10 ta yozuvni shu formatda yozamiz.</div></div>
           <div class="panel">
-<h4>Izchillik nima</h4>
-<p>Izchil hikoya (<span lang="en">coherent narrative</span>) arizaning hamma qismi bitta yoʻnalishni koʻrsatishi. Bu "hammasi bitta mavzu haqida" degani emas: turli faoliyatlar ham bitta xarakterni koʻrsata oladi.</p>
+<div data-kvideo="l5"></div>
+<ul><li><b>Rol:</b> 50 belgigacha.</li><li><b>Tashkilot:</b> 100 belgigacha.</li><li><b>Tavsif:</b> 150 belgigacha.</li>
+<li>Sinflar, haftasiga soat, yiliga hafta.</li></ul>
+<p>Tavsifni feʼl bilan boshlang (<i lang="en">Founded</i>, <i lang="en">Built</i>, <i lang="en">Taught</i>), raqam qoʻshing, eng muhim faoliyatni roʻyxat boshiga qoʻying.</p>
+<p lang="en">Built a Telegram bot that sends homework reminders to 120 students; maintained it for 2 years; teachers now use it in 4 classes.</p>
+<p class="mv-small">Kompas tuzgan namuna, faqat format uchun.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Common App formati</h4>
+<ul><li>10 tagacha faoliyat.</li><li>Lavozim yoki rol: qisqa (50 belgigacha).</li><li>Tashkilot nomi: 100 belgigacha.</li><li>Tavsif: 150 belgigacha.</li><li>Sinflar, haftasiga soat, yiliga hafta, kollejda davom ettirish niyati.</li></ul>
+<h4>Yozish qoidalari</h4>
+<ol><li><b>Feʼl bilan boshlang</b>: "Tashkil qildim", "Yozdim", "Oʻqitdim". Ingliz tilida: <i lang="en">Founded, Built, Taught</i>.</li><li><b>Raqam qoʻshing</b>: nechta odam, nechta soat, qanday natija.</li><li><b>"Men" va toʻliq gaplarni tejang</b>: belgi chegarasi uchun.</li><li><b>Eng muhim faoliyat</b> roʻyxat boshida tursin.</li></ol>
+<p>Kompas tuzgan namuna (inglizcha, 150 belgigacha): <span lang="en">Built a Telegram bot that sends homework reminders to 120 students; maintained it for 2 years; teachers now use it in 4 classes.</span></p>
+<h4>UCAS va boshqa platformalar</h4>
+<p>UCASʼda alohida faoliyatlar roʻyxati yoʻq: faoliyatlar shaxsiy bayonotning uchinchi savoliga (taʼlimdan tashqari tayyorgarlik) kiradi. Toʻgʻridan-toʻgʻri portallar koʻpincha CV soʻraydi (M3).</p>
+<div class="srcs">Manba: <a href="https://www.commonapp.org" target="_blank" rel="noopener">Common App (rasmiy sayt)</a>; <a href="https://www.ucas.com/applying/applying-to-university/writing-personal-statement/personal-statement-dos-and-donts" target="_blank" rel="noopener">UCAS: shaxsiy bayonot, 2026 qabulidan</a>. 31.10.2026 holatiga.</div></div></details>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Har tavsif feʼl bilan boshlanadi va raqam yoki natijani koʻrsatadi. <b>UCAS</b> da alohida roʻyxat yoʻq: faoliyatlar bayonotning 3-savoliga kiradi.</div></div></div>
+          <div class="panel"><div class="assign"><b>10 ta yozuv</b><ul><li>Eng muhim 10 faoliyatingizni tartiblang.</li><li>Pastdagi vositada har birining 150 belgilik tavsifini yozing.</li></ul>
+            <textarea data-save="a5" placeholder="1) Rol: ... · Tashkilot: ... · Tavsif: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +17 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.6</span><span class="l-t" style="display:block">CV: STAR usuli</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">CV v1.0</span><span class="tag xp">+17 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">CV dagi «jamoada ishlashni bilaman» degan jumla hech narsani isbotlamaydi. Bu darsda har bandni aniq voqea va natija bilan yozadigan STAR usulini qoʻllaymiz.</div></div>
+          <div class="panel">
+<div data-kvideo="l6"></div>
+<div class="tbl"><table><thead><tr><th>Harf</th><th>Savol</th></tr></thead><tbody>
+<tr><td>S (<i lang="en">Situation</i>)</td><td>Qayerda, qachon?</td></tr>
+<tr><td>T (<i lang="en">Task</i>)</td><td>Nima qilish kerak edi?</td></tr>
+<tr><td>A (<i lang="en">Action</i>)</td><td>Aynan siz nima qildingiz?</td></tr>
+<tr><td>R (<i lang="en">Result</i>)</td><td>Nima oʻzgardi?</td></tr>
+</tbody></table></div>
+<p>CV da STAR bitta qatorga sigʻadi. Namuna: <i>«Maktab robototexnika toʻgʻaragini tashkil qildim (8 oʻquvchi), haftalik mashgʻulot oʻtkazdim, jamoa viloyat tanloviga chiqdi.»</i></p>
+<p>Tuzilma (1–2 sahifa): ism va aloqa, taʼlim, yutuqlar, loyihalar, faoliyatlar, koʻnikmalar.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>STAR usuli</h4>
+<div class="tbl"><table><thead><tr><th>Harf</th><th>Maʼnosi</th><th>Savol</th></tr></thead><tbody>
+<tr><td><b>V</b>aziyat (<i lang="en">Situation</i>)</td><td>Qayerda, qachon</td><td>Qanday sharoit edi?</td></tr>
+<tr><td><b>V</b>azifa (<i lang="en">Task</i>)</td><td>Nima qilish kerak edi</td><td>Maqsad nima edi?</td></tr>
+<tr><td><b>H</b>arakat (<i lang="en">Action</i>)</td><td>Siz nima qildingiz</td><td>Aynan siz nima qildingiz?</td></tr>
+<tr><td><b>N</b>atija (<i lang="en">Result</i>)</td><td>Nima oʻzgardi</td><td>Raqam yoki aniq natija bormi?</td></tr>
+</tbody></table></div>
+<p>CV da STAR bitta qatorga siqiladi. Kompas tuzgan namuna: "Maktab robototexnika toʻgaragini tashkil qildim (8 oʻquvchi); haftalik mashgʻulotlar oʻtkazdim; jamoa viloyat tanloviga chiqdi."</p>
+<h4>Bakalavr CV tuzilmasi (1–2 sahifa)</h4>
+<ol><li>Ism, aloqa (email, telefon), shahar.</li><li>Taʼlim: maktab, yillar, baholar (asl shkalada).</li><li>Yutuqlar va mukofotlar (shu modul formatida).</li><li>Loyihalar va tadqiqot.</li><li>Faoliyatlar va yetakchilik (M3).</li><li>Koʻnikmalar: tillar (daraja bilan), dasturlar.</li></ol>
+<div class="box info">Akademik CV va ishchi rezyume (<i lang="en">Academic CV vs Resume</i>) farqi: bakalavr arizasida ish tajribasidan koʻra taʼlim, loyiha va faoliyat birinchi turadi. Rasm, tugʻilgan sana va oilaviy holat odatda kerak emas.</div></div></details>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Bakalavr CV da taʼlim va loyihalar birinchi turadi. Rasm, tugʻilgan sana va oilaviy holat shart emas.</div></div></div>
+          <div class="panel"><div class="assign"><b>CV qatorlari</b><ul><li>Eng muhim 5 faoliyat yoki yutuqingizni STAR usulida bitta qatordan yozing.</li><li>Pastdagi vositada CV boʻlimlarini toʻldiring.</li></ul>
+            <textarea data-save="a6" placeholder="1) ... ni tashkil qildim (...); ...; natija: ... 2) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +17 XP</button></div>
+        </div>
+      </article>
+      <!-- 3.7 -->
+      <article class="lesson" id="l7">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 3.7</span><span class="l-t" style="display:block">Izchil hikoya xaritasi</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Xarita</span><span class="tag xp">+17 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Komissiya arizangizni bir necha qismdan koʻradi: fanlar, faoliyat, insho, tavsiya. Ular bir-birini tasdiqlasa, ishonch oshadi. Bu darsda hammasini bitta xaritaga qoʻyamiz.</div></div>
+          <div class="panel">
+<div data-kvideo="l7"></div>
+<div class="tbl"><table><thead><tr><th>Qism</th><th>Savol</th></tr></thead><tbody>
+<tr><td>Fanlar va baholar</td><td>Sohangizga yaqin fanlarda baholaringiz qanday?</td></tr>
+<tr><td>Faoliyatlar</td><td>Darsdan tashqari shu yoʻnalishda nima qildingiz?</td></tr>
+<tr><td>Insho (M5)</td><td>Nega bu soha sizga muhim?</td></tr>
+<tr><td>Tavsiya (M4)</td><td>Oʻqituvchi qaysi epizodni yoza oladi?</td></tr>
+</tbody></table></div>
+<p>Turli faoliyat ham bitta xarakterni koʻrsata oladi. Hikoyani toʻqimang: komissiya qismlarni bir-biri bilan solishtiradi.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Izchillik nima</h4>
+<p>Izchil hikoya (<i lang="en">coherent narrative</i>) arizaning hamma qismi bitta yoʻnalishni koʻrsatishi. Bu "hammasi bitta mavzu haqida" degani emas: turli faoliyatlar ham bitta xarakterni koʻrsata oladi.</p>
 <div class="tbl"><table><thead><tr><th>Ariza qismi</th><th>Nimani koʻrsatadi</th><th>Savol</th></tr></thead><tbody>
 <tr><td>Fanlar va baholar</td><td>Akademik tayyorgarlik</td><td>Sohangizga yaqin fanlarda baholaringiz qanday?</td></tr>
-<tr><td>Faoliyatlar (M7)</td><td>Qiziqishning amaldagi isboti</td><td>Darsdan tashqari shu yoʻnalishda nima qildingiz?</td></tr>
-<tr><td>Insho (M9)</td><td>Shaxs va motivatsiya</td><td>Nega sizga bu soha muhim?</td></tr>
-<tr><td>Tavsiya (M8)</td><td>Boshqa odam koʻzi bilan dalil</td><td>Oʻqituvchi qaysi epizodni yoza oladi?</td></tr>
+<tr><td>Faoliyatlar (M3)</td><td>Qiziqishning amaldagi isboti</td><td>Darsdan tashqari shu yoʻnalishda nima qildingiz?</td></tr>
+<tr><td>Insho (M5)</td><td>Shaxs va motivatsiya</td><td>Nega sizga bu soha muhim?</td></tr>
+<tr><td>Tavsiya (M4)</td><td>Boshqa odam koʻzi bilan dalil</td><td>Oʻqituvchi qaysi epizodni yoza oladi?</td></tr>
 </tbody></table></div>
 <h4>Boʻshliqni topish</h4>
-<p>Jadvalni toʻldirganda boʻsh qolgan katak sizning keyingi oylardagi ishingiz. Masalan, faoliyat ustuni boʻsh boʻlsa, M7 da bitta chuqur loyiha rejalaysiz.</p>
-<div class="box info">Hikoyani toʻqimang. Komissiya tavsiya xati va faoliyatlar roʻyxati orqali insho bilan solishtiradi.</div>
+<p>Jadvalni toʻldirganda boʻsh qolgan katak sizning keyingi oylardagi ishingiz. Masalan, faoliyat ustuni boʻsh boʻlsa, shu modulda bitta chuqur loyiha rejalaysiz.</p>
+<div class="box info">Hikoyani toʻqimang. Komissiya tavsiya xati va faoliyatlar roʻyxati orqali insho bilan solishtiradi.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Fanlar, faoliyat, insho va tavsiya bitta yoʻnalishni tasdiqlasa, ariza kuchayadi. Boʻsh katak keyingi oylardagi ish rejasi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Toʻrt ustunli jadvalni oʻzingiz uchun toʻldiring.</li><li>Eng zaif ustunni va uni kuchaytirish uchun 1 aniq harakatni yozing.</li></ul>
-            <textarea data-save="a5" placeholder="Fanlar: ... Faoliyat: ... Insho gʻoyasi: ... Tavsiya: ... Zaif: ..., harakat: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Boʻsh qolgan katak keyingi oylardagi ishingiz. Eng zaif ustunni kuchaytiradigan bitta harakatni tanlang.</div></div></div>
+          <div class="panel"><div class="assign"><b>Sizning xaritangiz</b><ul><li>Toʻrt ustunli jadvalni oʻzingiz uchun toʻldiring.</li><li>Eng zaif ustunni va uni kuchaytiradigan 1 aniq harakatni yozing.</li></ul>
+            <textarea data-save="a7" placeholder="Fanlar: ... Faoliyat: ... Insho gʻoyasi: ... Tavsiya: ... Zaif: ..., harakat: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l7">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
 
     </div>
   </section>
 
-  <section id="bayon">
-    <h2>Qiziqish sohasi bayoni</h2>
-    <p class="sub">1 sahifa: savol, kelib chiqishi, dalil, keyingi qadam. Soʻz hisoblagich moʻljalni koʻrsatadi.</p>
+  <section id="royxat">
+    <h2>Faoliyatlar roʻyxati va CV</h2>
+    <p class="sub">Profil, 10 ta faoliyat va CV boʻlimlarini bitta joyga yigʻing.</p>
     <div class="tool">
-      <div class="tool-h"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Bayon ish varagʻi</h3><span>5 maydon · +30 XP</span></div></div>
+      <div class="tool-h"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Faoliyatlar roʻyxati (Activities List)</h3><span>10 maydon · +30 XP</span></div></div>
       
-      <div class="fld"><label for="f_profil">Bir jumlali profil</label><textarea id="f_profil" data-save="profil" placeholder="Men ...ga qiziqaman, chunki ...; buni ... va ... koʻrsatadi."></textarea></div><div class="fld"><label for="f_savol">1. Aniq savol</label><textarea id="f_savol" data-save="savol" data-wc="15-60" placeholder="..."></textarea><div class="meterw" data-meter="savol"></div></div><div class="fld"><label for="f_kelib">2. Kelib chiqishi (epizod)</label><textarea id="f_kelib" data-save="kelib" data-wc="60-150" placeholder="Qachon, qayerda, nima boʻldi ..."></textarea><div class="meterw" data-meter="kelib"></div></div><div class="fld"><label for="f_dalil">3. Dalil (nima qildim)</label><textarea id="f_dalil" data-save="dalil" data-wc="60-150" placeholder="Oʻqigan kitob, loyiha, kurs ..."></textarea><div class="meterw" data-meter="dalil"></div></div><div class="fld"><label for="f_keyin">4. Universitetda keyingi qadam</label><textarea id="f_keyin" data-save="keyin" data-wc="40-120" placeholder="Qaysi fan, laboratoriya yoki loyiha ..."></textarea><div class="meterw" data-meter="keyin"></div></div>
+      <div class="fld"><label for="f_profil">Bir jumlali profil</label><textarea id="f_profil" data-save="profil" placeholder="Men ...ga qiziqaman, chunki ...; buni ... va ... koʻrsatadi."></textarea></div><div class="fld"><label for="f_f13">1–3 faoliyat (eng muhim) <small>rol · tashkilot · tavsif · soat/hafta · yil</small></label><textarea id="f_f13" data-save="f13" placeholder="..."></textarea></div><div class="fld"><label for="f_f46">4–6 faoliyat</label><textarea id="f_f46" data-save="f46" placeholder="..."></textarea></div><div class="fld"><label for="f_f710">7–10 faoliyat</label><textarea id="f_f710" data-save="f710" placeholder="..."></textarea></div><div class="fld"><label for="f_xarita">Izchil hikoya xaritasi <small>faoliyatlar M3 profilingiz bilan qanday bogʻlangan</small></label><textarea id="f_xarita" data-save="xarita" placeholder="Profil: ... ; bogʻlovchi faoliyatlar: ..."></textarea></div><div class="fld"><label for="f_ism">Ism va aloqa <small>pasportdagidek</small></label><input id="f_ism" type="text" data-save="ism" placeholder="Ism Familiya · email · telefon · shahar"></div><div class="fld"><label for="f_talim">Taʼlim</label><textarea id="f_talim" data-save="talim" placeholder="... maktabi, 2020–2027; baholar: 4.8/5"></textarea></div><div class="fld"><label for="f_yutuq">Yutuqlar va mukofotlar <small>nomi, daraja, natija, yil</small></label><textarea id="f_yutuq" data-save="yutuq" placeholder="..."></textarea></div><div class="fld"><label for="f_loyiha">Loyihalar va tadqiqot <small>STAR, bitta qator</small></label><textarea id="f_loyiha" data-save="loyiha" placeholder="..."></textarea></div><div class="fld"><label for="f_konikma">Koʻnikmalar <small>tillar daraja bilan, dasturlar</small></label><input id="f_konikma" type="text" data-save="konikma" placeholder="Oʻzbek (ona tili), ingliz (IELTS ...), rus ...; Python ..."></div><div class="fld"><label for="f_reja">Keyingi 6 oy rejasi</label><textarea id="f_reja" data-save="reja" placeholder="Qaysi faoliyatni qanday chuqurlashtiraman ..."></textarea></div>
       <div id="toolOut" class="out" hidden></div>
-      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Bayonni saqlash · +30 XP</button>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Roʻyxatni saqlash · +30 XP</button>
     </div>
   </section>
 
   <section id="check">
-    <h2>Kimlik nazorati</h2>
-    <p class="sub">Bayonni yakunlashdan oldin tekshiring.</p>
+    <h2>Profil nazorati</h2>
+    <p class="sub">Roʻyxat va CV ni yakunlashdan oldin tekshiring.</p>
     <div class="tool">
       <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
-      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Profil bitta jumla va unda ikkita dalil bor.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Savol aniq, "hamma narsa" emas.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Kelib chiqishi aniq epizod bilan yozilgan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Har dalil tekshiriladigan (hujjat, natija yoki guvoh).</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Soha tanlovi oʻquv rejasi bilan tekshirilgan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Bakalavrdan keyingi kamida ikki yoʻl yozilgan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Izchil hikoya jadvalidagi eng zaif ustun aniqlangan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Hech qanday voqea toʻqilmagan, tayyor matn koʻchirilmagan.</span></label></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Profil bitta jumla va unda ikkita dalil bor.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Roʻyxat muhimlik tartibida, har tavsif feʼl bilan boshlanadi.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Tavsiflar 150 belgidan oshmaydi va natija yoki raqam bor.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Soat va yillar real, oshirilmagan.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Oilaviy majburiyat va ish ham hisobga olingan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>CV 1–2 sahifa, har band natijani koʻrsatadi.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Yutuqlar nomi, daraja, natija va yil bilan yozilgan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Izchil hikoya jadvalidagi eng zaif ustun aniqlangan.</span></label></div>
       <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
     </div>
   </section>
@@ -276,19 +433,20 @@
   <section id="nishonlar">
     <h2>Nishonlar</h2>
     <div class="badges">
-      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Kimlik meʼmori<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Bayon<small>Yakun</small></div>
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>4 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>7 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Profil meʼmori<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Profil<small>Yakun</small></div>
     </div>
   </section>
 
   <section id="artefakt">
-    <h2 id="artTitle">Qiziqish sohasi bayoni</h2>
+    <div data-kvideo="res"></div>
+    <h2 id="artTitle">Faoliyatlar roʻyxati, CV va hikoya xaritasi</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
       <div class="paper" id="artPaper"></div>
       <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
       <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
       <div class="row">
-        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +41 XP</button>
         <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
         <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
         <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
@@ -300,37 +458,54 @@
     <div class="mentor">
       <div class="av">KL</div>
       <div>
-        <q>Profilingizni ota-onangiz yoki doʻstingizga ayting va ulardan qayta aytib berishni soʻrang. Ular boshqa soʻz bilan toʻgʻri aytsa, profil aniq.</q>
+        <q>Tavsifni yozib boʻlgach, undan bitta soʻzni olib tashlang. Maʼno oʻzgarmasa, soʻz ortiqcha edi.</q>
         <small>Kompas Lab maslahati</small>
       </div>
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="3"><h2>Keyingi qadam: tavsiya xatlari</h2><div class="mv-bar"><i style="width:50%"></i></div><p class="mv-small">II bosqich: 1 / 2 modul · Rejangiz 50% tayyor</p><div class="mv-k" data-mn="m3"><b>Faoliyatlar roʻyxatingiz va CV tayyor.</b> Endi oʻqituvchingiz shu faktlarni oʻz xatida tasdiqlashi kerak. M4 da ulardan eng yaxshi 3–5 tasi Yutuqlar varaqasiga oʻtadi.</div><p>M4.1 dan: <i>«Aʼlochi va mehnatkash» degan xatni komissiya minglab oʻqigan. Kuchli xatda aniq epizod bor.</i></p><div class="mv-row"><a class="btn btn-p" href="bachelor-lab-o.html?m=4">M4: tavsiya xatlari</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
-      <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~1–2 hafta (haftasiga 3–5 soat)</div>
-      <div><b>Natija</b>Qiziqish sohasi bayoni</div>
+      <div><b>Darslar</b>7 ta</div>
+      <div><b>Vaqt</b>~2 hafta (darslar ~1,5 soat + roʻyxat va CV)</div>
+      <div><b>Natija</b>Faoliyatlar roʻyxati, CV va hikoya xaritasi</div>
     </div>
-    <p class="srcs">Faktlar: Universitetlarning rasmiy oʻquv rejalari (curriculum) va dastur sahifalari. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
+    <p class="srcs">Faktlar: <a href="https://www.commonapp.org" target="_blank" rel="noopener">Common App (rasmiy sayt)</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
   </section>
 </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="bachelor-lab.html">← Bakalavr dasturi</a>
-    <a class="btn btn-p" href="bachelor-lab-m4.html">Keyingi: M4 Ariza muddatlari va ish rejasi →</a>
+    <a class="btn btn-g" href="bachelor-lab-o.html?m=2">← M2</a>
+    <a class="btn btn-p" href="bachelor-lab-o.html?m=4">Keyingi: M4 Tavsiya xatlari va hujjatlar →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/bachelor-next.js" defer></script>
+<script>
+window.KGTool = { check: function () {
+  var long = [];
+  ["f13", "f46", "f710"].forEach(function (k) {
+    String(KG.nv(k)).split(/\n+/).forEach(function (line) {
+      var m = line.match(/tavsif\s*:\s*(.+)$/i);
+      var t = m ? m[1] : "";
+      if (t && t.length > 150) long.push(t.slice(0, 24) + "…");
+    });
+  });
+  return long.length ? ("150 belgidan uzun tavsif: " + long.length + " ta") : "";
+} };
+</script>
 <script>
 (function () {
-  var KEY = "kompas_bachelor_m3_v1", MOD = "3", LXP = 24, NL = 5, FINXP = 40;
-  var ART = [{"h": "Bir jumlali profil", "k": ["profil", "a1"]}, {"h": "Soha tanlovi", "k": ["a2", "a3"]}, {"h": "Aniq savol", "k": ["savol", "a4"]}, {"h": "Kelib chiqishi", "k": ["kelib"]}, {"h": "Dalil", "k": ["dalil"]}, {"h": "Universitetda keyingi qadam", "k": ["keyin"]}, {"h": "Izchil hikoya xaritasi", "k": ["a5"]}];
+  var KEY = "kompas_bachelor_m3_v1", MOD = "3", LXP = 17, NL = 7, FINXP = 41;
+  var ART = [{"h": "Bir jumlali profil", "k": ["profil", "a1"]}, {"h": "Faoliyatlar 1–3", "k": ["f13"]}, {"h": "Faoliyatlar 4–6", "k": ["f46"]}, {"h": "Faoliyatlar 7–10", "k": ["f710"]}, {"h": "Yutuqlar va loyihalar", "k": ["yutuq", "loyiha", "a3"]}, {"h": "Yetakchilik", "k": ["a4"]}, {"h": "Ism va aloqa", "k": ["ism"]}, {"h": "Taʼlim", "k": ["talim"]}, {"h": "Koʻnikmalar", "k": ["konikma"]}, {"h": "CV qatorlari (STAR)", "k": ["a6"]}, {"h": "Izchil hikoya xaritasi", "k": ["xarita", "a7"]}, {"h": "Keyingi 6 oy rejasi", "k": ["reja"]}];
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
   try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
@@ -348,7 +523,7 @@
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -496,7 +671,7 @@
   });
   $("docBtn").addEventListener("click", function () {
     var p = $("artPaper");
-    download("Bachelor_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+    download("Bakalavr_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
   });
   $("copyBtn").addEventListener("click", function () {
     copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
@@ -505,7 +680,7 @@
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

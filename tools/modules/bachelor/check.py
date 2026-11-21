@@ -1,4 +1,4 @@
-# Bachelor M1–M16 yetkazishdan oldingi tekshiruv (loyiha qoʻllanmasi 8-boʻlim, 1–6-bandlar).
+# Bakalavr M1–M8 (v2, 2026-11-21) yetkazishdan oldingi tekshiruv (loyiha qoʻllanmasi 8-boʻlim, 1–6-bandlar).
 #   python3 tools/modules/bachelor/check.py [1 2 ...]
 # 7-band (brauzer) alohida: tools/modules/test/paid_reader.js va gks/browser_test.js.
 import re, subprocess, sys, tempfile
@@ -42,11 +42,12 @@ def check(n):  # n = slug, masalan "m3-u"
         if r.returncode: out.append(f"JS #{i}: {r.stderr.strip()[:200]}")
     # 3) dars tuzilmasi
     nl = len(re.findall(r'<article class="lesson"', src))
-    for tab in ("Diqqat 🔥", "Asosiy qism", "Xulosa", "Topshiriq"):
+    for tab in ("Diqqat", "Asosiy qism", "Xulosa", "Topshiriq"):  # v2: tablarda emoji yoʻq
         c = src.count(f'role="tab">{tab}<')
         if c != nl: out.append(f"tab '{tab}': {c} ≠ {nl} dars")
     # 4) qobiq
-    if "<main>" not in src: out.append("<main> yoʻq")
+    if not re.search(r"<main[ >]", src): out.append("<main> yoʻq")
+    if src.count("data-kvideo=") < nl + 1: out.append("video joylari yetishmaydi")
     # 5) imlo (koʻrinadigan matn: script/style tashqarisi)
     p = P(); p.feed(src); txt = "".join(p.text)
     if "'" in txt: out.append("ASCII apostrof matnda: " + repr(txt[max(0, txt.index("'") - 30):txt.index("'") + 30]))
@@ -62,7 +63,7 @@ def check(n):  # n = slug, masalan "m3-u"
 
 
 if __name__ == "__main__":
-    ns = sys.argv[1:] or [str(i) for i in range(1, 17)]
+    ns = sys.argv[1:] or [str(i) for i in range(1, 9)]
     bad = 0
     for n in ns:
         r = check(n)

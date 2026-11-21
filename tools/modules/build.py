@@ -69,7 +69,7 @@ MODULES = {
     "gks-lab-m5-m":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m3-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
     "gks-lab-m4-d":         dict(lab="gks-lab.html", site=False, paid=True, protect=True),
-    # Bakalavr dasturi (2026-10-31): M1–M16, 4 faza. Manba tools/modules/bachelor/engine.py, oʻquvchi bachelor-lab-o.html?m=N
+    # Bakalavr dasturi (v2 2026-11-21, avval M1–M16): M1–M8, 4 bosqich × 2 modul. Manba tools/modules/bachelor/engine.py, oʻquvchi bachelor-lab-o.html?m=N
     "bachelor-lab-m1":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m2":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m3":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
@@ -78,14 +78,6 @@ MODULES = {
     "bachelor-lab-m6":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m7":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     "bachelor-lab-m8":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    "bachelor-lab-m9":         dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    "bachelor-lab-m10":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    "bachelor-lab-m11":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    "bachelor-lab-m12":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    "bachelor-lab-m13":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    "bachelor-lab-m14":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    "bachelor-lab-m15":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
-    "bachelor-lab-m16":        dict(lab="bachelor-lab.html", site=False, paid=True, protect=True),
     # USA dasturi (2026-10-31): M1–M8, 4 faza (1 faza = 2 modul). Manba tools/modules/usa/engine.py, oʻquvchi usa-lab-o.html?m=N
     "usa-lab-m1":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),
     "usa-lab-m2":             dict(lab="usa-lab.html", site=False, paid=True, protect=True),

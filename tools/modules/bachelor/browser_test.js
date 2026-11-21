@@ -1,11 +1,11 @@
-// Bachelor M1–M16 toʻliq oqim testi (yuklab olinadigan dist/ versiya, 390px):
+// Bakalavr M1–M8 (v2) toʻliq oqim testi (yuklab olinadigan dist/ versiya, 390px):
 // har dars 4 qism → yakunlash, mini-test, vosita, nazorat roʻyxati, halollik, yakun → 250 XP.
 //   PW=$(npm root -g)/playwright node tools/modules/bachelor/browser_test.js 1 2 ...
 const path = require("path");
 const { chromium } = require(process.env.PW || "playwright");
 const ROOT = path.resolve(__dirname, "../../..");
 (async () => {
-  const ns = process.argv.slice(2).length ? process.argv.slice(2) : Array.from({length: 16}, (_, i) => String(i + 1));
+  const ns = process.argv.slice(2).length ? process.argv.slice(2) : Array.from({length: 8}, (_, i) => String(i + 1));
   const b = await chromium.launch(); let bad = 0;
   for (const n of ns) {
     const ctx = await b.newContext({ viewport: { width: 390, height: 800 } });

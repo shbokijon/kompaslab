@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M8 Tavsiya xatlari · Bakalavr dasturi · Kompas Lab</title>
-<meta name="description" content="Bakalavr dasturi M8: kuchli tavsiya xati, oʻqituvchidan soʻrash, yutuqlar varaqasi (Brag Sheet), Common App va UCASʼda tavsiya jarayoni, maktab maslahatchisi boʻlmaganda. Natija: yutuqlar varaqasi, 2–3 tavsiya soʻrovi va aloqalar jadvali.">
+<title>M8 Intervyu, qaror va joʻnash · Bakalavr dasturi · Kompas Lab</title>
+<meta name="description" content="Bakalavr dasturi M8: intervyu turlari, "oʻzingiz haqingizda" javobi, akademik intervyu, yozib olish va baholash, qabul, rad va kutish roʻyxati, qabul xati va talaba vizasi, uy-joy, sugʻurta va birinchi yil.">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <style>
 {{CSS}}
-/* Bachelor M1–M16 qoʻshimchalari */
+/* Bakalavr M1–M8 qoʻshimchalari */
 .path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
 @media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
 .fld{margin-bottom:12px;}
@@ -46,7 +46,32 @@
   .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
-.path.pn{--pn:8;}
+.path.pn{--pn:9;}
+
+/* Bakalavr v2 (2026-11-21): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-take ul,.mv-i ul{margin:6px 0 0;padding-left:20px}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+.lesson .panel ol,.lesson .panel ul{padding-left:24px}
+
 </style>
 </head>
 <body>
@@ -62,205 +87,301 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="bachelor-lab" data-kv-mod="8">
 <div class="wrap">
 
   <div class="hero">
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bakalavr dasturi</a> · Modul 8</div>
-        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich II · Baholar, yutuqlar va tajriba</span>
-        <h1>Tavsiya xatlari</h1>
-        <p class="lead">Tavsiya xati sizni boshqa odam koʻzi bilan koʻrsatadi. Uni oʻzingiz yozmaysiz, lekin uning kuchli boʻlishiga taʼsir qila olasiz: toʻgʻri odamni tanlash, vaqtida soʻrash va faktlar bilan taʼminlash orqali.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Bosqich II</span><span class="fact"><b>250</b> XP</span></div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich IV · Topshirish va joʻnash</span>
+        <h1>Intervyu, qaror va joʻnash</h1>
+        <p class="lead">Bu modulda intervyuga tayyorlanasiz, natijalar uchun qaror jadvalini tuzasiz va qabul xatidan joʻnashgacha boʻlgan qadamlarni yozasiz. Oxirida sizda <strong>3 ta yozib olingan javob, qaror jadvali va joʻnash roʻyxati</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Bosqich IV</span><span class="fact"><b>250</b> XP</span></div>
       </div>
-      <img class="hero-art float" src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">
+      <img class="hero-art float" src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 9 qadam</span></div>
     <div class="path pn">
-      <a class="node" href="#l1" data-node="l1"><span class="dot">8.1</span>Kuchli xat</a><a class="node" href="#l2" data-node="l2"><span class="dot">8.2</span>Soʻrov</a><a class="node" href="#l3" data-node="l3"><span class="dot">8.3</span>Brag Sheet</a><a class="node" href="#l4" data-node="l4"><span class="dot">8.4</span>Platforma</a><a class="node" href="#l5" data-node="l5"><span class="dot">8.5</span>Maslahatchi</a><a class="node" href="#aloqa" data-node="tool"><span class="dot">🛠</span>Aloqalar</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Varaqa</a>
+      <a class="node" href="#l1" data-node="l1"><span class="dot">8.1</span>Intervyu</a><a class="node" href="#l2" data-node="l2"><span class="dot">8.2</span>Akademik</a><a class="node" href="#l3" data-node="l3"><span class="dot">8.3</span>Mezon</a><a class="node" href="#l4" data-node="l4"><span class="dot">8.4</span>Natijalar</a><a class="node" href="#l5" data-node="l5"><span class="dot">8.5</span>Viza</a><a class="node" href="#l6" data-node="l6"><span class="dot">8.6</span>Joʻnash</a><a class="node" href="#mezon" data-node="tool"><span class="dot">🛠</span>Mezon</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Joʻnash</a>
     </div>
   </nav>
 
   <section>
     <h2>Modul yakunida sizda</h2>
     <ul class="goal">
-      <li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Yutuqlar varaqasi (Brag Sheet):</b> tavsiya beruvchiga beriladigan faktlar va epizodlar</span></li><li><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span><b>2–3 tavsiya soʻrovi:</b> kimga, qachon, qanday</span></li><li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span><b>Aloqalar jadvali:</b> tavsiya beruvchilar, muddatlar, holat</span></li>
+      <li><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span><b>3 ta yozib olingan javob:</b> oʻzingiz haqingizda, akademik masala, motivatsiya</span></li><li><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span><b>Qaror jadvali:</b> bir nechta taklif, kutish roʻyxati yoki rad boʻlsa</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Joʻnash roʻyxati:</b> viza, uy-joy, sugʻurta, 30 kun, birinchi yil</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Tavsiya xatini oʻzingiz yozib, oʻqituvchiga imzolatsangiz, bu akademik halollikni buzadi va platformalar qoidalariga zid. Bu modulda faqat tavsiya beruvchiga faktlar berish oʻrgatiladi.</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Viza talablari va toʻlovlari 31.10.2026 holatiga; har mamlakatning rasmiy viza sahifasidan tekshiring. Viza qarorini konsullik chiqaradi.</p><p>Kompas Lab universitet, stipendiya dasturi yoki konsullik oʻrnida qaror qabul qilmaydi va qabul, stipendiya yoki vizani kafolatlamaydi. Insho, xat va hujjatni siz uchun yozmaydi: vositalar faqat sizning matningizni tartibga soladi. Sana va talablarni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 8.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 8.1</span><span class="l-t" style="display:block">Kuchli tavsiya xati</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.1</span><span class="l-t" style="display:block">Intervyu turlari va «Oʻzingiz haqingizda»</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Mini-test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">"U aʼlochi va mehnatkash oʻquvchi" degan xatni komissiya minglab oʻqigan. Kuchli xat aniq epizod va kuzatilgan dalil bilan ajralib turadi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Bitiruvchi bilan suhbat va akademik intervyu butunlay boshqa narsa. Biri sizni tanish uchun, ikkinchisi qanday fikrlashingizni koʻrish uchun. Bu darsda turlarni ajratib, birinchi savolga 3 daqiqalik javob tuzamiz.<small class="mv-fun">Kamera ostidan qarab gapirsak, intervyuchi faqat shiftimizni koʻrib qoladi. Kamerani koʻz darajasiga qoʻyamiz.</small></div></div>
           <div class="panel">
-<h4>Kuchsiz va kuchli xat</h4>
-<div class="tbl"><table><thead><tr><th>Kuchsiz</th><th>Kuchli</th></tr></thead><tbody>
-<tr><td>Umumiy maqtov: "aqlli, mehnatkash, faol"</td><td>Aniq epizod: "Darsdagi masalani uch xil usulda yechib, sinfga tushuntirib berdi"</td></tr>
-<tr><td>Baholarni takrorlash</td><td>Baholarda koʻrinmaydigan sifat: savol berish, xatodan keyin qayta urinish</td></tr>
-<tr><td>Solishtirishsiz</td><td>Kontekst bilan: "20 yillik ishimdagi eng kuchli 5 oʻquvchidan biri" (agar haqiqat boʻlsa)</td></tr>
-<tr><td>Qisqa, shablon</td><td>Shaxsiy, tavsiya beruvchi sizni yaqindan bilishi koʻrinadi</td></tr>
+<div data-kvideo="l1"></div>
+<div class="tbl"><table><thead><tr><th>Tur</th><th>Maqsad</th></tr></thead><tbody>
+<tr><td>Bitiruvchi bilan suhbat (<i lang="en">alumni interview</i>)</td><td>Sizni tanish; qarorga taʼsiri koʻpincha kichik</td></tr>
+<tr><td>Akademik intervyu</td><td>Fan boʻyicha fikrlash, yangi masala</td></tr>
+<tr><td>Stipendiya intervyusi</td><td>Motivatsiya, reja, moslik</td></tr>
 </tbody></table></div>
-<h4>Kim yozishi kerak</h4>
-<ul><li>Sizni darsda yaqindan bilgan oʻqituvchi, ayniqsa sohangizga yaqin fan boʻyicha.</li><li>Oxirgi 1–2 yilda dars bergan boʻlsa yaxshiroq.</li><li>Lavozimi baland, lekin sizni bilmaydigan odam (masalan direktor) kuchsizroq xat yozadi.</li></ul>
-<div class="box info">Xatni siz koʻrmaysiz: platformalar odatda xatni koʻrish huquqidan voz kechishni (<span lang="en">waive right to access</span>) taklif qiladi. Komissiya voz kechilgan xatga koʻproq ishonadi.</div>
+<p><b>«Oʻzingiz haqingizda»:</b> hozir (30 soniya), oʻtmish (90 soniya: 1–2 epizod), kelajak (60 soniya: nega shu dastur).</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Intervyu turlari</h4><div class="tbl"><table><thead><tr><th>Tur</th><th>Qayerda</th><th>Maqsad</th></tr></thead><tbody>
+<tr><td>Bitiruvchi bilan suhbat (<i lang="en">alumni interview</i>)</td><td>Baʼzi AQSh universitetlari</td><td>Sizni tanish, qiziqishlaringiz; koʻpincha qarorga kichik taʼsir</td></tr>
+<tr><td>Akademik intervyu</td><td>Oksford, Kembrij, baʼzi Yevropa va Osiyo universitetlari</td><td>Fan boʻyicha fikrlash, yangi masalani yechish</td></tr>
+<tr><td>Stipendiya intervyusi</td><td>GKS, MEXT, Türkiye Bursları va boshqalar</td><td>Motivatsiya, reja, mamlakat va dasturga moslik</td></tr>
+<tr><td>Qabul suhbati</td><td>Baʼzi universitetlar va dasturlar</td><td>Til, motivatsiya, hujjatlar boʻyicha savollar</td></tr>
+</tbody></table></div>
+<h4>Onlayn texnika</h4>
+<ul><li>Kamera koʻz darajasida, yuz yoritilgan, orqa fon tinch.</li><li>Internet zaxirasi (mobil internet), quloqchin.</li><li>Platformani (Zoom, Teams) bir kun oldin sinab koʻring.</li><li>Vaqt mintaqasini tekshiring: intervyu vaqti Toshkent vaqtiga toʻgʻri oʻgirilganmi?</li></ul>
+<div class="srcs">Manba: universitetlarning intervyu sahifalari; <a href="https://www.studyinkorea.go.kr" target="_blank" rel="noopener">Study in Korea (NIIED)</a>; <a href="https://www.turkiyeburslari.gov.tr" target="_blank" rel="noopener">Türkiye Bursları (rasmiy sayt)</a>. 31.10.2026 holatiga.</div><h4>"Oʻzingiz haqingizda": 3 daqiqa</h4><h4>Tuzilma: Hozir → Oʻtmish → Kelajak</h4>
+<ol><li><b>Hozir (30 soniya)</b>: kimsiz, qayerda oʻqiysiz, nimaga qiziqasiz (M3 profili).</li><li><b>Oʻtmish (90 soniya)</b>: bu qiziqish qanday shakllangan, 1–2 aniq epizod va natija.</li><li><b>Kelajak (60 soniya)</b>: nega shu dastur yoki stipendiya, nimani oʻrganmoqchisiz, keyin nima qilasiz.</li></ol>
+<h4>Misol tahlili (Kompas tuzgan namuna)</h4>
+<div class="tbl"><table><thead><tr><th>Kuchsiz</th><th>Kuchli</th></tr></thead><tbody>
+<tr><td>"Men Aziz, 17 yoshdaman, maktabda aʼlochiman, sport bilan shugʻullanaman, kitob oʻqishni yaxshi koʻraman..."</td><td>"Men energiya tizimlariga qiziqaman. Shu yil mahallamizdagi elektr uzilishlarini 3 oy kuzatib, ..."</td></tr>
+</tbody></table></div>
+<p>Kuchsiz javob roʻyxat, kuchli javob bitta yoʻnalish va dalil.</p>
+<div class="box info">Tuzilmani yodlang, jumlani har safar yangidan tuzing. Yodlangan matn sunʼiy eshitiladi va savol oʻzgarsa yoʻqolib qolasiz.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>Kuchli xat aniq epizod, baholarda koʻrinmaydigan sifat va kontekst bilan yoziladi. Sizni yaqindan biladigan oʻqituvchini tanlang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“Direktor yozgan xat har doim oʻqituvchi xatidan kuchli.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: sizni yaqindan bilgan oʻqituvchi aniqroq dalil beradi.</div></div><div class="qz" data-a="t"><p>“Kuchli xatda aniq epizodlar boʻladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: kuzatilgan voqea umumiy maqtovdan ishonchliroq.</div></div><div class="qz" data-a="n"><p>“Xatni oʻzim yozib, oʻqituvchiga imzolatsam boʻladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: bu akademik halollikni buzadi.</div></div><div class="qz" data-a="t"><p>“Xatni koʻrish huquqidan voz kechish komissiya ishonchini oshirishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: xat ochiqroq yozilgan deb hisoblanadi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>3 nomzod tavsiya beruvchini yozing.</li><li>Har biri sizni qaysi aniq epizod orqali biladi, yozing.</li></ul></div>
-            <textarea data-save="a1" placeholder="1) ... (fizika oʻqituvchisi, 2 yil): epizod — ... 2) ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Javobda roʻyxat emas, bitta yoʻnalish va dalil boʻlsin. Tuzilmani yodlang, jumlani har safar yangidan tuzing.</div></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="t"><p>“Akademik intervyuda toʻgʻri javobdan koʻra fikrlash jarayoni muhimroq boʻlishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: intervyuchi qanday oʻylashingizni koʻrmoqchi.</div></div><div class="qz" data-a="n"><p>“Bitiruvchi bilan suhbat har doim qabulni hal qiladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: koʻpincha qarorga kichik taʼsir qiladi.</div></div><div class="qz" data-a="t"><p>“Intervyu vaqtini Toshkent vaqtiga oʻgirib tekshirish kerak.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: vaqt mintaqasi xatosi keng uchraydi.</div></div><div class="qz" data-a="n"><p>“Stipendiya intervyusida oʻqishdan keyingi rejangiz soʻralmaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: reja va motivatsiya asosiy mavzu.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>Intervyu va 3 daqiqa</b><ul><li>Arizalaringizda qaysi intervyu turlari kutilishini yozing.</li><li>3 daqiqalik javobni telefonga yozib oling va har qism necha soniya olganini yozing.</li></ul></div>
+            <textarea data-save="a1" placeholder="...: akademik intervyu; ...: stipendiya intervyusi. Texnika: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
       <!-- 8.2 -->
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 8.2</span><span class="l-t" style="display:block">Oʻqituvchidan soʻrash</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🛠 Soʻrov</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.2</span><span class="l-t" style="display:block">Akademik intervyu</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Masala</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Oʻqituvchi bir vaqtda bir nechta oʻquvchiga xat yozishi mumkin. Kech soʻrov shoshilgan va umumiy xatga olib keladi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Akademik intervyuda sizga hech qachon koʻrmagan masala beriladi. Intervyuchi fikrlash yoʻlingizni eshitmoqchi. Bu darsda masalani ovoz chiqarib, qadamma-qadam yechishni mashq qilamiz.</div></div>
           <div class="panel">
-<h4>Qachon</h4>
-<p>Birinchi muddatdan kamida <b>6–8 hafta oldin</b>. Erta qaror yoki UCAS erta muddati boʻlsa, undan ham oldin.</p>
-<h4>Qanday</h4>
-<ol><li><b>Avval ogʻzaki</b>: shaxsan soʻrang, rad etish imkonini qoldiring: "Siz menga kuchli xat yoza olasizmi?"</li>
-<li><b>Keyin yozma</b>: qisqa xat bilan yutuqlar varaqasi (L3), universitetlar roʻyxati, muddatlar va topshirish usuli.</li>
-<li><b>Eslatma</b>: muddatdan 2 hafta va 3 kun oldin muloyim eslatma.</li>
-<li><b>Rahmat</b>: natijadan qatʼi nazar yozma rahmat va natija haqida xabar.</li></ol>
-<h4>Ingliz tilida xat kerak boʻlsa</h4>
-<p>Oʻqituvchi ingliz tilini bilmasligi mumkin. Variantlar: oʻqituvchi oʻzbekcha yozadi va xat professional tarjimon tomonidan tarjima qilinadi (baʼzi universitetlar tarjima tasdigʻini soʻraydi); yoki ingliz tili oʻqituvchisi tarjimada yordam beradi. Tarjimani siz qilmang: bu mustaqillikka shubha uygʻotadi. Universitetning tarjima qoidasini oldindan tekshiring.</p>
-<div class="box warn">Oʻqituvchi "oʻzing yozib kel, men imzolayman" desa, muloyim rad eting va yutuqlar varaqasini taklif qiling. Bu sizni ham, oʻqituvchini ham himoya qiladi.</div>
+<div data-kvideo="l2"></div>
+<ol><li>Savolni qayta ayting.</li><li>Maʼlum va berilganni ajrating.</li><li>Oddiy holatdan boshlang: kichik son, chizma.</li>
+<li>Har qadamni ayting: «Avval … ni koʻraman, chunki …».</li><li>Xatoni tan oling va qayta koʻring.</li><li>Intervyuchi yoʻnaltirsa, maslahatni ishlating.</li></ol>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Ovoz chiqarib fikrlash</h4>
+<ol><li><b>Savolni qayta ayting</b>: tushunganingizni tekshirish uchun.</li><li><b>Maʼlumni ajrating</b>: nimani bilaman, nima berilgan?</li><li><b>Oddiy holatdan boshlang</b>: kichik son, maxsus holat, chizma.</li><li><b>Har qadamni ayting</b>: "Avval ... ni koʻraman, chunki ..."</li><li><b>Xatoni tan oling</b>: "Bu yerda xato qildim, qayta koʻraman."</li><li><b>Maslahatni qabul qiling</b>: intervyuchi yoʻnaltirsa, uni ishlating.</li></ol>
+<h4>Tayyorgarlik</h4>
+<ul><li>Sohangiz boʻyicha olimpiada va qiziqarli masalalar toʻplamidan haftasiga 3–5 masalani ovoz chiqarib yeching.</li><li>Doʻstingiz intervyuchi boʻlsin: u faqat savol beradi va toʻxtab qolsangiz yoʻnaltiradi.</li><li>Oʻqigan kitob yoki maqolangiz haqida 2 daqiqa gapira olishingizni tekshiring: intervyuchi bayonotingizdagi narsalar haqida soʻrashi mumkin.</li></ul>
+<div class="box warn">Bilmasangiz, toʻqimang. "Buni bilmayman, lekin shunday oʻylayman..." deb taxminingizni asoslang. Bu kuchli javob.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/bell.webp" width="160" height="160" alt="" loading="lazy"><p>Muddatdan 6–8 hafta oldin, avval ogʻzaki, keyin yozma soʻrang; eslatma va rahmat yuboring. Tarjima kerak boʻlsa, uni oʻzingiz qilmang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Tanlagan tavsiya beruvchilar uchun soʻrov sanasini belgilang.</li><li>Yozma soʻrov xatining asosiy 5 jumlasini yozing.</li></ul>
-            <textarea data-save="a2" placeholder="Soʻrov sanasi: ... Xat: Hurmatli ..., ... universitetlariga ariza beryapman ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Bilmasangiz, toʻqimang: «Buni bilmayman, lekin shunday oʻylayman …» deb taxminingizni asoslang.</div></div></div>
+          <div class="panel"><div class="assign"><b>Bitta masala ovoz bilan</b><ul><li>Sohangiz boʻyicha bitta yangi masalani ovoz chiqarib yechib, yozib oling.</li><li>Qaysi qadamda toʻxtaganingizni va nima yordam berganini yozing.</li></ul>
+            <textarea data-save="a2" placeholder="Masala: ... Toʻxtagan joy: ... Yordam bergan: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
       <!-- 8.3 -->
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 8.3</span><span class="l-t" style="display:block">Yutuqlar varaqasi</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">📋 1 sahifa</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.3</span><span class="l-t" style="display:block">Yozib olish va baholash</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">8 band</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Oʻqituvchi sizni yaxshi biladi, lekin hamma narsani eslamaydi. Yutuqlar varaqasi unga aniq faktlar va epizodlarni eslatadi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Oʻz ovozingizni yozuvda eshitish noqulay, lekin intervyuga tayyorlanishning eng tez yoʻli. Bu darsda yozuvni 8 bandli mezon bilan baholaymiz.</div></div>
           <div class="panel">
-<h4>Yutuqlar varaqasi (<span lang="en">Brag Sheet</span>) tarkibi</h4>
-<ol><li><b>Asosiy maʼlumot</b>: ism, sinf, sohangiz, universitetlar va muddatlar.</li>
-<li><b>Bir jumlali profil</b> (M3).</li>
-<li><b>Siz va oʻqituvchi</b>: qaysi fan, necha yil, qaysi loyiha yoki tanlovda birga ishlagansiz.</li>
-<li><b>2–3 epizod</b>: oʻqituvchi oʻzi koʻrgan aniq voqealar (sana yoki dars bilan). Oʻqituvchi tasdiqlay oladigan voqealarni yozing.</li>
-<li><b>Yutuqlar</b>: eng muhim 3–5 tasi (M6 formatida).</li>
-<li><b>Nima taʼkidlanishi foydali</b>: masalan "mustaqil oʻrganish" yoki "jamoada ishlash", lekin tayyor jumla emas.</li></ol>
-<p>Hajmi: 1 sahifa. Koʻproq boʻlsa, oʻqituvchi uni oʻqimaydi.</p>
-<div class="box info">Varaqa faktlar beradi, matn emas. Oʻqituvchi oʻz soʻzlari bilan yozadi. Varaqadagi har gap oʻqituvchi tasdiqlay oladigan narsa boʻlsin.</div>
+<div data-kvideo="l3"></div>
+<p>Har band 0–2 ball, jami 16:</p>
+<ol><li>tuzilma;</li><li>aniq dalil;</li><li>savolga javob;</li><li>vaqt;</li><li>til aniqligi;</li><li>tezlik va pauza;</li><li>koʻz va kamera;</li><li>halollik va ishonch.</li></ol>
+<p>Yozib oling, ertasi kuni baholang, eng past 2 bandni tuzatib qayta yozing.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>8 bandli mezon (har biri 0–2 ball, jami 16)</h4>
+<div class="tbl"><table><thead><tr><th>№</th><th>Band</th><th>2 ball</th></tr></thead><tbody>
+<tr><td>1</td><td>Tuzilma</td><td>Boshlanish, asosiy qism, xulosa aniq</td></tr>
+<tr><td>2</td><td>Aniq dalil</td><td>Kamida bitta epizod yoki natija</td></tr>
+<tr><td>3</td><td>Savolga javob</td><td>Aynan soʻralganga javob berdi</td></tr>
+<tr><td>4</td><td>Vaqt</td><td>Chegarada (masalan 2–3 daqiqa)</td></tr>
+<tr><td>5</td><td>Til aniqligi</td><td>Tushunarli, takrorsiz</td></tr>
+<tr><td>6</td><td>Tezlik va pauza</td><td>Shoshilmasdan, pauzalar oʻrinli</td></tr>
+<tr><td>7</td><td>Koʻz va kamera</td><td>Kameraga qaraydi, yozuvdan oʻqimaydi</td></tr>
+<tr><td>8</td><td>Halollik va ishonch</td><td>Toʻqimaydi, bilmaganini tan oladi</td></tr>
+</tbody></table></div>
+<h4>Jarayon</h4>
+<ol><li>Telefonda yozib oling.</li><li>1 kundan keyin koʻring va mezon boʻyicha baholang.</li><li>Eng past 2 bandni tanlab, ularni tuzatib qayta yozing.</li><li>Ikki urinish balini solishtiring.</li></ol>
+<p><b>Ixtiyoriy oʻzaro tahrir</b>: yozuvni faqat ishonchli bir kishiga (oʻqituvchi yoki ota-ona) koʻrsating. Ochiq guruhga yoki nomaʼlum odamlarga yubormang: yozuvda yuzingiz va shaxsiy maʼlumotingiz bor.</p></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Yutuqlar varaqasi 1 sahifa: profil, oʻqituvchi bilan aloqangiz, 2–3 epizod, yutuqlar. Faktlar beradi, tayyor matn emas.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Bitta tavsiya beruvchi uchun yutuqlar varaqasini yozing.</li><li>Oʻqituvchi oʻzi koʻrgan 2–3 epizodni sanasi bilan kiriting.</li></ul>
-            <textarea data-save="a3" placeholder="Ism: ... Soha: ... Siz va men: ... Epizod 1: ... Epizod 2: ... Yutuqlar: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Ikki urinish balini solishtiring. Yozuvni faqat ishonchli bir kishiga koʻrsating.</div></div></div>
+          <div class="panel"><div class="assign"><b>3 ta javob</b><ul><li>Uch javobni yozib oling: oʻzingiz haqingizda, akademik masala, «nega shu dastur».</li><li>Pastdagi vositada mezon ballarini kiriting.</li></ul>
+            <textarea data-save="a3" placeholder="1-javob: 11/16, eng past: vaqt, pauza ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
       <!-- 8.4 -->
       <article class="lesson" id="l4">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 8.4</span><span class="l-t" style="display:block">Platformalarda tavsiya jarayoni</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🗺 Jarayon</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 8.4</span><span class="l-t" style="display:block">Qabul, rad, kutish roʻyxati</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Qaror</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Common Appʼda uch xil rol bor, UCASʼda bitta umumiy tavsiya. Kim nimani yuborishini bilmasangiz, ariza toʻliq boʻlmaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Natijalar kelganda his-tuygʻu kuchli boʻladi. Oldindan tuzilgan qaror jadvali sizni shoshilinch va qimmat xatodan saqlaydi. Bu darsda qabul, rad va kutish roʻyxati uchun reja tuzamiz.</div></div>
           <div class="panel">
-<div class="tbl"><table><thead><tr><th>Platforma</th><th>Kim nima yuboradi</th></tr></thead><tbody>
-<tr><td>Common App</td><td><b>Maktab maslahatchisi</b> (<span lang="en">school counselor</span>): maktab hisoboti (<span lang="en">school report</span>), maktab haqida maʼlumot (<span lang="en">school profile</span>), transkript va maslahatchi tavsiyasi. <b>Oʻqituvchilar</b> (<span lang="en">teacher evaluations</span>): odatda 1–2 ta. <b>Boshqa tavsiya beruvchilar</b>: baʼzi universitetlarda ixtiyoriy (masalan murabbiy, ish beruvchi)</td></tr>
-<tr><td>UCAS</td><td>Bitta umumiy tavsiya (<span lang="en">reference</span>) maktab yoki tavsiya beruvchi tomonidan UCAS tizimiga kiritiladi. Xalqaro abituriyent maktabi UCASʼga ulanmagan boʻlsa, "individual" ariza va tashqi tavsiya beruvchi orqali</td></tr>
-<tr><td>Toʻgʻridan-toʻgʻri portallar</td><td>Universitet havola yuboradi yoki skanerlangan imzolangan xatni yuklashni soʻraydi</td></tr>
+<div data-kvideo="l4"></div>
+<div class="tbl"><table><thead><tr><th>Natija</th><th>Nima qilasiz</th></tr></thead><tbody>
+<tr><td>Bir necha qabul</td><td>4 yillik xarajat, dastur, viza talablari va javob muddatini solishtiring</td></tr>
+<tr><td>UCAS takliflari</td><td>Asosiy (<i lang="en">firm</i>) va zaxira (<i lang="en">insurance</i>) tanlovni belgilaysiz</td></tr>
+<tr><td>Kutish roʻyxati</td><td>Ruxsat boʻlsa, qisqa xat yuboring; boshqa taklifni ham qabul qiling</td></tr>
+<tr><td>Rad</td><td>Zaxira rejaga oʻtasiz</td></tr>
 </tbody></table></div>
-<h4>Texnik qadamlar</h4>
-<ul><li>Platformada tavsiya beruvchining email manzilini aniq kiriting; u havola orqali yuklaydi.</li><li>Tavsiya beruvchiga platforma qanday ishlashini qisqa yoʻriqnoma bilan tushuntiring.</li><li>Nazorat jadvalida holatni kuzating: taklif yuborildi, qabul qilindi, yuklandi.</li></ul>
-<div class="srcs">Manba: <a href="https://www.commonapp.org" target="_blank" rel="noopener">Common App (rasmiy sayt)</a>; <a href="https://www.ucas.com" target="_blank" rel="noopener">UCAS (rasmiy sayt)</a>; <a href="https://www.ucas.com/international" target="_blank" rel="noopener">UCAS: xalqaro abituriyentlar</a>. 31.10.2026 holatiga.</div>
+<p>AQShda bir necha universitetga depozit toʻlash (<i lang="en">double deposit</i>) odatda qoidaga zid.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Bir nechta qabul boʻlsa</h4>
+<p>Solishtiring: toʻliq 4 yillik xarajat va moliyaviy yordam (M6), dastur va moslik bali (M1), viza va hujjat talablari, javob va depozit muddati.</p>
+<h4>Javob muddatlari</h4>
+<ul><li><b>AQSh</b>: koʻp universitetlarda oddiy muddat boʻyicha qabul qilinganlar uchun javob muddati 1-may atrofida; aniq sanani qabul xatidan oʻqing. Bir nechta universitetga depozit toʻlash (<i lang="en">double deposit</i>) odatda qoidaga zid.</li><li><b>UK (UCAS)</b>: takliflar orasidan asosiy (<i lang="en">firm</i>) va zaxira (<i lang="en">insurance</i>) tanlovni belgilaysiz; muddat UCAS tizimida koʻrsatiladi.</li><li><b>Boshqa mamlakatlar</b>: universitet xatidagi muddat; koʻpincha qisqa.</li></ul>
+<h4>Kutish roʻyxati</h4>
+<p>Agar universitet ruxsat bersa, qiziqishingizni tasdiqlovchi qisqa xat (<i lang="en">letter of continued interest</i>) yuboring: hali ham birinchi tanlovmi, ariza berilgandan keyingi yangi yutuqlar. Lekin boshqa taklifni qabul qilib, depozit toʻlang: kutish roʻyxati kafolat emas.</p>
+<h4>Rad javobidan keyin</h4>
+<ul><li>Qolgan takliflarni baholang.</li><li>Gap yili (<i lang="en">gap year</i>) va keyingi yil qayta ariza: nimani kuchaytirasiz?</li><li>Oʻzbekistonda oʻqib, keyin almashinuv yoki magistraturada chet elga chiqish.</li></ul>
+<div class="srcs">Manba: <a href="https://www.ucas.com" target="_blank" rel="noopener">UCAS (rasmiy sayt)</a>; universitetlarning qabul xatlari va rasmiy sahifalari. 31.10.2026 holatiga.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><p>Common App: maslahatchi, 1–2 oʻqituvchi va ixtiyoriy boshqa tavsiya; UCAS: bitta umumiy tavsiya; portallar: havola yoki yuklash. Holatni jadvalda kuzating.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Har platformangiz uchun kim qaysi rolni bajarishini yozing.</li><li>Tavsiya beruvchilar uchun 5 qadamlik qisqa yoʻriqnoma tuzing.</li></ul>
-            <textarea data-save="a4" placeholder="Common App: maslahatchi — ..., oʻqituvchi 1 — ..., oʻqituvchi 2 — ... UCAS: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Qaror mezonlarini va ularning ulushini natijalardan oldin yozing.</div></div></div>
+          <div class="panel"><div class="assign"><b>Qaror jadvali</b><ul><li>Qaror jadvali uchun mezonlaringizni va ularning ulushini yozing.</li><li>Rad javobi kelsa, zaxira rejangizni 3 qadamda yozing.</li></ul>
+            <textarea data-save="a4" placeholder="Mezonlar: xarajat (40%), dastur (30%) ... Zaxira: 1) ... 2) ... 3) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
       <!-- 8.5 -->
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 8.5</span><span class="l-t" style="display:block">Maktab maslahatchisi boʻlmasa</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🧭 Yechim</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.5</span><span class="l-t" style="display:block">Qabul xati va talaba vizasi</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">Bosqichlar</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Oʻzbekiston maktablarining koʻpida "maktab maslahatchisi" lavozimi yoʻq. Lekin Common App bu rolni soʻraydi. Kimdir uni bajarishi kerak.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Qabul xatidagi bitta jumla, masalan javob muddati yoki shart, keyingi hamma bosqichni belgilaydi. Viza qarorini esa konsullik chiqaradi. Bu darsda xatni roʻyxatga aylantirib, viza bosqichlarini yozamiz.</div></div>
           <div class="panel">
-<h4>Kim bajarishi mumkin</h4>
-<ul><li>Direktor yoki direktor oʻrinbosari (oʻquv ishlari boʻyicha).</li><li>Sinf rahbari.</li><li>Maktab psixologi yoki karyera boʻyicha masʼul xodim.</li></ul>
-<p>Muhimi: bu odam maktab nomidan rasmiy hujjat (transkript, maktab hisoboti) yubora olishi va platformada hisob ochishi kerak.</p>
-<h4>Maktabni qanday tayyorlash</h4>
-<ol><li>Erta uchrashing (birinchi muddatdan 2–3 oy oldin): maqsadingiz va platformani tushuntiring.</li>
-<li>Maktab haqida maʼlumot (<span lang="en">school profile</span>) qoralamasini birga tayyorlang: maktab turi, oʻquvchilar soni, baholash shkalasi, fanlar. Uni maktab tasdiqlaydi va yuboradi.</li>
-<li>Bitta masʼul odam va zaxira odamni kelishib oling.</li>
-<li>Platforma yoʻriqnomasini oʻzbek tilida qisqa qilib bering.</li></ol>
-<div class="box warn">Maslahatchi hisobini oʻzingiz ochib, oʻzingiz toʻldirmang. Rasmiy hujjat maktab vakili tomonidan yuborilishi kerak; aks holda bu firibgarlik deb baholanishi mumkin.</div>
+<div data-kvideo="l5"></div>
+<ol><li><b>Qabul turi:</b> shartli yoki shartsiz; shart nima?</li>
+<li><b>Javob muddati</b> va <b>depozit</b>.</li>
+<li><b>Viza hujjati:</b> AQSh I-20, UK CAS, Germaniya <i lang="en">Zulassungsbescheid</i>, Xitoy JW201/JW202.</li>
+<li><b>Viza:</b> rasmiy toʻlovlar, onlayn forma, moliyaviy imkoniyat dalili, biometrika, baʼzan intervyu va tibbiy talab.</li></ol>
+<p>18 yoshga toʻlmagan abituriyent uchun qoʻshimcha hujjatlar boʻlishi mumkin.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Qabul xati: birinchi 2 hafta</h4><h4>Xatni oʻqish</h4>
+<div class="tbl"><table><thead><tr><th>Band</th><th>Savol</th></tr></thead><tbody>
+<tr><td>Qabul turi</td><td>Shartli (<i lang="en">conditional</i>) yoki shartsiz (<i lang="en">unconditional</i>)? Shart nima: attestat bahosi, til testi, hujjat?</td></tr>
+<tr><td>Javob muddati</td><td>Qachongacha qabul qilish yoki rad etish kerak?</td></tr>
+<tr><td>Depozit</td><td>Joyni band qilish uchun toʻlov bormi? Qaytariladimi?</td></tr>
+<tr><td>Viza hujjati</td><td>Universitet qaysi hujjatni beradi va nimani soʻraydi?</td></tr>
+</tbody></table></div>
+<h4>Viza uchun universitet hujjatlari</h4>
+<ul><li><b>AQSh</b>: I-20 forma; universitet moliyaviy imkoniyat dalilini soʻraydi.</li><li><b>Buyuk Britaniya</b>: CAS (oʻqishga qabul tasdigʻi), shartlar bajarilgandan keyin beriladi.</li><li><b>Germaniya</b>: qabul xati (<i lang="en">Zulassungsbescheid</i>).</li><li><b>Italiya</b>: Universitaly tasdigʻi va universitet xati (M7).</li><li><b>Koreya, Xitoy</b>: qabul xati va mamlakatga xos forma (Xitoyda JW201/JW202).</li></ul>
+<div class="box warn">Birinchi 2 hafta ichida: javob bering, depozitni rasmiy kanal orqali toʻlang, viza hujjati uchun talablarni bajaring va nazorat jadvalini yangilang.</div>
+<div class="srcs">Manba: <a href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">AQSh Davlat departamenti: talaba vizasi</a>; <a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener">GOV.UK: Student visa</a>; <a href="https://www.auswaertiges-amt.de/en/visa-service" target="_blank" rel="noopener">Germaniya Tashqi ishlar vazirligi: viza xizmati</a>; <a href="https://vistoperitalia.esteri.it" target="_blank" rel="noopener">Italiya: Visto per lʼItalia</a>. 31.10.2026 holatiga.</div><h4>Talaba vizasi</h4><h4>Umumiy bosqichlar</h4>
+<ol><li>Universitet viza hujjati (I-20, CAS, qabul xati).</li><li>Rasmiy toʻlovlar (masalan AQShda SEVIS I-901 va viza arizasi toʻlovi; UK da viza toʻlovi va sogʻliqni saqlash qoʻshimcha toʻlovi).</li><li>Onlayn ariza formasi.</li><li>Moliyaviy imkoniyat dalili (bank koʻchirmasi, homiylik xati, stipendiya xati).</li><li>Biometrika va (baʼzi mamlakatlarda) intervyu.</li><li>Tibbiy talablar: masalan UK uchun Oʻzbekiston fuqarolaridan sil (TB) testi talab qilinadi; roʻyxatni GOV.UKʼdan tekshiring.</li></ol>
+<h4>Mamlakat boʻyicha manbalar</h4>
+<div class="tbl"><table><thead><tr><th>Mamlakat</th><th>Rasmiy manba</th></tr></thead><tbody>
+<tr><td>AQSh (F-1)</td><td><a href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">AQSh Davlat departamenti: talaba vizasi</a>; <a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">SEVIS I-901 toʻlovi (ICE)</a></td></tr>
+<tr><td>Buyuk Britaniya (Student visa)</td><td><a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener">GOV.UK: Student visa</a>; <a href="https://www.gov.uk/tb-test-visa" target="_blank" rel="noopener">GOV.UK: viza uchun sil (TB) testi</a></td></tr>
+<tr><td>Germaniya</td><td><a href="https://www.auswaertiges-amt.de/en/visa-service" target="_blank" rel="noopener">Germaniya Tashqi ishlar vazirligi: viza xizmati</a></td></tr>
+<tr><td>Italiya</td><td><a href="https://vistoperitalia.esteri.it" target="_blank" rel="noopener">Italiya: Visto per lʼItalia</a></td></tr>
+<tr><td>Koreya</td><td><a href="https://www.visa.go.kr" target="_blank" rel="noopener">Koreya Hi Korea / visa portali</a></td></tr>
+</tbody></table></div>
+<h4>18 yoshga toʻlmaganlar</h4>
+<p>Voyaga yetmagan abituriyentlar uchun qoʻshimcha talablar boʻlishi mumkin: ota-ona roziligi, vasiylik yoki yashash tartibi haqida hujjat. Mamlakat rasmiy sahifasidan va universitetdan tekshiring.</p>
+<div class="box warn">"Vizani kafolatlaymiz" yoki "bank koʻchirmasini tayyorlab beramiz" degan takliflarni rad eting. Soxta hujjat vizadan bosh tortish va kelajakdagi arizalarga taʼsir qilishi mumkin.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Maslahatchi rolini direktor oʻrinbosari yoki sinf rahbari bajarishi mumkin. Erta uchrashing, maktab maʼlumotini birga tayyorlang, lekin hisobni oʻzingiz toʻldirmang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Maktabingizda maslahatchi rolini kim bajarishi mumkinligini aniqlang.</li><li>U bilan uchrashuv sanasi va olib boradigan hujjatlar roʻyxatini yozing.</li></ul>
-            <textarea data-save="a5" placeholder="Masʼul: ... Zaxira: ... Uchrashuv: ... Olib boraman: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Birinchi 2 hafta ichida javob bering, depozitni rasmiy kanal orqali toʻlang va viza hujjati uchun talablarni bajaring.</div></div></div>
+          <div class="panel"><div class="assign"><b>Xat va viza bosqichlari</b><ul><li>Qabul xatingizdan (yoki namunadan) 4 bandni ajratib yozing.</li><li>Mamlakatingiz boʻyicha viza bosqichlarini rasmiy sahifadan sanalar bilan yozing.</li></ul>
+            <textarea data-save="a5" placeholder="Turi: ... Muddat: ... Depozit: ... Viza hujjati: ... Harakatlar: 1) ... 2) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 8.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 8.6</span><span class="l-t" style="display:block">Uy, sugʻurta, joʻnash va birinchi yil</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">Reja</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Joʻnashdan oldingi oy tez oʻtadi, birinchi semestr esa koʻp talaba uchun eng qiyin davr. Bu darsda uy, sugʻurta, 30 kunlik roʻyxat va birinchi yil rejasini tuzamiz.<small class="mv-fun">Adapterni unutib, birinchi kecha telefonni quvvatlay olmay qolganlarning klubi bor. Biz unga aʼzo boʻlmaymiz.</small></div></div>
+          <div class="panel">
+<div data-kvideo="l6"></div>
+<ul><li><b>Uy-joy:</b> birinchi yil uchun universitet yotoqxonasi eng xavfsiz; ijarada uyni koʻrmasdan toʻlamang.</li>
+<li><b>Sugʻurta:</b> koʻp mamlakatda talaba vizasi uchun majburiy.</li>
+<li><b>30 kun:</b> hujjatlar (asl va skan), dori va retsept, karta va birinchi oy xarajati, aloqa, birinchi kun yoʻli.</li>
+<li><b>Birinchi yil:</b> mustaqil oʻqish, akademik halollik, yordam xizmatlari (xalqaro ofis, yozuv markazi, maslahat xizmati).</li></ul>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Uy-joy, sugʻurta va bank</h4><h4>Uy-joy</h4>
+<ul><li><b>Universitet yotoqxonasi</b>: birinchi yil uchun eng xavfsiz variant. Ariza muddati qabul xatidan keyin tez keladi; baʼzi universitetlar birinchi kurs talabalariga kafolat beradi.</li><li><b>Ijara</b>: universitetning ijara boʻyicha maslahat sahifasidan foydalaning; shartnomani oʻqing, depozitni himoyalangan tizim orqali toʻlang (mamlakatga qarab).</li><li><b>Ijara xavf belgilari</b>: uyni koʻrmasdan toʻlov, pul oʻtkazish xizmati orqali toʻlov, egasi "chet elda", narx bozordan ancha past.</li></ul>
+<h4>Tibbiy sugʻurta</h4>
+<p>Koʻp mamlakatlarda talaba vizasi uchun sugʻurta majburiy: UK da viza bilan toʻlanadigan sogʻliqni saqlash qoʻshimcha toʻlovi, AQShda koʻpincha universitet sugʻurta rejasi, Germaniyada talabalar uchun davlat yoki xususiy sugʻurta. Universitet talabini oʻqing.</p>
+<h4>Bank va pul oʻtkazish</h4>
+<ul><li>Birinchi oy uchun naqd pul va xalqaro karta (bojxona qoidalari boʻyicha naqd pul chegarasini tekshiring).</li><li>Mahalliy bank hisobini ochish uchun odatda pasport, viza va universitet maʼlumotnomasi kerak.</li><li>Oʻzbekistondan pul oʻtkazish usullari va komissiyalarini oldindan solishtiring.</li></ul><h4>Joʻnash oldi tayyorgarlik</h4><h4>30 kunlik roʻyxat bloklari</h4>
+<div class="tbl"><table><thead><tr><th>Blok</th><th>Nima</th></tr></thead><tbody>
+<tr><td>Hujjatlar</td><td>Pasport (amal qilish muddati), viza, qabul xati, I-20/CAS, attestat va tarjimalar (asl), sugʻurta polisi, emlash guvohnomasi; hammasining skan nusxasi bulutda</td></tr>
+<tr><td>Sogʻliq</td><td>Shifokor koʻrigi, retsept boʻyicha dorilar (retsept va tarjimasi bilan, mamlakat qoidalarini tekshiring), koʻzoynak</td></tr>
+<tr><td>Pul</td><td>Xalqaro karta, birinchi oy uchun naqd pul (bojxona chegarasida), bankka ogohlantirish</td></tr>
+<tr><td>Aloqa</td><td>Telefon, xalqaro rouming yoki eSIM, oilaviy aloqa rejasi, favqulodda aloqalar roʻyxati</td></tr>
+<tr><td>Birinchi kun</td><td>Aeroportdan yotoqxonagacha yoʻl, universitet kutib olish xizmati, kelish vaqti, orientatsiya sanasi</td></tr>
+<tr><td>Kiyim va narsalar</td><td>Iqlimga mos kiyim, adapter, kichik zaxira</td></tr>
+</tbody></table></div>
+<div class="box info">Elchixona va konsullik roʻyxati: oʻqiyotgan mamlakatdagi Oʻzbekiston elchixonasi aloqasini yozib qoʻying.</div><h4>Birinchi yil</h4><h4>Akademik madaniyat</h4>
+<ul><li>Mustaqil oʻqish: dars soati kam, mustaqil ish koʻp.</li><li>Akademik halollik (<i lang="en">academic integrity</i>): manbasiz koʻchirish va boshqa odamga ish yozdirish jiddiy jazolanadi. AI qoidalari har kursda alohida boʻlishi mumkin.</li><li>Oʻqituvchining qabul soatlari (<i lang="en">office hours</i>): savol berish odatiy hol.</li></ul>
+<h4>Yordam xizmatlari</h4>
+<p>Xalqaro talabalar ofisi, akademik yozuv markazi, kutubxona, sogʻliq xizmati, ruhiy salomatlik xizmati (maslahat, <i lang="en">counselling</i>). Ularning joyi va aloqasini birinchi haftada yozib oling.</p>
+<h4>Ruhiy salomatlik</h4>
+<p>Uyni sogʻinish, charchoq va xavotir normal. Bir necha hafta davom etsa yoki oʻqishga xalaqit bersa, universitet maslahat xizmatiga murojaat qiling: bu bepul va maxfiy (universitet qoidasiga qarab).</p>
+<h4>Onlayn ilmiy profil</h4>
+<p>Tadqiqotga qiziqsangiz, birinchi yildayoq <a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a> identifikatorini oching va ilmiy ishlaringizni bitta joyda yuriting. Bakalavr tadqiqot dasturlari va magistratura arizasida foydali.</p>
+<div class="srcs">Manba: <a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a>; universitetlarning xalqaro talabalar sahifalari. 31.10.2026 holatiga.</div></div></details>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Asl hujjatlar qoʻl yukida, skan nusxalar bulutda tursin. Oʻqiyotgan mamlakatdagi Oʻzbekiston elchixonasi aloqasini yozib qoʻying.</div></div></div>
+          <div class="panel"><div class="assign"><b>Joʻnash roʻyxati</b><ul><li>Joʻnash sanasidan orqaga 4 haftaga ishlarni taqsimlang.</li><li>Universitetingizning 5 ta yordam xizmatini va birinchi semestr uchun 3 ta maqsadni yozing.</li></ul>
+            <textarea data-save="a6" placeholder="Uy: yotoqxona, ariza ... gacha. Sugʻurta: ... Birinchi oy: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
 
     </div>
   </section>
 
-  <section id="aloqa">
-    <h2>Aloqalar jadvali va soʻrovlar</h2>
-    <p class="sub">Tavsiya beruvchilar, rollar, muddatlar va holat bitta joyda.</p>
+  <section id="mezon">
+    <h2>Intervyu javoblari va joʻnash rejasi</h2>
+    <p class="sub">Har javob uchun 8 band boʻyicha 0–2 ball. Hisoblagich jami va eng zaif bandlarni koʻrsatadi.</p>
     <div class="tool">
-      <div class="tool-h"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Aloqalar jadvali</h3><span>5 maydon · +30 XP</span></div></div>
-      
-      <div class="fld"><label for="f_t1">1-tavsiya beruvchi <small>ism · lavozim · fan · necha yil · rol · soʻrov sanasi · holat</small></label><textarea id="f_t1" data-save="t1" placeholder="..."></textarea></div><div class="fld"><label for="f_t2">2-tavsiya beruvchi</label><textarea id="f_t2" data-save="t2" placeholder="..."></textarea></div><div class="fld"><label for="f_t3">Maslahatchi yoki 3-tavsiya beruvchi</label><textarea id="f_t3" data-save="t3" placeholder="..."></textarea></div><div class="fld"><label for="f_brag">Yutuqlar varaqasi (qisqa)</label><textarea id="f_brag" data-save="brag" data-wc="150-400" placeholder="Profil ... Epizodlar ... Yutuqlar ..."></textarea><div class="meterw" data-meter="brag"></div></div><div class="fld"><label for="f_eslatma">Eslatma va rahmat rejasi</label><input id="f_eslatma" type="text" data-save="eslatma" placeholder="Muddatdan 2 hafta va 3 kun oldin; natijadan keyin rahmat"></div>
+      <div class="tool-h"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Intervyu mezoni</h3><span>10 maydon · +30 XP</span></div></div>
+      <div class="fld"><label>Hisoblagich <small>oxirgi yozuv uchun, har band 0–2</small></label><div id="rbG" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px"></div><div id="rbOut" class="out" style="white-space:normal">Ballarni tanlang.</div></div>
+      <div class="fld"><label for="f_j1">1-javob: oʻzingiz haqingizda <small>urinish 1 va 2 ballari, nima oʻzgardi</small></label><textarea id="f_j1" data-save="j1" placeholder="1-urinish 9/16 → 2-urinish 13/16: vaqt va dalil tuzatildi"></textarea></div><div class="fld"><label for="f_j2">2-javob: akademik masala</label><textarea id="f_j2" data-save="j2" placeholder="..."></textarea></div><div class="fld"><label for="f_j3">3-javob: nega shu dastur yoki stipendiya</label><textarea id="f_j3" data-save="j3" placeholder="..."></textarea></div><div class="fld"><label for="f_qaror">Qaror jadvali mezonlari</label><textarea id="f_qaror" data-save="qaror" placeholder="Xarajat 40%, dastur 30%, viza 15%, shahar 15%"></textarea></div><div class="fld"><label for="f_zaxira">Rad yoki kutish roʻyxati uchun reja</label><textarea id="f_zaxira" data-save="zaxira" placeholder="..."></textarea></div><div class="fld"><label for="f_jonash">Joʻnash sanangiz <small>taxminiy boʻlsa ham</small></label><input id="f_jonash" type="date" data-save="jonash" placeholder=""></div><div class="fld"><label for="f_viza">Viza bosqichlari rejasi <small>bosqich · sana · hujjat</small></label><textarea id="f_viza" data-save="viza" placeholder="CAS ... ; toʻlov ... ; biometrika ..."></textarea></div><div class="fld"><label for="f_uy">Uy-joy va sugʻurta</label><textarea id="f_uy" data-save="uy" placeholder="Yotoqxona ... ; sugʻurta ..."></textarea></div><div class="fld"><label for="f_royxat">30 kunlik roʻyxat <small>4 hafta boʻyicha</small></label><textarea id="f_royxat" data-save="royxat" placeholder="4-hafta: ... 1-hafta: ..."></textarea></div><div class="fld"><label for="f_yil">Birinchi yil rejasi</label><textarea id="f_yil" data-save="yil" placeholder="Yordam xizmatlari ... ; maqsadlar ..."></textarea></div>
       <div id="toolOut" class="out" hidden></div>
-      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Jadvalni saqlash · +30 XP</button>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Natijani saqlash · +30 XP</button>
     </div>
   </section>
 
   <section id="check">
-    <h2>Tavsiya nazorati</h2>
-    <p class="sub">Topshirishdan oldin tekshiring.</p>
+    <h2>Joʻnash nazorati</h2>
+    <p class="sub">Natija va joʻnashdan oldin tekshiring.</p>
     <div class="tool">
-      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
-      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Tavsiya beruvchilar meni aniq epizodlar orqali biladi.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Soʻrov muddatdan kamida 6–8 hafta oldin.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Har biriga yutuqlar varaqasi berilgan, tayyor matn emas.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Platformada email manzillar toʻgʻri kiritilgan.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Maslahatchi roli kelishilgan va zaxira odam bor.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Tarjima kerak boʻlsa, uni men qilmayman.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Holat nazorat jadvalida kuzatiladi.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Natijadan qatʼi nazar rahmat yuboriladi.</span></label></div>
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>9 bandlik nazorat</h3><span>9 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>3 ta javob yozib olingan va mezon bilan baholangan.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Eng zaif 2 band tuzatilib, qayta yozilgan.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Qaror jadvali mezonlari natijalardan oldin yozilgan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Javob va depozit muddatlari xatdan oʻqilgan.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Qabul sharti bajarilgan, depozit rasmiy kanal orqali toʻlangan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Viza bosqichlari rasmiy sahifadan, sanalar bilan yozilgan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Uy-joy tasdiqlangan va sugʻurta talabi bajarilgan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Asl hujjatlar qoʻl yukida, skan nusxalar bulutda.</span></label><label class="ck" data-ck="c9"><input type="checkbox"><span>Elchixona va favqulodda aloqalar yozilgan.</span></label></div>
       <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
     </div>
   </section>
@@ -268,12 +389,13 @@
   <section id="nishonlar">
     <h2>Nishonlar</h2>
     <div class="badges">
-      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Tavsiya rejachisi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Varaqa<small>Yakun</small></div>
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>6 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Intervyu ustasi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Joʻnash<small>Yakun</small></div>
     </div>
   </section>
 
   <section id="artefakt">
-    <h2 id="artTitle">Yutuqlar varaqasi va aloqalar jadvali</h2>
+    <div data-kvideo="res"></div>
+    <h2 id="artTitle">Intervyu tayyorgarligi va joʻnash rejasi</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
       <div class="paper" id="artPaper"></div>
@@ -292,37 +414,65 @@
     <div class="mentor">
       <div class="av">KL</div>
       <div>
-        <q>Oʻqituvchiga soʻrovni tanaffusda yoʻl-yoʻlakay emas, oldindan kelishilgan qisqa uchrashuvda ayting. Bu sizning jiddiyligingizni koʻrsatadi.</q>
+        <q>Intervyudan keyin 10 daqiqa ichida berilgan savollarni yozib qoʻying. Keyingi intervyuga eng yaxshi tayyorgarlik shu.</q>
         <small>Kompas Lab maslahati</small>
       </div>
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="8"><h2>Bakalavr dasturi yakunlandi</h2><div class="mv-bar"><i style="width:100%"></i></div><p class="mv-small">IV bosqich: 2 / 2 modul · Rejangiz 100% tayyor</p><div class="mv-k" data-mn="m8"><b>Sizda toʻliq ariza paketi bor:</b> saralangan roʻyxat, vaqt jadvali, faoliyatlar va CV, tavsiya varaqasi, insho, 4 yillik reja, topshirilgan ariza va joʻnash roʻyxati.</div><p>Javoblaringiz hisobingizda saqlanadi: keyingi yil yangi muddatlar bilan qaytib kelishingiz mumkin.</p><div class="mv-row"><a class="btn btn-p" href="dashboard.html">Mening kabinetim</a><a class="btn btn-g" href="index.html#labs">Boshqa dasturlar</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
-      <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
-      <div><b>Natija</b>Yutuqlar varaqasi va aloqalar jadvali</div>
+      <div><b>Darslar</b>6 ta</div>
+      <div><b>Vaqt</b>~2 hafta (darslar ~1,2 soat + yozuvlar)</div>
+      <div><b>Natija</b>Intervyu tayyorgarligi va joʻnash rejasi</div>
     </div>
-    <p class="srcs">Faktlar: <a href="https://www.commonapp.org" target="_blank" rel="noopener">Common App (rasmiy sayt)</a>; <a href="https://www.ucas.com" target="_blank" rel="noopener">UCAS (rasmiy sayt)</a>; <a href="https://www.ucas.com/international" target="_blank" rel="noopener">UCAS: xalqaro abituriyentlar</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
+    <p class="srcs">Faktlar: <a href="https://www.ucas.com" target="_blank" rel="noopener">UCAS (rasmiy sayt)</a>; <a href="https://www.studyinkorea.go.kr" target="_blank" rel="noopener">Study in Korea (NIIED)</a>; <a href="https://www.turkiyeburslari.gov.tr" target="_blank" rel="noopener">Türkiye Bursları (rasmiy sayt)</a>; <a href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">AQSh Davlat departamenti: talaba vizasi</a>; <a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">SEVIS I-901 toʻlovi (ICE)</a>; <a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener">GOV.UK: Student visa</a>; <a href="https://www.auswaertiges-amt.de/en/visa-service" target="_blank" rel="noopener">Germaniya Tashqi ishlar vazirligi: viza xizmati</a>; <a href="https://vistoperitalia.esteri.it" target="_blank" rel="noopener">Italiya: Visto per lʼItalia</a>; <a href="https://www.visa.go.kr" target="_blank" rel="noopener">Koreya Hi Korea / visa portali</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
   </section>
 </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="bachelor-lab.html">← Bakalavr dasturi</a>
-    <a class="btn btn-p" href="bachelor-lab-m9.html">Keyingi: M9 Shaxsiy bayonot va insholar →</a>
+    <a class="btn btn-g" href="bachelor-lab-o.html?m=7">← M7</a>
+    <a class="btn btn-p" href="dashboard.html">Mening kabinetim →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/bachelor-next.js" defer></script>
+<script>
+window.KGTool = { init: function () {
+  var B = ["Tuzilma", "Aniq dalil", "Savolga javob", "Vaqt", "Til aniqligi", "Tezlik va pauza", "Koʻz va kamera", "Halollik va ishonch"];
+  var g = document.getElementById("rbG"), o = document.getElementById("rbOut");
+  var prev = String(KG.S.notes.rb_in || "").split(",");
+  B.forEach(function (b, i) {
+    var s = document.createElement("select"); s.id = "rb" + i;
+    s.setAttribute("aria-label", b);
+    s.style.cssText = "min-height:44px;padding:8px 10px;border:2px solid var(--border);border-radius:12px;font-size:15px;width:100%";
+    s.innerHTML = "<option value=\"\">" + b + "</option><option value=\"0\">" + b + ": 0</option><option value=\"1\">" + b + ": 1</option><option value=\"2\">" + b + ": 2</option>";
+    if (prev[i]) s.value = prev[i];
+    s.addEventListener("change", run); g.appendChild(s);
+  });
+  function run() {
+    var v = B.map(function (b, i) { return document.getElementById("rb" + i).value; });
+    var n = v.filter(function (x) { return x !== ""; }).length;
+    if (!n) { o.textContent = "Ballarni tanlang."; return; }
+    var t = 0, low = []; v.forEach(function (x, i) { if (x !== "") { t += +x; if (+x === 0) low.push(B[i]); } });
+    var txt = "Jami " + t + " / " + (n * 2) + (n < 8 ? " (" + n + " band baholandi)" : "") + (low.length ? ". Tuzatish kerak: " + low.join(", ") : "");
+    o.textContent = txt; KG.S.notes.rb = txt; KG.S.notes.rb_in = v.join(","); KG.save();
+  }
+  run();
+} };
+</script>
 <script>
 (function () {
-  var KEY = "kompas_bachelor_m8_v1", MOD = "8", LXP = 24, NL = 5, FINXP = 40;
-  var ART = [{"h": "Tavsiya beruvchilar tanlovi", "k": ["a1"]}, {"h": "1-tavsiya beruvchi", "k": ["t1"]}, {"h": "2-tavsiya beruvchi", "k": ["t2"]}, {"h": "Maslahatchi yoki 3-tavsiya", "k": ["t3", "a5"]}, {"h": "Yutuqlar varaqasi", "k": ["brag", "a3"]}, {"h": "Soʻrov va platforma jarayoni", "k": ["a2", "a4"]}, {"h": "Eslatma va rahmat", "k": ["eslatma"]}];
+  var KEY = "kompas_bachelor_m8_v1", MOD = "8", LXP = 20, NL = 6, FINXP = 40;
+  var ART = [{"h": "Intervyu turlari", "k": ["a1"]}, {"h": "Oʻzingiz haqingizda", "k": ["j1"]}, {"h": "Akademik masala", "k": ["j2", "a2"]}, {"h": "Nega shu dastur", "k": ["j3"]}, {"h": "Mezon natijalari", "k": ["rb", "a3"]}, {"h": "Qaror jadvali", "k": ["qaror", "a4"]}, {"h": "Zaxira reja", "k": ["zaxira"]}, {"h": "Joʻnash sanasi", "k": ["jonash"]}, {"h": "Viza bosqichlari", "k": ["viza", "a5"]}, {"h": "Uy-joy va sugʻurta", "k": ["uy"]}, {"h": "30 kunlik roʻyxat", "k": ["royxat", "a6"]}, {"h": "Birinchi yil rejasi", "k": ["yil"]}];
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
   try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
@@ -340,7 +490,7 @@
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -488,7 +638,7 @@
   });
   $("docBtn").addEventListener("click", function () {
     var p = $("artPaper");
-    download("Bachelor_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+    download("Bakalavr_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
   });
   $("copyBtn").addEventListener("click", function () {
     copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
@@ -497,7 +647,7 @@
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

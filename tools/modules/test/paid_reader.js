@@ -10,7 +10,7 @@ const ROOT = path.resolve(__dirname, "../../..");
 // Lab: PAID_LAB=gks-lab node … (standart master-lab)
 const LAB = process.env.PAID_LAB || "master-lab";
 // Modul kalitlari (?m=) va bazadagi tartib raqami; GKS: umumiy oʻzak + U/M/D treklari
-const KEYS = LAB === "gks-lab" ? ["m1", "m2", "m3-u", "m4-u", "m5-u", "m3-m", "m4-m", "m5-m", "m3-d", "m4-d", "m5-d"] : LAB === "bachelor-lab" ? Array.from({length: 16}, (_, i) => String(i + 1)) : ["1", "2", "3", "4", "5", "6", "7", "8"];
+const KEYS = LAB === "gks-lab" ? ["m1", "m2", "m3-u", "m4-u", "m5-u", "m3-m", "m4-m", "m5-m", "m3-d", "m4-d", "m5-d"] : ["1", "2", "3", "4", "5", "6", "7", "8"];
 const H = LAB === "gks-lab" ? { 3: "m3-u", 4: "m4-u", 5: "m5-u", 6: "m4-m", 8: "m5-d" } : {};   // test kalitlari
 const k = n => H[n] || String(n);
 const file = key => LAB + "-" + (key[0] === "m" ? key : "m" + key);

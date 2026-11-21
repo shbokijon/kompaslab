@@ -12,7 +12,7 @@ shuning uchun roʻyxatda yoʻq dastur oʻzgarmaydi. Belgilar faqat HTML belgilas
 """
 import re
 
-UI2_LABS = ("master-lab",)
+UI2_LABS = ("master-lab", "bachelor-lab")  # bachelor-lab: 2026-11-21 (Bakalavr v2)
 
 
 def enabled(name):

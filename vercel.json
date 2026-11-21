@@ -205,6 +205,86 @@
       "permanent": true
     },
     {
+      "source": "/bachelor-lab-m9",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m9.html",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m10",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m10.html",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m11",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m11.html",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m12",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m12.html",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m13",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m13.html",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m14",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m14.html",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m15",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m15.html",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m16",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-lab-m16.html",
+      "destination": "/bachelor-lab-dastur",
+      "permanent": true
+    },
+    {
       "source": "/bachelor-lab-test",
       "destination": "/bachelor-lab",
       "permanent": false

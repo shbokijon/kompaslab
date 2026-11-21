@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M6 Yutuqlar, CV va hujjatlar · Bakalavr dasturi · Kompas Lab</title>
-<meta name="description" content="Bakalavr dasturi M6: olimpiada va tanlovlar, onlayn kurslar, maktab yoshida ilmiy loyiha, bakalavr CV (STAR usuli), tarjima, notarius va apostil. Natija: Bakalavr CV v1.0 va hujjatlar nazorat roʻyxati.">
+<title>M6 Stipendiya va 4 yillik moliyaviy reja · Bakalavr dasturi · Kompas Lab</title>
+<meta name="description" content="Bakalavr dasturi M6: stipendiya manbalari va muvofiqlik, davlat stipendiyalari saralash jadvali, universitet yordami va grantlari, toʻliq xarajat modeli, 4 yillik reja va firibgarlikdan himoya.">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <style>
 {{CSS}}
-/* Bachelor M1–M16 qoʻshimchalari */
+/* Bakalavr M1–M8 qoʻshimchalari */
 .path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
 @media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
 .fld{margin-bottom:12px;}
@@ -46,7 +46,32 @@
   .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
-.path.pn{--pn:8;}
+.path.pn{--pn:9;}
+
+/* Bakalavr v2 (2026-11-21): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-take ul,.mv-i ul{margin:6px 0 0;padding-left:20px}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+.lesson .panel ol,.lesson .panel ul{padding-left:24px}
+
 </style>
 </head>
 <body>
@@ -62,209 +87,328 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="bachelor-lab" data-kv-mod="6">
 <div class="wrap">
 
   <div class="hero">
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bakalavr dasturi</a> · Modul 6</div>
-        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich II · Baholar, yutuqlar va tajriba</span>
-        <h1>Yutuqlar, CV va hujjatlar</h1>
-        <p class="lead">Yutuqlaringiz faqat hujjatda toʻgʻri yozilganda koʻrinadi. Bu modulda qaysi yutuq qabulda ahamiyatli ekanini ajratasiz, CV ni STAR usulida yozasiz va hujjatlarni legallashtirish zanjirini rejalaysiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Bosqich II</span><span class="fact"><b>250</b> XP</span></div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich III · Insho va stipendiya</span>
+        <h1>Stipendiya va 4 yillik moliyaviy reja</h1>
+        <p class="lead">Bu modulda sizga ochiq stipendiyalarni saralaysiz, universitet yordamini tekshirasiz va toʻliq xarajatni hisoblaysiz. Oxirida sizda <strong>4 yillik moliyaviy reja</strong> boʻladi: har yil uchun xarajat, qoplanadigan qism va boʻshliq.</p>
+        <div class="facts"><span class="fact"><b>6</b> dars</span><span class="fact">~<b>1–2</b> hafta</span><span class="fact">Bosqich III</span><span class="fact"><b>250</b> XP</span></div>
       </div>
-      <img class="hero-art float" src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">
+      <img class="hero-art float" src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 9 qadam</span></div>
     <div class="path pn">
-      <a class="node" href="#l1" data-node="l1"><span class="dot">6.1</span>Olimpiada</a><a class="node" href="#l2" data-node="l2"><span class="dot">6.2</span>Kurslar</a><a class="node" href="#l3" data-node="l3"><span class="dot">6.3</span>Loyiha</a><a class="node" href="#l4" data-node="l4"><span class="dot">6.4</span>CV</a><a class="node" href="#l5" data-node="l5"><span class="dot">6.5</span>Apostil</a><a class="node" href="#cv" data-node="tool"><span class="dot">🛠</span>CV</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>CV</a>
+      <a class="node" href="#l1" data-node="l1"><span class="dot">6.1</span>Manbalar</a><a class="node" href="#l2" data-node="l2"><span class="dot">6.2</span>Davlat</a><a class="node" href="#l3" data-node="l3"><span class="dot">6.3</span>Universitet</a><a class="node" href="#l4" data-node="l4"><span class="dot">6.4</span>Xarajat</a><a class="node" href="#l5" data-node="l5"><span class="dot">6.5</span>4 yil</a><a class="node" href="#l6" data-node="l6"><span class="dot">6.6</span>Himoya</a><a class="node" href="#reja" data-node="tool"><span class="dot">🛠</span>Reja</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Reja</a>
     </div>
   </nav>
 
   <section>
     <h2>Modul yakunida sizda</h2>
     <ul class="goal">
-      <li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Bakalavr CV v1.0:</b> 1–2 sahifa, har band STAR usulida</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Hujjatlar nazorat roʻyxati:</b> har hujjat: asl, tarjima, notarius yoki apostil, nusxa soni</span></li><li><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span><b>Yutuqlar saralashi:</b> qaysi yutuq ahamiyatli, qaysi biri uncha foydali emas</span></li>
+      <li><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><span><b>4 yillik moliyaviy reja:</b> har yil: xarajat, qoplanadigan qism, boʻshliq</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Stipendiyalar saralashi:</b> 2–3 ustuvor dastur, muvofiqlik bilan</span></li><li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span><b>Toʻliq xarajat modeli:</b> oʻqish, yashash, sugʻurta, viza, yoʻl</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Apostil tartibi va yigʻimi, notarial tarjima talablari oʻzgarishi mumkin. Bu moduldagi maʼlumot 31.10.2026 holatiga gov.uz manbasidan; topshirishdan oldin qayta tekshiring.</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Stipendiya shartlari, kvotalar, muddatlar va narxlar har sikl oʻzgaradi. Bu moduldagi maʼlumot 31.10.2026 holatiga; har dasturni joriy rasmiy eʼlondan tekshiring.</p><p>Kompas Lab universitet, stipendiya dasturi yoki konsullik oʻrnida qaror qabul qilmaydi va qabul, stipendiya yoki vizani kafolatlamaydi. Insho, xat va hujjatni siz uchun yozmaydi: vositalar faqat sizning matningizni tartibga soladi. Sana va talablarni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 6.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.1</span><span class="l-t" style="display:block">Olimpiadalar va tanlovlar</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.1</span><span class="l-t" style="display:block">Stipendiya qayerdan keladi?</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Mini-test</span><span class="tag xp">+20 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Viloyat olimpiadasidagi gʻalaba ham, xalqaro tanlovdagi ishtirok ham CV ga yoziladi. Lekin komissiya ularni bir xil baholamaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Stipendiyaning shartlari oldindan yozilgan. Shartni oʻqimasdan ariza berish vaqtni oladi, oʻqib berish imkoniyatni oshiradi. Bu darsda uch manbani va olti muvofiqlik shartini ajratamiz.</div></div>
           <div class="panel">
-<h4>Qaysi darajadagi yutuqlar muhim</h4>
-<div class="tbl"><table><thead><tr><th>Daraja</th><th>Signal</th><th>Izoh</th></tr></thead><tbody>
-<tr><td>Xalqaro fan olimpiadasi (IMO, IPhO, IOI va boshqalar) ishtiroki yoki medali</td><td>Juda kuchli</td><td>Juda kam oʻquvchi erishadi</td></tr>
-<tr><td>Respublika olimpiadasi gʻolibi yoki sovrindori</td><td>Kuchli</td><td>Oʻzbekistonda tanlovning eng yuqori ichki darajasi</td></tr>
-<tr><td>Viloyat bosqichi gʻolibi</td><td>Oʻrta</td><td>Kontekst bilan yozing: nechta ishtirokchi</td></tr>
-<tr><td>Tuman yoki maktab bosqichi</td><td>Past</td><td>Faqat boshqa yutuq yoʻq boʻlsa</td></tr>
-<tr><td>Pullik "xalqaro" tanlov, hamma qatnashuvchiga sertifikat</td><td>Deyarli yoʻq</td><td>Tanlov tanlovli boʻlmasa, signal bermaydi</td></tr>
+<div data-kvideo="l1"></div>
+<div class="tbl"><table><thead><tr><th>Manba</th><th>Misol</th></tr></thead><tbody>
+<tr><td>Davlat</td><td>GKS, MEXT, CSC, Stipendium Hungaricum, Türkiye Bursları</td></tr>
+<tr><td>Universitet</td><td>Ehtiyoj yoki yutuqqa qarab grant</td></tr>
+<tr><td>Tashkilot</td><td>Jamgʻarma, kompaniya</td></tr>
 </tbody></table></div>
-<h4>Toʻgʻri yozish</h4>
-<p>Format: <b>nomi, daraja, natija, yil, kontekst</b>. Masalan (Kompas tuzgan namuna): "Fizika boʻyicha respublika olimpiadasi, 2-oʻrin (2026), viloyatdan tanlangan 3 oʻquvchidan biri".</p>
-<div class="box warn">Ishtirokchilar sonini yoki oʻrinni bilmasangiz, yozmang. Tekshirib boʻlmaydigan raqam ishonchni pasaytiradi.</div>
+<p>Muvofiqlik shartlari:</p>
+<ol><li>fuqarolik;</li><li>yosh;</li><li>baho;</li><li>til;</li><li>daraja va soha;</li><li>cheklovlar.</li></ol>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Uch manba</h4>
+<div class="tbl"><table><thead><tr><th>Manba</th><th>Kim beradi</th><th>Misol</th></tr></thead><tbody>
+<tr><td>Davlat</td><td>Qabul qiluvchi mamlakat hukumati</td><td>GKS, MEXT, CSC, Stipendium Hungaricum, Türkiye Bursları</td></tr>
+<tr><td>Universitet</td><td>Universitetning oʻzi (M6)</td><td>Ehtiyojga yoki yutuqqa asoslangan grantlar</td></tr>
+<tr><td>Tashkilot</td><td>Jamgʻarma, kompaniya</td><td>Har biri alohida tekshiriladi</td></tr>
+</tbody></table></div>
+<h4>Toʻliq va qisman</h4>
+<p>Toʻliq stipendiya odatda oʻqish toʻlovi, oylik nafaqa, baʼzan aviabilet, sugʻurta va til yilini qoplaydi. Qisman stipendiya faqat oʻqish toʻlovining bir qismini qoplaydi; qolganini boshqa manbadan topish kerak.</p>
+<h4>Muvofiqlik shartlarini oʻqish</h4>
+<ol><li><b>Fuqarolik</b>: Oʻzbekiston hamkor davlatlar roʻyxatidami?</li><li><b>Yosh</b>: yuqori chegara koʻpincha aniq sana bilan beriladi.</li><li><b>Baho</b>: minimal oʻrtacha yoki foiz.</li><li><b>Til</b>: sertifikat talab qilinadimi yoki til yili beriladimi.</li><li><b>Daraja va soha</b>: bakalavr uchun ochiqmi, qaysi sohalar.</li><li><b>Cheklovlar</b>: boshqa stipendiya bilan birga olish, qayta ariza.</li></ol>
+<div class="box warn">"Stipendiyani kafolatlaymiz" degan agent yoki kanal firibgar boʻlishi ehtimoli yuqori. Davlat stipendiyalariga ariza rasmiy portal orqali va odatda bepul beriladi (M3).</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Xalqaro va respublika darajasidagi yutuqlar muhim dalil; pullik ommaviy tanlovning oʻzi ustunlik bermaydi. Har yutuqni nomi, daraja, natija, yil va kontekst bilan yozing.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“Hamma qatnashuvchiga beriladigan pullik "xalqaro" sertifikat muhim dalil.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: saralashsiz oʻtkaziladigan tanlovning oʻzi ustunlik bermaydi.</div></div><div class="qz" data-a="t"><p>“Respublika olimpiadasi sovrindori kuchli yutuq.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: bu ichki tanlovning eng yuqori darajasi.</div></div><div class="qz" data-a="n"><p>“Ishtirokchilar sonini taxminan yozib qoʻyish mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: tekshirib boʻlmaydigan raqamni yozmang.</div></div><div class="qz" data-a="t"><p>“Yutuq yozuvida yil va daraja boʻlishi kerak.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: komissiya vaqt va miqyosni koʻradi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Barcha yutuqlaringizni roʻyxatlang va har birini jadvaldagi darajaga qoʻying.</li><li>Eng kuchli 3 tasini toʻliq formatda yozing.</li></ul></div>
-            <textarea data-save="a1" placeholder="1) ... olimpiadasi, ..., ..., 2026, ... 2) ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Avval olti shartni tekshiring. Bittasi bajarilmasa, oʻsha dasturga vaqt sarflamang.</div></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“Qisman stipendiya hamma xarajatni qoplaydi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: odatda faqat oʻqish toʻlovining bir qismini.</div></div><div class="qz" data-a="t"><p>“Davlat stipendiyasiga ariza odatda rasmiy portal orqali beriladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: agent shart emas.</div></div><div class="qz" data-a="t"><p>“Yosh chegarasi aniq sana bilan berilishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: masalan, "... yildan keyin tugʻilgan".</div></div><div class="qz" data-a="n"><p>“Agent toʻlov evaziga stipendiyani kafolatlay oladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: hech kim kafolat bera olmaydi.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>6–8 stipendiya</b><ul><li>Sizga qiziq 6–8 stipendiyaning nomini va rasmiy saytini yozing.</li><li>Har biri uchun qaysi shart sizga toʻsiq boʻlishi mumkinligini belgilang.</li></ul></div>
+            <textarea data-save="a1" placeholder="1) GKS-U: sayt: ... ; toʻsiq: ... 2) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
       <!-- 6.2 -->
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.2</span><span class="l-t" style="display:block">Onlayn kurslar va sertifikatlar</span>
-            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">⚖️ Saralash</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.2</span><span class="l-t" style="display:block">Davlat stipendiyalari: saralash jadvali</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">Ikki trek</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">10 ta onlayn kurs sertifikati CV ni toʻldiradi, lekin kuchaytirmaydi. Bitta chuqur oʻzlashtirilgan va amalda qoʻllangan kurs koʻproq gapiradi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Davlat stipendiyalarining koʻpi oʻqish toʻlovi, oylik nafaqa va til yilini qoplaydi. Kanal va majburiyat esa har birida boshqa. Bu darsda ularni bitta jadvalda solishtiramiz.</div></div>
           <div class="panel">
-<h4>Qachon foydali</h4>
-<ul><li>Maktabda oʻtilmaydigan fanni oʻrganganingizni koʻrsatsa (masalan, dasturlash, chiziqli algebra).</li>
-<li>Kurs natijasida biror narsa qilgan boʻlsangiz: loyiha, dastur, tadqiqot.</li>
-<li>Kurs universitet darajasida va baholangan topshiriqlari boʻlsa.</li></ul>
-<h4>Qachon ahamiyati kam maʼlumot</h4>
-<ul><li>Faqat videolarni koʻrib olingan "tugatish sertifikati".</li><li>Sohangizga aloqasi yoʻq koʻp qisqa kurslar.</li><li>Pullik sertifikat, lekin hech qanday natija yoʻq.</li></ul>
-<h4>Yozish usuli</h4>
-<p>CV da kursni alohida qator qilib emas, u bilan qilgan ishingiz bilan birga yozing: "Onlayn kurs asosida maktab uchun dars jadvali dasturini yozdim (Python)".</p>
-<div class="box info">2–3 ta kurs yetarli. Ularni M3 dagi qiziqish sohasi bayoni bilan bogʻlang.</div>
+<div data-kvideo="l2"></div>
+<div class="tbl"><table><thead><tr><th>Dastur</th><th>Kanal</th><th>Eʼtibor bering</th></tr></thead><tbody>
+<tr><td>GKS-U (Koreya)</td><td>Elchixona yoki universitet treki</td><td>Tafsilot GKS dasturida</td></tr>
+<tr><td>MEXT (Yaponiya)</td><td>Asosan elchixona tavsiyasi, yozma imtihon</td><td>Bir yillik tayyorlov</td></tr>
+<tr><td>CSC (Xitoy)</td><td>Elchixona yoki universitet kanali</td><td>Dasturlarning koʻpi xitoy tilida</td></tr>
+<tr><td>Stipendium Hungaricum</td><td>Tempus platformasi, Oʻzbekiston hamkor davlat</td><td>Kvota va muddat har yil eʼlonda</td></tr>
+<tr><td>Türkiye Bursları</td><td>Bitta onlayn ariza</td><td>Bir yillik turk tili kursi</td></tr>
+<tr><td>Italiya DSU</td><td>Mintaqaviy agentlik</td><td>Ehtiyojga qarab, daromad hujjatlari kerak</td></tr>
+</tbody></table></div>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Koreya va Yaponiya</h4><h4>GKS bakalavriat (GKS-U), Koreya</h4>
+<ul><li>Odatda qoplaydi: aviabilet, oʻqish toʻlovi, oylik nafaqa, joylashish puli, tibbiy sugʻurta va bir yillik koreys tili kursi.</li>
+<li>Ikki asosiy trek: <b>elchixona treki</b> (Koreya elchixonasi orqali, mamlakat kvotasi bilan) va <b>universitet treki</b> (toʻgʻridan-toʻgʻri Koreya universitetiga). Bir siklda odatda bitta trek tanlanadi.</li>
+<li>Muvofiqlik: Koreya fuqarosi boʻlmaslik, yosh chegarasi, baho talabi (masalan 100 ballik shkalada 80 yoki sinfda yuqori 20 foiz). Aniq qiymatlar joriy yoʻriqnomada.</li>
+<li>Batafsil tayyorgarlik: <a href="gks-lab.html">GKS dasturi</a>.</li></ul>
+<h4>MEXT bakalavriat, Yaponiya</h4>
+<ul><li>Yaponiya Taʼlim vazirligi (MEXT) stipendiyasi: odatda oʻqish toʻlovi, oylik nafaqa, aviabilet va bir yillik tayyorlov (yapon tili va asosiy fanlar).</li>
+<li>Bakalavr uchun asosiy kanal: <b>elchixona tavsiyasi</b> (Yaponiya elchixonasi orqali yozma imtihon va intervyu). Baʼzi universitetlar oʻz tavsiyasi bilan ham nomzod koʻrsatadi.</li>
+<li>Yozma imtihon (matematika, fan, til) jiddiy tayyorgarlik talab qiladi.</li>
+<li>MEXT dasturi tayyorlanmoqda; hozircha rasmiy manbalar.</li></ul>
+<div class="box info">Trek tanlovi: elchixona trekida raqobat mamlakat ichida, universitet trekida universitetga qarab. Oʻz profilingizga qarab tanlang va yoʻriqnomadagi qoidani oʻqing.</div>
+<div class="srcs">Manba: <a href="https://www.studyinkorea.go.kr" target="_blank" rel="noopener">Study in Korea (NIIED)</a>; <a href="https://www.studyinjapan.go.jp/en/smap-stopj-applications-scholarship.html" target="_blank" rel="noopener">Study in Japan: MEXT stipendiyasi</a>. 31.10.2026 holatiga.</div><h4>Xitoy hukumati stipendiyasi (CSC)</h4><h4>Kanallar</h4>
+<div class="tbl"><table><thead><tr><th>Kanal</th><th>Qanday</th><th>Ariza kimga</th></tr></thead><tbody>
+<tr><td>Ikki tomonlama dastur (koʻpincha "A turi" deb ataladi)</td><td>Xitoy elchixonasi yoki mamlakatdagi masʼul tashkilot orqali</td><td>Elchixona/masʼul tashkilot va CSC portali</td></tr>
+<tr><td>Universitet dasturi ("B turi")</td><td>Xitoy universiteti nomzodlarni tanlab, CSC ga tavsiya qiladi</td><td>Universitetning oʻzi va CSC portali</td></tr>
+<tr><td>Boshqa maxsus dasturlar</td><td>Muayyan kelishuv yoki mintaqa uchun</td><td>Eʼlonga qarab</td></tr>
+</tbody></table></div>
+<h4>Hujjatlar (odatda)</h4>
+<p>CSC portalidagi ariza formasi, attestat va baholar (notarial tarjima), oʻqish rejasi, tavsiya xatlari, tibbiy koʻrik formasi (<i lang="en">Foreigner Physical Examination Form</i>), pasport, til sertifikati.</p>
+<h4>Universitet va til tanlash</h4>
+<ul><li>Bakalavr dasturlarining koʻpi xitoy tilida; stipendiya bir yillik til tayyorlovini oʻz ichiga olishi mumkin.</li><li>Ingliz tilidagi bakalavr dasturlari cheklangan; har universitet roʻyxatini alohida tekshiring.</li><li>Sohangiz boʻyicha kuchli universitetni tanlang (M1), keyin uning CSC kanalini.</li></ul>
+<div class="box warn">CSC portalida ariza bepul. "Universitetdan qabul xati olib beramiz" deb pul soʻraydigan vositachilardan ehtiyot boʻling; universitet xalqaro boʻlimi bilan toʻgʻridan-toʻgʻri yozishing.</div>
+<div class="srcs">Manba: <a href="https://www.campuschina.org" target="_blank" rel="noopener">Campus China (CSC rasmiy portali)</a>; <a href="https://www.studyinchina.edu.cn" target="_blank" rel="noopener">Study in China (Xitoy Taʼlim vazirligi)</a>; universitetlarning xalqaro talabalar sahifalari. 31.10.2026 holatiga.</div><h4>Vengriya va Italiya</h4><h4>Stipendium Hungaricum (Vengriya)</h4>
+<ul><li>Vengriya hukumatining ikki tomonlama kelishuvlar asosidagi stipendiyasi. Oʻzbekiston hamkor davlat; Oʻzbekiston tomonidan masʼul tashkilot (<i lang="en">Sending Partner</i>) Oliy taʼlim, fan va innovatsiyalar vazirligi.</li>
+<li>gov.uz eʼloniga koʻra (25.12.2024), 2025/2026 oʻquv yili uchun Oʻzbekistonga 170 tagacha oʻrin ajratilgan; ariza Vengriyadagi koordinator, Tempus jamgʻarmasi platformasi orqali onlayn beriladi. Keyingi yillar kvotasi va muddati yangi eʼlonda.</li>
+<li>Odatda qoplaydi: oʻqish toʻlovidan ozod qilish, oylik nafaqa, yotoqxona yoki turar joy uchun hissa, tibbiy sugʻurta.</li></ul>
+<h4>Italiya: mintaqaviy taʼlim huquqi stipendiyalari (DSU)</h4>
+<ul><li>Bu yagona davlat dasturi emas: har mintaqaning oʻz agentligi (<i lang="en">diritto allo studio</i>) bor va xalqaro talabalar ham ariza bera oladi.</li>
+<li>Asosan <b>ehtiyojga asoslangan</b>: oila daromadi va mulki haqidagi hujjatlar (xalqaro talabalar uchun maxsus hisoblangan koʻrsatkich) talab qilinadi. Bu hujjatlarni Oʻzbekistonda tayyorlash, tarjima va legallashtirish vaqt oladi.</li>
+<li>Odatda: pul stipendiyasi, yotoqxona, ovqatlanish va oʻqish toʻlovidan ozod qilish. Keyingi yillarda baho (kreditlar) sharti bor.</li>
+<li>12 yillik taʼlim talabini unutmang (M1).</li></ul>
+<div class="srcs">Manba: <a href="https://stipendiumhungaricum.hu" target="_blank" rel="noopener">Stipendium Hungaricum (Tempus jamgʻarmasi)</a>; <a href="https://gov.uz/en/edu/news/view/32547" target="_blank" rel="noopener">gov.uz: Oliy taʼlim vazirligi, Stipendium Hungaricum eʼloni (25.12.2024)</a>; <a href="https://www.studiare-in-italia.it" target="_blank" rel="noopener">Study in Italy (Italiya Tashqi ishlar vazirligi portali)</a>; tegishli mintaqaviy DSU agentliklari sahifalari. 31.10.2026 holatiga.</div><h4>Turkiya va boshqalar</h4><h4>Türkiye Bursları</h4>
+<ul><li>Turkiya hukumati stipendiyasi; bitta onlayn ariza orqali bir nechta universitet va dastur tanlanadi.</li><li>Odatda qoplaydi: oʻqish toʻlovi, oylik nafaqa, yotoqxona, tibbiy sugʻurta, bir martalik aviabilet va bir yillik turk tili kursi.</li><li>Tanlov: hujjatlar va intervyu. Ariza oynasi odatda yilning boshida; joriy eʼlonni rasmiy saytdan tekshiring.</li></ul>
+<h4>Universal baholash: 6 nuqta</h4>
+<div class="tbl"><table><thead><tr><th>№</th><th>Mezon</th><th>Savol</th></tr></thead><tbody>
+<tr><td>1</td><td>Muvofiqlik</td><td>Fuqarolik, yosh, baho, daraja mosmi? (majburiy shart)</td></tr>
+<tr><td>2</td><td>Qoplov</td><td>Toʻliqmi yoki qisman? Nima kiradi?</td></tr>
+<tr><td>3</td><td>Kanal</td><td>Elchixona, universitet yoki toʻgʻridan-toʻgʻri?</td></tr>
+<tr><td>4</td><td>Muddat</td><td>Hujjatlarga ulguraman?</td></tr>
+<tr><td>5</td><td>Raqobat</td><td>Profilim qanchalik mos?</td></tr>
+<tr><td>6</td><td>Majburiyat</td><td>Qaytish sharti, xizmat, soha cheklovi bormi va u menga maqbulmi?</td></tr>
+</tbody></table></div>
+<p>Muvofiqlik "yoʻq" boʻlsa, boshqa mezonlarni koʻrmang: dastur siz uchun emas.</p>
+<div class="box warn">Stipendiya eʼlonini faqat rasmiy saytdan oling. Telegram kanallaridagi "toʻliq stipendiya, hujjatsiz" eʼlonlarining koʻpi firibgarlik yoki eskirgan.</div>
+<div class="srcs">Manba: <a href="https://www.turkiyeburslari.gov.tr" target="_blank" rel="noopener">Türkiye Bursları (rasmiy sayt)</a>; <a href="https://www.ftc.gov/business-guidance/resources/scholarship-scams" target="_blank" rel="noopener">FTC (AQSh): stipendiya firibgarligi belgilari</a>. 31.10.2026 holatiga.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Onlayn kurs natija bilan birga yozilsa foydali, yolgʻiz sertifikat ahamiyati kam maʼlumot. 2–3 ta sohaga yaqin kurs yetarli.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Olgan kurslaringizni "foydali" va "ahamiyati kam maʼlumot" deb ajrating.</li><li>Foydali kurslar uchun ular bilan qilgan aniq ishingizni yozing.</li></ul>
-            <textarea data-save="a2" placeholder="Foydali: ... → natija: ... Ahamiyati kam maʼlumot: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/gks.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Har dasturni <b>muvofiqlik</b>, qoplov, kanal, muddat, raqobat va majburiyat boʻyicha baholang. Muvofiqlik bajarilmasa, qolgan ball hisobga olinmaydi.</div></div></div>
+          <div class="panel"><div class="assign"><b>Saralash jadvali</b><ul><li>5–8 dasturni olti mezon boʻyicha baholang.</li><li>Eng mos 3 tasini ustuvor deb belgilang va joriy eʼlon havolasini yozing.</li></ul>
+            <textarea data-save="a2" placeholder="GKS-U: yosh ..., baho ..., trek: ... chunki ... MEXT: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
       <!-- 6.3 -->
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
           <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.3</span><span class="l-t" style="display:block">Maktab yoshida ilmiy loyiha</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🔬 Reja</span><span class="tag xp">+24 XP</span></span></span>
+          <span><span class="l-n">Dars 6.3</span><span class="l-t" style="display:block">Universitet yordami va grantlari</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Qidiruv</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Ilmiy loyiha maktab oʻquvchisi uchun eng kuchli dalillardan biri, chunki u sizning savol berish va javob izlash qobiliyatingizni koʻrsatadi. Lekin uni boshlash 6–12 oy oladi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Koʻp universitet xalqaro talabaga chegirma yoki stipendiya beradi, lekin uni topish uchun dastur sahifasidan chuqurroq qarash kerak. Bu darsda universitet yordamini turi va sharti boʻyicha tekshiramiz.</div></div>
           <div class="panel">
-<h4>Mavzu topish</h4>
-<ul><li>M3 dagi aniq savolingizdan boshlang.</li><li>Mavzu kichik va tekshiriladigan boʻlsin: "suv tozaligi" emas, "mahallamizdagi uchta quduq suvining pH va qattiqligi".</li><li>Maʼlumot yigʻish mumkinligini tekshiring: asbob, ruxsat, vaqt.</li></ul>
-<h4>Ustoz topish</h4>
-<p>Maktab oʻqituvchisi, mahalliy universitet oʻqituvchisi yoki laboratoriya xodimi. Xat qisqa boʻlsin: kim siz, qanday savol, nima qilib boʻldingiz, ulardan nima soʻrayapsiz (masalan, oyiga bir marta 30 daqiqa maslahat).</p>
-<h4>Natijani hujjatlash</h4>
-<ul><li>Ish daftari: sana, nima qildingiz, natija.</li><li>Yakuniy 3–5 sahifali hisobot yoki poster.</li><li>Maktab konferensiyasi, tanlov yoki onlayn ochiq joyda taqdimot.</li></ul>
-<div class="box warn"><b>Halollik.</b> Loyihani boshqa odam qilib bergan boʻlsa yoki natija toʻqilgan boʻlsa, tavsiya xati va intervyuda bu ochilib qoladi. Kichik, lekin oʻzingizniki boʻlgan loyiha kuchliroq.</div>
+<div data-kvideo="l3"></div>
+<div class="tbl"><table><thead><tr><th>Tur</th><th>Qanday</th><th>Nima qilasiz</th></tr></thead><tbody>
+<tr><td>Avtomatik</td><td>Qabulda baho yoki test asosida</td><td>Shartini oʻqing</td></tr>
+<tr><td>Ariza bilan</td><td>Alohida forma, insho, baʼzan intervyu</td><td>Muddatini jadvalga qoʻshing</td></tr>
+<tr><td>Ehtiyojga qarab (AQSh)</td><td>Ota-ona daromadi hujjatlari bilan</td><td>Formalar va CDS H6: USA dasturida</td></tr>
+</tbody></table></div>
+<p>Uch savol: bir yillikmi yoki 4 yilga? Keyingi yillarda baho sharti bormi? Summa qatʼiymi yoki foiz?</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Universitet stipendiyalari</h4><h4>Ikki tur</h4>
+<div class="tbl"><table><thead><tr><th>Tur</th><th>Qanday</th><th>Nima qilish</th></tr></thead><tbody>
+<tr><td>Avtomatik</td><td>Qabul vaqtida baho yoki test asosida beriladi</td><td>Shartini (baho, muddat) oʻqing; ariza shart emas</td></tr>
+<tr><td>Ariza bilan</td><td>Alohida forma, insho, baʼzan intervyu</td><td>Muddatini nazorat jadvaliga qoʻshing; koʻpincha qabul muddatidan oldin</td></tr>
+</tbody></table></div>
+<h4>Qidirish usuli</h4>
+<ol><li>Universitet saytida "scholarships", "international students", "fees and funding" sahifalari.</li><li>Fakultet sahifasi: baʼzi stipendiyalar faqat fakultet darajasida.</li><li>Xalqaro boʻlimga yozma savol: "Oʻzbekistonlik bakalavr abituriyentlari qaysi stipendiyalarga ariza bera oladi?"</li></ol>
+<h4>Shartlarni oʻqing</h4>
+<ul><li>Bir yillikmi yoki 4 yilga?</li><li>Keyingi yillarda baho sharti bormi?</li><li>Summa qatʼiymi yoki foiz?</li></ul>
+<div class="box info">Birinchi yil uchun katta, keyingi yillar uchun yoʻq stipendiya 4 yillik rejada katta boʻshliq qoldiradi.</div><h4>AQSh moliyaviy yordami</h4><h4>Ikki siyosat</h4>
+<div class="tbl"><table><thead><tr><th>Siyosat</th><th>Maʼnosi</th></tr></thead><tbody>
+<tr><td>Toʻlov qobiliyatiga qaramaydigan (<i lang="en">need-blind</i>)</td><td>Qabul qarorida yordam soʻraganingiz hisobga olinmaydi. Xalqaro talabalar uchun bu siyosatni juda kam universitet qoʻllaydi</td></tr>
+<tr><td>Toʻlov qobiliyatiga qaraydigan (<i lang="en">need-aware</i>)</td><td>Yordam soʻrash qabul qaroriga taʼsir qilishi mumkin, chunki yordam byudjeti cheklangan</td></tr>
+</tbody></table></div>
+<p>Alohida savol: universitet <b>toʻliq ehtiyojni qoplaydimi</b> (<i lang="en">meets full demonstrated need</i>)? Baʼzilari need-aware boʻlsa ham, qabul qilingan talabaning toʻliq ehtiyojini qoplaydi.</p>
+<h4>Hujjatlar</h4>
+<ul><li><b>CSS Profile</b>: College Board tizimi, oila daromadi, mulki va xarajatlari haqida batafsil anketa. Koʻp xususiy universitetlar xalqaro talabalardan soʻraydi; toʻlovli, lekin ozod qilish imkoniyati bor.</li><li>Baʼzi universitetlar oʻz formasini yoki xalqaro talabalar uchun moliyaviy yordam anketasini soʻraydi.</li><li>Daromad hujjatlari: ish joyidan maʼlumotnoma, soliq hujjatlari, bank koʻchirmasi (tarjima bilan).</li></ul>
+<h4>Qaysi universitet yordam beradi</h4>
+<p>Universitetning rasmiy "international financial aid" sahifasi va Common Data Setʼning H boʻlimi (xalqaro talabalarga berilgan yordam). Javob "yoʻq" yoki juda kam boʻlsa, u universitet ishonchli daraja boʻla olmaydi.</p>
+<div class="srcs">Manba: <a href="https://cssprofile.collegeboard.org" target="_blank" rel="noopener">CSS Profile (College Board)</a>; <a href="https://commondataset.org" target="_blank" rel="noopener">Common Data Set loyihasi</a>; universitetlarning rasmiy moliyaviy yordam sahifalari. 31.10.2026 holatiga.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><p>Kichik, tekshiriladigan savol + ustoz + ish daftari + yakuniy hisobot. Kichik, lekin oʻzingizniki boʻlgan loyiha katta va qarzga olingandan kuchli.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Loyiha uchun 2 ta kichik, tekshiriladigan savol yozing.</li><li>Ustoz sifatida 2 nomzodni va ularga yuboradigan xatning asosiy 4 jumlasini yozing.</li></ul>
-            <textarea data-save="a3" placeholder="Savol 1: ... Savol 2: ... Ustoz: ... Xat: Men ..., savolim ..., qilganim ..., soʻrovim ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Faqat birinchi yilga beriladigan stipendiya 4 yillik rejada katta <b>boʻshliq</b> qoldiradi. Davomiylikni albatta tekshiring.</div></div></div>
+          <div class="panel"><div class="assign"><b>Uch universitet</b><ul><li>Roʻyxatingizdagi 3 universitetning xalqaro talabalar stipendiyalarini toping.</li><li>Har biri uchun tur, summa, davomiylik, shart va muddatni yozing.</li></ul>
+            <textarea data-save="a3" placeholder="...: avtomatik, oʻqish toʻlovining ...%, 4 yil, baho ... saqlansa"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
       <!-- 6.4 -->
       <article class="lesson" id="l4">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.4</span><span class="l-t" style="display:block">Bakalavr CV (STAR usuli)</span>
-            <span class="l-m"><span class="tag">⏱ 35 daqiqa</span><span class="tag">🛠 CV v1.0</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.4</span><span class="l-t" style="display:block">Toʻliq xarajat modeli</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Model</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">CV dagi "jamoada ishlashni bilaman" degan jumla hech narsani isbotlamaydi. STAR usuli har bandni aniq voqea va natija bilan yozadi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Oʻqish toʻlovi xarajatning faqat bir qismi. Yashash, sugʻurta, viza va yoʻl baʼzan oʻqish toʻlovi bilan teng keladi. Bu darsda bitta universitet uchun toʻliq xarajatni qatorlarga ajratamiz.</div></div>
           <div class="panel">
-<h4>STAR usuli</h4>
-<div class="tbl"><table><thead><tr><th>Harf</th><th>Maʼnosi</th><th>Savol</th></tr></thead><tbody>
-<tr><td><b>V</b>aziyat (<span lang="en">Situation</span>)</td><td>Qayerda, qachon</td><td>Qanday sharoit edi?</td></tr>
-<tr><td><b>V</b>azifa (<span lang="en">Task</span>)</td><td>Nima qilish kerak edi</td><td>Maqsad nima edi?</td></tr>
-<tr><td><b>H</b>arakat (<span lang="en">Action</span>)</td><td>Siz nima qildingiz</td><td>Aynan siz nima qildingiz?</td></tr>
-<tr><td><b>N</b>atija (<span lang="en">Result</span>)</td><td>Nima oʻzgardi</td><td>Raqam yoki aniq natija bormi?</td></tr>
+<div data-kvideo="l4"></div>
+<ol><li>Oʻqish toʻlovi</li><li>Yashash: yotoqxona yoki ijara, ovqat, transport</li><li>Tibbiy sugʻurta</li><li>Viza va tegishli toʻlovlar</li>
+<li>Moliyaviy kafolat, masalan Germaniyada bloklangan hisob</li><li>Aviabilet, yiliga kamida bir marta</li><li>Ariza va hujjatlar (M1)</li>
+<li>Yashirin xarajatlar: kitob, noutbuk, qishki kiyim, depozit</li></ol>
+<p>Universitetning rasmiy xarajat sahifasini (<i lang="en">cost of attendance</i>) asos qiling.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Xarajat qatorlari</h4>
+<div class="tbl"><table><thead><tr><th>Qator</th><th>Qayerdan</th></tr></thead><tbody>
+<tr><td>Oʻqish toʻlovi</td><td>Universitet "fees" sahifasi, xalqaro talaba uchun</td></tr>
+<tr><td>Yashash (yotoqxona yoki ijara, ovqat, transport)</td><td>Universitetning "cost of attendance" yoki "living costs" sahifasi</td></tr>
+<tr><td>Tibbiy sugʻurta</td><td>Universitet yoki viza talabi (masalan UK da <i lang="en">Immigration Health Surcharge</i>)</td></tr>
+<tr><td>Viza va tegishli toʻlovlar</td><td>Viza rasmiy sahifasi (AQShda SEVIS toʻlovi ham)</td></tr>
+<tr><td>Moliyaviy kafolat</td><td>Masalan, Germaniyada bloklangan hisob (<i lang="en">Sperrkonto</i>); bu xarajat emas, lekin oldindan kerak boʻladigan pul</td></tr>
+<tr><td>Yoʻl</td><td>Aviabilet, yiliga kamida bir marta</td></tr>
+<tr><td>Ariza va hujjatlar</td><td>M1 byudjeti</td></tr>
+<tr><td>Yashirin xarajatlar</td><td>Kitob, noutbuk, qishki kiyim, depozit, birinchi oy ijarasi</td></tr>
 </tbody></table></div>
-<p>CV da STAR bitta qatorga siqiladi. Kompas tuzgan namuna: "Maktab robototexnika toʻgaragini tashkil qildim (8 oʻquvchi); haftalik mashgʻulotlar oʻtkazdim; jamoa viloyat tanloviga chiqdi."</p>
-<h4>Bakalavr CV tuzilmasi (1–2 sahifa)</h4>
-<ol><li>Ism, aloqa (email, telefon), shahar.</li><li>Taʼlim: maktab, yillar, baholar (asl shkalada).</li><li>Yutuqlar va mukofotlar (L1 formatida).</li><li>Loyihalar va tadqiqot.</li><li>Faoliyatlar va yetakchilik (M7).</li><li>Koʻnikmalar: tillar (daraja bilan), dasturlar.</li></ol>
-<div class="box info">Akademik CV va ishchi rezyume (<span lang="en">Academic CV vs Resume</span>) farqi: bakalavr arizasida ish tajribasidan koʻra taʼlim, loyiha va faoliyat birinchi turadi. Rasm, tugʻilgan sana va oilaviy holat odatda kerak emas.</div>
+<p>Universitetning "cost of attendance" summasini asos qiling: u odatda yashashni ham oʻz ichiga oladi va real summaga yaqin.</p>
+<div class="box warn">Valyuta xavfi: soʻmdagi summa kurs oʻzgarsa oshadi. Hisobni asl valyutada yuriting va 10–15 foiz zaxira qoʻshing.</div>
+<div class="srcs">Manba: <a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener">GOV.UK: Student visa</a>; <a href="https://www.auswaertiges-amt.de/en/visa-service" target="_blank" rel="noopener">Germaniya Tashqi ishlar vazirligi: viza xizmati</a>; <a href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">SEVIS I-901 toʻlovi (ICE)</a>; universitetlarning fees va cost of attendance sahifalari. 31.10.2026 holatiga.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><p>Har CV bandi STAR: vaziyat, vazifa, harakat, natija; bitta qatorda. Bakalavr CV 1–2 sahifa, taʼlim va loyihalar birinchi.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Eng muhim 5 faoliyat yoki yutuqingizni STAR usulida bitta qatordan yozing.</li><li>Pastdagi vositada CV v1.0 boʻlimlarini toʻldiring.</li></ul>
-            <textarea data-save="a4" placeholder="1) ... ni tashkil qildim (...); ...; natija: ... 2) ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Hisobni asl valyutada yuriting va 10–15 foiz <b>zaxira</b> qoʻshing.</div></div></div>
+          <div class="panel"><div class="assign"><b>8 qatorli xarajat</b><ul><li>Bitta universitet uchun 8 qator boʻyicha yillik xarajatni yozing.</li><li>Har qatorga manba havolasini qoʻshing.</li></ul>
+            <textarea data-save="a4" placeholder="... universiteti (yillik): oʻqish ..., yashash ..., sugʻurta ..., viza ..., yoʻl ..., yashirin ... = ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
       <!-- 6.5 -->
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 6.5</span><span class="l-t" style="display:block">Tarjima, notarius, apostil</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🗺 Zanjir</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.5</span><span class="l-t" style="display:block">4 yillik reja</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Reja</span><span class="tag xp">+20 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Notarial tasdiqlangan nusxa yetarli deb oʻylash qimmat xato boʻlishi mumkin. Har mamlakat va universitet boshqa tasdiq turini soʻraydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Birinchi yilni qoplash yetarli emas. Ikkinchi yilda mablagʻ tugasa, oʻqish toʻxtaydi va viza ham xavf ostida qoladi. Bu darsda 4 yillik jadvalni hisoblagich bilan tuzamiz.</div></div>
           <div class="panel">
-<h4>Uch xil tasdiq</h4>
-<div class="tbl"><table><thead><tr><th>Tasdiq</th><th>Nima</th><th>Qachon soʻraladi</th></tr></thead><tbody>
-<tr><td>Tarjima</td><td>Hujjatning ingliz (yoki boshqa) tiliga tarjimasi</td><td>Deyarli har doim</td></tr>
-<tr><td>Notarial tasdiq</td><td>Notarius tarjima yoki nusxaning toʻgʻriligini tasdiqlaydi</td><td>Koʻp universitetlar va viza markazlari</td></tr>
-<tr><td>Apostil</td><td>Hujjat boshqa davlatda rasmiy deb tan olinishi uchun davlat tasdigʻi (Apostil konvensiyasi aʼzolari orasida)</td><td>Baʼzi universitetlar, stipendiyalar (masalan GKS), viza</td></tr>
+<div data-kvideo="l5"></div>
+<div class="tbl"><table><thead><tr><th>Yil</th><th>Xarajat</th><th>Stipendiya yoki grant</th><th>Oila hissasi</th><th>Boʻshliq</th></tr></thead><tbody>
+<tr><td>1</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+<tr><td>2</td><td colspan="4">oʻqish toʻlovining yillik oʻshishini hisobga oling</td></tr>
+<tr><td>3–4</td><td colspan="4">stipendiyaning baho sharti saqlanishini rejalang</td></tr>
 </tbody></table></div>
-<h4>Oʻzbekistonda apostil</h4>
-<p>Apostil uchun ariza my.gov.uz orqali elektron yoki Davlat xizmatlari markazida beriladi. gov.uz maʼlumotiga koʻra soʻrov ikki ish kuni ichida koʻrib chiqiladi, taʼlim muassasalari bergan hujjatlar uchun yigʻim bazaviy hisoblash miqdorining 20 foizi. Rad etilsa, xatoni tuzatib 30 kun ichida qayta topshirish mumkin.</p>
-<h4>Ketma-ketlik</h4>
-<ol><li>Asl hujjatdagi ism pasport bilan mosligini tekshiring.</li><li>Universitet nima soʻrashini aniqlang: tarjima, notarius, apostil yoki hammasi.</li><li>Apostil asl hujjatga yoki tarjimaga qoʻyilishini universitet talabidan oʻqing.</li><li>Nechta nusxa kerakligini yozing.</li></ol>
-<div class="box warn">Apostil tez, lekin undan oldingi qadamlar (maktabdan hujjat olish, tarjima, xatoni tuzatish) haftalab choʻziladi. Zanjirni muddatdan kamida 8–10 hafta oldin boshlang.</div>
-<div class="srcs">Manba: <a href="https://gov.uz/oz/advice/72/document/2620" target="_blank" rel="noopener">gov.uz: rasmiy hujjatlarga apostil qoʻyish</a>; <a href="https://my.gov.uz" target="_blank" rel="noopener">my.gov.uz (Yagona interaktiv davlat xizmatlari portali)</a>. 31.10.2026 holatiga; yigʻim va muddat oʻzgarishi mumkin.</div>
+<p>Talaba ishini asosiy manba qilmang: viza qoidalari haftalik soatni cheklaydi. Valyuta kursi 20 foiz oʻzgarsa, reja qanday oʻzgarishini hisoblang.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Reja tuzilmasi</h4>
+<div class="tbl"><table><thead><tr><th>Yil</th><th>Xarajat</th><th>Stipendiya / grant</th><th>Oila</th><th>Boshqa</th><th>Boʻshliq</th></tr></thead><tbody>
+<tr><td>1</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr><td>2</td><td colspan="5">oʻqish toʻlovining yillik oʻsishini hisobga oling</td></tr>
+<tr><td>3–4</td><td colspan="5">stipendiya shartlari (baho) saqlanishini rejalang</td></tr>
+</tbody></table></div>
+<h4>Boʻshliqni yopish</h4>
+<ul><li><b>Talaba ishi</b>: viza qoidalari haftalik soatni cheklaydi (masalan, koʻp mamlakatlarda oʻqish davrida yarim stavka). Ish daromadini asosiy manba qilib qoʻymang.</li><li><b>Keyingi yillar stipendiyalari</b>: baʼzi universitetlar 2-kursdan keyin stipendiya beradi, lekin kafolatsiz.</li><li><b>Arzonroq variant</b>: ishonchli darajadagi arzon universitet.</li></ul>
+<h4>Zaxira manba</h4>
+<p>Kutilmagan holat uchun kamida bir necha oylik yashash xarajatiga teng zaxira. Valyuta kursi 20 foiz oʻzgarsa, reja qanday oʻzgarishini hisoblang.</p>
+<div class="box warn">Reja boʻshliq 0 dan katta boʻlgan yil bilan tugasa, bu universitet hozircha real variant emas. Buni oila bilan ochiq muhokama qiling.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Tarjima, notarius va apostil turli talablar. Har universitet nima soʻrashini aniqlang va zanjirni muddatdan 8–10 hafta oldin boshlang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Har asosiy hujjat uchun zanjir yozing: asl → tarjima → notarius/apostil → nusxa soni.</li><li>Qaysi universitet nima talab qilishini qavsda koʻrsating.</li></ul>
-            <textarea data-save="a5" placeholder="Attestat: asl → tarjima (...) → apostil (...) → 2 nusxa. Transkript: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Reja boʻshligʻi 0 dan katta yil bilan tugasa, bu universitet hozircha real variant hisoblanmaydi. Buni ota-onangiz bilan ochiq gaplashing.</div></div></div>
+          <div class="panel"><div class="assign"><b>Sizning 4 yilingiz</b><ul><li>Eng ehtimolli universitetingiz uchun 4 yillik jadvalni hisoblagichda toʻldiring.</li><li>Kurs 20 foiz oshganda boʻshliq qanday oʻzgarishini yozing.</li></ul>
+            <textarea data-save="a5" placeholder="1-yil: xarajat ..., stipendiya ..., oila ..., boʻshliq ... 2-yil: ... Kurs +20%: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +20 XP</button></div>
+        </div>
+      </article>
+      <!-- 6.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 6.6</span><span class="l-t" style="display:block">Firibgarlikdan himoya</span>
+            <span class="l-m"><span class="tag">~8 daqiqa</span><span class="tag">Belgilar</span><span class="tag xp">+20 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Xorijda oʻqish atrofida firibgarlik koʻp: soxta stipendiya, «kafolatli qabul», oldindan toʻlov soʻraydigan agent. Bu darsda belgilarni va toʻlovdan oldingi qoidalarni yozamiz.</div></div>
+          <div class="panel">
+<div data-kvideo="l6"></div>
+<ul><li>«Stipendiya kafolatlanadi» yoki «qabul 100 foiz».</li>
+<li>Stipendiya uchun oldindan toʻlov: «rasmiylashtirish toʻlovi».</li>
+<li>Universitet nomidan oddiy pochta manzili.</li>
+<li>Shoshirish: «bugun toʻlamasangiz, joy ketadi».</li>
+<li>Siz ariza bermagan stipendiyani «yutganingiz» haqida xabar.</li></ul>
+<p>Rasmiy saytni oʻzingiz qidirib oching. Mablagʻni faqat universitetning rasmiy toʻlov tizimiga oʻtkazing, shaxsiy kartaga oʻtkazmang.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Ogohlantiruvchi belgilar</h4>
+<ul><li>"Stipendiya kafolatlanadi" yoki "qabul 100 foiz".</li><li>Stipendiyani olish uchun oldindan toʻlov ("rasmiylashtirish toʻlovi", "hujjat toʻlovi").</li><li>Rasmiy boʻlmagan email (masalan, oddiy pochta xizmati manzili universitet nomidan).</li><li>Shoshirish: "bugun toʻlamasangiz joy ketadi".</li><li>Siz ariza bermagan stipendiyani "yutganingiz" haqida xabar.</li><li>Universitet sahifasida topilmaydigan dastur yoki shartnoma.</li></ul>
+<h4>Tekshirish</h4>
+<ol><li>Universitet yoki stipendiya rasmiy saytini oʻzingiz qidirib oching (xabardagi havolani emas).</li><li>Qabul boʻlimiga rasmiy saytdagi manzil orqali yozib tasdiqlang.</li><li>Pulni faqat universitetning rasmiy toʻlov tizimiga oʻtkazing; shaxsiy kartaga emas.</li></ol>
+<div class="box info">Agent bilan ishlash qonuniy, lekin agent universitetdan komissiya olishi mumkin va u sizga "oʻz" universitetlarini taklif qiladi. Kompas Lab agentlik xizmati koʻrsatmaydi.</div>
+<div class="srcs">Manba: <a href="https://www.ftc.gov/business-guidance/resources/scholarship-scams" target="_blank" rel="noopener">FTC (AQSh): stipendiya firibgarligi belgilari</a>. 31.10.2026 holatiga.</div></div></details>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Kafolat, oldindan toʻlov, norasmiy email va shoshirish: bittasini koʻrsangiz, toʻlovni toʻxtatib, rasmiy manzil orqali tekshiring.</div></div></div>
+          <div class="panel"><div class="assign"><b>Toʻlovdan oldingi 3 qoida</b><ul><li>Belgilarni ota-onangiz bilan koʻrib chiqing.</li><li>«Toʻlovdan oldin» degan 3 qoidali roʻyxat yozing.</li></ul>
+            <textarea data-save="a6" placeholder="1) Rasmiy saytni oʻzimiz ochamiz 2) ... 3) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +20 XP</button></div>
         </div>
       </article>
 
     </div>
   </section>
 
-  <section id="cv">
-    <h2>Bakalavr CV v1.0</h2>
-    <p class="sub">Har bandni STAR usulida bitta qatorda yozing. Natija 1–2 sahifalik CV.</p>
+  <section id="reja">
+    <h2>4 yillik moliyaviy reja</h2>
+    <p class="sub">Hisoblagich: yillik xarajat va manbalarni kiriting, 4 yillik boʻshliq va zaxira avtomatik chiqadi.</p>
     <div class="tool">
-      <div class="tool-h"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div><h3>CV ish varagʻi</h3><span>6 maydon · +30 XP</span></div></div>
-      
-      <div class="fld"><label for="f_ism">Ism va aloqa <small>pasportdagidek</small></label><input id="f_ism" type="text" data-save="ism" placeholder="Ism Familiya · email · telefon · shahar"></div><div class="fld"><label for="f_talim">Taʼlim</label><textarea id="f_talim" data-save="talim" placeholder="... maktabi, 2020–2027; baholar: 4.8/5"></textarea></div><div class="fld"><label for="f_yutuq">Yutuqlar va mukofotlar <small>nomi, daraja, natija, yil</small></label><textarea id="f_yutuq" data-save="yutuq" placeholder="..."></textarea></div><div class="fld"><label for="f_loyiha">Loyihalar va tadqiqot <small>STAR, bitta qator</small></label><textarea id="f_loyiha" data-save="loyiha" placeholder="..."></textarea></div><div class="fld"><label for="f_faoliyat">Faoliyatlar va yetakchilik</label><textarea id="f_faoliyat" data-save="faoliyat" placeholder="..."></textarea></div><div class="fld"><label for="f_konikma">Koʻnikmalar <small>tillar daraja bilan, dasturlar</small></label><input id="f_konikma" type="text" data-save="konikma" placeholder="Oʻzbek (ona tili), ingliz (IELTS ...), rus ...; Python ..."></div>
+      <div class="tool-h"><img src="img/3d/money.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Moliyaviy reja</h3><span>6 maydon · +30 XP</span></div></div>
+      <div class="fld"><label>Hisoblagich <small>bir valyutada, yillik</small></label><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px"><input id="fX" type="number" min="0" placeholder="Yillik xarajat" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="fS" type="number" min="0" placeholder="Stipendiya / grant" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="fO" type="number" min="0" placeholder="Oila" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"><input id="fG" type="number" min="0" step="1" placeholder="Yillik oʻsish, %" style="min-height:46px;padding:10px 12px;border:2px solid var(--border);border-radius:12px;font-size:16px"></div><div id="fOut" class="out" style="white-space:normal">Raqamlarni kiriting.</div></div>
+      <div class="fld"><label for="f_s13">1–3 dastur (ustuvor) <small>nomi · mamlakat · muvofiqlik · qoplov · kanal · muddat · majburiyat · havola</small></label><textarea id="f_s13" data-save="s13" placeholder="GKS-U · Koreya · mos · toʻliq · elchixona · ... · til yili · https://..."></textarea></div><div class="fld"><label for="f_uni">Universitet va valyuta</label><input id="f_uni" type="text" data-save="uni" placeholder="... universiteti, USD"></div><div class="fld"><label for="f_xarajat">Toʻliq xarajat modeli (yillik)</label><textarea id="f_xarajat" data-save="xarajat" placeholder="Oʻqish ..., yashash ..., sugʻurta ..., viza ..., yoʻl ..., yashirin ..."></textarea></div><div class="fld"><label for="f_manba">Manbalar <small>stipendiya, grant, oila, boshqa</small></label><textarea id="f_manba" data-save="manba" placeholder="..."></textarea></div><div class="fld"><label for="f_zaxira">Zaxira va valyuta stsenariysi</label><textarea id="f_zaxira" data-save="zaxira" placeholder="Zaxira: ... oy; kurs +20%: ..."></textarea></div><div class="fld"><label for="f_himoya">Oila uchun "pul oʻtkazishdan oldin" qoidalari</label><textarea id="f_himoya" data-save="himoya" placeholder="1) ... 2) ... 3) ..."></textarea></div>
       <div id="toolOut" class="out" hidden></div>
-      <button class="btn btn-p" type="button" id="toolBtn" data-min="5" style="margin-top:14px">CV ni saqlash · +30 XP</button>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Rejani saqlash · +30 XP</button>
     </div>
   </section>
 
   <section id="check">
-    <h2>CV va hujjatlar nazorati</h2>
-    <p class="sub">Topshirishdan oldin tekshiring.</p>
+    <h2>Reja nazorati</h2>
+    <p class="sub">Rejani yakunlashdan oldin tekshiring.</p>
     <div class="tool">
-      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>9 bandlik nazorat</h3><span>9 band · +30 XP</span></div></div>
-      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>CV 1–2 sahifa.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Har band harakat feʼli bilan boshlanadi va natijani koʻrsatadi.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Yutuqlar nomi, daraja, natija va yil bilan yozilgan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Tekshirib boʻlmaydigan raqam yoʻq.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Ism pasport bilan harfma-harf bir xil.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Har hujjat uchun tasdiq turi (tarjima, notarius, apostil) aniqlangan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Apostil zanjiri muddatdan 8–10 hafta oldin boshlanadi.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Nusxalar soni yozilgan.</span></label><label class="ck" data-ck="c9"><input type="checkbox"><span>CV dagi har band hujjat yoki guvoh bilan tasdiqlanadi.</span></label></div>
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Har stipendiya rasmiy saytdan olingan, Telegram eʼlonidan olinmagan.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Muvofiqlik har dastur uchun tekshirilgan.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Majburiyatlar (qaytish, til yili, soha) oʻqilgan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Universitet stipendiyasining davomiyligi va baho sharti oʻqilgan.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>Xarajat 8 qator boʻyicha, asl valyutada va manba bilan hisoblangan.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>4 yilning har biri uchun boʻshliq hisoblangan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Valyuta stsenariysi va zaxira bor, talaba ishi asosiy manba qilinmagan.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Hech qanday agentga toʻlov qilinmaydi.</span></label></div>
       <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
     </div>
   </section>
@@ -272,12 +416,13 @@
   <section id="nishonlar">
     <h2>Nishonlar</h2>
     <div class="badges">
-      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">CV ustasi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">CV<small>Yakun</small></div>
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>6 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Moliya rejachisi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Reja<small>Yakun</small></div>
     </div>
   </section>
 
   <section id="artefakt">
-    <h2 id="artTitle">Bakalavr CV v1.0 va hujjatlar roʻyxati</h2>
+    <div data-kvideo="res"></div>
+    <h2 id="artTitle">4 yillik moliyaviy reja</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
       <div class="paper" id="artPaper"></div>
@@ -296,37 +441,60 @@
     <div class="mentor">
       <div class="av">KL</div>
       <div>
-        <q>CV ni ovoz chiqarib oʻqing. Har bandda "xoʻsh, natija nima boʻldi?" degan savolga javob boʻlmasa, bandni qayta yozing.</q>
+        <q>Moliyaviy rejani raqamlar bilan, ota-onangiz bilan birga koʻrib chiqing.</q>
         <small>Kompas Lab maslahati</small>
       </div>
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="6"><h2>III bosqich yakunlandi: keyingi qadam topshirish</h2><div class="mv-bar"><i style="width:80%"></i></div><p class="mv-small">III bosqich: 2 / 2 modul · Rejangiz 80% tayyor</p><div class="mv-k" data-mn="m6"><b>4 yillik rejangiz tayyor.</b> Endi hujjatlar, insho va reja bir joyga kelib, ariza topshiriladi. IV bosqichda (M7–M8) arizani platformada topshirasiz, intervyuga tayyorlanasiz va joʻnashni rejalashtirasiz.</div><p>IV bosqich darslari:</p><ul class="mv-lock"><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.1 Common App</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.2 UCAS</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.3 Universitet portallari</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.4 Xitoy, Italiya, Singapur: kimga qaysi yoʻl?</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">7.5 Topshirish va oxirgi tekshiruv</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">8.1 Intervyu turlari va «Oʻzingiz haqingizda»</li><li><img src="img/3d/lock.webp" alt="" width="22" height="22">8.2 Akademik intervyu</li></ul><p class="mv-small">Keyingi bosqich 1 ta bosqich tarifida navbatdagi toʻlov bilan ochiladi. Toʻliq dastur tarifida hamma modul allaqachon ochiq. 18 yoshga toʻlmagan boʻlsangiz, obunani ota-onangiz rasmiylashtiradi.</p><div class="mv-row"><a class="btn btn-p" href="bachelor-lab-o.html?m=7">IV bosqich: M7 ni ochish</a><a class="btn btn-g" href="bachelor-lab-narxlar.html">Tariflar</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
-      <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
-      <div><b>Natija</b>Bakalavr CV v1.0 va hujjatlar roʻyxati</div>
+      <div><b>Darslar</b>6 ta</div>
+      <div><b>Vaqt</b>~1–2 hafta (darslar ~1,2 soat + hisoblagich)</div>
+      <div><b>Natija</b>4 yillik moliyaviy reja</div>
     </div>
-    <p class="srcs">Faktlar: <a href="https://gov.uz/oz/advice/72/document/2620" target="_blank" rel="noopener">gov.uz: rasmiy hujjatlarga apostil qoʻyish</a>; <a href="https://my.gov.uz" target="_blank" rel="noopener">my.gov.uz (Yagona interaktiv davlat xizmatlari portali)</a>; <a href="https://www.commonapp.org" target="_blank" rel="noopener">Common App (rasmiy sayt)</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
+    <p class="srcs">Faktlar: <a href="https://www.studyinkorea.go.kr" target="_blank" rel="noopener">Study in Korea (NIIED)</a>; <a href="https://www.studyinjapan.go.jp/en/smap-stopj-applications-scholarship.html" target="_blank" rel="noopener">Study in Japan: MEXT stipendiyasi</a>; <a href="https://www.campuschina.org" target="_blank" rel="noopener">Campus China (CSC rasmiy portali)</a>; <a href="https://stipendiumhungaricum.hu" target="_blank" rel="noopener">Stipendium Hungaricum (Tempus jamgʻarmasi)</a>; <a href="https://gov.uz/en/edu/news/view/32547" target="_blank" rel="noopener">gov.uz: Oliy taʼlim vazirligi, Stipendium Hungaricum eʼloni (25.12.2024)</a>; <a href="https://www.studiare-in-italia.it" target="_blank" rel="noopener">Study in Italy (Italiya Tashqi ishlar vazirligi portali)</a>; <a href="https://www.turkiyeburslari.gov.tr" target="_blank" rel="noopener">Türkiye Bursları (rasmiy sayt)</a>; <a href="https://cssprofile.collegeboard.org" target="_blank" rel="noopener">CSS Profile (College Board)</a>; <a href="https://commondataset.org" target="_blank" rel="noopener">Common Data Set loyihasi</a>; <a href="https://www.ftc.gov/business-guidance/resources/scholarship-scams" target="_blank" rel="noopener">FTC (AQSh): stipendiya firibgarligi belgilari</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
   </section>
 </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="bachelor-lab.html">← Bakalavr dasturi</a>
-    <a class="btn btn-p" href="bachelor-lab-m7.html">Keyingi: M7 Darsdan tashqari faoliyat →</a>
+    <a class="btn btn-g" href="bachelor-lab-o.html?m=5">← M5</a>
+    <a class="btn btn-p" href="bachelor-lab-o.html?m=7">Keyingi: M7 Topshirish: platformalar va mamlakat yoʻllari →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/bachelor-next.js" defer></script>
+<script>
+window.KGTool = { init: function () {
+  var ids = ["fX", "fS", "fO", "fG"], o = document.getElementById("fOut");
+  function v(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
+  function fmt(n) { return Math.round(n).toLocaleString("ru-RU"); }
+  function run() {
+    var X = v("fX"), S = v("fS"), O = v("fO"), G = v("fG") / 100;
+    if (!X) { o.textContent = "Raqamlarni kiriting."; return; }
+    var rows = [], tot = 0;
+    for (var y = 1; y <= 4; y++) { var x = X * Math.pow(1 + G, y - 1), gap = Math.max(0, x - S - O); tot += gap; rows.push(y + "-yil: xarajat " + fmt(x) + ", boʻshliq " + fmt(gap)); }
+    var txt = rows.join("; ") + ". 4 yilda jami boʻshliq: " + fmt(tot) + ".";
+    o.innerHTML = "<span class=\"pill " + (tot > 0 ? "no" : "ok") + "\">" + (tot > 0 ? "Boʻshliq bor" : "Qoplangan") + "</span> " + KG.esc(txt);
+    KG.S.notes.plan4 = txt; KG.S.notes.fin_in = [X, S, O, v("fG")].join("|"); KG.save();
+  }
+  if (KG.S.notes.fin_in) { var p = String(KG.S.notes.fin_in).split("|"); ids.forEach(function (id, i) { if (p[i] && p[i] !== "0") document.getElementById(id).value = p[i]; }); }
+  ids.forEach(function (id) { document.getElementById(id).addEventListener("input", run); });
+  run();
+} };
+</script>
 <script>
 (function () {
-  var KEY = "kompas_bachelor_m6_v1", MOD = "6", LXP = 24, NL = 5, FINXP = 40;
-  var ART = [{"h": "Ism va aloqa", "k": ["ism"]}, {"h": "Taʼlim", "k": ["talim"]}, {"h": "Yutuqlar va mukofotlar", "k": ["yutuq", "a1"]}, {"h": "Loyihalar va tadqiqot", "k": ["loyiha", "a3"]}, {"h": "Faoliyatlar va yetakchilik", "k": ["faoliyat", "a4"]}, {"h": "Koʻnikmalar va kurslar", "k": ["konikma", "a2"]}, {"h": "Hujjatlar zanjiri", "k": ["a5"]}];
+  var KEY = "kompas_bachelor_m6_v1", MOD = "6", LXP = 20, NL = 6, FINXP = 40;
+  var ART = [{"h": "Stipendiya manbalari", "k": ["a1"]}, {"h": "Ustuvor stipendiyalar", "k": ["s13", "a2"]}, {"h": "Universitet va valyuta", "k": ["uni"]}, {"h": "Universitet yordami", "k": ["a3"]}, {"h": "Toʻliq xarajat modeli", "k": ["xarajat", "a4"]}, {"h": "Manbalar", "k": ["manba"]}, {"h": "4 yillik hisob", "k": ["plan4", "a5"]}, {"h": "Zaxira va valyuta", "k": ["zaxira"]}, {"h": "Firibgarlikdan himoya", "k": ["himoya", "a6"]}];
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
   try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
@@ -344,7 +512,7 @@
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -492,7 +660,7 @@
   });
   $("docBtn").addEventListener("click", function () {
     var p = $("artPaper");
-    download("Bachelor_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+    download("Bakalavr_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
   });
   $("copyBtn").addEventListener("click", function () {
     copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
@@ -501,7 +669,7 @@
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

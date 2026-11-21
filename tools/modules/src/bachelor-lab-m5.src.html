@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2d4a3e">
-<title>M5 Baholar va testlar · Bakalavr dasturi · Kompas Lab</title>
-<meta name="description" content="Bakalavr dasturi M5: attestat baholarini taqdim etish, transkript va tarjima, IELTS/TOEFL/Duolingo strategiyasi, SAT va ACT, test talabi siyosatlari. Natija: test kalendari va baholar jadvali.">
+<title>M5 Insho: yozish va tahrir · Bakalavr dasturi · Kompas Lab</title>
+<meta name="description" content="Bakalavr dasturi M5: shaxsiy bayonot va qiziqish bayoni, hikoya va mavzu, birinchi qoralama, UCAS uch savoli, qoʻshimcha insholar, tahrir va AI chegarasi.">
 <link rel="icon" href="img/3d/compass.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&text=%CA%BB%CA%BC%C3%96%C3%B6%C4%9E%C4%9F%C5%9E%C5%9F%C3%87%C3%A7&display=swap" rel="stylesheet"><script src="js/alifbo.js"></script>
 <style>
 {{CSS}}
-/* Bachelor M1–M16 qoʻshimchalari */
+/* Bakalavr M1–M8 qoʻshimchalari */
 .path.pn{grid-template-columns:repeat(var(--pn),minmax(0,1fr));}
 @media(max-width:760px){.path.pn{grid-template-columns:repeat(4,minmax(0,1fr));}.path.pn .node::after{display:none;}}
 .fld{margin-bottom:12px;}
@@ -46,7 +46,32 @@
   .top,.hero,.map,section:not(#artefakt),footer,.toast,.artifact .row,.noprint{display:none!important;}
   body{background:#fff;} .artifact{border:none;padding:0;} .paper{border:none;padding:0;font-size:11pt;}
 }
-.path.pn{--pn:8;}
+.path.pn{--pn:10;}
+
+/* Bakalavr v2 (2026-11-21): qisqa dars, ⓘ, video joyi, keyingi qadam */
+.mv-i{margin-top:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);font-size:14px}
+.mv-i>summary{cursor:pointer;list-style:none;padding:9px 12px;font-weight:700;color:var(--muted)}
+.mv-i>summary::-webkit-details-marker{display:none}
+.mv-i>summary::before{content:"\24D8";display:inline-block;margin-right:7px;color:var(--accent);font-weight:800}
+.mv-i[open]>summary{border-bottom:1px solid var(--border)}
+.mv-i>div{padding:10px 12px}
+.mv-i .box,.mv-i .tbl{margin:8px 0}
+.mv-fun{display:block;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.mv-take{font-size:16.5px;line-height:1.5}
+.mv-take ul,.mv-i ul{margin:6px 0 0;padding-left:20px}
+.mv-next{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:20px 22px}
+.mv-next h2{margin-top:0}
+.mv-next .mv-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.mv-next .mv-k{background:var(--accent-lit);border-radius:14px;padding:12px 14px;margin:10px 0;font-size:15.5px}
+.mv-next ul.mv-lock{list-style:none;padding:0;margin:10px 0;display:grid;gap:6px}
+.mv-next ul.mv-lock li{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted)}
+.mv-next ul.mv-lock img{width:22px;height:22px}
+.mv-bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden;margin:8px 0 2px}
+.mv-bar i{display:block;height:100%;background:var(--accent)}
+.mv-small{font-size:12.5px;color:var(--muted)}
+[data-kvideo]:empty{display:none}
+.lesson .panel ol,.lesson .panel ul{padding-left:24px}
+
 </style>
 </head>
 <body>
@@ -62,211 +87,349 @@
   <div class="xp-bar"><i id="xpBar"></i></div>
 </header>
 
-<main>
+<main data-kv-lab="bachelor-lab" data-kv-mod="5">
 <div class="wrap">
 
   <div class="hero">
     <div class="hero-g">
       <div>
         <div class="crumb"><a href="index.html">Kompas Lab</a> · <a href="bachelor-lab.html">Bakalavr dasturi</a> · Modul 5</div>
-        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich II · Baholar, yutuqlar va tajriba</span>
-        <h1>Baholar va testlar</h1>
-        <p class="lead">Baholar va testlar arizaning raqamli qismi. Ularni toʻgʻri taqdim etmasangiz, kuchli natija ham noaniq koʻrinadi. Bu modulda baholaringizni universitet talablari bilan solishtirasiz va testlar kalendarini tuzasiz.</p>
-        <div class="facts"><span class="fact"><b>5</b> dars</span><span class="fact">~<b>2</b> hafta</span><span class="fact">Bosqich II</span><span class="fact"><b>250</b> XP</span></div>
+        <span class="badge" style="background:var(--accent-lit);color:var(--accent)">Bosqich III · Insho va stipendiya</span>
+        <h1>Insho: yozish va tahrir</h1>
+        <p class="lead">Bu modulda qaysi universitet qaysi yozma hujjatni soʻrashini aniqlaysiz, hikoya topasiz va birinchi qoralamani yozasiz. Keyin uch bosqichda tahrir qilasiz. Oxirida sizda <strong>yakuniy insho va tahrir qaydi</strong> boʻladi.</p>
+        <div class="facts"><span class="fact"><b>7</b> dars</span><span class="fact">~<b>2–3</b> hafta</span><span class="fact">Bosqich III</span><span class="fact"><b>250</b> XP</span></div>
       </div>
-      <img class="hero-art float" src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy">
+      <img class="hero-art float" src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy">
     </div>
   </div>
 
   <nav class="map" aria-label="Modul xaritasi">
-    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 8 bosqich</span></div>
+    <div class="map-h"><b>Sizning yoʻlingiz</b><span id="mapN">0 / 10 qadam</span></div>
     <div class="path pn">
-      <a class="node" href="#l1" data-node="l1"><span class="dot">5.1</span>Baholar</a><a class="node" href="#l2" data-node="l2"><span class="dot">5.2</span>Transkript</a><a class="node" href="#l3" data-node="l3"><span class="dot">5.3</span>Til testi</a><a class="node" href="#l4" data-node="l4"><span class="dot">5.4</span>SAT/ACT</a><a class="node" href="#l5" data-node="l5"><span class="dot">5.5</span>Siyosat</a><a class="node" href="#kalendar" data-node="tool"><span class="dot">🛠</span>Kalendar</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Kalendar</a>
+      <a class="node" href="#l1" data-node="l1"><span class="dot">5.1</span>Turlar</a><a class="node" href="#l2" data-node="l2"><span class="dot">5.2</span>Mavzu</a><a class="node" href="#l3" data-node="l3"><span class="dot">5.3</span>Qoralama</a><a class="node" href="#l4" data-node="l4"><span class="dot">5.4</span>UCAS</a><a class="node" href="#l5" data-node="l5"><span class="dot">5.5</span>Qoʻshimcha</a><a class="node" href="#l6" data-node="l6"><span class="dot">5.6</span>Tahrir</a><a class="node" href="#l7" data-node="l7"><span class="dot">5.7</span>Yakun</a><a class="node" href="#insho" data-node="tool"><span class="dot">🛠</span>Insholar</a><a class="node" href="#check" data-node="ck"><span class="dot">✅</span>Nazorat</a><a class="node" href="#artefakt" data-node="fin"><span class="dot">✓</span>Insho</a>
     </div>
   </nav>
 
   <section>
     <h2>Modul yakunida sizda</h2>
     <ul class="goal">
-      <li><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span><b>Baholar jadvali:</b> asl shkalada, universitet talablari bilan solishtirilgan</span></li><li><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><span><b>Test kalendari:</b> til testi va SAT/ACT: sana, roʻyxatdan oʻtish, qayta topshirish zaxirasi</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Test siyosati xaritasi:</b> har universitet: talab qilinadi, ixtiyoriy yoki hisobga olinmaydi</span></li>
+      <li><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span><b>Yakuniy asosiy insho:</b> Common App, 250–650 soʻz yoki motivatsion xat</span></li><li><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span><b>UCAS bayonoti:</b> uch savol, jami 4 000 belgigacha (kerak boʻlsa)</span></li><li><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span><b>Tahrir qaydi va AI bayoni:</b> nima oʻzgardi va yordamdan qanday foydalandingiz</span></li>
     </ul>
-    <div class="box warn" style="margin-top:14px">Test talablari, minimal ballar va imtihon narxlari universitet va yilga qarab oʻzgaradi. Bu moduldagi misollar umumiy; har universitet uchun rasmiy sahifani tekshiring (31.10.2026 holatiga).</div>
+    
   </section>
 
   <section id="darslar">
     <h2>Darslar</h2>
-    <p class="sub">Har dars toʻrt qismdan iborat: Diqqat 🔥, Asosiy qism, Xulosa va Topshiriq. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p>
+    <p class="sub">Har dars 4 qism: Diqqat, Asosiy qism, Xulosa, Topshiriq. Har qism 1–3 daqiqa. Javoblaringiz hisobingizda saqlanadi, Kompas Lab jamoasi ularni koʻra oladi.</p><details class="mv-i"><summary>Bu modul nima qilmaydi</summary><div><p>Insho mavzulari, belgi chegaralari va AI qoidalari 31.10.2026 holatiga; Common App va UCAS rasmiy sahifasidan tekshiring. Kompas Lab insho yozib bermaydi.</p><p>Kompas Lab universitet, stipendiya dasturi yoki konsullik oʻrnida qaror qabul qilmaydi va qabul, stipendiya yoki vizani kafolatlamaydi. Insho, xat va hujjatni siz uchun yozmaydi: vositalar faqat sizning matningizni tartibga soladi. Sana va talablarni rasmiy sahifadan oʻzingiz tasdiqlaysiz. Sanasi koʻrsatilgan maʼlumot shu sanadagi holat.</p></div></details>
     <div class="lessons">
 
       <!-- 5.1 -->
       <article class="lesson" id="l1">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 5.1</span><span class="l-t" style="display:block">Attestat baholarini taqdim etish</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">🎯 Mini-test</span><span class="tag xp">+24 XP · test +30 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 5.1</span><span class="l-t" style="display:block">Shaxsiy bayonot va qiziqish bayoni</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Mini-test</span><span class="tag xp">+17 XP · test +30 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Komissiya Oʻzbekiston baholash tizimini bilmasligi mumkin. "4.7" deb yozib qoʻyish yetmaydi: qaysi shkala, qaysi fanlar, qaysi yillar?</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">«Insho», «shaxsiy bayonot» va «motivatsion xat» koʻpincha bir narsa deb oʻylanadi. Har biri boshqa savolga javob beradi. Bu darsda turlarni ajratamiz va hammasiga asos boʻlgan qiziqish bayonini tuzamiz.</div></div>
           <div class="panel">
-<h4>Uch qoida</h4>
-<ol><li><b>Asl shkalada yozing.</b> "4.7 / 5" yoki "86 / 100". Oʻzingiz AQSh GPAʼsiga aylantirmang: universitetlar baholarni oʻz usuli bilan qayta hisoblaydi.</li>
-<li><b>Shkalani tushuntiring.</b> Ariza formasida yoki qoʻshimcha izohda: 5 eng yuqori, 3 oʻtish bahosi.</li>
-<li><b>Fanlarni koʻrsating.</b> Matematika, fizika, informatika kabi sohangizga yaqin fanlar baholari umumiy oʻrtachadan muhimroq boʻlishi mumkin.</li></ol>
-<h4>Maktab hisoboti</h4>
-<p>AQShda maktab oʻz haqida hisobot (<span lang="en">school profile</span>) yuboradi: baholash tizimi, sinfdagi oʻquvchilar soni, fanlar. Oʻzbekiston maktablarida bunday hujjat koʻpincha yoʻq. M8 da uni direktor bilan qanday tayyorlashni koʻrasiz.</p>
-<div class="box warn"><b>"GPA toʻqimang."</b> Internetdagi kalkulyator bilan hisoblangan "3.9 GPA" rasmiy hujjat emas. Shkalasiz yoki tasdiqlanmagan raqam ishonchni pasaytiradi.</div>
+<div data-kvideo="l1"></div>
+<div class="tbl"><table><thead><tr><th>Hujjat</th><th>Asosiy savol</th><th>Qayerda</th></tr></thead><tbody>
+<tr><td>Shaxsiy insho</td><td>Siz qanday odamsiz?</td><td>Common App</td></tr>
+<tr><td>Shaxsiy bayonot</td><td>Nega shu fan va qanday tayyorlangansiz?</td><td>UCAS</td></tr>
+<tr><td>Motivatsion xat</td><td>Nega shu dastur va shu universitet?</td><td>Yevropa va Osiyo portallari, stipendiyalar</td></tr>
+<tr><td>Qoʻshimcha insho</td><td>Universitetning aniq savoli</td><td>AQSh universitetlari</td></tr>
+</tbody></table></div>
+<p><b>Qiziqish bayoni</b> (1 sahifa, faqat oʻzingiz uchun): aniq savol, uning kelib chiqishi, dalil, universitetdagi keyingi qadam.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Shaxsiy bayonot nima</h4><div class="tbl"><table><thead><tr><th>Hujjat</th><th>Asosiy savol</th><th>Qayerda</th></tr></thead><tbody>
+<tr><td>Shaxsiy insho (<i lang="en">personal essay</i>)</td><td>Siz qanday odamsiz?</td><td>Common App asosiy inshosi</td></tr>
+<tr><td>Shaxsiy bayonot (<i lang="en">personal statement</i>)</td><td>Nega shu fan va bunga qanday tayyorlangansiz?</td><td>UCAS</td></tr>
+<tr><td>Motivatsion xat (<i lang="en">motivation letter</i>)</td><td>Nega shu dastur va shu universitet?</td><td>Yevropa va Osiyo portallari, stipendiyalar</td></tr>
+<tr><td>Qoʻshimcha insho (<i lang="en">supplemental essay</i>)</td><td>Universitetning aniq savoli</td><td>AQSh universitetlari</td></tr>
+</tbody></table></div>
+<h4>Motivatsion xat tuzilishi</h4>
+<p>Qulay tuzilma: <b>Oʻzingiz haqingizda → Dalillar → Maqsad → Moslik</b>. Kim siz, buni nima koʻrsatadi, nimaga intilasiz, va nega aynan shu dastur.</p>
+<div class="box info">Bitta matnni hamma platformaga yuborish xato. Har hujjat oʻz savoliga javob berishi kerak, lekin hammasi M3 dagi bitta profilga tayanadi.</div><h4>Qiziqish sohasi bayoni</h4><h4>Kenglikdan aniqlikka</h4>
+<p>Qiziqish sohasi bayoni 1 sahifali ichki hujjat. Bu bayon insho va intervyu uchun xomashyo: bir sahifa, oddiy til.</p>
+<div class="tbl"><table><thead><tr><th>Daraja</th><th>Misol (Kompas tuzgan namuna)</th></tr></thead><tbody>
+<tr><td>Keng soha</td><td>Informatika</td></tr>
+<tr><td>Yoʻnalish</td><td>Sunʼiy intellekt</td></tr>
+<tr><td>Aniq savol</td><td>Kam maʼlumotli tillarda (masalan oʻzbek tilida) nutqni tanish qanday ishlaydi?</td></tr>
+</tbody></table></div>
+<h4>Bayon tuzilmasi (4 qism)</h4>
+<ol><li><b>Savol</b>: sizni qiziqtiradigan aniq savol.</li>
+<li><b>Kelib chiqishi</b>: bu savol qachon va qanday paydo boʻldi (aniq epizod).</li>
+<li><b>Dalil</b>: shu savol ustida nima qildingiz (kitob, loyiha, kurs, tajriba).</li>
+<li><b>Keyingi qadam</b>: universitetda bu savol bilan nima qilmoqchisiz.</li></ol>
+<div class="box warn">16–17 yoshli abituriyentdan ilmiy kashfiyot kutilmaydi; aniq savol va oʻz qoʻlingiz bilan qilingan harakat kutiladi.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/chart.webp" width="160" height="160" alt="" loading="lazy"><p>Baholarni asl shkalada yozing, shkalani tushuntiring va sohangizga yaqin fanlarni koʻrsating. Oʻzboshimchalik bilan GPA hisoblamang.</p></div></div>
-          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="n"><p>“Arizaga 5 ballik bahoni oʻzim 4.0 GPAʼga aylantirib yozishim kerak.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: asl shkalada yozing; universitet oʻzi qayta hisoblaydi.</div></div><div class="qz" data-a="t"><p>“Sohaga yaqin fanlar baholari alohida ahamiyatga ega boʻlishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: muhandislik uchun matematika va fizika, informatika uchun matematika koʻriladi.</div></div><div class="qz" data-a="t"><p>“School profile maktab haqidagi kontekst hujjati.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: AQSh kollejlari baholarni shu kontekstda oʻqiydi.</div></div><div class="qz" data-a="n"><p>“Shkalani tushuntirish shart emas, hamma 5 ballik tizimni biladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: xorijiy xodim bilmasligi mumkin.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><ul><li>Oxirgi 3 yildagi baholaringizni asl shkalada fanlar boʻyicha yozing.</li><li>Sohangizga yaqin 3 fanni belgilang va ularning oʻrtachasini hisoblang.</li></ul></div>
-            <textarea data-save="a1" placeholder="9-sinf: matematika 5, fizika 5 ... ; sohaga yaqin oʻrtacha: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Bitta matnni hamma platformaga yubormang. Har hujjat oʻz savoliga javob beradi, lekin hammasi bitta profilga tayanadi.</div></div></div>
+          <div class="panel"><div class="assign"><b>Mini-test: toʻgʻri yoki notoʻgʻri?</b><div class="quiz" id="quiz"><div class="qz" data-a="t"><p>“UCAS shaxsiy bayonoti asosan fan tanlovi va unga tayyorgarlik haqida.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: 2026 qabulidan uchta savol aynan shu haqda.</div></div><div class="qz" data-a="n"><p>“Common App inshosi va motivatsion xat bir xil matn boʻlishi mumkin.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: ular turli savollarga javob beradi.</div></div><div class="qz" data-a="t"><p>“Motivatsion xat nega shu dastur va universitetni tanlaganingizni tushuntiradi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Toʻgʻri: Oʻzingiz haqingizda → Dalillar → Maqsad → Moslik.</div></div><div class="qz" data-a="n"><p>“Qoʻshimcha insholar faqat Yevropa universitetlarida boʻladi.”</p><div class="row"><button type="button" data-v="t">✓ Toʻgʻri</button><button type="button" data-v="n">✗ Notoʻgʻri</button></div><div class="why">Notoʻgʻri: ular asosan AQSh universitetlarida.</div></div></div><div class="verdict" id="quizRes"></div><div style="margin-top:14px"><b>Yozma hujjatlar xaritasi</b><ul><li>Har universitet qaysi yozma hujjatni soʻrashini yozing.</li><li>Keng soha, yoʻnalish va aniq savol zanjirini yozing.</li></ul></div>
+            <textarea data-save="a1" placeholder="...: Common App insho + 2 qoʻshimcha; ...: UCAS bayonot; ...: motivatsion xat"></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l1">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
       <!-- 5.2 -->
       <article class="lesson" id="l2">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 5.2</span><span class="l-t" style="display:block">Transkript va attestat</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📄 Hujjat</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 5.2</span><span class="l-t" style="display:block">Hikoya va mavzu</span>
+            <span class="l-m"><span class="tag">~10 daqiqa</span><span class="tag">Mavzu tanlovi</span><span class="tag xp">+17 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Bitiruvdan oldin ariza berasiz, demak attestat hali yoʻq. Universitet nima soʻraydi va maktab nima bera oladi, oldindan aniqlang.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Common App ning yetti mavzusidan birini tanlash koʻp vaqt oladi. Komissiya esa mavzuga emas, hikoyaga qaraydi. Bu darsda avval hikoyani, keyin mavzuni topamiz.</div></div>
           <div class="panel">
-<h4>Qaysi hujjat</h4>
-<div class="tbl"><table><thead><tr><th>Hujjat</th><th>Kim beradi</th><th>Qachon kerak</th></tr></thead><tbody>
-<tr><td>Baholar koʻchirmasi (transkript)</td><td>Maktab: oxirgi 3–4 yil fanlar boʻyicha</td><td>Ariza vaqtida</td></tr>
-<tr><td>Oʻqish joyidan maʼlumotnoma</td><td>Maktab</td><td>Ariza vaqtida (kutilayotgan bitiruv sanasi bilan)</td></tr>
-<tr><td>Attestat (asl)</td><td>Maktab, bitiruvda</td><td>Qabuldan keyin yoki shartli qabul shartini bajarishda</td></tr>
-</tbody></table></div>
-<h4>Tarjima va tasdiq</h4>
-<ul><li>Ingliz tiliga tarjima: fan nomlari, baho shkalasi, maktab nomi va ismingiz pasportdagidek.</li>
-<li>Baʼzi universitetlar notarial tarjima, baʼzilari maktab tasdiqlagan nusxa, baʼzilari apostil soʻraydi (M6).</li>
-<li>Koʻp universitetlar ariza vaqtida skanerlangan nusxani qabul qiladi, asl hujjatni qabuldan keyin soʻraydi.</li></ul>
-<h4>Ism va transliteratsiya</h4>
-<p>Pasport, attestat, test sertifikati va ariza formasidagi ism harfma-harf bir xil boʻlsin. Farq boʻlsa (masalan Ulugʻbek va <span lang="en">Ulugbek</span>), tarjimada pasport variantini ishlating va izohda koʻrsating.</p>
-<div class="srcs">Manba: <a href="https://gov.uz/oz/advice/72/document/2620" target="_blank" rel="noopener">gov.uz: rasmiy hujjatlarga apostil qoʻyish</a>; <a href="https://my.gov.uz" target="_blank" rel="noopener">my.gov.uz (Yagona interaktiv davlat xizmatlari portali)</a>; universitetlarning hujjat talablari sahifalari. 31.10.2026 holatiga.</div>
+<div data-kvideo="l2"></div>
+<ul><li>Yetti mavzu varianti, biri «oʻzingiz tanlagan mavzu».</li>
+<li>Hajm: 250–650 soʻz.</li>
+<li>Bitta insho Common App orqali ariza beradigan hamma universitetga boradi.</li></ul>
+<p>Mavzular har yili eʼlon qilinadi: aniq matnni rasmiy sahifadan oʻqing. Koʻp kuchli insho bir necha mavzuga mos keladi.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Asosiy faktlar</h4>
+<ul><li>Etti mavzu varianti; ulardan biri "oʻzingiz tanlagan mavzu".</li><li>Hajm: 250–650 soʻz.</li><li>Bitta insho Common App orqali ariza beradigan hamma universitetga boradi.</li></ul>
+<h4>Mavzular yoʻnalishi (qisqacha)</h4>
+<ol><li>Siz uchun muhim kelib chiqish, kimlik, qiziqish yoki isteʼdod.</li><li>Qiyinchilik, muvaffaqiyatsizlik va undan saboq.</li><li>Eʼtiqod yoki gʻoyani shubha ostiga qoʻygan payt.</li><li>Kimdir siz uchun qilgan va sizni minnatdor qilgan ish.</li><li>Oʻsishga olib kelgan yutuq yoki voqea.</li><li>Vaqtni unutib qoʻyadigan darajada qiziqtiradigan mavzu.</li><li>Oʻzingiz tanlagan mavzu.</li></ol>
+<p>Aniq matnni har yili rasmiy sahifadan oʻqing.</p>
+<h4>Mavzu emas, hikoya</h4>
+<p>Avval hikoyani toping, keyin unga mos mavzuni tanlang. Koʻp kuchli insholar bir nechta mavzuga mos keladi.</p>
+<div class="srcs">Manba: <a href="https://www.commonapp.org/apply/essay-prompts" target="_blank" rel="noopener">Common App: insho mavzulari</a>. 31.10.2026 holatiga.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><p>Ariza vaqtida transkript va maʼlumotnoma, asl attestat odatda qabuldan keyin. Tarjimadagi ism pasport bilan harfma-harf bir xil boʻlsin.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Maktabingizdan qaysi hujjatlarni va qachon olishingiz mumkinligini aniqlang.</li><li>Ismingizning pasportdagi yozilishini va boshqa hujjatlardagi farqlarni yozing.</li></ul>
-            <textarea data-save="a2" placeholder="Transkript: ... gacha. Maʼlumotnoma: ... Ism (pasport): ... Farqlar: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Avval hikoyani toping, keyin unga mos mavzuni tanlang.</div></div></div>
+          <div class="panel"><div class="assign"><b>Ikki mavzu, ikki hikoya</b><ul><li>Joriy yil mavzularini rasmiy sahifadan oʻqing.</li><li>Sizga yaqin 2 mavzuni tanlang va har biriga bitta hikoya gʻoyasini yozing.</li></ul>
+            <textarea data-save="a2" placeholder="Mavzu ...: hikoya gʻoyasi ... Mavzu ...: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l2">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
       <!-- 5.3 -->
       <article class="lesson" id="l3">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 5.3</span><span class="l-t" style="display:block">Ingliz tili testi strategiyasi</span>
-            <span class="l-m"><span class="tag">⏱ 30 daqiqa</span><span class="tag">🗺 Test tanlovi</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 5.3</span><span class="l-t" style="display:block">Birinchi qoralama</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">Insho v1</span><span class="tag xp">+17 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">Uch xil test, har biri boshqa universitetlarda qabul qilinadi. Notoʻgʻri test tanlasangiz, yaxshi natija ham ish bermaydi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Eng yaxshi insho koʻpincha katta voqeadan emas, kichik epizoddan boshlanadi: oshxonadagi suhbat, buzilgan velosiped, ukaga tushuntirilgan masala. Bu darsda epizodni topib, birinchi qoralamani yozamiz.<small class="mv-fun">Birinchi qoralamani hech kim koʻrmaydi, hatto qabul komissiyasi ham. Bemalol yozavering.</small></div></div>
           <div class="panel">
-<div class="tbl"><table><thead><tr><th>Test</th><th>Format</th><th>Eʼtibor bering</th></tr></thead><tbody>
-<tr><td>IELTS Academic</td><td>Markazda yoki kompyuterda; 4 qism</td><td>UK uchun eng keng tarqalgan; UK vizasi uchun UKVI talabi bilan alohida variant kerak boʻlishi mumkin</td></tr>
-<tr><td>TOEFL iBT</td><td>Kompyuterda; uydan topshirish varianti ham bor</td><td>AQShda keng qabul qilinadi</td></tr>
-<tr><td>Duolingo English Test</td><td>Onlayn, uydan</td><td>Koʻp AQSh universitetlari qabul qiladi; UK va Yevropada kamroq. Har universitetda alohida tekshiring</td></tr>
+<div data-kvideo="l3"></div>
+<ol><li><b>Epizod:</b> aniq joy, vaqt va harakat, 2–3 jumla.</li>
+<li><b>Fikr:</b> oʻsha payt nima oʻyladingiz, nima qiyin edi?</li>
+<li><b>Oʻzgarish:</b> keyin nima qildingiz?</li>
+<li><b>Maʼno:</b> bu siz haqingizda nima deydi?</li></ol>
+<div class="tbl"><table><thead><tr><th>Aytish</th><th>Koʻrsatish</th></tr></thead><tbody>
+<tr><td>Men qatʼiyatliman.</td><td>Dasturim 40-marta xato berganida, xatolarni daftarga yozish odatini boshladim.</td></tr>
 </tbody></table></div>
-<h4>Strategiya</h4>
-<ol><li>Saralangan roʻyxatdagi universitetlar qabul qiladigan testlarni jadvalga yozing.</li>
-<li>Hammasiga mos keladigan bitta testni tanlang.</li>
-<li>Har universitetning minimal ballini va qism (masalan yozish) boʻyicha minimalni yozing.</li>
-<li>Birinchi urinishni muddatdan kamida 3–4 oy oldin rejalang: qayta topshirishga vaqt qolsin.</li></ol>
-<div class="box warn">Sertifikatning amal qilish muddati bor (koʻpincha 2 yil). Ariza va viza vaqtida amalda boʻlishini tekshiring.</div>
-<div class="srcs">Manba: <a href="https://ielts.org" target="_blank" rel="noopener">IELTS (rasmiy sayt)</a>; <a href="https://www.ets.org/toefl.html" target="_blank" rel="noopener">TOEFL (ETS)</a>; <a href="https://englishtest.duolingo.com" target="_blank" rel="noopener">Duolingo English Test</a>. 31.10.2026 holatiga.</div>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Epizoddan maʼnoga</h4>
+<ol><li><b>Epizod</b>: aniq joy, vaqt va harakat. 2–3 jumla bilan sahna.</li>
+<li><b>Fikr</b>: oʻsha paytda nima oʻylagansiz, nima qiyin boʻlgan.</li>
+<li><b>Oʻzgarish</b>: undan keyin nima qildingiz yoki qanday oʻylaydigan boʻldingiz.</li>
+<li><b>Maʼno</b>: bu sizning kimligingiz haqida nima deydi va kelajakka qanday bogʻlanadi.</li></ol>
+<h4>"Koʻrsat, aytma"</h4>
+<div class="tbl"><table><thead><tr><th>Aytish</th><th>Koʻrsatish (Kompas tuzgan namuna)</th></tr></thead><tbody>
+<tr><td>Men qiziquvchanman.</td><td>Radioni uchinchi marta ochganimda, onam vintlarni sanab qoʻyadigan boʻldi.</td></tr>
+<tr><td>Men qatʼiyatliman.</td><td>Dasturim 40-marta xato berganida, xatolarni daftarga yozishni boshladim.</td></tr>
+</tbody></table></div>
+<h4>Birinchi qoralama qoidasi</h4>
+<p>Birinchi qoralama yaxshi boʻlishi shart emas. 650 soʻzdan koʻp yozing, keyin qisqartirasiz. Bir oʻtirishda yozing, tahrirni keyinga qoldiring.</p>
+<div class="box warn">Boshqalarning inshosini oʻqish foydali, lekin undan jumla, tuzilma yoki hikoya olmang. Platformalar oʻxshashlikni tekshiradi (M5).</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy"><p>Roʻyxatingizdagi hamma universitet qabul qiladigan bitta testni tanlang, qismlar boʻyicha minimalni yozing va qayta topshirishga 3–4 oy zaxira qoʻying.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Roʻyxatingizdagi universitetlar qabul qiladigan testlar va minimal ballarni yozing.</li><li>Tanlagan testingiz va birinchi urinish sanasini belgilang.</li></ul>
-            <textarea data-save="a3" placeholder="... universiteti: IELTS 6.5 (har qism 6.0), TOEFL ..., DET ... Tanlov: ... ; sana: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Birinchi qoralamani bir oʻtirishda, tahrirsiz yozing. 650 soʻzdan koʻp chiqsa, keyin qisqartirasiz.</div></div></div>
+          <div class="panel"><div class="assign"><b>5 epizod va qoralama</b><ul><li>Hayotingizdan 5 ta kichik epizodni bir jumladan yozing.</li><li>Eng kuchlisini tanlab, pastdagi vositada birinchi qoralamani yozing.</li></ul>
+            <textarea data-save="a3" placeholder="1) ... 2) ... 3) ... 4) ... 5) ... Tanlov: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l3">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
       <!-- 5.4 -->
       <article class="lesson" id="l4">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 5.4</span><span class="l-t" style="display:block">SAT va ACT</span>
-            <span class="l-m"><span class="tag">⏱ 25 daqiqa</span><span class="tag">📝 Reja</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 5.4</span><span class="l-t" style="display:block">UCAS: uch savol</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Uch savol</span><span class="tag xp">+17 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">SAT yoki ACT faqat AQSh (va baʼzi boshqa) universitetlari uchun kerak. Hamma uchun shart emas, lekin kerak boʻlsa, tayyorgarlik oylab davom etadi.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">2026 qabulidan UCAS bayonoti uchta savolga javob. Bitta bayonot Buyuk Britaniyadagi hamma tanlovingizga boradi. Bu darsda uch savolga dalil yigʻamiz.</div></div>
           <div class="panel">
-<h4>Kimga kerak</h4>
-<ul><li>AQSh universitetlariga ariza beradiganlar (test siyosatiga qarab, L5).</li>
-<li>Baʼzi boshqa mamlakatlardagi universitetlar ham SAT natijasini qabul qiladi yoki qoʻshimcha dalil sifatida koʻradi.</li>
-<li>UK, Germaniya, Italiya va koʻp Osiyo universitetlari uchun odatda kerak emas.</li></ul>
-<h4>SAT va ACT farqi</h4>
-<p>SAT hozir raqamli (Digital SAT): matematika va oʻqish-yozish boʻlimlari. ACT ingliz tili, matematika, oʻqish va ixtiyoriy fan boʻlimlarini oʻz ichiga oladi. Ikkalasi ham universitetlarda teng qabul qilinadi; sizga qaysi format qulayligini sinov testi bilan aniqlang.</p>
-<h4>Tayyorgarlik vaqti</h4>
-<p>Odatda 2–4 oy muntazam tayyorgarlik. College Boardʼning bepul rasmiy sinov testlari (Bluebook ilovasi) bor.</p>
-<h4>Topshirish joyi</h4>
-<p>Oʻzbekistonda test markazlari va sanalar soni cheklangan; joylar tez toʻlishi mumkin. Roʻyxatdan oʻtishni imkon qadar erta qiling.</p>
-<div class="srcs">Manba: <a href="https://satsuite.collegeboard.org/sat" target="_blank" rel="noopener">SAT (College Board)</a>; <a href="https://www.act.org" target="_blank" rel="noopener">ACT (rasmiy sayt)</a>. 31.10.2026 holatiga.</div>
+<div data-kvideo="l4"></div>
+<div class="tbl"><table><thead><tr><th>№</th><th>Savol</th><th>Nima yozasiz</th></tr></thead><tbody>
+<tr><td>1</td><td>Nega shu kurs yoki fan?</td><td>Qiziqish va uning kelib chiqishi</td></tr>
+<tr><td>2</td><td>Oʻqishingiz sizni qanday tayyorladi?</td><td>Fanlar, loyihalar, olimpiadalar</td></tr>
+<tr><td>3</td><td>Taʼlimdan tashqari nima qildingiz?</td><td>Faoliyat, ish, mustaqil oʻqish (M3)</td></tr>
+</tbody></table></div>
+<p>Har javob kamida 350 belgi, jami 4 000 belgigacha. Tanlovlaringiz bitta fan atrofida boʻlsin.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Uch savol</h4>
+<div class="tbl"><table><thead><tr><th>№</th><th>Savol (mazmuni)</th><th>Nima yozasiz</th></tr></thead><tbody>
+<tr><td>1</td><td>Nega shu kurs yoki fanni oʻqimoqchisiz?</td><td>Qiziqishingiz va uning kelib chiqishi (M3)</td></tr>
+<tr><td>2</td><td>Malakalaringiz va oʻqishingiz sizni bu kursga qanday tayyorladi?</td><td>Maktab fanlari, loyihalar, olimpiadalar</td></tr>
+<tr><td>3</td><td>Taʼlimdan tashqari yana nima qildingiz va bu tajriba nega foydali?</td><td>Faoliyatlar, ish, mustaqil oʻqish (M3)</td></tr>
+</tbody></table></div>
+<h4>Chegaralar</h4>
+<ul><li>Har javob kamida 350 belgi.</li><li>Jami 4 000 belgigacha (boʻsh joylar bilan).</li><li>Bitta bayonot barcha (odatda 5 tagacha) tanlovga boradi: shuning uchun tanlovlaringiz bir fan atrofida boʻlsin.</li></ul>
+<p>Uslub: akademik va aniq. Fanga qiziqish dalil bilan: oʻqigan kitob, qilgan tajriba, yechgan masala va undan nima oʻrgandingiz.</p>
+<div class="srcs">Manba: <a href="https://www.ucas.com/applying/applying-to-university/writing-personal-statement/personal-statement-dos-and-donts" target="_blank" rel="noopener">UCAS: shaxsiy bayonot, 2026 qabulidan</a>; <a href="https://www.timeshighereducation.com/counsellor/admissions-processes-and-funding/guide-2026-changes-ucas-personal-statement" target="_blank" rel="noopener">Times Higher Education: 2026 UCAS bayonoti oʻzgarishlari</a>. 31.10.2026 holatiga.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/bulb.webp" width="160" height="160" alt="" loading="lazy"><p>SAT yoki ACT asosan AQSh uchun. Sinov testi bilan formatni tanlang, 2–4 oy tayyorlaning va markazda joyni erta band qiling.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Roʻyxatingizda SAT yoki ACT talab qiladigan universitetlar bormi, aniqlang.</li><li>Kerak boʻlsa, bitta rasmiy sinov testini topshiring va natijani yozing.</li></ul>
-            <textarea data-save="a4" placeholder="SAT kerak: ... Sinov testi natijasi: ... Maqsad ball: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/scroll.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take"><b>UCAS</b> bayonotida qiziqishni dalil bilan koʻrsating: oʻqigan kitob, qilgan tajriba, yechgan masala va undan nima oʻrgandingiz.</div></div></div>
+          <div class="panel"><div class="assign"><b>Uch savolga dalil</b><ul><li>Har savolga 3 tadan dalil yozing.</li><li>Vositada uch javobning qoralamasini yozing. UK ga ariza bermasangiz, motivatsion xat rejasini yozing.</li></ul>
+            <textarea data-save="a4" placeholder="1-savol dalillari: ... 2-savol: ... 3-savol: ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l4">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
       <!-- 5.5 -->
       <article class="lesson" id="l5">
         <button class="l-head" type="button" aria-expanded="false">
-          <span class="l-ic"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
-          <span><span class="l-n">Dars 5.5</span><span class="l-t" style="display:block">Test talabi siyosatlari</span>
-            <span class="l-m"><span class="tag">⏱ 20 daqiqa</span><span class="tag">⚖️ Qaror</span><span class="tag xp">+24 XP</span></span></span>
+          <span class="l-ic"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 5.5</span><span class="l-t" style="display:block">Qoʻshimcha insholar: «Nega aynan biz?»</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Universitet tadqiqoti</span><span class="tag xp">+17 XP</span></span></span>
           <span class="chev">▾</span>
         </button>
         <div class="l-body">
-          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat 🔥<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
-          <div class="panel"><div class="hook">"Test ixtiyoriy" degani "test muhim emas" degani emas. Ballni yuborish yoki yubormaslik strategik qaror.</div></div>
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">«Nega aynan bizning universitet?» savoliga «reytingi yuqori» deb javob berish eng zaif yoʻl. Bu darsda universitetni oʻrganganingizni koʻrsatadigan faktlarni yigʻamiz.</div></div>
           <div class="panel">
-<div class="tbl"><table><thead><tr><th>Siyosat</th><th>Maʼnosi</th><th>Nima qilish</th></tr></thead><tbody>
-<tr><td>Talab qilinadi (<span lang="en">test-required</span>)</td><td>Ballsiz ariza koʻrib chiqilmaydi</td><td>Albatta topshiring</td></tr>
-<tr><td>Ixtiyoriy (<span lang="en">test-optional</span>)</td><td>Ball yubormasangiz ham koʻriladi</td><td>Ball universitetda qabul qilinganlar oraligʻining oʻrtasi yoki yuqorisida boʻlsa, yuboring</td></tr>
-<tr><td>Hisobga olinmaydi (<span lang="en">test-blind</span>)</td><td>Ball yuborsangiz ham koʻrilmaydi</td><td>Vaqtni boshqa qismga sarflang</td></tr>
+<div data-kvideo="l5"></div>
+<div class="tbl"><table><thead><tr><th>Manba</th><th>Nima topasiz</th></tr></thead><tbody>
+<tr><td>Oʻquv reja</td><td>Aniq fan nomlari va ular sizga nega kerak</td></tr>
+<tr><td>Laboratoriya sahifalari</td><td>Bakalavrlar qatnasha oladigan loyihalar</td></tr>
+<tr><td>Talabalar tashkilotlari</td><td>Siz davom ettiradigan faoliyat</td></tr>
 </tbody></table></div>
-<p>Baʼzi tanlovli universitetlar soʻnggi yillarda test talabini qayta joriy qildi. Xalqaro abituriyentlar uchun alohida qoida boʻlishi ham mumkin. Shuning uchun siyosatni har yili universitet sahifasidan tekshiring.</p>
-<h4>Ballni solishtirish</h4>
-<p>Universitetning Common Data Setʼidagi C9 boʻlimida qabul qilinganlarning 25- va 75-persentil ballari bor. Ballingiz 25-persentildan past boʻlsa, ixtiyoriy siyosatda yubormaslik haqida oʻylang.</p>
-<div class="srcs">Manba: <a href="https://commondataset.org" target="_blank" rel="noopener">Common Data Set loyihasi</a>; universitetlarning rasmiy qabul sahifalari. 31.10.2026 holatiga.</div>
+<p><b>Tekshiruv:</b> javobdagi universitet nomini boshqasiga almashtiring. Matn baribir toʻgʻri boʻlsa, u juda umumiy.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Ikki asosiy savol</h4>
+<ul><li><b>"Nega aynan biz?"</b> (<i lang="en">Why us?</i>)</li><li><b>"Nega bu mutaxassislik?"</b> (<i lang="en">Why this major?</i>)</li></ul>
+<h4>Kuchli javob uchun manbalar</h4>
+<div class="tbl"><table><thead><tr><th>Manba</th><th>Nima topasiz</th></tr></thead><tbody>
+<tr><td>Oʻquv rejasi</td><td>Aniq fan nomlari va ular sizga nega kerak</td></tr>
+<tr><td>Laboratoriya va tadqiqot sahifalari</td><td>Bakalavrlar qatnasha oladigan loyihalar</td></tr>
+<tr><td>Talabalar tashkilotlari</td><td>Siz qoʻshiladigan yoki davom ettiradigan faoliyat</td></tr>
+<tr><td>Universitet oʻquv modeli</td><td>Masalan, birinchi kurs seminarlari, amaliyot dasturi</td></tr>
+</tbody></table></div>
+<h4>Tekshiruv</h4>
+<p>Javobingizdagi universitet nomini boshqa universitet nomi bilan almashtiring. Agar matn baribir toʻgʻri boʻlsa, u juda umumiy.</p>
+<div class="box warn">Universitet sahifasidan matnni koʻchirmang. Faktni oʻz soʻzingiz bilan va oʻzingizga bogʻlab yozing.</div></div></details>
           </div>
-          <div class="panel"><div class="take"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><p>Siyosat uch xil: talab qilinadi, ixtiyoriy, hisobga olinmaydi. Ixtiyoriyda ballingizni CDSʼdagi oraliq bilan solishtirib yuborish yoki yubormaslikni hal qiling.</p></div></div>
-          <div class="panel"><div class="assign"><b>Topshiriq</b><ul><li>Har universitetingizning test siyosatini rasmiy sahifadan yozing.</li><li>Ixtiyoriy siyosatdagi universitetlar uchun ballni yuborish qarorini asoslang.</li></ul>
-            <textarea data-save="a5" placeholder="... — talab qilinadi; ... — ixtiyoriy, CDS 25–75: ...–..., qaror: ..."></textarea></div></div>
-          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +24 XP</button></div>
+          <div class="panel"><div class="take"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Har faktni oʻz soʻzingiz bilan va oʻzingizga bogʻlab yozing. Universitet sahifasidan matn koʻchirmang.</div></div></div>
+          <div class="panel"><div class="assign"><b>«Nega biz?» uchun 3 fakt</b><ul><li>Qoʻshimcha insho savollarini yozing: universitet, savol, soʻz chegarasi.</li><li>Bitta «Nega biz?» uchun 3 aniq fakt va ularning sizga bogʻliqligini yozing.</li></ul>
+            <textarea data-save="a5" placeholder="... universiteti: "..." (250 soʻz). Faktlar: 1) ...: chunki men ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l5">Darsni yakunlash · +17 XP</button></div>
+        </div>
+      </article>
+      <!-- 5.6 -->
+      <article class="lesson" id="l6">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 5.6</span><span class="l-t" style="display:block">Tahrir: mazmun, tuzilma, til</span>
+            <span class="l-m"><span class="tag">~12 daqiqa</span><span class="tag">Tahrir</span><span class="tag xp">+17 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Koʻp oʻquvchi tahrirni vergul va imlodan boshlaydi. Keyin butun paragraf oʻchirilsa, oʻsha mehnat behuda ketadi. Bu darsda tahrirni yirikdan maydaga qilamiz.</div></div>
+          <div class="panel">
+<div data-kvideo="l6"></div>
+<div class="tbl"><table><thead><tr><th>Bosqich</th><th>Savol</th></tr></thead><tbody>
+<tr><td>1. Mazmun</td><td>Inshoni bir jumlada ayta olasizmi?</td></tr>
+<tr><td>2. Tuzilma</td><td>Har paragraf bitta vazifa bajaradimi?</td></tr>
+<tr><td>3. Til</td><td>Ortiqcha soʻz, klishe, xato bormi?</td></tr>
+</tbody></table></div>
+<p>Klishe bilan boshlamang («Bolaligimdan …»), oʻzingizni maqtamang, mavhum vaʼda bermang. «Juda», «aslida», «har doim» soʻzlarini olib koʻrib, maʼno oʻzgarmasa, olib tashlang.</p>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Uch bosqichli tahrir</h4><div class="tbl"><table><thead><tr><th>Bosqich</th><th>Savol</th><th>Usul</th></tr></thead><tbody>
+<tr><td><b>1. Mazmun</b></td><td>Insho siz haqingizda nima deydi? Bu M3 profilingizga mosmi?</td><td>Inshoni bir jumlada aytib bering. Ayta olmasangiz, mazmun aniq emas</td></tr>
+<tr><td><b>2. Tuzilma</b></td><td>Epizod → fikr → oʻzgarish → maʼno ketma-ketligi bormi? Har paragraf bitta vazifa bajaradimi?</td><td>Har paragraf yoniga uning vazifasini 3 soʻzda yozing</td></tr>
+<tr><td><b>3. Til</b></td><td>Jumlalar aniqmi? Ortiqcha soʻz, xato bormi?</td><td>Ovoz chiqarib oʻqish; imlo tekshiruvi</td></tr>
+</tbody></table></div>
+<p>Har bosqich alohida oʻtishda bajariladi. Bir vaqtda hammasini tuzatishga urinmang.</p>
+<h4>Versiyalarni saqlang</h4>
+<p>Har yirik oʻzgarishdan keyin yangi versiya: v1, v2, v3. Fayl nomida sana. Tahrir qaydiga nima oʻzgarganini 1–2 jumlada yozing. Bu sizni ham, oʻqituvchini ham yoʻnaltiradi va halollikni koʻrsatadi.</p>
+<div class="box info">Mazmun bosqichida insho butunlay oʻzgarishi mumkin. Bu normal: koʻp kuchli insholar ikkinchi yoki uchinchi hikoyadan chiqadi.</div><h4>Klishelar va ortiqcha soʻzlar</h4><h4>Keng tarqalgan klishelar</h4>
+<ul><li>"Bolaligimdan ...", "Men har doim ..." bilan boshlash.</li><li>Lugʻatdan taʼrif: "Vebsterning lugʻatiga koʻra ..."</li><li>Mashhur iqtibos bilan boshlash.</li><li>Oʻz-oʻzini maqtash: "Men juda mehnatkash va iqtidorli oʻquvchiman."</li><li>Mavhum iboralar: "dunyoni oʻzgartirmoqchiman", "insoniyatga foyda keltirmoqchiman".</li></ul>
+<h4>Ortiqcha soʻzlar</h4>
+<div class="tbl"><table><thead><tr><th>Ortiqcha</th><th>Aniq (Kompas tuzgan namuna)</th></tr></thead><tbody>
+<tr><td>Men juda ham katta qiziqish bilan shuni taʼkidlashni istardimki ...</td><td>(olib tashlang, toʻgʻri fikrdan boshlang)</td></tr>
+<tr><td>Bu tajriba men uchun juda muhim boʻldi.</td><td>Shundan keyin har hafta ... qila boshladim.</td></tr>
+</tbody></table></div>
+<h4>Usul</h4>
+<p>"juda", "haqiqatan", "aslida", "har doim" soʻzlarini qidiring va har birini olib tashlab koʻring. Maʼno oʻzgarmasa, olib tashlang.</p></div></details>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">Har bosqichni alohida oʻtishda bajaring va har yirik oʻzgarishdan keyin yangi versiyani saqlang.</div></div></div>
+          <div class="panel"><div class="assign"><b>Uch bosqichli tahrir</b><ul><li>Inshongizni bir jumlada aytib bering va har paragraf vazifasini 3 soʻzda yozing.</li><li>3 ta klishe yoki ortiqcha jumlani topib, aniq harakat bilan qayta yozing.</li></ul>
+            <textarea data-save="a6" placeholder="Insho bir jumlada: ... Paragraflar: 1) sahna, 2) ..., 3) ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l6">Darsni yakunlash · +17 XP</button></div>
+        </div>
+      </article>
+      <!-- 5.7 -->
+      <article class="lesson" id="l7">
+        <button class="l-head" type="button" aria-expanded="false">
+          <span class="l-ic"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><span class="ok">✓</span></span>
+          <span><span class="l-n">Dars 5.7</span><span class="l-t" style="display:block">Fikr olish, AI chegarasi va yakuniy versiya</span>
+            <span class="l-m"><span class="tag">~15 daqiqa</span><span class="tag">Fikr olish</span><span class="tag xp">+17 XP</span></span></span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="l-body">
+          <div class="tabs" role="tablist"><button class="tab" role="tab">Diqqat<i class="seen"></i></button><button class="tab" role="tab">Asosiy qism<i class="seen"></i></button><button class="tab" role="tab">Xulosa<i class="seen"></i></button><button class="tab" role="tab">Topshiriq<i class="seen"></i></button></div>
+          <div class="panel"><div class="hook">Siz inshongizni juda yaxshi bilasiz, shuning uchun undagi boʻshliqni koʻrmaysiz. AI esa bir necha soniyada «chiroyli» matn yozadi. Bu darsda fikr olish, AI chegarasi va platformaga joylashni hal qilamiz.</div></div>
+          <div class="panel">
+<div data-kvideo="l7"></div>
+<ul><li><b>Fikr olish:</b> 1–2 kishiga aniq savol bilan: qaysi 3 narsani eslab qoldingiz, qayerda zerikdingiz?</li>
+<li><b>AI:</b> Common App AI yaratgan matnni oʻz ishi sifatida topshirishni firibgarlik deydi. UCAS bayonotlarni oʻxshashlikka tekshiradi.</li>
+<li><b>Joylash:</b> matnni avval oddiy matn muharririga koʻchiring, platforma hisoblagichi bilan tekshiring, boshqa universitet nomi qolmaganini koʻring.</li></ul>
+<details class="mv-i"><summary>Batafsil</summary><div><h4>Oʻzaro tahrir</h4><h4>Kimga koʻrsatish</h4>
+<ul><li><b>1–2 kishi yetarli</b>: masalan ingliz tili oʻqituvchisi va sizni yaxshi biladigan doʻst.</li><li>Koʻp odam koʻp qarama-qarshi fikr beradi va inshoingiz oʻz ovozini yoʻqotadi.</li><li>Ota-onalar mazmun boʻyicha foydali, lekin ular koʻpincha klishelarni yoqtiradi.</li></ul>
+<h4>Qanday soʻrash</h4>
+<p>"Qanday?" deb emas, aniq savollar bilan:</p>
+<ol><li>Oʻqib boʻlgach, men haqimda qaysi 3 narsani eslab qoldingiz?</li><li>Qaysi joyda zerikdingiz yoki chalkashdingiz?</li><li>Qaysi jumla menga oʻxshamaydi?</li></ol>
+<h4>Qaysi fikrni qabul qilish</h4>
+<ul><li>Ikki odam bir joyni belgilasa, oʻsha joyda muammo bor.</li><li>Ular qayerda qiynalganini aytsin, qanday tuzatishni oʻzingiz hal qilasiz.</li><li>Kimdir jumlangizni qayta yozib bersa, uni koʻchirmang: bu sizning matningiz boʻlishi kerak.</li></ul>
+<div class="box warn">Pullik "insho yozib beramiz" xizmatlari va matnni oʻzi qayta yozadigan muharrirlar arizangizni xavf ostiga qoʻyadi. Oʻzaro tahrirdan fikr olasiz, matnni oʻzingiz yozasiz.</div><h4>AI davrida insho</h4><h4>Platforma qoidalari</h4>
+<ul><li><b>Common App</b>: firibgarlik siyosati AI platformasi yaratgan mazmunni oʻz ishi sifatida topshirishni firibgarlik qatoriga kiritadi. Arizani imzolaganingizda matn oʻzingizniki ekanini tasdiqlaysiz.</li>
+<li><b>UCAS</b>: AI dan gʻoya toʻplash, tuzilma taklifi va oʻqilishni tekshirish uchun foydalanish mumkin. Bayonotning hammasini yoki katta qismini AI ga yozdirib, oʻziniki sifatida topshirish universitetlar tomonidan koʻchirish (<i lang="en">cheating</i>) deb hisoblanadi. Siz bayonot boshqa manbadan, jumladan AI dan koʻchirilmaganini tasdiqlaysiz. UCAS tekshiruv jamoasi bayonotlar orasidagi oʻxshashlikni tekshiradi; oʻxshashlik topilsa universitetlarga xabar berilishi, taklif berilmasligi yoki qaytarib olinishi mumkin.</li>
+<li><b>Universitetlar</b>: koʻpchiligi oʻz qoidasini eʼlon qiladi. Ariza beradigan har universitet sahifasini tekshiring.</li></ul>
+<h4>Chegara</h4>
+<div class="tbl"><table><thead><tr><th>Odatda maqbul</th><th>Maqbul emas</th></tr></thead><tbody>
+<tr><td>Gʻoyalar roʻyxatini tuzish uchun savol-javob</td><td>Insho yoki uning qismini yozdirish</td></tr>
+<tr><td>Imlo va grammatika tekshiruvi (matnni qayta yozmasdan)</td><td>"Yaxshiroq qilib qayta yoz" deb butun paragrafni almashtirish</td></tr>
+<tr><td>"Bu paragraf nima demoqchi?" deb tushunarlilikni tekshirish</td><td>AI yozgan matnni oʻz soʻzingiz bilan qayta yozish (u baribir sizning fikringiz emas)</td></tr>
+</tbody></table></div>
+<p>Kompas Lab qoidasi: matnni siz yozasiz; AI va odamlar faqat savol beradi va xatoni koʻrsatadi.</p>
+<div class="srcs">Manba: <a href="https://www.commonapp.org/fraud-policy/" target="_blank" rel="noopener">Common App: firibgarlik siyosati (Fraud Policy)</a>; <a href="https://www.ucas.com/applying/applying-to-university/writing-your-personal-statement/a-guide-to-using-ai-and-chatgpt-with-your-personal-statement" target="_blank" rel="noopener">UCAS: shaxsiy bayonotda AI va ChatGPT dan foydalanish</a>; <a href="https://www.ucas.com/sites/default/files/similarity-detection-applicant-guide.pdf" target="_blank" rel="noopener">UCAS: oʻxshashlikni aniqlash xizmati, abituriyent uchun qoʻllanma</a>. 31.10.2026 holatiga.</div><h4>Yakuniy versiya</h4><h4>Chegara</h4>
+<ul><li>Common App: soʻz soni platforma hisoblagichi boʻyicha; matnni joylab, hisoblagichga qarang.</li><li>UCAS: belgilar boʻsh joylar bilan; satr oraligʻi va maxsus belgilar ham hisoblanishi mumkin.</li><li>Portallar: baʼzilari PDF fayl soʻraydi, baʼzilari matn maydoni.</li></ul>
+<h4>Fayl va format</h4>
+<ul><li>Matnni avval oddiy matn muharririga koʻchirib, keyin platformaga joylang: yashirin formatlash yoʻqoladi.</li><li>Qoʻshtirnoq, tire va apostrof platformada toʻgʻri koʻrinishini tekshiring.</li><li>PDF soʻralsa: fayl nomi "Familiya_Ism_Universitet_MotivationLetter.pdf" kabi; hajm chegarasini tekshiring.</li></ul>
+<h4>Oxirgi tekshiruv</h4>
+<ol><li>Universitet nomi toʻgʻrimi (boshqa universitet nomi qolib ketmaganmi)?</li><li>Ovoz chiqarib oxirgi marta oʻqing.</li><li>Koʻrib chiqish (<i lang="en">preview</i>) sahifasini PDF qilib saqlang.</li></ol>
+<div class="srcs">Manba: <a href="https://www.commonapp.org" target="_blank" rel="noopener">Common App (rasmiy sayt)</a>; <a href="https://www.ucas.com/applying/applying-to-university/writing-personal-statement/personal-statement-dos-and-donts" target="_blank" rel="noopener">UCAS: shaxsiy bayonot, 2026 qabulidan</a>. 31.10.2026 holatiga.</div></div></details>
+          </div>
+          <div class="panel"><div class="take"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy"><div class="mv-take">AI dan savol va tekshiruv uchun foydalanishingiz mumkin, matnni esa oʻzingiz yozasiz. Koʻrib chiqish sahifasini PDF qilib saqlang.</div></div></div>
+          <div class="panel"><div class="assign"><b>Yakuniy versiya</b><ul><li>2 kishiga uchta aniq savol yuboring va qaysi fikrni qabul qilganingizni yozing.</li><li>Oʻzingizning AI qoidangizni 3 bandda yozing va yakuniy matnni joylab, soʻz sonini yozing.</li></ul>
+            <textarea data-save="a7" placeholder="Oʻquvchi 1: ... fikri: ... qabul qildim/qilmadim, chunki ..."></textarea></div></div>
+          <div class="l-foot"><span class="hint" data-hint></span><button class="btn btn-p" type="button" data-complete="l7">Darsni yakunlash · +17 XP</button></div>
         </div>
       </article>
 
     </div>
   </section>
 
-  <section id="kalendar">
-    <h2>Test kalendari va baholar jadvali</h2>
-    <p class="sub">Baholaringiz va testlar rejasini universitet talablari bilan solishtiring.</p>
+  <section id="insho">
+    <h2>Insholar: qoralama va yakuniy matn</h2>
+    <p class="sub">Qoralamadan yakuniy versiyagacha bitta joyda. Har versiyani saqlang.</p>
     <div class="tool">
-      <div class="tool-h"><img src="img/3d/calendar.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Test kalendari</h3><span>5 maydon · +30 XP</span></div></div>
-      
-      <div class="fld"><label for="f_baho">Baholar jadvali <small>asl shkalada, sohaga yaqin fanlar</small></label><textarea id="f_baho" data-save="baho" placeholder="Umumiy: 4.8/5; matematika 5, fizika 5, informatika 5 ..."></textarea></div><div class="fld"><label for="f_talab">Universitetlar talablari <small>universitet · til minimal · SAT siyosati</small></label><textarea id="f_talab" data-save="talab" placeholder="... · IELTS 6.5 · test-optional ..."></textarea></div><div class="fld"><label for="f_tiltest">Til testi rejasi <small>test, 1-urinish sanasi, zaxira sana</small></label><input id="f_tiltest" type="text" data-save="tiltest" placeholder="IELTS, ... ; zaxira ..."></div><div class="fld"><label for="f_sat">SAT/ACT rejasi (kerak boʻlsa)</label><input id="f_sat" type="text" data-save="sat" placeholder="Digital SAT, ... ; sinov testi ..."></div><div class="fld"><label for="f_hujjat">Transkript va tarjima rejasi</label><textarea id="f_hujjat" data-save="hujjat" placeholder="Transkript: ... ; tarjima: ... ; ism: ..."></textarea></div>
+      <div class="tool-h"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy"><div><h3>Insho ish varagʻi</h3><span>9 maydon · +30 XP</span></div></div>
+      <div class="box info" style="margin-bottom:12px">UCAS belgilarni boʻsh joylar bilan sanaydi. Pastdagi hisoblagich soʻzni koʻrsatadi; belgilar soni pastda alohida chiqadi.</div><div id="ucasOut" class="out" style="white-space:normal">UCAS javoblari: 0 belgi</div>
+      <div class="fld"><label for="f_ca">Common App asosiy inshosi v1 <small>250–650 soʻz</small></label><textarea id="f_ca" data-save="ca" data-wc="250-650" placeholder="..."></textarea><div class="meterw" data-meter="ca"></div></div><div class="fld"><label for="f_uq1">UCAS 1-savol: nega shu fan? <small>kamida 350 belgi</small></label><textarea id="f_uq1" data-save="uq1" placeholder="..."></textarea></div><div class="fld"><label for="f_uq2">UCAS 2-savol: oʻqishim qanday tayyorladi? <small>kamida 350 belgi</small></label><textarea id="f_uq2" data-save="uq2" placeholder="..."></textarea></div><div class="fld"><label for="f_uq3">UCAS 3-savol: taʼlimdan tashqari tayyorgarlik <small>kamida 350 belgi</small></label><textarea id="f_uq3" data-save="uq3" placeholder="..."></textarea></div><div class="fld"><label for="f_qosh">Qoʻshimcha insholar rejasi <small>universitet · savol · chegara · manbalar</small></label><textarea id="f_qosh" data-save="qosh" placeholder="..."></textarea></div><div class="fld"><label for="f_yakun">Yakuniy asosiy insho (yoki motivatsion xat)</label><textarea id="f_yakun" data-save="yakun" data-wc="250-650" placeholder="..."></textarea><div class="meterw" data-meter="yakun"></div></div><div class="fld"><label for="f_versiya">Versiyalar qaydi <small>v1, v2, v3: sana va nima oʻzgardi</small></label><textarea id="f_versiya" data-save="versiya" placeholder="v1 (...): ... v2 (...): ..."></textarea></div><div class="fld"><label for="f_ai">AI va yordamdan foydalanish bayoni <small>halol yozing</small></label><textarea id="f_ai" data-save="ai" placeholder="AI dan faqat ... uchun foydalandim; matnni oʻzim yozdim."></textarea></div><div class="fld"><label for="f_joylash">Platformaga joylash <small>platforma · soʻz/belgi soni · sana</small></label><input id="f_joylash" type="text" data-save="joylash" placeholder="Common App · 612 soʻz · ..."></div>
       <div id="toolOut" class="out" hidden></div>
-      <button class="btn btn-p" type="button" id="toolBtn" data-min="4" style="margin-top:14px">Kalendarni saqlash · +30 XP</button>
+      <button class="btn btn-p" type="button" id="toolBtn" data-min="2" style="margin-top:14px">Qoralamani saqlash · +30 XP</button>
     </div>
   </section>
 
   <section id="check">
-    <h2>Baholar va testlar nazorati</h2>
-    <p class="sub">Topshirishdan oldin tekshiring.</p>
+    <h2>Insho nazorati</h2>
+    <p class="sub">Platformaga joylashdan oldin tekshiring.</p>
     <div class="tool">
-      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>8 bandlik nazorat</h3><span>8 band · +30 XP</span></div></div>
-      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Baholar asl shkalada, shkala izohi bilan yozilgan.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Oʻzboshimchalik bilan hisoblangan GPA ishlatilmagan.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Har universitet qabul qiladigan til testlari tekshirilgan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Til testi uchun qayta topshirish zaxirasi bor.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>SAT/ACT kerak yoki kerak emasligi har universitet uchun aniq.</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>Test siyosati joriy yil sahifasidan olingan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>Hujjatlardagi ism pasport bilan bir xil.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Sertifikatlar ariza va viza vaqtida amalda boʻladi.</span></label></div>
+      <div class="tool-h"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy"><div><h3>9 bandlik nazorat</h3><span>9 band · +30 XP</span></div></div>
+      <div class="cklist"><label class="ck" data-ck="c1"><input type="checkbox"><span>Har universitet qaysi yozma hujjatni soʻrashi aniq.</span></label><label class="ck" data-ck="c2"><input type="checkbox"><span>Insho aniq epizoddan boshlanadi, klishe bilan boshlanmaydi.</span></label><label class="ck" data-ck="c3"><input type="checkbox"><span>Xususiyatlar voqea orqali koʻrsatilgan.</span></label><label class="ck" data-ck="c4"><input type="checkbox"><span>Insho M3 profilimga mos.</span></label><label class="ck" data-ck="c5"><input type="checkbox"><span>UCAS javoblarining har biri kamida 350 belgi, jami 4 000 dan oshmaydi (kerak boʻlsa).</span></label><label class="ck" data-ck="c6"><input type="checkbox"><span>1–2 kishidan aniq savollar bilan fikr olingan.</span></label><label class="ck" data-ck="c7"><input type="checkbox"><span>AI dan foydalanish platforma va universitet qoidalariga mos.</span></label><label class="ck" data-ck="c8"><input type="checkbox"><span>Chegara platforma hisoblagichi bilan tekshirilgan, boshqa universitet nomi qolmagan.</span></label><label class="ck" data-ck="c9"><input type="checkbox"><span>Matn meniki: hech kim uni men uchun yozmagan.</span></label></div>
       <button class="btn btn-p" type="button" id="ckBtn" style="margin-top:14px">Roʻyxat yakunlandi · +30 XP</button>
     </div>
   </section>
@@ -274,19 +437,20 @@
   <section id="nishonlar">
     <h2>Nishonlar</h2>
     <div class="badges">
-      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>3 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>5 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Test strategi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Kalendar<small>Yakun</small></div>
+      <div class="bdg" data-badge="quizOk"><img src="img/3d/books.webp" width="160" height="160" alt="" loading="lazy">Bilimdon<small>Test 3+/4</small></div><div class="bdg" data-badge="half"><img src="img/3d/compass.webp" width="160" height="160" alt="" loading="lazy">Yarim yoʻl<small>4 dars</small></div><div class="bdg" data-badge="all"><img src="img/3d/telescope.webp" width="160" height="160" alt="" loading="lazy">Darslar<small>7 dars</small></div><div class="bdg" data-badge="tool"><img src="img/3d/memo.webp" width="160" height="160" alt="" loading="lazy">Hikoyachi<small>Vosita</small></div><div class="bdg" data-badge="ck"><img src="img/3d/shield.webp" width="160" height="160" alt="" loading="lazy">Nazoratchi<small>Roʻyxat</small></div><div class="bdg" data-badge="fin"><img src="img/3d/seedling.webp" width="160" height="160" alt="" loading="lazy">Insho<small>Yakun</small></div>
     </div>
   </section>
 
   <section id="artefakt">
-    <h2 id="artTitle">Test kalendari va baholar jadvali</h2>
+    <div data-kvideo="res"></div>
+    <h2 id="artTitle">Yakuniy insholar va tahrir qaydi</h2>
     <p class="sub">Darslardagi javoblar va vositadan avtomatik yigʻiladi. PDF uchun “Chop etish” → “PDF sifatida saqlash”.</p>
     <div class="artifact">
       <div class="paper" id="artPaper"></div>
       <div class="noprint" id="artMeta" style="font-size:13.5px;color:var(--muted);margin-top:12px"></div>
       <label class="ck noprint" data-ck="hon" style="margin-top:12px"><input type="checkbox"><span><b>Halollik bayonoti:</b> bu hujjatdagi matn va faktlar meniki, tekshiriladigan va hujjat bilan tasdiqlanadi. Kompas namunalari faqat oʻrganish uchun.</span></label>
       <div class="row">
-        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +40 XP</button>
+        <button class="btn btn-p" type="button" id="finBtn">Yakunlash · +41 XP</button>
         <button class="btn btn-g" type="button" id="docBtn">📄 Word (.doc)</button>
         <button class="btn btn-g" type="button" id="copyBtn">📋 Matnni nusxalash</button>
         <button class="btn btn-g" type="button" onclick="window.print()">🖨 Chop etish / PDF</button>
@@ -298,37 +462,53 @@
     <div class="mentor">
       <div class="av">KL</div>
       <div>
-        <q>Test sanasini tanlaganda natija kelish muddatini ham qoʻshing. Natija universitetga muddatdan oldin yetib borishi kerak.</q>
+        <q>Qoralamani yozgach, uni 2–3 kun ochmang. Keyin ovoz chiqarib oʻqing: qoqilgan joyingiz tahrir talab qiladi.</q>
         <small>Kompas Lab maslahati</small>
       </div>
     </div>
   </section>
 
+  <section id="keyingi"><div class="mv-next" data-mnext="5"><h2>Keyingi qadam: moliyaviy reja</h2><div class="mv-bar"><i style="width:70%"></i></div><p class="mv-small">III bosqich: 1 / 2 modul · Rejangiz 70% tayyor</p><div class="mv-k" data-mn="m5"><b>Inshongiz tayyor.</b> Endi har universitet uchun 4 yillik xarajatni hisoblash qoladi. M6 da stipendiyalarni saralaysiz va bitta universitet uchun 4 yillik rejani tuzasiz.</div><p>M6.1 dan: <i>Stipendiyaning shartlari oldindan yozilgan. Avval mosligingizni tekshirasiz, keyin vaqt sarflaysiz.</i></p><div class="mv-row"><a class="btn btn-p" href="bachelor-lab-o.html?m=6">M6: stipendiya va reja</a></div></div></section>
+
   <section>
     <h2>Modul pasporti</h2>
     <div class="pass">
-      <div><b>Darslar</b>5 ta</div>
-      <div><b>Vaqt</b>~2 hafta (haftasiga 3–5 soat)</div>
-      <div><b>Natija</b>Test kalendari va baholar jadvali</div>
+      <div><b>Darslar</b>7 ta</div>
+      <div><b>Vaqt</b>~2–3 hafta (darslar ~1,5 soat + yozish)</div>
+      <div><b>Natija</b>Yakuniy insholar va tahrir qaydi</div>
     </div>
-    <p class="srcs">Faktlar: <a href="https://ielts.org" target="_blank" rel="noopener">IELTS (rasmiy sayt)</a>; <a href="https://www.ets.org/toefl.html" target="_blank" rel="noopener">TOEFL (ETS)</a>; <a href="https://englishtest.duolingo.com" target="_blank" rel="noopener">Duolingo English Test</a>; <a href="https://satsuite.collegeboard.org/sat" target="_blank" rel="noopener">SAT (College Board)</a>; <a href="https://www.act.org" target="_blank" rel="noopener">ACT (rasmiy sayt)</a>; <a href="https://commondataset.org" target="_blank" rel="noopener">Common Data Set loyihasi</a>; <a href="https://gov.uz/oz/advice/72/document/2620" target="_blank" rel="noopener">gov.uz: rasmiy hujjatlarga apostil qoʻyish</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
+    <p class="srcs">Faktlar: <a href="https://www.commonapp.org/apply/essay-prompts" target="_blank" rel="noopener">Common App: insho mavzulari</a>; <a href="https://www.commonapp.org/fraud-policy/" target="_blank" rel="noopener">Common App: firibgarlik siyosati (Fraud Policy)</a>; <a href="https://www.ucas.com/applying/applying-to-university/writing-personal-statement/personal-statement-dos-and-donts" target="_blank" rel="noopener">UCAS: shaxsiy bayonot, 2026 qabulidan</a>; <a href="https://www.ucas.com/applying/applying-to-university/writing-your-personal-statement/a-guide-to-using-ai-and-chatgpt-with-your-personal-statement" target="_blank" rel="noopener">UCAS: shaxsiy bayonotda AI va ChatGPT dan foydalanish</a>; <a href="https://www.ucas.com/sites/default/files/similarity-detection-applicant-guide.pdf" target="_blank" rel="noopener">UCAS: oʻxshashlikni aniqlash xizmati, abituriyent uchun qoʻllanma</a>. Faktlar 31.10.2026 holatiga; har sikl rasmiy sahifadan qayta tekshiring. Muddat, toʻlov va kvotalar har yili oʻzgaradi.</p>
   </section>
 </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <a class="btn btn-g" href="bachelor-lab.html">← Bakalavr dasturi</a>
-    <a class="btn btn-p" href="bachelor-lab-m6.html">Keyingi: M6 Yutuqlar, CV va hujjatlar →</a>
+    <a class="btn btn-g" href="bachelor-lab-o.html?m=4">← M4</a>
+    <a class="btn btn-p" href="bachelor-lab-o.html?m=6">Keyingi: M6 Stipendiya va 4 yillik moliyaviy reja →</a>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status"><img id="toastImg" src="img/3d/bulb.webp" width="160" height="160" alt=""><span id="toastT"></span></div>
 <script src="js/sfx.js"></script>
+<script src="js/module-video.js" defer></script>
+<script src="js/bachelor-next.js" defer></script>
+<script>
+window.KGTool = { init: function () {
+  var o = document.getElementById("ucasOut");
+  function run() {
+    var n = [1, 2, 3].map(function (i) { return String(KG.nv("uq" + i)).length; }), t = n[0] + n[1] + n[2];
+    var low = n.filter(function (x) { return x > 0 && x < 350; }).length;
+    o.innerHTML = "UCAS javoblari: <b>" + t + "</b> / 4000 belgi (1: " + n[0] + ", 2: " + n[1] + ", 3: " + n[2] + ")" + (t > 4000 ? " <span class=\"pill no\">chegaradan oshdi</span>" : "") + (low ? " <span class=\"pill chk\">" + low + " ta javob 350 dan qisqa</span>" : "");
+  }
+  ["uq1", "uq2", "uq3"].forEach(function (k) { var el = document.querySelector("[data-save=\"" + k + "\"]"); if (el) el.addEventListener("input", function () { setTimeout(run, 400); }); });
+  run();
+} };
+</script>
 <script>
 (function () {
-  var KEY = "kompas_bachelor_m5_v1", MOD = "5", LXP = 24, NL = 5, FINXP = 40;
-  var ART = [{"h": "Baholar jadvali", "k": ["baho", "a1"]}, {"h": "Transkript va hujjatlar", "k": ["hujjat", "a2"]}, {"h": "Universitetlar talablari", "k": ["talab"]}, {"h": "Til testi rejasi", "k": ["tiltest", "a3"]}, {"h": "SAT/ACT rejasi", "k": ["sat", "a4"]}, {"h": "Test siyosati qarorlari", "k": ["a5"]}];
+  var KEY = "kompas_bachelor_m5_v1", MOD = "5", LXP = 17, NL = 7, FINXP = 41;
+  var ART = [{"h": "Talab qilinadigan matnlar va qiziqish bayoni", "k": ["a1"]}, {"h": "Mavzu va hikoya", "k": ["a2", "a3"]}, {"h": "Common App asosiy inshosi v1", "k": ["ca"]}, {"h": "UCAS 1-savol", "k": ["uq1"]}, {"h": "UCAS 2-savol", "k": ["uq2"]}, {"h": "UCAS 3-savol", "k": ["uq3", "a4"]}, {"h": "Qoʻshimcha insholar", "k": ["qosh", "a5"]}, {"h": "Yakuniy insho", "k": ["yakun"]}, {"h": "Tahrir qaydi", "k": ["versiya", "a6"]}, {"h": "AI va yordam bayoni", "k": ["ai", "a7"]}, {"h": "Platformaga joylash", "k": ["joylash"]}];
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var S = { xp: 0, done: {}, seen: {}, notes: {}, quiz: {}, ck: {}, open: "l1" };
   try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch (e) {}
@@ -346,7 +526,7 @@
   var MAX = 250, LEVELS = [[0, "1-daraja: Kuzatuvchi"], [80, "2-daraja: Izlanuvchi"], [170, "3-daraja: Kashfiyotchi"], [250, "Modul yakunlandi"]];
   function renderXp(bump) {
     $("xpN").textContent = S.xp; $("xpBar").style.width = Math.min(100, S.xp / MAX * 100) + "%";
-    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l;
+    var l = LEVELS[0][1]; LEVELS.forEach(function (x) { if (S.xp >= x[0]) l = x[1]; }); $("lvl").textContent = l; $("lvl").parentNode.style.visibility = S.xp ? "" : "hidden";
     if (bump) { var p = $("xpPill"); p.classList.remove("pop"); void p.offsetWidth; p.classList.add("pop"); }
   }
   var tt;
@@ -494,7 +674,7 @@
   });
   $("docBtn").addEventListener("click", function () {
     var p = $("artPaper");
-    download("Bachelor_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
+    download("Bakalavr_M" + MOD + "_" + $("artTitle").textContent.replace(/[^A-Za-z0-9\u02bb\u02bc]+/g, "_") + ".doc", "application/msword", '<html><head><meta charset="utf-8"></head><body style="font-family:Georgia,serif">' + p.innerHTML + "</body></html>");
   });
   $("copyBtn").addEventListener("click", function () {
     copyText(artText().map(function (s) { return s.h.toUpperCase() + "\n" + (s.t || "—"); }).join("\n\n"));
@@ -503,7 +683,7 @@
   function renderAll() {
     var nodes = document.querySelectorAll("[data-node]"), n = 0;
     nodes.forEach(function (el) { var d = !!S.done[el.getAttribute("data-node")]; el.classList.toggle("done", d); if (d) n++; });
-    $("mapN").textContent = n + " / " + nodes.length + " bosqich";
+    $("mapN").textContent = n + " / " + nodes.length + " qadam";
     document.querySelectorAll("[data-badge]").forEach(function (el) { el.classList.toggle("on", !!S.done[el.getAttribute("data-badge")]); });
   }
   if (window.KGTool && window.KGTool.init) window.KGTool.init();

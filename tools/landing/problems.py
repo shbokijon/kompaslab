@@ -7,13 +7,13 @@ def h(a, b):
 
 PROBLEMS = {
 "bachelor-lab": dict(
-  h1=h("Xorijda bakalavr oʻqimoqchisiz.", "Lekin qayerdan boshlashni bilmaysiz."),
-  lead="Hammasini bitta rejaga yigʻasiz, insho va tavsiya materiallarini oʻzingiz tayyorlaysiz.",
+  h1=h("Xorijda bakalavr oʻqimoqchisiz.", "Lekin qayerdan boshlashni hali bilmaysiz."),
+  lead="Bepul M0 da 12 daqiqada muddatgacha qancha vaqtingiz borligini va birinchi qadamni bilib olasiz. Insho va tavsiya materiallarini oʻzingiz tayyorlaysiz, biz yoʻl koʻrsatamiz.",
   probs=[
-    ("telescope", "Qaysi universitet mos, bilmaysiz", "Reyting va tanishlar maslahati sizga mos joyni koʻrsatmaydi.", "Oʻz mezoningiz bilan", "8–12 universitetni rasmiy talablari bilan solishtirib, oʻzingizga mosini ajratasiz."),
-    ("calendar", "Test va muddatlar aralashib ketgan", "Qaysi test qachon kerakligi chalkash.", "Teskari kalendar", "Testlar va arizalar rasmiy muddatdan orqaga hisoblangan rejaga tushadi."),
-    ("memo", "Insho yozishni hech kim oʻrgatmagan", "Nima haqida yozish, qanday boshlash tushunarsiz.", "Tuzilma va mezon", "Inshoni oʻzingiz yozasiz va baholash mezoni bilan oʻzingiz tekshirasiz."),
-    ("money", "Xarajat nomaʼlum", "Toʻrt yil qancha turishini oila hali hisoblamagan.", "Toʻrt yillik hisob", "Oʻqish va yashash xarajatini, universitet yordami imkonini oldindan hisoblaysiz."),
+    ("telescope", "Qaysi universitet mos keladi?", "Reyting va tanishlar maslahati sizga mos joyni koʻrsatmaydi.", "Saralangan roʻyxat", "8–12 universitetni rasmiy talablari va moslik bali bilan uch darajaga ajratasiz."),
+    ("calendar", "Test va muddatlar aralashgan", "Qaysi test qachon kerakligi chalkash.", "Teskari kalendar", "Testlar, tavsiya va hujjatlar eng erta muddatdan orqaga hisoblangan rejaga tushadi."),
+    ("memo", "Insho nimadan boshlanadi?", "Nima haqida yozish, qanday boshlash tushunarsiz.", "Epizoddan insho", "Hikoyani kichik epizoddan topasiz, inshoni oʻzingiz yozasiz va mezon bilan tekshirasiz."),
+    ("money", "Toʻrt yil qanchaga tushadi?", "Oʻqish toʻlovidan tashqari yashash, sugʻurta va yoʻl xarajati ham bor.", "Toʻrt yillik reja", "Budjetingizni har yil uchun hisoblaysiz va boʻshliqni yopadigan stipendiyani tanlaysiz."),
   ]),
 "master-lab": dict(
   h1=h("Magistraturaga topshirmoqchisiz.", "Lekin qaysi dastur va qaysi hujjat kerakligi hali noaniq."),
