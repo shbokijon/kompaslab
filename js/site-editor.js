@@ -17,7 +17,8 @@
   var UMD = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
   var COLS = "id,page,sel,kind,guard,label,value,status";
   var OKTAG = { B: 1, STRONG: 1, I: 1, EM: 1, U: 1, BR: 1, SMALL: 1, MARK: 1, SUB: 1, SUP: 1, A: 1, SPAN: 1 };
-  var OKATTR = /^(class|href|target|rel|lang|translate|data-alifbo)$/;
+  // aria-hidden: sarlavhadagi ⓘ (span.kl-i); data-snd: havola tovushi (2026-11-21: ikkalasi tahrirni yopib qoʻyardi)
+  var OKATTR = /^(class|href|target|rel|lang|translate|data-alifbo|aria-hidden|data-snd)$/;
   var sb = null, rows = [], lost = [], mode = "pick", cur = null, editing = null, client = false;
 
   // ── yordamchilar ─────────────────────────────────────────────
@@ -296,6 +297,8 @@
     var el = cur; if (!el || why(el)) return;
     if (el.__kseGuard == null && !rowsOf(el).html) el.__kseGuard = K.guard(el);
     editing = { el: el, html: el.innerHTML };
+    // ⓘ belgisi tasodifan oʻchmasin: u tahrirlanmaydi, saqlanganda joyida qoladi
+    [].forEach.call(el.querySelectorAll(".kl-i"), function (x) { x.setAttribute("contenteditable", "false"); });
     el.setAttribute("contenteditable", "true");
     el.setAttribute("data-kse-editing", "");
     el.focus();
@@ -306,6 +309,7 @@
     if (!editing) return;
     var el = editing.el;
     el.removeAttribute("contenteditable"); el.removeAttribute("data-kse-editing");
+    [].forEach.call(el.querySelectorAll("[contenteditable]"), function (x) { x.removeAttribute("contenteditable"); });
     editing = null;
   }
   function cancelEdit() {
@@ -501,7 +505,8 @@
   function guardEv(e) {
     if (inHost(e.target)) return;
     if (editing) {
-      if (editing.el.contains(e.target)) { if (e.target.closest && e.target.closest("a")) e.preventDefault(); return; }
+      // havola ochilmasin; <summary> ichidagi sarlavhada bosish ⓘ oynasini ochib-yopmasin
+      if (editing.el.contains(e.target)) { if (e.target.closest && e.target.closest("a, summary")) e.preventDefault(); return; }
       e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
       return;
     }
@@ -521,6 +526,12 @@
     if (editing) {
       if (e.key === "Escape") { e.preventDefault(); cancelEdit(); }
       else if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); saveEdit(); }
+      // <summary> ichida boʻsh joy va Enter brauzerda ⓘ oynasini ochadi: oʻrniga matn yozamiz
+      else if ((e.key === " " || e.key === "Enter") && editing.el.closest("summary") && editing.el.contains(e.target)) {
+        e.preventDefault();
+        if (e.key === " ") document.execCommand("insertText", false, " ");
+        else document.execCommand("insertLineBreak");
+      }
       return;
     }
     if (e.key === "Escape" && cur) { cur = null; render(); sched(); }

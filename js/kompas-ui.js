@@ -747,6 +747,8 @@
           else if (n === "lang") keep = /^[a-z]{2,3}(-[A-Za-z]{2,4})?$/.test(v);
           else if (n === "translate") keep = v === "no";
           else if (n === "data-alifbo") keep = v === "off";
+          else if (n === "aria-hidden") keep = v === "true";
+          else if (n === "data-snd") keep = /^[a-z0-9]{1,16}$/.test(v);
           if (!keep) c.removeAttribute(a.name);
         });
         if (c.nodeName === "A" && c.getAttribute("target")) c.setAttribute("rel", "noopener");
