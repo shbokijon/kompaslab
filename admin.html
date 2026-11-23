@@ -558,7 +558,8 @@ body{font-family:'Outfit','IBM Plex Sans',sans-serif;background:var(--bg);color:
       <div class="card" style="margin-top:14px">
         <div class="ch"><h2>🤝 Donatlar</h2><span id="donSum" style="font-size:12px;color:var(--muted)"></span></div>
         <div class="tbl-scroll">
-          <table class="tbl"><thead><tr><th>№</th><th>Summa (soʻm)</th><th>Holat</th><th>Yaratilgan</th><th>Toʻlangan</th></tr></thead><tbody id="tbDon"></tbody></table>
+          <table class="tbl"><thead><tr><th>№</th><th>Summa (soʻm)</th><th>Holat</th><th>Yaratilgan</th><th>Toʻlangan</th><th>Amal</th></tr></thead><tbody id="tbDon"></tbody></table>
+          <p style="padding:10px 14px;font-size:11px;color:var(--muted)">Faqat toʻlanmagan test donat yozuvlari oʻchiriladi. Toʻlangan donatlar moliyaviy tarixni saqlash uchun bloklangan. Oʻchirish Click/Payme orqali pulni qaytarmaydi.</p>
         </div>
       </div>
     </div>
@@ -1306,13 +1307,60 @@ async function refundPayment(paymentId, name) {
   await loadPayments(); renderKPIs()
 }
 
+let _allDonations = []
+
 async function loadDonations() {
   const tb = document.getElementById('tbDon'); if (!tb) return
-  const { data, error } = await supabase.from('donations').select('order_no, amount, status, created_at, paid_at, receipt_no').order('created_at', { ascending: false }).limit(100)
-  if (error) { tb.innerHTML = '<tr><td colspan="5" style="color:var(--red);padding:14px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
-  const paid = (data || []).filter(d => d.status === 'paid')
+  const { data, error } = await supabase.from('donations').select('id, order_no, amount, status, created_at, paid_at, receipt_no').order('created_at', { ascending: false }).limit(100)
+  if (error) { tb.innerHTML = '<tr><td colspan="6" style="color:var(--red);padding:14px">Xatolik: ' + escHtml(error.message) + '</td></tr>'; return }
+  _allDonations = data || []
+  const paid = _allDonations.filter(d => d.status === 'paid')
   document.getElementById('donSum').textContent = paid.length ? paid.length + ' ta toʻlangan · ' + formatMoney(paid.reduce((t, d) => t + (d.amount || 0), 0)) + ' soʻm' : 'Hali toʻlangan donat yoʻq'
-  tb.innerHTML = (data || []).length ? data.map(d => `<tr><td style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px">D${d.order_no}${d.receipt_no ? '<br><span style="color:var(--muted);font-size:10px">chek D-' + d.receipt_no + '</span>' : ''}</td><td style="font-weight:700">${formatMoney(d.amount)}</td><td>${d.status === 'paid' ? '<span class="tag tgr">✓ Toʻlangan</span>' : d.status === 'pending' ? '<span class="tag tgd">⏳ Kutilmoqda</span>' : '<span class="tag tg">' + escHtml(d.status) + '</span>'}</td><td style="font-size:11px;color:var(--muted)">${(d.created_at || '').slice(0, 16).replace('T', ' ')}</td><td style="font-size:11px;color:var(--muted)">${(d.paid_at || '').slice(0, 16).replace('T', ' ') || '—'}</td></tr>`).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Donat yoʻq</td></tr>'
+  tb.innerHTML = (data || []).length ? data.map(d => `<tr><td style="font-family:'JetBrains Mono','IBM Plex Sans',monospace;font-size:12px">D${d.order_no}${d.receipt_no ? '<br><span style="color:var(--muted);font-size:10px">chek D-' + d.receipt_no + '</span>' : ''}</td><td style="font-weight:700">${formatMoney(d.amount)}</td><td>${d.status === 'paid' ? '<span class="tag tgr">✓ Toʻlangan</span>' : d.status === 'pending' ? '<span class="tag tgd">⏳ Kutilmoqda</span>' : '<span class="tag tg">' + escHtml(d.status) + '</span>'}</td><td style="font-size:11px;color:var(--muted)">${(d.created_at || '').slice(0, 16).replace('T', ' ')}</td><td style="font-size:11px;color:var(--muted)">${(d.paid_at || '').slice(0, 16).replace('T', ' ') || '—'}</td><td><button class="btn bd bsm" onclick="deleteDonation('${d.id}')" ${d.status === 'paid' ? 'disabled title="Toʻlangan donatni oʻchirib boʻlmaydi" style="opacity:.45;cursor:not-allowed"' : ''}>🗑 Oʻchirish</button></td></tr>`).join('') : '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:16px">Donat yoʻq</td></tr>'
+}
+
+
+async function deleteDonation(donationId) {
+  const row = _allDonations.find(d => d.id === donationId)
+  if (!row) { toast('❌ Donat topilmadi. Jadvalni yangilang.'); return }
+  if (row.status === 'paid') {
+    toast('⚠️ Toʻlangan donatni oʻchirib boʻlmaydi')
+    return
+  }
+
+  const reason = (prompt(
+    `TEST donat yozuvini oʻchirish sababi. Bu amalni qaytarib boʻlmaydi.
+Bazadagi yozuv oʻchadi; Click/Payme orqali pul qaytarilmaydi.
+
+D${row.order_no} · ${formatMoney(row.amount)} soʻm · ${row.status}
+
+Sabab:`,
+    'Admin tomonidan amalga oshirilgan test donati'
+  ) || '').trim()
+  if (reason.length < 3) { toast('Oʻchirish bekor qilindi: sabab kiritilmadi'); return }
+
+  if (!confirm(
+    `DIQQAT: donat yozuvi bazadan butunlay oʻchiriladi. Click/Payme orqali pul qaytarilmaydi. Audit jurnalida yozuv qoladi.
+
+D${row.order_no}
+${formatMoney(row.amount)} soʻm · ${row.status}
+
+Davom etasizmi?`
+  )) return
+
+  try {
+    const { data, error } = await supabase.rpc('fn_admin_delete_donation', {
+      p_donation_id: donationId,
+      p_reason: reason
+    })
+    if (error) throw error
+    if (!data?.deleted) throw new Error('Donat oʻchirilgani tasdiqlanmadi')
+
+    toast('🗑 Test donati oʻchirildi')
+    await loadDonations()
+  } catch (err) {
+    toast('❌ Oʻchirish amalga oshmadi: ' + err.message)
+  }
 }
 
 async function rejectPayment(paymentId, name) {
