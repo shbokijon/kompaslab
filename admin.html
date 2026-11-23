@@ -1345,13 +1345,13 @@ async function deletePayment(paymentId) {
   const name = payment.profile?.full_name ||
     `${payment.profile?.first_name || ''} ${payment.profile?.last_name || ''}`.trim() || 'Nomaʼlum foydalanuvchi'
   const reason = (prompt(
-    `TEST toʻlovini oʻchirish sababi. Bu amalni qaytarib boʻlmaydi.\n\n${name} · ${formatMoney(payment.amount)} soʻm\n\nSabab:`,
+    `TEST toʻlovini oʻchirish sababi. Bu amalni qaytarib boʻlmaydi.\nBazadagi yozuv oʻchadi; Click/Payme orqali pul qaytarilmaydi.\n\n${name} · ${formatMoney(payment.amount)} soʻm\n\nSabab:`,
     'Admin tomonidan amalga oshirilgan test toʻlovi'
   ) || '').trim()
   if (reason.length < 3) { toast('Oʻchirish bekor qilindi: sabab kiritilmadi'); return }
 
   const ok = confirm(
-    `DIQQAT: toʻlov yozuvi butunlay oʻchiriladi.\n\n${name}\n${formatMoney(payment.amount)} soʻm · ${payment.status}\n\nBogʻlangan kirish pending holatiga qaytariladi. Audit jurnalida yozuv qoladi.\n\nDavom etasizmi?`
+    `DIQQAT: toʻlov yozuvi bazadan butunlay oʻchiriladi. Click/Payme orqali pul qaytarilmaydi.\n\n${name}\n${formatMoney(payment.amount)} soʻm · ${payment.status}\n\nBogʻlangan kirish pending holatiga qaytariladi. Audit jurnalida yozuv qoladi.\n\nDavom etasizmi?`
   )
   if (!ok) return
 
