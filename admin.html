@@ -1185,7 +1185,7 @@ async function loadPayments() {
     let q = supabase
       .from(DB.payments)
       .select(`
-        id, amount, method, status, note, created_at, kind, ref_no, receipt_no,
+        id, amount, method, status, note, created_at, kind, ref_no, receipt_no, installment_item_id,
         profile:profiles(full_name, first_name, last_name, email),
         course:courses(slug, title, emoji)
       `)
@@ -1250,6 +1250,7 @@ function renderPaymentsTable(payments) {
           ` : `
             <button class="btn bs bsm" onclick="toast('🧾 ${escHtml(name)} · ${formatMoney(p.amount)} soʻm')">🧾 Chek</button>
           `}
+          <button class="btn bd bsm" ${p.installment_item_id ? 'disabled title=\"Boʻlib toʻlash yozuvini bu yerdan oʻchirib boʻlmaydi\"' : `onclick=\"deletePayment('${p.id}')\"`}>🗑 Oʻchirish</button>
         </div>
       </td>
     </tr>`
@@ -1330,6 +1331,44 @@ async function rejectPayment(paymentId, name) {
 
   } catch(err) {
     toast('❌ Xatolik: ' + err.message)
+  }
+}
+
+async function deletePayment(paymentId) {
+  const payment = _allPayments.find(p => p.id === paymentId)
+  if (!payment) { toast('❌ Toʻlov topilmadi. Jadvalni yangilang.'); return }
+  if (payment.installment_item_id) {
+    toast('⚠️ Boʻlib toʻlash yozuvi alohida tartibda boshqariladi')
+    return
+  }
+
+  const name = payment.profile?.full_name ||
+    `${payment.profile?.first_name || ''} ${payment.profile?.last_name || ''}`.trim() || 'Nomaʼlum foydalanuvchi'
+  const reason = (prompt(
+    `TEST toʻlovini oʻchirish sababi. Bu amalni qaytarib boʻlmaydi.\n\n${name} · ${formatMoney(payment.amount)} soʻm\n\nSabab:`,
+    'Admin tomonidan amalga oshirilgan test toʻlovi'
+  ) || '').trim()
+  if (reason.length < 3) { toast('Oʻchirish bekor qilindi: sabab kiritilmadi'); return }
+
+  const ok = confirm(
+    `DIQQAT: toʻlov yozuvi butunlay oʻchiriladi.\n\n${name}\n${formatMoney(payment.amount)} soʻm · ${payment.status}\n\nBogʻlangan kirish pending holatiga qaytariladi. Audit jurnalida yozuv qoladi.\n\nDavom etasizmi?`
+  )
+  if (!ok) return
+
+  try {
+    const { data, error } = await supabase.rpc('fn_admin_delete_payment', {
+      p_payment_id: paymentId,
+      p_reason: reason
+    })
+    if (error) throw error
+    if (!data?.deleted) throw new Error('Toʻlov oʻchirilgani tasdiqlanmadi')
+
+    toast('🗑 Test toʻlovi oʻchirildi')
+    await loadPayments()
+    await loadStudents()
+    renderKPIs()
+  } catch (err) {
+    toast('❌ Oʻchirish amalga oshmadi: ' + err.message)
   }
 }
 
