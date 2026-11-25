@@ -669,7 +669,12 @@
 //    Element CSS yoʻli (sel) bilan topiladi; asl matn boshi (guard) mos kelmasa, shu teg ichidan guard boʻyicha izlanadi,
 //    topilmasa oʻzgarish qoʻllanmaydi. Yashirish oldindan CSS bilan (kesh), sahifa yuklangach tekshiriladi.
 //    Muharrir: ?kedit=1 (faqat admin; js/site-editor.js), chiqish ?kedit=0. Oʻchirish: ?edits=0
+//    text (2026-11-25): murakkab blok (tugma, ikonka, ⓘ, forma ichida) tuzilmasi tegilmaydi, faqat matn tugunlari almashadi.
+//    Bu blok js/site-edits.js ga ham koʻchiriladi (kompas-ui.js yuklamaydigan sahifalar uchun):
+//    python3 tools/site/site_edits_js.py. Belgilar orasini oʻzgartirsangiz, skriptni qayta ishga tushiring.
+// <site-edits>
 (function () {
+  if (window.KSiteEdits) return; // sahifada ikkala fayl boʻlsa, bir marta
   var file = location.pathname.split("/").pop() || "index.html";
   if (!/\.html?$/.test(file)) file += ".html";
   if (/^admin/.test(file)) return;
@@ -824,8 +829,34 @@
     return o;
   }
 
+  // ── Matn tugunlari (kind 'text', 2026-11-25): {"n":12,"c":{"3":"yangi matn"}} ──
+  // n: blokdagi boʻsh boʻlmagan matn tugunlari soni (sahifa oʻzgarsa mos kelmaydi va qoʻllanmaydi);
+  // c: oʻzgargan tugunlar (tartib raqami → matn, amaldagi alifboda). Tuzilma, atribut va JS tegilmaydi.
+  function tnodes(el) {
+    var out = [], tw = (el.ownerDocument || document).createTreeWalker(el, 4, null), n;
+    while ((n = tw.nextNode())) {
+      if (!/\S/.test(n.nodeValue)) continue;
+      var p = n.parentNode, bad = false;
+      while (p && p !== el) { if (SKIPT[p.nodeName]) { bad = true; break; } p = p.parentNode; }
+      if (!bad) out.push(n);
+    }
+    return out;
+  }
+  function parseText(v) {
+    var o = null; try { o = typeof v === "string" ? JSON.parse(v) : v; } catch (e) {}
+    if (!o || typeof o.n !== "number" || !o.c || typeof o.c !== "object") return null;
+    return o;
+  }
+  function textApply(el, v) {
+    var o = parseText(v); if (!o) return false;
+    var ns = tnodes(el); if (ns.length !== o.n) return false;
+    for (var k in o.c) { var i = +k; if (ns[i] && typeof o.c[k] === "string" && ns[i].nodeValue !== o.c[k]) ns[i].nodeValue = o.c[k]; }
+    return true;
+  }
+
   window.KSiteEdits = { file: file, norm: norm, txt: txt, guard: guard, path: path, locate: locate, clean: clean, G: G,
-    style: style, clearStyle: clearStyle, parseStyle: parseStyle, peers: peers, FS_LIM: FS_LIM, W_MIN: W_MIN };
+    style: style, clearStyle: clearStyle, parseStyle: parseStyle, peers: peers, FS_LIM: FS_LIM, W_MIN: W_MIN,
+    tnodes: tnodes, parseText: parseText, textApply: textApply };
 
   var S = sessionStorage, KE = "kompas_kedit";
   try {
@@ -859,7 +890,7 @@
     var keep = [];
     rows.forEach(function (r) {
       if (done[r.id]) { if (r.kind === "hide" && done[r.id] === "css") keep.push(r); return; }
-      var el = (r.kind === "html" && document.querySelector('[data-kse-id="' + r.id + '"]')) || locate(r);
+      var el = (r.kind === "html" && document.querySelector('[data-kse-id="' + r.id + '"]')) || (r.kind === "text" && document.querySelector('[data-kse-tid="' + r.id + '"]')) || locate(r);
       if (!el) { if (!final && r.kind === "hide" && cache) keep.push(r); return; }
       if (r.kind === "hide") {
         if (q(document, r.sel) === el) { keep.push(r); done[r.id] = "css"; }
@@ -868,6 +899,9 @@
         el.innerHTML = clean(r.value); el.setAttribute("data-kse", "t"); el.setAttribute("data-kse-id", r.id); done[r.id] = 1;
       } else if (r.kind === "style") {
         style(el, r.value); done[r.id] = 1;
+      } else if (r.kind === "text") {
+        // JS kech chizadigan blokda tugunlar soni hali mos kelmasa, keyingi urinishda qayta tekshiriladi
+        if (textApply(el, r.value)) { el.setAttribute("data-kse-tid", r.id); done[r.id] = 1; }
       }
     });
     css(keep);
@@ -897,3 +931,4 @@
     });
   });
 })();
+// </site-edits>

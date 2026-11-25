@@ -49,8 +49,10 @@ const WS = (() => {
 
   const COLS = 'id,page,sel,kind,guard,label,value,status,note,created_at,updated_at'
   const SKIP = /^(SCRIPT|STYLE|NOSCRIPT|TEMPLATE|LINK|META|BR|HR)$/
-  // kompas-ui.js yuklamaydigan sahifalar: ularda tahrir qoʻllanmaydi
-  const NO_UI = ['master-lab-manbalar.html', 'sources.html']
+  // 2026-11-25: hamma ochiq sahifa tahrirlanadi (kompas-ui.js yoki js/site-edits.js orqali).
+  // Roʻyxatda yoʻq sahifalar ("Boshqa sahifa…"): login, register, dashboard, profil va b.
+  const NO_UI = []
+  const EXTRA = ['login.html', 'register.html', 'reset-password.html', 'dashboard.html', 'profil.html', 'm0-access.html', 'tolov.html', 'qollab-quvvatlash.html', 'oferta.html', 'maxfiylik.html', 'offline.html', 'sources.html']
   let pages = [], file = 'index.html', doc = null, edits = [], hideRows = []
 
   const short = (s, n) => { s = String(s || '').replace(/\s+/g, ' ').trim(); return s.length > n ? s.slice(0, n - 1) + '…' : s }
@@ -79,7 +81,7 @@ const WS = (() => {
       const x = await (await fetch('/sitemap.xml', { cache: 'no-store' })).text()
       pages = [...x.matchAll(/<loc>https?:\/\/[^/]+\/?([^<]*)<\/loc>/g)].map(m => (m[1] || 'index').replace(/\.html$/, '') + '.html')
     } catch (e) { pages = ['index.html', 'qanday-ishlaydi.html', 'narxlar.html', 'savollar.html'] }
-    pages = [...new Set(pages)].filter(f => !NO_UI.includes(f))
+    pages = [...new Set([...pages, ...EXTRA])].filter(f => !NO_UI.includes(f))
     const groups = {}
     pages.forEach(f => { (groups[groupOf(f)] = groups[groupOf(f)] || []).push(f) })
     const order = ['Sayt', ...Object.keys(groups).filter(g => g !== 'Sayt' && g !== 'Atlas').sort(), 'Atlas'].filter(g => groups[g])
@@ -124,8 +126,8 @@ const WS = (() => {
       const r = await fetch('/' + file, { cache: 'no-store', credentials: 'same-origin' })
       if (!r.ok) throw new Error('HTTP ' + r.status)
       doc = new DOMParser().parseFromString(await r.text(), 'text/html')
-      if (!/kompas-ui\.js/.test(doc.documentElement.innerHTML)) {
-        box.innerHTML = '<tr><td colspan="3" style="color:var(--red)">Bu sahifa js/kompas-ui.js ni yuklamaydi: oʻzgarishlar saytda qoʻllanmaydi.</td></tr>'
+      if (!/kompas-ui\.js|site-edits\.js/.test(doc.documentElement.innerHTML)) {
+        box.innerHTML = '<tr><td colspan="3" style="color:var(--red)">Bu sahifa js/kompas-ui.js yoki js/site-edits.js ni yuklamaydi: oʻzgarishlar saytda qoʻllanmaydi.</td></tr>'
         await loadEdits(); return
       }
     } catch (e) {
@@ -207,10 +209,10 @@ const WS = (() => {
       hideRows = a.data || []
     }
     tb.innerHTML = edits.length ? edits.map(r => {
-      const val = r.kind === 'html' ? short((r.value || '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, ''), 90) : r.kind === 'style' ? styleTxt(r.value) : '—'
+      const val = r.kind === 'text' ? textTxt(r.value) : r.kind === 'html' ? short((r.value || '').replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, ''), 90) : r.kind === 'style' ? styleTxt(r.value) : '—'
       const on = r.status === 'active'
       return '<tr><td><a href="' + escHtml(urlOf(r.page)) + '" target="_blank" rel="noopener">' + escHtml(r.page.replace(/\.html$/, '')) + '</a></td>' +
-        '<td>' + ({ hide: '🙈 Yashirish', html: '✏️ Matn', style: '📐 Oʻlcham' }[r.kind] || r.kind) + '</td>' +
+        '<td>' + ({ hide: '🙈 Yashirish', html: '✏️ Matn', text: '✏️ Matn', style: '📐 Oʻlcham' }[r.kind] || r.kind) + '</td>' +
         '<td style="max-width:280px;font-size:12px">' + escHtml(short(r.label || r.sel, 90)) + '</td>' +
         '<td style="max-width:320px;font-size:12px">' + escHtml(val) + '</td>' +
         '<td style="font-size:12px;white-space:nowrap">' + escHtml(String(r.updated_at || '').slice(0, 16).replace('T', ' ')) + '</td>' +
@@ -220,6 +222,10 @@ const WS = (() => {
           : '<span style="color:var(--muted);font-size:12px">Bekor qilingan</span> <button class="btn bs bsm" onclick="WS.setStatus(' + r.id + ',\'active\')">Qayta yoqish</button>') +
         '</td></tr>'
     }).join('') : '<tr><td colspan="6" style="color:var(--muted)">Oʻzgarish yoʻq</td></tr>'
+  }
+  function textTxt(v) {
+    let o = {}; try { o = JSON.parse(v || '{}') } catch (e) {}
+    return short(Object.values(o.c || {}).join(' · '), 90) || '—'
   }
   function styleTxt(v) {
     let o = {}; try { o = JSON.parse(v || '{}') } catch (e) {}

@@ -121,6 +121,10 @@
     '.szr{display:grid;grid-template-columns:62px 34px 1fr 34px auto;gap:6px;align-items:center;font-size:12px}' +
     '.szr .b{padding:5px 0;text-align:center}.szr .v{text-align:center;font:700 12px "JetBrains Mono",monospace}' +
     '.szr .b.s{padding:5px 8px}' +
+    '.tl{display:grid;gap:6px;max-height:42vh;overflow:auto;padding-right:2px}' +
+    '.ti{display:grid;gap:2px}.ti span{font:600 10.5px "JetBrains Mono",monospace;color:#6b7f76}' +
+    '.ti textarea{width:100%;resize:vertical;min-height:30px;border:1px solid #dce8e2;border-radius:7px;padding:5px 7px;font-size:13px;line-height:1.4;color:#1a2e26;background:#fff}' +
+    '.ti textarea:focus{outline:2px solid #2d4a3e;border-color:#2d4a3e}' +
     '@media(max-width:560px){.pn{right:8px;left:8px;bottom:8px;width:auto}}' +
     '</style>' +
     '<div class="box hov"></div><div class="box sel"></div><div class="tip"></div>' +
@@ -169,7 +173,7 @@
   }
   var hovEl = null;
   function track() {
-    place(hov, mode === "pick" && !editing && hovEl !== cur ? hovEl : null);
+    place(hov, editing && editing.text ? hovEl : mode === "pick" && !editing && hovEl !== cur ? hovEl : null);
     place(selb, cur);
     var showH = cur && cur.isConnected && mode === "pick" && !editing && sizable(cur);
     [hl, hr].forEach(function (h) { h.style.display = showH ? "block" : "none"; });
@@ -192,20 +196,31 @@
   function why(el) {
     if (!el || el === document.body || el === document.documentElement) return "Bu butun sahifa";
     if (/^(SCRIPT|STYLE|INPUT|TEXTAREA|SELECT|IMG|CANVAS|VIDEO|IFRAME|svg|SVG)$/.test(el.nodeName)) return "Bu element matn emas";
-    if (!K.norm(K.txt(el))) return "Bu elementda matn yoʻq";
+    if (!K.tnodes(el).length) return "Bu elementda matn yoʻq";
     for (var p = el.parentElement; p && p !== document.body; p = p.parentElement)
-      if (p.hasAttribute("data-kse-id")) return "Yuqoridagi blok allaqachon tahrirlangan: oʻsha blokni tahrirlang (⬆ Ota blok)";
+      if (p.hasAttribute("data-kse-id") || p.hasAttribute("data-kse-tid")) return "Yuqoridagi blok allaqachon tahrirlangan: oʻsha blokni tahrirlang (⬆ Ota blok)";
+    if (!simple(el) && !rowsOf(el).html) {
+      if (el.querySelector("[data-kse-id],[data-kse-tid]")) return "Ichidagi qism alohida tahrirlangan: oʻsha qismni tahrirlang yoki uning tahririni bekor qiling (↩ Asl matn)";
+      if (K.tnodes(el).length > TMAX) return "Blokda " + K.tnodes(el).length + " ta matn boʻlagi bor: kichikroq qismni tanlang (eng koʻpi " + TMAX + ")";
+    }
+    return "";
+  }
+  // Oddiy blok: faqat matn va b/i/a/span… Unda matn joyida (contenteditable) tahrirlanadi.
+  // Boshqa bloklar (tugma, ikonka, forma, ⓘ, kod boshqaradigan qism) "matn boʻlaklari" rejimida: tuzilma tegilmaydi.
+  var TMAX = 80;
+  function simple(el) {
+    if (rowsOf(el).text) return false;
+    if (K.txt(el).length > 4000) return false;
     var all = el.querySelectorAll("*");
     for (var i = 0; i < all.length; i++) {
       var c = all[i];
-      if (!OKTAG[c.nodeName]) return "Ichida <" + tagName(c) + "> bor: ichkiroq (kichikroq) qismni tanlang";
+      if (!OKTAG[c.nodeName]) return false;
       for (var j = 0; j < c.attributes.length; j++) {
         var a = c.attributes[j].name;
-        if (!OKATTR.test(a) && !/^data-kse/.test(a)) return "Ichida sayt kodi boshqaradigan qism bor (" + a + "): ichkiroq qismni tanlang";
+        if (!OKATTR.test(a) && !/^data-kse/.test(a)) return false;
       }
     }
-    if (K.txt(el).length > 4000) return "Matn juda uzun: kichikroq qismni tanlang";
-    return "";
+    return true;
   }
   function render() {
     var box = $(".cur");
@@ -218,11 +233,20 @@
       cv(box); cv($(".cnt"));
       return;
     }
-    var rs = rowsOf(cur), hidden = !!rs.hide, w = why(cur);
+    var rs = rowsOf(cur), hidden = !!rs.hide, w = why(cur), tx = !w && !simple(cur) && !rs.html;
     var h = '<div class="lbl">' + esc(labelOf(cur)) + '<br><code>' + esc(short(K.path(cur), 90)) + '</code>' +
       (hidden ? '<br><b style="color:#c4622d">Saytda yashirin</b>' : "") +
-      (rs.html ? '<br><b style="color:#b08a00">Matni tahrirlangan</b>' : "") + '</div>';
-    if (editing) {
+      (rs.html || rs.text ? '<br><b style="color:#b08a00">Matni tahrirlangan</b>' : "") + '</div>';
+    if (editing && editing.text) {
+      h += '<div class="note">Bu blokda tugma, ikonka yoki kod boshqaradigan qism bor: uning tuzilmasi oʻzgarmaydi, faqat matn boʻlaklari. Sahifadagi matnni bossangiz, mos maydon tanlanadi.</div>' +
+        '<div class="tl">' + editing.nodes.map(function (n, i) {
+          var p = n.parentElement;
+          return '<label class="ti"><span>' + (i + 1) + ' · &lt;' + esc(p ? tagName(p) : "?") + '&gt;</span>' +
+            '<textarea data-ti="' + i + '" rows="1">' + esc(n.nodeValue.replace(/^\s+|\s+$/g, "")) + '</textarea></label>';
+        }).join("") + '</div>' +
+        '<div class="row"><button class="b p" data-a="save">💾 Saqlash</button><button class="b" data-a="cancel">Bekor</button></div>' +
+        '<div class="note">Ctrl+Enter saqlaydi, Esc bekor qiladi.</div>';
+    } else if (editing) {
       h += '<div class="row"><button class="b p" data-a="save">💾 Saqlash</button><button class="b" data-a="cancel">Bekor</button></div>' +
         '<div class="note">Matnni toʻgʻridan-toʻgʻri sahifada yozing. Ctrl+Enter saqlaydi, Esc bekor qiladi. Qalin/kursiv: Ctrl+B / Ctrl+I.</div>';
     } else {
@@ -230,18 +254,23 @@
         '<button class="b" data-a="up"' + (cur.parentElement && cur.parentElement !== document.body && cur.parentElement !== document.documentElement ? "" : " disabled") + '>⬆ Ota blok</button>' +
         '<button class="b" data-a="edit"' + (w ? " disabled" : "") + '>✏️ Matnni tahrirlash</button>' +
         (hidden ? '<button class="b" data-a="show">👁 Koʻrsatish</button>' : '<button class="b w" data-a="hide">🙈 Yashirish</button>') +
-        (rs.html ? '<button class="b" data-a="revert">↩ Asl matn</button>' : "") +
+        (rs.html || rs.text ? '<button class="b" data-a="revert">↩ Asl matn</button>' : "") +
         '<button class="b" data-a="desel">✕</button></div>' +
-        (w ? '<div class="note">' + esc(w) + '</div>' : "") + sizePanel();
+        (w ? '<div class="note">' + esc(w) + '</div>' : tx ? '<div class="note">Murakkab blok: matn boʻlaklari panelda alohida tahrirlanadi, tugma va ikonkalar joyida qoladi.</div>' : "") + sizePanel();
     }
     box.innerHTML = h; cv(box); cv($(".cnt"));
+    if (editing && editing.text) {
+      // Maydondagi matn alifbo.js oʻgirgan koʻrinishda boʻlmasin: yozilgan qiymat aynan saqlanadi
+      [].forEach.call(box.querySelectorAll("textarea[data-ti]"), function (t) { t.value = editing.vals[+t.getAttribute("data-ti")]; grow(t); });
+    }
   }
+  function grow(t) { t.style.height = "auto"; t.style.height = Math.min(160, t.scrollHeight + 2) + "px"; }
   function renderLost() {
     var b = $(".lostbox");
     if (!lost.length) { b.innerHTML = ""; return; }
     b.innerHTML = '<div class="lost">⚠️ ' + lost.length + ' ta oʻzgarish bu sahifada topilmadi (sahifa manbasi oʻzgargan boʻlishi mumkin), saytda qoʻllanmayapti:' +
       lost.map(function (r) {
-        return '<div>' + (r.kind === "hide" ? "Yashirish" : "Matn") + ": " + esc(short(r.label || r.sel, 60)) +
+        return '<div>' + ({ hide: "Yashirish", style: "Oʻlcham" }[r.kind] || "Matn") + ": " + esc(short(r.label || r.sel, 60)) +
           ' <button class="b" data-a="off" data-id="' + r.id + '">Bekor qilish</button></div>';
       }).join("") + '</div>';
     cv(b);
@@ -254,7 +283,11 @@
   }
 
   // ── bazaga yozish ───────────────────────────────────────────
-  function fail(e) { msg("❌ " + (e && (e.message || e.details) || e), "er"); }
+  function fail(e) {
+    // 23514: bazada 'text' turi hali yoʻq (supabase/migrations/20261125_site_edits_text.sql qoʻllanmagan)
+    if (e && e.code === "23514" && /kind_check/.test(e.message || "")) { msg("❌ Bazaga 20261125_site_edits_text.sql migratsiyasi hali qoʻllanmagan: murakkab blok matni saqlanmadi", "er"); return; }
+    msg("❌ " + (e && (e.message || e.details) || e), "er");
+  }
   async function write(kind, el, fields) {
     var r = rowsOf(el)[kind];
     var res;
@@ -293,8 +326,75 @@
     } catch (e) { fail(e); }
     render(); sched();
   }
+  // ── Matn boʻlaklari rejimi (kind 'text') ─────────────────────
+  function foreign(n) {
+    for (var p = n.parentNode; p && p.nodeType === 1; p = p.parentNode) {
+      var lg = p.getAttribute("lang");
+      if ((lg && !/^uz/i.test(lg)) || p.getAttribute("translate") === "no" || p.getAttribute("data-alifbo") === "off") return true;
+    }
+    return false;
+  }
+  function startText() {
+    var el = cur;
+    if (el.__kseGuard == null && !rowsOf(el).text) el.__kseGuard = K.guard(el);
+    var nodes = K.tnodes(el);
+    editing = { el: el, text: true, nodes: nodes, orig: [], ws: [], vals: [] };
+    nodes.forEach(function (n, i) {
+      var v = n.nodeValue, m = /^(\s*)([\s\S]*?)(\s*)$/.exec(v);
+      editing.orig[i] = v; editing.ws[i] = [m[1], m[3]]; editing.vals[i] = m[2];
+    });
+    el.setAttribute("data-kse-editing", "");
+    msg(""); render(); sched();
+    var f = root.querySelector("textarea[data-ti]"); if (f) f.focus();
+  }
+  function focusNode(t) {
+    if (!editing || !editing.text) return;
+    for (var i = 0; i < editing.nodes.length; i++) if (t === editing.nodes[i].parentNode || (t.contains && t.contains(editing.nodes[i]))) {
+      var f = root.querySelector('textarea[data-ti="' + i + '"]'); if (f) { f.focus(); f.scrollIntoView({ block: "nearest" }); } return;
+    }
+  }
+  root.addEventListener("input", function (e) {
+    var t = e.target; if (!editing || !editing.text || !t.hasAttribute || !t.hasAttribute("data-ti")) return;
+    var i = +t.getAttribute("data-ti"), n = editing.nodes[i];
+    editing.vals[i] = t.value; grow(t);
+    n.nodeValue = editing.ws[i][0] + t.value + editing.ws[i][1];
+    sched();
+  });
+  root.addEventListener("focusin", function (e) {
+    var t = e.target; if (!editing || !editing.text || !t.hasAttribute || !t.hasAttribute("data-ti")) return;
+    hovEl = editing.nodes[+t.getAttribute("data-ti")].parentElement; place(hov, hovEl);
+  });
+  function cancelText() {
+    editing.nodes.forEach(function (n, i) { if (n.nodeValue !== editing.orig[i]) n.nodeValue = editing.orig[i]; });
+    editing.el.removeAttribute("data-kse-editing"); editing = null; hovEl = null;
+  }
+  async function saveText() {
+    var ed = editing, el = ed.el, old = rowsOf(el).text, prev = old ? (K.parseText(old.value) || { c: {} }).c : {};
+    var c = {}, k;
+    for (k in prev) c[k] = prev[k];
+    for (var i = 0; i < ed.nodes.length; i++) {
+      var v = ed.vals[i];
+      if (!/\S/.test(v)) { msg("⚠️ " + (i + 1) + "-maydon boʻsh qoldi. Qismni olib tashlash uchun uni tanlab “Yashirish”dan foydalaning.", "er"); return; }
+      var full = ed.ws[i][0] + v + ed.ws[i][1];
+      if (full !== ed.orig[i]) c[i] = foreign(ed.nodes[i]) ? full : toOld(full);
+    }
+    if (!Object.keys(c).length) { msg("Oʻzgarish yoʻq"); return; }
+    var value = JSON.stringify({ n: ed.nodes.length, c: c });
+    if (value.length > 20000) { msg("⚠️ Matn juda uzun: kichikroq qismni tanlang", "er"); return; }
+    try {
+      var r = await write("text", el, { value: value, status: "active" });
+      el.removeAttribute("data-kse-editing"); editing = null; hovEl = null;
+      setRow(el, r);
+      if (!rows.some(function (x) { return x.id === r.id; })) rows.push(r); else rows = rows.map(function (x) { return x.id === r.id ? r : x; });
+      K.textApply(el, r.value);
+      el.setAttribute("data-kse-tid", r.id);
+      msg("✅ Saqlandi. Saytda bir necha daqiqada (yangi tashrifda) koʻrinadi.", "ok");
+    } catch (e) { fail(e); }
+    render(); sched();
+  }
   function startEdit() {
     var el = cur; if (!el || why(el)) return;
+    if (!simple(el) && !rowsOf(el).html) { startText(); return; }
     if (el.__kseGuard == null && !rowsOf(el).html) el.__kseGuard = K.guard(el);
     editing = { el: el, html: el.innerHTML };
     // ⓘ belgisi tasodifan oʻchmasin: u tahrirlanmaydi, saqlanganda joyida qoladi
@@ -314,11 +414,13 @@
   }
   function cancelEdit() {
     if (!editing) return;
+    if (editing.text) { cancelText(); msg(""); render(); sched(); return; }
     editing.el.innerHTML = editing.html;
     endEdit(); msg(""); render(); sched();
   }
   async function saveEdit() {
     if (!editing) return;
+    if (editing.text) return saveText();
     var el = editing.el;
     var html = oldHtml(K.clean(el.innerHTML)).replace(/^(\s|&nbsp;|<br>)+|(\s|&nbsp;|<br>)+$/g, "");
     if (!K.norm(html.replace(/<[^>]+>/g, ""))) { msg("⚠️ Matn boʻsh boʻlib qoldi. Qismni olib tashlash uchun “Yashirish”dan foydalaning.", "er"); return; }
@@ -342,7 +444,7 @@
     render(); sched();
   }
   async function revert() {
-    var el = cur, o = el && rowsOf(el).html;
+    var el = cur, o = el && (rowsOf(el).html || rowsOf(el).text);
     if (!o || !confirm("Bu qism manbadagi asl matnga qaytarilsinmi?")) return;
     var u = await sb.from("site_edits").update({ status: "off" }).eq("id", o.id);
     if (u.error) { fail(u.error); return; }
@@ -506,6 +608,12 @@
     if (inHost(e.target)) return;
     if (editing) {
       // havola ochilmasin; <summary> ichidagi sarlavhada bosish ⓘ oynasini ochib-yopmasin
+      if (editing.text) {
+        // Matn boʻlaklari rejimi: sahifadagi matnni bosish mos maydonni tanlaydi, sayt kodi ishlamaydi
+        e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
+        if (e.type === "click" && editing.el.contains(e.target)) focusNode(e.target);
+        return;
+      }
       if (editing.el.contains(e.target)) { if (e.target.closest && e.target.closest("a, summary")) e.preventDefault(); return; }
       e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
       return;
@@ -523,11 +631,13 @@
   window.addEventListener("scroll", sched, true);
   window.addEventListener("resize", sched);
   window.addEventListener("keydown", function (e) {
+    // Panel maydonlarida yozilgan tugmalar sahifaga (←/→ sahifa almashtirish va b.) yetib bormasin
+    if (inHost(e.target)) e.stopPropagation();
     if (editing) {
       if (e.key === "Escape") { e.preventDefault(); cancelEdit(); }
       else if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); saveEdit(); }
       // <summary> ichida boʻsh joy va Enter brauzerda ⓘ oynasini ochadi: oʻrniga matn yozamiz
-      else if ((e.key === " " || e.key === "Enter") && editing.el.closest("summary") && editing.el.contains(e.target)) {
+      else if (!editing.text && (e.key === " " || e.key === "Enter") && editing.el.closest("summary") && editing.el.contains(e.target)) {
         e.preventDefault();
         if (e.key === " ") document.execCommand("insertText", false, " ");
         else document.execCommand("insertLineBreak");
@@ -542,8 +652,12 @@
   function applyAll() {
     lost = [];
     rows.forEach(function (r) {
-      var el = (r.kind === "html" && document.querySelector('[data-kse-id="' + r.id + '"]')) || K.locate(r);
+      var el = (r.kind === "html" && document.querySelector('[data-kse-id="' + r.id + '"]')) || (r.kind === "text" && document.querySelector('[data-kse-tid="' + r.id + '"]')) || K.locate(r);
       if (!el) { lost.push(r); return; }
+      if (r.kind === "text") {
+        if (el.getAttribute("data-kse-tid") !== String(r.id) && !K.textApply(el, r.value)) { lost.push(r); return; }
+        el.__kseGuard = r.guard; el.setAttribute("data-kse-tid", r.id);
+      }
       setRow(el, r);
       if (r.kind === "hide") el.setAttribute("data-kse-hidden", "");
       else if (r.kind === "style") K.style(el, r.value);
