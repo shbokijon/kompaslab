@@ -726,16 +726,16 @@ function renderModules(modules, progressMap, courseSlug) {
 //  5. OBUNASIZ: bepul M0 modullar (birinchi oʻrinda)
 // ════════════════════════════════════════════════════════
 const M0_LIST = [
-  { lab: 'master-lab',       href: 'master-lab-m0.html',       key: 'kompas_master_m0_v1',   icon: 'master',   name: 'Magistratura dasturi M0',       sub: 'Magistratura: tayyorgarlik va muddatlar',
-    lessons: ["Magistratura dasturi qanday ishlaydi?", "Magistratura turlari va oʻqish imkoniyatlari", "Magistraturaga arizada qanday hujjatlar kerak?", "Tayyorgarligingizni qanday baholaysiz?", "Magistratura dasturi sizga mosmi? Obunadan oldingi tekshiruv"] },
+  { lab: 'master-lab',       href: 'master-lab-m0.html',       key: 'kompas_master_m0_v1',   icon: 'master',   name: 'Magistratura dasturi M0',       sub: 'Magistratura: 12 daqiqada baho va reja',
+    lessons: ["Qachon oʻqishni boshlamoqchisiz?", "Nimani va qayerda oʻqiysiz?", "Hujjatlaringiz qay holatda?", "Oʻqish puli qayerdan keladi?"] },
   { lab: 'bachelor-lab',     href: 'bachelor-lab-m0.html',     key: 'kompas_bachelor_m0_v1', icon: 'bachelor', name: 'Bakalavr dasturi M0',     sub: 'Bakalavr: 12 daqiqada baho va reja',
     lessons: ["Qachon oʻqishni boshlamoqchisiz?", "Nimani va qayerda oʻqiysiz?", "Arizangiz uchun nimalar tayyor?", "Oʻqish puli qayerdan keladi?"] },
-  { lab: 'phd-lab',          href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD dasturi M0',          sub: 'Moliyalashtirilgan PhD: boshlashdan oldingi tekshiruv',
-    lessons: ["PhD nima va kimga kerak", "Uchta global model", "“Faqat moliyalashtirilgan” qoidasi", "PhD vaqt chizigʻi: qarordan taklifgacha 12–18 oy", "Tayyorgarlik diagnostikasi", "Qaror: boshlash, kechiktirish yoki boshqa dastur"] },
+  { lab: 'phd-lab',          href: 'phd-lab-m0.html',          key: 'kompas_phd_m0_v1',      icon: 'phd',      name: 'PhD dasturi M0',          sub: 'PhD: 12 daqiqada model, baho va reja',
+    lessons: ["Qachon PhD ni boshlaysiz?", "Qaysi yoʻl bilan PhD ga kirasiz?", "Arizangiz uchun nimalar tayyor?", "PhD ni qanday moliyalashtirasiz?"] },
   { lab: 'gks-lab',          href: 'gks-lab-m0.html',          key: 'kompas_gks_m0_v1',      icon: 'gks',      name: 'GKS dasturi M0',          sub: 'Koreya hukumati stipendiyasi',
     lessons: ["GKS nima va kimga beriladi", "Ikki trek va tanlov bosqichlari", "Muvofiqlik tekshiruvi", "Trek tanlovi", "Vaqt chizigʻi, toʻlov va rozilik"] },
-  { lab: 'usa-lab',          href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA dasturi M0',          sub: 'AQSh: beshta yoʻl, pul va viza',
-    lessons: ["AQSh yoʻllari xaritasi", "Eng keng tarqalgan miflar", "Pul haqiqati va B reja", "Yoʻl tanlagich", "Rasmiy manbalarni oʻqish", "Tayyorgarlik, kalendar va shartlar"] },
+  { lab: 'usa-lab',          href: 'usa-lab-m0.html',          key: 'kompas_usa_m0_v1',      icon: 'usa',      name: 'USA dasturi M0',          sub: 'AQSh: 12 daqiqada yoʻl, baho va reja',
+    lessons: ["Qachon oʻqishni boshlaysiz?", "AQShga qaysi yoʻl bilan borasiz?", "Arizangiz uchun nimalar tayyor?", "Yiliga qancha toʻlay olasiz?"] },
   { lab: 'tadbirkor-talaba', href: 'tadbirkor-talaba-m0.html', key: 'kompas_tt_m0_v1',       icon: 'tt',       name: 'Tadbirkor Talaba M0', sub: 'Oʻqish va biznesni birga olib borish',
     lessons: ["Talaba tadbirkorligi nima va nima emas", "Vaqt, oʻqish va pul", "Huquqiy shakllar xaritasi", "Tayyorgarlik koʻrsatkichi", "Kimga mos emas va shartlar"] },
   { lab: 'musofir-lab',      href: 'musofir-lab-m0.html',      key: 'kompas_musofir_m0_v1',  icon: 'musofir',  name: 'Musofir dasturi M0',      sub: 'Xorijda ish: rasmiy yoʻl va himoya',

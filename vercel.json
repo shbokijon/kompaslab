@@ -133,6 +133,26 @@
       "permanent": false
     },
     {
+      "source": "/phd-lab-m0-5",
+      "destination": "/phd-lab-m0-yakun",
+      "permanent": false
+    },
+    {
+      "source": "/phd-lab-m0-5.html",
+      "destination": "/phd-lab-m0-yakun",
+      "permanent": false
+    },
+    {
+      "source": "/phd-lab-m0-6",
+      "destination": "/phd-lab-m0-yakun",
+      "permanent": false
+    },
+    {
+      "source": "/phd-lab-m0-6.html",
+      "destination": "/phd-lab-m0-yakun",
+      "permanent": false
+    },
+    {
       "source": "/master-lab-m0-5",
       "destination": "/master-lab-m0-yakun",
       "permanent": false
