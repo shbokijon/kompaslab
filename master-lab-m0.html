@@ -303,6 +303,11 @@ html[data-theme="dark"] .kp-ph{color:inherit}
 .fb.show{display:block;animation:fadeUp .3s ease both}
 .fb.warn{background:var(--gold-lit)}
 .fb b{color:var(--accent)}
+.dl-box{display:none;margin-top:10px;max-width:340px;border:1.5px solid var(--accent);border-radius:12px;padding:8px 12px;background:var(--surface);font-size:13.5px}
+.dl-box.show{display:grid;gap:2px}
+.dl-box span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.dl-box b{font-size:18px;color:var(--accent)}
+.dl-box small{color:var(--muted);font-size:12.5px;line-height:1.4}
 .in-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
 .in-row input{flex:1 1 200px;min-height:44px;border:2px solid var(--border);border-radius:12px;padding:8px 12px;font:inherit;background:var(--surface);color:var(--text)}
 .in-row input:focus{outline:none;border-color:var(--accent)}
@@ -455,8 +460,10 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
             </div>
             <div class="q">
               <h3>Topshirish sanasini bilasizmi?</h3>
-              <p class="qs">Bilmasangiz, boʻsh qoldiring: taxminiy sanani oʻzimiz qoʻyamiz.</p>
-              <div class="in-row"><input type="date" id="dlDate" aria-label="Topshirish sanasi"></div>
+              <p class="qs">Dastur sahifasidagi <b>eng erta</b> sanani kiriting. Bilmasangiz, pastdagi tugmani bosing.</p>
+              <div class="in-row"><input type="date" id="dlDate" aria-label="Topshirish sanasi" required></div>
+              <div class="chips"><button type="button" class="chip" id="dateX" aria-pressed="false">Aniq sanani bilmayman: taxminiy sana qoʻyilsin</button></div>
+              <div class="dl-box" id="dlBox" role="status"></div>
             </div>
             <div class="fb" id="fb1" role="status"></div>
             <details class="more"><summary>Nega sanadan orqaga hisoblaymiz?</summary><p>Reja topshirish sanasidan orqaga hisoblanadi va 4 hafta zaxira qoladi: tavsiya xati kech kelsa yoki internet uzilsa. Tavsiya xatini boshqa odam yozadi, til imtihoniga oldindan yozilish kerak. Shuning uchun erta boshlash kerak.</p></details>
@@ -790,11 +797,12 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
     fld.addEventListener("change", function () { A.field = fld.value.trim(); if (A.field) A.fieldX = false; save(); renderAll(); });
   }
   if (fx) fx.addEventListener("click", function () { A.fieldX = !A.fieldX; if (A.fieldX) { A.field = ""; if (fld) fld.value = ""; } save(); renderAll(); });
-  var dd = $("dlDate");
+  var dd = $("dlDate"), dx = $("dateX");
   if (dd) {
     dd.value = A.date || "";
-    dd.addEventListener("change", function () { A.date = dd.value; save(); renderAll(); });
+    dd.addEventListener("change", function () { A.date = dd.value; if (A.date) A.dateX = false; save(); renderAll(); });
   }
+  if (dx) dx.addEventListener("click", function () { A.dateX = !A.dateX; if (A.dateX) { A.date = ""; if (dd) dd.value = ""; } save(); renderAll(); });
 
   // ── Hisob-kitob ──
   function today() { var t = new Date(); t.setHours(0, 0, 0, 0); return t; }
@@ -802,7 +810,7 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
   // Taxminiy topshirish sanasi (foydalanuvchi aniq sana kiritmasa)
   function deadline() {
     if (A.date) return new Date(A.date + "T00:00:00");
-    if (!A.start) return null;
+    if (!A.start || !A.dateX) return null;
     var m = { "2027k": "2027-01-15", "2028b": "2027-10-01", "2028k": "2028-01-15" }[A.start];
     if (m) return new Date(m + "T00:00:00");
     return new Date(today().getTime() + 40 * 7 * DAY);
@@ -816,7 +824,7 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
   var DOC_ORDER = ["ref", "lang", "cv", "sop", "tr"]; // koʻp vaqt oladiganlari birinchi
   var DIM = ["Vaqt", "Yoʻnalish", "Baholar", "Til", "Hujjatlar", "Pul"];
   function answered(id) {
-    if (id === "l1") return !!(A.start || A.date);
+    if (id === "l1") return !!A.start && (!!A.date || !!A.dateX);
     if (id === "l2") return !!A.deg && !!(A.field || A.fieldX) && !!A.ftype && A.where.length > 0;
     if (id === "l3") return ["cv", "sop", "ref", "tr", "lang"].every(function (k) { return A.docs[k] != null; }) && !!A.grades;
     if (id === "l4") return A.fund.length > 0;
@@ -840,12 +848,22 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
 
   // ── Darhol javoblar ──
   function fb(id, html, warn) { var e = $(id); if (!e) return; e.innerHTML = html || ""; e.classList.toggle("show", !!html); if (warn != null) e.classList.toggle("warn", !!warn); }
+  function renderDate() {
+    if (dx) dx.setAttribute("aria-pressed", A.dateX ? "true" : "false");
+    var box = $("dlBox"), d = deadline();
+    var est = A.dateX && d ? iso(d) : "";
+    if (A.dateEst !== est) { A.dateEst = est; save(); }
+    if (!box) return;
+    if (!d) { box.innerHTML = ""; box.classList.remove("show"); return; }
+    box.innerHTML = "<span>Ariza muddatingiz</span><b>" + short(d) + "</b><small>" + (A.date ? "Siz kiritgan sana." : "Taxminiy sana: boshlash yilingizga qarab qoʻyildi. Aniq sanani dastur sahifasidan topib, kiriting.") + "</small>";
+    box.classList.add("show");
+  }
   function render1() {
+    renderDate();
     var w = weeks(), pw = prepWeeks();
     if (w == null) { fb("fb1", ""); return; }
-    var est = A.date ? "" : " Sana taxminiy: aniq sanani dastur sahifasidan topib, yuqoriga kiriting.";
     var msg = pw >= 24 ? "Bu bemalol yetadi." : pw >= 16 ? "Yetadi, agar hozir boshlasangiz." : pw >= 10 ? "Tigʻiz, lekin ulgurasiz." : "Juda tigʻiz. Rejada keyingi mavsum ham koʻrsatiladi.";
-    fb("fb1", "Topshirishgacha <b>" + w + " hafta</b> bor: " + pw + " hafta tayyorgarlik va 4 hafta zaxira. " + msg + "<br><small>Taxminiy topshirish sanasi: " + fmt(deadline()) + "." + est + "</small>", pw < 10);
+    fb("fb1", "Topshirishgacha <b>" + w + " hafta</b> bor: " + pw + " hafta tayyorgarlik va 4 hafta zaxira. " + msg, pw < 10);
   }
   function render2() {
     var d = A.deg;
@@ -879,7 +897,7 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
     fb("fb4", A.fund.indexOf("x") >= 0 ? "Normal hol. Rejada pul masalasi alohida bosqichda turadi." :
       st ? "Stipendiya sanalari rejangizga qoʻshiladi. Ular koʻpincha universitet qabulidan oldinroq yopiladi." : "Yaxshi. Reja universitet sanalariga qarab tuziladi.");
   }
-  var HINT = { l1: "Bitta variantni tanlang.", l2: "Toʻrtta savolga javob bering.", l3: "Har hujjatga va baholarga javob bering.", l4: "Kamida bittasini tanlang." };
+  var HINT = { l1: "Ikkala savolga javob bering.", l2: "Toʻrtta savolga javob bering.", l3: "Har hujjatga va baholarga javob bering.", l4: "Kamida bittasini tanlang." };
   function renderSteps() {
     lessons.forEach(function (l) {
       var id = l.id, ok = answered(id), h = l.querySelector("[data-hint]");

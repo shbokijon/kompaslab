@@ -822,7 +822,8 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
   function renderDate() {
     if (dx) dx.setAttribute("aria-pressed", A.dateX ? "true" : "false");
     var box = $("dlBox"), d = deadline();
-    A.dateEst = A.dateX && d ? iso(d) : "";
+    var est = A.dateX && d ? iso(d) : "";
+    if (A.dateEst !== est) { A.dateEst = est; save(); }
     if (!box) return;
     if (!d) { box.innerHTML = ""; box.classList.remove("show"); return; }
     box.innerHTML = "<span>Ariza muddatingiz</span><b>" + short(d) + "</b><small>" + (A.date ? "Siz kiritgan sana." : "Taxminiy sana: " + (A.route ? "tanlagan yoʻlingizga" : "bakalavr yoʻliga") + " qarab qoʻyildi. Aniq sanani universitet yoki dastur sahifasidan topib, kiriting.") + "</small>";

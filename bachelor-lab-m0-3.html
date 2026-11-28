@@ -303,6 +303,11 @@ html[data-theme="dark"] .kp-ph{color:inherit}
 .fb.show{display:block;animation:fadeUp .3s ease both}
 .fb.warn{background:var(--gold-lit)}
 .fb b{color:var(--accent)}
+.dl-box{display:none;margin-top:10px;max-width:340px;border:1.5px solid var(--accent);border-radius:12px;padding:8px 12px;background:var(--surface);font-size:13.5px}
+.dl-box.show{display:grid;gap:2px}
+.dl-box span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.dl-box b{font-size:18px;color:var(--accent)}
+.dl-box small{color:var(--muted);font-size:12.5px;line-height:1.4}
 .in-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
 .in-row input{flex:1 1 200px;min-height:44px;border:2px solid var(--border);border-radius:12px;padding:8px 12px;font:inherit;background:var(--surface);color:var(--text)}
 .in-row input:focus{outline:none;border-color:var(--accent)}
@@ -459,8 +464,10 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
             </div>
             <div class="q">
               <h3>Aniq ariza muddatini bilasizmi?</h3>
-              <p class="qs">Bilmasangiz, boʻsh qoldiring: taxminiy sanani oʻzimiz qoʻyamiz.</p>
-              <div class="in-row"><input type="date" id="dlDate" aria-label="Ariza muddati"></div>
+              <p class="qs">Universitet sahifasidagi <b>eng erta</b> sanani kiriting. Bilmasangiz, pastdagi tugmani bosing.</p>
+              <div class="in-row"><input type="date" id="dlDate" aria-label="Ariza muddati" required></div>
+              <div class="chips"><button type="button" class="chip" id="dateX" aria-pressed="false">Aniq sanani bilmayman: taxminiy sana qoʻyilsin</button></div>
+              <div class="dl-box" id="dlBox" role="status"></div>
             </div>
             <div class="fb" id="fb1" role="status"></div>
             <details class="more"><summary>Qaysi sanadan hisoblaymiz?</summary><p>Reja eng erta ariza muddatidan orqaga hisoblanadi va 4 hafta zaxira qoladi. Buyuk Britaniyada 2027-yil kuzi uchun UCAS muddatlari: Oksford, Kembrij va koʻp tibbiyot yoʻnalishlari 15.10.2026 (<a href="https://www.ucas.com/events/2027-entry-deadline-for-the-universities-of-oxford-and-cambridge-and-most-courses-in-medicine-475536" target="_blank" rel="noopener">UCAS: 15.10.2026</a>), qolgan koʻp dasturlar 13.01.2027 (<a href="https://www.ucas.com/events/2027-entry-deadline-for-all-undergraduate-courses-except-those-with-a-15-october-deadline-475546" target="_blank" rel="noopener">UCAS: 13.01.2027</a>). 19.11.2026 holatiga. Boshqa mamlakatlarda har universitetning oʻz muddati bor: uni universitet sahifasidan oling. Keyingi yillar uchun sana taxminiy.</p></details>
@@ -773,11 +780,12 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
     fld.addEventListener("change", function () { A.field = fld.value.trim(); if (A.field) A.fieldX = false; save(); renderAll(); });
   }
   if (fx) fx.addEventListener("click", function () { A.fieldX = !A.fieldX; if (A.fieldX) { A.field = ""; if (fld) fld.value = ""; } save(); renderAll(); });
-  var dd = $("dlDate");
+  var dd = $("dlDate"), dx = $("dateX");
   if (dd) {
     dd.value = A.date || "";
-    dd.addEventListener("change", function () { A.date = dd.value; save(); renderAll(); });
+    dd.addEventListener("change", function () { A.date = dd.value; if (A.date) A.dateX = false; save(); renderAll(); });
   }
+  if (dx) dx.addEventListener("click", function () { A.dateX = !A.dateX; if (A.dateX) { A.date = ""; if (dd) dd.value = ""; } save(); renderAll(); });
 
   // ── Sana hisobi ──
   function today() { var t = new Date(); t.setHours(0, 0, 0, 0); return t; }
@@ -789,7 +797,7 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
   function deadline() {
     earlyPassed = false;
     if (A.date) return D(A.date);
-    if (!A.start) return null;
+    if (!A.start || !A.dateX) return null;
     var y = Y[A.start];
     if (!y) return new Date(today().getTime() + 52 * 7 * DAY);
     if (A.early === "y") {
@@ -809,7 +817,7 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
   var DOC_ORDER = ["lang", "ref", "ach", "ess"]; // koʻp vaqt oladiganlari birinchi
   var DIM = ["Vaqt", "Yoʻnalish", "Baholar", "Ingliz tili", "Yutuq va hujjatlar", "Pul"];
   function answered(id) {
-    if (id === "l1") return !!(A.start || A.date) && !!A.stage && !!A.early;
+    if (id === "l1") return !!A.start && !!A.stage && !!A.early && (!!A.date || !!A.dateX);
     if (id === "l2") return !!A.deg && !!(A.field || A.fieldX) && A.where.length > 0;
     if (id === "l3") return DOC_KEYS.every(function (k) { return A.docs[k] != null; }) && !!A.grades;
     if (id === "l4") return !!A.fund;
@@ -834,12 +842,22 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
 
   // ── Darhol javoblar ──
   function fb(id, html, warn) { var e = $(id); if (!e) return; e.innerHTML = html || ""; e.classList.toggle("show", !!html); if (warn != null) e.classList.toggle("warn", !!warn); }
+  function renderDate() {
+    if (dx) dx.setAttribute("aria-pressed", A.dateX ? "true" : "false");
+    var box = $("dlBox"), d = deadline();
+    var est = A.dateX && d ? iso(d) : "";
+    if (A.dateEst !== est) { A.dateEst = est; save(); }
+    if (!box) return;
+    if (!d) { box.innerHTML = ""; box.classList.remove("show"); return; }
+    box.innerHTML = "<span>Ariza muddatingiz</span><b>" + short(d) + "</b><small>" + (A.date ? "Siz kiritgan sana." : "Taxminiy sana: boshlash yilingizga qarab qoʻyildi. Aniq sanani universitet sahifasidan topib, kiriting.") + "</small>";
+    box.classList.add("show");
+  }
   function render1() {
+    renderDate();
     var w = weeks(), pw = prepWeeks();
     if (w == null) { fb("fb1", ""); return; }
-    var est = A.date ? "" : " Sana taxminiy: aniq sanani universitet sahifasidan topib, yuqoriga kiriting.";
     var msg = pw >= 32 ? "Bu bemalol yetadi." : pw >= 24 ? "Yetadi, agar hozir boshlasangiz." : pw >= 14 ? "Tigʻiz: testni qayta topshirishga vaqt kam qoladi." : "Juda tigʻiz. Rejada keyingi mavsum ham koʻrsatiladi.";
-    var t = "Ariza muddatigacha <b>" + w + " hafta</b> bor: " + pw + " hafta tayyorgarlik va 4 hafta zaxira. " + msg + "<br><small>Taxminiy ariza muddati: " + fmt(deadline()) + "." + est + "</small>";
+    var t = "Ariza muddatigacha <b>" + w + " hafta</b> bor: " + pw + " hafta tayyorgarlik va 4 hafta zaxira. " + msg;
     if (earlyPassed) t += "<br><small>Bu yilgi erta muddat (15.10.2026) oʻtib ketgan, shuning uchun reja yanvar muddatiga qurildi.</small>";
     if ((A.stage === "s9" || A.stage === "s10") && A.start === "2027k") t += "<br><small>2027 kuzida boshlash uchun maktabni 2027-yil yozigacha bitirish kerak. Sinfingiz va yilni yana bir tekshiring.</small>";
     fb("fb1", t, pw < 14);
@@ -880,7 +898,7 @@ html[data-theme="dark"] .cta .btn-p:hover{background:#bfe3cf}
       x: "Bu normal hol. Natijadagi rejani ota-onangizga koʻrsating va shu hafta gaplashing."
     }[A.fund] || "");
   }
-  var HINT = { l1: "Uchta savolga javob bering.", l2: "Uchta savolga javob bering.", l3: "Baholar va har qatorga javob bering.", l4: "Bitta variantni tanlang." };
+  var HINT = { l1: "Toʻrtta savolga javob bering.", l2: "Uchta savolga javob bering.", l3: "Baholar va har qatorga javob bering.", l4: "Bitta variantni tanlang." };
   function renderSteps() {
     lessons.forEach(function (l) {
       var id = l.id, ok = answered(id), h = l.querySelector("[data-hint]");
