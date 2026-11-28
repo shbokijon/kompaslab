@@ -1,11 +1,13 @@
 // ═══════════════════════════════════════════════════════════════
 //  KOMPAS LAB — live-bar.js
 //  Saytning eng tepasida doim koʻrinadigan jonli panel:
-//   · hozir saytda turganlar (Supabase Realtime Presence, bir brauzer = 1)
 //   · roʻyxatdan oʻtganlar (kompas_public_stats().registered)
 //   · tashriflar: bugun / shu hafta / shu oy / shu yil (kompas_track_visit)
 //     1 tashrif = 1 brauzer × 1 kun (Toshkent vaqti), hafta dushanbadan
 //  Raqam olinmasa, oʻsha belgi koʻrsatilmaydi: soxta raqam yoʻq.
+//  2026-11-28 (asoschi): "Hozir saytda" (Realtime Presence) olib tashlandi:
+//  kam trafikda 1 yoki 2 koʻrsatardi va bepul serverda doimiy ulanish xotira oladi.
+//  Roʻyxatdan oʻtganlar 60 soniya emas, 5 daqiqada bir yangilanadi.
 // ═══════════════════════════════════════════════════════════════
 (function () {
   if (window.__kompasLiveBar) return;
@@ -75,7 +77,7 @@
     var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
     var bar = document.createElement("div");
     bar.className = "klb"; bar.hidden = true; bar.setAttribute("aria-live", "polite");
-    bar.innerHTML = '<div class="klb-st">' + chip("klbOn", "telescope", "Hozir saytda", true) + chip("klbReg", "bachelor", "Roʻyxatdan oʻtganlar", false) +
+    bar.innerHTML = '<div class="klb-st">' + chip("klbReg", "bachelor", "Roʻyxatdan oʻtganlar", false) +
       '<i class="klb-s" id="klbSep" hidden></i>' +
       chip("klbD", "bell", "Bugungi tashriflar", false) + chip("klbW", "calendar", "Shu haftadagi tashriflar", false) +
       chip("klbM", "chart", "Shu oydagi tashriflar", false) + chip("klbY", "seedling", "Shu yildagi tashriflar", false) + '</div>' + contacts();
@@ -146,15 +148,18 @@
     var bar = mount(), sb = client();
     if (!sb) return;
 
-    // Roʻyxatdan oʻtganlar: sahifa ochilganda va har 60 soniyada
+    // Roʻyxatdan oʻtganlar: sahifa ochilganda va har 5 daqiqada (tabga qaytganda ham 5 daqiqadan tez emas)
+    var REG_EVERY = 300000, regAt = 0;
     function loadReg() {
       if (document.hidden || typeof sb.rpc !== "function") return;
+      if (Date.now() - regAt < REG_EVERY - 1000) return;
+      regAt = Date.now();
       sb.rpc("kompas_public_stats").then(function (r) {
         var n = r && !r.error && r.data ? r.data.registered : null;
         if (typeof n === "number" && n >= REG_MIN) setVal(bar, "klbReg", n);
       });
     }
-    loadReg(); setInterval(loadReg, 60000);
+    loadReg(); setInterval(loadReg, REG_EVERY);
     document.addEventListener("visibilitychange", loadReg);
 
     // Tashriflar: sahifa ochilganda 1 marta yoziladi (bir kunda takror sanalmaydi), har 5 daqiqada yangilanadi
@@ -184,15 +189,6 @@
           .then(function () {}, function () {});
       } catch (e) {}
     }
-
-    // Hozir saytda: Realtime Presence (bitta brauzer bir nechta tabda ham 1 marta sanaladi)
-    if (typeof sb.channel !== "function") return;
-    var ch = sb.channel("kompas-online", { config: { presence: { key: visitorId() } } });
-    function count() { setVal(bar, "klbOn", Object.keys(ch.presenceState()).length); }
-    ch.on("presence", { event: "sync" }, count)
-      .subscribe(function (status) {
-        if (status === "SUBSCRIBED") ch.track({ at: Date.now(), page: location.pathname });
-      });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
