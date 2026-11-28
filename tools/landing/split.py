@@ -150,7 +150,8 @@ def modules(dastur):
         if ph is None:
             for a, b, lab in phases:
                 if a <= n <= b: ph = lab; break
-        res.append(dict(id=mid, n=n, slug=re.sub(r"[^a-z0-9]+", "-", mid.lower()).strip("-"), title=title, art=art, free=bool(m.group(2)), core="tag-core" in d, lessons=lessons, group=ph))
+        mc = re.search(r'<div class="mod-c">(.*?)</div>', d, flags=re.S)
+        res.append(dict(meta=text(mc.group(1)) if mc else "", id=mid, n=n, slug=re.sub(r"[^a-z0-9]+", "-", mid.lower()).strip("-"), title=title, art=art, free=bool(m.group(2)), core="tag-core" in d, lessons=lessons, group=ph))
     return res
 
 
@@ -407,7 +408,7 @@ def split(root, f, src):
             if k == "faktlar" and stem in FACTS_ON_SOURCES:
                 continue  # 2026-11-19: Masterda stipendiya faktlari faqat Manbalar sahifasida (takror yoʻq)
             parts.append(B[k])
-    made.append(emit(stem + "-dastur.html", "dastur", f"Dastur: {len(mods)} modul, {nlessons} dars · {lab_name} | Kompas Lab", f"{lab_name} dasturi: fazalar, {len(mods)} modul va {nlessons} dars mavzulari. M0 bepul.", "\n".join(parts), own=("dastur", "qanday", "faktlar", "atlas")))
+    made.append(emit(stem + "-dastur.html", "dastur", f"Dastur: {len(mods)} modul, {nlessons} dars · {lab_name} | Kompas Lab", f"{lab_name}: fazalar, {len(mods)} modul va {nlessons} dars mavzulari. M0 bepul.", "\n".join(parts), own=("dastur", "qanday", "faktlar", "atlas")))
 
     # ── 2b. Manbalar (2026-11-19): faktlar bloki dastur sahifasidan shu yerga koʻchgan (FACTS_ON_SOURCES) ──
     if stem in FACTS_ON_SOURCES and "faktlar" in B:

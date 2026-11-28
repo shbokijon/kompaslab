@@ -36,7 +36,8 @@ MODULES = {
     # Bakalavr M0 v2 (2026-11-19): tayyor sahifa src/bachelor-lab-m0.page.html (Magistratura M0 v2 andozasi)
     "bachelor-lab-m0":     dict(lab="bachelor-lab.html", site=True, raw=True),
     "gks-lab-m0":          dict(lab="gks-lab.html", site=True, protect=True),
-    "phd-lab-m0":          dict(lab="phd-lab.html", site=True, protect=True),
+    # PhD M0 v2 (2026-11-28): tayyor sahifa src/phd-lab-m0.page.html (USA M0 v2 andozasi)
+    "phd-lab-m0":          dict(lab="phd-lab.html", site=True, raw=True),
     "tadbirkor-talaba-m0": dict(lab="tadbirkor-talaba.html", site=True, protect=True),
     # Tayyor sahifa (avval master-lab-m0.html qoʻlda yuritilgan): faqat sayt versiyasi
     "master-lab-m0":       dict(lab="master-lab.html", site=True, raw=True),
